@@ -1,0 +1,39 @@
+name: Curador Automatico
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 04:00 AM (Hora UTC)
+    - cron: '0 4 * * *'
+  workflow_dispatch: # Permite ejecutarlo manualmente con un botón
+
+jobs:
+  procesar_catalogo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar el repositorio
+      uses: actions/checkout@v3
+
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Instalar dependencias
+      run: pip install requests
+
+    - name: Ejecutar el Curador Mágico
+      env:
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        XTREAM_URL: ${{ secrets.XTREAM_URL }}
+        XTREAM_USER: ${{ secrets.XTREAM_USER }}
+        XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
+      run: python curador.py
+
+    - name: Guardar el JSON en el repositorio
+      run: |
+        git config --global user.name "Bot Curador"
+        git config --global user.email "bot@allstreamtv.com"
+        git add catalogo_curado.json
+        git commit -m "Actualización diaria del catálogo" || echo "No hay cambios para guardar"
+        git push
