@@ -64,7 +64,7 @@ def main():
         return
 
     mapa_curado = {"movies": {}, "series": {}}
-    peliculas_a_procesar = peliculas[:50]
+    peliculas_a_procesar = peliculas
     
     print(f"Procesando {len(peliculas_a_procesar)} películas con TMDB...")
     
