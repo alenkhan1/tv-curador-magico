@@ -2,20 +2,22 @@ name: Curador Automatico
 
 on:
   schedule:
-    # Se ejecuta todos los días a las 04:00 AM (Hora UTC)
     - cron: '0 4 * * *'
-  workflow_dispatch: # Permite ejecutarlo manualmente con un botón
+  workflow_dispatch:
 
 jobs:
   procesar_catalogo:
     runs-on: ubuntu-latest
+    # NUEVO: Le damos permiso explícito al bot para guardar archivos
+    permissions:
+      contents: write
 
     steps:
     - name: Descargar el repositorio
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4 # ACTUALIZADO a v4
 
     - name: Configurar Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5 # ACTUALIZADO a v5
       with:
         python-version: '3.10'
 
