@@ -2,14 +2,13 @@ import os
 import time
 import json
 import requests
+import re
 
-# 1. Leer las credenciales ocultas desde GitHub Secrets
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
 XTREAM_URL = os.environ.get("XTREAM_URL")
 XTREAM_USER = os.environ.get("XTREAM_USER")
 XTREAM_PASS = os.environ.get("XTREAM_PASS")
 
-# Mapeo básico de IDs de géneros de TMDB a nombres en español
 TMDB_GENRES = {
     28: "💥 Acción", 12: "🗺️ Aventura", 16: "🎨 Animación", 35: "😂 Comedia", 
     80: "🕵️ Crimen", 99: "🎬 Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia", 
@@ -28,19 +27,35 @@ def obtener_peliculas_xtream():
         print(f"Error conectando a Xtream: {e}")
         return []
 
+def limpiar_titulo(nombre):
+    # Eliminar textos entre paréntesis () y corchetes []
+    limpio = re.sub(r'\(.*?\)|\[.*?\]', '', nombre)
+    # Eliminar extensiones
+    limpio = re.sub(r'\.mp4|\.mkv|\.avi', '', limpio, flags=re.IGNORECASE)
+    # Eliminar resoluciones o tags sueltos comunes
+    tags = ["1080p", "720p", "4k", "fhd", "hd", "latino", "español", "castellano", "dual", "vod"]
+    for tag in tags:
+        limpio = re.sub(rf'\b{tag}\b', '', limpio, flags=re.IGNORECASE)
+    # Quitar guiones o barras extras que hayan quedado
+    limpio = limpio.replace("-", " ").replace("|", " ").replace("_", " ")
+    # Limpiar espacios dobles
+    return " ".join(limpio.split())
+
 def buscar_genero_tmdb(titulo):
     url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={titulo}&language=es-ES"
     try:
         req = requests.get(url, timeout=10)
+        if req.status_code != 200:
+            print(f"  [!] Error de API TMDB ({req.status_code}): Revise su API KEY.")
+            return "🍿 Otros"
+            
         data = req.json()
         if data.get("results") and len(data["results"]) > 0:
-            # Tomamos el primer resultado
             genre_ids = data["results"][0].get("genre_ids", [])
             if genre_ids:
-                # Devolvemos el nombre del primer género que coincida
                 return TMDB_GENRES.get(genre_ids[0], "🍿 Otros")
     except Exception as e:
-        pass
+        print(f"  [!] Error de red con TMDB: {e}")
     return "🍿 Otros"
 
 def main():
@@ -48,33 +63,26 @@ def main():
     if not peliculas:
         return
 
-    # Estructura del mapa final
     mapa_curado = {"movies": {}, "series": {}}
-    
-    # PARA LA PRUEBA: Solo procesaremos las primeras 50 películas para no tardar 1 hora
-    # En la versión final quitaremos este límite
     peliculas_a_procesar = peliculas[:50]
     
     print(f"Procesando {len(peliculas_a_procesar)} películas con TMDB...")
     
     for vod in peliculas_a_procesar:
         stream_id = int(vod.get("stream_id", 0))
-        nombre = vod.get("name", "").strip()
+        nombre_original = vod.get("name", "").strip()
         
-        # Limpiar años del titulo ej: "Buscando a Nemo (2003)" -> "Buscando a Nemo"
-        titulo_limpio = nombre.split("(")[0].strip()
-        
+        titulo_limpio = limpiar_titulo(nombre_original)
         genero = buscar_genero_tmdb(titulo_limpio)
+        
+        print(f"Original: '{nombre_original}' | Buscado: '{titulo_limpio}' -> Género: {genero}")
         
         if genero not in mapa_curado["movies"]:
             mapa_curado["movies"][genero] = []
             
         mapa_curado["movies"][genero].append(stream_id)
-        
-        # Respetar el límite de TMDB (aprox 4 peticiones por segundo)
         time.sleep(0.3)
 
-    # Guardar el JSON resultante
     with open("catalogo_curado.json", "w", encoding="utf-8") as f:
         json.dump(mapa_curado, f, ensure_ascii=False, indent=2)
         
