@@ -3,12 +3,15 @@ import time
 import json
 import requests
 import re
+from datetime import datetime, timedelta
 
+# Credenciales
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
 XTREAM_URL = os.environ.get("XTREAM_URL")
 XTREAM_USER = os.environ.get("XTREAM_USER")
 XTREAM_PASS = os.environ.get("XTREAM_PASS")
 
+# Diccionarios de Géneros
 TMDB_GENRES = {
     28: "💥 Acción", 12: "🗺️ Aventura", 16: "🎨 Animación", 35: "😂 Comedia", 
     80: "🕵️ Crimen", 99: "🎬 Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia", 
@@ -17,9 +20,34 @@ TMDB_GENRES = {
     10770: "📺 Película de TV", 53: "😱 Suspense", 10752: "⚔️ Bélica", 37: "🤠 Western"
 }
 
-def obtener_peliculas_xtream():
-    print("Descargando catálogo de Xtream...")
-    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_vod_streams"
+TMDB_SERIES_GENRES = {
+    10759: "💥 Acción y Aventura", 16: "🎨 Animación", 35: "😂 Comedia", 
+    80: "🕵️ Crimen", 99: "🎬 Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia", 
+    10762: "🧸 Infantil", 9648: "🔍 Misterio", 10763: "📰 Noticias", 
+    10764: "📺 Reality", 10765: "🚀 Sci-Fi & Fantasy", 10766: "🧼 Telenovela", 
+    10767: "🗣️ Talk Show", 10768: "⚔️ Guerra y Política", 37: "🤠 Western"
+}
+
+# El orden estricto en el que quieres que aparezcan en la TV
+ORDEN_CATEGORIAS = [
+    "🆕 Estrenos", "👑 Clásicos", "📻 Retro",
+    "💥 Acción", "💥 Acción y Aventura", "🚀 Ciencia Ficción", "🚀 Sci-Fi & Fantasy",
+    "👻 Terror", "😱 Suspense", "🔍 Misterio", "🕵️ Crimen",
+    "😂 Comedia", "❤️ Romance", "🎭 Drama", "🧼 Telenovela",
+    "🎨 Animación", "👨‍👩‍👧‍👦 Familia", "🧸 Infantil", "🧙‍♂️ Fantasía", "🗺️ Aventura",
+    "🎬 Documental", "🏛️ Historia", "⚔️ Bélica", "⚔️ Guerra y Política",
+    "🎵 Música", "📺 Película de TV", "📺 Reality", "🗣️ Talk Show", "📰 Noticias", "🤠 Western",
+    "🍿 Otros"
+]
+
+# Cálculos de fechas
+HOY = datetime.now()
+FECHA_ESTRENOS_LIMITE = HOY - timedelta(days=180) # Hace 6 meses
+AÑO_ACTUAL = HOY.year
+
+def obtener_xtream(action):
+    print(f"Descargando catálogo ({action}) de Xtream...")
+    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
     try:
         req = requests.get(url, timeout=15)
         return req.json()
@@ -28,65 +56,132 @@ def obtener_peliculas_xtream():
         return []
 
 def limpiar_titulo(nombre):
-    # Eliminar textos entre paréntesis () y corchetes []
-    limpio = re.sub(r'\(.*?\)|\[.*?\]', '', nombre)
-    # Eliminar extensiones
+    # Quitar años y contenido entre corchetes
+    limpio = re.sub(r'\(\d{4}\)|\(.*?\)|\[.*?\]', '', nombre)
     limpio = re.sub(r'\.mp4|\.mkv|\.avi', '', limpio, flags=re.IGNORECASE)
-    # Eliminar resoluciones o tags sueltos comunes
-    tags = ["1080p", "720p", "4k", "fhd", "hd", "latino", "español", "castellano", "dual", "vod"]
+    # Limpieza súper agresiva de tags piratas
+    tags = ["1080p", "720p", "4k", "fhd", "hd", "latino", "español", "castellano", "dual", "vod", "subtitulado", "audio"]
     for tag in tags:
         limpio = re.sub(rf'\b{tag}\b', '', limpio, flags=re.IGNORECASE)
-    # Quitar guiones o barras extras que hayan quedado
     limpio = limpio.replace("-", " ").replace("|", " ").replace("_", " ")
-    # Limpiar espacios dobles
     return " ".join(limpio.split())
 
-def buscar_genero_tmdb(titulo):
-    url = f"https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={titulo}&language=es-ES"
+def buscar_info_tmdb(titulo, es_serie=False):
+    tipo = "tv" if es_serie else "movie"
+    url = f"https://api.themoviedb.org/3/search/{tipo}?api_key={TMDB_API_KEY}&query={titulo}&language=es-ES"
+    
     try:
         req = requests.get(url, timeout=10)
-        if req.status_code != 200:
-            print(f"  [!] Error de API TMDB ({req.status_code}): Revise su API KEY.")
-            return "🍿 Otros"
+        if req.status_code == 200:
+            data = req.json()
+            if data.get("results") and len(data["results"]) > 0:
+                item = data["results"][0]
+                
+                # 1. Buscar el primer género válido en nuestra lista (Reduce "Otros")
+                genre_ids = item.get("genre_ids", [])
+                diccionario = TMDB_SERIES_GENRES if es_serie else TMDB_GENRES
+                genero_principal = "🍿 Otros"
+                for gid in genre_ids:
+                    if gid in diccionario:
+                        genero_principal = diccionario[gid]
+                        break # Encontramos uno válido, salimos del loop
+                
+                # 2. Extraer Fecha, Año, Rating y Votos
+                fecha_str = item.get("first_air_date") if es_serie else item.get("release_date")
+                año = 0
+                fecha_obj = None
+                if fecha_str and "-" in fecha_str:
+                    año = int(fecha_str.split("-")[0])
+                    try:
+                        fecha_obj = datetime.strptime(fecha_str, "%Y-%m-%d")
+                    except ValueError:
+                        pass
+                        
+                vote_avg = float(item.get("vote_average", 0))
+                vote_count = int(item.get("vote_count", 0))
+                
+                return genero_principal, fecha_obj, año, vote_avg, vote_count
+    except Exception:
+        pass
+    
+    return "🍿 Otros", None, 0, 0.0, 0
+
+def organizar_diccionario(diccionario_desordenado):
+    # Ordena el diccionario final según la lista ORDEN_CATEGORIAS
+    diccionario_ordenado = {}
+    for cat in ORDEN_CATEGORIAS:
+        if cat in diccionario_desordenado and len(diccionario_desordenado[cat]) > 0:
+            diccionario_ordenado[cat] = diccionario_desordenado[cat]
             
-        data = req.json()
-        if data.get("results") and len(data["results"]) > 0:
-            genre_ids = data["results"][0].get("genre_ids", [])
-            if genre_ids:
-                return TMDB_GENRES.get(genre_ids[0], "🍿 Otros")
-    except Exception as e:
-        print(f"  [!] Error de red con TMDB: {e}")
-    return "🍿 Otros"
+    # Añadir cualquier categoría que se nos haya escapado de la lista maestra
+    for cat, ids in diccionario_desordenado.items():
+        if cat not in diccionario_ordenado and len(ids) > 0:
+            diccionario_ordenado[cat] = ids
+            
+    return diccionario_ordenado
+
+def procesar_catalogo(items, es_serie, mapa_curado):
+    tipo_str = "series" if es_serie else "movies"
+    id_key = "series_id" if es_serie else "stream_id"
+    print(f"Procesando {len(items)} {tipo_str}...")
+    
+    # Diccionario temporal
+    temp_map = {}
+    
+    for item in items:
+        stream_id = int(item.get(id_key, 0))
+        nombre_original = item.get("name", "").strip()
+        titulo_limpio = limpiar_titulo(nombre_original)
+        
+        genero, fecha_obj, año, rating, votos = buscar_info_tmdb(titulo_limpio, es_serie)
+        
+        categorias_asignadas = []
+        
+        # A) Categoría de Género Principal
+        categorias_asignadas.append(genero)
+        
+        # B) Regla 🆕 Estrenos (Últimos 6 meses)
+        if fecha_obj and fecha_obj >= FECHA_ESTRENOS_LIMITE:
+            categorias_asignadas.append("🆕 Estrenos")
+            
+        # C) Regla 📻 Retro (1970 - 1999)
+        if 1970 <= año <= 1999:
+            categorias_asignadas.append("📻 Retro")
+            
+        # D) Regla 👑 Clásicos (Nota > 7.8, Votos > 2000, Más de 15 años)
+        if rating >= 7.8 and votos >= 2000 and año <= (AÑO_ACTUAL - 15) and año > 0:
+            categorias_asignadas.append("👑 Clásicos")
+            
+        # Guardar el ID en todas las categorías que le tocaron
+        for cat in categorias_asignadas:
+            if cat not in temp_map:
+                temp_map[cat] = []
+            if stream_id not in temp_map[cat]: # Evitar duplicados
+                temp_map[cat].append(stream_id)
+                
+        time.sleep(0.3)
+        
+    # Aplicar el orden estricto antes de guardar
+    mapa_curado[tipo_str] = organizar_diccionario(temp_map)
 
 def main():
-    peliculas = obtener_peliculas_xtream()
-    if not peliculas:
-        return
-
     mapa_curado = {"movies": {}, "series": {}}
-    peliculas_a_procesar = peliculas
     
-    print(f"Procesando {len(peliculas_a_procesar)} películas con TMDB...")
-    
-    for vod in peliculas_a_procesar:
-        stream_id = int(vod.get("stream_id", 0))
-        nombre_original = vod.get("name", "").strip()
+    # 1. Procesar Películas
+    peliculas = obtener_xtream("get_vod_streams")
+    if peliculas:
+        procesar_catalogo(peliculas, False, mapa_curado)
         
-        titulo_limpio = limpiar_titulo(nombre_original)
-        genero = buscar_genero_tmdb(titulo_limpio)
-        
-        print(f"Original: '{nombre_original}' | Buscado: '{titulo_limpio}' -> Género: {genero}")
-        
-        if genero not in mapa_curado["movies"]:
-            mapa_curado["movies"][genero] = []
-            
-        mapa_curado["movies"][genero].append(stream_id)
-        time.sleep(0.3)
+    # 2. Procesar Series
+    series = obtener_xtream("get_series")
+    if series:
+        procesar_catalogo(series, True, mapa_curado)
 
+    # 3. Guardar el archivo
     with open("catalogo_curado.json", "w", encoding="utf-8") as f:
         json.dump(mapa_curado, f, ensure_ascii=False, indent=2)
         
-    print("¡Catálogo curado generado exitosamente!")
+    print("¡Catálogo curado y ordenado exitosamente!")
 
 if __name__ == "__main__":
     main()
