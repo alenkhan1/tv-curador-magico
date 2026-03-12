@@ -23,10 +23,21 @@ TMDB_GENRES = {
 TMDB_SERIES_GENRES = {
     10759: "💥 Acción y Aventura", 16: "🎨 Animación", 35: "😂 Comedia", 
     80: "🕵️ Crimen", 99: "🎬 Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia", 
-    10762: "🧸 Infantil", 9648: "🔍 Misterio", 10763: "📰 Noticias", 
+    10762: "🧸 Infantil", 9648: "🔍 Misterio", 
     10764: "📺 Reality", 10765: "🚀 Sci-Fi & Fantasy", 10766: "🧼 Telenovela", 
     10767: "🗣️ Talk Show", 10768: "⚔️ Guerra y Política", 37: "🤠 Western"
 }
+
+# Listas Negras (Filtro Implacable)
+BANNED_CATEGORY_KEYWORDS = [
+    "XXX", "+18", "18+", "ADULTO", "HENTAI", "ONLYFANS", "BRAZZER", "PORN",
+    "GANGBANG", "CAM |", "VOD CAM"
+]
+
+BANNED_STREAM_KEYWORDS = [
+    " HDCAM", " TS-SCREENER", " CAMRIP", " TELESYNC", " TS "
+]
+
 
 # El orden estricto en el que quieres que aparezcan en la TV
 ORDEN_CATEGORIAS = [
@@ -44,6 +55,39 @@ ORDEN_CATEGORIAS = [
 HOY = datetime.now()
 FECHA_ESTRENOS_LIMITE = HOY - timedelta(days=180) # Hace 6 meses
 AÑO_ACTUAL = HOY.year
+
+
+def obtener_categorias_xtream(action):
+    print(f"Descargando nombres de carpetas ({action}) de Xtream...")
+    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
+    mapa = {}
+    try:
+        req = requests.get(url, timeout=15)
+        if req.status_code == 200:
+            categorias = req.json()
+            for cat in categorias:
+                cat_id = str(cat.get("category_id", ""))
+                cat_name = cat.get("category_name", "")
+                mapa[cat_id] = cat_name
+    except Exception as e:
+        pass
+    return mapa
+
+def es_contenido_prohibido(nombre_crudo, category_id, mapa_categorias):
+    # 1. Revisar nombre de la carpeta
+    cat_name = mapa_categorias.get(str(category_id), "").upper()
+    for kw in BANNED_CATEGORY_KEYWORDS:
+        if kw in cat_name:
+            return True
+            
+    # 2. Revisar nombre del video (con espacios para no bloquear palabras como "Cameron")
+    nombre_upper = nombre_crudo.upper()
+    for kw in BANNED_STREAM_KEYWORDS:
+        if kw in nombre_upper:
+            return True
+            
+    return False
+
 
 def obtener_xtream(action):
     print(f"Descargando catálogo ({action}) de Xtream...")
@@ -125,7 +169,7 @@ def organizar_diccionario(diccionario_desordenado):
             
     return diccionario_ordenado
 
-def procesar_catalogo(items, es_serie, mapa_curado):
+def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
     tipo_str = "series" if es_serie else "movies"
     id_key = "series_id" if es_serie else "stream_id"
     print(f"Procesando {len(items)} {tipo_str}...")
@@ -135,7 +179,13 @@ def procesar_catalogo(items, es_serie, mapa_curado):
     
     for item in items:
         stream_id = int(item.get(id_key, 0))
+        category_id = str(item.get("category_id", ""))
         nombre_original = item.get("name", "").strip()
+        
+        # EL CADENERO: Si es prohibido, lo ignoramos por completo y pasamos al siguiente
+        if es_contenido_prohibido(nombre_original, category_id, mapa_categorias):
+            continue
+            
         titulo_limpio = limpiar_titulo(nombre_original)
         
         # NUEVO: Extraer año original para evitar que TMDB nos engañe con remakes o documentales
@@ -200,14 +250,16 @@ def main():
     mapa_curado = {"movies": {}, "series": {}}
     
     # 1. Procesar Películas
+    cat_peliculas = obtener_categorias_xtream("get_vod_categories")
     peliculas = obtener_xtream("get_vod_streams")
     if peliculas:
-        procesar_catalogo(peliculas, False, mapa_curado)
+        procesar_catalogo(peliculas, False, mapa_curado, cat_peliculas)
         
     # 2. Procesar Series
+    cat_series = obtener_categorias_xtream("get_series_categories")
     series = obtener_xtream("get_series")
     if series:
-        procesar_catalogo(series, True, mapa_curado)
+        procesar_catalogo(series, True, mapa_curado, cat_series)
 
     # 3. Guardar el archivo
     with open("catalogo_curado.json", "w", encoding="utf-8") as f:
