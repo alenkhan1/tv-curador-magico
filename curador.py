@@ -185,8 +185,10 @@ def procesar_catalogo(items, es_serie, mapa_curado):
         for cat in categorias_asignadas:
             if cat not in temp_map:
                 temp_map[cat] = []
-            # Evitar duplicados comprobando si el ID ya existe en esta categoría
-            if not any(obj["id"] == stream_id for obj in temp_map[cat]):
+            
+            # MAGIA: Evitar duplicados comprobando si el NOMBRE LIMPIO ya existe en esta categoría
+            # (Así ignoramos las versiones repetidas en 4K, 720p, etc., que tienen distinto ID)
+            if not any(obj["clean_name"] == nombre_final for obj in temp_map[cat]):
                 temp_map[cat].append(nuevo_item)
                 
         time.sleep(0.2)
