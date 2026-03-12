@@ -77,14 +77,14 @@ def buscar_info_tmdb(titulo, es_serie=False):
             if data.get("results") and len(data["results"]) > 0:
                 item = data["results"][0]
                 
-                # 1. Buscar el primer género válido en nuestra lista (Reduce "Otros")
+                # 1. Buscar el primer género válido en nuestra lista
                 genre_ids = item.get("genre_ids", [])
                 diccionario = TMDB_SERIES_GENRES if es_serie else TMDB_GENRES
                 genero_principal = "🍿 Otros"
                 for gid in genre_ids:
                     if gid in diccionario:
                         genero_principal = diccionario[gid]
-                        break # Encontramos uno válido, salimos del loop
+                        break
                 
                 # 2. Extraer Fecha, Año, Rating y Votos
                 fecha_str = item.get("first_air_date") if es_serie else item.get("release_date")
@@ -100,11 +100,16 @@ def buscar_info_tmdb(titulo, es_serie=False):
                 vote_avg = float(item.get("vote_average", 0))
                 vote_count = int(item.get("vote_count", 0))
                 
-                return genero_principal, fecha_obj, año, vote_avg, vote_count
+                # 3. NUEVO: Obtener póster HD y título oficial limpio directamente de TMDB
+                poster_path = item.get("poster_path")
+                poster_url = f"https://image.tmdb.org/t/p/w500{poster_path}" if poster_path else ""
+                titulo_oficial = item.get("name") if es_serie else item.get("title")
+                
+                return genero_principal, fecha_obj, año, vote_avg, vote_count, titulo_oficial, poster_url
     except Exception:
         pass
     
-    return "🍿 Otros", None, 0, 0.0, 0
+    return "🍿 Otros", None, 0, 0.0, 0, "", ""
 
 def organizar_diccionario(diccionario_desordenado):
     # Ordena el diccionario final según la lista ORDEN_CATEGORIAS
@@ -133,33 +138,58 @@ def procesar_catalogo(items, es_serie, mapa_curado):
         nombre_original = item.get("name", "").strip()
         titulo_limpio = limpiar_titulo(nombre_original)
         
-        genero, fecha_obj, año, rating, votos = buscar_info_tmdb(titulo_limpio, es_serie)
+        # NUEVO: Extraer año original para evitar que TMDB nos engañe con remakes o documentales
+        año_original = 0
+        match_año = re.search(r'\((\d{4})\)', nombre_original)
+        if match_año:
+            año_original = int(match_año.group(1))
+            
+        genero, fecha_obj, año, rating, votos, titulo_oficial, poster_url = buscar_info_tmdb(titulo_limpio, es_serie)
+        
+        # Consolidar los datos finales a guardar
+        nombre_final = titulo_oficial if titulo_oficial else titulo_limpio
+        año_final = año if año > 0 else año_original
         
         categorias_asignadas = []
         
         # A) Categoría de Género Principal
         categorias_asignadas.append(genero)
         
-        # B) Regla 🆕 Estrenos (Últimos 6 meses)
+        # B) Regla 🆕 Estrenos (Últimos 6 meses) ESTRICTA
+        es_estreno_valido = False
         if fecha_obj and fecha_obj >= FECHA_ESTRENOS_LIMITE:
+            # Si TMDB dice que es estreno, pero el título original de Xtream decía (1998), lo descartamos
+            if año_original == 0 or año_original >= (AÑO_ACTUAL - 1):
+                es_estreno_valido = True
+                
+        if es_estreno_valido:
             categorias_asignadas.append("🆕 Estrenos")
             
         # C) Regla 📻 Retro (1970 - 1999)
-        if 1970 <= año <= 1999:
+        if 1970 <= año_final <= 1999:
             categorias_asignadas.append("📻 Retro")
             
         # D) Regla 👑 Clásicos (Nota > 7.8, Votos > 2000, Más de 15 años)
-        if rating >= 7.8 and votos >= 2000 and año <= (AÑO_ACTUAL - 15) and año > 0:
+        if rating >= 7.8 and votos >= 2000 and año_final <= (AÑO_ACTUAL - 15) and año_final > 0:
             categorias_asignadas.append("👑 Clásicos")
             
-        # Guardar el ID en todas las categorías que le tocaron
+        # NUEVO: Crear el objeto JSON enriquecido (ya no es solo un número ID)
+        nuevo_item = {
+            "id": stream_id,
+            "clean_name": nombre_final,
+            "year": año_final,
+            "poster": poster_url
+        }
+            
+        # Guardar el objeto en todas las categorías que le tocaron
         for cat in categorias_asignadas:
             if cat not in temp_map:
                 temp_map[cat] = []
-            if stream_id not in temp_map[cat]: # Evitar duplicados
-                temp_map[cat].append(stream_id)
+            # Evitar duplicados comprobando si el ID ya existe en esta categoría
+            if not any(obj["id"] == stream_id for obj in temp_map[cat]):
+                temp_map[cat].append(nuevo_item)
                 
-        time.sleep(0.3)
+        time.sleep(0.2)
         
     # Aplicar el orden estricto antes de guardar
     mapa_curado[tipo_str] = organizar_diccionario(temp_map)
