@@ -11,18 +11,18 @@ XTREAM_URL = os.environ.get("XTREAM_URL")
 XTREAM_USER = os.environ.get("XTREAM_USER")
 XTREAM_PASS = os.environ.get("XTREAM_PASS")
 
-# Diccionarios de Géneros
+# Diccionarios de Géneros (Símbolos Temáticos Minimalistas)
 TMDB_GENRES = {
-    28: "💥 Acción", 12: "🗺️ Aventura", 16: "🎨 Animación", 35: "😂 Comedia", 
-    80: "🕵️ Crimen", 99: "🎬 Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia", 
-    14: "🧙‍♂️ Fantasía", 36: "🏛️ Historia", 27: "👻 Terror", 10402: "🎵 Música", 
+    28: "🎬 Acción", 12: "🗺️ Aventura", 16: "🎨 Animación", 35: "😂 Comedia", 
+    80: "🕵️ Crimen", 99: "🎞️ Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia", 
+    14: "✨ Fantasía", 36: "🏛️ Historia", 27: "💀 Terror", 10402: "🎵 Música", 
     9648: "🔍 Misterio", 10749: "❤️ Romance", 878: "🚀 Ciencia Ficción", 
     10770: "📺 Película de TV", 53: "😱 Suspense", 10752: "⚔️ Bélica", 37: "🤠 Western"
 }
 
 TMDB_SERIES_GENRES = {
-    10759: "💥 Acción y Aventura", 16: "🎨 Animación", 35: "😂 Comedia", 
-    80: "🕵️ Crimen", 99: "🎬 Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia", 
+    10759: "🎬 Acción y Aventura", 16: "🎨 Animación", 35: "😂 Comedia", 
+    80: "🕵️ Crimen", 99: "🎞️ Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia", 
     10762: "🧸 Infantil", 9648: "🔍 Misterio", 
     10764: "📺 Reality", 10765: "🚀 Sci-Fi & Fantasy", 10766: "🧼 Telenovela", 
     10767: "🗣️ Talk Show", 10768: "⚔️ Guerra y Política", 37: "🤠 Western"
@@ -31,24 +31,23 @@ TMDB_SERIES_GENRES = {
 # Listas Negras (Filtro Implacable)
 BANNED_CATEGORY_KEYWORDS = [
     "XXX", "+18", "18+", "ADULTO", "HENTAI", "ONLYFANS", "BRAZZER", "PORN",
-    "GANGBANG", "CAM |", "VOD CAM"
+    "GANGBANG", "CAM |", "VOD CAM", "XXXCOLOMBIA", "XXXESPAÑA", "XXXMEXICO",
+    "XXXMIX", "XXXPERU", "24/7"
 ]
 
 BANNED_STREAM_KEYWORDS = [
     " HDCAM", " TS-SCREENER", " CAMRIP", " TELESYNC", " TS "
 ]
 
-
-# El orden estricto en el que quieres que aparezcan en la TV
+# El orden estricto (Símbolos Temáticos Minimalistas)
 ORDEN_CATEGORIAS = [
-    "🆕 Estrenos", "👑 Clásicos", "📻 Retro",
-    "💥 Acción", "💥 Acción y Aventura", "🚀 Ciencia Ficción", "🚀 Sci-Fi & Fantasy",
-    "👻 Terror", "😱 Suspense", "🔍 Misterio", "🕵️ Crimen",
+    "✧ Estrenos", "★ Clásicos", "📼 Retro",
+    "🎬 Acción", "🎬 Acción y Aventura", "🚀 Ciencia Ficción", "🚀 Sci-Fi & Fantasy",
+    "💀 Terror", "😱 Suspense", "🔍 Misterio", "🕵️ Crimen",
     "😂 Comedia", "❤️ Romance", "🎭 Drama", "🧼 Telenovela",
-    "🎨 Animación", "👨‍👩‍👧‍👦 Familia", "🧸 Infantil", "🧙‍♂️ Fantasía", "🗺️ Aventura",
-    "🎬 Documental", "🏛️ Historia", "⚔️ Bélica", "⚔️ Guerra y Política",
-    "🎵 Música", "📺 Película de TV", "📺 Reality", "🗣️ Talk Show", "📰 Noticias", "🤠 Western",
-    "🍿 Otros"
+    "🎨 Animación", "👨‍👩‍👧‍👦 Familia", "🧸 Infantil", "✨ Fantasía", "🗺️ Aventura",
+    "🎞️ Documental", "🏛️ Historia", "⚔️ Bélica", "⚔️ Guerra y Política",
+    "🎵 Música", "📺 Película de TV", "📺 Reality", "🗣️ Talk Show", "📰 Noticias", "🤠 Western"
 ]
 
 # Cálculos de fechas
@@ -110,10 +109,16 @@ def limpiar_titulo(nombre):
     limpio = limpio.replace("-", " ").replace("|", " ").replace("_", " ")
     return " ".join(limpio.split())
 
-def buscar_info_tmdb(titulo, es_serie=False):
+def buscar_info_tmdb(titulo, año_original=0, es_serie=False):
     tipo = "tv" if es_serie else "movie"
     url = f"https://api.themoviedb.org/3/search/{tipo}?api_key={TMDB_API_KEY}&query={titulo}&language=es-ES"
     
+    # MAGIA: Exigir año si lo tenemos para evitar posters falsos
+    if año_original > 0 and not es_serie:
+        url += f"&year={año_original}"
+    elif año_original > 0 and es_serie:
+        url += f"&first_air_date_year={año_original}"
+        
     try:
         req = requests.get(url, timeout=10)
         if req.status_code == 200:
@@ -121,16 +126,24 @@ def buscar_info_tmdb(titulo, es_serie=False):
             if data.get("results") and len(data["results"]) > 0:
                 item = data["results"][0]
                 
-                # 1. Buscar el primer género válido en nuestra lista
+                # 1. Póster HD Estricto (Sin póster no hay fiesta)
+                poster_path = item.get("poster_path")
+                if not poster_path:
+                    return None # Ignorar por completo
+                poster_url = f"https://image.tmdb.org/t/p/w500{poster_path}"
+                
+                # 2. Buscar Género Válido (Adiós "Otros")
                 genre_ids = item.get("genre_ids", [])
                 diccionario = TMDB_SERIES_GENRES if es_serie else TMDB_GENRES
-                genero_principal = "🍿 Otros"
+                genero_principal = None
                 for gid in genre_ids:
                     if gid in diccionario:
                         genero_principal = diccionario[gid]
                         break
+                if not genero_principal:
+                    return None # Si no encaja en géneros, se descarta
                 
-                # 2. Extraer Fecha, Año, Rating y Votos
+                # 3. Extraer Fecha y Año
                 fecha_str = item.get("first_air_date") if es_serie else item.get("release_date")
                 año = 0
                 fecha_obj = None
@@ -143,17 +156,13 @@ def buscar_info_tmdb(titulo, es_serie=False):
                         
                 vote_avg = float(item.get("vote_average", 0))
                 vote_count = int(item.get("vote_count", 0))
-                
-                # 3. NUEVO: Obtener póster HD y título oficial limpio directamente de TMDB
-                poster_path = item.get("poster_path")
-                poster_url = f"https://image.tmdb.org/t/p/w500{poster_path}" if poster_path else ""
                 titulo_oficial = item.get("name") if es_serie else item.get("title")
                 
                 return genero_principal, fecha_obj, año, vote_avg, vote_count, titulo_oficial, poster_url
     except Exception:
         pass
     
-    return "🍿 Otros", None, 0, 0.0, 0, "", ""
+    return None
 
 def organizar_diccionario(diccionario_desordenado):
     # Ordena el diccionario final según la lista ORDEN_CATEGORIAS
@@ -174,7 +183,6 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
     id_key = "series_id" if es_serie else "stream_id"
     print(f"Procesando {len(items)} {tipo_str}...")
     
-    # Diccionario temporal
     temp_map = {}
     
     for item in items:
@@ -182,48 +190,52 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
         category_id = str(item.get("category_id", ""))
         nombre_original = item.get("name", "").strip()
         
-        # EL CADENERO: Si es prohibido, lo ignoramos por completo y pasamos al siguiente
+        # EL CADENERO: Bloqueo de origen
         if es_contenido_prohibido(nombre_original, category_id, mapa_categorias):
             continue
             
         titulo_limpio = limpiar_titulo(nombre_original)
         
-        # NUEVO: Extraer año original para evitar que TMDB nos engañe con remakes o documentales
         año_original = 0
         match_año = re.search(r'\((\d{4})\)', nombre_original)
         if match_año:
             año_original = int(match_año.group(1))
             
-        genero, fecha_obj, año, rating, votos, titulo_oficial, poster_url = buscar_info_tmdb(titulo_limpio, es_serie)
-        
-        # Consolidar los datos finales a guardar
+        resultado_tmdb = buscar_info_tmdb(titulo_limpio, año_original, es_serie)
+        if not resultado_tmdb:
+            continue # Si falló TMDB, o no hay póster, o no hay género, se ignora
+            
+        genero, fecha_obj, año, rating, votos, titulo_oficial, poster_url = resultado_tmdb
         nombre_final = titulo_oficial if titulo_oficial else titulo_limpio
         año_final = año if año > 0 else año_original
         
         categorias_asignadas = []
+        es_clasico = False
+        es_retro = False
         
-        # A) Categoría de Género Principal
-        categorias_asignadas.append(genero)
-        
-        # B) Regla 🆕 Estrenos (Últimos 6 meses) ESTRICTA
-        es_estreno_valido = False
+        # REGLAS DEL TIEMPO
+        # 1. 👑 Clásicos (Estricto: Año <= 2000, > 7.8 nota, > 2000 votos)
+        if año_final <= 2000 and rating >= 7.8 and votos >= 2000:
+            categorias_asignadas.append("★ Clásicos")
+            es_clasico = True
+            
+        # 2. 📻 Retro (Exclusivo: 1970 - 1999, que NO sea Clásico)
+        if 1970 <= año_final <= 1999 and not es_clasico:
+            categorias_asignadas.append("📼 Retro")
+            es_retro = True
+            
+        # 3. 🆕 Estrenos (Últimos 6 meses reales)
         if fecha_obj and fecha_obj >= FECHA_ESTRENOS_LIMITE:
-            # Si TMDB dice que es estreno, pero el título original de Xtream decía (1998), lo descartamos
             if año_original == 0 or año_original >= (AÑO_ACTUAL - 1):
-                es_estreno_valido = True
+                categorias_asignadas.append("✧ Estrenos")
                 
-        if es_estreno_valido:
-            categorias_asignadas.append("🆕 Estrenos")
+        # 4. Vitrinas de Género (Solo de los últimos 5 años, o si es retro/clásico se deja en su propia sección)
+        if año_final >= (AÑO_ACTUAL - 5):
+            categorias_asignadas.append(genero)
             
-        # C) Regla 📻 Retro (1970 - 1999)
-        if 1970 <= año_final <= 1999:
-            categorias_asignadas.append("📻 Retro")
+        if not categorias_asignadas:
+            continue # Si no entró en ninguna regla, se descarta
             
-        # D) Regla 👑 Clásicos (Nota > 7.8, Votos > 2000, Más de 15 años)
-        if rating >= 7.8 and votos >= 2000 and año_final <= (AÑO_ACTUAL - 15) and año_final > 0:
-            categorias_asignadas.append("👑 Clásicos")
-            
-        # NUEVO: Crear el objeto JSON enriquecido (ya no es solo un número ID)
         nuevo_item = {
             "id": stream_id,
             "clean_name": nombre_final,
@@ -231,19 +243,14 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
             "poster": poster_url
         }
             
-        # Guardar el objeto en todas las categorías que le tocaron
         for cat in categorias_asignadas:
             if cat not in temp_map:
                 temp_map[cat] = []
-            
-            # MAGIA: Evitar duplicados comprobando si el NOMBRE LIMPIO ya existe en esta categoría
-            # (Así ignoramos las versiones repetidas en 4K, 720p, etc., que tienen distinto ID)
             if not any(obj["clean_name"] == nombre_final for obj in temp_map[cat]):
                 temp_map[cat].append(nuevo_item)
                 
         time.sleep(0.2)
         
-    # Aplicar el orden estricto antes de guardar
     mapa_curado[tipo_str] = organizar_diccionario(temp_map)
 
 def main():
