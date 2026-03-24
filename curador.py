@@ -157,8 +157,9 @@ def buscar_info_tmdb(titulo, año_original=0, es_serie=False):
                 vote_avg = float(item.get("vote_average", 0))
                 vote_count = int(item.get("vote_count", 0))
                 titulo_oficial = item.get("name") if es_serie else item.get("title")
+                tmdb_id = str(item.get("id", ""))
                 
-                return genero_principal, fecha_obj, año, vote_avg, vote_count, titulo_oficial, poster_url
+                return genero_principal, fecha_obj, año, vote_avg, vote_count, titulo_oficial, poster_url, tmdb_id
     except Exception:
         pass
     
@@ -205,7 +206,7 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
         if not resultado_tmdb:
             continue # Si falló TMDB, o no hay póster, o no hay género, se ignora
             
-        genero, fecha_obj, año, rating, votos, titulo_oficial, poster_url = resultado_tmdb
+        genero, fecha_obj, año, rating, votos, titulo_oficial, poster_url, tmdb_id = resultado_tmdb
         nombre_final = titulo_oficial if titulo_oficial else titulo_limpio
         año_final = año if año > 0 else año_original
         
@@ -240,7 +241,8 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
             "id": stream_id,
             "clean_name": nombre_final,
             "year": año_final,
-            "poster": poster_url
+            "poster": poster_url,
+            "tmdb_id": tmdb_id
         }
             
         for cat in categorias_asignadas:
