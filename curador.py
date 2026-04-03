@@ -93,14 +93,7 @@ def obtener_xtream(action):
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
     try:
         req = requests.get(url, timeout=15)
-        data = req.json()
-        
-        # EL FIX: Verificar que la respuesta sea realmente una lista
-        if not isinstance(data, list):
-            print(f"⚠️ Error: La API no devolvió una lista para {action}. Respuesta recibida: {str(data)[:150]}...")
-            return []
-            
-        return data
+        return req.json()
     except Exception as e:
         print(f"Error conectando a Xtream: {e}")
         return []
@@ -194,10 +187,6 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
     temp_map = {}
     
     for item in items:
-        # EL FIX: Si el item no es un diccionario, lo saltamos
-        if not isinstance(item, dict):
-            continue
-            
         stream_id = int(item.get(id_key, 0))
         category_id = str(item.get("category_id", ""))
         nombre_original = item.get("name", "").strip()
