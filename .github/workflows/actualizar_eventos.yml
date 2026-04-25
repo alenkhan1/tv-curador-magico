@@ -1,0 +1,40 @@
+name: Curador Eventos Deportivos
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+
+jobs:
+  procesar_eventos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Instalar dependencias
+        run: pip install requests
+
+      - name: Ejecutar Curador de Eventos
+        env:
+          SPORTSDB_API_KEY: ${{ secrets.SPORTSDB_API_KEY }}
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
+          XTREAM_USER: ${{ secrets.XTREAM_USER }}
+          XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
+        run: python curador_eventos.py
+
+      - name: Guardar cambios Eventos
+        run: |
+          git config --global user.name "Bot Curador"
+          git config --global user.email "bot@allstreamtv.com"
+          git add eventos_hoy.json
+          git commit -m "Actualización de Eventos (4h)" || echo "Sin cambios"
+          git push
