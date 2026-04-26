@@ -1,138 +1,281 @@
 import os
 import re
 import json
-import requests
 import time
-from datetime import datetime
+import requests
+import unicodedata
+from datetime import datetime, timezone
 
 # ─── CONFIGURACIÓN DE ENTORNO ────────────────────────────────────────────────
-XTREAM_URL = os.environ.get("XTREAM_URL")
-XTREAM_USER = os.environ.get("XTREAM_USER")
-XTREAM_PASS = os.environ.get("XTREAM_PASS")
-# La clave 123 es funcional para usuarios gratuitos en TheSportsDB
+XTREAM_URL       = os.environ.get("XTREAM_URL")
+XTREAM_USER      = os.environ.get("XTREAM_USER")
+XTREAM_PASS      = os.environ.get("XTREAM_PASS")
 SPORTSDB_API_KEY = os.environ.get("SPORTSDB_API_KEY", "123")
+FECHA_HOY        = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-# ─── LISTA BLANCA DE INTERÉS (HARDCODEADA) ──────────────────────────────────
-# Solo procesaremos canales que contengan estas palabras clave (Equipos o Ligas Top)
-WHITELIST = [
-    "REAL MADRID", "BARCELONA", "ATLETICO", "NAPOLI", "INTER", "MILAN", "JUVENTUS",
-    "LIVERPOOL", "MANCHESTER", "ARSENAL", "CHELSEA", "BAYERN", "PSG", "BENFICA",
-    "NACIONAL", "MILLONARIOS", "AMERICA", "JUNIOR", "SANTA FE", "MEDELLIN",
-    "LIBERTADORES", "SUDAMERICANA", "CHAMPIONS", "EUROPA LEAGUE", "LALIGA", "PREMIER",
-    "UFC", "F1", "FORMULA 1", "MOTOGP", "NBA", "MLB", "NFL", "TOUR", "VUELTA", "GIRO"
-]
+# ─── LIGAS EN SEGUIMIENTO ────────────────────────────────────────────────────
+# IDs verificados contra TheSportsDB. Clave: idLeague. Valor: nombre display.
+LIGAS_SEGUIMIENTO = {
+    # Fútbol – Competiciones de Clubes Europa
+    "4480": "UEFA Champions League",
+    "4481": "UEFA Europa League",
+    "5071": "UEFA Conference League",
+    "4328": "Premier League",
+    "4335": "La Liga",
+    "4332": "Serie A",
+    "4334": "Ligue 1",
+    "4331": "Bundesliga",
+    # Fútbol – América / Internacional
+    "4501": "Copa Libertadores",
+    "4724": "Copa Sudamericana",
+    "4346": "MLS",
+    "4350": "Liga MX",
+    "4351": "Brasileirao Serie A",
+    "4406": "Argentina Primera División",
+    "4497": "Liga BetPlay Colombia",
+    "4951": "Torneo BetPlay (Segunda)",
+    "5183": "Copa Colombia",
+    "4686": "Liga Pro Ecuador",
+    "4687": "Paraguay Primera División",
+    "4688": "Perú Liga 1",
+    # Fútbol – Selecciones
+    "4429": "FIFA World Cup",
+    "4499": "Copa América",
+    "4496": "Copa África de Naciones",
+    "4502": "UEFA Euro",
+    "4498": "Copa Confederaciones",
+    "4873": "CONCACAF Gold Cup",
+    "4503": "FIFA Club World Cup",
+    # Baloncesto
+    "4387": "NBA",
+    "4516": "WNBA",
+    "4607": "NCAAB",
+    "4408": "Liga Endesa ACB",
+    # Béisbol
+    "4424": "MLB",
+    "5064": "Liga Mexicana de Béisbol",
+    # Hockey sobre hielo
+    "4380": "NHL",
+    # Tenis
+    "4464": "ATP World Tour",
+    "4517": "WTA Tour",
+    # Golf
+    "4425": "PGA Tour",
+    # Ciclismo
+    "4465": "UCI World Tour",
+    # Automovilismo
+    "4370": "Formula 1",
+    "4393": "NASCAR Cup Series",
+    "4373": "IndyCar Series",
+    "4407": "MotoGP",
+    "4409": "WRC",
+    "4447": "Dakar Rally",
+    # Artes Marciales / Boxeo
+    "4443": "UFC",
+    "4445": "Boxeo",
+    # Olimpiadas
+    "4975": "Juegos Olímpicos",
+    "5039": "Olimpiadas Fútbol",
+    "5020": "Olimpiadas Baloncesto",
+}
 
-# ─── FUNCIONES DE RED (XTREAM) ───────────────────────────────────────────────
+# Palabras que no aportan al matching de nombres de equipos
+STOP_WORDS = {
+    "FC", "SC", "CF", "AC", "AS", "US", "CS", "RC", "CD", "SD", "UD",
+    "RCD", "SSD", "SSC", "GD", "AF", "THE", "DE", "LA", "LAS", "LOS",
+    "EL", "Y", "E", "AND", "OF", "DEL", "SAN", "SANTA", "DOS", "DU"
+}
+
+
+# ─── UTILIDADES ──────────────────────────────────────────────────────────────
+
+def normalizar(texto):
+    """Mayúsculas, sin acentos, sin caracteres especiales."""
+    texto = texto.upper()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    texto = re.sub(r"[^A-Z0-9\s]", " ", texto)
+    return " ".join(texto.split())
+
+
+def palabras_clave(nombre_equipo):
+    """
+    Extrae hasta 2 palabras significativas del nombre de un equipo.
+    Ignora STOP_WORDS y palabras de 1-2 caracteres.
+    Ej: "Real Madrid CF" -> ["MADRID"]
+        "Manchester City" -> ["MANCHESTER", "CITY"]
+        "Atlético Nacional" -> ["ATLETICO", "NACIONAL"]
+    """
+    palabras = normalizar(nombre_equipo).split()
+    filtradas = [p for p in palabras if p not in STOP_WORDS and len(p) > 2]
+    return filtradas[:2]
+
+
+# ─── CAPA DE RED ─────────────────────────────────────────────────────────────
+
 def obtener_streams_xtream():
-    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
+    """Una sola llamada: descarga todos los streams en vivo de Xtream."""
+    url = (f"{XTREAM_URL}/player_api.php"
+           f"?username={XTREAM_USER}&password={XTREAM_PASS}"
+           f"&action=get_live_streams")
     try:
         r = requests.get(url, timeout=20)
         return r.json() if r.status_code == 200 else []
-    except:
+    except Exception as e:
+        print(f"❌ Error al obtener streams de Xtream: {e}")
         return []
 
-# ─── LÓGICA DE EXTRACCIÓN Y LIMPIEZA ─────────────────────────────────────────
-def extraer_evento(nombre_canal):
-    """
-    Usa Regex para extraer competidores ignorando el ruido del proveedor.
-    Ej: "EVENTO E$PN 13:45 Napoli vs Cremonese" -> "Napoli vs Cremonese"
-    """
-    nombre_up = nombre_canal.upper()
-    if not any(word in nombre_up for word in WHITELIST):
-        return None
 
-    # Buscamos el patrón [Equipo A] vs/v/- [Equipo B]
-    # Ignoramos cualquier hora HH:MM previa y basura como "EVENTO", "ESPN", etc.
-    patron = r'(?:\d{2}:\d{2})?\s*(.*?)\s+(?:VS|V|-)\s+(.*)'
-    match = re.search(patron, nombre_canal, re.IGNORECASE)
-    
-    if match:
-        # Limpieza de prefijos comunes de proveedores
-        local = re.sub(r'^(?i)(EVENTO|LIVE|VIVO|E\$PN|D\$PORTS|FOX|DAZN|DIRECTV)[\s\d\W]*', '', match.group(1)).strip()
-        visitante = match.group(2).strip()
-        return f"{local} vs {visitante}"
-    
-    # Si no hay "vs", devolvemos el nombre limpio (para F1, UFC, etc.)
-    return re.sub(r'^(?i)(EVENTO|LIVE|VIVO)[\s\d\W]*', '', nombre_canal).strip()
+def obtener_eventos_del_dia():
+    """
+    FUENTE DE VERDAD: consulta TheSportsDB por fecha para cada liga.
+    Retorna lista de eventos con datos oficiales + campos internos de trabajo.
+    """
+    base_url = (f"https://www.thesportsdb.com/api/v1/json"
+                f"/{SPORTSDB_API_KEY}/eventsday.php")
+    eventos = []
+    ids_vistos = set()
 
-# ─── CONSULTA A THESPORTSDB (LA VERDAD ABSOLUTA) ─────────────────────────────
-def consultar_api_deportes(query):
-    """
-    Busca el evento en TheSportsDB para obtener hora UTC, logos y torneo.
-    """
-    # Formateamos para la URL (espacios por guiones bajos)
-    query_url = query.replace(" ", "_")
-    url = f"https://www.thesportsdb.com/api/v1/json/{SPORTSDB_API_KEY}/searchevents.php?e={query_url}"
-    
-    try:
-        r = requests.get(url, timeout=10)
-        if r.status_code == 200:
+    for liga_id, liga_nombre in LIGAS_SEGUIMIENTO.items():
+        try:
+            r = requests.get(base_url, params={"d": FECHA_HOY, "l": liga_id}, timeout=10)
+            if r.status_code != 200:
+                continue
+
             data = r.json()
-            if data.get("event"):
-                ev = data["event"]
-                # Filtro Estricto: Si no hay timestamp, no nos sirve para la app
-                if not ev.get("strTimestamp"): return None
-                
-                return {
-                    "id": ev["idEvent"],
-                    "titulo": ev["strEvent"],
-                    "torneo": ev["strLeague"],
-                    "hora_utc": ev["strTimestamp"], # Formato: 2026-04-26T18:00:00Z
-                    "logo_local": ev.get("strHomeTeamBadge", ""),
-                    "logo_visitante": ev.get("strAwayTeamBadge", ""),
-                    "banner": ev.get("strThumb", "")
-                }
-    except:
-        pass
-    return None
+            if not data or not data.get("events"):
+                continue
 
-# ─── PROCESO PRINCIPAL ───────────────────────────────────────────────────────
-def main():
-    print("🚀 Iniciando Curador de Eventos Deportivos...")
-    streams = obtener_streams_xtream()
-    if not streams:
-        print("❌ No se pudo obtener la lista de Xtream.")
-        return
+            for ev in data["events"]:
+                id_ev = ev.get("idEvent", "")
 
-    eventos_finales = {} # Usamos dict para agrupar fuentes por ID de evento
+                # Deduplicación: una liga puede aparecer en varias consultas
+                if id_ev in ids_vistos:
+                    continue
+                ids_vistos.add(id_ev)
 
-    for s in streams:
-        nombre_raw = s.get("name", "")
-        stream_id = s.get("stream_id")
-        
-        # 1. Intentar extraer nombre de evento limpio
-        query_evento = extraer_evento(nombre_raw)
-        if not query_evento: continue
+                # Filtro estricto: sin timestamp no es útil para la app
+                if not ev.get("strTimestamp"):
+                    continue
 
-        # 2. Si ya lo procesamos, solo añadimos la fuente (Agrupación)
-        ya_existe = next((id_ev for id_ev, info in eventos_finales.items() if query_evento in info['titulo']), None)
-        
-        if ya_existe:
-            eventos_finales[ya_existe]["fuentes"].append({
-                "nombre": nombre_raw,
-                "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
-            })
+                eventos.append({
+                    # Campos del modelo final (Evento.kt)
+                    "id":               id_ev,
+                    "titulo":           ev.get("strEvent", ""),
+                    "torneo":           ev.get("strLeague") or liga_nombre,
+                    "hora_utc":         ev.get("strTimestamp", ""),
+                    "logo_local":       ev.get("strHomeTeamBadge") or "",
+                    "logo_visitante":   ev.get("strAwayTeamBadge") or "",
+                    "banner":           ev.get("strThumb") or "",
+                    # Campos internos de trabajo (no van al JSON final)
+                    "_equipo_local":    ev.get("strHomeTeam", ""),
+                    "_equipo_visitante": ev.get("strAwayTeam", ""),
+                })
+
+            time.sleep(0.3)
+
+        except Exception as e:
+            print(f"⚠️  Error en liga {liga_nombre} ({liga_id}): {e}")
             continue
 
-        # 3. Consultar API (Filtro Estricto)
-        info_oficial = consultar_api_deportes(query_evento)
-        
-        if info_oficial:
-            id_ev = info_oficial["id"]
-            info_oficial["fuentes"] = [{
-                "nombre": nombre_raw,
-                "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
-            }]
-            eventos_finales[id_ev] = info_oficial
-            print(f"✅ Evento Validado: {info_oficial['titulo']} ({info_oficial['torneo']})")
-            time.sleep(0.5) # Respeto a la API gratuita
+    return eventos
 
-    # 4. Guardar JSON
-    resultado = list(eventos_finales.values())
+
+# ─── MATCHING ────────────────────────────────────────────────────────────────
+
+def buscar_fuentes_en_xtream(evento, streams):
+    """
+    Dado un evento oficial de TheSportsDB, busca en los streams de Xtream
+    cuáles corresponden. Retorna lista de {nombre, url}.
+
+    Estrategia:
+    - Evento con dos equipos: el stream debe contener palabras clave de AMBOS.
+    - Evento sin equipos (F1, ciclismo, etc.): match por palabras del título.
+    """
+    fuentes = []
+    equipo_local     = evento.get("_equipo_local", "")
+    equipo_visitante = evento.get("_equipo_visitante", "")
+
+    if equipo_local and equipo_visitante:
+        kw_local     = palabras_clave(equipo_local)
+        kw_visitante = palabras_clave(equipo_visitante)
+
+        # Si no se extrajeron palabras clave, no podemos hacer matching fiable
+        if not kw_local or not kw_visitante:
+            return []
+
+        for s in streams:
+            nombre_norm = normalizar(s.get("name", ""))
+            if (all(kw in nombre_norm for kw in kw_local) and
+                    all(kw in nombre_norm for kw in kw_visitante)):
+                stream_id = s.get("stream_id")
+                fuentes.append({
+                    "nombre": s.get("name", ""),
+                    "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
+                })
+    else:
+        # Evento sin equipos definidos: usar palabras del título
+        kw_titulo = palabras_clave(evento.get("titulo", ""))
+        if not kw_titulo:
+            return []
+
+        for s in streams:
+            nombre_norm = normalizar(s.get("name", ""))
+            if all(kw in nombre_norm for kw in kw_titulo):
+                stream_id = s.get("stream_id")
+                fuentes.append({
+                    "nombre": s.get("name", ""),
+                    "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
+                })
+
+    return fuentes
+
+
+# ─── PROCESO PRINCIPAL ───────────────────────────────────────────────────────
+
+def main():
+    print(f"🚀 Curador de Eventos — {FECHA_HOY}")
+
+    # 1. Una sola llamada a Xtream (toda la lista de streams)
+    streams = obtener_streams_xtream()
+    if not streams:
+        print("❌ No se pudo obtener la lista de Xtream. Abortando.")
+        return
+    print(f"📡 {len(streams)} streams obtenidos de Xtream.")
+
+    # 2. Obtener eventos del día desde TheSportsDB (fuente de verdad)
+    print(f"📅 Consultando {len(LIGAS_SEGUIMIENTO)} ligas en TheSportsDB...")
+    eventos_api = obtener_eventos_del_dia()
+    print(f"🗓️  {len(eventos_api)} eventos encontrados en la API.")
+
+    # 3. Para cada evento, buscar fuentes disponibles en Xtream
+    eventos_finales = []
+    for evento in eventos_api:
+        fuentes = buscar_fuentes_en_xtream(evento, streams)
+        if not fuentes:
+            continue  # Evento sin cobertura en esta lista IPTV: se omite
+
+        eventos_finales.append({
+            "id":            evento["id"],
+            "titulo":        evento["titulo"],
+            "torneo":        evento["torneo"],
+            "hora_utc":      evento["hora_utc"],
+            "logo_local":    evento["logo_local"],
+            "logo_visitante": evento["logo_visitante"],
+            "banner":        evento["banner"],
+            "fuentes":       fuentes,
+        })
+        print(f"✅ {evento['titulo']} ({evento['torneo']}) — {len(fuentes)} fuente(s)")
+
+    # 4. Ordenar por hora (más próximos primero)
+    eventos_finales.sort(key=lambda e: e["hora_utc"])
+
+    # 5. Guardar JSON
     with open("eventos_hoy.json", "w", encoding="utf-8") as f:
-        json.dump(resultado, f, ensure_ascii=False, indent=2)
-    
-    print(f"🏁 Proceso finalizado. {len(resultado)} eventos exportados a eventos_hoy.json")
+        json.dump(eventos_finales, f, ensure_ascii=False, indent=2)
+
+    print(f"🏁 Finalizado. {len(eventos_finales)} eventos exportados a eventos_hoy.json")
+
 
 if __name__ == "__main__":
     main()
