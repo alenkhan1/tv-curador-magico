@@ -13,70 +13,62 @@ XTREAM_PASS      = os.environ.get("XTREAM_PASS")
 SPORTSDB_API_KEY = os.environ.get("SPORTSDB_API_KEY", "123")
 FECHA_HOY        = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+
 # ─── LIGAS EN SEGUIMIENTO ────────────────────────────────────────────────────
-# IDs verificados contra TheSportsDB. Clave: idLeague. Valor: nombre display.
 LIGAS_SEGUIMIENTO = {
-    # Fútbol – Competiciones de Clubes Europa
-    "4480": "UEFA Champions League",
-    "4481": "UEFA Europa League",
-    "5071": "UEFA Conference League",
-    "4328": "Premier League",
-    "4335": "La Liga",
-    "4332": "Serie A",
-    "4334": "Ligue 1",
-    "4331": "Bundesliga",
-    # Fútbol – América / Internacional
-    "4501": "Copa Libertadores",
-    "4724": "Copa Sudamericana",
-    "4346": "MLS",
-    "4350": "Liga MX",
-    "4351": "Brasileirao Serie A",
-    "4406": "Argentina Primera División",
-    "4497": "Liga BetPlay Colombia",
-    "4951": "Torneo BetPlay (Segunda)",
-    "5183": "Copa Colombia",
-    "4686": "Liga Pro Ecuador",
-    "4687": "Paraguay Primera División",
-    "4688": "Perú Liga 1",
-    # Fútbol – Selecciones
-    "4429": "FIFA World Cup",
-    "4499": "Copa América",
-    "4496": "Copa África de Naciones",
-    "4502": "UEFA Euro",
-    "4498": "Copa Confederaciones",
-    "4873": "CONCACAF Gold Cup",
-    "4503": "FIFA Club World Cup",
+    # Fútbol
+    "4480": ("UEFA Champions League", "Fútbol"),
+    "4481": ("UEFA Europa League", "Fútbol"),
+    "5071": ("UEFA Conference League", "Fútbol"),
+    "4328": ("Premier League", "Fútbol"),
+    "4335": ("La Liga", "Fútbol"),
+    "4332": ("Serie A", "Fútbol"),
+    "4334": ("Ligue 1", "Fútbol"),
+    "4331": ("Bundesliga", "Fútbol"),
+    "4501": ("Copa Libertadores", "Fútbol"),
+    "4724": ("Copa Sudamericana", "Fútbol"),
+    "4346": ("MLS", "Fútbol"),
+    "4350": ("Liga MX", "Fútbol"),
+    "4351": ("Brasileirao Serie A", "Fútbol"),
+    "4406": ("Argentina Primera División", "Fútbol"),
+    "4497": ("Liga BetPlay", "Fútbol"),
+    "4951": ("Torneo BetPlay", "Fútbol"),
+    "5183": ("Copa Colombia", "Fútbol"),
+    "4686": ("Liga Pro Ecuador", "Fútbol"),
+    "4687": ("Paraguay Primera División", "Fútbol"),
+    "4688": ("Perú Liga 1", "Fútbol"),
+    "4429": ("FIFA World Cup", "Fútbol"),
+    "4499": ("Copa América", "Fútbol"),
+    "4496": ("Copa África de Naciones", "Fútbol"),
+    "4502": ("UEFA Euro", "Fútbol"),
+    "4498": ("Copa Confederaciones", "Fútbol"),
+    "4873": ("CONCACAF Gold Cup", "Fútbol"),
+    "4503": ("FIFA Club World Cup", "Fútbol"),
     # Baloncesto
-    "4387": "NBA",
-    "4516": "WNBA",
-    "4607": "NCAAB",
-    "4408": "Liga Endesa ACB",
+    "4387": ("NBA", "Baloncesto"),
+    "4516": ("WNBA", "Baloncesto"),
+    "4607": ("NCAAB", "Baloncesto"),
+    "4408": ("Liga Endesa ACB", "Baloncesto"),
+    # Motor
+    "4370": ("Formula 1", "Motor"),
+    "4393": ("NASCAR", "Motor"),
+    "4373": ("IndyCar", "Motor"),
+    "4407": ("MotoGP", "Motor"),
+    "4409": ("WRC", "Motor"),
+    "4447": ("Dakar Rally", "Motor"),
+    # Tenis / Raqueta
+    "4464": ("ATP", "Tenis"),
+    "4517": ("WTA", "Tenis"),
     # Béisbol
-    "4424": "MLB",
-    "5064": "Liga Mexicana de Béisbol",
-    # Hockey sobre hielo
-    "4380": "NHL",
-    # Tenis
-    "4464": "ATP World Tour",
-    "4517": "WTA Tour",
-    # Golf
-    "4425": "PGA Tour",
-    # Ciclismo
-    "4465": "UCI World Tour",
-    # Automovilismo
-    "4370": "Formula 1",
-    "4393": "NASCAR Cup Series",
-    "4373": "IndyCar Series",
-    "4407": "MotoGP",
-    "4409": "WRC",
-    "4447": "Dakar Rally",
-    # Artes Marciales / Boxeo
-    "4443": "UFC",
-    "4445": "Boxeo",
-    # Olimpiadas
-    "4975": "Juegos Olímpicos",
-    "5039": "Olimpiadas Fútbol",
-    "5020": "Olimpiadas Baloncesto",
+    "4424": ("MLB", "Béisbol"),
+    "5064": ("Liga Mexicana de Béisbol", "Béisbol"),
+    # Otros
+    "4380": ("NHL", "Hockey"),
+    "4425": ("PGA Tour", "Golf"),
+    "4465": ("Ciclismo UCI", "Ciclismo"),
+    "4443": ("UFC", "Combate"),
+    "4445": ("Boxeo", "Combate"),
+    "4975": ("Juegos Olímpicos", "Olimpiadas"),
 }
 
 # Palabras que no aportan al matching de nombres de equipos
@@ -136,7 +128,7 @@ def obtener_eventos_del_dia():
     eventos = []
     ids_vistos = set()
 
-    for liga_id, liga_nombre in LIGAS_SEGUIMIENTO.items():
+    for liga_id, (liga_nombre, categoria) in LIGAS_SEGUIMIENTO.items():
         try:
             r = requests.get(base_url, params={"d": FECHA_HOY, "l": liga_id}, timeout=10)
             if r.status_code != 200:
@@ -149,25 +141,26 @@ def obtener_eventos_del_dia():
             for ev in data["events"]:
                 id_ev = ev.get("idEvent", "")
 
-                # Deduplicación: una liga puede aparecer en varias consultas
                 if id_ev in ids_vistos:
                     continue
                 ids_vistos.add(id_ev)
 
-                # Filtro estricto: sin timestamp no es útil para la app
-                if not ev.get("strTimestamp"):
+                raw_time = ev.get("strTimestamp")
+                if not raw_time:
                     continue
+                
+                # REPARACIÓN MILITAR DE LA HORA (ISO 8601)
+                iso_time = raw_time.replace(" ", "T") + "Z"
 
                 eventos.append({
-                    # Campos del modelo final (Evento.kt)
                     "id":               id_ev,
                     "titulo":           ev.get("strEvent", ""),
-                    "torneo":           ev.get("strLeague") or liga_nombre,
-                    "hora_utc":         ev.get("strTimestamp", ""),
+                    "torneo":           liga_nombre, # Forzamos el nombre comercial limpio
+                    "categoria":        categoria,   # Inyectamos la macro-categoría
+                    "hora_utc":         iso_time,    # Hora legible para Android
                     "logo_local":       ev.get("strHomeTeamBadge") or "",
                     "logo_visitante":   ev.get("strAwayTeamBadge") or "",
                     "banner":           ev.get("strThumb") or "",
-                    # Campos internos de trabajo (no van al JSON final)
                     "_equipo_local":    ev.get("strHomeTeam", ""),
                     "_equipo_visitante": ev.get("strAwayTeam", ""),
                 })
@@ -184,49 +177,46 @@ def obtener_eventos_del_dia():
 # ─── MATCHING ────────────────────────────────────────────────────────────────
 
 def buscar_fuentes_en_xtream(evento, streams):
-    """
-    Dado un evento oficial de TheSportsDB, busca en los streams de Xtream
-    cuáles corresponden. Retorna lista de {nombre, url}.
-
-    Estrategia:
-    - Evento con dos equipos: el stream debe contener palabras clave de AMBOS.
-    - Evento sin equipos (F1, ciclismo, etc.): match por palabras del título.
-    """
     fuentes = []
     equipo_local     = evento.get("_equipo_local", "")
     equipo_visitante = evento.get("_equipo_visitante", "")
+    torneo           = evento.get("torneo", "")
+    categoria        = evento.get("categoria", "")
 
-    if equipo_local and equipo_visitante:
-        kw_local     = palabras_clave(equipo_local)
-        kw_visitante = palabras_clave(equipo_visitante)
+    kw_local     = palabras_clave(equipo_local) if equipo_local else []
+    kw_visitante = palabras_clave(equipo_visitante) if equipo_visitante else []
+    kw_torneo    = palabras_clave(torneo)
 
-        # Si no se extrajeron palabras clave, no podemos hacer matching fiable
-        if not kw_local or not kw_visitante:
-            return []
+    for s in streams:
+        nombre_crudo = s.get("name", "")
+        nombre_norm = normalizar(nombre_crudo)
+        es_match = False
 
-        for s in streams:
-            nombre_norm = normalizar(s.get("name", ""))
+        # ESTRATEGIA 1: Match Híbrido por Torneo (Para canales que dicen "Liga Betplay", "ATP", "F1")
+        if kw_torneo and any(kw in nombre_norm for kw in kw_torneo):
+            if categoria not in ["Fútbol", "Baloncesto", "Béisbol"]:
+                # Deportes individuales/motor: Si dice el torneo, es nuestro.
+                es_match = True
+            else:
+                # Deportes de equipo: Exige que diga el torneo Y al menos el nombre de un equipo.
+                if (kw_local and any(kw in nombre_norm for kw in kw_local)) or \
+                   (kw_visitante and any(kw in nombre_norm for kw in kw_visitante)):
+                    es_match = True
+
+        # ESTRATEGIA 2: Match Clásico Implacable (El estándar de equipos)
+        if not es_match and kw_local and kw_visitante:
             if (all(kw in nombre_norm for kw in kw_local) and
-                    all(kw in nombre_norm for kw in kw_visitante)):
-                stream_id = s.get("stream_id")
-                fuentes.append({
-                    "nombre": s.get("name", ""),
-                    "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
-                })
-    else:
-        # Evento sin equipos definidos: usar palabras del título
-        kw_titulo = palabras_clave(evento.get("titulo", ""))
-        if not kw_titulo:
-            return []
+                all(kw in nombre_norm for kw in kw_visitante)):
+                es_match = True
 
-        for s in streams:
-            nombre_norm = normalizar(s.get("name", ""))
-            if all(kw in nombre_norm for kw in kw_titulo):
-                stream_id = s.get("stream_id")
-                fuentes.append({
-                    "nombre": s.get("name", ""),
-                    "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
-                })
+        if es_match:
+            stream_id = s.get("stream_id")
+            # Usamos el nombre original de la lista, limpiando caracteres raros para la UI
+            titulo_limpio = nombre_crudo.replace("▫", " ").strip()
+            fuentes.append({
+                "nombre": titulo_limpio,
+                "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
+            })
 
     return fuentes
 
@@ -259,6 +249,7 @@ def main():
             "id":            evento["id"],
             "titulo":        evento["titulo"],
             "torneo":        evento["torneo"],
+            "categoria":     evento["categoria"],
             "hora_utc":      evento["hora_utc"],
             "logo_local":    evento["logo_local"],
             "logo_visitante": evento["logo_visitante"],
