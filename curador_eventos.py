@@ -10,7 +10,6 @@ from datetime import datetime, timezone
 XTREAM_URL       = os.environ.get("XTREAM_URL")
 XTREAM_USER      = os.environ.get("XTREAM_USER")
 XTREAM_PASS      = os.environ.get("XTREAM_PASS")
-# Eliminamos la clave por defecto para evitar usar una expirada
 RAPIDAPI_KEY     = os.environ.get("RAPIDAPI_KEY") 
 RAPIDAPI_HOST    = "sofasport.p.rapidapi.com"
 FECHA_HOY        = datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -94,24 +93,32 @@ def obtener_eventos_del_dia():
         "Content-Type": "application/json"
     }
     
-    querystring = {"locale": "ES", "date": FECHA_HOY}
+    # 🔴 CAMBIO: Quitamos la fecha estricta para emular tu comando cURL
+    querystring = {"locale": "ES"}
     
     try:
         r = requests.get(url, headers=headers, params=querystring, timeout=15)
         
-        # DEBUG: Si no es 200, mostramos por qué
         if r.status_code != 200:
             print(f"❌ Error de API ({r.status_code}): {r.text}")
             return []
 
         data = r.json()
+        
+        # 🔴 EL DETECTIVE: Vamos a imprimir qué nos responde realmente la API
+        print("\n--- DEBUG: RESPUESTA CRUDA DE LA API (Primeros 1500 caracteres) ---")
+        print(json.dumps(data, ensure_ascii=False)[:1500])
+        print("--------------------------------------------------------------------\n")
+
         eventos = []
         ids_vistos = set()
         
+        # Flexibilizamos la búsqueda de la lista base
         if isinstance(data, list):
             lista_base = data
         elif isinstance(data, dict):
-            lista_base = data.get("data", data.get("events", []))
+            # Busca en cualquier llave común donde guarden las cosas
+            lista_base = data.get("data", data.get("events", data.get("tournaments", [])))
         else:
             lista_base = []
                 
