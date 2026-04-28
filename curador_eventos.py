@@ -86,15 +86,20 @@ def obtener_eventos_del_dia():
         print("❌ Error: No se encontró RAPIDAPI_KEY en las variables de entorno.")
         return []
 
-    url = f"https://{RAPIDAPI_HOST}/v1/events/schedule/popular"
+    # 1. EL CAMBIO CRÍTICO: Usamos el endpoint por fecha en lugar del "popular"
+    url = f"https://{RAPIDAPI_HOST}/v1/events/schedule/date"
+    
     headers = {
         "x-rapidapi-key": RAPIDAPI_KEY,
         "x-rapidapi-host": RAPIDAPI_HOST,
         "Content-Type": "application/json"
     }
     
-    # Mantenemos el parámetro locale
-    querystring = {"locale": "ES"}
+    # 2. AÑADIR LA FECHA: Este endpoint requiere la fecha exacta
+    querystring = {
+        "locale": "ES",
+        "date": FECHA_HOY  # Variable definida al inicio del script como YYYY-MM-DD
+    }
     
     try:
         r = requests.get(url, headers=headers, params=querystring, timeout=15)
@@ -125,7 +130,6 @@ def obtener_eventos_del_dia():
         for ev_raw in eventos_planos:
             if not isinstance(ev_raw, dict): continue
             
-            # 🛠️ EL PARCHE: Si el evento viene envuelto en la llave "event", lo extraemos.
             ev = ev_raw.get("event", ev_raw)
             
             id_ev = str(ev.get("id", ""))
@@ -137,7 +141,6 @@ def obtener_eventos_del_dia():
             torneo = ev.get("tournament", {}).get("name", "Evento Deportivo")
             categoria = ev.get("tournament", {}).get("category", {}).get("sport", {}).get("name", "Deporte")
 
-            # Ahora sí encontrará el timestamp
             unix_time = ev.get("startTimestamp")
             if not unix_time: continue
             
