@@ -25,7 +25,8 @@ jobs:
 
       - name: Ejecutar Curador de Eventos
         env:
-          SPORTSDB_API_KEY: ${{ secrets.SPORTSDB_API_KEY }}
+          # Sincronizamos el nombre con lo que busca el script .py
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
@@ -36,5 +37,5 @@ jobs:
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
           git add eventos_hoy.json
-          git commit -m "Actualización de Eventos (4h)" || echo "Sin cambios"
+          git commit -m "Actualización de Eventos (Auto)" || echo "Sin cambios"
           git push
