@@ -13,10 +13,35 @@ XTREAM_PASS      = os.environ.get("XTREAM_PASS")
 SPORTSDB_API_KEY = os.environ.get("SPORTSDB_API_KEY", "123")
 FECHA_HOY        = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
+# ─── EL ROMPECÓDIGOS (Diccionario Anti-Leetspeak) ────────────────────────────
+LEET_DICT = {
+    "4": "A", "@": "A", 
+    "3": "E", "€": "E", 
+    "1": "I", "¡": "I", "|": "I",
+    "0": "O", "Ø": "O",
+    "5": "S", "$": "S",
+    "7": "T",
+    "8": "B",
+    "ñ": "N", "Ñ": "N"
+}
+
+# ─── PALABRAS CLAVE UNIVERSALES (Red de Arrastre para Deportes Individuales) ─
+# Si TheSportsDB dice que hay un evento de estas categorías, tomaremos TODOS 
+# los canales que contengan alguna de estas palabras en su nombre o carpeta.
+KEYWORDS_DEPORTES_INDIVIDUALES = {
+    "Tenis": ["ATP", "WTA", "TENIS", "TENNIS", "ROLAND GARROS", "WIMBLEDON", "GRAND SLAM"],
+    "Motor": ["F1", "FORMULA 1", "MOTO GP", "MOTOGP", "NASCAR", "INDYCAR", "MOTOR", "RALLY", "DAKAR"],
+    "Combate": ["UFC", "MMA", "BOX", "BOXEO", "BOXING", "WWE", "VELADA"],
+    "Ciclismo": ["CICLISMO", "TOUR DE FRANCE", "GIRO DE ITALIA", "VUELTA A ESPANA", "UCI"],
+    "Golf": ["PGA", "GOLF", "MASTERS", "RYDER CUP", "LIV GOLF"],
+    "Olimpiadas": ["JUEGOS OLIMPICOS", "OLYMPICS", "PARIS 2024"] # Adaptable al año
+}
+
+# Deportes que requieren match estricto de equipos
+DEPORTES_DE_EQUIPO = ["Fútbol", "Baloncesto", "Béisbol", "Hockey"]
 
 # ─── LIGAS EN SEGUIMIENTO ────────────────────────────────────────────────────
 LIGAS_SEGUIMIENTO = {
-    # Fútbol
     "4480": ("UEFA Champions League", "Fútbol"),
     "4481": ("UEFA Europa League", "Fútbol"),
     "5071": ("UEFA Conference League", "Fútbol"),
@@ -44,25 +69,20 @@ LIGAS_SEGUIMIENTO = {
     "4498": ("Copa Confederaciones", "Fútbol"),
     "4873": ("CONCACAF Gold Cup", "Fútbol"),
     "4503": ("FIFA Club World Cup", "Fútbol"),
-    # Baloncesto
     "4387": ("NBA", "Baloncesto"),
     "4516": ("WNBA", "Baloncesto"),
     "4607": ("NCAAB", "Baloncesto"),
     "4408": ("Liga Endesa ACB", "Baloncesto"),
-    # Motor
     "4370": ("Formula 1", "Motor"),
     "4393": ("NASCAR", "Motor"),
     "4373": ("IndyCar", "Motor"),
     "4407": ("MotoGP", "Motor"),
     "4409": ("WRC", "Motor"),
     "4447": ("Dakar Rally", "Motor"),
-    # Tenis / Raqueta
     "4464": ("ATP", "Tenis"),
     "4517": ("WTA", "Tenis"),
-    # Béisbol
     "4424": ("MLB", "Béisbol"),
     "5064": ("Liga Mexicana de Béisbol", "Béisbol"),
-    # Otros
     "4380": ("NHL", "Hockey"),
     "4425": ("PGA Tour", "Golf"),
     "4465": ("Ciclismo UCI", "Ciclismo"),
@@ -71,45 +91,47 @@ LIGAS_SEGUIMIENTO = {
     "4975": ("Juegos Olímpicos", "Olimpiadas"),
 }
 
-# Palabras que no aportan al matching de nombres de equipos
 STOP_WORDS = {
     "FC", "SC", "CF", "AC", "AS", "US", "CS", "RC", "CD", "SD", "UD",
     "RCD", "SSD", "SSC", "GD", "AF", "THE", "DE", "LA", "LAS", "LOS",
     "EL", "Y", "E", "AND", "OF", "DEL", "SAN", "SANTA", "DOS", "DU"
 }
 
+# ─── UTILIDADES DE TEXTO ─────────────────────────────────────────────────────
 
-# ─── UTILIDADES ──────────────────────────────────────────────────────────────
-
-def normalizar(texto):
-    """Mayúsculas, sin acentos, sin caracteres especiales."""
+def desencriptar_texto(texto):
+    """Convierte Leetspeak a español, quita acentos y caracteres raros."""
     texto = texto.upper()
+    for leet, real in LEET_DICT.items():
+        texto = texto.replace(leet, real)
+        
     texto = unicodedata.normalize("NFD", texto)
     texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    # Dejamos solo letras y números, el resto se vuelve espacios
     texto = re.sub(r"[^A-Z0-9\s]", " ", texto)
     return " ".join(texto.split())
 
-
-def palabras_clave(nombre_equipo):
-    """
-    Extrae hasta 2 palabras significativas del nombre de un equipo.
-    Ignora STOP_WORDS y palabras de 1-2 caracteres.
-    Ej: "Real Madrid CF" -> ["MADRID"]
-        "Manchester City" -> ["MANCHESTER", "CITY"]
-        "Atlético Nacional" -> ["ATLETICO", "NACIONAL"]
-    """
-    palabras = normalizar(nombre_equipo).split()
+def extraer_palabras_clave_equipo(nombre_equipo):
+    """Extrae palabras de búsqueda sólidas para equipos deportivos."""
+    palabras = desencriptar_texto(nombre_equipo).split()
     filtradas = [p for p in palabras if p not in STOP_WORDS and len(p) > 2]
+    # Retornamos hasta las 2 palabras más significativas
     return filtradas[:2]
 
+# ─── CAPA DE RED (XTREAM + API) ──────────────────────────────────────────────
 
-# ─── CAPA DE RED ─────────────────────────────────────────────────────────────
+def obtener_categorias_xtream():
+    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_categories"
+    try:
+        r = requests.get(url, timeout=15)
+        if r.status_code == 200:
+            return {str(c.get("category_id", "")): c.get("category_name", "") for c in r.json()}
+    except Exception as e:
+        print(f"❌ Error al obtener categorías de Xtream: {e}")
+    return {}
 
 def obtener_streams_xtream():
-    """Una sola llamada: descarga todos los streams en vivo de Xtream."""
-    url = (f"{XTREAM_URL}/player_api.php"
-           f"?username={XTREAM_USER}&password={XTREAM_PASS}"
-           f"&action=get_live_streams")
+    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
     try:
         r = requests.get(url, timeout=20)
         return r.json() if r.status_code == 200 else []
@@ -117,133 +139,136 @@ def obtener_streams_xtream():
         print(f"❌ Error al obtener streams de Xtream: {e}")
         return []
 
-
 def obtener_eventos_del_dia():
-    """
-    FUENTE DE VERDAD: consulta TheSportsDB por fecha para cada liga.
-    Retorna lista de eventos con datos oficiales + campos internos de trabajo.
-    """
-    base_url = (f"https://www.thesportsdb.com/api/v1/json"
-                f"/{SPORTSDB_API_KEY}/eventsday.php")
+    base_url = f"https://www.thesportsdb.com/api/v1/json/{SPORTSDB_API_KEY}/eventsday.php"
     eventos = []
     ids_vistos = set()
 
     for liga_id, (liga_nombre, categoria) in LIGAS_SEGUIMIENTO.items():
         try:
             r = requests.get(base_url, params={"d": FECHA_HOY, "l": liga_id}, timeout=10)
-            if r.status_code != 200:
-                continue
-
+            if r.status_code != 200: continue
             data = r.json()
-            if not data or not data.get("events"):
-                continue
+            if not data or not data.get("events"): continue
 
             for ev in data["events"]:
                 id_ev = ev.get("idEvent", "")
-
-                if id_ev in ids_vistos:
-                    continue
+                if id_ev in ids_vistos: continue
                 ids_vistos.add(id_ev)
 
                 raw_time = ev.get("strTimestamp")
-                if not raw_time:
-                    continue
-                
-                # REPARACIÓN MILITAR DE LA HORA (ISO 8601)
+                if not raw_time: continue
                 iso_time = raw_time.replace(" ", "T") + "Z"
 
                 eventos.append({
-                    "id":               id_ev,
-                    "titulo":           ev.get("strEvent", ""),
-                    "torneo":           liga_nombre, # Forzamos el nombre comercial limpio
-                    "categoria":        categoria,   # Inyectamos la macro-categoría
-                    "hora_utc":         iso_time,    # Hora legible para Android
-                    "logo_local":       ev.get("strHomeTeamBadge") or "",
-                    "logo_visitante":   ev.get("strAwayTeamBadge") or "",
-                    "banner":           ev.get("strThumb") or "",
-                    "_equipo_local":    ev.get("strHomeTeam", ""),
+                    "id": id_ev,
+                    "titulo": ev.get("strEvent", ""),
+                    "torneo": liga_nombre,
+                    "categoria": categoria,
+                    "hora_utc": iso_time,
+                    "logo_local": ev.get("strHomeTeamBadge") or "",
+                    "logo_visitante": ev.get("strAwayTeamBadge") or "",
+                    "banner": ev.get("strThumb") or "",
+                    "_equipo_local": ev.get("strHomeTeam", ""),
                     "_equipo_visitante": ev.get("strAwayTeam", ""),
                 })
-
             time.sleep(0.3)
-
         except Exception as e:
-            print(f"⚠️  Error en liga {liga_nombre} ({liga_id}): {e}")
             continue
-
     return eventos
 
+# ─── EL MOTOR DE BÚSQUEDA GLOBAL ─────────────────────────────────────────────
 
-# ─── MATCHING ────────────────────────────────────────────────────────────────
+def preprocesar_lista_iptv(streams_raw, categorias_map):
+    """
+    Crea un super-índice con la 'Fusión de Contexto' (Carpeta + Canal)
+    totalmente desencriptado, listo para búsquedas masivas.
+    """
+    streams_listos = []
+    for s in streams_raw:
+        cat_id = str(s.get("category_id", ""))
+        cat_name = categorias_map.get(cat_id, "")
+        stream_name_raw = s.get("name", "")
+        stream_id = s.get("stream_id")
+        
+        # Fusión de contexto y desencriptado global
+        fusion_texto = f"{cat_name} {stream_name_raw}"
+        texto_rastreable = desencriptar_texto(fusion_texto)
+        
+        # Limpiar el nombre visible para la UI (quitamos los emojis raros pero conservamos la ofuscación original si la hay)
+        titulo_ui = stream_name_raw.replace("▫", " ").strip()
+        
+        streams_listos.append({
+            "id": stream_id,
+            "nombre_ui": titulo_ui,
+            "texto_rastreable": texto_rastreable
+        })
+    return streams_listos
 
-def buscar_fuentes_en_xtream(evento, streams):
+def buscar_fuentes_universales(evento, streams_procesados):
     fuentes = []
-    equipo_local     = evento.get("_equipo_local", "")
-    equipo_visitante = evento.get("_equipo_visitante", "")
-    torneo           = evento.get("torneo", "")
-    categoria        = evento.get("categoria", "")
+    categoria = evento.get("categoria", "")
+    
+    # 1. MODO DEPORTES DE EQUIPO (Búsqueda por contrincantes)
+    if categoria in DEPORTES_DE_EQUIPO:
+        kw_local = extraer_palabras_clave_equipo(evento.get("_equipo_local", ""))
+        kw_visit = extraer_palabras_clave_equipo(evento.get("_equipo_visitante", ""))
+        
+        if not kw_local or not kw_visit: return []
 
-    kw_local     = palabras_clave(equipo_local) if equipo_local else []
-    kw_visitante = palabras_clave(equipo_visitante) if equipo_visitante else []
-    kw_torneo    = palabras_clave(torneo)
+        for s in streams_procesados:
+            texto = s["texto_rastreable"]
+            # Deben estar presentes TODAS las palabras clave de ambos equipos en la fusión (Carpeta + Canal)
+            if all(kw in texto for kw in kw_local) and all(kw in texto for kw in kw_visit):
+                fuentes.append({
+                    "nombre": s["nombre_ui"],
+                    "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{s['id']}.ts"
+                })
 
-    for s in streams:
-        nombre_crudo = s.get("name", "")
-        nombre_norm = normalizar(nombre_crudo)
-        es_match = False
-
-        # ESTRATEGIA 1: Match Híbrido por Torneo (Para canales que dicen "Liga Betplay", "ATP", "F1")
-        if kw_torneo and any(kw in nombre_norm for kw in kw_torneo):
-            if categoria not in ["Fútbol", "Baloncesto", "Béisbol"]:
-                # Deportes individuales/motor: Si dice el torneo, es nuestro.
-                es_match = True
-            else:
-                # Deportes de equipo: Exige que diga el torneo Y al menos el nombre de un equipo.
-                if (kw_local and any(kw in nombre_norm for kw in kw_local)) or \
-                   (kw_visitante and any(kw in nombre_norm for kw in kw_visitante)):
-                    es_match = True
-
-        # ESTRATEGIA 2: Match Clásico Implacable (El estándar de equipos)
-        if not es_match and kw_local and kw_visitante:
-            if (all(kw in nombre_norm for kw in kw_local) and
-                all(kw in nombre_norm for kw in kw_visitante)):
-                es_match = True
-
-        if es_match:
-            stream_id = s.get("stream_id")
-            # Usamos el nombre original de la lista, limpiando caracteres raros para la UI
-            titulo_limpio = nombre_crudo.replace("▫", " ").strip()
-            fuentes.append({
-                "nombre": titulo_limpio,
-                "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
-            })
+    # 2. MODO DEPORTES INDIVIDUALES (Red de arrastre por categoría)
+    else:
+        palabras_trampa = KEYWORDS_DEPORTES_INDIVIDUALES.get(categoria, [])
+        if not palabras_trampa: return []
+        
+        for s in streams_procesados:
+            texto = s["texto_rastreable"]
+            # Si ALGUNA palabra trampa coincide, lo asignamos.
+            if any(kw in texto for kw in palabras_trampa):
+                fuentes.append({
+                    "nombre": s["nombre_ui"],
+                    "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{s['id']}.ts"
+                })
 
     return fuentes
-
 
 # ─── PROCESO PRINCIPAL ───────────────────────────────────────────────────────
 
 def main():
-    print(f"🚀 Curador de Eventos — {FECHA_HOY}")
+    print(f"🚀 Iniciando Curador Universal de Eventos — {FECHA_HOY}")
 
-    # 1. Una sola llamada a Xtream (toda la lista de streams)
-    streams = obtener_streams_xtream()
-    if not streams:
-        print("❌ No se pudo obtener la lista de Xtream. Abortando.")
+    print("📡 Descargando estructura de Xtream...")
+    categorias_map = obtener_categorias_xtream()
+    streams_raw = obtener_streams_xtream()
+    
+    if not streams_raw:
+        print("❌ No hay streams en Xtream. Abortando.")
         return
-    print(f"📡 {len(streams)} streams obtenidos de Xtream.")
 
-    # 2. Obtener eventos del día desde TheSportsDB (fuente de verdad)
-    print(f"📅 Consultando {len(LIGAS_SEGUIMIENTO)} ligas en TheSportsDB...")
+    # Paso 1: Crear el Índice Global Desencriptado
+    print("🧠 Procesando y desencriptando lista iptv completa...")
+    streams_procesados = preprocesar_lista_iptv(streams_raw, categorias_map)
+    
+    # Paso 2: Descargar Cartelera Oficial
+    print("📅 Consultando TheSportsDB...")
     eventos_api = obtener_eventos_del_dia()
     print(f"🗓️  {len(eventos_api)} eventos encontrados en la API.")
 
-    # 3. Para cada evento, buscar fuentes disponibles en Xtream
+    # Paso 3: Cruce Masivo de Datos
     eventos_finales = []
     for evento in eventos_api:
-        fuentes = buscar_fuentes_en_xtream(evento, streams)
+        fuentes = buscar_fuentes_universales(evento, streams_procesados)
         if not fuentes:
-            continue  # Evento sin cobertura en esta lista IPTV: se omite
+            continue
 
         eventos_finales.append({
             "id":            evento["id"],
@@ -254,19 +279,16 @@ def main():
             "logo_local":    evento["logo_local"],
             "logo_visitante": evento["logo_visitante"],
             "banner":        evento["banner"],
-            "fuentes":       fuentes,
+            "fuentes":       fuentes, # Ahora acumulará todas las fuentes posibles
         })
-        print(f"✅ {evento['titulo']} ({evento['torneo']}) — {len(fuentes)} fuente(s)")
+        print(f"✅ {evento['titulo']} ({evento['torneo']}) — {len(fuentes)} fuente(s) extraídas")
 
-    # 4. Ordenar por hora (más próximos primero)
     eventos_finales.sort(key=lambda e: e["hora_utc"])
 
-    # 5. Guardar JSON
     with open("eventos_hoy.json", "w", encoding="utf-8") as f:
         json.dump(eventos_finales, f, ensure_ascii=False, indent=2)
 
-    print(f"🏁 Finalizado. {len(eventos_finales)} eventos exportados a eventos_hoy.json")
-
+    print(f"🏁 Finalizado. {len(eventos_finales)} eventos guardados con éxito.")
 
 if __name__ == "__main__":
     main()
