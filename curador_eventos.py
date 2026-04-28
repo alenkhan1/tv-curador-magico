@@ -203,33 +203,41 @@ def preprocesar_lista_iptv(streams_raw, categorias_map):
         })
     return streams_listos
 
+def extraer_palabras_clave_torneo(nombre_torneo):
+    """Extrae palabras clave fuertes del nombre del torneo para cruzar con IPTV."""
+    palabras = desencriptar_texto(nombre_torneo).split()
+    # Filtramos palabras muy cortas o comunes (STOP_WORDS ya está definido arriba)
+    filtradas = [p for p in palabras if p not in STOP_WORDS and len(p) > 2]
+    return filtradas
+
 def buscar_fuentes_universales(evento, streams_procesados):
     fuentes = []
-    categoria = evento.get("categoria", "")
     
-    if categoria in DEPORTES_DE_EQUIPO:
-        kw_local = extraer_palabras_clave_equipo(evento.get("_equipo_local", ""))
-        kw_visit = extraer_palabras_clave_equipo(evento.get("_equipo_visitante", ""))
-        
-        if not kw_local or not kw_visit: return []
+    # 1. Extraemos las palabras clave del torneo (Ej: "UEFA Champions League" -> ["UEFA", "CHAMPIONS", "LEAGUE"])
+    torneo_limpio = extraer_palabras_clave_torneo(evento.get("torneo", ""))
+    
+    # Si la API no nos dio un torneo válido, abortamos.
+    if not torneo_limpio:
+        return []
 
-        for s in streams_procesados:
-            texto = s["texto_rastreable"]
-            if all(kw in texto for kw in kw_local) and all(kw in texto for kw in kw_visit):
-                fuentes.append({
-                    "nombre": s["nombre_ui"],
-                    "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{s['id']}.ts"
-                })
-    else:
-        palabras_trampa = KEYWORDS_DEPORTES_INDIVIDUALES.get(categoria, [])
-        if not palabras_trampa: return []
-        for s in streams_procesados:
-            texto = s["texto_rastreable"]
-            if any(kw in texto for kw in palabras_trampa):
-                fuentes.append({
-                    "nombre": s["nombre_ui"],
-                    "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{s['id']}.ts"
-                })
+    for s in streams_procesados:
+        texto_canal = s["texto_rastreable"]
+        
+        # 2. Lógica de Coincidencia Flexible
+        # Contamos cuántas palabras clave del torneo aparecen en el nombre/carpeta del canal de IPTV
+        coincidencias = sum(1 for kw in torneo_limpio if kw in texto_canal)
+        
+        # Regla de Oro: 
+        # Si el torneo tiene 1 palabra (ej. "MLB", "NBA"), exigimos 1 coincidencia.
+        # Si el torneo tiene 2 o más palabras (ej. "Champions League"), exigimos al menos 2 para evitar falsos positivos.
+        umbral = 1 if len(torneo_limpio) == 1 else 2
+
+        if coincidencias >= umbral:
+            fuentes.append({
+                "nombre": s["nombre_ui"],
+                "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{s['id']}.ts"
+            })
+            
     return fuentes
 
 # ─── PROCESO PRINCIPAL ───────────────────────────────────────────────────────
