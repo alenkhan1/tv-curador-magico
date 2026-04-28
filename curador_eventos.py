@@ -158,16 +158,31 @@ def obtener_eventos_del_dia():
         r = requests.get(url, headers=headers, params=querystring, timeout=15)
         if r.status_code == 200:
             data = r.json()
-            # Sofasport agrupa los eventos en 'data' o directamente en la raíz dependiendo del endpoint,
-            # el schedule popular usa 'data' para el arreglo principal de eventos
-            lista_eventos = data.get("data", [])
             
-            for ev in lista_eventos:
+            # 1. RESOLUCIÓN DEL CRASH: Detectar si la raíz es Lista o Diccionario
+            if isinstance(data, list):
+                lista_base = data
+            elif isinstance(data, dict):
+                lista_base = data.get("data", data.get("events", []))
+            else:
+                lista_base = []
+                
+            # 2. APLANADOR DE SEGURIDAD: A veces SofaScore agrupa por torneos [{"tournament": {...}, "events": [...]}]
+            eventos_planos = []
+            for item in lista_base:
+                if isinstance(item, dict) and "events" in item and isinstance(item["events"], list):
+                    eventos_planos.extend(item["events"])
+                else:
+                    eventos_planos.append(item)
+            
+            # 3. EXTRACCIÓN DE DATOS
+            for ev in eventos_planos:
+                if not isinstance(ev, dict): continue
+                
                 id_ev = str(ev.get("id", ""))
                 if not id_ev or id_ev in ids_vistos: continue
                 ids_vistos.add(id_ev)
 
-                # Extracción de campos basada en la estructura general de SofaScore
                 home_team = ev.get("homeTeam", {}).get("name", "")
                 away_team = ev.get("awayTeam", {}).get("name", "")
                 torneo = ev.get("tournament", {}).get("name", "Evento Deportivo")
