@@ -93,7 +93,7 @@ def obtener_eventos_del_dia():
         "Content-Type": "application/json"
     }
     
-    # 🔴 CAMBIO: Quitamos la fecha estricta para emular tu comando cURL
+    # Mantenemos el parámetro locale
     querystring = {"locale": "ES"}
     
     try:
@@ -104,20 +104,13 @@ def obtener_eventos_del_dia():
             return []
 
         data = r.json()
-        
-        # 🔴 EL DETECTIVE: Vamos a imprimir qué nos responde realmente la API
-        print("\n--- DEBUG: RESPUESTA CRUDA DE LA API (Primeros 1500 caracteres) ---")
-        print(json.dumps(data, ensure_ascii=False)[:1500])
-        print("--------------------------------------------------------------------\n")
 
         eventos = []
         ids_vistos = set()
         
-        # Flexibilizamos la búsqueda de la lista base
         if isinstance(data, list):
             lista_base = data
         elif isinstance(data, dict):
-            # Busca en cualquier llave común donde guarden las cosas
             lista_base = data.get("data", data.get("events", data.get("tournaments", [])))
         else:
             lista_base = []
@@ -129,8 +122,11 @@ def obtener_eventos_del_dia():
             else:
                 eventos_planos.append(item)
             
-        for ev in eventos_planos:
-            if not isinstance(ev, dict): continue
+        for ev_raw in eventos_planos:
+            if not isinstance(ev_raw, dict): continue
+            
+            # 🛠️ EL PARCHE: Si el evento viene envuelto en la llave "event", lo extraemos.
+            ev = ev_raw.get("event", ev_raw)
             
             id_ev = str(ev.get("id", ""))
             if not id_ev or id_ev in ids_vistos: continue
@@ -141,10 +137,11 @@ def obtener_eventos_del_dia():
             torneo = ev.get("tournament", {}).get("name", "Evento Deportivo")
             categoria = ev.get("tournament", {}).get("category", {}).get("sport", {}).get("name", "Deporte")
 
+            # Ahora sí encontrará el timestamp
             unix_time = ev.get("startTimestamp")
             if not unix_time: continue
+            
             iso_time = datetime.fromtimestamp(unix_time, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
             titulo = f"{home_team} vs {away_team}" if home_team and away_team else ev.get("customId", torneo)
 
             eventos.append({
