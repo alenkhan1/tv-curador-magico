@@ -86,7 +86,6 @@ def obtener_eventos_del_dia():
         print("❌ Error: No se encontró RAPIDAPI_KEY en las variables de entorno.")
         return []
 
-    # 1. EL CAMBIO CRÍTICO: Usamos el endpoint por fecha en lugar del "popular"
     url = f"https://{RAPIDAPI_HOST}/v1/events/schedule/date"
     
     headers = {
@@ -94,76 +93,95 @@ def obtener_eventos_del_dia():
         "x-rapidapi-host": RAPIDAPI_HOST,
         "Content-Type": "application/json"
     }
-    
-    # 2. AÑADIR LA FECHA: Este endpoint requiere la fecha exacta
-    querystring = {
-        "locale": "ES",
-        "date": FECHA_HOY  # Variable definida al inicio del script como YYYY-MM-DD
+
+    # Diccionario de los deportes que nos interesan y sus IDs en SofaScore
+    # (Puedes agregar o quitar según necesites)
+    DEPORTES_IDS = {
+        "Fútbol": 1,
+        "Baloncesto": 2,
+        "Béisbol": 5,
+        "Tenis": 3,
+        "Hockey": 4,
+        "Combate": 13, # MMA/UFC (aproximado, verifica el ID exacto si lo tienes)
+        "Motor": 10    # Deportes de motor
     }
-    
-    try:
-        r = requests.get(url, headers=headers, params=querystring, timeout=15)
-        
-        if r.status_code != 200:
-            print(f"❌ Error de API ({r.status_code}): {r.text}")
-            return []
 
-        data = r.json()
+    eventos_totales = []
+    ids_vistos = set()
 
-        eventos = []
-        ids_vistos = set()
+    for nombre_deporte, sport_id in DEPORTES_IDS.items():
+        print(f"  🔍 Consultando {nombre_deporte} (ID: {sport_id})...")
         
-        if isinstance(data, list):
-            lista_base = data
-        elif isinstance(data, dict):
-            lista_base = data.get("data", data.get("events", data.get("tournaments", [])))
-        else:
-            lista_base = []
-                
-        eventos_planos = []
-        for item in lista_base:
-            if isinstance(item, dict) and "events" in item and isinstance(item["events"], list):
-                eventos_planos.extend(item["events"])
+        querystring = {
+            "locale": "ES",
+            "date": FECHA_HOY,
+            "sport_id": sport_id # Aquí le damos a la API el dato que exigía
+        }
+        
+        try:
+            r = requests.get(url, headers=headers, params=querystring, timeout=15)
+            
+            if r.status_code != 200:
+                print(f"  ⚠️ Error en {nombre_deporte} ({r.status_code}): {r.text}")
+                continue
+
+            data = r.json()
+
+            if isinstance(data, list):
+                lista_base = data
+            elif isinstance(data, dict):
+                lista_base = data.get("data", data.get("events", data.get("tournaments", [])))
             else:
-                eventos_planos.append(item)
-            
-        for ev_raw in eventos_planos:
-            if not isinstance(ev_raw, dict): continue
-            
-            ev = ev_raw.get("event", ev_raw)
-            
-            id_ev = str(ev.get("id", ""))
-            if not id_ev or id_ev in ids_vistos: continue
-            ids_vistos.add(id_ev)
+                lista_base = []
+                    
+            eventos_planos = []
+            for item in lista_base:
+                if isinstance(item, dict) and "events" in item and isinstance(item["events"], list):
+                    eventos_planos.extend(item["events"])
+                else:
+                    eventos_planos.append(item)
+                
+            for ev_raw in eventos_planos:
+                if not isinstance(ev_raw, dict): continue
+                
+                ev = ev_raw.get("event", ev_raw)
+                
+                id_ev = str(ev.get("id", ""))
+                if not id_ev or id_ev in ids_vistos: continue
+                ids_vistos.add(id_ev)
 
-            home_team = ev.get("homeTeam", {}).get("name", "")
-            away_team = ev.get("awayTeam", {}).get("name", "")
-            torneo = ev.get("tournament", {}).get("name", "Evento Deportivo")
-            categoria = ev.get("tournament", {}).get("category", {}).get("sport", {}).get("name", "Deporte")
+                home_team = ev.get("homeTeam", {}).get("name", "")
+                away_team = ev.get("awayTeam", {}).get("name", "")
+                torneo = ev.get("tournament", {}).get("name", "Evento Deportivo")
+                # Forzamos la categoría usando el nombre de nuestro diccionario
+                categoria = ev.get("tournament", {}).get("category", {}).get("sport", {}).get("name", nombre_deporte)
 
-            unix_time = ev.get("startTimestamp")
-            if not unix_time: continue
+                unix_time = ev.get("startTimestamp")
+                if not unix_time: continue
+                
+                iso_time = datetime.fromtimestamp(unix_time, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                titulo = f"{home_team} vs {away_team}" if home_team and away_team else ev.get("customId", torneo)
+
+                eventos_totales.append({
+                    "id": id_ev,
+                    "titulo": titulo,
+                    "torneo": torneo,
+                    "categoria": categoria,
+                    "hora_utc": iso_time,
+                    "logo_local": "", 
+                    "logo_visitante": "",
+                    "banner": "",
+                    "_equipo_local": home_team,
+                    "_equipo_visitante": away_team,
+                })
+                
+        except Exception as e:
+            print(f"  ⚠️ Excepción consultando {nombre_deporte}: {e}")
             
-            iso_time = datetime.fromtimestamp(unix_time, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-            titulo = f"{home_team} vs {away_team}" if home_team and away_team else ev.get("customId", torneo)
+        # Pequeña pausa para no bombardear la API y evitar bloqueos (Rate Limiting)
+        time.sleep(1)
 
-            eventos.append({
-                "id": id_ev,
-                "titulo": titulo,
-                "torneo": torneo,
-                "categoria": categoria,
-                "hora_utc": iso_time,
-                "logo_local": "", 
-                "logo_visitante": "",
-                "banner": "",
-                "_equipo_local": home_team,
-                "_equipo_visitante": away_team,
-            })
-        return eventos
-    except Exception as e:
-        print(f"❌ Error crítico consultando SofaScore: {e}")
-        return []
-
+    return eventos_totales
 # ─── MOTOR DE BÚSQUEDA ───────────────────────────────────────────────────────
 
 def preprocesar_lista_iptv(streams_raw, categorias_map):
