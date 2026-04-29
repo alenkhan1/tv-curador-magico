@@ -38,4 +38,5 @@ jobs:
           git config --global user.email "bot@allstreamtv.com"
           git add eventos_hoy.json
           git commit -m "Actualización de Eventos (Auto)" || echo "Sin cambios"
+          git pull --rebase
           git push
