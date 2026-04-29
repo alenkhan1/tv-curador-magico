@@ -2,7 +2,7 @@ name: Curador Eventos Deportivos
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 */6 * * *" # Se ejecuta cada 6 horas
   workflow_dispatch:
 
 jobs:
@@ -25,8 +25,9 @@ jobs:
 
       - name: Ejecutar Curador de Eventos
         env:
-          # Sincronizamos el nombre con lo que busca el script .py
-          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+          RAPIDAPI_KEY_1: ${{ secrets.RAPIDAPI_KEY_1 }}
+          RAPIDAPI_KEY_2: ${{ secrets.RAPIDAPI_KEY_2 }}
+          RAPIDAPI_KEY_3: ${{ secrets.RAPIDAPI_KEY_3 }}
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
