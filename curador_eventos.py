@@ -21,7 +21,6 @@ LEET_DICT = {
     "0": "O", "Ø": "O", "5": "S", "$": "S", "7": "T", "8": "B", "ñ": "N", "Ñ": "N"
 }
 
-# Palabras que no suman puntos en el motor de búsqueda (Anti-Basura)
 PALABRAS_GENERICAS = {
     "WOMEN", "MEN", "CUP", "LEAGUE", "LIVE", "FHD", "4K", "1080P", "720P", 
     "CHAMPIONSHIP", "TOUR", "QUALIFICATION", "TV", "SPORTS", "VS"
@@ -32,34 +31,29 @@ STOP_WORDS = {
     "THE", "DE", "LA", "LAS", "LOS", "EL", "Y", "E", "AND", "OF", "DEL"
 }
 
-# Sistema de Capas (Tiers)
 TIER_1_ELITE = ["CHAMPIONS LEAGUE", "LIGA BETPLAY", "LA LIGA", "PREMIER LEAGUE", "SERIE A", "FORMULA 1", "NBA", "UFC", "LIBERTADORES", "MUNDIAL"]
 TIER_2_NICHO = ["NFL", "MLB", "F2", "F3", "MOTO GP", "COPA SUDAMERICANA", "EREDIVISIE", "BUNDESLIGA"]
-
 PAISES_HEROE_LOCAL = ["Colombia", "Spain", "CO", "ES"]
 
 # ─── UTILIDADES DE TEXTO ─────────────────────────────────────────────────────
 
 def normalizar_texto(texto):
-    """Limpia, quita tildes, resuelve leetspeak y pasa a mayúsculas."""
     if not texto: return ""
     texto = str(texto).upper()
     for leet, real in LEET_DICT.items():
         texto = texto.replace(leet, real)
     texto = unicodedata.normalize("NFD", texto)
     texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
-    texto = re.sub(r"[^A-Z0-9\s:]", " ", texto) # Mantenemos los dos puntos para las horas
+    texto = re.sub(r"[^A-Z0-9\s:]", " ", texto)
     return " ".join(texto.split())
 
 def extraer_keywords(texto):
-    """Extrae palabras clave ignorando Stop Words y Genéricas."""
     palabras = normalizar_texto(texto).split()
     return [p for p in palabras if p not in STOP_WORDS and p not in PALABRAS_GENERICAS and len(p) > 2]
 
 # ─── CAPA DE RED (API Y XTREAM) ──────────────────────────────────────────────
 
 def obtener_datos_xtream():
-    """Obtiene y preprocesa los canales de IPTV en una sola pasada."""
     print("📡 Descargando estructura de Xtream...")
     url_base = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
     
@@ -89,7 +83,6 @@ def obtener_datos_xtream():
         return []
 
 def obtener_eventos_api():
-    """Descarga los eventos del día y extrae datos clave de nacionalidad y horas."""
     if not RAPIDAPI_KEY:
         return []
 
@@ -100,7 +93,6 @@ def obtener_eventos_api():
         "x-rapidapi-host": RAPIDAPI_HOST
     }
     
-    # Reducimos los IDs a los deportes estrictamente necesarios para evitar basura
     DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Motor": 10, "Tenis": 3, "Béisbol": 5}
     eventos_procesados = []
     
@@ -111,7 +103,6 @@ def obtener_eventos_api():
             
             datos = r.json().get("events", [])
             for ev in datos:
-                # Extracción segura de datos anidados
                 torneo_data = ev.get("tournament", {})
                 cat_data = torneo_data.get("category", {})
                 
@@ -127,21 +118,19 @@ def obtener_eventos_api():
                 
                 dt_obj = datetime.fromtimestamp(unix_time, timezone.utc)
                 hora_utc_str = dt_obj.strftime("%Y-%m-%dT%H:%M:%SZ")
-                hora_corta = dt_obj.strftime("%H:%M") # Formato HH:MM para cruzar con IPTV
+                hora_corta = dt_obj.strftime("%H:%M")
                 
-                # REGLA: El Héroe Local y Tiers
-                tier = 3 # Por defecto: Relleno
+                tier = 3
                 torneo_norm = normalizar_texto(torneo_nombre)
                 
                 if any(t in torneo_norm for t in TIER_1_ELITE): tier = 1
                 elif any(t in torneo_norm for t in TIER_2_NICHO): tier = 2
                 
                 if pais_evento in PAISES_HEROE_LOCAL or pais_codigo in PAISES_HEROE_LOCAL:
-                    tier = 1 # Promoción automática
+                    tier = 1
                 
-                # REGLA: Filtro de popularidad básico (Evita torneos ITF o juveniles)
                 if tier == 3 and deporte == "Tenis" and "ITF" in torneo_norm:
-                    continue # Descartar basura conocida de inmediato
+                    continue
                 
                 eventos_procesados.append({
                     "id": str(ev.get("id")),
@@ -164,25 +153,20 @@ def obtener_eventos_api():
 # ─── MOTOR DE PUNTUACIÓN (SCORING) ───────────────────────────────────────────
 
 def evaluar_vinculo(evento, texto_canal):
-    """Asigna un puntaje de confianza a un vínculo IPTV basado en reglas estrictas."""
     puntaje = 0
     
-    # 1. Triaje de Hora (Si tiene la hora exacta del evento, gana un bonus masivo)
     if evento["hora_corta"] in texto_canal:
         puntaje += 30
 
-    # 2. Análisis de Entidades Fuertes (Equipos)
     coincidencias_local = sum(1 for kw in evento["_kws_local"] if kw in texto_canal)
     coincidencias_visit = sum(1 for kw in evento["_kws_visit"] if kw in texto_canal)
     
     if coincidencias_local > 0: puntaje += 35
     if coincidencias_visit > 0: puntaje += 35
 
-    # 3. Análisis de Entidades Débiles (Torneo)
     coincidencias_torneo = sum(1 for kw in evento["_kws_torneo"] if kw in texto_canal)
     if coincidencias_torneo > 0: puntaje += 15
     
-    # Regla Anti-Basura: Si el torneo tiene 2+ palabras pero el canal solo empareja 1, no damos puntos de torneo
     if len(evento["_kws_torneo"]) > 1 and coincidencias_torneo == 1:
         puntaje -= 15 
 
@@ -190,9 +174,6 @@ def evaluar_vinculo(evento, texto_canal):
 
 def buscar_fuentes(evento, streams_procesados):
     fuentes = []
-    # UMBRAL DE CONFIANZA: Mínimo 70 puntos para aprobar. 
-    # Esto exige que o bien encuentra ambos equipos (70pts), 
-    # o encuentra un equipo + hora exacta (65pts) + torneo (15pts).
     UMBRAL = 70 
 
     for s in streams_procesados:
@@ -232,18 +213,15 @@ def main():
                 "fuentes": fuentes
             })
             
-    # REGLA DE DENSIDAD: Evitar la estantería vacía, pero no saturar de basura
-    eventos_alta_prioridad = [e for e in resultados if e["tier"] in]
+    # NUEVA FORMA DE VALIDAR PARA EVITAR ERROR DE SINTAXIS EN GITHUB
+    eventos_alta_prioridad = [e for e in resultados if e.get("tier") == 1 or e.get("tier") == 2]
     
     if len(eventos_alta_prioridad) > 25:
-        # Si hay muchos eventos buenos, eliminamos la Capa 3 (Relleno)
         print("📊 Alta densidad detectada. Descartando eventos de Tier 3.")
         resultados = eventos_alta_prioridad
     else:
-        # Si hay pocos eventos, dejamos la Capa 3
         print("📊 Baja densidad. Manteniendo eventos de Tier 3 para rellenar.")
 
-    # Ordenar por fecha y limpiar el campo tier temporal
     resultados.sort(key=lambda x: x["hora_utc"])
     for r in resultados:
         r.pop("tier", None)
