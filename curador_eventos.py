@@ -26,8 +26,8 @@ indice_llave_actual = 0
 
 # ─── DICCIONARIOS Y REGLAS DE NEGOCIO ────────────────────────────────────────
 LEET_DICT = {
-    "4": "A", "@": "A", "3": "E", "€": "E", "1": "I", "¡": "I", "|": "I",
-    "0": "O", "Ø": "O", "5": "S", "$": "S", "7": "T", "8": "B", "ñ": "N", "Ñ": "N"
+    "@": "A", "€": "E", "¡": "I", "|": "I",
+    "Ø": "O", "$": "S", "ñ": "N", "Ñ": "N"
 }
 
 PALABRAS_GENERICAS = {
@@ -144,7 +144,9 @@ def obtener_eventos_api():
             cat_nombre = cat.get("category", {}).get("name", "")
             
             # NUEVO: FILTRADO PREMATURO (Ahorro Masivo de Peticiones)
-            if cat_nombre not in CATEGORIAS_PERMITIDAS:
+            # Solo aplicamos el filtro estricto de países al Fútbol.
+            # Dejamos pasar todo el Tenis, Béisbol, Baloncesto y Motor libremente.
+            if deporte == "Fútbol" and cat_nombre not in CATEGORIAS_PERMITIDAS:
                 continue
 
             url_eventos = f"https://{RAPIDAPI_HOST}/v1/events/schedule/category"
@@ -202,14 +204,21 @@ def obtener_eventos_api():
 # ─── MOTOR DE PUNTUACIÓN Y ORQUESTADOR ───────────────────────────────────────
 def evaluar_vinculo(evento, texto_canal):
     puntaje = 0
-    if evento["hora_corta"] in texto_canal: puntaje += 30
-    clocal = sum(1 for kw in evento["_kws_local"] if kw in texto_canal)
-    cvisit = sum(1 for kw in evento["_kws_visit"] if kw in texto_canal)
+    # Añadimos espacios para buscar la palabra exacta y no pedazos de palabras
+    texto_padded = f" {texto_canal} "
+    
+    if f" {evento['hora_corta']} " in texto_padded: puntaje += 30
+    
+    clocal = sum(1 for kw in evento["_kws_local"] if f" {kw} " in texto_padded)
+    cvisit = sum(1 for kw in evento["_kws_visit"] if f" {kw} " in texto_padded)
+    
     if clocal > 0: puntaje += 35
     if cvisit > 0: puntaje += 35
-    ctorneo = sum(1 for kw in evento["_kws_torneo"] if kw in texto_canal)
+    
+    ctorneo = sum(1 for kw in evento["_kws_torneo"] if f" {kw} " in texto_padded)
     if ctorneo > 0: puntaje += 15
     if len(evento["_kws_torneo"]) > 1 and ctorneo == 1: puntaje -= 15 
+    
     return puntaje
 
 def buscar_fuentes(evento, streams_procesados):
