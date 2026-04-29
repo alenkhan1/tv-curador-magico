@@ -233,7 +233,7 @@ def main():
             })
             
     # REGLA DE DENSIDAD: Evitar la estantería vacía, pero no saturar de basura
-    eventos_alta_prioridad = [e for e in resultados if e["tier"] in] 
+    eventos_alta_prioridad = [e for e in resultados if e["tier"] in]
     
     if len(eventos_alta_prioridad) > 25:
         # Si hay muchos eventos buenos (ej. Fin de semana), eliminamos la Capa 3 (Relleno)
