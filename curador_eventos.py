@@ -86,66 +86,89 @@ def obtener_eventos_api():
     if not RAPIDAPI_KEY:
         return []
 
-    print("📅 Consultando SofaScore API...")
-    url = f"https://{RAPIDAPI_HOST}/v1/events/schedule/date"
+    print("📅 Consultando SofaScore API (Flujo de 2 pasos)...")
     headers = {
         "x-rapidapi-key": RAPIDAPI_KEY,
         "x-rapidapi-host": RAPIDAPI_HOST
     }
     
-    DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Motor": 10, "Tenis": 3, "Béisbol": 5}
+    # IDs oficiales actualizados según manual
+    DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, "Béisbol": 64}
     eventos_procesados = []
     
     for deporte, sport_id in DEPORTES_IDS.items():
         try:
-            r = requests.get(url, headers=headers, params={"date": FECHA_HOY, "sport_id": sport_id}, timeout=15)
-            if r.status_code != 200: continue
+            # PASO 1: Obtener las categorías que tienen eventos el día de hoy
+            url_categorias = f"https://{RAPIDAPI_HOST}/v1/calendar/categories"
+            r_cat = requests.get(url_categorias, headers=headers, params={"sport_id": sport_id, "date": FECHA_HOY, "timezone": 0}, timeout=15)
             
-            datos = r.json().get("events", [])
-            for ev in datos:
-                torneo_data = ev.get("tournament", {})
-                cat_data = torneo_data.get("category", {})
+            if r_cat.status_code != 200: 
+                continue
                 
-                torneo_nombre = torneo_data.get("name", "")
-                pais_evento = cat_data.get("name", "")
-                pais_codigo = cat_data.get("alpha2", "")
+            categorias_activas = r_cat.json().get("data", [])
+            
+            # PASO 2: Extraer los eventos de cada categoría activa
+            for cat in categorias_activas:
+                cat_id = cat.get("category", {}).get("id")
+                if not cat_id: continue
+
+                url_eventos = f"https://{RAPIDAPI_HOST}/v1/events/schedule/category"
+                r_ev = requests.get(url_eventos, headers=headers, params={"category_id": cat_id, "date": FECHA_HOY}, timeout=15)
                 
-                eq_local = ev.get("homeTeam", {}).get("name", "")
-                eq_visit = ev.get("awayTeam", {}).get("name", "")
+                if r_ev.status_code != 200: continue
                 
-                unix_time = ev.get("startTimestamp")
-                if not unix_time: continue
+                datos = r_ev.json().get("data", [])
                 
-                dt_obj = datetime.fromtimestamp(unix_time, timezone.utc)
-                hora_utc_str = dt_obj.strftime("%Y-%m-%dT%H:%M:%SZ")
-                hora_corta = dt_obj.strftime("%H:%M")
+                for ev in datos:
+                    torneo_data = ev.get("tournament", {})
+                    cat_data = torneo_data.get("category", {})
+                    
+                    torneo_nombre = torneo_data.get("name", "")
+                    pais_evento = cat_data.get("name", "")
+                    pais_codigo = cat_data.get("alpha2", "")
+                    
+                    eq_local = ev.get("homeTeam", {}).get("name", "")
+                    eq_visit = ev.get("awayTeam", {}).get("name", "")
+                    
+                    unix_time = ev.get("startTimestamp")
+                    if not unix_time: continue
+                    
+                    dt_obj = datetime.fromtimestamp(unix_time, timezone.utc)
+                    hora_utc_str = dt_obj.strftime("%Y-%m-%dT%H:%M:%SZ")
+                    hora_corta = dt_obj.strftime("%H:%M")
+                    
+                    tier = 3
+                    torneo_norm = normalizar_texto(torneo_nombre)
+                    
+                    if any(t in torneo_norm for t in TIER_1_ELITE): tier = 1
+                    elif any(t in torneo_norm for t in TIER_2_NICHO): tier = 2
+                    
+                    if pais_evento in PAISES_HEROE_LOCAL or pais_codigo in PAISES_HEROE_LOCAL:
+                        tier = 1
+                    
+                    if tier == 3 and deporte == "Tenis" and "ITF" in torneo_norm:
+                        continue
+                    
+                    eventos_procesados.append({
+                        "id": str(ev.get("id")),
+                        "titulo": f"{eq_local} vs {eq_visit}" if eq_local and eq_visit else torneo_nombre,
+                        "torneo": torneo_nombre,
+                        "categoria": deporte,
+                        "hora_utc": hora_utc_str,
+                        "hora_corta": hora_corta,
+                        "tier": tier,
+                        "_kws_local": extraer_keywords(eq_local),
+                        "_kws_visit": extraer_keywords(eq_visit),
+                        "_kws_torneo": extraer_keywords(torneo_nombre)
+                    })
                 
-                tier = 3
-                torneo_norm = normalizar_texto(torneo_nombre)
+                # Pequeña pausa entre llamadas de categorías para no superar el rate limit de RapidAPI
+                time.sleep(0.3)
                 
-                if any(t in torneo_norm for t in TIER_1_ELITE): tier = 1
-                elif any(t in torneo_norm for t in TIER_2_NICHO): tier = 2
-                
-                if pais_evento in PAISES_HEROE_LOCAL or pais_codigo in PAISES_HEROE_LOCAL:
-                    tier = 1
-                
-                if tier == 3 and deporte == "Tenis" and "ITF" in torneo_norm:
-                    continue
-                
-                eventos_procesados.append({
-                    "id": str(ev.get("id")),
-                    "titulo": f"{eq_local} vs {eq_visit}" if eq_local and eq_visit else torneo_nombre,
-                    "torneo": torneo_nombre,
-                    "categoria": deporte,
-                    "hora_utc": hora_utc_str,
-                    "hora_corta": hora_corta,
-                    "tier": tier,
-                    "_kws_local": extraer_keywords(eq_local),
-                    "_kws_visit": extraer_keywords(eq_visit),
-                    "_kws_torneo": extraer_keywords(torneo_nombre)
-                })
         except Exception as e:
             pass
+        
+        # Pausa entre deportes
         time.sleep(1)
         
     return eventos_procesados
@@ -197,7 +220,13 @@ def main():
         return
         
     eventos = obtener_eventos_api()
-    print(f"🗓️ {len(eventos)} eventos pre-filtrados encontrados.")
+    print(f"🗓️ {len(eventos)} eventos pre-filtrados encontrados en la API.")
+
+    # --- SEGURO DE VIDA ---
+    if len(eventos) == 0:
+        print("⚠️ CUIDADO: La API no devolvió eventos hoy. Abortando curación para no borrar tu archivo actual.")
+        return
+    # ----------------------
 
     resultados = []
     for ev in eventos:
@@ -213,14 +242,13 @@ def main():
                 "fuentes": fuentes
             })
             
-    # NUEVA FORMA DE VALIDAR PARA EVITAR ERROR DE SINTAXIS EN GITHUB
     eventos_alta_prioridad = [e for e in resultados if e.get("tier") == 1 or e.get("tier") == 2]
     
     if len(eventos_alta_prioridad) > 25:
-        print("📊 Alta densidad detectada. Descartando eventos de Tier 3.")
+        print("📊 Alta densidad detectada. Descartando eventos de Tier 3 (Relleno).")
         resultados = eventos_alta_prioridad
     else:
-        print("📊 Baja densidad. Manteniendo eventos de Tier 3 para rellenar.")
+        print("📊 Baja densidad. Manteniendo eventos de Tier 3 para asegurar opciones.")
 
     resultados.sort(key=lambda x: x["hora_utc"])
     for r in resultados:
