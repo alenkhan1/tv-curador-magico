@@ -35,7 +35,8 @@ PALABRAS_GENERICAS = {
 
 STOP_WORDS = {
     "FC", "SC", "CF", "AC", "AS", "US", "CS", "RC", "CD", "SD", "UD",
-    "THE", "DE", "LA", "LAS", "LOS", "EL", "Y", "E", "AND", "OF", "DEL"
+    "THE", "DE", "LA", "LAS", "LOS", "EL", "Y", "E", "AND", "OF", "DEL",
+    "CENTRAL", "CITY", "UNITED", "REAL", "CLUB", "ATLETICO", "DEPORTIVO", "SPORTING"
 }
 
 TIER_1_ELITE = ["CHAMPIONS LEAGUE", "LIGA BETPLAY", "LA LIGA", "PREMIER LEAGUE", "SERIE A", "FORMULA 1", "NBA", "UFC", "LIBERTADORES", "MUNDIAL"]
