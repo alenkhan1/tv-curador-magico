@@ -49,7 +49,9 @@ PAISES_HEROE_LOCAL = ["Colombia", "Spain", "CO", "ES"]
 CATEGORIAS_PERMITIDAS = {
     "Colombia", "Spain", "World", "Europe", "South America", 
     "North & Central America", "England", "Italy", "Germany", 
-    "France", "USA", "Argentina", "Brazil", "Mexico", "ATP", "WTA"
+    "France", "USA", "Argentina", "Brazil", "Mexico", "ATP", "WTA",
+    # --- Agregados para asegurar ligas emergentes y continentales ---
+    "Saudi Arabia", "Asia", "Africa"
 }
 
 # ─── UTILIDADES ──────────────────────────────────────────────────────────────
@@ -249,8 +251,21 @@ def main():
                 "fuentes": fuentes
             })
             
-    alta_prioridad = [e for e in resultados if e.get("tier") == 1 or e.get("tier") == 2]
-    if len(alta_prioridad) > 25: resultados = alta_prioridad
+    # 1. Separamos el grano de la paja extrema (Tier 4 se elimina siempre en la extracción)
+    # 2. Agrupamos los eventos de alta calidad
+    alta_prioridad = [e for e in resultados if e.get("tier") in [1, 2]]
+    eventos_relleno = [e for e in resultados if e.get("tier") == 3]
+    
+    # 3. La regla del "Volumen Ideal": Queremos garantizar una app vibrante
+    CUPO_MINIMO_APP = 60 # La estantería nunca debe verse pobre
+    
+    if len(alta_prioridad) >= CUPO_MINIMO_APP:
+        # Si la élite basta para llenar la app (ej. un sábado loco), solo mostramos élite
+        resultados = alta_prioridad
+    else:
+        # Si la élite no alcanza, tomamos los mejores del relleno hasta llenar el cupo
+        espacio_disponible = CUPO_MINIMO_APP - len(alta_prioridad)
+        resultados = alta_prioridad + eventos_relleno[:espacio_disponible]
     
     resultados.sort(key=lambda x: x["hora_utc"])
     for r in resultados: r.pop("tier", None)
