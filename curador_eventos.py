@@ -236,11 +236,11 @@ def main():
     eventos_alta_prioridad = [e for e in resultados if e["tier"] in]
     
     if len(eventos_alta_prioridad) > 25:
-        # Si hay muchos eventos buenos (ej. Fin de semana), eliminamos la Capa 3 (Relleno)
+        # Si hay muchos eventos buenos, eliminamos la Capa 3 (Relleno)
         print("📊 Alta densidad detectada. Descartando eventos de Tier 3.")
         resultados = eventos_alta_prioridad
     else:
-        # Si hay pocos eventos, dejamos la Capa 3 para que el usuario tenga opciones
+        # Si hay pocos eventos, dejamos la Capa 3
         print("📊 Baja densidad. Manteniendo eventos de Tier 3 para rellenar.")
 
     # Ordenar por fecha y limpiar el campo tier temporal
