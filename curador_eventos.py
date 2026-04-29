@@ -14,225 +14,190 @@ RAPIDAPI_KEY     = os.environ.get("RAPIDAPI_KEY")
 RAPIDAPI_HOST    = "sofasport.p.rapidapi.com"
 FECHA_HOY        = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-# ─── EL ROMPECÓDIGOS (Diccionario Anti-Leetspeak) ────────────────────────────
+# ─── DICCIONARIOS Y REGLAS DE NEGOCIO ────────────────────────────────────────
+
 LEET_DICT = {
-    "4": "A", "@": "A", 
-    "3": "E", "€": "E", 
-    "1": "I", "¡": "I", "|": "I",
-    "0": "O", "Ø": "O",
-    "5": "S", "$": "S",
-    "7": "T",
-    "8": "B",
-    "ñ": "N", "Ñ": "N"
+    "4": "A", "@": "A", "3": "E", "€": "E", "1": "I", "¡": "I", "|": "I",
+    "0": "O", "Ø": "O", "5": "S", "$": "S", "7": "T", "8": "B", "ñ": "N", "Ñ": "N"
 }
 
-KEYWORDS_DEPORTES_INDIVIDUALES = {
-    "Tenis": ["ATP", "WTA", "TENIS", "TENNIS", "ROLAND GARROS", "WIMBLEDON", "GRAND SLAM"],
-    "Motor": ["F1", "FORMULA 1", "MOTO GP", "MOTOGP", "NASCAR", "INDYCAR", "MOTOR", "RALLY", "DAKAR"],
-    "Combate": ["UFC", "MMA", "BOX", "BOXEO", "BOXING", "WWE", "VELADA"],
-    "Ciclismo": ["CICLISMO", "TOUR DE FRANCE", "GIRO DE ITALIA", "VUELTA A ESPANA", "UCI"],
-    "Golf": ["PGA", "GOLF", "MASTERS", "RYDER CUP", "LIV GOLF"],
-    "Olimpiadas": ["JUEGOS OLIMPICOS", "OLYMPICS", "PARIS 2024"]
+# Palabras que no suman puntos en el motor de búsqueda (Anti-Basura)
+PALABRAS_GENERICAS = {
+    "WOMEN", "MEN", "CUP", "LEAGUE", "LIVE", "FHD", "4K", "1080P", "720P", 
+    "CHAMPIONSHIP", "TOUR", "QUALIFICATION", "TV", "SPORTS", "VS"
 }
-
-DEPORTES_DE_EQUIPO = ["Fútbol", "Baloncesto", "Béisbol", "Hockey"]
 
 STOP_WORDS = {
     "FC", "SC", "CF", "AC", "AS", "US", "CS", "RC", "CD", "SD", "UD",
-    "RCD", "SSD", "SSC", "GD", "AF", "THE", "DE", "LA", "LAS", "LOS",
-    "EL", "Y", "E", "AND", "OF", "DEL", "SAN", "SANTA", "DOS", "DU"
+    "THE", "DE", "LA", "LAS", "LOS", "EL", "Y", "E", "AND", "OF", "DEL"
 }
+
+# Sistema de Capas (Tiers)
+TIER_1_ELITE = ["CHAMPIONS LEAGUE", "LIGA BETPLAY", "LA LIGA", "PREMIER LEAGUE", "SERIE A", "FORMULA 1", "NBA", "UFC", "LIBERTADORES", "MUNDIAL"]
+TIER_2_NICHO = ["NFL", "MLB", "F2", "F3", "MOTO GP", "COPA SUDAMERICANA", "EREDIVISIE", "BUNDESLIGA"]
+
+PAISES_HEROE_LOCAL = ["Colombia", "Spain", "CO", "ES"]
 
 # ─── UTILIDADES DE TEXTO ─────────────────────────────────────────────────────
 
-def desencriptar_texto(texto):
+def normalizar_texto(texto):
+    """Limpia, quita tildes, resuelve leetspeak y pasa a mayúsculas."""
     if not texto: return ""
-    texto = texto.upper()
+    texto = str(texto).upper()
     for leet, real in LEET_DICT.items():
         texto = texto.replace(leet, real)
     texto = unicodedata.normalize("NFD", texto)
     texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
-    texto = re.sub(r"[^A-Z0-9\s]", " ", texto)
+    texto = re.sub(r"[^A-Z0-9\s:]", " ", texto) # Mantenemos los dos puntos para las horas
     return " ".join(texto.split())
 
-def extraer_palabras_clave_equipo(nombre_equipo):
-    palabras = desencriptar_texto(nombre_equipo).split()
-    filtradas = [p for p in palabras if p not in STOP_WORDS and len(p) > 2]
-    return filtradas[:2]
+def extraer_keywords(texto):
+    """Extrae palabras clave ignorando Stop Words y Genéricas."""
+    palabras = normalizar_texto(texto).split()
+    return [p for p in palabras if p not in STOP_WORDS and p not in PALABRAS_GENERICAS and len(p) > 2]
 
-# ─── CAPA DE RED ─────────────────────────────────────────────────────────────
+# ─── CAPA DE RED (API Y XTREAM) ──────────────────────────────────────────────
 
-def obtener_categorias_xtream():
-    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_categories"
-    try:
-        r = requests.get(url, timeout=15)
-        if r.status_code == 200:
-            return {str(c.get("category_id", "")): c.get("category_name", "") for c in r.json()}
-    except Exception as e:
-        print(f"❌ Error al obtener categorías de Xtream: {e}")
-    return {}
-
-def obtener_streams_xtream():
-    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
-    try:
-        r = requests.get(url, timeout=20)
-        return r.json() if r.status_code == 200 else []
-    except Exception as e:
-        print(f"❌ Error al obtener streams de Xtream: {e}")
-        return []
-
-def obtener_eventos_del_dia():
-    if not RAPIDAPI_KEY:
-        print("❌ Error: No se encontró RAPIDAPI_KEY en las variables de entorno.")
-        return []
-
-    url = f"https://{RAPIDAPI_HOST}/v1/events/schedule/date"
+def obtener_datos_xtream():
+    """Obtiene y preprocesa los canales de IPTV en una sola pasada."""
+    print("📡 Descargando estructura de Xtream...")
+    url_base = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
     
+    try:
+        r_cat = requests.get(f"{url_base}&action=get_live_categories", timeout=15)
+        r_str = requests.get(f"{url_base}&action=get_live_streams", timeout=25)
+        
+        if r_cat.status_code != 200 or r_str.status_code != 200:
+            return []
+
+        categorias = {str(c.get("category_id", "")): c.get("category_name", "") for c in r_cat.json()}
+        streams_listos = []
+        
+        for s in r_str.json():
+            cat_name = categorias.get(str(s.get("category_id", "")), "")
+            stream_name = s.get("name", "")
+            texto_completo = f"{cat_name} {stream_name}"
+            
+            streams_listos.append({
+                "id": s.get("stream_id"),
+                "nombre_ui": stream_name.strip(),
+                "texto_analisis": normalizar_texto(texto_completo)
+            })
+        return streams_listos
+    except Exception as e:
+        print(f"❌ Error conectando a Xtream: {e}")
+        return []
+
+def obtener_eventos_api():
+    """Descarga los eventos del día y extrae datos clave de nacionalidad y horas."""
+    if not RAPIDAPI_KEY:
+        return []
+
+    print("📅 Consultando SofaScore API...")
+    url = f"https://{RAPIDAPI_HOST}/v1/events/schedule/date"
     headers = {
         "x-rapidapi-key": RAPIDAPI_KEY,
-        "x-rapidapi-host": RAPIDAPI_HOST,
-        "Content-Type": "application/json"
+        "x-rapidapi-host": RAPIDAPI_HOST
     }
-
-    # Diccionario de los deportes que nos interesan y sus IDs en SofaScore
-    # (Puedes agregar o quitar según necesites)
-    DEPORTES_IDS = {
-        "Fútbol": 1,
-        "Baloncesto": 2,
-        "Béisbol": 5,
-        "Tenis": 3,
-        "Hockey": 4,
-        "Combate": 13, # MMA/UFC (aproximado, verifica el ID exacto si lo tienes)
-        "Motor": 10    # Deportes de motor
-    }
-
-    eventos_totales = []
-    ids_vistos = set()
-
-    for nombre_deporte, sport_id in DEPORTES_IDS.items():
-        print(f"  🔍 Consultando {nombre_deporte} (ID: {sport_id})...")
-        
-        querystring = {
-            "locale": "ES",
-            "date": FECHA_HOY,
-            "sport_id": sport_id # Aquí le damos a la API el dato que exigía
-        }
-        
+    
+    # Reducimos los IDs a los deportes estrictamente necesarios para evitar basura
+    DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Motor": 10, "Tenis": 3, "Béisbol": 5}
+    eventos_procesados = []
+    
+    for deporte, sport_id in DEPORTES_IDS.items():
         try:
-            r = requests.get(url, headers=headers, params=querystring, timeout=15)
+            r = requests.get(url, headers=headers, params={"date": FECHA_HOY, "sport_id": sport_id}, timeout=15)
+            if r.status_code != 200: continue
             
-            if r.status_code != 200:
-                print(f"  ⚠️ Error en {nombre_deporte} ({r.status_code}): {r.text}")
-                continue
-
-            data = r.json()
-
-            if isinstance(data, list):
-                lista_base = data
-            elif isinstance(data, dict):
-                lista_base = data.get("data", data.get("events", data.get("tournaments", [])))
-            else:
-                lista_base = []
-                    
-            eventos_planos = []
-            for item in lista_base:
-                if isinstance(item, dict) and "events" in item and isinstance(item["events"], list):
-                    eventos_planos.extend(item["events"])
-                else:
-                    eventos_planos.append(item)
+            datos = r.json().get("events", [])
+            for ev in datos:
+                # Extracción segura de datos anidados
+                torneo_data = ev.get("tournament", {})
+                cat_data = torneo_data.get("category", {})
                 
-            for ev_raw in eventos_planos:
-                if not isinstance(ev_raw, dict): continue
+                torneo_nombre = torneo_data.get("name", "")
+                pais_evento = cat_data.get("name", "")
+                pais_codigo = cat_data.get("alpha2", "")
                 
-                ev = ev_raw.get("event", ev_raw)
+                eq_local = ev.get("homeTeam", {}).get("name", "")
+                eq_visit = ev.get("awayTeam", {}).get("name", "")
                 
-                id_ev = str(ev.get("id", ""))
-                if not id_ev or id_ev in ids_vistos: continue
-                ids_vistos.add(id_ev)
-
-                home_team = ev.get("homeTeam", {}).get("name", "")
-                away_team = ev.get("awayTeam", {}).get("name", "")
-                torneo = ev.get("tournament", {}).get("name", "Evento Deportivo")
-                # Forzamos la categoría usando el nombre de nuestro diccionario
-                categoria = ev.get("tournament", {}).get("category", {}).get("sport", {}).get("name", nombre_deporte)
-
                 unix_time = ev.get("startTimestamp")
                 if not unix_time: continue
                 
-                iso_time = datetime.fromtimestamp(unix_time, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-                titulo = f"{home_team} vs {away_team}" if home_team and away_team else ev.get("customId", torneo)
-
-                eventos_totales.append({
-                    "id": id_ev,
-                    "titulo": titulo,
-                    "torneo": torneo,
-                    "categoria": categoria,
-                    "hora_utc": iso_time,
-                    "logo_local": "", 
-                    "logo_visitante": "",
-                    "banner": "",
-                    "_equipo_local": home_team,
-                    "_equipo_visitante": away_team,
-                })
+                dt_obj = datetime.fromtimestamp(unix_time, timezone.utc)
+                hora_utc_str = dt_obj.strftime("%Y-%m-%dT%H:%M:%SZ")
+                hora_corta = dt_obj.strftime("%H:%M") # Formato HH:MM para cruzar con IPTV
                 
+                # REGLA: El Héroe Local y Tiers
+                tier = 3 # Por defecto: Relleno
+                torneo_norm = normalizar_texto(torneo_nombre)
+                
+                if any(t in torneo_norm for t in TIER_1_ELITE): tier = 1
+                elif any(t in torneo_norm for t in TIER_2_NICHO): tier = 2
+                
+                if pais_evento in PAISES_HEROE_LOCAL or pais_codigo in PAISES_HEROE_LOCAL:
+                    tier = 1 # Promoción automática
+                
+                # REGLA: Filtro de popularidad básico (Evita torneos ITF o juveniles)
+                if tier == 3 and deporte == "Tenis" and "ITF" in torneo_norm:
+                    continue # Descartar basura conocida de inmediato
+                
+                eventos_procesados.append({
+                    "id": str(ev.get("id")),
+                    "titulo": f"{eq_local} vs {eq_visit}" if eq_local and eq_visit else torneo_nombre,
+                    "torneo": torneo_nombre,
+                    "categoria": deporte,
+                    "hora_utc": hora_utc_str,
+                    "hora_corta": hora_corta,
+                    "tier": tier,
+                    "_kws_local": extraer_keywords(eq_local),
+                    "_kws_visit": extraer_keywords(eq_visit),
+                    "_kws_torneo": extraer_keywords(torneo_nombre)
+                })
         except Exception as e:
-            print(f"  ⚠️ Excepción consultando {nombre_deporte}: {e}")
-            
-        # Pequeña pausa para no bombardear la API y evitar bloqueos (Rate Limiting)
+            pass
         time.sleep(1)
-
-    return eventos_totales
-# ─── MOTOR DE BÚSQUEDA ───────────────────────────────────────────────────────
-
-def preprocesar_lista_iptv(streams_raw, categorias_map):
-    streams_listos = []
-    for s in streams_raw:
-        cat_id = str(s.get("category_id", ""))
-        cat_name = categorias_map.get(cat_id, "")
-        stream_name_raw = s.get("name", "")
-        stream_id = s.get("stream_id")
         
-        fusion_texto = f"{cat_name} {stream_name_raw}"
-        texto_rastreable = desencriptar_texto(fusion_texto)
-        titulo_ui = stream_name_raw.replace("▫", " ").strip()
-        
-        streams_listos.append({
-            "id": stream_id,
-            "nombre_ui": titulo_ui,
-            "texto_rastreable": texto_rastreable
-        })
-    return streams_listos
+    return eventos_procesados
 
-def extraer_palabras_clave_torneo(nombre_torneo):
-    """Extrae palabras clave fuertes del nombre del torneo para cruzar con IPTV."""
-    palabras = desencriptar_texto(nombre_torneo).split()
-    # Filtramos palabras muy cortas o comunes (STOP_WORDS ya está definido arriba)
-    filtradas = [p for p in palabras if p not in STOP_WORDS and len(p) > 2]
-    return filtradas
+# ─── MOTOR DE PUNTUACIÓN (SCORING) ───────────────────────────────────────────
 
-def buscar_fuentes_universales(evento, streams_procesados):
+def evaluar_vinculo(evento, texto_canal):
+    """Asigna un puntaje de confianza a un vínculo IPTV basado en reglas estrictas."""
+    puntaje = 0
+    
+    # 1. Triaje de Hora (Si tiene la hora exacta del evento, gana un bonus masivo)
+    if evento["hora_corta"] in texto_canal:
+        puntaje += 30
+
+    # 2. Análisis de Entidades Fuertes (Equipos)
+    coincidencias_local = sum(1 for kw in evento["_kws_local"] if kw in texto_canal)
+    coincidencias_visit = sum(1 for kw in evento["_kws_visit"] if kw in texto_canal)
+    
+    if coincidencias_local > 0: puntaje += 35
+    if coincidencias_visit > 0: puntaje += 35
+
+    # 3. Análisis de Entidades Débiles (Torneo)
+    coincidencias_torneo = sum(1 for kw in evento["_kws_torneo"] if kw in texto_canal)
+    if coincidencias_torneo > 0: puntaje += 15
+    
+    # Regla Anti-Basura: Si el torneo tiene 2+ palabras pero el canal solo empareja 1, no damos puntos de torneo
+    if len(evento["_kws_torneo"]) > 1 and coincidencias_torneo == 1:
+        puntaje -= 15 
+
+    return puntaje
+
+def buscar_fuentes(evento, streams_procesados):
     fuentes = []
-    
-    # 1. Extraemos las palabras clave del torneo (Ej: "UEFA Champions League" -> ["UEFA", "CHAMPIONS", "LEAGUE"])
-    torneo_limpio = extraer_palabras_clave_torneo(evento.get("torneo", ""))
-    
-    # Si la API no nos dio un torneo válido, abortamos.
-    if not torneo_limpio:
-        return []
+    # UMBRAL DE CONFIANZA: Mínimo 70 puntos para aprobar. 
+    # Esto exige que o bien encuentra ambos equipos (70pts), 
+    # o encuentra un equipo + hora exacta (65pts) + torneo (15pts).
+    UMBRAL = 70 
 
     for s in streams_procesados:
-        texto_canal = s["texto_rastreable"]
-        
-        # 2. Lógica de Coincidencia Flexible
-        # Contamos cuántas palabras clave del torneo aparecen en el nombre/carpeta del canal de IPTV
-        coincidencias = sum(1 for kw in torneo_limpio if kw in texto_canal)
-        
-        # Regla de Oro: 
-        # Si el torneo tiene 1 palabra (ej. "MLB", "NBA"), exigimos 1 coincidencia.
-        # Si el torneo tiene 2 o más palabras (ej. "Champions League"), exigimos al menos 2 para evitar falsos positivos.
-        umbral = 1 if len(torneo_limpio) == 1 else 2
-
-        if coincidencias >= umbral:
+        score = evaluar_vinculo(evento, s["texto_analisis"])
+        if score >= UMBRAL:
             fuentes.append({
                 "nombre": s["nombre_ui"],
                 "url": f"{XTREAM_URL}/live/{XTREAM_USER}/{XTREAM_PASS}/{s['id']}.ts"
@@ -240,50 +205,53 @@ def buscar_fuentes_universales(evento, streams_procesados):
             
     return fuentes
 
-# ─── PROCESO PRINCIPAL ───────────────────────────────────────────────────────
+# ─── ORQUESTADOR PRINCIPAL ───────────────────────────────────────────────────
 
 def main():
-    print(f"🚀 Iniciando Curador Universal de Eventos — {FECHA_HOY}")
+    print(f"🚀 Iniciando Curador Inteligente — {FECHA_HOY}")
 
-    print("📡 Descargando estructura de Xtream...")
-    categorias_map = obtener_categorias_xtream()
-    streams_raw = obtener_streams_xtream()
-    
-    if not streams_raw:
-        print("❌ No hay streams en Xtream. Abortando.")
+    streams = obtener_datos_xtream()
+    if not streams:
+        print("❌ Error: No se pudieron cargar los streams de IPTV.")
         return
+        
+    eventos = obtener_eventos_api()
+    print(f"🗓️ {len(eventos)} eventos pre-filtrados encontrados.")
 
-    print("🧠 Procesando y desencriptando lista iptv completa...")
-    streams_procesados = preprocesar_lista_iptv(streams_raw, categorias_map)
+    resultados = []
+    for ev in eventos:
+        fuentes = buscar_fuentes(ev, streams)
+        if fuentes:
+            resultados.append({
+                "id": ev["id"],
+                "titulo": ev["titulo"],
+                "torneo": ev["torneo"],
+                "categoria": ev["categoria"],
+                "hora_utc": ev["hora_utc"],
+                "tier": ev["tier"],
+                "fuentes": fuentes
+            })
+            
+    # REGLA DE DENSIDAD: Evitar la estantería vacía, pero no saturar de basura
+    eventos_alta_prioridad = [e for e in resultados if e["tier"] in]
     
-    print("📅 Consultando SofaScore (RapidAPI)...")
-    eventos_api = obtener_eventos_del_dia()
-    print(f"🗓️  {len(eventos_api)} eventos encontrados en la API.")
+    if len(eventos_alta_prioridad) > 25:
+        # Si hay muchos eventos buenos (ej. Fin de semana), eliminamos la Capa 3 (Relleno)
+        print("📊 Alta densidad detectada. Descartando eventos de Tier 3.")
+        resultados = eventos_alta_prioridad
+    else:
+        # Si hay pocos eventos, dejamos la Capa 3 para que el usuario tenga opciones
+        print("📊 Baja densidad. Manteniendo eventos de Tier 3 para rellenar.")
 
-    eventos_finales = []
-    for evento in eventos_api:
-        fuentes = buscar_fuentes_universales(evento, streams_procesados)
-        if not fuentes: continue
-
-        eventos_finales.append({
-            "id":            evento["id"],
-            "titulo":        evento["titulo"],
-            "torneo":        evento["torneo"],
-            "categoria":     evento["categoria"],
-            "hora_utc":      evento["hora_utc"],
-            "logo_local":    evento["logo_local"],
-            "logo_visitante": evento["logo_visitante"],
-            "banner":        evento["banner"],
-            "fuentes":       fuentes,
-        })
-        print(f"✅ {evento['titulo']} — {len(fuentes)} fuente(s)")
-
-    eventos_finales.sort(key=lambda e: e["hora_utc"])
+    # Ordenar por fecha y limpiar el campo tier temporal
+    resultados.sort(key=lambda x: x["hora_utc"])
+    for r in resultados:
+        r.pop("tier", None)
 
     with open("eventos_hoy.json", "w", encoding="utf-8") as f:
-        json.dump(eventos_finales, f, ensure_ascii=False, indent=2)
+        json.dump(resultados, f, ensure_ascii=False, indent=2)
 
-    print(f"🏁 Finalizado. {len(eventos_finales)} eventos guardados.")
+    print(f"🏁 Curación finalizada. {len(resultados)} eventos guardados con alta precisión.")
 
 if __name__ == "__main__":
     main()
