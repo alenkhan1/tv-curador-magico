@@ -231,8 +231,16 @@ def main():
         fuentes = buscar_fuentes(ev, streams)
         if fuentes:
             resultados.append({
-                "id": ev["id"], "titulo": ev["titulo"], "torneo": ev["torneo"],
-                "categoria": ev["categoria"], "hora_utc": ev["hora_utc"], "tier": ev["tier"], "fuentes": fuentes
+                "id": ev["id"],
+                "titulo": ev["titulo"],
+                "torneo": ev["torneo"],
+                "categoria": ev["categoria"],
+                "hora_utc": ev["hora_utc"],
+                "logo_local": "",         # ¡AGREGADO PARA QUE ANDROID NO FALLE!
+                "logo_visitante": "",     # ¡AGREGADO PARA QUE ANDROID NO FALLE!
+                "banner": "",             # ¡AGREGADO PARA QUE ANDROID NO FALLE!
+                "tier": ev["tier"],
+                "fuentes": fuentes
             })
             
     alta_prioridad = [e for e in resultados if e.get("tier") == 1 or e.get("tier") == 2]
