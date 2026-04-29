@@ -92,22 +92,21 @@ def obtener_eventos_api():
         "x-rapidapi-host": RAPIDAPI_HOST
     }
     
-    # IDs oficiales actualizados según manual
     DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, "Béisbol": 64}
     eventos_procesados = []
     
     for deporte, sport_id in DEPORTES_IDS.items():
         try:
-            # PASO 1: Obtener las categorías que tienen eventos el día de hoy
             url_categorias = f"https://{RAPIDAPI_HOST}/v1/calendar/categories"
             r_cat = requests.get(url_categorias, headers=headers, params={"sport_id": sport_id, "date": FECHA_HOY, "timezone": 0}, timeout=15)
             
+            # NUEVO: Imprimir el motivo real si la API falla
             if r_cat.status_code != 200: 
+                print(f"⚠️ Error API Categorías ({deporte}): HTTP {r_cat.status_code} - {r_cat.text}")
                 continue
                 
             categorias_activas = r_cat.json().get("data", [])
             
-            # PASO 2: Extraer los eventos de cada categoría activa
             for cat in categorias_activas:
                 cat_id = cat.get("category", {}).get("id")
                 if not cat_id: continue
@@ -115,7 +114,10 @@ def obtener_eventos_api():
                 url_eventos = f"https://{RAPIDAPI_HOST}/v1/events/schedule/category"
                 r_ev = requests.get(url_eventos, headers=headers, params={"category_id": cat_id, "date": FECHA_HOY}, timeout=15)
                 
-                if r_ev.status_code != 200: continue
+                # NUEVO: Imprimir el motivo real si falla la extracción de eventos
+                if r_ev.status_code != 200: 
+                    print(f"⚠️ Error API Eventos ({deporte}): HTTP {r_ev.status_code} - {r_ev.text}")
+                    continue
                 
                 datos = r_ev.json().get("data", [])
                 
@@ -162,13 +164,11 @@ def obtener_eventos_api():
                         "_kws_torneo": extraer_keywords(torneo_nombre)
                     })
                 
-                # Pequeña pausa entre llamadas de categorías para no superar el rate limit de RapidAPI
                 time.sleep(0.3)
                 
         except Exception as e:
-            pass
+            print(f"⚠️ Excepción crítica consultando {deporte}: {e}")
         
-        # Pausa entre deportes
         time.sleep(1)
         
     return eventos_procesados
