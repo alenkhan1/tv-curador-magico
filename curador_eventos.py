@@ -4,14 +4,16 @@ import json
 import time
 import requests
 import unicodedata
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 # ─── CONFIGURACIÓN DE ENTORNO Y LLAVES ───────────────────────────────────────
 XTREAM_URL       = os.environ.get("XTREAM_URL")
 XTREAM_USER      = os.environ.get("XTREAM_USER")
 XTREAM_PASS      = os.environ.get("XTREAM_PASS")
 RAPIDAPI_HOST    = "sofasport.p.rapidapi.com"
-FECHA_HOY        = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+# Ancla temporal: Obligamos al bot a vivir en el huso horario de Colombia (UTC-5)
+ZONA_HORARIA_COLOMBIA = timezone(timedelta(hours=-5))
+FECHA_HOY = datetime.now(ZONA_HORARIA_COLOMBIA).strftime("%Y-%m-%d")
 
 # Cargamos el arsenal de llaves
 LLAVES_API = [
@@ -158,12 +160,16 @@ def obtener_eventos_api():
                 eq_local = ev.get("homeTeam", {}).get("name", "")
                 eq_visit = ev.get("awayTeam", {}).get("name", "")
                 unix_time = ev.get("startTimestamp")
-                
                 if not unix_time: continue
                 
-                dt_obj = datetime.fromtimestamp(unix_time, timezone.utc)
-                hora_utc_str = dt_obj.strftime("%Y-%m-%dT%H:%M:%SZ")
-                hora_corta = dt_obj.strftime("%H:%M")
+                # 1. Creamos el objeto en Tiempo Universal (UTC)
+                dt_obj_utc = datetime.fromtimestamp(unix_time, timezone.utc)
+                # Esta es la que se guarda en el JSON para que tu Android TV la entienda
+                hora_utc_str = dt_obj_utc.strftime("%Y-%m-%dT%H:%M:%SZ") 
+                
+                # 2. Traducimos esa hora a la de Colombia SOLO para buscar en la lista IPTV
+                dt_obj_colombia = dt_obj_utc.astimezone(ZONA_HORARIA_COLOMBIA)
+                hora_corta = dt_obj_colombia.strftime("%H:%M")
                 tier = 3
                 torneo_norm = normalizar_texto(torneo_nombre)
                 
