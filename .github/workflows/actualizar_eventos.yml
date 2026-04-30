@@ -30,9 +30,10 @@ jobs:
         run: pip install requests
 
       - name: Ejecutar Curador de Eventos
-        # ✅ Ya no se necesitan RAPIDAPIKEY1/2/3
-        # SofaScore se consulta directamente sin API key
         env:
+          RAPIDAPI_KEY_1: ${{ secrets.RAPIDAPI_KEY1 }}
+          RAPIDAPI_KEY_2: ${{ secrets.RAPIDAPI_KEY2 }}
+          RAPIDAPI_KEY_3: ${{ secrets.RAPIDAPI_KEY3 }}
           XTREAM_URL:  ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
