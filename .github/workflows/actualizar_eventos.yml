@@ -2,7 +2,7 @@ name: Curador Eventos Deportivos
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # Se ejecuta cada 6 horas
+    - cron: "0 10,22 * * *" # Se ejecuta 2 veces al día (10:00 y 22:00 UTC)
   workflow_dispatch:
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          git add eventos_hoy.json
-          git commit -m "Actualización de Eventos (Auto)" || echo "Sin cambios"
+          git add eventos_hoy.json meta_curador.json
+          git commit -m "Actualización de Eventos (Auto optimizado)" || echo "Sin cambios"
           git pull --rebase
           git push
