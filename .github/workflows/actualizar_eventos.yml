@@ -38,15 +38,16 @@ jobs:
           git config --global user.name  "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
 
-          # CORRECCIÓN: pull --rebase ANTES del commit para evitar conflictos
-          git pull --rebase origin main
-
-          # Añadimos los archivos generados
+          # PASO 1: Stagear los archivos generados
           git add eventos_hoy.json
-          git add meta_curador.json     || true
+          git add meta_curador.json      || true
           git add eventos_raw_backup.json || true
 
-          # Solo commiteamos si hay cambios reales
-          git diff --staged --quiet || git commit -m "🤖 Curación automática de eventos [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          # PASO 2: Commitear (solo si hay cambios reales)
+          git diff --staged --quiet || git commit -m "🤖 Curación automática [$(date -u '+%Y-%m-%d %H:%M UTC')]"
 
+          # PASO 3: Ahora sí, pull --rebase es seguro (no hay cambios sin commitear)
+          git pull --rebase origin main
+
+          # PASO 4: Push
           git push
