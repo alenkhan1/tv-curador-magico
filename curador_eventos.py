@@ -59,17 +59,24 @@ PAISES_HEROE_LOCAL = {"Colombia", "Spain", "CO", "ES"}
 
 DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, "Béisbol": 64, "Rugby": 12, "Boxeo": 9, "Voleibol": 23, "MMA": 30}
 DURACION_POR_DEPORTE = {"Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210, "Béisbol": 210, "Rugby": 120, "Boxeo": 180, "Voleibol": 150, "MMA": 200}
-UMBRAL_POR_DEPORTE = {"Fútbol": 70, "Baloncesto": 65, "Tenis": 60, "Motor": 50, "Béisbol": 65, "Rugby": 65, "Boxeo": 60, "Voleibol": 65, "MMA": 55}
+UMBRAL_POR_DEPORTE = {"Fútbol": 70, "Baloncesto": 65, "Tenis": 60, "Motor": 65, "Béisbol": 65, "Rugby": 65, "Boxeo": 65, "Voleibol": 65, "MMA": 65} # Umbrales subidos para mayor seguridad
 
-# FILTRO ESCUDO: Evita que el script consulte endpoints de ligas irrelevantes
+# FILTRO DE PAÍSES/REGIONES (Primer Escudo)
 CATEGORIAS_PERMITIDAS_POR_DEPORTE = {
     "Fútbol": {"Colombia", "Spain", "World", "Europe", "South America", "North & Central America", "England", "Italy", "Germany", "France", "USA", "Argentina", "Brazil", "Mexico", "Saudi Arabia"},
     "Baloncesto": {"USA", "World", "Europe", "Spain"},
     "Tenis": {"ATP", "WTA", "World"},
     "Béisbol": {"USA", "World"},
     "Rugby": {"World", "Europe", "England", "France", "New Zealand", "Australia", "South Africa", "Argentina"},
-    # Para deportes de nicho, dejamos un set vacío que actuará como comodín (se permiten todas)
-    "Motor": set(), "Boxeo": set(), "Voleibol": set(), "MMA": set()
+    "Motor": set(), "Boxeo": set(), "Voleibol": set(), "MMA": set() # Se controlan por Listas Blancas
+}
+
+# FILTRO DE TORNEOS (Segundo Escudo - Listas Blancas)
+WHITELIST_TORNEOS = {
+    "Motor": ["FORMULA 1", "F1", "FORMULA 2", "F2", "FORMULA 3", "F3", "FORMULA E", "MOTOGP", "MOTO 2", "MOTO 3", "NASCAR", "INDYCAR", "WRC", "RALLY", "DAKAR", "WEC", "SUPERBIKE"],
+    "MMA": ["UFC", "BELLATOR", "PFL", "ONE CHAMPIONSHIP", "KSW"],
+    "Boxeo": ["BOXING", "BOXEO", "TOP RANK", "MATCHROOM", "GOLDEN BOY", "GLORY"],
+    "Tenis": ["ATP", "WTA", "GRAND SLAM", "DAVIS CUP", "WIMBLEDON", "ROLAND GARROS", "US OPEN", "AUSTRALIAN OPEN", "PREMIER PADEL", "WORLD PADEL TOUR", "A1 PADEL", "WTT", "TABLE TENNIS", "PING PONG"]
 }
 
 # ─── UTILIDADES ──────────────────────────────────────────────────────────────
@@ -82,7 +89,7 @@ def normalizar_texto(texto: str) -> str:
     return " ".join(re.sub(r"[^A-Z0-9\s:]", " ", texto).split())
 
 def aplicar_alias(texto: str) -> str:
-    for alias, expansion in sorted(ALIAS_EQUIPOS.items(), key=lambda x: -len(x[0])):
+    for alias, expansion in sorted(ALIAS_EQUIPOS.items(), key=lambda x: -len(x)):
         texto = re.sub(r"\b" + re.escape(alias) + r"\b", expansion, texto)
     return texto
 
@@ -137,24 +144,24 @@ def obtener_datos_xtream() -> list:
 def obtener_eventos_api() -> list:
     if not LLAVES_API: return []
     eventos_procesados = []
+    ahora_utc = datetime.now(timezone.utc) # Referencia para el Recolector de Basura
 
     for deporte, sport_id in DEPORTES_IDS.items():
-        # 1. Obtenemos las categorías que tienen eventos HOY para este deporte
         r_cat = hacer_peticion_rotativa(f"https://{RAPIDAPI_HOST}/v1/calendar/categories", {"sport_id": sport_id, "date": FECHA_HOY, "timezone": -5})
         if not r_cat or r_cat.status_code != 200: continue
         
         categorias_activas = r_cat.json().get("data", [])
-        filtro_permitidas = CATEGORIAS_PERMITIDAS_POR_DEPORTE.get(deporte, set())
+        filtro_paises = CATEGORIAS_PERMITIDAS_POR_DEPORTE.get(deporte, set())
+        lista_blanca_torneos = WHITELIST_TORNEOS.get(deporte, [])
 
         for cat in categorias_activas:
             cat_id = cat.get("category", {}).get("id")
             cat_nombre = cat.get("category", {}).get("name", "")
 
-            # ESCUDO: Si el filtro no está vacío y la categoría no está en la lista, la saltamos.
-            if filtro_permitidas and cat_nombre not in filtro_permitidas:
+            # ESCUDO 1: Países / Regiones
+            if filtro_paises and cat_nombre not in filtro_paises:
                 continue
 
-            # 2. Consultamos solo los eventos de las categorías aprobadas
             r_ev = hacer_peticion_rotativa(f"https://{RAPIDAPI_HOST}/v1/events/schedule/category", {"category_id": cat_id, "date": FECHA_HOY})
             if not r_ev or r_ev.status_code != 200: continue
 
@@ -163,22 +170,34 @@ def obtener_eventos_api() -> list:
                     torneo_data = ev.get("tournament", {})
                     cat_data = torneo_data.get("category", {})
                     torneo_nombre = torneo_data.get("name", "")
-                    pais_evento = cat_data.get("name", "")
-                    pais_codigo = cat_data.get("alpha2", "")
-                    unique_id = torneo_data.get("uniqueTournament", {}).get("id")
-
                     torneo_norm = normalizar_texto(torneo_nombre)
+
+                    # ESCUDO 2: Listas Blancas (Si el deporte tiene lista, el torneo DEBE incluir alguna palabra clave)
+                    if lista_blanca_torneos and not any(kw in torneo_norm for kw in lista_blanca_torneos):
+                        continue
+                    
+                    # Filtro específico para Tenis (Excluir ITF de bajo nivel)
                     if deporte == "Tenis" and "ITF" in torneo_norm and not any(t in torneo_norm for t in TIER_1_ELITE + TIER_2_NICHO):
                         continue
 
-                    home_data, away_data = ev.get("homeTeam", {}), ev.get("awayTeam", {})
-                    eq_local, eq_visit = home_data.get("name", ""), away_data.get("name", "")
-                    
                     unix_time = ev.get("startTimestamp")
                     if not unix_time: continue
 
+                    duracion = DURACION_POR_DEPORTE.get(deporte, 150)
                     dt_utc = datetime.fromtimestamp(unix_time, timezone.utc)
-                    hora_utc = dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+                    hora_fin_evento = dt_utc + timedelta(minutes=duracion)
+
+                    # RECOLECTOR DE BASURA: Si la hora de fin ya pasó, no agregamos el evento
+                    if hora_fin_evento < ahora_utc:
+                        continue
+
+                    pais_evento = cat_data.get("name", "")
+                    pais_codigo = cat_data.get("alpha2", "")
+                    unique_id = torneo_data.get("uniqueTournament", {}).get("id")
+                    home_data, away_data = ev.get("homeTeam", {}), ev.get("awayTeam", {})
+                    eq_local, eq_visit = home_data.get("name", ""), away_data.get("name", "")
+                    
+                    hora_utc_str = dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
                     hora_corta = dt_utc.astimezone(ZONA_COLOMBIA).strftime("%H:%M")
 
                     tier = 3
@@ -192,12 +211,12 @@ def obtener_eventos_api() -> list:
                         "titulo": f"{eq_local} vs {eq_visit}" if es_duelo else torneo_nombre,
                         "torneo": torneo_nombre,
                         "categoria": deporte,
-                        "hora_utc": hora_utc,
+                        "hora_utc": hora_utc_str,
                         "logo_local": url_logo_equipo(home_data.get("id")) if es_duelo else url_logo_torneo(unique_id),
                         "logo_visitante": url_logo_equipo(away_data.get("id")) if es_duelo else "",
                         "banner": url_logo_torneo(unique_id),
                         "tier": tier,
-                        "duracion_min": DURACION_POR_DEPORTE.get(deporte, 150),
+                        "duracion_min": duracion,
                         "_hora_corta": hora_corta,
                         "_kws_local": extraer_keywords(eq_local),
                         "_kws_visit": extraer_keywords(eq_visit),
@@ -208,24 +227,57 @@ def obtener_eventos_api() -> list:
             time.sleep(0.3)
         time.sleep(0.5)
 
-    log.info(f"Total API: {len(eventos_procesados)} eventos relevantes.")
+    log.info(f"Total API: {len(eventos_procesados)} eventos vigentes y relevantes.")
     return eventos_procesados
 
-# ─── MATCHING ────────────────────────────────────────────────────────────────
+# ─── MATCHING (MOTOR ANTI-CLONES) ─────────────────────────────────────────────
 def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
-    puntaje, texto_pad = 0, f" {texto_canal} "
-    if f" {evento['_hora_corta']} " in texto_pad: puntaje += 30
+    puntaje = 0
+    # Añadimos espacios para asegurar palabras completas
+    texto_pad = f" {texto_canal} "
     
-    c_local = sum(1 for kw in evento["_kws_local"] if f" {kw} " in texto_pad)
-    c_visit = sum(1 for kw in evento["_kws_visit"] if f" {kw} " in texto_pad)
-    c_torneo = sum(1 for kw in evento["_kws_torneo"] if f" {kw} " in texto_pad)
+    # 1. Búsqueda de la Hora (No consume la palabra porque un canal puede tener "14:00 14:00")
+    if f" {evento['_hora_corta']} " in texto_pad: 
+        puntaje += 30
+        
+    # 2. Búsqueda y Consumo de Palabras del Local
+    c_local = 0
+    for kw in evento["_kws_local"]:
+        kw_str = f" {kw} "
+        if kw_str in texto_pad:
+            c_local += 1
+            # Consume la palabra reemplazando solo la primera coincidencia por espacios
+            texto_pad = texto_pad.replace(kw_str, "   ", 1) 
+            
+    # 3. Búsqueda y Consumo de Palabras del Visitante (Si el local ya consumió "SMITH", el visitante no lo encuentra)
+    c_visit = 0
+    for kw in evento["_kws_visit"]:
+        kw_str = f" {kw} "
+        if kw_str in texto_pad:
+            c_visit += 1
+            texto_pad = texto_pad.replace(kw_str, "   ", 1)
+            
+    # 4. Búsqueda de Torneo
+    c_torneo = 0
+    for kw in evento["_kws_torneo"]:
+        kw_str = f" {kw} "
+        if kw_str in texto_pad:
+            c_torneo += 1
+            texto_pad = texto_pad.replace(kw_str, "   ", 1)
 
+    # Asignación de puntos
     if c_local > 0: puntaje += 35
     if c_visit > 0: puntaje += 35
     if c_torneo > 0: puntaje += 15
 
-    if c_local == 0 and c_visit == 0 and puntaje >= 30 and c_torneo >= 2: puntaje += 40
-    if len(evento["_kws_torneo"]) > 1 and c_torneo == 1 and c_local == 0 and c_visit == 0: puntaje -= 15
+    # Regla de canal contenedor (Sin equipos, pero con hora y nombre del torneo)
+    if c_local == 0 and c_visit == 0 and puntaje >= 30 and c_torneo >= 2: 
+        puntaje += 40
+        
+    # Penalización por falso positivo de torneo
+    if len(evento["_kws_torneo"]) > 1 and c_torneo == 1 and c_local == 0 and c_visit == 0: 
+        puntaje -= 15
+        
     return puntaje
 
 def buscar_fuentes(evento: dict, streams: list) -> list:
@@ -261,7 +313,7 @@ def main():
         json.dump(resultados, f, ensure_ascii=False, indent=2)
 
     with open("meta_curador.json", "w", encoding="utf-8") as f:
-        json.dump({"generado_en": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "eventos": len(resultados), "desglose": desglose}, f, indent=2)
+        json.dump({"generado_en": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "eventos_vigentes": len(resultados), "desglose": desglose}, f, indent=2)
 
     log.info(f"Proceso completado: {len(resultados)} eventos vinculados con éxito.")
 
