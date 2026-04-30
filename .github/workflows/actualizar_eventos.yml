@@ -2,14 +2,8 @@ name: Curador Eventos Deportivos
 
 on:
   schedule:
-    # Ejecuciones en UTC: 01:00, 07:00, 13:00, 19:00
-    # → En Colombia (UTC-5): 20:00 día anterior, 02:00, 08:00, 14:00
-    # Ajustado para cubrir partidos de mañana, mediodía y noche
-    - cron: '0 1 * * *'
-    - cron: '0 7 * * *'
-    - cron: '0 13 * * *'
-    - cron: '0 19 * * *'
-  workflow_dispatch:  # Permite ejecución manual desde GitHub Actions
+    - cron: "0 */6 * * *" # Se ejecuta cada 6 horas
+  workflow_dispatch:
 
 jobs:
   procesar_eventos:
@@ -24,32 +18,26 @@ jobs:
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.10"
 
       - name: Instalar dependencias
         run: pip install requests
 
       - name: Ejecutar Curador de Eventos
         env:
-          XTREAM_URL:  ${{ secrets.XTREAM_URL }}
+          RAPIDAPI_KEY_1: ${{ secrets.RAPIDAPI_KEY_1 }}
+          RAPIDAPI_KEY_2: ${{ secrets.RAPIDAPI_KEY_2 }}
+          RAPIDAPI_KEY_3: ${{ secrets.RAPIDAPI_KEY_3 }}
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
         run: python curador_eventos.py
 
-      - name: Guardar cambios en el repositorio
+      - name: Guardar cambios Eventos
         run: |
-          git config --global user.name  "Bot Curador"
+          git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-
-          # Stagear archivos generados
           git add eventos_hoy.json
-          git add meta_curador.json        || true
-          git add eventos_raw_backup.json  || true
-
-          # Commitear solo si hay cambios reales
-          git diff --staged --quiet || \
-            git commit -m "Curación automática $(date -u '+%Y-%m-%d %H:%M') UTC"
-
-          # Pull + push
-          git pull --rebase origin main
+          git commit -m "Actualización de Eventos (Auto)" || echo "Sin cambios"
+          git pull --rebase
           git push
