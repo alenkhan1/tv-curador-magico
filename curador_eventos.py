@@ -16,23 +16,23 @@ logging.basicConfig(
 log = logging.getLogger("curador")
 
 # ─── CONFIGURACIÓN DE ENTORNO ────────────────────────────────────────────────
-XTREAM_URL   = os.environ.get("XTREAM_URL")
-XTREAM_USER  = os.environ.get("XTREAM_USER")
-XTREAM_PASS  = os.environ.get("XTREAM_PASS")
-RAPIDAPI_HOST = "sofasport.p.rapidapi.com"
+XTREAM_URL  = os.environ.get("XTREAM_URL")
+XTREAM_USER = os.environ.get("XTREAM_USER")
+XTREAM_PASS = os.environ.get("XTREAM_PASS")
 
-# Colombia como zona principal (UTC-5). La app consume hora_utc y convierte sola,
-# pero _hora_corta se usa internamente en el scoring de streams con hora en su nombre.
 ZONA_COLOMBIA = timezone(timedelta(hours=-5))
 FECHA_HOY     = datetime.now(ZONA_COLOMBIA).strftime("%Y-%m-%d")
 
-LLAVES_API = [
-    os.environ.get("RAPIDAPI_KEY_1"),
-    os.environ.get("RAPIDAPI_KEY_2"),
-    os.environ.get("RAPIDAPI_KEY_3"),
-]
-LLAVES_API = [k for k in LLAVES_API if k]
-indice_llave_actual = 0
+# ─── SOFASCORE SCRAPING ──────────────────────────────────────────────────────
+SOFA_BASE = "https://www.sofascore.com/api/v1"
+SOFA_HEADERS = {
+    "User-Agent":      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept":          "application/json, text/plain, */*",
+    "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
+    "Referer":         "https://www.sofascore.com/",
+    "Origin":          "https://www.sofascore.com",
+    "Cache-Control":   "no-cache",
+}
 
 # ─── CDN DE IMÁGENES SOFASCORE ───────────────────────────────────────────────
 SOFA_IMG_EQUIPO = "https://api.sofascore.app/api/v1/team/{id}/image"
@@ -45,40 +45,34 @@ LEET_DICT = {
 }
 
 # ─── ALIAS DE EQUIPOS ────────────────────────────────────────────────────────
-# Se aplican al texto YA NORMALIZADO del stream (mayúsculas, sin acentos).
-# Ordenados de mayor a menor longitud para evitar sustituciones parciales.
 ALIAS_EQUIPOS = {
-    # Fútbol Internacional
-    "MAN CITY":       "MANCHESTER CITY",
-    "MAN UTD":        "MANCHESTER UNITED",
-    "MAN U":          "MANCHESTER UNITED",
-    "PARIS SG":       "PARIS SAINT GERMAIN",
-    "PSG":            "PARIS SAINT GERMAIN",
-    "INTER MILAN":    "INTERNAZIONALE",
-    "AC MILAN":       "MILAN",
-    "SPURS":          "TOTTENHAM",
-    "JUVE":           "JUVENTUS",
-    "NEWCASTLE UTD":  "NEWCASTLE",
-    "ATM":            "ATLETICO MADRID",
-    "BARCA":          "BARCELONA",
-    "FCB":            "BARCELONA",
-    "BETIS":          "REAL BETIS",
-    # Fútbol Colombia
-    "SANTA FE":  "INDEPENDIENTE SANTA FE",
-    "NACIONAL":  "ATLETICO NACIONAL",
-    "AMERICA":   "AMERICA CALI",
-    "DEP CALI":  "DEPORTIVO CALI",
-    # Baloncesto NBA
-    "LAKERS":   "LOS ANGELES LAKERS",
-    "LAL":      "LOS ANGELES LAKERS",
-    "WARRIORS": "GOLDEN STATE WARRIORS",
-    "GSW":      "GOLDEN STATE WARRIORS",
-    "CELTICS":  "BOSTON CELTICS",
-    "BOS":      "BOSTON CELTICS",
-    "BUCKS":    "MILWAUKEE BUCKS",
-    "NETS":     "BROOKLYN NETS",
-    "CLIPPERS": "LOS ANGELES CLIPPERS",
-    # Motor
+    "MAN CITY":        "MANCHESTER CITY",
+    "MAN UTD":         "MANCHESTER UNITED",
+    "MAN U":           "MANCHESTER UNITED",
+    "PARIS SG":        "PARIS SAINT GERMAIN",
+    "PSG":             "PARIS SAINT GERMAIN",
+    "INTER MILAN":     "INTERNAZIONALE",
+    "AC MILAN":        "MILAN",
+    "SPURS":           "TOTTENHAM",
+    "JUVE":            "JUVENTUS",
+    "NEWCASTLE UTD":   "NEWCASTLE",
+    "ATM":             "ATLETICO MADRID",
+    "BARCA":           "BARCELONA",
+    "FCB":             "BARCELONA",
+    "BETIS":           "REAL BETIS",
+    "SANTA FE":        "INDEPENDIENTE SANTA FE",
+    "NACIONAL":        "ATLETICO NACIONAL",
+    "AMERICA":         "AMERICA CALI",
+    "DEP CALI":        "DEPORTIVO CALI",
+    "LAKERS":          "LOS ANGELES LAKERS",
+    "LAL":             "LOS ANGELES LAKERS",
+    "WARRIORS":        "GOLDEN STATE WARRIORS",
+    "GSW":             "GOLDEN STATE WARRIORS",
+    "CELTICS":         "BOSTON CELTICS",
+    "BOS":             "BOSTON CELTICS",
+    "BUCKS":           "MILWAUKEE BUCKS",
+    "NETS":            "BROOKLYN NETS",
+    "CLIPPERS":        "LOS ANGELES CLIPPERS",
     "RED BULL RACING": "RED BULL",
     "REDBULL":         "RED BULL",
     "RBR":             "RED BULL",
@@ -125,19 +119,16 @@ CATEGORIAS_FUTBOL_PERMITIDAS = {
 }
 
 # ─── CONFIGURACIÓN POR DEPORTE ───────────────────────────────────────────────
-# IDs de deporte en SofaScore. Motor=22 verificado en producción.
-# Rugby=12, Boxeo=9, Voleibol=23, MMA=30 son IDs estándar; si no devuelven
-# eventos, verificar con: /v1/calendar/categories?sport_id=ID&date=FECHA
-DEPORTES_IDS = {
-    "Fútbol":     1,
-    "Baloncesto": 2,
-    "Tenis":      5,
-    "Motor":      22,
-    "Béisbol":    64,
-    "Rugby":      12,
-    "Boxeo":      9,
-    "Voleibol":   23,
-    "MMA":        30,
+DEPORTES_SLUGS = {
+    "Fútbol":     "football",
+    "Baloncesto": "basketball",
+    "Tenis":      "tennis",
+    "Motor":      "motorsport",
+    "Béisbol":    "baseball",
+    "Rugby":      "rugby",
+    "Boxeo":      "box",
+    "Voleibol":   "volleyball",
+    "MMA":        "mma",
 }
 
 DURACION_POR_DEPORTE = {
@@ -182,31 +173,6 @@ def url_logo_equipo(team_id) -> str:
 def url_logo_torneo(unique_id) -> str:
     return SOFA_IMG_TORNEO.format(id=unique_id) if unique_id else ""
 
-# ─── RED CON ROTACIÓN DE LLAVES ──────────────────────────────────────────────
-def hacer_peticion_rotativa(url: str, params: dict):
-    global indice_llave_actual
-    intentos = 0
-    while intentos < len(LLAVES_API):
-        llave   = LLAVES_API[indice_llave_actual]
-        headers = {"x-rapidapi-key": llave, "x-rapidapi-host": RAPIDAPI_HOST}
-        try:
-            r = requests.get(url, headers=headers, params=params, timeout=15)
-            if r.status_code == 429:
-                log.warning(f"Llave {indice_llave_actual + 1} agotada (429). Rotando...")
-                indice_llave_actual = (indice_llave_actual + 1) % len(LLAVES_API)
-                intentos += 1
-                time.sleep(1)
-                continue
-            return r
-        except requests.exceptions.Timeout:
-            log.error(f"Timeout en {url}")
-            return None
-        except requests.exceptions.RequestException as e:
-            log.error(f"Error de red [{type(e).__name__}]: {e}")
-            return None
-    log.critical("TODAS LAS LLAVES AGOTADAS.")
-    return None
-
 # ─── OBTENER STREAMS XTREAM ───────────────────────────────────────────────────
 def obtener_datos_xtream() -> list:
     log.info("Descargando estructura de Xtream...")
@@ -244,39 +210,29 @@ def obtener_datos_xtream() -> list:
         log.error(f"Error parseando Xtream [{type(e).__name__}]: {e}")
         return []
 
-# ─── OBTENER EVENTOS SOFASCORE ───────────────────────────────────────────────
-# CORRECCIÓN: antes se hacían 2 llamadas anidadas por deporte:
-#   1) /v1/calendar/categories  → lista de categorías activas (15-30 cats)
-#   2) /v1/events/schedule/category × cada categoría → eventos
-# Eso generaba 100-200 requests por ejecución × 4 runs/día = límite agotado.
-#
-# Ahora: 1 sola llamada por deporte con /v1/events/schedule/sport
-# → 9 requests por ejecución × 4 runs/día = 36 requests/día.
+# ─── OBTENER EVENTOS SOFASCORE (scraping directo, sin API key) ───────────────
 def obtener_eventos_api() -> list:
-    if not LLAVES_API:
-        log.error("Sin llaves de API.")
-        return []
-
     log.info(f"Consultando SofaScore para: {FECHA_HOY}")
     eventos_procesados = []
 
-    for deporte, sport_id in DEPORTES_IDS.items():
-        log.info(f"  [{deporte}] sport_id={sport_id}...")
-
-        r = hacer_peticion_rotativa(
-            f"https://{RAPIDAPI_HOST}/v1/events/schedule/sport",
-            {"sport_id": sport_id, "date": FECHA_HOY, "timezone": 0}
-        )
-
-        if not r or r.status_code != 200:
-            log.warning(f"  [{deporte}] Sin datos (HTTP {r.status_code if r else 'None'}).")
-            time.sleep(1)
-            continue
+    for deporte, slug in DEPORTES_SLUGS.items():
+        url = f"{SOFA_BASE}/sport/{slug}/scheduled-events/{FECHA_HOY}"
+        log.info(f"  [{deporte}] {slug}...")
 
         try:
-            datos = r.json().get("data", [])
-        except ValueError:
-            log.error(f"  [{deporte}] JSON inválido.")
+            r = requests.get(url, headers=SOFA_HEADERS, timeout=20)
+            if r.status_code == 429:
+                log.warning(f"  [{deporte}] Rate limit. Esperando 20s...")
+                time.sleep(20)
+                r = requests.get(url, headers=SOFA_HEADERS, timeout=20)
+            if r.status_code != 200:
+                log.warning(f"  [{deporte}] HTTP {r.status_code}. Saltando.")
+                time.sleep(2)
+                continue
+            datos = r.json().get("events", [])
+        except Exception as e:
+            log.error(f"  [{deporte}] {type(e).__name__}: {e}")
+            time.sleep(2)
             continue
 
         cnt = 0
@@ -291,16 +247,12 @@ def obtener_eventos_api() -> list:
                 pais_codigo      = cat_data.get("alpha2", "")
                 unique_torneo_id = unique_torneo_data.get("id")
 
-                # Filtro fútbol: antes era a nivel de categoría,
-                # ahora es a nivel de evento — mismo resultado.
                 if deporte == "Fútbol" and pais_evento not in CATEGORIAS_FUTBOL_PERMITIDAS:
                     continue
 
                 torneo_norm = normalizar_texto(torneo_nombre)
 
-                if deporte == "Tenis" and "ITF" in torneo_norm and True:
-                    # Solo excluir ITF tier 3 (sin relevancia)
-                    tier_check = 3
+                if deporte == "Tenis" and "ITF" in torneo_norm:
                     if not any(t in torneo_norm for t in TIER_1_ELITE) and \
                        not any(t in torneo_norm for t in TIER_2_NICHO):
                         continue
@@ -320,7 +272,6 @@ def obtener_eventos_api() -> list:
                 hora_utc   = dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
                 hora_corta = dt_utc.astimezone(ZONA_COLOMBIA).strftime("%H:%M")
 
-                # Tier
                 tier = 3
                 if any(t in torneo_norm for t in TIER_1_ELITE):
                     tier = 1
@@ -329,11 +280,9 @@ def obtener_eventos_api() -> list:
                 if pais_evento in PAISES_HEROE_LOCAL or pais_codigo in PAISES_HEROE_LOCAL:
                     tier = min(tier, 2)
 
-                # Tipo: duelo vs individual
                 es_duelo = bool(eq_local and eq_visit)
                 titulo   = f"{eq_local} vs {eq_visit}" if es_duelo else torneo_nombre
 
-                # Logos
                 if es_duelo:
                     logo_local     = url_logo_equipo(home_id)
                     logo_visitante = url_logo_equipo(away_id)
@@ -345,7 +294,6 @@ def obtener_eventos_api() -> list:
                 duracion_min = DURACION_POR_DEPORTE.get(deporte, 150)
 
                 eventos_procesados.append({
-                    # Campos del data class Kotlin
                     "id":             str(ev.get("id")),
                     "titulo":         titulo,
                     "torneo":         torneo_nombre,
@@ -354,10 +302,8 @@ def obtener_eventos_api() -> list:
                     "logo_local":     logo_local,
                     "logo_visitante": logo_visitante,
                     "banner":         banner,
-                    # Campos extra (Gson ignora si no están en el data class)
                     "tier":           tier,
                     "duracion_min":   duracion_min,
-                    # Campos internos del curador (se eliminan antes del JSON final)
                     "_hora_corta":    hora_corta,
                     "_kws_local":     extraer_keywords(eq_local),
                     "_kws_visit":     extraer_keywords(eq_visit),
@@ -366,29 +312,17 @@ def obtener_eventos_api() -> list:
                 cnt += 1
 
             except Exception as e:
-                log.warning(
-                    f"  [{deporte}] Evento {ev.get('id', '?')}: "
-                    f"{type(e).__name__}: {e}"
-                )
+                log.warning(f"  [{deporte}] Evento {ev.get('id','?')}: {type(e).__name__}: {e}")
                 continue
 
-        log.info(f"  [{deporte}] {cnt} eventos obtenidos.")
-        time.sleep(1)
+        log.info(f"  [{deporte}] {cnt} eventos.")
+        time.sleep(2)
 
-    log.info(f"Total de API: {len(eventos_procesados)} eventos.")
+    log.info(f"Total API: {len(eventos_procesados)} eventos.")
     return eventos_procesados
 
 # ─── MOTOR DE SCORING ─────────────────────────────────────────────────────────
 def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
-    """
-    Score 0-115 que mide si un stream corresponde a un evento.
-      +30  Hora exacta (Colombia) en el nombre del stream
-      +35  Match de keyword del equipo local
-      +35  Match de keyword del equipo visitante
-      +15  Match de keyword del torneo
-      +40  Bonificación canal contenedor (sin equipos, hora + >=2 kws torneo)
-      -15  Penalización match débil (1 kw torneo, sin equipos)
-    """
     puntaje   = 0
     texto_pad = f" {texto_canal} "
 
@@ -429,19 +363,16 @@ def main():
     log.info(f"║ Fecha: {FECHA_HOY} | Zona: Colombia (UTC-5) ║")
     log.info("╚═════════════════════════════════════════════════╝")
 
-    # Fase 1: Streams
     streams = obtener_datos_xtream()
     if not streams:
         log.critical("Sin streams de Xtream. Abortando.")
         return
 
-    # Fase 2: Eventos
     eventos = obtener_eventos_api()
     if not eventos:
         log.critical("Sin eventos de API. Abortando.")
         return
 
-    # Backup de eventos crudos (sin campos internos) para debugging
     try:
         with open("eventos_raw_backup.json", "w", encoding="utf-8") as f:
             json.dump(
@@ -452,9 +383,8 @@ def main():
     except IOError as e:
         log.warning(f"No se pudo guardar backup: {e}")
 
-    # Fase 3: Matching
     resultados = []
-    desglose   = {d: 0 for d in DEPORTES_IDS}
+    desglose   = {d: 0 for d in DEPORTES_SLUGS}
 
     for ev in eventos:
         fuentes = buscar_fuentes(ev, streams)
@@ -476,7 +406,6 @@ def main():
 
     resultados.sort(key=lambda x: x["hora_utc"])
 
-    # Fase 4: Escritura del JSON principal (array plano, compatible con Retrofit List<Evento>)
     try:
         with open("eventos_hoy.json", "w", encoding="utf-8") as f:
             json.dump(resultados, f, ensure_ascii=False, indent=2)
@@ -485,7 +414,6 @@ def main():
         log.critical(f"Error escribiendo eventos_hoy.json: {e}")
         return
 
-    # Fase 5: Metadata de ejecución
     meta = {
         "generado_en":          datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "fecha_eventos":        FECHA_HOY,
