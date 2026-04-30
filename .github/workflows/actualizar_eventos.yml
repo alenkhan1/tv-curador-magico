@@ -31,9 +31,6 @@ jobs:
 
       - name: Ejecutar Curador de Eventos
         env:
-          RAPIDAPI_KEY_1: ${{ secrets.RAPIDAPI_KEY_1 }}
-          RAPIDAPI_KEY_2: ${{ secrets.RAPIDAPI_KEY_2 }}
-          RAPIDAPI_KEY_3: ${{ secrets.RAPIDAPI_KEY_3 }}
           XTREAM_URL:  ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
