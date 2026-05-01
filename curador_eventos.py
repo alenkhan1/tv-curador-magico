@@ -53,10 +53,8 @@ PALABRAS_GENERICAS = {"WOMEN", "MEN", "CUP", "LEAGUE", "LIVE", "FHD", "4K", "108
 STOP_WORDS = {"FC", "SC", "CF", "AC", "AS", "US", "CS", "RC", "CD", "SD", "UD", "THE", "DE", "LA", "LAS", "LOS", "EL", "Y", "E", "AND", "OF", "DEL", "CENTRAL", "CITY", "UNITED", "REAL", "CLUB", "ATLETICO", "DEPORTIVO", "SPORTING"}
 
 # ─── EXCEPCIONES Y ALIAS DE TORNEOS ──────────────────────────────────────────
-# Permite que palabras de 2 caracteres sobrevivan al filtro si son vitales
-PALABRAS_CORTAS_PERMITIDAS = {"F1", "F2", "F3", "GP", "Q1", "Q2", "Q3", "M1", "M2", "M3"}
+PALABRAS_CORTAS_PERMITIDAS = {"F1", "F2", "F3", "GP", "Q1", "Q2", "Q3", "M1", "M2", "M3", "UFC", "PFL", "PGA", "LIV", "AEW", "WWE", "WRC", "ATP", "WTA", "WBC"}
 
-# Traductor universal: Nombre formal de la API -> Alias en los canales de TV
 ALIAS_TORNEOS = {
     "FORMULA 1": ["F1"],
     "FORMULA 2": ["F2"],
@@ -66,17 +64,22 @@ ALIAS_TORNEOS = {
     "WORLD PADEL TOUR": ["WPT"],
     "CHAMPIONS LEAGUE": ["UCL"],
     "ALL ELITE WRESTLING": ["AEW"],
-    "BARE KNUCKLE": ["BKFC"]
+    "BARE KNUCKLE": ["BKFC"],
+    "PGA TOUR": ["PGA", "GOLF"],
+    "LIV GOLF": ["LIV", "GOLF"]
 }
 
 # ─── REGLAS DE NEGOCIO Y FILTROS ESTRICTOS ───────────────────────────────────
-TIER_1_ELITE = ["CHAMPIONS LEAGUE", "UEFA CHAMPIONS", "LIGA BETPLAY", "LA LIGA", "PREMIER LEAGUE", "SERIE A", "FORMULA 1", "NBA", "UFC", "LIBERTADORES", "COPA AMERICA", "MUNDIAL", "WORLD CUP", "ATP", "WTA", "GRAND SLAM", "WIMBLEDON", "ROLAND GARROS", "US OPEN", "AUSTRALIAN OPEN", "MOTO GP", "MOTOGP", "SIX NATIONS", "RUGBY CHAMPIONSHIP", "COPA DEL REY", "FA CUP", "SUPER BOWL", "BOXING WORLD"]
-TIER_2_NICHO = ["NFL", "MLB", "F2", "F3", "COPA SUDAMERICANA", "EREDIVISIE", "BUNDESLIGA", "LIGUE 1", "CHAMPIONS CUP", "SUPER RUGBY", "NATIONS LEAGUE", "RECOPA", "SUPERLIGA"]
+TIER_1_ELITE = ["CHAMPIONS LEAGUE", "UEFA CHAMPIONS", "LIGA BETPLAY", "LA LIGA", "PREMIER LEAGUE", "SERIE A", "FORMULA 1", "NBA", "UFC", "LIBERTADORES", "COPA AMERICA", "MUNDIAL", "WORLD CUP", "ATP", "WTA", "GRAND SLAM", "WIMBLEDON", "ROLAND GARROS", "US OPEN", "AUSTRALIAN OPEN", "MOTO GP", "MOTOGP", "SIX NATIONS", "RUGBY CHAMPIONSHIP", "COPA DEL REY", "FA CUP", "SUPER BOWL", "BOXING WORLD", "PGA TOUR", "MASTERS"]
+TIER_2_NICHO = ["NFL", "MLB", "F2", "F3", "COPA SUDAMERICANA", "EREDIVISIE", "BUNDESLIGA", "LIGUE 1", "CHAMPIONS CUP", "SUPER RUGBY", "NATIONS LEAGUE", "RECOPA", "SUPERLIGA", "LIV GOLF"]
 PAISES_HEROE_LOCAL = {"Colombia", "Spain", "CO", "ES"}
 
-DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, "Béisbol": 64, "Rugby": 12, "Boxeo": 9, "Voleibol": 23, "MMA": 30}
-DURACION_POR_DEPORTE = {"Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210, "Béisbol": 210, "Rugby": 120, "Boxeo": 180, "Voleibol": 150, "MMA": 200}
-UMBRAL_POR_DEPORTE = {"Fútbol": 70, "Baloncesto": 65, "Tenis": 60, "Motor": 65, "Béisbol": 65, "Rugby": 65, "Boxeo": 65, "Voleibol": 65, "MMA": 65} # Umbrales subidos para mayor seguridad
+# ¡GOLF AÑADIDO (ID 18)!
+DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, "Béisbol": 64, "Rugby": 12, "Boxeo": 9, "Voleibol": 23, "MMA": 30, "Golf": 18}
+DURACION_POR_DEPORTE = {"Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210, "Béisbol": 210, "Rugby": 120, "Boxeo": 180, "Voleibol": 150, "MMA": 200, "Golf": 240}
+
+# UMBRALES REDUCIDOS PARA DEPORTES INDIVIDUALES
+UMBRAL_POR_DEPORTE = {"Fútbol": 70, "Baloncesto": 65, "Tenis": 60, "Motor": 50, "Béisbol": 65, "Rugby": 65, "Boxeo": 50, "Voleibol": 65, "MMA": 50, "Golf": 50} 
 
 # FILTRO DE PAÍSES/REGIONES (Primer Escudo)
 CATEGORIAS_PERMITIDAS_POR_DEPORTE = {
@@ -85,15 +88,13 @@ CATEGORIAS_PERMITIDAS_POR_DEPORTE = {
     "Tenis": {"ATP", "WTA", "World"},
     "Béisbol": {"USA", "World"},
     "Rugby": {"World", "Europe", "England", "France", "New Zealand", "Australia", "South Africa", "Argentina"},
-    "Motor": set(), "Boxeo": set(), "Voleibol": set(), "MMA": set() # Se controlan por Listas Blancas
+    "Motor": set(), "Boxeo": set(), "Voleibol": set(), "MMA": set(), "Golf": set()
 }
 
-# FILTRO DE TORNEOS (Segundo Escudo - Listas Blancas)
+# FILTRO DE TORNEOS (Segundo Escudo) - Flexibilizado para permitir todo lo de deportes individuales
 WHITELIST_TORNEOS = {
-    "Motor": ["FORMULA 1", "F1", "FORMULA 2", "F2", "FORMULA 3", "F3", "FORMULA E", "MOTOGP", "MOTO 2", "MOTO 3", "NASCAR", "INDYCAR", "WRC", "RALLY", "DAKAR", "WEC", "SUPERBIKE"],
-    "MMA": ["UFC", "BELLATOR", "PFL", "ONE CHAMPIONSHIP", "KSW"],
-    "Boxeo": ["BOXING", "BOXEO", "TOP RANK", "MATCHROOM", "GOLDEN BOY", "GLORY"],
     "Tenis": ["ATP", "WTA", "GRAND SLAM", "DAVIS CUP", "WIMBLEDON", "ROLAND GARROS", "US OPEN", "AUSTRALIAN OPEN", "PREMIER PADEL", "WORLD PADEL TOUR", "A1 PADEL", "WTT", "TABLE TENNIS", "PING PONG"]
+    # Motor, MMA, Boxeo y Golf ya no tienen restricción estricta aquí para no asfixiar el feed
 }
 
 # ─── UTILIDADES ──────────────────────────────────────────────────────────────
@@ -166,7 +167,7 @@ def obtener_datos_xtream() -> list:
 def obtener_eventos_api() -> list:
     if not LLAVES_API: return []
     eventos_procesados = []
-    ahora_utc = datetime.now(timezone.utc) # Referencia para el Recolector de Basura
+    ahora_utc = datetime.now(timezone.utc)
 
     for deporte, sport_id in DEPORTES_IDS.items():
         r_cat = hacer_peticion_rotativa(f"https://{RAPIDAPI_HOST}/v1/calendar/categories", {"sport_id": sport_id, "date": FECHA_HOY, "timezone": -5})
@@ -193,16 +194,14 @@ def obtener_eventos_api() -> list:
                     cat_data = torneo_data.get("category", {})
                     torneo_nombre = torneo_data.get("name", "")
                     torneo_norm = normalizar_texto(torneo_nombre)
-                    
-                    # Extraemos el país o la categoría principal (Vital porque aquí vienen "ATP", "WTA", etc.)
                     pais_evento = cat_data.get("name", "")
                     pais_evento_norm = normalizar_texto(pais_evento)
 
-                    # ESCUDO 2: Listas Blancas (Busca en el nombre del torneo Y en el nombre de la categoría)
+                    # ESCUDO 2: Listas Blancas (Solo estricto para deportes configurados con lista, el resto pasa libre)
                     if lista_blanca_torneos and not any(kw in torneo_norm for kw in lista_blanca_torneos) and not any(kw in pais_evento_norm for kw in lista_blanca_torneos):
-                        continue
-                    
-                    # Filtro específico para Tenis (Excluir ITF de bajo nivel)
+                        if deporte in ["Fútbol", "Baloncesto", "Tenis"]: # Exigencia estricta solo a los masivos
+                            continue
+
                     if deporte == "Tenis" and "ITF" in torneo_norm and not any(t in torneo_norm for t in TIER_1_ELITE + TIER_2_NICHO):
                         continue
 
@@ -213,14 +212,12 @@ def obtener_eventos_api() -> list:
                     dt_utc = datetime.fromtimestamp(unix_time, timezone.utc)
                     hora_fin_evento = dt_utc + timedelta(minutes=duracion)
 
-                    # RECOLECTOR DE BASURA: Omitir eventos finalizados
                     if hora_fin_evento < ahora_utc:
                         continue
 
                     pais_codigo = cat_data.get("alpha2", "")
                     unique_id = torneo_data.get("uniqueTournament", {}).get("id")
                     
-                    # Extracción del nombre específico de la carrera/pelea (Vital para deportes sin equipos)
                     nombre_evento_api = ev.get("name", "")
                     description_api = ev.get("description", "")
                     
@@ -237,7 +234,6 @@ def obtener_eventos_api() -> list:
 
                     es_duelo = bool(eq_local and eq_visit)
                     
-                    # TÍTULO INTELIGENTE: Si no hay equipos, usa el nombre de la carrera. Si no hay carrera, usa el torneo.
                     if es_duelo:
                         titulo_final = f"{eq_local} vs {eq_visit}"
                     elif nombre_evento_api:
@@ -247,14 +243,11 @@ def obtener_eventos_api() -> list:
                     else:
                         titulo_final = torneo_nombre
 
-                    # GENERACIÓN DE PALABRAS CLAVE DINÁMICA
                     kws_locales = extraer_keywords(eq_local) if es_duelo else extraer_keywords(titulo_final)
                     kws_visitantes = extraer_keywords(eq_visit) if es_duelo else []
                     
-                    # Inyectamos el nombre de la categoría ("ATP", "WTA") en las keywords del torneo
                     kws_torneo = extraer_keywords(torneo_nombre) + extraer_keywords(pais_evento)
                     
-                    # INYECCIÓN DEL DICCIONARIO DE ALIAS PARA TORNEOS
                     for oficial, alias_list in ALIAS_TORNEOS.items():
                         if oficial in torneo_norm:
                             kws_torneo.extend(alias_list)
@@ -286,14 +279,11 @@ def obtener_eventos_api() -> list:
 # ─── MATCHING (MOTOR ANTI-CLONES) ─────────────────────────────────────────────
 def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
     puntaje = 0
-    # Añadimos espacios para asegurar palabras completas
     texto_pad = f" {texto_canal} "
     
-    # 1. Búsqueda de la Hora (No consume la palabra porque un canal puede tener "14:00 14:00")
     if f" {evento['_hora_corta']} " in texto_pad: 
         puntaje += 30
         
-    # 2. Búsqueda y Consumo de Palabras del Local / Evento Individual
     c_local = 0
     for kw in evento["_kws_local"]:
         kw_str = f" {kw} "
@@ -301,7 +291,6 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
             c_local += 1
             texto_pad = texto_pad.replace(kw_str, "   ", 1) 
             
-    # 3. Búsqueda y Consumo de Palabras del Visitante (Si es deporte individual, esto valdrá 0)
     c_visit = 0
     for kw in evento["_kws_visit"]:
         kw_str = f" {kw} "
@@ -309,7 +298,6 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
             c_visit += 1
             texto_pad = texto_pad.replace(kw_str, "   ", 1)
             
-    # 4. Búsqueda de Torneo y Alias (Ej. F1, GP, ATP)
     c_torneo = 0
     for kw in evento["_kws_torneo"]:
         kw_str = f" {kw} "
@@ -318,26 +306,33 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
             texto_pad = texto_pad.replace(kw_str, "   ", 1)
 
     # ─── ASIGNACIÓN DE PUNTOS (FÚTBOL / DUELOS) ───
-    if evento["_kws_visit"]: # Es un duelo (Tiene equipo visitante)
+    if evento["_kws_visit"]: 
         if c_local > 0: puntaje += 35
         if c_visit > 0: puntaje += 35
         if c_torneo > 0: puntaje += 15
         
-        # Regla de canal contenedor para duelos (Sin equipos, pero con hora y nombre del torneo)
         if c_local == 0 and c_visit == 0 and puntaje >= 30 and c_torneo >= 2: 
             puntaje += 40
 
-    # ─── ASIGNACIÓN DE PUNTOS (MOTOR / GOLF / TENIS INDIVIDUAL) ───
+    # ─── ASIGNACIÓN DE PUNTOS (MOTOR / GOLF / BOXEO / INDIVIDUAL) ───
     else: 
-        # Eliminamos la restricción estricta de la hora (puntaje >= 30).
-        # Multiplicamos el peso de las palabras de la carrera (Ej. Miami) y del Torneo (Ej. F1, GP)
+        # Valor a las palabras de la carrera y el torneo
         puntaje += (c_local * 25) + (c_torneo * 25)
         
-        # Súper Bonificación: Si el canal menciona el Torneo (F1) y la Carrera (Miami), aprueba directo (+50 pts)
+        # Bonificación si el canal menciona el nombre explícito del deporte (Ej: GOLF, BOXEO)
+        cat_upper = f" {evento['categoria'].upper()} "
+        if cat_upper in texto_pad:
+            puntaje += 20
+            
+        # Si el canal tiene la hora y al menos un indicio (nombre, torneo o deporte), lo empujamos
+        # para que supere el umbral de 50 evitando que canales genéricos sin contexto pasen.
+        if f" {evento['_hora_corta']} " in texto_pad and (c_local > 0 or c_torneo > 0 or cat_upper in texto_pad):
+            puntaje += 15
+        
         if c_local > 0 and c_torneo > 0:
             puntaje += 50
 
-    # Penalización por falso positivo de torneo en cualquier deporte
+    # Penalización por falso positivo (Un canal menciona una palabra común de torneo sin estar los equipos)
     if len(evento["_kws_torneo"]) > 1 and c_torneo == 1 and c_local == 0 and c_visit == 0: 
         puntaje -= 15
         
