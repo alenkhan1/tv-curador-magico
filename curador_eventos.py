@@ -21,7 +21,7 @@ RAPIDAPI_HOST = "sofasport.p.rapidapi.com"
 ZONA_COLOMBIA = timezone(timedelta(hours=-5))
 FECHA_HOY     = datetime.now(ZONA_COLOMBIA).strftime("%Y-%m-%d")
 ARCHIVO_CACHE = "agenda_guardada.json"
-HORAS_CACHE   = 4
+HORAS_CACHE   = 4 # Tiempo de vida del caché de la API
 
 LLAVES_API = [
     os.environ.get("RAPIDAPI_KEY_1"),
@@ -35,41 +35,89 @@ indice_llave_actual = 0
 SOFA_IMG_EQUIPO = "https://api.sofascore.app/api/v1/team/{id}/image"
 SOFA_IMG_TORNEO = "https://api.sofascore.app/api/v1/unique-tournament/{id}/image/dark"
 
-DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, "Béisbol": 64, "Boxeo": 9, "MMA": 30, "Golf": 18}
-
-TRADUCTOR_JERGA = {
-    "F1": "FORMULA 1", "MOTO GP": "MOTOGP", "UCL": "CHAMPIONS LEAGUE", 
-    "LIV": "LIV GOLF", "PGA": "PGA TOUR", "PREMIER": "PREMIER LEAGUE"
+DEPORTES_IDS = {
+    "Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, 
+    "Béisbol": 64, "Boxeo": 9, "MMA": 30, "Golf": 18, 
+    "Hockey": 4, "Voleibol": 23, "Rugby": 12
 }
 
-LOGOS_GENERICOS = {
-    "Boxeo": "https://img.icons8.com/color/512/boxing-glove.png",
-    "Lucha": "https://img.icons8.com/color/512/wrestling.png",
+# Categorizador heurístico para la Ruta B (Eventos Rescatados)
+CATEGORIAS_RESCATE = {
+    "Motor": ["F1", "F2", "F3", "FORMULA", "NASCAR", "CARRERA", "GP ", "MOTOGP"],
+    "Béisbol": ["MLB", "LMB", "BEISBOL", "BASEBALL", "DIAMONDBACKS", "CUBS", "YANKEES", "RED SOX", "DODGERS", "PIRATES", "REDS", "ASTROS", "RANGERS"],
+    "Baloncesto": ["NBA", "WNBA", "BASKETBALL", "LAKERS", "CELTICS", "BULLS", "CAVALIERS", "PISTONS", "MAGIC", "RAPTORS"],
+    "Fútbol": ["LIGA", "SERIE A", "PREMIER", "FUTBOL", "SOCCER", "NWSL", "MLS", "CHAMPIONS", "LEAGUE"],
+    "Lucha Libre": ["WWE", "SMACKDOWN", "RAW", "AEW", "LUCHA"],
+    "Boxeo": ["BOXEO", "BOXING", "PESAJE"],
+    "Hockey": ["NHL", "SABRES", "BRUINS", "CANADIENS", "LIGHTNING"],
+    "Tenis": ["ATP", "WTA", "TENIS", "TENNIS", "WIMBLEDON", "OPEN"]
+}
+
+LOGOS_RESCATE = {
     "Motor": "https://img.icons8.com/color/512/f1-car.png",
-    "Default": "https://img.icons8.com/color/512/stadium.png"
+    "Béisbol": "https://img.icons8.com/color/512/baseball.png",
+    "Baloncesto": "https://img.icons8.com/color/512/basketball.png",
+    "Fútbol": "https://img.icons8.com/color/512/football2.png",
+    "Lucha Libre": "https://img.icons8.com/color/512/wrestling.png",
+    "Boxeo": "https://img.icons8.com/color/512/boxing-glove.png",
+    "Hockey": "https://img.icons8.com/color/512/ice-hockey.png",
+    "Tenis": "https://img.icons8.com/color/512/tennis.png",
+    "Deportes": "https://img.icons8.com/color/512/stadium.png" # Fallback
 }
 
 # ─── UTILIDADES ──────────────────────────────────────────────────────────────
-def normalizar_texto(texto: str) -> str:
+def limpiar_texto_para_match(texto: str) -> str:
+    """Limpia el texto de un canal eliminando horas, tags, y contenido en paréntesis para agrupar."""
     if not texto: return ""
     texto = str(texto).upper()
+    
+    # 1. Quitar contenido entre paréntesis y corchetes (ej. "On Board", "Con Tornello", "May 01")
+    texto = re.sub(r'\(.*?\)', '', texto)
+    texto = re.sub(r'\[.*?\]', '', texto)
+    
+    # 2. Quitar horas y zonas horarias (ej. 14:00, 2:35 PM, ET)
+    texto = re.sub(r'\b\d{1,2}:\d{2}\b(\s*[AP]M)?(\s*ET)?', '', texto)
+    
+    # 3. Quitar tags basura de IPTV
+    texto = re.sub(r'\b(HD|SD|FHD|4K|ENG|ESP|GER|OPC\.\d+|OP\d+|PEA \d+|PARA\+ \d+)\b', '', texto)
+    
+    # 4. Quitar caracteres especiales y dejar solo letras y números
     texto = unicodedata.normalize("NFD", texto)
     texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
     texto = re.sub(r"[^A-Z0-9\s]", " ", texto)
     
-    for corto, largo in TRADUCTOR_JERGA.items():
-        texto = re.sub(rf"\b{corto}\b", largo, texto)
-        
     return " ".join(texto.split())
 
 def similitud(a: str, b: str) -> float:
+    """Devuelve un porcentaje de similitud entre dos textos (0.0 a 100.0)"""
     return SequenceMatcher(None, a, b).ratio() * 100
 
-def extraer_hora(texto: str):
-    match = re.search(r"\b(\d{1,2}):(\d{2})\b", texto)
-    return match.group(0) if match else None
+def adivinar_categoria_y_logo(texto: str):
+    """Analiza el título limpio para asignarle la categoría correcta en Modo Rescate."""
+    texto_upper = texto.upper()
+    for categoria, keywords in CATEGORIAS_RESCATE.items():
+        if any(kw in texto_upper for kw in keywords):
+            return categoria, LOGOS_RESCATE[categoria]
+    return "Deportes", LOGOS_RESCATE["Deportes"]
 
-# ─── RED Y CACHÉ ─────────────────────────────────────────────────────────────
+def calcular_hora_utc_falsa(nombre_canal: str) -> str:
+    """Extrae la primera hora que vea en el canal. Si no hay, usa la hora actual UTC."""
+    match = re.search(r'\b(\d{1,2}):(\d{2})\b\s*(PM)?', nombre_canal, re.IGNORECASE)
+    if match:
+        try:
+            h = int(match.group(1))
+            m = int(match.group(2))
+            pm = match.group(3)
+            if pm and h < 12: h += 12
+            # Asumimos que la hora extraída es de hoy en zona Colombia como base aproximada
+            dt_evento = datetime.now(ZONA_COLOMBIA).replace(hour=h, minute=m, second=0, microsecond=0)
+            return dt_evento.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        except:
+            pass
+    # Si falla o no hay hora, devolvemos la hora actual UTC para que esté "En Vivo" ahora mismo
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+# ─── RED Y CACHÉ (API SOFASCORE) ─────────────────────────────────────────────
 def hacer_peticion_rotativa(url: str, params: dict):
     global indice_llave_actual
     intentos = 0
@@ -90,11 +138,11 @@ def obtener_agenda_maestra() -> list:
     if os.path.exists(ARCHIVO_CACHE):
         tiempo_modificacion = os.path.getmtime(ARCHIVO_CACHE)
         if (time.time() - tiempo_modificacion) < (HORAS_CACHE * 3600):
-            log.info("Cargando Agenda Maestra desde Caché Local (Ahorrando API)...")
+            log.info("Cargando Agenda de SofaScore desde Caché Local...")
             with open(ARCHIVO_CACHE, "r", encoding="utf-8") as f:
                 return json.load(f)
 
-    log.info("Descargando Agenda Maestra de SofaScore...")
+    log.info("Descargando Agenda Maestra de SofaScore (Todas las categorías)...")
     eventos_api = []
     
     for deporte, sport_id in DEPORTES_IDS.items():
@@ -112,24 +160,23 @@ def obtener_agenda_maestra() -> list:
                     if not unix_time: continue
                     
                     dt_utc = datetime.fromtimestamp(unix_time, timezone.utc)
-                    hora_corta = dt_utc.astimezone(ZONA_COLOMBIA).strftime("%H:%M")
-                    
                     torneo = ev.get("tournament", {}).get("name", "")
                     nombre_evento = ev.get("name", ev.get("description", ""))
                     eq_local = ev.get("homeTeam", {}).get("name", "")
                     eq_visit = ev.get("awayTeam", {}).get("name", "")
                     
                     titulo = f"{eq_local} vs {eq_visit}" if eq_local and eq_visit else nombre_evento
-                    firma_texto = normalizar_texto(f"{torneo} {titulo}")
+                    # La firma se usará para el Fuzzy Matching
+                    firma_texto = limpiar_texto_para_match(f"{torneo} {titulo}")
 
                     eventos_api.append({
                         "id": str(ev.get("id")),
                         "titulo": titulo,
                         "torneo": torneo,
                         "categoria": deporte,
-                        "hora_corta": hora_corta,
                         "firma_texto": firma_texto,
                         "hora_utc": dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                        "duracion_min": DURACION_POR_DEPORTE.get(deporte, 150),
                         "logo_local": url_logo_equipo(ev.get("homeTeam", {}).get("id")) if eq_local else url_logo_torneo(ev.get("tournament", {}).get("uniqueTournament", {}).get("id")),
                         "logo_visitante": url_logo_equipo(ev.get("awayTeam", {}).get("id")) if eq_visit else "",
                         "tier": 2
@@ -143,9 +190,9 @@ def obtener_agenda_maestra() -> list:
     
     return eventos_api
 
-# ─── XTREAM Y EMPAREJAMIENTO ─────────────────────────────────────────────────
+# ─── XTREAM (CUBO A) ─────────────────────────────────────────────────────────
 def procesar_cubo_a() -> list:
-    log.info("Descargando Xtream y filtrando Cubo A...")
+    log.info("Descargando Xtream y detectando canales temporales (Cubo A)...")
     url_base = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
     
     try:
@@ -154,39 +201,27 @@ def procesar_cubo_a() -> list:
         
         for s in r_str.json():
             nombre_canal = s.get("name", "").strip()
-            hora_canal = extraer_hora(nombre_canal)
             
-            if hora_canal:
-                texto_limpio = normalizar_texto(nombre_canal)
-                cubo_a.append({
-                    "id_xtream": s.get("stream_id"),
-                    "nombre_ui": nombre_canal,
-                    "hora_extraida": hora_canal,
-                    "texto_limpio": texto_limpio
-                })
-        log.info(f"Cubo A listo: {len(cubo_a)} eventos detectados.")
+            # Filtro amplio: Si tiene hora (ej. 14:00, 2:30 PM), entra al Cubo A. 
+            # También dejamos entrar canales de PPV o ligas específicas que suelen ser temporales.
+            if re.search(r'\b\d{1,2}:\d{2}\b', nombre_canal) or any(kw in nombre_canal.upper() for kw in ["PEA ", "PARA+", "LMB", "MLB"]):
+                texto_limpio = limpiar_texto_para_match(nombre_canal)
+                if len(texto_limpio) > 5: # Evitar canales basura demasiado cortos
+                    cubo_a.append({
+                        "id_xtream": s.get("stream_id"),
+                        "nombre_ui": nombre_canal,
+                        "texto_limpio": texto_limpio
+                    })
+                    
+        log.info(f"Cubo A listo: {len(cubo_a)} canales temporales detectados.")
         return cubo_a
     except Exception as e:
         log.error(f"Error procesando Xtream: {e}")
         return []
 
-def asignar_logo_generico(texto: str) -> str:
-    texto = texto.upper()
-    if "LUCHA" in texto or "WWE" in texto or "AEW" in texto: return LOGOS_GENERICOS["Lucha"]
-    if "BOXEO" in texto or "BOXING" in texto: return LOGOS_GENERICOS["Boxeo"]
-    if "F1" in texto or "MOTOR" in texto or "RALLY" in texto: return LOGOS_GENERICOS["Motor"]
-    return LOGOS_GENERICOS["Default"]
-
-def adivinar_categoria(texto: str) -> str:
-    texto = texto.upper()
-    if "LUCHA" in texto or "WWE" in texto: return "Lucha Libre"
-    if "BOX" in texto: return "Boxeo"
-    if "F1" in texto or "GP" in texto: return "Motor"
-    return "Deportes"
-
-# ─── ORQUESTADOR ─────────────────────────────────────────────────────────────
+# ─── ORQUESTADOR (EL CEREBRO EMPAREJADOR) ────────────────────────────────────
 def main():
-    log.info(f"--- Iniciando Curador Mágico V2 ---")
+    log.info(f"--- Iniciando Curador Mágico V3 (Fuzzy Match & Grouping) ---")
     
     agenda_api = obtener_agenda_maestra()
     cubo_a = procesar_cubo_a()
@@ -196,74 +231,67 @@ def main():
     resultados_finales = []
 
     for canal in cubo_a:
-        hora_canal = canal["hora_extraida"]
         texto_canal = canal["texto_limpio"]
-        
-        eventos_candidatos = [ev for ev in agenda_api if ev["hora_corta"] == hora_canal]
         
         match_encontrado = False
         mejor_evento = None
         mejor_puntaje = 0
         
-        # Corrección 1: Construir URL sin "/live/" para adaptarse al proveedor
+        # Corrección CRÍTICA: Enlace Directo, sin carpeta "/live/"
         fuente_limpia = {"nombre": canal["nombre_ui"], "url": f"{XTREAM_URL}/{XTREAM_USER}/{XTREAM_PASS}/{canal['id_xtream']}.ts"}
         
-        # 2. RUTA A (Emparejamiento API)
-        if eventos_candidatos:
-            for ev in eventos_candidatos:
-                puntaje = similitud(texto_canal, ev["firma_texto"])
-                if puntaje > mejor_puntaje:
-                    mejor_puntaje = puntaje
-                    mejor_evento = ev
+        # 1. RUTA A (Emparejamiento API por Similitud de Texto)
+        # Comparamos contra toda la agenda de hoy, el texto manda sobre la hora.
+        for ev in agenda_api:
+            puntaje = similitud(texto_canal, ev["firma_texto"])
+            if puntaje > mejor_puntaje:
+                mejor_puntaje = puntaje
+                mejor_evento = ev
+        
+        # Umbral del 55%. Si el texto de Xtream y el de la API se parecen más de un 55%, es un match.
+        if mejor_puntaje > 55.0 and mejor_evento:
+            match_encontrado = True
             
-            if mejor_puntaje > 45.0 and mejor_evento:
-                match_encontrado = True
-                evento_existente = next((item for item in resultados_finales if item["id"] == mejor_evento["id"]), None)
-                if evento_existente:
-                    evento_existente["fuentes"].append(fuente_limpia)
-                else:
-                    evento_clon = mejor_evento.copy()
-                    evento_clon["fuentes"] = [fuente_limpia]
-                    del evento_clon["firma_texto"]
-                    del evento_clon["hora_corta"]
-                    resultados_finales.append(evento_clon)
+            # Agrupación: Si este evento de la API ya lo metimos al JSON, solo agregamos la fuente (camara 2, etc)
+            evento_existente = next((item for item in resultados_finales if item["id"] == mejor_evento["id"]), None)
+            if evento_existente:
+                evento_existente["fuentes"].append(fuente_limpia)
+            else:
+                evento_clon = mejor_evento.copy()
+                evento_clon["fuentes"] = [fuente_limpia]
+                del evento_clon["firma_texto"] # Limpieza de datos internos
+                resultados_finales.append(evento_clon)
 
-        # 3. RUTA B (Modo Rescate Agrupado)
+        # 2. RUTA B (Modo Rescate Agrupado) - Para Lucha Libre, PPV, etc.
         if not match_encontrado:
-            # Corrección 2: Eliminamos textos entre paréntesis y corchetes para agrupar (Ej: quita "(On Board Antonelli)")
-            titulo_limpio = re.sub(r'\(.*?\)', '', canal["nombre_ui"])
-            titulo_limpio = titulo_limpio.replace(hora_canal, "").strip(" -|▫✨[]")
+            # Agrupación por título limpio. Esto fusiona las 12 F1 en 1 solo evento.
+            titulo_limpio = texto_canal
             
-            # Buscamos si ya creamos un evento de rescate con ese mismo título base
+            # Buscar si ya creamos un evento rescatado con este mismo título
             evento_existente = next((item for item in resultados_finales if item["titulo"] == titulo_limpio), None)
             
             if evento_existente:
                 evento_existente["fuentes"].append(fuente_limpia)
             else:
-                categoria_adivinada = adivinar_categoria(texto_canal)
-                logo = asignar_logo_generico(texto_canal)
-                
-                try:
-                    hora, minuto = map(int, hora_canal.split(":"))
-                    dt_evento = datetime.now(ZONA_COLOMBIA).replace(hour=hora, minute=minuto, second=0, microsecond=0)
-                    hora_utc_falsa = dt_evento.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-                except:
-                    hora_utc_falsa = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                categoria_adivinada, logo_adivinado = adivinar_categoria_y_logo(texto_canal)
+                hora_utc_calculada = calcular_hora_utc_falsa(canal["nombre_ui"])
 
                 evento_rescate = {
-                    "id": f"rescate_{hash(titulo_limpio)}", # ID basado en el título, no en el canal
-                    "titulo": titulo_limpio,
+                    "id": f"rescate_{hash(titulo_limpio)}", 
+                    "titulo": titulo_limpio.title(), # Formato bonito (Capitalizado)
                     "torneo": "Evento Especial (PPV)",
                     "categoria": categoria_adivinada,
-                    "hora_utc": hora_utc_falsa,
-                    "logo_local": logo,
+                    "hora_utc": hora_utc_calculada,
+                    "duracion_min": 240, # FUNDAMENTAL: 4 horas de duración para que aparezca "En Vivo" en la app
+                    "logo_local": logo_adivinado,
                     "logo_visitante": "",
-                    "banner": logo,
+                    "banner": logo_adivinado,
                     "tier": 2,
                     "fuentes": [fuente_limpia]
                 }
                 resultados_finales.append(evento_rescate)
 
+    # Ordenar cronológicamente
     resultados_finales.sort(key=lambda x: x["hora_utc"])
 
     with open("eventos_hoy.json", "w", encoding="utf-8") as f:
