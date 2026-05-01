@@ -17,7 +17,6 @@ XTREAM_USER  = os.environ.get("XTREAM_USER")
 XTREAM_PASS  = os.environ.get("XTREAM_PASS")
 RAPIDAPI_HOST = "sofasport.p.rapidapi.com"
 
-# Colombia como zona principal (UTC-5)
 ZONA_COLOMBIA = timezone(timedelta(hours=-5))
 FECHA_HOY     = datetime.now(ZONA_COLOMBIA).strftime("%Y-%m-%d")
 
@@ -50,9 +49,9 @@ ALIAS_EQUIPOS = {
 }
 
 PALABRAS_GENERICAS = {"WOMEN", "MEN", "CUP", "LEAGUE", "LIVE", "FHD", "4K", "1080P", "720P", "1080", "720", "480", "CHAMPIONSHIP", "TOUR", "QUALIFICATION", "TV", "SPORTS", "VS", "STADIUM", "CANCHA", "HD", "SD", "UHD", "PREMIUM"}
-STOP_WORDS = {"FC", "SC", "CF", "AC", "AS", "US", "CS", "RC", "CD", "SD", "UD", "THE", "DE", "LA", "LAS", "LOS", "EL", "Y", "E", "AND", "OF", "DEL", "CENTRAL", "CITY", "UNITED", "REAL", "CLUB", "ATLETICO", "DEPORTIVO", "SPORTING"}
+# AÑADIDAS PALABRAS PARA EVITAR FALSOS POSITIVOS UNIVERSITARIOS Y COMUNES
+STOP_WORDS = {"FC", "SC", "CF", "AC", "AS", "US", "CS", "RC", "CD", "SD", "UD", "THE", "DE", "LA", "LAS", "LOS", "EL", "Y", "E", "AND", "OF", "DEL", "CENTRAL", "CITY", "UNITED", "REAL", "CLUB", "ATLETICO", "DEPORTIVO", "SPORTING", "STATE", "UNIVERSITY", "TECH", "COLLEGE", "SAN", "SAINT"}
 
-# ─── EXCEPCIONES Y ALIAS DE TORNEOS ──────────────────────────────────────────
 PALABRAS_CORTAS_PERMITIDAS = {"F1", "F2", "F3", "GP", "Q1", "Q2", "Q3", "M1", "M2", "M3", "UFC", "PFL", "PGA", "LIV", "AEW", "WWE", "WRC", "ATP", "WTA", "WBC"}
 
 ALIAS_TORNEOS = {
@@ -63,10 +62,17 @@ ALIAS_TORNEOS = {
     "MOTOGP": ["GP"],
     "WORLD PADEL TOUR": ["WPT"],
     "CHAMPIONS LEAGUE": ["UCL"],
-    "ALL ELITE WRESTLING": ["AEW"],
-    "BARE KNUCKLE": ["BKFC"],
     "PGA TOUR": ["PGA", "GOLF"],
     "LIV GOLF": ["LIV", "GOLF"]
+}
+
+# NUEVO: MARCADORES EXCLUSIVOS PARA EVITAR CONTAMINACIÓN CRUZADA
+MARCADORES_EXCLUSIVOS = {
+    "Baloncesto": ["NBA", "WNBA", "EUROLEAGUE", "FIBA"],
+    "Béisbol": ["MLB"],
+    "Motor": ["F1", "FORMULA 1", "GP ", "MOTOGP", "MOTO GP", "NASCAR"],
+    "MMA": ["UFC", "BELLATOR", "PFL"],
+    "Tenis": ["ATP", "WTA", "WIMBLEDON", "ROLAND GARROS"]
 }
 
 # ─── REGLAS DE NEGOCIO Y FILTROS ESTRICTOS ───────────────────────────────────
@@ -77,11 +83,8 @@ PAISES_HEROE_LOCAL = {"Colombia", "Spain", "CO", "ES"}
 # ¡GOLF AÑADIDO (ID 18)!
 DEPORTES_IDS = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, "Béisbol": 64, "Rugby": 12, "Boxeo": 9, "Voleibol": 23, "MMA": 30, "Golf": 18}
 DURACION_POR_DEPORTE = {"Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210, "Béisbol": 210, "Rugby": 120, "Boxeo": 180, "Voleibol": 150, "MMA": 200, "Golf": 240}
-
-# UMBRALES REDUCIDOS PARA DEPORTES INDIVIDUALES
 UMBRAL_POR_DEPORTE = {"Fútbol": 70, "Baloncesto": 65, "Tenis": 60, "Motor": 50, "Béisbol": 65, "Rugby": 65, "Boxeo": 50, "Voleibol": 65, "MMA": 50, "Golf": 50} 
 
-# FILTRO DE PAÍSES/REGIONES (Primer Escudo)
 CATEGORIAS_PERMITIDAS_POR_DEPORTE = {
     "Fútbol": {"Colombia", "Spain", "World", "Europe", "South America", "North & Central America", "England", "Italy", "Germany", "France", "USA", "Argentina", "Brazil", "Mexico", "Saudi Arabia"},
     "Baloncesto": {"USA", "World", "Europe", "Spain"},
@@ -91,10 +94,8 @@ CATEGORIAS_PERMITIDAS_POR_DEPORTE = {
     "Motor": set(), "Boxeo": set(), "Voleibol": set(), "MMA": set(), "Golf": set()
 }
 
-# FILTRO DE TORNEOS (Segundo Escudo) - Flexibilizado para permitir todo lo de deportes individuales
 WHITELIST_TORNEOS = {
     "Tenis": ["ATP", "WTA", "GRAND SLAM", "DAVIS CUP", "WIMBLEDON", "ROLAND GARROS", "US OPEN", "AUSTRALIAN OPEN", "PREMIER PADEL", "WORLD PADEL TOUR", "A1 PADEL", "WTT", "TABLE TENNIS", "PING PONG"]
-    # Motor, MMA, Boxeo y Golf ya no tienen restricción estricta aquí para no asfixiar el feed
 }
 
 # ─── UTILIDADES ──────────────────────────────────────────────────────────────
@@ -155,6 +156,7 @@ def obtener_datos_xtream() -> list:
         for s in r_str.json():
             cat_name = categorias.get(str(s.get("category_id", "")), "")
             stream_name = s.get("name", "")
+            # Alias aplicados a Xtream para facilitar match
             texto_final = aplicar_alias(normalizar_texto(f"{cat_name} {stream_name}"))
             streams.append({"id": s.get("stream_id"), "nombre_ui": stream_name.strip(), "texto_analisis": texto_final})
         log.info(f"Cargados {len(streams)} streams.")
@@ -181,7 +183,6 @@ def obtener_eventos_api() -> list:
             cat_id = cat.get("category", {}).get("id")
             cat_nombre = cat.get("category", {}).get("name", "")
 
-            # ESCUDO 1: Países / Regiones
             if filtro_paises and cat_nombre not in filtro_paises:
                 continue
 
@@ -197,9 +198,9 @@ def obtener_eventos_api() -> list:
                     pais_evento = cat_data.get("name", "")
                     pais_evento_norm = normalizar_texto(pais_evento)
 
-                    # ESCUDO 2: Listas Blancas (Solo estricto para deportes configurados con lista, el resto pasa libre)
+                    # Listas Blancas más flexibles (dejamos pasar Motor, Golf, Boxeo libres de culpa)
                     if lista_blanca_torneos and not any(kw in torneo_norm for kw in lista_blanca_torneos) and not any(kw in pais_evento_norm for kw in lista_blanca_torneos):
-                        if deporte in ["Fútbol", "Baloncesto", "Tenis"]: # Exigencia estricta solo a los masivos
+                        if deporte in ["Fútbol", "Baloncesto", "Tenis"]: 
                             continue
 
                     if deporte == "Tenis" and "ITF" in torneo_norm and not any(t in torneo_norm for t in TIER_1_ELITE + TIER_2_NICHO):
@@ -245,7 +246,6 @@ def obtener_eventos_api() -> list:
 
                     kws_locales = extraer_keywords(eq_local) if es_duelo else extraer_keywords(titulo_final)
                     kws_visitantes = extraer_keywords(eq_visit) if es_duelo else []
-                    
                     kws_torneo = extraer_keywords(torneo_nombre) + extraer_keywords(pais_evento)
                     
                     for oficial, alias_list in ALIAS_TORNEOS.items():
@@ -281,6 +281,12 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
     puntaje = 0
     texto_pad = f" {texto_canal} "
     
+    # ─── BLOQUEO DE CONTAMINACIÓN CRUZADA ───
+    for deporte_marcador, marcadores in MARCADORES_EXCLUSIVOS.items():
+        if evento["categoria"] != deporte_marcador: 
+            if any(f" {m} " in texto_pad for m in marcadores):
+                puntaje -= 50 # Súper penalización si un partido de Béisbol tiene la etiqueta "F1" o "NBA"
+
     if f" {evento['_hora_corta']} " in texto_pad: 
         puntaje += 30
         
@@ -305,34 +311,34 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
             c_torneo += 1
             texto_pad = texto_pad.replace(kw_str, "   ", 1)
 
-    # ─── ASIGNACIÓN DE PUNTOS (FÚTBOL / DUELOS) ───
+    # ─── ASIGNACIÓN DE PUNTOS (FÚTBOL / BEISBOL / DUELOS) ───
     if evento["_kws_visit"]: 
         if c_local > 0: puntaje += 35
         if c_visit > 0: puntaje += 35
         if c_torneo > 0: puntaje += 15
         
+        # Penalización estricta: Si solo tienes UNA palabra de un equipo (Ej: "Miami") 
+        # y no tienes al rival ni el torneo, te penalizamos para no engañar al sistema.
+        if (c_local > 0 and c_visit == 0 and c_torneo == 0) or (c_visit > 0 and c_local == 0 and c_torneo == 0):
+            puntaje -= 20
+            
         if c_local == 0 and c_visit == 0 and puntaje >= 30 and c_torneo >= 2: 
             puntaje += 40
 
     # ─── ASIGNACIÓN DE PUNTOS (MOTOR / GOLF / BOXEO / INDIVIDUAL) ───
     else: 
-        # Valor a las palabras de la carrera y el torneo
         puntaje += (c_local * 25) + (c_torneo * 25)
-        
-        # Bonificación si el canal menciona el nombre explícito del deporte (Ej: GOLF, BOXEO)
         cat_upper = f" {evento['categoria'].upper()} "
+        
         if cat_upper in texto_pad:
             puntaje += 20
             
-        # Si el canal tiene la hora y al menos un indicio (nombre, torneo o deporte), lo empujamos
-        # para que supere el umbral de 50 evitando que canales genéricos sin contexto pasen.
         if f" {evento['_hora_corta']} " in texto_pad and (c_local > 0 or c_torneo > 0 or cat_upper in texto_pad):
             puntaje += 15
         
         if c_local > 0 and c_torneo > 0:
             puntaje += 50
 
-    # Penalización por falso positivo (Un canal menciona una palabra común de torneo sin estar los equipos)
     if len(evento["_kws_torneo"]) > 1 and c_torneo == 1 and c_local == 0 and c_visit == 0: 
         puntaje -= 15
         
