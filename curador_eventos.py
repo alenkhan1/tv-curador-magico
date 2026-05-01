@@ -293,16 +293,15 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
     if f" {evento['_hora_corta']} " in texto_pad: 
         puntaje += 30
         
-    # 2. Búsqueda y Consumo de Palabras del Local
+    # 2. Búsqueda y Consumo de Palabras del Local / Evento Individual
     c_local = 0
     for kw in evento["_kws_local"]:
         kw_str = f" {kw} "
         if kw_str in texto_pad:
             c_local += 1
-            # Consume la palabra reemplazando solo la primera coincidencia por espacios
             texto_pad = texto_pad.replace(kw_str, "   ", 1) 
             
-    # 3. Búsqueda y Consumo de Palabras del Visitante (Si el local ya consumió "SMITH", el visitante no lo encuentra)
+    # 3. Búsqueda y Consumo de Palabras del Visitante (Si es deporte individual, esto valdrá 0)
     c_visit = 0
     for kw in evento["_kws_visit"]:
         kw_str = f" {kw} "
@@ -310,7 +309,7 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
             c_visit += 1
             texto_pad = texto_pad.replace(kw_str, "   ", 1)
             
-    # 4. Búsqueda de Torneo
+    # 4. Búsqueda de Torneo y Alias (Ej. F1, GP, ATP)
     c_torneo = 0
     for kw in evento["_kws_torneo"]:
         kw_str = f" {kw} "
@@ -318,16 +317,29 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
             c_torneo += 1
             texto_pad = texto_pad.replace(kw_str, "   ", 1)
 
-    # Asignación de puntos
-    if c_local > 0: puntaje += 35
-    if c_visit > 0: puntaje += 35
-    if c_torneo > 0: puntaje += 15
-
-    # Regla de canal contenedor (Sin equipos, pero con hora y nombre del torneo)
-    if c_local == 0 and c_visit == 0 and puntaje >= 30 and c_torneo >= 2: 
-        puntaje += 40
+    # ─── ASIGNACIÓN DE PUNTOS (FÚTBOL / DUELOS) ───
+    if evento["_kws_visit"]: # Es un duelo (Tiene equipo visitante)
+        if c_local > 0: puntaje += 35
+        if c_visit > 0: puntaje += 35
+        if c_torneo > 0: puntaje += 15
         
-    # Penalización por falso positivo de torneo
+        # Regla de canal contenedor para duelos (Sin equipos, pero con hora y nombre del torneo)
+        if c_local == 0 and c_visit == 0 and puntaje >= 30 and c_torneo >= 2: 
+            puntaje += 40
+
+    # ─── ASIGNACIÓN DE PUNTOS (MOTOR / GOLF / TENIS INDIVIDUAL) ───
+    else: 
+        # En deportes individuales, "_kws_local" guarda el nombre de la carrera/pelea.
+        # Si el canal tiene la hora exacta (+30) y al menos el alias del torneo (ej. F1) o una palabra de la carrera.
+        if puntaje >= 30:
+            # Multiplicamos el peso de las palabras encontradas para compensar la falta de equipos
+            puntaje += (c_local * 20) + (c_torneo * 25)
+            
+            # Bonificación extra si encontró tanto el torneo como el evento (Match perfecto)
+            if c_local > 0 and c_torneo > 0:
+                puntaje += 20
+
+    # Penalización por falso positivo de torneo en cualquier deporte
     if len(evento["_kws_torneo"]) > 1 and c_torneo == 1 and c_local == 0 and c_visit == 0: 
         puntaje -= 15
         
