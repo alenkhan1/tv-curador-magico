@@ -52,6 +52,23 @@ ALIAS_EQUIPOS = {
 PALABRAS_GENERICAS = {"WOMEN", "MEN", "CUP", "LEAGUE", "LIVE", "FHD", "4K", "1080P", "720P", "1080", "720", "480", "CHAMPIONSHIP", "TOUR", "QUALIFICATION", "TV", "SPORTS", "VS", "STADIUM", "CANCHA", "HD", "SD", "UHD", "PREMIUM"}
 STOP_WORDS = {"FC", "SC", "CF", "AC", "AS", "US", "CS", "RC", "CD", "SD", "UD", "THE", "DE", "LA", "LAS", "LOS", "EL", "Y", "E", "AND", "OF", "DEL", "CENTRAL", "CITY", "UNITED", "REAL", "CLUB", "ATLETICO", "DEPORTIVO", "SPORTING"}
 
+# ─── EXCEPCIONES Y ALIAS DE TORNEOS ──────────────────────────────────────────
+# Permite que palabras de 2 caracteres sobrevivan al filtro si son vitales
+PALABRAS_CORTAS_PERMITIDAS = {"F1", "F2", "F3", "GP", "Q1", "Q2", "Q3", "M1", "M2", "M3"}
+
+# Traductor universal: Nombre formal de la API -> Alias en los canales de TV
+ALIAS_TORNEOS = {
+    "FORMULA 1": ["F1"],
+    "FORMULA 2": ["F2"],
+    "FORMULA 3": ["F3"],
+    "MOTO GP": ["GP"],
+    "MOTOGP": ["GP"],
+    "WORLD PADEL TOUR": ["WPT"],
+    "CHAMPIONS LEAGUE": ["UCL"],
+    "ALL ELITE WRESTLING": ["AEW"],
+    "BARE KNUCKLE": ["BKFC"]
+}
+
 # ─── REGLAS DE NEGOCIO Y FILTROS ESTRICTOS ───────────────────────────────────
 TIER_1_ELITE = ["CHAMPIONS LEAGUE", "UEFA CHAMPIONS", "LIGA BETPLAY", "LA LIGA", "PREMIER LEAGUE", "SERIE A", "FORMULA 1", "NBA", "UFC", "LIBERTADORES", "COPA AMERICA", "MUNDIAL", "WORLD CUP", "ATP", "WTA", "GRAND SLAM", "WIMBLEDON", "ROLAND GARROS", "US OPEN", "AUSTRALIAN OPEN", "MOTO GP", "MOTOGP", "SIX NATIONS", "RUGBY CHAMPIONSHIP", "COPA DEL REY", "FA CUP", "SUPER BOWL", "BOXING WORLD"]
 TIER_2_NICHO = ["NFL", "MLB", "F2", "F3", "COPA SUDAMERICANA", "EREDIVISIE", "BUNDESLIGA", "LIGUE 1", "CHAMPIONS CUP", "SUPER RUGBY", "NATIONS LEAGUE", "RECOPA", "SUPERLIGA"]
@@ -94,7 +111,12 @@ def aplicar_alias(texto: str) -> str:
     return texto
 
 def extraer_keywords(texto: str) -> list:
-    return [p for p in normalizar_texto(texto).split() if p not in STOP_WORDS and p not in PALABRAS_GENERICAS and len(p) > 2]
+    return [
+        p for p in normalizar_texto(texto).split() 
+        if p not in STOP_WORDS 
+        and p not in PALABRAS_GENERICAS 
+        and (len(p) > 2 or p in PALABRAS_CORTAS_PERMITIDAS)
+    ]
 
 def url_logo_equipo(team_id) -> str: return SOFA_IMG_EQUIPO.format(id=team_id) if team_id else ""
 def url_logo_torneo(unique_id) -> str: return SOFA_IMG_TORNEO.format(id=unique_id) if unique_id else ""
@@ -171,9 +193,13 @@ def obtener_eventos_api() -> list:
                     cat_data = torneo_data.get("category", {})
                     torneo_nombre = torneo_data.get("name", "")
                     torneo_norm = normalizar_texto(torneo_nombre)
+                    
+                    # Extraemos el país o la categoría principal (Vital porque aquí vienen "ATP", "WTA", etc.)
+                    pais_evento = cat_data.get("name", "")
+                    pais_evento_norm = normalizar_texto(pais_evento)
 
-                    # ESCUDO 2: Listas Blancas (Si el deporte tiene lista, el torneo DEBE incluir alguna palabra clave)
-                    if lista_blanca_torneos and not any(kw in torneo_norm for kw in lista_blanca_torneos):
+                    # ESCUDO 2: Listas Blancas (Busca en el nombre del torneo Y en el nombre de la categoría)
+                    if lista_blanca_torneos and not any(kw in torneo_norm for kw in lista_blanca_torneos) and not any(kw in pais_evento_norm for kw in lista_blanca_torneos):
                         continue
                     
                     # Filtro específico para Tenis (Excluir ITF de bajo nivel)
@@ -187,13 +213,17 @@ def obtener_eventos_api() -> list:
                     dt_utc = datetime.fromtimestamp(unix_time, timezone.utc)
                     hora_fin_evento = dt_utc + timedelta(minutes=duracion)
 
-                    # RECOLECTOR DE BASURA: Si la hora de fin ya pasó, no agregamos el evento
+                    # RECOLECTOR DE BASURA: Omitir eventos finalizados
                     if hora_fin_evento < ahora_utc:
                         continue
 
-                    pais_evento = cat_data.get("name", "")
                     pais_codigo = cat_data.get("alpha2", "")
                     unique_id = torneo_data.get("uniqueTournament", {}).get("id")
+                    
+                    # Extracción del nombre específico de la carrera/pelea (Vital para deportes sin equipos)
+                    nombre_evento_api = ev.get("name", "")
+                    description_api = ev.get("description", "")
+                    
                     home_data, away_data = ev.get("homeTeam", {}), ev.get("awayTeam", {})
                     eq_local, eq_visit = home_data.get("name", ""), away_data.get("name", "")
                     
@@ -206,9 +236,32 @@ def obtener_eventos_api() -> list:
                     if pais_evento in PAISES_HEROE_LOCAL or pais_codigo in PAISES_HEROE_LOCAL: tier = min(tier, 2)
 
                     es_duelo = bool(eq_local and eq_visit)
+                    
+                    # TÍTULO INTELIGENTE: Si no hay equipos, usa el nombre de la carrera. Si no hay carrera, usa el torneo.
+                    if es_duelo:
+                        titulo_final = f"{eq_local} vs {eq_visit}"
+                    elif nombre_evento_api:
+                        titulo_final = nombre_evento_api
+                    elif description_api:
+                        titulo_final = description_api
+                    else:
+                        titulo_final = torneo_nombre
+
+                    # GENERACIÓN DE PALABRAS CLAVE DINÁMICA
+                    kws_locales = extraer_keywords(eq_local) if es_duelo else extraer_keywords(titulo_final)
+                    kws_visitantes = extraer_keywords(eq_visit) if es_duelo else []
+                    
+                    # Inyectamos el nombre de la categoría ("ATP", "WTA") en las keywords del torneo
+                    kws_torneo = extraer_keywords(torneo_nombre) + extraer_keywords(pais_evento)
+                    
+                    # INYECCIÓN DEL DICCIONARIO DE ALIAS PARA TORNEOS
+                    for oficial, alias_list in ALIAS_TORNEOS.items():
+                        if oficial in torneo_norm:
+                            kws_torneo.extend(alias_list)
+
                     eventos_procesados.append({
                         "id": str(ev.get("id")),
-                        "titulo": f"{eq_local} vs {eq_visit}" if es_duelo else torneo_nombre,
+                        "titulo": titulo_final,
                         "torneo": torneo_nombre,
                         "categoria": deporte,
                         "hora_utc": hora_utc_str,
@@ -218,9 +271,9 @@ def obtener_eventos_api() -> list:
                         "tier": tier,
                         "duracion_min": duracion,
                         "_hora_corta": hora_corta,
-                        "_kws_local": extraer_keywords(eq_local),
-                        "_kws_visit": extraer_keywords(eq_visit),
-                        "_kws_torneo": extraer_keywords(torneo_nombre),
+                        "_kws_local": kws_locales,
+                        "_kws_visit": kws_visitantes,
+                        "_kws_torneo": kws_torneo,
                     })
                 except Exception:
                     continue
