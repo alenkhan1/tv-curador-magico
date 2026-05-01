@@ -329,15 +329,13 @@ def evaluar_vinculo(evento: dict, texto_canal: str) -> int:
 
     # ─── ASIGNACIÓN DE PUNTOS (MOTOR / GOLF / TENIS INDIVIDUAL) ───
     else: 
-        # En deportes individuales, "_kws_local" guarda el nombre de la carrera/pelea.
-        # Si el canal tiene la hora exacta (+30) y al menos el alias del torneo (ej. F1) o una palabra de la carrera.
-        if puntaje >= 30:
-            # Multiplicamos el peso de las palabras encontradas para compensar la falta de equipos
-            puntaje += (c_local * 20) + (c_torneo * 25)
-            
-            # Bonificación extra si encontró tanto el torneo como el evento (Match perfecto)
-            if c_local > 0 and c_torneo > 0:
-                puntaje += 20
+        # Eliminamos la restricción estricta de la hora (puntaje >= 30).
+        # Multiplicamos el peso de las palabras de la carrera (Ej. Miami) y del Torneo (Ej. F1, GP)
+        puntaje += (c_local * 25) + (c_torneo * 25)
+        
+        # Súper Bonificación: Si el canal menciona el Torneo (F1) y la Carrera (Miami), aprueba directo (+50 pts)
+        if c_local > 0 and c_torneo > 0:
+            puntaje += 50
 
     # Penalización por falso positivo de torneo en cualquier deporte
     if len(evento["_kws_torneo"]) > 1 and c_torneo == 1 and c_local == 0 and c_visit == 0: 
