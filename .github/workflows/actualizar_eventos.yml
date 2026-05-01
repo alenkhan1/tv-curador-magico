@@ -37,7 +37,15 @@ jobs:
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          git add eventos_hoy.json meta_curador.json
+          
+          # 1. Agrega eventos_hoy.json sí o sí
+          git add eventos_hoy.json
+          
+          # 2. Agrega meta_curador.json SOLO si existe
+          if [ -f "meta_curador.json" ]; then
+            git add meta_curador.json
+          fi
+          
           git commit -m "Actualización de Eventos (Auto optimizado)" || echo "Sin cambios"
           git pull --rebase
           git push
