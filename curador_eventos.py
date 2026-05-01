@@ -156,27 +156,44 @@ def hacer_peticion_rotativa(url: str, params: dict):
         log.error("No hay llaves de RapidAPI configuradas.")
         return None
         
+    # Súper protección: Intentaremos hasta 2 veces POR LLAVE (ej. si hay 4 llaves, intentará 8 veces antes de rendirse)
+    max_intentos_globales = len(LLAVES_API) * 2 
     intentos = 0
-    while intentos < len(LLAVES_API):
+    tiempo_espera = 2 # Tiempo base de espera (Exponential Backoff)
+    
+    while intentos < max_intentos_globales:
         llave = LLAVES_API[indice_llave_actual]
         try:
             r = requests.get(url, headers={"x-rapidapi-key": llave, "x-rapidapi-host": RAPIDAPI_HOST}, params=params, timeout=15)
             
-            if r.status_code in [429, 403]: # Rate Limit o Quota Exceeded
-                log.warning(f"Llave {indice_llave_actual + 1} agotada o bloqueada temporalmente. Rotando...")
+            # 429: Rate Limit (Muy rápido) | 403: Quota Exceeded (Se acabó el saldo de esta llave)
+            if r.status_code in [429, 403]: 
+                log.warning(f"Llave {indice_llave_actual + 1} agotada/bloqueada (Código {r.status_code}). Rotando y enfriando {tiempo_espera}s...")
                 indice_llave_actual = (indice_llave_actual + 1) % len(LLAVES_API)
                 intentos += 1
-                time.sleep(2) # Pausa obligatoria al rotar
+                
+                # Enfriamiento progresivo para no enfadar a la API
+                time.sleep(tiempo_espera)
+                # Aumentamos el tiempo de espera para el próximo intento (max 10 segundos)
+                tiempo_espera = min(tiempo_espera * 2, 10) 
                 continue
                 
-            return r
+            # Si la respuesta es exitosa (200 OK)
+            if r.status_code == 200:
+                return r
+            else:
+                log.warning(f"Respuesta inesperada de la API (Código {r.status_code}). Reintentando...")
+                intentos += 1
+                time.sleep(2)
+                continue
+                
         except requests.exceptions.RequestException as e:
-            log.error(f"Error de conexión en llave {indice_llave_actual + 1}: {e}")
+            log.error(f"Error de red en llave {indice_llave_actual + 1}: {e}")
             indice_llave_actual = (indice_llave_actual + 1) % len(LLAVES_API)
             intentos += 1
-            time.sleep(2)
+            time.sleep(3)
             
-    log.error("Todas las llaves fallaron o se agotaron.")
+    log.error("¡FALLO CRÍTICO! Todas las llaves fueron probadas múltiples veces y la API sigue bloqueando. Abortando descarga.")
     return None
 
 def obtener_agenda_maestra() -> list:
