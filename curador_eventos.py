@@ -25,7 +25,7 @@ HORAS_CACHE   = 4
 
 # Lector Dinámico: Atrapa cualquier variable que empiece con "RAPIDAPI_KEY_"
 LLAVES_ENV = [val for key, val in os.environ.items() if key.startswith("RAPIDAPI_KEY_") and val]
-LLAVES_API = list(set(LLAVES_ENV)) # Elimina duplicados si los hay
+LLAVES_API = list(set(LLAVES_ENV)) # Elimina duplicados
 indice_llave_actual = 0
 
 if not LLAVES_API:
@@ -53,7 +53,6 @@ TRADUCTOR_JERGA = {
     "LIV": "LIV GOLF", "PGA": "PGA TOUR", "PREMIER": "PREMIER LEAGUE"
 }
 
-# (Paso 4) Ampliación de Categorías y Logos de Rescate
 CATEGORIAS_RESCATE = {
     "Motor": ["F1", "F2", "F3", "FORMULA", "NASCAR", "CARRERA", "GP ", "MOTOGP", "RALLY", "INDYCAR", "SPRINT"],
     "Béisbol": ["MLB", "LMB", "BEISBOL", "BASEBALL", "DIAMONDBACKS", "CUBS", "YANKEES", "RED SOX", "DODGERS", "PIRATES", "REDS", "ASTROS", "RANGERS", "PADRES", "GIANTS", "MARINERS"],
@@ -83,7 +82,31 @@ LOGOS_RESCATE = {
     "Deportes": "https://img.icons8.com/color/512/stadium.png"
 }
 
-# ─── UTILIDADES ──────────────────────────────────────────────────────────────
+# ─── UTILIDADES DE FECHA Y TEXTO ─────────────────────────────────────────────
+def obtener_variaciones_fecha_hoy() -> list:
+    """Genera dinámicamente múltiples formatos de la fecha actual para atrapar cualquier proveedor."""
+    dt = datetime.now(ZONA_COLOMBIA)
+    d, m = dt.strftime("%d"), dt.strftime("%m")
+    
+    meses_es = {"01":"ENE", "02":"FEB", "03":"MAR", "04":"ABR", "05":"MAY", "06":"JUN", "07":"JUL", "08":"AGO", "09":"SEP", "10":"OCT", "11":"NOV", "12":"DIC"}
+    meses_en = {"01":"JAN", "02":"FEB", "03":"MAR", "04":"APR", "05":"MAY", "06":"JUN", "07":"JUL", "08":"AUG", "09":"SEP", "10":"OCT", "11":"NOV", "12":"DEC"}
+    
+    m_es, m_en = meses_es[m], meses_en[m]
+    
+    # Crea formatos latinos, gringos, con barra, guión, espacio y texto.
+    return [
+        f"{d}/{m}", f"{d}-{m}", f"{d} {m}", f"{d}.{m}",
+        f"{m}/{d}", f"{m}-{d}", f"{m} {d}", f"{m}.{d}",
+        f"{d} {m_es}", f"{m_es} {d}", f"{d} {m_en}", f"{m_en} {d}"
+    ]
+
+def limpiar_nombre_categoria(nombre: str) -> str:
+    """Elimina emojis y decoraciones para dejar el nombre puro y legible."""
+    nombre = nombre.upper()
+    # Mantiene solo letras, números, espacios y separadores de fecha comunes
+    nombre = re.sub(r'[^\w\s\/\-\.]', ' ', nombre) 
+    return ' '.join(nombre.split())
+
 def limpiar_texto_para_match(texto: str) -> str:
     if not texto: return ""
     texto = str(texto).upper()
@@ -127,7 +150,6 @@ def adivinar_categoria_y_logo(texto: str):
     return "Deportes", LOGOS_RESCATE["Deportes"]
 
 def calcular_hora_utc_falsa(nombre_canal: str) -> str:
-    # Intenta atrapar la hora real del título
     match = re.search(r'\b(\d{1,2}):(\d{2})\b\s*(PM)?', nombre_canal, re.IGNORECASE)
     if match:
         try:
@@ -144,7 +166,7 @@ def crear_id_seguro(titulo: str) -> str:
     hash_obj = hashlib.md5(titulo.encode('utf-8'))
     return hash_obj.hexdigest()[:12]
 
-# ─── RED Y CACHÉ (Paso 2: Anti-ráfagas y Auto-limpieza de Llaves) ────────────
+# ─── RED Y CACHÉ (Anti-ráfagas y Auto-limpieza de Llaves) ────────────────────
 def hacer_peticion_segura(url: str, params: dict):
     global LLAVES_API, indice_llave_actual
     if not LLAVES_API: return None
@@ -156,13 +178,13 @@ def hacer_peticion_segura(url: str, params: dict):
     while intentos < max_intentos and LLAVES_API:
         llave = LLAVES_API[indice_llave_actual]
         try:
-            time.sleep(1.5) # Pausa base estricta para evitar bloqueos
+            time.sleep(1.5) # Pausa base estricta
             r = requests.get(url, headers={"x-rapidapi-key": llave, "x-rapidapi-host": RAPIDAPI_HOST}, params=params, timeout=15)
             
             if r.status_code == 200:
                 return r
                 
-            elif r.status_code == 429: # Rate Limit
+            elif r.status_code == 429:
                 log.warning(f"Llave {indice_llave_actual + 1} dio 429 (Límite vel.). Esperando {backoff}s...")
                 time.sleep(backoff)
                 backoff = min(backoff * 2, 8) # Retroceso exponencial
@@ -170,9 +192,9 @@ def hacer_peticion_segura(url: str, params: dict):
                 intentos += 1
                 continue
                 
-            elif r.status_code == 403: # Cuota mensual agotada
+            elif r.status_code == 403:
                 log.error(f"🚨 Llave {indice_llave_actual + 1} AGOTADA (403). Eliminándola de la rotación.")
-                LLAVES_API.pop(indice_llave_actual) # Elimina la llave muerta
+                LLAVES_API.pop(indice_llave_actual)
                 if not LLAVES_API:
                     log.error("Todas las llaves se han agotado.")
                     return None
@@ -180,7 +202,7 @@ def hacer_peticion_segura(url: str, params: dict):
                 continue
                 
             else:
-                return r # Devuelve el 404 o 500 para que lo maneje el llamador
+                return r # Devuelve el 404 o 500
                 
         except requests.exceptions.RequestException as e:
             log.warning(f"Error de conexión en llave {indice_llave_actual + 1}. Rotando...")
@@ -209,13 +231,12 @@ def obtener_agenda_maestra() -> list:
         params = {"date": FECHA_HOY, "sport_id": sport_id, "timezone": -5}
         
         r_agenda = hacer_peticion_segura(url, params)
-        
         if not r_agenda: continue
 
-        # (Paso 3) Manejo silencioso y limpio de los 404
+        # Manejo silencioso de los 404 para delegar a Ruta B
         if r_agenda.status_code == 404:
             if deporte in ["Boxeo", "MMA", "Golf", "Fútbol Americano"]:
-                log.info(f"  └─ Sin agenda regular para {deporte} hoy (Comportamiento normal, se delegará a Rescate).")
+                log.info(f"  └─ Sin agenda regular para {deporte} hoy (Se delegará a Rescate).")
             else:
                 log.warning(f"  └─ No se pudo descargar la agenda de {deporte} (Error 404).")
             continue
@@ -259,30 +280,41 @@ def obtener_agenda_maestra() -> list:
             json.dump(eventos_api, f, ensure_ascii=False, indent=2)
     return eventos_api
 
-# ─── XTREAM (Paso 1: Extracción Inteligente + Filtro de Contención) ──────────
+# ─── XTREAM (Extracción Universal Adaptativa) ────────────────────────────────
 def procesar_cubo_a() -> list:
     log.info("Analizando servidor Xtream...")
     base_url = XTREAM_URL.rstrip('/')
     api_url = f"{base_url}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
-    
     cubo_a = []
-    fecha_corta = FECHA_HOY[-5:] # "05-02"
-    fecha_inversa = f"{FECHA_HOY[8:10]}/{FECHA_HOY[5:7]}" # "02/05"
+    
+    fechas_hoy = obtener_variaciones_fecha_hoy()
+    palabras_principales = ["HOY", "TODAY", "DAILY", "DIARIO", "DIA", "VIVO", "LIVE"]
+    palabras_contexto = ["EVENTOS", "EVENTS", "AGENDA", "PARTIDOS", "CARTELERA", "CALENDARIO", "PPV"]
     
     try:
-        # Intento Primario: Buscar la categoría del día
         r_cat = requests.get(f"{api_url}&action=get_live_categories", timeout=15)
         categoria_id_hoy = None
         
         if r_cat.status_code == 200:
             for cat in r_cat.json():
-                nombre_cat = cat.get("category_name", "").upper()
-                if fecha_corta in nombre_cat or fecha_inversa in nombre_cat or "EVENTOS DIARIOS" in nombre_cat:
+                nombre_cat = cat.get("category_name", "")
+                nombre_limpio = limpiar_nombre_categoria(nombre_cat)
+                
+                # Fase 2: Coincidencia Fuerte (Regla de Oro: Fecha explícita)
+                if any(f in nombre_limpio for f in fechas_hoy):
                     categoria_id_hoy = cat.get("category_id")
-                    log.info(f"🎯 Categoría del día detectada: {nombre_cat} (ID: {categoria_id_hoy})")
+                    log.info(f"🎯 Categoría detectada por FECHA: '{nombre_cat}' (ID: {categoria_id_hoy})")
+                    break
+                    
+                # Fase 3: Coincidencia Flexible (Sinónimos Universales)
+                tiene_principal = any(p in nombre_limpio for p in palabras_principales)
+                tiene_contexto = any(c in nombre_limpio for c in palabras_contexto)
+                if tiene_principal and tiene_contexto:
+                    categoria_id_hoy = cat.get("category_id")
+                    log.info(f"🎯 Categoría detectada por PALABRAS CLAVE: '{nombre_cat}' (ID: {categoria_id_hoy})")
                     break
         
-        # Modo de descarga
+        # Fase 4: Descarga
         if categoria_id_hoy:
             url_streams = f"{api_url}&action=get_live_streams&category_id={categoria_id_hoy}"
         else:
@@ -295,13 +327,14 @@ def procesar_cubo_a() -> list:
         for s in r_str.json():
             nombre_canal = s.get("name", "").strip()
             
-            # Filtro de Contención: Si estamos en modo supervivencia y el canal tiene fecha explícita vieja, lo descartamos
+            # Filtro de Contención para canales zombies (Solo aplica en Fuerza Bruta)
             if not categoria_id_hoy:
                  match_fecha = re.search(r'\b(\d{1,2})[-/](\d{1,2})\b', nombre_canal)
                  if match_fecha:
-                     fecha_en_canal = f"{int(match_fecha.group(1)):02d}/{int(match_fecha.group(2)):02d}"
-                     if fecha_en_canal != fecha_inversa:
-                         continue # Canal zombie detectado. Descartar.
+                     d_str, m_str = match_fecha.group(1), match_fecha.group(2)
+                     # Si tiene formato fecha pero NO cruza con nuestras permutaciones de hoy, es basura.
+                     if not any(f in f"{d_str}/{m_str}" or f in f"{m_str}/{d_str}" for f in fechas_hoy):
+                         continue 
 
             if re.search(r'\b\d{1,2}:\d{2}\b', nombre_canal) or any(kw in nombre_canal.upper() for kw in ["PEA ", "PARA+", "LMB ", "MLB ", "UFC "]):
                 texto_limpio = limpiar_texto_para_match(nombre_canal)
@@ -320,7 +353,7 @@ def procesar_cubo_a() -> list:
 
 # ─── ORQUESTADOR (MOTOR DE EMPAREJAMIENTO) ───────────────────────────────────
 def main():
-    log.info(f"=== Iniciando Curador Mágico V8 (Arquitectura Adaptativa) ===")
+    log.info(f"=== Iniciando Curador Mágico V8 (Arquitectura Adaptativa Universal) ===")
     agenda_api = obtener_agenda_maestra()
     cubo_a = procesar_cubo_a()
     
