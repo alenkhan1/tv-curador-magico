@@ -45,7 +45,7 @@ DEPORTES_MAP = {
 
 DURACION_POR_DEPORTE = {
     "Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210, 
-    "Béisbol": 210, "Rugby": 120, "Boxeo": 180, "Voleibol": 150, "MMA": 200, "Golf": 240, "Hockey": 150
+    "Béisbol": 210, "Hockey": 150, "Combate": 180, "Deportes": 180
 }
 
 TRADUCTOR_JERGA = {
@@ -58,13 +58,10 @@ CATEGORIAS_RESCATE = {
     "Béisbol": ["MLB", "LMB", "BEISBOL", "BASEBALL", "DIAMONDBACKS", "CUBS", "YANKEES", "RED SOX", "DODGERS", "PIRATES", "REDS", "ASTROS", "RANGERS", "PADRES", "GIANTS", "MARINERS"],
     "Baloncesto": ["NBA", "WNBA", "BASKETBALL", "LAKERS", "CELTICS", "BULLS", "CAVALIERS", "PISTONS", "MAGIC", "RAPTORS", "ENDESA", "EUROLEAGUE"],
     "Fútbol": ["LIGA", "SERIE A", "PREMIER", "FUTBOL", "SOCCER", "NWSL", "MLS", "CHAMPIONS", "LEAGUE", "SUDAMERICANA", "COPA", "BUNDESLIGA", "LIGUE 1"],
-    "Lucha Libre": ["WWE", "SMACKDOWN", "RAW", "AEW", "LUCHA", "WRESTLING", "WRESTLEMANIA"],
-    "Boxeo": ["BOXEO", "BOXING", "PESAJE", "FIGHT", "COMBATE", "RING"],
-    "MMA": ["UFC", "MMA", "BELLATOR", "ONE CHAMPIONSHIP", "FIGHT PASS"],
-    "Golf": ["PGA", "LIV", "GOLF", "MASTERS", "OPEN"],
+    "Combate": ["WWE", "SMACKDOWN", "RAW", "AEW", "LUCHA", "WRESTLING", "WRESTLEMANIA", "BOXEO", "BOXING", "PESAJE", "FIGHT", "COMBATE", "RING", "UFC", "MMA", "BELLATOR", "ONE CHAMPIONSHIP", "FIGHT PASS"],
+    "Deportes": ["PGA", "LIV", "GOLF", "MASTERS", "OPEN", "NFL", "FOOTBALL", "SUPER BOWL", "NCAA", "RUGBY", "DERBY", "KENTUCKY"],
     "Hockey": ["NHL", "SABRES", "BRUINS", "CANADIENS", "LIGHTNING", "HOCKEY", "STANLEY"],
-    "Tenis": ["ATP", "WTA", "TENIS", "TENNIS", "WIMBLEDON", "OPEN", "PADEL", "PING PONG"],
-    "Fútbol Americano": ["NFL", "FOOTBALL", "SUPER BOWL", "NCAA"]
+    "Tenis": ["ATP", "WTA", "TENIS", "TENNIS", "WIMBLEDON", "OPEN", "PADEL", "PING PONG"]
 }
 
 LOGOS_RESCATE = {
@@ -72,14 +69,10 @@ LOGOS_RESCATE = {
     "Béisbol": "https://img.icons8.com/color/512/baseball.png",
     "Baloncesto": "https://img.icons8.com/color/512/basketball.png",
     "Fútbol": "https://img.icons8.com/color/512/football2.png",
-    "Lucha Libre": "https://img.icons8.com/color/512/wrestling.png",
-    "Boxeo": "https://img.icons8.com/color/512/boxing-glove.png",
-    "MMA": "https://img.icons8.com/color/512/boxing-glove.png",
-    "Golf": "https://img.icons8.com/color/512/golf.png",
+    "Combate": "https://img.icons8.com/color/512/boxing-glove.png",
+    "Deportes": "https://img.icons8.com/color/512/stadium.png",
     "Hockey": "https://img.icons8.com/color/512/ice-hockey.png",
-    "Tenis": "https://img.icons8.com/color/512/tennis.png",
-    "Fútbol Americano": "https://img.icons8.com/color/512/american-football.png",
-    "Deportes": "https://img.icons8.com/color/512/stadium.png"
+    "Tenis": "https://img.icons8.com/color/512/tennis.png"
 }
 
 # ─── UTILIDADES DE FECHA Y TEXTO ─────────────────────────────────────────────
@@ -394,10 +387,24 @@ def main():
         # Ruta B (Rescate Premium)
         if not match_encontrado:
             titulo_base = canal["nombre_ui"]
+            # 1. Limpieza base de horas, resoluciones y paréntesis
             titulo_base = re.sub(r'\(.*?\)|\[.*?\]', '', titulo_base)
             titulo_base = re.sub(r'\b\d{1,2}:\d{2}\b(\s*[AP]M)?(\s*ET)?', '', titulo_base)
             titulo_base = re.sub(r'\b(HD|SD|FHD|4K|ENG|ESP|GER)\b', '', titulo_base, flags=re.IGNORECASE)
-            titulo_base = titulo_base.strip(" -|▫✨[]").title()
+            
+            # 2. IA de Separación: Partimos el título usando la basura (▫, |, ☻, ✨) como separadores
+            partes = [p.strip() for p in re.split(r'[▫\|☻✨]+', titulo_base) if len(p.strip()) > 2]
+            
+            if partes:
+                # Buscamos si alguna de las partes es un duelo (contiene "vs")
+                parte_vs = next((p for p in partes if ' vs ' in p.lower() or ' vs. ' in p.lower()), None)
+                if parte_vs:
+                    titulo_base = parte_vs # ¡Aislamos solo el combate/partido!
+                else:
+                    titulo_base = " - ".join(partes) # Si no hay duelo, unimos lo que sobrevivió
+            
+            # 3. Capitalización final
+            titulo_base = titulo_base.strip(" -[]").title()
             
             if not titulo_base: continue
             
