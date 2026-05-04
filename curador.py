@@ -50,10 +50,10 @@ ORDEN_CATEGORIAS = [
     "🎵 Música", "📺 Película de TV", "📺 Reality", "🗣️ Talk Show", "📰 Noticias", "🤠 Western"
 ]
 
-# Cálculos de fechas (se calculan en tiempo de ejecución, no de importación)
-HOY = None
-FECHA_ESTRENOS_LIMITE = None
-AÑO_ACTUAL = None
+# Cálculos de fechas
+HOY = datetime.now()
+FECHA_ESTRENOS_LIMITE = HOY - timedelta(days=180)
+AÑO_ACTUAL = HOY.year
 
 
 def obtener_categorias_xtream(action):
@@ -281,11 +281,6 @@ def main():
             print(f"[ERROR FATAL] Falta el secreto '{nombre}'. Abortando ejecución.")
             return
 
-    global HOY, FECHA_ESTRENOS_LIMITE, AÑO_ACTUAL
-    HOY = datetime.now()
-    FECHA_ESTRENOS_LIMITE = HOY - timedelta(days=180)
-    AÑO_ACTUAL = HOY.year
-    
     mapa_curado = {"movies": {}, "series": {}}
     
     # 1. Procesar Películas
