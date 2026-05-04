@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Descargar el repositorio
-        uses: actions/checkout@v4 # ACTUALIZADO a v4
+        uses: actions/checkout@v5
 
       - name: Configurar Python
-        uses: actions/setup-python@v5 # ACTUALIZADO a v5
+        uses: actions/setup-python@v5.6.0
         with:
           python-version: "3.10"
 
@@ -38,4 +38,5 @@ jobs:
           git config --global user.email "bot@allstreamtv.com"
           git add catalogo_curado.json
           git commit -m "Actualización diaria del catálogo" || echo "No hay cambios para guardar"
+          git pull --rebase -X theirs
           git push
