@@ -129,7 +129,7 @@ def buscar_info_tmdb(titulo, año_original=0, es_serie=False):
         if req.status_code == 200:
             data = req.json()
             if data.get("results") and len(data["results"]) > 0:
-                item = data["results"][0]
+                item = data["results"]
                 
                 # 1. Póster HD Estricto (Sin póster no hay fiesta)
                 poster_path = item.get("poster_path")
@@ -153,7 +153,7 @@ def buscar_info_tmdb(titulo, año_original=0, es_serie=False):
                 año = 0
                 fecha_obj = None
                 if fecha_str and "-" in fecha_str:
-                    año = int(fecha_str.split("-")[0])
+                    año = int(fecha_str.split("-"))
                     try:
                         fecha_obj = datetime.strptime(fecha_str, "%Y-%m-%d")
                     except ValueError:
@@ -165,8 +165,9 @@ def buscar_info_tmdb(titulo, año_original=0, es_serie=False):
                 tmdb_id = str(item.get("id", ""))
                 
                 resultado = genero_principal, fecha_obj, año, vote_avg, vote_count, titulo_oficial, poster_url, tmdb_id
-        _tmdb_cache[cache_key] = resultado
-        return resultado
+                
+                _tmdb_cache[cache_key] = resultado
+                return resultado
     except Exception:
         pass
     
