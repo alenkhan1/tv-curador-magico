@@ -50,10 +50,10 @@ ORDEN_CATEGORIAS = [
     "🎵 Música", "📺 Película de TV", "📺 Reality", "🗣️ Talk Show", "📰 Noticias", "🤠 Western"
 ]
 
-# Cálculos de fechas
-HOY = datetime.now()
-FECHA_ESTRENOS_LIMITE = HOY - timedelta(days=180) # Hace 6 meses
-AÑO_ACTUAL = HOY.year
+# Cálculos de fechas (se calculan en tiempo de ejecución, no de importación)
+HOY = None
+FECHA_ESTRENOS_LIMITE = None
+AÑO_ACTUAL = None
 
 
 def obtener_categorias_xtream(action):
@@ -69,7 +69,7 @@ def obtener_categorias_xtream(action):
                 cat_name = cat.get("category_name", "")
                 mapa[cat_id] = cat_name
     except Exception as e:
-        pass
+        print(f"[ERROR] No se pudo obtener categorías de Xtream ({action}): {e}. El filtro de contenido adulto puede estar inactivo.")
     return mapa
 
 def es_contenido_prohibido(nombre_crudo, category_id, mapa_categorias):
@@ -109,7 +109,12 @@ def limpiar_titulo(nombre):
     limpio = limpio.replace("-", " ").replace("|", " ").replace("_", " ")
     return " ".join(limpio.split())
 
+_tmdb_cache = {}
+
 def buscar_info_tmdb(titulo, año_original=0, es_serie=False):
+    cache_key = (titulo.lower(), año_original, es_serie)
+    if cache_key in _tmdb_cache:
+        return _tmdb_cache[cache_key]
     tipo = "tv" if es_serie else "movie"
     url = f"https://api.themoviedb.org/3/search/{tipo}?api_key={TMDB_API_KEY}&query={titulo}&language=es-ES"
     
@@ -159,7 +164,9 @@ def buscar_info_tmdb(titulo, año_original=0, es_serie=False):
                 titulo_oficial = item.get("name") if es_serie else item.get("title")
                 tmdb_id = str(item.get("id", ""))
                 
-                return genero_principal, fecha_obj, año, vote_avg, vote_count, titulo_oficial, poster_url, tmdb_id
+                resultado = genero_principal, fecha_obj, año, vote_avg, vote_count, titulo_oficial, poster_url, tmdb_id
+        _tmdb_cache[cache_key] = resultado
+        return resultado
     except Exception:
         pass
     
@@ -185,6 +192,7 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
     print(f"Procesando {len(items)} {tipo_str}...")
     
     temp_map = {}
+    contadores = {"adulto": 0, "sin_tmdb": 0, "sin_poster": 0, "sin_genero": 0, "sin_regla": 0, "aceptados": 0}
     
     for item in items:
         stream_id = int(item.get(id_key, 0))
@@ -193,6 +201,7 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
         
         # EL CADENERO: Bloqueo de origen
         if es_contenido_prohibido(nombre_original, category_id, mapa_categorias):
+            contadores["adulto"] += 1
             continue
             
         titulo_limpio = limpiar_titulo(nombre_original)
@@ -204,7 +213,8 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
             
         resultado_tmdb = buscar_info_tmdb(titulo_limpio, año_original, es_serie)
         if not resultado_tmdb:
-            continue # Si falló TMDB, o no hay póster, o no hay género, se ignora
+            contadores["sin_tmdb"] += 1
+            continue
             
         genero, fecha_obj, año, rating, votos, titulo_oficial, poster_url, tmdb_id = resultado_tmdb
         nombre_final = titulo_oficial if titulo_oficial else titulo_limpio
@@ -235,7 +245,9 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
             categorias_asignadas.append(genero)
             
         if not categorias_asignadas:
-            continue # Si no entró en ninguna regla, se descarta
+            contadores["sin_regla"] += 1
+            continue
+        contadores["aceptados"] += 1
             
         nuevo_item = {
             "id": stream_id,
@@ -251,11 +263,28 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
             if not any(obj["clean_name"] == nombre_final for obj in temp_map[cat]):
                 temp_map[cat].append(nuevo_item)
                 
-        time.sleep(0.2)
+                time.sleep(0.2)
         
     mapa_curado[tipo_str] = organizar_diccionario(temp_map)
+    print(f"  ✅ Aceptados: {contadores['aceptados']} | 🔞 Adulto: {contadores['adulto']} | ❌ Sin TMDB/póster/género: {contadores['sin_tmdb']} | 📭 Sin regla temporal: {contadores['sin_regla']}")
 
 def main():
+    credenciales_requeridas = {
+        "TMDB_API_KEY": TMDB_API_KEY,
+        "XTREAM_URL": XTREAM_URL,
+        "XTREAM_USER": XTREAM_USER,
+        "XTREAM_PASS": XTREAM_PASS,
+    }
+    for nombre, valor in credenciales_requeridas.items():
+        if not valor:
+            print(f"[ERROR FATAL] Falta el secreto '{nombre}'. Abortando ejecución.")
+            return
+
+    global HOY, FECHA_ESTRENOS_LIMITE, AÑO_ACTUAL
+    HOY = datetime.now()
+    FECHA_ESTRENOS_LIMITE = HOY - timedelta(days=180)
+    AÑO_ACTUAL = HOY.year
+    
     mapa_curado = {"movies": {}, "series": {}}
     
     # 1. Procesar Películas
