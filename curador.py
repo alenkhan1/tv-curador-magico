@@ -263,7 +263,7 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
             if not any(obj["clean_name"] == nombre_final for obj in temp_map[cat]):
                 temp_map[cat].append(nuevo_item)
                 
-time.sleep(0.2)
+    time.sleep(0.2)
         
     mapa_curado[tipo_str] = organizar_diccionario(temp_map)
     print(f"  ✅ Aceptados: {contadores['aceptados']} | 🔞 Adulto: {contadores['adulto']} | ❌ Sin TMDB/póster/género: {contadores['sin_tmdb']} | 📭 Sin regla temporal: {contadores['sin_regla']}")
