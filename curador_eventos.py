@@ -38,14 +38,15 @@ SOFA_IMG_EQUIPO = "https://api.sofascore.app/api/v1/team/{id}/image"
 SOFA_IMG_TORNEO = "https://api.sofascore.app/api/v1/unique-tournament/{id}/image/dark"
 
 DEPORTES_MAP = {
-    "Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 22, 
-    "Béisbol": 64, "Boxeo": 9, "MMA": 30, "Golf": 18, 
-    "Hockey": 4, "Voleibol": 23, "Rugby": 12, "Fútbol Americano": 14
+    "Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 11,
+    "Béisbol": 64, "Hockey": 4, "Voleibol": 23, "Rugby": 12,
+    "Fútbol Americano": 63
 }
 
 DURACION_POR_DEPORTE = {
-    "Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210, 
-    "Béisbol": 210, "Hockey": 150, "Combate": 180, "Deportes": 180
+    "Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210,
+    "Béisbol": 210, "Hockey": 150, "Combate": 180, "Deportes": 180,
+    "Ciclismo": 300
 }
 
 TRADUCTOR_JERGA = {
@@ -62,6 +63,7 @@ CATEGORIAS_RESCATE = {
     "Deportes": ["PGA", "LIV", "GOLF", "MASTERS", "OPEN", "NFL", "FOOTBALL", "SUPER BOWL", "NCAA", "RUGBY", "DERBY", "KENTUCKY"],
     "Hockey": ["NHL", "SABRES", "BRUINS", "CANADIENS", "LIGHTNING", "HOCKEY", "STANLEY"],
     "Tenis": ["ATP", "WTA", "TENIS", "TENNIS", "WIMBLEDON", "OPEN", "PADEL", "PING PONG"]
+    "Ciclismo": ["CICLISMO", "CYCLING", "TOUR DE FRANCE", "TOUR COLOMBIA", "VUELTA ESPAÑA", "VUELTA A ESPAÑA", "GIRO DE ITALIA", "GIRO D ITALIA", "UCI", "ETAPA", "BERNAL", "CARAPAZ", "NAIRO", "COLOMBIA ES PASION"]
 }
 
 LOGOS_RESCATE = {
@@ -72,7 +74,8 @@ LOGOS_RESCATE = {
     "Combate": "https://img.icons8.com/color/512/boxing-glove.png",
     "Deportes": "https://img.icons8.com/color/512/stadium.png",
     "Hockey": "https://img.icons8.com/color/512/ice-hockey.png",
-    "Tenis": "https://img.icons8.com/color/512/tennis.png"
+    "Tenis": "https://img.icons8.com/color/512/tennis.png",
+    "Ciclismo": "https://img.icons8.com/color/512/cycling.png"
 }
 
 # ─── UTILIDADES DE FECHA Y TEXTO ─────────────────────────────────────────────
