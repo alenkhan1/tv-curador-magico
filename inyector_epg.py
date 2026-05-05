@@ -140,23 +140,47 @@ def extraer_eurosport() -> list:
     return eventos
 
 def extraer_dsports() -> list:
-    log.info("📡 Extrayendo DSports (API JSON)...")
-    # Nota: Aquí debes poner la URL real del JSON que capturaste. 
-    # Usaremos una lista simulada para demostrar la lógica por si la URL caduca.
-    # url_dsports = "TU_URL_AQUI" 
+    log.info("📡 Extrayendo DSports (API Automática)...")
     eventos = []
+    
+    # Usamos EXACTAMENTE la URL que tú investigaste y encontraste
+    url_dsports = "https://epg.tbxapis.com/v0/epg/external/entries"
+    
     try:
-        # data = requests.get(url_dsports, timeout=15).json()
-        # En producción, usa el "data" real. Asumo que inyectarás el json aquí.
-        log.warning("Saltando Dsports hasta configurar URL en código (La lógica está lista)")
-        # for prog in data.get("data", {}).get("programs", []):
-        #     titulo = prog.get("Title", "")
-        #     if es_basura(titulo): continue
-        #     inicio = datetime.fromisoformat(prog.get("StartDate").replace("+00:00", "+00:00"))
-        #     fin = datetime.fromisoformat(prog.get("EndDate").replace("+00:00", "+00:00"))
-        #     duracion = int((fin - inicio).total_seconds() / 60)
-        #     eventos.append({"titulo": titulo, "canal": "DSports", "hora_utc": inicio.strftime("%Y-%m-%dT%H:%M:%SZ"), "duracion_min": duracion})
-    except Exception as e: log.error(f"Error DSports: {e}")
+        # El script hace la conexión a internet automáticamente
+        respuesta = requests.get(url_dsports, timeout=15)
+        
+        if respuesta.status_code != 200:
+            log.error(f"Error accediendo a la API de DSports. Código: {respuesta.status_code}")
+            return eventos
+            
+        data = respuesta.json()
+            
+        # El JSON empieza con "data" y luego "programs"
+        for prog in data.get("data", {}).get("programs", []):
+            titulo = prog.get("Title", "")
+            if es_basura(titulo): continue
+            
+            try:
+                # Reemplazamos +00:00 por Z para estandarizar con tu app
+                hora_limpia = prog.get("StartDate").replace("+00:00", "Z")
+                # Parseamos el tiempo para calcular la duración
+                inicio = datetime.fromisoformat(prog.get("StartDate"))
+                fin = datetime.fromisoformat(prog.get("EndDate"))
+                duracion = int((fin - inicio).total_seconds() / 60)
+                
+                eventos.append({
+                    "titulo": titulo.strip(), 
+                    "canal": "DSports", 
+                    "hora_utc": hora_limpia, 
+                    "duracion_min": duracion
+                })
+            except Exception as e:
+                continue # Si hay error en la hora de un evento, saltamos al siguiente
+                
+    except Exception as e: 
+        log.error(f"Error en la conexión con DSports: {e}")
+        
     return eventos
 
 def extraer_winplay() -> list:
