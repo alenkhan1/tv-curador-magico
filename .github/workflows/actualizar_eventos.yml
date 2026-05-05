@@ -2,7 +2,10 @@ name: Curador Eventos Deportivos
 
 on:
   schedule:
-    - cron: "0 17 * * *" # Se ejecuta 1 vez al día (17:00 UTC = 19:00 España / 12:00 Colombia)
+    # El Curador Pesado: 1 vez al día (ej. 17:00 UTC)
+    - cron: "0 17 * * *"
+    # El Inyector Ligero: Múltiples veces (ej. 13:00, 20:00, 23:00 UTC)
+    - cron: "0 13,20,23 * * *"
   workflow_dispatch:
 
 jobs:
