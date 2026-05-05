@@ -1,7 +1,6 @@
 import os
-import re  # <--- Esta es la línea que faltaba
+import re
 import json
-import time
 import gzip
 import logging
 import requests
@@ -19,27 +18,24 @@ XTREAM_PASS  = os.environ.get("XTREAM_PASS", "password")
 
 ARCHIVO_EVENTOS = "eventos_hoy.json"
 
-# ─── MAPEO ESTRICTO DE SUBCANALES ────────────────────────────────────────────
-# 1. Relacionamos el ID del XML con un Nombre Lógico para nuestra App
+# ─── MAPEO ESTRICTO DE CANALES ───────────────────────────────────────────────
+# Solo buscaremos exactamente los canales que te interesan, ignorando los básicos si no los quieres.
 MAPEO_XML_CANALES = {
-    "Win.Sports+.co": "Win Sports +",                        #[cite: 12]
-    "Win.Sports.co": "Win Sports Básico",                    #[cite: 12]
-    "DSPORTS.+(DTS+).co": "DSports +",                       #[cite: 12]
-    "DSPORTS.2.(DTS2).co": "DSports 2",                      #[cite: 12]
-    "TyC.Sports.International(TYCS).co": "TyC Sports",       #[cite: 12]
-    "Eurosport.es": "Eurosport 1",                           #[cite: 10]
-    "Eurosport.2.es": "Eurosport 2"                          #[cite: 10]
+    "Win.Sports+.co": "Win Sports +",
+    "DSPORTS.+(DTS+).co": "DSports +",
+    "DSPORTS.2.(DTS2).co": "DSports 2",
+    "TyC.Sports.International(TYCS).co": "TyC Sports",
+    "Eurosport.es": "Eurosport 1",
+    "Eurosport.2.es": "Eurosport 2"
 }
 
-# 2. Relacionamos el Nombre Lógico con la búsqueda en tu servidor Xtream
 FIRMAS_XTREAM = {
     "Win Sports +": ["WIN SPORTS+", "WIN SPORTS +", "WIN+"],
-    "Win Sports Básico": ["WIN SPORTS", "WIN SPORT"], # Se filtrará el "+" más abajo
     "DSports +": ["DSPORTS+", "DSPORTS +", "DIRECTV SPORTS+"],
     "DSports 2": ["DSPORTS 2", "DSPORTS2", "DIRECTV SPORTS 2"],
     "TyC Sports": ["TYC SPORTS", "TYC"],
-    "Eurosport 1": ["EUROSPORT 1", "EUROSPORT 1HD", "EUROSPORT HD"],
-    "Eurosport 2": ["EUROSPORT 2"]
+    "Eurosport 1": ["EUROSPORT 1", "EUROSPORT 1HD", "EUROSPORT HD", "EUROSPORT ESPAÑA"],
+    "Eurosport 2": ["EUROSPORT 2", "EUROSPORT 2HD"]
 }
 
 URLS_XMLTV = [
@@ -48,36 +44,49 @@ URLS_XMLTV = [
 ]
 
 # ─── FILTROS LÓGICOS INTELIGENTES ────────────────────────────────────────────
-def pasa_filtros_logicos(titulo: str, categoria: str, inicio_dt: datetime, fin_dt: datetime) -> bool:
+def parsear_tiempo_xml(tiempo_str: str) -> datetime:
+    """Convierte '20260505190000 -0500' a un objeto datetime en UTC exacto."""
+    # Extraemos hasta la zona horaria (los primeros 20 caracteres)
+    t_str = tiempo_str[:20]
+    dt = datetime.strptime(t_str, "%Y%m%d%H%M%S %z")
+    return dt.astimezone(timezone.utc)
+
+def pasa_filtros_logicos(titulo: str, subtitulo: str, descripcion: str, categoria: str, inicio_dt: datetime, fin_dt: datetime) -> bool:
     ahora_dt = datetime.now(timezone.utc)
-    t_upper = titulo.upper()
+    
+    # Unificamos todo el texto para buscar nuestras palabras clave
+    texto_completo = f"{titulo} {subtitulo} {descripcion}".upper()
     cat_upper = categoria.upper()
 
-    # 1. Filtro del Reloj Estricto: Si ya terminó o es de mañana, se descarta.
+    # 1. Filtro del Reloj Estricto: Descartar pasado y mañana
     if fin_dt <= ahora_dt: return False
     if inicio_dt.date() > ahora_dt.date(): return False
 
-    # 2. Filtro de Duración: Si dura menos de 65 mins, es un resumen.
+    # 2. Filtro de Duración: Menos de 65 mins = resumen
     duracion_min = (fin_dt - inicio_dt).total_seconds() / 60
     if duracion_min < 65: return False
 
-    # 3. Filtro de Metadatos (Categoría)
-    if any(c in cat_upper for c in ["TALK", "NEWS", "MAGAZINE", "DOCUMENTARY", "NOTICIAS"]):
+    # 3. Filtro de Categoría de Metadatos
+    if any(c in cat_upper for c in ["TALK", "NEWS", "MAGAZINE", "DOCUMENTARY", "NOTICIAS", "BUSINESS", "WEATHER"]):
         return False
 
     # 4. Diccionario Negativo (Basura y Relleno)
     basura = [
         "REPETICIÓN", "REPETICION", "CLÁSICOS", "CLASICOS", "TEMPORADA", 
         "PARTE", "RESUMEN", "ESPECIAL", "NOTICIAS", "SAQUE LARGO", "PREVIO", 
-        "MEDIO TIEMPO", "LA RUTA", "SPORTIA", "DOMINGOL", "LÍBERO", "PLANETA"
+        "MEDIO TIEMPO", "LA RUTA", "SPORTIA", "DOMINGOL", "LÍBERO", "PLANETA",
+        "PUEDE PASAR", "FÚTBOL TOTAL", "NOTICIAS LITE", "NOTICIAS NITE"
     ]
-    if any(b in t_upper for b in basura): return False
+    if any(b in texto_completo for b in basura): return False
 
-    # 5. Regla Competitiva ("VS" o palabras clave de carrera/etapa)
-    es_duelo = " VS " in t_upper or " VS. " in t_upper
-    es_carrera = any(kw in t_upper for kw in ["ETAPA", "FINAL", "GRAN PREMIO", "RONDA", "CLASIFICACIÓN"])
+    # 5. Regla Competitiva Ampliada (Busca en Título, Subtítulo y Descripción)
+    es_duelo = " VS " in texto_completo or " VS. " in texto_completo or " - " in titulo
+    es_evento_especial = any(kw in texto_completo for kw in [
+        "ETAPA", "FINAL", "GRAN PREMIO", "RONDA", "CLASIFICACIÓN", 
+        "SESIÓN", "CHAMPIONSHIP", "TORNEO", "VUELTA"
+    ])
     
-    if not (es_duelo or es_carrera): return False
+    if not (es_duelo or es_evento_especial): return False
 
     return True
 
@@ -110,9 +119,6 @@ def obtener_urls_xtream() -> dict:
             
             for canal_logico, firmas in FIRMAS_XTREAM.items():
                 if any(firma in nombre for firma in firmas):
-                    # Protección para no meter Win+ en Win Básico
-                    if canal_logico == "Win Sports Básico" and "+" in nombre:
-                        continue 
                     mapa_urls[canal_logico].append({
                         "nombre": s.get("name", "").strip(),
                         "url": url_video
@@ -133,7 +139,7 @@ def descargar_y_procesar_xmltv() -> list:
     ids_interes = list(MAPEO_XML_CANALES.keys())
 
     for url_gz in URLS_XMLTV:
-        log.info(f"   -> Descargando {url_gz.split('/')[-1]}...")
+        log.info(f"   -> Procesando {url_gz.split('/')[-1]}...")
         try:
             r = requests.get(url_gz, timeout=20)
             xml_content = gzip.decompress(r.content)
@@ -142,41 +148,48 @@ def descargar_y_procesar_xmltv() -> list:
             for programme in root.findall('programme'):
                 canal_xml = programme.get('channel')
                 
-                # Filtrado inmediato: Solo leemos los canales que mapeamos[cite: 10, 12]
                 if canal_xml not in ids_interes:
                     continue
                     
                 nombre_logico = MAPEO_XML_CANALES[canal_xml]
                 
-                # Extracción de datos del XML
-                title_elem = programme.find('title')
-                cat_elem = programme.find('category')
+                # Extracción segura de nodos XML
+                title_node = programme.find('title')
+                sub_node = programme.find('sub-title')
+                desc_node = programme.find('desc')
+                cat_node = programme.find('category')
                 
-                titulo = title_elem.text if title_elem is not None else ""
-                categoria = cat_elem.text if cat_elem is not None else ""
+                titulo = title_node.text if title_node is not None and title_node.text else ""
+                subtitulo = sub_node.text if sub_node is not None and sub_node.text else ""
+                descripcion = desc_node.text if desc_node is not None and desc_node.text else ""
+                categoria = cat_node.text if cat_node is not None and cat_node.text else ""
                 
-                # Manejo de tiempo XMLTV (Ej: "20260505190000 +0000")
                 start_str = programme.get('start')
                 end_str = programme.get('stop')
                 
                 try:
-                    # Cortamos los primeros 14 caracteres y forzamos zona horaria UTC
-                    inicio_dt = datetime.strptime(start_str[:14], "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc)
-                    fin_dt = datetime.strptime(end_str[:14], "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc)
-                except: continue
+                    inicio_dt = parsear_tiempo_xml(start_str)
+                    fin_dt = parsear_tiempo_xml(end_str)
+                except Exception as e:
+                    continue
 
-                # Aplicar nuestros filtros de inteligencia
-                if pasa_filtros_logicos(titulo, categoria, inicio_dt, fin_dt):
+                if pasa_filtros_logicos(titulo, subtitulo, descripcion, categoria, inicio_dt, fin_dt):
                     duracion_min = int((fin_dt - inicio_dt).total_seconds() / 60)
+                    
+                    # Si el subtítulo tiene información rica (ej. "Final | Sesión 4"), la unimos al título
+                    titulo_final = titulo.strip()
+                    if subtitulo and subtitulo.upper() not in titulo.upper():
+                        titulo_final = f"{titulo_final} - {subtitulo.strip()}"
+                        
                     eventos_validos.append({
-                        "titulo": titulo.strip(),
+                        "titulo": titulo_final,
                         "canal": nombre_logico,
                         "hora_utc": inicio_dt.strftime("%Y-%m-%dT%H:%M:%SZ"),
                         "duracion_min": duracion_min
                     })
                     
         except Exception as e:
-            log.error(f"Error procesando XMLTV {url_gz}: {e}")
+            log.error(f"Error procesando {url_gz}: {e}")
             
     return eventos_validos
 
@@ -193,7 +206,7 @@ def inyectar_eventos():
         
     urls_disponibles = obtener_urls_xtream()
     eventos_xml = descargar_y_procesar_xmltv()
-    log.info(f"Total eventos reales en vivo filtrados: {len(eventos_xml)}")
+    log.info(f"Total eventos reales en vivo filtrados de la EPG: {len(eventos_xml)}")
     
     nuevos_creados = 0
     fuentes_añadidas = 0
@@ -202,13 +215,12 @@ def inyectar_eventos():
         canal = ex["canal"]
         fuentes_iptv = urls_disponibles.get(canal, [])
         
-        # Si Xtream no nos da este canal hoy o se cayó, ignoramos el evento
         if not fuentes_iptv: continue
             
         match_encontrado = False
         
-        # Buscar si el evento ya existe en tu app
         for ea in eventos_app:
+            # Buscamos similitud en el título.
             if calcular_similitud(ex["titulo"], ea["titulo"]) > 75.0:
                 match_encontrado = True
                 urls_actuales = [f["url"] for f in ea["fuentes"]]
@@ -218,14 +230,14 @@ def inyectar_eventos():
                         fuentes_añadidas += 1
                 break
                 
-        # Si no existe, es evento LOCAL/EXCLUSIVO. Lo creamos.
         if not match_encontrado:
-            cat = "Ciclismo" if any(kw in ex["titulo"].upper() for kw in ["ETAPA", "VUELTA", "TOUR"]) else "Fútbol" if " VS " in ex["titulo"].upper() else "Deportes"
+            t_up = ex["titulo"].upper()
+            cat = "Ciclismo" if any(kw in t_up for kw in ["ETAPA", "VUELTA", "TOUR", "GIRO"]) else "Tenis" if "ATP" in t_up or "WTA" in t_up else "Fútbol" if " VS " in t_up or "-" in t_up else "Deportes"
             
             nuevo_evento = {
                 "id": crear_id_seguro(ex["titulo"], ex["hora_utc"]),
                 "titulo": ex["titulo"],
-                "torneo": canal, # El nombre del canal da contexto
+                "torneo": canal,
                 "categoria": cat,
                 "hora_utc": ex["hora_utc"],
                 "duracion_min": ex["duracion_min"],
@@ -236,7 +248,6 @@ def inyectar_eventos():
             eventos_app.append(nuevo_evento)
             nuevos_creados += 1
             
-    # Ordenar cronológicamente para mantener el orden en la app
     eventos_app.sort(key=lambda x: x.get("hora_utc", ""))
     
     with open(ARCHIVO_EVENTOS, "w", encoding="utf-8") as f:
