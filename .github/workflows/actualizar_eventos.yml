@@ -2,9 +2,9 @@ name: Curador Eventos Deportivos
 
 on:
   schedule:
-    # El Curador Pesado: 1 vez al día (ej. 17:00 UTC)
+    # El Curador Pesado: 1 vez al día (17:00 UTC)
     - cron: "0 17 * * *"
-    # El Inyector Ligero: Múltiples veces (ej. 13:00, 20:00, 23:00 UTC)
+    # El Inyector Ligero: Múltiples veces (13:00, 20:00, 23:00 UTC)
     - cron: "0 13,20,23 * * *"
   workflow_dispatch:
 
@@ -24,9 +24,12 @@ jobs:
           python-version: "3.10"
 
       - name: Instalar dependencias
+        # Además de requests, puedes agregar bs4 si llegas a usar BeautifulSoup en el futuro
         run: pip install requests
 
-      - name: Ejecutar Curador de Eventos
+      - name: Ejecutar Curador Pesado (SofaScore)
+        # ESTA ES LA MAGIA: Solo se ejecuta a las 17:00 o si le das clic manual al botón (workflow_dispatch)
+        if: github.event.schedule == '0 17 * * *' || github.event_name == 'workflow_dispatch'
         env:
           RAPIDAPI_KEY_1: ${{ secrets.RAPIDAPI_KEY_1 }}
           RAPIDAPI_KEY_2: ${{ secrets.RAPIDAPI_KEY_2 }}
@@ -37,6 +40,15 @@ jobs:
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
         run: python curador_eventos.py
+
+      - name: Ejecutar Inyector Ligero (Scraping Web Local)
+        # Este NO tiene "if", por lo que se ejecutará SIEMPRE (a las 13, 17, 20 y 23)
+        # A las 17:00, inyectará los canales en el JSON nuevo. En los demás horarios, solo lo actualizará.
+        env:
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
+          XTREAM_USER: ${{ secrets.XTREAM_USER }}
+          XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
+        run: python inyector_epg.py
 
       - name: Guardar cambios Eventos
         run: |
