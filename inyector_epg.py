@@ -1,4 +1,5 @@
 import os
+import re  # <--- Esta es la línea que faltaba
 import json
 import time
 import gzip
