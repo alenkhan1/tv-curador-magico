@@ -10,7 +10,7 @@ from difflib import SequenceMatcher
 
 # ─── CONFIGURACIÓN DE LOGS Y ENTORNO ─────────────────────────────────────────
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
-log = logging.getLogger("inyector_xmltv")
+log = logging.getLogger("inyector_maestro")
 
 XTREAM_URL   = os.environ.get("XTREAM_URL", "http://tu-servidor.com")
 XTREAM_USER  = os.environ.get("XTREAM_USER", "usuario")
@@ -18,15 +18,19 @@ XTREAM_PASS  = os.environ.get("XTREAM_PASS", "password")
 
 ARCHIVO_EVENTOS = "eventos_hoy.json"
 
-# ─── MAPEO ESTRICTO DE CANALES ───────────────────────────────────────────────
-# Solo buscaremos exactamente los canales que te interesan, ignorando los básicos si no los quieres.
+# ─── MAPEOS DE CANALES ───────────────────────────────────────────────────────
+# XMLTV procesará los canales latinos.
 MAPEO_XML_CANALES = {
     "Win.Sports+.co": "Win Sports +",
     "DSPORTS.+(DTS+).co": "DSports +",
     "DSPORTS.2.(DTS2).co": "DSports 2",
-    "TyC.Sports.International(TYCS).co": "TyC Sports",
-    "Eurosport.es": "Eurosport 1",
-    "Eurosport.2.es": "Eurosport 2"
+    "TyC.Sports.International(TYCS).co": "TyC Sports"
+}
+
+# Movistar API procesará los canales europeos (Precisión 100% En Vivo)
+CANALES_MOVISTAR = {
+    "Eurosport 1": "ESP",
+    "Eurosport 2": "ESP2"
 }
 
 FIRMAS_XTREAM = {
@@ -43,34 +47,26 @@ URLS_XMLTV = [
     "https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz"
 ]
 
-# ─── FILTROS LÓGICOS INTELIGENTES ────────────────────────────────────────────
+# ─── FUNCIONES DE AYUDA Y FILTROS ────────────────────────────────────────────
 def parsear_tiempo_xml(tiempo_str: str) -> datetime:
-    """Convierte '20260505190000 -0500' a un objeto datetime en UTC exacto."""
-    # Extraemos hasta la zona horaria (los primeros 20 caracteres)
     t_str = tiempo_str[:20]
     dt = datetime.strptime(t_str, "%Y%m%d%H%M%S %z")
     return dt.astimezone(timezone.utc)
 
 def pasa_filtros_logicos(titulo: str, subtitulo: str, descripcion: str, categoria: str, inicio_dt: datetime, fin_dt: datetime) -> bool:
     ahora_dt = datetime.now(timezone.utc)
-    
-    # Unificamos todo el texto para buscar nuestras palabras clave
     texto_completo = f"{titulo} {subtitulo} {descripcion}".upper()
     cat_upper = categoria.upper()
 
-    # 1. Filtro del Reloj Estricto: Descartar pasado y mañana
     if fin_dt <= ahora_dt: return False
     if inicio_dt.date() > ahora_dt.date(): return False
 
-    # 2. Filtro de Duración: Menos de 65 mins = resumen
     duracion_min = (fin_dt - inicio_dt).total_seconds() / 60
     if duracion_min < 65: return False
 
-    # 3. Filtro de Categoría de Metadatos
     if any(c in cat_upper for c in ["TALK", "NEWS", "MAGAZINE", "DOCUMENTARY", "NOTICIAS", "BUSINESS", "WEATHER"]):
         return False
 
-    # 4. Diccionario Negativo (Basura y Relleno)
     basura = [
         "REPETICIÓN", "REPETICION", "CLÁSICOS", "CLASICOS", "TEMPORADA", 
         "PARTE", "RESUMEN", "ESPECIAL", "NOTICIAS", "SAQUE LARGO", "PREVIO", 
@@ -79,7 +75,6 @@ def pasa_filtros_logicos(titulo: str, subtitulo: str, descripcion: str, categori
     ]
     if any(b in texto_completo for b in basura): return False
 
-    # 5. Regla Competitiva Ampliada (Busca en Título, Subtítulo y Descripción)
     es_duelo = " VS " in texto_completo or " VS. " in texto_completo or " - " in titulo
     es_evento_especial = any(kw in texto_completo for kw in [
         "ETAPA", "FINAL", "GRAN PREMIO", "RONDA", "CLASIFICACIÓN", 
@@ -100,7 +95,7 @@ def calcular_similitud(texto1: str, texto2: str) -> float:
     t2 = re.sub(r'[^A-Z0-9\s]', '', str(texto2).upper())
     return SequenceMatcher(None, t1, t2).ratio() * 100
 
-# ─── FASE 1: OBTENER URLS ACTIVAS DE XTREAM ──────────────────────────────────
+# ─── FASE 1: XTREAM ──────────────────────────────────────────────────────────
 def obtener_urls_xtream() -> dict:
     log.info("🔍 Fase 1: Escaneando servidor Xtream para URLs dinámicas...")
     base_url = XTREAM_URL.rstrip('/')
@@ -132,14 +127,13 @@ def obtener_urls_xtream() -> dict:
         log.error(f"Error escaneando Xtream: {e}")
         return mapa_urls
 
-# ─── FASE 2: PROCESAMIENTO XMLTV ─────────────────────────────────────────────
+# ─── FASE 2: EXTRACCIÓN XMLTV (Canales Latinos) ──────────────────────────────
 def descargar_y_procesar_xmltv() -> list:
-    log.info("📡 Fase 2: Descargando y procesando EPGShare01 (XMLTV)...")
+    log.info("📡 Fase 2A: Procesando EPGShare01 (XMLTV)...")
     eventos_validos = []
     ids_interes = list(MAPEO_XML_CANALES.keys())
 
     for url_gz in URLS_XMLTV:
-        log.info(f"   -> Procesando {url_gz.split('/')[-1]}...")
         try:
             r = requests.get(url_gz, timeout=20)
             xml_content = gzip.decompress(r.content)
@@ -153,7 +147,6 @@ def descargar_y_procesar_xmltv() -> list:
                     
                 nombre_logico = MAPEO_XML_CANALES[canal_xml]
                 
-                # Extracción segura de nodos XML
                 title_node = programme.find('title')
                 sub_node = programme.find('sub-title')
                 desc_node = programme.find('desc')
@@ -170,13 +163,11 @@ def descargar_y_procesar_xmltv() -> list:
                 try:
                     inicio_dt = parsear_tiempo_xml(start_str)
                     fin_dt = parsear_tiempo_xml(end_str)
-                except Exception as e:
-                    continue
+                except Exception: continue
 
                 if pasa_filtros_logicos(titulo, subtitulo, descripcion, categoria, inicio_dt, fin_dt):
                     duracion_min = int((fin_dt - inicio_dt).total_seconds() / 60)
                     
-                    # Si el subtítulo tiene información rica (ej. "Final | Sesión 4"), la unimos al título
                     titulo_final = titulo.strip()
                     if subtitulo and subtitulo.upper() not in titulo.upper():
                         titulo_final = f"{titulo_final} - {subtitulo.strip()}"
@@ -189,13 +180,58 @@ def descargar_y_procesar_xmltv() -> list:
                     })
                     
         except Exception as e:
-            log.error(f"Error procesando {url_gz}: {e}")
+            log.error(f"Error procesando XMLTV {url_gz}: {e}")
+            
+    return eventos_validos
+
+# ─── FASE 2.5: EXTRACCIÓN MOVISTAR (Canales Europeos) ────────────────────────
+def extraer_eventos_movistar() -> list:
+    log.info("📡 Fase 2B: Extrayendo canales desde API Movistar+ (Solo En Vivo)...")
+    eventos_validos = []
+    
+    ahora = datetime.now(timezone.utc)
+    fecha_movistar = ahora.strftime("%Y-%m-%dT00:00:00")
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+        "Accept": "application/json"
+    }
+
+    for nombre_canal, id_movistar in CANALES_MOVISTAR.items():
+        url = f"https://soteroc-pf.cdn.sve.video.telefonicaservices.com/service/contents/webplayer/CASUAL/epg?from={fecha_movistar}&span=1&channel={id_movistar}&network=movistarplus&v=10&mdrm=true&tlsstream=true&demarcation=0&startover=U7D"
+        
+        try:
+            r = requests.get(url, headers=headers, timeout=15)
+            if r.status_code != 200: continue
+            
+            programas = r.json()
+            for prog in programas:
+                tags = prog.get("Tags", "") 
+                
+                # Filtro absoluto: Solo directo
+                if "DI" in tags or "DIRECTO" in str(tags).upper():
+                    titulo = prog.get("Title", "Sin Título")
+                    inicio_ms = prog.get("StartTime", 0)
+                    fin_ms = prog.get("EndTime", 0)
+                    
+                    inicio_dt = datetime.fromtimestamp(inicio_ms / 1000, timezone.utc)
+                    fin_dt = datetime.fromtimestamp(fin_ms / 1000, timezone.utc)
+                    duracion_min = int((fin_dt - inicio_dt).total_seconds() / 60)
+                    
+                    eventos_validos.append({
+                        "titulo": titulo.strip(),
+                        "canal": nombre_canal,
+                        "hora_utc": inicio_dt.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                        "duracion_min": abs(duracion_min)
+                    })
+        except Exception as e:
+            log.error(f"Error procesando {nombre_canal} en API Movistar: {e}")
             
     return eventos_validos
 
 # ─── FASE 3: MOTOR DE FUSIÓN ─────────────────────────────────────────────────
 def inyectar_eventos():
-    log.info("=== INICIANDO INYECTOR EPG V2 (XMLTV) ===")
+    log.info("=== INICIANDO INYECTOR EPG MAESTRO ===")
     
     if not os.path.exists(ARCHIVO_EVENTOS):
         log.error(f"No existe {ARCHIVO_EVENTOS}. Ejecuta primero el curador.")
@@ -205,14 +241,20 @@ def inyectar_eventos():
         eventos_app = json.load(f)
         
     urls_disponibles = obtener_urls_xtream()
+    
+    # 1. Recolectamos eventos de ambas fuentes
     eventos_xml = descargar_y_procesar_xmltv()
-    log.info(f"Total eventos reales en vivo filtrados de la EPG: {len(eventos_xml)}")
+    eventos_movistar = extraer_eventos_movistar()
+    
+    eventos_totales_web = eventos_xml + eventos_movistar
+    log.info(f"Total eventos reales en vivo listos para procesar: {len(eventos_totales_web)}")
     
     nuevos_creados = 0
     fuentes_añadidas = 0
     
-    for ex in eventos_xml:
-        canal = ex["canal"]
+    # 2. Fusión contra los eventos de tu App
+    for ev_web in eventos_totales_web:
+        canal = ev_web["canal"]
         fuentes_iptv = urls_disponibles.get(canal, [])
         
         if not fuentes_iptv: continue
@@ -220,8 +262,7 @@ def inyectar_eventos():
         match_encontrado = False
         
         for ea in eventos_app:
-            # Buscamos similitud en el título.
-            if calcular_similitud(ex["titulo"], ea["titulo"]) > 75.0:
+            if calcular_similitud(ev_web["titulo"], ea["titulo"]) > 75.0:
                 match_encontrado = True
                 urls_actuales = [f["url"] for f in ea["fuentes"]]
                 for fuente_nueva in fuentes_iptv:
@@ -231,16 +272,16 @@ def inyectar_eventos():
                 break
                 
         if not match_encontrado:
-            t_up = ex["titulo"].upper()
+            t_up = ev_web["titulo"].upper()
             cat = "Ciclismo" if any(kw in t_up for kw in ["ETAPA", "VUELTA", "TOUR", "GIRO"]) else "Tenis" if "ATP" in t_up or "WTA" in t_up else "Fútbol" if " VS " in t_up or "-" in t_up else "Deportes"
             
             nuevo_evento = {
-                "id": crear_id_seguro(ex["titulo"], ex["hora_utc"]),
-                "titulo": ex["titulo"],
+                "id": crear_id_seguro(ev_web["titulo"], ev_web["hora_utc"]),
+                "titulo": ev_web["titulo"],
                 "torneo": canal,
                 "categoria": cat,
-                "hora_utc": ex["hora_utc"],
-                "duracion_min": ex["duracion_min"],
+                "hora_utc": ev_web["hora_utc"],
+                "duracion_min": ev_web["duracion_min"],
                 "logo_local": "", "logo_visitante": "", "banner": "",
                 "tier": 2,
                 "fuentes": fuentes_iptv
