@@ -14,12 +14,10 @@ jobs:
       - name: Ejecutar WebGrab+Plus (Scraper)
         run: |
           echo "Iniciando contenedor de WebGrab+Plus..."
-          # Usamos GHCR (GitHub Container Registry) para evitar límites de descarga
+          # Dejamos que la imagen inicie nativamente montando la carpeta
           docker run --rm \
             -v ${{ github.workspace }}/wgp_config:/config \
-            --entrypoint /bin/bash \
-            ghcr.io/linuxserver/webgrabplus:latest \
-            -c "cd /app/wg++ && dotnet WebGrab+Plus.dll /config"
+            ghcr.io/linuxserver/webgrabplus:latest
 
       - name: Mostrar el resultado generado
         run: |
