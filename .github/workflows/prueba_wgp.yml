@@ -1,0 +1,28 @@
+name: Prueba Piloto WebGrab+Plus
+
+on:
+  workflow_dispatch: # Esto habilita el botón para ejecutarlo manualmente
+
+jobs:
+  probar_scraper:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar WebGrab+Plus (Scraper)
+        run: |
+          echo "Iniciando contenedor de WebGrab+Plus..."
+          # Usamos la imagen oficial, pero forzamos que corra el proceso una sola vez y se apague (sin quedarse en bucle)
+          docker run --rm \
+            -v ${{ github.workspace }}/wgp_config:/config \
+            --entrypoint /bin/bash \
+            lscr.io/linuxserver/webgrabplus:latest \
+            -c "cd /app/wg++ && dotnet WebGrab+Plus.dll /config"
+
+      - name: Mostrar el resultado generado
+        run: |
+          echo "=== LECTURA DEL ARCHIVO GUIDE.XML ==="
+          # Imprimimos el archivo en la consola para ver si funcionó el truco del [VIVO]
+          cat wgp_config/guide.xml
