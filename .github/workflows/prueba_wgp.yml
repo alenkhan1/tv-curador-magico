@@ -13,16 +13,21 @@ jobs:
 
       - name: Ejecutar WebGrab+Plus (Scraper)
         run: |
-          echo "Iniciando contenedor de WebGrab+Plus (Ejecución Única)..."
-          # Anulamos el servidor cron y usamos /bin/sh (Alpine Linux) para forzar la ejecución directa
-          docker run --rm \
-            --entrypoint /bin/sh \
+          echo "1. Arrancando contenedor en segundo plano..."
+          docker run -d --name wgp \
             -v ${{ github.workspace }}/wgp_config:/config \
-            ghcr.io/linuxserver/webgrabplus:latest \
-            -c "cd /app/wg++ && dotnet WebGrab+Plus.dll /config"
+            ghcr.io/linuxserver/webgrabplus:latest
+
+          echo "2. Esperando 15s para que inicie su entorno nativo..."
+          sleep 15
+
+          echo "3. Lanzando la extracción manualmente..."
+          docker exec wgp /bin/sh -c "cd /app/wg++ && dotnet WebGrab+Plus.dll /config"
+
+          echo "4. Apagando y limpiando contenedor..."
+          docker rm -f wgp
 
       - name: Mostrar el resultado generado
         run: |
           echo "=== LECTURA DEL ARCHIVO GUIDE.XML ==="
-          # Imprimimos el archivo en la consola para ver si funcionó el truco del [VIVO]
           cat wgp_config/guide.xml
