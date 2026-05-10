@@ -176,8 +176,12 @@ def extraer_eventos_epg(mapa_xtream: dict) -> list:
             if r.status_code != 200: return
             
             f = gzip.GzipFile(fileobj=io.BytesIO(r.content)) if url_xml.endswith(".gz") else io.BytesIO(r.content)
-            
+            contador_nodos = 0
             for event, elem in ET.iterparse(f, events=("end",)):
+                contador_nodos += 1  # <--- DESPUÉS DE LA LÍNEA (Indentado)
+                if contador_nodos % 100000 == 0:
+                    log.info(f"[{region}] Procesados {contador_nodos} bloques XML...")
+            
                 if elem.tag == "programme":
                     canal_id = elem.attrib.get("channel", "").upper()
                     
