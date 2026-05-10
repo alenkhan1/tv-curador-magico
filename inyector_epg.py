@@ -138,9 +138,9 @@ def extraer_eventos():
         log.info(f"📡 Leyendo EPG {pais} (epgshare01)...")
         try:
             r = requests.get(url, timeout=20)
-            with gzip.GzipFile(fileobj=io.BytesIO(r.content)) as f:
-                it = ET.iterparse(f, events=("end",))
-                for _, elem in it:
+            xml_data = gzip.decompress(r.content) # Descomprime todo a memoria
+            it = ET.iterparse(io.BytesIO(xml_data), events=("end",)) # Lee como texto normal
+            for _, elem in it:
                     if elem.tag == "programme":
                         cid = elem.attrib.get("channel")
                         canal_asignado = obtener_canal_logico(cid)
