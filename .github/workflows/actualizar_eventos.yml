@@ -21,10 +21,9 @@ jobs:
           python-version: "3.10"
 
       - name: Instalar dependencias
-        # Se añade lxml para parsear XMLTV rápido sin saturar la RAM
-        run: pip install requests lxml
+        run: pip install requests
 
-      - name: Ejecutar Orquestador Maestro EPG
+      - name: Ejecutar Curador Base (SofaScore + Xtream)
         env:
           RAPIDAPI_KEY_1: ${{ secrets.RAPIDAPI_KEY_1 }}
           RAPIDAPI_KEY_2: ${{ secrets.RAPIDAPI_KEY_2 }}
@@ -34,10 +33,16 @@ jobs:
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
-          # Nuevas llaves para el Validador de Google
+        run: python curador_eventos.py
+
+      - name: Ejecutar Inyector Local (Filtro Google + EPG_DobleM)
+        env:
+          XTREAM_URL: ${{ secrets.XTREAM_URL }}
+          XTREAM_USER: ${{ secrets.XTREAM_USER }}
+          XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
           GOOGLE_CX: ${{ secrets.GOOGLE_CX }}
-        run: python curador_eventos.py
+        run: python inyector_epg.py
 
       - name: Guardar cambios Eventos
         run: |
@@ -50,6 +55,6 @@ jobs:
             git add meta_curador.json
           fi
 
-          git commit -m "Actualización Maestro de Eventos (V9 EPG + IA Search)" || echo "Sin cambios"
+          git commit -m "Actualización de Eventos (Google Search Inyectado)" || echo "Sin cambios"
           git pull --rebase
           git push
