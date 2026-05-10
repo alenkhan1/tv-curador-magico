@@ -30,10 +30,13 @@ LLAVES_ENV = [val for key, val in os.environ.items() if key.startswith("RAPIDAPI
 LLAVES_API = list(set(LLAVES_ENV))
 indice_llave_actual = 0
 
-# ─── URLS DE EPG (Puedes cambiarlas si caen) ─────────────────────────────────
+# ─── URLS DE EPG LIGERAS (Archivos por país) ─────────────────────────────────
 URL_EPG_EUROPA = "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml"
-# Asumimos un XML genérico o gz para América. Reemplaza con tu fuente real.
-URL_EPG_AMERICA = "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
+URLS_EPG_AMERICA = [
+    "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz", # Colombia (Win Sports, DSports CO)
+    "https://epgshare01.online/epgshare01/epg_ripper_AR1.xml.gz", # Argentina (TyC Sports, ESPN AR)
+    "https://epgshare01.online/epgshare01/epg_ripper_MX1.xml.gz"  # México (TUDN, Claro Sports)
+]
 
 # ─── DICCIONARIOS Y CONSTANTES ───────────────────────────────────────────────
 DEPORTES_MAP = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 11, "Béisbol": 64, "Hockey": 4, "Voleibol": 23, "Rugby": 12, "Fútbol Americano": 63}
@@ -221,8 +224,9 @@ def extraer_eventos_epg(mapa_xtream: dict) -> list:
             log.error(f"Error procesando {region}: {e}")
 
     procesar_xml(URL_EPG_EUROPA, "EU")
-    procesar_xml(URL_EPG_AMERICA, "AM")
-    
+    for url_ligera in URLS_EPG_AMERICA:
+        procesar_xml(url_ligera, "AM")
+        
     return eventos_aprobados
 
 # ─── FASE 4: SOFASCORE Y FUSIÓN FINAL ────────────────────────────────────────
