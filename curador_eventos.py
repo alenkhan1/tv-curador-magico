@@ -5,443 +5,313 @@ import time
 import logging
 import requests
 import unicodedata
+import gzip
+import io
 from datetime import datetime, timezone, timedelta
 from difflib import SequenceMatcher
+import xml.etree.ElementTree as ET
 
-# ─── LOGGING ESTRUCTURADO ────────────────────────────────────────────────────
+# ─── LOGGING Y CONFIGURACIÓN ─────────────────────────────────────────────────
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
-log = logging.getLogger("curador")
+log = logging.getLogger("curador_maestro")
 
-# ─── CONFIGURACIÓN DE ENTORNO Y LLAVES DINÁMICAS ─────────────────────────────
-XTREAM_URL   = os.environ.get("XTREAM_URL")
-XTREAM_USER  = os.environ.get("XTREAM_USER")
-XTREAM_PASS  = os.environ.get("XTREAM_PASS")
+XTREAM_URL   = os.environ.get("XTREAM_URL", "").rstrip('/')
+XTREAM_USER  = os.environ.get("XTREAM_USER", "")
+XTREAM_PASS  = os.environ.get("XTREAM_PASS", "")
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
+GOOGLE_CX    = os.environ.get("GOOGLE_CX", "")
 RAPIDAPI_HOST = "sofasport.p.rapidapi.com"
 
 ZONA_COLOMBIA = timezone(timedelta(hours=-5))
-FECHA_HOY     = datetime.now(ZONA_COLOMBIA).strftime("%Y-%m-%d")
-ARCHIVO_CACHE = "agenda_api_v7.json"
-HORAS_CACHE   = 4
+FECHA_HOY = datetime.now(ZONA_COLOMBIA).strftime("%Y-%m-%d")
+ARCHIVO_JSON = "eventos_hoy.json"
 
-# Lector Dinámico: Atrapa cualquier variable que empiece con "RAPIDAPI_KEY_"
 LLAVES_ENV = [val for key, val in os.environ.items() if key.startswith("RAPIDAPI_KEY_") and val]
-LLAVES_API = list(set(LLAVES_ENV)) # Elimina duplicados
+LLAVES_API = list(set(LLAVES_ENV))
 indice_llave_actual = 0
 
-if not LLAVES_API:
-    log.warning("⚠️ No se han detectado llaves de RapidAPI en las variables de entorno.")
-else:
-    log.info(f"✅ Se han cargado {len(LLAVES_API)} llaves de RapidAPI para la rotación.")
+# ─── URLS DE EPG (Puedes cambiarlas si caen) ─────────────────────────────────
+URL_EPG_EUROPA = "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml"
+# Asumimos un XML genérico o gz para América. Reemplaza con tu fuente real.
+URL_EPG_AMERICA = "https://epgshare01.online/epgshare01/epg_ripper_ALL_SOURCES1.xml.gz"
 
-# ─── DICCIONARIOS Y CONFIGURACIÓN ────────────────────────────────────────────
-SOFA_IMG_EQUIPO = "https://api.sofascore.app/api/v1/team/{id}/image"
-SOFA_IMG_TORNEO = "https://api.sofascore.app/api/v1/unique-tournament/{id}/image/dark"
+# ─── DICCIONARIOS Y CONSTANTES ───────────────────────────────────────────────
+DEPORTES_MAP = {"Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 11, "Béisbol": 64, "Hockey": 4, "Voleibol": 23, "Rugby": 12, "Fútbol Americano": 63}
+DURACION_POR_DEPORTE = {"Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210, "Béisbol": 210, "Hockey": 150, "Combate": 180, "Deportes": 180, "Ciclismo": 300}
 
-DEPORTES_MAP = {
-    "Fútbol": 1, "Baloncesto": 2, "Tenis": 5, "Motor": 11,
-    "Béisbol": 64, "Hockey": 4, "Voleibol": 23, "Rugby": 12,
-    "Fútbol Americano": 63
-}
+CANALES_AMERICA = ["WIN SPORTS", "DSPORTS", "TYC SPORTS", "TNT SPORTS", "CLARO SPORTS", "TUDN", "ESPN"]
+CANALES_EUROPA  = ["EUROSPORT", "GOL", "DAZN"]
 
-DURACION_POR_DEPORTE = {
-    "Fútbol": 120, "Baloncesto": 150, "Tenis": 180, "Motor": 210,
-    "Béisbol": 210, "Hockey": 150, "Combate": 180, "Deportes": 180,
-    "Ciclismo": 300
-}
+PALABRAS_BASURA = ["REPETICIÓN", "REPETICION", "NOTICIAS", "RESUMEN", "PREVIO", "SAQUE LARGO", "MEDIO TIEMPO", "MAGAZINE", "FÚTBOL TOTAL", "SPORTIA", "DOMINGOL", "LÍBERO", "SPORTSCENTER", "STUDIO", "ANALISIS", "ENTREVISTA"]
+BANDERAS_VERDES = ["hoy", "previa", "transmisión", "alineaciones", "dónde ver", "recibe a", "se enfrentan", "vivo", "directo"]
+BANDERAS_ROJAS  = ["goles", "resumen", "resultado", "derrotó", "empató", "ayer", "polémica por", "venció", "crónica"]
 
-TRADUCTOR_JERGA = {
-    "F1": "FORMULA 1", "MOTO GP": "MOTOGP", "UCL": "CHAMPIONS LEAGUE", 
-    "LIV": "LIV GOLF", "PGA": "PGA TOUR", "PREMIER": "PREMIER LEAGUE"
-}
-
-CATEGORIAS_RESCATE = {
-    "Motor": ["F1", "F2", "F3", "FORMULA", "NASCAR", "CARRERA", "GP ", "MOTOGP", "RALLY", "INDYCAR", "SPRINT"],
-    "Béisbol": ["MLB", "LMB", "BEISBOL", "BASEBALL", "DIAMONDBACKS", "CUBS", "YANKEES", "RED SOX", "DODGERS", "PIRATES", "REDS", "ASTROS", "RANGERS", "PADRES", "GIANTS", "MARINERS"],
-    "Baloncesto": ["NBA", "WNBA", "BASKETBALL", "LAKERS", "CELTICS", "BULLS", "CAVALIERS", "PISTONS", "MAGIC", "RAPTORS", "ENDESA", "EUROLEAGUE"],
-    "Fútbol": ["LIGA", "SERIE A", "PREMIER", "FUTBOL", "SOCCER", "NWSL", "MLS", "CHAMPIONS", "LEAGUE", "SUDAMERICANA", "COPA", "BUNDESLIGA", "LIGUE 1"],
-    "Combate": ["WWE", "SMACKDOWN", "RAW", "AEW", "LUCHA", "WRESTLING", "WRESTLEMANIA", "BOXEO", "BOXING", "PESAJE", "FIGHT", "COMBATE", "RING", "UFC", "MMA", "BELLATOR", "ONE CHAMPIONSHIP", "FIGHT PASS"],
-    "Deportes": ["PGA", "LIV", "GOLF", "MASTERS", "OPEN", "NFL", "FOOTBALL", "SUPER BOWL", "NCAA", "RUGBY", "DERBY", "KENTUCKY"],
-    "Hockey": ["NHL", "SABRES", "BRUINS", "CANADIENS", "LIGHTNING", "HOCKEY", "STANLEY"],
-    "Tenis": ["ATP", "WTA", "TENIS", "TENNIS", "WIMBLEDON", "OPEN", "PADEL", "PING PONG"],
-    "Ciclismo": ["CICLISMO", "CYCLING", "TOUR DE FRANCE", "TOUR COLOMBIA", "VUELTA ESPAÑA", "VUELTA A ESPAÑA", "GIRO DE ITALIA", "GIRO D ITALIA", "UCI", "ETAPA", "BERNAL", "CARAPAZ", "NAIRO", "COLOMBIA ES PASION"]
-}
-
-LOGOS_RESCATE = {
-    "Motor": "https://img.icons8.com/color/512/f1-car.png",
-    "Béisbol": "https://img.icons8.com/color/512/baseball.png",
-    "Baloncesto": "https://img.icons8.com/color/512/basketball.png",
-    "Fútbol": "https://img.icons8.com/color/512/football2.png",
-    "Combate": "https://img.icons8.com/color/512/boxing-glove.png",
-    "Deportes": "https://img.icons8.com/color/512/stadium.png",
-    "Hockey": "https://img.icons8.com/color/512/ice-hockey.png",
-    "Tenis": "https://img.icons8.com/color/512/tennis.png",
-    "Ciclismo": "https://img.icons8.com/color/512/cycling.png"
-}
-
-# ─── UTILIDADES DE FECHA Y TEXTO ─────────────────────────────────────────────
-def obtener_variaciones_fecha_hoy() -> list:
-    """Genera dinámicamente múltiples formatos de la fecha actual para atrapar cualquier proveedor."""
-    dt = datetime.now(ZONA_COLOMBIA)
-    d, m = dt.strftime("%d"), dt.strftime("%m")
-    
-    meses_es = {"01":"ENE", "02":"FEB", "03":"MAR", "04":"ABR", "05":"MAY", "06":"JUN", "07":"JUL", "08":"AGO", "09":"SEP", "10":"OCT", "11":"NOV", "12":"DIC"}
-    meses_en = {"01":"JAN", "02":"FEB", "03":"MAR", "04":"APR", "05":"MAY", "06":"JUN", "07":"JUL", "08":"AUG", "09":"SEP", "10":"OCT", "11":"NOV", "12":"DEC"}
-    
-    m_es, m_en = meses_es[m], meses_en[m]
-    
-    # Crea formatos latinos, gringos, con barra, guión, espacio y texto.
-    return [
-        f"{d}/{m}", f"{d}-{m}", f"{d} {m}", f"{d}.{m}",
-        f"{m}/{d}", f"{m}-{d}", f"{m} {d}", f"{m}.{d}",
-        f"{d} {m_es}", f"{m_es} {d}", f"{d} {m_en}", f"{m_en} {d}"
-    ]
-
-def limpiar_nombre_categoria(nombre: str) -> str:
-    """Elimina emojis y decoraciones para dejar el nombre puro y legible."""
-    nombre = nombre.upper()
-    # Mantiene solo letras, números, espacios y separadores de fecha comunes
-    nombre = re.sub(r'[^\w\s\/\-\.]', ' ', nombre) 
-    return ' '.join(nombre.split())
-
-def limpiar_texto_para_match(texto: str) -> str:
-    if not texto: return ""
-    texto = str(texto).upper()
-    
-    texto = re.sub(r'\(.*?\)', '', texto)
-    texto = re.sub(r'\[.*?\]', '', texto)
-    texto = re.sub(r'\b\d{1,2}:\d{2}\b(\s*[AP]M)?(\s*ET)?', '', texto)
-    texto = re.sub(r'\b(HD|SD|FHD|4K|ENG|ESP|GER|OPC\.\d+|OP\d+|PEA \d+|PARA\+ \d+|VIVO|LIVE|COMPACTO|REPETICION|RESUMEN)\b', '', texto)
-    
-    texto = unicodedata.normalize("NFD", texto)
-    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
-    texto = re.sub(r"[^A-Z0-9\s]", " ", texto) 
-    
-    for corto, largo in TRADUCTOR_JERGA.items():
-        texto = re.sub(rf"\b{corto}\b", largo, texto)
-        
-    palabras = [p for p in texto.split() if len(p) > 2 and p not in ["THE", "AND", "DEL", "LAS", "LOS", "VS", "EN", "EL", "DE", "LA"]]
-    return " ".join(palabras)
-
-def calcular_similitud_interseccion(xtream_limpio: str, api_limpio: str) -> float:
-    if not xtream_limpio or not api_limpio: return 0.0
-    words_x = set(xtream_limpio.split())
-    words_a = set(api_limpio.split())
-    if not words_x or not words_a: return 0.0
-    
-    comunes = words_x.intersection(words_a)
-    if len(comunes) >= 2: return 85.0
-    if len(comunes) == 1 and len(list(comunes)[0]) >= 5:
-        if SequenceMatcher(None, xtream_limpio, api_limpio).ratio() * 100 > 40.0:
-            return 70.0
-            
-    ratio_difuso = SequenceMatcher(None, xtream_limpio, api_limpio).ratio() * 100
-    if ratio_difuso > 65.0: return ratio_difuso
-    return 0.0
-
-def adivinar_categoria_y_logo(texto: str):
-    texto_upper = texto.upper()
-    for categoria, keywords in CATEGORIAS_RESCATE.items():
-        if any(kw in texto_upper for kw in keywords):
-            return categoria, LOGOS_RESCATE[categoria]
-    return "Deportes", LOGOS_RESCATE["Deportes"]
-
-def calcular_hora_utc_falsa(nombre_canal: str) -> str:
-    match = re.search(r'\b(\d{1,2}):(\d{2})\b\s*(PM)?', nombre_canal, re.IGNORECASE)
-    if match:
-        try:
-            h, m = int(match.group(1)), int(match.group(2))
-            pm = match.group(3)
-            if pm and h < 12: h += 12
-            dt_evento = datetime.now(ZONA_COLOMBIA).replace(hour=h, minute=m, second=0, microsecond=0)
-            return dt_evento.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        except: pass
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-def crear_id_seguro(titulo: str) -> str:
+# ─── FUNCIONES DE LIMPIEZA Y UTILIDAD ────────────────────────────────────────
+def crear_id_seguro(texto: str) -> str:
     import hashlib
-    hash_obj = hashlib.md5(titulo.encode('utf-8'))
-    return hash_obj.hexdigest()[:12]
+    return hashlib.md5(texto.encode('utf-8')).hexdigest()[:12]
 
-# ─── RED Y CACHÉ (Anti-ráfagas y Auto-limpieza de Llaves) ────────────────────
+def calcular_similitud(t1: str, t2: str) -> float:
+    t1 = re.sub(r'[^A-Z0-9\s]', '', str(t1).upper())
+    t2 = re.sub(r'[^A-Z0-9\s]', '', str(t2).upper())
+    return SequenceMatcher(None, t1, t2).ratio() * 100
+
+def es_basura(titulo: str) -> bool:
+    t = titulo.upper()
+    return any(pb in t for pb in PALABRAS_BASURA)
+
+def parse_xmltv_time(time_str: str) -> str:
+    """Convierte 20260510200000 -0500 a formato UTC ISO 8601."""
+    try:
+        dt_obj = datetime.strptime(time_str[:14], "%Y%m%d%H%M%S")
+        offset_str = time_str[15:]
+        sign = 1 if offset_str == '+' else -1
+        hours, mins = int(offset_str[1:3]), int(offset_str[3:5])
+        tz = timezone(timedelta(hours=sign*hours, minutes=sign*mins))
+        return dt_obj.replace(tzinfo=tz).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    except:
+        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+# ─── FASE 1: FILTRO XTREAM Y RANKING DE CALIDAD ──────────────────────────────
+def clasificar_calidad(nombre: str) -> int:
+    n = nombre.upper()
+    if any(x in n for x in ['4K', 'FHD', '1080', 'HEVC', '50FPS', '60FPS']): return 3
+    if any(x in n for x in ['HD', '720']): return 2
+    return 1 # SD o sin etiqueta
+
+def es_espn_latam(nombre: str) -> bool:
+    n = nombre.upper()
+    if "ESPN" not in n: return False
+    # Filtro Gringo (Lista Negra)
+    if re.search(r'\b(US|USA|UK|NCAA|COLLEGE|ESPNU|SEC|ACCN|ESPN\+)\b', n): return False
+    # Filtro Latam (Lista Blanca)
+    return bool(re.search(r'\bESPN(\s?[2-7]| PREMIUM| EXTRA)?\b', n))
+
+def mapear_canales_xtream() -> dict:
+    """Escanea Xtream y agrupa calidades filtrando basura."""
+    log.info("🔍 Escaneando Xtream y rankeando calidades...")
+    api_url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
+    mapa = {c: [] for c in CANALES_AMERICA + CANALES_EUROPA}
+    
+    try:
+        r = requests.get(api_url, timeout=30)
+        if r.status_code != 200: return mapa
+        
+        for s in r.json():
+            nombre = s.get("name", "").strip()
+            nombre_upper = nombre.upper()
+            url_video = f"{XTREAM_URL}/{XTREAM_USER}/{XTREAM_PASS}/{s.get('stream_id')}.ts"
+            
+            # Match lógico
+            canal_asignado = None
+            if "ESPN" in nombre_upper:
+                if es_espn_latam(nombre): canal_asignado = "ESPN"
+            else:
+                for c in mapa.keys():
+                    if c in nombre_upper and c != "ESPN":
+                        canal_asignado = c
+                        break
+            
+            if canal_asignado:
+                mapa[canal_asignado].append({
+                    "nombre": nombre,
+                    "url": url_video,
+                    "score": clasificar_calidad(nombre)
+                })
+        
+        # Ordenar por calidad y dejar solo las 2 mejores
+        for c in mapa:
+            mapa[c].sort(key=lambda x: x["score"], reverse=True)
+            mapa[c] = [{"nombre": x["nombre"], "url": x["url"]} for x in mapa[c][:2]]
+            
+        return mapa
+    except Exception as e:
+        log.error(f"Error Xtream: {e}")
+        return mapa
+
+# ─── FASE 2: EL VALIDADOR DE GOOGLE (SOLUCIÓN AMERICANA) ─────────────────────
+def validar_con_google(titulo: str) -> bool:
+    """Usa Custom Search para saber si el evento es hoy. Devuelve True si es EN VIVO."""
+    if not GOOGLE_API_KEY or not GOOGLE_CX:
+        log.warning("Faltan llaves de Google. Se asume FALSO por seguridad.")
+        return False
+        
+    url = "https://www.googleapis.com/customsearch/v1"
+    params = {
+        "key": GOOGLE_API_KEY, "cx": GOOGLE_CX,
+        "q": f'"{titulo}" (hoy OR previa OR vivo)',
+        "dateRestrict": "d", # Solo últimas 24 horas
+        "hl": "es"
+    }
+    
+    try:
+        time.sleep(1) # Cuidar Rate Limit
+        r = requests.get(url, params=params, timeout=10)
+        if r.status_code != 200: return False
+        
+        items = r.json().get("items", [])
+        if not items: return False # Si internet no habla de esto, es repetición
+        
+        texto_global = " ".join([i.get("snippet", "") + i.get("title", "") for i in items]).lower()
+        
+        puntos_verdes = sum(1 for b in BANDERAS_VERDES if b in texto_global)
+        puntos_rojos  = sum(1 for b in BANDERAS_ROJAS if b in texto_global)
+        
+        return puntos_verdes > puntos_rojos
+    except:
+        return False
+
+# ─── FASE 3: PARSEO XMLTV (EXTRACCIÓN Y ENRUTAMIENTO) ────────────────────────
+def extraer_eventos_epg(mapa_xtream: dict) -> list:
+    log.info("📡 Descargando y procesando guías EPG (XMLTV)...")
+    eventos_aprobados = []
+    
+    # Función interna para procesar un XML de EPG
+    def procesar_xml(url_xml, region):
+        try:
+            r = requests.get(url_xml, stream=True, timeout=20)
+            if r.status_code != 200: return
+            
+            f = gzip.GzipFile(fileobj=io.BytesIO(r.content)) if url_xml.endswith(".gz") else io.BytesIO(r.content)
+            
+            for event, elem in ET.iterparse(f, events=("end",)):
+                if elem.tag == "programme":
+                    canal_id = elem.attrib.get("channel", "").upper()
+                    
+                    # Buscar si el canal nos importa
+                    canal_logico = next((c for c in (CANALES_EUROPA if region == "EU" else CANALES_AMERICA) if c.replace(" ", "") in canal_id), None)
+                    
+                    if canal_logico and mapa_xtream.get(canal_logico): # Solo procesar si tenemos el canal HOY en Xtream
+                        titulo_elem = elem.find("title")
+                        desc_elem = elem.find("desc")
+                        titulo = titulo_elem.text if titulo_elem is not None else ""
+                        desc = desc_elem.text if desc_elem is not None else ""
+                        
+                        if es_basura(titulo): 
+                            elem.clear()
+                            continue
+                            
+                        hora_str = elem.attrib.get("start", "")
+                        
+                        # --- ENRUTADOR ---
+                        es_valido = False
+                        if region == "EU":
+                            if "DIRECTO" in titulo.upper() or "VIVO" in titulo.upper() or "DIRECTO" in desc.upper():
+                                es_valido = True
+                        else:
+                            # Tubería Americana: Validar con Google
+                            titulo_limpio = re.sub(r'\b(HD|SD|FHD|4K|VIVO|DIRECTO)\b', '', titulo, flags=re.IGNORECASE).strip()
+                            es_valido = validar_con_google(titulo_limpio)
+                        
+                        if es_valido:
+                            cat = "Fútbol" if " vs " in titulo.lower() else "Deportes"
+                            eventos_aprobados.append({
+                                "id": f"epg_{crear_id_seguro(titulo+hora_str)}",
+                                "titulo": titulo.replace("DIRECTO", "").strip(" -:"),
+                                "torneo": canal_logico,
+                                "categoria": cat,
+                                "hora_utc": parse_xmltv_time(hora_str),
+                                "duracion_min": 120, # Default si no hay 'stop'
+                                "logo_local": "", "logo_visitante": "", "banner": "",
+                                "tier": 2,
+                                "fuentes": mapa_xtream[canal_logico]
+                            })
+                    elem.clear() # Liberar memoria RAM
+        except Exception as e:
+            log.error(f"Error procesando {region}: {e}")
+
+    procesar_xml(URL_EPG_EUROPA, "EU")
+    procesar_xml(URL_EPG_AMERICA, "AM")
+    
+    return eventos_aprobados
+
+# ─── FASE 4: SOFASCORE Y FUSIÓN FINAL ────────────────────────────────────────
 def hacer_peticion_segura(url: str, params: dict):
     global LLAVES_API, indice_llave_actual
     if not LLAVES_API: return None
-        
     intentos = 0
-    max_intentos = len(LLAVES_API) * 2 
-    backoff = 2 # Segundos de espera iniciales si hay Rate Limit
-    
-    while intentos < max_intentos and LLAVES_API:
+    while intentos < len(LLAVES_API) * 2 and LLAVES_API:
         llave = LLAVES_API[indice_llave_actual]
         try:
-            time.sleep(1.5) # Pausa base estricta
+            time.sleep(1.5)
             r = requests.get(url, headers={"x-rapidapi-key": llave, "x-rapidapi-host": RAPIDAPI_HOST}, params=params, timeout=15)
-            
-            if r.status_code == 200:
-                return r
-                
-            elif r.status_code == 429:
-                log.warning(f"Llave {indice_llave_actual + 1} dio 429 (Límite vel.). Esperando {backoff}s...")
-                time.sleep(backoff)
-                backoff = min(backoff * 2, 8) # Retroceso exponencial
+            if r.status_code == 200: return r
+            if r.status_code == 429:
+                time.sleep(2)
                 indice_llave_actual = (indice_llave_actual + 1) % len(LLAVES_API)
-                intentos += 1
-                continue
-                
             elif r.status_code == 403:
-                log.error(f"🚨 Llave {indice_llave_actual + 1} AGOTADA (403). Eliminándola de la rotación.")
                 LLAVES_API.pop(indice_llave_actual)
-                if not LLAVES_API:
-                    log.error("Todas las llaves se han agotado.")
-                    return None
+                if not LLAVES_API: return None
                 indice_llave_actual = indice_llave_actual % len(LLAVES_API)
-                continue
-                
-            else:
-                return r # Devuelve el 404 o 500
-                
-        except requests.exceptions.RequestException as e:
-            log.warning(f"Error de conexión en llave {indice_llave_actual + 1}. Rotando...")
+            intentos += 1
+        except:
             indice_llave_actual = (indice_llave_actual + 1) % len(LLAVES_API)
             intentos += 1
-            time.sleep(2)
-            
     return None
 
-def obtener_agenda_maestra() -> list:
-    if os.path.exists(ARCHIVO_CACHE):
-        tiempo_modificacion = os.path.getmtime(ARCHIVO_CACHE)
-        if (time.time() - tiempo_modificacion) < (HORAS_CACHE * 3600):
-            try:
-                with open(ARCHIVO_CACHE, "r", encoding="utf-8") as f:
-                    agenda = json.load(f)
-                    if agenda: return agenda
-            except Exception: pass
-
-    log.info("Descargando Agenda Maestra de SofaScore...")
-    eventos_api = []
-    
-    for deporte, sport_id in DEPORTES_MAP.items():
-        log.info(f"Consultando agenda de {deporte}...")
-        url = f"https://{RAPIDAPI_HOST}/v1/events/schedule/date"
-        params = {"date": FECHA_HOY, "sport_id": sport_id, "timezone": -5}
-        
-        r_agenda = hacer_peticion_segura(url, params)
-        if not r_agenda: continue
-
-        # Manejo silencioso de los 404 para delegar a Ruta B
-        if r_agenda.status_code == 404:
-            if deporte in ["Boxeo", "MMA", "Golf", "Fútbol Americano"]:
-                log.info(f"  └─ Sin agenda regular para {deporte} hoy (Se delegará a Rescate).")
-            else:
-                log.warning(f"  └─ No se pudo descargar la agenda de {deporte} (Error 404).")
-            continue
-            
-        data = r_agenda.json().get("data", [])
-        
-        for ev in data:
-            try:
-                unix_time = ev.get("startTimestamp")
-                if not unix_time: continue
-                dt_utc = datetime.fromtimestamp(unix_time, timezone.utc)
-                torneo = ev.get("tournament", {}).get("name", "")
-                home_team = ev.get("homeTeam", {})
-                away_team = ev.get("awayTeam", {})
-                eq_local = home_team.get("name", "")
-                eq_visit = away_team.get("name", "")
-                
-                titulo = f"{eq_local} vs {eq_visit}" if eq_local and eq_visit else ev.get("name", ev.get("description", ""))
-                firma_texto = limpiar_texto_para_match(f"{torneo} {titulo}")
-
-                if eq_local:
-                    logo_local = SOFA_IMG_EQUIPO.format(id=home_team.get("id"))
-                else:
-                    logo_local = SOFA_IMG_TORNEO.format(id=ev.get("tournament", {}).get("uniqueTournament", {}).get("id"))
-                    
-                logo_visitante = SOFA_IMG_EQUIPO.format(id=away_team.get("id")) if eq_visit else ""
-
-                eventos_api.append({
-                    "id": str(ev.get("id")),
-                    "titulo": titulo, "torneo": torneo, "categoria": deporte,
-                    "firma_texto": firma_texto,
-                    "hora_utc": dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                    "duracion_min": DURACION_POR_DEPORTE.get(deporte, 150),
-                    "logo_local": logo_local, "logo_visitante": logo_visitante,
-                    "tier": 2
-                })
-            except Exception: continue
-
-    if eventos_api:
-        with open(ARCHIVO_CACHE, "w", encoding="utf-8") as f:
-            json.dump(eventos_api, f, ensure_ascii=False, indent=2)
-    return eventos_api
-
-# ─── XTREAM (Extracción Universal Adaptativa) ────────────────────────────────
-def procesar_cubo_a() -> list:
-    log.info("Analizando servidor Xtream...")
-    base_url = XTREAM_URL.rstrip('/')
-    api_url = f"{base_url}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
-    cubo_a = []
-    
-    fechas_hoy = obtener_variaciones_fecha_hoy()
-    palabras_principales = ["HOY", "TODAY", "DAILY", "DIARIO", "DIA", "VIVO", "LIVE"]
-    palabras_contexto = ["EVENTOS", "EVENTS", "AGENDA", "PARTIDOS", "CARTELERA", "CALENDARIO", "PPV"]
-    
-    try:
-        r_cat = requests.get(f"{api_url}&action=get_live_categories", timeout=15)
-        categoria_id_hoy = None
-        
-        if r_cat.status_code == 200:
-            for cat in r_cat.json():
-                nombre_cat = cat.get("category_name", "")
-                nombre_limpio = limpiar_nombre_categoria(nombre_cat)
-                
-                # Fase 2: Coincidencia Fuerte (Regla de Oro: Fecha explícita)
-                if any(f in nombre_limpio for f in fechas_hoy):
-                    categoria_id_hoy = cat.get("category_id")
-                    log.info(f"🎯 Categoría detectada por FECHA: '{nombre_cat}' (ID: {categoria_id_hoy})")
-                    break
-                    
-                # Fase 3: Coincidencia Flexible (Sinónimos Universales)
-                tiene_principal = any(p in nombre_limpio for p in palabras_principales)
-                tiene_contexto = any(c in nombre_limpio for c in palabras_contexto)
-                if tiene_principal and tiene_contexto:
-                    categoria_id_hoy = cat.get("category_id")
-                    log.info(f"🎯 Categoría detectada por PALABRAS CLAVE: '{nombre_cat}' (ID: {categoria_id_hoy})")
-                    break
-        
-        # Fase 4: Descarga
-        if categoria_id_hoy:
-            url_streams = f"{api_url}&action=get_live_streams&category_id={categoria_id_hoy}"
-        else:
-            log.warning("⚠️ No se detectó categoría del día. Entrando en Modo Supervivencia (Fuerza Bruta)...")
-            url_streams = f"{api_url}&action=get_live_streams"
-            
-        r_str = requests.get(url_streams, timeout=30)
-        if r_str.status_code != 200: return []
-        
-        for s in r_str.json():
-            nombre_canal = s.get("name", "").strip()
-            
-            # Filtro de Contención para canales zombies (Solo aplica en Fuerza Bruta)
-            if not categoria_id_hoy:
-                 match_fecha = re.search(r'\b(\d{1,2})[-/](\d{1,2})\b', nombre_canal)
-                 if match_fecha:
-                     d_str, m_str = match_fecha.group(1), match_fecha.group(2)
-                     # Si tiene formato fecha pero NO cruza con nuestras permutaciones de hoy, es basura.
-                     if not any(f in f"{d_str}/{m_str}" or f in f"{m_str}/{d_str}" for f in fechas_hoy):
-                         continue 
-
-            if re.search(r'\b\d{1,2}:\d{2}\b', nombre_canal) or any(kw in nombre_canal.upper() for kw in ["PEA ", "PARA+", "LMB ", "MLB ", "UFC "]):
-                texto_limpio = limpiar_texto_para_match(nombre_canal)
-                if len(texto_limpio) > 4:
-                    cubo_a.append({
-                        "id_xtream": str(s.get("stream_id")),
-                        "nombre_ui": nombre_canal,
-                        "texto_limpio": texto_limpio
-                    })
-                    
-        log.info(f"Cubo A listo: {len(cubo_a)} canales procesables.")
-        return cubo_a
-    except Exception as e:
-        log.error(f"Error procesando Xtream: {e}")
-        return []
-
-# ─── ORQUESTADOR (MOTOR DE EMPAREJAMIENTO) ───────────────────────────────────
 def main():
-    log.info(f"=== Iniciando Curador Mágico V8 (Arquitectura Adaptativa Universal) ===")
-    agenda_api = obtener_agenda_maestra()
-    cubo_a = procesar_cubo_a()
+    log.info("=== Iniciando Pipeline Maestro EPG V9 ===")
     
-    if not cubo_a: 
-        log.warning("No se detectaron eventos temporales en Xtream para procesar.")
-        return
-
-    resultados_finales = []
-    base_url = XTREAM_URL.rstrip('/')
-
-    for canal in cubo_a:
-        texto_canal = canal["texto_limpio"]
-        url_video = f"{base_url}/{XTREAM_USER}/{XTREAM_PASS}/{canal['id_xtream']}.ts"
-        fuente_limpia = {"nombre": canal["nombre_ui"], "url": url_video}
-        
-        match_encontrado = False
-        mejor_evento, mejor_puntaje = None, 0
-        
-        # Ruta A
-        if agenda_api:
-            for ev in agenda_api:
-                puntaje = calcular_similitud_interseccion(texto_canal, ev["firma_texto"])
-                if puntaje > mejor_puntaje:
-                    mejor_puntaje, mejor_evento = puntaje, ev
-            
-            if mejor_puntaje > 55.0 and mejor_evento:
-                match_encontrado = True
-                evento_existente = next((item for item in resultados_finales if item["id"] == mejor_evento["id"]), None)
-                if evento_existente:
-                    if not any(f["url"] == url_video for f in evento_existente["fuentes"]):
-                        evento_existente["fuentes"].append(fuente_limpia)
-                else:
-                    evento_clon = mejor_evento.copy()
-                    evento_clon["fuentes"] = [fuente_limpia]
-                    if "firma_texto" in evento_clon: del evento_clon["firma_texto"]
-                    resultados_finales.append(evento_clon)
-
-        # Ruta B (Rescate Premium)
-        if not match_encontrado:
-            titulo_base = canal["nombre_ui"]
-            # 1. Limpieza base de horas, resoluciones y paréntesis
-            titulo_base = re.sub(r'\(.*?\)|\[.*?\]', '', titulo_base)
-            titulo_base = re.sub(r'\b\d{1,2}:\d{2}\b(\s*[AP]M)?(\s*ET)?', '', titulo_base)
-            titulo_base = re.sub(r'\b(HD|SD|FHD|4K|ENG|ESP|GER)\b', '', titulo_base, flags=re.IGNORECASE)
-            
-            # 2. IA de Separación: Partimos el título usando la basura (▫, |, ☻, ✨) como separadores
-            partes = [p.strip() for p in re.split(r'[▫\|☻✨]+', titulo_base) if len(p.strip()) > 2]
-            
-            if partes:
-                # Buscamos si alguna de las partes es un duelo (contiene "vs")
-                parte_vs = next((p for p in partes if ' vs ' in p.lower() or ' vs. ' in p.lower()), None)
-                if parte_vs:
-                    titulo_base = parte_vs # ¡Aislamos solo el combate/partido!
-                else:
-                    titulo_base = " - ".join(partes) # Si no hay duelo, unimos lo que sobrevivió
-            
-            # 3. Capitalización final
-            titulo_base = titulo_base.strip(" -[]").title()
-            
-            if not titulo_base: continue
-            
-            evento_existente = next((item for item in resultados_finales if item["titulo"] == titulo_base and item["id"].startswith("rescate_")), None)
-            
-            if evento_existente:
-                if not any(f["url"] == url_video for f in evento_existente["fuentes"]):
-                    evento_existente["fuentes"].append(fuente_limpia)
-            else:
-                categoria_adivinada, logo_adivinado = adivinar_categoria_y_logo(canal["nombre_ui"])
-                hora_utc_calculada = calcular_hora_utc_falsa(canal["nombre_ui"])
+    # 1. Obtener Xtream pre-mapeado
+    mapa_xtream = mapear_canales_xtream()
+    
+    # 2. Descargar API SofaScore
+    eventos_finales = []
+    log.info("Descargando SofaScore...")
+    for deporte, sport_id in DEPORTES_MAP.items():
+        url = f"https://{RAPIDAPI_HOST}/v1/events/schedule/date"
+        r = hacer_peticion_segura(url, {"date": FECHA_HOY, "sport_id": sport_id, "timezone": -5})
+        if not r: continue
+        for ev in r.json().get("data", []):
+            try:
+                unix = ev.get("startTimestamp")
+                if not unix: continue
+                titulo = f"{ev.get('homeTeam', {}).get('name', '')} vs {ev.get('awayTeam', {}).get('name', '')}"
+                if " vs " not in titulo: titulo = ev.get("name", "")
                 
-                resultados_finales.append({
-                    "id": f"rescate_{crear_id_seguro(titulo_base)}", 
-                    "titulo": titulo_base,
-                    "torneo": "Evento Especial",
-                    "categoria": categoria_adivinada,
-                    "hora_utc": hora_utc_calculada,
-                    "duracion_min": DURACION_POR_DEPORTE.get(categoria_adivinada, 240),
-                    "logo_local": logo_adivinado,
-                    "logo_visitante": "",
-                    "banner": logo_adivinado,
+                eventos_finales.append({
+                    "id": str(ev.get("id")),
+                    "titulo": titulo,
+                    "torneo": ev.get("tournament", {}).get("name", ""),
+                    "categoria": deporte,
+                    "hora_utc": datetime.fromtimestamp(unix, timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                    "duracion_min": DURACION_POR_DEPORTE.get(deporte, 150),
+                    "logo_local": f"https://api.sofascore.app/api/v1/team/{ev.get('homeTeam', {}).get('id')}/image",
+                    "logo_visitante": f"https://api.sofascore.app/api/v1/team/{ev.get('awayTeam', {}).get('id')}/image" if ev.get('awayTeam') else "",
                     "tier": 2,
-                    "fuentes": [fuente_limpia]
+                    "fuentes": [] # Se llenarán en el cruce de cubo temporal si lo deseas, o las fusionamos.
                 })
+            except: continue
 
-    resultados_finales.sort(key=lambda x: x["hora_utc"])
+    # 3. Extraer y Validar eventos EPG
+    eventos_epg = extraer_eventos_epg(mapa_xtream)
+    log.info(f"Eventos EPG aprobados (EU + Google Validados): {len(eventos_epg)}")
 
-    try:
-        with open("eventos_hoy.json", "w", encoding="utf-8") as f:
-            json.dump(resultados_finales, f, ensure_ascii=False, indent=2)
-        log.info(f"¡Proceso Terminado! Total de eventos listos: {len(resultados_finales)}")
-    except Exception as e:
-        log.error(f"Error crítico guardando el archivo JSON: {e}")
+    # 4. Motor de Fusión (Deduplicación)
+    for e_epg in eventos_epg:
+        match = False
+        for e_sofa in eventos_finales:
+            # Si se parecen > 75%, fusionamos la fuente de IPTV al evento de SofaScore
+            if calcular_similitud(e_epg["titulo"], e_sofa["titulo"]) > 75.0:
+                match = True
+                urls_existentes = [f["url"] for f in e_sofa["fuentes"]]
+                for fuente in e_epg["fuentes"]:
+                    if fuente["url"] not in urls_existentes:
+                        e_sofa["fuentes"].append(fuente)
+                break
+        
+        # Si es un deporte de nicho, lo añadimos como evento nuevo
+        if not match:
+            eventos_finales.append(e_epg)
+
+    # 5. Ordenar cronológicamente
+    eventos_finales.sort(key=lambda x: x["hora_utc"])
+
+    # 6. Guardar JSON
+    with open(ARCHIVO_JSON, "w", encoding="utf-8") as f:
+        json.dump(eventos_finales, f, ensure_ascii=False, indent=2)
+        
+    log.info(f"✅ ¡Proceso Terminado! Total de eventos listos: {len(eventos_finales)}")
 
 if __name__ == "__main__":
     main()
