@@ -4,6 +4,8 @@ import re
 import time
 import logging
 import requests
+import gzip
+import io
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 from difflib import SequenceMatcher
@@ -21,6 +23,14 @@ GOOGLE_CX = os.environ.get("GOOGLE_CX")
 
 ARCHIVO_EVENTOS = "eventos_hoy.json"
 
+# ─── URLS DE EPG LIGERAS Y ESPECÍFICAS ───────────────────────────────────────
+URL_EPG_EUROPA = "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml"
+URLS_EPG_AMERICA = [
+    "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz", # Colombia (Win Sports, DSports)
+    "https://epgshare01.online/epgshare01/epg_ripper_AR1.xml.gz"  # Argentina (TyC Sports, DSports)
+]
+
+# ─── FIRMAS DE CANALES EN XTREAM ─────────────────────────────────────────────
 FIRMAS_CANALES = {
     "Win Sports": ["WIN SPORTS", "WIN SPORT", "WIN+"],
     "DSports": ["DSPORTS", "DIRECTV SPORTS", "D SPORTS", "DTV SPORTS"],
@@ -28,7 +38,7 @@ FIRMAS_CANALES = {
     "Eurosport": ["EUROSPORT"]
 }
 
-# ─── FUNCIONES DE LIMPIEZA Y VALIDADOR GOOGLE ────────────────────────────────
+# ─── FUNCIONES DE AYUDA Y LIMPIEZA ───────────────────────────────────────────
 def calcular_similitud(texto1: str, texto2: str) -> float:
     t1 = re.sub(r'[^A-Z0-9\s]', '', str(texto1).upper())
     t2 = re.sub(r'[^A-Z0-9\s]', '', str(texto2).upper())
@@ -41,11 +51,32 @@ def es_basura(titulo: str) -> bool:
         "SAQUE LARGO", "MEDIO TIEMPO", "LA RUTA DEL MUNDIAL", "DESPIERTA WIN",
         "PLANETA FÚTBOL", "MAGAZINE", "FÚTBOL TOTAL", "DE FÚTBOL SE HABLA ASÍ",
         "PUEDE PASAR", "SUPERFÚTBOL", "DALE AL MEDIO", "SPORTIA", "DOMINGOL",
-        "LÍBERO", "PRESIÓN ALTA"
+        "LÍBERO", "PRESIÓN ALTA", "CONEXIÓN", "SPORT CENTER", "SPORTSCENTER"
     ]
-    if t.strip() in ["DSPORTS", "WIN SPORTS", "EUROSPORT"]: return True
+    if t.strip() in ["DSPORTS", "WIN SPORTS", "EUROSPORT", "TYC SPORTS"]: return True
     return any(pb in t for pb in palabras_basura)
 
+def parse_xmltv_time(time_str: str) -> datetime:
+    """Convierte '20260510200000 -0500' a objeto datetime UTC."""
+    try:
+        dt_obj = datetime.strptime(time_str[:14], "%Y%m%d%H%M%S")
+        offset_str = time_str[15:]
+        if len(offset_str) >= 5:
+            sign = 1 if offset_str[0] == '+' else -1
+            hours, mins = int(offset_str[1:3]), int(offset_str[3:5])
+            tz = timezone(timedelta(hours=sign*hours, minutes=sign*mins))
+        else:
+            tz = timezone.utc
+        return dt_obj.replace(tzinfo=tz).astimezone(timezone.utc)
+    except:
+        return datetime.now(timezone.utc)
+
+def crear_id_seguro(titulo: str) -> str:
+    import hashlib
+    hash_obj = hashlib.md5(titulo.encode('utf-8'))
+    return f"local_{hash_obj.hexdigest()[:10]}"
+
+# ─── VALIDADOR DE GOOGLE (LA SOLUCIÓN AMERICANA) ─────────────────────────────
 def es_en_vivo_google(titulo: str) -> bool:
     if not GOOGLE_API_KEY or not GOOGLE_CX:
         log.warning("⚠️ Faltan llaves de Google. Se descarta evento por seguridad.")
@@ -62,8 +93,10 @@ def es_en_vivo_google(titulo: str) -> bool:
     }
     
     try:
+        time.sleep(1) # Cuidar rate limit de Google
         r = requests.get(url, params=params, timeout=10)
-        if r.status_code != 200: return False
+        if r.status_code != 200: 
+            return False
             
         items = r.json().get("items", [])
         if not items:
@@ -89,13 +122,9 @@ def es_en_vivo_google(titulo: str) -> bool:
         log.error(f"Error conectando a Google: {e}")
         return False
 
-def crear_id_seguro(titulo: str) -> str:
-    import hashlib
-    hash_obj = hashlib.md5(titulo.encode('utf-8'))
-    return f"local_{hash_obj.hexdigest()[:10]}"
-
+# ─── CONEXIÓN XTREAM ─────────────────────────────────────────────────────────
 def obtener_urls_xtream() -> dict:
-    log.info("🔍 Fase 1: Escaneando servidor Xtream para URLs dinámicas...")
+    log.info("🔍 Fase 1: Escaneando servidor Xtream para URLs de Win, TyC, DSports, Eurosport...")
     base_url = XTREAM_URL.rstrip('/')
     api_url = f"{base_url}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
     
@@ -121,124 +150,91 @@ def obtener_urls_xtream() -> dict:
     except Exception as e:
         return mapa_urls
 
-# ─── FASE 2: SCRAPERS LOCALES + VALIDACIÓN GOOGLE ────────────────────────────
-headers_web = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-
-def extraer_tyc() -> list:
-    log.info("📡 Extrayendo TyC Sports...")
-    eventos = []
+# ─── PARSEO LIGERO DE EPG ────────────────────────────────────────────────────
+def extraer_eventos_epg() -> list:
+    eventos_aprobados = []
+    
+    # 1. PROCESAR EUROPA (EPG_dobleM) -> Lógica de confianza (DIRECTO)
+    log.info("📡 Extrayendo Vía Europea (EPG_dobleM)...")
     try:
-        html = requests.get("https://play.tycsports.com/proximos-eventos.html", headers=headers_web, timeout=15).text
-        patron = r'data-start="(\d+)"\s+data-end="(\d+)"\s+data-eventname="([^"]+)"'
-        coincidencias = re.findall(patron, html)
-        
-        for start_ms, end_ms, titulo in coincidencias:
-            if es_basura(titulo): continue
-            if not es_en_vivo_google(titulo): continue # <--- Validación Google
-            
-            inicio_dt = datetime.fromtimestamp(int(start_ms) / 1000, timezone.utc)
-            fin_dt = datetime.fromtimestamp(int(end_ms) / 1000, timezone.utc)
-            duracion = int((fin_dt - inicio_dt).total_seconds() / 60)
-            
-            eventos.append({
-                "titulo": titulo.strip(), "canal": "TyC Sports",
-                "hora_utc": inicio_dt.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                "duracion_min": duracion
-            })
-    except Exception as e: log.error(f"Error TyC: {e}")
-    return eventos
-
-def extraer_eurosport_epg() -> list:
-    log.info("📡 Extrayendo Eurosport 1 y 2 (EPG_dobleM)...")
-    eventos = []
-    try:
-        url_xml = "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml"
-        r = requests.get(url_xml, timeout=20)
-        if r.status_code != 200: return eventos
-        
-        root = ET.fromstring(r.content)
-        for elem in root.findall("programme"):
-            canal_id = elem.attrib.get("channel", "")
-            
-            # FILTRO ESTRICTO: Solo estos dos canales
-            if canal_id in ["Eurosport1.es", "Eurosport2.es"]:
-                titulo_elem = elem.find("title")
-                desc_elem = elem.find("desc")
-                titulo = titulo_elem.text if titulo_elem is not None else ""
-                desc = desc_elem.text if desc_elem is not None else ""
+        r_eu = requests.get(URL_EPG_EUROPA, timeout=15)
+        if r_eu.status_code == 200:
+            root_eu = ET.fromstring(r_eu.content)
+            for elem in root_eu.findall("programme"):
+                canal_id = elem.attrib.get("channel", "")
                 
-                # FILTRO VIVO: Debe decir explícitamente DIRECTO
-                if "DIRECTO" in titulo.upper() or "DIRECTO" in desc.upper():
-                    titulo_limpio = titulo.replace("DIRECTO", "").replace("()", "").strip(" -:")
-                    if es_basura(titulo_limpio): continue
+                # Solo analizamos Eurosport 1 y 2
+                if canal_id in ["Eurosport1.es", "Eurosport2.es"]:
+                    titulo_elem = elem.find("title")
+                    desc_elem = elem.find("desc")
+                    titulo = titulo_elem.text if titulo_elem is not None else ""
+                    desc = desc_elem.text if desc_elem is not None else ""
                     
-                    hora_str = elem.attrib.get("start", "")
-                    try:
-                        dt_obj = datetime.strptime(hora_str[:14], "%Y%m%d%H%M%S")
-                        offset_str = hora_str[15:]
-                        sign = 1 if offset_str == '+' else -1
-                        hours, mins = int(offset_str[1:3]), int(offset_str[3:5])
-                        tz = timezone(timedelta(hours=sign*hours, minutes=sign*mins))
-                        dt_utc = dt_obj.replace(tzinfo=tz).astimezone(timezone.utc)
+                    if "DIRECTO" in titulo.upper() or "DIRECTO" in desc.upper():
+                        titulo_limpio = titulo.replace("DIRECTO", "").replace("()", "").strip(" -:")
+                        if es_basura(titulo_limpio): continue
                         
-                        duracion = 120
+                        dt_utc = parse_xmltv_time(elem.attrib.get("start", ""))
                         hora_stop = elem.attrib.get("stop", "")
+                        duracion = 120
                         if hora_stop:
-                            dt_stop = datetime.strptime(hora_stop[:14], "%Y%m%d%H%M%S").replace(tzinfo=tz).astimezone(timezone.utc)
+                            dt_stop = parse_xmltv_time(hora_stop)
                             duracion = int((dt_stop - dt_utc).total_seconds() / 60)
                             
-                        eventos.append({
+                        eventos_aprobados.append({
                             "titulo": titulo_limpio, 
                             "canal": "Eurosport",
                             "hora_utc": dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
                             "duracion_min": abs(duracion)
                         })
-                    except: continue
-    except Exception as e: log.error(f"Error Eurosport EPG: {e}")
-    return eventos
+    except Exception as e: log.error(f"Error procesando Europa: {e}")
 
-def extraer_dsports() -> list:
-    log.info("📡 Extrayendo DSports...")
-    eventos = []
-    # Lógica base intacta, cuando pongas el JSON aquí le agregas el filtro:
-    # if es_basura(titulo): continue
-    # if not es_en_vivo_google(titulo): continue
-    return eventos
-
-def extraer_winplay() -> list:
-    log.info("📡 Extrayendo Win Sports...")
-    eventos = []
-    try:
-        ahora = datetime.now(timezone.utc)
-        start_date = f"{ahora.strftime('%Y-%m-%d')}T00:00:00.000Z"
-        end_date = f"{ahora.strftime('%Y-%m-%d')}T23:59:59.000Z"
-        url = f"https://unity.tbxapis.com/v0/sections/679cf2e59f9c761c5888766a/components/67b4dc7c7bcf686c2de6142d/items/6761b6ab55adef022ee97d166a561d048728db7c786b53b0941d0dd9_eses_p0_es.json?pageSize=25&page=1&fromEpg={start_date}&toEpg={end_date}"
-        
-        datos = requests.get(url, timeout=15).json()
-        for canal in datos.get("result", []):
-            for prog in canal.get("content", {}).get("epg", []):
-                titulo = prog.get("programName", "")
+    # 2. PROCESAR AMÉRICA (epgshare01) -> Lógica de validación (Google)
+    for url_am in URLS_EPG_AMERICA:
+        region_nombre = "Colombia" if "CO1" in url_am else "Argentina"
+        log.info(f"📡 Extrayendo Vía Americana ({region_nombre} - epgshare01)...")
+        try:
+            r_am = requests.get(url_am, stream=True, timeout=20)
+            if r_am.status_code == 200:
+                f = gzip.GzipFile(fileobj=io.BytesIO(r_am.content))
                 
-                if es_basura(titulo): continue
-                if not es_en_vivo_google(titulo): continue # <--- Validación Google
-                
-                try:
-                    inicio_dt = datetime.strptime(prog.get("startTime"), "%Y-%m-%dT%H:%M:%S.000Z")
-                    fin_dt = datetime.strptime(prog.get("endTime"), "%Y-%m-%dT%H:%M:%S.000Z")
-                    duracion = int((fin_dt - inicio_dt).total_seconds() / 60)
-                    
-                    eventos.append({
-                        "titulo": titulo.strip(), "canal": "Win Sports",
-                        "hora_utc": inicio_dt.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                        "duracion_min": duracion
-                    })
-                except: continue
-    except Exception as e: log.error(f"Error WinPlay: {e}")
-    return eventos
+                for event, elem in ET.iterparse(f, events=("end",)):
+                    if elem.tag == "programme":
+                        canal_id = elem.attrib.get("channel", "").upper()
+                        
+                        canal_logico = None
+                        if "WINSPORT" in canal_id: canal_logico = "Win Sports"
+                        elif "TYCSPORT" in canal_id: canal_logico = "TyC Sports"
+                        elif "DSPORT" in canal_id or "DIRECTVSPORT" in canal_id: canal_logico = "DSports"
+                        
+                        if canal_logico:
+                            titulo_elem = elem.find("title")
+                            titulo = titulo_elem.text if titulo_elem is not None else ""
+                            
+                            if not es_basura(titulo):
+                                # ¡AQUÍ ENTRA GOOGLE!
+                                if es_en_vivo_google(titulo):
+                                    dt_utc = parse_xmltv_time(elem.attrib.get("start", ""))
+                                    hora_stop = elem.attrib.get("stop", "")
+                                    duracion = 120
+                                    if hora_stop:
+                                        dt_stop = parse_xmltv_time(hora_stop)
+                                        duracion = int((dt_stop - dt_utc).total_seconds() / 60)
+                                        
+                                    eventos_aprobados.append({
+                                        "titulo": titulo.strip(), 
+                                        "canal": canal_logico,
+                                        "hora_utc": dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                        "duracion_min": abs(duracion)
+                                    })
+                        elem.clear() # Liberar memoria
+        except Exception as e: log.error(f"Error procesando {region_nombre}: {e}")
 
-# ─── FASE 3: MOTOR DE FUSIÓN ─────────────────────────────────────────────────
+    return eventos_aprobados
+
+# ─── FASE 3: MOTOR DE INYECCIÓN ──────────────────────────────────────────────
 def inyectar_eventos():
-    log.info("=== INICIANDO INYECTOR EPG LIGERO Y SEGURO ===")
+    log.info("=== INICIANDO INYECTOR DUAL (EPG + GOOGLE) ===")
     if not os.path.exists(ARCHIVO_EVENTOS):
         log.error(f"No existe {ARCHIVO_EVENTOS}. Ejecuta primero el curador.")
         return
@@ -247,16 +243,20 @@ def inyectar_eventos():
         eventos_app = json.load(f)
         
     urls_disponibles = obtener_urls_xtream()
-    eventos_web = extraer_tyc() + extraer_eurosport_epg() + extraer_winplay() + extraer_dsports()
-    log.info(f"Total eventos inyectables aprobados: {len(eventos_web)}")
+    eventos_aprobados = extraer_eventos_epg()
+    
+    log.info(f"Total eventos inyectables (Europa Confianza + América Google): {len(eventos_aprobados)}")
     
     nuevos_creados = 0
     fuentes_añadidas = 0
     
-    for ew in eventos_web:
+    for ew in eventos_aprobados:
         canal = ew["canal"]
         fuentes_iptv = urls_disponibles.get(canal, [])
-        if not fuentes_iptv: continue
+        
+        if not fuentes_iptv: 
+            # Si no tienes links de Xtream de ese canal hoy, no inyectamos el evento
+            continue
             
         match_encontrado = False
         for ea in eventos_app:
