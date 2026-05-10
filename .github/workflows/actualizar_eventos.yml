@@ -2,10 +2,7 @@ name: Curador Eventos Deportivos
 
 on:
   schedule:
-    # El Curador Pesado: 1 vez al día (17:00 UTC)
-    - cron: "0 17 * * *"
-    # El Inyector Ligero: Múltiples veces (13:00, 20:00, 23:00 UTC)
-    - cron: "0 13,20,23 * * *"
+    - cron: "0 17 * * *" # Se ejecuta 1 vez al día (17:00 UTC)
   workflow_dispatch:
 
 jobs:
@@ -24,11 +21,10 @@ jobs:
           python-version: "3.10"
 
       - name: Instalar dependencias
-        run: pip install requests
+        # Se añade lxml para parsear XMLTV rápido sin saturar la RAM
+        run: pip install requests lxml
 
-      - name: Ejecutar Curador Pesado (SofaScore)
-        # Solo se ejecuta a las 17:00 UTC o si le das clic manual al botón (workflow_dispatch)
-        if: github.event.schedule == '0 17 * * *' || github.event_name == 'workflow_dispatch'
+      - name: Ejecutar Orquestador Maestro EPG
         env:
           RAPIDAPI_KEY_1: ${{ secrets.RAPIDAPI_KEY_1 }}
           RAPIDAPI_KEY_2: ${{ secrets.RAPIDAPI_KEY_2 }}
@@ -38,27 +34,22 @@ jobs:
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
+          # Nuevas llaves para el Validador de Google
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GOOGLE_CX: ${{ secrets.GOOGLE_CX }}
         run: python curador_eventos.py
-
-      - name: Ejecutar Inyector Ligero (EPG XMLTV)
-        # Se ejecuta siempre. Actualiza las fuentes a las 17:00, y a las 13, 20 y 23 escanea eventos frescos.
-        env:
-          XTREAM_URL: ${{ secrets.XTREAM_URL }}
-          XTREAM_USER: ${{ secrets.XTREAM_USER }}
-          XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
-        run: python inyector_epg.py
 
       - name: Guardar cambios Eventos
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          
+
           git add eventos_hoy.json
-          
+
           if [ -f "meta_curador.json" ]; then
             git add meta_curador.json
           fi
-          
-          git commit -m "Actualización de Eventos y EPG (Auto)" || echo "Sin cambios"
+
+          git commit -m "Actualización Maestro de Eventos (V9 EPG + IA Search)" || echo "Sin cambios"
           git pull --rebase
           git push
