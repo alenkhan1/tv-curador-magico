@@ -169,11 +169,12 @@ def main():
         return
 
     # Escaneo Xtream
-    log.info("🔗 Mapeando links de Xtream...")
+    log.info("🔗 Mapeando links de Xtream a través del puente...")
     mapa_xtream = {k: [] for k in ["Win Sports", "DSports", "TyC Sports", "Eurosport"]}
     try:
         url_x = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
-        streams = requests.get(url_x, timeout=30).json()
+        req_x = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_x}, timeout=60)
+        streams = req_x.json() if req_x.status_code == 200 else []
         for s in streams:
             n = s.get("name", "").upper()
             stream_id = s.get('stream_id')
