@@ -4,6 +4,7 @@ import json
 import requests
 import re
 from datetime import datetime, timedelta
+from curl_cffi import requests as cffi_requests
 
 # Credenciales
 TMDB_API_KEY = os.environ.get("TMDB_API_KEY")
@@ -61,13 +62,9 @@ def obtener_categorias_xtream(action):
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
     mapa = {}
     
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
-        "Accept": "application/json"
-    }
-    
     try:
-        req = requests.get(url, headers=headers, timeout=15)
+        # impersonate="chrome" falsifica la firma TLS para saltar el firewall de XUI
+        req = cffi_requests.get(url, impersonate="chrome", timeout=20)
         if req.status_code == 200:
             try:
                 categorias = req.json()
@@ -99,18 +96,12 @@ def es_contenido_prohibido(nombre_crudo, category_id, mapa_categorias):
             
     return False
 
-
 def obtener_xtream(action):
     print(f"Descargando catálogo ({action}) de Xtream...")
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
     
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
-        "Accept": "application/json"
-    }
-    
     try:
-        req = requests.get(url, headers=headers, timeout=15)
+        req = cffi_requests.get(url, impersonate="chrome", timeout=20)
         if req.status_code == 200:
             try:
                 return req.json()
