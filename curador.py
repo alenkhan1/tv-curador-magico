@@ -60,16 +60,28 @@ def obtener_categorias_xtream(action):
     print(f"Descargando nombres de carpetas ({action}) de Xtream...")
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
     mapa = {}
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+        "Accept": "application/json"
+    }
+    
     try:
-        req = requests.get(url, timeout=15)
+        req = requests.get(url, headers=headers, timeout=15)
         if req.status_code == 200:
-            categorias = req.json()
-            for cat in categorias:
-                cat_id = str(cat.get("category_id", ""))
-                cat_name = cat.get("category_name", "")
-                mapa[cat_id] = cat_name
+            try:
+                categorias = req.json()
+                for cat in categorias:
+                    cat_id = str(cat.get("category_id", ""))
+                    cat_name = cat.get("category_name", "")
+                    mapa[cat_id] = cat_name
+            except ValueError:
+                print(f"[ERROR] Respuesta no es JSON en {action}. Bloqueo detectado. Contenido: {req.text[:200]}")
+        else:
+            print(f"[ERROR] Fallo de servidor en {action}. Código HTTP: {req.status_code}")
     except Exception as e:
-        print(f"[ERROR] No se pudo obtener categorías de Xtream ({action}): {e}. El filtro de contenido adulto puede estar inactivo.")
+        print(f"[ERROR] No se pudo conectar a Xtream ({action}): {e}")
+        
     return mapa
 
 def es_contenido_prohibido(nombre_crudo, category_id, mapa_categorias):
@@ -91,9 +103,23 @@ def es_contenido_prohibido(nombre_crudo, category_id, mapa_categorias):
 def obtener_xtream(action):
     print(f"Descargando catálogo ({action}) de Xtream...")
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
+    
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+        "Accept": "application/json"
+    }
+    
     try:
-        req = requests.get(url, timeout=15)
-        return req.json()
+        req = requests.get(url, headers=headers, timeout=15)
+        if req.status_code == 200:
+            try:
+                return req.json()
+            except ValueError:
+                print(f"[ERROR] Respuesta no es JSON en {action}. Bloqueo detectado. Contenido: {req.text[:200]}")
+                return []
+        else:
+            print(f"[ERROR] Fallo de servidor en {action}. Código HTTP: {req.status_code}")
+            return []
     except Exception as e:
         print(f"Error conectando a Xtream: {e}")
         return []
