@@ -262,7 +262,7 @@ def obtener_agenda_maestra() -> list:
 
 # ─── XTREAM ────────────────────────────────
 def procesar_cubo_a() -> list:
-    log.info("Analizando servidor Xtream...")
+    log.info("Analizando servidor Xtream a través del puente...")
     base_url = XTREAM_URL.rstrip('/')
     api_url = f"{base_url}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
     cubo_a = []
@@ -272,7 +272,8 @@ def procesar_cubo_a() -> list:
     palabras_contexto = ["EVENTOS", "EVENTS", "AGENDA", "PARTIDOS", "CARTELERA", "CALENDARIO", "PPV"]
     
     try:
-        r_cat = requests.get(f"{api_url}&action=get_live_categories", timeout=15)
+        url_cat_original = f"{api_url}&action=get_live_categories"
+        r_cat = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_cat_original}, timeout=45)
         categoria_id_hoy = None
         
         if r_cat.status_code == 200:
@@ -295,7 +296,7 @@ def procesar_cubo_a() -> list:
         else:
             url_streams = f"{api_url}&action=get_live_streams"
             
-        r_str = requests.get(url_streams, timeout=30)
+        r_str = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_streams}, timeout=60)
         if r_str.status_code != 200: return []
         
         for s in r_str.json():
