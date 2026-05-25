@@ -58,27 +58,22 @@ AÑO_ACTUAL = HOY.year
 
 
 def obtener_categorias_xtream(action):
-    print(f"Descargando nombres de carpetas ({action}) de Xtream...")
-    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
+    print(f"Descargando nombres de carpetas ({action}) de Xtream a través del puente en Render...")
+    url_original = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
     mapa = {}
-    
     try:
-        # impersonate="chrome" falsifica la firma TLS para saltar el firewall de XUI
-        req = cffi_requests.get(url, impersonate="chrome", timeout=20)
+        # Apuntamos al puente enviando la URL original en los parámetros de la petición
+        req = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_original}, timeout=60)
         if req.status_code == 200:
-            try:
-                categorias = req.json()
-                for cat in categorias:
-                    cat_id = str(cat.get("category_id", ""))
-                    cat_name = cat.get("category_name", "")
-                    mapa[cat_id] = cat_name
-            except ValueError:
-                print(f"[ERROR] Respuesta no es JSON en {action}. Bloqueo detectado. Contenido: {req.text[:200]}")
+            categorias = req.json()
+            for cat in categorias:
+                cat_id = str(cat.get("category_id", ""))
+                cat_name = cat.get("category_name", "")
+                mapa[cat_id] = cat_name
         else:
-            print(f"[ERROR] Fallo de servidor en {action}. Código HTTP: {req.status_code}")
+            print(f"[ERROR] El puente respondió con código HTTP {req.status_code}")
     except Exception as e:
-        print(f"[ERROR] No se pudo conectar a Xtream ({action}): {e}")
-        
+        print(f"[ERROR] No se pudo obtener categorías a través del puente ({action}): {e}")
     return mapa
 
 def es_contenido_prohibido(nombre_crudo, category_id, mapa_categorias):
@@ -97,22 +92,17 @@ def es_contenido_prohibido(nombre_crudo, category_id, mapa_categorias):
     return False
 
 def obtener_xtream(action):
-    print(f"Descargando catálogo ({action}) de Xtream...")
-    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
-    
+    print(f"Descargando catálogo ({action}) de Xtream a través del puente en Render...")
+    url_original = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action={action}"
     try:
-        req = cffi_requests.get(url, impersonate="chrome", timeout=20)
+        req = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_original}, timeout=60)
         if req.status_code == 200:
-            try:
-                return req.json()
-            except ValueError:
-                print(f"[ERROR] Respuesta no es JSON en {action}. Bloqueo detectado. Contenido: {req.text[:200]}")
-                return []
+            return req.json()
         else:
-            print(f"[ERROR] Fallo de servidor en {action}. Código HTTP: {req.status_code}")
+            print(f"[ERROR] El puente respondió con código HTTP {req.status_code}")
             return []
     except Exception as e:
-        print(f"Error conectando a Xtream: {e}")
+        print(f"Error conectando al puente para {action}: {e}")
         return []
 
 def limpiar_titulo(nombre):
