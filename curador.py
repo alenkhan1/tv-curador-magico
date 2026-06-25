@@ -204,9 +204,11 @@ def procesar_catalogo(items, es_serie, mapa_curado, mapa_categorias):
     contadores = {"adulto": 0, "sin_tmdb": 0, "sin_poster": 0, "sin_genero": 0, "sin_regla": 0, "aceptados": 0}
     
     for item in items:
-        stream_id = int(item.get(id_key, 0))
-        category_id = str(item.get("category_id", ""))
-        nombre_original = item.get("name", "").strip()
+        stream_id = int(item.get(id_key) or 0)
+        category_id = str(item.get("category_id") or "")
+        nombre_original = (item.get("name") or "").strip()
+        if not nombre_original:
+            continue
         
         # EL CADENERO: Bloqueo de origen
         if es_contenido_prohibido(nombre_original, category_id, mapa_categorias):
