@@ -348,8 +348,8 @@ def detectar_base_media_m3u() -> str:
                 )
                 return base_api
 
-            for linea_bytes in respuesta.iter_lines(chunk_size=8192, decode_unicode=True):
-                linea = (linea_bytes or "").strip()
+            for linea_bytes in respuesta.iter_lines(chunk_size=8192):
+                linea = linea_bytes.decode("utf-8", errors="ignore").strip()
                 if not linea.startswith(("http://", "https://")):
                     continue
 
