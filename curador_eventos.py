@@ -7,6 +7,7 @@ import requests
 import unicodedata
 from datetime import datetime, timezone, timedelta
 from difflib import SequenceMatcher
+from urllib.parse import urlparse
 
 # ─── LOGGING ESTRUCTURADO ────────────────────────────────────────────────────
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
@@ -323,6 +324,69 @@ def procesar_cubo_a() -> list:
         log.error(f"Error procesando Xtream: {e}")
         return []
 
+# ─── RESOLUCIÓN DE HOST DE MEDIA ─────────────────────────────────────────────
+def detectar_base_media_m3u() -> str:
+    """Lee una muestra pequeña del M3U y detecta su host real de media."""
+    base_api = XTREAM_URL.rstrip("/")
+    url_m3u = (
+        f"{base_api}/get.php?username={XTREAM_USER}"
+        f"&password={XTREAM_PASS}&type=m3u&output=ts"
+    )
+    candidatos = []
+
+    try:
+        with requests.get(
+            url_m3u,
+            headers={"Range": "bytes=0-65535"},
+            stream=True,
+            timeout=(15, 30)
+        ) as respuesta:
+            if respuesta.status_code not in (200, 206):
+                log.warning(
+                    f"No se pudo leer la muestra M3U: HTTP {respuesta.status_code}. "
+                    f"Se conserva XTREAM_URL como base de media."
+                )
+                return base_api
+
+            for linea_bytes in respuesta.iter_lines(chunk_size=8192, decode_unicode=True):
+                linea = (linea_bytes or "").strip()
+                if not linea.startswith(("http://", "https://")):
+                    continue
+
+                parsed = urlparse(linea)
+                partes = [parte for parte in parsed.path.split("/") if parte]
+                if len(partes) < 3:
+                    continue
+
+                usuario, password = partes[-3], partes[-2]
+                stream_id = partes[-1].split("?")[0]
+                if usuario == XTREAM_USER and password == XTREAM_PASS and stream_id:
+                    candidatos.append(f"{parsed.scheme}://{parsed.netloc}")
+
+                if len(candidatos) >= 3:
+                    break
+
+        if len(candidatos) >= 3 and len(set(candidatos)) == 1:
+            base_media = candidatos[0]
+            if base_media != base_api:
+                log.info(f"Base de media detectada desde M3U: {base_media}")
+            else:
+                log.info("El M3U confirma XTREAM_URL como base de media.")
+            return base_media
+
+        log.warning(
+            "No se obtuvo una muestra M3U consistente. "
+            "Se conserva XTREAM_URL como base de media."
+        )
+        return base_api
+
+    except requests.exceptions.RequestException as e:
+        log.warning(
+            f"No se pudo detectar la base de media desde M3U: {e}. "
+            "Se conserva XTREAM_URL como base de media."
+        )
+        return base_api
+
 # ─── ORQUESTADOR ───────────────────────────────────
 def main():
     log.info(f"=== Iniciando Curador Base (SofaScore + Xtream) ===")
@@ -334,11 +398,11 @@ def main():
         return
 
     resultados_finales = []
-    base_url = XTREAM_URL.rstrip('/')
+    base_media = detectar_base_media_m3u()
 
     for canal in cubo_a:
         texto_canal = canal["texto_limpio"]
-        url_video = f"{base_url}/{XTREAM_USER}/{XTREAM_PASS}/{canal['id_xtream']}.ts"
+        url_video = f"{base_media}/{XTREAM_USER}/{XTREAM_PASS}/{canal['id_xtream']}"
         fuente_limpia = {"nombre": canal["nombre_ui"], "url": url_video}
         
         match_encontrado = False
