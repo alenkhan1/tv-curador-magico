@@ -4,39 +4,96 @@ on:
   schedule:
     - cron: "0 4 * * *"
   workflow_dispatch:
+    inputs:
+      presupuesto_min:
+        description: "Minutos maximos de trabajo antes de guardar y parar"
+        required: false
+        default: "240"
+      hilos:
+        description: "Consultas simultaneas a TMDB"
+        required: false
+        default: "12"
+
+# Nunca dos curadores a la vez: se pisarian la memoria y el commit.
+concurrency:
+  group: curador
+  cancel-in-progress: false
 
 jobs:
   procesar_catalogo:
     runs-on: ubuntu-latest
-    # NUEVO: Le damos permiso explícito al bot para guardar archivos
+    timeout-minutes: 330
     permissions:
       contents: write
 
     steps:
       - name: Descargar el repositorio
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
 
       - name: Configurar Python
-        uses: actions/setup-python@v5.6.0
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
       - name: Instalar dependencias
-        run: pip install requests curl_cffi
+        run: pip install --upgrade "requests>=2.32" "curl_cffi>=0.7"
 
-      - name: Ejecutar el Curador Mágico
+      # continue-on-error: si el curador no valida el catalogo, NO se pierde
+      # el avance: la memoria y el informe se guardan igual en el paso siguiente.
+      - name: Ejecutar el curador
+        id: curador
+        continue-on-error: true
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
+          PRESUPUESTO_MIN: ${{ github.event.inputs.presupuesto_min || '240' }}
+          HILOS_TMDB: ${{ github.event.inputs.hilos || '12' }}
+          PYTHONUNBUFFERED: "1"
         run: python curador.py
 
-      - name: Guardar el JSON en el repositorio
+      - name: Guardar cambios en el repositorio
+        if: always()
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          git add catalogo_curado.json
-          git commit -m "Actualización diaria del catálogo" || echo "No hay cambios para guardar"
-          git pull --rebase -X theirs
-          git push
+
+          for f in catalogo_curado.json cache_tmdb.json correcciones.json informe_no_resueltos.json; do
+            if [ -f "$f" ]; then git add "$f"; fi
+          done
+
+          if git diff --cached --quiet; then
+            echo "No hay cambios para guardar."
+            exit 0
+          fi
+
+          git commit -m "Actualizacion del catalogo ($(date -u '+%Y-%m-%d %H:%M UTC'))"
+
+          # Reintentos: el push puede chocar con otro commit reciente.
+          for intento in 1 2 3; do
+            if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push; then
+              echo "Cambios publicados."
+              exit 0
+            fi
+            echo "Reintento $intento de publicacion..."
+            sleep 10
+          done
+          echo "No se pudo publicar los cambios."
+          exit 1
+
+      - name: Resumen de lo no resuelto
+        if: always()
+        run: |
+          test -f informe_no_resueltos.json || exit 0
+          python -c "import json;d=json.load(open('informe_no_resueltos.json',encoding='utf-8'));r=d.get('resumen',{});print('No resueltos:',r.get('total'));print('Por motivo:',r.get('por_motivo'));[print('  patron %-24s %s veces'%(p['patron'][:24],p['veces'])) for p in (d.get('patrones') or [])[:8]]"
+
+      # Si el curador no valido el catalogo, el trabajo se marca como fallido
+      # para que GitHub te avise por correo. El catalogo anterior sigue intacto.
+      - name: Marcar fallo si el curador no valido el catalogo
+        if: steps.curador.outcome == 'failure'
+        run: |
+          echo "El curador no publico un catalogo valido. Revisa el registro de arriba."
+          exit 1
