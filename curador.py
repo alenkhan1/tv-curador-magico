@@ -1,17 +1,35 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Curador VOD  ->  catalogo_curado.json
+Curador VOD -> catalogo_curado.json
+
+Principio central (acordado 01-ago-2026):
+El catalogo completo NUNCA descarta un titulo solo porque TMDB no lo identifico.
+Solo se descarta por: contenido adulto, exclusion manual explicita, o duplicado
+inferior (que igual se conserva como respaldo, no se destruye).
+
+Dos niveles de confianza en el mismo archivo:
+  - "items"          -> identificados con TMDB: poster, genero, sinopsis, nota.
+                        Estos alimentan las filas de vitrina.
+  - "sin_identificar"-> sobrevive el filtro adulto pero TMDB no lo resolvio.
+                        Solo nombre limpio e id del proveedor. Van al buscador,
+                        nunca a una fila de vitrina (no hay genero/anio real).
 
 Arquitectura de dos fases:
-  FASE 1  clasificar TODO el catalogo (sin decidir nada de presentacion)
-  FASE 2  armar la vitrina (agrupar duplicados, fusionar filas flacas, ordenar, recortar)
+FASE 1 clasificar TODO el catalogo (sin decidir nada de presentacion)
+FASE 2 armar la vitrina (agrupar duplicados, fusionar filas flacas, ordenar, recortar)
+
+La calidad tecnica (CAM, BRrip, etc.) NUNCA excluye un titulo por si sola.
+Solo se usa para desempatar entre copias del MISMO titulo (mismo id de TMDB).
+Si una pelicula solo existe en una copia de baja calidad, esa copia se acepta
+igual: es la unica que existe en el mundo real para ese titulo.
 
 Archivos que maneja:
-  catalogo_curado.json      generado. NUNCA se edita a mano.
-  cache_tmdb.json           memoria persistente. Permite reanudar y hace las corridas diarias rapidas.
-  correcciones.json         lo editas tu a mano: equivalencias, exclusiones, asignaciones forzadas.
-  informe_no_resueltos.json generado. Lo que no se pudo identificar, agrupado por patron.
+catalogo_curado.json generado. NUNCA se edita a mano.
+cache_tmdb.json memoria persistente. Permite reanudar y hace las corridas diarias rapidas.
+correcciones.json OPCIONAL, la editas tu a mano: equivalencias, exclusiones, forzados.
+                  El curador funciona perfecto sin tocarlo nunca.
+informe_no_resueltos.json generado. Diagnostico de lo no identificado, agrupado por patron.
 """
 
 import os
@@ -19,7 +37,6 @@ import re
 import sys
 import json
 import time
-import math
 import random
 import difflib
 import threading
@@ -33,7 +50,6 @@ try:
     from curl_cffi import requests as cffi_requests
 except Exception:
     cffi_requests = None
-
 
 # ============================================================================
 # CONFIGURACION
@@ -52,11 +68,13 @@ ARCHIVO_CACHE = "cache_tmdb.json"
 ARCHIVO_CORRECCIONES = "correcciones.json"
 ARCHIVO_INFORME = "informe_no_resueltos.json"
 
-SCHEMA = 2
+SCHEMA = 3          # sube de 2 a 3: catalogo completo + nivel "sin_identificar"
 CACHE_VERSION = 1
 
-# --- Topes de vitrina (acordados) -------------------------------------------
-TOPE_GENERO = int(os.environ.get("TOPE_GENERO", "40"))
+# --- Topes de VITRINA (cuantos posters por fila, NO del catalogo) ----------
+# El catalogo completo (items + sin_identificar) nunca tiene tope.
+# Estos topes solo deciden cuantas referencias entran en cada fila.
+TOPE_GENERO = int(os.environ.get("TOPE_GENERO", "50"))
 TOPE_ESTRENOS = int(os.environ.get("TOPE_ESTRENOS", "30"))
 TOPE_EPOCA = int(os.environ.get("TOPE_EPOCA", "50"))
 PISO_FILA = int(os.environ.get("PISO_FILA", "10"))
@@ -104,30 +122,28 @@ INICIO = time.monotonic()
 POSTER_BASE = "https://image.tmdb.org/t/p/"
 POSTER_SIZE = "w500"
 
-
 # ============================================================================
 # GENEROS
 # ============================================================================
 
 GEN_PELICULAS = {
-    28: "🎬 Acción", 12: "🗺️ Aventura", 16: "🎨 Animación", 35: "😂 Comedia",
-    80: "🕵️ Crimen", 99: "🎞️ Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia",
-    14: "✨ Fantasía", 36: "🏛️ Historia", 27: "💀 Terror", 10402: "🎵 Música",
-    9648: "🔍 Misterio", 10749: "❤️ Romance", 878: "🚀 Ciencia Ficción",
-    10770: "📺 Película de TV", 53: "😱 Suspense", 10752: "⚔️ Bélica", 37: "🤠 Western",
+    28: "Accion", 12: "Aventura", 16: "Animacion", 35: "Comedia",
+    80: "Crimen", 99: "Documental", 18: "Drama", 10751: "Familia",
+    14: "Fantasia", 36: "Historia", 27: "Terror", 10402: "Musica",
+    9648: "Misterio", 10749: "Romance", 878: "Ciencia Ficcion",
+    10770: "Pelicula de TV", 53: "Suspense", 10752: "Belica", 37: "Western",
 }
 
 GEN_SERIES = {
-    10759: "🎬 Acción y Aventura", 16: "🎨 Animación", 35: "😂 Comedia",
-    80: "🕵️ Crimen", 99: "🎞️ Documental", 18: "🎭 Drama", 10751: "👨‍👩‍👧‍👦 Familia",
-    10762: "🧸 Infantil", 9648: "🔍 Misterio", 10763: "🎞️ Documental",
-    10764: "📺 Reality", 10765: "🚀 Sci-Fi & Fantasy", 10766: "🧼 Telenovela",
-    10767: "🗣️ Talk Show", 10768: "⚔️ Guerra y Política", 37: "🤠 Western",
+    10759: "Accion y Aventura", 16: "Animacion", 35: "Comedia",
+    80: "Crimen", 99: "Documental", 18: "Drama", 10751: "Familia",
+    10762: "Infantil", 9648: "Misterio", 10763: "Documental",
+    10764: "Reality", 10765: "Sci-Fi & Fantasy", 10766: "Telenovela",
+    10767: "Talk Show", 10768: "Guerra y Politica", 37: "Western",
 }
 
-FILA_ANIME = "🌸 Anime"
+FILA_ANIME = "Anime"
 
-# Prioridad propia: lo especifico gana a lo genérico.
 PRIORIDAD_PELICULAS = [
     99, 16, 27, 37, 878, 10752, 10402, 36, 14, 80, 9648, 53, 12, 28,
     10749, 10751, 35, 18, 10770,
@@ -137,48 +153,43 @@ PRIORIDAD_SERIES = [
     10763, 10766, 10751, 35, 18,
 ]
 
-# Generos "fuertes": pueden ocupar una segunda fila.
 FUERTES_PELICULAS = {99, 16, 27, 37, 878, 10752, 10402, 36, 14, 80, 9648, 53}
 FUERTES_SERIES = {99, 16, 37, 10765, 10768, 80, 9648, 10762}
 
 ORDEN_CATEGORIAS = [
-    "✧ Estrenos", "★ Clásicos", "📼 Retro",
-    "🎬 Acción", "🎬 Acción y Aventura", "🚀 Ciencia Ficción", "🚀 Sci-Fi & Fantasy",
-    "💀 Terror", "😱 Suspense", "🔍 Misterio", "🕵️ Crimen",
-    "😂 Comedia", "❤️ Romance", "🎭 Drama", "🧼 Telenovela",
-    "🎨 Animación", "🌸 Anime", "👨‍👩‍👧‍👦 Familia", "🧸 Infantil",
-    "✨ Fantasía", "🗺️ Aventura",
-    "🎞️ Documental", "🏛️ Historia", "⚔️ Bélica", "⚔️ Guerra y Política",
-    "🎵 Música", "📺 Película de TV", "📺 Reality", "🗣️ Talk Show", "🤠 Western",
+    "Estrenos", "Clasicos", "Retro",
+    "Accion", "Accion y Aventura", "Ciencia Ficcion", "Sci-Fi & Fantasy",
+    "Terror", "Suspense", "Misterio", "Crimen",
+    "Comedia", "Romance", "Drama", "Telenovela",
+    "Animacion", "Anime", "Familia", "Infantil",
+    "Fantasia", "Aventura",
+    "Documental", "Historia", "Belica", "Guerra y Politica",
+    "Musica", "Pelicula de TV", "Reality", "Talk Show", "Western",
 ]
 
-# Escalera de fusion: si la fila no llega al piso, sus items se absorben aqui.
 FUSION = {
-    "⚔️ Bélica": "🎬 Acción",
-    "🏛️ Historia": "🎞️ Documental",
-    "🤠 Western": "🎬 Acción",
-    "📺 Película de TV": "🎭 Drama",
-    "🎵 Música": "🎞️ Documental",
-    "✨ Fantasía": "🚀 Ciencia Ficción",
-    "🔍 Misterio": "😱 Suspense",
-    "🗺️ Aventura": "🎬 Acción",
-    "❤️ Romance": "🎭 Drama",
-    "👨‍👩‍👧‍👦 Familia": "🎨 Animación",
-    "⚔️ Guerra y Política": "🎭 Drama",
-    "🗣️ Talk Show": "📺 Reality",
-    "📺 Reality": "🎞️ Documental",
-    "🧼 Telenovela": "🎭 Drama",
-    "🧸 Infantil": "🎨 Animación",
-    "🌸 Anime": "🎨 Animación",
-    "😱 Suspense": "🕵️ Crimen",
-    "🚀 Sci-Fi & Fantasy": "🎬 Acción y Aventura",
+    "Belica": "Accion",
+    "Historia": "Documental",
+    "Western": "Accion",
+    "Pelicula de TV": "Drama",
+    "Musica": "Documental",
+    "Fantasia": "Ciencia Ficcion",
+    "Misterio": "Suspense",
+    "Aventura": "Accion",
+    "Romance": "Drama",
+    "Familia": "Animacion",
+    "Guerra y Politica": "Drama",
+    "Talk Show": "Reality",
+    "Reality": "Documental",
+    "Telenovela": "Drama",
+    "Infantil": "Animacion",
+    "Anime": "Animacion",
+    "Suspense": "Crimen",
+    "Sci-Fi & Fantasy": "Accion y Aventura",
 }
 
-TOPES = {"✧ Estrenos": TOPE_ESTRENOS, "★ Clásicos": TOPE_EPOCA, "📼 Retro": TOPE_EPOCA}
-
-# Tipo de cada fila. La app ordena y decide por este campo, no comparando emojis.
-TIPOS_FILA = {"✧ Estrenos": "estrenos", "★ Clásicos": "epoca", "📼 Retro": "epoca"}
-
+TOPES = {"Estrenos": TOPE_ESTRENOS, "Clasicos": TOPE_EPOCA, "Retro": TOPE_EPOCA}
+TIPOS_FILA = {"Estrenos": "estrenos", "Clasicos": "epoca", "Retro": "epoca"}
 
 # ============================================================================
 # NORMALIZACION
@@ -190,23 +201,19 @@ def sin_acentos(texto):
         if unicodedata.category(c) != "Mn"
     )
 
-
 def normalizar(texto):
     t = sin_acentos(texto).upper()
     t = re.sub(r"[^A-Z0-9]+", " ", t)
     return " ".join(t.split())
 
-
 def clave(titulo, anio):
     return "%s|%s" % (normalizar(titulo), int(anio or 0))
-
 
 def contiene_secuencia(norm, secuencia):
     return (" %s " % secuencia) in (" %s " % norm)
 
-
 # ============================================================================
-# FILTRO DE CONTENIDO ADULTO
+# FILTRO DE CONTENIDO ADULTO (unico motivo de exclusion "de origen")
 # ============================================================================
 
 CAT_SUBCADENAS = [
@@ -222,8 +229,8 @@ TITULO_SUBCADENAS = ["XXX", "HENTAI", "PORNO", "ONLYFANS", "BRAZZER"]
 TITULO_TOKENS = [
     "HDCAM", "CAMRIP", "TELESYNC", "SCREENER", "DVDSCR", "TS SCREENER", "TSRIP",
 ]
-RE_MAS18 = re.compile(r"(\+\s?18|18\s?\+|\(\s?18\s?\)|\b18\s?PLUS\b)", re.I)
 
+RE_MAS18 = re.compile(r"(\+\s?18|18\s?\+|\(\s?18\s?\)|\b18\s?PLUS\b)", re.I)
 
 def categoria_prohibida(nombre_categoria):
     if not nombre_categoria:
@@ -241,7 +248,6 @@ def categoria_prohibida(nombre_categoria):
             return True
     return False
 
-
 def titulo_prohibido(nombre_crudo):
     if not nombre_crudo:
         return False
@@ -256,9 +262,10 @@ def titulo_prohibido(nombre_crudo):
             return True
     return False
 
-
 # ============================================================================
 # LIMPIEZA DE TITULOS (por capas, extrayendo señal antes de descartar)
+# Cobertura ampliada de etiquetas tecnicas para evitar residuos tipo
+# "BRrip x264" al final del nombre mostrado (defecto reportado en la vitrina).
 # ============================================================================
 
 PREFIJOS = {
@@ -301,7 +308,8 @@ BASURA = {
     "DOLBY", "VISION", "REPACK", "PROPER", "RIP", "AUDIO", "VOD", "MKV",
     "MP4", "AVI", "RARBG", "YTS", "YIFY", "EVO", "GALAXYRG", "FGT", "ETRG",
     "PSA", "TGX", "MEGUSTA", "ION10", "SPARKS", "IMAX", "EXTENDED", "UNRATED",
-    "REMASTERED", "OPEN", "MATTE", "LINE", "DUBBED",
+    "REMASTERED", "OPEN", "MATTE", "LINE", "DUBBED", "10BIT", "8BIT",
+    "WEBCAP", "PREAIR", "LIMITED", "INTERNAL", "COMPLETE", "MULTISUB",
 }
 
 RE_EXT = re.compile(r"\.(mp4|mkv|avi|mov|ts|m4v|flv|wmv)\s*$", re.I)
@@ -337,7 +345,6 @@ RE_EPISODIO = re.compile(
     r"\b(?:E|EP|CAP|CAPITULO|EPISODIO|EPISODE)\s*\.?\s*\d{1,3}\b", re.I
 )
 
-
 def absorber_etiquetas(fragmento, info):
     """Extrae calidad / origen / idioma de un trozo que vamos a descartar
     (prefijo del proveedor, contenido entre corchetes o parentesis).
@@ -361,7 +368,6 @@ def absorber_etiquetas(fragmento, info):
             if rango > info["idioma"]:
                 info["idioma"], info["idioma_txt"] = rango, txt
             info["etiquetas"].append(norm)
-
 
 def limpiar_titulo(nombre, es_serie=False):
     """Devuelve dict con: buscar, anio, calidad, calidad_txt, fuente,
@@ -415,7 +421,7 @@ def limpiar_titulo(nombre, es_serie=False):
         texto = RE_TEMPORADA.sub(" ", texto)
         texto = RE_EPISODIO.sub(" ", texto)
 
-    # 4) bigramas tecnicos -> token unico
+    # 4) bigramas tecnicos -> token unico (evita que sobrevivan pegados)
     for patron, reemplazo in RE_BIGRAMAS:
         texto = patron.sub(reemplazo, texto)
 
@@ -454,22 +460,22 @@ def limpiar_titulo(nombre, es_serie=False):
             continue
         limpios.append(token)
 
-    # 6) año suelto al final
+    # 6) año suelto al final (o en cualquier posicion residual)
     if limpios:
         ultimo = normalizar(limpios[-1])
         if re.fullmatch(r"(19|20)\d{2}", ultimo):
             valor = int(ultimo)
-            if 1900 <= valor <= ANIO_ACTUAL + 2 and len(limpios) >= 3:
+            if 1900 <= valor <= ANIO_ACTUAL + 2 and len(limpios) >= 2:
                 if not info["anio"]:
                     info["anio"] = valor
                 limpios.pop()
 
     if not info["anio"]:
-        for token in limpios:
+        for token in list(limpios):
             norm = normalizar(token)
             if re.fullmatch(r"(19|20)\d{2}", norm):
                 valor = int(norm)
-                if 1900 <= valor <= ANIO_ACTUAL + 2 and len(limpios) >= 3:
+                if 1900 <= valor <= ANIO_ACTUAL + 2 and len(limpios) >= 2:
                     info["anio"] = valor
                     limpios.remove(token)
                     break
@@ -484,7 +490,6 @@ def limpiar_titulo(nombre, es_serie=False):
     info["buscar"] = " ".join(" ".join(limpios).split())
     return info
 
-
 def titulo_recortado(titulo):
     """Version corta para el tercer intento: quita el subtitulo tras : o -"""
     for sep in (":", " - "):
@@ -497,13 +502,11 @@ def titulo_recortado(titulo):
         return " ".join(tokens[:-1])
     return ""
 
-
 # ============================================================================
 # RED: proveedor (puente en Render + respaldo directo)
 # ============================================================================
 
 _local = threading.local()
-
 
 def sesion():
     s = getattr(_local, "s", None)
@@ -511,17 +514,15 @@ def sesion():
         s = requests.Session()
         s.headers.update({
             "Accept-Encoding": "gzip, deflate",
-            "User-Agent": "curador-vod/2.0",
+            "User-Agent": "curador-vod/3.0",
         })
         _local.s = s
     return s
-
 
 def url_xtream(accion, extra=""):
     return "%s/player_api.php?username=%s&password=%s&action=%s%s" % (
         XTREAM_URL, XTREAM_USER, XTREAM_PASS, accion, extra
     )
-
 
 def puente_get(url_original, timeout=(15, 240), intentos=3):
     for i in range(intentos):
@@ -531,15 +532,14 @@ def puente_get(url_original, timeout=(15, 240), intentos=3):
             )
             if r.status_code == 200:
                 return r.json()
-            print("   [aviso] el puente respondio HTTP %s (intento %s/%s)"
+            print(" [aviso] el puente respondio HTTP %s (intento %s/%s)"
                   % (r.status_code, i + 1, intentos))
         except Exception as e:
-            print("   [aviso] fallo el puente: %s (intento %s/%s)"
+            print(" [aviso] fallo el puente: %s (intento %s/%s)"
                   % (e, i + 1, intentos))
         if i < intentos - 1:
             time.sleep(3 * (i + 1) ** 2)
     return None
-
 
 def directo_get(url_original, timeout=240):
     if cffi_requests is None:
@@ -548,26 +548,24 @@ def directo_get(url_original, timeout=240):
         r = cffi_requests.get(url_original, impersonate="chrome", timeout=timeout)
         if r.status_code == 200:
             return r.json()
-        print("   [aviso] conexion directa respondio HTTP %s" % r.status_code)
+        print(" [aviso] conexion directa respondio HTTP %s" % r.status_code)
     except Exception as e:
-        print("   [aviso] fallo la conexion directa: %s" % e)
+        print(" [aviso] fallo la conexion directa: %s" % e)
     return None
-
 
 def proveedor_get(url_original):
     datos = puente_get(url_original)
     if datos is None:
-        print("   [aviso] el puente no respondio, intentando conexion directa...")
+        print(" [aviso] el puente no respondio, intentando conexion directa...")
         datos = directo_get(url_original)
     if datos is None:
         return None
     if isinstance(datos, dict) and "user_info" in datos:
         return None
     if not isinstance(datos, list):
-        print("   [aviso] la respuesta no es una lista (%s)" % type(datos).__name__)
+        print(" [aviso] la respuesta no es una lista (%s)" % type(datos).__name__)
         return None
     return datos
-
 
 def descargar_catalogo(es_serie):
     """Descarga carpeta por carpeta. Devuelve (items, mapa_categorias, plano)."""
@@ -587,11 +585,11 @@ def descargar_catalogo(es_serie):
         cid = str(cat.get("category_id") or "")
         if cid:
             mapa[cid] = cat.get("category_name") or ""
-    print("   %s carpetas encontradas." % len(mapa))
+    print(" %s carpetas encontradas." % len(mapa))
 
     plano = len(mapa) <= 1
     if plano:
-        print("   [AVISO] el proveedor tiene estructura plana (%s carpeta). "
+        print(" [AVISO] el proveedor tiene estructura plana (%s carpeta). "
               "El filtro por carpetas queda inactivo; se usaran las otras capas."
               % len(mapa))
 
@@ -604,18 +602,18 @@ def descargar_catalogo(es_serie):
         visibles = [c for c in mapa if not categoria_prohibida(mapa[c])]
         bloqueadas = len(mapa) - len(visibles)
         if bloqueadas:
-            print("   %s carpetas bloqueadas por el filtro de adultos."
+            print(" %s carpetas bloqueadas por el filtro de adultos."
                   % bloqueadas)
         print("-> Descargando %s carpeta por carpeta..." % etiqueta)
         for indice, cid in enumerate(visibles, 1):
             datos = proveedor_get(url_xtream(accion_lista, "&category_id=%s" % cid))
             if datos is None:
                 fallidas += 1
-                print("   [aviso] carpeta '%s' (%s) no se pudo descargar."
+                print(" [aviso] carpeta '%s' (%s) no se pudo descargar."
                       % (mapa[cid], cid))
                 continue
             if len(datos) > UMBRAL_NO_FILTRA:
-                print("   [aviso] el proveedor ignora el filtro por carpeta. "
+                print(" [aviso] el proveedor ignora el filtro por carpeta. "
                       "Cambiando a descarga completa.")
                 modo_completo = True
                 items = {}
@@ -626,12 +624,12 @@ def descargar_catalogo(es_serie):
                     it.setdefault("category_id", cid)
                     items[str(sid)] = it
             if indice % 25 == 0:
-                print("   %s/%s carpetas, %s items acumulados."
+                print(" %s/%s carpetas, %s items acumulados."
                       % (indice, len(visibles), len(items)))
             time.sleep(PAUSA_PROVEEDOR)
 
         if visibles and fallidas > max(2, len(visibles) * 0.2):
-            print("   [aviso] fallaron %s de %s carpetas. "
+            print(" [aviso] fallaron %s de %s carpetas. "
                   "Cambiando a descarga completa." % (fallidas, len(visibles)))
             modo_completo = True
             items = {}
@@ -647,9 +645,8 @@ def descargar_catalogo(es_serie):
             if sid is not None:
                 items[str(sid)] = it
 
-    print("   %s items de %s listos." % (len(items), etiqueta))
+    print(" %s items de %s listos." % (len(items), etiqueta))
     return list(items.values()), mapa, plano
-
 
 # ============================================================================
 # RED: TMDB (limitador, reintentos, escalera de intentos, puntuacion)
@@ -673,9 +670,7 @@ class Limitador:
         if espera > 0:
             time.sleep(espera)
 
-
 LIMITADOR = Limitador(TMDB_RPS)
-
 
 def tmdb_get(ruta, params, intentos=4):
     """Devuelve dict, o None si hubo fallo de red (distinto de 'no encontrado')."""
@@ -702,7 +697,6 @@ def tmdb_get(ruta, params, intentos=4):
         except Exception:
             time.sleep(1.5 * (i + 1) + random.random())
     return None
-
 
 def puntuar(candidato, consulta_norm, anio_consulta, es_serie):
     if candidato.get("adult"):
@@ -760,7 +754,6 @@ def puntuar(candidato, consulta_norm, anio_consulta, es_serie):
         "candidato": candidato,
     }
 
-
 def tmdb_buscar(titulo, es_serie, anio=None):
     ruta = "search/tv" if es_serie else "search/movie"
     params = {"query": titulo, "language": "es-ES", "include_adult": "false"}
@@ -771,7 +764,6 @@ def tmdb_buscar(titulo, es_serie, anio=None):
         return None
     return datos.get("results") or []
 
-
 def mejor_de(resultados, consulta_norm, anio, es_serie, umbral):
     mejor = None
     for candidato in (resultados or [])[:12]:
@@ -781,7 +773,6 @@ def mejor_de(resultados, consulta_norm, anio, es_serie, umbral):
     if mejor and mejor["score"] >= umbral:
         return mejor
     return None
-
 
 def empaquetar(elegido, es_serie):
     c = elegido["candidato"]
@@ -799,9 +790,9 @@ def empaquetar(elegido, es_serie):
         "pop": round(float(c.get("popularity") or 0.0), 2),
         "lang": c.get("original_language") or "",
         "paises": paises if isinstance(paises, list) else [],
+        "sinopsis": (c.get("overview") or "").strip(),
         "ts": int(time.time()),
     }
-
 
 def resolver_titulo(titulo, anio, es_serie):
     """Escalera de intentos. Devuelve (datos|None, motivo)."""
@@ -811,7 +802,6 @@ def resolver_titulo(titulo, anio, es_serie):
 
     hubo_fallo_red = False
 
-    # Intento A: con año
     if anio:
         res = tmdb_buscar(titulo, es_serie, anio)
         if res is None:
@@ -821,7 +811,6 @@ def resolver_titulo(titulo, anio, es_serie):
             if elegido:
                 return empaquetar(elegido, es_serie), "ok"
 
-    # Intento B: sin año
     res = tmdb_buscar(titulo, es_serie, None)
     if res is None:
         hubo_fallo_red = True
@@ -830,7 +819,6 @@ def resolver_titulo(titulo, anio, es_serie):
         if elegido:
             return empaquetar(elegido, es_serie), "ok"
 
-    # Intento C: titulo recortado
     corto = titulo_recortado(titulo)
     if corto:
         res = tmdb_buscar(corto, es_serie, None)
@@ -846,7 +834,6 @@ def resolver_titulo(titulo, anio, es_serie):
     if hubo_fallo_red:
         return None, "fallo_red"
     return None, "no_encontrado"
-
 
 def tmdb_por_id(tmdb_id, es_serie):
     """Para las equivalencias manuales del archivo de correcciones."""
@@ -874,9 +861,9 @@ def tmdb_por_id(tmdb_id, es_serie):
         "pop": round(float(datos.get("popularity") or 0.0), 2),
         "lang": datos.get("original_language") or "",
         "paises": paises if isinstance(paises, list) else [],
+        "sinopsis": (datos.get("overview") or "").strip(),
         "ts": int(time.time()),
     }, "ok"
-
 
 def detalles_serie(tmdb_id):
     datos = tmdb_get("tv/%s" % tmdb_id, {"language": "es-ES"})
@@ -893,7 +880,6 @@ def detalles_serie(tmdb_id):
         "ts": int(time.time()),
     }
 
-
 # ============================================================================
 # MEMORIA PERSISTENTE
 # ============================================================================
@@ -905,7 +891,6 @@ def leer_json(ruta, por_defecto):
     except Exception:
         return por_defecto
 
-
 def escribir_json(ruta, datos, compacto=False):
     tmp = ruta + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
@@ -915,7 +900,6 @@ def escribir_json(ruta, datos, compacto=False):
             json.dump(datos, f, ensure_ascii=False, indent=2)
     os.replace(tmp, ruta)
 
-
 def cargar_cache():
     cache = leer_json(ARCHIVO_CACHE, None)
     if not isinstance(cache, dict) or cache.get("version") != CACHE_VERSION:
@@ -924,14 +908,11 @@ def cargar_cache():
         cache.setdefault(k, {})
     return cache
 
-
 CACHE_LOCK = threading.Lock()
-
 
 def guardar_cache(cache):
     with CACHE_LOCK:
         escribir_json(ARCHIVO_CACHE, cache, compacto=True)
-
 
 def cache_vigente(entrada):
     if not isinstance(entrada, dict):
@@ -946,7 +927,6 @@ def cache_vigente(entrada):
     limite = REFRESCO_RECIENTE if anio >= ANIO_ACTUAL - 2 else REFRESCO_ANTIGUO
     return edad < limite
 
-
 def detalles_vigentes(entrada):
     if not isinstance(entrada, dict):
         return False
@@ -956,35 +936,33 @@ def detalles_vigentes(entrada):
         return edad < REFRESCO_SERIE_TERMINADA
     return edad < REFRESCO_SERIE_ACTIVA
 
-
 def presupuesto_agotado():
     return (time.monotonic() - INICIO) / 60.0 >= PRESUPUESTO_MIN
 
-
 # ============================================================================
-# CORRECCIONES MANUALES
+# CORRECCIONES MANUALES (100% opcional, valvula de escape, no obligatorio)
 # ============================================================================
 
 AYUDA_CORRECCIONES = [
-    "Este archivo lo editas TU a mano. El curador lo lee antes de buscar en TMDB.",
+    "OPCIONAL. El curador funciona perfecto sin que edites este archivo nunca.",
+    "Sirve solo para forzar un caso puntual sin esperar a que TMDB lo resuelva.",
     "equivalencias: fuerza la identificacion. tipo es 'movie' o 'tv'.",
     "  {\"tipo\": \"movie\", \"nombre\": \"Gran Turismo De jugador a corredor\", \"tmdb_id\": 442249}",
     "exclusiones: nunca entra al catalogo. Por nombre o por id del proveedor.",
-    "  {\"tipo\": \"movie\", \"nombre\": \"Evento UFC 300\"}  |  {\"tipo\": \"movie\", \"id\": 173558}",
+    "  {\"tipo\": \"movie\", \"nombre\": \"Evento UFC 300\"} | {\"tipo\": \"movie\", \"id\": 173558}",
     "forzados: manda el item a una fila concreta, ademas de la que le toque.",
-    "  {\"tipo\": \"movie\", \"nombre\": \"El callejon de los milagros\", \"fila\": \"📼 Retro\"}",
+    "  {\"tipo\": \"movie\", \"nombre\": \"El callejon de los milagros\", \"fila\": \"Retro\"}",
     "El campo 'nombre' se compara sin acentos, sin mayusculas y sin signos,",
     "asi que no tienes que copiarlo con precision milimetrica.",
 ]
-
 
 def cargar_correcciones():
     datos = leer_json(ARCHIVO_CORRECCIONES, None)
     if not isinstance(datos, dict):
         datos = {"_ayuda": AYUDA_CORRECCIONES, "equivalencias": [],
-                 "exclusiones": [], "forzados": []}
+                  "exclusiones": [], "forzados": []}
         escribir_json(ARCHIVO_CORRECCIONES, datos)
-        print("-> Creado %s vacio (editalo a mano cuando quieras)."
+        print("-> Creado %s vacio (opcional, editalo a mano solo si quieres)."
               % ARCHIVO_CORRECCIONES)
     datos["_ayuda"] = AYUDA_CORRECCIONES
     for k in ("equivalencias", "exclusiones", "forzados"):
@@ -1021,9 +999,11 @@ def cargar_correcciones():
     escribir_json(ARCHIVO_CORRECCIONES, datos)
     return indice
 
-
 # ============================================================================
-# FASE 1  ·  CLASIFICAR TODO EL CATALOGO
+# FASE 1 - CLASIFICAR TODO EL CATALOGO
+# Un titulo solo se descarta aqui por: adulto, o exclusion manual.
+# Si no tiene nombre legible tras la limpieza, se conserva igual con el
+# nombre crudo del proveedor (nunca desaparece en silencio).
 # ============================================================================
 
 def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
@@ -1036,9 +1016,10 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
 
     contadores = {
         "adulto": 0, "excluido": 0, "sin_nombre": 0, "no_encontrado": 0,
-        "fallo_red": 0, "sin_genero": 0, "clasificados": 0, "titulo_vacio": 0,
+        "fallo_red": 0, "clasificados": 0, "sin_identificar": 0,
     }
-    grupos = {}          # clave de busqueda -> {"anio", "titulo", "copias":[...]}
+
+    grupos = {}  # clave de busqueda -> {"anio", "titulo", "copias":[...]}
     forzados_por_clave = {}
 
     for item in items:
@@ -1064,19 +1045,15 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
             continue
 
         info = limpiar_titulo(nombre, es_serie)
-        if not info["buscar"]:
-            contadores["titulo_vacio"] += 1
-            informe.append({
-                "id": sid, "tipo": tipo, "nombre_original": nombre,
-                "titulo_buscado": "", "motivo": "titulo_vacio",
-                "carpeta": cat_nombre, "etiquetas": info["etiquetas"],
-            })
-            continue
+        # Nombre para buscar en TMDB puede quedar vacio en casos raros
+        # (titulo compuesto solo de etiquetas tecnicas). El item NO se pierde:
+        # usa el nombre crudo como clave y como nombre para mostrar.
+        titulo_busqueda = info["buscar"] or nombre
 
-        k = clave(info["buscar"], info["anio"])
+        k = clave(titulo_busqueda, info["anio"])
         grupo = grupos.get(k)
         if grupo is None:
-            grupo = {"anio": info["anio"], "titulo": info["buscar"], "copias": []}
+            grupo = {"anio": info["anio"], "titulo": titulo_busqueda, "copias": []}
             grupos[k] = grupo
 
         marca = 0
@@ -1086,7 +1063,8 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
             marca = 0
 
         grupo["copias"].append({
-            "id": sid, "nombre": nombre, "carpeta": cat_nombre,
+            "id": sid, "nombre": nombre, "nombre_crudo": nombre,
+            "carpeta": cat_nombre,
             "calidad": info["calidad"], "calidad_txt": info["calidad_txt"],
             "fuente": info["fuente"], "idioma": info["idioma"],
             "idioma_txt": info["idioma_txt"], "temporada": info["temporada"],
@@ -1095,16 +1073,15 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
         })
 
         fila_forzada = (corr["forzados"][tipo].get(nombre_norm)
-                        or corr["forzados"][tipo].get(normalizar(info["buscar"])))
+                        or corr["forzados"][tipo].get(normalizar(titulo_busqueda)))
         if fila_forzada:
             forzados_por_clave[k] = fila_forzada
 
-    print("   %s titulos distintos tras agrupar (de %s items)."
+    print(" %s titulos distintos tras agrupar (de %s items)."
           % (len(grupos), len(items)))
-    print("   descartados de entrada -> adulto: %s | excluidos a mano: %s | "
-          "sin nombre: %s | titulo ilegible: %s"
-          % (contadores["adulto"], contadores["excluido"],
-             contadores["sin_nombre"], contadores["titulo_vacio"]))
+    print(" descartados de entrada -> adulto: %s | excluidos a mano: %s | "
+          "sin nombre: %s"
+          % (contadores["adulto"], contadores["excluido"], contadores["sin_nombre"]))
 
     # --- resolver contra TMDB ------------------------------------------------
     pendientes = []
@@ -1125,7 +1102,7 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
         elif not cache_vigente(entrada):
             pendientes.append(k)
 
-    print("   %s titulos ya estaban en memoria, %s por resolver."
+    print(" %s titulos ya estaban en memoria, %s por resolver."
           % (len(grupos) - len(pendientes), len(pendientes)))
 
     if pendientes:
@@ -1152,23 +1129,23 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
                 try:
                     k, datos, motivo = futuro.result()
                 except Exception as e:
-                    print("   [aviso] error resolviendo: %s" % e)
+                    print(" [aviso] error resolviendo: %s" % e)
                     continue
                 if datos:
                     cache[tipo][k] = datos
                 elif motivo != "fallo_red":
                     cache[tipo][k] = {"ok": False, "motivo": motivo,
-                                      "ts": int(time.time())}
+                                       "ts": int(time.time())}
                 resueltos += 1
                 if resueltos % GUARDAR_CADA == 0:
                     guardar_cache(cache)
-                    print("   ... %s/%s resueltos (%.1f min transcurridos)"
+                    print(" ... %s/%s resueltos (%.1f min transcurridos)"
                           % (resueltos, len(pendientes),
                              (time.monotonic() - INICIO) / 60.0))
 
         guardar_cache(cache)
         if omitidos_presupuesto:
-            print("   [AVISO] presupuesto de %s min agotado. %s titulos quedan "
+            print(" [AVISO] presupuesto de %s min agotado. %s titulos quedan "
                   "para la proxima corrida (el avance ya esta guardado)."
                   % (PRESUPUESTO_MIN, omitidos_presupuesto))
 
@@ -1182,7 +1159,7 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
         faltan = [i for i in ids_series
                   if not detalles_vigentes(cache["detalles_tv"].get(str(i)))]
         if faltan and not presupuesto_agotado():
-            print("   Pidiendo ficha completa de %s series (ultima actividad)..."
+            print(" Pidiendo ficha completa de %s series (ultima actividad)..."
                   % len(faltan))
             hechos = 0
             with ThreadPoolExecutor(max_workers=HILOS_TMDB) as pool:
@@ -1203,21 +1180,38 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
                         guardar_cache(cache)
             guardar_cache(cache)
 
-    # --- construir clasificados ---------------------------------------------
+    # --- construir clasificados y sin_identificar ----------------------------
     clasificados = []
+    sin_identificar = []
+
     for k, grupo in grupos.items():
         entrada = cache[tipo].get(k)
+        motivo = None
         if not entrada:
             contadores["fallo_red"] += 1
             motivo = "pendiente"
         elif not entrada.get("ok"):
             motivo = entrada.get("motivo") or "no_encontrado"
             contadores["no_encontrado" if motivo == "no_encontrado"
-                       else "fallo_red"] += 1
-        else:
-            motivo = None
+                        else "fallo_red"] += 1
 
         if motivo:
+            # NO se pierde: entra al nivel "sin_identificar" del catalogo,
+            # visible para el buscador con su nombre limpio. Va tambien
+            # al informe para que el usuario sepa por que no tiene ficha.
+            mejor_copia, _ = elegir_mejor_copia(grupo["copias"])
+            sin_identificar.append({
+                "id": int(mejor_copia["id"]) if str(mejor_copia["id"]).isdigit()
+                      else mejor_copia["id"],
+                "titulo": grupo["titulo"] or mejor_copia["nombre_crudo"],
+                "anio": grupo["anio"] or None,
+                "alt": [
+                    int(c["id"]) for c in grupo["copias"]
+                    if c is not mejor_copia and str(c["id"]).isdigit()
+                ][:5],
+            })
+            contadores["sin_identificar"] += 1
+
             ejemplo = grupo["copias"][0]
             informe.append({
                 "id": ejemplo["id"], "tipo": tipo,
@@ -1241,20 +1235,21 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
             "pop": entrada.get("pop") or 0.0,
             "lang": entrada.get("lang") or "",
             "paises": entrada.get("paises") or [],
+            "sinopsis": entrada.get("sinopsis") or "",
             "copias": grupo["copias"],
             "fila_forzada": forzados_por_clave.get(k),
             "detalles": cache["detalles_tv"].get(str(entrada["tmdb"])) if es_serie else None,
         })
         contadores["clasificados"] += 1
 
-    print("   clasificados: %s | no encontrados en TMDB: %s | pendientes por red: %s"
-          % (contadores["clasificados"], contadores["no_encontrado"],
-             contadores["fallo_red"]))
-    return clasificados, contadores
-
+    print(" clasificados con ficha TMDB: %s | sin identificar (van al buscador): %s"
+          % (contadores["clasificados"], contadores["sin_identificar"]))
+    return clasificados, sin_identificar, contadores
 
 # ============================================================================
-# FASE 2  ·  ARMAR LA VITRINA
+# FASE 2 - ARMAR LA VITRINA
+# Aqui se decide en que filas aparece cada titulo IDENTIFICADO.
+# Los "sin_identificar" nunca pasan por aqui: no tienen genero ni año reales.
 # ============================================================================
 
 def anio_de(fecha):
@@ -1262,23 +1257,22 @@ def anio_de(fecha):
         return int(fecha[:4])
     return 0
 
-
 def fecha_obj(fecha):
     try:
         return datetime.strptime(fecha[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
     except (ValueError, TypeError):
         return None
 
-
 def elegir_mejor_copia(copias):
-    """Escalera de preferencia: resolucion > origen > idioma > mas reciente."""
+    """Escalera de preferencia: resolucion > origen > idioma > mas reciente.
+    Nunca descarta contenido: la peor copia se guarda como respaldo (alt),
+    y si es la UNICA copia que existe, se acepta igual sin importar su calidad."""
     ordenadas = sorted(
         copias,
         key=lambda c: (c["calidad"], c["fuente"], c["idioma"], c["marca"]),
         reverse=True,
     )
     return ordenadas[0], ordenadas[1:]
-
 
 def elegir_generos(clasificado, es_serie):
     """Devuelve (fila_principal, fila_secundaria|None)."""
@@ -1287,7 +1281,6 @@ def elegir_generos(clasificado, es_serie):
     fuertes = FUERTES_SERIES if es_serie else FUERTES_PELICULAS
     generos = clasificado["generos"]
 
-    # Regla de combinacion: animacion + origen japones = Anime
     es_anime = (
         16 in generos
         and (clasificado["lang"] == "ja" or "JP" in (clasificado["paises"] or []))
@@ -1308,7 +1301,6 @@ def elegir_generos(clasificado, es_serie):
         secundaria = diccionario.get(ordenados[0])
     return principal, secundaria
 
-
 def fase2(clasificados, es_serie, total_origen):
     etiqueta = "series" if es_serie else "peliculas"
     print("\n=== FASE 2: armando la vitrina de %s ===" % etiqueta)
@@ -1325,12 +1317,12 @@ def fase2(clasificados, es_serie, total_origen):
                 actual["fila_forzada"] = c["fila_forzada"]
 
     duplicados_fusionados = len(clasificados) - len(por_tmdb)
-    print("   %s titulos unicos (%s agrupaciones por duplicado)."
+    print(" %s titulos unicos (%s agrupaciones por duplicado)."
           % (len(por_tmdb), duplicados_fusionados))
 
     # --- 2) construir registros y asignar filas -----------------------------
     registros = []
-    sin_genero = 0
+    sin_genero = []
     copias_descartadas = 0
 
     for c in por_tmdb.values():
@@ -1350,46 +1342,8 @@ def fase2(clasificados, es_serie, total_origen):
                 anio_display = anio_de(detalles["ultima"]) or anio_display
 
         principal, secundaria = elegir_generos(c, es_serie)
-        if not principal:
-            sin_genero += 1
-            continue
 
-        filas = set()
-
-        # Vitrinas de genero: SIN puerta de año
-        filas.add(principal)
-        if secundaria:
-            filas.add(secundaria)
-
-        # Epoca: NO exclusiva, ventana rodante
-        es_clasico = False
-        if anio_origen and anio_origen <= ANIO_ANTIGUO:
-            if c["nota"] >= CLASICO_NOTA_MIN and c["votos"] >= CLASICO_VOTOS_MIN:
-                filas.add("★ Clásicos")
-                es_clasico = True
-            else:
-                filas.add("📼 Retro")
-
-        # Estrenos
-        fobj = fecha_obj(fecha_actividad)
-        if fobj:
-            if es_serie:
-                if fobj >= LIMITE_ESTRENO_SERIE and fobj <= LIMITE_FUTURO:
-                    marca = mejor["marca"]
-                    fresco_proveedor = True
-                    if marca:
-                        edad = (time.time() - marca) / 86400.0
-                        fresco_proveedor = edad <= DIAS_PROVEEDOR_ESTRENO
-                    if fresco_proveedor:
-                        filas.add("✧ Estrenos")
-            else:
-                if LIMITE_ESTRENO_PELI <= fobj <= LIMITE_FUTURO:
-                    filas.add("✧ Estrenos")
-
-        if c["fila_forzada"]:
-            filas.add(c["fila_forzada"])
-
-        registros.append({
+        registro = {
             "tmdb": c["tmdb"],
             "titulo": c["titulo"],
             "poster": c["poster"],
@@ -1398,22 +1352,66 @@ def fase2(clasificados, es_serie, total_origen):
             "nota": c["nota"],
             "votos": c["votos"],
             "pop": c["pop"],
+            "sinopsis": c["sinopsis"],
             "fecha_orden": fecha_actividad or c["fecha"],
-            "id": int(mejor["id"]) if mejor["id"].isdigit() else mejor["id"],
+            "id": int(mejor["id"]) if str(mejor["id"]).isdigit() else mejor["id"],
             "calidad": mejor["calidad_txt"],
             "idioma": mejor["idioma_txt"],
             "alt": [int(x["id"]) for x in resto[:3] if str(x["id"]).isdigit()],
-            "filas": filas,
-            "es_clasico": es_clasico,
-        })
+            "filas": set(),
+            "es_clasico": False,
+        }
+
+        # Sin genero utilizable: el titulo NO se descarta del catalogo,
+        # solo no entra a ninguna fila de vitrina. Sigue siendo buscable
+        # y tiene poster/sinopsis reales (a diferencia de "sin_identificar").
+        if not principal:
+            sin_genero.append(registro)
+            continue
+
+        filas = registro["filas"]
+        filas.add(principal)
+        if secundaria:
+            filas.add(secundaria)
+
+        # Epoca: NO exclusiva, ventana rodante
+        if anio_origen and anio_origen <= ANIO_ANTIGUO:
+            if c["nota"] >= CLASICO_NOTA_MIN and c["votos"] >= CLASICO_VOTOS_MIN:
+                filas.add("Clasicos")
+                registro["es_clasico"] = True
+            else:
+                filas.add("Retro")
+
+        # Estrenos
+        fobj = fecha_obj(fecha_actividad)
+        if fobj:
+            if es_serie:
+                if LIMITE_ESTRENO_SERIE <= fobj <= LIMITE_FUTURO:
+                    marca = mejor["marca"]
+                    fresco_proveedor = True
+                    if marca:
+                        edad = (time.time() - marca) / 86400.0
+                        fresco_proveedor = edad <= DIAS_PROVEEDOR_ESTRENO
+                    if fresco_proveedor:
+                        filas.add("Estrenos")
+            else:
+                if LIMITE_ESTRENO_PELI <= fobj <= LIMITE_FUTURO:
+                    filas.add("Estrenos")
+
+        if c["fila_forzada"]:
+            filas.add(c["fila_forzada"])
+
+        registros.append(registro)
 
     if sin_genero:
-        print("   %s titulos sin genero utilizable (no entran)." % sin_genero)
+        print(" %s titulos sin genero utilizable: quedan en el catalogo y en "
+              "el buscador, pero no aparecen en ninguna fila de vitrina."
+              % len(sin_genero))
     if copias_descartadas:
-        print("   %s copias duplicadas descartadas (se guardan hasta 3 como respaldo)."
-              % copias_descartadas)
+        print(" %s copias duplicadas de menor calidad conservadas como "
+              "respaldo (nunca se destruyen)." % copias_descartadas)
 
-    # --- 3) fusionar filas flacas -------------------------------------------
+    # --- 3) fusionar filas flacas (solo afecta la VITRINA, no el catalogo) --
     def contar():
         cuenta = {}
         for r in registros:
@@ -1442,17 +1440,18 @@ def fase2(clasificados, es_serie, total_origen):
                 fusiones_hechas.append("%s -> %s (%s)" % (flaca, destino, movidos))
 
     for linea in fusiones_hechas:
-        print("   fusion: %s" % linea)
+        print(" fusion: %s" % linea)
 
     cuenta = contar()
     descartadas = [f for f, n in cuenta.items() if n < PISO_FILA]
     for f in descartadas:
         for r in registros:
             r["filas"].discard(f)
-        print("   fila '%s' eliminada: solo %s items (piso %s)."
+        print(" fila '%s' eliminada de la vitrina: solo %s items (piso %s). "
+              "Los titulos siguen en el catalogo completo y el buscador."
               % (f, cuenta[f], PISO_FILA))
 
-    # --- 4) ordenar y recortar ----------------------------------------------
+    # --- 4) ordenar y recortar SOLO las filas de vitrina ---------------------
     def orden_estrenos(r):
         return (r["fecha_orden"] or "", r["pop"])
 
@@ -1466,9 +1465,9 @@ def fase2(clasificados, es_serie, total_origen):
         return (r["pop"], r["nota"])
 
     ordenadores = {
-        "✧ Estrenos": orden_estrenos,
-        "★ Clásicos": orden_clasicos,
-        "📼 Retro": orden_retro,
+        "Estrenos": orden_estrenos,
+        "Clasicos": orden_clasicos,
+        "Retro": orden_retro,
     }
 
     por_fila = {}
@@ -1476,63 +1475,75 @@ def fase2(clasificados, es_serie, total_origen):
         for f in r["filas"]:
             por_fila.setdefault(f, []).append(r)
 
-    filas_finales = []
-    usados = {}
+    # --- items_planos: TODO lo identificado entra aqui, sin tope. -----------
+    # Las filas de vitrina solo guardan referencias (posiciones) a esta lista,
+    # y su tope de presentacion NO recorta lo que hay en items_planos.
     items_planos = []
+    usados = {}
+
+    def indice_de(r):
+        idx = usados.get(r["tmdb"])
+        if idx is not None:
+            return idx
+        item = {
+            "id": r["id"],
+            "titulo": r["titulo"],
+            "year": r["anio"],
+            "poster": r["poster"],
+            "tmdb": r["tmdb"],
+            "nota": r["nota"],
+            "sinopsis": r["sinopsis"],
+        }
+        if r["anio_origen"] and r["anio_origen"] != r["anio"]:
+            item["year_origen"] = r["anio_origen"]
+        if r["calidad"]:
+            item["calidad"] = r["calidad"]
+        if r["idioma"]:
+            item["idioma"] = r["idioma"]
+        if r["alt"]:
+            item["alt"] = r["alt"]
+        idx = len(items_planos)
+        items_planos.append(item)
+        usados[r["tmdb"]] = idx
+        return idx
+
+    # Aseguramos que TODO registro identificado (tenga o no fila de vitrina)
+    # quede en items_planos, para que el buscador lo encuentre siempre.
+    for r in registros:
+        indice_de(r)
+    for r in sin_genero:
+        indice_de(r)
 
     nombres_ordenados = [f for f in ORDEN_CATEGORIAS if f in por_fila]
     nombres_ordenados += sorted(f for f in por_fila if f not in ORDEN_CATEGORIAS)
 
+    filas_finales = []
     for nombre in nombres_ordenados:
         lista = por_fila[nombre]
         lista.sort(key=ordenadores.get(nombre, orden_genero), reverse=True)
         tope = TOPES.get(nombre, TOPE_GENERO)
         recortada = lista[:tope]
-        referencias = []
-        for r in recortada:
-            indice = usados.get(r["tmdb"])
-            if indice is None:
-                item = {
-                    "id": r["id"],
-                    "titulo": r["titulo"],
-                    "year": r["anio"],
-                    "poster": r["poster"],
-                    "tmdb": r["tmdb"],
-                    "nota": r["nota"],
-                }
-                if r["anio_origen"] and r["anio_origen"] != r["anio"]:
-                    item["year_origen"] = r["anio_origen"]
-                if r["calidad"]:
-                    item["calidad"] = r["calidad"]
-                if r["idioma"]:
-                    item["idioma"] = r["idioma"]
-                if r["alt"]:
-                    item["alt"] = r["alt"]
-                indice = len(items_planos)
-                items_planos.append(item)
-                usados[r["tmdb"]] = indice
-            referencias.append(indice)
+        referencias = [indice_de(r) for r in recortada]
         filas_finales.append({
             "nombre": nombre,
             "tipo": TIPOS_FILA.get(nombre, "genero"),
             "items": referencias,
         })
-        print("   %-26s %3s items (de %s disponibles)"
+        print(" %-26s %3s items en vitrina (de %s identificados con este genero)"
               % (nombre, len(referencias), len(lista)))
 
     salida = {
         "origen": total_origen,
-        "titulos_clasificados": len(registros),
+        "titulos_identificados": len(items_planos),
         "items": items_planos,
         "filas": filas_finales,
     }
-    print("   -> %s filas, %s items distintos en el archivo."
+    print(" -> %s filas de vitrina | %s titulos identificados totales en el catalogo."
           % (len(filas_finales), len(items_planos)))
     return salida
 
-
 # ============================================================================
-# INFORME DE NO RESUELTOS  (ordenado por frecuencia del patron)
+# INFORME DE NO RESUELTOS (diagnostico, ordenado por frecuencia del patron)
 # ============================================================================
 
 def escribir_informe(informe, contadores_peli, contadores_serie):
@@ -1568,9 +1579,12 @@ def escribir_informe(informe, contadores_peli, contadores_serie):
 
     datos = {
         "_ayuda": [
-            "Lo que el curador no pudo identificar. Revisa 'patrones' de arriba a abajo:",
-            "arreglar los primeros recupera muchos items de golpe.",
-            "Cuando identifiques un caso, agregalo a correcciones.json.",
+            "Diagnostico. Estos titulos NO se descartaron: viven en el catalogo",
+            "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
+            "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina.",
+            "Revisa 'patrones' de arriba a abajo: arreglar los primeros",
+            "recupera muchos items de golpe hacia el catalogo identificado.",
+            "Si quieres forzar un caso, agregalo a correcciones.json (opcional).",
             "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
             "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida.",
         ],
@@ -1594,14 +1608,9 @@ def escribir_informe(informe, contadores_peli, contadores_serie):
     print("\n-> Informe escrito en %s (%s casos, %s patrones)."
           % (ARCHIVO_INFORME, len(informe), len(lista_patrones)))
     if lista_patrones[:5]:
-        print("   patrones mas repetidos:")
+        print(" patrones mas repetidos:")
         for p in lista_patrones[:5]:
-            print("     %-22s %s veces" % (p["patron"][:22], p["veces"]))
-
-
-# ============================================================================
-# LISTADO DE CARPETAS VISTAS  (para revisar al cambiar de proveedor)
-# ============================================================================
+            print("  %-22s %s veces" % (p["patron"][:22], p["veces"]))
 
 def volcar_carpetas(mapa_peli, mapa_serie):
     def resumir(mapa):
@@ -1612,36 +1621,40 @@ def volcar_carpetas(mapa_peli, mapa_serie):
         )
     return {"peliculas": resumir(mapa_peli), "series": resumir(mapa_serie)}
 
-
 # ============================================================================
 # VALIDACION ANTES DE PUBLICAR
+# El freno mira el TOTAL de titulos en el catalogo (identificados +
+# sin_identificar), no solo lo que entra a la vitrina, para detectar de
+# verdad una caida real de contenido y no un simple reordenamiento de filas.
 # ============================================================================
+
+def total_catalogo(bloque):
+    return len(bloque.get("items") or []) + len(bloque.get("sin_identificar") or [])
 
 def validar(nuevo):
     problemas = []
     for tipo in ("movies", "series"):
         bloque = nuevo.get(tipo) or {}
         filas = bloque.get("filas") or []
-        items = bloque.get("items") or []
         if tipo == "movies" and len(filas) < MINIMO_FILAS:
             problemas.append(
-                "peliculas solo tiene %s filas (minimo %s)" % (len(filas), MINIMO_FILAS)
+                "peliculas solo tiene %s filas de vitrina (minimo %s)"
+                % (len(filas), MINIMO_FILAS)
             )
-        if tipo == "movies" and not items:
-            problemas.append("peliculas quedo sin items")
+        if tipo == "movies" and total_catalogo(bloque) == 0:
+            problemas.append("peliculas quedo con el catalogo completo vacio")
 
     anterior = leer_json(ARCHIVO_CATALOGO, None)
     if isinstance(anterior, dict) and anterior.get("schema") == SCHEMA:
         for tipo in ("movies", "series"):
-            ant = len(((anterior.get(tipo) or {}).get("items")) or [])
-            nue = len(((nuevo.get(tipo) or {}).get("items")) or [])
+            ant = total_catalogo(anterior.get(tipo) or {})
+            nue = total_catalogo(nuevo.get(tipo) or {})
             if ant >= 20 and nue < ant * TOLERANCIA_CAIDA:
                 problemas.append(
-                    "%s cayo de %s a %s items (tolerancia %.0f%%)"
+                    "%s cayo de %s a %s titulos en el catalogo (tolerancia %.0f%%)"
                     % (tipo, ant, nue, TOLERANCIA_CAIDA * 100)
                 )
     return problemas
-
 
 # ============================================================================
 # MAIN
@@ -1656,8 +1669,8 @@ def main():
         print("[ERROR FATAL] faltan secretos: %s" % ", ".join(faltantes))
         return 1
 
-    print("Curador VOD  ·  %s" % HOY.strftime("%Y-%m-%d %H:%M UTC"))
-    print("Topes: genero %s | estrenos %s | epoca %s | piso %s"
+    print("Curador VOD - %s" % HOY.strftime("%Y-%m-%d %H:%M UTC"))
+    print("Topes de VITRINA (no del catalogo): genero %s | estrenos %s | epoca %s | piso %s"
           % (TOPE_GENERO, TOPE_ESTRENOS, TOPE_EPOCA, PISO_FILA))
     print("Antiguo = %s o anterior | presupuesto %s min | %s hilos"
           % (ANIO_ANTIGUO, PRESUPUESTO_MIN, HILOS_TMDB))
@@ -1678,16 +1691,19 @@ def main():
         print("[AVISO] no se pudo descargar series. Se sigue solo con peliculas.")
         series, mapa_serie, plano_serie = [], {}, False
 
-    clas_peli, cont_peli = fase1(
+    clas_peli, sin_id_peli, cont_peli = fase1(
         peliculas, False, mapa_peli, plano_peli, cache, corr, informe
     )
-    clas_serie, cont_serie = fase1(
+    clas_serie, sin_id_serie, cont_serie = fase1(
         series, True, mapa_serie, plano_serie, cache, corr, informe
     )
     guardar_cache(cache)
 
     bloque_peli = fase2(clas_peli, False, len(peliculas))
     bloque_serie = fase2(clas_serie, True, len(series))
+
+    bloque_peli["sin_identificar"] = sin_id_peli
+    bloque_serie["sin_identificar"] = sin_id_serie
 
     nuevo = {
         "schema": SCHEMA,
@@ -1707,21 +1723,25 @@ def main():
     if problemas:
         print("\n[VALIDACION FALLIDA] no se publica el catalogo nuevo:")
         for p in problemas:
-            print("   - %s" % p)
+            print(" - %s" % p)
         print("Se conserva %s tal como estaba. La memoria y el informe SI se "
               "guardaron, asi que el avance no se pierde." % ARCHIVO_CATALOGO)
         return 2
 
     escribir_json(ARCHIVO_CATALOGO, nuevo)
     tam = os.path.getsize(ARCHIVO_CATALOGO) / 1024.0
+    total_peli = total_catalogo(bloque_peli)
+    total_serie = total_catalogo(bloque_serie)
     print("\n=== LISTO ===")
-    print("Peliculas: %s filas, %s items  ·  Series: %s filas, %s items"
-          % (len(bloque_peli["filas"]), len(bloque_peli["items"]),
-             len(bloque_serie["filas"]), len(bloque_serie["items"])))
+    print("Peliculas: %s filas de vitrina, %s en catalogo completo (%s con ficha + %s sin identificar)"
+          % (len(bloque_peli["filas"]), total_peli,
+             len(bloque_peli["items"]), len(sin_id_peli)))
+    print("Series: %s filas de vitrina, %s en catalogo completo (%s con ficha + %s sin identificar)"
+          % (len(bloque_serie["filas"]), total_serie,
+             len(bloque_serie["items"]), len(sin_id_serie)))
     print("%s escrito (%.0f KB) en %.1f minutos."
           % (ARCHIVO_CATALOGO, tam, (time.monotonic() - INICIO) / 60.0))
     return 0
-
 
 if __name__ == "__main__":
     sys.exit(main())
