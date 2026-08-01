@@ -1,17 +1,19 @@
 {
   "_ayuda": [
-    "Lo que el curador no pudo identificar. Revisa 'patrones' de arriba a abajo:",
-    "arreglar los primeros recupera muchos items de golpe.",
-    "Cuando identifiques un caso, agregalo a correcciones.json.",
+    "Diagnostico. Estos titulos NO se descartaron: viven en el catalogo",
+    "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
+    "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina.",
+    "Revisa 'patrones' de arriba a abajo: arreglar los primeros",
+    "recupera muchos items de golpe hacia el catalogo identificado.",
+    "Si quieres forzar un caso, agregalo a correcciones.json (opcional).",
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-08-01T06:30:32Z",
+  "generado": "2026-08-01T12:19:59Z",
   "resumen": {
-    "total": 3856,
+    "total": 3851,
     "por_motivo": {
-      "titulo_vacio": 4,
-      "no_encontrado": 3852
+      "no_encontrado": 3851
     },
     "peliculas": {
       "adulto": 5,
@@ -19,31 +21,29 @@
       "sin_nombre": 1,
       "no_encontrado": 3611,
       "fallo_red": 0,
-      "sin_genero": 0,
-      "clasificados": 8075,
-      "titulo_vacio": 4
+      "clasificados": 8077,
+      "sin_identificar": 3611
     },
     "series": {
       "adulto": 0,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 241,
+      "no_encontrado": 240,
       "fallo_red": 0,
-      "sin_genero": 0,
-      "clasificados": 1563,
-      "titulo_vacio": 0
+      "clasificados": 1564,
+      "sin_identificar": 240
     }
   },
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 3371,
+      "veces": 3366,
       "ejemplos": [
-        "Latino (1985)",
-        "[REC] (2007)",
-        "Dual (2022)",
         "El Día Del Fin Del Mundo: Migración (2026) Subtitulada",
-        "Equipo Demolición (2026)"
+        "Equipo Demolición (2026)",
+        "Super Bowl LX (2026)",
+        "Amame, amame (2026)",
+        "Flow callejero 3 (2026)"
       ]
     },
     {
@@ -361,13 +361,6 @@
       ]
     },
     {
-      "patron": "IT 1990",
-      "veces": 1,
-      "ejemplos": [
-        "It (1990) - 1080p BRrip x264 (3.7 Mbps) [spa]"
-      ]
-    },
-    {
       "patron": "AVISO GENERAL",
       "veces": 1,
       "ejemplos": [
@@ -653,6 +646,13 @@
       "ejemplos": [
         "Resident Evil 4: La resurrección (2010)"
       ]
+    },
+    {
+      "patron": "RESIDENT EVIL 6",
+      "veces": 1,
+      "ejemplos": [
+        "Resident Evil 6: Capítulo final (2016)"
+      ]
     }
   ],
   "etiquetas_mas_frecuentes": [
@@ -662,7 +662,7 @@
     },
     {
       "etiqueta": "1080P",
-      "veces": 462
+      "veces": 461
     },
     {
       "etiqueta": "LAT",
@@ -674,15 +674,15 @@
     },
     {
       "etiqueta": "LATINO",
-      "veces": 99
+      "veces": 98
     },
     {
       "etiqueta": "BRRIP",
-      "veces": 95
+      "veces": 94
     },
     {
       "etiqueta": "WEBDL",
-      "veces": 84
+      "veces": 83
     },
     {
       "etiqueta": "720P",
@@ -729,10 +729,6 @@
       "veces": 8
     },
     {
-      "etiqueta": "WEB",
-      "veces": 7
-    },
-    {
       "etiqueta": "SUBTITULADA",
       "veces": 6
     },
@@ -742,6 +738,10 @@
     },
     {
       "etiqueta": "HMAX",
+      "veces": 6
+    },
+    {
+      "etiqueta": "WEB",
       "veces": 6
     },
     {
@@ -760,11 +760,11 @@
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "SAGAS",
-      "veces": 1117
+      "veces": 1115
     },
     {
       "carpeta": "VARIADAS",
-      "veces": 843
+      "veces": 840
     },
     {
       "carpeta": "PELICULAS RETRO",
@@ -791,11 +791,11 @@
       "veces": 119
     },
     {
-      "carpeta": "PELICULAS CLASICAS",
-      "veces": 81
+      "carpeta": "SUSPENSO",
+      "veces": 82
     },
     {
-      "carpeta": "SUSPENSO",
+      "carpeta": "PELICULAS CLASICAS",
       "veces": 81
     },
     {
@@ -860,50 +860,6 @@
     }
   ],
   "items": [
-    {
-      "id": "480127",
-      "tipo": "movie",
-      "nombre_original": "Latino (1985)",
-      "titulo_buscado": "",
-      "motivo": "titulo_vacio",
-      "carpeta": "PELICULAS 60 FPS",
-      "etiquetas": [
-        "LATINO"
-      ]
-    },
-    {
-      "id": "460770",
-      "tipo": "movie",
-      "nombre_original": "It (1990) - 1080p BRrip x264 (3.7 Mbps) [spa]",
-      "titulo_buscado": "",
-      "motivo": "titulo_vacio",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BRRIP",
-        "X264"
-      ]
-    },
-    {
-      "id": "492737",
-      "tipo": "movie",
-      "nombre_original": "[REC] (2007)",
-      "titulo_buscado": "",
-      "motivo": "titulo_vacio",
-      "carpeta": "SAGAS",
-      "etiquetas": []
-    },
-    {
-      "id": "470321",
-      "tipo": "movie",
-      "nombre_original": "Dual (2022)",
-      "titulo_buscado": "",
-      "motivo": "titulo_vacio",
-      "carpeta": "VARIADAS",
-      "etiquetas": [
-        "DUAL"
-      ]
-    },
     {
       "id": "346738",
       "tipo": "movie",
@@ -1526,8 +1482,8 @@
       "id": "451768",
       "tipo": "movie",
       "nombre_original": "#SalvemosaRosa (2025",
-      "titulo_buscado": "SalvemosaRosa (2025",
-      "anio": 0,
+      "titulo_buscado": "SalvemosaRosa",
+      "anio": 2025,
       "motivo": "no_encontrado",
       "carpeta": "ESTRENOS 2025",
       "etiquetas": [],
@@ -3978,6 +3934,20 @@
       "motivo": "no_encontrado",
       "carpeta": "PELICULAS 60 FPS",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "480127",
+      "tipo": "movie",
+      "nombre_original": "Latino (1985)",
+      "titulo_buscado": "Latino (1985)",
+      "anio": 1985,
+      "motivo": "no_encontrado",
+      "carpeta": "PELICULAS 60 FPS",
+      "etiquetas": [
+        "LATINO"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -9080,6 +9050,22 @@
       "copias": 1
     },
     {
+      "id": "460770",
+      "tipo": "movie",
+      "nombre_original": "It (1990) - 1080p BRrip x264 (3.7 Mbps) [spa]",
+      "titulo_buscado": "It (1990) - 1080p BRrip x264 (3.7 Mbps) [spa]",
+      "anio": 1990,
+      "motivo": "no_encontrado",
+      "carpeta": "PELICULAS RETRO",
+      "etiquetas": [
+        "1080P",
+        "BRRIP",
+        "X264"
+      ],
+      "prefijo": "IT",
+      "copias": 1
+    },
+    {
       "id": "460775",
       "tipo": "movie",
       "nombre_original": "Jamaica Bajo Cero (1993)",
@@ -10971,6 +10957,30 @@
       "nombre_original": "Locos por las nueces (2014)",
       "titulo_buscado": "Locos por las nueces",
       "anio": 2014,
+      "motivo": "no_encontrado",
+      "carpeta": "INFANTIL",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "489571",
+      "tipo": "movie",
+      "nombre_original": "Locos por las nueces 2 (2017)",
+      "titulo_buscado": "Locos por las nueces 2",
+      "anio": 2017,
+      "motivo": "no_encontrado",
+      "carpeta": "INFANTIL",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "489574",
+      "tipo": "movie",
+      "nombre_original": "Lo que el agua se llevó (2006)",
+      "titulo_buscado": "Lo que el agua se llevó",
+      "anio": 2006,
       "motivo": "no_encontrado",
       "carpeta": "INFANTIL",
       "etiquetas": [],
