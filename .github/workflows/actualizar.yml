@@ -33,15 +33,13 @@ jobs:
           fetch-depth: 1
 
       - name: Configurar Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5.6.0
         with:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        run: pip install --upgrade "requests>=2.32" "curl_cffi>=0.7"
+        run: pip install --upgrade requests curl_cffi
 
-      # continue-on-error: si el curador no valida el catalogo, NO se pierde
-      # el avance: la memoria y el informe se guardan igual en el paso siguiente.
       - name: Ejecutar el curador
         id: curador
         continue-on-error: true
@@ -55,26 +53,26 @@ jobs:
           PYTHONUNBUFFERED: "1"
         run: python curador.py
 
+      # El curador nunca sobrescribe catalogo_curado.json si la validacion
+      # falla (queda intacto el de la corrida anterior). Aun asi guardamos
+      # SIEMPRE la memoria y el informe: el avance de TMDB no se pierde.
       - name: Guardar cambios en el repositorio
         if: always()
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-
           for f in catalogo_curado.json cache_tmdb.json correcciones.json informe_no_resueltos.json; do
-            if [ -f "$f" ]; then git add "$f"; fi
+            if [ -f "$f" ]; then
+              git add "$f"
+            fi
           done
-
           if git diff --cached --quiet; then
             echo "No hay cambios para guardar."
             exit 0
           fi
-
-          git commit -m "Actualizacion del catalogo ($(date -u '+%Y-%m-%d %H:%M UTC'))"
-
-          # Reintentos: el push puede chocar con otro commit reciente.
+          git commit -m "Actualizacion del catalogo $(date -u +%Y-%m-%d\ %H:%M\ UTC)"
           for intento in 1 2 3; do
-            if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push; then
+            if git pull --rebase --autostash origin "$GITHUB_REF_NAME" && git push; then
               echo "Cambios publicados."
               exit 0
             fi
@@ -88,10 +86,18 @@ jobs:
         if: always()
         run: |
           test -f informe_no_resueltos.json || exit 0
-          python -c "import json;d=json.load(open('informe_no_resueltos.json',encoding='utf-8'));r=d.get('resumen',{});print('No resueltos:',r.get('total'));print('Por motivo:',r.get('por_motivo'));[print('  patron %-24s %s veces'%(p['patron'][:24],p['veces'])) for p in (d.get('patrones') or [])[:8]]"
+          python -c "
+          import json
+          d = json.load(open('informe_no_resueltos.json', encoding='utf-8'))
+          r = d.get('resumen', {})
+          print('No resueltos:', r.get('total'))
+          print('Por motivo:', r.get('por_motivo'))
+          print('Patrones mas repetidos:')
+          for p in (d.get('patrones') or [])[:8]:
+              print('  %-24s %s veces' % (p.get('patron'), p.get('veces')))
+          "
 
-      # Si el curador no valido el catalogo, el trabajo se marca como fallido
-      # para que GitHub te avise por correo. El catalogo anterior sigue intacto.
+      # El push puede chocar con otro commit reciente; ya hay reintento arriba.
       - name: Marcar fallo si el curador no valido el catalogo
         if: steps.curador.outcome == 'failure'
         run: |
