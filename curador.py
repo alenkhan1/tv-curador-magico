@@ -111,6 +111,14 @@ MINIMO_FILAS = 3
 UMBRAL_NORMAL = 0.80
 UMBRAL_RIESGO = 0.88
 
+# --- Quinto intento: titulos alternativos (acordado 09-ago-2026) -----------
+# Cuantos candidatos (de los ya traidos por busquedas anteriores) se
+# revisan en detalle contra sus titulos alternativos/traducciones antes de
+# rendirse. No dispara busquedas nuevas de texto, solo peticiones de
+# detalle por candidato ya visto; se limita para no disparar el tiempo de
+# corrida en catalogos grandes.
+TOPE_CANDIDATOS_ALTERNATIVOS = 5
+
 # --- Alerta de calidad del informe (acordado 09-ago-2026) -------------------
 # El usuario no revisa el informe a mano; el propio workflow debe avisar
 # cuando el porcentaje de titulos sin identificar se sale de lo normal.
@@ -861,6 +869,76 @@ def tmdb_buscar_multilenguaje(titulo, es_serie, anio):
     return resultados or None
 
 
+def tmdb_titulos_alternativos(tmdb_id, es_serie):
+    """Trae la lista de titulos alternativos/traducciones que TMDB tiene
+    guardados para una ficha puntual (endpoint 'alternative_titles' o
+    'translations'). Sirve para el quinto intento: cuando el nombre que
+    trae el proveedor no coincide con el titulo principal en ningun idioma
+    de busqueda, puede coincidir con una traduccion regional (ej: LATAM)
+    que TMDB SI tiene guardada pero que 'search/movie' no usa para indexar
+    texto. Devuelve una lista plana de nombres (str), o [] si no hay nada
+    o hubo fallo de red (nunca None: aqui un fallo de red no debe frenar
+    la escalera completa, solo se pierde esta oportunidad puntual)."""
+    tipo = "tv" if es_serie else "movie"
+    nombres = []
+
+    datos = tmdb_get("%s/%s/alternative_titles" % (tipo, tmdb_id), {})
+    if datos:
+        clave = "results" if es_serie else "titles"
+        for t in datos.get(clave) or []:
+            nombre = t.get("title")
+            if nombre:
+                nombres.append(nombre)
+
+    datos = tmdb_get("%s/%s/translations" % (tipo, tmdb_id), {})
+    if datos:
+        for t in datos.get("translations") or []:
+            data = t.get("data") or {}
+            nombre = data.get("title") or data.get("name")
+            if nombre:
+                nombres.append(nombre)
+
+    return nombres
+
+
+def buscar_por_titulos_alternativos(titulo, candidatos, consulta_norm,
+                                     anio, es_serie, umbral):
+    """Quinto intento: revisa, de los candidatos ya traidos por los
+    intentos anteriores (no dispara una busqueda nueva), si el nombre del
+    proveedor calza con alguno de los titulos alternativos/traducciones
+    regionales que TMDB tiene guardados para esa ficha. Solo se revisan
+    los primeros candidatos mas relevantes, para no disparar peticiones
+    de mas por cada titulo sin resolver."""
+    for candidato in (candidatos or [])[:TOPE_CANDIDATOS_ALTERNATIVOS]:
+        tmdb_id = candidato.get("id")
+        if not tmdb_id:
+            continue
+        nombres_alt = tmdb_titulos_alternativos(tmdb_id, es_serie)
+        if not nombres_alt:
+            continue
+        mejor_score = 0.0
+        for nombre_alt in nombres_alt:
+            nn = normalizar(nombre_alt)
+            if not nn:
+                continue
+            if nn == consulta_norm:
+                mejor_score = 1.0
+                break
+            seq = difflib.SequenceMatcher(None, consulta_norm, nn).ratio()
+            tq, tc = set(consulta_norm.split()), set(nn.split())
+            cobertura = (len(tq & tc) / len(tc)) if tc else 0.0
+            mejor_score = max(mejor_score, 0.55 * cobertura + 0.45 * seq)
+        if mejor_score >= umbral:
+            p = puntuar(candidato, consulta_norm, anio, es_serie)
+            if p is None:
+                # el candidato no pasa el filtro basico (adulto/sin poster),
+                # se respeta esa regla igual que en cualquier otro intento.
+                continue
+            p["sim"] = mejor_score
+            return p
+    return None
+
+
 def resolver_titulo(titulo, anio, es_serie):
     """Escalera de intentos. Devuelve (datos|None, motivo)."""
     consulta_norm = normalizar(titulo)
@@ -868,12 +946,14 @@ def resolver_titulo(titulo, anio, es_serie):
         return None, "titulo_vacio"
 
     hubo_fallo_red = False
+    candidatos_vistos = []
 
     if anio:
         res = tmdb_buscar(titulo, es_serie, anio)
         if res is None:
             hubo_fallo_red = True
         else:
+            candidatos_vistos.extend(res)
             elegido = mejor_de(res, consulta_norm, anio, es_serie, UMBRAL_NORMAL)
             if elegido:
                 return empaquetar(elegido, es_serie), "ok"
@@ -882,6 +962,7 @@ def resolver_titulo(titulo, anio, es_serie):
     if res is None:
         hubo_fallo_red = True
     else:
+        candidatos_vistos.extend(res)
         elegido = mejor_de(res, consulta_norm, anio, es_serie, UMBRAL_NORMAL)
         if elegido:
             return empaquetar(elegido, es_serie), "ok"
@@ -892,21 +973,46 @@ def resolver_titulo(titulo, anio, es_serie):
         if res is None:
             hubo_fallo_red = True
         else:
+            candidatos_vistos.extend(res)
             elegido = mejor_de(
                 res, normalizar(corto), anio, es_serie, UMBRAL_RIESGO
             )
             if elegido:
                 return empaquetar(elegido, es_serie), "ok"
 
-    # Cuarto intento (nuevo): mismo titulo original, buscando en otros
-    # idiomas de indexacion de TMDB. Recupera casos donde el titulo en
-    # espanol del proveedor es correcto, pero TMDB solo lo tiene calzado
-    # bajo su nombre original o su variante en-US/es-MX.
+    # Cuarto intento: mismo titulo original, buscando en otros idiomas de
+    # indexacion de TMDB. Recupera casos donde el titulo en espanol del
+    # proveedor es correcto, pero TMDB solo lo tiene calzado bajo su
+    # nombre original o su variante en-US/es-MX.
     res = tmdb_buscar_multilenguaje(titulo, es_serie, anio)
     if res is None:
         hubo_fallo_red = True
     elif res:
+        candidatos_vistos.extend(res)
         elegido = mejor_de(res, consulta_norm, anio, es_serie, UMBRAL_RIESGO)
+        if elegido:
+            return empaquetar(elegido, es_serie), "ok"
+
+    # Quinto intento (nuevo, acordado 09-ago-2026): titulos alternativos.
+    # Cubre el caso de franquicias como "007" o "Depredador", donde el
+    # titulo en espanol del proveedor no es una traduccion literal del
+    # titulo principal de TMDB, pero SI existe como titulo alternativo o
+    # traduccion regional guardada en la propia ficha de TMDB. No hace
+    # busqueda de texto nueva: reutiliza los candidatos ya vistos en los
+    # intentos anteriores, para no multiplicar peticiones de mas.
+    ids_vistos = set()
+    candidatos_unicos = []
+    for c in candidatos_vistos:
+        cid = c.get("id")
+        if cid and cid not in ids_vistos:
+            ids_vistos.add(cid)
+            candidatos_unicos.append(c)
+
+    if candidatos_unicos:
+        elegido = buscar_por_titulos_alternativos(
+            titulo, candidatos_unicos, consulta_norm, anio, es_serie,
+            UMBRAL_RIESGO,
+        )
         if elegido:
             return empaquetar(elegido, es_serie), "ok"
 
