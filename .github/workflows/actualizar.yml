@@ -50,6 +50,7 @@ jobs:
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
           PRESUPUESTO_MIN: ${{ github.event.inputs.presupuesto_min || '240' }}
           HILOS_TMDB: ${{ github.event.inputs.hilos || '12' }}
+          UMBRAL_ALERTA_NO_IDENTIFICADO: "15"
           PYTHONUNBUFFERED: "1"
         run: python curador.py
 
@@ -84,10 +85,11 @@ jobs:
 
       - name: Resumen de lo no resuelto
         if: always()
+        id: resumen_informe
         run: |
           test -f informe_no_resueltos.json || exit 0
           python -c "
-          import json
+          import json, os
           d = json.load(open('informe_no_resueltos.json', encoding='utf-8'))
           r = d.get('resumen', {})
           print('No resueltos:', r.get('total'))
@@ -95,7 +97,24 @@ jobs:
           print('Patrones mas repetidos:')
           for p in (d.get('patrones') or [])[:8]:
               print('  %-24s %s veces' % (p.get('patron'), p.get('veces')))
+          alerta = r.get('alerta') or {}
+          print()
+          print('Alerta de identificacion (umbral %s%%):' % alerta.get('umbral'))
+          print('  peliculas sin identificar: %s%%' % alerta.get('porcentaje_peliculas'))
+          print('  series sin identificar:    %s%%' % alerta.get('porcentaje_series'))
+          salida = os.environ.get('GITHUB_OUTPUT')
+          if salida:
+              with open(salida, 'a', encoding='utf-8') as f:
+                  f.write('supera_umbral=%s\n' % str(bool(alerta.get('supera_umbral'))).lower())
           "
+
+      # No bloquea la publicacion (el catalogo ya se guardo en el paso
+      # anterior). Solo deja una senal visible en el resumen del job para
+      # que sea evidente sin tener que abrir el informe a mano.
+      - name: Alertar si sube el porcentaje sin identificar
+        if: always() && steps.resumen_informe.outputs.supera_umbral == 'true'
+        run: |
+          echo "::warning::El porcentaje de titulos sin identificar supero el umbral configurado. Revisa informe_no_resueltos.json (seccion 'patrones')."
 
       # El push puede chocar con otro commit reciente; ya hay reintento arriba.
       - name: Marcar fallo si el curador no valido el catalogo
