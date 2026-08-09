@@ -9,52 +9,48 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-08-09T05:06:51Z",
+  "generado": "2026-08-09T14:28:50Z",
   "resumen": {
-    "total": 3855,
+    "total": 3737,
     "por_motivo": {
-      "no_encontrado": 3855
+      "no_encontrado": 3711,
+      "pendiente": 26
     },
     "peliculas": {
       "adulto": 5,
       "excluido": 0,
       "sin_nombre": 1,
-      "no_encontrado": 3614,
-      "fallo_red": 0,
-      "clasificados": 8088,
-      "sin_identificar": 3614
+      "no_encontrado": 3473,
+      "fallo_red": 26,
+      "clasificados": 8136,
+      "sin_identificar": 3499
     },
     "series": {
       "adulto": 0,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 241,
+      "no_encontrado": 238,
       "fallo_red": 0,
-      "clasificados": 1574,
-      "sin_identificar": 241
+      "clasificados": 1578,
+      "sin_identificar": 238
+    },
+    "alerta": {
+      "porcentaje_peliculas": 30.1,
+      "porcentaje_series": 13.1,
+      "umbral": 15.0,
+      "supera_umbral": true
     }
   },
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 3370,
+      "veces": 3358,
       "ejemplos": [
         "El Día Del Fin Del Mundo: Migración (2026) Subtitulada",
         "Equipo Demolición (2026)",
         "Super Bowl LX (2026)",
         "Amame, amame (2026)",
         "Flow callejero 3 (2026)"
-      ]
-    },
-    {
-      "patron": "007",
-      "veces": 9,
-      "ejemplos": [
-        "007: El hombre del revólver de oro (1974)",
-        "007: El mundo no basta (1999)",
-        "007: En la mira de los asesinos (1985)",
-        "007: Los diamantes son eternos (1971)",
-        "007: Misión espacial (1979)"
       ]
     },
     {
@@ -69,6 +65,17 @@
       ]
     },
     {
+      "patron": "007",
+      "veces": 8,
+      "ejemplos": [
+        "007: El hombre del revólver de oro (1974)",
+        "007: El mundo no basta (1999)",
+        "007: En la mira de los asesinos (1985)",
+        "007: Los diamantes son eternos (1971)",
+        "007: Misión espacial (1979)"
+      ]
+    },
+    {
       "patron": "BATMAN",
       "veces": 6,
       "ejemplos": [
@@ -77,17 +84,6 @@
         "Batman: Ataque a Arkham (2014)",
         "Batman: Bajo Cero (1998)",
         "Batman: El caballero de Ciudad Gótica (2008)"
-      ]
-    },
-    {
-      "patron": "STAR WARS",
-      "veces": 5,
-      "ejemplos": [
-        "Star Wars: Rogue One (2016)",
-        "Star Wars: Episodio I - La amenaza fantasma (1999)",
-        "Star Wars: Ewoks La Batalla Por Endor (1985)",
-        "Star Wars: Ewoks Caravana De Valor (1984)",
-        "Star Wars: Historias de los Jedi (2022)"
       ]
     },
     {
@@ -116,24 +112,6 @@
         "Maze Runner: La cura mortal (2018)",
         "Maze Runner: Prueba de fuego (2015)",
         "Maze Runner: Correr o morir (2014)"
-      ]
-    },
-    {
-      "patron": "03",
-      "veces": 3,
-      "ejemplos": [
-        "03 - ¡Enfrentamiento! Caballero de Oro contra Caballero de Oro - [Team Drive PSG Retro]",
-        "03 - Los Caballeros del Zodíaco contraatacan (1988) - [Team Drive VIP RETRO]",
-        "03 - Scooby-Doo! y la escuela de fantasmas (1988) [1080p Lat 60FPS]"
-      ]
-    },
-    {
-      "patron": "01",
-      "veces": 3,
-      "ejemplos": [
-        "01 - Los Caballeros del Zodiaco y la reencarnación de Ellis, diosa de la guerra (1987) - [Team Drive VIP RETRO]",
-        "01 - La Monja [2018] [BRRIP] [1080P]",
-        "01 - Scooby-Doo! y los hermanos Boo (1988) [1080p Lat]"
       ]
     },
     {
@@ -273,46 +251,6 @@
       ]
     },
     {
-      "patron": "04",
-      "veces": 2,
-      "ejemplos": [
-        "04 - Los Caballeros del Zodíaco contra Lucifer (1989) - [Team Drive VIP RETRO]",
-        "04 - Scooby-Doo! en la Isla de los Zombies (1998) [1080p Lat]"
-      ]
-    },
-    {
-      "patron": "02",
-      "veces": 2,
-      "ejemplos": [
-        "02 - Annabelle 2 - La Creación [2017] [BRRIP] [1080P]",
-        "02 - Scooby-Doo! y la carrera de los monstruos (1988) [480p Lat]"
-      ]
-    },
-    {
-      "patron": "05",
-      "veces": 2,
-      "ejemplos": [
-        "05 - Annabelle 3 - Vuelve A Casa [2019]",
-        "05 - Scooby-Doo! y el fantasma de la bruja (1999) [1080p Lat]"
-      ]
-    },
-    {
-      "patron": "07",
-      "veces": 2,
-      "ejemplos": [
-        "07 - El Conjuro 2 [2016] [BRRIP] [1080P]",
-        "07 - Scooby-Doo! y la persecución cibernética (2001) [1080p Lat]"
-      ]
-    },
-    {
-      "patron": "08",
-      "veces": 2,
-      "ejemplos": [
-        "08 - El Conjuro 3 - El Diablo Me Obligo A Hacerlo [2021] [BRRIP] [1080P]",
-        "08 - Scooby-Doo! y la leyenda del vampiro (2003) [1080p Lat]"
-      ]
-    },
-    {
       "patron": "THOR",
       "veces": 2,
       "ejemplos": [
@@ -326,22 +264,6 @@
       "ejemplos": [
         "Resident Evil - El capítulo final (2016)",
         "Resident Evil: Infierno (2012)"
-      ]
-    },
-    {
-      "patron": "24",
-      "veces": 2,
-      "ejemplos": [
-        "24 - Scooby-Doo! Miedo al escenario (2013) [1080p Lat]",
-        "24: El legado (2017)"
-      ]
-    },
-    {
-      "patron": "31",
-      "veces": 2,
-      "ejemplos": [
-        "31 - Lego Scooby-Doo! Hollywood embrujado (2016) [1080p Lat]",
-        "31: Morir es el único escape (2016)"
       ]
     },
     {
@@ -653,6 +575,76 @@
       "ejemplos": [
         "Resident Evil 6: Capítulo final (2016)"
       ]
+    },
+    {
+      "patron": "RASCACIELOS",
+      "veces": 1,
+      "ejemplos": [
+        "Rascacielos: Rescate En Las Alturas (2018)"
+      ]
+    },
+    {
+      "patron": "TERMINATOR 3",
+      "veces": 1,
+      "ejemplos": [
+        "Terminator 3: La rebelión de las máquinas (2003)"
+      ]
+    },
+    {
+      "patron": "RAPIDO Y FURIOSO",
+      "veces": 1,
+      "ejemplos": [
+        "Rápido y furioso: Reto Tokio (2006)"
+      ]
+    },
+    {
+      "patron": "EL HOBBIT 3",
+      "veces": 1,
+      "ejemplos": [
+        "El Hobbit 3: La Batalla de Los Cinco Ejércitos (2014)"
+      ]
+    },
+    {
+      "patron": "MATRIX",
+      "veces": 1,
+      "ejemplos": [
+        "Matrix: Revoluciones (2003)"
+      ]
+    },
+    {
+      "patron": "INFRAMUNDO 4",
+      "veces": 1,
+      "ejemplos": [
+        "Inframundo 4: El despertar (2012)"
+      ]
+    },
+    {
+      "patron": "DRAGON BALL GT",
+      "veces": 1,
+      "ejemplos": [
+        "Dragon Ball GT: La Legendaria Esfera de Cuatro Estrellas (1997)"
+      ]
+    },
+    {
+      "patron": "POKEMON X SIEMPRE",
+      "veces": 1,
+      "ejemplos": [
+        "Pokémon x siempre: Celebi, la voz del bosque (2001)"
+      ]
+    },
+    {
+      "patron": "DOLLHOUSE",
+      "veces": 1,
+      "ejemplos": [
+        "Dollhouse: Muñeca maldita (2025)"
+      ]
+    },
+    {
+      "patron": "HOME SWEET HOME",
+      "veces": 1,
+      "ejemplos": [
+        "Home Sweet Home- Reborn (2025) SUB"
+      ]
     }
   ],
   "etiquetas_mas_frecuentes": [
@@ -662,11 +654,11 @@
     },
     {
       "etiqueta": "1080P",
-      "veces": 461
+      "veces": 419
     },
     {
       "etiqueta": "LAT",
-      "veces": 202
+      "veces": 173
     },
     {
       "etiqueta": "SUB",
@@ -674,11 +666,11 @@
     },
     {
       "etiqueta": "LATINO",
-      "veces": 98
+      "veces": 96
     },
     {
       "etiqueta": "BRRIP",
-      "veces": 94
+      "veces": 87
     },
     {
       "etiqueta": "WEBDL",
@@ -690,7 +682,7 @@
     },
     {
       "etiqueta": "BDRIP",
-      "veces": 38
+      "veces": 39
     },
     {
       "etiqueta": "DUAL",
@@ -699,10 +691,6 @@
     {
       "etiqueta": "NF",
       "veces": 32
-    },
-    {
-      "etiqueta": "STAR",
-      "veces": 21
     },
     {
       "etiqueta": "HD",
@@ -726,7 +714,7 @@
     },
     {
       "etiqueta": "480P",
-      "veces": 8
+      "veces": 7
     },
     {
       "etiqueta": "SUBTITULADA",
@@ -755,20 +743,24 @@
     {
       "etiqueta": "BLURAY",
       "veces": 5
+    },
+    {
+      "etiqueta": "LINE",
+      "veces": 4
     }
   ],
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "SAGAS",
-      "veces": 1115
+      "veces": 1005
     },
     {
       "carpeta": "VARIADAS",
-      "veces": 840
+      "veces": 839
     },
     {
       "carpeta": "PELICULAS RETRO",
-      "veces": 220
+      "veces": 221
     },
     {
       "carpeta": "DRAMA",
@@ -776,7 +768,7 @@
     },
     {
       "carpeta": "PELICULAS 60 FPS",
-      "veces": 154
+      "veces": 152
     },
     {
       "carpeta": "INFANTIL",
@@ -784,7 +776,7 @@
     },
     {
       "carpeta": "ACCION",
-      "veces": 124
+      "veces": 123
     },
     {
       "carpeta": "TERROR",
@@ -796,7 +788,7 @@
     },
     {
       "carpeta": "PELICULAS CLASICAS",
-      "veces": 81
+      "veces": 79
     },
     {
       "carpeta": "ESTRENOS 2025",
@@ -847,15 +839,15 @@
       "veces": 20
     },
     {
-      "carpeta": "SERIES DISNEY",
-      "veces": 20
-    },
-    {
       "carpeta": "AVENTURA",
       "veces": 19
     },
     {
-      "carpeta": "SERIES APPLE TV",
+      "carpeta": "SERIES DISNEY",
+      "veces": 19
+    },
+    {
+      "carpeta": "SERIES RETRO",
       "veces": 18
     }
   ],
@@ -3371,7 +3363,7 @@
       "carpeta": "PELICULAS 60 FPS",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 3
+      "copias": 4
     },
     {
       "id": "479878",
@@ -4252,20 +4244,6 @@
       "copias": 1
     },
     {
-      "id": "480255",
-      "tipo": "movie",
-      "nombre_original": "Star Wars: Rogue One (2016)",
-      "titulo_buscado": "Wars: Rogue One",
-      "anio": 2016,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS 60 FPS",
-      "etiquetas": [
-        "STAR"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "480257",
       "tipo": "movie",
       "nombre_original": "Rápidos y furiosos X (2023)",
@@ -4299,7 +4277,7 @@
       "carpeta": "PELICULAS 60 FPS",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "480263",
@@ -4311,7 +4289,7 @@
       "carpeta": "PELICULAS 60 FPS",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "480268",
@@ -4482,20 +4460,6 @@
       "copias": 1
     },
     {
-      "id": "480310",
-      "tipo": "movie",
-      "nombre_original": "Star Wars: Episodio I - La amenaza fantasma (1999)",
-      "titulo_buscado": "Wars: Episodio I La amenaza fantasma",
-      "anio": 1999,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS 60 FPS",
-      "etiquetas": [
-        "STAR"
-      ],
-      "prefijo": "",
-      "copias": 3
-    },
-    {
       "id": "480315",
       "tipo": "movie",
       "nombre_original": "Búsqueda implacable 2 (2012)",
@@ -4589,7 +4553,7 @@
       "carpeta": "PELICULAS 60 FPS",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "480343",
@@ -6211,23 +6175,6 @@
       "copias": 2
     },
     {
-      "id": "458268",
-      "tipo": "movie",
-      "nombre_original": "Mad Max 2 (1981) - 1080p BRrip x264 (7.9 Mbps) [spa]",
-      "titulo_buscado": "Mad 2",
-      "anio": 1981,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "MAX",
-        "1080P",
-        "BRRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "458282",
       "tipo": "movie",
       "nombre_original": "Milagros Inesperados (1999)",
@@ -6594,32 +6541,14 @@
       "copias": 2
     },
     {
-      "id": "458479",
-      "tipo": "movie",
-      "nombre_original": "Star Wars (1977) - 1080p BRrip x264 (3.0 Mbps) [spa, eng]",
-      "titulo_buscado": "Wars",
-      "anio": 1977,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "STAR",
-        "1080P",
-        "BRRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "458480",
       "tipo": "movie",
       "nombre_original": "Star Wars Episode I - The Phantom Menace (1999) - 1080p BDrip x264 60 fps (8.0 Mbps) [spa, eng]",
-      "titulo_buscado": "Wars Episode I The Phantom Menace 60 fps",
+      "titulo_buscado": "Star Wars Episode I The Phantom Menace 60 fps",
       "anio": 1999,
-      "motivo": "no_encontrado",
+      "motivo": "pendiente",
       "carpeta": "PELICULAS CLASICAS",
       "etiquetas": [
-        "STAR",
         "1080P",
         "BDRIP",
         "X264"
@@ -7129,6 +7058,22 @@
       "copias": 1
     },
     {
+      "id": "459888",
+      "tipo": "movie",
+      "nombre_original": "10 (1979) - 1080p BDrip x264 (8.4 Mbps) [spa, eng]",
+      "titulo_buscado": "10 (1979) - 1080p BDrip x264 (8.4 Mbps) [spa, eng]",
+      "anio": 1979,
+      "motivo": "pendiente",
+      "carpeta": "PELICULAS RETRO",
+      "etiquetas": [
+        "1080P",
+        "BDRIP",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "459889",
       "tipo": "movie",
       "nombre_original": "10 cosas que odio de ti (1999)",
@@ -7177,6 +7122,22 @@
       "etiquetas": [],
       "prefijo": "",
       "copias": 2
+    },
+    {
+      "id": "459904",
+      "tipo": "movie",
+      "nombre_original": "54 (1998) - 1080p BRrip x264 (5.1 Mbps)",
+      "titulo_buscado": "54 (1998) - 1080p BRrip x264 (5.1 Mbps)",
+      "anio": 1998,
+      "motivo": "pendiente",
+      "carpeta": "PELICULAS RETRO",
+      "etiquetas": [
+        "1080P",
+        "BRRIP",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
     },
     {
       "id": "459925",
@@ -8425,7 +8386,7 @@
       "carpeta": "PELICULAS RETRO",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 2
+      "copias": 3
     },
     {
       "id": "460482",
@@ -8766,20 +8727,6 @@
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
-    },
-    {
-      "id": "460603",
-      "tipo": "movie",
-      "nombre_original": "Star Wars: Ewoks La Batalla Por Endor (1985)",
-      "titulo_buscado": "Wars: Ewoks La Batalla Por Endor",
-      "anio": 1985,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "STAR"
-      ],
-      "prefijo": "",
-      "copias": 2
     },
     {
       "id": "460613",
@@ -10215,7 +10162,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489335",
@@ -10491,7 +10438,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489437",
@@ -10527,7 +10474,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489443",
@@ -10587,7 +10534,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489460",
@@ -10683,7 +10630,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489481",
@@ -10743,7 +10690,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489508",
@@ -10755,7 +10702,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489510",
@@ -10875,7 +10822,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489542",
@@ -10887,7 +10834,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "489543",
@@ -10899,7 +10846,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 2
+      "copias": 3
     },
     {
       "id": "489545",
@@ -10949,7 +10896,7 @@
       "carpeta": "INFANTIL",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 2
+      "copias": 3
     },
     {
       "id": "489568",
@@ -10981,6 +10928,42 @@
       "nombre_original": "Locos por las nueces (2014)",
       "titulo_buscado": "Locos por las nueces",
       "anio": 2014,
+      "motivo": "no_encontrado",
+      "carpeta": "INFANTIL",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "489571",
+      "tipo": "movie",
+      "nombre_original": "Locos por las nueces 2 (2017)",
+      "titulo_buscado": "Locos por las nueces 2",
+      "anio": 2017,
+      "motivo": "no_encontrado",
+      "carpeta": "INFANTIL",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "489574",
+      "tipo": "movie",
+      "nombre_original": "Lo que el agua se llevó (2006)",
+      "titulo_buscado": "Lo que el agua se llevó",
+      "anio": 2006,
+      "motivo": "no_encontrado",
+      "carpeta": "INFANTIL",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "489584",
+      "tipo": "movie",
+      "nombre_original": "Los héroes del apocalipsis: ¡Felices días finales! (2021)",
+      "titulo_buscado": "Los héroes del apocalipsis: ¡Felices días finales!",
+      "anio": 2021,
       "motivo": "no_encontrado",
       "carpeta": "INFANTIL",
       "etiquetas": [],
