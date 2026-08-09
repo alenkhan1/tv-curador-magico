@@ -9,34 +9,34 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-08-09T14:28:50Z",
+  "generado": "2026-08-09T15:26:52Z",
   "resumen": {
-    "total": 3737,
+    "total": 3732,
     "por_motivo": {
       "no_encontrado": 3711,
-      "pendiente": 26
+      "pendiente": 21
     },
     "peliculas": {
       "adulto": 5,
       "excluido": 0,
       "sin_nombre": 1,
       "no_encontrado": 3473,
-      "fallo_red": 26,
-      "clasificados": 8136,
-      "sin_identificar": 3499
+      "fallo_red": 20,
+      "clasificados": 8142,
+      "sin_identificar": 3493
     },
     "series": {
       "adulto": 0,
       "excluido": 0,
       "sin_nombre": 0,
       "no_encontrado": 238,
-      "fallo_red": 0,
+      "fallo_red": 1,
       "clasificados": 1578,
-      "sin_identificar": 238
+      "sin_identificar": 239
     },
     "alerta": {
-      "porcentaje_peliculas": 30.1,
-      "porcentaje_series": 13.1,
+      "porcentaje_peliculas": 30.0,
+      "porcentaje_series": 13.2,
       "umbral": 15.0,
       "supera_umbral": true
     }
@@ -44,7 +44,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 3358,
+      "veces": 3352,
       "ejemplos": [
         "El Día Del Fin Del Mundo: Migración (2026) Subtitulada",
         "Equipo Demolición (2026)",
@@ -654,7 +654,7 @@
     },
     {
       "etiqueta": "1080P",
-      "veces": 419
+      "veces": 413
     },
     {
       "etiqueta": "LAT",
@@ -666,15 +666,15 @@
     },
     {
       "etiqueta": "LATINO",
-      "veces": 96
-    },
-    {
-      "etiqueta": "BRRIP",
-      "veces": 87
+      "veces": 90
     },
     {
       "etiqueta": "WEBDL",
       "veces": 83
+    },
+    {
+      "etiqueta": "BRRIP",
+      "veces": 81
     },
     {
       "etiqueta": "720P",
@@ -752,7 +752,7 @@
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "SAGAS",
-      "veces": 1005
+      "veces": 999
     },
     {
       "carpeta": "VARIADAS",
@@ -839,11 +839,11 @@
       "veces": 20
     },
     {
-      "carpeta": "AVENTURA",
-      "veces": 19
+      "carpeta": "SERIES DISNEY",
+      "veces": 20
     },
     {
-      "carpeta": "SERIES DISNEY",
+      "carpeta": "AVENTURA",
       "veces": 19
     },
     {
