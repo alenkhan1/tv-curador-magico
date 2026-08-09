@@ -9,21 +9,21 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-08-09T16:11:42Z",
+  "generado": "2026-08-09T16:46:03Z",
   "resumen": {
-    "total": 1467,
+    "total": 1439,
     "por_motivo": {
-      "no_encontrado": 1446,
-      "pendiente": 21
+      "no_encontrado": 1413,
+      "pendiente": 26
     },
     "peliculas": {
       "adulto": 5,
       "excluido": 0,
       "sin_nombre": 1,
-      "no_encontrado": 1407,
-      "fallo_red": 20,
-      "clasificados": 10208,
-      "sin_identificar": 1427
+      "no_encontrado": 1374,
+      "fallo_red": 25,
+      "clasificados": 10222,
+      "sin_identificar": 1399
     },
     "series": {
       "adulto": 0,
@@ -35,7 +35,7 @@
       "sin_identificar": 40
     },
     "alerta": {
-      "porcentaje_peliculas": 12.3,
+      "porcentaje_peliculas": 12.0,
       "porcentaje_series": 2.2,
       "umbral": 15.0,
       "supera_umbral": false
@@ -44,34 +44,13 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1418,
+      "veces": 1399,
       "ejemplos": [
         "Super Bowl LX (2026)",
         "Amame, amame (2026)",
         "BTS El comeback en directo - Arirang (2026)",
         "Inthum (2026)",
         "Por fin Tu (2026)"
-      ]
-    },
-    {
-      "patron": "STAR WARS EPISODE I",
-      "veces": 1,
-      "ejemplos": [
-        "Star Wars Episode I - The Phantom Menace (1999) - 1080p BDrip x264 60 fps (8.0 Mbps) [spa, eng]"
-      ]
-    },
-    {
-      "patron": "THE CROW 1994",
-      "veces": 1,
-      "ejemplos": [
-        "The Crow (1994) - 1080p BDrip x264 60 fps (10.7 Mbps) [spa, eng]"
-      ]
-    },
-    {
-      "patron": "THE FACULTY 1998",
-      "veces": 1,
-      "ejemplos": [
-        "The Faculty (1998) - 1080p BDrip x264 60 fps (10.7 Mbps) [spa, eng]"
       ]
     },
     {
@@ -89,45 +68,10 @@
       ]
     },
     {
-      "patron": "ALIEN 1979",
-      "veces": 1,
-      "ejemplos": [
-        "Alien (1979) - 1080p BRrip x264 60 fps (5.9 Mbps) [spa, eng]"
-      ]
-    },
-    {
-      "patron": "ALIENS 1986",
-      "veces": 1,
-      "ejemplos": [
-        "Aliens (1986) - 1080p BRrip x264 60 fps (5.6 Mbps) [spa, eng]"
-      ]
-    },
-    {
-      "patron": "BEETLEJUICE 1988",
-      "veces": 1,
-      "ejemplos": [
-        "Beetlejuice (1988) - 1080p BDrip x264 60 fps (11.6 Mbps) [spa, eng]"
-      ]
-    },
-    {
-      "patron": "BRAVEHEART 1995",
-      "veces": 1,
-      "ejemplos": [
-        "Braveheart (1995) - 1080p BRrip x264 60 fps (6.4 Mbps) [spa, eng]"
-      ]
-    },
-    {
       "patron": "GINGER SNAPS 2000",
       "veces": 1,
       "ejemplos": [
         "Ginger Snaps (2000) - Terror, Fantasía - 1080p"
-      ]
-    },
-    {
-      "patron": "HOME ALONE 1990",
-      "veces": 1,
-      "ejemplos": [
-        "Home Alone (1990) - 1080p BDrip x264 60 fps (10.7 Mbps) [spa, eng]"
       ]
     },
     {
@@ -156,13 +100,6 @@
       "veces": 1,
       "ejemplos": [
         "Pokémon: The Chronicles of Arceus (2022)"
-      ]
-    },
-    {
-      "patron": "SMALL FRY 2011",
-      "veces": 1,
-      "ejemplos": [
-        "Small Fry (2011) - 1080p BRrip x264 60 fps (6.8 Mbps) [spa]"
       ]
     },
     {
@@ -400,11 +337,11 @@
   "etiquetas_mas_frecuentes": [
     {
       "etiqueta": "X264",
-      "veces": 426
+      "veces": 403
     },
     {
       "etiqueta": "1080P",
-      "veces": 267
+      "veces": 239
     },
     {
       "etiqueta": "LAT",
@@ -416,7 +353,7 @@
     },
     {
       "etiqueta": "WEBDL",
-      "veces": 55
+      "veces": 54
     },
     {
       "etiqueta": "LATINO",
@@ -431,20 +368,20 @@
       "veces": 30
     },
     {
-      "etiqueta": "BDRIP",
-      "veces": 29
-    },
-    {
-      "etiqueta": "BRRIP",
-      "veces": 24
-    },
-    {
       "etiqueta": "DUAL",
       "veces": 22
     },
     {
+      "etiqueta": "BRRIP",
+      "veces": 20
+    },
+    {
       "etiqueta": "HD",
       "veces": 18
+    },
+    {
+      "etiqueta": "BDRIP",
+      "veces": 11
     },
     {
       "etiqueta": "AMZN",
@@ -506,19 +443,19 @@
     },
     {
       "carpeta": "VARIADAS",
-      "veces": 116
+      "veces": 115
     },
     {
       "carpeta": "DRAMA",
-      "veces": 91
+      "veces": 89
     },
     {
       "carpeta": "TERROR",
-      "veces": 67
+      "veces": 66
     },
     {
       "carpeta": "PELICULAS RETRO",
-      "veces": 65
+      "veces": 54
     },
     {
       "carpeta": "ACCION",
@@ -530,7 +467,7 @@
     },
     {
       "carpeta": "ANIMADAS",
-      "veces": 35
+      "veces": 32
     },
     {
       "carpeta": "WESTERN",
@@ -538,7 +475,7 @@
     },
     {
       "carpeta": "PELICULAS CLASICAS",
-      "veces": 26
+      "veces": 18
     },
     {
       "carpeta": "ESTRENOS 2025",
@@ -573,10 +510,6 @@
       "veces": 5
     },
     {
-      "carpeta": "AVENTURA",
-      "veces": 5
-    },
-    {
       "carpeta": "ROMANTICAS",
       "veces": 5
     },
@@ -590,6 +523,10 @@
     },
     {
       "carpeta": "INFANTIL",
+      "veces": 3
+    },
+    {
+      "carpeta": "AVENTURA",
       "veces": 3
     },
     {
@@ -1231,22 +1168,6 @@
       "copias": 1
     },
     {
-      "id": "458169",
-      "tipo": "movie",
-      "nombre_original": "Homeward Bound The Incredible Journey (1993) - 1080p BDrip x264 60 fps (13.4 Mbps) [spa]",
-      "titulo_buscado": "Homeward Bound The Incredible Journey 60 fps",
-      "anio": 1993,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "458175",
       "tipo": "movie",
       "nombre_original": "INFIERNO EN LA TELE (1992)",
@@ -1357,54 +1278,6 @@
       "copias": 1
     },
     {
-      "id": "458403",
-      "tipo": "movie",
-      "nombre_original": "Return of the Living Dead III (1993) - 1080p BDrip x264 60 fps (10.7 Mbps) [spa]",
-      "titulo_buscado": "Return of the Living Dead III 60 fps",
-      "anio": 1993,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "458415",
-      "tipo": "movie",
-      "nombre_original": "Rudolph the Red-Nosed Reindeer (1964) - 1080p BDrip x264 60 fps (16.6 Mbps) [spa]",
-      "titulo_buscado": "Rudolph the Red Nosed Reindeer 60 fps",
-      "anio": 1964,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "458480",
-      "tipo": "movie",
-      "nombre_original": "Star Wars Episode I - The Phantom Menace (1999) - 1080p BDrip x264 60 fps (8.0 Mbps) [spa, eng]",
-      "titulo_buscado": "Star Wars Episode I The Phantom Menace 60 fps",
-      "anio": 1999,
-      "motivo": "pendiente",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "458486",
       "tipo": "movie",
       "nombre_original": "Stu4rt.L1ttl3.(1999).BRRIP-[ZSERIESGDZ]",
@@ -1465,70 +1338,6 @@
       "motivo": "no_encontrado",
       "carpeta": "PELICULAS CLASICAS",
       "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "458541",
-      "tipo": "movie",
-      "nombre_original": "The Crow (1994) - 1080p BDrip x264 60 fps (10.7 Mbps) [spa, eng]",
-      "titulo_buscado": "The Crow 60 fps",
-      "anio": 1994,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "458542",
-      "tipo": "movie",
-      "nombre_original": "The Crow City of Angels (1996) - 1080p BDrip x264 60 fps (12.6 Mbps) [spa, eng]",
-      "titulo_buscado": "The Crow City of Angels 60 fps",
-      "anio": 1996,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "458557",
-      "tipo": "movie",
-      "nombre_original": "The Faculty (1998) - 1080p BDrip x264 60 fps (10.7 Mbps) [spa, eng]",
-      "titulo_buscado": "The Faculty 60 fps",
-      "anio": 1998,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "458631",
-      "tipo": "movie",
-      "nombre_original": "The Return of the Living Dead (1985) - 1080p BDrip x264 60 fps (11.8 Mbps) [spa]",
-      "titulo_buscado": "The Return of the Living Dead 60 fps",
-      "anio": 1985,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS CLASICAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
       "prefijo": "",
       "copias": 1
     },
@@ -1619,54 +1428,6 @@
       "copias": 1
     },
     {
-      "id": "459967",
-      "tipo": "movie",
-      "nombre_original": "Alien (1979) - 1080p BRrip x264 60 fps (5.9 Mbps) [spa, eng]",
-      "titulo_buscado": "Alien 60 fps",
-      "anio": 1979,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BRRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "459972",
-      "tipo": "movie",
-      "nombre_original": "Aliens (1986) - 1080p BRrip x264 60 fps (5.6 Mbps) [spa, eng]",
-      "titulo_buscado": "Aliens 60 fps",
-      "anio": 1986,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BRRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "459978",
-      "tipo": "movie",
-      "nombre_original": "A Little Princess (1995) 1080p BDrip x264 60 fps [spa]",
-      "titulo_buscado": "A Little Princess 60 fps",
-      "anio": 1995,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "460017",
       "tipo": "movie",
       "nombre_original": "Animal House (1978) BDRemux HD1080",
@@ -1676,38 +1437,6 @@
       "carpeta": "PELICULAS RETRO",
       "etiquetas": [
         "BDREMUX"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "460074",
-      "tipo": "movie",
-      "nombre_original": "Back to the Future (1985) - 1080p BDrip x264 60 fps (9.5 Mbps) [spa, eng]",
-      "titulo_buscado": "Back to the Future 60 fps",
-      "anio": 1985,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "460075",
-      "tipo": "movie",
-      "nombre_original": "Back to the Future Part II (1989) - 1080p BDrip x264 60 fps (10.3 Mbps) [spa, eng]",
-      "titulo_buscado": "Back to the Future Part II 60 fps",
-      "anio": 1989,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
       ],
       "prefijo": "",
       "copias": 1
@@ -1741,22 +1470,6 @@
       "copias": 1
     },
     {
-      "id": "460103",
-      "tipo": "movie",
-      "nombre_original": "Batman Forever (1995) - 1080p BDrip x264 60 fps (9.1 Mbps) [spa, eng]",
-      "titulo_buscado": "Batman Forever 60 fps",
-      "anio": 1995,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "460104",
       "tipo": "movie",
       "nombre_original": "Batman La película (1966)",
@@ -1769,22 +1482,6 @@
       "copias": 1
     },
     {
-      "id": "460114",
-      "tipo": "movie",
-      "nombre_original": "Beetlejuice (1988) - 1080p BDrip x264 60 fps (11.6 Mbps) [spa, eng]",
-      "titulo_buscado": "Beetlejuice 60 fps",
-      "anio": 1988,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "460159",
       "tipo": "movie",
       "nombre_original": "Bollywood (1994)",
@@ -1793,22 +1490,6 @@
       "motivo": "no_encontrado",
       "carpeta": "PELICULAS RETRO",
       "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "460169",
-      "tipo": "movie",
-      "nombre_original": "Braveheart (1995) - 1080p BRrip x264 60 fps (6.4 Mbps) [spa, eng]",
-      "titulo_buscado": "Braveheart 60 fps",
-      "anio": 1995,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BRRIP",
-        "X264"
-      ],
       "prefijo": "",
       "copias": 1
     },
@@ -1905,22 +1586,6 @@
       "etiquetas": [],
       "prefijo": "",
       "copias": 2
-    },
-    {
-      "id": "460394",
-      "tipo": "movie",
-      "nombre_original": "Dragon Ball Curse of the Blood Rubies (1986) - 1080p BDrip x264 60 fps (20.1 Mbps) [spa]",
-      "titulo_buscado": "Dragon Ball Curse of the Blood Rubies 60 fps",
-      "anio": 1986,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
     },
     {
       "id": "460417",
@@ -2065,38 +1730,6 @@
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
-    },
-    {
-      "id": "460736",
-      "tipo": "movie",
-      "nombre_original": "Home Alone (1990) - 1080p BDrip x264 60 fps (10.7 Mbps) [spa, eng]",
-      "titulo_buscado": "Home Alone 60 fps",
-      "anio": 1990,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 2
-    },
-    {
-      "id": "460737",
-      "tipo": "movie",
-      "nombre_original": "Home Alone 2 Lost in New York (1992) - 1080p BDrip x264 60 fps (8.8 Mbps) [spa, eng]",
-      "titulo_buscado": "Home Alone 2 Lost in New York 60 fps",
-      "anio": 1992,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS RETRO",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 2
     },
     {
       "id": "460770",
@@ -2901,9 +2534,9 @@
       "id": "462953",
       "tipo": "movie",
       "nombre_original": "Panda Plan (2024) 1080p Chinese WEB-DL HC HEVC x265 60fps 5.1",
-      "titulo_buscado": "Panda Plan Chinese HC 60fps",
+      "titulo_buscado": "Panda Plan Chinese HC",
       "anio": 2024,
-      "motivo": "no_encontrado",
+      "motivo": "pendiente",
       "carpeta": "ACCION",
       "etiquetas": [
         "1080P",
@@ -2990,9 +2623,9 @@
       "id": "462972",
       "tipo": "movie",
       "nombre_original": "Proyecto Rampage (2018) Acción. Ciencia ficción - 2.7 Mbps, 1080p - [spa]",
-      "titulo_buscado": "Proyecto Rampage Acción Ciencia ficción 2 7 Mbps",
+      "titulo_buscado": "Proyecto Rampage Acción Ciencia ficción",
       "anio": 2018,
-      "motivo": "no_encontrado",
+      "motivo": "pendiente",
       "carpeta": "ACCION",
       "etiquetas": [
         "1080P"
@@ -3250,22 +2883,6 @@
       "copias": 1
     },
     {
-      "id": "463238",
-      "tipo": "movie",
-      "nombre_original": "Hawaiian Vacation (2011) - 1080p BDrip x264 60 fps (9.8 Mbps) [spa]",
-      "titulo_buscado": "Hawaiian Vacation 60 fps",
-      "anio": 2011,
-      "motivo": "no_encontrado",
-      "carpeta": "ANIMADAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "463243",
       "tipo": "movie",
       "nombre_original": "Hola, Alberto (2021) [1080p] [AVC] [8.2 Mbps] [spa, eng]",
@@ -3461,22 +3078,6 @@
       "copias": 1
     },
     {
-      "id": "463458",
-      "tipo": "movie",
-      "nombre_original": "Small Fry (2011) - 1080p BRrip x264 60 fps (6.8 Mbps) [spa]",
-      "titulo_buscado": "Small Fry 60 fps",
-      "anio": 2011,
-      "motivo": "no_encontrado",
-      "carpeta": "ANIMADAS",
-      "etiquetas": [
-        "1080P",
-        "BRRIP",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "463460",
       "tipo": "movie",
       "nombre_original": "Snoopy y Charlie Brown Peanuts la película (2015) Animación. Comedia. Aventuras - 1080p",
@@ -3524,22 +3125,6 @@
       "carpeta": "ANIMADAS",
       "etiquetas": [
         "480P"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "463497",
-      "tipo": "movie",
-      "nombre_original": "The Lion King 1½ (2004) - 1080p BDrip x264 60 fps (8.3 Mbps) [spa]",
-      "titulo_buscado": "The Lion King 1½ 60 fps",
-      "anio": 2004,
-      "motivo": "no_encontrado",
-      "carpeta": "ANIMADAS",
-      "etiquetas": [
-        "1080P",
-        "BDRIP",
-        "X264"
       ],
       "prefijo": "",
       "copias": 1
@@ -3627,34 +3212,6 @@
       "motivo": "no_encontrado",
       "carpeta": "AVENTURA",
       "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "463804",
-      "tipo": "movie",
-      "nombre_original": "Robin Hood (2018) 4.8 Mbps, 1080p - [spa]",
-      "titulo_buscado": "Robin Hood 4 8 Mbps",
-      "anio": 2018,
-      "motivo": "no_encontrado",
-      "carpeta": "AVENTURA",
-      "etiquetas": [
-        "1080P"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "463805",
-      "tipo": "movie",
-      "nombre_original": "Robin Hood (2018) 5.3 Mbps, 1080p - [spa, eng]",
-      "titulo_buscado": "Robin Hood 5 3 Mbps",
-      "anio": 2018,
-      "motivo": "no_encontrado",
-      "carpeta": "AVENTURA",
-      "etiquetas": [
-        "1080P"
-      ],
       "prefijo": "",
       "copias": 1
     },
@@ -5786,9 +5343,9 @@
       "id": "490964",
       "tipo": "movie",
       "nombre_original": "La Profecia III (1981) El Conflicto Final (1981) 60Fps",
-      "titulo_buscado": "La Profecia III El Conflicto Final 60Fps",
+      "titulo_buscado": "La Profecia III El Conflicto Final",
       "anio": 1981,
-      "motivo": "no_encontrado",
+      "motivo": "pendiente",
       "carpeta": "SAGAS",
       "etiquetas": [],
       "prefijo": "",
@@ -11584,6 +11141,384 @@
       "etiquetas": [
         "X264"
       ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491824",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Super Samurai - 22_x264",
+      "titulo_buscado": "Power Rangers Super Samurai 22",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491825",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 01 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 01",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491826",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 02 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 02",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491827",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 03 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 03",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491828",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 04 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 04",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491829",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 05 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 05",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491830",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 06 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 06",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491831",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 07 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 07",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491832",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 08 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 08",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491833",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 09 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 09",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491834",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 10 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 10",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491835",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 11 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 11",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491836",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 12 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 12",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491837",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 13 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 13",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491838",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 14 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 14",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491839",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 15 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 15",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491840",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 16 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 16",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491841",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 17 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 17",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491842",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 18 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 18",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491843",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 19 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 19",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491844",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 20 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 20",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491845",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 21 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 21",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491846",
+      "tipo": "movie",
+      "nombre_original": "[SR] Power Rangers Megaforce 22 [Lat-Cast-Ing Sub][Final]_x264",
+      "titulo_buscado": "Power Rangers Megaforce 22",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "X264"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "491847",
+      "tipo": "movie",
+      "nombre_original": "Power Rangers_ Furia Dino_S01E01_Destino Dinohenge",
+      "titulo_buscado": "Power Rangers Furia Dino S01E01 Destino Dinohenge",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SAGAS",
+      "etiquetas": [],
       "prefijo": "",
       "copias": 1
     }
