@@ -111,6 +111,15 @@ MINIMO_FILAS = 3
 UMBRAL_NORMAL = 0.80
 UMBRAL_RIESGO = 0.88
 
+# --- Alerta de calidad del informe (acordado 09-ago-2026) -------------------
+# El usuario no revisa el informe a mano; el propio workflow debe avisar
+# cuando el porcentaje de titulos sin identificar se sale de lo normal.
+# Esto NO bloquea la publicacion del catalogo (eso lo sigue decidiendo
+# 'validar()'), solo deja una senal visible en el resumen del job.
+UMBRAL_ALERTA_NO_IDENTIFICADO = float(
+    os.environ.get("UMBRAL_ALERTA_NO_IDENTIFICADO", "15")
+)  # porcentaje
+
 HOY = datetime.now(timezone.utc)
 ANIO_ACTUAL = HOY.year
 ANIO_ANTIGUO = ANIO_ACTUAL - ANIOS_ANTIGUO
@@ -143,6 +152,7 @@ GEN_SERIES = {
 }
 
 FILA_ANIME = "Anime"
+FILA_SIN_GENERO = "Descubrir"
 
 PRIORIDAD_PELICULAS = [
     99, 16, 27, 37, 878, 10752, 10402, 36, 14, 80, 9648, 53, 12, 28,
@@ -165,6 +175,7 @@ ORDEN_CATEGORIAS = [
     "Fantasia", "Aventura",
     "Documental", "Historia", "Belica", "Guerra y Politica",
     "Musica", "Pelicula de TV", "Reality", "Talk Show", "Western",
+    "Descubrir",
 ]
 
 FUSION = {
@@ -288,10 +299,18 @@ CALIDADES = {
 FUENTES = {
     "REMUX": 3, "BLURAY": 3, "BDRIP": 3, "BRRIP": 3, "WEBDL": 3, "BDREMUX": 3,
     "WEBRIP": 2, "HDRIP": 2, "DVDRIP": 2, "HDTV": 2, "WEB": 2, "AMZN": 2,
-    "NF": 2, "DSNP": 2, "HMAX": 2, "MAX": 2, "ATVP": 2, "HULU": 2, "STAR": 2,
+    "NF": 2, "DSNP": 2, "HMAX": 2, "ATVP": 2, "HULU": 2,
     "HDCAM": 0, "CAMRIP": 0, "CAM": 0, "TS": 0, "TELESYNC": 0,
     "SCREENER": 0, "DVDSCR": 0, "TSRIP": 0,
 }
+
+# Palabras que SI son etiquetas de plataforma/origen pero tambien son
+# palabras reales frecuentes en titulos (Star Wars, Max, etc). Solo se
+# reconocen como etiqueta si vienen claramente delimitadas: dentro de un
+# corchete/parentesis, o como la ULTIMA palabra suelta del texto. Nunca
+# se descartan si aparecen como primera palabra o en medio del titulo,
+# para no comerse titulos reales (bug detectado: "Star Wars" -> "Wars").
+FUENTES_AMBIGUAS = {"MAX": 2, "STAR": 2}
 
 IDIOMAS = {
     "LATINO": (3, "Latino"), "LAT": (3, "Latino"), "DUAL": (3, "Dual"),
@@ -319,6 +338,10 @@ RE_ANIO = re.compile(r"\b(19\d{2}|20\d{2})\b")
 RE_PREFIJO = re.compile(r"^\s*([^\-|:]{1,20})\s*[\-|:]\s+")
 RE_SEPARADORES = re.compile(r"[|_·•‹›»«]+")
 RE_INICIO_SUCIO = re.compile(r"^[^\w¡¿(\"']+", re.UNICODE)
+# Numero suelto de colección al inicio ("01 - Titulo", "03 - Titulo"):
+# lo usan proveedores para ordenar sagas en su explorador de archivos,
+# no es parte real del titulo. Se descarta antes de tocar el resto.
+RE_NUMERO_COLECCION = re.compile(r"^\s*\d{1,3}\s*[\-\.]\s+")
 
 RE_BIGRAMAS = [
     (re.compile(r"\bWEB[\s\.\-]?DL\b", re.I), " WEBDL "),
@@ -358,8 +381,11 @@ def absorber_etiquetas(fragmento, info):
             if rango > info["calidad"]:
                 info["calidad"], info["calidad_txt"] = rango, txt
             info["etiquetas"].append(norm)
-        elif norm in FUENTES:
-            rango = FUENTES[norm]
+        elif norm in FUENTES or norm in FUENTES_AMBIGUAS:
+            # Aqui es seguro reconocer las ambiguas (STAR, MAX): el
+            # fragmento ya viene aislado (corchetes/parentesis/prefijo),
+            # no es una palabra suelta en medio del titulo visible.
+            rango = FUENTES.get(norm, FUENTES_AMBIGUAS.get(norm))
             if info["fuente"] is None or rango < info["fuente"]:
                 info["fuente"] = rango
             info["etiquetas"].append(norm)
@@ -393,7 +419,9 @@ def limpiar_titulo(nombre, es_serie=False):
     texto = RE_CORCHETES.sub(" ", texto)
     texto = RE_PARENTESIS.sub(" ", texto)
 
-    # 2) prefijos del proveedor (hasta dos capas)
+    # 2) numero suelto de coleccion al inicio ("01 - ", "03 - "), luego
+    # prefijos del proveedor (hasta dos capas)
+    texto = RE_NUMERO_COLECCION.sub("", texto)
     for _ in range(2):
         texto = RE_INICIO_SUCIO.sub("", texto)
         m = RE_PREFIJO.match(texto)
@@ -428,9 +456,14 @@ def limpiar_titulo(nombre, es_serie=False):
     texto = RE_SEPARADORES.sub(" ", texto)
     texto = texto.replace("–", "-").replace("—", "-")
 
-    # 5) tokenizar y descartar etiquetas, extrayendo señal
+    # 5) tokenizar y descartar etiquetas, extrayendo señal.
+    # Las FUENTES_AMBIGUAS (STAR, MAX...) tambien son palabras reales de
+    # titulos ("Star Wars", "Mad Max"), asi que aqui NO se descartan por
+    # simple coincidencia: solo se marcan como candidatas y se resuelven
+    # al final, cuando ya sabemos su posicion dentro del titulo limpio.
     crudos = re.split(r"[\s\-\.,;/\\]+", texto)
     limpios = []
+    candidatos_ambiguos = []
     for token in crudos:
         if not token:
             continue
@@ -458,7 +491,22 @@ def limpiar_titulo(nombre, es_serie=False):
         if norm in BASURA:
             info["etiquetas"].append(norm)
             continue
+        if norm in FUENTES_AMBIGUAS:
+            candidatos_ambiguos.append((len(limpios), norm))
         limpios.append(token)
+
+    # Una ambigua solo se trata como etiqueta tecnica si quedo como la
+    # ULTIMA palabra del titulo limpio (patron real de nombre de archivo:
+    # "Titulo (2024) MAX"), nunca si esta al inicio o en medio (evita
+    # romper "Star Wars", "Mad Max", etc).
+    if candidatos_ambiguos and limpios:
+        pos_ultimo, norm_ultimo = candidatos_ambiguos[-1]
+        if pos_ultimo == len(limpios) - 1 and len(limpios) >= 2:
+            rango = FUENTES_AMBIGUAS[norm_ultimo]
+            if info["fuente"] is None or rango < info["fuente"]:
+                info["fuente"] = rango
+            info["etiquetas"].append(norm_ultimo)
+            limpios.pop()
 
     # 6) año suelto al final (o en cualquier posicion residual)
     if limpios:
@@ -794,6 +842,25 @@ def empaquetar(elegido, es_serie):
         "ts": int(time.time()),
     }
 
+def tmdb_buscar_multilenguaje(titulo, es_serie, anio):
+    """Cuarto intento: TMDB indexa cada ficha en un idioma principal, y a
+    veces el titulo en espanol que tiene el proveedor no coincide con el
+    'title' que TMDB devuelve en es-ES (varia por doblaje/region), pero SI
+    coincide con el titulo original o el ingles. Se prueba en esos otros
+    idiomas antes de rendirse, sin bajar el umbral de confianza normal."""
+    ruta = "search/tv" if es_serie else "search/movie"
+    resultados = []
+    for idioma in ("en-US", "es-MX"):
+        params = {"query": titulo, "language": idioma, "include_adult": "false"}
+        if anio:
+            params["first_air_date_year" if es_serie else "year"] = anio
+        datos = tmdb_get(ruta, params)
+        if datos is None:
+            continue
+        resultados.extend(datos.get("results") or [])
+    return resultados or None
+
+
 def resolver_titulo(titulo, anio, es_serie):
     """Escalera de intentos. Devuelve (datos|None, motivo)."""
     consulta_norm = normalizar(titulo)
@@ -830,6 +897,18 @@ def resolver_titulo(titulo, anio, es_serie):
             )
             if elegido:
                 return empaquetar(elegido, es_serie), "ok"
+
+    # Cuarto intento (nuevo): mismo titulo original, buscando en otros
+    # idiomas de indexacion de TMDB. Recupera casos donde el titulo en
+    # espanol del proveedor es correcto, pero TMDB solo lo tiene calzado
+    # bajo su nombre original o su variante en-US/es-MX.
+    res = tmdb_buscar_multilenguaje(titulo, es_serie, anio)
+    if res is None:
+        hubo_fallo_red = True
+    elif res:
+        elegido = mejor_de(res, consulta_norm, anio, es_serie, UMBRAL_RIESGO)
+        if elegido:
+            return empaquetar(elegido, es_serie), "ok"
 
     if hubo_fallo_red:
         return None, "fallo_red"
@@ -1362,11 +1441,15 @@ def fase2(clasificados, es_serie, total_origen):
             "es_clasico": False,
         }
 
-        # Sin genero utilizable: el titulo NO se descarta del catalogo,
-        # solo no entra a ninguna fila de vitrina. Sigue siendo buscable
-        # y tiene poster/sinopsis reales (a diferencia de "sin_identificar").
+        # Sin genero utilizable: TMDB no trae genero para esta ficha (pasa
+        # con contenido internacional/especiales). Ya NO se deja fuera de
+        # toda fila: se le asigna la fila "Descubrir" para que el titulo
+        # (que ya tiene poster/sinopsis/nota reales) siga siendo visible
+        # en vitrina en vez de vivir solo en el buscador.
         if not principal:
+            registro["filas"].add(FILA_SIN_GENERO)
             sin_genero.append(registro)
+            registros.append(registro)
             continue
 
         filas = registro["filas"]
@@ -1517,20 +1600,51 @@ def fase2(clasificados, es_serie, total_origen):
     nombres_ordenados = [f for f in ORDEN_CATEGORIAS if f in por_fila]
     nombres_ordenados += sorted(f for f in por_fila if f not in ORDEN_CATEGORIAS)
 
+    # --- Variedad diaria de vitrina (acordado 09-ago-2026) ------------------
+    # "Estrenos" siempre debe ir estrictamente del mas nuevo al mas viejo:
+    # no rota. El resto de filas (generos, Clasicos, Retro) SI rotan: cuando
+    # hay mas candidatos que el tope de la fila, se reserva una porcion fija
+    # ("anclas", los mejores por relevancia) para que la fila nunca pierda
+    # calidad de piso, y el resto de espacios se llena con una muestra
+    # aleatoria del resto del pool. La semilla se deriva de la fecha del dia
+    # (no de la hora), asi que la fila es estable durante todo el dia pero
+    # cambia de una corrida diaria a la siguiente, mezclando titulos de
+    # distintas epocas en vez de mostrar siempre el mismo top fijo.
+    FILAS_SIN_ROTACION = {"Estrenos"}
+    PORCENTAJE_ANCLAS = 0.4
+    SEMILLA_DIA = HOY.strftime("%Y-%m-%d")
+
+    def seleccionar_con_variedad(nombre, lista, tope):
+        if nombre in FILAS_SIN_ROTACION or len(lista) <= tope:
+            return lista[:tope]
+        cantidad_anclas = max(1, int(round(tope * PORCENTAJE_ANCLAS)))
+        cantidad_anclas = min(cantidad_anclas, tope)
+        anclas = lista[:cantidad_anclas]
+        resto_pool = lista[cantidad_anclas:]
+        cupo_rotacion = tope - len(anclas)
+        rng = random.Random("%s|%s" % (SEMILLA_DIA, nombre))
+        elegidos_rotacion = rng.sample(
+            resto_pool, min(cupo_rotacion, len(resto_pool))
+        )
+        return anclas + elegidos_rotacion
+
     filas_finales = []
     for nombre in nombres_ordenados:
         lista = por_fila[nombre]
         lista.sort(key=ordenadores.get(nombre, orden_genero), reverse=True)
         tope = TOPES.get(nombre, TOPE_GENERO)
-        recortada = lista[:tope]
+        recortada = seleccionar_con_variedad(nombre, lista, tope)
         referencias = [indice_de(r) for r in recortada]
         filas_finales.append({
             "nombre": nombre,
             "tipo": TIPOS_FILA.get(nombre, "genero"),
             "items": referencias,
         })
-        print(" %-26s %3s items en vitrina (de %s identificados con este genero)"
-              % (nombre, len(referencias), len(lista)))
+        rota = " (con rotacion diaria)" if (
+            nombre not in FILAS_SIN_ROTACION and len(lista) > tope
+        ) else ""
+        print(" %-26s %3s items en vitrina (de %s identificados con este genero)%s"
+              % (nombre, len(referencias), len(lista), rota))
 
     salida = {
         "origen": total_origen,
@@ -1545,6 +1659,29 @@ def fase2(clasificados, es_serie, total_origen):
 # ============================================================================
 # INFORME DE NO RESUELTOS (diagnostico, ordenado por frecuencia del patron)
 # ============================================================================
+
+def calcular_alerta(contadores_peli, contadores_serie):
+    """Porcentaje de titulos sin ficha TMDB sobre el total de cada bloque,
+    y si supera el umbral configurado. El workflow lee esto para decidir
+    si deja una alerta visible, sin bloquear la publicacion del catalogo."""
+    def porcentaje(contadores):
+        total = contadores.get("clasificados", 0) + contadores.get("sin_identificar", 0)
+        if not total:
+            return 0.0
+        return round(100.0 * contadores.get("sin_identificar", 0) / total, 1)
+
+    pct_peli = porcentaje(contadores_peli)
+    pct_serie = porcentaje(contadores_serie)
+    return {
+        "porcentaje_peliculas": pct_peli,
+        "porcentaje_series": pct_serie,
+        "umbral": UMBRAL_ALERTA_NO_IDENTIFICADO,
+        "supera_umbral": (
+            pct_peli > UMBRAL_ALERTA_NO_IDENTIFICADO
+            or pct_serie > UMBRAL_ALERTA_NO_IDENTIFICADO
+        ),
+    }
+
 
 def escribir_informe(informe, contadores_peli, contadores_serie):
     patrones = {}
@@ -1594,6 +1731,7 @@ def escribir_informe(informe, contadores_peli, contadores_serie):
             "por_motivo": motivos,
             "peliculas": contadores_peli,
             "series": contadores_serie,
+            "alerta": calcular_alerta(contadores_peli, contadores_serie),
         },
         "patrones": lista_patrones[:80],
         "etiquetas_mas_frecuentes": [
