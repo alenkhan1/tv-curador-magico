@@ -375,6 +375,8 @@ RE_BIGRAMAS = [
     (re.compile(r"\b[HXhx][\s\.]?26([45])\b"), r" X26\1 "),
     (re.compile(r"\b[2578]\.[01]\b"), " "),
     (re.compile(r"\bDD\s?\+?\s?5\b", re.I), " "),
+    (re.compile(r"\b\d{2,3}\s?fps\b", re.I), " "),
+    (re.compile(r"\b\d+(?:\.\d+)?\s?Mbps\b", re.I), " "),
 ]
 
 RE_SXXEYY = re.compile(r"\bS\s?\d{1,2}\s?E\s?\d{1,3}\b", re.I)
