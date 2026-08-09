@@ -119,6 +119,16 @@ UMBRAL_RIESGO = 0.88
 # corrida en catalogos grandes.
 TOPE_CANDIDATOS_ALTERNATIVOS = 5
 
+# --- Version de la logica de resolucion (acordado 09-ago-2026) -------------
+# Cada vez que la ESCALERA de intentos de resolver_titulo() cambia (se le
+# agrega un intento nuevo, como el quinto de titulos alternativos), se sube
+# este numero en 1. Un fallo guardado en cache con una version MENOR a esta
+# se considera "logica vieja": se reintenta una vez sin importar el
+# refresco normal de 14 dias (REFRESCO_FALLIDO), porque la razon por la que
+# fallo pudo dejar de existir. Una vez reintentado con la logica actual, si
+# vuelve a fallar, se guarda con esta version y respeta el refresco normal.
+VERSION_LOGICA_RESOLVER = 2
+
 # --- Alerta de calidad del informe (acordado 09-ago-2026) -------------------
 # El usuario no revisa el informe a mano; el propio workflow debe avisar
 # cuando el porcentaje de titulos sin identificar se sale de lo normal.
@@ -1104,6 +1114,15 @@ def cache_vigente(entrada):
         return False
     edad = (time.time() - float(entrada.get("ts") or 0)) / 86400.0
     if not entrada.get("ok"):
+        # Un fallo guardado con una version de logica anterior a la
+        # actual NO se considera vigente, sin importar su edad: se le da
+        # una oportunidad de reintento con la escalera de intentos nueva
+        # (ej: el quinto intento de titulos alternativos). Esto evita
+        # tener que borrar el cache a mano cada vez que mejoramos
+        # resolver_titulo(), y evita reintentar TODOS los dias los fallos
+        # que ya se probaron con la logica actual y siguen sin existir.
+        if int(entrada.get("version_logica") or 0) < VERSION_LOGICA_RESOLVER:
+            return False
         return edad < REFRESCO_FALLIDO
     anio = 0
     fecha = entrada.get("fecha") or ""
@@ -1320,7 +1339,8 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
                     cache[tipo][k] = datos
                 elif motivo != "fallo_red":
                     cache[tipo][k] = {"ok": False, "motivo": motivo,
-                                       "ts": int(time.time())}
+                                       "ts": int(time.time()),
+                                       "version_logica": VERSION_LOGICA_RESOLVER}
                 resueltos += 1
                 if resueltos % GUARDAR_CADA == 0:
                     guardar_cache(cache)
