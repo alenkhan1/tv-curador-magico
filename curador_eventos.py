@@ -372,9 +372,11 @@ def procesar_cubo_a() -> list:
     palabras_contexto = ["EVENTOS", "EVENTS", "AGENDA", "PARTIDOS", "CARTELERA", "CALENDARIO", "PPV", "SPORT"]
 
     try:
+        # 1) Categorías: se usan solo para IDENTIFICAR cuáles category_id son "de hoy".
+        # NUNCA se usan para filtrar la llamada a get_live_streams (ver nota mas abajo).
         url_cat_original = f"{api_url}&action=get_live_categories"
         r_cat = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_cat_original}, timeout=45)
-        categorias_hoy_ids = []
+        categorias_hoy_ids = set()
 
         if r_cat.status_code == 200:
             for cat in r_cat.json():
@@ -386,21 +388,26 @@ def procesar_cubo_a() -> list:
                 tiene_contexto = any(c in nombre_limpio for c in palabras_contexto)
 
                 if match_fecha_directa or (tiene_principal and tiene_contexto):
-                    categorias_hoy_ids.append(cat.get("category_id"))
-
-        # Union de TODAS las categorias candidatas (no solo la primera que matchee)
-        streams_totales = []
-        if categorias_hoy_ids:
-            for cat_id in categorias_hoy_ids:
-                url_streams = f"{api_url}&action=get_live_streams&category_id={cat_id}"
-                r_str = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_streams}, timeout=60)
-                if r_str.status_code == 200:
-                    streams_totales.extend(r_str.json())
+                    categorias_hoy_ids.add(str(cat.get("category_id")))
+            log.info(f"Categorias candidatas a 'hoy' detectadas: {len(categorias_hoy_ids)}")
         else:
-            url_streams = f"{api_url}&action=get_live_streams"
-            r_str = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_streams}, timeout=60)
-            if r_str.status_code == 200:
-                streams_totales = r_str.json()
+            log.warning(f"get_live_categories devolvio HTTP {r_cat.status_code}, se continua sin filtro de categoria.")
+
+        # 2) IMPORTANTE: se pide get_live_streams SIN category_id.
+        # El filtro server-side &category_id=X de este panel Xtream demostro devolver
+        # [] (vacio) con HTTP 200 incluso cuando esa categoria SI tiene streams activos
+        # (confirmado manualmente). Filtrar por category_id en la URL es INSEGURO en este
+        # proveedor: es mas confiable traer el catalogo completo una sola vez y filtrar en
+        # Python contra 'categorias_hoy_ids'. Esto tambien reduce N llamadas a 1 sola.
+        url_streams = f"{api_url}&action=get_live_streams"
+        r_str = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_streams}, timeout=60)
+
+        if r_str.status_code != 200:
+            log.error(f"get_live_streams devolvio HTTP {r_str.status_code}. Abortando cubo_a.")
+            return []
+
+        streams_totales = r_str.json()
+        log.info(f"Total streams live recibidos del panel (sin filtrar): {len(streams_totales)}")
 
         vistos = set()
         for s in streams_totales:
@@ -411,8 +418,13 @@ def procesar_cubo_a() -> list:
             nombre_canal = s.get("name", "").strip()
             if not nombre_canal: continue
 
-            # Filtro universal: el canal es candidato a "evento" si contiene una hora
-            # reconocible en cualquier formato, o palabras clave de PPV/live event.
+            cat_id_stream = str(s.get("category_id"))
+
+            # Si detectamos categorias "de hoy", el stream debe pertenecer a una de ellas
+            # O contener una hora/keyword reconocible (red de seguridad si el mapeo de
+            # categorias fallo o cambio de id).
+            pertenece_a_categoria_hoy = (not categorias_hoy_ids) or (cat_id_stream in categorias_hoy_ids)
+
             tiene_hora = extraer_hora_evento(nombre_canal) is not None
             tiene_kw_evento = any(kw in nombre_canal.upper() for kw in ["PPV", "LIVE EVENT", "PEA ", "PARA+"])
 
@@ -423,12 +435,13 @@ def procesar_cubo_a() -> list:
                     if not any(f in f"{d_str}/{m_str}" or f in f"{m_str}/{d_str}" for f in fechas_hoy):
                         continue
 
-            if tiene_hora or tiene_kw_evento:
+            if pertenece_a_categoria_hoy and (tiene_hora or tiene_kw_evento):
                 cubo_a.append({
                     "id_xtream": stream_id,
                     "nombre_ui": nombre_canal,
                 })
 
+        log.info(f"Eventos candidatos detectados en cubo_a: {len(cubo_a)}")
         return cubo_a
     except Exception as e:
         log.error(f"Error procesando Xtream: {e}")
