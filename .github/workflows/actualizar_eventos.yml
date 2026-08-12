@@ -31,11 +31,6 @@ jobs:
 
       - name: Ejecutar Curador Base (TheSportsDB + Xtream)
         env:
-          RAPIDAPI_KEY_1: ${{ secrets.RAPIDAPI_KEY_1 }}
-          RAPIDAPI_KEY_2: ${{ secrets.RAPIDAPI_KEY_2 }}
-          RAPIDAPI_KEY_3: ${{ secrets.RAPIDAPI_KEY_3 }}
-          RAPIDAPI_KEY_4: ${{ secrets.RAPIDAPI_KEY_4 }}
-          RAPIDAPI_KEY_5: ${{ secrets.RAPIDAPI_KEY_5 }}
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
