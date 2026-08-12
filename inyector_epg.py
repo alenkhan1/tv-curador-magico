@@ -89,19 +89,27 @@ def limpiar_titulo_eurosport(titulo):
 contadores = {
     "europa_programmes_totales": 0,
     "europa_channel_id_reconocido": 0,
+    "europa_tiene_directo": 0,
     "europa_dentro_de_ventana_hoy": 0,
     "europa_no_es_basura": 0,
     "europa_aprobados_final": 0,
 }
 
 def extraer_eventos_eurosport(inicio_ventana, fin_ventana):
-    """Extrae eventos de Eurosport 1/2 cuyo horario de inicio real cae dentro
-    de la ventana de 'hoy' (union Colombia+España). Ya NO se usa la palabra
-    'DIRECTO' como criterio de fecha: es texto editorial fijo en el feed
-    (parte del nombre del programa), no un indicador de vigencia temporal,
-    por eso dejaba pasar sesiones de dias futuros y bloqueaba sesiones de
-    hoy de forma inconsistente. El unico criterio de fecha ahora es el
-    atributo start real del XML."""
+    """Extrae eventos de Eurosport 1/2 que cumplen AMBAS condiciones:
+    1) El titulo lleva la palabra DIRECTO (marca editorial confirmada del
+       feed EPG_dobleM para indicar transmision en vivo, sea el deporte que
+       sea -- snooker, atletismo, ciclismo en ruta, lo que sea). Contenido
+       enlatado/diferido como reposiciones de MTB de meses atras o programas
+       tipo 'World Series of Poker' NUNCA llevan esta palabra en este feed,
+       verificado directamente contra el XML real.
+    2) El horario de inicio real (atributo start) cae dentro de la ventana
+       de 'hoy' (union Colombia+España). Esto es necesario porque el feed
+       pre-marca como DIRECTO sesiones de dias futuros ya confirmadas en el
+       calendario oficial de un torneo (ej. Snooker Open de China), no solo
+       la sesion de hoy.
+    Ninguno de los dos filtros por si solo es suficiente; se necesitan los
+    dos en conjunto."""
     eventos = []
     log.info(f"Ventana 'hoy' unificada (UTC): {inicio_ventana.isoformat()} -> {fin_ventana.isoformat()}")
     log.info("📡 Leyendo EPG Europa (EPG_dobleM) — Eurosport 1 y 2...")
@@ -116,21 +124,24 @@ def extraer_eventos_eurosport(inicio_ventana, fin_ventana):
 
                 if canal_asignado == "Eurosport":
                     contadores["europa_channel_id_reconocido"] += 1
-                    dt_inicio = parse_time_epg_a_dt(elem.attrib.get("start"))
+                    tit = elem.findtext("title", "")
 
-                    if dt_inicio is not None and inicio_ventana <= dt_inicio < fin_ventana:
-                        contadores["europa_dentro_de_ventana_hoy"] += 1
-                        tit = elem.findtext("title", "")
-                        tit_limpio = limpiar_titulo_eurosport(tit)
-                        if not es_basura(tit_limpio):
-                            contadores["europa_no_es_basura"] += 1
-                            contadores["europa_aprobados_final"] += 1
-                            eventos.append({
-                                "titulo": tit_limpio,
-                                "canal": "Eurosport",
-                                "hora_utc": dt_inicio.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                                "duracion_min": 120
-                            })
+                    if "DIRECTO" in tit.upper():
+                        contadores["europa_tiene_directo"] += 1
+                        dt_inicio = parse_time_epg_a_dt(elem.attrib.get("start"))
+
+                        if dt_inicio is not None and inicio_ventana <= dt_inicio < fin_ventana:
+                            contadores["europa_dentro_de_ventana_hoy"] += 1
+                            tit_limpio = limpiar_titulo_eurosport(tit)
+                            if not es_basura(tit_limpio):
+                                contadores["europa_no_es_basura"] += 1
+                                contadores["europa_aprobados_final"] += 1
+                                eventos.append({
+                                    "titulo": tit_limpio,
+                                    "canal": "Eurosport",
+                                    "hora_utc": dt_inicio.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                    "duracion_min": 120
+                                })
                 elem.clear()
     except Exception as e:
         log.error(f"Error leyendo EPG Europa: {e}")
