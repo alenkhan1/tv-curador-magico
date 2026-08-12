@@ -9,34 +9,34 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-08-11T05:10:19Z",
+  "generado": "2026-08-12T05:37:54Z",
   "resumen": {
-    "total": 1439,
+    "total": 1437,
     "por_motivo": {
-      "no_encontrado": 1413,
+      "no_encontrado": 1411,
       "pendiente": 26
     },
     "peliculas": {
       "adulto": 5,
       "excluido": 0,
       "sin_nombre": 1,
-      "no_encontrado": 1374,
+      "no_encontrado": 1373,
       "fallo_red": 25,
-      "clasificados": 10225,
-      "sin_identificar": 1399
+      "clasificados": 10229,
+      "sin_identificar": 1398
     },
     "series": {
       "adulto": 0,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 39,
+      "no_encontrado": 38,
       "fallo_red": 1,
-      "clasificados": 1777,
-      "sin_identificar": 40
+      "clasificados": 1779,
+      "sin_identificar": 39
     },
     "alerta": {
       "porcentaje_peliculas": 12.0,
-      "porcentaje_series": 2.2,
+      "porcentaje_series": 2.1,
       "umbral": 15.0,
       "supera_umbral": false
     }
@@ -44,7 +44,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1399,
+      "veces": 1398,
       "ejemplos": [
         "Super Bowl LX (2026)",
         "Amame, amame (2026)",
@@ -184,13 +184,6 @@
       "veces": 1,
       "ejemplos": [
         "The Quest (1996) - 240p"
-      ]
-    },
-    {
-      "patron": "RESIDENT EVIL",
-      "veces": 1,
-      "ejemplos": [
-        "Resident Evil - El capítulo final (2016)"
       ]
     },
     {
@@ -439,7 +432,7 @@
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "SAGAS",
-      "veces": 829
+      "veces": 828
     },
     {
       "carpeta": "VARIADAS",
