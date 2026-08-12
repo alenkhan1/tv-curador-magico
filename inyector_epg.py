@@ -93,14 +93,29 @@ def parse_time(time_str):
         return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
-def calcular_ventana_hoy():
-    """Ventana 'hoy' unificada: desde el inicio del día en Colombia (UTC-5)
-    hasta el final del día en España (UTC+1/+2), en UTC. Así cubrimos ambos
-    husos horarios sin perder eventos de ninguno de los dos."""
+def calcular_ventana_hoy_espana():
+    """Ventana 'hoy' para Eurosport: el canal se transmite físicamente desde
+    España, así que 'hoy' se calcula en huso horario español (UTC+2 en verano),
+    no mezclado con Colombia. Mezclar ambos husos en un solo cálculo era el
+    error original: generaba una ventana de ~41-51h (casi 2 días de parrilla)
+    en vez de las ~24h reales de un día en España, multiplicando por 8-10 la
+    cantidad de eventos esperados."""
     ahora_utc = datetime.now(timezone.utc)
-    hoy_colombia = (ahora_utc - timedelta(hours=5)).date()
-    inicio_ventana = datetime.combine(hoy_colombia, datetime.min.time(), tzinfo=timezone(timedelta(hours=-5))).astimezone(timezone.utc)
-    fin_ventana = inicio_ventana + timedelta(days=2, hours=3)
+    tz_espana = timezone(timedelta(hours=2))
+    hoy_espana = ahora_utc.astimezone(tz_espana).date()
+    inicio_ventana = datetime.combine(hoy_espana, datetime.min.time(), tzinfo=tz_espana).astimezone(timezone.utc)
+    fin_ventana = datetime.combine(hoy_espana, datetime.max.time(), tzinfo=tz_espana).astimezone(timezone.utc)
+    return inicio_ventana, fin_ventana
+
+def calcular_ventana_hoy_colombia():
+    """Ventana 'hoy' para Win Sports / TyC Sports / DSports: se transmiten
+    desde América, así que 'hoy' se calcula en huso horario Colombia (UTC-5),
+    separado del cálculo de Eurosport."""
+    ahora_utc = datetime.now(timezone.utc)
+    tz_colombia = timezone(timedelta(hours=-5))
+    hoy_colombia = ahora_utc.astimezone(tz_colombia).date()
+    inicio_ventana = datetime.combine(hoy_colombia, datetime.min.time(), tzinfo=tz_colombia).astimezone(timezone.utc)
+    fin_ventana = datetime.combine(hoy_colombia, datetime.max.time(), tzinfo=tz_colombia).astimezone(timezone.utc)
     return inicio_ventana, fin_ventana
 
 def obtener_canal_logico(cid):
@@ -237,11 +252,37 @@ def extraer_eventos_america(inicio_ventana, fin_ventana):
             log.error(f"Error {pais}: {e}")
     return eventos
 
+def deduplicar_eventos(eventos):
+    """Agrupa repeticiones del mismo evento (mismo canal + mismo título exacto)
+    que aparecen varias veces el mismo día en la parrilla de Eurosport (ej.
+    'Snooker: Open de China · Día 3' emitido 4 veces). Se conserva una sola
+    aparición por grupo: la próxima emisión que aún no ha empezado si existe,
+    o si todas ya empezaron, la más reciente (probablemente la que está en
+    vivo ahora). Esto evita que el mismo evento cuente como 3-4 eventos
+    distintos, que era la causa principal de inflar el conteo de 5-6 reales
+    a ~50."""
+    ahora = datetime.now(timezone.utc)
+    grupos = {}
+    for ev in eventos:
+        clave = (ev["canal"], ev["titulo"].strip().upper())
+        grupos.setdefault(clave, []).append(ev)
+
+    resultado = []
+    for clave, ocurrencias in grupos.items():
+        ocurrencias.sort(key=lambda e: e["hora_utc"])
+        futuras = [e for e in ocurrencias if datetime.strptime(e["hora_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) >= ahora]
+        elegido = futuras[0] if futuras else ocurrencias[-1]
+        resultado.append(elegido)
+
+    return resultado
+
 def extraer_eventos():
-    inicio_ventana, fin_ventana = calcular_ventana_hoy()
+    inicio_esp, fin_esp = calcular_ventana_hoy_espana()
+    inicio_col, fin_col = calcular_ventana_hoy_colombia()
     eventos = []
-    eventos += extraer_eventos_eurosport(inicio_ventana, fin_ventana)
-    eventos += extraer_eventos_america(inicio_ventana, fin_ventana)
+    eventos += extraer_eventos_eurosport(inicio_esp, fin_esp)
+    eventos += extraer_eventos_america(inicio_col, fin_col)
+    eventos = deduplicar_eventos(eventos)
     return eventos
 
 # ─── INYECCIÓN ───────────────────────────────────────────────────────────────
