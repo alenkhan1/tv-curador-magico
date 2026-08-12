@@ -17,19 +17,26 @@ XTREAM_USER = os.environ.get("XTREAM_USER")
 XTREAM_PASS = os.environ.get("XTREAM_PASS")
 
 ARCHIVO_EVENTOS = "eventos_hoy.json"
-
-# ─── FUENTE EPG: SOLO EUROSPORT (España) ─────────────────────────────────────
 URL_EPG_EUROPA = "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml"
 
-# ─── CONTADORES DE EMBUDO (diagnostico) ──────────────────────────────────────
-contadores = {
-    "europa_programmes_totales": 0,
-    "europa_channel_id_reconocido": 0,
-    "europa_tiene_directo": 0,
-    "europa_no_es_basura": 0,
-    "europa_aprobados_final": 0,
-}
-canales_vistos_sin_reconocer = set()
+# ─── VENTANA DE "HOY" UNIFICADA (Colombia UTC-5 + España CEST UTC+2) ────────
+OFFSET_COLOMBIA = timedelta(hours=-5)
+OFFSET_ESPANA = timedelta(hours=2)  # CEST. Cambiar a +1 en horario de invierno europeo.
+
+def calcular_ventana_hoy_utc():
+    ahora_utc = datetime.now(timezone.utc)
+    fecha_colombia = (ahora_utc + OFFSET_COLOMBIA).date()
+    fecha_espana = (ahora_utc + OFFSET_ESPANA).date()
+
+    inicio_colombia_utc = datetime.combine(fecha_colombia, datetime.min.time(), tzinfo=timezone.utc) - OFFSET_COLOMBIA
+    fin_colombia_utc = inicio_colombia_utc + timedelta(days=1)
+
+    inicio_espana_utc = datetime.combine(fecha_espana, datetime.min.time(), tzinfo=timezone.utc) - OFFSET_ESPANA
+    fin_espana_utc = inicio_espana_utc + timedelta(days=1)
+
+    inicio_ventana = min(inicio_colombia_utc, inicio_espana_utc)
+    fin_ventana = max(fin_colombia_utc, fin_espana_utc)
+    return inicio_ventana, fin_ventana
 
 def calcular_similitud(t1, t2):
     t1, t2 = str(t1).upper(), str(t2).upper()
@@ -43,7 +50,8 @@ def es_basura(titulo):
               "DALE AL MEDIO", "SPORTIA", "DOMINGOL", "LÍBERO", "PRESIÓN ALTA"]
     return any(b in t for b in basura) or len(t) < 5
 
-def parse_time(time_str):
+def parse_time_epg_a_dt(time_str):
+    """Parsea el formato de fecha del XML del EPG (YYYYMMDDHHMMSS +ZZZZ) a datetime UTC."""
     try:
         dt = datetime.strptime(time_str[:14], "%Y%m%d%H%M%S")
         offset = time_str[15:]
@@ -53,16 +61,23 @@ def parse_time(time_str):
             tz = timezone(timedelta(hours=sign*h, minutes=sign*m))
         else:
             tz = timezone.utc
-        return dt.replace(tzinfo=tz).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        return dt.replace(tzinfo=tz).astimezone(timezone.utc)
     except Exception:
-        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        return None
+
+def parse_iso_a_dt(iso_str):
+    """Parsea el formato ISO 8601 que usamos en eventos_hoy.json (ej: 2026-08-15T10:45:00Z) a datetime UTC."""
+    if not iso_str:
+        return None
+    try:
+        return datetime.strptime(iso_str, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except Exception:
+        return None
 
 def obtener_canal_logico(cid):
-    """Unico proposito de esta funcion: reconocer Eurosport 1 y 2. Nada mas."""
     c = str(cid)
     if c in ["Eurosport 1 HD", "Eurosport 2"]:
         return "Eurosport"
-    canales_vistos_sin_reconocer.add(c)
     return None
 
 def limpiar_titulo_eurosport(titulo):
@@ -71,10 +86,24 @@ def limpiar_titulo_eurosport(titulo):
     t = t.replace("DIRECTO", "").strip(" -:")
     return ' '.join(t.split())
 
-def extraer_eventos_eurosport():
-    """Extrae eventos EXCLUSIVAMENTE de Eurosport 1/2, validados solo con el propio EPG.
-    Sin dependencias externas de ningun tipo (sin Google, sin otras fuentes)."""
+contadores = {
+    "europa_programmes_totales": 0,
+    "europa_channel_id_reconocido": 0,
+    "europa_dentro_de_ventana_hoy": 0,
+    "europa_no_es_basura": 0,
+    "europa_aprobados_final": 0,
+}
+
+def extraer_eventos_eurosport(inicio_ventana, fin_ventana):
+    """Extrae eventos de Eurosport 1/2 cuyo horario de inicio real cae dentro
+    de la ventana de 'hoy' (union Colombia+España). Ya NO se usa la palabra
+    'DIRECTO' como criterio de fecha: es texto editorial fijo en el feed
+    (parte del nombre del programa), no un indicador de vigencia temporal,
+    por eso dejaba pasar sesiones de dias futuros y bloqueaba sesiones de
+    hoy de forma inconsistente. El unico criterio de fecha ahora es el
+    atributo start real del XML."""
     eventos = []
+    log.info(f"Ventana 'hoy' unificada (UTC): {inicio_ventana.isoformat()} -> {fin_ventana.isoformat()}")
     log.info("📡 Leyendo EPG Europa (EPG_dobleM) — Eurosport 1 y 2...")
     try:
         r = requests.get(URL_EPG_EUROPA, timeout=20)
@@ -87,9 +116,11 @@ def extraer_eventos_eurosport():
 
                 if canal_asignado == "Eurosport":
                     contadores["europa_channel_id_reconocido"] += 1
-                    tit = elem.findtext("title", "")
-                    if "DIRECTO" in tit.upper():
-                        contadores["europa_tiene_directo"] += 1
+                    dt_inicio = parse_time_epg_a_dt(elem.attrib.get("start"))
+
+                    if dt_inicio is not None and inicio_ventana <= dt_inicio < fin_ventana:
+                        contadores["europa_dentro_de_ventana_hoy"] += 1
+                        tit = elem.findtext("title", "")
                         tit_limpio = limpiar_titulo_eurosport(tit)
                         if not es_basura(tit_limpio):
                             contadores["europa_no_es_basura"] += 1
@@ -97,7 +128,7 @@ def extraer_eventos_eurosport():
                             eventos.append({
                                 "titulo": tit_limpio,
                                 "canal": "Eurosport",
-                                "hora_utc": parse_time(elem.attrib.get("start")),
+                                "hora_utc": dt_inicio.strftime("%Y-%m-%dT%H:%M:%SZ"),
                                 "duracion_min": 120
                             })
                 elem.clear()
@@ -107,7 +138,7 @@ def extraer_eventos_eurosport():
     return eventos
 
 def main():
-    log.info("🚀 INICIANDO INYECTOR (solo Eurosport 1/2, sin Google, sin fuentes externas)")
+    log.info("🚀 INICIANDO INYECTOR (Eurosport 1/2, filtro por ventana real de fecha)")
 
     if not os.path.exists(ARCHIVO_EVENTOS):
         log.error("No se encontró eventos_hoy.json. Ejecuta primero el curador.")
@@ -131,18 +162,33 @@ def main():
 
     log.info(f"Canal 'Eurosport': {len(fuentes_eurosport)} streams Xtream mapeados.")
 
-    eventos_nuevos = extraer_eventos_eurosport()
-    log.info(f"✅ Eventos Eurosport aprobados por EPG: {len(eventos_nuevos)}")
+    inicio_ventana, fin_ventana = calcular_ventana_hoy_utc()
+    eventos_nuevos = extraer_eventos_eurosport(inicio_ventana, fin_ventana)
+    log.info(f"✅ Eventos Eurosport aprobados (dentro de ventana de hoy): {len(eventos_nuevos)}")
 
     log.info("── RESUMEN DE EMBUDO ──")
     for k, v in contadores.items():
         log.info(f"  {k}: {v}")
-    if canales_vistos_sin_reconocer:
-        muestra = list(canales_vistos_sin_reconocer)[:15]
-        log.info(f"  channel_id vistos SIN reconocer (muestra de {len(canales_vistos_sin_reconocer)}): {muestra}")
 
     with open(ARCHIVO_EVENTOS, "r", encoding="utf-8") as f:
         data = json.load(f)
+
+    # ─── PURGA DE EVENTOS VENCIDOS/FUERA DE VENTANA ─────────────────────────
+    # Al correr el pipeline varias veces al dia, aprovechamos para eliminar
+    # del archivo cualquier evento (de cualquier fuente, no solo Eurosport)
+    # cuyo horario de inicio ya quedo fuera de la ventana unificada de "hoy".
+    total_antes = len(data)
+    data_filtrada = []
+    for ev in data:
+        dt_ev = parse_iso_a_dt(ev.get("hora_utc", ""))
+        if dt_ev is None:
+            data_filtrada.append(ev)  # si no se puede parsear, se conserva para no perder datos por error de formato
+            continue
+        if inicio_ventana <= dt_ev < fin_ventana:
+            data_filtrada.append(ev)
+    data = data_filtrada
+    purgados = total_antes - len(data)
+    log.info(f"🗑️ Eventos purgados (fuera de ventana de hoy o ya finalizados): {purgados}")
 
     creados = 0
     para_inyeccion = []
