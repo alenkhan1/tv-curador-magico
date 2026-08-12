@@ -235,6 +235,40 @@ def descomponer_canal(nombre_canal: str) -> dict:
             "texto_completo": limpiar_texto_para_match(texto_sin_hora),
         }
 
+def buscar_evento_rescate_duplicado(resultados_finales, canal_info, titulo_base, hora_dt):
+    """
+    Busca si ya existe un evento de rescate que representa el MISMO partido/evento,
+    aunque el titulo textual sea distinto (ej: "Amistoso Newcastle Vs Everton" vs
+    "World Cup Newcastle Vs Everton" son el mismo partido bajo dos categorias
+    distintas del proveedor Xtream). El match ya NO depende de titulo_base exacto:
+    compara el PAR de participantes (si existen) + proximidad horaria (<=90 min).
+    Si no hay participantes (evento individual), cae de vuelta al match por
+    titulo exacto, igual que antes.
+    """
+    tiene_participantes = canal_info["participante_a"] and canal_info["participante_b"]
+
+    for item in resultados_finales:
+        if not item["id"].startswith("rescate_"):
+            continue
+
+        if tiene_participantes and item.get("_participante_a") and item.get("_participante_b"):
+            set_nuevo = {canal_info["participante_a"], canal_info["participante_b"]}
+            set_existente = {item["_participante_a"], item["_participante_b"]}
+            if set_nuevo != set_existente:
+                continue
+
+            if hora_dt and item.get("_hora_dt_rescate"):
+                diff_min = abs((hora_dt - item["_hora_dt_rescate"]).total_seconds()) / 60.0
+                if diff_min > 90:
+                    continue
+
+            return item
+
+        elif not tiene_participantes and item["titulo"] == titulo_base:
+            return item
+
+    return None
+
 def calcular_similitud_universal(canal_info: dict, evento_api: dict) -> float:
     """
     Combina proximidad horaria + similitud de texto.
@@ -537,15 +571,17 @@ def main():
 
             if not titulo_base: continue
 
-            evento_existente = next((item for item in resultados_finales if item["titulo"] == titulo_base and item["id"].startswith("rescate_")), None)
+            hora_dt_rescate = canal_info["hora_dt"] or datetime.now(ZONA_COLOMBIA)
+            hora_dt_rescate_utc = hora_dt_rescate.astimezone(timezone.utc)
+
+            evento_existente = buscar_evento_rescate_duplicado(resultados_finales, canal_info, titulo_base, hora_dt_rescate_utc)
 
             if evento_existente:
                 if not any(f["url"] == url_video for f in evento_existente["fuentes"]):
                     evento_existente["fuentes"].append(fuente_limpia)
             else:
                 categoria_adivinada, logo_adivinado = adivinar_categoria_y_logo(canal["nombre_ui"])
-                hora_dt = canal_info["hora_dt"] or datetime.now(ZONA_COLOMBIA)
-                hora_utc_calculada = hora_dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                hora_utc_calculada = hora_dt_rescate_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
 
                 resultados_finales.append({
                     "id": f"rescate_{crear_id_seguro(titulo_base)}",
@@ -558,10 +594,18 @@ def main():
                     "logo_visitante": "",
                     "banner": logo_adivinado,
                     "tier": 2,
-                    "fuentes": [fuente_limpia]
+                    "fuentes": [fuente_limpia],
+                    "_participante_a": canal_info["participante_a"],
+                    "_participante_b": canal_info["participante_b"],
+                    "_hora_dt_rescate": hora_dt_rescate_utc,
                 })
 
     resultados_finales.sort(key=lambda x: x["hora_utc"])
+
+    for ev in resultados_finales:
+        ev.pop("_participante_a", None)
+        ev.pop("_participante_b", None)
+        ev.pop("_hora_dt_rescate", None)
 
     try:
         with open("eventos_hoy.json", "w", encoding="utf-8") as f:
