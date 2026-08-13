@@ -3,32 +3,6 @@
 """
 CURADOR DE EVENTOS DEPORTIVOS EN VIVO — AllStreamTV
 =====================================================
-Cruza la lista Xtream del proveedor (universal, cualquier lista, sin
-estructura fija asumida) contra la Agenda Maestra de TheSportsDB para
-producir eventos_hoy.json con datos reales (torneo, logos, categoria).
-
-Cambios de este rediseño (acordado 13-ago-2026):
-1. Extraccion de enfrentamiento/torneo por SEGMENTOS (agnostica al orden
-   y al proveedor), en vez de aplicar "vs" sobre el string completo.
-2. Deteccion de hora amplia (acepta "8am", no solo "HH:MM").
-3. Calibracion AUTOMATICA del huso horario real de la lista contra
-   TheSportsDB, usando matches de alta confianza como referencia. El
-   curador es universal: nunca asume que la lista viene en hora Colombia.
-4. Segunda pasada de matching dedicada a eventos con enfrentamiento
-   (participante_a vs participante_b) que no alcanzaron el umbral en la
-   primera pasada, con colchon horario ajustado (no exagerado).
-5. "Prestamo" de datos visuales (logo/torneo) para eventos que no llegan
-   al umbral de fusion completa pero si a un umbral de confianza menor.
-6. Categorias dinamicas por volumen: categorias con pocos eventos ese dia
-   se agrupan en "Otros Deportes" para no mostrar secciones vacias/pobres.
-7. Fallback de torneo usa la categoria adivinada, nunca un texto fijo
-   generico ("Evento Especial") que no aporta informacion real.
-8. Salida en formato {"generado_utc","base_media","eventos":[...]}. Los
-   eventos guardan "id_xtream" (no URL completa) en cada fuente: la URL
-   se construye en un unico punto (base_media + credenciales + id), igual
-   que ya se resuelve en el curador de VOD. Evita URLs repetidas/enormes
-   en el JSON y evita que un cambio de host de media rompa eventos ya
-   guardados.
 """
 
 import os
