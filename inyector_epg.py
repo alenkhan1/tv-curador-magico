@@ -1,35 +1,57 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+INYECTOR EPG EUROSPORT — AllStreamTV
+======================================
+Enriquece eventos_hoy.json con la parrilla real de Eurosport 1/2 (EPG
+Europa, fuente EPG_dobleM), usando el huso horario de España porque ese
+es el huso en que ese canal realmente transmite (independiente de que
+la app se use en Colombia).
+
+Cambios de este rediseño (acordado 13-ago-2026):
+1. Se ELIMINA por completo el bloque de EPG America (Win Sports/TyC/
+   DSports). No existia fuente EPG confiable para esos canales; el
+   validador de Google nunca se activaba en el workflow real (falta la
+   API key en el YAML) y el bloque completo era trabajo inoficioso que
+   ademas ensuciaba el archivo de eventos.
+2. IDs verdaderamente unicos: se reemplaza el esquema
+   "epg_{timestamp}_{primeras 5 letras}" (colisionaba cuando dos eventos
+   se procesaban en el mismo segundo con titulo similar, causando el
+   crash fatal de LazyVerticalGrid en la app por claves duplicadas) por
+   un hash MD5 del titulo completo + hora + canal, que es deterministico
+   y libre de colisiones.
+3. Ventana diaria estricta: antes de inyectar, se descarta de
+   eventos_hoy.json cualquier evento remanente de una corrida anterior
+   que ya no cae dentro de la ventana "hoy" vigente en este momento, para
+   no acumular basura entre las 3 corridas diarias del workflow.
+4. Consume eventos_hoy.json en el formato nuevo
+   {"generado_utc","base_media","eventos":[...]} y usa "id_xtream" (no
+   URL completa) en cada fuente, igual que el curador base.
+"""
+
 import os
 import json
 import re
 import time
+import hashlib
 import logging
 import requests
 import gzip
 import io
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
-from difflib import SequenceMatcher
 
-# ─── CONFIGURACIÓN DE LOGS ───────────────────────────────────────────────────
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
 log = logging.getLogger("inyector")
 
 XTREAM_URL = os.environ.get("XTREAM_URL")
 XTREAM_USER = os.environ.get("XTREAM_USER")
 XTREAM_PASS = os.environ.get("XTREAM_PASS")
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
-GOOGLE_CX = os.environ.get("GOOGLE_CX")
+PUENTE_URL = os.environ.get("PUENTE_URL", "https://mi-dashboard-tv.onrender.com/api/puente_xtream")
 
 ARCHIVO_EVENTOS = "eventos_hoy.json"
-
-# ─── FUENTES EPG LIGERAS ─────────────────────────────────────────────────────
 URL_EPG_EUROPA = "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml"
-URLS_AMERICA = {
-    "Colombia": "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz",
-    "Argentina": "https://epgshare01.online/epgshare01/epg_ripper_AR1.xml.gz"
-}
 
-# ─── CONTADORES DE EMBUDO (diagnóstico) ──────────────────────────────────────
 contadores = {
     "europa_programmes_totales": 0,
     "europa_channel_id_reconocido": 0,
@@ -38,18 +60,12 @@ contadores = {
     "europa_aprobados_final": 0,
 }
 
-# ─── FUNCIONES DE APOYO ──────────────────────────────────────────────────────
-def calcular_similitud(t1, t2):
-    t1, t2 = str(t1).upper(), str(t2).upper()
-    return SequenceMatcher(None, t1, t2).ratio() * 100
+# ─── FUNCIONES DE APOYO ─────────────────────────────────────────────────────
 
 def es_basura(titulo):
-    """Excluye contenido claramente diferido/enlatado por patrón de texto conocido.
-    NO se usa la palabra DIRECTO como criterio (confirmado que no es confiable
-    en ninguna fuente disponible: ni EPG_dobleM, ni la web pública de Movistar+,
-    ni iptv-org/epg tienen una señal estructurada de en-vivo-vs-repeticion).
-    En su lugar se excluye lo que sabemos con certeza que es diferido/magazine,
-    y se acepta todo lo demás como evento en vivo real, para no perder ninguno."""
+    """Excluye contenido claramente diferido/enlatado por patron de texto
+    conocido. No se usa la palabra DIRECTO como criterio (no es confiable
+    en la fuente disponible)."""
     t = titulo.upper()
     basura = [
         "REPETICIÓN", "REPETICION", "RESUMEN", "NOTICIAS", "MAGAZINE",
@@ -60,20 +76,11 @@ def es_basura(titulo):
     ]
     if any(b in t for b in basura) or len(t) < 5:
         return True
-
-    # Patrón genérico de contenido episódico/enlatado (series, docu-realities,
-    # magazines de recopilación), detectado por " E" + número o "EPISODIO" +
-    # número en el título. Un evento deportivo real en este feed se marca por
-    # día ("Día 5"), etapa ("Etapa 19") o sesión ("Sesión de tarde"), nunca por
-    # número de episodio -- por eso este patrón es seguro y generalizable, en
-    # vez de excluir un programa por su nombre propio (ej. "poker").
     if re.search(r'\bE\d+\b', t) or re.search(r'\bEPISODIO\s*\d+\b', t):
         return True
-
     return False
 
 def parse_time_epg_a_dt(time_str):
-    """Convierte start/stop del XMLTV a datetime real en UTC (para comparar ventanas)."""
     try:
         dt = datetime.strptime(time_str[:14], "%Y%m%d%H%M%S")
         offset = time_str[15:]
@@ -87,19 +94,9 @@ def parse_time_epg_a_dt(time_str):
     except Exception:
         return None
 
-def parse_time(time_str):
-    dt = parse_time_epg_a_dt(time_str)
-    if dt is None:
-        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-
 def calcular_ventana_hoy_espana():
-    """Ventana 'hoy' para Eurosport: el canal se transmite físicamente desde
-    España, así que 'hoy' se calcula en huso horario español (UTC+2 en verano),
-    no mezclado con Colombia. Mezclar ambos husos en un solo cálculo era el
-    error original: generaba una ventana de ~41-51h (casi 2 días de parrilla)
-    en vez de las ~24h reales de un día en España, multiplicando por 8-10 la
-    cantidad de eventos esperados."""
+    """Eurosport transmite fisicamente desde España: 'hoy' se calcula en
+    huso español (CEST UTC+2 en verano), no en huso Colombia."""
     ahora_utc = datetime.now(timezone.utc)
     tz_espana = timezone(timedelta(hours=2))
     hoy_espana = ahora_utc.astimezone(tz_espana).date()
@@ -107,88 +104,33 @@ def calcular_ventana_hoy_espana():
     fin_ventana = datetime.combine(hoy_espana, datetime.max.time(), tzinfo=tz_espana).astimezone(timezone.utc)
     return inicio_ventana, fin_ventana
 
-def calcular_ventana_hoy_colombia():
-    """Ventana 'hoy' para Win Sports / TyC Sports / DSports: se transmiten
-    desde América, así que 'hoy' se calcula en huso horario Colombia (UTC-5),
-    separado del cálculo de Eurosport."""
-    ahora_utc = datetime.now(timezone.utc)
-    tz_colombia = timezone(timedelta(hours=-5))
-    hoy_colombia = ahora_utc.astimezone(tz_colombia).date()
-    inicio_ventana = datetime.combine(hoy_colombia, datetime.min.time(), tzinfo=tz_colombia).astimezone(timezone.utc)
-    fin_ventana = datetime.combine(hoy_colombia, datetime.max.time(), tzinfo=tz_colombia).astimezone(timezone.utc)
-    return inicio_ventana, fin_ventana
-
 def obtener_canal_logico(cid):
-    """Detecta el canal basándose estrictamente en los identificadores reales confirmados."""
     c = str(cid)
-    c_upper = c.upper()
-
     if c in ["Eurosport 1 HD", "Eurosport 2"]:
         return "Eurosport"
-
-    if "WIN.SPORTS" in c_upper or "WIN+" in c_upper:
-        return "Win Sports"
-    if "TYC.SPORTS" in c_upper:
-        return "TyC Sports"
-    if "DSPORTS" in c_upper or "DIRECTV.SPORTS" in c_upper:
-        return "DSports"
-
     return None
 
 def limpiar_titulo_eurosport(titulo):
-    """Limpia las etiquetas [COLOR] y la palabra DIRECTO (residuo editorial,
-    no se usa como filtro, solo se limpia del texto visible al usuario)."""
     t = re.sub(r'\[COLOR.*?\]', '', titulo)
     t = re.sub(r'\[/COLOR\]', '', t)
     t = re.sub(r'(?i)\bDIRECTO\b', '', t).strip(" -:")
     return ' '.join(t.split())
 
-# ─── VALIDADOR GOOGLE (América) ──────────────────────────────────────────────
-def validar_google(titulo):
-    if not GOOGLE_API_KEY:
-        return False
-    titulo_limpio = re.sub(r'\b(HD|SD|FHD|4K|VIVO|DIRECTO|REPETICION|RESUMEN)\b', '', titulo, flags=re.IGNORECASE).strip()
+def crear_id_unico(titulo: str, hora_utc: str, canal: str) -> str:
+    """ID deterministico y libre de colisiones (13-ago-2026): hash MD5
+    del titulo completo + hora exacta + canal. Reemplaza el esquema viejo
+    'epg_{timestamp}_{primeras 5 letras}' que colisionaba cuando dos
+    eventos distintos se procesaban en el mismo segundo y compartian las
+    primeras letras del titulo (causa confirmada del crash fatal en la
+    app: LazyVerticalGrid con claves duplicadas)."""
+    base = f"{titulo.strip().upper()}|{hora_utc}|{canal}"
+    return f"epg_{hashlib.md5(base.encode('utf-8')).hexdigest()[:16]}"
 
-    url = "https://www.googleapis.com/customsearch/v1"
-    params = {"key": GOOGLE_API_KEY, "cx": GOOGLE_CX, "q": f'"{titulo_limpio}" (hoy OR previa OR vivo)', "dateRestrict": "d"}
-    try:
-        time.sleep(1)
-        r = requests.get(url, params=params, timeout=10)
-        if r.status_code != 200:
-            return False
+# ─── PROCESADOR EPG ─────────────────────────────────────────────────────────
 
-        items = r.json().get("items", [])
-        if not items:
-            return False
-
-        text = " ".join([i.get("snippet", "") + " " + i.get("title", "") for i in items]).lower()
-        verdes = ["hoy", "vivo", "directo", "transmisión", "transmision", "alineaciones", "dónde ver", "donde ver", "recibe a", "se enfrentan"]
-        rojas = ["goles", "resumen", "resultado", "derrotó", "derroto", "empató", "empato", "ayer", "polémica", "venció", "vencio"]
-
-        puntos_verdes = sum(1 for v in verdes if v in text)
-        puntos_rojas = sum(1 for r in rojas if r in text)
-
-        es_vivo = puntos_verdes > puntos_rojas
-        if es_vivo:
-            log.info(f"[+] GOOGLE APRUEBA: {titulo}")
-        return es_vivo
-    except Exception:
-        return False
-
-# ─── PROCESADOR EPG ──────────────────────────────────────────────────────────
 def extraer_eventos_eurosport(inicio_ventana, fin_ventana):
-    """Extrae eventos de Eurosport 1/2 cuyo horario real (start) cae dentro de
-    la ventana de 'hoy' (union Colombia+España), excluyendo solo lo que sabemos
-    con certeza que es contenido diferido/magazine por patrón de texto (es_basura).
-    NO se filtra por la palabra DIRECTO: confirmamos, revisando el XML real y la
-    web pública de Movistar+, que ninguna fuente disponible marca de forma
-    confiable en-vivo-vs-repeticion. Esta es la estrategia que maximiza la
-    captura de todo evento en vivo real (snooker, atletismo, ciclismo, MTB,
-    motocross, lo que sea), aceptando como costo residual que una sesión
-    reemitida el mismo día (ej. snooker repetido 3-4 veces) pueda aparecer
-    más de una vez -- la UI debe ocultar lo que ya finalizó por horario."""
     eventos = []
-    log.info(f"Ventana 'hoy' unificada (UTC): {inicio_ventana.isoformat()} -> {fin_ventana.isoformat()}")
+    log.info(f"Ventana 'hoy' España (UTC): {inicio_ventana.isoformat()} -> {fin_ventana.isoformat()}")
     log.info("📡 Leyendo EPG Europa (EPG_dobleM) — Eurosport 1 y 2...")
     try:
         r = requests.get(URL_EPG_EUROPA, timeout=20)
@@ -214,7 +156,7 @@ def extraer_eventos_eurosport(inicio_ventana, fin_ventana):
                                 "titulo": tit_limpio,
                                 "canal": "Eurosport",
                                 "hora_utc": dt_inicio.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                                "duracion_min": 120
+                                "duracion_min": 120,
                             })
                 elem.clear()
     except Exception as e:
@@ -222,45 +164,9 @@ def extraer_eventos_eurosport(inicio_ventana, fin_ventana):
 
     return eventos
 
-def extraer_eventos_america(inicio_ventana, fin_ventana):
-    eventos = []
-    for pais, url in URLS_AMERICA.items():
-        log.info(f"📡 Leyendo EPG {pais} (epgshare01)...")
-        try:
-            r = requests.get(url, timeout=20)
-            xml_data = gzip.decompress(r.content)
-            it = ET.iterparse(io.BytesIO(xml_data), events=("end",))
-            for _, elem in it:
-                if elem.tag == "programme":
-                    cid = elem.attrib.get("channel")
-                    canal_asignado = obtener_canal_logico(cid)
-
-                    if canal_asignado in ["Win Sports", "TyC Sports", "DSports"]:
-                        dt_inicio = parse_time_epg_a_dt(elem.attrib.get("start"))
-                        if dt_inicio is not None and inicio_ventana <= dt_inicio < fin_ventana:
-                            tit = elem.findtext("title", "")
-                            if not es_basura(tit):
-                                if validar_google(tit):
-                                    eventos.append({
-                                        "titulo": tit.strip(),
-                                        "canal": canal_asignado,
-                                        "hora_utc": dt_inicio.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                                        "duracion_min": 120
-                                    })
-                    elem.clear()
-        except Exception as e:
-            log.error(f"Error {pais}: {e}")
-    return eventos
-
 def deduplicar_eventos(eventos):
-    """Agrupa repeticiones del mismo evento (mismo canal + mismo título exacto)
-    que aparecen varias veces el mismo día en la parrilla de Eurosport (ej.
-    'Snooker: Open de China · Día 3' emitido 4 veces). Se conserva una sola
-    aparición por grupo: la próxima emisión que aún no ha empezado si existe,
-    o si todas ya empezaron, la más reciente (probablemente la que está en
-    vivo ahora). Esto evita que el mismo evento cuente como 3-4 eventos
-    distintos, que era la causa principal de inflar el conteo de 5-6 reales
-    a ~50."""
+    """Agrupa repeticiones del mismo evento (mismo canal + mismo titulo
+    exacto) que aparecen varias veces el mismo dia en la parrilla."""
     ahora = datetime.now(timezone.utc)
     grupos = {}
     for ev in eventos:
@@ -270,7 +176,8 @@ def deduplicar_eventos(eventos):
     resultado = []
     for clave, ocurrencias in grupos.items():
         ocurrencias.sort(key=lambda e: e["hora_utc"])
-        futuras = [e for e in ocurrencias if datetime.strptime(e["hora_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) >= ahora]
+        futuras = [e for e in ocurrencias
+                   if datetime.strptime(e["hora_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) >= ahora]
         elegido = futuras[0] if futuras else ocurrencias[-1]
         resultado.append(elegido)
 
@@ -278,90 +185,119 @@ def deduplicar_eventos(eventos):
 
 def extraer_eventos():
     inicio_esp, fin_esp = calcular_ventana_hoy_espana()
-    inicio_col, fin_col = calcular_ventana_hoy_colombia()
-    eventos = []
-    eventos += extraer_eventos_eurosport(inicio_esp, fin_esp)
-    eventos += extraer_eventos_america(inicio_col, fin_col)
+    eventos = extraer_eventos_eurosport(inicio_esp, fin_esp)
     eventos = deduplicar_eventos(eventos)
-    return eventos
+    return eventos, inicio_esp, fin_esp
 
-# ─── INYECCIÓN ───────────────────────────────────────────────────────────────
+def podar_eventos_vencidos(data_eventos: list, inicio_ventana_espana, fin_ventana_espana):
+    """Ventana diaria estricta (13-ago-2026): el curador captura SOLO
+    eventos en vivo de hoy. Antes de inyectar, se descarta cualquier
+    evento de Eurosport que quedo de una corrida anterior y que ya no
+    cae en la ventana 'hoy' vigente en este momento (evita que las 3
+    corridas diarias vayan acumulando basura de eventos vencidos)."""
+    conservados = []
+    podados = 0
+    for ev in data_eventos:
+        if ev.get("torneo") == "Eurosport" or "eurosport" in str(ev.get("torneo", "")).lower():
+            try:
+                hora_ev = datetime.strptime(ev["hora_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+            except Exception:
+                conservados.append(ev)
+                continue
+            if not (inicio_ventana_espana <= hora_ev < fin_ventana_espana):
+                podados += 1
+                continue
+        conservados.append(ev)
+    if podados:
+        log.info(f"🧹 Podados {podados} eventos de Eurosport vencidos de corridas anteriores.")
+    return conservados
+
+# ─── MAPEO DE STREAMS EUROSPORT ─────────────────────────────────────────────
+
+def mapear_streams_eurosport():
+    mapa = []
+    try:
+        url_x = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
+        req_x = requests.get(PUENTE_URL, params={"url": url_x}, timeout=60)
+        streams = req_x.json() if req_x.status_code == 200 else []
+        log.info(f"Streams Xtream recibidos: {len(streams)}")
+        for s in streams:
+            n = (s.get("name") or "").upper()
+            if "EUROSPORT" in n:
+                mapa.append({"nombre": s.get("name"), "id_xtream": str(s.get("stream_id"))})
+        log.info(f"Canal 'Eurosport': {len(mapa)} streams Xtream mapeados.")
+    except Exception as e:
+        log.error(f"Error mapeando Xtream: {e}")
+    return mapa
+
+# ─── INYECCIÓN ──────────────────────────────────────────────────────────────
+
 def main():
-    log.info("🚀 INICIANDO INYECTOR (ventana real de fecha + exclusión por patrones de basura, sin filtro DIRECTO)")
+    log.info("🚀 INICIANDO INYECTOR EUROSPORT (huso España, ventana diaria estricta, IDs unicos)")
 
     if not os.path.exists(ARCHIVO_EVENTOS):
         log.error("No se encontró eventos_hoy.json. Ejecuta primero el curador.")
         return
 
-    log.info("🔗 Mapeando links de Xtream a través del puente...")
-    mapa_xtream = {k: [] for k in ["Win Sports", "DSports", "TyC Sports", "Eurosport"]}
-    try:
-        url_x = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
-        req_x = requests.get("https://mi-dashboard-tv.onrender.com/api/puente_xtream", params={"url": url_x}, timeout=60)
-        streams = req_x.json() if req_x.status_code == 200 else []
-        log.info(f"Streams Xtream recibidos: {len(streams)}")
-        for s in streams:
-            n = s.get("name", "").upper()
-            stream_id = s.get('stream_id')
-            u = f"{XTREAM_URL}/{XTREAM_USER}/{XTREAM_PASS}/{stream_id}.ts"
+    with open(ARCHIVO_EVENTOS, "r", encoding="utf-8") as f:
+        data_raw = json.load(f)
 
-            if "WIN SPORT" in n or "WIN+" in n:
-                mapa_xtream["Win Sports"].append({"nombre": s.get("name"), "url": u})
-            elif "DSPORTS" in n or "DIRECTV SPORTS" in n or "D SPORTS" in n:
-                mapa_xtream["DSports"].append({"nombre": s.get("name"), "url": u})
-            elif "TYC" in n:
-                mapa_xtream["TyC Sports"].append({"nombre": s.get("name"), "url": u})
-            elif "EUROSPORT" in n:
-                mapa_xtream["Eurosport"].append({"nombre": s.get("name"), "url": u})
-        for canal, lista in mapa_xtream.items():
-            log.info(f"Canal '{canal}': {len(lista)} streams Xtream mapeados.")
-    except Exception as e:
-        log.error(f"Error mapeando Xtream: {e}")
+    # Compatibilidad con el formato nuevo {"eventos":[...]}
+    if isinstance(data_raw, dict) and "eventos" in data_raw:
+        contenedor = data_raw
+        data = data_raw["eventos"]
+    else:
+        contenedor = {"generado_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                      "base_media": "", "eventos": data_raw}
+        data = contenedor["eventos"]
 
-    eventos_nuevos = extraer_eventos()
+    log.info("🔗 Mapeando streams de Eurosport a través del puente...")
+    fuentes_eurosport = mapear_streams_eurosport()
+
+    eventos_nuevos, inicio_esp, fin_esp = extraer_eventos()
     log.info(f"✅ Eventos Eurosport aprobados (dentro de ventana de hoy, sin basura): {contadores['europa_aprobados_final']}")
     log.info("── RESUMEN DE EMBUDO ──")
     for k, v in contadores.items():
         log.info(f"  {k}: {v}")
-    log.info(f"✅ Total eventos aprobados (Europa + América): {len(eventos_nuevos)}")
 
-    with open(ARCHIVO_EVENTOS, "r", encoding="utf-8") as f:
-        data = json.load(f)
+    data = podar_eventos_vencidos(data, inicio_esp, fin_esp)
+
+    if not fuentes_eurosport:
+        log.warning("No hay streams de Eurosport disponibles en el proveedor. No se inyecta nada nuevo.")
+        contenedor["eventos"] = data
+        with open(ARCHIVO_EVENTOS, "w", encoding="utf-8") as f:
+            json.dump(contenedor, f, ensure_ascii=False, indent=2)
+        return
 
     creados = 0
     para_inyeccion = []
 
     for en in eventos_nuevos:
-        fuentes_iptv = mapa_xtream.get(en["canal"], [])
-        if not fuentes_iptv:
+        id_nuevo = crear_id_unico(en["titulo"], en["hora_utc"], en["canal"])
+
+        existente = next((item for item in data if item.get("id") == id_nuevo), None)
+        if existente:
+            urls_actuales = {f["id_xtream"] for f in existente.get("fuentes", [])}
+            for fn in fuentes_eurosport:
+                if fn["id_xtream"] not in urls_actuales:
+                    existente["fuentes"].append(fn)
             continue
 
-        match = False
-        for ex in data:
-            if calcular_similitud(en["titulo"], ex["titulo"]) > 75:
-                match = True
-                urls_actuales = [f["url"] for f in ex["fuentes"]]
-                for fn in fuentes_iptv:
-                    if fn["url"] not in urls_actuales:
-                        ex["fuentes"].append(fn)
-                break
-
-        if not match:
-            cat = "Ciclismo" if "ETAPA" in en["titulo"].upper() else "Fútbol" if " VS " in en["titulo"].upper() else "Deportes"
-            para_inyeccion.append({
-                "id": f"epg_{int(time.time())}_{en['titulo'][:5]}",
-                "titulo": en["titulo"], "torneo": en["canal"], "categoria": cat,
-                "hora_utc": en["hora_utc"], "duracion_min": 120,
-                "logo_local": "", "logo_visitante": "", "banner": "", "tier": 2,
-                "fuentes": fuentes_iptv
-            })
-            creados += 1
+        para_inyeccion.append({
+            "id": id_nuevo,
+            "titulo": en["titulo"], "torneo": "Eurosport", "categoria": "Deportes",
+            "hora_utc": en["hora_utc"], "duracion_min": en["duracion_min"],
+            "logo_local": "", "logo_visitante": "", "banner": "", "tier": 2,
+            "fuentes": list(fuentes_eurosport),
+        })
+        creados += 1
 
     data.extend(para_inyeccion)
     data.sort(key=lambda x: x.get("hora_utc", ""))
 
+    contenedor["eventos"] = data
     with open(ARCHIVO_EVENTOS, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+        json.dump(contenedor, f, ensure_ascii=False, indent=2)
 
     log.info(f"💾 Inyección terminada. Eventos nuevos inyectados: {creados}")
 
