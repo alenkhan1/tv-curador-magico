@@ -36,7 +36,14 @@ jobs:
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
         run: python curador_eventos.py
 
-      - name: Ejecutar Inyector Eurosport (EPG_dobleM, sin Google)
+      # Nota (13-ago-2026): el inyector quedo dedicado EXCLUSIVAMENTE a
+      # Eurosport 1/2. Se elimino el bloque de EPG America (Win Sports/
+      # TyC/DSports) porque no existia fuente EPG confiable para esos
+      # canales y el validador de Google nunca se activaba en este
+      # workflow (no se pasaban GOOGLE_API_KEY/GOOGLE_CX como env), asi
+      # que ese trabajo era inoficioso. Por eso ya no se necesitan esas
+      # credenciales aqui.
+      - name: Ejecutar Inyector Eurosport (EPG_dobleM)
         env:
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
