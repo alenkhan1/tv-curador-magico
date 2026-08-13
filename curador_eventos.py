@@ -3,7 +3,32 @@
 """
 CURADOR DE EVENTOS DEPORTIVOS EN VIVO — AllStreamTV
 =====================================================
-.
+Cruza la lista Xtream del proveedor (universal, cualquier lista, sin
+estructura fija asumida) contra la Agenda Maestra de TheSportsDB para
+producir eventos_hoy.json con datos reales (torneo, logos, categoria).
+
+Cambios de este rediseño (acordado 13-ago-2026):
+1. Extraccion de enfrentamiento/torneo por SEGMENTOS (agnostica al orden
+   y al proveedor), en vez de aplicar "vs" sobre el string completo.
+2. Deteccion de hora amplia (acepta "8am", no solo "HH:MM").
+3. Calibracion AUTOMATICA del huso horario real de la lista contra
+   TheSportsDB, usando matches de alta confianza como referencia. El
+   curador es universal: nunca asume que la lista viene en hora Colombia.
+4. Segunda pasada de matching dedicada a eventos con enfrentamiento
+   (participante_a vs participante_b) que no alcanzaron el umbral en la
+   primera pasada, con colchon horario ajustado (no exagerado).
+5. "Prestamo" de datos visuales (logo/torneo) para eventos que no llegan
+   al umbral de fusion completa pero si a un umbral de confianza menor.
+6. Categorias dinamicas por volumen: categorias con pocos eventos ese dia
+   se agrupan en "Otros Deportes" para no mostrar secciones vacias/pobres.
+7. Fallback de torneo usa la categoria adivinada, nunca un texto fijo
+   generico ("Evento Especial") que no aporta informacion real.
+8. Salida en formato {"generado_utc","base_media","eventos":[...]}. Los
+   eventos guardan "id_xtream" (no URL completa) en cada fuente: la URL
+   se construye en un unico punto (base_media + credenciales + id), igual
+   que ya se resuelve en el curador de VOD. Evita URLs repetidas/enormes
+   en el JSON y evita que un cambio de host de media rompa eventos ya
+   guardados.
 """
 
 import os
@@ -582,14 +607,20 @@ def obtener_agenda_maestra() -> list:
 
                 if eq_local and eq_visit:
                     titulo = f"{eq_local} vs {eq_visit}"
+                    tipo_evento_api = "duelo"
                 else:
                     titulo = ev.get("strEvent", "") or ev.get("strFilename", "") or torneo
+                    tipo_evento_api = "sencillo"
 
                 firma_texto = limpiar_texto_para_match(f"{torneo} {titulo}")
 
                 eventos_api.append({
                     "id": str(ev.get("idEvent")),
                     "titulo": titulo, "torneo": torneo, "categoria": deporte_es,
+                    "tipo_evento": tipo_evento_api,
+                    "equipo_local": eq_local,
+                    "equipo_visitante": eq_visit,
+                    "subtitulo": ev.get("strEvent", "") if tipo_evento_api == "sencillo" else "",
                     "firma_texto": firma_texto,
                     "hora_utc": dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "duracion_min": DURACION_POR_DEPORTE.get(deporte_es, 150),
@@ -748,6 +779,7 @@ def main():
             info["hora_dt"] = info["hora_dt"].replace(tzinfo=timezone(timedelta(hours=offset_horario)))
 
     resultados_finales = []
+    eventos_cuarentena = []
 
     for canal, canal_info in zip(cubo_a, canales_info):
         fuente_limpia = {"nombre": canal["nombre_ui"], "id_xtream": canal["id_xtream"]}
@@ -771,72 +803,15 @@ def main():
                 evento_clon = mejor_evento.copy()
                 evento_clon["fuentes"] = [fuente_limpia]
                 evento_clon.pop("firma_texto", None)
-                
-                # Inyectar las nuevas cajas estructuradas
-                evento_clon["tipo_evento"] = canal_info["tipo_evento"]
-                evento_clon["subtitulo"] = canal_info["subtitulo_display"].title() if canal_info["subtitulo_display"] else ""
-                evento_clon["equipo_local"] = canal_info["equipo_local_display"].title() if canal_info["equipo_local_display"] else ""
-                evento_clon["equipo_visitante"] = canal_info["equipo_visitante_display"].title() if canal_info["equipo_visitante_display"] else ""
-                
-                # Ajustar el título para que sea limpio (Y por retrocompatibilidad si la app no lee cajas aún)
-                if canal_info["tipo_evento"] == "duelo":
-                    evento_clon["titulo"] = f"{evento_clon['equipo_local']} vs {evento_clon['equipo_visitante']}"
-                else:
-                    evento_clon["titulo"] = canal_info["torneo_display"].title() if canal_info["torneo_display"] else mejor_evento.get("titulo", "")
-                
+                # Reverse Matching: Confiamos 100% en la API. No inyectamos texto de IPTV.
                 resultados_finales.append(evento_clon)
 
         if not match_encontrado:
-            if canal_info["tipo_evento"] == "duelo":
-                titulo_base = f"{canal_info['equipo_local_display'].title()} Vs {canal_info['equipo_visitante_display'].title()}"
-            else:
-                titulo_base = canal_info["torneo_display"].title() if canal_info["torneo_display"] else "Evento Deportivo"
-
-            if not titulo_base:
-                continue
-
-            hora_dt_rescate = canal_info["hora_dt"] or datetime.now(timezone(timedelta(hours=offset_horario)))
-            hora_dt_rescate_utc = hora_dt_rescate.astimezone(timezone.utc)
-
-            evento_existente = buscar_evento_rescate_duplicado(resultados_finales, canal_info, titulo_base, hora_dt_rescate_utc)
-
-            if evento_existente:
-                if not any(f["id_xtream"] == fuente_limpia["id_xtream"] for f in evento_existente["fuentes"]):
-                    evento_existente["fuentes"].append(fuente_limpia)
-            else:
-                categoria_adivinada, logo_adivinado = adivinar_categoria_y_logo(canal["nombre_ui"])
-                torneo_final = canal_info["torneo_display"].title() if canal_info["torneo_display"] else categoria_adivinada
-                logo_torneo_final = logo_adivinado
-
-                if mejor_evento and mejor_puntaje >= UMBRAL_PRESTAMO:
-                    logo_adivinado = mejor_evento.get("logo_local") or logo_adivinado
-                    logo_torneo_final = mejor_evento.get("logo_torneo") or logo_adivinado
-                    if mejor_evento.get("torneo"):
-                        torneo_final = mejor_evento["torneo"]
-
-                hora_utc_calculada = hora_dt_rescate_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
-
-                resultados_finales.append({
-                    "id": f"rescate_{crear_id_seguro(titulo_base)}",
-                    "titulo": titulo_base,
-                    "tipo_evento": canal_info["tipo_evento"],
-                    "torneo": torneo_final,
-                    "subtitulo": canal_info["subtitulo_display"].title() if canal_info["subtitulo_display"] else "",
-                    "equipo_local": canal_info["equipo_local_display"].title() if canal_info["equipo_local_display"] else "",
-                    "equipo_visitante": canal_info["equipo_visitante_display"].title() if canal_info["equipo_visitante_display"] else "",
-                    "logo_torneo": logo_torneo_final,
-                    "categoria": categoria_adivinada,
-                    "hora_utc": hora_utc_calculada,
-                    "duracion_min": DURACION_POR_DEPORTE.get(categoria_adivinada, 240),
-                    "logo_local": logo_adivinado,
-                    "logo_visitante": "",
-                    "banner": logo_adivinado,
-                    "tier": 2,
-                    "fuentes": [fuente_limpia],
-                    "_participante_a": canal_info["participante_a"],
-                    "_participante_b": canal_info["participante_b"],
-                    "_hora_dt_rescate": hora_dt_rescate_utc,
-                })
+            # Cuarentena: El evento IPTV no cruzó con TheSportsDB. Se aísla.
+            fuente_cuarentena = fuente_limpia.copy()
+            fuente_cuarentena["motivo"] = "Sin match en TheSportsDB"
+            fuente_cuarentena["texto_analizado"] = canal_info["texto_completo"]
+            eventos_cuarentena.append(fuente_cuarentena)
 
     reasignar_categorias_dinamicas(resultados_finales)
 
@@ -856,7 +831,11 @@ def main():
     try:
         with open(ARCHIVO_SALIDA, "w", encoding="utf-8") as f:
             json.dump(salida, f, ensure_ascii=False, indent=2)
-        log.info(f"¡Proceso Terminado! Total de eventos listos: {len(resultados_finales)}")
+            
+        with open("eventos_descartados.json", "w", encoding="utf-8") as f_cuarentena:
+            json.dump(eventos_cuarentena, f_cuarentena, ensure_ascii=False, indent=2)
+            
+        log.info(f"¡Proceso Terminado! Eventos premium: {len(resultados_finales)} | Enviados a cuarentena: {len(eventos_cuarentena)}")
     except Exception as e:
         log.error(f"Error crítico guardando el archivo JSON: {e}")
 
