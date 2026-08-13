@@ -3,32 +3,7 @@
 """
 CURADOR DE EVENTOS DEPORTIVOS EN VIVO — AllStreamTV
 =====================================================
-Cruza la lista Xtream del proveedor (universal, cualquier lista, sin
-estructura fija asumida) contra la Agenda Maestra de TheSportsDB para
-producir eventos_hoy.json con datos reales (torneo, logos, categoria).
-
-Cambios de este rediseño (acordado 13-ago-2026):
-1. Extraccion de enfrentamiento/torneo por SEGMENTOS (agnostica al orden
-   y al proveedor), en vez de aplicar "vs" sobre el string completo.
-2. Deteccion de hora amplia (acepta "8am", no solo "HH:MM").
-3. Calibracion AUTOMATICA del huso horario real de la lista contra
-   TheSportsDB, usando matches de alta confianza como referencia. El
-   curador es universal: nunca asume que la lista viene en hora Colombia.
-4. Segunda pasada de matching dedicada a eventos con enfrentamiento
-   (participante_a vs participante_b) que no alcanzaron el umbral en la
-   primera pasada, con colchon horario ajustado (no exagerado).
-5. "Prestamo" de datos visuales (logo/torneo) para eventos que no llegan
-   al umbral de fusion completa pero si a un umbral de confianza menor.
-6. Categorias dinamicas por volumen: categorias con pocos eventos ese dia
-   se agrupan en "Otros Deportes" para no mostrar secciones vacias/pobres.
-7. Fallback de torneo usa la categoria adivinada, nunca un texto fijo
-   generico ("Evento Especial") que no aporta informacion real.
-8. Salida en formato {"generado_utc","base_media","eventos":[...]}. Los
-   eventos guardan "id_xtream" (no URL completa) en cada fuente: la URL
-   se construye en un unico punto (base_media + credenciales + id), igual
-   que ya se resuelve en el curador de VOD. Evita URLs repetidas/enormes
-   en el JSON y evita que un cambio de host de media rompa eventos ya
-   guardados.
+.
 """
 
 import os
@@ -275,6 +250,64 @@ def limpiar_texto_para_match(texto: str) -> str:
     return " ".join(palabras)
 
 def descomponer_canal(nombre_canal: str) -> dict:
+    # Extraer hora original ANTES de manipular el texto
+    hora_dt = extraer_hora_evento(nombre_canal)
+    
+    # 1. Aplanadora de símbolos: convertimos separadores comunes a |
+    t = re.sub(r'[▫•‣●\-]+', '|', nombre_canal)
+    
+    # 2. Barredora de basura
+    t = limpiar_ruido_canal(t)
+    t = re.sub(r'\b\d{1,2}:\d{2}\b\s*([AaPp][Mm])?', ' ', t)
+    t = re.sub(r'\b(\d{1,2})\s*([AaPp][Mm])\b', ' ', t)
+    t = re.sub(r'\b[A-Za-z]{3,}\s+\d{1,2}\b', ' ', t)
+    
+    # Separar en segmentos reales
+    segmentos_brutos = [s.strip() for s in t.split('|')]
+    segmentos = [s for s in segmentos_brutos if len(s) > 1]
+    
+    tipo_evento = "sencillo"
+    participante_a, participante_b = None, None
+    torneo_contexto, subtitulo = "", ""
+    
+    idx_enfrentamiento = -1
+    for i, seg in enumerate(segmentos):
+        a, b = extraer_enfrentamiento(seg)
+        if a and b:
+            idx_enfrentamiento = i
+            participante_a, participante_b = a, b
+            tipo_evento = "duelo"
+            break
+            
+    if tipo_evento == "duelo":
+        resto = [s for i, s in enumerate(segmentos) if i != idx_enfrentamiento]
+        # Nos quedamos con el primer segmento que contenga el nombre del torneo (ej: "Liga Betplay")
+        torneo_contexto = resto[0] if resto else ""
+    else:
+        if segmentos:
+            # En tenis es común que usen / para separar la cancha (ej: Cincinnati Open / Court 4)
+            if '/' in segmentos[0]:
+                partes = [p.strip() for p in segmentos[0].split('/', 1)]
+                torneo_contexto = partes[0]
+                subtitulo = partes[1] if len(partes) > 1 else ""
+            else:
+                torneo_contexto = segmentos[0]
+                if len(segmentos) > 1:
+                    subtitulo = segmentos[1]
+
+    return {
+        "hora_dt": hora_dt,
+        "tipo_evento": tipo_evento,
+        "torneo_display": torneo_contexto,
+        "subtitulo_display": subtitulo,
+        "equipo_local_display": participante_a,
+        "equipo_visitante_display": participante_b,
+        # Mantener los campos internos intactos para el motor de matching (Retrocompatibilidad)
+        "participante_a": limpiar_texto_para_match(participante_a) if participante_a else None,
+        "participante_b": limpiar_texto_para_match(participante_b) if participante_b else None,
+        "contexto": limpiar_texto_para_match(torneo_contexto),
+        "texto_completo": limpiar_texto_para_match(" ".join(segmentos))
+    }
     """
     Extraccion universal, agnostica a proveedor/orden de campos.
     Estrategia por SEGMENTOS (13-ago-2026): el nombre del canal casi
@@ -560,6 +593,7 @@ def obtener_agenda_maestra() -> list:
                     "firma_texto": firma_texto,
                     "hora_utc": dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "duracion_min": DURACION_POR_DEPORTE.get(deporte_es, 150),
+                    "logo_torneo": ev.get("strLeagueBadge", "") or ev.get("strBadge", "") or "",
                     "logo_local": ev.get("strHomeTeamBadge", "") or ev.get("strThumb", "") or "",
                     "logo_visitante": ev.get("strAwayTeamBadge", "") or "",
                     "tier": 2,
@@ -737,15 +771,26 @@ def main():
                 evento_clon = mejor_evento.copy()
                 evento_clon["fuentes"] = [fuente_limpia]
                 evento_clon.pop("firma_texto", None)
+                
+                # Inyectar las nuevas cajas estructuradas
+                evento_clon["tipo_evento"] = canal_info["tipo_evento"]
+                evento_clon["subtitulo"] = canal_info["subtitulo_display"].title() if canal_info["subtitulo_display"] else ""
+                evento_clon["equipo_local"] = canal_info["equipo_local_display"].title() if canal_info["equipo_local_display"] else ""
+                evento_clon["equipo_visitante"] = canal_info["equipo_visitante_display"].title() if canal_info["equipo_visitante_display"] else ""
+                
+                # Ajustar el título para que sea limpio (Y por retrocompatibilidad si la app no lee cajas aún)
+                if canal_info["tipo_evento"] == "duelo":
+                    evento_clon["titulo"] = f"{evento_clon['equipo_local']} vs {evento_clon['equipo_visitante']}"
+                else:
+                    evento_clon["titulo"] = canal_info["torneo_display"].title() if canal_info["torneo_display"] else mejor_evento.get("titulo", "")
+                
                 resultados_finales.append(evento_clon)
 
         if not match_encontrado:
-            if canal_info["participante_a"] and canal_info["participante_b"]:
-                titulo_base = f"{canal_info['participante_a'].title()} Vs {canal_info['participante_b'].title()}"
+            if canal_info["tipo_evento"] == "duelo":
+                titulo_base = f"{canal_info['equipo_local_display'].title()} Vs {canal_info['equipo_visitante_display'].title()}"
             else:
-                titulo_original = re.sub(r'\b(HD|SD|FHD|4K|ENG|ESP|GER|PPV)\b', '', canal["nombre_ui"], flags=re.IGNORECASE)
-                titulo_original = re.sub(r'\bLIVE\s*EVENT\s*\d*\b', '', titulo_original, flags=re.IGNORECASE)
-                titulo_base = titulo_original.strip(" -|▫:").title()
+                titulo_base = canal_info["torneo_display"].title() if canal_info["torneo_display"] else "Evento Deportivo"
 
             if not titulo_base:
                 continue
@@ -760,19 +805,12 @@ def main():
                     evento_existente["fuentes"].append(fuente_limpia)
             else:
                 categoria_adivinada, logo_adivinado = adivinar_categoria_y_logo(canal["nombre_ui"])
+                torneo_final = canal_info["torneo_display"].title() if canal_info["torneo_display"] else categoria_adivinada
+                logo_torneo_final = logo_adivinado
 
-                # Torneo real: se usa el contexto extraido por segmentos.
-                # Solo si no hay ningun contexto util, se cae al nombre de
-                # la categoria (nunca a un texto fijo sin informacion).
-                torneo_final = canal_info["contexto"].title() if canal_info["contexto"] else categoria_adivinada
-
-                # "Prestamo" de logo/torneo (13-ago-2026): aunque el match
-                # no alcance el umbral de fusion completa, si hubo un
-                # candidato razonablemente cercano (UMBRAL_PRESTAMO) se usa
-                # su logo/torneo real en vez del icono generico, sin fusionar
-                # las fuentes (evitamos mezclar eventos que no son el mismo).
                 if mejor_evento and mejor_puntaje >= UMBRAL_PRESTAMO:
                     logo_adivinado = mejor_evento.get("logo_local") or logo_adivinado
+                    logo_torneo_final = mejor_evento.get("logo_torneo") or logo_adivinado
                     if mejor_evento.get("torneo"):
                         torneo_final = mejor_evento["torneo"]
 
@@ -781,7 +819,12 @@ def main():
                 resultados_finales.append({
                     "id": f"rescate_{crear_id_seguro(titulo_base)}",
                     "titulo": titulo_base,
+                    "tipo_evento": canal_info["tipo_evento"],
                     "torneo": torneo_final,
+                    "subtitulo": canal_info["subtitulo_display"].title() if canal_info["subtitulo_display"] else "",
+                    "equipo_local": canal_info["equipo_local_display"].title() if canal_info["equipo_local_display"] else "",
+                    "equipo_visitante": canal_info["equipo_visitante_display"].title() if canal_info["equipo_visitante_display"] else "",
+                    "logo_torneo": logo_torneo_final,
                     "categoria": categoria_adivinada,
                     "hora_utc": hora_utc_calculada,
                     "duracion_min": DURACION_POR_DEPORTE.get(categoria_adivinada, 240),
