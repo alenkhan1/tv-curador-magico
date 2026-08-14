@@ -3,10 +3,10 @@
 """
 INYECTOR EPG POLIDEPORTIVO (TheSportsDB API + Eurosport 1/2 + Teledeporte)
 ========================================================================
-1. API como Fuente de la Verdad: Consulta los eventos oficiales de hoy en TheSportsDB.
-2. Cruce Inteligente EPG: Valida emisiones en Eurosport 1, Eurosport 2 y Teledeporte.
-3. Cero Repeticiones: Descarta enlatados y emisiones de jornadas no activas hoy.
-4. Soporte Polideportivo Enriquecido: Snooker, Atletismo, Ciclismo, Gimnasia, Motor, etc.
+- API TheSportsDB como Fuente de la Verdad para validar eventos de hoy.
+- Soporte para múltiples sesiones en vivo en el mismo día (mañana / tarde).
+- Duración real calculada dinámicamente desde start/stop del XML.
+- Filtrado por palabras clave distintivas (evita falsos positivos como Tokio vs Londres).
 """
 
 import os
@@ -58,6 +58,12 @@ VETO_EXPLICITO = [
     "LO MEJOR DE", "PROGRAMACION", "PROGRAMACIÓN", "SPORT CENTER", "SPORTSCENTER"
 ]
 
+STOP_WORDS = {
+    "FORMULA", "E", "EPRIX", "LEAGUE", "CHAMPIONSHIP", "CHAMPIONSHIPS", "TOUR", "CUP", "OPEN", "WORLD",
+    "SERIES", "DE", "DEL", "LA", "EL", "LOS", "LAS", "EN", "EN VIVO", "DIRECTO", "LIVE", "FINAL", "SEMIFINAL",
+    "CUARTOS", "DIA", "ETAPA", "STAGE", "SESION", "ROUND", "PARTE", "T2026", "T26", "T25", "HD", "FHD", "SD"
+}
+
 
 def normalizar_texto(texto: str) -> str:
     """Homogeniza cadenas eliminando tildes y caracteres especiales."""
@@ -70,8 +76,14 @@ def normalizar_texto(texto: str) -> str:
     return " ".join(t.split())
 
 
+def extraer_palabras_distintivas(texto: str) -> set:
+    """Extrae palabras clave no genéricas (ciudades, sedes, nombres)."""
+    palabras = set(normalizar_texto(texto).split())
+    return {p for p in (palabras - STOP_WORDS) if len(p) > 2 and not p.isdigit()}
+
+
 def parse_timestamp_epg(time_str: str) -> datetime:
-    """Convierte cadenas horarias del EPG (notación estándar o exponencial)."""
+    """Convierte marcas de tiempo del XML a datetime UTC."""
     if not time_str:
         return None
     partes = time_str.strip().split()
@@ -101,7 +113,7 @@ def parse_timestamp_epg(time_str: str) -> datetime:
 
 
 def calcular_ventana_hoy_espana():
-    """Calcula el rango 'hoy' en huso español (CEST UTC+2)."""
+    """Calcula el rango del día actual en España (CEST UTC+2)."""
     ahora_utc = datetime.now(timezone.utc)
     tz_espana = timezone(timedelta(hours=2))
     hoy_espana = ahora_utc.astimezone(tz_espana).date()
@@ -111,7 +123,7 @@ def calcular_ventana_hoy_espana():
 
 
 def obtener_agenda_thesportsdb(fecha_str: str) -> list:
-    """Descarga los eventos oficiales programados para hoy desde TheSportsDB."""
+    """Obtiene la lista de eventos oficiales programados para la fecha."""
     deportes = ["Snooker", "Athletics", "Cycling", "Motorsport", "Gymnastics", "Golf", "Fighting", "Tennis"]
     eventos_tsdb = []
 
@@ -139,7 +151,7 @@ def obtener_agenda_thesportsdb(fecha_str: str) -> list:
 
 
 def clasificar_disciplina(texto: str) -> tuple:
-    """Clasifica el deporte y el logo correspondiente según palabras clave."""
+    """Identifica el deporte y asigna el badge oficial."""
     t_norm = normalizar_texto(texto)
     categoria = "Otros Deportes"
 
@@ -166,14 +178,14 @@ def clasificar_disciplina(texto: str) -> tuple:
     return categoria, logo
 
 
-def procesar_programa_epg(titulo_raw: str, tsdb_agenda: list) -> dict:
-    """Evalúa la validez del programa contra la agenda oficial de TheSportsDB."""
+def procesar_programa_epg(titulo_raw: str, tsdb_agenda: list, dt_inicio: datetime) -> dict:
+    """Valida la emisión contra la API TheSportsDB y limpia la metadata."""
     if not titulo_raw or len(titulo_raw.strip()) < 5:
         return None
 
     t_norm = normalizar_texto(titulo_raw)
 
-    # 1. Filtro de vetos absolutos
+    # 1. Filtro de vetos de programas enlatados
     if any(v in t_norm for v in VETO_EXPLICITO):
         return None
     if re.search(r"\bE\d+\b", t_norm) or re.search(r"\bEPISODIO\s*\d+\b", t_norm):
@@ -182,27 +194,26 @@ def procesar_programa_epg(titulo_raw: str, tsdb_agenda: list) -> dict:
     categoria, logo_defecto = clasificar_disciplina(titulo_raw)
     es_directo_etiqueta = bool(re.search(r"\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO)\b", titulo_raw, re.I))
 
-    # 2. Cruce con TheSportsDB: ¿Existe coincidencia activa hoy?
+    # 2. Cruce estricto por palabras clave distintivas con TheSportsDB
     match_tsdb = None
+    kw_epg = extraer_palabras_distintivas(titulo_raw)
+
     for ev in tsdb_agenda:
         dep_api = ev["deporte"].upper()
-        ev_norm = normalizar_texto(ev["nombre"] + " " + ev["torneo"])
-
-        # Match por disciplina o palabras clave del torneo
         if categoria.upper() == dep_api or (categoria == "Motor" and dep_api == "MOTORSPORT"):
-            palabras_epg = set(t_norm.split())
-            palabras_api = set(ev_norm.split())
-            comunes = palabras_epg.intersection(palabras_api)
-            if len(comunes) >= 2 or any(k in t_norm for k in ["CHINA OPEN", "EUROPEO DE ATLETISMO", "GIMNASIA"]):
+            kw_api = extraer_palabras_distintivas(ev["nombre"] + " " + ev["torneo"])
+            coincidencias = kw_epg.intersection(kw_api)
+            
+            # Coincidencia si comparten sede/torneo distintivo (ej: 'CHINA')
+            if len(coincidencias) >= 1:
                 match_tsdb = ev
                 break
 
-    # 3. Decisión de admisión:
-    # Entra si tiene marca explícita de DIRECTO o si está confirmado en la agenda de TheSportsDB
+    # 3. Admisión: requiere etiqueta DIRECTO o validación positiva con TheSportsDB
     if not es_directo_etiqueta and not match_tsdb:
         return None
 
-    # 4. Limpieza del título para la UI
+    # 4. Estructuración de Título y Subtítulo
     t_limpio = re.sub(r"\[COLOR.*?\]", "", titulo_raw, flags=re.I)
     t_limpio = re.sub(r"\[/COLOR\]", "", t_limpio, flags=re.I)
     t_limpio = re.sub(r"(?i)\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO)\b", "", t_limpio).strip(" -:·")
@@ -229,18 +240,21 @@ def procesar_programa_epg(titulo_raw: str, tsdb_agenda: list) -> dict:
         if len(partes) >= 2:
             torneo, subtitulo = partes[0], ": ".join(partes[1:])
 
-    # Limpieza de etiquetas de temporada
     torneo = re.sub(r"\bT\d{2,4}(/\d{2})?\b", "", torneo).strip(" -:·")
     torneo = " ".join(torneo.split()) or t_limpio
 
     subtitulo = re.sub(r"\bT\d{2,4}(/\d{2})?\b", "", subtitulo).strip(" -:·")
     subtitulo = " ".join(subtitulo.split()) or categoria
 
-    # Si hay detalles en TheSportsDB, enriquecemos el subtítulo
+    # Diferenciación por sesión horaria si los cruces están disponibles en TheSportsDB
     if match_tsdb and match_tsdb.get("resultados_o_cruces"):
         cruces = [c.strip() for c in match_tsdb["resultados_o_cruces"].split("\r\n") if c.strip()]
         if cruces:
-            subtitulo = f"{subtitulo} ({cruces[0]})" if subtitulo != categoria else cruces[0]
+            # Sesión de mañana (< 12:00 UTC) vs Sesión de tarde (>= 12:00 UTC)
+            if dt_inicio.hour < 12 and len(cruces) >= 2:
+                subtitulo = f"{subtitulo} ({cruces[1]})"
+            else:
+                subtitulo = f"{subtitulo} ({cruces[0]})"
 
     titulo_final = f"{torneo} · {subtitulo}" if subtitulo != categoria else torneo
     logo_final = match_tsdb["badge"] if match_tsdb and match_tsdb.get("badge") else logo_defecto
@@ -277,13 +291,10 @@ def mapear_streams_por_canal() -> dict:
 
             fuente = {"nombre": s.get("name"), "id_xtream": sid}
 
-            # Teledeporte
             if any(k in nombre for k in ["TELEDEPORTE", " TDP ", "TDP HD", "TDP FHD"]):
                 mapa["TDP"].append(fuente)
-            # Eurosport 2
             elif any(k in nombre for k in ["EUROSPORT 2", "EUROSPORT2", "EUROSPORTS 2", "ES2"]):
                 mapa["E2"].append(fuente)
-            # Eurosport 1
             elif any(k in nombre for k in ["EUROSPORT 1", "EUROSPORT1", "EUROSPORTS 1", "ES1", "EUROSPORT HD"]):
                 mapa["E1"].append(fuente)
 
@@ -295,7 +306,7 @@ def mapear_streams_por_canal() -> dict:
 
 
 def extraer_eventos_epg(mapa_streams: dict, inicio_hoy_utc: datetime, fin_hoy_utc: datetime, tsdb_agenda: list) -> list:
-    """Descarga el EPG y procesa los eventos confirmados de la jornada."""
+    """Descarga el EPG y procesa cada sesión en vivo con su duración real."""
     log.info("Descargando EPG Europa (EPG_dobleM)...")
     eventos_aprobados = []
 
@@ -320,13 +331,20 @@ def extraer_eventos_epg(mapa_streams: dict, inicio_hoy_utc: datetime, fin_hoy_ut
 
                 if canal_clave:
                     dt_inicio = parse_timestamp_epg(elem.attrib.get("start", ""))
+                    dt_fin = parse_timestamp_epg(elem.attrib.get("stop", ""))
+
                     if dt_inicio and (inicio_hoy_utc <= dt_inicio <= fin_hoy_utc):
                         tit_raw = elem.findtext("title", "")
-                        info_ev = procesar_programa_epg(tit_raw, tsdb_agenda)
+                        info_ev = procesar_programa_epg(tit_raw, tsdb_agenda, dt_inicio)
 
                         if info_ev:
                             fuentes_asignadas = mapa_streams.get(canal_clave, [])
                             if fuentes_asignadas:
+                                # Cálculo dinámico de la duración real del programa
+                                duracion_min = int((dt_fin - dt_inicio).total_seconds() / 60) if dt_fin else 120
+                                if duracion_min <= 0:
+                                    duracion_min = 120
+
                                 id_base = f"{info_ev['titulo'].upper()}|{dt_inicio.strftime('%Y%m%d%H%M')}|{canal_clave}"
                                 id_unico = f"epg_{hashlib.md5(id_base.encode('utf-8')).hexdigest()[:12]}"
 
@@ -340,7 +358,7 @@ def extraer_eventos_epg(mapa_streams: dict, inicio_hoy_utc: datetime, fin_hoy_ut
                                     "equipo_visitante": "",
                                     "subtitulo": info_ev["subtitulo"],
                                     "hora_utc": dt_inicio.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                                    "duracion_min": 120,
+                                    "duracion_min": duracion_min,
                                     "logo_torneo": info_ev["logo"],
                                     "logo_local": info_ev["logo"],
                                     "logo_visitante": "",
@@ -351,16 +369,12 @@ def extraer_eventos_epg(mapa_streams: dict, inicio_hoy_utc: datetime, fin_hoy_ut
     except Exception as e:
         log.error(f"Error procesando EPG: {e}")
 
-    # Deduplicación cronológica (solo la primera emisión por evento/sesión)
+    # Deduplicación por canal y hora de inicio (permite sesiones de mañana y tarde independientes)
     unicos = {}
     for ev in eventos_aprobados:
-        k = (ev["torneo"], ev["subtitulo"])
+        k = (ev["torneo"], ev["hora_utc"])
         if k not in unicos:
             unicos[k] = ev
-        else:
-            # Conservamos la emisión más temprana
-            if ev["hora_utc"] < unicos[k]["hora_utc"]:
-                unicos[k] = ev
 
     log.info(f"Eventos polideportivos aprobados para hoy: {len(unicos)}")
     return list(unicos.values())
@@ -382,20 +396,20 @@ def main():
 
     eventos_existentes = data_salida.get("eventos", []) if isinstance(data_salida, dict) else data_salida
 
-    # 1. Ventana de Hoy en España
+    # 1. Ventana horaria de hoy
     inicio_hoy_utc, fin_hoy_utc, fecha_str = calcular_ventana_hoy_espana()
     log.info(f"Ventana 'Hoy': {inicio_hoy_utc.isoformat()} -> {fin_hoy_utc.isoformat()} ({fecha_str})")
 
-    # 2. Consultar agenda de TheSportsDB
+    # 2. Agenda oficial de TheSportsDB
     tsdb_agenda = obtener_agenda_thesportsdb(fecha_str)
 
-    # 3. Mapeo de canales Xtream
+    # 3. Mapeo de canales
     mapa_streams = mapear_streams_por_canal()
 
-    # 4. Extracción de eventos del EPG cruzados con la API
+    # 4. Extracción de eventos del EPG
     eventos_epg = extraer_eventos_epg(mapa_streams, inicio_hoy_utc, fin_hoy_utc, tsdb_agenda)
 
-    # 5. Poda de eventos EPG antiguos fuera del rango de hoy
+    # 5. Poda de eventos fuera de rango
     eventos_base_conservados = []
     for ev in eventos_existentes:
         if ev.get("id", "").startswith("epg_"):
@@ -407,7 +421,7 @@ def main():
                 continue
         eventos_base_conservados.append(ev)
 
-    # 6. Inyección final
+    # 6. Inyección sin colisiones
     ids_existentes = {ev["id"] for ev in eventos_base_conservados}
     inyectados_nuevos = 0
     for ev_nuevo in eventos_epg:
