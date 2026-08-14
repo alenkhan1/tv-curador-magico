@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-INYECTOR EPG POLIDEPORTIVO (TheSportsDB API + Eurosport 1/2 + Teledeporte)
+INYECTOR EPG DINÁMICO UNIVERSAL (TheSportsDB API + Canales Lineales EPG)
 ========================================================================
-- API TheSportsDB como Fuente de la Verdad para validar eventos de hoy.
-- Soporte para múltiples sesiones en vivo en el mismo día (mañana / tarde).
-- Duración real calculada dinámicamente desde start/stop del XML.
-- Filtrado por palabras clave distintivas (evita falsos positivos como Tokio vs Londres).
+- Cero URLs fijas o hardcodeadas: los logos provienen dinámicamente de TheSportsDB.
+- Cero listas manuales de torneos: validación por coincidencia de tokens en tiempo real.
+- Duración exacta calculada desde los timestamps (start / stop) del XML.
+- Sintaxis optimizada para tarjetas de Android TV (evita desbordes y redundancias).
+- Soporte multicanal: Eurosport 1, Eurosport 2, Teledeporte y canales lineales mapeados.
 """
 
 import os
@@ -20,15 +21,15 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 import requests
 
-# ─── LOGGING ────────────────────────────────────────────────────────────────
+# ─── CONFIGURACIÓN DE LOGGING ───────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     datefmt="%H:%M:%S"
 )
-log = logging.getLogger("inyector_polideportivo")
+log = logging.getLogger("inyector_universal")
 
-# ─── CONFIGURACIÓN DE ENTORNO ───────────────────────────────────────────────
+# ─── VARIABLES DE ENTORNO ───────────────────────────────────────────────────
 XTREAM_URL = os.environ.get("XTREAM_URL")
 XTREAM_USER = os.environ.get("XTREAM_USER")
 XTREAM_PASS = os.environ.get("XTREAM_PASS")
@@ -38,35 +39,24 @@ ARCHIVO_EVENTOS = "eventos_hoy.json"
 URL_EPG_EUROPA = "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml"
 THESPORTSDB_BASE = "https://www.thesportsdb.com/api/v1/json/3"
 
-# ─── LOGOS OFICIALES THE SPORTS DB (HTTP 200 VERIFICADOS) ────────────────────
-LOGOS_DISCIPLINAS = {
-    "Snooker": "https://r2.thesportsdb.com/images/media/league/badge/0gmkgj1555600537.png",
-    "Atletismo": "https://r2.thesportsdb.com/images/media/league/badge/9rr2ad1741364834.png",
-    "Ciclismo": "https://r2.thesportsdb.com/images/media/league/badge/igahc11535183469.png",
-    "Motor": "https://r2.thesportsdb.com/images/media/league/badge/64f67s1770108650.png",
-    "Gimnasia": "https://r2.thesportsdb.com/images/media/league/badge/9rr2ad1741364834.png",
-    "Natación": "https://r2.thesportsdb.com/images/media/league/badge/9rr2ad1741364834.png",
-    "Tenis": "https://r2.thesportsdb.com/images/media/league/badge/1adg221775893214.png",
-    "Combate": "https://r2.thesportsdb.com/images/media/league/badge/x9cxmq1578222615.png",
-    "Triatlón": "https://r2.thesportsdb.com/images/media/league/badge/igahc11535183469.png",
-    "Otros Deportes": "https://r2.thesportsdb.com/images/media/league/badge/0gmkgj1555600537.png"
+# Palabras genéricas a omitir al calcular la similitud léxica entre EPG y API
+STOP_WORDS = {
+    "DE", "DEL", "LA", "EL", "LOS", "LAS", "EN", "UN", "UNA", "Y", "O", "POR",
+    "THE", "OF", "AND", "IN", "ON", "AT", "TO", "FOR", "WITH", "BY",
+    "DIRECTO", "VIVO", "LIVE", "EN DIRECTO", "EN VIVO", "HD", "FHD", "SD", "4K",
+    "T2024", "T2025", "T2026", "T2027", "T24", "T25", "T26", "T27"
 }
 
 VETO_EXPLICITO = [
     "REPETICION", "REPETICIÓN", "RESUMEN", "HIGHLIGHTS", "NOTICIAS", "NEWS",
     "MAGAZINE", "MEMORIAS", "VINTAGE", "CLASICOS", "CLÁSICOS", "ESPECIAL",
-    "LO MEJOR DE", "PROGRAMACION", "PROGRAMACIÓN", "SPORT CENTER", "SPORTSCENTER"
+    "LO MEJOR DE", "PROGRAMACION", "PROGRAMACIÓN", "SPORT CENTER", "SPORTSCENTER",
+    "INFORMATIVO", "TELEDIARIO", "REPORTAJES"
 ]
-
-STOP_WORDS = {
-    "FORMULA", "E", "EPRIX", "LEAGUE", "CHAMPIONSHIP", "CHAMPIONSHIPS", "TOUR", "CUP", "OPEN", "WORLD",
-    "SERIES", "DE", "DEL", "LA", "EL", "LOS", "LAS", "EN", "EN VIVO", "DIRECTO", "LIVE", "FINAL", "SEMIFINAL",
-    "CUARTOS", "DIA", "ETAPA", "STAGE", "SESION", "ROUND", "PARTE", "T2026", "T26", "T25", "HD", "FHD", "SD"
-}
 
 
 def normalizar_texto(texto: str) -> str:
-    """Homogeniza cadenas eliminando tildes y caracteres especiales."""
+    """Homogeniza cadenas eliminando acentos y caracteres no alfanuméricos."""
     if not texto:
         return ""
     t = str(texto).upper()
@@ -76,14 +66,14 @@ def normalizar_texto(texto: str) -> str:
     return " ".join(t.split())
 
 
-def extraer_palabras_distintivas(texto: str) -> set:
-    """Extrae palabras clave no genéricas (ciudades, sedes, nombres)."""
+def extraer_tokens_distintivos(texto: str) -> set:
+    """Extrae palabras clave no genéricas de longitud mayor a 2 caracteres."""
     palabras = set(normalizar_texto(texto).split())
     return {p for p in (palabras - STOP_WORDS) if len(p) > 2 and not p.isdigit()}
 
 
 def parse_timestamp_epg(time_str: str) -> datetime:
-    """Convierte marcas de tiempo del XML a datetime UTC."""
+    """Convierte timestamps del XMLTV (estándar o exponencial) a objeto datetime UTC."""
     if not time_str:
         return None
     partes = time_str.strip().split()
@@ -92,8 +82,7 @@ def parse_timestamp_epg(time_str: str) -> datetime:
 
     if "e+" in ts_num.lower():
         try:
-            val = float(ts_num)
-            ts_digits = f"{int(round(val)):014d}"
+            ts_digits = f"{int(round(float(ts_num))):014d}"
         except Exception:
             return None
     else:
@@ -113,7 +102,7 @@ def parse_timestamp_epg(time_str: str) -> datetime:
 
 
 def calcular_ventana_hoy_espana():
-    """Calcula el rango del día actual en España (CEST UTC+2)."""
+    """Define el rango del día actual en hora local de España (CEST UTC+2)."""
     ahora_utc = datetime.now(timezone.utc)
     tz_espana = timezone(timedelta(hours=2))
     hoy_espana = ahora_utc.astimezone(tz_espana).date()
@@ -122,154 +111,151 @@ def calcular_ventana_hoy_espana():
     return inicio_utc, fin_utc, hoy_espana.strftime("%Y-%m-%d")
 
 
-def obtener_agenda_thesportsdb(fecha_str: str) -> list:
-    """Obtiene la lista de eventos oficiales programados para la fecha."""
-    deportes = ["Snooker", "Athletics", "Cycling", "Motorsport", "Gymnastics", "Golf", "Fighting", "Tennis"]
+def obtener_agenda_dinamica_tsdb(fecha_str: str) -> list:
+    """Descarga de forma dinámica la agenda oficial de TheSportsDB para el día."""
+    url_all = f"{THESPORTSDB_BASE}/eventsday.php?d={fecha_str}"
     eventos_tsdb = []
 
-    for dep in deportes:
-        url = f"{THESPORTSDB_BASE}/eventsday.php?d={fecha_str}&s={dep}"
+    try:
+        res = requests.get(url_all, timeout=12)
+        if res.status_code == 200 and res.text:
+            evs = res.json().get("events") or []
+            for e in evs:
+                eventos_tsdb.append({
+                    "id": e.get("idEvent"),
+                    "nombre": e.get("strEvent", ""),
+                    "deporte": e.get("strSport", "Deportes"),
+                    "torneo": e.get("strLeague", ""),
+                    "badge": e.get("strLeagueBadge") or e.get("strBadge") or e.get("strThumb") or "",
+                    "ronda": e.get("strRound", ""),
+                    "cruces": e.get("strResult", "")
+                })
+    except Exception as e:
+        log.warning(f"Error consultando endpoint general de TheSportsDB: {e}")
+
+    # Consultar disciplinas adicionales que reportan por parámetro deportivo
+    deportes_adicionales = ["Snooker", "Athletics", "Cycling", "Motorsport", "Gymnastics", "Golf", "Fighting", "Tennis", "Swimming"]
+    for dep in deportes_adicionales:
         try:
-            res = requests.get(url, timeout=10)
+            url_dep = f"{THESPORTSDB_BASE}/eventsday.php?d={fecha_str}&s={dep}"
+            res = requests.get(url_dep, timeout=8)
             if res.status_code == 200 and res.text:
                 evs = res.json().get("events") or []
                 for e in evs:
-                    eventos_tsdb.append({
-                        "id": e.get("idEvent"),
-                        "nombre": e.get("strEvent", ""),
-                        "deporte": dep,
-                        "torneo": e.get("strLeague", ""),
-                        "badge": e.get("strLeagueBadge") or LOGOS_DISCIPLINAS.get(dep, LOGOS_DISCIPLINAS["Otros Deportes"]),
-                        "ronda": e.get("strRound", ""),
-                        "resultados_o_cruces": e.get("strResult", "")
-                    })
-        except Exception as e:
-            log.warning(f"Error consultando TheSportsDB ({dep}): {e}")
+                    if not any(x["id"] == e.get("idEvent") for x in eventos_tsdb):
+                        eventos_tsdb.append({
+                            "id": e.get("idEvent"),
+                            "nombre": e.get("strEvent", ""),
+                            "deporte": e.get("strSport") or dep,
+                            "torneo": e.get("strLeague", ""),
+                            "badge": e.get("strLeagueBadge") or e.get("strBadge") or e.get("strThumb") or "",
+                            "ronda": e.get("strRound", ""),
+                            "cruces": e.get("strResult", "")
+                        })
+        except Exception:
+            pass
 
-    log.info(f"TheSportsDB: {len(eventos_tsdb)} eventos oficiales programados para hoy ({fecha_str})")
+    log.info(f"TheSportsDB: {len(eventos_tsdb)} eventos oficiales programados para {fecha_str}")
     return eventos_tsdb
 
 
-def clasificar_disciplina(texto: str) -> tuple:
-    """Identifica el deporte y asigna el badge oficial."""
-    t_norm = normalizar_texto(texto)
-    categoria = "Otros Deportes"
-
-    if any(k in t_norm for k in ["SNOOKER", "BILLAR", "CHINA OPEN"]):
-        categoria = "Snooker"
-    elif any(k in t_norm for k in ["ATLETISMO", "ATHLETICS", "JABALINA", "MARATON", "PERTIGA", "VELOCIDAD", "DECATLON"]):
-        categoria = "Atletismo"
-    elif any(k in t_norm for k in ["CICLISMO", "CYCLING", "ARCTIC RACE", "VUELTA", "TOUR", "GIRO", "ETAPA"]):
-        categoria = "Ciclismo"
-    elif any(k in t_norm for k in ["GIMNASIA", "RITMICA", "ALL AROUND"]):
-        categoria = "Gimnasia"
-    elif any(k in t_norm for k in ["NATACION", "ACUATICOS", "SINCRONIZADOS", "SALTOS"]):
-        categoria = "Natación"
-    elif any(k in t_norm for k in ["FORMULA E", "MOTOGP", "SUPERBIKE", "RALLY", "WRC", "F1", "MOTOR"]):
-        categoria = "Motor"
-    elif any(k in t_norm for k in ["TENIS", "TENNIS", "ROLAND GARROS", "WIMBLEDON", "US OPEN", "ATP", "WTA"]):
-        categoria = "Tenis"
-    elif any(k in t_norm for k in ["TRIATLON", "TRIATHLON", "T100", "IRONMAN"]):
-        categoria = "Triatlón"
-    elif any(k in t_norm for k in ["BOXEO", "UFC", "MMA", "COMBATE"]):
-        categoria = "Combate"
-
-    logo = LOGOS_DISCIPLINAS.get(categoria, LOGOS_DISCIPLINAS["Otros Deportes"])
-    return categoria, logo
-
-
 def procesar_programa_epg(titulo_raw: str, tsdb_agenda: list, dt_inicio: datetime) -> dict:
-    """Valida la emisión contra la API TheSportsDB y limpia la metadata."""
+    """Analiza la emisión, efectúa el cruce dinámico y estructura la información."""
     if not titulo_raw or len(titulo_raw.strip()) < 5:
         return None
 
     t_norm = normalizar_texto(titulo_raw)
 
-    # 1. Filtro de vetos de programas enlatados
     if any(v in t_norm for v in VETO_EXPLICITO):
         return None
     if re.search(r"\bE\d+\b", t_norm) or re.search(r"\bEPISODIO\s*\d+\b", t_norm):
         return None
 
-    categoria, logo_defecto = clasificar_disciplina(titulo_raw)
     es_directo_etiqueta = bool(re.search(r"\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO)\b", titulo_raw, re.I))
 
-    # 2. Cruce estricto por palabras clave distintivas con TheSportsDB
+    # Cruce semántico dinámico por tokens con la API
     match_tsdb = None
-    kw_epg = extraer_palabras_distintivas(titulo_raw)
+    kw_epg = extraer_tokens_distintivos(titulo_raw)
 
     for ev in tsdb_agenda:
-        dep_api = ev["deporte"].upper()
-        if categoria.upper() == dep_api or (categoria == "Motor" and dep_api == "MOTORSPORT"):
-            kw_api = extraer_palabras_distintivas(ev["nombre"] + " " + ev["torneo"])
-            coincidencias = kw_epg.intersection(kw_api)
-            
-            # Coincidencia si comparten sede/torneo distintivo (ej: 'CHINA')
-            if len(coincidencias) >= 1:
-                match_tsdb = ev
-                break
+        kw_api = extraer_tokens_distintivos(f"{ev['nombre']} {ev['torneo']} {ev['deporte']}")
+        coincidencias = kw_epg.intersection(kw_api)
+        if len(coincidencias) >= 1:
+            match_tsdb = ev
+            break
 
-    # 3. Admisión: requiere etiqueta DIRECTO o validación positiva con TheSportsDB
+    # Admisión: tener etiqueta explícita o match directo en la API de hoy
     if not es_directo_etiqueta and not match_tsdb:
         return None
 
-    # 4. Estructuración de Título y Subtítulo
+    # Limpieza de sintaxis para Android TV
     t_limpio = re.sub(r"\[COLOR.*?\]", "", titulo_raw, flags=re.I)
     t_limpio = re.sub(r"\[/COLOR\]", "", t_limpio, flags=re.I)
     t_limpio = re.sub(r"(?i)\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO)\b", "", t_limpio).strip(" -:·")
     t_limpio = " ".join(t_limpio.split())
 
-    torneo = t_limpio
-    subtitulo = ""
+    partes = [p.strip() for p in t_limpio.split("·") if p.strip()] if "·" in t_limpio else [t_limpio, ""]
+    p1 = partes[0]
+    p2 = partes[1] if len(partes) > 1 else ""
 
-    if "·" in t_limpio:
-        partes = [p.strip() for p in t_limpio.split("·") if p.strip()]
-        if len(partes) >= 2:
-            p1, p2 = partes[0], partes[1]
-            indicadores = ["DIA", "DÍA", "ETAPA", "STAGE", "SESION", "SESIÓN", "FINAL", "SEMIFINAL", "CUARTOS", "CARRERA"]
-            if any(ind in normalizar_texto(p1) for ind in indicadores) and not any(ind in normalizar_texto(p2) for ind in indicadores):
-                torneo, subtitulo = p2, p1
-            else:
-                torneo, subtitulo = p1, p2
-    elif " - " in t_limpio:
-        partes = [p.strip() for p in t_limpio.split(" - ") if p.strip()]
-        if len(partes) >= 2:
-            torneo, subtitulo = partes[0], " - ".join(partes[1:])
-    elif ":" in t_limpio:
-        partes = [p.strip() for p in t_limpio.split(":") if p.strip()]
-        if len(partes) >= 2:
-            torneo, subtitulo = partes[0], ": ".join(partes[1:])
+    # Detección estructural del Torneo vs Ronda/Fase
+    kw_torneo = ["MUNDIAL", "CAMPEONATO", "EUROPEO", "OPEN", "VUELTA", "TOUR", "RACE", "GRAND PRIX", "SERIES", "LEAGUE", "COPA"]
+    score_p1 = sum(1 for k in kw_torneo if k in normalizar_texto(p1))
+    score_p2 = sum(1 for k in kw_torneo if k in normalizar_texto(p2))
+
+    if score_p2 > score_p1:
+        torneo_raw, sub_raw = p2, p1
+    else:
+        torneo_raw, sub_raw = p1, p2
+
+    categoria = match_tsdb["deporte"] if match_tsdb else "Deportes"
+
+    # Eliminar redundancia de categoría en el título (ej: "Snooker: Open de China" -> "Open de China")
+    torneo = torneo_raw
+    if torneo.lower().startswith(f"{categoria.lower()}:"):
+        torneo = torneo[len(categoria)+1:].strip()
+    elif torneo.lower().startswith(categoria.lower()):
+        torneo = torneo[len(categoria):].strip(" -:·")
 
     torneo = re.sub(r"\bT\d{2,4}(/\d{2})?\b", "", torneo).strip(" -:·")
-    torneo = " ".join(torneo.split()) or t_limpio
+    torneo = " ".join(torneo.split())
 
-    subtitulo = re.sub(r"\bT\d{2,4}(/\d{2})?\b", "", subtitulo).strip(" -:·")
-    subtitulo = " ".join(subtitulo.split()) or categoria
+    subtitulo = re.sub(r"\bT\d{2,4}(/\d{2})?\b", "", sub_raw).strip(" -:·")
+    subtitulo = " ".join(subtitulo.split())
 
-    # Diferenciación por sesión horaria si los cruces están disponibles en TheSportsDB
-    if match_tsdb and match_tsdb.get("resultados_o_cruces"):
-        cruces = [c.strip() for c in match_tsdb["resultados_o_cruces"].split("\r\n") if c.strip()]
-        if cruces:
-            # Sesión de mañana (< 12:00 UTC) vs Sesión de tarde (>= 12:00 UTC)
-            if dt_inicio.hour < 12 and len(cruces) >= 2:
-                subtitulo = f"{subtitulo} ({cruces[1]})"
-            else:
-                subtitulo = f"{subtitulo} ({cruces[0]})"
+    # Formateo dinámico de cruces si TheSportsDB entrega los duelos de la sesión
+    if match_tsdb and match_tsdb.get("cruces"):
+        cruces_lista = [c.strip() for c in match_tsdb["cruces"].split("\r\n") if c.strip()]
+        if cruces_lista:
+            c_text = cruces_lista[1] if dt_inicio.hour < 12 and len(cruces_lista) >= 2 else cruces_lista[0]
+            c_clean = re.sub(r"^\d+\s*", "", c_text).replace(" v ", " vs ")
+            if "cuartos" in subtitulo.lower():
+                subtitulo = f"Cuartos: {c_clean}"
+            elif "semifinal" in subtitulo.lower():
+                subtitulo = f"Semifinal: {c_clean}"
+            elif not subtitulo:
+                subtitulo = c_clean
 
-    titulo_final = f"{torneo} · {subtitulo}" if subtitulo != categoria else torneo
-    logo_final = match_tsdb["badge"] if match_tsdb and match_tsdb.get("badge") else logo_defecto
+    # Límites proporcionales para evitar desbordamiento en la UI
+    if len(torneo) > 30:
+        torneo = torneo[:29].rstrip() + "…"
+    if len(subtitulo) > 36:
+        subtitulo = subtitulo[:35].rstrip() + "…"
+
+    titulo_final = f"{torneo} · {subtitulo}" if subtitulo else torneo
+    logo_dinamico = match_tsdb["badge"] if match_tsdb and match_tsdb.get("badge") else ""
 
     return {
         "categoria": categoria,
         "torneo": torneo,
         "subtitulo": subtitulo,
         "titulo": titulo_final,
-        "logo": logo_final
+        "logo": logo_dinamico
     }
 
 
-def mapear_streams_por_canal() -> dict:
-    """Mapea fuentes de reproducción para Eurosport 1, Eurosport 2 y Teledeporte."""
+def mapear_streams_canales_lineales() -> dict:
+    """Mapea streams de Xtream para Eurosport 1, Eurosport 2 y Teledeporte."""
     mapa = {"E1": [], "E2": [], "TDP": []}
     if not XTREAM_URL or not XTREAM_USER or not XTREAM_PASS:
         return mapa
@@ -279,7 +265,7 @@ def mapear_streams_por_canal() -> dict:
         api_url = f"{base_url}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
         r = requests.get(PUENTE_URL, params={"url": api_url}, timeout=45)
         if r.status_code != 200:
-            log.warning(f"Error obteniendo streams de Xtream: HTTP {r.status_code}")
+            log.warning(f"Error consultando streams: HTTP {r.status_code}")
             return mapa
 
         streams = r.json()
@@ -298,22 +284,22 @@ def mapear_streams_por_canal() -> dict:
             elif any(k in nombre for k in ["EUROSPORT 1", "EUROSPORT1", "EUROSPORTS 1", "ES1", "EUROSPORT HD"]):
                 mapa["E1"].append(fuente)
 
-        log.info(f"Mapeo de señales: {len(mapa['E1'])} en Eurosport 1 | {len(mapa['E2'])} en Eurosport 2 | {len(mapa['TDP'])} en Teledeporte")
+        log.info(f"Señales mapeadas: E1={len(mapa['E1'])} | E2={len(mapa['E2'])} | TDP={len(mapa['TDP'])}")
     except Exception as e:
-        log.error(f"Error procesando streams: {e}")
+        log.error(f"Error mapeando streams lineales: {e}")
 
     return mapa
 
 
 def extraer_eventos_epg(mapa_streams: dict, inicio_hoy_utc: datetime, fin_hoy_utc: datetime, tsdb_agenda: list) -> list:
-    """Descarga el EPG y procesa cada sesión en vivo con su duración real."""
-    log.info("Descargando EPG Europa (EPG_dobleM)...")
+    """Extrae y procesa los programas en vivo del EPG con cálculo exacto de duración."""
+    log.info("Descargando guía EPG...")
     eventos_aprobados = []
 
     try:
         r = requests.get(URL_EPG_EUROPA, timeout=25)
         if r.status_code != 200:
-            log.error(f"No se pudo descargar el EPG: HTTP {r.status_code}")
+            log.error(f"Error descargando EPG: HTTP {r.status_code}")
             return []
 
         it = ET.iterparse(io.BytesIO(r.content), events=("end",))
@@ -340,7 +326,6 @@ def extraer_eventos_epg(mapa_streams: dict, inicio_hoy_utc: datetime, fin_hoy_ut
                         if info_ev:
                             fuentes_asignadas = mapa_streams.get(canal_clave, [])
                             if fuentes_asignadas:
-                                # Cálculo dinámico de la duración real del programa
                                 duracion_min = int((dt_fin - dt_inicio).total_seconds() / 60) if dt_fin else 120
                                 if duracion_min <= 0:
                                     duracion_min = 120
@@ -369,19 +354,19 @@ def extraer_eventos_epg(mapa_streams: dict, inicio_hoy_utc: datetime, fin_hoy_ut
     except Exception as e:
         log.error(f"Error procesando EPG: {e}")
 
-    # Deduplicación por canal y hora de inicio (permite sesiones de mañana y tarde independientes)
+    # Deduplicación por torneo y hora de inicio (permite sesiones de mañana/tarde independientes)
     unicos = {}
     for ev in eventos_aprobados:
         k = (ev["torneo"], ev["hora_utc"])
         if k not in unicos:
             unicos[k] = ev
 
-    log.info(f"Eventos polideportivos aprobados para hoy: {len(unicos)}")
+    log.info(f"Eventos aprobados del EPG para hoy: {len(unicos)}")
     return list(unicos.values())
 
 
 def main():
-    log.info("=== Iniciando Inyector Polideportivo (TheSportsDB API + Eurosport + Teledeporte) ===")
+    log.info("=== Iniciando Inyector EPG Universal Dinámico ===")
 
     if not os.path.exists(ARCHIVO_EVENTOS):
         log.error(f"No se encontró {ARCHIVO_EVENTOS}. Ejecuta primero curador_eventos.py.")
@@ -396,20 +381,12 @@ def main():
 
     eventos_existentes = data_salida.get("eventos", []) if isinstance(data_salida, dict) else data_salida
 
-    # 1. Ventana horaria de hoy
     inicio_hoy_utc, fin_hoy_utc, fecha_str = calcular_ventana_hoy_espana()
-    log.info(f"Ventana 'Hoy': {inicio_hoy_utc.isoformat()} -> {fin_hoy_utc.isoformat()} ({fecha_str})")
-
-    # 2. Agenda oficial de TheSportsDB
-    tsdb_agenda = obtener_agenda_thesportsdb(fecha_str)
-
-    # 3. Mapeo de canales
-    mapa_streams = mapear_streams_por_canal()
-
-    # 4. Extracción de eventos del EPG
+    tsdb_agenda = obtener_agenda_dinamica_tsdb(fecha_str)
+    mapa_streams = mapear_streams_canales_lineales()
     eventos_epg = extraer_eventos_epg(mapa_streams, inicio_hoy_utc, fin_hoy_utc, tsdb_agenda)
 
-    # 5. Poda de eventos fuera de rango
+    # Conservar eventos del curador base y podar EPG antiguos
     eventos_base_conservados = []
     for ev in eventos_existentes:
         if ev.get("id", "").startswith("epg_"):
@@ -421,7 +398,6 @@ def main():
                 continue
         eventos_base_conservados.append(ev)
 
-    # 6. Inyección sin colisiones
     ids_existentes = {ev["id"] for ev in eventos_base_conservados}
     inyectados_nuevos = 0
     for ev_nuevo in eventos_epg:
@@ -444,7 +420,7 @@ def main():
     try:
         with open(ARCHIVO_EVENTOS, "w", encoding="utf-8") as f:
             json.dump(data_salida, f, ensure_ascii=False, indent=2)
-        log.info(f"¡Inyección completada! Nuevos eventos: {inyectados_nuevos} | Total en cartelera: {len(eventos_base_conservados)}")
+        log.info(f"¡Proceso universal completado! Total en cartelera: {len(eventos_base_conservados)}")
     except Exception as e:
         log.error(f"Error guardando {ARCHIVO_EVENTOS}: {e}")
 
