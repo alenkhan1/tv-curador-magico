@@ -9,21 +9,21 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-08-13T05:41:03Z",
+  "generado": "2026-08-14T05:38:16Z",
   "resumen": {
-    "total": 1437,
+    "total": 1438,
     "por_motivo": {
       "no_encontrado": 1411,
-      "pendiente": 26
+      "pendiente": 27
     },
     "peliculas": {
       "adulto": 5,
       "excluido": 0,
       "sin_nombre": 1,
       "no_encontrado": 1373,
-      "fallo_red": 25,
-      "clasificados": 10230,
-      "sin_identificar": 1398
+      "fallo_red": 26,
+      "clasificados": 10231,
+      "sin_identificar": 1399
     },
     "series": {
       "adulto": 0,
@@ -44,7 +44,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1398,
+      "veces": 1399,
       "ejemplos": [
         "Super Bowl LX (2026)",
         "Amame, amame (2026)",
@@ -495,12 +495,12 @@
       "veces": 7
     },
     {
-      "carpeta": "NOVELAS VENEZOLANAS",
+      "carpeta": "ESTRENOS 2026",
       "veces": 6
     },
     {
-      "carpeta": "ESTRENOS 2026",
-      "veces": 5
+      "carpeta": "NOVELAS VENEZOLANAS",
+      "veces": 6
     },
     {
       "carpeta": "ROMANTICAS",
@@ -587,6 +587,18 @@
       "titulo_buscado": "Por fin Tu",
       "anio": 2026,
       "motivo": "no_encontrado",
+      "carpeta": "ESTRENOS 2026",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "522392",
+      "tipo": "movie",
+      "nombre_original": "El turno del papá (2026)",
+      "titulo_buscado": "El turno del papá",
+      "anio": 2026,
+      "motivo": "pendiente",
       "carpeta": "ESTRENOS 2026",
       "etiquetas": [],
       "prefijo": "",
@@ -11500,18 +11512,6 @@
         "SUB",
         "X264"
       ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "491847",
-      "tipo": "movie",
-      "nombre_original": "Power Rangers_ Furia Dino_S01E01_Destino Dinohenge",
-      "titulo_buscado": "Power Rangers Furia Dino S01E01 Destino Dinohenge",
-      "anio": 0,
-      "motivo": "no_encontrado",
-      "carpeta": "SAGAS",
-      "etiquetas": [],
       "prefijo": "",
       "copias": 1
     }
