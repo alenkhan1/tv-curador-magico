@@ -4,10 +4,10 @@
 CURADOR DE EVENTOS DEPORTIVOS — AllStreamTV
 ===========================================
 Motor de Reverse Matching Directo:
-1. Detección nativa de zona horaria vía server_info de Xtream.
-2. TheSportsDB como única fuente de verdad estructurada (nombres, logos, torneos).
-3. Pipeline en 2 vías: Duelos (coincidencia simultánea de rivales) y Sencillos.
-4. Preservación estricta de categorías deportivas oficiales (sin 'Otros Deportes').
+1. Detección nativa de zona horaria vía server_info de Xtream (Colombia UTC-5).
+2. Sofascore API (vía RapidAPI con pool rotativo) como fuente de verdad.
+3. Pipeline en 2 vías: Duelos (coincidencia de rivales) y Sencillos.
+4. Preservación estricta de categorías deportivas oficiales.
 5. Consolidación de streams bajo el mismo ID y cuarentena para descartes.
 """
 
@@ -41,7 +41,7 @@ HORAS_CACHE = 4
 ARCHIVO_SALIDA = "eventos_hoy.json"
 ARCHIVO_CUARENTENA = "eventos_descartados.json"
 
-# Pool de llaves RapidAPI con rotación automática ante código 429 / límite mensual
+# Pool de llaves RapidAPI con rotación automática ante código 429 / 403
 RAPIDAPI_KEYS = [
     "072599e981mshbab710958e9d920p1c8c38jsne9d89560995a",
     "5f5fff28b3mshb7c76039c57175bp1e5b83jsn27e806b7922d",
@@ -78,6 +78,7 @@ DURACION_POR_DEPORTE = {
     "Voleibol": 150,
     "Rugby": 150,
     "Fútbol Americano": 210,
+    "Snooker": 240,
     "Deportes": 150,
 }
 
@@ -110,12 +111,9 @@ def obtener_palabras_clave(texto: str, filtrar_stopwords: bool = True) -> set:
 
 
 def extraer_hora_canal(texto: str, fecha_base: datetime):
-    """
-    Extrae la hora y minuto del stream soportando formatos pegados como 03:07pm.
-    """
+    """Extrae la hora y minuto del stream soportando formatos pegados como 03:07pm."""
     t = texto.strip()
 
-    # Formato HH:MM con AM/PM (ej: 03:07pm, 19:00, 20:00)
     for m in re.finditer(r'(\d{1,2}):(\d{2})\s*([APap][Mm])?', t):
         h, mi = int(m.group(1)), int(m.group(2))
         ampm = m.group(3)
@@ -128,7 +126,6 @@ def extraer_hora_canal(texto: str, fecha_base: datetime):
         if 0 <= h <= 23 and 0 <= mi <= 59:
             return fecha_base.replace(hour=h, minute=mi, second=0, microsecond=0)
 
-    # Formato hora suelta (ej: 8pm, 8 AM)
     for m in re.finditer(r'\b(\d{1,2})\s*([APap][Mm])\b', t):
         h = int(m.group(1))
         ampm = m.group(2).upper()
@@ -143,9 +140,7 @@ def extraer_hora_canal(texto: str, fecha_base: datetime):
 
 
 def obtener_info_servidor_xtream() -> tuple:
-    """
-    Lee server_info de Xtream Codes para obtener la zona horaria real y hora local.
-    """
+    """Lee server_info de Xtream Codes para obtener la zona horaria real y hora local."""
     base_url = XTREAM_URL.rstrip("/")
     api_url = f"{base_url}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
     try:
@@ -168,7 +163,10 @@ def obtener_info_servidor_xtream() -> tuple:
     tz_defecto = timezone(timedelta(hours=-5))
     hoy_defecto = datetime.now(tz_defecto)
     log.info(f"Usando zona horaria de respaldo: UTC-5 ({hoy_defecto.strftime('%Y-%m-%d')})")
-    return tz_defecto, hoy_defectodef hacer_peticion_sofascore(endpoint: str, params: dict = None) -> dict:
+    return tz_defecto, hoy_defecto
+
+
+def hacer_peticion_sofascore(endpoint: str, params: dict = None) -> dict:
     """Ejecuta peticiones rotando entre el pool de llaves RapidAPI si hay error de cuota."""
     global RAPIDAPI_KEYS
     url = f"https://{RAPIDAPI_HOST}{endpoint}"
@@ -212,13 +210,10 @@ def obtener_agenda_maestra(fecha_consulta: str) -> list:
     log.info(f"Descargando Agenda Maestra de Sofascore para fecha {fecha_consulta}...")
     eventos_api = []
 
-    # Iterar por cada deporte configurado
     for deporte_es, deporte_slug in DEPORTES_MAP.items():
-        # Consulta de eventos programados para la fecha
         endpoint = f"/sport/{deporte_slug}/scheduled-events/{fecha_consulta}"
         data = hacer_peticion_sofascore(endpoint)
         
-        # Fallback de endpoint si la estructura de la API usa /tournaments/get-scheduled-events o /matches
         if not data or "events" not in data:
             endpoint_alt = "/matches/get-daily-events"
             data = hacer_peticion_sofascore(endpoint_alt, {"sport": deporte_slug, "date": fecha_consulta})
@@ -241,7 +236,6 @@ def obtener_agenda_maestra(fecha_consulta: str) -> list:
                 eq_local = home_team.get("name", "") if isinstance(home_team, dict) else ""
                 eq_visit = away_team.get("name", "") if isinstance(away_team, dict) else ""
 
-                # Timestamps en formato UNIX o ISO
                 start_ts = ev.get("startTimestamp")
                 if start_ts:
                     dt_utc = datetime.fromtimestamp(start_ts, tz=timezone.utc)
@@ -399,16 +393,12 @@ def detectar_base_media_m3u() -> str:
 
 
 def emparejar_evento(canal: dict, duelos_api: list, sencillos_api: list) -> tuple:
-    """
-    Ejecuta el Reverse Matching determinista:
-    1. Vía Duelos: Coincidencia simultánea de ambos rivales y proximidad horaria.
-    2. Vía Sencillos: Presencia del título del torneo/carrera en el texto.
-    """
+    """Ejecuta el Reverse Matching determinista contra la agenda de Sofascore."""
     texto_canal = canal["texto_normalizado"]
     palabras_canal = set(texto_canal.split())
     hora_canal = canal["hora_local"]
 
-    # ── VÍA 1: DUELOS (Fútbol, Baloncesto, Tenis, Béisbol, NFL, etc.) ─────────
+    # ── VÍA 1: DUELOS (Coincidencia simultánea de rivales) ────────────────────
     for ev in duelos_api:
         palabras_local = obtener_palabras_clave(ev["equipo_local"])
         palabras_visit = obtener_palabras_clave(ev["equipo_visitante"])
@@ -419,21 +409,19 @@ def emparejar_evento(canal: dict, duelos_api: list, sencillos_api: list) -> tupl
         match_local = bool(palabras_local.intersection(palabras_canal))
         match_visit = bool(palabras_visit.intersection(palabras_canal))
 
-        # Requiere coincidencia de ambos rivales (independiente de si hay 'vs', '@' o '-')
         if match_local and match_visit:
             if hora_canal and ev.get("hora_utc"):
                 try:
                     dt_api_utc = datetime.strptime(ev["hora_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
                     dt_canal_utc = hora_canal.astimezone(timezone.utc)
                     diff_min = abs((dt_api_utc - dt_canal_utc).total_seconds()) / 60.0
-                    # Si difiere más de 3 horas, no es el mismo partido
                     if diff_min > 180:
                         continue
                 except Exception:
                     pass
             return ev, "Match Duelo Exitoso"
 
-    # ── VÍA 2: SENCILLOS (F1, UFC, Rally, Golf, Ciclismo, Boxeo) ──────────────
+    # ── VÍA 2: SENCILLOS (Torneos / Circuitos) ────────────────────────────────
     for ev in sencillos_api:
         palabras_evento = obtener_palabras_clave(ev["titulo"], filtrar_stopwords=False)
         palabras_torneo = obtener_palabras_clave(ev["torneo"], filtrar_stopwords=False)
@@ -450,7 +438,7 @@ def emparejar_evento(canal: dict, duelos_api: list, sencillos_api: list) -> tupl
 
 
 def main():
-    log.info("=== Iniciando Curador Universal Directo (TheSportsDB + Xtream) ===")
+    log.info("=== Iniciando Curador Universal Directo (Sofascore + Xtream) ===")
 
     if not XTREAM_URL or not XTREAM_USER or not XTREAM_PASS:
         log.error("Faltan variables de entorno de Xtream (XTREAM_URL, XTREAM_USER, XTREAM_PASS).")
@@ -460,7 +448,7 @@ def main():
     tz_servidor, hoy_servidor = obtener_info_servidor_xtream()
     fecha_hoy_str = hoy_servidor.strftime("%Y-%m-%d")
 
-    # 2. Descargar Agenda Maestra
+    # 2. Descargar Agenda Maestra desde Sofascore
     agenda_completa = obtener_agenda_maestra(fecha_hoy_str)
     duelos_api = [e for e in agenda_completa if e["tipo_evento"] == "duelo"]
     sencillos_api = [e for e in agenda_completa if e["tipo_evento"] == "sencillo"]
@@ -488,7 +476,6 @@ def main():
         if ev_match:
             ev_id = ev_match["id"]
             if ev_id in eventos_vip_dict:
-                # Si el evento ya existe, solo añadimos la nueva opción de stream
                 if not any(f["id_xtream"] == fuente_stream["id_xtream"] for f in eventos_vip_dict[ev_id]["fuentes"]):
                     eventos_vip_dict[ev_id]["fuentes"].append(fuente_stream)
             else:
