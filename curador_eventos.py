@@ -34,29 +34,36 @@ log = logging.getLogger("curador")
 XTREAM_URL = os.environ.get("XTREAM_URL")
 XTREAM_USER = os.environ.get("XTREAM_USER")
 XTREAM_PASS = os.environ.get("XTREAM_PASS")
-
-THESPORTSDB_KEY = os.environ.get("THESPORTSDB_KEY", "123")
-THESPORTSDB_BASE = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}"
 PUENTE_URL = os.environ.get("PUENTE_URL", "https://mi-dashboard-tv.onrender.com/api/puente_xtream")
 
-ARCHIVO_CACHE = "agenda_api_v8.json"
+ARCHIVO_CACHE = "agenda_sofascore_v1.json"
 HORAS_CACHE = 4
 ARCHIVO_SALIDA = "eventos_hoy.json"
 ARCHIVO_CUARENTENA = "eventos_descartados.json"
 
-# ─── DEPORTES A CONSULTAR EN THESPORTSDB ────────────────────────────────────
+# Pool de llaves RapidAPI con rotación automática ante código 429 / límite mensual
+RAPIDAPI_KEYS = [
+    "072599e981mshbab710958e9d920p1c8c38jsne9d89560995a",
+    "5f5fff28b3mshb7c76039c57175bp1e5b83jsn27e806b7922d",
+    "9d5754dc26mshb254b3fc1eaf4adp15078cjsn5334f87c679a",
+    "a4a8d3afacmshfc27d6369c47862p132d4cjsn729698ccd676",
+    "b17398907amshc7271e57c364f89p1ef63ajsn80a1eec7990c"
+]
+
+RAPIDAPI_HOST = "sofascore.p.rapidapi.com"
+
+# Deportes a consultar en Sofascore
 DEPORTES_MAP = {
-    "Fútbol": "Soccer",
-    "Baloncesto": "Basketball",
-    "Tenis": "Tennis",
-    "Motor": "Motorsport",
-    "Béisbol": "Baseball",
-    "Hockey": "Ice Hockey",
-    "Voleibol": "Volleyball",
-    "Rugby": "Rugby",
-    "Fútbol Americano": "American Football",
-    "Combate": "Fighting",
-    "Ciclismo": "Cycling",
+    "Fútbol": "football",
+    "Baloncesto": "basketball",
+    "Tenis": "tennis",
+    "Rugby": "rugby",
+    "Béisbol": "baseball",
+    "Hockey": "ice-hockey",
+    "Voleibol": "volleyball",
+    "Fútbol Americano": "american-football",
+    "Motor": "motorsport",
+    "Snooker": "snooker"
 }
 
 DURACION_POR_DEPORTE = {
@@ -161,11 +168,35 @@ def obtener_info_servidor_xtream() -> tuple:
     tz_defecto = timezone(timedelta(hours=-5))
     hoy_defecto = datetime.now(tz_defecto)
     log.info(f"Usando zona horaria de respaldo: UTC-5 ({hoy_defecto.strftime('%Y-%m-%d')})")
-    return tz_defecto, hoy_defecto
+    return tz_defecto, hoy_defectodef hacer_peticion_sofascore(endpoint: str, params: dict = None) -> dict:
+    """Ejecuta peticiones rotando entre el pool de llaves RapidAPI si hay error de cuota."""
+    global RAPIDAPI_KEYS
+    url = f"https://{RAPIDAPI_HOST}{endpoint}"
+    
+    for i, key in enumerate(RAPIDAPI_KEYS):
+        host_actual = "sofascore6.p.rapidapi.com" if "sofascore6" in key else RAPIDAPI_HOST
+        headers = {
+            "x-rapidapi-host": host_actual,
+            "x-rapidapi-key": key,
+            "Content-Type": "application/json"
+        }
+        try:
+            r = requests.get(url, headers=headers, params=params, timeout=15)
+            if r.status_code == 200:
+                return r.json()
+            elif r.status_code in (429, 403):
+                log.warning(f"Llave #{i+1} agotada o bloqueada (HTTP {r.status_code}). Rotando a la siguiente...")
+                continue
+            else:
+                log.warning(f"Error HTTP {r.status_code} en endpoint {endpoint}")
+        except Exception as e:
+            log.warning(f"Fallo de conexión con llave #{i+1}: {e}")
+            continue
+    return None
 
 
 def obtener_agenda_maestra(fecha_consulta: str) -> list:
-    """Descarga la agenda completa del día desde TheSportsDB."""
+    """Descarga la agenda completa del día desde Sofascore sin límites de cobertura."""
     if os.path.exists(ARCHIVO_CACHE):
         tiempo_modificacion = os.path.getmtime(ARCHIVO_CACHE)
         if (time.time() - tiempo_modificacion) < (HORAS_CACHE * 3600):
@@ -178,59 +209,71 @@ def obtener_agenda_maestra(fecha_consulta: str) -> list:
             except Exception:
                 pass
 
-    log.info(f"Descargando Agenda Maestra de TheSportsDB para fecha {fecha_consulta}...")
+    log.info(f"Descargando Agenda Maestra de Sofascore para fecha {fecha_consulta}...")
     eventos_api = []
 
-    for deporte_es, deporte_api in DEPORTES_MAP.items():
-        url = f"{THESPORTSDB_BASE}/eventsday.php"
-        params = {"d": fecha_consulta, "s": deporte_api}
-        try:
-            time.sleep(1.0)
-            r = requests.get(url, params=params, timeout=15)
-            if r.status_code == 429:
-                time.sleep(5)
-                r = requests.get(url, params=params, timeout=15)
-            if r.status_code != 200:
-                continue
-            data = r.json().get("events") or []
-        except Exception as e:
-            log.warning(f"Error consultando agenda para {deporte_es}: {e}")
+    # Iterar por cada deporte configurado
+    for deporte_es, deporte_slug in DEPORTES_MAP.items():
+        # Consulta de eventos programados para la fecha
+        endpoint = f"/sport/{deporte_slug}/scheduled-events/{fecha_consulta}"
+        data = hacer_peticion_sofascore(endpoint)
+        
+        # Fallback de endpoint si la estructura de la API usa /tournaments/get-scheduled-events o /matches
+        if not data or "events" not in data:
+            endpoint_alt = "/matches/get-daily-events"
+            data = hacer_peticion_sofascore(endpoint_alt, {"sport": deporte_slug, "date": fecha_consulta})
+
+        if not data:
             continue
 
-        for ev in data:
-            try:
-                fecha_str = ev.get("dateEvent")
-                hora_str = ev.get("strTime") or "00:00:00"
-                if not fecha_str:
-                    continue
-                dt_naive = datetime.strptime(f"{fecha_str} {hora_str[:8]}", "%Y-%m-%d %H:%M:%S")
-                dt_utc = dt_naive.replace(tzinfo=timezone.utc)
+        lista_eventos = data.get("events") or data.get("data") or []
+        log.info(f"Sofascore [{deporte_es}]: {len(lista_eventos)} eventos encontrados.")
 
-                torneo = ev.get("strLeague", "") or ""
-                eq_local = ev.get("strHomeTeam", "") or ""
-                eq_visit = ev.get("strAwayTeam", "") or ""
+        for ev in lista_eventos:
+            try:
+                id_ev = str(ev.get("id") or ev.get("idEvent") or ev.get("customId"))
+                torneo_obj = ev.get("tournament", {})
+                torneo_nombre = torneo_obj.get("name", "") if isinstance(torneo_obj, dict) else str(torneo_obj)
+                
+                home_team = ev.get("homeTeam", {})
+                away_team = ev.get("awayTeam", {})
+                
+                eq_local = home_team.get("name", "") if isinstance(home_team, dict) else ""
+                eq_visit = away_team.get("name", "") if isinstance(away_team, dict) else ""
+
+                # Timestamps en formato UNIX o ISO
+                start_ts = ev.get("startTimestamp")
+                if start_ts:
+                    dt_utc = datetime.fromtimestamp(start_ts, tz=timezone.utc)
+                else:
+                    fecha_str = ev.get("startDate") or fecha_consulta
+                    dt_utc = datetime.strptime(fecha_str[:10], "%Y-%m-%d").replace(tzinfo=timezone.utc)
 
                 if eq_local and eq_visit:
                     titulo = f"{eq_local} vs {eq_visit}"
                     tipo_evento_api = "duelo"
                 else:
-                    titulo = ev.get("strEvent", "") or ev.get("strFilename", "") or torneo
+                    titulo = ev.get("name") or ev.get("slug") or torneo_nombre
                     tipo_evento_api = "sencillo"
 
+                logo_local = f"https://api.sofascore.app/api/v1/team/{home_team.get('id')}/image" if isinstance(home_team, dict) and home_team.get("id") else ""
+                logo_visit = f"https://api.sofascore.app/api/v1/team/{away_team.get('id')}/image" if isinstance(away_team, dict) and away_team.get("id") else ""
+                logo_torneo = f"https://api.sofascore.app/api/v1/unique-tournament/{torneo_obj.get('uniqueTournament', {}).get('id')}/image" if isinstance(torneo_obj, dict) and torneo_obj.get("uniqueTournament") else ""
+
                 eventos_api.append({
-                    "id": str(ev.get("idEvent")),
+                    "id": id_ev,
                     "titulo": titulo,
-                    "torneo": torneo,
-                    "categoria": deporte_es,  # Preserva su deporte real
+                    "torneo": torneo_nombre,
+                    "categoria": deporte_es,
                     "tipo_evento": tipo_evento_api,
                     "equipo_local": eq_local,
                     "equipo_visitante": eq_visit,
-                    "subtitulo": ev.get("strEvent", "") if tipo_evento_api == "sencillo" else "",
+                    "subtitulo": ev.get("slug", "") if tipo_evento_api == "sencillo" else "",
                     "hora_utc": dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ"),
                     "duracion_min": DURACION_POR_DEPORTE.get(deporte_es, 150),
-                    "logo_torneo": ev.get("strLeagueBadge", "") or ev.get("strBadge", "") or "",
-                    "logo_local": ev.get("strHomeTeamBadge", "") or ev.get("strThumb", "") or "",
-                    "logo_visitante": ev.get("strAwayTeamBadge", "") or "",
+                    "logo_torneo": logo_torneo,
+                    "logo_local": logo_local,
+                    "logo_visitante": logo_visit,
                     "tier": 2,
                 })
             except Exception:
@@ -239,6 +282,7 @@ def obtener_agenda_maestra(fecha_consulta: str) -> list:
     if eventos_api:
         with open(ARCHIVO_CACHE, "w", encoding="utf-8") as f:
             json.dump(eventos_api, f, ensure_ascii=False, indent=2)
+            
     return eventos_api
 
 
