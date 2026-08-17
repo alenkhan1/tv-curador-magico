@@ -75,7 +75,7 @@ CACHE_VERSION = 1
 # El catalogo completo (items + sin_identificar) nunca tiene tope.
 # Estos topes solo deciden cuantas referencias entran en cada fila.
 TOPE_GENERO = int(os.environ.get("TOPE_GENERO", "50"))
-TOPE_ESTRENOS = int(os.environ.get("TOPE_ESTRENOS", "30"))
+TOPE_ESTRENOS = int(os.environ.get("TOPE_ESTRENOS", "50"))
 TOPE_EPOCA = int(os.environ.get("TOPE_EPOCA", "50"))
 PISO_FILA = int(os.environ.get("PISO_FILA", "10"))
 
