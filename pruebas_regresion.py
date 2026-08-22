@@ -1,92 +1,100 @@
 # -*- coding: utf-8 -*-
-"""Pruebas deterministas de regresión para el curador AllStreamTV v9."""
+"""Pruebas sin red del contrato de fecha y correlación del curador v10."""
+from __future__ import annotations
 
-from datetime import datetime
-from zoneinfo import ZoneInfo
+import unittest
+from datetime import datetime, timedelta, timezone
 
-from curador_eventos import (
-    emparejar_sencillo,
-    extraer_sesion,
-    inferir_deporte,
-    normalizar_texto,
-    tokenizar,
-)
-from inyector_epg import buscar_evento_oficial, construir_evento_epg
-
-TZ = ZoneInfo("America/Bogota")
+import curador_eventos as curador
+import inyector_epg as epg
 
 
-def canal(nombre: str, categoria: str | None) -> dict:
-    return {
-        "id_xtream": "prueba",
-        "nombre_ui": nombre,
-        "texto_normalizado": normalizar_texto(nombre),
-        "tokens": tokenizar(nombre),
-        "hora_local": datetime(2026, 8, 22, 10, 0, tzinfo=TZ),
-        "categoria_inferida": categoria,
-        "sesion": extraer_sesion(nombre),
-    }
+class PruebasJornadaColombia(unittest.TestCase):
+    def setUp(self) -> None:
+        self.tz = curador.obtener_zona_aplicacion()
+        self.hoy = datetime.now(self.tz).replace(hour=10, minute=0, second=0, microsecond=0)
 
+    def test_fecha_xtream_de_ayer_es_rechazada(self) -> None:
+        ayer = self.hoy - timedelta(days=1)
+        aceptado, motivo = curador.es_candidato(
+            {"name": f"{ayer.strftime('%d/%m')} 19:00 Fútbol Equipo A vs Equipo B", "category_id": ""},
+            set(), self.hoy,
+        )
+        self.assertFalse(aceptado)
+        self.assertEqual(motivo, "fecha_xtream_fuera_de_jornada")
 
-def evento(event_id: str, titulo: str, torneo: str, categoria: str) -> dict:
-    return {
-        "id": event_id,
-        "titulo": titulo,
-        "torneo": torneo,
-        "categoria": categoria,
-        "tipo_evento": "sencillo",
-        "equipo_local": "",
-        "equipo_visitante": "",
-        "subtitulo": titulo,
-        "hora_utc": "2026-08-22T15:00:00Z",
-        "duracion_min": 210,
-        "logo_torneo": "",
-        "logo_local": "",
-        "logo_visitante": "",
-        "tier": 1,
-    }
+    def test_categoria_xtream_de_ayer_es_rechazada_aunque_el_nombre_tenga_hora(self) -> None:
+        aceptado, motivo = curador.es_candidato(
+            {"name": "19:00 Fútbol Equipo A vs Equipo B", "category_id": "ayer"},
+            set(), self.hoy, {"ayer"},
+        )
+        self.assertFalse(aceptado)
+        self.assertEqual(motivo, "categoria_xtream_fuera_de_jornada")
 
+    def test_fecha_xtream_de_hoy_es_aceptada(self) -> None:
+        aceptado, motivo = curador.es_candidato(
+            {"name": f"{self.hoy.strftime('%d/%m')} 19:00 Fútbol Equipo A vs Equipo B", "category_id": ""},
+            set(), self.hoy,
+        )
+        self.assertTrue(aceptado)
+        self.assertEqual(motivo, "fecha_xtream_hoy")
 
-def ejecutar() -> None:
-    vuelta = evento("vuelta", "Vuelta a España", "UCI World Tour", "Ciclismo")
-    dp_world = canal("05:30 | DP World Tour | Nexo Championship | HD", inferir_deporte("DP World Tour Golf"))
-    match, _, _ = emparejar_sencillo(dp_world, [vuelta])
-    assert match is None, "No debe relacionarse ciclismo con un torneo de golf."
+    def test_desfase_de_veintitres_horas_no_puede_confirmar(self) -> None:
+        canal = {"hora_local": self.hoy, "categoria_inferida": "Fútbol", "sesion": None}
+        evento = {"hora_utc": curador.iso_utc(self.hoy - timedelta(hours=23))}
+        cercano, diferencia = curador._proximidad_horaria(canal, evento)
+        self.assertFalse(cercano)
+        self.assertGreater(diferencia or 0, curador.MAX_DIFERENCIA_MIN)
 
-    ufc = evento("ufc", "UFC Fight Night Hernandez vs Rodrigues", "UFC", "Combate")
-    bkfc = canal("16:00 | BKFC | BKFC Fight Night | HD", inferir_deporte("BKFC Fight Night"))
-    match, _, _ = emparejar_sencillo(bkfc, [ufc])
-    assert match is None, "No debe relacionarse UFC con BKFC por palabras genéricas."
+    def test_epg_de_madrugada_espanola_puede_ser_tarde_colombiana(self) -> None:
+        # 23 de agosto, 00:30 CEST corresponde a 22 de agosto, 17:30 en Bogotá.
+        inicio = epg.parse_timestamp_epg("20260823003000 +0200")
+        self.assertIsNotNone(inicio)
+        self.assertEqual(inicio.astimezone(self.tz).date().isoformat(), "2026-08-22")
+        self.assertEqual(inicio.astimezone(self.tz).strftime("%H:%M"), "17:30")
 
-    sprint = evento("f1", "Dutch Grand Prix Sprint", "Formula 1", "Motor")
-    clasificacion = canal("08:00 | Formula 1 | GP Países Bajos Clasificación Sprint", inferir_deporte("Formula 1"))
-    match, _, _ = emparejar_sencillo(clasificacion, [sprint])
-    assert match is None, "Clasificación sprint no es carrera sprint."
+    def test_epg_de_madrugada_espanola_puede_pertenecer_a_ayer_colombia(self) -> None:
+        # 22 de agosto, 06:30 CEST corresponde a 21 de agosto, 23:30 en Bogotá.
+        inicio = epg.parse_timestamp_epg("20260822063000 +0200")
+        self.assertIsNotNone(inicio)
+        self.assertEqual(inicio.astimezone(self.tz).date().isoformat(), "2026-08-21")
 
-    carrera_sprint = canal("10:00 | Formula 1 | Dutch Grand Prix Sprint Race", inferir_deporte("Formula 1"))
-    match, _, _ = emparejar_sencillo(carrera_sprint, [sprint])
-    assert match is sprint, "Una carrera sprint sí debe asociarse al evento sprint oficial."
+    def test_sesion_formula_uno_no_confunde_sprint_con_clasificacion(self) -> None:
+        canal = {"sesion": "clasificacion_sprint", "categoria_inferida": "Motor"}
+        carrera = {"titulo": "Gran Premio de Países Bajos Carrera Sprint", "subtitulo": "", "categoria": "Motor"}
+        self.assertFalse(curador._sesiones_compatibles(canal, carrera))
 
-    cycling = evento("cycling", "World Tour Vancouver", "UCI World Tour", "Ciclismo")
-    oficial, puntuacion, _ = buscar_evento_oficial("Mundial de hockey hierba · Alemania - España", [cycling])
-    assert oficial is None and puntuacion == 0, "Hockey no puede heredar categoría Cycling."
+    def test_normalizador_api_y_match_xtream_crean_evento_confirmado(self) -> None:
+        inicio = self.hoy.replace(hour=19)
+        bruto = {
+            "fixture": {"id": 501, "timestamp": int(inicio.timestamp()), "status": {"short": "NS"}},
+            "league": {"name": "Liga de Prueba", "logo": "liga.png"},
+            "teams": {"home": {"name": "Equipo Azul", "logo": "azul.png"}, "away": {"name": "Equipo Rojo", "logo": "rojo.png"}},
+        }
+        evento = curador.normalizar_evento_api("football", bruto, curador.API_CONFIGS["football"], self.tz)
+        self.assertIsNotNone(evento)
+        canal = {
+            "id_xtream": "99", "nombre_ui": f"{self.hoy.strftime('%d/%m')} 19:00 Fútbol Equipo Azul vs Equipo Rojo",
+            "texto_normalizado": "FUTBOL EQUIPO AZUL VS EQUIPO ROJO", "tokens": curador.tokenizar("Fútbol Equipo Azul vs Equipo Rojo"),
+            "hora_local": inicio, "categoria_inferida": "Fútbol", "sesion": None, "motivo_vigencia": "fecha_xtream_hoy",
+        }
+        eventos, descartados, _ = curador.curar_eventos([evento], [canal], self.hoy.date())
+        self.assertEqual(len(descartados), 0)
+        self.assertEqual(len(eventos), 1)
+        self.assertEqual(eventos[0]["estado"], "confirmado")
+        self.assertEqual(eventos[0]["fuentes"][0]["id_xtream"], "99")
 
-    probable = construir_evento_epg(
-        "DIRECTO · Mundial de hockey hierba · Alemania - España",
-        "",
-        datetime(2026, 8, 22, 18, 0, tzinfo=ZoneInfo("UTC")),
-        datetime(2026, 8, 22, 20, 0, tzinfo=ZoneInfo("UTC")),
-        [{"nombre": "TELEDEPORTE", "id_xtream": "1"}],
-        [cycling],
-    )
-    assert probable is not None, "Una emisión de hockey en directo puede conservarse como probable."
-    assert probable["categoria"] == "Hockey", "La emisión probable debe conservar su propia categoría."
-    assert probable["estado"] == "probable", "La emisión sin agenda oficial debe quedar marcada como probable."
-
-    requeridos = {"id", "titulo", "torneo", "categoria", "hora_utc", "duracion_min", "fuentes"}
-    assert requeridos.issubset(probable), "La salida debe mantener los campos esenciales de Android TV."
+    def test_tarjeta_probable_conserva_hora_colombia(self) -> None:
+        canal = {
+            "id_xtream": "77", "nombre_ui": f"{self.hoy.strftime('%d/%m')} 19:00 UFC Fight Night",
+            "texto_normalizado": "UFC FIGHT NIGHT", "hora_local": self.hoy.replace(hour=19),
+            "categoria_inferida": "Combate", "motivo_vigencia": "fecha_xtream_hoy",
+        }
+        tarjeta = curador.crear_probable_xtream(canal, self.tz)
+        self.assertIsNotNone(tarjeta)
+        self.assertEqual(tarjeta["estado"], "probable")
+        self.assertEqual(tarjeta["hora_local_producto"], "19:00")
 
 
 if __name__ == "__main__":
-    ejecutar()
-    print("PRUEBAS_DE_REGRESION_OK")
+    unittest.main(verbosity=2)
