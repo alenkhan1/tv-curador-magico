@@ -1,66 +1,92 @@
-name: Curador Eventos Deportivos
+name: Actualizar cartelera deportiva
 
 on:
   schedule:
-    # 3 ejecuciones diarias en UTC, espaciadas ~8 horas, para cubrir bien
-    # tanto la zona horaria de Colombia (UTC-5) como la de España (CEST UTC+2)
-    # y capturar sesiones de Eurosport que se confirman/actualizan mas tarde
-    # en el dia (ej. sesiones de tarde/noche europeas).
-    - cron: "0 6 * * *"   # 06:00 UTC -> 01:00 Colombia / 08:00 España
-    - cron: "0 14 * * *"  # 14:00 UTC -> 09:00 Colombia / 16:00 España
-    - cron: "0 21 * * *"  # 21:00 UTC -> 16:00 Colombia / 23:00 España
+    # Actualiza cada cuatro horas. GitHub puede demorar tareas programadas en
+    # horas de alta carga; workflow_dispatch permite forzar una actualización.
+    - cron: "17 1,5,9,13,17,21 * * *"
   workflow_dispatch:
+
+concurrency:
+  group: actualizar-cartelera-deportiva
+  cancel-in-progress: false
 
 jobs:
   procesar_eventos:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: write
 
     steps:
-      - name: Descargar el repositorio
+      - name: Descargar repositorio
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 1
 
       - name: Configurar Python
-        uses: actions/setup-python@v5.6.0
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
       - name: Instalar dependencias
-        run: pip install requests
+        run: python -m pip install --upgrade pip requests
 
-      - name: Ejecutar Curador Base (TheSportsDB + Xtream)
+      - name: Ejecutar curador base
         env:
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
+          # Cree este secreto para usar una clave propia; si queda vacío, el
+          # script aplica la clave de desarrollo 123 con cadencia segura.
+          THESPORTSDB_KEY: ${{ secrets.THESPORTSDB_KEY }}
+          # Si usa otro puente, créelo como secreto. El valor por defecto del
+          # script se aplica cuando este campo queda vacío.
+          PUENTE_URL: ${{ secrets.PUENTE_URL }}
+          APP_TIMEZONE: America/Bogota
+          THESPORTSDB_MIN_INTERVAL: "2.1"
+          HORAS_CACHE: "3"
+          MAX_CUARENTENA: "1000"
+          LOG_LEVEL: INFO
         run: python curador_eventos.py
 
-      # Nota (13-ago-2026): el inyector quedo dedicado EXCLUSIVAMENTE a
-      # Eurosport 1/2. Se elimino el bloque de EPG America (Win Sports/
-      # TyC/DSports) porque no existia fuente EPG confiable para esos
-      # canales y el validador de Google nunca se activaba en este
-      # workflow (no se pasaban GOOGLE_API_KEY/GOOGLE_CX como env), asi
-      # que ese trabajo era inoficioso. Por eso ya no se necesitan esas
-      # credenciales aqui.
-      - name: Ejecutar Inyector Eurosport (EPG_dobleM)
+      - name: Enriquecer con EPG lineal verificable
         env:
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
+          THESPORTSDB_KEY: ${{ secrets.THESPORTSDB_KEY }}
+          PUENTE_URL: ${{ secrets.PUENTE_URL }}
+          APP_TIMEZONE: America/Bogota
+          THESPORTSDB_MIN_INTERVAL: "2.1"
+          HORAS_CACHE: "3"
+          # true conserva emisiones deportivas explícitamente en vivo que no
+          # aparecen en la agenda oficial, siempre marcadas como "probable".
+          INCLUIR_EPG_NO_VERIFICADO: "true"
+          MAX_EPG_EVENTOS: "150"
+          LOG_LEVEL: INFO
         run: python inyector_epg.py
 
-      - name: Guardar cambios Eventos
+      - name: Resumen de curación
+        if: always()
+        run: |
+          echo "## Curación deportiva" >> "$GITHUB_STEP_SUMMARY"
+          if [ -f meta_curador.json ]; then
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat meta_curador.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No se generó meta_curador.json." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Publicar cartelera y diagnóstico
+        if: success()
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-
-          git add eventos_hoy.json
-
-          if [ -f "meta_curador.json" ]; then
-            git add meta_curador.json
-          fi
-
-          git commit -m "Actualización de Eventos" || echo "Sin cambios"
-          git pull --rebase
-          git push
+          git add eventos_hoy.json eventos_descartados.json meta_curador.json
+          git add agenda_api_v9.json 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -m "Actualización de cartelera deportiva"
+          git pull --rebase origin main
+          git push origin HEAD:main
