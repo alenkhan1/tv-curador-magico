@@ -66,8 +66,11 @@ jobs:
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
           PUENTE_URL: ${{ secrets.PUENTE_URL }}
           APP_TIMEZONE: America/Bogota
-          INCLUIR_EPG_NO_VERIFICADO: "true"
-          MAX_EPG_EVENTOS: "150"
+          # EN CANAL: admite emisiones deportivas EPG aunque no digan DIRECTO,
+          # pero el inyector excluye repeticiones, resúmenes y contenido editorial.
+          INCLUIR_EPG_EN_CANAL: "true"
+          PUBLICAR_EPG_FUTURO: "true"
+          MAX_EPG_EVENTOS: "180"
           MAX_DIFERENCIA_EPG_MIN: "210"
           LOG_LEVEL: INFO
         run: python inyector_epg.py
@@ -94,8 +97,8 @@ jobs:
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          git add eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_v10.json presupuesto_api.json
+          git add eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_actual.json presupuesto_api.json
           git diff --cached --quiet && exit 0
-          git commit -m "Actualización de cartelera multideporte"
+          git commit -m "Actualización de cartelera deportiva EN CANAL"
           git pull --rebase origin main
           git push origin HEAD:main
