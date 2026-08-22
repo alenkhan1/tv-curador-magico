@@ -1,19 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-CURADOR DE EVENTOS DEPORTIVOS — AllStreamTV
+"""Curador deportivo multideporte para AllStreamTV.
 
-Principios de esta versión:
-- Una única zona horaria de producto, configurable con APP_TIMEZONE.
-- Agenda deportiva normalizada, con caché y control explícito de tasa.
-- Correlación conservadora: no confunde deportes, sesiones, resúmenes ni eventos
-  que solo comparten términos genéricos.
-- Trazabilidad por evento y por señal descartada para depurar el catálogo.
-- Salida compatible con la estructura previa de eventos_hoy.json; añade campos
-  de confianza que pueden ser ignorados por clientes antiguos.
+La agenda se construye con API-Sports por disciplina. Xtream aporta las señales
+reproducibles y nunca se descarta una señal vigente solo porque TheSportsDB no
+la conozca. Colombia (America/Bogota) es la única zona que determina la jornada.
 """
-
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import os
@@ -21,8 +15,7 @@ import re
 import time
 import unicodedata
 from collections import Counter
-from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable, Optional
 from urllib.parse import urlparse
@@ -31,7 +24,6 @@ from zoneinfo import ZoneInfo
 import requests
 
 
-# ─── CONFIGURACIÓN ──────────────────────────────────────────────────────────
 logging.basicConfig(
     level=os.environ.get("LOG_LEVEL", "INFO").upper(),
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -39,126 +31,100 @@ logging.basicConfig(
 )
 log = logging.getLogger("curador")
 
+# ─── Configuración ───────────────────────────────────────────────────────────
+APP_TIMEZONE = os.environ.get("APP_TIMEZONE", "America/Bogota")
+API_SPORTS_KEY = os.environ.get("API_SPORTS_KEY", "").strip()
+API_SPORTS_MIN_INTERVAL = max(float(os.environ.get("API_SPORTS_MIN_INTERVAL", "7")), 0.0)
+API_SPORTS_MAX_RETRIES = max(int(os.environ.get("API_SPORTS_MAX_RETRIES", "1")), 0)
+API_SPORTS_DEPORTES = {
+    x.strip().lower()
+    for x in os.environ.get(
+        "API_SPORTS_DEPORTES",
+        "football,basketball,baseball,formula-1,hockey,mma,nba,nfl,rugby,volleyball,handball,afl",
+    ).split(",")
+    if x.strip()
+}
+
 XTREAM_URL = (os.environ.get("XTREAM_URL") or "").rstrip("/")
 XTREAM_USER = os.environ.get("XTREAM_USER") or ""
 XTREAM_PASS = os.environ.get("XTREAM_PASS") or ""
 PUENTE_URL = os.environ.get("PUENTE_URL") or "https://mi-dashboard-tv.onrender.com/api/puente_xtream"
 
-THESPORTSDB_KEY = os.environ.get("THESPORTSDB_KEY") or "123"
-THESPORTSDB_BASE = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}"
-# El plan gratuito documenta 30 req/min. 2,1 s mantiene una cadencia segura.
-THESPORTSDB_MIN_INTERVAL = max(float(os.environ.get("THESPORTSDB_MIN_INTERVAL", "2.1")), 0.0)
-THESPORTSDB_MAX_RETRIES = max(int(os.environ.get("THESPORTSDB_MAX_RETRIES", "3")), 0)
+THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "123").strip()
+USAR_THESPORTSDB_RESPALDO = os.environ.get("USAR_THESPORTSDB_RESPALDO", "true").lower() in {"1", "true", "si", "sí", "yes"}
+THESPORTSDB_MAX_EVENTOS = max(int(os.environ.get("THESPORTSDB_MAX_EVENTOS", "3")), 0)
+THESPORTSDB_MAX_SOLICITUDES_DIA = max(int(os.environ.get("THESPORTSDB_MAX_SOLICITUDES_DIA", "3")), 0)
 
-APP_TIMEZONE = os.environ.get("APP_TIMEZONE") or "America/Bogota"
-HORAS_CACHE = max(int(os.environ.get("HORAS_CACHE", "3")), 0)
-ARCHIVO_CACHE = Path(os.environ.get("ARCHIVO_CACHE", "agenda_api_v9.json"))
+ARCHIVO_CACHE = Path(os.environ.get("ARCHIVO_CACHE", "agenda_api_v10.json"))
 ARCHIVO_SALIDA = Path(os.environ.get("ARCHIVO_SALIDA", "eventos_hoy.json"))
 ARCHIVO_CUARENTENA = Path(os.environ.get("ARCHIVO_CUARENTENA", "eventos_descartados.json"))
 ARCHIVO_META = Path(os.environ.get("ARCHIVO_META", "meta_curador.json"))
+ARCHIVO_PRESUPUESTO = Path(os.environ.get("ARCHIVO_PRESUPUESTO", "presupuesto_api.json"))
+MINUTOS_CACHE = max(int(os.environ.get("MINUTOS_CACHE", "45")), 0)
 MAX_CUARENTENA = max(int(os.environ.get("MAX_CUARENTENA", "1000")), 0)
-
-# Se consulta primero el calendario general y después deportes donde la cobertura
-# del endpoint general suele ser irregular. La lista puede ampliarse por entorno.
-DEPORTES_TSDB = [
-    "Soccer", "Basketball", "Tennis", "Motorsport", "Baseball", "Ice Hockey",
-    "Volleyball", "Rugby", "American Football", "Fighting", "Cycling", "Golf",
-    "Snooker", "Athletics", "Gymnastics", "Swimming", "Darts",
-]
-
-CATEGORIAS = {
-    "SOCCER": "Fútbol",
-    "FOOTBALL": "Fútbol",
-    "BASKETBALL": "Baloncesto",
-    "TENNIS": "Tenis",
-    "MOTORSPORT": "Motor",
-    "FORMULA 1": "Motor",
-    "BASEBALL": "Béisbol",
-    "ICE HOCKEY": "Hockey",
-    "HOCKEY": "Hockey",
-    "VOLLEYBALL": "Voleibol",
-    "RUGBY": "Rugby",
-    "AMERICAN FOOTBALL": "Fútbol Americano",
-    "FIGHTING": "Combate",
-    "MMA": "Combate",
-    "BOXING": "Combate",
-    "WRESTLING": "Combate",
-    "CYCLING": "Ciclismo",
-    "GOLF": "Golf",
-    "SNOOKER": "Snooker",
-    "ATHLETICS": "Atletismo",
-    "GYMNASTICS": "Gimnasia",
-    "SWIMMING": "Natación",
-    "DARTS": "Dardos",
-}
+MAX_DIFERENCIA_MIN = max(int(os.environ.get("MAX_DIFERENCIA_MIN", "180")), 15)
+PUBLICAR_XTREAM_PROBABLE = os.environ.get("PUBLICAR_XTREAM_PROBABLE", "true").lower() in {"1", "true", "si", "sí", "yes"}
+PUBLICAR_AGENDA_SIN_FUENTE = os.environ.get("PUBLICAR_AGENDA_SIN_FUENTE", "false").lower() in {"1", "true", "si", "sí", "yes"}
 
 DURACION_POR_CATEGORIA = {
-    "Fútbol": 130, "Baloncesto": 160, "Tenis": 210, "Motor": 210,
-    "Béisbol": 210, "Hockey": 160, "Voleibol": 160, "Rugby": 160,
-    "Fútbol Americano": 220, "Combate": 210, "Ciclismo": 330, "Golf": 300,
-    "Snooker": 240, "Atletismo": 180, "Gimnasia": 180, "Natación": 150,
-    "Dardos": 180, "Deportes": 150,
+    "Fútbol": 130, "Baloncesto": 160, "Béisbol": 210, "Motor": 210,
+    "Hockey": 160, "Combate": 210, "Tenis": 210, "Rugby": 160,
+    "Voleibol": 160, "Fútbol Americano": 220, "Handball": 150,
+    "Deportes": 150,
 }
 
-# Términos que no identifican inequívocamente un evento. Se eliminan antes de
-# comparar títulos, pero se conservan en la interfaz original.
+# host, endpoint, categoría, forma de respuesta. El endpoint se consulta una
+# vez por jornada; los adaptadores toleran campos ausentes de ligas pequeñas.
+API_CONFIGS: dict[str, dict[str, str]] = {
+    "football": {"host": "https://v3.football.api-sports.io", "endpoint": "fixtures", "categoria": "Fútbol", "tipo": "games"},
+    "basketball": {"host": "https://v1.basketball.api-sports.io", "endpoint": "games", "categoria": "Baloncesto", "tipo": "games"},
+    "baseball": {"host": "https://v1.baseball.api-sports.io", "endpoint": "games", "categoria": "Béisbol", "tipo": "games"},
+    "hockey": {"host": "https://v1.hockey.api-sports.io", "endpoint": "games", "categoria": "Hockey", "tipo": "games"},
+    "handball": {"host": "https://v1.handball.api-sports.io", "endpoint": "games", "categoria": "Handball", "tipo": "games"},
+    "rugby": {"host": "https://v1.rugby.api-sports.io", "endpoint": "games", "categoria": "Rugby", "tipo": "games"},
+    "volleyball": {"host": "https://v1.volleyball.api-sports.io", "endpoint": "games", "categoria": "Voleibol", "tipo": "games"},
+    "afl": {"host": "https://v1.afl.api-sports.io", "endpoint": "games", "categoria": "Fútbol Australiano", "tipo": "games"},
+    "nfl": {"host": "https://v1.american-football.api-sports.io", "endpoint": "games", "categoria": "Fútbol Americano", "tipo": "games"},
+    "nba": {"host": "https://v2.nba.api-sports.io", "endpoint": "games", "categoria": "Baloncesto", "tipo": "games"},
+    "formula-1": {"host": "https://v1.formula-1.api-sports.io", "endpoint": "races", "categoria": "Motor", "tipo": "races"},
+    "mma": {"host": "https://v1.mma.api-sports.io", "endpoint": "fights", "categoria": "Combate", "tipo": "fights"},
+}
+
 STOPWORDS = {
-    "A", "AL", "AND", "AT", "BY", "CON", "COPA", "DE", "DEL", "EL", "EN", "FOR",
-    "GRAND", "GRAN", "HD", "LA", "LAS", "LEAGUE", "LIVE", "LOS", "OF", "ON", "OPEN",
-    "PARA", "PARTIDO", "PPV", "RACE", "SERIES", "SPORT", "THE", "TO", "TOUR", "TV",
-    "UN", "UNA", "VS", "VIVO", "WORLD", "CAMPEONATO", "CHAMPIONSHIP", "EVENT", "EVENTS",
-    "FIGHT", "NIGHT", "MATCH", "DIRECTO", "HOY", "TODAY", "DAILY", "DIARIO", "DIA",
-    "PRACTICE", "ENTRENAMIENTO", "ROUND", "FINAL", "FASE", "JORNADA",
+    "A", "AL", "AND", "AT", "BY", "CON", "COPA", "DE", "DEL", "EL", "EN", "FOR", "GRAND", "GRAN",
+    "HD", "LA", "LAS", "LEAGUE", "LIVE", "LOS", "OF", "ON", "OPEN", "PARA", "PARTIDO", "PPV", "RACE",
+    "SERIES", "SPORT", "THE", "TO", "TOUR", "TV", "UN", "UNA", "VS", "VIVO", "WORLD", "CAMPEONATO",
+    "CHAMPIONSHIP", "EVENT", "EVENTS", "FIGHT", "NIGHT", "MATCH", "DIRECTO", "HOY", "TODAY", "DAILY",
+    "DIARIO", "DIA", "PRACTICE", "ENTRENAMIENTO", "ROUND", "FINAL", "FASE", "JORNADA",
 }
-
-# Contenido que se debe excluir del curador de eventos en vivo. No se descarta
-# una práctica/clasificación: se rechaza solo si no tiene un evento oficial de la
-# misma sesión, lo que evita vender un compacto como una carrera.
 VETO_EMISION = {
-    "REPETICION", "REPETICIÓN", "REPLAY", "RESUMEN", "HIGHLIGHTS", "COMPACTO",
-    "NOTICIAS", "NEWS", "MAGAZINE", "PREVIA", "POSTPARTIDO", "POST PARTIDO",
-    "DOCUMENTAL", "CLASICOS", "CLÁSICOS", "MEMORIAS", "VINTAGE", "MEJORES MOMENTOS",
+    "REPETICION", "REPLAY", "RESUMEN", "HIGHLIGHTS", "COMPACTO", "NOTICIAS", "NEWS", "MAGAZINE", "PREVIA",
+    "POSTPARTIDO", "POST PARTIDO", "DOCUMENTAL", "CLASICOS", "MEMORIAS", "VINTAGE", "MEJORES MOMENTOS",
 }
-
-# Las sesiones tienen que coincidir cuando están explícitas en ambos lados.
 SESIONES = {
     "PRACTICE": "practica", "PRACTICA": "practica", "ENTRENAMIENTO": "practica",
-    "QUALIFYING": "clasificacion", "CLASIFICACION": "clasificacion",
-    "CLASIFICACIÓN": "clasificacion", "POLE": "clasificacion",
-    "SPRINT": "sprint", "RACE": "carrera", "CARRERA": "carrera",
-    "PARTIDO": "partido", "MATCH": "partido", "PELEA": "pelea", "FIGHT": "pelea",
+    "QUALIFYING": "clasificacion", "CLASIFICACION": "clasificacion", "POLE": "clasificacion",
+    "SPRINT": "sprint", "RACE": "carrera", "CARRERA": "carrera", "PARTIDO": "partido", "MATCH": "partido",
+    "PELEA": "pelea", "FIGHT": "pelea",
 }
-
 DEPORTE_PISTAS = {
-    "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER", "BUNDESLIGA", "SERIE A", "CHAMPIONS"},
-    "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE"},
-    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA", "ROLAND GARROS", "WIMBLEDON"},
-    "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR"},
+    "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER", "BUNDESLIGA", "SERIE A", "CHAMPIONS", "LIBERTADORES", "SUDAMERICANA"},
+    "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA"},
     "Béisbol": {"BASEBALL", "BEISBOL", "MLB"},
-    "Hockey": {"HOCKEY"},
-    "Voleibol": {"VOLLEY", "VOLEIBOL"},
-    "Rugby": {"RUGBY"},
-    "Fútbol Americano": {"NFL", "AMERICAN FOOTBALL", "FUTBOL AMERICANO"},
-    "Combate": {"UFC", "MMA", "BKFC", "BOXING", "BOXEO", "WWE", "WRESTLING", "KICKBOXING"},
-    "Ciclismo": {"CYCLING", "CICLISMO", "VUELTA", "GIRO", "TOUR DE FRANCE"},
-    "Golf": {"GOLF", "PGA", "DP WORLD", "LIV GOLF"},
-    "Snooker": {"SNOOKER"},
-    "Atletismo": {"ATHLETICS", "ATLETISMO"},
-    "Gimnasia": {"GYMNASTICS", "GIMNASIA"},
-    "Natación": {"SWIMMING", "NATACION"},
-    "Dardos": {"DARTS", "DARDOS"},
+    "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR"},
+    "Hockey": {"HOCKEY"}, "Combate": {"UFC", "MMA", "BKFC", "BOXING", "BOXEO", "WWE", "WRESTLING", "KICKBOXING"},
+    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA"}, "Rugby": {"RUGBY"}, "Voleibol": {"VOLLEY", "VOLEIBOL"},
+    "Fútbol Americano": {"NFL", "AMERICAN FOOTBALL", "FUTBOL AMERICANO"}, "Handball": {"HANDBALL", "BALONMANO"},
 }
 
 
-# ─── UTILIDADES DE TEXTO Y TIEMPO ───────────────────────────────────────────
+# ─── Utilidades ──────────────────────────────────────────────────────────────
 def normalizar_texto(texto: Any) -> str:
-    """Devuelve mayúsculas sin tildes ni puntuación irrelevante."""
     if texto is None:
         return ""
     valor = unicodedata.normalize("NFD", str(texto).upper())
     valor = "".join(c for c in valor if unicodedata.category(c) != "Mn")
-    valor = re.sub(r"[^A-Z0-9\s]", " ", valor)
-    return " ".join(valor.split())
+    return " ".join(re.sub(r"[^A-Z0-9\s]", " ", valor).split())
 
 
 def tokenizar(texto: Any, *, conservar_genericos: bool = False) -> set[str]:
@@ -166,26 +132,14 @@ def tokenizar(texto: Any, *, conservar_genericos: bool = False) -> set[str]:
     return palabras if conservar_genericos else palabras - STOPWORDS
 
 
-def categoria_deporte(deporte: Any) -> str:
-    normalizado = normalizar_texto(deporte)
-    if normalizado in CATEGORIAS:
-        return CATEGORIAS[normalizado]
-    for clave, categoria in CATEGORIAS.items():
-        if clave in normalizado or normalizado in clave:
-            return categoria
-    return "Deportes"
+def contiene_veto(texto: Any) -> bool:
+    valor = normalizar_texto(texto)
+    return any(palabra in valor for palabra in VETO_EMISION)
 
 
 def inferir_deporte(texto: Any) -> Optional[str]:
-    """Infiera categoría solo cuando la pista es inequívoca."""
     valor = normalizar_texto(texto)
-    hallazgos: list[str] = []
-    for categoria, pistas in DEPORTE_PISTAS.items():
-        for pista in pistas:
-            if normalizar_texto(pista) in valor:
-                hallazgos.append(categoria)
-                break
-    # Si hay más de una disciplina explícita, el nombre no sirve para validar.
+    hallazgos = [categoria for categoria, pistas in DEPORTE_PISTAS.items() if any(pista in valor for pista in pistas)]
     unicos = list(dict.fromkeys(hallazgos))
     return unicos[0] if len(unicos) == 1 else None
 
@@ -193,62 +147,49 @@ def inferir_deporte(texto: Any) -> Optional[str]:
 def extraer_sesion(texto: Any) -> Optional[str]:
     valor = normalizar_texto(texto)
     encontrados = {sesion for pista, sesion in SESIONES.items() if pista in valor}
-    if not encontrados:
-        return None
-    # Una clasificación sprint y una carrera sprint son sesiones distintas. El
-    # valor "sprint" sin calificativo queda deliberadamente genérico para poder
-    # asociarse con una carrera sprint oficial, pero nunca con clasificación.
     if "sprint" in encontrados and "clasificacion" in encontrados:
         return "clasificacion_sprint"
     if "sprint" in encontrados and "carrera" in encontrados:
         return "carrera_sprint"
-    if "sprint" in encontrados:
-        return "sprint"
-    return sorted(encontrados)[0]
-
-
-def contiene_veto(texto: Any) -> bool:
-    valor = normalizar_texto(texto)
-    return any(palabra in valor for palabra in VETO_EMISION)
+    return "sprint" if "sprint" in encontrados else (sorted(encontrados)[0] if encontrados else None)
 
 
 def obtener_zona_aplicacion() -> ZoneInfo:
     try:
         return ZoneInfo(APP_TIMEZONE)
     except Exception:
-        log.warning("APP_TIMEZONE inválida (%s); se usará UTC.", APP_TIMEZONE)
-        return ZoneInfo("UTC")
+        log.warning("APP_TIMEZONE inválida (%s); se usará America/Bogota.", APP_TIMEZONE)
+        return ZoneInfo("America/Bogota")
 
 
-def ahora_local() -> datetime:
-    return datetime.now(obtener_zona_aplicacion())
+def iso_utc(valor: datetime) -> str:
+    return valor.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def parsear_fecha_hora_tsdb(evento: dict[str, Any]) -> Optional[datetime]:
-    """Convierte timestamp TheSportsDB a UTC, privilegiando strTimestamp."""
-    timestamp = (evento.get("strTimestamp") or "").strip()
-    if timestamp:
+def parsear_iso_o_timestamp(valor: Any) -> Optional[datetime]:
+    if valor is None or valor == "":
+        return None
+    if isinstance(valor, (int, float)) or (isinstance(valor, str) and valor.strip().isdigit()):
         try:
-            return datetime.fromisoformat(timestamp.replace("Z", "+00:00")).astimezone(timezone.utc)
+            return datetime.fromtimestamp(int(valor), tz=timezone.utc)
+        except (ValueError, OSError, OverflowError):
+            return None
+    if isinstance(valor, str):
+        try:
+            fecha = datetime.fromisoformat(valor.replace("Z", "+00:00"))
+            return (fecha if fecha.tzinfo else fecha.replace(tzinfo=timezone.utc)).astimezone(timezone.utc)
         except ValueError:
             pass
-
-    fecha = (evento.get("dateEvent") or "").strip()
-    hora = (evento.get("strTime") or "00:00:00").strip()
-    if not fecha:
-        return None
-    try:
-        hora = (hora + ":00:00")[:8]
-        return datetime.strptime(f"{fecha} {hora}", "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
-    except ValueError:
-        return None
+        for formato in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M"):
+            try:
+                return datetime.strptime(valor, formato).replace(tzinfo=timezone.utc)
+            except ValueError:
+                continue
+    return None
 
 
 def extraer_hora_canal(texto: str, fecha_base: datetime) -> Optional[datetime]:
-    """Extrae hora; la fecha embebida se usa solo como pista, no como verdad de zona."""
-    valor = texto or ""
-    # HH:MM, 8:30pm y variantes sin espacio.
-    for match in re.finditer(r"(?<!\d)(\d{1,2}):(\d{2})\s*([APap][Mm])?(?!\d)", valor):
+    for match in re.finditer(r"(?<!\d)(\d{1,2}):(\d{2})\s*([APap][Mm])?(?!\d)", texto or ""):
         hora, minuto = int(match.group(1)), int(match.group(2))
         ampm = (match.group(3) or "").upper()
         if ampm == "PM" and hora < 12:
@@ -257,16 +198,6 @@ def extraer_hora_canal(texto: str, fecha_base: datetime) -> Optional[datetime]:
             hora = 0
         if 0 <= hora <= 23 and 0 <= minuto <= 59:
             return fecha_base.replace(hour=hora, minute=minuto, second=0, microsecond=0)
-
-    for match in re.finditer(r"(?<!\d)(\d{1,2})\s*([APap][Mm])(?!\w)", valor):
-        hora = int(match.group(1))
-        ampm = match.group(2).upper()
-        if ampm == "PM" and hora < 12:
-            hora += 12
-        elif ampm == "AM" and hora == 12:
-            hora = 0
-        if 0 <= hora <= 23:
-            return fecha_base.replace(hour=hora, minute=0, second=0, microsecond=0)
     return None
 
 
@@ -274,286 +205,376 @@ def variaciones_fecha(fecha: datetime) -> set[str]:
     meses_es = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"]
     meses_en = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     d, m = fecha.day, fecha.month
-    return {
-        f"{d:02d}/{m:02d}", f"{d:02d}-{m:02d}", f"{m:02d}/{d:02d}", f"{m:02d}-{d:02d}",
-        f"{d} {meses_es[m - 1]}", f"{meses_es[m - 1]} {d}",
-        f"{d} {meses_en[m - 1]}", f"{meses_en[m - 1]} {d}",
-    }
+    return {f"{d:02d}/{m:02d}", f"{d:02d}-{m:02d}", f"{d} {meses_es[m-1]}", f"{d} {meses_en[m-1]}", f"{meses_es[m-1]} {d}", f"{meses_en[m-1]} {d}"}
 
 
-def iso_utc(fecha: datetime) -> str:
-    return fecha.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+def fecha_xtream_explicita(texto: str, fecha_producto: date) -> Optional[bool]:
+    """None significa que el rótulo no expone una fecha; True/False es definitivo."""
+    hallada = False
+    for dia, mes, _ in re.findall(r"(?<!\d)(\d{1,2})[/-](\d{1,2})(?:[/-](\d{2,4}))?(?!\d)", texto or ""):
+        hallada = True
+        try:
+            if date(fecha_producto.year, int(mes), int(dia)) == fecha_producto:
+                return True
+        except ValueError:
+            continue
+    return False if hallada else None
 
 
-# ─── HTTP Y AGENDA ──────────────────────────────────────────────────────────
-class ClienteTheSportsDB:
-    def __init__(self) -> None:
-        self.session = requests.Session()
+def _get(objeto: Any, *rutas: str) -> Any:
+    for ruta in rutas:
+        actual = objeto
+        ok = True
+        for parte in ruta.split("."):
+            if not isinstance(actual, dict) or parte not in actual:
+                ok = False
+                break
+            actual = actual[parte]
+        if ok and actual not in (None, ""):
+            return actual
+    return None
+
+
+def guardar_json(path: Path, contenido: Any) -> None:
+    path.write_text(json.dumps(contenido, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+# ─── Cliente API-Sports ──────────────────────────────────────────────────────
+class ClienteApiSports:
+    def __init__(self, clave: str) -> None:
+        self.clave = clave
+        self.sesion = requests.Session()
         self.ultimo_request = 0.0
-        self.estadisticas = Counter()
+        self.metricas: dict[str, dict[str, Any]] = {}
 
-    def get_json(self, endpoint: str, params: Optional[dict[str, Any]] = None) -> Optional[dict[str, Any]]:
-        url = f"{THESPORTSDB_BASE}/{endpoint.lstrip('/')}"
-        for intento in range(THESPORTSDB_MAX_RETRIES + 1):
-            espera = THESPORTSDB_MIN_INTERVAL - (time.monotonic() - self.ultimo_request)
+    def get(self, deporte: str, host: str, endpoint: str, params: dict[str, str]) -> Optional[dict[str, Any]]:
+        datos = self.metricas.setdefault(deporte, Counter())
+        if not self.clave:
+            datos["omitido_sin_clave"] += 1
+            return None
+        url = f"{host.rstrip('/')}/{endpoint.lstrip('/')}"
+        for intento in range(API_SPORTS_MAX_RETRIES + 1):
+            espera = API_SPORTS_MIN_INTERVAL - (time.monotonic() - self.ultimo_request)
             if espera > 0:
                 time.sleep(espera)
             try:
-                respuesta = self.session.get(url, params=params, timeout=(10, 30))
+                respuesta = self.sesion.get(url, params=params, headers={"x-apisports-key": self.clave}, timeout=(10, 35))
                 self.ultimo_request = time.monotonic()
-                self.estadisticas["solicitudes"] += 1
+                datos["solicitudes"] += 1
             except requests.RequestException as exc:
-                self.estadisticas["errores_red"] += 1
-                log.warning("TheSportsDB sin respuesta (%s): %s", endpoint, exc)
-                if intento < THESPORTSDB_MAX_RETRIES:
-                    time.sleep(2 ** intento)
+                datos["errores_red"] += 1
+                log.warning("API-Sports %s sin respuesta: %s", deporte, exc)
+                if intento < API_SPORTS_MAX_RETRIES:
+                    time.sleep(3 * (intento + 1))
                     continue
                 return None
 
+            datos["http"] = respuesta.status_code
+            for cabecera, destino in (
+                ("x-ratelimit-requests-limit", "limite_diario"),
+                ("x-ratelimit-requests-remaining", "restantes_diarios"),
+                ("X-RateLimit-Limit", "limite_minuto"),
+                ("X-RateLimit-Remaining", "restantes_minuto"),
+            ):
+                if respuesta.headers.get(cabecera):
+                    datos[destino] = respuesta.headers[cabecera]
             if respuesta.status_code == 200:
                 try:
-                    return respuesta.json()
+                    cuerpo = respuesta.json()
                 except ValueError:
-                    self.estadisticas["json_invalido"] += 1
-                    log.warning("TheSportsDB devolvió JSON inválido en %s.", endpoint)
+                    datos["json_invalido"] += 1
                     return None
-
-            self.estadisticas[f"http_{respuesta.status_code}"] += 1
-            if respuesta.status_code == 429 and intento < THESPORTSDB_MAX_RETRIES:
-                espera_429 = min(60, 8 * (intento + 1))
-                log.warning("TheSportsDB limitó la solicitud; reintento en %ss.", espera_429)
-                time.sleep(espera_429)
+                errores = cuerpo.get("errors") if isinstance(cuerpo, dict) else None
+                if errores and errores not in ({}, [], ""):
+                    datos["errores_api"] += 1
+                    datos["ultimo_error"] = str(errores)[:240]
+                return cuerpo if isinstance(cuerpo, dict) else None
+            datos[f"http_{respuesta.status_code}"] += 1
+            if respuesta.status_code in (429, 500, 502, 503, 504) and intento < API_SPORTS_MAX_RETRIES:
+                time.sleep(6 * (intento + 1))
                 continue
-            log.warning("TheSportsDB respondió HTTP %s en %s.", respuesta.status_code, endpoint)
+            log.warning("API-Sports %s respondió HTTP %s.", deporte, respuesta.status_code)
             return None
         return None
 
 
-def normalizar_evento_tsdb(evento: dict[str, Any]) -> Optional[dict[str, Any]]:
-    inicio = parsear_fecha_hora_tsdb(evento)
-    if inicio is None:
-        return None
-
-    local = (evento.get("strHomeTeam") or "").strip()
-    visitante = (evento.get("strAwayTeam") or "").strip()
-    torneo = (evento.get("strLeague") or "").strip()
-    titulo_original = (evento.get("strEvent") or evento.get("strFilename") or torneo).strip()
-    if not titulo_original and not (local and visitante):
-        return None
-
-    if local and visitante:
-        titulo = f"{local} vs {visitante}"
-        tipo = "duelo"
-    else:
-        titulo = titulo_original
-        tipo = "sencillo"
-
-    categoria = categoria_deporte(evento.get("strSport") or "")
-    return {
-        "id": str(evento.get("idEvent") or ""),
-        "titulo": titulo,
-        "torneo": torneo,
-        "categoria": categoria,
-        "tipo_evento": tipo,
-        "equipo_local": local,
-        "equipo_visitante": visitante,
-        "subtitulo": titulo_original if tipo == "sencillo" else "",
-        "hora_utc": iso_utc(inicio),
-        "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150),
-        "logo_torneo": evento.get("strLeagueBadge") or evento.get("strBadge") or "",
-        "logo_local": evento.get("strHomeTeamBadge") or evento.get("strThumb") or "",
-        "logo_visitante": evento.get("strAwayTeamBadge") or "",
-        "tier": 1,
-        # Campos de auditoría que no rompen consumidores del esquema anterior.
-        "origen": "thesportsdb",
-        "estado": "confirmado",
-        "confianza": "alta",
-        "puntuacion_confianza": 100,
-        "fuentes": [],
-    }
-
-
-def _leer_cache(fecha_consulta: str) -> Optional[list[dict[str, Any]]]:
-    if HORAS_CACHE <= 0 or not ARCHIVO_CACHE.exists():
-        return None
-    antiguedad = time.time() - ARCHIVO_CACHE.stat().st_mtime
-    if antiguedad > HORAS_CACHE * 3600:
-        return None
-    try:
-        datos = json.loads(ARCHIVO_CACHE.read_text(encoding="utf-8"))
-        if datos.get("fecha") == fecha_consulta and isinstance(datos.get("eventos"), list):
-            return datos["eventos"]
-    except (OSError, ValueError, AttributeError):
-        pass
+# ─── Agenda normalizada ──────────────────────────────────────────────────────
+def _fecha_evento_api(item: dict[str, Any]) -> Optional[datetime]:
+    candidatos = (
+        _get(item, "fixture.timestamp", "game.date.timestamp", "race.date.timestamp", "date.timestamp"),
+        _get(item, "fixture.date", "game.date.date", "race.date", "date.date", "date"),
+    )
+    for valor in candidatos:
+        resultado = parsear_iso_o_timestamp(valor)
+        if resultado:
+            return resultado
     return None
 
 
-def obtener_agenda_maestra(fecha_consulta: str, cliente: Optional[ClienteTheSportsDB] = None) -> list[dict[str, Any]]:
-    """Obtiene y unifica agenda general y por deporte sin duplicar idEvent."""
-    cache = _leer_cache(fecha_consulta)
-    if cache is not None:
-        log.info("Agenda cargada de caché: %d eventos.", len(cache))
-        return cache
+def _texto_evento_api(item: dict[str, Any], config: dict[str, str]) -> tuple[str, str, str, str, str, str]:
+    local = str(_get(item, "teams.home.name", "home.name", "fighters.home.name") or "").strip()
+    visitante = str(_get(item, "teams.away.name", "away.name", "fighters.away.name") or "").strip()
+    torneo = str(_get(item, "league.name", "competition.name", "race.competition.name", "event.name") or "").strip()
+    subtitulo = str(_get(item, "game.stage", "game.week", "fixture.status.long", "race.type", "race.name", "name") or "").strip()
+    if local and visitante:
+        return f"{local} vs {visitante}", torneo, local, visitante, "duelo", subtitulo
+    titulo = str(_get(item, "race.competition.name", "race.name", "fight.name", "event.name", "name", "league.name") or "").strip()
+    if not titulo:
+        titulo = torneo
+    return titulo, torneo, "", "", "sencillo", subtitulo
 
-    cliente = cliente or ClienteTheSportsDB()
-    ids: set[str] = set()
-    agenda: list[dict[str, Any]] = []
 
-    consultas: list[tuple[str, dict[str, str]]] = [("eventsday.php", {"d": fecha_consulta})]
-    consultas.extend(("eventsday.php", {"d": fecha_consulta, "s": deporte}) for deporte in DEPORTES_TSDB)
+def normalizar_evento_api(deporte: str, item: dict[str, Any], config: dict[str, str], tz: ZoneInfo) -> Optional[dict[str, Any]]:
+    inicio = _fecha_evento_api(item)
+    if inicio is None or inicio.astimezone(tz).date() != datetime.now(tz).date():
+        return None
+    titulo, torneo, local, visitante, tipo, subtitulo = _texto_evento_api(item, config)
+    if not titulo:
+        return None
+    id_origen = str(_get(item, "fixture.id", "game.id", "race.id", "fight.id", "id") or "")
+    if not id_origen:
+        id_origen = hashlib.sha1(f"{deporte}|{titulo}|{iso_utc(inicio)}".encode()).hexdigest()[:16]
+    logo_torneo = str(_get(item, "league.logo", "competition.logo", "race.competition.logo") or "")
+    logo_local = str(_get(item, "teams.home.logo", "home.logo") or "")
+    logo_visitante = str(_get(item, "teams.away.logo", "away.logo") or "")
+    estado_raw = str(_get(item, "fixture.status.short", "game.status.short", "race.status.short", "status.short", "status.long") or "NS").upper()
+    estado = "en_vivo" if estado_raw in {"1H", "2H", "HT", "Q1", "Q2", "Q3", "Q4", "LIVE", "IN", "P", "RUNNING"} else "finalizado" if estado_raw in {"FT", "AET", "PEN", "FINISHED", "ENDED"} else "programado"
+    return {
+        "id": f"apisports_{deporte}_{id_origen}", "agenda_id": f"apisports_{deporte}_{id_origen}",
+        "titulo": titulo, "torneo": torneo, "categoria": config["categoria"], "tipo_evento": tipo,
+        "equipo_local": local, "equipo_visitante": visitante, "subtitulo": subtitulo,
+        "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(tz).strftime("%H:%M"),
+        "duracion_min": DURACION_POR_CATEGORIA.get(config["categoria"], 150),
+        "logo_torneo": logo_torneo, "logo_local": logo_local, "logo_visitante": logo_visitante,
+        "tier": 1, "origen": f"api_sports:{deporte}", "origenes": [f"api_sports:{deporte}"],
+        "estado": "confirmado", "estado_evento": estado, "confianza": "alta", "puntuacion_confianza": 100,
+        "fuentes": [], "metodo_correlacion": "agenda_api_sports", "razones_correlacion": [f"deporte:{deporte}"],
+    }
 
-    for endpoint, params in consultas:
-        datos = cliente.get_json(endpoint, params)
-        for evento in (datos or {}).get("events") or []:
-            normalizado = normalizar_evento_tsdb(evento)
-            if not normalizado or not normalizado["id"] or normalizado["id"] in ids:
-                continue
-            ids.add(normalizado["id"])
-            agenda.append(normalizado)
 
-    agenda.sort(key=lambda e: e["hora_utc"])
+def _leer_cache(fecha_consulta: str, permitir_vencida: bool = False) -> Optional[dict[str, Any]]:
+    if not ARCHIVO_CACHE.exists():
+        return None
     try:
-        ARCHIVO_CACHE.write_text(
-            json.dumps({"fecha": fecha_consulta, "eventos": agenda}, ensure_ascii=False, indent=2),
-            encoding="utf-8",
-        )
-    except OSError as exc:
-        log.warning("No se pudo guardar la caché de agenda: %s", exc)
+        datos = json.loads(ARCHIVO_CACHE.read_text(encoding="utf-8"))
+        if not isinstance(datos, dict) or datos.get("fecha_local_producto") != fecha_consulta:
+            return None
+        edad = time.time() - ARCHIVO_CACHE.stat().st_mtime
+        if permitir_vencida or (MINUTOS_CACHE > 0 and edad <= MINUTOS_CACHE * 60):
+            return datos
+    except (OSError, ValueError):
+        return None
+    return None
 
-    log.info(
-        "Agenda TheSportsDB lista: %d eventos | %d solicitudes | HTTP 429: %d",
-        len(agenda), cliente.estadisticas["solicitudes"], cliente.estadisticas["http_429"],
-    )
+
+def cargar_agenda_cache(fecha_consulta: str) -> list[dict[str, Any]]:
+    datos = _leer_cache(fecha_consulta, permitir_vencida=True)
+    return list(datos.get("eventos", [])) if datos else []
+
+
+def reservar_presupuesto(nombre: str, fecha_consulta: str, limite: int) -> bool:
+    """Reserva una llamada diaria persistente; el workflow serializa ejecuciones."""
+    if limite <= 0:
+        return False
+    try:
+        datos = json.loads(ARCHIVO_PRESUPUESTO.read_text(encoding="utf-8")) if ARCHIVO_PRESUPUESTO.exists() else {}
+    except (OSError, ValueError):
+        datos = {}
+    if datos.get("fecha_local_producto") != fecha_consulta:
+        datos = {"fecha_local_producto": fecha_consulta, "usos": {}}
+    usos = datos.setdefault("usos", {})
+    usados = int(usos.get(nombre, 0))
+    if usados >= limite:
+        return False
+    usos[nombre] = usados + 1
+    guardar_json(ARCHIVO_PRESUPUESTO, datos)
+    return True
+
+
+def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Counter) -> list[dict[str, Any]]:
+    if not USAR_THESPORTSDB_RESPALDO or not THESPORTSDB_MAX_EVENTOS:
+        return []
+    if not reservar_presupuesto("thesportsdb", fecha_consulta, THESPORTSDB_MAX_SOLICITUDES_DIA):
+        metricas["omitido_presupuesto_diario"] += 1
+        return []
+    url = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}/eventsday.php"
+    try:
+        respuesta = requests.get(url, params={"d": fecha_consulta}, timeout=(10, 30))
+        metricas["solicitudes"] += 1
+        if respuesta.status_code != 200:
+            metricas[f"http_{respuesta.status_code}"] += 1
+            return []
+        datos = respuesta.json()
+    except (requests.RequestException, ValueError) as exc:
+        metricas["errores"] += 1
+        log.warning("TheSportsDB de respaldo no disponible: %s", exc)
+        return []
+    eventos: list[dict[str, Any]] = []
+    for bruto in (datos.get("events") or [])[:THESPORTSDB_MAX_EVENTOS]:
+        inicio = parsear_iso_o_timestamp(bruto.get("strTimestamp"))
+        if inicio is None:
+            inicio = parsear_iso_o_timestamp(f"{bruto.get('dateEvent', '')} {bruto.get('strTime', '00:00:00')}")
+        if inicio is None or inicio.astimezone(tz).date() != datetime.now(tz).date():
+            continue
+        local, visitante = (bruto.get("strHomeTeam") or "").strip(), (bruto.get("strAwayTeam") or "").strip()
+        titulo = f"{local} vs {visitante}" if local and visitante else (bruto.get("strEvent") or bruto.get("strLeague") or "").strip()
+        if not titulo:
+            continue
+        categoria = inferir_deporte(f"{bruto.get('strSport', '')} {titulo}") or "Deportes"
+        ident = str(bruto.get("idEvent") or hashlib.sha1(f"{titulo}|{iso_utc(inicio)}".encode()).hexdigest()[:16])
+        eventos.append({
+            "id": f"tsdb_{ident}", "agenda_id": f"tsdb_{ident}", "titulo": titulo,
+            "torneo": (bruto.get("strLeague") or "").strip(), "categoria": categoria,
+            "tipo_evento": "duelo" if local and visitante else "sencillo", "equipo_local": local, "equipo_visitante": visitante,
+            "subtitulo": "", "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(tz).strftime("%H:%M"),
+            "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150), "logo_torneo": bruto.get("strLeagueBadge") or "",
+            "logo_local": bruto.get("strHomeTeamBadge") or "", "logo_visitante": bruto.get("strAwayTeamBadge") or "",
+            "tier": 2, "origen": "thesportsdb_respaldo", "origenes": ["thesportsdb_respaldo"],
+            "estado": "confirmado", "estado_evento": "programado", "confianza": "media", "puntuacion_confianza": 78,
+            "fuentes": [], "metodo_correlacion": "agenda_thesportsdb_respaldo", "razones_correlacion": [],
+        })
+    metricas["eventos"] = len(eventos)
+    return eventos
+
+
+def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[dict[str, Any]] = None, forzar: bool = False) -> list[dict[str, Any]]:
+    tz = obtener_zona_aplicacion()
+    cache = None if forzar else _leer_cache(fecha_consulta)
+    if cache:
+        if metricas_salida is not None:
+            metricas_salida.update(cache.get("metricas", {}))
+            metricas_salida["cache"] = "vigente"
+        return list(cache.get("eventos", []))
+
+    cliente = ClienteApiSports(API_SPORTS_KEY)
+    agenda: list[dict[str, Any]] = []
+    for deporte, config in API_CONFIGS.items():
+        if deporte not in API_SPORTS_DEPORTES:
+            continue
+        params = {"date": fecha_consulta, "timezone": APP_TIMEZONE}
+        datos = cliente.get(deporte, config["host"], config["endpoint"], params)
+        for bruto in (datos or {}).get("response") or []:
+            if isinstance(bruto, dict):
+                evento = normalizar_evento_api(deporte, bruto, config, tz)
+                if evento:
+                    agenda.append(evento)
+
+    metricas_tsdb: Counter = Counter()
+    agenda.extend(obtener_respaldo_thesportsdb(fecha_consulta, tz, metricas_tsdb))
+    unicos = {evento["id"]: evento for evento in agenda}
+    agenda = sorted(unicos.values(), key=lambda e: e["hora_utc"])
+    metricas = {"api_sports": {k: dict(v) for k, v in cliente.metricas.items()}, "thesportsdb_respaldo": dict(metricas_tsdb), "eventos": len(agenda)}
+    if not agenda:
+        anterior = _leer_cache(fecha_consulta, permitir_vencida=True)
+        if anterior:
+            agenda = list(anterior.get("eventos", []))
+            metricas["cache"] = "venciente_usada_por_fallo"
+    guardar_json(ARCHIVO_CACHE, {"version": 10, "fecha_local_producto": fecha_consulta, "generado_utc": iso_utc(datetime.now(timezone.utc)), "eventos": agenda, "metricas": metricas})
+    if metricas_salida is not None:
+        metricas_salida.update(metricas)
     return agenda
 
 
-# ─── XTREAM Y SELECCIÓN DE CANDIDATOS ────────────────────────────────────────
-def llamada_xtream(url: str, timeout: int = 45) -> Any:
+# ─── Xtream ──────────────────────────────────────────────────────────────────
+def llamada_xtream(url: str, timeout: int = 60) -> Any:
     respuesta = requests.get(PUENTE_URL, params={"url": url}, timeout=timeout)
     respuesta.raise_for_status()
     return respuesta.json()
 
 
-def detectar_categorias_de_hoy(fecha_local: datetime) -> set[str]:
+def detectar_categorias_fechadas(fecha_local: datetime) -> tuple[set[str], set[str]]:
+    """Separa categorías de hoy de categorías que expresan otra fecha concreta."""
     if not XTREAM_URL:
-        return set()
-    api = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_categories"
-    marcas_fecha = variaciones_fecha(fecha_local)
-    ids: set[str] = set()
+        return set(), set()
+    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_categories"
+    hoy, ajenas = set(), set()
     try:
-        for categoria in llamada_xtream(api, timeout=45) or []:
-            nombre = normalizar_texto(categoria.get("category_name") or "")
-            if any(normalizar_texto(marca) in nombre for marca in marcas_fecha):
-                ids.add(str(categoria.get("category_id") or ""))
-    except (requests.RequestException, ValueError, TypeError) as exc:
-        log.warning("No se pudieron leer las categorías Xtream: %s", exc)
-    ids.discard("")
-    return ids
+        for categoria in llamada_xtream(url, 45) or []:
+            sid = str(categoria.get("category_id") or "")
+            nombre_original = str(categoria.get("category_name") or "")
+            if not sid:
+                continue
+            fecha_texto = fecha_xtream_explicita(nombre_original, fecha_local.date())
+            if fecha_texto is True or any(normalizar_texto(marca) in normalizar_texto(nombre_original) for marca in variaciones_fecha(fecha_local)):
+                hoy.add(sid)
+            elif fecha_texto is False:
+                ajenas.add(sid)
+    except (requests.RequestException, TypeError, ValueError) as exc:
+        log.warning("No se pudieron leer categorías Xtream: %s", exc)
+    return hoy, ajenas
 
 
-def es_candidato(canal: dict[str, Any], categorias_hoy: set[str], fecha_local: datetime) -> bool:
-    nombre = str(canal.get("name") or "").strip()
-    if not nombre or contiene_veto(nombre):
-        return False
+def es_candidato(stream: dict[str, Any], categorias_hoy: set[str], fecha_local: datetime, categorias_ajenas: Optional[set[str]] = None) -> tuple[bool, str]:
+    nombre = str(stream.get("name") or "").strip()
+    if not nombre:
+        return False, "sin_nombre"
+    if contiene_veto(nombre):
+        return False, "contenido_no_evento"
+    fecha_en_texto = fecha_xtream_explicita(nombre, fecha_local.date())
+    if fecha_en_texto is False:
+        return False, "fecha_xtream_fuera_de_jornada"
+    if str(stream.get("category_id") or "") in (categorias_ajenas or set()):
+        return False, "categoria_xtream_fuera_de_jornada"
+    hora = extraer_hora_canal(nombre, fecha_local)
+    deporte, duelo = inferir_deporte(nombre), bool(re.search(r"\b(VS|V|AT)\b|\s[-@]\s", normalizar_texto(nombre)))
+    categoria_hoy = str(stream.get("category_id") or "") in categorias_hoy
+    if fecha_en_texto is True and (hora or deporte or duelo):
+        return True, "fecha_xtream_hoy"
+    if categoria_hoy and (hora or deporte or duelo):
+        return True, "categoria_xtream_hoy"
+    if hora and (deporte or duelo):
+        return True, "hora_y_identidad_sin_fecha"
+    return False, "sin_vigencia_o_identidad"
 
-    normalizado = normalizar_texto(nombre)
-    categoria_id = str(canal.get("category_id") or "")
-    tiene_hora = extraer_hora_canal(nombre, fecha_local) is not None
-    tiene_fecha = any(normalizar_texto(marca) in normalizado for marca in variaciones_fecha(fecha_local))
-    deporte = inferir_deporte(nombre)
-    tiene_duelo = bool(re.search(r"\b(VS|V|AT)\b|\s[-@]\s", normalizado))
-    tiene_marca_evento = any(marca in normalizado for marca in ("PPV", "LIVE EVENT", "EVENTOS", "EVENTS"))
 
-    # Una categoría fechada es una señal de contexto. Se exige además hora o una
-    # identidad deportiva; no se absorben todos los canales de la categoría.
-    en_categoria_hoy = bool(categorias_hoy and categoria_id in categorias_hoy)
-    return bool(
-        (en_categoria_hoy and (tiene_hora or deporte or tiene_duelo or tiene_marca_evento))
-        or (tiene_fecha and (tiene_hora or deporte or tiene_duelo))
-        or (tiene_hora and (deporte is not None or tiene_duelo))
-    )
-
-
-def obtener_canales_candidatos(fecha_local: datetime) -> tuple[list[dict[str, Any]], dict[str, int]]:
-    metricas = Counter()
-    if not XTREAM_URL or not XTREAM_USER or not XTREAM_PASS:
-        log.error("Faltan XTREAM_URL, XTREAM_USER o XTREAM_PASS.")
-        return [], metricas
-
-    categorias_hoy = detectar_categorias_de_hoy(fecha_local)
+def obtener_canales_candidatos(fecha_local: datetime) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    metricas: Counter = Counter()
+    if not (XTREAM_URL and XTREAM_USER and XTREAM_PASS):
+        metricas["error"] = "faltan_credenciales_xtream"
+        return [], dict(metricas)
+    categorias_hoy, categorias_ajenas = detectar_categorias_fechadas(fecha_local)
     metricas["categorias_hoy"] = len(categorias_hoy)
-    api = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
+    metricas["categorias_fuera_de_jornada"] = len(categorias_ajenas)
+    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
     try:
-        streams = llamada_xtream(api, timeout=75) or []
-    except (requests.RequestException, ValueError, TypeError) as exc:
-        log.error("No se pudieron obtener streams Xtream: %s", exc)
-        return [], metricas
-
-    metricas["streams_totales"] = len(streams)
+        streams = llamada_xtream(url, 75) or []
+    except (requests.RequestException, TypeError, ValueError) as exc:
+        metricas["error"] = f"xtream:{exc}"
+        return [], dict(metricas)
     candidatos: list[dict[str, Any]] = []
     vistos: set[str] = set()
     for stream in streams:
-        stream_id = str(stream.get("stream_id") or "")
-        if not stream_id or stream_id in vistos:
+        sid = str(stream.get("stream_id") or "")
+        if not sid or sid in vistos:
             continue
-        vistos.add(stream_id)
-        if not es_candidato(stream, categorias_hoy, fecha_local):
+        vistos.add(sid)
+        metricas["streams_totales"] += 1
+        aceptado, motivo = es_candidato(stream, categorias_hoy, fecha_local, categorias_ajenas)
+        if not aceptado:
+            metricas[f"descartado_{motivo}"] += 1
             continue
         nombre = str(stream.get("name") or "").strip()
         candidatos.append({
-            "id_xtream": stream_id,
-            "nombre_ui": nombre,
-            "texto_normalizado": normalizar_texto(nombre),
-            "tokens": tokenizar(nombre),
-            "hora_local": extraer_hora_canal(nombre, fecha_local),
-            "categoria_inferida": inferir_deporte(nombre),
-            "sesion": extraer_sesion(nombre),
-            "categoria_xtream": str(stream.get("category_id") or ""),
+            "id_xtream": sid, "nombre_ui": nombre, "texto_normalizado": normalizar_texto(nombre), "tokens": tokenizar(nombre),
+            "hora_local": extraer_hora_canal(nombre, fecha_local), "categoria_inferida": inferir_deporte(nombre),
+            "sesion": extraer_sesion(nombre), "categoria_xtream": str(stream.get("category_id") or ""), "motivo_vigencia": motivo,
         })
     metricas["candidatos"] = len(candidatos)
-    log.info(
-        "Xtream: %d streams | %d categorías del día | %d candidatos útiles.",
-        metricas["streams_totales"], metricas["categorias_hoy"], metricas["candidatos"],
-    )
-    return candidatos, metricas
+    return candidatos, dict(metricas)
 
 
 def detectar_base_media_m3u() -> str:
-    """Obtiene la base real de medios sin almacenar credenciales en el JSON."""
-    if not XTREAM_URL or not XTREAM_USER or not XTREAM_PASS:
-        return XTREAM_URL
-    m3u = f"{XTREAM_URL}/get.php?username={XTREAM_USER}&password={XTREAM_PASS}&type=m3u&output=ts"
-    candidatos: list[str] = []
-    try:
-        with requests.get(m3u, headers={"Range": "bytes=0-65535"}, stream=True, timeout=(15, 35)) as respuesta:
-            if respuesta.status_code not in (200, 206):
-                return XTREAM_URL
-            for linea in respuesta.iter_lines(chunk_size=8192):
-                url = linea.decode("utf-8", errors="ignore").strip()
-                if not url.startswith(("http://", "https://")):
-                    continue
-                parsed = urlparse(url)
-                partes = [p for p in parsed.path.split("/") if p]
-                if len(partes) >= 3 and partes[-3] == XTREAM_USER and partes[-2] == XTREAM_PASS:
-                    candidatos.append(f"{parsed.scheme}://{parsed.netloc}")
-                if len(candidatos) >= 3:
-                    break
-    except requests.RequestException:
-        return XTREAM_URL
-    return candidatos[0] if len(candidatos) >= 3 and len(set(candidatos)) == 1 else XTREAM_URL
+    """No incluye usuario ni contraseña; la aplicación conserva su mecanismo actual de reproducción."""
+    return XTREAM_URL
 
 
-# ─── CORRELACIÓN ────────────────────────────────────────────────────────────
+# ─── Correlación ─────────────────────────────────────────────────────────────
 def _inicio_evento(evento: dict[str, Any]) -> Optional[datetime]:
-    try:
-        return datetime.strptime(evento["hora_utc"], "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
-    except (ValueError, KeyError, TypeError):
-        return None
+    return parsear_iso_o_timestamp(evento.get("hora_utc"))
 
 
 def _deportes_compatibles(canal: dict[str, Any], evento: dict[str, Any]) -> bool:
-    inferido = canal.get("categoria_inferida")
-    return not inferido or inferido == evento.get("categoria")
+    return not canal.get("categoria_inferida") or canal["categoria_inferida"] == evento.get("categoria")
 
 
 def _sesiones_compatibles(canal: dict[str, Any], evento: dict[str, Any]) -> bool:
@@ -561,117 +582,61 @@ def _sesiones_compatibles(canal: dict[str, Any], evento: dict[str, Any]) -> bool
     sesion_evento = extraer_sesion(f"{evento.get('titulo', '')} {evento.get('subtitulo', '')}")
     if not sesion_canal or not sesion_evento or sesion_canal == sesion_evento:
         return True
-    # La agenda puede abreviar "Sprint" para una carrera sprint. Se permite esa
-    # relación direccional, pero nunca se confunde con clasificación sprint.
     return sesion_evento == "sprint" and sesion_canal == "carrera_sprint"
 
 
-def _proximidad_horaria(canal: dict[str, Any], evento: dict[str, Any]) -> tuple[bool, Optional[float]]:
-    """Solo penaliza desfases grandes; la fecha de rótulos IPTV no es una zona fiable."""
-    hora_canal = canal.get("hora_local")
-    inicio_evento = _inicio_evento(evento)
-    if hora_canal is None or inicio_evento is None:
+def _proximidad_horaria(canal: dict[str, Any], evento: dict[str, Any]) -> tuple[bool, Optional[int]]:
+    hora_canal, hora_evento = canal.get("hora_local"), _inicio_evento(evento)
+    if hora_canal is None or hora_evento is None:
         return True, None
-    diferencia = abs((hora_canal.astimezone(timezone.utc) - inicio_evento).total_seconds()) / 60
-    # Se permite hasta 6 h: muchos proveedores rotulan en otra zona o anuncian
-    # con antelación. Fuera de ese intervalo el texto debe ser excepcionalmente fuerte.
-    return diferencia <= 360, diferencia
+    diferencia = round(abs((hora_canal.astimezone(timezone.utc) - hora_evento).total_seconds()) / 60)
+    # Nunca se permite la excepción antigua de 23 h: un horario explícito es una
+    # restricción dura, no solo una penalización de puntuación.
+    return diferencia <= MAX_DIFERENCIA_MIN, diferencia
 
 
 def calcular_similitud_simple(titulo: str, torneo: str, canal: str) -> tuple[int, list[str]]:
-    """Calcula una puntuación explicable para eventos individuales."""
-    tokens_evento = tokenizar(f"{titulo} {torneo}")
-    tokens_canal = tokenizar(canal)
-    comunes = sorted(tokens_evento.intersection(tokens_canal))
+    evento_tokens, canal_tokens = tokenizar(f"{titulo} {torneo}"), tokenizar(canal)
+    comunes = sorted(evento_tokens & canal_tokens)
     if not comunes:
         return 0, []
-
-    # La cobertura del nombre oficial es más valiosa que el número bruto de tokens.
-    cobertura = len(comunes) / max(len(tokens_evento), 1)
-    precision = len(comunes) / max(len(tokens_canal), 1)
+    cobertura = len(comunes) / max(len(evento_tokens), 1)
+    precision = len(comunes) / max(len(canal_tokens), 1)
     puntuacion = round(100 * (0.76 * cobertura + 0.24 * precision))
-
-    evento_norm = normalizar_texto(titulo)
-    canal_norm = normalizar_texto(canal)
+    evento_norm, canal_norm = normalizar_texto(titulo), normalizar_texto(canal)
     if evento_norm and evento_norm in canal_norm:
         puntuacion = max(puntuacion, 92)
-    # Una palabra única, no genérica y de longitud alta puede identificar eventos
-    # como "Vuelta", pero no basta para términos cortos o ambiguos.
-    if len(comunes) == 1 and len(comunes[0]) >= 7:
+    if len(comunes) == 1 and len(comunes[0]) >= 8:
         puntuacion = max(puntuacion, 58)
     return min(puntuacion, 100), comunes
 
 
-def emparejar_duelo(canal: dict[str, Any], eventos: Iterable[dict[str, Any]]) -> tuple[Optional[dict[str, Any]], int, list[str]]:
-    mejor: Optional[dict[str, Any]] = None
-    mejor_puntuacion = 0
-    mejor_razones: list[str] = []
-    for evento in eventos:
-        if evento.get("tipo_evento") != "duelo" or not _deportes_compatibles(canal, evento):
-            continue
-        local = tokenizar(evento.get("equipo_local", ""))
-        visitante = tokenizar(evento.get("equipo_visitante", ""))
-        if not local or not visitante:
-            continue
-        acierto_local = sorted(local.intersection(canal["tokens"]))
-        acierto_visitante = sorted(visitante.intersection(canal["tokens"]))
-        if not acierto_local or not acierto_visitante:
+def emparejar_evento(canal: dict[str, Any], agenda: Iterable[dict[str, Any]]) -> tuple[Optional[dict[str, Any]], int, str, list[str]]:
+    mejor, mejor_puntos, mejor_metodo, mejor_razones = None, 0, "sin_coincidencia_verificable", []
+    for evento in agenda:
+        if not _deportes_compatibles(canal, evento) or not _sesiones_compatibles(canal, evento):
             continue
         cercano, diferencia = _proximidad_horaria(canal, evento)
-        puntuacion = 82 + min(8, 4 * (len(acierto_local) + len(acierto_visitante)))
-        razones = [f"equipo_local:{','.join(acierto_local)}", f"equipo_visitante:{','.join(acierto_visitante)}"]
-        if diferencia is not None:
-            razones.append(f"diferencia_min:{round(diferencia)}")
-            if cercano:
-                puntuacion += 5
-            elif puntuacion < 96:
+        if not cercano:
+            continue
+        local, visita = tokenizar(evento.get("equipo_local", "")), tokenizar(evento.get("equipo_visitante", ""))
+        acierto_local, acierto_visita = sorted(local & canal["tokens"]), sorted(visita & canal["tokens"])
+        if local and visita and acierto_local and acierto_visita:
+            puntos = min(100, 84 + 4 * (len(acierto_local) + len(acierto_visita)) + (5 if diferencia is not None else 0))
+            metodo, razones = "duelo_verificado", [f"local:{','.join(acierto_local)}", f"visitante:{','.join(acierto_visita)}"]
+        else:
+            puntos, comunes = calcular_similitud_simple(evento.get("titulo", ""), evento.get("torneo", ""), canal["nombre_ui"])
+            frase = normalizar_texto(evento.get("titulo", "")) in canal["texto_normalizado"] if evento.get("titulo") else False
+            fuerte = len(comunes) == 1 and len(comunes[0]) >= 8 and canal.get("categoria_inferida") == evento.get("categoria")
+            if len(comunes) < 2 and not frase and not fuerte:
                 continue
-        if puntuacion > mejor_puntuacion:
-            mejor, mejor_puntuacion, mejor_razones = evento, min(puntuacion, 100), razones
-    return mejor, mejor_puntuacion, mejor_razones
-
-
-def emparejar_sencillo(canal: dict[str, Any], eventos: Iterable[dict[str, Any]]) -> tuple[Optional[dict[str, Any]], int, list[str]]:
-    mejor: Optional[dict[str, Any]] = None
-    mejor_puntuacion = 0
-    mejor_razones: list[str] = []
-    for evento in eventos:
-        if evento.get("tipo_evento") != "sencillo" or not _deportes_compatibles(canal, evento):
-            continue
-        if not _sesiones_compatibles(canal, evento):
-            continue
-        puntuacion, comunes = calcular_similitud_simple(evento.get("titulo", ""), evento.get("torneo", ""), canal["nombre_ui"])
-        if not comunes:
-            continue
-        cercano, diferencia = _proximidad_horaria(canal, evento)
-        # Se piden dos palabras distintivas, salvo una frase oficial íntegra o un
-        # identificador largo con una disciplina explícita compatible.
-        texto_evento = normalizar_texto(evento.get("titulo", ""))
-        texto_canal = canal["texto_normalizado"]
-        frase_completa = bool(texto_evento and texto_evento in texto_canal)
-        unica_fuerte = len(comunes) == 1 and len(comunes[0]) >= 7 and canal.get("categoria_inferida") == evento.get("categoria")
-        if len(comunes) < 2 and not frase_completa and not unica_fuerte:
-            continue
-        if not cercano and puntuacion < 92:
-            continue
-        if cercano:
-            puntuacion = min(100, puntuacion + 5)
-        razones = [f"tokens:{','.join(comunes)}"]
+            puntos = min(100, puntos + (5 if diferencia is not None else 0))
+            metodo, razones = "evento_simple_verificado", [f"tokens:{','.join(comunes)}"]
         if diferencia is not None:
-            razones.append(f"diferencia_min:{round(diferencia)}")
-        if puntuacion > mejor_puntuacion:
-            mejor, mejor_puntuacion, mejor_razones = evento, puntuacion, razones
-    return mejor, mejor_puntuacion, mejor_razones
-
-
-def emparejar_evento(canal: dict[str, Any], agenda: list[dict[str, Any]]) -> tuple[Optional[dict[str, Any]], int, str, list[str]]:
-    duelo, puntuacion_duelo, razones_duelo = emparejar_duelo(canal, agenda)
-    sencillo, puntuacion_sencillo, razones_sencillo = emparejar_sencillo(canal, agenda)
-    if duelo and puntuacion_duelo >= puntuacion_sencillo:
-        return duelo, puntuacion_duelo, "duelo_verificado", razones_duelo
-    if sencillo:
-        return sencillo, puntuacion_sencillo, "evento_simple_verificado", razones_sencillo
-    return None, 0, "sin_coincidencia_verificable", []
+            razones.append(f"diferencia_min:{diferencia}")
+        if puntos > mejor_puntos:
+            mejor, mejor_puntos, mejor_metodo, mejor_razones = evento, puntos, metodo, razones
+    return mejor, mejor_puntos, mejor_metodo, mejor_razones
 
 
 def fusionar_fuente(evento: dict[str, Any], fuente: dict[str, Any]) -> None:
@@ -680,101 +645,91 @@ def fusionar_fuente(evento: dict[str, Any], fuente: dict[str, Any]) -> None:
         fuentes.append(fuente)
 
 
-def curar_eventos(agenda: list[dict[str, Any]], candidatos: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]], Counter]:
+def _titulo_probable(canal: dict[str, Any]) -> str:
+    titulo = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", canal["nombre_ui"])
+    titulo = re.sub(r"(?<!\d)\d{1,2}:\d{2}\s*(?:[APap][Mm])?(?!\d)", "", titulo)
+    return " ".join(titulo.strip(" -|·:").split()) or canal["nombre_ui"]
+
+
+def crear_probable_xtream(canal: dict[str, Any], tz: ZoneInfo) -> Optional[dict[str, Any]]:
+    hora = canal.get("hora_local")
+    if hora is None:
+        return None
+    titulo = _titulo_probable(canal)
+    categoria = canal.get("categoria_inferida") or "Deportes"
+    clave = f"{normalizar_texto(titulo)}|{hora.strftime('%Y%m%d%H%M')}"
+    ident = hashlib.sha1(clave.encode("utf-8")).hexdigest()[:16]
+    return {
+        "id": f"xtream_{ident}", "agenda_id": "", "titulo": titulo, "torneo": "", "categoria": categoria,
+        "tipo_evento": "duelo" if re.search(r"\b(VS|V|AT)\b", canal["texto_normalizado"]) else "sencillo",
+        "equipo_local": "", "equipo_visitante": "", "subtitulo": "", "hora_utc": iso_utc(hora),
+        "hora_local_producto": hora.astimezone(tz).strftime("%H:%M"), "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150),
+        "logo_torneo": "", "logo_local": "", "logo_visitante": "", "tier": 3, "origen": "xtream_probable",
+        "origenes": ["xtream"], "estado": "probable", "estado_evento": "programado", "confianza": "media",
+        "puntuacion_confianza": 58, "fuentes": [], "metodo_correlacion": "xtream_vigente_sin_agenda",
+        "razones_correlacion": [canal["motivo_vigencia"], f"categoria:{categoria}"],
+    }
+
+
+def curar_eventos(agenda: list[dict[str, Any]], candidatos: list[dict[str, Any]], fecha_producto: date) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, int]]:
     resultados: dict[str, dict[str, Any]] = {}
     cuarentena: list[dict[str, Any]] = []
-    metricas = Counter()
-
+    metricas: Counter = Counter()
+    tz = obtener_zona_aplicacion()
     for canal in candidatos:
-        evento, puntuacion, metodo, razones = emparejar_evento(canal, agenda)
+        evento, puntos, metodo, razones = emparejar_evento(canal, agenda)
         fuente = {"nombre": canal["nombre_ui"], "id_xtream": canal["id_xtream"]}
+        if evento is None and PUBLICAR_XTREAM_PROBABLE:
+            evento = crear_probable_xtream(canal, tz)
+            if evento:
+                puntos = int(evento["puntuacion_confianza"])
+                metodo = str(evento["metodo_correlacion"])
+                razones = list(evento["razones_correlacion"])
         if evento is None:
             metricas["cuarentena"] += 1
             if len(cuarentena) < MAX_CUARENTENA:
-                cuarentena.append({
-                    **fuente,
-                    "motivo": metodo,
-                    "categoria_inferida": canal.get("categoria_inferida"),
-                    "sesion_inferida": canal.get("sesion"),
-                    "texto_analizado": canal["texto_normalizado"],
-                })
+                cuarentena.append({**fuente, "motivo": metodo, "categoria_inferida": canal.get("categoria_inferida"), "texto_analizado": canal["texto_normalizado"]})
             continue
-
         clave = evento["id"]
         if clave not in resultados:
             clon = {k: v for k, v in evento.items() if k != "fuentes"}
             clon["fuentes"] = []
+            clon["puntuacion_confianza"] = puntos
             clon["metodo_correlacion"] = metodo
             clon["razones_correlacion"] = razones
-            clon["puntuacion_confianza"] = puntuacion
-            clon["confianza"] = "alta" if puntuacion >= 85 else "media"
-            clon["estado"] = "confirmado" if puntuacion >= 80 else "probable"
             resultados[clave] = clon
-        else:
-            # Conserva siempre la mejor evidencia de una misma tarjeta.
-            if puntuacion > int(resultados[clave].get("puntuacion_confianza", 0)):
-                resultados[clave]["puntuacion_confianza"] = puntuacion
-                resultados[clave]["confianza"] = "alta" if puntuacion >= 85 else "media"
-                resultados[clave]["estado"] = "confirmado" if puntuacion >= 80 else "probable"
-                resultados[clave]["metodo_correlacion"] = metodo
-                resultados[clave]["razones_correlacion"] = razones
         fusionar_fuente(resultados[clave], fuente)
-        metricas["fuentes_emparejadas"] += 1
-
-    eventos = list(resultados.values())
-    eventos.sort(key=lambda evento: evento["hora_utc"])
+        metricas["fuentes_emparejadas" if evento.get("agenda_id") else "fuentes_probables"] += 1
+    if PUBLICAR_AGENDA_SIN_FUENTE:
+        for evento in agenda:
+            resultados.setdefault(evento["id"], {k: v for k, v in evento.items()})
+    eventos = sorted(resultados.values(), key=lambda e: e["hora_utc"])
     metricas["eventos_unicos"] = len(eventos)
-    return eventos, cuarentena, metricas
-
-
-# ─── SALIDA Y EJECUCIÓN ──────────────────────────────────────────────────────
-def guardar_json(path: Path, contenido: Any) -> None:
-    path.write_text(json.dumps(contenido, ensure_ascii=False, indent=2), encoding="utf-8")
+    return eventos, cuarentena, dict(metricas)
 
 
 def main() -> None:
-    log.info("=== Iniciando Curador de Eventos AllStreamTV v9 ===")
-    if not XTREAM_URL or not XTREAM_USER or not XTREAM_PASS:
-        log.error("Faltan XTREAM_URL, XTREAM_USER o XTREAM_PASS.")
-        raise SystemExit(2)
-
     tz = obtener_zona_aplicacion()
-    fecha_local = datetime.now(tz)
-    fecha_consulta = fecha_local.date().isoformat()
-    cliente = ClienteTheSportsDB()
-    agenda = obtener_agenda_maestra(fecha_consulta, cliente)
-    candidatos, metricas_xtream = obtener_canales_candidatos(fecha_local)
-    eventos, cuarentena, metricas_curacion = curar_eventos(agenda, candidatos)
-
-    base_media = detectar_base_media_m3u()
+    ahora = datetime.now(tz)
+    fecha = ahora.date().isoformat()
+    log.info("=== Curador multideporte v10 | Colombia %s ===", fecha)
+    metricas_agenda: dict[str, Any] = {}
+    agenda = obtener_agenda_maestra(fecha, metricas_agenda)
+    candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
+    eventos, cuarentena, metricas_curacion = curar_eventos(agenda, candidatos, ahora.date())
     salida = {
-        "version": 9,
-        "generado_utc": iso_utc(datetime.now(timezone.utc)),
-        "zona_horaria_producto": str(tz),
-        "fecha_local_producto": fecha_consulta,
-        "base_media": base_media,
-        "eventos": eventos,
+        "version": 10, "generado_utc": iso_utc(datetime.now(timezone.utc)), "zona_horaria_producto": str(tz),
+        "fecha_local_producto": fecha, "base_media": detectar_base_media_m3u(), "eventos": eventos,
     }
     meta = {
-        "version": 9,
-        "generado_utc": salida["generado_utc"],
-        "zona_horaria_producto": str(tz),
-        "fecha_local_producto": fecha_consulta,
-        "agenda_tsdb": len(agenda),
-        "solicitudes_tsdb": dict(cliente.estadisticas),
-        "xtream": dict(metricas_xtream),
-        "curacion": dict(metricas_curacion),
-        "eventos_finales_base": len(eventos),
-        "cuarentena_guardada": len(cuarentena),
+        "version": 10, "generado_utc": salida["generado_utc"], "zona_horaria_producto": str(tz),
+        "fecha_local_producto": fecha, "agenda": metricas_agenda, "xtream": metricas_xtream,
+        "curacion": metricas_curacion, "eventos_finales_base": len(eventos), "cuarentena_guardada": len(cuarentena),
     }
     guardar_json(ARCHIVO_SALIDA, salida)
     guardar_json(ARCHIVO_CUARENTENA, cuarentena)
     guardar_json(ARCHIVO_META, meta)
-
-    log.info(
-        "Curador finalizado: agenda=%d | candidatos=%d | eventos=%d | cuarentena=%d.",
-        len(agenda), len(candidatos), len(eventos), len(cuarentena),
-    )
+    log.info("Finalizado: agenda=%d candidatos=%d eventos=%d cuarentena=%d", len(agenda), len(candidatos), len(eventos), len(cuarentena))
 
 
 if __name__ == "__main__":
