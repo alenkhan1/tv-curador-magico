@@ -1,6 +1,6 @@
 {
-  "version": 10,
-  "generado_utc": "2026-08-22T17:35:48Z",
+  "version": 11,
+  "generado_utc": "2026-08-22T18:09:56Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-22",
   "agenda": {
@@ -9,7 +9,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -17,7 +17,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -25,7 +25,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -33,7 +33,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -41,7 +41,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -49,7 +49,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -57,7 +57,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -65,7 +65,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -73,7 +73,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -81,7 +81,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9",
         "errores_api": 1,
@@ -91,7 +91,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -99,7 +99,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "99",
+        "restantes_diarios": "97",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       }
@@ -108,8 +108,7 @@
       "solicitudes": 1,
       "eventos": 2
     },
-    "eventos": 1574,
-    "cache": "vigente"
+    "eventos": 1573
   },
   "xtream": {
     "categorias_hoy": 4,
@@ -122,28 +121,42 @@
     "candidatos": 519
   },
   "curacion": {
-    "fuentes_emparejadas": 421,
-    "fuentes_probables": 97,
+    "fuentes_emparejadas": 417,
+    "fuentes_probables": 101,
     "cuarentena": 1,
-    "eventos_unicos": 252
+    "eventos_unicos": 254
   },
-  "eventos_finales_base": 252,
+  "eventos_finales_base": 254,
   "cuarentena_guardada": 1,
   "epg": {
+    "politica": "en_canal",
     "lectura": {
       "programas_leidos": 80184,
-      "rechazados": 65,
-      "admitidos": 2
+      "programas_guia_principal": 85,
+      "finalizados": 22,
+      "deporte_no_reconocido": 16,
+      "veto_explicito": 27,
+      "admitidos": 20,
+      "categoria:Ciclismo": 9,
+      "estado:en_canal": 4,
+      "categoria:Snooker": 4,
+      "estado:programado": 16,
+      "categoria:Combate": 1,
+      "categoria:Baloncesto": 1,
+      "categoria:Hockey": 2,
+      "categoria:Fútbol": 1,
+      "categoria:Tenis": 2
     },
     "fusion": {
-      "agregados": 2
+      "agregados": 20
     },
     "canales_mapeados": {
       "E1": 9,
       "E2": 10,
       "TDP": 3
-    }
+    },
+    "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 254,
-  "actualizado_utc": "2026-08-22T17:35:57Z"
+  "eventos_finales_total": 274,
+  "actualizado_utc": "2026-08-22T18:09:56Z"
 }
