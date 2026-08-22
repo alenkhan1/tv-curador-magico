@@ -55,7 +55,8 @@ USAR_THESPORTSDB_RESPALDO = os.environ.get("USAR_THESPORTSDB_RESPALDO", "true").
 THESPORTSDB_MAX_EVENTOS = max(int(os.environ.get("THESPORTSDB_MAX_EVENTOS", "3")), 0)
 THESPORTSDB_MAX_SOLICITUDES_DIA = max(int(os.environ.get("THESPORTSDB_MAX_SOLICITUDES_DIA", "3")), 0)
 
-ARCHIVO_CACHE = Path(os.environ.get("ARCHIVO_CACHE", "agenda_api_v10.json"))
+# Nombre estable: evita crear una caché distinta por cada versión del curador.
+ARCHIVO_CACHE = Path(os.environ.get("ARCHIVO_CACHE", "agenda_api_actual.json"))
 ARCHIVO_SALIDA = Path(os.environ.get("ARCHIVO_SALIDA", "eventos_hoy.json"))
 ARCHIVO_CUARENTENA = Path(os.environ.get("ARCHIVO_CUARENTENA", "eventos_descartados.json"))
 ARCHIVO_META = Path(os.environ.get("ARCHIVO_META", "meta_curador.json"))
@@ -70,6 +71,7 @@ DURACION_POR_CATEGORIA = {
     "Fútbol": 130, "Baloncesto": 160, "Béisbol": 210, "Motor": 210,
     "Hockey": 160, "Combate": 210, "Tenis": 210, "Rugby": 160,
     "Voleibol": 160, "Fútbol Americano": 220, "Handball": 150,
+    "Ciclismo": 240, "Snooker": 180, "Golf": 300, "Gimnasia": 150,
     "Deportes": 150,
 }
 
@@ -100,6 +102,8 @@ STOPWORDS = {
 VETO_EMISION = {
     "REPETICION", "REPLAY", "RESUMEN", "HIGHLIGHTS", "COMPACTO", "NOTICIAS", "NEWS", "MAGAZINE", "PREVIA",
     "POSTPARTIDO", "POST PARTIDO", "DOCUMENTAL", "CLASICOS", "MEMORIAS", "VINTAGE", "MEJORES MOMENTOS",
+    "WIEDERHOLUNG", "ZUSAMMENFASSUNG", "DOKUMENTATION", "VORSCHAU", "NACHRICHTEN",
+    "REPETICAO", "RESUMO", "DOCUMENTARIO", "REDIFFUSION", "RETROSPECTIVA",
 }
 SESIONES = {
     "PRACTICE": "practica", "PRACTICA": "practica", "ENTRENAMIENTO": "practica",
@@ -107,13 +111,20 @@ SESIONES = {
     "SPRINT": "sprint", "RACE": "carrera", "CARRERA": "carrera", "PARTIDO": "partido", "MATCH": "partido",
     "PELEA": "pelea", "FIGHT": "pelea",
 }
+# Las pistas se evalúan por palabra/frase completa y con prioridad editorial. Evita
+# que "Championship" active erróneamente la antigua pista genérica "CHAMPIONS".
 DEPORTE_PISTAS = {
-    "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER", "BUNDESLIGA", "SERIE A", "CHAMPIONS", "LIBERTADORES", "SUDAMERICANA"},
+    "Golf": {"GOLF", "PGA", "DP WORLD", "BMW CHAMPIONSHIP"},
+    "Snooker": {"SNOOKER"},
+    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE"},
+    "Gimnasia": {"GIMNASIA", "GYMNASTICS", "GYMNASTIQUE", "TURNEN", "ARTISTICA"},
+    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA"},
+    "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA"},
     "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA"},
     "Béisbol": {"BASEBALL", "BEISBOL", "MLB"},
     "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR"},
     "Hockey": {"HOCKEY"}, "Combate": {"UFC", "MMA", "BKFC", "BOXING", "BOXEO", "WWE", "WRESTLING", "KICKBOXING"},
-    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA"}, "Rugby": {"RUGBY"}, "Voleibol": {"VOLLEY", "VOLEIBOL"},
+    "Rugby": {"RUGBY"}, "Voleibol": {"VOLLEY", "VOLEIBOL"},
     "Fútbol Americano": {"NFL", "AMERICAN FOOTBALL", "FUTBOL AMERICANO"}, "Handball": {"HANDBALL", "BALONMANO"},
 }
 
@@ -137,11 +148,17 @@ def contiene_veto(texto: Any) -> bool:
     return any(palabra in valor for palabra in VETO_EMISION)
 
 
+def _pista_completa(valor: str, pista: str) -> bool:
+    return bool(re.search(rf"(?<![A-Z0-9]){re.escape(pista)}(?![A-Z0-9])", valor))
+
+
 def inferir_deporte(texto: Any) -> Optional[str]:
+    """Clasifica por prioridad y coincidencias de palabras completas."""
     valor = normalizar_texto(texto)
-    hallazgos = [categoria for categoria, pistas in DEPORTE_PISTAS.items() if any(pista in valor for pista in pistas)]
-    unicos = list(dict.fromkeys(hallazgos))
-    return unicos[0] if len(unicos) == 1 else None
+    for categoria, pistas in DEPORTE_PISTAS.items():
+        if any(_pista_completa(valor, pista) for pista in pistas):
+            return categoria
+    return None
 
 
 def extraer_sesion(texto: Any) -> Optional[str]:
@@ -469,7 +486,7 @@ def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[dict[s
         if anterior:
             agenda = list(anterior.get("eventos", []))
             metricas["cache"] = "venciente_usada_por_fallo"
-    guardar_json(ARCHIVO_CACHE, {"version": 10, "fecha_local_producto": fecha_consulta, "generado_utc": iso_utc(datetime.now(timezone.utc)), "eventos": agenda, "metricas": metricas})
+    guardar_json(ARCHIVO_CACHE, {"version": 11, "fecha_local_producto": fecha_consulta, "generado_utc": iso_utc(datetime.now(timezone.utc)), "eventos": agenda, "metricas": metricas})
     if metricas_salida is not None:
         metricas_salida.update(metricas)
     return agenda
@@ -712,17 +729,17 @@ def main() -> None:
     tz = obtener_zona_aplicacion()
     ahora = datetime.now(tz)
     fecha = ahora.date().isoformat()
-    log.info("=== Curador multideporte v10 | Colombia %s ===", fecha)
+    log.info("=== Curador multideporte v11 EN CANAL | Colombia %s ===", fecha)
     metricas_agenda: dict[str, Any] = {}
     agenda = obtener_agenda_maestra(fecha, metricas_agenda)
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
     eventos, cuarentena, metricas_curacion = curar_eventos(agenda, candidatos, ahora.date())
     salida = {
-        "version": 10, "generado_utc": iso_utc(datetime.now(timezone.utc)), "zona_horaria_producto": str(tz),
+        "version": 11, "generado_utc": iso_utc(datetime.now(timezone.utc)), "zona_horaria_producto": str(tz),
         "fecha_local_producto": fecha, "base_media": detectar_base_media_m3u(), "eventos": eventos,
     }
     meta = {
-        "version": 10, "generado_utc": salida["generado_utc"], "zona_horaria_producto": str(tz),
+        "version": 11, "generado_utc": salida["generado_utc"], "zona_horaria_producto": str(tz),
         "fecha_local_producto": fecha, "agenda": metricas_agenda, "xtream": metricas_xtream,
         "curacion": metricas_curacion, "eventos_finales_base": len(eventos), "cuarentena_guardada": len(cuarentena),
     }
