@@ -1,32 +1,148 @@
 {
-  "version": 9,
-  "generado_utc": "2026-08-22T13:45:33Z",
+  "version": 10,
+  "generado_utc": "2026-08-22T14:44:59Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-22",
-  "agenda_tsdb": 35,
-  "solicitudes_tsdb": {},
+  "agenda": {
+    "api_sports": {
+      "football": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "basketball": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "baseball": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "hockey": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "handball": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "rugby": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "volleyball": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "afl": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "nfl": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "nba": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9",
+        "errores_api": 1,
+        "ultimo_error": "{'timezone': 'The Timezone field do not exist.'}"
+      },
+      "formula-1": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "mma": {
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "99",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      }
+    },
+    "thesportsdb_respaldo": {
+      "solicitudes": 1,
+      "eventos": 2
+    },
+    "eventos": 1574
+  },
   "xtream": {
-    "categorias_hoy": 0,
-    "streams_totales": 4177,
-    "candidatos": 4
+    "categorias_hoy": 2,
+    "categorias_fuera_de_jornada": 6,
+    "streams_totales": 4489,
+    "descartado_sin_vigencia_o_identidad": 3833,
+    "descartado_contenido_no_evento": 54,
+    "descartado_fecha_xtream_fuera_de_jornada": 113,
+    "descartado_categoria_xtream_fuera_de_jornada": 183,
+    "candidatos": 306
   },
   "curacion": {
-    "cuarentena": 4,
-    "eventos_unicos": 0
+    "fuentes_emparejadas": 256,
+    "fuentes_probables": 49,
+    "cuarentena": 1,
+    "eventos_unicos": 173
   },
-  "eventos_finales_base": 0,
-  "cuarentena_guardada": 4,
+  "eventos_finales_base": 173,
+  "cuarentena_guardada": 1,
   "epg": {
     "lectura": {
       "programas_leidos": 79740,
-      "rechazados": 60,
-      "admitidos": 7,
-      "finales": 7
+      "rechazados": 64,
+      "admitidos": 3
     },
     "fusion": {
-      "epg_agregados": 7
+      "agregados": 3
+    },
+    "canales_mapeados": {
+      "E1": 9,
+      "E2": 10,
+      "TDP": 3
     }
   },
-  "eventos_finales_total": 7,
-  "actualizado_utc": "2026-08-22T13:45:39Z"
+  "eventos_finales_total": 176,
+  "actualizado_utc": "2026-08-22T14:45:07Z"
 }
