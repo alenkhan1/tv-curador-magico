@@ -9,7 +9,7 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-08-21T04:39:35Z",
+  "generado": "2026-08-22T04:33:55Z",
   "resumen": {
     "total": 1438,
     "por_motivo": {
@@ -22,7 +22,7 @@
       "sin_nombre": 1,
       "no_encontrado": 109,
       "fallo_red": 1289,
-      "clasificados": 10242,
+      "clasificados": 10248,
       "sin_identificar": 1398
     },
     "series": {
@@ -31,7 +31,7 @@
       "sin_nombre": 0,
       "no_encontrado": 9,
       "fallo_red": 31,
-      "clasificados": 1764,
+      "clasificados": 1768,
       "sin_identificar": 40
     },
     "alerta": {
@@ -44,13 +44,20 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1399,
+      "veces": 1398,
       "ejemplos": [
         "Super Bowl LX (2026)",
         "Amame, amame (2026)",
-        "BTS El comeback en directo - Arirang (2026)",
         "Inthum (2026)",
-        "Por fin Tu (2026)"
+        "Por fin Tu (2026)",
+        "Risa y la cabina del viento (2026)"
+      ]
+    },
+    {
+      "patron": "CODIGO",
+      "veces": 1,
+      "ejemplos": [
+        "Código: Venganza (2026) Audio Digital"
       ]
     },
     {
@@ -557,18 +564,6 @@
       "copias": 1
     },
     {
-      "id": "391699",
-      "tipo": "movie",
-      "nombre_original": "BTS El comeback en directo - Arirang (2026)",
-      "titulo_buscado": "BTS El comeback en directo Arirang",
-      "anio": 2026,
-      "motivo": "pendiente",
-      "carpeta": "ESTRENOS 2026",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "403063",
       "tipo": "movie",
       "nombre_original": "Inthum (2026)",
@@ -613,6 +608,20 @@
       "motivo": "pendiente",
       "carpeta": "ESTRENOS 2026",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "529190",
+      "tipo": "movie",
+      "nombre_original": "Código: Venganza (2026) Audio Digital",
+      "titulo_buscado": "Código: Venganza Digital",
+      "anio": 2026,
+      "motivo": "pendiente",
+      "carpeta": "ESTRENOS 2026",
+      "etiquetas": [
+        "AUDIO"
+      ],
       "prefijo": "",
       "copias": 1
     },
