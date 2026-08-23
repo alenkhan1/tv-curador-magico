@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Inyector XMLTV multicanal con validación cruzada multi-feed (UK/DE/ES)."""
+"""Inyector XMLTV multicanal con política estricta de emisiones en vivo y consenso multi-feed."""
 from __future__ import annotations
 
 import hashlib
@@ -67,6 +67,16 @@ VETO_EPG = {
 # Filtro de archivos históricos o temporadas pasadas
 PATRON_TEMPORADA_HISTORICA = re.compile(r"\b(19\d\d|20[0-2][0-5])\b|\bT(2[0-5]|\d{1,2})\b", re.I)
 
+# Normalización canónica de sinónimos multilingües
+SINONIMOS_TORNEOS = {
+    "CYCLISME : TOUR D'ESPAGNE": "La Vuelta",
+    "CYCLISME TOUR D'ESPAGNE": "La Vuelta",
+    "TOUR D'ESPAGNE": "La Vuelta",
+    "VUELTA A ESPANA": "La Vuelta",
+    "CYCLISME : RENEWI TOUR": "Renewi Tour",
+    "CYCLISME RENEWI TOUR": "Renewi Tour",
+}
+
 
 def parse_timestamp_epg(valor: str) -> Optional[datetime]:
     if not valor:
@@ -105,6 +115,13 @@ def limpiar_titulo_epg(titulo: str) -> tuple[str, str]:
     valor = re.sub(r"(?i)\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO|DIREKT|EN DIRECT)\b", "", valor)
     valor = re.sub(r"\bT\d{2,4}(/\d{2,4})?\b", "", valor)
     valor = " ".join(valor.strip(" -:·|▫/").split())
+
+    # Canonicalización de sinónimos
+    valor_norm = normalizar_texto(valor)
+    for sinonimo, canonico in SINONIMOS_TORNEOS.items():
+        if normalizar_texto(sinonimo) in valor_norm:
+            valor = valor.replace(sinonimo, canonico).replace(sinonimo.lower(), canonico)
+
     partes = [p.strip() for p in re.split(r"\s*[·|▫:/]\s*", valor, maxsplit=1) if p.strip()]
     if len(partes) == 2:
         return partes[0], partes[1]
@@ -225,7 +242,6 @@ def buscar_evento_agenda(titulo_epg: str, inicio_epg: datetime, agenda: list[dic
 
 
 def extraer_participantes_tenis(titulo: str) -> tuple[str, str]:
-    """Detecta duelos legítimos exclusivamente con dos nombres/apellidos claros."""
     limpio = re.sub(r"\([^)]{2,4}\)", "", titulo or "")
     match = re.search(r"\b([A-ZÁÉÍÓÚÑa-záéíóúñ\.\s]{3,24})\s+(?:VS\.?|V\.?)\s+([A-ZÁÉÍÓÚÑa-záéíóúñ\.\s]{3,24})\b", limpio, flags=re.I)
     if not match:
@@ -253,16 +269,18 @@ def construir_evento_epg(
     if not PUBLICAR_EPG_FUTURO and inicio > ahora:
         return None
 
+    # Política estricta: si no hay confirmación de DIRECTO/LIVE, se descarta
+    directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}")
+    if not directo:
+        return None
+
     torneo, subtitulo = limpiar_titulo_epg(titulo_raw)
     categoria = inferir_deporte(f"{titulo_raw} {descripcion}")
     if not categoria:
         return None
 
     duracion = max(15, int((fin - inicio).total_seconds() / 60)) if fin else DURACION_POR_CATEGORIA.get(categoria, 150)
-    directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}")
-
-    # Descarte de bloques cortos (< 45 min) sin directo confirmado para evitar micro-resúmenes
-    if duracion < 45 and not directo:
+    if duracion < 30:
         return None
 
     # Determinación de modo de presentación y duelos
@@ -274,7 +292,6 @@ def construir_evento_epg(
     elif es_individual:
         tipo = "sencillo"
     else:
-        # Deportes colectivos estándar
         match = re.search(r"\b(.+?)\s+(?:VS\.?|V\.?)\s+(.+?)\b", torneo, re.I)
         if match:
             tipo = "duelo"
@@ -294,9 +311,9 @@ def construir_evento_epg(
         evento.update({
             "id": oficial["id"], "agenda_id": oficial["id"], "hora_utc": iso_utc(inicio), "duracion_min": duracion,
             "origen": f"{oficial.get('origen', 'api_sports')}+epg", "origenes": list(dict.fromkeys(list(oficial.get("origenes", [])) + ["epg"])),
-            "estado": "confirmado" if directo else estado_str, "estado_evento": "programado",
-            "confianza": "alta" if (puntos >= 85 or directo) else "media",
-            "puntuacion_confianza": max(puntos, int(oficial.get("puntuacion_confianza", 0))),
+            "estado": "confirmado", "estado_evento": "programado",
+            "confianza": "alta",
+            "puntuacion_confianza": max(puntos, int(oficial.get("puntuacion_confianza", 0)), 90),
             "metodo_correlacion": "epg_agenda_verificada", "razones_correlacion": [f"tokens:{','.join(tokens)}", f"directo:{str(directo).lower()}"], "fuentes": [],
         })
         for fuente in fuentes:
@@ -307,7 +324,7 @@ def construir_evento_epg(
     if not INCLUIR_EPG_EN_CANAL:
         return None
 
-    ident = hashlib.sha1(f"{normalizar_texto(torneo)}|{normalizar_texto(subtitulo)}|{inicio.strftime('%Y%m%d%H%M')}".encode()).hexdigest()[:16]
+    ident = hashlib.sha1(f"{normalizar_texto(torneo)}|{normalizar_texto(subtitulo)}|{inicio.strftime('%Y%m%d')}".encode()).hexdigest()[:16]
     return {
         "id": f"epg_{ident}", "agenda_id": "", "titulo": limitar(titulo_final, 75), "torneo": limitar(torneo, 55),
         "categoria": categoria, "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante,
@@ -318,15 +335,15 @@ def construir_evento_epg(
         "duracion_min": duracion, "logo_torneo": logo_oficial, "logo_local": logo_oficial if tipo == "sencillo" else "",
         "logo_visitante": "", "tier": 2, "origen": "epg_en_canal", "origenes": ["epg"],
         "estado": estado_str, "estado_evento": "programado",
-        "confianza": "alta" if directo else "media", "puntuacion_confianza": 85 if directo else 68,
-        "metodo_correlacion": "epg_directo_multi_feed" if directo else "epg_deportivo_lineal",
+        "confianza": "alta", "puntuacion_confianza": 88,
+        "metodo_correlacion": "epg_directo_multi_feed",
         "razones_correlacion": ["canal_prioritario", "sin_veto", f"categoria:{categoria}", f"directo:{str(directo).lower()}"],
         "fuentes": fuentes,
     }
 
 
 def construir_matriz_consenso(programas: list[dict[str, Any]]) -> dict[tuple[str, str], bool]:
-    """Crea un mapa (canal_clave, timestamp_slot) -> True si algún país marca DIRECTO."""
+    """Crea un mapa (canal_clave, timestamp_slot) -> True si algún país marca DIRECTO/LIVE."""
     consenso: dict[tuple[str, str], bool] = {}
     for p in programas:
         if not p.get("inicio"):
@@ -336,7 +353,6 @@ def construir_matriz_consenso(programas: list[dict[str, Any]]) -> dict[tuple[str
         es_live = es_directo_multilingue(f"{p['titulo']} {p['descripcion']}")
         if es_live:
             consenso[(clave, slot)] = True
-            # Cubre variaciones de +/- 15 minutos entre operadores de cable
             for offset in (-15, 15):
                 slot_cercano = (p["inicio"] + timedelta(minutes=offset)).strftime("%Y%m%d%H%M")
                 consenso[(clave, slot_cercano)] = True
@@ -403,15 +419,16 @@ def extraer_eventos_epg(mapa: dict[str, list[dict[str, Any]]], agenda: list[dict
             metricas["admitidos"] += 1
             metricas[f"categoria:{evento['categoria']}"] += 1
         else:
-            metricas["rechazados"] += 1
+            metricas["rechazados_no_en_vivo"] += 1
 
     return consolidar_eventos_epg(eventos), dict(metricas)
 
 
 def consolidar_eventos_epg(eventos: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    unicos: dict[tuple[str, str], dict[str, Any]] = {}
+    unicos: dict[str, dict[str, Any]] = {}
     for evento in eventos:
-        clave = (str(evento.get("agenda_id") or normalizar_texto(f"{evento['torneo']} {evento['subtitulo']}")), str(evento["hora_utc"]))
+        # Clave unificada por sesión (sin hora_utc) para evitar duplicar el mismo bloque
+        clave = str(evento.get("agenda_id") or normalizar_texto(f"{evento['torneo']} {evento['subtitulo']}"))
         previo = unicos.get(clave)
         if previo is None:
             unicos[clave] = evento
@@ -476,7 +493,7 @@ def main() -> None:
         meta = {}
 
     meta["epg"] = {
-        "politica": "en_canal_consenso_multifeed", "lectura": metricas_epg, "fusion": metricas_fusion,
+        "politica": "en_canal_consenso_multifeed_estricto", "lectura": metricas_epg, "fusion": metricas_fusion,
         "canales_mapeados": {k: len(v) for k, v in mapa.items()}, "orden_fuentes": "ES,Principal,EN,otros"
     }
     meta["eventos_finales_total"], meta["actualizado_utc"] = len(eventos), iso_utc(ahora)
