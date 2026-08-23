@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Resolvedor universal de logos deportivos con catálogo maestro y caché local."""
+"""Resolvedor universal de logos deportivos con CDN Proxy (anti-403) y caché local."""
 from __future__ import annotations
 
 import json
@@ -7,8 +7,9 @@ import logging
 import os
 import re
 import unicodedata
+import urllib.parse
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import requests
 
@@ -16,8 +17,19 @@ log = logging.getLogger("resolvedor_logos")
 
 ARCHIVO_CACHE_LOGOS = Path(os.environ.get("ARCHIVO_CACHE_LOGOS", "logos_cache.json"))
 
-# Catálogo maestro de insignias de federaciones y circuitos oficiales
-CIRCUITO_LOGOS: dict[str, str] = {
+
+def envolver_cdn_proxy(url: str) -> str:
+    """Envuelve URLs externas en wsrv.nl para evitar bloqueos HTTP 403 por User-Agent en Android TV."""
+    if not url:
+        return ""
+    if url.startswith("https://wsrv.nl/?url="):
+        return url
+    url_limpia = url.strip()
+    return f"https://wsrv.nl/?url={urllib.parse.quote(url_limpia, safe='')}&w=400&output=webp"
+
+
+# Catálogo maestro de insignias de federaciones, ligas y circuitos oficiales
+CIRCUITO_LOGOS_RAW: dict[str, str] = {
     # Tenis
     "ATP": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/ATP_Tour_logo.svg/512px-ATP_Tour_logo.svg.png",
     "WTA": "https://upload.wikimedia.org/wikipedia/en/thumb/0/03/WTA_logo_2020.svg/512px-WTA_logo_2020.svg.png",
@@ -29,6 +41,7 @@ CIRCUITO_LOGOS: dict[str, str] = {
     # Ciclismo
     "UCI": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Union_Cycliste_Internationale_logo.svg/512px-Union_Cycliste_Internationale_logo.svg.png",
     "VUELTA": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/La_Vuelta_logo.svg/512px-La_Vuelta_logo.svg.png",
+    "LA VUELTA": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/La_Vuelta_logo.svg/512px-La_Vuelta_logo.svg.png",
     "TOUR DE FRANCE": "https://upload.wikimedia.org/wikipedia/en/thumb/9/91/Tour_de_France_logo.svg/512px-Tour_de_France_logo.svg.png",
     "GIRO": "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Giro_d%27Italia_logo.svg/512px-Giro_d%27Italia_logo.svg.png",
     "RENEWI TOUR": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Renewi_Tour_logo.svg/512px-Renewi_Tour_logo.svg.png",
@@ -58,11 +71,13 @@ CIRCUITO_LOGOS: dict[str, str] = {
     # Béisbol y otros
     "MLB": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/512px-Major_League_Baseball_logo.svg.png",
     "LMB": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Liga_Mexicana_de_Beisbol_logo.svg/512px-Liga_Mexicana_de_Beisbol_logo.svg.png",
+    "LITTLE LEAGUE": "https://upload.wikimedia.org/wikipedia/en/thumb/9/90/Little_League_logo.svg/512px-Little_League_logo.svg.png",
     "NCAA": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/512px-NCAA_logo.svg.png",
     "GIMNASIA": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/European_Gymnastics_logo.svg/512px-European_Gymnastics_logo.svg.png",
+    "HOCKEY HIERBA": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/International_Hockey_Federation_logo.svg/512px-International_Hockey_Federation_logo.svg.png",
 }
 
-FALLBACK_POR_CATEGORIA: dict[str, str] = {
+FALLBACK_POR_CATEGORIA_RAW: dict[str, str] = {
     "Tenis": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/ATP_Tour_logo.svg/512px-ATP_Tour_logo.svg.png",
     "Ciclismo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Union_Cycliste_Internationale_logo.svg/512px-Union_Cycliste_Internationale_logo.svg.png",
     "Snooker": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/World_Snooker_Tour_logo.svg/512px-World_Snooker_Tour_logo.svg.png",
@@ -71,12 +86,16 @@ FALLBACK_POR_CATEGORIA: dict[str, str] = {
     "Combate": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/512px-UFC_logo.svg.png",
     "Béisbol": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/512px-Major_League_Baseball_logo.svg.png",
     "Gimnasia": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/European_Gymnastics_logo.svg/512px-European_Gymnastics_logo.svg.png",
+    "Hockey": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/International_Hockey_Federation_logo.svg/512px-International_Hockey_Federation_logo.svg.png",
     "Fútbol": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Soccerball.svg/512px-Soccerball.svg.png",
     "Baloncesto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/512px-Basketball.png",
-    "Hockey": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Ice_hockey_puck.svg/512px-Ice_hockey_puck.svg.png",
     "Rugby": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rugby_ball.svg/512px-Rugby_ball.svg.png",
     "Fútbol Americano": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/512px-National_Football_League_logo.svg.png",
 }
+
+# Diccionario pre-envuelto con CDN Proxy
+CIRCUITO_LOGOS = {k: envolver_cdn_proxy(v) for k, v in CIRCUITO_LOGOS_RAW.items()}
+FALLBACK_POR_CATEGORIA = {k: envolver_cdn_proxy(v) for k, v in FALLBACK_POR_CATEGORIA_RAW.items()}
 
 
 def _normalizar(texto: Any) -> str:
@@ -104,7 +123,7 @@ def _guardar_cache(cache: dict[str, str]) -> None:
 
 
 def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False) -> str:
-    """Resuelve el logo con precedencia: Caché -> Catálogo Maestro -> Wikidata -> Fallback."""
+    """Resuelve el logo oficial con precedencia: Caché -> Catálogo Maestro -> Wikidata -> Fallback CDN."""
     if not torneo and not categoria:
         return ""
 
@@ -113,14 +132,14 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     if torneo_norm in cache and cache[torneo_norm]:
         return cache[torneo_norm]
 
-    # 1. Búsqueda en catálogo maestro de circuitos y marcas
+    # 1. Búsqueda directa en catálogo de federaciones/circuitos
     for clave, url in CIRCUITO_LOGOS.items():
         if clave in torneo_norm or torneo_norm in clave:
             cache[torneo_norm] = url
             _guardar_cache(cache)
             return url
 
-    # 2. Búsqueda en Wikidata / Wikimedia API (si está habilitada la red)
+    # 2. Búsqueda ligera en Wikidata API (si está habilitada la red)
     if permitir_red and torneo_norm:
         try:
             url_api = "https://www.wikidata.org/w/api.php"
@@ -141,19 +160,23 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
                         c_resp = requests.get(claims_url, timeout=5)
                         if c_resp.status_code == 200:
                             claims = c_resp.json().get("entities", {}).get(entidad_id, {}).get("claims", {})
-                            imagen_prop = claims.get("P154") or claims.get("P18")  # P154: Logo, P18: Imagen
+                            imagen_prop = claims.get("P154") or claims.get("P18")
                             if imagen_prop:
                                 filename = imagen_prop[0]["mainsnak"]["datavalue"]["value"]
                                 filename_clean = filename.replace(" ", "_")
-                                logo_url = f"https://commons.wikimedia.org/wiki/Special:FilePath/{filename_clean}?width=512"
-                                cache[torneo_norm] = logo_url
+                                raw_url = f"https://commons.wikimedia.org/wiki/Special:FilePath/{filename_clean}"
+                                cdn_url = envolver_cdn_proxy(raw_url)
+                                cache[torneo_norm] = cdn_url
                                 _guardar_cache(cache)
-                                return logo_url
+                                return cdn_url
         except Exception as exc:
-            log.debug("Error consultando Wikidata para %s: %s", torneo, exc)
+            log.debug("Wikidata sin resultado para %s: %s", torneo, exc)
 
-    # 3. Fallback oficial por categoría
-    fallback = FALLBACK_POR_CATEGORIA.get(categoria, "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Soccerball.svg/512px-Soccerball.svg.png")
+    # 3. Fallback oficial garantizado por categoría
+    fallback = FALLBACK_POR_CATEGORIA.get(
+        categoria,
+        envolver_cdn_proxy("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Soccerball.svg/512px-Soccerball.svg.png")
+    )
     cache[torneo_norm] = fallback
     _guardar_cache(cache)
     return fallback
