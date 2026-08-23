@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Curador deportivo multideporte para AllStreamTV.
-
-La agenda se construye con API-Sports por disciplina. Xtream aporta las señales
-reproducibles y nunca se descarta una señal vigente solo porque TheSportsDB no
-la conozca. Colombia (America/Bogota) es la única zona que determina la jornada.
-"""
+"""Curador deportivo multideporte para AllStreamTV con parser de duelos de cobertura total."""
 from __future__ import annotations
 
 import hashlib
@@ -98,7 +93,6 @@ STOPWORDS = {
     "DIARIO", "DIA", "PRACTICE", "ENTRENAMIENTO", "ROUND", "FINAL", "FASE", "JORNADA",
 }
 
-# Tokens genéricos que no deben autorizar por sí solos un emparejamiento deportivo
 TOKENS_GENERICOS = {
     "UNITED", "CITY", "REAL", "CLUB", "DEPORTIVO", "RACING", "INTER", "ATLETICO",
     "SPORT", "SPORTING", "SAN", "SANTA", "SAO", "FC", "CF", "CD", "AC", "SC",
@@ -128,7 +122,7 @@ DEPORTE_PISTAS = {
     "Tenis": {"TENNIS", "TENIS", "ATP", "WTA"},
     "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA"},
     "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA", "WNBA"},
-    "Béisbol": {"BASEBALL", "BEISBOL", "MLB", "LMB"},
+    "Béisbol": {"BASEBALL", "BEISBOL", "MLB", "LMB", "LITTLE LEAGUE"},
     "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR", "SUPERBIKE"},
     "Hockey": {"HOCKEY"},
     "Combate": {"UFC", "MMA", "BKFC", "BOXING", "BOXEO", "WWE", "WRESTLING", "KICKBOXING"},
@@ -356,6 +350,7 @@ def normalizar_evento_api(deporte: str, item: dict[str, Any], config: dict[str, 
     id_origen = str(_get(item, "fixture.id", "game.id", "race.id", "fight.id", "id") or "")
     if not id_origen:
         id_origen = hashlib.sha1(f"{deporte}|{titulo}|{iso_utc(inicio)}".encode()).hexdigest()[:16]
+
     logo_torneo = str(_get(item, "league.logo", "competition.logo", "race.competition.logo") or "")
     if not logo_torneo:
         logo_torneo = resolver_logo_torneo(torneo or titulo, config["categoria"])
@@ -624,7 +619,6 @@ def calcular_similitud_simple(titulo: str, torneo: str, canal: str) -> tuple[int
     if not comunes:
         return 0, []
 
-    # Descartar si los tokens comunes son únicamente palabras genéricas
     comunes_significativos = [t for t in comunes if t not in TOKENS_GENERICOS]
     if not comunes_significativos:
         return 0, []
@@ -657,7 +651,6 @@ def emparejar_evento(canal: dict[str, Any], agenda: Iterable[dict[str, Any]]) ->
         local_sig = [t for t in acierto_local if t not in TOKENS_GENERICOS]
         visita_sig = [t for t in acierto_visita if t not in TOKENS_GENERICOS]
 
-        # Solo se valida duelo si ambos equipos tienen coincidencia O si al menos uno tiene token no genérico
         if local and visita and acierto_local and acierto_visita and (local_sig or visita_sig):
             puntos = min(100, 84 + 4 * (len(acierto_local) + len(acierto_visita)) + (5 if diferencia is not None else 0))
             metodo, razones = "duelo_verificado", [f"local:{','.join(acierto_local)}", f"visitante:{','.join(acierto_visita)}"]
@@ -683,34 +676,50 @@ def fusionar_fuente(evento: dict[str, Any], fuente: dict[str, Any]) -> None:
         fuentes.append(fuente)
 
 
-def _titulo_probable(canal: dict[str, Any]) -> tuple[str, str]:
-    titulo = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", canal["nombre_ui"])
-    titulo = re.sub(r"(?<!\d)\d{1,2}:\d{2}\s*(?:[APap][Mm])?(?!\d)", "", titulo)
-    limpio = " ".join(titulo.strip(" -|·:▫").split()) or canal["nombre_ui"]
+def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, str, str, str]:
+    """Analiza el título completo extrayendo (torneo, subtítulo, tipo, equipo_local, equipo_visitante)."""
+    # 1. Limpieza de fechas, horas y sufijos de resolución
+    limpio = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", nombre_ui)
+    limpio = re.sub(r"(?<!\d)\d{1,2}:\d{2}\s*(?:[APap][Mm])?(?!\d)", "", limpio)
+    limpio = re.sub(r"\b(FHD|HD|SD|OP1|OP2|4K)\b", "", limpio, flags=re.I)
+    limpio = " ".join(limpio.strip(" -|·:▫/|").split())
+
+    es_individual = categoria in DEPORTES_INDIVIDUALES
+
+    # 2. Búsqueda de duelo en todo el texto si es deporte colectivo
+    duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus)\s+(.+)", limpio, flags=re.I)
+    if duelo_match and not es_individual:
+        parte_izq, parte_der = duelo_match.group(1).strip(), duelo_match.group(2).strip()
+        subpartes_izq = [p.strip() for p in re.split(r"\s*[|·▫/]\s*", parte_izq) if p.strip()]
+        subpartes_der = [p.strip() for p in re.split(r"\s*[|·▫/]\s*", parte_der) if p.strip()]
+
+        if len(subpartes_izq) > 1:
+            torneo = subpartes_izq[0]
+            local = subpartes_izq[-1]
+        else:
+            torneo = categoria
+            local = parte_izq
+
+        visitante = subpartes_der[0] if subpartes_der else parte_der
+        subtitulo = " - ".join(subpartes_der[1:]) if len(subpartes_der) > 1 else ""
+
+        return torneo, subtitulo, "duelo", local, visitante
+
+    # 3. Tratamiento como evento por competición / individual
     partes = [p.strip() for p in re.split(r"\s*[|·▫/]\s*", limpio) if p.strip()]
     if len(partes) >= 2:
-        return partes[0], " - ".join(partes[1:])
-    return limpio, ""
+        return partes[0], " - ".join(partes[1:]), "sencillo", "", ""
+    return limpio, "", "sencillo", "", ""
 
 
 def crear_probable_xtream(canal: dict[str, Any], tz: ZoneInfo) -> Optional[dict[str, Any]]:
     hora = canal.get("hora_local")
     if hora is None:
         return None
-    torneo, subtitulo = _titulo_probable(canal)
     categoria = canal.get("categoria_inferida") or "Deportes"
-    es_individual = categoria in DEPORTES_INDIVIDUALES
-    duelo_match = re.search(r"\b(.+?)\s+(?:VS\.?|V\.?)\s+(.+?)\b", torneo, re.I)
+    torneo, subtitulo, tipo, local, visitante = analizar_titulo_xtream(canal["nombre_ui"], categoria)
 
-    if duelo_match and not es_individual:
-        tipo = "duelo"
-        local, visitante = duelo_match.group(1).strip(), duelo_match.group(2).strip()
-        titulo = f"{local} vs {visitante}"
-    else:
-        tipo = "sencillo"
-        local, visitante = "", ""
-        titulo = torneo
-
+    titulo = f"{local} vs {visitante}" if tipo == "duelo" else torneo
     clave = f"{normalizar_texto(titulo)}|{hora.strftime('%Y%m%d%H%M')}"
     ident = hashlib.sha1(clave.encode("utf-8")).hexdigest()[:16]
     logo = resolver_logo_torneo(torneo, categoria)
