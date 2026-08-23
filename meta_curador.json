@@ -1,15 +1,15 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-23T03:15:53Z",
+  "generado_utc": "2026-08-23T05:46:48Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-08-22",
+  "fecha_local_producto": "2026-08-23",
   "agenda": {
     "api_sports": {
       "football": {
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -17,7 +17,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -25,7 +25,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -33,7 +33,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -41,7 +41,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -49,7 +49,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -57,7 +57,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -65,7 +65,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -73,7 +73,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -81,7 +81,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9",
         "errores_api": 1,
@@ -91,7 +91,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -99,22 +99,26 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "97",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       }
     },
     "thesportsdb_respaldo": {
       "solicitudes": 1,
-      "eventos": 2
+      "eventos": 3
     },
-    "eventos": 1573,
-    "cache": "vigente"
+    "eventos": 887
   },
   "xtream": {
     "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 0,
-    "error": "xtream:404 Client Error: Not Found for url: https://mi-dashboard-tv.onrender.com/api/puente_xtream?url=http%3A%2F%2Freydereyes.xyz%3A8080%2Fplayer_api.php%3Fusername%3Djorge%26password%3Djorge123%26action%3Dget_live_streams"
+    "categorias_fuera_de_jornada": 10,
+    "streams_totales": 4704,
+    "descartado_sin_vigencia_o_identidad": 3829,
+    "descartado_contenido_no_evento": 56,
+    "descartado_fecha_xtream_fuera_de_jornada": 312,
+    "descartado_categoria_xtream_fuera_de_jornada": 507,
+    "candidatos": 0
   },
   "curacion": {
     "eventos_unicos": 0
@@ -124,16 +128,34 @@
   "epg": {
     "politica": "en_canal",
     "lectura": {
-      "programas_leidos": 80343
+      "programas_leidos": 80343,
+      "programas_guia_principal": 88,
+      "admitidos": 50,
+      "categoria:Snooker": 9,
+      "estado:en_canal": 3,
+      "estado:programado": 47,
+      "categoria:Ciclismo": 26,
+      "deporte_no_reconocido": 10,
+      "veto_explicito": 28,
+      "categoria:Combate": 1,
+      "categoria:Motor": 3,
+      "categoria:Fútbol": 4,
+      "categoria:Gimnasia": 2,
+      "categoria:Voleibol": 1,
+      "categoria:Baloncesto": 1,
+      "categoria:Hockey": 1,
+      "categoria:Tenis": 2
     },
-    "fusion": {},
+    "fusion": {
+      "agregados": 49
+    },
     "canales_mapeados": {
-      "E1": 0,
-      "E2": 0,
-      "TDP": 0
+      "E1": 9,
+      "E2": 10,
+      "TDP": 3
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 0,
-  "actualizado_utc": "2026-08-23T03:15:53Z"
+  "eventos_finales_total": 49,
+  "actualizado_utc": "2026-08-23T05:46:48Z"
 }
