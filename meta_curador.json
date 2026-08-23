@@ -1,6 +1,6 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-23T19:08:17Z",
+  "generado_utc": "2026-08-23T20:15:42Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-23",
   "agenda": {
@@ -124,27 +124,21 @@
   "curacion": {
     "fuentes_probables": 77,
     "fuentes_emparejadas": 225,
-    "eventos_unicos": 149
+    "eventos_unicos": 159
   },
-  "eventos_finales_base": 149,
+  "eventos_finales_base": 159,
   "cuarentena_guardada": 0,
   "epg": {
-    "politica": "en_canal_consenso_multifeed",
+    "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
       "programas_leidos": 79185,
       "veto_o_historico": 43,
-      "rechazados": 30,
-      "admitidos": 15,
-      "categoria:Ciclismo": 8,
-      "categoria:Combate": 1,
-      "categoria:Fútbol": 1,
-      "categoria:Hockey": 1,
-      "categoria:Gimnasia": 1,
-      "categoria:Tenis": 2,
-      "categoria:Snooker": 1
+      "rechazados_no_en_vivo": 44,
+      "admitidos": 1,
+      "categoria:Fútbol": 1
     },
     "fusion": {
-      "agregados": 15
+      "agregados": 1
     },
     "canales_mapeados": {
       "E1": 9,
@@ -153,6 +147,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 164,
-  "actualizado_utc": "2026-08-23T19:08:17Z"
+  "eventos_finales_total": 160,
+  "actualizado_utc": "2026-08-23T20:15:42Z"
 }
