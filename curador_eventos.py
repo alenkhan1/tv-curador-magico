@@ -105,6 +105,7 @@ VETO_EMISION = {
     "POSTPARTIDO", "POST PARTIDO", "DOCUMENTAL", "CLASICOS", "MEMORIAS", "VINTAGE", "MEJORES MOMENTOS",
     "WIEDERHOLUNG", "ZUSAMMENFASSUNG", "DOKUMENTATION", "VORSCHAU", "NACHRICHTEN",
     "REPETICAO", "RESUMO", "DOCUMENTARIO", "REDIFFUSION", "RETROSPECTIVA",
+    "PRIMER TOQUE", "SAQUE LARGO", "LINEA DE 4", "PLANETA FUTBOL", "ESTUDIO ESTADIO",
 }
 
 SESIONES = {
@@ -117,10 +118,10 @@ SESIONES = {
 DEPORTE_PISTAS = {
     "Golf": {"GOLF", "PGA", "DP WORLD", "BMW CHAMPIONSHIP"},
     "Snooker": {"SNOOKER"},
-    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR"},
+    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR", "RCN"},
     "Gimnasia": {"GIMNASIA", "GYMNASTICS", "GYMNASTIQUE", "TURNEN", "ARTISTICA"},
     "Tenis": {"TENNIS", "TENIS", "ATP", "WTA"},
-    "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA"},
+    "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA", "BETPLAY", "DIMAYOR"},
     "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA", "WNBA"},
     "Béisbol": {"BASEBALL", "BEISBOL", "MLB", "LMB", "LITTLE LEAGUE"},
     "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR", "SUPERBIKE"},
@@ -247,12 +248,10 @@ def generar_huella_canonica(evento: dict[str, Any]) -> str:
     hora_utc = str(evento.get("hora_utc", ""))
     fecha_slot = hora_utc[:10] if len(hora_utc) >= 10 else ""
 
-    # Duelo colectivo: firma por orden alfabético de equipos
     if local and visita and categoria not in DEPORTES_INDIVIDUALES:
         equipos = sorted([local, visita])
         return f"DUELO|{categoria}|{equipos[0]}|{equipos[1]}|{fecha_slot}"
 
-    # Torneo / Individual: firma por torneo + fase + fecha
     torneo = normalizar_texto(evento.get("torneo") or evento.get("titulo") or "")
     subtitulo = normalizar_texto(evento.get("subtitulo") or "")
     return f"COMPET|{categoria}|{torneo}|{subtitulo}|{fecha_slot}"
@@ -705,7 +704,6 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, st
 
     es_individual = categoria in DEPORTES_INDIVIDUALES
 
-    # Detección de duelo en la totalidad del texto
     duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus)\s+(.+)", limpio, flags=re.I)
     if duelo_match and not es_individual:
         parte_izq, parte_der = duelo_match.group(1).strip(), duelo_match.group(2).strip()
@@ -724,7 +722,6 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, st
 
         return torneo, subtitulo, "duelo", local, visitante
 
-    # Competición individual
     partes = [p.strip() for p in re.split(r"\s*[|·▫/]\s*", limpio) if p.strip()]
     if len(partes) >= 2:
         return partes[0], " - ".join(partes[1:]), "sencillo", "", ""
@@ -797,7 +794,7 @@ def main() -> None:
     tz = obtener_zona_aplicacion()
     ahora = datetime.now(tz)
     fecha = ahora.date().isoformat()
-    log.info("=== Curador multideporte v12 | Colombia %s ===", fecha)
+    log.info("=== Curador multideporte v13 | Colombia %s ===", fecha)
     metricas_agenda: dict[str, Any] = {}
     agenda = obtener_agenda_maestra(fecha, metricas_agenda)
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
