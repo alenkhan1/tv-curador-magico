@@ -584,8 +584,33 @@ def obtener_canales_candidatos(fecha_local: datetime) -> tuple[list[dict[str, An
     return candidatos, dict(metricas)
 
 
-def detectar_base_media_m3u() -> str:
-    return XTREAM_URL
+def detectar_base_reproduccion() -> str:
+    fallback = XTREAM_URL
+    if not (XTREAM_URL and XTREAM_USER and XTREAM_PASS):
+        return fallback
+    url_api = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
+    try:
+        datos = llamada_xtream(url_api, 30)
+        if datos and isinstance(datos, dict) and "server_info" in datos:
+            server = datos["server_info"]
+            protocolo = server.get("server_protocol", "http")
+            dominio = str(server.get("url", "")).strip("/")
+            puerto = server.get("port", "80")
+            if dominio and "localhost" not in dominio and "127.0.0.1" not in dominio:
+                return f"{protocolo}://{dominio}:{puerto}"
+    except Exception as exc:
+        log.warning("No se pudo detectar el balanceador real: %s", exc)
+    return fallback
+
+
+def inyectar_urls_reproduccion(eventos: list[dict[str, Any]], base_url: str) -> None:
+    if not base_url or not XTREAM_USER or not XTREAM_PASS:
+        return
+    for evento in eventos:
+        for fuente in evento.get("fuentes", []):
+            sid = fuente.get("id_xtream")
+            if sid:
+                fuente["url_reproduccion"] = f"{base_url}/{XTREAM_USER}/{XTREAM_PASS}/{sid}"
 
 
 def _inicio_evento(evento: dict[str, Any]) -> Optional[datetime]:
@@ -783,9 +808,13 @@ def main() -> None:
     agenda = obtener_agenda_maestra(fecha, metricas_agenda)
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
     eventos, cuarentena, metricas_curacion = curar_eventos(agenda, candidatos, ahora.date())
+    
+    base_reproduccion = detectar_base_reproduccion()
+    inyectar_urls_reproduccion(eventos, base_reproduccion)
+    
     salida = {
         "version": 11, "generado_utc": iso_utc(datetime.now(timezone.utc)), "zona_horaria_producto": str(tz),
-        "fecha_local_producto": fecha, "base_media": detectar_base_media_m3u(), "eventos": eventos,
+        "fecha_local_producto": fecha, "base_media": base_reproduccion, "eventos": eventos,
     }
     meta = {
         "version": 11, "generado_utc": salida["generado_utc"], "zona_horaria_producto": str(tz),
