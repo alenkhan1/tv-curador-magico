@@ -31,6 +31,15 @@ class PruebasSistemaMulticanal(unittest.TestCase):
         self.assertEqual(inyector.clasificar_canal_lineal("CO | DIRECTV SPORTS 2 HD"), "DSPORTS_2")
         self.assertEqual(inyector.clasificar_canal_lineal("LATAM | ESPN 3 FHD"), "ESPN_3")
 
+    def test_filtro_temporadas_historicas_no_bloquea_temporadas_actuales(self) -> None:
+        self.assertTrue(bool(inyector.PATRON_TEMPORADA_HISTORICA.search("Ciclismo 2023")))
+        self.assertTrue(bool(inyector.PATRON_TEMPORADA_HISTORICA.search("Superbike T2025")))
+        self.assertTrue(bool(inyector.PATRON_TEMPORADA_HISTORICA.search("Fórmula E T24")))
+        # Temporadas actuales no deben coincidir
+        self.assertIsNone(inyector.PATRON_TEMPORADA_HISTORICA.search("Wuhan Open T26/27"))
+        self.assertIsNone(inyector.PATRON_TEMPORADA_HISTORICA.search("Copa del Mundo 2026"))
+        self.assertIsNone(inyector.PATRON_TEMPORADA_HISTORICA.search("España vs Bélgica T0"))
+
     def test_huella_canonica_unifica_duelos_independiente_del_orden(self) -> None:
         ev1 = {"categoria": "Fútbol", "equipo_local": "Real Madrid", "equipo_visitante": "Barcelona", "hora_utc": "2026-08-24T19:00:00Z"}
         ev2 = {"categoria": "Fútbol", "equipo_local": "Barcelona", "equipo_visitante": "Real Madrid", "hora_utc": "2026-08-24T19:00:00Z"}
