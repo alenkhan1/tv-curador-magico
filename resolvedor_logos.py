@@ -48,6 +48,8 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "TOUR DE FRANCE": "https://upload.wikimedia.org/wikipedia/en/thumb/9/91/Tour_de_France_logo.svg/512px-Tour_de_France_logo.svg.png",
     "GIRO": "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Giro_d%27Italia_logo.svg/512px-Giro_d%27Italia_logo.svg.png",
     "RENEWI TOUR": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Renewi_Tour_logo.svg/512px-Renewi_Tour_logo.svg.png",
+    "VUELTA A COLOMBIA": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Union_Cycliste_Internationale_logo.svg/512px-Union_Cycliste_Internationale_logo.svg.png",
+    "CLASICO RCN": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Union_Cycliste_Internationale_logo.svg/512px-Union_Cycliste_Internationale_logo.svg.png",
 
     # Snooker
     "WST": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/World_Snooker_Tour_logo.svg/512px-World_Snooker_Tour_logo.svg.png",
@@ -78,6 +80,8 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "LIGUE 1": "https://media.api-sports.io/football/leagues/61.png",
     "BUNDESLIGA": "https://media.api-sports.io/football/leagues/78.png",
     "LIGA BETPLAY": "https://media.api-sports.io/football/leagues/239.png",
+    "TORNEO BETPLAY": "https://media.api-sports.io/football/leagues/240.png",
+    "COPA BETPLAY": "https://media.api-sports.io/football/leagues/241.png",
     "DIMAYOR": "https://media.api-sports.io/football/leagues/239.png",
     "COPA LIBERTADORES": "https://media.api-sports.io/football/leagues/13.png",
     "COPA SUDAMERICANA": "https://media.api-sports.io/football/leagues/11.png",
@@ -137,7 +141,7 @@ def _guardar_cache(cache: dict[str, str]) -> None:
 
 
 def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False) -> str:
-    """Resuelve el logo oficial garantizando el proxy anti-403."""
+    """Resuelve el logo oficial garantizando el proxy anti-403 para Android TV."""
     if not torneo and not categoria:
         return ""
 
@@ -146,14 +150,14 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     if torneo_norm in cache and cache[torneo_norm]:
         return cache[torneo_norm]
 
-    # 1. Búsqueda directa en catálogo de federaciones/circuitos
+    # 1. Búsqueda directa en catálogo de circuitos
     for clave, url in CIRCUITO_LOGOS.items():
         if clave in torneo_norm or torneo_norm in clave:
             cache[torneo_norm] = url
             _guardar_cache(cache)
             return url
 
-    # 2. Búsqueda en Wikidata si se autoriza red
+    # 2. Búsqueda en Wikidata si está autorizada
     if permitir_red and torneo_norm:
         try:
             url_api = "https://www.wikidata.org/w/api.php"
@@ -176,9 +180,8 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
                             claims = c_resp.json().get("entities", {}).get(entidad_id, {}).get("claims", {})
                             imagen_prop = claims.get("P154") or claims.get("P18")
                             if imagen_prop:
-                                filename = imagen_prop[0]["mainsnak"]["datavalue"]["value"]
-                                filename_clean = filename.replace(" ", "_")
-                                raw_url = f"https://commons.wikimedia.org/wiki/Special:FilePath/{filename_clean}"
+                                filename = imagen_prop[0]["mainsnak"]["datavalue"]["value"].replace(" ", "_")
+                                raw_url = f"https://commons.wikimedia.org/wiki/Special:FilePath/{filename}"
                                 cdn_url = envolver_cdn_proxy(raw_url)
                                 cache[torneo_norm] = cdn_url
                                 _guardar_cache(cache)
