@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Inyector multicanal definitivo de TV lineal deportiva (Eurosport, Teledeporte, ESPN, Win Sports, DSports)."""
+"""Inyector multicanal 100% basado en APIs oficiales (Discovery, RTVE, Claro, DGO, ESPN) vía Render."""
 from __future__ import annotations
 
 import hashlib
-import io
 import json
 import logging
 import os
 import re
-import xml.etree.ElementTree as ET
-from collections import Counter
+import urllib.parse
 from datetime import datetime, timedelta, timezone
 from typing import Any, Optional
 
@@ -40,71 +38,65 @@ logging.basicConfig(
 )
 log = logging.getLogger("inyector_canales_vivo")
 
-PUENTE_URL = (os.environ.get("PUENTE_URL") or "").strip() or "https://mi-dashboard-tv.onrender.com/api/puente_xtream"
+# Proxy universal en Render garantizado (evita variables vacías de GitHub Actions)
+PUENTE_RENDER_DEFAULT = "https://mi-dashboard-tv.onrender.com/api/puente_xtream"
+ENV_PUENTE = (os.environ.get("PUENTE_URL") or "").strip()
+PUENTE_URL = ENV_PUENTE if ENV_PUENTE else PUENTE_RENDER_DEFAULT
 
-HEADERS_DEFAULT = {
+HEADERS_CHROME = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
     "Accept": "application/json, text/plain, */*",
 }
 
 REGEX_PAIS_EXTRANJERO = re.compile(r"\b(DE|FR|UK|EN|PT|IT|GERMAN|FRENCH)\b", re.I)
-PATRON_TEMPORADA_HISTORICA = re.compile(r"\b(19\d\d|20[0-1]\d|202[0-5])\b|\bT(19\d\d|20[0-1]\d|202[0-5]|2[0-5])\b", re.I)
-
-# Veto estricto de programas no deportivos / no competitivos de las parrillas
-VETO_PROGRAMAS_ESTUDIO = {
-    "SPORTSCENTER", "SAQUE LARGO", "PRIMER TOQUE", "LINEA DE 4", "PLANETA FUTBOL",
-    "ESTUDIO ESTADIO", "EL CHIRINGUITO", "NOTICIAS", "NEWS", "MAGAZINE", "INFORMATIVO",
-    "PREVIA", "POST", "RESUMEN", "HIGHLIGHTS", "COMPACTO", "REPETICION", "REPLAY", "VINTAGE",
-    "CLASICOS", "MEMORIAS", "LO MEJOR DE", "DOCUMENTAL",
-}
 
 
-def llamada_proxy(url: str, headers: Optional[dict[str, str]] = None, timeout: int = 15, usar_proxy: bool = True) -> Optional[requests.Response]:
-    """Ejecuta peticiones canalizándolas por Render si está disponible, con fallback directo."""
-    h = headers or HEADERS_DEFAULT
-    if usar_proxy and PUENTE_URL:
-        try:
-            resp = requests.get(PUENTE_URL, params={"url": url}, headers=h, timeout=timeout)
-            if resp.status_code == 200:
-                return resp
-        except Exception:
-            pass
+def consultar_api_render(url: str, headers_extra: Optional[dict[str, str]] = None, timeout: int = 15) -> Optional[dict[str, Any]]:
+    """Enruta la llamada a la API a través del proxy en Render para saltar bloqueos geográficos y de WAF."""
+    h = {**HEADERS_CHROME, **(headers_extra or {})}
+    url_proxy = f"{PUENTE_URL}?url={urllib.parse.quote(url, safe='')}"
 
+    # 1. Intento por proxy Render
+    try:
+        resp = requests.get(url_proxy, headers=h, timeout=timeout)
+        if resp.status_code == 200:
+            return resp.json()
+    except Exception as exc:
+        log.debug("Proxy Render falló para %s: %s. Reintentando directo...", url, exc)
+
+    # 2. Respaldo directo
     try:
         resp = requests.get(url, headers=h, timeout=timeout)
-        return resp if resp.status_code == 200 else None
+        if resp.status_code == 200:
+            return resp.json()
     except Exception as exc:
-        log.warning("Petición no completada para %s: %s", url, exc)
-        return None
+        log.warning("Fallo total al consultar %s: %s", url, exc)
+
+    return None
 
 
 def clasificar_canal_lineal(nombre: str) -> Optional[str]:
-    """Clasifica canales lineales descartando DAZN y aislando códigos de país mediante límites de palabra."""
+    """Clasifica canales lineales de Xtream descartando DAZN y aislando códigos de país."""
     n = normalizar_texto(nombre)
     if "DAZN" in n:
         return None
 
-    # 1. Teledeporte España
     if "TELEDEPORTE" in n or re.search(r"\bTDP\b", n):
-        n_sin_tdp = n.replace("TELEDEPORTE", "").replace("TDP", "")
-        if not REGEX_PAIS_EXTRANJERO.search(n_sin_tdp):
+        n_sin = n.replace("TELEDEPORTE", "").replace("TDP", "")
+        if not REGEX_PAIS_EXTRANJERO.search(n_sin):
             return "TDP"
 
-    # 2. Eurosport 1 España
     if re.search(r"\bEUROSPORTS?\s*1\b", n) and not re.search(r"\bEUROSPORTS?\s*2\b", n):
         if not REGEX_PAIS_EXTRANJERO.search(n):
             return "E1"
 
-    # 3. Eurosport 2 España
     if re.search(r"\bEUROSPORTS?\s*2\b", n):
         if not REGEX_PAIS_EXTRANJERO.search(n):
             return "E2"
 
-    # 4. Win Sports Colombia
     if "WIN SPORTS" in n or "WIN+" in n or "WIN PLUS" in n:
         return "WIN_PLUS" if ("+" in n or "PLUS" in n or "PREMIUM" in n) else "WIN_BASICO"
 
-    # 5. DSports / DIRECTV Sports
     if "DSPORTS" in n or "DIRECTV SPORTS" in n or "D SPORTS" in n:
         if "2" in n:
             return "DSPORTS_2"
@@ -112,7 +104,6 @@ def clasificar_canal_lineal(nombre: str) -> Optional[str]:
             return "DSPORTS_PLUS"
         return "DSPORTS_1"
 
-    # 6. ESPN Familia
     if "ESPN" in n and not any(x in n for x in ["BR", "BRASIL", "USA"]):
         for i in range(1, 8):
             if f"ESPN {i}" in n or f"ESPN{i}" in n:
@@ -131,15 +122,11 @@ def mapear_canales_lineales_xtream() -> dict[str, list[dict[str, Any]]]:
     if not (XTREAM_URL and XTREAM_USER and XTREAM_PASS):
         return mapa
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
-    resp = llamada_proxy(url, timeout=75, usar_proxy=True)
-    if not resp:
-        return mapa
-    try:
-        streams = resp.json() or []
-    except Exception:
+    datos = consultar_api_render(url, timeout=75)
+    if not isinstance(datos, list):
         return mapa
 
-    for stream in streams:
+    for stream in datos:
         nombre = str(stream.get("name") or "").strip()
         sid = str(stream.get("stream_id") or "")
         clave = clasificar_canal_lineal(nombre)
@@ -148,112 +135,281 @@ def mapear_canales_lineales_xtream() -> dict[str, list[dict[str, Any]]]:
     return mapa
 
 
-def es_bloque_en_vivo(texto: str) -> bool:
-    """Valida estrictamente si el bloque de programación lineal corresponde a una transmisión en vivo."""
-    n = normalizar_texto(texto)
-    if any(p in n for p in VETO_PROGRAMAS_ESTUDIO) or contiene_veto(n) or PATRON_TEMPORADA_HISTORICA.search(n):
-        return False
-    return bool(re.search(r"\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO|DIREKT|EN DIRECT|AO VIVO|\[VIVO\]|\(VIVO\))\b", n))
+def limpiar_titulo_evento(titulo_raw: str, desc_raw: str = "") -> tuple[str, str, str]:
+    """Limpia marcas técnicas y extrae (titulo_limpio, torneo, subtitulo)."""
+    t = re.sub(r"(?i)\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO|DIREKT|\[VIVO\]|\(VIVO\)|T\d{2,4}(/\d{2,4})?)\b", "", titulo_raw)
+    t = " ".join(t.strip(" -:·|▫/").split())
+
+    d = re.sub(r"(?i)\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO)\b", "", desc_raw).strip()
+    partes = [p.strip() for p in re.split(r"\s*[·|▫:/]\s*", t, maxsplit=1) if p.strip()]
+    torneo = partes[0] if partes else t
+    subtitulo = partes[1] if len(partes) > 1 else d
+
+    if "VUELTA" in normalizar_texto(torneo):
+        torneo = "La Vuelta"
+
+    return t, torneo, subtitulo
 
 
-def extraer_eventos_guia_universal(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
-    """Extrae la programación lineal de Eurosport, TDP, ESPN, Win Sports y DSports desde el XMLTV de alta disponibilidad."""
+# ─── 1. Adaptador Eurosport España (Discovery API) ───────────────────────────
+def extraer_eventos_eurosport(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
     eventos: list[dict[str, Any]] = []
-    url = "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml"
-    resp = llamada_proxy(url, timeout=35, usar_proxy=False)
-    if not resp:
+    token_json = consultar_api_render("https://eu3-prod-direct.eurosport.es/token?realm=eurosport", timeout=8)
+    token = (token_json or {}).get("data", {}).get("attributes", {}).get("token")
+    if not token:
         return []
 
-    tz = obtener_zona_aplicacion()
-    consenso_live: dict[tuple[str, str], bool] = {}
-    programas_candidatos: list[dict[str, Any]] = []
-
-    try:
-        for _, el in ET.iterparse(io.BytesIO(resp.content), events=("end",)):
-            if el.tag != "programme":
-                continue
-            canal = el.attrib.get("channel", "")
-            clave = clasificar_canal_lineal(canal)
-            start_raw = el.attrib.get("start", "")
-            stop_raw = el.attrib.get("stop", "")
-
-            if clave and start_raw:
-                try:
-                    dt_inicio = datetime.strptime(start_raw[:14], "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc)
-                    dt_fin = datetime.strptime(stop_raw[:14], "%Y%m%d%H%M%S").replace(tzinfo=timezone.utc) if stop_raw else None
-                except ValueError:
-                    el.clear()
-                    continue
-
-                if dt_inicio.astimezone(tz).date().isoformat() == fecha_colombia:
-                    tit = el.findtext("title", "") or ""
-                    desc = el.findtext("desc", "") or ""
-                    texto_completo = f"{tit} {desc}"
-                    live_flag = es_bloque_en_vivo(texto_completo)
-                    slot = dt_inicio.strftime("%Y%m%d%H%M")
-                    if live_flag:
-                        consenso_live[(clave, slot)] = True
-
-                    programas_candidatos.append({
-                        "clave": clave, "canal": canal, "inicio": dt_inicio, "fin": dt_fin,
-                        "titulo": tit, "desc": desc, "es_live": live_flag
-                    })
-            el.clear()
-    except Exception as exc:
-        log.warning("Fallo en lectura de guía universal: %s", exc)
+    url_grid = f"https://eu3-prod-direct.eurosport.es/cms/routes/watch/schedule?date={fecha_colombia}"
+    grid_json = consultar_api_render(url_grid, headers_extra={"Authorization": f"Bearer {token}"}, timeout=10)
+    if not grid_json:
         return []
 
-    for p in programas_candidatos:
-        slot_key = (p["clave"], p["inicio"].strftime("%Y%m%d%H%M"))
-        if not (p["es_live"] or consenso_live.get(slot_key, False)):
+    items = grid_json.get("data", {}).get("attributes", {}).get("scheduleItems", [])
+    for item in items:
+        # Filtro estructural nativo: solo competiciones en vivo (descarta magazines / La Montonera)
+        material_type = str(item.get("materialType", "")).upper()
+        content_type = str(item.get("contentType", "")).upper()
+        if material_type in {"MAGAZINE", "STUDIO_SHOW", "REPLAY", "RECORDED"} or content_type == "STUDIO_SHOW":
+            continue
+        if not (item.get("live") is True or material_type in {"LIVE", "COMPETITION"}):
             continue
 
-        tit, desc = p["titulo"], p["desc"]
-        texto_completo = f"{tit} {desc}"
-        categoria = inferir_deporte(texto_completo)
-        if not categoria:
+        tit_raw = str(item.get("title") or item.get("name") or "").strip()
+        desc_raw = str(item.get("description") or item.get("subtitle") or "").strip()
+        if contiene_veto(f"{tit_raw} {desc_raw}"):
             continue
 
-        # Limpieza de sufijos y etiquetas de directo
-        tit_limpio = re.sub(r"(?i)\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO|DIREKT|EN DIRECT|\[VIVO\]|\(VIVO\))\b", "", tit)
-        tit_limpio = " ".join(tit_limpio.strip(" -:·|▫/").split())
+        canal_nombre = str(item.get("channelName", "")).upper()
+        clave_canal = "E2" if "2" in canal_nombre else "E1"
+        fuentes = canales_map.get(clave_canal, [])
 
-        duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus)\s+(.+)", tit_limpio, re.I)
-        tipo = "duelo" if duelo_match and categoria not in DEPORTES_INDIVIDUALES else "sencillo"
-        local = duelo_match.group(1).strip() if tipo == "duelo" else ""
-        visitante = duelo_match.group(2).strip() if tipo == "duelo" else ""
+        inicio_utc = item.get("start") or item.get("startTime")
+        fin_utc = item.get("end") or item.get("endTime")
+        dt_inicio = datetime.fromisoformat(inicio_utc.replace("Z", "+00:00")) if inicio_utc else None
+        dt_fin = datetime.fromisoformat(fin_utc.replace("Z", "+00:00")) if fin_utc else None
+        if not dt_inicio:
+            continue
 
-        torneo = tit_limpio
-        if "VUELTA" in normalizar_texto(tit_limpio):
-            torneo = "La Vuelta"
-        elif "LIGA BETPLAY" in normalizar_texto(texto_completo):
-            torneo = "Liga BetPlay Dimayor"
+        titulo_limpio, torneo, subtitulo = limpiar_titulo_evento(tit_raw, desc_raw)
+        categoria = inferir_deporte(f"{titulo_limpio} {subtitulo}") or "Deportes"
+        duracion = max(15, int((dt_fin - dt_inicio).total_seconds() / 60)) if dt_fin else 120
+        logo_img = item.get("images", {}).get("logo") or item.get("images", {}).get("poster")
+        logo_final = envolver_cdn_proxy(logo_img) if logo_img else resolver_logo_torneo(torneo, categoria)
 
-        logo_final = resolver_logo_torneo(torneo, categoria)
-        fuentes = canales_map.get(p["clave"], [])
-
-        iso_ini = p["inicio"].isoformat()
-        cadena_ident = f"{tit_limpio}|{iso_ini}"
+        cadena_ident = f"{torneo}|{subtitulo}|{inicio_utc}"
         ev_id = hashlib.sha1(cadena_ident.encode("utf-8")).hexdigest()[:14]
 
         eventos.append({
-            "id": f"guia_{ev_id}",
-            "agenda_id": "", "titulo": tit_limpio, "torneo": torneo, "categoria": categoria,
-            "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante,
-            "subtitulo": desc, "hora_utc": iso_utc(p["inicio"]),
-            "hora_local_producto": p["inicio"].astimezone(tz).strftime("%H:%M"),
-            "duracion_min": max(20, int((p["fin"] - p["inicio"]).total_seconds() / 60)) if p["fin"] else DURACION_POR_CATEGORIA.get(categoria, 120),
-            "logo_torneo": logo_final, "logo_local": logo_final if tipo == "sencillo" else "", "logo_visitante": "",
-            "tier": 2, "origen": f"lineal_{p['clave'].lower()}", "origenes": [f"lineal_{p['clave'].lower()}"],
-            "estado": "confirmado", "estado_evento": "programado", "confianza": "alta", "puntuacion_confianza": 92,
-            "metodo_correlacion": "guia_lineal_verificada", "razones_correlacion": ["directo:true", f"canal:{p['clave']}"],
+            "id": f"eurosport_{ev_id}", "agenda_id": "", "titulo": titulo_limpio, "torneo": torneo,
+            "categoria": categoria, "tipo_evento": "sencillo", "equipo_local": "", "equipo_visitante": "",
+            "subtitulo": subtitulo, "hora_utc": iso_utc(dt_inicio),
+            "hora_local_producto": dt_inicio.astimezone(obtener_zona_aplicacion()).strftime("%H:%M"),
+            "duracion_min": duracion, "logo_torneo": logo_final, "logo_local": logo_final, "logo_visitante": "",
+            "tier": 2, "origen": "eurosport_oficial", "origenes": ["eurosport_oficial"],
+            "estado": "confirmado", "estado_evento": "programado", "confianza": "alta", "puntuacion_confianza": 96,
+            "metodo_correlacion": "api_oficial_eurosport", "razones_correlacion": ["directo:true", f"canal:{clave_canal}"],
             "fuentes": fuentes,
         })
     return eventos
 
 
-# ─── Adaptador Directo Web: ESPN Live TV Schedule ───────────────────────────
-def extraer_eventos_espn_web(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+# ─── 2. Adaptador RTVE Teledeporte ──────────────────────────────────────────
+def extraer_eventos_teledeporte(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    eventos: list[dict[str, Any]] = []
+    fuentes = canales_map.get("TDP", [])
+    url = f"https://www.rtve.es/api/parrilla/tve/teledeporte/{fecha_colombia}.json"
+    data = consultar_api_render(url, headers_extra={"Referer": "https://www.rtve.es/"}, timeout=8)
+    if not data:
+        return []
+
+    programas = data.get("parrilla", {}).get("programas", [])
+    for prog in programas:
+        tipo_prog = str(prog.get("tipo_programa") or "").lower()
+        if "magazine" in tipo_prog or "informativo" in tipo_prog:
+            continue
+
+        es_directo = bool(prog.get("directo") is True or str(prog.get("directo")).lower() in {"true", "1", "si", "directo"})
+        if not es_directo:
+            continue
+
+        tit_raw = str(prog.get("title") or prog.get("name") or "").strip()
+        desc_raw = str(prog.get("desc") or prog.get("description") or "").strip()
+        if contiene_veto(f"{tit_raw} {desc_raw}"):
+            continue
+
+        h_ini = prog.get("hora_inicio") or prog.get("start")
+        h_fin = prog.get("hora_fin") or prog.get("end")
+        dt_inicio = datetime.fromisoformat(h_ini.replace("Z", "+00:00")) if (h_ini and "T" in h_ini) else None
+        dt_fin = datetime.fromisoformat(h_fin.replace("Z", "+00:00")) if (h_fin and "T" in h_fin) else None
+
+        if not dt_inicio and h_ini and ":" in h_ini:
+            partes = h_ini.split(":")
+            tz_esp = timezone(timedelta(hours=2))
+            dt_inicio = datetime.strptime(f"{fecha_colombia} {partes[0]}:{partes[1]}", "%Y-%m-%d %H:%M").replace(tzinfo=tz_esp).astimezone(timezone.utc)
+
+        if not dt_inicio:
+            continue
+
+        titulo_limpio, torneo, subtitulo = limpiar_titulo_evento(tit_raw, desc_raw)
+        categoria = inferir_deporte(f"{titulo_limpio} {subtitulo}") or "Deportes"
+        duracion = max(15, int((dt_fin - dt_inicio).total_seconds() / 60)) if (dt_fin and dt_inicio) else 90
+        logo_final = resolver_logo_torneo(torneo, categoria)
+
+        iso_ini = dt_inicio.isoformat()
+        cadena_ident = f"{torneo}|{subtitulo}|{iso_ini}"
+        ev_id = hashlib.sha1(cadena_ident.encode("utf-8")).hexdigest()[:14]
+
+        eventos.append({
+            "id": f"rtve_tdp_{ev_id}", "agenda_id": "", "titulo": titulo_limpio, "torneo": torneo,
+            "categoria": categoria, "tipo_evento": "sencillo", "equipo_local": "", "equipo_visitante": "",
+            "subtitulo": subtitulo, "hora_utc": iso_utc(dt_inicio),
+            "hora_local_producto": dt_inicio.astimezone(obtener_zona_aplicacion()).strftime("%H:%M"),
+            "duracion_min": duracion, "logo_torneo": logo_final, "logo_local": logo_final, "logo_visitante": "",
+            "tier": 2, "origen": "rtve_oficial", "origenes": ["rtve_oficial"],
+            "estado": "confirmado", "estado_evento": "programado", "confianza": "alta", "puntuacion_confianza": 96,
+            "metodo_correlacion": "api_oficial_rtve", "razones_correlacion": ["directo:true", "canal:TDP"],
+            "fuentes": fuentes,
+        })
+    return eventos
+
+
+# ─── 3. Adaptador Win Sports & Win+ (Claro Video Colombia API) ──────────────
+def extraer_eventos_claro_winsports(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    eventos: list[dict[str, Any]] = []
+    fecha_compacta = fecha_colombia.replace("-", "")
+    url = (
+        f"https://mfwkweb-api.clarovideo.net/services/epg/channel?"
+        f"device_category=web&device_model=web&device_type=web&device_so=Chrome&format=json&"
+        f"date_from={fecha_compacta}000000&date_to={fecha_compacta}235959&quantity_channels=50"
+    )
+
+    data = consultar_api_render(url, timeout=12)
+    if not data:
+        return []
+
+    canales = data.get("response", {}).get("channels", [])
+    for canal in canales:
+        c_name = normalizar_texto(canal.get("name", ""))
+        if "WIN" not in c_name:
+            continue
+
+        es_plus = "+" in c_name or "PLUS" in c_name or "PREMIUM" in c_name
+        fuentes = canales_map.get("WIN_PLUS" if es_plus else "WIN_BASICO", [])
+
+        for prog in canal.get("events", []):
+            if prog.get("program_type") == "EPISODIC" or "talk" in str(prog.get("genre", "")).lower():
+                continue
+
+            tit_raw = str(prog.get("name") or "").strip()
+            desc_raw = str(prog.get("description") or "").strip()
+            texto_completo = f"{tit_raw} {desc_raw}"
+
+            if contiene_veto(texto_completo):
+                continue
+
+            es_vivo = bool(re.search(r"\b(VIVO|EN VIVO|DIRECTO|LIVE|\[VIVO\]|\(VIVO\))\b", normalizar_texto(texto_completo)))
+            if not es_vivo:
+                continue
+
+            h_ini = prog.get("date_begin")
+            h_fin = prog.get("date_end")
+            dt_inicio = datetime.fromisoformat(h_ini.replace("Z", "+00:00")) if (h_ini and "T" in h_ini) else None
+            dt_fin = datetime.fromisoformat(h_fin.replace("Z", "+00:00")) if (h_fin and "T" in h_fin) else None
+            if not dt_inicio:
+                continue
+
+            titulo_limpio, torneo, subtitulo = limpiar_titulo_evento(tit_raw, desc_raw)
+            categoria = inferir_deporte(texto_completo) or "Fútbol"
+            duracion = max(20, int((dt_fin - dt_inicio).total_seconds() / 60)) if (dt_fin and dt_inicio) else 120
+            logo_final = resolver_logo_torneo(torneo, categoria)
+
+            duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus)\s+(.+)", titulo_limpio, re.I)
+            tipo = "duelo" if duelo_match and categoria not in DEPORTES_INDIVIDUALES else "sencillo"
+            local = duelo_match.group(1).strip() if tipo == "duelo" else ""
+            visitante = duelo_match.group(2).strip() if tipo == "duelo" else ""
+
+            iso_ini = dt_inicio.isoformat()
+            cadena_ident = f"{torneo}|{subtitulo}|{iso_ini}"
+            ev_id = hashlib.sha1(cadena_ident.encode("utf-8")).hexdigest()[:14]
+
+            eventos.append({
+                "id": f"winsports_{ev_id}", "agenda_id": "", "titulo": titulo_limpio, "torneo": torneo,
+                "categoria": categoria, "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante,
+                "subtitulo": subtitulo, "hora_utc": iso_utc(dt_inicio),
+                "hora_local_producto": dt_inicio.astimezone(obtener_zona_aplicacion()).strftime("%H:%M"),
+                "duracion_min": duracion, "logo_torneo": logo_final, "logo_local": logo_final, "logo_visitante": "",
+                "tier": 2, "origen": "winsports_claro_oficial", "origenes": ["winsports_claro_oficial"],
+                "estado": "confirmado", "estado_evento": "programado", "confianza": "alta", "puntuacion_confianza": 96,
+                "metodo_correlacion": "api_claro_winsports", "razones_correlacion": ["directo:true"],
+                "fuentes": fuentes,
+            })
+    return eventos
+
+
+# ─── 4. Adaptador DSports / DIRECTV Sports (DGO API) ─────────────────────────
+def extraer_eventos_dsports(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    eventos: list[dict[str, Any]] = []
+    url = f"https://api.directvgo.com/epg/v1/programs?country=CO&device=web&date={fecha_colombia}"
+    h = {"Origin": "https://www.directvgo.com", "Referer": "https://www.directvgo.com/"}
+    data = consultar_api_render(url, headers_extra=h, timeout=10)
+    if not data:
+        return []
+
+    canales = data.get("channels", [])
+    for canal in canales:
+        c_name = normalizar_texto(canal.get("channelName", ""))
+        if "DSPORTS" not in c_name and "DIRECTV SPORTS" not in c_name:
+            continue
+
+        clave_canal = "DSPORTS_2" if " 2" in c_name else ("DSPORTS_PLUS" if "+" in c_name or "PLUS" in c_name else "DSPORTS_1")
+        fuentes = canales_map.get(clave_canal, [])
+
+        for prog in canal.get("programs", []):
+            if prog.get("programType") in {"SportsNews", "SportsTalk"}:
+                continue
+            if not prog.get("isLive") is True:
+                continue
+
+            tit_raw = str(prog.get("title") or "").strip()
+            desc_raw = str(prog.get("description") or "").strip()
+            if contiene_veto(f"{tit_raw} {desc_raw}"):
+                continue
+
+            h_ini = prog.get("startDate")
+            dt_inicio = datetime.fromisoformat(h_ini.replace("Z", "+00:00")) if h_ini else None
+            if not dt_inicio:
+                continue
+
+            titulo_limpio, torneo, subtitulo = limpiar_titulo_evento(tit_raw, desc_raw)
+            categoria = inferir_deporte(f"{titulo_limpio} {subtitulo}") or "Deportes"
+            logo_prog = prog.get("images", {}).get("poster")
+            logo_final = envolver_cdn_proxy(logo_prog) if logo_prog else resolver_logo_torneo(torneo, categoria)
+
+            duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus)\s+(.+)", titulo_limpio, re.I)
+            tipo = "duelo" if duelo_match and categoria not in DEPORTES_INDIVIDUALES else "sencillo"
+            local = duelo_match.group(1).strip() if tipo == "duelo" else ""
+            visitante = duelo_match.group(2).strip() if tipo == "duelo" else ""
+
+            iso_ini = dt_inicio.isoformat()
+            cadena_ident = f"{torneo}|{subtitulo}|{iso_ini}"
+            ev_id = hashlib.sha1(cadena_ident.encode("utf-8")).hexdigest()[:14]
+
+            eventos.append({
+                "id": f"dsports_{ev_id}", "agenda_id": "", "titulo": titulo_limpio, "torneo": torneo,
+                "categoria": categoria, "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante,
+                "subtitulo": subtitulo, "hora_utc": iso_utc(dt_inicio),
+                "hora_local_producto": dt_inicio.astimezone(obtener_zona_aplicacion()).strftime("%H:%M"),
+                "duracion_min": 130, "logo_torneo": logo_final, "logo_local": logo_final, "logo_visitante": "",
+                "tier": 2, "origen": "dsports_oficial", "origenes": ["dsports_oficial"],
+                "estado": "confirmado", "estado_evento": "programado", "confianza": "alta", "puntuacion_confianza": 96,
+                "metodo_correlacion": "api_oficial_dsports", "razones_correlacion": ["isLive:true"],
+                "fuentes": fuentes,
+            })
+    return eventos
+
+
+# ─── 5. Adaptador ESPN Latinoamérica ────────────────────────────────────────
+def extraer_eventos_espn(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
     eventos: list[dict[str, Any]] = []
     fecha_compacta = fecha_colombia.replace("-", "")
     ligas_espn = [
@@ -273,11 +429,10 @@ def extraer_eventos_espn_web(fecha_colombia: str, canales_map: dict[str, list[di
 
     for deporte_slug, liga_slug, categoria, torneo_default in ligas_espn:
         url = f"https://site.api.espn.com/apis/site/v2/sports/{deporte_slug}/{liga_slug}/scoreboard?dates={fecha_compacta}"
-        resp = llamada_proxy(url, timeout=6, usar_proxy=False)
-        if not resp:
+        datos = consultar_api_render(url, timeout=6)
+        if not datos:
             continue
         try:
-            datos = resp.json()
             for ev in datos.get("events", []):
                 competencia = ev.get("competitions", [{}])[0]
                 competidores = competencia.get("competitors", [])
@@ -362,7 +517,7 @@ def fusionar_eventos_multicanal(eventos_base: list[dict[str, Any]], eventos_nuev
 def main() -> None:
     tz, ahora = obtener_zona_aplicacion(), datetime.now(timezone.utc)
     fecha_colombia = ahora.astimezone(tz).date().isoformat()
-    log.info("=== Inyector Multicanal Oficial v15 | Colombia %s ===", fecha_colombia)
+    log.info("=== Inyector Oficial 100%% APIs | Colombia %s ===", fecha_colombia)
 
     try:
         salida = json.loads(ARCHIVO_SALIDA.read_text(encoding="utf-8")) if ARCHIVO_SALIDA.exists() else {"version": 11, "eventos": []}
@@ -372,14 +527,15 @@ def main() -> None:
     eventos_base = list(salida.get("eventos") or [])
     canales_lineales = mapear_canales_lineales_xtream()
 
-    # 1. Extracción multicanal completa (Eurosport 1/2, TDP, ESPN, Win Sports, DSports)
-    ev_guia = extraer_eventos_guia_universal(fecha_colombia, canales_lineales)
+    # Extracción estricta de las 5 APIs oficiales
+    ev_eurosport = extraer_eventos_eurosport(fecha_colombia, canales_lineales)
+    ev_rtve = extraer_eventos_teledeporte(fecha_colombia, canales_lineales)
+    ev_win = extraer_eventos_claro_winsports(fecha_colombia, canales_lineales)
+    ev_dsports = extraer_eventos_dsports(fecha_colombia, canales_lineales)
+    ev_espn = extraer_eventos_espn(fecha_colombia, canales_lineales)
 
-    # 2. Extracción complementaria ESPN
-    ev_espn = extraer_eventos_espn_web(fecha_colombia, canales_lineales)
-
-    total_inyectados = ev_guia + ev_espn
-    eventos_finales = fusionar_eventos_multicanal(eventos_base, total_inyectados)
+    total_nuevos = ev_eurosport + ev_rtve + ev_win + ev_dsports + ev_espn
+    eventos_finales = fusionar_eventos_multicanal(eventos_base, total_nuevos)
 
     salida.update({
         "version": 11, "generado_utc": iso_utc(ahora), "zona_horaria_producto": str(tz),
@@ -390,13 +546,14 @@ def main() -> None:
     meta = {
         "version": 11, "generado_utc": salida["generado_utc"], "fecha_local_producto": fecha_colombia,
         "canales_lineales_mapeados": {k: len(v) for k, v in canales_lineales.items()},
-        "inyectados_guia_lineal": len(ev_guia), "inyectados_espn": len(ev_espn),
-        "total_cartelera_unificada": len(eventos_finales),
+        "inyectados_eurosport": len(ev_eurosport), "inyectados_teledeporte": len(ev_rtve),
+        "inyectados_winsports": len(ev_win), "inyectados_dsports": len(ev_dsports),
+        "inyectados_espn": len(ev_espn), "total_cartelera_unificada": len(eventos_finales),
     }
     ARCHIVO_META.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     log.info(
-        "Cartelera unificada: Lineal=%d ESPN=%d Total=%d",
-        len(ev_guia), len(ev_espn), len(eventos_finales)
+        "Cartelera APIs oficial: E1/E2=%d TDP=%d Win=%d DSports=%d ESPN=%d Total=%d",
+        len(ev_eurosport), len(ev_rtve), len(ev_win), len(ev_dsports), len(ev_espn), len(eventos_finales)
     )
 
 
