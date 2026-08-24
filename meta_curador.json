@@ -1,6 +1,6 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-24T09:52:53Z",
+  "generado_utc": "2026-08-24T10:07:54Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-24",
   "agenda": {
@@ -113,8 +113,13 @@
   },
   "xtream": {
     "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 0,
-    "error": "xtream:404 Client Error: Not Found for url: https://mi-dashboard-tv.onrender.com/api/puente_xtream?url=http%3A%2F%2Freydereyes.xyz%3A8080%2Fplayer_api.php%3Fusername%3Djorge%26password%3Djorge123%26action%3Dget_live_streams"
+    "categorias_fuera_de_jornada": 6,
+    "streams_totales": 4177,
+    "descartado_sin_vigencia_o_identidad": 3829,
+    "descartado_contenido_no_evento": 52,
+    "descartado_fecha_xtream_fuera_de_jornada": 113,
+    "descartado_categoria_xtream_fuera_de_jornada": 183,
+    "candidatos": 0
   },
   "curacion": {
     "eventos_unicos": 0
@@ -134,12 +139,12 @@
       "agregados": 2
     },
     "canales_mapeados": {
-      "E1": 0,
-      "E2": 0,
-      "TDP": 0
+      "E1": 9,
+      "E2": 10,
+      "TDP": 3
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
   "eventos_finales_total": 2,
-  "actualizado_utc": "2026-08-24T09:52:54Z"
+  "actualizado_utc": "2026-08-24T10:07:54Z"
 }
