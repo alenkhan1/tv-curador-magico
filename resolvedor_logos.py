@@ -28,6 +28,7 @@ def envolver_cdn_proxy(url: str) -> str:
     return f"https://wsrv.nl/?url={urllib.parse.quote(url_limpia, safe='')}&w=400&output=webp"
 
 
+# Catálogo maestro de insignias de federaciones, ligas y circuitos oficiales
 CIRCUITO_LOGOS_RAW: dict[str, str] = {
     # Tenis
     "ATP": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/ATP_Tour_logo.svg/512px-ATP_Tour_logo.svg.png",
@@ -36,10 +37,6 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "CINCINNATI OPEN": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cincinnati_Open_logo.svg/512px-Cincinnati_Open_logo.svg.png",
     "WINSTON-SALEM": "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/Winston-Salem_Open_logo.svg/512px-Winston-Salem_Open_logo.svg.png",
     "ABIERTO GNP": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Abierto_GNP_Seguros_Logo.png/512px-Abierto_GNP_Seguros_Logo.png",
-    "US OPEN": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/US_Open_logo.svg/512px-US_Open_logo.svg.png",
-    "ROLAND GARROS": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4c/Roland_Garros_logo.svg/512px-Roland_Garros_logo.svg.png",
-    "WIMBLEDON": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Wimbledon_logo.svg/512px-Wimbledon_logo.svg.png",
-    "AUSTRALIAN OPEN": "https://upload.wikimedia.org/wikipedia/en/thumb/0/00/Australian_Open_logo.svg/512px-Australian_Open_logo.svg.png",
 
     # Ciclismo
     "UCI": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Union_Cycliste_Internationale_logo.svg/512px-Union_Cycliste_Internationale_logo.svg.png",
@@ -48,8 +45,6 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "TOUR DE FRANCE": "https://upload.wikimedia.org/wikipedia/en/thumb/9/91/Tour_de_France_logo.svg/512px-Tour_de_France_logo.svg.png",
     "GIRO": "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Giro_d%27Italia_logo.svg/512px-Giro_d%27Italia_logo.svg.png",
     "RENEWI TOUR": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Renewi_Tour_logo.svg/512px-Renewi_Tour_logo.svg.png",
-    "VUELTA A COLOMBIA": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Union_Cycliste_Internationale_logo.svg/512px-Union_Cycliste_Internationale_logo.svg.png",
-    "CLASICO RCN": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Union_Cycliste_Internationale_logo.svg/512px-Union_Cycliste_Internationale_logo.svg.png",
 
     # Snooker
     "WST": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/World_Snooker_Tour_logo.svg/512px-World_Snooker_Tour_logo.svg.png",
@@ -72,20 +67,6 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "PGA": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/PGA_Tour_logo.svg/512px-PGA_Tour_logo.svg.png",
     "DP WORLD": "https://upload.wikimedia.org/wikipedia/en/thumb/6/65/DP_World_Tour_logo.svg/512px-DP_World_Tour_logo.svg.png",
     "BMW CHAMPIONSHIP": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/BMW_Championship_logo.svg/512px-BMW_Championship_logo.svg.png",
-
-    # Fútbol & Ligas Oficiales
-    "LALIGA": "https://media.api-sports.io/football/leagues/140.png",
-    "PREMIER LEAGUE": "https://media.api-sports.io/football/leagues/39.png",
-    "SERIE A": "https://media.api-sports.io/football/leagues/135.png",
-    "LIGUE 1": "https://media.api-sports.io/football/leagues/61.png",
-    "BUNDESLIGA": "https://media.api-sports.io/football/leagues/78.png",
-    "LIGA BETPLAY": "https://media.api-sports.io/football/leagues/239.png",
-    "TORNEO BETPLAY": "https://media.api-sports.io/football/leagues/240.png",
-    "COPA BETPLAY": "https://media.api-sports.io/football/leagues/241.png",
-    "DIMAYOR": "https://media.api-sports.io/football/leagues/239.png",
-    "COPA LIBERTADORES": "https://media.api-sports.io/football/leagues/13.png",
-    "COPA SUDAMERICANA": "https://media.api-sports.io/football/leagues/11.png",
-    "CHAMPIONS LEAGUE": "https://media.api-sports.io/football/leagues/2.png",
 
     # Béisbol y otros
     "MLB": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/512px-Major_League_Baseball_logo.svg.png",
@@ -112,6 +93,7 @@ FALLBACK_POR_CATEGORIA_RAW: dict[str, str] = {
     "Fútbol Americano": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/512px-National_Football_League_logo.svg.png",
 }
 
+# Diccionario pre-envuelto con CDN Proxy
 CIRCUITO_LOGOS = {k: envolver_cdn_proxy(v) for k, v in CIRCUITO_LOGOS_RAW.items()}
 FALLBACK_POR_CATEGORIA = {k: envolver_cdn_proxy(v) for k, v in FALLBACK_POR_CATEGORIA_RAW.items()}
 
@@ -141,7 +123,7 @@ def _guardar_cache(cache: dict[str, str]) -> None:
 
 
 def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False) -> str:
-    """Resuelve el logo oficial garantizando el proxy anti-403 para Android TV."""
+    """Resuelve el logo oficial con precedencia: Caché -> Catálogo Maestro -> Wikidata -> Fallback CDN."""
     if not torneo and not categoria:
         return ""
 
@@ -150,14 +132,14 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     if torneo_norm in cache and cache[torneo_norm]:
         return cache[torneo_norm]
 
-    # 1. Búsqueda directa en catálogo de circuitos
+    # 1. Búsqueda directa en catálogo de federaciones/circuitos
     for clave, url in CIRCUITO_LOGOS.items():
         if clave in torneo_norm or torneo_norm in clave:
             cache[torneo_norm] = url
             _guardar_cache(cache)
             return url
 
-    # 2. Búsqueda en Wikidata si está autorizada
+    # 2. Búsqueda ligera en Wikidata API (si está habilitada la red)
     if permitir_red and torneo_norm:
         try:
             url_api = "https://www.wikidata.org/w/api.php"
@@ -180,8 +162,9 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
                             claims = c_resp.json().get("entities", {}).get(entidad_id, {}).get("claims", {})
                             imagen_prop = claims.get("P154") or claims.get("P18")
                             if imagen_prop:
-                                filename = imagen_prop[0]["mainsnak"]["datavalue"]["value"].replace(" ", "_")
-                                raw_url = f"https://commons.wikimedia.org/wiki/Special:FilePath/{filename}"
+                                filename = imagen_prop[0]["mainsnak"]["datavalue"]["value"]
+                                filename_clean = filename.replace(" ", "_")
+                                raw_url = f"https://commons.wikimedia.org/wiki/Special:FilePath/{filename_clean}"
                                 cdn_url = envolver_cdn_proxy(raw_url)
                                 cache[torneo_norm] = cdn_url
                                 _guardar_cache(cache)
