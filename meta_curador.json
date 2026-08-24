@@ -1,8 +1,8 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-24T03:17:13Z",
+  "generado_utc": "2026-08-24T05:55:26Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-08-23",
+  "fecha_local_producto": "2026-08-24",
   "agenda": {
     "api_sports": {
       "football": {
@@ -106,36 +106,38 @@
     },
     "thesportsdb_respaldo": {
       "solicitudes": 1,
-      "eventos": 3
+      "eventos": 2
     },
-    "eventos": 887,
-    "cache": "vigente"
+    "eventos": 208
   },
   "xtream": {
-    "categorias_hoy": 4,
-    "categorias_fuera_de_jornada": 6,
+    "categorias_hoy": 0,
+    "categorias_fuera_de_jornada": 10,
     "streams_totales": 4629,
     "descartado_sin_vigencia_o_identidad": 3829,
     "descartado_contenido_no_evento": 56,
-    "descartado_fecha_xtream_fuera_de_jornada": 259,
-    "descartado_categoria_xtream_fuera_de_jornada": 183,
-    "candidatos": 302
+    "descartado_fecha_xtream_fuera_de_jornada": 417,
+    "descartado_categoria_xtream_fuera_de_jornada": 327,
+    "candidatos": 0
   },
   "curacion": {
-    "fuentes_probables": 77,
-    "fuentes_emparejadas": 225,
-    "eventos_unicos": 159
+    "eventos_unicos": 0
   },
-  "eventos_finales_base": 159,
+  "eventos_finales_base": 0,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
       "programas_leidos": 79185,
-      "veto_o_historico": 43,
-      "rechazados_no_en_vivo": 45
+      "veto_o_historico": 26,
+      "rechazados_no_en_vivo": 30,
+      "admitidos": 3,
+      "categoria:Ciclismo": 2,
+      "categoria:Snooker": 1
     },
-    "fusion": {},
+    "fusion": {
+      "agregados": 3
+    },
     "canales_mapeados": {
       "E1": 9,
       "E2": 10,
@@ -143,6 +145,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 159,
-  "actualizado_utc": "2026-08-24T03:17:13Z"
+  "eventos_finales_total": 3,
+  "actualizado_utc": "2026-08-24T05:55:26Z"
 }
