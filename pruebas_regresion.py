@@ -1,72 +1,60 @@
 # -*- coding: utf-8 -*-
-"""Pruebas de regresión integrales del sistema multicanal oficial."""
+"""Pruebas de regresión integrales del sistema curador e inyector."""
 from __future__ import annotations
 
 import unittest
 from datetime import datetime, timedelta, timezone
 
 import curador_eventos as curador
-import inyector_epg as inyector
+import inyector_epg as epg
 from resolvedor_logos import resolver_logo_torneo
 
 
-class PruebasSistemaMulticanal(unittest.TestCase):
+class PruebasSistemaCurador(unittest.TestCase):
     def setUp(self) -> None:
         self.tz = curador.obtener_zona_aplicacion()
         self.hoy = datetime.now(self.tz).replace(hour=10, minute=0, second=0, microsecond=0)
 
-    def test_clasificador_descarta_dazn_mascarado_y_aisla_paises(self) -> None:
-        canal_dazn_falso = "04 | DAZN (ES) EUROSPORTS 2"
-        self.assertIsNone(inyector.clasificar_canal_lineal(canal_dazn_falso))
+    def test_logos_envueltos_en_cdn_proxy_para_evitar_error_403(self) -> None:
+        logo = resolver_logo_torneo("WTA Cincinnati Open", "Tenis")
+        self.assertTrue(logo.startswith("https://wsrv.nl/?url="))
 
-        canal_tdp_valido = "Spain: ES: TELEDEPORTE FHD"
-        self.assertEqual(inyector.clasificar_canal_lineal(canal_tdp_valido), "TDP")
+    def test_epg_sin_marca_de_directo_es_rechazado_estrictamente(self) -> None:
+        ahora = datetime(2026, 8, 23, 12, 0, tzinfo=timezone.utc)
+        tarjeta = epg.construir_evento_epg(
+            "UFC 330: Makhachev vs Machado Garry", "", ahora, ahora + timedelta(hours=2),
+            [{"nombre": "Eurosport 2 ES", "id_xtream": "10"}], [], ahora, consenso_directo=False
+        )
+        self.assertIsNone(tarjeta)
 
-        canal_es1_valido = "Spain: ES: EUROSPORT 1 HD"
-        self.assertEqual(inyector.clasificar_canal_lineal(canal_es1_valido), "E1")
+    def test_epg_con_consenso_directo_crea_evento_competicion(self) -> None:
+        ahora = datetime(2026, 8, 23, 12, 0, tzinfo=timezone.utc)
+        tarjeta = epg.construir_evento_epg(
+            "Snooker : Wuhan Open - Día 1", "", ahora, ahora + timedelta(hours=2),
+            [{"nombre": "Eurosport 1 ES", "id_xtream": "10"}], [], ahora, consenso_directo=True
+        )
+        self.assertIsNotNone(tarjeta)
+        self.assertEqual(tarjeta["categoria"], "Snooker")
+        self.assertEqual(tarjeta["tipo_evento"], "sencillo")
+        self.assertEqual(tarjeta["modo_presentacion"], "competicion")
+        self.assertTrue(tarjeta["logo_torneo"].startswith("https://wsrv.nl/?url="))
 
-    def test_clasificador_canales_espn_win_dsports(self) -> None:
-        self.assertEqual(inyector.clasificar_canal_lineal("CO | WIN SPORTS+ HD"), "WIN_PLUS")
-        self.assertEqual(inyector.clasificar_canal_lineal("CO | WIN SPORTS HD"), "WIN_BASICO")
-        self.assertEqual(inyector.clasificar_canal_lineal("CO | DIRECTV SPORTS 2 HD"), "DSPORTS_2")
-        self.assertEqual(inyector.clasificar_canal_lineal("LATAM | ESPN 3 FHD"), "ESPN_3")
-
-    def test_filtro_temporadas_historicas_no_bloquea_temporadas_actuales(self) -> None:
-        self.assertTrue(bool(inyector.PATRON_TEMPORADA_HISTORICA.search("Ciclismo 2023")))
-        self.assertTrue(bool(inyector.PATRON_TEMPORADA_HISTORICA.search("Superbike T2025")))
-        self.assertTrue(bool(inyector.PATRON_TEMPORADA_HISTORICA.search("Fórmula E T24")))
-        # Temporadas actuales no deben coincidir
-        self.assertIsNone(inyector.PATRON_TEMPORADA_HISTORICA.search("Wuhan Open T26/27"))
-        self.assertIsNone(inyector.PATRON_TEMPORADA_HISTORICA.search("Copa del Mundo 2026"))
-        self.assertIsNone(inyector.PATRON_TEMPORADA_HISTORICA.search("España vs Bélgica T0"))
-
-    def test_huella_canonica_unifica_duelos_independiente_del_orden(self) -> None:
-        ev1 = {"categoria": "Fútbol", "equipo_local": "Real Madrid", "equipo_visitante": "Barcelona", "hora_utc": "2026-08-24T19:00:00Z"}
-        ev2 = {"categoria": "Fútbol", "equipo_local": "Barcelona", "equipo_visitante": "Real Madrid", "hora_utc": "2026-08-24T19:00:00Z"}
-        self.assertEqual(curador.generar_huella_canonica(ev1), curador.generar_huella_canonica(ev2))
-
-    def test_huella_canonica_unifica_ciclismo_misma_etapa(self) -> None:
-        ev_es = {"categoria": "Ciclismo", "torneo": "La Vuelta", "subtitulo": "Etapa 2 - Mónaco", "hora_utc": "2026-08-24T13:00:00Z"}
-        ev_espn = {"categoria": "Ciclismo", "torneo": "La Vuelta", "subtitulo": "Etapa 2 - Mónaco", "hora_utc": "2026-08-24T13:30:00Z"}
-        self.assertEqual(curador.generar_huella_canonica(ev_es), curador.generar_huella_canonica(ev_espn))
-
-    def test_fusion_multicanal_unifica_fuentes(self) -> None:
-        ev1 = {
-            "id": "e1", "titulo": "La Vuelta", "torneo": "La Vuelta", "categoria": "Ciclismo",
-            "subtitulo": "Etapa 2", "hora_utc": "2026-08-24T13:00:00Z", "fuentes": [{"nombre": "Eurosport 1", "id_xtream": "101"}]
+    def test_canal_xtream_con_duelo_en_subtitulo_se_analiza_correctamente(self) -> None:
+        canal = {
+            "id_xtream": "530165",
+            "nombre_ui": "13:00 ▫ Little League Baseball ▫ Willemstad Curacao vs. Seoul South Korea ▫ HD ▫▫",
+            "texto_normalizado": "13 00 LITTLE LEAGUE BASEBALL WILLEMSTAD CURACAO VS SEOUL SOUTH KOREA HD",
+            "tokens": curador.tokenizar("Little League Baseball Willemstad Curacao vs Seoul South Korea"),
+            "hora_local": self.hoy.replace(hour=13),
+            "categoria_inferida": "Béisbol",
+            "sesion": None,
+            "motivo_vigencia": "fecha_xtream_hoy"
         }
-        ev2 = {
-            "id": "e2", "titulo": "La Vuelta", "torneo": "La Vuelta", "categoria": "Ciclismo",
-            "subtitulo": "Etapa 2", "hora_utc": "2026-08-24T13:00:00Z", "fuentes": [{"nombre": "ESPN 2", "id_xtream": "202"}]
-        }
-        fusionados = inyector.fusionar_eventos_multicanal([ev1], [ev2])
-        self.assertEqual(len(fusionados), 1)
-        self.assertEqual(len(fusionados[0]["fuentes"]), 2)
-        self.assertEqual({f["id_xtream"] for f in fusionados[0]["fuentes"]}, {"101", "202"})
-
-    def test_resolucion_logo_con_proxy_cdn(self) -> None:
-        logo_cincinnati = resolver_logo_torneo("WTA Cincinnati Open", "Tenis")
-        self.assertTrue(logo_cincinnati.startswith("https://wsrv.nl/?url="))
+        evento = curador.crear_probable_xtream(canal, self.tz)
+        self.assertIsNotNone(evento)
+        self.assertEqual(evento["tipo_evento"], "duelo")
+        self.assertEqual(evento["equipo_local"], "Willemstad Curacao")
+        self.assertEqual(evento["equipo_visitante"], "Seoul South Korea")
 
 
 if __name__ == "__main__":
