@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Inyector multicanal oficial (Eurosport, RTVE, ESPN, Win Sports, DSports) con fusión canónica."""
+"""Inyector multicanal oficial (Eurosport, RTVE, ESPN, Win Sports, DSports) con aislamiento robusto de países."""
 from __future__ import annotations
 
 import hashlib
@@ -45,25 +45,30 @@ HEADERS_DEFAULT = {
     "Accept": "application/json",
 }
 
+# Patrón estricto para aislar códigos de país (evita falso positivo en 'teleDEporte' o 'DEportes')
+REGEX_PAIS_EXTRANJERO = re.compile(r"\b(DE|FR|UK|EN|PT|IT|GERMAN|FRENCH)\b", re.I)
 
-# ─── Filtro Estricto de Canales Xtream (Anti-DAZN / Solo Señales Válidas) ───
+
 def clasificar_canal_lineal(nombre: str) -> Optional[str]:
-    """Clasifica el canal Xtream descartando canales falsos (DAZN, idiomas ajenos)."""
+    """Clasifica el canal Xtream descartando DAZN y aislando códigos de país mediante límites de palabra."""
     n = normalizar_texto(nombre)
+    if "DAZN" in n:
+        return None
 
-    # 1. Teledeporte España
+    # 1. Teledeporte España (Verifica que 'DE' sea país aislado y no parte de deporte/teledep)
     if "TELEDEPORTE" in n or re.search(r"\bTDP\b", n):
-        if not any(x in n for x in ["DE", "FR", "UK", "EN", "PT", "IT"]):
+        partes_limpias = REGEX_PAIS_EXTRANJERO.sub("", n)
+        if not any(x in partes_limpias for x in ["FRANCE", "UK", "ENGL"]):
             return "TDP"
 
-    # 2. Eurosport 1 España (Descarte estricto de DAZN y señales extranjeras)
+    # 2. Eurosport 1 España
     if re.search(r"\bEUROSPORTS?\s*1\b", n) and not re.search(r"\bEUROSPORTS?\s*2\b", n):
-        if not any(veto in n for veto in ["DAZN", "DE", "FR", "UK", "EN", "PT", "IT", "GERMAN", "FRENCH"]):
+        if not REGEX_PAIS_EXTRANJERO.search(n):
             return "E1"
 
-    # 3. Eurosport 2 España (Descarte estricto de DAZN y señales extranjeras)
+    # 3. Eurosport 2 España
     if re.search(r"\bEUROSPORTS?\s*2\b", n):
-        if not any(veto in n for veto in ["DAZN", "DE", "FR", "UK", "EN", "PT", "IT", "GERMAN", "FRENCH"]):
+        if not REGEX_PAIS_EXTRANJERO.search(n):
             return "E2"
 
     # 4. Win Sports Colombia
@@ -78,7 +83,7 @@ def clasificar_canal_lineal(nombre: str) -> Optional[str]:
             return "DSPORTS_PLUS"
         return "DSPORTS_1"
 
-    # 6. ESPN Familia
+    # 6. ESPN Familia (Latinoamérica)
     if "ESPN" in n and not any(x in n for x in ["BR", "BRASIL", "USA"]):
         for i in range(1, 8):
             if f"ESPN {i}" in n or f"ESPN{i}" in n:
@@ -122,7 +127,6 @@ def mapear_canales_lineales_xtream() -> dict[str, list[dict[str, Any]]]:
 def extraer_eventos_eurosport(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
     eventos: list[dict[str, Any]] = []
     try:
-        # Obtener token de invitado
         resp_tok = requests.get("https://eu3-prod-direct.eurosport.es/token?realm=eurosport", headers=HEADERS_DEFAULT, timeout=8)
         if resp_tok.status_code != 200:
             return []
@@ -153,8 +157,6 @@ def extraer_eventos_eurosport(fecha_colombia: str, canales_map: dict[str, list[d
             canal_nombre = str(item.get("channelName", "")).upper()
             clave_canal = "E2" if "2" in canal_nombre else "E1"
             fuentes = canales_map.get(clave_canal, [])
-            if not fuentes:
-                continue
 
             inicio_utc = item.get("start") or item.get("startTime")
             fin_utc = item.get("end") or item.get("endTime")
@@ -189,8 +191,6 @@ def extraer_eventos_eurosport(fecha_colombia: str, canales_map: dict[str, list[d
 def extraer_eventos_teledeporte(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
     eventos: list[dict[str, Any]] = []
     fuentes = canales_map.get("TDP", [])
-    if not fuentes:
-        return []
 
     try:
         url = f"https://www.rtve.es/api/parrilla/tve/teledeporte/{fecha_colombia}.json"
@@ -243,7 +243,7 @@ def extraer_eventos_teledeporte(fecha_colombia: str, canales_map: dict[str, list
     return eventos
 
 
-# ─── Adaptador 3: ESPN Latinoamérica (Scoreboard & Live TV API) ─────────────
+# ─── Adaptador 3: ESPN Latinoamérica ────────────────────────────────────────
 def extraer_eventos_espn(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
     eventos: list[dict[str, Any]] = []
     fecha_compacta = fecha_colombia.replace("-", "")
@@ -289,7 +289,6 @@ def extraer_eventos_espn(fecha_colombia: str, canales_map: dict[str, list[dict[s
                 if not dt_inicio:
                     continue
 
-                # Canales ESPN asociados a la emisión
                 broadcasts = competencia.get("broadcasts", [])
                 nombres_bcast = [b.get("names", []) for b in broadcasts]
                 canales_texto = normalizar_texto(" ".join([item for sub in nombres_bcast for item in sub]))
@@ -319,9 +318,114 @@ def extraer_eventos_espn(fecha_colombia: str, canales_map: dict[str, list[dict[s
     return eventos
 
 
+# ─── Adaptador 4: Win Sports Colombia (API Oficial CMS) ──────────────────────
+def extraer_eventos_winsports(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    eventos: list[dict[str, Any]] = []
+    try:
+        url = f"https://www.winsports.co/api/v1/programacion?fecha={fecha_colombia}"
+        resp = requests.get(url, headers={**HEADERS_DEFAULT, "Referer": "https://www.winsports.co/"}, timeout=8)
+        if resp.status_code != 200:
+            return []
+
+        bloques = resp.json() if isinstance(resp.json(), list) else resp.json().get("data", [])
+        for prog in bloques:
+            if not (prog.get("en_vivo") is True or str(prog.get("en_vivo")) in {"1", "true"}):
+                continue
+
+            titulo = str(prog.get("titulo") or prog.get("name") or "").strip()
+            desc = str(prog.get("subtitulo") or prog.get("descripcion") or "").strip()
+            if not titulo or contiene_veto(f"{titulo} {desc}"):
+                continue
+
+            h_ini = prog.get("hora_inicio") or prog.get("start")
+            dt_inicio = datetime.fromisoformat(h_ini.replace("Z", "+00:00")) if (h_ini and "T" in h_ini) else None
+            if not dt_inicio:
+                continue
+
+            es_premium = "plus" in normalizar_texto(prog.get("canal", "")) or "premium" in normalizar_texto(prog.get("canal", ""))
+            fuentes = canales_map.get("WIN_PLUS" if es_premium else "WIN_BASICO", [])
+            fuentes.extend(canales_map.get("WIN_BASICO", []))
+
+            categoria = "Fútbol"
+            logo_final = resolver_logo_torneo("Liga BetPlay", categoria)
+
+            eventos.append({
+                "id": f"winsports_{hashlib.sha1(f'{titulo}|{dt_inicio.isoformat()}'.encode()).hexdigest()[:14]}",
+                "agenda_id": "", "titulo": titulo, "torneo": "Liga BetPlay Dimayor", "categoria": categoria,
+                "tipo_evento": "duelo" if " vs " in titulo.lower() else "sencillo",
+                "equipo_local": titulo.split(" vs ")[0].strip() if " vs " in titulo.lower() else "",
+                "equipo_visitante": titulo.split(" vs ")[1].strip() if " vs " in titulo.lower() else "",
+                "subtitulo": desc, "hora_utc": iso_utc(dt_inicio),
+                "hora_local_producto": dt_inicio.astimezone(obtener_zona_aplicacion()).strftime("%H:%M"),
+                "duracion_min": 130, "logo_torneo": logo_final, "logo_local": logo_final, "logo_visitante": "",
+                "tier": 2, "origen": "winsports_oficial", "origenes": ["winsports_oficial"],
+                "estado": "confirmado", "estado_evento": "programado", "confianza": "alta", "puntuacion_confianza": 95,
+                "metodo_correlacion": "api_oficial_winsports", "razones_correlacion": ["directo:true"],
+                "fuentes": fuentes,
+            })
+    except Exception as exc:
+        log.warning("Adaptador Win Sports no disponible: %s", exc)
+    return eventos
+
+
+# ─── Adaptador 5: DSports / DIRECTV Sports (API DGO) ─────────────────────────
+def extraer_eventos_dsports(fecha_colombia: str, canales_map: dict[str, list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    eventos: list[dict[str, Any]] = []
+    try:
+        url = f"https://api.directvgo.com/epg/v1/programs?country=CO&device=web&date={fecha_colombia}"
+        headers = {**HEADERS_DEFAULT, "Origin": "https://www.directvgo.com", "Referer": "https://www.directvgo.com/"}
+        resp = requests.get(url, headers=headers, timeout=8)
+        if resp.status_code != 200:
+            return []
+
+        canales = resp.json().get("channels", [])
+        for canal in canales:
+            c_name = normalizar_texto(canal.get("channelName", ""))
+            if "DSPORTS" not in c_name and "DIRECTV SPORTS" not in c_name:
+                continue
+
+            clave_canal = "DSPORTS_2" if " 2" in c_name else ("DSPORTS_PLUS" if "+" in c_name or "PLUS" in c_name else "DSPORTS_1")
+            fuentes = canales_map.get(clave_canal, [])
+
+            for prog in canal.get("programs", []):
+                if not prog.get("isLive") is True:
+                    continue
+
+                titulo = str(prog.get("title") or "").strip()
+                desc = str(prog.get("description") or "").strip()
+                if not titulo or contiene_veto(f"{titulo} {desc}"):
+                    continue
+
+                h_ini = prog.get("startDate")
+                dt_inicio = datetime.fromisoformat(h_ini.replace("Z", "+00:00")) if h_ini else None
+                if not dt_inicio:
+                    continue
+
+                categoria = inferir_deporte(f"{titulo} {desc}") or "Deportes"
+                logo_prog = prog.get("images", {}).get("poster")
+                logo_final = envolver_cdn_proxy(logo_prog) if logo_prog else resolver_logo_torneo(titulo, categoria)
+
+                eventos.append({
+                    "id": f"dsports_{hashlib.sha1(f'{titulo}|{dt_inicio.isoformat()}'.encode()).hexdigest()[:14]}",
+                    "agenda_id": "", "titulo": titulo, "torneo": titulo, "categoria": categoria,
+                    "tipo_evento": "duelo" if " vs " in titulo.lower() else "sencillo",
+                    "equipo_local": titulo.split(" vs ")[0].strip() if " vs " in titulo.lower() else "",
+                    "equipo_visitante": titulo.split(" vs ")[1].strip() if " vs " in titulo.lower() else "",
+                    "subtitulo": desc, "hora_utc": iso_utc(dt_inicio),
+                    "hora_local_producto": dt_inicio.astimezone(obtener_zona_aplicacion()).strftime("%H:%M"),
+                    "duracion_min": 130, "logo_torneo": logo_final, "logo_local": logo_final, "logo_visitante": "",
+                    "tier": 2, "origen": "dsports_oficial", "origenes": ["dsports_oficial"],
+                    "estado": "confirmado", "estado_evento": "programado", "confianza": "alta", "puntuacion_confianza": 95,
+                    "metodo_correlacion": "api_oficial_dsports", "razones_correlacion": ["isLive:true"],
+                    "fuentes": fuentes,
+                })
+    except Exception as exc:
+        log.warning("Adaptador DSports no disponible: %s", exc)
+    return eventos
+
+
 # ─── Motor de Fusión Canónica Universal ──────────────────────────────────────
 def fusionar_eventos_multicanal(eventos_base: list[dict[str, Any]], eventos_nuevos: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Unifica eventos que representan la misma transmisión (Eurosport + ESPN + Xtream) en una sola tarjeta."""
     indice_canonica: dict[str, dict[str, Any]] = {}
 
     for ev in eventos_base + eventos_nuevos:
@@ -329,14 +433,12 @@ def fusionar_eventos_multicanal(eventos_base: list[dict[str, Any]], eventos_nuev
         existente = indice_canonica.get(huella)
 
         if existente is None:
-            # Nuevo evento canonical
             clon = {k: v for k, v in ev.items() if k != "fuentes"}
             clon["fuentes"] = []
             for f in ev.get("fuentes", []):
                 fusionar_fuente(clon, f)
             indice_canonica[huella] = clon
         else:
-            # Enriquecer metadatos (conservar logos más nítidos y banderas de mayor confianza)
             if not existente.get("logo_local") and ev.get("logo_local"):
                 existente["logo_local"] = ev["logo_local"]
             if not existente.get("logo_visitante") and ev.get("logo_visitante"):
@@ -350,7 +452,6 @@ def fusionar_eventos_multicanal(eventos_base: list[dict[str, Any]], eventos_nuev
             )
             existente["origenes"] = list(dict.fromkeys(list(existente.get("origenes", [])) + list(ev.get("origenes", []))))
 
-            # Fusionar fuentes
             for f in ev.get("fuentes", []):
                 fusionar_fuente(existente, f)
 
@@ -360,7 +461,7 @@ def fusionar_eventos_multicanal(eventos_base: list[dict[str, Any]], eventos_nuev
 def main() -> None:
     tz, ahora = obtener_zona_aplicacion(), datetime.now(timezone.utc)
     fecha_colombia = ahora.astimezone(tz).date().isoformat()
-    log.info("=== Inyector Multicanal Oficial v12 | Colombia %s ===", fecha_colombia)
+    log.info("=== Inyector Multicanal Oficial v13 (Eurosport, RTVE, ESPN, Win, DSports) | Colombia %s ===", fecha_colombia)
 
     try:
         salida = json.loads(ARCHIVO_SALIDA.read_text(encoding="utf-8")) if ARCHIVO_SALIDA.exists() else {"version": 11, "eventos": []}
@@ -370,12 +471,14 @@ def main() -> None:
     eventos_base = list(salida.get("eventos") or [])
     canales_lineales = mapear_canales_lineales_xtream()
 
-    # Extracción oficial por cadena
+    # Ejecución de todos los adaptadores oficiales
     ev_eurosport = extraer_eventos_eurosport(fecha_colombia, canales_lineales)
     ev_rtve = extraer_eventos_teledeporte(fecha_colombia, canales_lineales)
     ev_espn = extraer_eventos_espn(fecha_colombia, canales_lineales)
+    ev_win = extraer_eventos_winsports(fecha_colombia, canales_lineales)
+    ev_dsports = extraer_eventos_dsports(fecha_colombia, canales_lineales)
 
-    total_inyectados = ev_eurosport + ev_rtve + ev_espn
+    total_inyectados = ev_eurosport + ev_rtve + ev_espn + ev_win + ev_dsports
     eventos_finales = fusionar_eventos_multicanal(eventos_base, total_inyectados)
 
     salida.update({
@@ -388,10 +491,12 @@ def main() -> None:
         "version": 11, "generado_utc": salida["generado_utc"], "fecha_local_producto": fecha_colombia,
         "canales_lineales_mapeados": {k: len(v) for k, v in canales_lineales.items()},
         "inyectados_eurosport": len(ev_eurosport), "inyectados_teledeporte": len(ev_rtve),
-        "inyectados_espn": len(ev_espn), "total_cartelera_unificada": len(eventos_finales),
+        "inyectados_espn": len(ev_espn), "inyectados_winsports": len(ev_win),
+        "inyectados_dsports": len(ev_dsports), "total_cartelera_unificada": len(eventos_finales),
     }
     ARCHIVO_META.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
-    log.info("Cartelera unificada con éxito: E1/E2=%d TDP=%d ESPN=%d Total=%d", len(ev_eurosport), len(ev_rtve), len(ev_espn), len(eventos_finales))
+    log.info("Cartelera unificada con éxito: E1/E2=%d TDP=%d ESPN=%d Win=%d DSports=%d Total=%d", 
+             len(ev_eurosport), len(ev_rtve), len(ev_espn), len(ev_win), len(ev_dsports), len(eventos_finales))
 
 
 if __name__ == "__main__":
