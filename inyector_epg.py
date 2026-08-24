@@ -467,6 +467,14 @@ def fusionar_con_base(base: list[dict[str, Any]], epg: list[dict[str, Any]]) -> 
             metricas["agregados"] += 1
     return sorted(resultado, key=lambda e: e["hora_utc"]), dict(metricas)
 
+def inyectar_urls_reproduccion(eventos: list[dict[str, Any]], base_url: str) -> None:
+    if not base_url or not XTREAM_USER or not XTREAM_PASS:
+        return
+    for evento in eventos:
+        for fuente in evento.get("fuentes", []):
+            sid = fuente.get("id_xtream")
+            if sid and "url_reproduccion" not in fuente:
+                fuente["url_reproduccion"] = f"{base_url}/{XTREAM_USER}/{XTREAM_PASS}/{sid}"
 
 def main() -> None:
     tz, ahora = obtener_zona_aplicacion(), datetime.now(timezone.utc)
@@ -480,6 +488,9 @@ def main() -> None:
     mapa = mapear_streams_canales_lineales()
     eventos_epg, metricas_epg = extraer_eventos_epg(mapa, agenda, ahora.astimezone(tz), ahora)
     eventos, metricas_fusion = fusionar_con_base(list(salida.get("eventos") or []), eventos_epg)
+
+    base_reproduccion = salida.get("base_media", "")
+    inyectar_urls_reproduccion(eventos, str(base_reproduccion))
 
     salida.update({
         "version": 11, "generado_utc": iso_utc(ahora), "zona_horaria_producto": str(tz),
