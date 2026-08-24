@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Curador deportivo multideporte para AllStreamTV con parser de duelos de cobertura total."""
+"""Curador deportivo multideporte para AllStreamTV con huella digital canónica."""
 from __future__ import annotations
 
 import hashlib
@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 
-from resolvedor_logos import resolver_logo_torneo
+from resolvedor_logos import envolver_cdn_proxy, resolver_logo_torneo
 
 logging.basicConfig(
     level=os.environ.get("LOG_LEVEL", "INFO").upper(),
@@ -239,6 +239,25 @@ def fecha_xtream_explicita(texto: str, fecha_producto: date) -> Optional[bool]:
     return False if hallada else None
 
 
+def generar_huella_canonica(evento: dict[str, Any]) -> str:
+    """Genera una firma canónica universal para fusionar transmisiones duplicadas del mismo evento."""
+    categoria = str(evento.get("categoria") or "")
+    local = normalizar_texto(evento.get("equipo_local", ""))
+    visita = normalizar_texto(evento.get("equipo_visitante", ""))
+    hora_utc = str(evento.get("hora_utc", ""))
+    fecha_slot = hora_utc[:10] if len(hora_utc) >= 10 else ""
+
+    # Duelo colectivo: firma por orden alfabético de equipos
+    if local and visita and categoria not in DEPORTES_INDIVIDUALES:
+        equipos = sorted([local, visita])
+        return f"DUELO|{categoria}|{equipos[0]}|{equipos[1]}|{fecha_slot}"
+
+    # Torneo / Individual: firma por torneo + fase + fecha
+    torneo = normalizar_texto(evento.get("torneo") or evento.get("titulo") or "")
+    subtitulo = normalizar_texto(evento.get("subtitulo") or "")
+    return f"COMPET|{categoria}|{torneo}|{subtitulo}|{fecha_slot}"
+
+
 def _get(objeto: Any, *rutas: str) -> Any:
     for ruta in rutas:
         actual = objeto
@@ -352,20 +371,20 @@ def normalizar_evento_api(deporte: str, item: dict[str, Any], config: dict[str, 
         id_origen = hashlib.sha1(f"{deporte}|{titulo}|{iso_utc(inicio)}".encode()).hexdigest()[:16]
 
     logo_torneo = str(_get(item, "league.logo", "competition.logo", "race.competition.logo") or "")
-    if not logo_torneo:
-        logo_torneo = resolver_logo_torneo(torneo or titulo, config["categoria"])
+    logo_torneo_cdn = envolver_cdn_proxy(logo_torneo) if logo_torneo else resolver_logo_torneo(torneo or titulo, config["categoria"])
 
-    logo_local = str(_get(item, "teams.home.logo", "home.logo") or "")
-    logo_visitante = str(_get(item, "teams.away.logo", "away.logo") or "")
+    logo_local = envolver_cdn_proxy(str(_get(item, "teams.home.logo", "home.logo") or ""))
+    logo_visitante = envolver_cdn_proxy(str(_get(item, "teams.away.logo", "away.logo") or ""))
     estado_raw = str(_get(item, "fixture.status.short", "game.status.short", "race.status.short", "status.short", "status.long") or "NS").upper()
     estado = "en_vivo" if estado_raw in {"1H", "2H", "HT", "Q1", "Q2", "Q3", "Q4", "LIVE", "IN", "P", "RUNNING"} else "finalizado" if estado_raw in {"FT", "AET", "PEN", "FINISHED", "ENDED"} else "programado"
+
     return {
         "id": f"apisports_{deporte}_{id_origen}", "agenda_id": f"apisports_{deporte}_{id_origen}",
         "titulo": titulo, "torneo": torneo, "categoria": config["categoria"], "tipo_evento": tipo,
         "equipo_local": local, "equipo_visitante": visitante, "subtitulo": subtitulo,
         "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(tz).strftime("%H:%M"),
         "duracion_min": DURACION_POR_CATEGORIA.get(config["categoria"], 150),
-        "logo_torneo": logo_torneo, "logo_local": logo_local, "logo_visitante": logo_visitante,
+        "logo_torneo": logo_torneo_cdn, "logo_local": logo_local, "logo_visitante": logo_visitante,
         "tier": 1, "origen": f"api_sports:{deporte}", "origenes": [f"api_sports:{deporte}"],
         "estado": "confirmado", "estado_evento": estado, "confianza": "alta", "puntuacion_confianza": 100,
         "fuentes": [], "metodo_correlacion": "agenda_api_sports", "razones_correlacion": [f"deporte:{deporte}"],
@@ -442,7 +461,8 @@ def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Co
         categoria = inferir_deporte(f"{bruto.get('strSport', '')} {titulo}") or "Deportes"
         ident = str(bruto.get("idEvent") or hashlib.sha1(f"{titulo}|{iso_utc(inicio)}".encode()).hexdigest()[:16])
         torneo = (bruto.get("strLeague") or "").strip()
-        logo_torneo = bruto.get("strLeagueBadge") or resolver_logo_torneo(torneo, categoria)
+        logo_torneo = envolver_cdn_proxy(bruto.get("strLeagueBadge") or "") or resolver_logo_torneo(torneo, categoria)
+
         eventos.append({
             "id": f"tsdb_{ident}", "agenda_id": f"tsdb_{ident}", "titulo": titulo,
             "torneo": torneo, "categoria": categoria,
@@ -451,7 +471,8 @@ def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Co
             "equipo_visitante": visitante if categoria not in DEPORTES_INDIVIDUALES else "",
             "subtitulo": "", "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(tz).strftime("%H:%M"),
             "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150), "logo_torneo": logo_torneo,
-            "logo_local": bruto.get("strHomeTeamBadge") or "", "logo_visitante": bruto.get("strAwayTeamBadge") or "",
+            "logo_local": envolver_cdn_proxy(bruto.get("strHomeTeamBadge") or ""),
+            "logo_visitante": envolver_cdn_proxy(bruto.get("strAwayTeamBadge") or ""),
             "tier": 2, "origen": "thesportsdb_respaldo", "origenes": ["thesportsdb_respaldo"],
             "estado": "confirmado", "estado_evento": "programado", "confianza": "media", "puntuacion_confianza": 78,
             "fuentes": [], "metodo_correlacion": "agenda_thesportsdb_respaldo", "razones_correlacion": [],
@@ -677,8 +698,6 @@ def fusionar_fuente(evento: dict[str, Any], fuente: dict[str, Any]) -> None:
 
 
 def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, str, str, str]:
-    """Analiza el título completo extrayendo (torneo, subtítulo, tipo, equipo_local, equipo_visitante)."""
-    # 1. Limpieza de fechas, horas y sufijos de resolución
     limpio = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", nombre_ui)
     limpio = re.sub(r"(?<!\d)\d{1,2}:\d{2}\s*(?:[APap][Mm])?(?!\d)", "", limpio)
     limpio = re.sub(r"\b(FHD|HD|SD|OP1|OP2|4K)\b", "", limpio, flags=re.I)
@@ -686,7 +705,7 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, st
 
     es_individual = categoria in DEPORTES_INDIVIDUALES
 
-    # 2. Búsqueda de duelo en todo el texto si es deporte colectivo
+    # Detección de duelo en la totalidad del texto
     duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus)\s+(.+)", limpio, flags=re.I)
     if duelo_match and not es_individual:
         parte_izq, parte_der = duelo_match.group(1).strip(), duelo_match.group(2).strip()
@@ -705,7 +724,7 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, st
 
         return torneo, subtitulo, "duelo", local, visitante
 
-    # 3. Tratamiento como evento por competición / individual
+    # Competición individual
     partes = [p.strip() for p in re.split(r"\s*[|·▫/]\s*", limpio) if p.strip()]
     if len(partes) >= 2:
         return partes[0], " - ".join(partes[1:]), "sencillo", "", ""
@@ -778,7 +797,7 @@ def main() -> None:
     tz = obtener_zona_aplicacion()
     ahora = datetime.now(tz)
     fecha = ahora.date().isoformat()
-    log.info("=== Curador multideporte v11 EN CANAL | Colombia %s ===", fecha)
+    log.info("=== Curador multideporte v12 | Colombia %s ===", fecha)
     metricas_agenda: dict[str, Any] = {}
     agenda = obtener_agenda_maestra(fecha, metricas_agenda)
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
