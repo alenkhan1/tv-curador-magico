@@ -15,15 +15,19 @@ class PruebasSistemaMulticanal(unittest.TestCase):
         self.tz = curador.obtener_zona_aplicacion()
         self.hoy = datetime.now(self.tz).replace(hour=10, minute=0, second=0, microsecond=0)
 
-    def test_clasificador_descarta_dazn_mascarado_como_eurosport(self) -> None:
+    def test_clasificador_descarta_dazn_mascarado_y_aisla_paises(self) -> None:
         canal_dazn_falso = "04 | DAZN (ES) EUROSPORTS 2"
         self.assertIsNone(inyector.clasificar_canal_lineal(canal_dazn_falso))
 
-        canal_es_valido = "Spain: ES: EUROSPORT 1 HD"
-        self.assertEqual(inyector.clasificar_canal_lineal(canal_es_valido), "E1")
+        canal_tdp_valido = "Spain: ES: TELEDEPORTE FHD"
+        self.assertEqual(inyector.clasificar_canal_lineal(canal_tdp_valido), "TDP")
+
+        canal_es1_valido = "Spain: ES: EUROSPORT 1 HD"
+        self.assertEqual(inyector.clasificar_canal_lineal(canal_es1_valido), "E1")
 
     def test_clasificador_canales_espn_win_dsports(self) -> None:
         self.assertEqual(inyector.clasificar_canal_lineal("CO | WIN SPORTS+ HD"), "WIN_PLUS")
+        self.assertEqual(inyector.clasificar_canal_lineal("CO | WIN SPORTS HD"), "WIN_BASICO")
         self.assertEqual(inyector.clasificar_canal_lineal("CO | DIRECTV SPORTS 2 HD"), "DSPORTS_2")
         self.assertEqual(inyector.clasificar_canal_lineal("LATAM | ESPN 3 FHD"), "ESPN_3")
 
