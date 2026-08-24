@@ -9,7 +9,6 @@ import logging
 import os
 import re
 import xml.etree.ElementTree as ET
-from collections import Counter
 from datetime import datetime, timedelta, timezone
 from typing import Any, Optional
 
@@ -20,18 +19,15 @@ from curador_eventos import (
     ARCHIVO_SALIDA,
     DEPORTES_INDIVIDUALES,
     DURACION_POR_CATEGORIA,
-    PUENTE_URL,
     XTREAM_PASS,
     XTREAM_URL,
     XTREAM_USER,
-    cargar_agenda_cache,
     contiene_veto,
     fusionar_fuente,
     generar_huella_canonica,
     inferir_deporte,
     iso_utc,
     normalizar_texto,
-    obtener_agenda_maestra,
     obtener_zona_aplicacion,
 )
 from resolvedor_logos import envolver_cdn_proxy, resolver_logo_torneo
@@ -43,6 +39,8 @@ logging.basicConfig(
 )
 log = logging.getLogger("inyector_canales_vivo")
 
+PUENTE_URL = (os.environ.get("PUENTE_URL") or "").strip() or "https://mi-dashboard-tv.onrender.com/api/puente_xtream"
+
 HEADERS_DEFAULT = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
     "Accept": "application/json, text/plain, */*",
@@ -53,7 +51,7 @@ PATRON_TEMPORADA_HISTORICA = re.compile(r"\b(19\d\d|20[0-1]\d|202[0-5])\b|\bT(19
 
 
 def llamada_proxy(url: str, headers: Optional[dict[str, str]] = None, timeout: int = 15, usar_proxy: bool = True) -> Optional[requests.Response]:
-    """Ejecuta peticiones canalizándolas por PUENTE_URL (Render) si está disponible, con fallback directo."""
+    """Ejecuta peticiones canalizándolas por PUENTE_URL (Render) con fallback directo."""
     h = headers or HEADERS_DEFAULT
     if usar_proxy and PUENTE_URL:
         try:
@@ -77,7 +75,7 @@ def clasificar_canal_lineal(nombre: str) -> Optional[str]:
     if "DAZN" in n:
         return None
 
-    # 1. Teledeporte España (descarta si 'DE' es código de país aislado)
+    # 1. Teledeporte España
     if "TELEDEPORTE" in n or re.search(r"\bTDP\b", n):
         n_sin_tdp = n.replace("TELEDEPORTE", "").replace("TDP", "")
         if not REGEX_PAIS_EXTRANJERO.search(n_sin_tdp):
@@ -167,7 +165,8 @@ def extraer_eventos_eurosport(fecha_colombia: str, canales_map: dict[str, list[d
 
             titulo = str(item.get("title") or item.get("name") or "").strip()
             desc = str(item.get("description") or item.get("subtitle") or "").strip()
-            if contiene_veto(f"{titulo} {desc}") or PATRON_TEMPORADA_HISTORICA.search(f"{titulo} {desc}"):
+            texto_completo = f"{titulo} {desc}"
+            if contiene_veto(texto_completo) or PATRON_TEMPORADA_HISTORICA.search(texto_completo):
                 continue
 
             canal_nombre = str(item.get("channelName", "")).upper()
@@ -182,12 +181,15 @@ def extraer_eventos_eurosport(fecha_colombia: str, canales_map: dict[str, list[d
                 continue
 
             duracion = max(15, int((dt_fin - dt_inicio).total_seconds() / 60)) if dt_fin else 120
-            categoria = inferir_deporte(f"{titulo} {desc}") or "Deportes"
+            categoria = inferir_deporte(texto_completo) or "Deportes"
             logo_img = item.get("images", {}).get("logo") or item.get("images", {}).get("poster")
             logo_final = envolver_cdn_proxy(logo_img) if logo_img else resolver_logo_torneo(titulo, categoria)
 
+            ident_str = f"{titulo}|{inicio_utc}"
+            ev_id = hashlib.sha1(ident_str.encode("utf-8")).hexdigest()[:14]
+
             eventos.append({
-                "id": f"eurosport_{hashlib.sha1(f'{titulo}|{inicio_utc}'.encode()).hexdigest()[:14]}",
+                "id": f"eurosport_{ev_id}",
                 "agenda_id": "", "titulo": titulo, "torneo": titulo, "categoria": categoria,
                 "tipo_evento": "sencillo", "equipo_local": "", "equipo_visitante": "",
                 "subtitulo": desc, "hora_utc": iso_utc(dt_inicio),
@@ -222,7 +224,8 @@ def extraer_eventos_teledeporte(fecha_colombia: str, canales_map: dict[str, list
 
             titulo = str(prog.get("title") or prog.get("name") or "").strip()
             desc = str(prog.get("desc") or prog.get("description") or "").strip()
-            if contiene_veto(f"{titulo} {desc}") or PATRON_TEMPORADA_HISTORICA.search(f"{titulo} {desc}"):
+            texto_completo = f"{titulo} {desc}"
+            if contiene_veto(texto_completo) or PATRON_TEMPORADA_HISTORICA.search(texto_completo):
                 continue
 
             h_ini = prog.get("hora_inicio") or prog.get("start")
@@ -239,11 +242,14 @@ def extraer_eventos_teledeporte(fecha_colombia: str, canales_map: dict[str, list
                 continue
 
             duracion = max(15, int((dt_fin - dt_inicio).total_seconds() / 60)) if (dt_fin and dt_inicio) else 90
-            categoria = inferir_deporte(f"{titulo} {desc}") or "Deportes"
+            categoria = inferir_deporte(texto_completo) or "Deportes"
             logo_final = resolver_logo_torneo(titulo, categoria)
 
+            ident_str = f"{titulo}|{dt_inicio.isoformat()}"
+            ev_id = hashlib.sha1(ident_str.encode("utf-8")).hexdigest()[:14]
+
             eventos.append({
-                "id": f"rtve_tdp_{hashlib.sha1(f'{titulo}|{dt_inicio.isoformat()}'.encode()).hexdigest()[:14]}",
+                "id": f"rtve_tdp_{ev_id}",
                 "agenda_id": "", "titulo": titulo, "torneo": titulo, "categoria": categoria,
                 "tipo_evento": "sencillo", "equipo_local": "", "equipo_visitante": "",
                 "subtitulo": desc, "hora_utc": iso_utc(dt_inicio),
@@ -378,7 +384,7 @@ def extraer_eventos_claro_winsports(fecha_colombia: str, canales_map: dict[str, 
 
                 duracion = max(20, int((dt_fin - dt_inicio).total_seconds() / 60)) if (dt_fin and dt_inicio) else 120
                 categoria = inferir_deporte(texto_analizar) or "Fútbol"
-                torneo = "Liga BetPlay Dimayor" if "LIGA" in normalizar_texto(texto_analizar) else (prog.get("parental_rating") or "Win Sports Evento")
+                torneo = "Liga BetPlay Dimayor" if "LIGA" in normalizar_texto(texto_analizar) else (prog.get("parental_rating") or "Win Sports")
                 logo_final = resolver_logo_torneo(torneo, categoria)
 
                 duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus)\s+(.+)", titulo, re.I)
@@ -386,8 +392,11 @@ def extraer_eventos_claro_winsports(fecha_colombia: str, canales_map: dict[str, 
                 local = duelo_match.group(1).strip() if tipo == "duelo" else ""
                 visitante = duelo_match.group(2).strip() if tipo == "duelo" else ""
 
+                ident_str = f"{titulo}|{dt_inicio.isoformat()}"
+                ev_id = hashlib.sha1(ident_str.encode("utf-8")).hexdigest()[:14]
+
                 eventos.append({
-                    "id": f"winsports_{hashlib.sha1(f'{titulo}|{dt_inicio.isoformat()}'.encode()).hexdigest()[:14]}",
+                    "id": f"winsports_{ev_id}",
                     "agenda_id": "", "titulo": titulo, "torneo": torneo, "categoria": categoria,
                     "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante,
                     "subtitulo": desc, "hora_utc": iso_utc(dt_inicio),
@@ -428,7 +437,8 @@ def extraer_eventos_dsports(fecha_colombia: str, canales_map: dict[str, list[dic
 
                 titulo = str(prog.get("title") or "").strip()
                 desc = str(prog.get("description") or "").strip()
-                if not titulo or contiene_veto(f"{titulo} {desc}") or PATRON_TEMPORADA_HISTORICA.search(f"{titulo} {desc}"):
+                texto_completo = f"{titulo} {desc}"
+                if not titulo or contiene_veto(texto_completo) or PATRON_TEMPORADA_HISTORICA.search(texto_completo):
                     continue
 
                 h_ini = prog.get("startDate")
@@ -436,12 +446,15 @@ def extraer_eventos_dsports(fecha_colombia: str, canales_map: dict[str, list[dic
                 if not dt_inicio:
                     continue
 
-                categoria = inferir_deporte(f"{titulo} {desc}") or "Deportes"
+                categoria = inferir_deporte(texto_completo) or "Deportes"
                 logo_prog = prog.get("images", {}).get("poster")
                 logo_final = envolver_cdn_proxy(logo_prog) if logo_prog else resolver_logo_torneo(titulo, categoria)
 
+                ident_str = f"{titulo}|{dt_inicio.isoformat()}"
+                ev_id = hashlib.sha1(ident_str.encode("utf-8")).hexdigest()[:14]
+
                 eventos.append({
-                    "id": f"dsports_{hashlib.sha1(f'{titulo}|{dt_inicio.isoformat()}'.encode()).hexdigest()[:14]}",
+                    "id": f"dsports_{ev_id}",
                     "agenda_id": "", "titulo": titulo, "torneo": titulo, "categoria": categoria,
                     "tipo_evento": "duelo" if " vs " in titulo.lower() else "sencillo",
                     "equipo_local": titulo.split(" vs ")[0].strip() if " vs " in titulo.lower() else "",
@@ -487,7 +500,8 @@ def extraer_eventos_xmltv_fallback(fecha_colombia: str, canales_map: dict[str, l
                 if dt_inicio.astimezone(tz).date().isoformat() == fecha_colombia:
                     tit = el.findtext("title", "") or ""
                     desc = el.findtext("desc", "") or ""
-                    es_live = bool(re.search(r"\b(DIRECTO|VIVO|LIVE|DIREKT|EN DIRECT)\b", normalizar_texto(f"{tit} {desc}")))
+                    texto_completo = f"{tit} {desc}"
+                    es_live = bool(re.search(r"\b(DIRECTO|VIVO|LIVE|DIREKT|EN DIRECT)\b", normalizar_texto(texto_completo)))
                     slot = dt_inicio.strftime("%Y%m%d%H%M")
                     if es_live:
                         consenso_live[(clave, slot)] = True
@@ -502,18 +516,24 @@ def extraer_eventos_xmltv_fallback(fecha_colombia: str, canales_map: dict[str, l
         return []
 
     for p in programas_todos:
-        if not (p["es_live"] or consenso_live.get((p["clave"], p["inicio"].strftime("%Y%m%d%H%M")), False)):
+        slot_clave = (p["clave"], p["inicio"].strftime("%Y%m%d%H%M"))
+        if not (p["es_live"] or consenso_live.get(slot_clave, False)):
             continue
         tit, desc = p["titulo"], p["desc"]
-        if contiene_veto(f"{tit} {desc}") or PATRON_TEMPORADA_HISTORICA.search(f"{tit} {desc}"):
+        texto_completo = f"{tit} {desc}"
+        if contiene_veto(texto_completo) or PATRON_TEMPORADA_HISTORICA.search(texto_completo):
             continue
 
-        categoria = inferir_deporte(f"{tit} {desc}") or "Deportes"
+        categoria = inferir_deporte(texto_completo) or "Deportes"
         logo_final = resolver_logo_torneo(tit, categoria)
         fuentes = canales_map.get(p["clave"], [])
 
+        p_inicio_iso = p["inicio"].isoformat()
+        ident_str = f"{tit}|{p_inicio_iso}"
+        ev_id = hashlib.sha1(ident_str.encode("utf-8")).hexdigest()[:14]
+
         eventos.append({
-            "id": f"xmltv_{hashlib.sha1(f'{tit}|{p['inicio'].isoformat()}'.encode()).hexdigest()[:14]}",
+            "id": f"xmltv_{ev_id}",
             "agenda_id": "", "titulo": tit, "torneo": tit, "categoria": categoria,
             "tipo_evento": "sencillo", "equipo_local": "", "equipo_visitante": "",
             "subtitulo": desc, "hora_utc": iso_utc(p["inicio"]),
