@@ -42,7 +42,7 @@ API_SPORTS_DEPORTES = {
 XTREAM_URL = (os.environ.get("XTREAM_URL") or "").rstrip("/")
 XTREAM_USER = os.environ.get("XTREAM_USER") or ""
 XTREAM_PASS = os.environ.get("XTREAM_PASS") or ""
-PUENTE_URL = os.environ.get("PUENTE_URL") or "https://mi-dashboard-tv.onrender.com/api/puente_xtream"
+PUENTE_URL = (os.environ.get("PUENTE_URL") or "").strip() or "https://mi-dashboard-tv.onrender.com/api/puente_xtream"
 
 THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "123").strip()
 USAR_THESPORTSDB_RESPALDO = os.environ.get("USAR_THESPORTSDB_RESPALDO", "true").lower() in {"1", "true", "si", "sí", "yes"}
@@ -105,7 +105,7 @@ VETO_EMISION = {
     "POSTPARTIDO", "POST PARTIDO", "DOCUMENTAL", "CLASICOS", "MEMORIAS", "VINTAGE", "MEJORES MOMENTOS",
     "WIEDERHOLUNG", "ZUSAMMENFASSUNG", "DOKUMENTATION", "VORSCHAU", "NACHRICHTEN",
     "REPETICAO", "RESUMO", "DOCUMENTARIO", "REDIFFUSION", "RETROSPECTIVA",
-    "PRIMER TOQUE", "SAQUE LARGO", "LINEA DE 4", "PLANETA FUTBOL", "ESTUDIO ESTADIO",
+    "PRIMER TOQUE", "SAQUE LARGO", "LINEA DE 4", "PLANETA FUTBOL", "ESTUDIO ESTADIO", "SPORTSCENTER",
 }
 
 SESIONES = {
@@ -519,9 +519,9 @@ def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[dict[s
 
 
 def llamada_xtream(url: str, timeout: int = 60) -> Any:
-    respuesta = requests.get(PUENTE_URL, params={"url": url}, timeout=timeout)
-    respuesta.raise_for_status()
-    return respuesta.json()
+    resp = requests.get(PUENTE_URL, params={"url": url}, timeout=timeout)
+    resp.raise_for_status()
+    return resp.json()
 
 
 def detectar_categorias_fechadas(fecha_local: datetime) -> tuple[set[str], set[str]]:
@@ -794,7 +794,7 @@ def main() -> None:
     tz = obtener_zona_aplicacion()
     ahora = datetime.now(tz)
     fecha = ahora.date().isoformat()
-    log.info("=== Curador multideporte v13 | Colombia %s ===", fecha)
+    log.info("=== Curador multideporte v14 | Colombia %s ===", fecha)
     metricas_agenda: dict[str, Any] = {}
     agenda = obtener_agenda_maestra(fecha, metricas_agenda)
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
