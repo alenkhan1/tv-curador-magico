@@ -1,6 +1,6 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-24T05:55:26Z",
+  "generado_utc": "2026-08-24T09:05:07Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-24",
   "agenda": {
@@ -108,17 +108,13 @@
       "solicitudes": 1,
       "eventos": 2
     },
-    "eventos": 208
+    "eventos": 208,
+    "cache": "vigente"
   },
   "xtream": {
     "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 10,
-    "streams_totales": 4629,
-    "descartado_sin_vigencia_o_identidad": 3829,
-    "descartado_contenido_no_evento": 56,
-    "descartado_fecha_xtream_fuera_de_jornada": 417,
-    "descartado_categoria_xtream_fuera_de_jornada": 327,
-    "candidatos": 0
+    "categorias_fuera_de_jornada": 0,
+    "error": "xtream:404 Client Error: Not Found for url: https://mi-dashboard-tv.onrender.com/api/puente_xtream?url=http%3A%2F%2Freydereyes.xyz%3A8080%2Fplayer_api.php%3Fusername%3Djorge%26password%3Djorge123%26action%3Dget_live_streams"
   },
   "curacion": {
     "eventos_unicos": 0
@@ -128,23 +124,22 @@
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 79185,
+      "programas_leidos": 77213,
       "veto_o_historico": 26,
-      "rechazados_no_en_vivo": 30,
-      "admitidos": 3,
-      "categoria:Ciclismo": 2,
-      "categoria:Snooker": 1
+      "rechazados_no_en_vivo": 31,
+      "admitidos": 2,
+      "categoria:Ciclismo": 2
     },
     "fusion": {
-      "agregados": 3
+      "agregados": 2
     },
     "canales_mapeados": {
-      "E1": 9,
-      "E2": 10,
-      "TDP": 3
+      "E1": 0,
+      "E2": 0,
+      "TDP": 0
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 3,
-  "actualizado_utc": "2026-08-24T05:55:26Z"
+  "eventos_finales_total": 2,
+  "actualizado_utc": "2026-08-24T09:05:07Z"
 }
