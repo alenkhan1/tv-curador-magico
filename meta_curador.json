@@ -1,6 +1,6 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-25T11:44:24Z",
+  "generado_utc": "2026-08-25T14:04:52Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-25",
   "agenda": {
@@ -113,8 +113,13 @@
   },
   "xtream": {
     "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 0,
-    "error": "xtream:404 Client Error: Not Found for url: https://mi-dashboard-tv.onrender.com/api/puente_xtream?url=http%3A%2F%2Freydereyes.xyz%3A8080%2Fplayer_api.php%3Fusername%3Djorge%26password%3Djorge123%26action%3Dget_live_streams"
+    "categorias_fuera_de_jornada": 6,
+    "streams_totales": 4038,
+    "descartado_sin_vigencia_o_identidad": 3693,
+    "descartado_contenido_no_evento": 49,
+    "descartado_fecha_xtream_fuera_de_jornada": 113,
+    "descartado_categoria_xtream_fuera_de_jornada": 183,
+    "candidatos": 0
   },
   "curacion": {
     "eventos_unicos": 0
@@ -126,21 +131,21 @@
     "lectura": {
       "programas_leidos": 81338,
       "veto_o_historico": 67,
-      "rechazados_no_en_vivo": 42,
-      "admitidos": 3,
-      "categoria:Ciclismo": 2,
+      "rechazados_no_en_vivo": 43,
+      "admitidos": 2,
+      "categoria:Ciclismo": 1,
       "categoria:Voleibol": 1
     },
     "fusion": {
-      "agregados": 3
+      "agregados": 2
     },
     "canales_mapeados": {
-      "E1": 0,
-      "E2": 0,
-      "TDP": 0
+      "E1": 6,
+      "E2": 9,
+      "TDP": 2
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 3,
-  "actualizado_utc": "2026-08-25T11:44:25Z"
+  "eventos_finales_total": 2,
+  "actualizado_utc": "2026-08-25T14:04:55Z"
 }

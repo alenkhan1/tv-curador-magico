@@ -1,49 +1,10 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-25T11:44:25Z",
+  "generado_utc": "2026-08-25T14:04:55Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-25",
-  "base_media": "http://reydereyes.xyz:8080",
+  "base_media": "http://elpapanatas.space:8080",
   "eventos": [
-    {
-      "id": "epg_33cd38219658968c",
-      "agenda_id": "",
-      "titulo": "Etapa 4 - Andorra la Vella - Andorra la Vella",
-      "torneo": "Etapa 4 - Andorra la Vella - Andorra la Vella",
-      "categoria": "Ciclismo",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "La Vuelta",
-      "titulo_tarjeta": "Etapa 4 - Andorra la Vella - Andorra la Vella",
-      "subtitulo_tarjeta": "La Vuelta",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-08-25T12:25:00Z",
-      "hora_local_producto": "07:25",
-      "duracion_min": 85,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "programado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Ciclismo",
-        "directo:true"
-      ],
-      "fuentes": []
-    },
     {
       "id": "epg_f00a34c52b8985ce",
       "agenda_id": "",
@@ -81,7 +42,20 @@
         "categoria:Voleibol",
         "directo:true"
       ],
-      "fuentes": []
+      "fuentes": [
+        {
+          "nombre": "ES| TELEDEPORTE",
+          "id_xtream": "530915",
+          "idioma": "ES",
+          "prioridad": 0
+        },
+        {
+          "nombre": "Teledeporte",
+          "id_xtream": "530993",
+          "idioma": "Principal",
+          "prioridad": 10
+        }
+      ]
     },
     {
       "id": "epg_c1bd0b4d98fa6f1f",
@@ -120,7 +94,44 @@
         "categoria:Ciclismo",
         "directo:true"
       ],
-      "fuentes": []
+      "fuentes": [
+        {
+          "nombre": "Eurosport 1 ES",
+          "id_xtream": "265652",
+          "idioma": "ES",
+          "prioridad": 0
+        },
+        {
+          "nombre": "EUROSPORT 1",
+          "id_xtream": "232944",
+          "idioma": "Principal",
+          "prioridad": 10
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "258733",
+          "idioma": "Principal",
+          "prioridad": 10
+        },
+        {
+          "nombre": "Eurosport1",
+          "id_xtream": "530990",
+          "idioma": "Principal",
+          "prioridad": 10
+        },
+        {
+          "nombre": "EUROSPORTS 1",
+          "id_xtream": "141420",
+          "idioma": "Principal",
+          "prioridad": 10
+        },
+        {
+          "nombre": "UK | EUROSPORTS 1",
+          "id_xtream": "240358",
+          "idioma": "EN",
+          "prioridad": 30
+        }
+      ]
     }
   ]
 }
