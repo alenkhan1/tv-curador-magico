@@ -1,83 +1,2678 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-25T15:05:55Z",
+  "generado_utc": "2026-08-25T16:00:43Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-25",
   "base_media": "http://elpapanatas.space:8080",
   "eventos": [
     {
-      "id": "epg_c1bd0b4d98fa6f1f",
+      "id": "xtream_96b7ce877bb4f3b9",
       "agenda_id": "",
-      "titulo": "La Vuelta - Etapa 4",
-      "torneo": "La Vuelta - Etapa 4",
+      "titulo": "La Vuelta a España",
+      "torneo": "La Vuelta a España",
       "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "La montonera",
-      "titulo_tarjeta": "La Vuelta - Etapa 4",
-      "subtitulo_tarjeta": "La montonera",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-08-25T15:30:00Z",
-      "hora_local_producto": "10:30",
-      "duracion_min": 30,
+      "subtitulo": "La Vuelta 26",
+      "hora_utc": "2026-08-25T11:30:00Z",
+      "hora_local_producto": "06:30",
+      "duracion_min": 240,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F23%2FLa_Vuelta_logo.svg%2F512px-La_Vuelta_logo.svg.png&w=400&output=webp",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F23%2FLa_Vuelta_logo.svg%2F512px-La_Vuelta_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "epg"
+        "xtream"
       ],
-      "estado": "programado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Ciclismo",
-        "directo:true"
+        "fecha_xtream_hoy",
+        "categoria:Ciclismo"
       ],
       "fuentes": [
         {
-          "nombre": "Eurosport 1 ES",
-          "id_xtream": "265652",
-          "idioma": "ES",
-          "prioridad": 0
+          "nombre": "06:30 25/08 | La Vuelta a España | La Vuelta 26 | HD ||",
+          "id_xtream": "532534"
+        }
+      ]
+    },
+    {
+      "id": "xtream_ff65ee832ff80717",
+      "agenda_id": "",
+      "titulo": "La Vuelta a España",
+      "torneo": "La Vuelta a España",
+      "categoria": "Ciclismo",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "La Vuelta 26",
+      "hora_utc": "2026-08-25T12:30:00Z",
+      "hora_local_producto": "07:30",
+      "duracion_min": 240,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F23%2FLa_Vuelta_logo.svg%2F512px-La_Vuelta_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F23%2FLa_Vuelta_logo.svg%2F512px-La_Vuelta_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Ciclismo"
+      ],
+      "fuentes": [
+        {
+          "nombre": "07:30 ▫ La Vuelta a España ▫ La Vuelta 26 ▫ HD ▫▫",
+          "id_xtream": "532791"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d46003c3145e5c6d",
+      "agenda_id": "",
+      "titulo": "Tenis ATP",
+      "torneo": "Tenis ATP",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Arthur Ashe - Mixed Doubles Championship",
+      "hora_utc": "2026-08-25T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 25/08 | Tenis ATP | Arthur Ashe / Mixed Doubles Championship | HD ||",
+          "id_xtream": "532535"
+        }
+      ]
+    },
+    {
+      "id": "xtream_ace5203e386021fa",
+      "agenda_id": "",
+      "titulo": "Tenis ATP",
+      "torneo": "Tenis ATP",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Court 10 - Qualifying",
+      "hora_utc": "2026-08-25T14:00:00Z",
+      "hora_local_producto": "09:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Court 10 / Qualifying | HD ||",
+          "id_xtream": "532536"
         },
         {
-          "nombre": "EUROSPORT 1",
-          "id_xtream": "232944",
-          "idioma": "Principal",
-          "prioridad": 10
+          "nombre": "09:00 25/08 | Tenis ATP | Court 11 / Qualifying | HD ||",
+          "id_xtream": "532537"
         },
         {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "258733",
-          "idioma": "Principal",
-          "prioridad": 10
+          "nombre": "09:00 25/08 | Tenis ATP | Court 12 / Qualifying | HD ||",
+          "id_xtream": "532538"
         },
         {
-          "nombre": "Eurosport1",
-          "id_xtream": "530990",
-          "idioma": "Principal",
-          "prioridad": 10
+          "nombre": "09:00 25/08 | Tenis ATP | Court 13 / Qualifying | HD ||",
+          "id_xtream": "532539"
         },
         {
-          "nombre": "EUROSPORTS 1",
-          "id_xtream": "141420",
-          "idioma": "Principal",
-          "prioridad": 10
+          "nombre": "09:00 25/08 | Tenis ATP | Court 14 / Qualifying | HD ||",
+          "id_xtream": "532540"
         },
         {
-          "nombre": "UK | EUROSPORTS 1",
-          "id_xtream": "240358",
-          "idioma": "EN",
-          "prioridad": 30
+          "nombre": "09:00 25/08 | Tenis ATP | Court 15 / Qualifying | HD ||",
+          "id_xtream": "532541"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Court 16 / Qualifying | HD ||",
+          "id_xtream": "532542"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Court 4 / Qualifying | HD ||",
+          "id_xtream": "532543"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Court 5 / Qualifying | HD ||",
+          "id_xtream": "532544"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Court 6 / Qualifying | HD ||",
+          "id_xtream": "532545"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Court 7 / Qualifying | HD ||",
+          "id_xtream": "532546"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Court 8 / Qualifying | HD ||",
+          "id_xtream": "532547"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Court 9 / Qualifying | HD ||",
+          "id_xtream": "532548"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Louis Armstrong Stadium / Mixed Doubles Championship | HD ||",
+          "id_xtream": "532549"
+        },
+        {
+          "nombre": "09:00 25/08 | Tenis ATP | Stadium 17 / Qualifying | HD ||",
+          "id_xtream": "532550"
+        },
+        {
+          "nombre": "09:00 ▫ Tenis ATP ▫ 2026 US Open Qualifying ▫ HD ▫▫",
+          "id_xtream": "532792"
+        },
+        {
+          "nombre": "09:00 ▫ Tenis ATP ▫ Arthur Ashe / Mixed Doubles Championship ▫ HD ▫▫",
+          "id_xtream": "532793"
+        }
+      ]
+    },
+    {
+      "id": "xtream_fb61d29510ae8f66",
+      "agenda_id": "",
+      "titulo": "Tenis ATP",
+      "torneo": "Tenis ATP",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Court 10 - Qualifying",
+      "hora_utc": "2026-08-25T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 10 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532794"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 11 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532795"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 12 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532796"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 13 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532797"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 14 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532798"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 15 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532799"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 16 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532800"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 4 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532801"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 5 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532802"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 6 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532803"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 7 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532804"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 8 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532805"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Court 9 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532806"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Louis Armstrong Stadium / Mixed Doubles Championship ▫ HD ▫▫",
+          "id_xtream": "532807"
+        },
+        {
+          "nombre": "10:00 ▫ Tenis ATP ▫ Stadium 17 / Qualifying ▫ HD ▫▫",
+          "id_xtream": "532808"
+        }
+      ]
+    },
+    {
+      "id": "xtream_e00330bed84df0f9",
+      "agenda_id": "",
+      "titulo": "Little League Baseball",
+      "torneo": "Little League Baseball",
+      "categoria": "Béisbol",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Little League World Series",
+      "hora_utc": "2026-08-25T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 25/08 | Little League Baseball | Little League World Series | HD ||",
+          "id_xtream": "532554"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1602992",
+      "agenda_id": "apisports_football_1602992",
+      "titulo": "Abha vs Al Khaleej Saihat",
+      "torneo": "Pro League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Abha",
+      "equipo_visitante": "Al Khaleej Saihat",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T16:05:00Z",
+      "hora_local_producto": "11:05",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/307.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2951.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2928.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ABHA",
+        "visitante:KHALEEJ",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:05 25/08 | Saudi Pro | Abha vs. Al Khaleej | HD |",
+          "id_xtream": "532551"
+        },
+        {
+          "nombre": "11:05 ▫ Saudi Pro ▫ Abha vs. Al Khaleej ▫ HD ▫",
+          "id_xtream": "532809"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1622626",
+      "agenda_id": "apisports_football_1622626",
+      "titulo": "Sabah FA vs Hapoel Beer Sheva",
+      "torneo": "UEFA Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sabah FA",
+      "equipo_visitante": "Hapoel Beer Sheva",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T16:45:00Z",
+      "hora_local_producto": "11:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/2.png",
+      "logo_local": "https://media.api-sports.io/football/teams/13976.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/563.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:SABAH",
+        "visitante:HAPOEL,SHEVA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:45 25/08 | UEFA | Sabah vs. Hapoel Be'er Sheva | HD | OP1",
+          "id_xtream": "532552"
+        },
+        {
+          "nombre": "10:45 25/08 | UEFA | Sabah vs. Hapoel Be'er Sheva | HD | OP2",
+          "id_xtream": "532553"
+        },
+        {
+          "nombre": "11:45 ▫ UEFA ▫ Sabah vs. Hapoel Be'er Sheva ▫ HD ▫",
+          "id_xtream": "532810"
+        }
+      ]
+    },
+    {
+      "id": "xtream_a3624824fa90d61d",
+      "agenda_id": "",
+      "titulo": "Tenis ATP",
+      "torneo": "Tenis ATP",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Winston-Salem Open",
+      "hora_utc": "2026-08-25T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 25/08 | Tenis ATP | Winston-Salem Open | HD ||",
+          "id_xtream": "532556"
+        }
+      ]
+    },
+    {
+      "id": "xtream_eb4db28e771898ea",
+      "agenda_id": "",
+      "titulo": "Little League Baseball",
+      "torneo": "Little League Baseball",
+      "categoria": "Béisbol",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Little League World Series",
+      "hora_utc": "2026-08-25T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 ▫ Little League Baseball ▫ Little League World Series ▫ HD ▫▫",
+          "id_xtream": "532811"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1602994",
+      "agenda_id": "apisports_football_1602994",
+      "titulo": "Al-Ettifaq vs Al-Nassr",
+      "torneo": "Pro League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Al-Ettifaq",
+      "equipo_visitante": "Al-Nassr",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/307.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2934.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2939.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 68,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:NASSR,PRO",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 25/08 | Saudi Pro | Al Ittifaq vs. Al Nassr | HD |",
+          "id_xtream": "532555"
+        },
+        {
+          "nombre": "13:00 ▫ Saudi Pro ▫ Al Ittifaq vs. Al Nassr ▫ HD ▫",
+          "id_xtream": "532812"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1627066",
+      "agenda_id": "apisports_football_1627066",
+      "titulo": "Sheffield United U21 vs West Ham United U21",
+      "torneo": "Premier League Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sheffield United U21",
+      "equipo_visitante": "West Ham United U21",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/871.png",
+      "logo_local": "https://media.api-sports.io/football/teams/20086.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/7203.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:UNITED",
+        "visitante:HAM,UNITED,WEST",
+        "diferencia_min:20"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:40 25/08 | Carabao Cup | Southampton vs. West Ham United | HD ||",
+          "id_xtream": "532558"
+        },
+        {
+          "nombre": "13:40 ▫ Carabao Cup ▫ Southampton vs. West Ham United ▫ HD ▫▫",
+          "id_xtream": "532815"
+        }
+      ]
+    },
+    {
+      "id": "xtream_13b815611ded1104",
+      "agenda_id": "",
+      "titulo": "Little League Baseball",
+      "torneo": "Little League Baseball",
+      "categoria": "Béisbol",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Little League World Series",
+      "hora_utc": "2026-08-25T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 25/08 | Little League Baseball | Little League World Series | HD ||",
+          "id_xtream": "532560"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c79c9f5ad1838e7b",
+      "agenda_id": "",
+      "titulo": "Tenis ATP",
+      "torneo": "Tenis ATP",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Winston-Salem Open",
+      "hora_utc": "2026-08-25T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F2%2F2a%2FATP_Tour_logo.svg%2F512px-ATP_Tour_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 ▫ Tenis ATP ▫ Winston-Salem Open ▫ HD ▫▫",
+          "id_xtream": "532813"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1623096",
+      "agenda_id": "apisports_football_1623096",
+      "titulo": "Sheffield Wednesday vs Wolves",
+      "torneo": "League Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sheffield Wednesday",
+      "equipo_visitante": "Wolves",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/48.png",
+      "logo_local": "https://media.api-sports.io/football/teams/74.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/39.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 74,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:CUP,SHEFFIELD,WEDNESDAY",
+        "diferencia_min:75"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:30 25/08 | Carabao Cup | Sheffield Wednesday vs. Wolverhampton Wanderers | HD ||",
+          "id_xtream": "532557"
+        },
+        {
+          "nombre": "13:30 ▫ Carabao Cup ▫ Sheffield Wednesday vs. Wolverhampton Wanderers ▫ HD ▫▫",
+          "id_xtream": "532814"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1623100",
+      "agenda_id": "apisports_football_1623100",
+      "titulo": "Nottingham Forest vs Leeds",
+      "torneo": "League Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nottingham Forest",
+      "equipo_visitante": "Leeds",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/48.png",
+      "logo_local": "https://media.api-sports.io/football/teams/65.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/63.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:FOREST,NOTTINGHAM",
+        "visitante:LEEDS",
+        "diferencia_min:65"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:55 25/08 | Carabao Cup | Nottingham Forest vs. Leeds United | HD ||",
+          "id_xtream": "532559"
+        },
+        {
+          "nombre": "13:55 ▫ Carabao Cup ▫ Nottingham Forest vs. Leeds United ▫ HD ▫▫",
+          "id_xtream": "532816"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1570342",
+      "agenda_id": "apisports_football_1570342",
+      "titulo": "Valencia vs Real Betis",
+      "torneo": "La Liga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Valencia",
+      "equipo_visitante": "Real Betis",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/140.png",
+      "logo_local": "https://media.api-sports.io/football/teams/532.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/543.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:VALENCIA",
+        "visitante:BETIS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 25/08 | Primera ESP | Valencia vs. Betis | HD || OP1",
+          "id_xtream": "532561"
+        },
+        {
+          "nombre": "13:00 25/08 | Primera ESP | Valencia vs. Betis | HD || OP2",
+          "id_xtream": "532562"
+        },
+        {
+          "nombre": "13:00 25/08 | Primera ESP | Valencia vs. Betis | SD || OP3",
+          "id_xtream": "532563"
+        },
+        {
+          "nombre": "14:00 ▫ Primera ESP ▫ Valencia vs. Betis ▫ HD ▫▫",
+          "id_xtream": "532818"
+        },
+        {
+          "nombre": "14:00 ▫ Primera ESP ▫ Valencia vs. Betis ▫ SD ▫▫",
+          "id_xtream": "532819"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1622627",
+      "agenda_id": "apisports_football_1622627",
+      "titulo": "Bodo/Glimt vs NEC Nijmegen",
+      "torneo": "UEFA Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bodo/Glimt",
+      "equipo_visitante": "NEC Nijmegen",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/2.png",
+      "logo_local": "https://media.api-sports.io/football/teams/327.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/413.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:GLIMT",
+        "visitante:NEC",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 25/08 | UEFA | Bodø/Glimt vs. NEC | HD | OP1",
+          "id_xtream": "532564"
+        },
+        {
+          "nombre": "13:00 25/08 | UEFA | Bodø/Glimt vs. NEC | HD | OP2",
+          "id_xtream": "532565"
+        },
+        {
+          "nombre": "14:00 ▫ UEFA ▫ Bodø/Glimt vs. NEC ▫ HD ▫",
+          "id_xtream": "532820"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1610924",
+      "agenda_id": "apisports_football_1610924",
+      "titulo": "Lask Linz vs Celtic",
+      "torneo": "UEFA Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lask Linz",
+      "equipo_visitante": "Celtic",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/2.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1026.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/247.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:LASK,LINZ",
+        "visitante:CELTIC",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 25/08 | UEFA | LASK Linz vs. Celtic | HD | OP1",
+          "id_xtream": "532566"
+        },
+        {
+          "nombre": "13:00 25/08 | UEFA | LASK Linz vs. Celtic | HD | OP2",
+          "id_xtream": "532567"
+        },
+        {
+          "nombre": "14:00 ▫ UEFA ▫ LASK Linz vs. Celtic ▫ HD ▫",
+          "id_xtream": "532821"
+        }
+      ]
+    },
+    {
+      "id": "xtream_1d0485184f3415de",
+      "agenda_id": "",
+      "titulo": "Little League Baseball",
+      "torneo": "Little League Baseball",
+      "categoria": "Béisbol",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Little League World Series",
+      "hora_utc": "2026-08-25T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 ▫ Little League Baseball ▫ Little League World Series ▫ HD ▫▫",
+          "id_xtream": "532817"
+        }
+      ]
+    },
+    {
+      "id": "xtream_8ff38d2729b7bd1d",
+      "agenda_id": "",
+      "titulo": "Little League Baseball",
+      "torneo": "Little League Baseball",
+      "categoria": "Béisbol",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Little League World Series",
+      "hora_utc": "2026-08-25T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 25/08 | Little League Baseball | Little League World Series | HD ||",
+          "id_xtream": "532568"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2ddb827e25008710",
+      "agenda_id": "",
+      "titulo": "Tenis WTA",
+      "torneo": "Tenis WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Abierto GNP Seguros",
+      "hora_utc": "2026-08-25T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 25/08 | Tenis WTA | Abierto GNP Seguros | HD ||",
+          "id_xtream": "532569"
+        }
+      ]
+    },
+    {
+      "id": "xtream_50e5de2ce4d707ee",
+      "agenda_id": "",
+      "titulo": "Tenis WTA",
+      "torneo": "Tenis WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Abierto GNP Seguros - Grandstand",
+      "hora_utc": "2026-08-25T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:30 25/08 | Tenis WTA | Abierto GNP Seguros / Grandstand | HD ||",
+          "id_xtream": "532570"
+        }
+      ]
+    },
+    {
+      "id": "xtream_a632928c56948afb",
+      "agenda_id": "",
+      "titulo": "Little League Baseball",
+      "torneo": "Little League Baseball",
+      "categoria": "Béisbol",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Little League World Series",
+      "hora_utc": "2026-08-25T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 ▫ Little League Baseball ▫ Little League World Series ▫ HD ▫▫",
+          "id_xtream": "532822"
+        }
+      ]
+    },
+    {
+      "id": "xtream_dc77ab5341ba4b85",
+      "agenda_id": "",
+      "titulo": "Tenis WTA",
+      "torneo": "Tenis WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Abierto GNP Seguros",
+      "hora_utc": "2026-08-25T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 ▫ Tenis WTA ▫ Abierto GNP Seguros ▫ HD ▫▫",
+          "id_xtream": "532823"
+        }
+      ]
+    },
+    {
+      "id": "xtream_5595c561f4a119fa",
+      "agenda_id": "",
+      "titulo": "Tenis WTA",
+      "torneo": "Tenis WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Abierto GNP Seguros - Grandstand",
+      "hora_utc": "2026-08-25T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:30 ▫ Tenis WTA ▫ Abierto GNP Seguros / Grandstand ▫ HD ▫▫",
+          "id_xtream": "532824"
+        }
+      ]
+    },
+    {
+      "id": "xtream_1e8b5926ca4b56ba",
+      "agenda_id": "",
+      "titulo": "Little League Baseball",
+      "torneo": "Little League Baseball",
+      "categoria": "Béisbol",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Little League World Series",
+      "hora_utc": "2026-08-25T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 25/08 | Little League Baseball | Little League World Series | HD ||",
+          "id_xtream": "532581"
+        }
+      ]
+    },
+    {
+      "id": "xtream_30508761b761e53d",
+      "agenda_id": "",
+      "titulo": "Tenis WTA",
+      "torneo": "Tenis WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Abierto GNP Seguros - Cancha 4",
+      "hora_utc": "2026-08-25T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 25/08 | Tenis WTA | Abierto GNP Seguros / Cancha 4 | HD ||",
+          "id_xtream": "532582"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1520831",
+      "agenda_id": "apisports_football_1520831",
+      "titulo": "Atletico Goianiense vs Botafogo SP",
+      "torneo": "Serie B",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atletico Goianiense",
+      "equipo_visitante": "Botafogo SP",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/72.png",
+      "logo_local": "https://media.api-sports.io/football/teams/144.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2618.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATLETICO,GOIANIENSE",
+        "visitante:BOTAFOGO",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:30 25/08 | Brasil | Atlético Goianiense vs. Botafogo SP (Serie B) | HD |",
+          "id_xtream": "532571"
+        },
+        {
+          "nombre": "17:30 ▫ Brasil ▫ Atlético Goianiense vs. Botafogo SP (Serie B) ▫ HD ▫",
+          "id_xtream": "532825"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1520835",
+      "agenda_id": "apisports_football_1520835",
+      "titulo": "Juventude vs CRB",
+      "torneo": "Serie B",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Juventude",
+      "equipo_visitante": "CRB",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/72.png",
+      "logo_local": "https://media.api-sports.io/football/teams/152.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/146.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:JUVENTUDE",
+        "visitante:CRB",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:30 25/08 | Brasil | Juventude vs. CRB (Serie B) | HD |",
+          "id_xtream": "532572"
+        },
+        {
+          "nombre": "17:30 ▫ Brasil ▫ Juventude vs. CRB (Serie B) ▫ HD ▫",
+          "id_xtream": "532826"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179998",
+      "agenda_id": "apisports_baseball_179998",
+      "titulo": "Miami Marlins vs Boston Red Sox",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Miami Marlins",
+      "equipo_visitante": "Boston Red Sox",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T22:40:00Z",
+      "hora_local_producto": "17:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/19.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/5.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MARLINS,MIAMI",
+        "visitante:BOSTON,RED,SOX",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:40 25/08 | Boston Red Sox vs. Miami Marlins | HD | MLB | OP1",
+          "id_xtream": "532573"
+        },
+        {
+          "nombre": "16:40 25/08 | Boston Red Sox vs. Miami Marlins | HD | MLB | OP2",
+          "id_xtream": "532574"
+        },
+        {
+          "nombre": "17:40 ▫ MLB ▫ Boston Red Sox vs. Miami Marlins ▫ HD ▫",
+          "id_xtream": "532827"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180000",
+      "agenda_id": "apisports_baseball_180000",
+      "titulo": "Detroit Tigers vs Tampa Bay Rays",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Detroit Tigers",
+      "equipo_visitante": "Tampa Bay Rays",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T22:40:00Z",
+      "hora_local_producto": "17:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/12.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/34.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:DETROIT,TIGERS",
+        "visitante:BAY,RAYS,TAMPA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:40 25/08 | Tampa Bay Rays vs. Detroit Tigers | HD | MLB | OP1",
+          "id_xtream": "532575"
+        },
+        {
+          "nombre": "16:40 25/08 | Tampa Bay Rays vs. Detroit Tigers | HD | MLB | OP2",
+          "id_xtream": "532576"
+        },
+        {
+          "nombre": "17:40 ▫ MLB ▫ Tampa Bay Rays vs. Detroit Tigers ▫ HD ▫",
+          "id_xtream": "532828"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179991",
+      "agenda_id": "apisports_baseball_179991",
+      "titulo": "Washington Nationals vs Colorado Rockies",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Nationals",
+      "equipo_visitante": "Colorado Rockies",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T22:45:00Z",
+      "hora_local_producto": "17:45",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/37.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/10.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NATIONALS,WASHINGTON",
+        "visitante:COLORADO,ROCKIES",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:45 25/08 | Colorado Rockies vs. Washington Nationals | HD | MLB | OP1",
+          "id_xtream": "532577"
+        },
+        {
+          "nombre": "16:45 25/08 | Colorado Rockies vs. Washington Nationals | HD | MLB | OP2",
+          "id_xtream": "532578"
+        },
+        {
+          "nombre": "17:45 ▫ MLB ▫ Colorado Rockies vs. Washington Nationals ▫ HD ▫",
+          "id_xtream": "532829"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549745",
+      "agenda_id": "apisports_football_1549745",
+      "titulo": "Bucaramanga vs Águilas Doradas",
+      "torneo": "Primera A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bucaramanga",
+      "equipo_visitante": "Águilas Doradas",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-25T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1131.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1144.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BUCARAMANGA",
+        "visitante:AGUILAS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 25/08 | Liga Betplay | Atlético Bucaramanga vs. Rionegro Águilas | HD | OP1",
+          "id_xtream": "532579"
+        },
+        {
+          "nombre": "17:00 25/08 | Liga Betplay | Atlético Bucaramanga vs. Rionegro Águilas | HD | OP2",
+          "id_xtream": "532580"
+        },
+        {
+          "nombre": "18:00 ▫ Liga Betplay ▫ Atlético Bucaramanga vs. Rionegro Águilas ▫ HD ▫",
+          "id_xtream": "532830"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_495057",
+      "agenda_id": "apisports_basketball_495057",
+      "titulo": "Connecticut Sun W vs Chicago Sky W",
+      "torneo": "NBA W",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Connecticut Sun W",
+      "equipo_visitante": "Chicago Sky W",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/164.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/163.png",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CONNECTICUT,SUN",
+        "visitante:CHICAGO,SKY",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 25/08 | WNBA | Chicago Sky vs. Connecticut Sun | HD |",
+          "id_xtream": "532583"
+        },
+        {
+          "nombre": "18:00 ▫ WNBA ▫ Chicago Sky vs. Connecticut Sun ▫ HD ▫",
+          "id_xtream": "532833"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b42320588777e304",
+      "agenda_id": "",
+      "titulo": "Little League Baseball",
+      "torneo": "Little League Baseball",
+      "categoria": "Béisbol",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Little League World Series",
+      "hora_utc": "2026-08-25T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F9%2F90%2FLittle_League_logo.svg%2F512px-Little_League_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ▫ Little League Baseball ▫ Little League World Series ▫ HD ▫▫",
+          "id_xtream": "532831"
+        }
+      ]
+    },
+    {
+      "id": "xtream_866b1d0dfb6fd5ff",
+      "agenda_id": "",
+      "titulo": "Tenis WTA",
+      "torneo": "Tenis WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Abierto GNP Seguros - Cancha 4",
+      "hora_utc": "2026-08-25T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F0%2F03%2FWTA_logo_2020.svg%2F512px-WTA_logo_2020.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ▫ Tenis WTA ▫ Abierto GNP Seguros / Cancha 4 ▫ HD ▫▫",
+          "id_xtream": "532832"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179996",
+      "agenda_id": "apisports_baseball_179996",
+      "titulo": "New York Yankees vs Houston Astros",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Yankees",
+      "equipo_visitante": "Houston Astros",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T23:05:00Z",
+      "hora_local_producto": "18:05",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/25.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/15.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NEW,YANKEES,YORK",
+        "visitante:ASTROS,HOUSTON",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:05 25/08 | Houston Astros vs. New York Yankees | HD | MLB |  OP2",
+          "id_xtream": "532584"
+        },
+        {
+          "nombre": "17:05 25/08 | Houston Astros vs. New York Yankees | HD | MLB | OP1",
+          "id_xtream": "532585"
+        },
+        {
+          "nombre": "18:05 ▫ MLB ▫ Houston Astros vs. New York Yankees ▫ HD ▫",
+          "id_xtream": "532834"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179992",
+      "agenda_id": "apisports_baseball_179992",
+      "titulo": "Toronto Blue Jays vs Kansas City Royals",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Toronto Blue Jays",
+      "equipo_visitante": "Kansas City Royals",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T23:07:00Z",
+      "hora_local_producto": "18:07",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/36.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/16.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BLUE,JAYS,TORONTO",
+        "visitante:CITY,KANSAS,ROYALS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:07 25/08 | Kansas City Royals vs. Toronto Blue Jays | HD | MLB | OP1",
+          "id_xtream": "532586"
+        },
+        {
+          "nombre": "17:07 25/08 | Kansas City Royals vs. Toronto Blue Jays | HD | MLB | OP2",
+          "id_xtream": "532587"
+        },
+        {
+          "nombre": "18:07 ▫ MLB ▫ Kansas City Royals vs. Toronto Blue Jays ▫ HD ▫",
+          "id_xtream": "532835"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179997",
+      "agenda_id": "apisports_baseball_179997",
+      "titulo": "New York Mets vs Milwaukee Brewers",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Mets",
+      "equipo_visitante": "Milwaukee Brewers",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T23:10:00Z",
+      "hora_local_producto": "18:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/24.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/20.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:METS,NEW,YORK",
+        "visitante:BREWERS,MILWAUKEE",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:10 25/08 | Milwaukee Brewers vs. New York Mets | HD | MLB | OP1",
+          "id_xtream": "532588"
+        },
+        {
+          "nombre": "17:10 25/08 | Milwaukee Brewers vs. New York Mets | HD | MLB | OP2",
+          "id_xtream": "532589"
+        },
+        {
+          "nombre": "18:10 ▫ MLB ▫ Milwaukee Brewers vs. New York Mets ▫ HD ▫",
+          "id_xtream": "532836"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180002",
+      "agenda_id": "apisports_baseball_180002",
+      "titulo": "Atlanta Braves vs Los Angeles Dodgers",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlanta Braves",
+      "equipo_visitante": "Los Angeles Dodgers",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T23:15:00Z",
+      "hora_local_producto": "18:15",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/3.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/18.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATLANTA,BRAVES",
+        "visitante:ANGELES,DODGERS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:15 25/08 | Los Angeles Dodgers vs. Atlanta Braves | HD | MLB | OP1",
+          "id_xtream": "532590"
+        },
+        {
+          "nombre": "17:15 25/08 | Los Angeles Dodgers vs. Atlanta Braves | HD | MLB | OP2",
+          "id_xtream": "532591"
+        },
+        {
+          "nombre": "18:15 ▫ MLB ▫ Los Angeles Dodgers vs. Atlanta Braves ▫ HD ▫",
+          "id_xtream": "532837"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180001",
+      "agenda_id": "apisports_baseball_180001",
+      "titulo": "Chicago White Sox vs Texas Rangers",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chicago White Sox",
+      "equipo_visitante": "Texas Rangers",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T23:40:00Z",
+      "hora_local_producto": "18:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/7.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/35.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CHICAGO,SOX,WHITE",
+        "visitante:RANGERS,TEXAS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:40 25/08 | Texas Rangers vs. Chicago White Sox | HD | MLB | OP1",
+          "id_xtream": "532592"
+        },
+        {
+          "nombre": "17:40 25/08 | Texas Rangers vs. Chicago White Sox | HD | MLB | OP2",
+          "id_xtream": "532593"
+        },
+        {
+          "nombre": "18:40 ▫ MLB ▫ Texas Rangers vs. Chicago White Sox ▫ HD ▫",
+          "id_xtream": "532838"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179993",
+      "agenda_id": "apisports_baseball_179993",
+      "titulo": "St.Louis Cardinals vs Baltimore Orioles",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "St.Louis Cardinals",
+      "equipo_visitante": "Baltimore Orioles",
+      "subtitulo": "",
+      "hora_utc": "2026-08-25T23:45:00Z",
+      "hora_local_producto": "18:45",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/33.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/4.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CARDINALS,LOUIS",
+        "visitante:BALTIMORE,ORIOLES",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:45 25/08 | Baltimore Orioles vs. St. Louis Cardinals | HD | MLB | OP1",
+          "id_xtream": "532594"
+        },
+        {
+          "nombre": "17:45 25/08 | Baltimore Orioles vs. St. Louis Cardinals | HD | MLB | OP2",
+          "id_xtream": "532595"
+        },
+        {
+          "nombre": "18:45 ▫ MLB ▫ Baltimore Orioles vs. St. Louis Cardinals ▫ HD ▫",
+          "id_xtream": "532839"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1623069",
+      "agenda_id": "apisports_football_1623069",
+      "titulo": "Cruzeiro vs Atletico-MG",
+      "torneo": "Copa Do Brasil",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cruzeiro",
+      "equipo_visitante": "Atletico-MG",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-26T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/73.png",
+      "logo_local": "https://media.api-sports.io/football/teams/135.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1062.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CRUZEIRO",
+        "visitante:ATLETICO",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 25/08 | Brasil | Cruzeiro vs. Atlético Mineiro (Copa do Brasil) | HD |",
+          "id_xtream": "532596"
+        },
+        {
+          "nombre": "19:00 ▫ Brasil ▫ Cruzeiro vs. Atlético Mineiro (Copa do Brasil) ▫ HD ▫",
+          "id_xtream": "532840"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_495058",
+      "agenda_id": "apisports_basketball_495058",
+      "titulo": "Dallas Wings W vs Portland Fire W",
+      "torneo": "NBA W",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Dallas Wings W",
+      "equipo_visitante": "Portland Fire W",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/165.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/7100.png",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:DALLAS,WINGS",
+        "visitante:FIRE,PORTLAND",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 25/08 | WNBA | Portland Fire vs. Dallas Wings | HD |",
+          "id_xtream": "532597"
+        },
+        {
+          "nombre": "19:00 ▫ WNBA ▫ Portland Fire vs. Dallas Wings ▫ HD ▫",
+          "id_xtream": "532841"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1547769",
+      "agenda_id": "apisports_football_1547769",
+      "titulo": "Independiente del Valle vs Deportes Tolima",
+      "torneo": "CONMEBOL Libertadores",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Independiente del Valle",
+      "equipo_visitante": "Deportes Tolima",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-26T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1153.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1142.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:INDEPENDIENTE,VALLE",
+        "visitante:DEPORTES,TOLIMA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 25/08 | CONMEBOL Libertadores | Independiente Del Valle (ECU) vs. Deportes Tolima (COL) | HD | OP1",
+          "id_xtream": "532598"
+        },
+        {
+          "nombre": "18:30 25/08 | CONMEBOL Libertadores | Independiente Del Valle (ECU) vs. Deportes Tolima (COL) | HD | OP2",
+          "id_xtream": "532599"
+        },
+        {
+          "nombre": "18:30 25/08 | CONMEBOL Libertadores | Independiente Del Valle (ECU) vs. Deportes Tolima (COL) | SD | OP3",
+          "id_xtream": "532600"
+        },
+        {
+          "nombre": "19:30 ▫ CONMEBOL Libertadores ▫ Independiente Del Valle (ECU) vs. Deportes Tolima (COL) ▫ HD ▫",
+          "id_xtream": "532842"
+        },
+        {
+          "nombre": "19:30 ▫ CONMEBOL Libertadores ▫ Independiente Del Valle (ECU) vs. Deportes Tolima (COL) ▫ SD ▫",
+          "id_xtream": "532843"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1627558",
+      "agenda_id": "apisports_football_1627558",
+      "titulo": "Monterrey vs Chicago Fire",
+      "torneo": "Leagues Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Monterrey",
+      "equipo_visitante": "Chicago Fire",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-26T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/772.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2282.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1607.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MONTERREY",
+        "visitante:CHICAGO,FIRE",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 25/08 | Leagues Cup | Monterrey vs. Chicago Fire (english) | HD | OP1",
+          "id_xtream": "532601"
+        },
+        {
+          "nombre": "18:30 25/08 | Leagues Cup | Monterrey vs. Chicago Fire (english) | HD | OP2",
+          "id_xtream": "532602"
+        },
+        {
+          "nombre": "18:30 25/08 | Leagues Cup | Monterrey vs. Chicago Fire | HD |  OP3",
+          "id_xtream": "532603"
+        },
+        {
+          "nombre": "19:30 ▫ Leagues Cup ▫ Monterrey vs. Chicago Fire (english) ▫ HD ▫",
+          "id_xtream": "532844"
+        },
+        {
+          "nombre": "19:30 ▫ Leagues Cup ▫ Monterrey vs. Chicago Fire ▫ HD ▫",
+          "id_xtream": "532845"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549747",
+      "agenda_id": "apisports_football_1549747",
+      "titulo": "Cucuta vs Alianza Valledupar",
+      "torneo": "Primera A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cucuta",
+      "equipo_visitante": "Alianza Valledupar",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-26T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1470.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1141.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CUCUTA",
+        "visitante:ALIANZA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 25/08 | Liga Betplay | Cúcuta Deportivo vs. Alianza | HD | OP1",
+          "id_xtream": "532604"
+        },
+        {
+          "nombre": "19:00 25/08 | Liga Betplay | Cúcuta Deportivo vs. Alianza | HD | OP2",
+          "id_xtream": "532605"
+        },
+        {
+          "nombre": "20:00 ▫ Liga Betplay ▫ Cúcuta Deportivo vs. Alianza ▫ HD ▫",
+          "id_xtream": "532846"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2df23adede9ac8ca",
+      "agenda_id": "",
+      "titulo": "Olmecas vs Guerreros",
+      "torneo": "LMB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Olmecas",
+      "equipo_visitante": "Guerreros",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8a%2FLiga_Mexicana_de_Beisbol_logo.svg%2F512px-Liga_Mexicana_de_Beisbol_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ▫ LMB ▫ Olmecas vs. Guerreros ▫ HD ▫",
+          "id_xtream": "532847"
+        }
+      ]
+    },
+    {
+      "id": "xtream_072557f72e1cd7e1",
+      "agenda_id": "",
+      "titulo": "Pericos vs Diablos Rojos",
+      "torneo": "LMB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Pericos",
+      "equipo_visitante": "Diablos Rojos",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F8%2F8a%2FLiga_Mexicana_de_Beisbol_logo.svg%2F512px-Liga_Mexicana_de_Beisbol_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ▫ LMB ▫ Pericos vs. Diablos Rojos ▫ HD ▫",
+          "id_xtream": "532848"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549752",
+      "agenda_id": "apisports_football_1549752",
+      "titulo": "Santa Fe vs Jaguares",
+      "torneo": "Primera A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Santa Fe",
+      "equipo_visitante": "Jaguares",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-26T01:05:00Z",
+      "hora_local_producto": "20:05",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1139.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1133.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:SANTA",
+        "visitante:JAGUARES",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:05 25/08 | Liga Betplay | Santa Fe vs. Jaguares de Córdoba | HD | OP1",
+          "id_xtream": "532606"
+        },
+        {
+          "nombre": "19:05 25/08 | Liga Betplay | Santa Fe vs. Jaguares de Córdoba | HD | OP2",
+          "id_xtream": "532607"
+        },
+        {
+          "nombre": "20:05 ▫ Liga Betplay ▫ Santa Fe vs. Jaguares de Córdoba ▫ HD ▫",
+          "id_xtream": "532849"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179999",
+      "agenda_id": "apisports_baseball_179999",
+      "titulo": "Los Angeles Angels vs Cleveland Guardians",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Los Angeles Angels",
+      "equipo_visitante": "Cleveland Guardians",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T01:38:00Z",
+      "hora_local_producto": "20:38",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/17.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/9.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ANGELES,ANGELS",
+        "visitante:CLEVELAND,GUARDIANS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:38 25/08 | Cleveland Guardians vs. Los Angeles Angels | HD | MLB | OP1",
+          "id_xtream": "532608"
+        },
+        {
+          "nombre": "19:38 25/08 | Cleveland Guardians vs. Los Angeles Angels | HD | MLB | OP2",
+          "id_xtream": "532609"
+        },
+        {
+          "nombre": "20:38 ▫ MLB ▫ Cleveland Guardians vs. Los Angeles Angels ▫ HD ▫",
+          "id_xtream": "532850"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180004",
+      "agenda_id": "apisports_baseball_180004",
+      "titulo": "Arizona Diamondbacks vs Chicago Cubs",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Arizona Diamondbacks",
+      "equipo_visitante": "Chicago Cubs",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T01:40:00Z",
+      "hora_local_producto": "20:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/2.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/6.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ARIZONA,DIAMONDBACKS",
+        "visitante:CHICAGO,CUBS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:40 25/08 | Chicago Cubs vs. Arizona Diamondbacks | HD | MLB | OP1",
+          "id_xtream": "532610"
+        },
+        {
+          "nombre": "19:40 25/08 | Chicago Cubs vs. Arizona Diamondbacks | HD | MLB | OP2",
+          "id_xtream": "532611"
+        },
+        {
+          "nombre": "20:40 ▫ MLB ▫ Chicago Cubs vs. Arizona Diamondbacks ▫ HD ▫",
+          "id_xtream": "532851"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180003",
+      "agenda_id": "apisports_baseball_180003",
+      "titulo": "Athletics vs Minnesota Twins",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Athletics",
+      "equipo_visitante": "Minnesota Twins",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T01:40:00Z",
+      "hora_local_producto": "20:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/963.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/22.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATHLETICS",
+        "visitante:MINNESOTA,TWINS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:40 25/08 | Minnesota Twins vs. Athletics | HD | MLB | OP1",
+          "id_xtream": "532612"
+        },
+        {
+          "nombre": "19:40 25/08 | Minnesota Twins vs. Athletics | HD | MLB | OP2",
+          "id_xtream": "532613"
+        },
+        {
+          "nombre": "20:40 ▫ MLB ▫ Minnesota Twins vs. Athletics ▫ HD ▫",
+          "id_xtream": "532852"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179994",
+      "agenda_id": "apisports_baseball_179994",
+      "titulo": "Seattle Mariners vs Philadelphia Phillies",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Seattle Mariners",
+      "equipo_visitante": "Philadelphia Phillies",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T01:40:00Z",
+      "hora_local_producto": "20:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/32.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/27.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MARINERS,SEATTLE",
+        "visitante:PHILADELPHIA,PHILLIES",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:40 25/08 | Philadelphia Phillies vs. Seattle Mariners | HD | MLB | OP1",
+          "id_xtream": "532614"
+        },
+        {
+          "nombre": "19:40 25/08 | Philadelphia Phillies vs. Seattle Mariners | HD | MLB | OP2",
+          "id_xtream": "532615"
+        },
+        {
+          "nombre": "20:40 ▫ MLB ▫ Philadelphia Phillies vs. Seattle Mariners ▫ HD ▫",
+          "id_xtream": "532853"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_179990",
+      "agenda_id": "apisports_baseball_179990",
+      "titulo": "San Diego Padres vs Pittsburgh Pirates",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Diego Padres",
+      "equipo_visitante": "Pittsburgh Pirates",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T01:40:00Z",
+      "hora_local_producto": "20:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/30.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/28.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:DIEGO,PADRES,SAN",
+        "visitante:PIRATES,PITTSBURGH",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:40 25/08 | Pittsburgh Pirates vs. San Diego Padres (espanol) | HD | MLB | OP1",
+          "id_xtream": "532616"
+        },
+        {
+          "nombre": "19:40 25/08 | Pittsburgh Pirates vs. San Diego Padres | HD | MLB | OP2",
+          "id_xtream": "532617"
+        },
+        {
+          "nombre": "20:40 ▫ MLB ▫ Pittsburgh Pirates vs. San Diego Padres (espanol) ▫ HD ▫▫",
+          "id_xtream": "532854"
+        },
+        {
+          "nombre": "20:40 ▫ MLB ▫ Pittsburgh Pirates vs. San Diego Padres ▫ HD ▫",
+          "id_xtream": "532855"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_495059",
+      "agenda_id": "apisports_basketball_495059",
+      "titulo": "Phoenix Mercury W vs Washington Mystics W",
+      "torneo": "NBA W",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Phoenix Mercury W",
+      "equipo_visitante": "Washington Mystics W",
+      "subtitulo": "",
+      "hora_utc": "2026-08-26T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/171.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/175.png",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MERCURY,PHOENIX",
+        "visitante:MYSTICS,WASHINGTON",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 25/08 | WNBA | Washington Mystics vs. Phoenix Mercury | HD |",
+          "id_xtream": "532618"
+        },
+        {
+          "nombre": "21:00 ▫ WNBA ▫ Washington Mystics vs. Phoenix Mercury ▫ HD ▫",
+          "id_xtream": "532856"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1548368",
+      "agenda_id": "apisports_football_1548368",
+      "titulo": "CS Cartagines vs FAS",
+      "torneo": "CONCACAF Central American Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "CS Cartagines",
+      "equipo_visitante": "FAS",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-26T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/1028.png",
+      "logo_local": "https://media.api-sports.io/football/teams/820.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/4302.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CARTAGINES",
+        "visitante:FAS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:30 25/08 | Central American Cup | CS Cartaginés vs. CD FAS | HD ||",
+          "id_xtream": "532619"
+        },
+        {
+          "nombre": "20:30 25/08 | Central American Cup | CS Cartaginés vs. CD FAS | SD ||",
+          "id_xtream": "532620"
+        },
+        {
+          "nombre": "21:30 ▫ Central American Cup ▫ CS Cartaginés vs. CD FAS ▫ HD ▫▫",
+          "id_xtream": "532857"
+        },
+        {
+          "nombre": "21:30 ▫ Central American Cup ▫ CS Cartaginés vs. CD FAS ▫ SD ▫▫",
+          "id_xtream": "532858"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1548369",
+      "agenda_id": "apisports_football_1548369",
+      "titulo": "Municipal vs CD Motagua",
+      "torneo": "CONCACAF Central American Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Municipal",
+      "equipo_visitante": "CD Motagua",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-26T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/1028.png",
+      "logo_local": "https://media.api-sports.io/football/teams/3665.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1055.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MUNICIPAL",
+        "visitante:MOTAGUA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:30 25/08 | Central American Cup | CSD Municipal vs. FC Motagua | HD ||",
+          "id_xtream": "532621"
+        },
+        {
+          "nombre": "20:30 25/08 | Central American Cup | CSD Municipal vs. FC Motagua | SD ||",
+          "id_xtream": "532622"
+        },
+        {
+          "nombre": "21:30 ▫ Central American Cup ▫ CSD Municipal vs. FC Motagua ▫ HD ▫▫",
+          "id_xtream": "532859"
+        },
+        {
+          "nombre": "21:30 ▫ Central American Cup ▫ CSD Municipal vs. FC Motagua ▫ SD ▫▫",
+          "id_xtream": "532860"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1627559",
+      "agenda_id": "apisports_football_1627559",
+      "titulo": "Leon vs Real Salt Lake",
+      "torneo": "Leagues Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Leon",
+      "equipo_visitante": "Real Salt Lake",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-26T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/772.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2289.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1606.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:LEON",
+        "visitante:LAKE,REAL,SALT",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:30 25/08 | Leagues Cup | León vs. Real Salt Lake (english) | HD | OP1",
+          "id_xtream": "532623"
+        },
+        {
+          "nombre": "20:30 25/08 | Leagues Cup | León vs. Real Salt Lake (english) | HD | OP2",
+          "id_xtream": "532624"
+        },
+        {
+          "nombre": "20:30 25/08 | Leagues Cup | León vs. Real Salt Lake (english) | HD | OP3",
+          "id_xtream": "532625"
+        },
+        {
+          "nombre": "21:30 ▫ Leagues Cup ▫ León vs. Real Salt Lake (english) ▫ HD ▫",
+          "id_xtream": "532861"
+        },
+        {
+          "nombre": "21:30 ▫ Leagues Cup ▫ León vs. Real Salt Lake ▫ HD ▫",
+          "id_xtream": "532862"
         }
       ]
     }

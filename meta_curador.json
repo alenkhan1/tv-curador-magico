@@ -1,6 +1,6 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-25T15:05:52Z",
+  "generado_utc": "2026-08-25T16:00:40Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-25",
   "agenda": {
@@ -112,32 +112,30 @@
     "cache": "vigente"
   },
   "xtream": {
-    "categorias_hoy": 0,
+    "categorias_hoy": 4,
     "categorias_fuera_de_jornada": 6,
-    "streams_totales": 4038,
+    "streams_totales": 4319,
     "descartado_sin_vigencia_o_identidad": 3693,
     "descartado_contenido_no_evento": 49,
-    "descartado_fecha_xtream_fuera_de_jornada": 113,
+    "descartado_fecha_xtream_fuera_de_jornada": 230,
     "descartado_categoria_xtream_fuera_de_jornada": 183,
-    "candidatos": 0
+    "candidatos": 164
   },
   "curacion": {
-    "eventos_unicos": 0
+    "fuentes_probables": 53,
+    "fuentes_emparejadas": 111,
+    "eventos_unicos": 60
   },
-  "eventos_finales_base": 0,
+  "eventos_finales_base": 60,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
       "programas_leidos": 81319,
       "veto_o_historico": 67,
-      "rechazados_no_en_vivo": 44,
-      "admitidos": 1,
-      "categoria:Ciclismo": 1
+      "rechazados_no_en_vivo": 45
     },
-    "fusion": {
-      "agregados": 1
-    },
+    "fusion": {},
     "canales_mapeados": {
       "E1": 6,
       "E2": 9,
@@ -145,6 +143,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 1,
-  "actualizado_utc": "2026-08-25T15:05:55Z"
+  "eventos_finales_total": 60,
+  "actualizado_utc": "2026-08-25T16:00:43Z"
 }
