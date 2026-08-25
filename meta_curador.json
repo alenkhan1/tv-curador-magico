@@ -1,15 +1,15 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-25T03:13:09Z",
+  "generado_utc": "2026-08-25T05:49:27Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-08-24",
+  "fecha_local_producto": "2026-08-25",
   "agenda": {
     "api_sports": {
       "football": {
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -17,7 +17,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -25,7 +25,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -33,7 +33,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -41,7 +41,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -49,7 +49,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -57,7 +57,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -65,7 +65,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -73,7 +73,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -81,7 +81,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9",
         "errores_api": 1,
@@ -91,7 +91,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -99,43 +99,44 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "96",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       }
     },
     "thesportsdb_respaldo": {
       "solicitudes": 1,
-      "eventos": 2
+      "eventos": 0
     },
-    "eventos": 214,
-    "cache": "vigente"
+    "eventos": 325
   },
   "xtream": {
-    "categorias_hoy": 4,
-    "categorias_fuera_de_jornada": 6,
+    "categorias_hoy": 0,
+    "categorias_fuera_de_jornada": 10,
     "streams_totales": 4322,
     "descartado_sin_vigencia_o_identidad": 3693,
     "descartado_contenido_no_evento": 49,
-    "descartado_fecha_xtream_fuera_de_jornada": 261,
-    "descartado_categoria_xtream_fuera_de_jornada": 183,
-    "candidatos": 136
+    "descartado_fecha_xtream_fuera_de_jornada": 333,
+    "descartado_categoria_xtream_fuera_de_jornada": 247,
+    "candidatos": 0
   },
   "curacion": {
-    "fuentes_probables": 61,
-    "fuentes_emparejadas": 75,
-    "eventos_unicos": 57
+    "eventos_unicos": 0
   },
-  "eventos_finales_base": 57,
+  "eventos_finales_base": 0,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
       "programas_leidos": 82117,
-      "veto_o_historico": 64,
-      "rechazados_no_en_vivo": 40
+      "veto_o_historico": 12,
+      "rechazados_no_en_vivo": 35,
+      "admitidos": 1,
+      "categoria:Ciclismo": 1
     },
-    "fusion": {},
+    "fusion": {
+      "agregados": 1
+    },
     "canales_mapeados": {
       "E1": 6,
       "E2": 9,
@@ -143,6 +144,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 57,
-  "actualizado_utc": "2026-08-25T03:13:12Z"
+  "eventos_finales_total": 1,
+  "actualizado_utc": "2026-08-25T05:49:30Z"
 }
