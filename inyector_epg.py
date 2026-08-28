@@ -405,5 +405,3 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
             log.warning("No se pudo descargar EPG auxiliar %s: %s", url_epg, exc)
         except ET.ParseError as exc:
             log.error("XMLTV Inválido en %s: %s", url_epg, exc)
-
-    
