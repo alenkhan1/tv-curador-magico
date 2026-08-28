@@ -16,9 +16,10 @@ from typing import Any, Optional
 import requests
 
 from curador_eventos import (
+    resolver_logo_equipo,
     ARCHIVO_META,
     ARCHIVO_SALIDA,
-    DEPORTES_INDIVIDUALES,
+    DEPORTES_COMPETICION,
     DURACION_POR_CATEGORIA,
     PUENTE_URL,
     XTREAM_PASS,
@@ -270,7 +271,13 @@ def construir_evento_epg(
         return None
 
     # Política estricta: si no hay confirmación de DIRECTO/LIVE, se descarta
+    oficial, puntos, tokens = buscar_evento_agenda(titulo_raw, inicio, agenda)
+
+    # Política estricta: si no hay confirmación de DIRECTO/LIVE, verificamos con la API
     directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}")
+    if not directo and oficial:
+        directo = True # ¡Rescatado! El texto no decia Directo, pero la API confirma que ocurre AHORA
+    
     if not directo:
         return None
 
@@ -284,7 +291,7 @@ def construir_evento_epg(
         return None
 
     # Determinación de modo de presentación y duelos
-    es_individual = categoria in DEPORTES_INDIVIDUALES
+    es_individual = categoria in DEPORTES_COMPETICION
     local, visitante = "", ""
     if categoria == "Tenis":
         local, visitante = extraer_participantes_tenis(titulo_raw)
@@ -300,8 +307,8 @@ def construir_evento_epg(
             tipo = "sencillo"
 
     titulo_final = f"{local} vs {visitante}" if tipo == "duelo" else torneo
-    logo_oficial = resolver_logo_torneo(torneo, categoria)
-    oficial, puntos, tokens = buscar_evento_agenda(titulo_raw, inicio, agenda)
+    logo_oficial = resolver_logo_torneo,
+    resolver_logo_equipo(torneo, categoria)
     fuentes = ordenar_fuentes(fuentes)
 
     estado_str = "en_canal" if inicio <= ahora < (fin or inicio + timedelta(minutes=duracion)) else "programado"
@@ -332,8 +339,9 @@ def construir_evento_epg(
         "titulo_tarjeta": limitar(torneo, 52), "subtitulo_tarjeta": limitar(subtitulo, 44),
         "modo_presentacion": "competicion" if tipo == "sencillo" else "duelo_equipos",
         "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(obtener_zona_aplicacion()).strftime("%H:%M"),
-        "duracion_min": duracion, "logo_torneo": logo_oficial, "logo_local": logo_oficial if tipo == "sencillo" else "",
-        "logo_visitante": "", "tier": 2, "origen": "epg_en_canal", "origenes": ["epg"],
+        "duracion_min": duracion, "logo_torneo": logo_oficial, 
+        "logo_local": resolver_logo_equipo(local) or (logo_oficial if tipo == "sencillo" else ""),
+        "logo_visitante": resolver_logo_equipo(visitante) or "", "tier": 2, "origen": "epg_en_canal", "origenes": ["epg"],
         "estado": estado_str, "estado_evento": "programado",
         "confianza": "alta", "puntuacion_confianza": 88,
         "metodo_correlacion": "epg_directo_multi_feed",
