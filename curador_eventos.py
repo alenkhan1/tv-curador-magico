@@ -69,7 +69,36 @@ DURACION_POR_CATEGORIA = {
     "Deportes": 150,
 }
 
-DEPORTES_INDIVIDUALES = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Combate", "Escalada", "Atletismo"}
+DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Escalada", "Atletismo"}
+DEPORTES_HIBRIDOS = {"Combate", "Tenis", "Deportes"}
+ARCHIVO_LOGOS_EQUIPOS = Path(os.environ.get("ARCHIVO_LOGOS_EQUIPOS", "logos_equipos.json"))
+
+def _cargar_cache_equipos() -> dict[str, str]:
+    if not ARCHIVO_LOGOS_EQUIPOS.exists(): return {}
+    try:
+        return json.loads(ARCHIVO_LOGOS_EQUIPOS.read_text(encoding="utf-8"))
+    except:
+        return {}
+
+def _guardar_cache_equipos(cache: dict[str, str]) -> None:
+    try:
+        ARCHIVO_LOGOS_EQUIPOS.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
+    except:
+        pass
+
+CACHE_EQUIPOS = _cargar_cache_equipos()
+
+def resolver_logo_equipo(nombre: str) -> str:
+    if not nombre: return ""
+    return CACHE_EQUIPOS.get(normalizar_texto(nombre), "")
+
+def registrar_logo_equipo(nombre: str, url: str) -> None:
+    if not nombre or not url: return
+    norm = normalizar_texto(nombre)
+    if CACHE_EQUIPOS.get(norm) != url:
+        CACHE_EQUIPOS[norm] = url
+        _guardar_cache_equipos(CACHE_EQUIPOS)
+
 
 API_CONFIGS: dict[str, dict[str, str]] = {
     "football": {"host": "https://v3.football.api-sports.io", "endpoint": "fixtures", "categoria": "Fútbol", "tipo": "games"},
@@ -352,12 +381,18 @@ def normalizar_evento_api(deporte: str, item: dict[str, Any], config: dict[str, 
     if not id_origen:
         id_origen = hashlib.sha1(f"{deporte}|{titulo}|{iso_utc(inicio)}".encode()).hexdigest()[:16]
 
+
     logo_torneo = str(_get(item, "league.logo", "competition.logo", "race.competition.logo") or "")
     if not logo_torneo:
         logo_torneo = resolver_logo_torneo(torneo or titulo, config["categoria"])
 
     logo_local = str(_get(item, "teams.home.logo", "home.logo") or "")
     logo_visitante = str(_get(item, "teams.away.logo", "away.logo") or "")
+
+    # GUARDADO EN MEMORIA PERPETUA:
+    if local and logo_local: registrar_logo_equipo(local, logo_local)
+    if visitante and logo_visitante: registrar_logo_equipo(visitante, logo_visitante)
+
     estado_raw = str(_get(item, "fixture.status.short", "game.status.short", "race.status.short", "status.short", "status.long") or "NS").upper()
     estado = "en_vivo" if estado_raw in {"1H", "2H", "HT", "Q1", "Q2", "Q3", "Q4", "LIVE", "IN", "P", "RUNNING"} else "finalizado" if estado_raw in {"FT", "AET", "PEN", "FINISHED", "ENDED"} else "programado"
     return {
@@ -447,9 +482,9 @@ def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Co
         eventos.append({
             "id": f"tsdb_{ident}", "agenda_id": f"tsdb_{ident}", "titulo": titulo,
             "torneo": torneo, "categoria": categoria,
-            "tipo_evento": "duelo" if local and visitante and categoria not in DEPORTES_INDIVIDUALES else "sencillo",
-            "equipo_local": local if categoria not in DEPORTES_INDIVIDUALES else "",
-            "equipo_visitante": visitante if categoria not in DEPORTES_INDIVIDUALES else "",
+            "tipo_evento": "duelo" if local and visitante and categoria not in DEPORTES_COMPETICION else "sencillo",
+            "equipo_local": local if categoria not in DEPORTES_COMPETICION else "",
+            "equipo_visitante": visitante if categoria not in DEPORTES_COMPETICION else "",
             "subtitulo": "", "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(tz).strftime("%H:%M"),
             "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150), "logo_torneo": logo_torneo,
             "logo_local": bruto.get("strHomeTeamBadge") or "", "logo_visitante": bruto.get("strAwayTeamBadge") or "",
@@ -579,6 +614,7 @@ def es_candidato(stream: dict[str, Any], categorias_hoy: set[str], fecha_local: 
 
 def obtener_canales_candidatos(fecha_local: datetime) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     metricas: Counter = Counter()
+    deduplicador: dict[str, str] = {}
     if not (XTREAM_URL and XTREAM_USER and XTREAM_PASS):
         metricas["error"] = "faltan_credenciales_xtream"
         return [], dict(metricas)
@@ -607,7 +643,7 @@ def obtener_canales_candidatos(fecha_local: datetime) -> tuple[list[dict[str, An
         candidatos.append({
             "id_xtream": sid, "nombre_ui": nombre, "texto_normalizado": normalizar_texto(nombre), "tokens": tokenizar(nombre),
             "hora_local": extraer_hora_canal(nombre, fecha_local), "categoria_inferida": inferir_deporte(nombre),
-            "sesion": extraer_sesion(nombre), "categoria_xtream": str(stream.get("category_id") or ""), "motivo_vigencia": motivo,
+            "sesion": extraer_sesion(nombre), "categoria_xtream": str(stream.get("category_id") or ""), "motivo_vigencia": motivo, "logo_xtream": str(stream.get("stream_icon") or stream.get("tvg_logo") or ""),
         })
     metricas["candidatos"] = len(candidatos)
     return candidatos, dict(metricas)
@@ -702,76 +738,79 @@ def fusionar_fuente(evento: dict[str, Any], fuente: dict[str, Any]) -> None:
 
 
 def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, str, str, str]:
-    """Analiza el título completo extrayendo (torneo, subtítulo, tipo, equipo_local, equipo_visitante)."""
-    # 1. Limpieza de fechas, horas y sufijos de resolución
+    # Hibridizacion universal - Nivel Premium
     limpio = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", nombre_ui)
     limpio = re.sub(r"(?<!\d)\d{1,2}:\d{2}\s*(?:[APap][Mm])?(?!\d)", "", limpio)
     limpio = re.sub(r"\b(FHD|HD|SD|OP1|OP2|4K)\b", "", limpio, flags=re.I)
-    limpio = " ".join(limpio.strip(" -|·:▫/|").split())
+    limpio = " ".join(limpio.strip(" -|·:▪/|").split())
 
-    es_individual = categoria in DEPORTES_INDIVIDUALES
+    es_competicion = categoria in DEPORTES_COMPETICION
 
-    # 2. Búsqueda de duelo en todo el texto si es deporte colectivo
-    duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus)\s+(.+)", limpio, flags=re.I)
-    if duelo_match and not es_individual:
+    # Pivote de duelo: 'vs.', 'v.', 'x', '-'
+    duelo_match = None if es_competicion else re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus|x|-)\s+(.+)", limpio, flags=re.I)
+    
+    if duelo_match:
         parte_izq, parte_der = duelo_match.group(1).strip(), duelo_match.group(2).strip()
-        subpartes_izq = [p.strip() for p in re.split(r"\s*[|·▫/]\s*", parte_izq) if p.strip()]
-        subpartes_der = [p.strip() for p in re.split(r"\s*[|·▫/]\s*", parte_der) if p.strip()]
+        sub_izq = [p.strip() for p in re.split(r"\s*[|·▪/]\s*", parte_izq) if p.strip()]
+        sub_der = [p.strip() for p in re.split(r"\s*[|·▪/]\s*", parte_der) if p.strip()]
 
-        if len(subpartes_izq) > 1:
-            torneo = subpartes_izq[0]
-            local = subpartes_izq[-1]
-        else:
-            torneo = categoria
-            local = parte_izq
-
-        visitante = subpartes_der[0] if subpartes_der else parte_der
-        subtitulo = " - ".join(subpartes_der[1:]) if len(subpartes_der) > 1 else ""
-
+        torneo, local = (sub_izq[0], sub_izq[-1]) if len(sub_izq) > 1 else (categoria, parte_izq)
+        visitante = sub_der[0] if sub_der else parte_der
+        subtitulo = " - ".join(sub_der[1:]) if len(sub_der) > 1 else ""
         return torneo, subtitulo, "duelo", local, visitante
 
-    # 3. Tratamiento como evento por competición / individual
-    partes = [p.strip() for p in re.split(r"\s*[|·▫/]\s*", limpio) if p.strip()]
+    partes = [p.strip() for p in re.split(r"\s*[|·▪/]\s*", limpio) if p.strip()]
     if len(partes) >= 2:
         return partes[0], " - ".join(partes[1:]), "sencillo", "", ""
     return limpio, "", "sencillo", "", ""
 
 
-def crear_probable_xtream(canal: dict[str, Any], tz: ZoneInfo) -> Optional[dict[str, Any]]:
+
+
+def crear_probable_xtream(canal: dict[str, Any], tz: ZoneInfo, existentes: dict[str, str]) -> Optional[dict[str, Any]]:
     hora = canal.get("hora_local")
-    if hora is None:
-        return None
+    if hora is None: return None
     categoria = canal.get("categoria_inferida") or "Deportes"
     torneo, subtitulo, tipo, local, visitante = analizar_titulo_xtream(canal["nombre_ui"], categoria)
 
     titulo = f"{local} vs {visitante}" if tipo == "duelo" else torneo
-    clave = f"{normalizar_texto(titulo)}|{hora.strftime('%Y%m%d%H%M')}"
-    ident = hashlib.sha1(clave.encode("utf-8")).hexdigest()[:16]
-    logo = resolver_logo_torneo(torneo, categoria)
+    # Fuzzy Merging por Franja y Titulo Normalizado
+    clave_dedup = normalizar_texto(titulo) + hora.strftime('%H%M')
+    ident = existentes.get(clave_dedup) or hashlib.sha1(clave_dedup.encode("utf-8")).hexdigest()[:16]
+    existentes[clave_dedup] = ident
+
+    logo = canal.get("logo_xtream") or resolver_logo_torneo(torneo, categoria)
+    
+    # Recuperación Inmaculada:
+    logo_loc = resolver_logo_equipo(local) or (logo if tipo == "sencillo" else canal.get("logo_xtream", ""))
+    logo_vis = resolver_logo_equipo(visitante)
 
     return {
         "id": f"xtream_{ident}", "agenda_id": "", "titulo": titulo, "torneo": torneo, "categoria": categoria,
         "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante, "subtitulo": subtitulo,
         "hora_utc": iso_utc(hora), "hora_local_producto": hora.astimezone(tz).strftime("%H:%M"),
         "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150),
-        "logo_torneo": logo, "logo_local": logo if tipo == "sencillo" else "", "logo_visitante": "",
+        "logo_torneo": logo, "logo_local": logo_loc, "logo_visitante": logo_vis,
         "tier": 3, "origen": "xtream_probable", "origenes": ["xtream"], "estado": "probable",
         "estado_evento": "programado", "confianza": "media", "puntuacion_confianza": 58, "fuentes": [],
         "metodo_correlacion": "xtream_vigente_sin_agenda",
-        "razones_correlacion": [canal["motivo_vigencia"], f"categoria:{categoria}"],
+        "razones_correlacion": [canal.get("motivo_vigencia",""), f"categoria:{categoria}"],
     }
+
+
 
 
 def curar_eventos(agenda: list[dict[str, Any]], candidatos: list[dict[str, Any]], fecha_producto: date) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, int]]:
     resultados: dict[str, dict[str, Any]] = {}
     cuarentena: list[dict[str, Any]] = []
     metricas: Counter = Counter()
+    deduplicador: dict[str, str] = {}
     tz = obtener_zona_aplicacion()
     for canal in candidatos:
         evento, puntos, metodo, razones = emparejar_evento(canal, agenda)
         fuente = {"nombre": canal["nombre_ui"], "id_xtream": canal["id_xtream"]}
         if evento is None and PUBLICAR_XTREAM_PROBABLE:
-            evento = crear_probable_xtream(canal, tz)
+            evento = crear_probable_xtream(canal, tz, deduplicador)
             if evento:
                 puntos = int(evento["puntuacion_confianza"])
                 metodo = str(evento["metodo_correlacion"])
