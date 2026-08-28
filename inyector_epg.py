@@ -405,3 +405,117 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
             log.warning("No se pudo descargar EPG auxiliar %s: %s", url_epg, exc)
         except ET.ParseError as exc:
             log.error("XMLTV Inválido en %s: %s", url_epg, exc)
+
+    # Matriz de consenso paneuropea
+    matriz_live = construir_matriz_consenso(todos_los_programas)
+
+    eventos: List[Dict[str, Any]] = []
+    for programa in programas_principales:
+        titulo, desc = str(programa["titulo"]), str(programa["descripcion"])
+        if es_historico_o_veto(titulo, desc):
+            metricas["veto_o_historico"] += 1
+            continue
+
+        clave = str(programa["clave"])
+        slot = programa["inicio"].strftime("%Y%m%d%H%M")
+        es_directo_validado = matriz_live.get((clave, slot), False)
+        
+        # Relajación estricta para canales deportivos puros
+        if not es_directo_validado and clave in {"E1", "E2", "TDP"}:
+            if not es_historico_o_veto(titulo, desc):
+                es_directo_validado = True
+
+        evento = construir_evento_epg(
+            titulo, desc, programa["inicio"], programa["fin"],
+            mapa.get(clave, []), agenda, ahora, consenso_directo=es_directo_validado
+        )
+
+        if evento:
+            eventos.append(evento)
+            metricas["admitidos"] += 1
+            metricas[f"categoria:{evento['categoria']}"] += 1
+        else:
+            metricas["rechazados_no_en_vivo"] += 1
+
+    return consolidar_eventos_epg(eventos), dict(metricas)
+
+
+def consolidar_eventos_epg(eventos: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    unicos: Dict[str, Dict[str, Any]] = {}
+    for evento in eventos:
+        # Clave unificada por sesión (sin hora_utc) para evitar duplicar el mismo bloque
+        clave = str(evento.get("agenda_id") or normalizar_texto(f"{evento['torneo']} {evento['subtitulo']}"))
+        previo = unicos.get(clave)
+        if previo is None:
+            unicos[clave] = evento
+        else:
+            for fuente in evento["fuentes"]:
+                fusionar_fuente(previo, fuente)
+            previo["fuentes"] = ordenar_fuentes(previo["fuentes"])
+    return sorted(unicos.values(), key=lambda e: e["hora_utc"])[:MAX_EPG_EVENTOS]
+
+
+def eventos_se_solapan(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
+    inicio_a, inicio_b = _inicio(a), _inicio(b)
+    if not inicio_a or not inicio_b:
+        return False
+    fin_a = inicio_a + timedelta(minutes=int(a.get("duracion_min") or 0))
+    fin_b = inicio_b + timedelta(minutes=int(b.get("duracion_min") or 0))
+    return inicio_a <= fin_b + timedelta(minutes=20) and inicio_b <= fin_a + timedelta(minutes=20)
+
+
+def fusionar_con_base(base: List[Dict[str, Any]], epg: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
+    metricas: Counter = Counter()
+    resultado = list(base)
+    por_agenda = {str(e.get("agenda_id") or e.get("id")): e for e in resultado if e.get("agenda_id") or str(e.get("id", "")).startswith("apisports_")}
+    for evento in epg:
+        existente = por_agenda.get(str(evento.get("agenda_id") or evento.get("id")))
+        if existente and eventos_se_solapan(existente, evento):
+            for fuente in evento["fuentes"]:
+                fusionar_fuente(existente, fuente)
+            existente["fuentes"] = ordenar_fuentes(existente.get("fuentes") or [])
+            existente["origenes"] = list(dict.fromkeys(list(existente.get("origenes", [])) + ["epg"]))
+            existente["origen"] = f"{existente.get('origen', 'api_sports')}+epg"
+            existente["puntuacion_confianza"] = max(int(existente.get("puntuacion_confianza", 0)), int(evento.get("puntuacion_confianza", 0)))
+            metricas["fusionados"] += 1
+        elif not any(str(e.get("id")) == str(evento.get("id")) for e in resultado):
+            resultado.append(evento)
+            metricas["agregados"] += 1
+    return sorted(resultado, key=lambda e: e["hora_utc"]), dict(metricas)
+
+
+def main() -> None:
+    tz, ahora = obtener_zona_aplicacion(), datetime.now(timezone.utc)
+    fecha = ahora.astimezone(tz).date().isoformat()
+    try:
+        salida = json.loads(ARCHIVO_SALIDA.read_text(encoding="utf-8")) if ARCHIVO_SALIDA.exists() else {"version": 11, "eventos": [], "base_media": ""}
+    except (OSError, ValueError):
+        salida = {"version": 11, "eventos": [], "base_media": ""}
+
+    agenda = cargar_agenda_cache(fecha) or obtener_agenda_maestra(fecha)
+    mapa = mapear_streams_canales_lineales()
+    eventos_epg, metricas_epg = extraer_eventos_epg(mapa, agenda, ahora.astimezone(tz), ahora)
+    eventos, metricas_fusion = fusionar_con_base(list(salida.get("eventos") or []), eventos_epg)
+
+    salida.update({
+        "version": 11, "generado_utc": iso_utc(ahora), "zona_horaria_producto": str(tz),
+        "fecha_local_producto": fecha, "base_media": salida.get("base_media", ""), "eventos": eventos
+    })
+    ARCHIVO_SALIDA.write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    try:
+        meta = json.loads(ARCHIVO_META.read_text(encoding="utf-8")) if ARCHIVO_META.exists() else {}
+    except (OSError, ValueError):
+        meta = {}
+
+    meta["epg"] = {
+        "politica": "en_canal_consenso_multifeed_estricto", "lectura": metricas_epg, "fusion": metricas_fusion,
+        "canales_mapeados": {k: len(v) for k, v in mapa.items()}, "orden_fuentes": "ES,Principal,EN,otros"
+    }
+    meta["eventos_finales_total"], meta["actualizado_utc"] = len(eventos), iso_utc(ahora)
+    ARCHIVO_META.write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+    log.info("EPG Multi-Feed: leídos=%s admitidos=%s cartelera=%d", metricas_epg.get("programas_leidos", 0), metricas_epg.get("admitidos", 0), len(eventos))
+
+
+if __name__ == "__main__":
+    main()
