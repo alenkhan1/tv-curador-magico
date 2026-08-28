@@ -75,7 +75,7 @@ CACHE_VERSION = 1
 # El catalogo completo (items + sin_identificar) nunca tiene tope.
 # Estos topes solo deciden cuantas referencias entran en cada fila.
 TOPE_GENERO = int(os.environ.get("TOPE_GENERO", "50"))
-TOPE_ESTRENOS = int(os.environ.get("TOPE_ESTRENOS", "50"))
+TOPE_ESTRENOS = int(os.environ.get("TOPE_ESTRENOS", "30"))
 TOPE_EPOCA = int(os.environ.get("TOPE_EPOCA", "50"))
 PISO_FILA = int(os.environ.get("PISO_FILA", "10"))
 
@@ -93,7 +93,7 @@ HILOS_TMDB = int(os.environ.get("HILOS_TMDB", "12"))
 TMDB_RPS = float(os.environ.get("TMDB_RPS", "35"))
 PRESUPUESTO_MIN = int(os.environ.get("PRESUPUESTO_MIN", "240"))
 GUARDAR_CADA = int(os.environ.get("GUARDAR_CADA", "400"))
-PAUSA_PROVEEDOR = float(os.environ.get("PAUSA_PROVEEDOR", "0.3"))
+PAUSA_PROVEEDOR = float(os.environ.get("PAUSA_PROVEEDOR", "1.2"))
 UMBRAL_NO_FILTRA = 50000
 
 # --- Refresco de memoria (dias) ---------------------------------------------
@@ -582,7 +582,7 @@ def sesion():
         s = requests.Session()
         s.headers.update({
             "Accept-Encoding": "gzip, deflate",
-            "User-Agent": "curador-vod/3.0",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
         })
         _local.s = s
     return s
@@ -636,10 +636,16 @@ def proveedor_get(url_original):
     return datos
 
 def descargar_catalogo(es_serie):
-    """Descarga carpeta por carpeta. Devuelve (items, mapa_categorias, plano)."""
+    """
+    Descarga el catalogo del proveedor de forma rapida y segura.
+    Prioriza 1 sola peticion unificada para no saturar el servidor Xtream ni
+    provocar rate-limiting / bloqueo por rafaga de consultas.
+    Filtra en memoria el contenido adulto usando el mapa de categorias.
+    """
     accion_cat = "get_series_categories" if es_serie else "get_vod_categories"
     accion_lista = "get_series" if es_serie else "get_vod_streams"
     etiqueta = "series" if es_serie else "peliculas"
+    id_key = "series_id" if es_serie else "stream_id"
 
     print("-> Descargando carpetas de %s..." % etiqueta)
     categorias = proveedor_get(url_xtream(accion_cat))
@@ -661,61 +667,65 @@ def descargar_catalogo(es_serie):
               "El filtro por carpetas queda inactivo; se usaran las otras capas."
               % len(mapa))
 
+    visibles = {c for c in mapa if not categoria_prohibida(mapa[c])}
+    bloqueadas = len(mapa) - len(visibles)
+    if bloqueadas:
+        print(" %s carpetas bloqueadas por el filtro de adultos." % bloqueadas)
+
     items = {}
-    id_key = "series_id" if es_serie else "stream_id"
-    modo_completo = plano
-    fallidas = 0
 
-    if not plano:
-        visibles = [c for c in mapa if not categoria_prohibida(mapa[c])]
-        bloqueadas = len(mapa) - len(visibles)
-        if bloqueadas:
-            print(" %s carpetas bloqueadas por el filtro de adultos."
-                  % bloqueadas)
-        print("-> Descargando %s carpeta por carpeta..." % etiqueta)
-        for indice, cid in enumerate(visibles, 1):
-            datos = proveedor_get(url_xtream(accion_lista, "&category_id=%s" % cid))
-            if datos is None:
-                fallidas += 1
-                print(" [aviso] carpeta '%s' (%s) no se pudo descargar."
-                      % (mapa[cid], cid))
+    # ESTRATEGIA PRINCIPAL: Peticion unificada (1 sola llamada rapida y segura)
+    print("-> Descargando %s en una sola peticion..." % etiqueta)
+    datos_completos = proveedor_get(url_xtream(accion_lista))
+
+    if datos_completos is not None:
+        for it in datos_completos:
+            sid = it.get(id_key)
+            if sid is None:
                 continue
-            if len(datos) > UMBRAL_NO_FILTRA:
-                print(" [aviso] el proveedor ignora el filtro por carpeta. "
-                      "Cambiando a descarga completa.")
-                modo_completo = True
-                items = {}
-                break
-            for it in datos:
-                sid = it.get(id_key)
-                if sid is not None:
-                    it.setdefault("category_id", cid)
-                    items[str(sid)] = it
-            if indice % 25 == 0:
-                print(" %s/%s carpetas, %s items acumulados."
-                      % (indice, len(visibles), len(items)))
-            time.sleep(PAUSA_PROVEEDOR)
+            cid = str(it.get("category_id") or "")
+            # Filtrar contenido de carpetas para adultos en memoria
+            if not plano and cid and cid in mapa and cid not in visibles:
+                continue
+            items[str(sid)] = it
+        print(" %s items de %s listos (descarga unificada exitosa)." % (len(items), etiqueta))
+        return list(items.values()), mapa, plano
 
-        if visibles and fallidas > max(2, len(visibles) * 0.2):
-            print(" [aviso] fallaron %s de %s carpetas. "
-                  "Cambiando a descarga completa." % (fallidas, len(visibles)))
-            modo_completo = True
-            items = {}
+    # ESTRATEGIA DE RESPALDO: Carpeta por carpeta con pausa respetuosa y cortafuegos
+    print(" [aviso] la descarga unificada no respondio. Intentando carpeta por carpeta con proteccion...")
+    fallidas_consecutivas = 0
+    lista_visibles = [c for c in mapa if c in visibles]
 
-    if modo_completo or not items:
-        print("-> Descargando %s en una sola peticion..." % etiqueta)
-        datos = proveedor_get(url_xtream(accion_lista))
+    for indice, cid in enumerate(lista_visibles, 1):
+        datos = proveedor_get(url_xtream(accion_lista, "&category_id=%s" % cid))
         if datos is None:
-            print("[ERROR FATAL] no se pudo obtener el catalogo de %s." % etiqueta)
-            return None, mapa, plano
+            fallidas_consecutivas += 1
+            print(" [aviso] carpeta '%s' (%s) no se pudo descargar." % (mapa[cid], cid))
+            if fallidas_consecutivas >= 3:
+                print(" [aviso] 3 fallos consecutivos detectados. Pausando 15s para evitar bloqueo del servidor...")
+                time.sleep(15)
+                fallidas_consecutivas = 0
+            continue
+
+        fallidas_consecutivas = 0
         for it in datos:
             sid = it.get(id_key)
             if sid is not None:
+                it.setdefault("category_id", cid)
                 items[str(sid)] = it
+
+        if indice % 10 == 0 or indice == len(lista_visibles):
+            print(" %s/%s carpetas, %s items acumulados." % (indice, len(lista_visibles), len(items)))
+
+        # Pausa con jitter aleatorio para imitar comportamiento de cliente estandar
+        time.sleep(PAUSA_PROVEEDOR + random.uniform(0.1, 0.4))
+
+    if not items:
+        print("[ERROR FATAL] no se pudo obtener el catalogo de %s." % etiqueta)
+        return None, mapa, plano
 
     print(" %s items de %s listos." % (len(items), etiqueta))
     return list(items.values()), mapa, plano
-
 # ============================================================================
 # RED: TMDB (limitador, reintentos, escalera de intentos, puntuacion)
 # ============================================================================
