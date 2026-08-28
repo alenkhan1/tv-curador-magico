@@ -13,7 +13,7 @@ from collections import Counter
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlparse
-from typing import Any, Iterable, Optional
+from typing import Any, Optional, Iterable, List, Dict, Tuple
 from zoneinfo import ZoneInfo
 
 import requests
@@ -73,14 +73,14 @@ DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Esc
 DEPORTES_HIBRIDOS = {"Combate", "Tenis", "Deportes"}
 ARCHIVO_LOGOS_EQUIPOS = Path(os.environ.get("ARCHIVO_LOGOS_EQUIPOS", "logos_equipos.json"))
 
-def _cargar_cache_equipos() -> dict[str, str]:
+def _cargar_cache_equipos() -> Dict[str, str]:
     if not ARCHIVO_LOGOS_EQUIPOS.exists(): return {}
     try:
         return json.loads(ARCHIVO_LOGOS_EQUIPOS.read_text(encoding="utf-8"))
     except:
         return {}
 
-def _guardar_cache_equipos(cache: dict[str, str]) -> None:
+def _guardar_cache_equipos(cache: Dict[str, str]) -> None:
     try:
         ARCHIVO_LOGOS_EQUIPOS.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
     except:
@@ -100,7 +100,7 @@ def registrar_logo_equipo(nombre: str, url: str) -> None:
         _guardar_cache_equipos(CACHE_EQUIPOS)
 
 
-API_CONFIGS: dict[str, dict[str, str]] = {
+API_CONFIGS: Dict[str, Dict[str, str]] = {
     "football": {"host": "https://v3.football.api-sports.io", "endpoint": "fixtures", "categoria": "Fútbol", "tipo": "games"},
     "basketball": {"host": "https://v1.basketball.api-sports.io", "endpoint": "games", "categoria": "Baloncesto", "tipo": "games"},
     "baseball": {"host": "https://v1.baseball.api-sports.io", "endpoint": "games", "categoria": "Béisbol", "tipo": "games"},
@@ -292,9 +292,9 @@ class ClienteApiSports:
         self.clave = clave
         self.sesion = requests.Session()
         self.ultimo_request = 0.0
-        self.metricas: dict[str, dict[str, Any]] = {}
+        self.metricas: Dict[str, Dict[str, Any]] = {}
 
-    def get(self, deporte: str, host: str, endpoint: str, params: dict[str, str]) -> Optional[dict[str, Any]]:
+    def get(self, deporte: str, host: str, endpoint: str, params: Dict[str, str]) -> Optional[Dict[str, Any]]:
         datos = self.metricas.setdefault(deporte, Counter())
         if not self.clave:
             datos["omitido_sin_clave"] += 1
@@ -345,7 +345,7 @@ class ClienteApiSports:
         return None
 
 
-def _fecha_evento_api(item: dict[str, Any]) -> Optional[datetime]:
+def _fecha_evento_api(item: Dict[str, Any]) -> Optional[datetime]:
     candidatos = (
         _get(item, "fixture.timestamp", "game.date.timestamp", "race.date.timestamp", "date.timestamp"),
         _get(item, "fixture.date", "game.date.date", "race.date", "date.date", "date"),
@@ -357,7 +357,7 @@ def _fecha_evento_api(item: dict[str, Any]) -> Optional[datetime]:
     return None
 
 
-def _texto_evento_api(item: dict[str, Any], config: dict[str, str]) -> tuple[str, str, str, str, str, str]:
+def _texto_evento_api(item: Dict[str, Any], config: Dict[str, str]) -> Tuple[str, str, str, str, str, str]:
     local = str(_get(item, "teams.home.name", "home.name", "fighters.home.name") or "").strip()
     visitante = str(_get(item, "teams.away.name", "away.name", "fighters.away.name") or "").strip()
     torneo = str(_get(item, "league.name", "competition.name", "race.competition.name", "event.name") or "").strip()
@@ -370,7 +370,7 @@ def _texto_evento_api(item: dict[str, Any], config: dict[str, str]) -> tuple[str
     return titulo, torneo, "", "", "sencillo", subtitulo
 
 
-def normalizar_evento_api(deporte: str, item: dict[str, Any], config: dict[str, str], tz: ZoneInfo) -> Optional[dict[str, Any]]:
+def normalizar_evento_api(deporte: str, item: Dict[str, Any], config: Dict[str, str], tz: ZoneInfo) -> Optional[Dict[str, Any]]:
     inicio = _fecha_evento_api(item)
     if inicio is None or inicio.astimezone(tz).date() != datetime.now(tz).date():
         return None
@@ -408,7 +408,7 @@ def normalizar_evento_api(deporte: str, item: dict[str, Any], config: dict[str, 
     }
 
 
-def _leer_cache(fecha_consulta: str, permitir_vencida: bool = False) -> Optional[dict[str, Any]]:
+def _leer_cache(fecha_consulta: str, permitir_vencida: bool = False) -> Optional[Dict[str, Any]]:
     if not ARCHIVO_CACHE.exists():
         return None
     try:
@@ -423,7 +423,7 @@ def _leer_cache(fecha_consulta: str, permitir_vencida: bool = False) -> Optional
     return None
 
 
-def cargar_agenda_cache(fecha_consulta: str) -> list[dict[str, Any]]:
+def cargar_agenda_cache(fecha_consulta: str) -> List[Dict[str, Any]]:
     datos = _leer_cache(fecha_consulta, permitir_vencida=True)
     return list(datos.get("eventos", [])) if datos else []
 
@@ -446,7 +446,7 @@ def reservar_presupuesto(nombre: str, fecha_consulta: str, limite: int) -> bool:
     return True
 
 
-def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Counter) -> list[dict[str, Any]]:
+def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Counter) -> List[Dict[str, Any]]:
     if not USAR_THESPORTSDB_RESPALDO or not THESPORTSDB_MAX_EVENTOS:
         return []
     if not reservar_presupuesto("thesportsdb", fecha_consulta, THESPORTSDB_MAX_SOLICITUDES_DIA):
@@ -464,7 +464,7 @@ def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Co
         metricas["errores"] += 1
         log.warning("TheSportsDB de respaldo no disponible: %s", exc)
         return []
-    eventos: list[dict[str, Any]] = []
+    eventos: List[Dict[str, Any]] = []
     for bruto in (datos.get("events") or [])[:THESPORTSDB_MAX_EVENTOS]:
         inicio = parsear_iso_o_timestamp(bruto.get("strTimestamp"))
         if inicio is None:
@@ -496,7 +496,7 @@ def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Co
     return eventos
 
 
-def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[dict[str, Any]] = None, forzar: bool = False) -> list[dict[str, Any]]:
+def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[Dict[str, Any]] = None, forzar: bool = False) -> List[Dict[str, Any]]:
     tz = obtener_zona_aplicacion()
     cache = None if forzar else _leer_cache(fecha_consulta)
     if cache:
@@ -506,7 +506,7 @@ def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[dict[s
         return list(cache.get("eventos", []))
 
     cliente = ClienteApiSports(API_SPORTS_KEY)
-    agenda: list[dict[str, Any]] = []
+    agenda: List[Dict[str, Any]] = []
     for deporte, config in API_CONFIGS.items():
         if deporte not in API_SPORTS_DEPORTES:
             continue
@@ -568,7 +568,7 @@ def detectar_base_media_m3u() -> str:
     return base_api
 
 
-def detectar_categorias_fechadas(fecha_local: datetime) -> tuple[set[str], set[str]]:
+def detectar_categorias_fechadas(fecha_local: datetime) -> Tuple[set[str], set[str]]:
     if not XTREAM_URL:
         return set(), set()
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_categories"
@@ -589,7 +589,7 @@ def detectar_categorias_fechadas(fecha_local: datetime) -> tuple[set[str], set[s
     return hoy, ajenas
 
 
-def es_candidato(stream: dict[str, Any], categorias_hoy: set[str], fecha_local: datetime, categorias_ajenas: Optional[set[str]] = None) -> tuple[bool, str]:
+def es_candidato(stream: Dict[str, Any], categorias_hoy: set[str], fecha_local: datetime, categorias_ajenas: Optional[set[str]] = None) -> Tuple[bool, str]:
     nombre = str(stream.get("name") or "").strip()
     if not nombre:
         return False, "sin_nombre"
@@ -612,9 +612,9 @@ def es_candidato(stream: dict[str, Any], categorias_hoy: set[str], fecha_local: 
     return False, "sin_vigencia_o_identidad"
 
 
-def obtener_canales_candidatos(fecha_local: datetime) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+def obtener_canales_candidatos(fecha_local: datetime) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
     metricas: Counter = Counter()
-    deduplicador: dict[str, str] = {}
+    deduplicador: Dict[str, str] = {}
     if not (XTREAM_URL and XTREAM_USER and XTREAM_PASS):
         metricas["error"] = "faltan_credenciales_xtream"
         return [], dict(metricas)
@@ -627,7 +627,7 @@ def obtener_canales_candidatos(fecha_local: datetime) -> tuple[list[dict[str, An
     except (requests.RequestException, TypeError, ValueError) as exc:
         metricas["error"] = f"xtream:{exc}"
         return [], dict(metricas)
-    candidatos: list[dict[str, Any]] = []
+    candidatos: List[Dict[str, Any]] = []
     vistos: set[str] = set()
     for stream in streams:
         sid = str(stream.get("stream_id") or "")
@@ -649,15 +649,15 @@ def obtener_canales_candidatos(fecha_local: datetime) -> tuple[list[dict[str, An
     return candidatos, dict(metricas)
 
 
-def _inicio_evento(evento: dict[str, Any]) -> Optional[datetime]:
+def _inicio_evento(evento: Dict[str, Any]) -> Optional[datetime]:
     return parsear_iso_o_timestamp(evento.get("hora_utc"))
 
 
-def _deportes_compatibles(canal: dict[str, Any], evento: dict[str, Any]) -> bool:
+def _deportes_compatibles(canal: Dict[str, Any], evento: Dict[str, Any]) -> bool:
     return not canal.get("categoria_inferida") or canal["categoria_inferida"] == evento.get("categoria")
 
 
-def _sesiones_compatibles(canal: dict[str, Any], evento: dict[str, Any]) -> bool:
+def _sesiones_compatibles(canal: Dict[str, Any], evento: Dict[str, Any]) -> bool:
     sesion_canal = canal.get("sesion")
     sesion_evento = extraer_sesion(f"{evento.get('titulo', '')} {evento.get('subtitulo', '')}")
     if not sesion_canal or not sesion_evento or sesion_canal == sesion_evento:
@@ -665,7 +665,7 @@ def _sesiones_compatibles(canal: dict[str, Any], evento: dict[str, Any]) -> bool
     return sesion_evento == "sprint" and sesion_canal == "carrera_sprint"
 
 
-def _proximidad_horaria(canal: dict[str, Any], evento: dict[str, Any]) -> tuple[bool, Optional[int]]:
+def _proximidad_horaria(canal: Dict[str, Any], evento: Dict[str, Any]) -> Tuple[bool, Optional[int]]:
     hora_canal, hora_evento = canal.get("hora_local"), _inicio_evento(evento)
     if hora_canal is None or hora_evento is None:
         return True, None
@@ -673,7 +673,7 @@ def _proximidad_horaria(canal: dict[str, Any], evento: dict[str, Any]) -> tuple[
     return diferencia <= MAX_DIFERENCIA_MIN, diferencia
 
 
-def calcular_similitud_simple(titulo: str, torneo: str, canal: str) -> tuple[int, list[str]]:
+def calcular_similitud_simple(titulo: str, torneo: str, canal: str) -> Tuple[int, List[str]]:
     evento_tokens = tokenizar(f"{titulo} {torneo}")
     canal_tokens = tokenizar(canal)
     comunes = sorted(evento_tokens & canal_tokens)
@@ -695,7 +695,7 @@ def calcular_similitud_simple(titulo: str, torneo: str, canal: str) -> tuple[int
     return min(puntuacion, 100), comunes
 
 
-def emparejar_evento(canal: dict[str, Any], agenda: Iterable[dict[str, Any]]) -> tuple[Optional[dict[str, Any]], int, str, list[str]]:
+def emparejar_evento(canal: Dict[str, Any], agenda: Iterable[Dict[str, Any]]) -> Tuple[Optional[Dict[str, Any]], int, str, List[str]]:
     mejor, mejor_puntos, mejor_metodo, mejor_razones = None, 0, "sin_coincidencia_verificable", []
     for evento in agenda:
         if not _deportes_compatibles(canal, evento) or not _sesiones_compatibles(canal, evento):
@@ -731,13 +731,13 @@ def emparejar_evento(canal: dict[str, Any], agenda: Iterable[dict[str, Any]]) ->
     return mejor, mejor_puntos, mejor_metodo, mejor_razones
 
 
-def fusionar_fuente(evento: dict[str, Any], fuente: dict[str, Any]) -> None:
+def fusionar_fuente(evento: Dict[str, Any], fuente: Dict[str, Any]) -> None:
     fuentes = evento.setdefault("fuentes", [])
     if not any(str(x.get("id_xtream")) == str(fuente.get("id_xtream")) for x in fuentes):
         fuentes.append(fuente)
 
 
-def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, str, str, str]:
+def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> Tuple[str, str, str, str, str]:
     # Hibridizacion universal - Nivel Premium
     limpio = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", nombre_ui)
     limpio = re.sub(r"(?<!\d)\d{1,2}:\d{2}\s*(?:[APap][Mm])?(?!\d)", "", limpio)
@@ -746,13 +746,17 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, st
 
     es_competicion = categoria in DEPORTES_COMPETICION
 
-    # Pivote de duelo: 'vs.', 'v.', 'x', '-'
-    duelo_match = None if es_competicion else re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus|x|-)\s+(.+)", limpio, flags=re.I)
+    # Pivote de duelo con doble prioridad (vs/@ primero, x/- como respaldo)
+    duelo_match = None
+    if not es_competicion:
+        duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus|@)\s+(.+)", limpio, flags=re.I)
+        if not duelo_match:
+            duelo_match = re.search(r"(.+?)\s+(?:x|-)\s+(.+)", limpio, flags=re.I)
     
     if duelo_match:
         parte_izq, parte_der = duelo_match.group(1).strip(), duelo_match.group(2).strip()
-        sub_izq = [p.strip() for p in re.split(r"\s*[|·▪/]\s*", parte_izq) if p.strip()]
-        sub_der = [p.strip() for p in re.split(r"\s*[|·▪/]\s*", parte_der) if p.strip()]
+        sub_izq = [p.strip() for p in re.split(r"\s*[|·▪/:-]\s*", parte_izq) if p.strip()]
+        sub_der = [p.strip() for p in re.split(r"\s*[|·▪/:-]\s*", parte_der) if p.strip()]
 
         torneo, local = (sub_izq[0], sub_izq[-1]) if len(sub_izq) > 1 else (categoria, parte_izq)
         visitante = sub_der[0] if sub_der else parte_der
@@ -767,7 +771,7 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> tuple[str, str, st
 
 
 
-def crear_probable_xtream(canal: dict[str, Any], tz: ZoneInfo, existentes: dict[str, str]) -> Optional[dict[str, Any]]:
+def crear_probable_xtream(canal: Dict[str, Any], tz: ZoneInfo, existentes: Dict[str, str]) -> Optional[Dict[str, Any]]:
     hora = canal.get("hora_local")
     if hora is None: return None
     categoria = canal.get("categoria_inferida") or "Deportes"
@@ -800,11 +804,11 @@ def crear_probable_xtream(canal: dict[str, Any], tz: ZoneInfo, existentes: dict[
 
 
 
-def curar_eventos(agenda: list[dict[str, Any]], candidatos: list[dict[str, Any]], fecha_producto: date) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, int]]:
-    resultados: dict[str, dict[str, Any]] = {}
-    cuarentena: list[dict[str, Any]] = []
+def curar_eventos(agenda: List[Dict[str, Any]], candidatos: List[Dict[str, Any]], fecha_producto: date) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, int]]:
+    resultados: Dict[str, Dict[str, Any]] = {}
+    cuarentena: List[Dict[str, Any]] = []
     metricas: Counter = Counter()
-    deduplicador: dict[str, str] = {}
+    deduplicador: Dict[str, str] = {}
     tz = obtener_zona_aplicacion()
     for canal in candidatos:
         evento, puntos, metodo, razones = emparejar_evento(canal, agenda)
@@ -843,7 +847,7 @@ def main() -> None:
     ahora = datetime.now(tz)
     fecha = ahora.date().isoformat()
     log.info("=== Curador multideporte v11 EN CANAL | Colombia %s ===", fecha)
-    metricas_agenda: dict[str, Any] = {}
+    metricas_agenda: Dict[str, Any] = {}
     agenda = obtener_agenda_maestra(fecha, metricas_agenda)
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
     eventos, cuarentena, metricas_curacion = curar_eventos(agenda, candidatos, ahora.date())
