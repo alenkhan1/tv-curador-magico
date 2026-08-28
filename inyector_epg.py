@@ -11,7 +11,7 @@ import re
 import xml.etree.ElementTree as ET
 from collections import Counter
 from datetime import datetime, timedelta, timezone
-from typing import Any, Optional
+from typing import Any, Optional, List, Dict, Tuple
 
 import requests
 
@@ -111,7 +111,7 @@ def es_historico_o_veto(titulo: str, descripcion: str = "") -> bool:
     return False
 
 
-def limpiar_titulo_epg(titulo: str) -> tuple[str, str]:
+def limpiar_titulo_epg(titulo: str) -> Tuple[str, str]:
     valor = re.sub(r"\[/?COLOR[^\]]*\]", "", titulo or "", flags=re.I)
     valor = re.sub(r"(?i)\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO|DIREKT|EN DIRECT)\b", "", valor)
     valor = re.sub(r"\bT\d{2,4}(/\d{2,4})?\b", "", valor)
@@ -161,7 +161,7 @@ def prioridad_guia_epg(channel_id: str) -> int:
     return 50
 
 
-def idioma_fuente(nombre: str) -> tuple[str, int]:
+def idioma_fuente(nombre: str) -> Tuple[str, int]:
     valor = normalizar_texto(nombre)
     if any(x in valor for x in (" ESPANA", " ESPANOL", " CASTELLANO", " LATINO", " LATAM")) or re.search(r"(?:^|\s)ES(?:\s|$)", valor):
         return "ES", 0
@@ -176,8 +176,8 @@ def idioma_fuente(nombre: str) -> tuple[str, int]:
     return "Principal", 10
 
 
-def ordenar_fuentes(fuentes: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    unicas: dict[str, dict[str, Any]] = {}
+def ordenar_fuentes(fuentes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    unicas: Dict[str, Dict[str, Any]] = {}
     for fuente in fuentes:
         sid = str(fuente.get("id_xtream") or "")
         if not sid:
@@ -196,8 +196,8 @@ def llamada_xtream(url: str, timeout: int = 60) -> Any:
     return respuesta.json()
 
 
-def mapear_streams_canales_lineales() -> dict[str, list[dict[str, Any]]]:
-    mapa: dict[str, list[dict[str, Any]]] = {clave: [] for clave in CANALES_EPG}
+def mapear_streams_canales_lineales() -> Dict[str, List[Dict[str, Any]]]:
+    mapa: Dict[str, List[Dict[str, Any]]] = {clave: [] for clave in CANALES_EPG}
     if not (XTREAM_URL and XTREAM_USER and XTREAM_PASS):
         return mapa
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
@@ -214,19 +214,19 @@ def mapear_streams_canales_lineales() -> dict[str, list[dict[str, Any]]]:
     return {clave: ordenar_fuentes(fuentes) for clave, fuentes in mapa.items()}
 
 
-def _inicio(evento: dict[str, Any]) -> Optional[datetime]:
+def _inicio(evento: Dict[str, Any]) -> Optional[datetime]:
     try:
         return datetime.strptime(str(evento["hora_utc"]), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
     except (KeyError, TypeError, ValueError):
         return None
 
 
-def sesiones_compatibles_epg(titulo: str, evento: dict[str, Any]) -> bool:
+def sesiones_compatibles_epg(titulo: str, evento: Dict[str, Any]) -> bool:
     a, b = extraer_sesion(titulo), extraer_sesion(f"{evento.get('titulo', '')} {evento.get('subtitulo', '')}")
     return not a or not b or a == b or (b == "sprint" and a == "carrera_sprint")
 
 
-def buscar_evento_agenda(titulo_epg: str, inicio_epg: datetime, agenda: list[dict[str, Any]]) -> tuple[Optional[dict[str, Any]], int, list[str]]:
+def buscar_evento_agenda(titulo_epg: str, inicio_epg: datetime, agenda: List[Dict[str, Any]]) -> Tuple[Optional[Dict[str, Any]], int, List[str]]:
     categoria, mejor, mejor_puntos, mejor_tokens = inferir_deporte(titulo_epg), None, 0, []
     for evento in agenda:
         if categoria and categoria != evento.get("categoria"):
@@ -242,7 +242,7 @@ def buscar_evento_agenda(titulo_epg: str, inicio_epg: datetime, agenda: list[dic
     return (mejor, mejor_puntos, mejor_tokens) if mejor_puntos >= 65 else (None, 0, [])
 
 
-def extraer_participantes_tenis(titulo: str) -> tuple[str, str]:
+def extraer_participantes_tenis(titulo: str) -> Tuple[str, str]:
     limpio = re.sub(r"\([^)]{2,4}\)", "", titulo or "")
     match = re.search(r"\b([A-ZÁÉÍÓÚÑa-záéíóúñ\.\s]{3,24})\s+(?:VS\.?|V\.?)\s+([A-ZÁÉÍÓÚÑa-záéíóúñ\.\s]{3,24})\b", limpio, flags=re.I)
     if not match:
@@ -258,11 +258,11 @@ def construir_evento_epg(
     descripcion: str,
     inicio: datetime,
     fin: Optional[datetime],
-    fuentes: list[dict[str, Any]],
-    agenda: list[dict[str, Any]],
+    fuentes: List[Dict[str, Any]],
+    agenda: List[Dict[str, Any]],
     ahora: datetime,
     consenso_directo: bool = False,
-) -> Optional[dict[str, Any]]:
+) -> Optional[Dict[str, Any]]:
     if not titulo_raw or es_historico_o_veto(titulo_raw, descripcion):
         return None
     if fin and fin <= ahora:
@@ -307,8 +307,7 @@ def construir_evento_epg(
             tipo = "sencillo"
 
     titulo_final = f"{local} vs {visitante}" if tipo == "duelo" else torneo
-    logo_oficial = resolver_logo_torneo,
-    resolver_logo_equipo(torneo, categoria)
+    logo_oficial = resolver_logo_torneo(torneo, categoria)
     fuentes = ordenar_fuentes(fuentes)
 
     estado_str = "en_canal" if inicio <= ahora < (fin or inicio + timedelta(minutes=duracion)) else "programado"
@@ -350,9 +349,9 @@ def construir_evento_epg(
     }
 
 
-def construir_matriz_consenso(programas: list[dict[str, Any]]) -> dict[tuple[str, str], bool]:
+def construir_matriz_consenso(programas: List[Dict[str, Any]]) -> Dict[Tuple[str, str], bool]:
     """Crea un mapa (canal_clave, timestamp_slot) -> True si algún país marca DIRECTO/LIVE."""
-    consenso: dict[tuple[str, str], bool] = {}
+    consenso: Dict[Tuple[str, str], bool] = {}
     for p in programas:
         if not p.get("inicio"):
             continue
@@ -367,7 +366,7 @@ def construir_matriz_consenso(programas: list[dict[str, Any]]) -> dict[tuple[str
     return consenso
 
 
-def extraer_eventos_epg(mapa: dict[str, list[dict[str, Any]]], agenda: list[dict[str, Any]], fecha_colombia: datetime, ahora: Optional[datetime] = None) -> tuple[list[dict[str, Any]], dict[str, int]]:
+def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict[str, Any]], fecha_colombia: datetime, ahora: Optional[datetime] = None) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
     metricas: Counter = Counter()
     tz = obtener_zona_aplicacion()
     ahora = ahora or datetime.now(timezone.utc)
@@ -378,8 +377,8 @@ def extraer_eventos_epg(mapa: dict[str, list[dict[str, Any]]], agenda: list[dict
         log.warning("No se pudo descargar EPG: %s", exc)
         return [], dict(metricas)
 
-    todos_los_programas: list[dict[str, Any]] = []
-    programas_principales: list[dict[str, Any]] = []
+    todos_los_programas: List[Dict[str, Any]] = []
+    programas_principales: List[Dict[str, Any]] = []
 
     try:
         for _, elemento in ET.iterparse(io.BytesIO(respuesta.content), events=("end",)):
@@ -406,7 +405,7 @@ def extraer_eventos_epg(mapa: dict[str, list[dict[str, Any]]], agenda: list[dict
     # Matriz de consenso paneuropea
     matriz_live = construir_matriz_consenso(todos_los_programas)
 
-    eventos: list[dict[str, Any]] = []
+    eventos: List[Dict[str, Any]] = []
     for programa in programas_principales:
         titulo, desc = str(programa["titulo"]), str(programa["descripcion"])
         if es_historico_o_veto(titulo, desc):
@@ -432,8 +431,8 @@ def extraer_eventos_epg(mapa: dict[str, list[dict[str, Any]]], agenda: list[dict
     return consolidar_eventos_epg(eventos), dict(metricas)
 
 
-def consolidar_eventos_epg(eventos: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    unicos: dict[str, dict[str, Any]] = {}
+def consolidar_eventos_epg(eventos: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    unicos: Dict[str, Dict[str, Any]] = {}
     for evento in eventos:
         # Clave unificada por sesión (sin hora_utc) para evitar duplicar el mismo bloque
         clave = str(evento.get("agenda_id") or normalizar_texto(f"{evento['torneo']} {evento['subtitulo']}"))
@@ -447,7 +446,7 @@ def consolidar_eventos_epg(eventos: list[dict[str, Any]]) -> list[dict[str, Any]
     return sorted(unicos.values(), key=lambda e: e["hora_utc"])[:MAX_EPG_EVENTOS]
 
 
-def eventos_se_solapan(a: dict[str, Any], b: dict[str, Any]) -> bool:
+def eventos_se_solapan(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
     inicio_a, inicio_b = _inicio(a), _inicio(b)
     if not inicio_a or not inicio_b:
         return False
@@ -456,7 +455,7 @@ def eventos_se_solapan(a: dict[str, Any], b: dict[str, Any]) -> bool:
     return inicio_a <= fin_b + timedelta(minutes=20) and inicio_b <= fin_a + timedelta(minutes=20)
 
 
-def fusionar_con_base(base: list[dict[str, Any]], epg: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, int]]:
+def fusionar_con_base(base: List[Dict[str, Any]], epg: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
     metricas: Counter = Counter()
     resultado = list(base)
     por_agenda = {str(e.get("agenda_id") or e.get("id")): e for e in resultado if e.get("agenda_id") or str(e.get("id", "")).startswith("apisports_")}
