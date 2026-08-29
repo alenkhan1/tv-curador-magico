@@ -75,7 +75,7 @@ CACHE_VERSION = 1
 # El catalogo completo (items + sin_identificar) nunca tiene tope.
 # Estos topes solo deciden cuantas referencias entran en cada fila.
 TOPE_GENERO = int(os.environ.get("TOPE_GENERO", "50"))
-TOPE_ESTRENOS = int(os.environ.get("TOPE_ESTRENOS", "30"))
+TOPE_ESTRENOS = int(os.environ.get("TOPE_ESTRENOS", "50"))
 TOPE_EPOCA = int(os.environ.get("TOPE_EPOCA", "50"))
 PISO_FILA = int(os.environ.get("PISO_FILA", "10"))
 
@@ -259,7 +259,7 @@ TITULO_TOKENS = [
     "HDCAM", "CAMRIP", "TELESYNC", "SCREENER", "DVDSCR", "TS SCREENER", "TSRIP",
 ]
 
-RE_MAS18 = re.compile(r"(\+\s?18|18\s?\+|\(\s?18\s?\)|\b18\s?PLUS\b)", re.I)
+RE_MAS18 = re.compile(r"(\+\s?18|18\s?\+|\(\s?18\s?\)|\\b18\s?PLUS\\b)", re.I)
 
 def categoria_prohibida(nombre_categoria):
     if not nombre_categoria:
@@ -354,7 +354,7 @@ RE_CORCHETES = re.compile(r"\[([^\]]*)\]")
 RE_PARENTESIS = re.compile(r"\(([^)]*)\)")
 RE_ANIO = re.compile(r"\b(19\d{2}|20\d{2})\b")
 RE_PREFIJO = re.compile(r"^\s*([^\-|:]{1,20})\s*[\-|:]\s+")
-RE_SEPARADORES = re.compile(r"[|_·•‹›»«]+")
+RE_SEPARADORES = re.compile(r"[|_··••‹›»«]+")
 RE_INICIO_SUCIO = re.compile(r"^[^\w¡¿(\"']+", re.UNICODE)
 # Numero suelto de colección al inicio ("01 - Titulo", "03 - Titulo"):
 # lo usan proveedores para ordenar sagas en su explorador de archivos,
@@ -391,7 +391,7 @@ RE_EPISODIO = re.compile(
 def absorber_etiquetas(fragmento, info):
     """Extrae calidad / origen / idioma de un trozo que vamos a descartar
     (prefijo del proveedor, contenido entre corchetes o parentesis).
-    Asi no perdemos la senal que necesita el desempate de duplicados."""
+    Asi no perdemos la señal que necesita el desempate de duplicados."""
     for token in re.split(r"[\s\-\.,;/\\|_]+", fragmento or ""):
         norm = normalizar(token)
         if not norm:
@@ -1595,8 +1595,19 @@ def fase2(clasificados, es_serie, total_origen):
         if secundaria:
             filas.add(secundaria)
 
-        # Epoca: NO exclusiva, ventana rodante
-        if anio_origen and anio_origen <= ANIO_ANTIGUO:
+        # Deteccion de Anime y Telenovelas para exclusion estricta de Clasicos y Retro
+        es_anime = (
+            16 in (c.get("generos") or [])
+            and (c.get("lang") == "ja" or "JP" in (c.get("paises") or []))
+        )
+        es_novela = (
+            10766 in (c.get("generos") or [])
+            or principal == "Telenovela"
+            or secundaria == "Telenovela"
+        )
+
+        # Epoca: NO exclusiva, ventana rodante (excluye Anime y Telenovelas de Clasicos y Retro)
+        if anio_origen and anio_origen <= ANIO_ANTIGUO and not (es_anime or es_novela):
             if c["nota"] >= CLASICO_NOTA_MIN and c["votos"] >= CLASICO_VOTOS_MIN:
                 filas.add("Clasicos")
                 registro["es_clasico"] = True
@@ -1738,29 +1749,41 @@ def fase2(clasificados, es_serie, total_origen):
     nombres_ordenados = [f for f in ORDEN_CATEGORIAS if f in por_fila]
     nombres_ordenados += sorted(f for f in por_fila if f not in ORDEN_CATEGORIAS)
 
-    # --- Variedad diaria de vitrina (acordado 09-ago-2026) ------------------
+    # --- Variedad diaria de vitrina (acordado 09-ago-2026, refinado 29-ago-2026) ----
     # "Estrenos" siempre debe ir estrictamente del mas nuevo al mas viejo:
-    # no rota. El resto de filas (generos, Clasicos, Retro) SI rotan: cuando
-    # hay mas candidatos que el tope de la fila, se reserva una porcion fija
-    # ("anclas", los mejores por relevancia) para que la fila nunca pierda
-    # calidad de piso, y el resto de espacios se llena con una muestra
-    # aleatoria del resto del pool. La semilla se deriva de la fecha del dia
-    # (no de la hora), asi que la fila es estable durante todo el dia pero
-    # cambia de una corrida diaria a la siguiente, mezclando titulos de
-    # distintas epocas en vez de mostrar siempre el mismo top fijo.
+    # no rota.
+    # "Clasicos" y "Retro" rotan al 100% con semilla diaria (sin anclas fijas en portada)
+    # para que cada dia el usuario vea titulos distintos al inicio de la fila,
+    # incluso si la fila tiene 50 o menos titulos.
+    # El resto de filas (generos) mantiene anclas (40% fijos) y rota el resto del pool.
     FILAS_SIN_ROTACION = {"Estrenos"}
     PORCENTAJE_ANCLAS = 0.4
     SEMILLA_DIA = HOY.strftime("%Y-%m-%d")
 
     def seleccionar_con_variedad(nombre, lista, tope):
-        if nombre in FILAS_SIN_ROTACION or len(lista) <= tope:
+        if nombre in FILAS_SIN_ROTACION:
+            return lista[:tope]
+
+        rng = random.Random("%s|%s" % (SEMILLA_DIA, nombre))
+
+        # En Clasicos y Retro: rotacion total diaria para variar la portada
+        if nombre in ("Clasicos", "Retro"):
+            if len(lista) <= tope:
+                copia = list(lista)
+                rng.shuffle(copia)
+                return copia
+            elegidos = rng.sample(lista, tope)
+            rng.shuffle(elegidos)
+            return elegidos
+
+        # Filas de genero convencionales: anclas fijas + rotacion en resto
+        if len(lista) <= tope:
             return lista[:tope]
         cantidad_anclas = max(1, int(round(tope * PORCENTAJE_ANCLAS)))
         cantidad_anclas = min(cantidad_anclas, tope)
         anclas = lista[:cantidad_anclas]
         resto_pool = lista[cantidad_anclas:]
         cupo_rotacion = tope - len(anclas)
-        rng = random.Random("%s|%s" % (SEMILLA_DIA, nombre))
         elegidos_rotacion = rng.sample(
             resto_pool, min(cupo_rotacion, len(resto_pool))
         )
@@ -1779,7 +1802,7 @@ def fase2(clasificados, es_serie, total_origen):
             "items": referencias,
         })
         rota = " (con rotacion diaria)" if (
-            nombre not in FILAS_SIN_ROTACION and len(lista) > tope
+            nombre not in FILAS_SIN_ROTACION and (nombre in ("Clasicos", "Retro") or len(lista) > tope)
         ) else ""
         print(" %-26s %3s items en vitrina (de %s identificados con este genero)%s"
               % (nombre, len(referencias), len(lista), rota))
