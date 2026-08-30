@@ -1,8 +1,5882 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-30T18:04:19Z",
+  "generado_utc": "2026-08-30T20:14:56Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-30",
   "base_media": "http://stejar.matrivagoweb.com:8080",
-  "eventos": []
+  "eventos": [
+    {
+      "id": "xtream_4401678366a8917b",
+      "agenda_id": "",
+      "titulo": "La Vuelta a España: Stage 9 - Ciclismo",
+      "torneo": "La Vuelta a España: Stage 9 - Ciclismo",
+      "categoria": "Ciclismo",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://pbs.twimg.com/media/C1_LAKgXUAMPaOi.jpg",
+      "logo_local": "https://pbs.twimg.com/media/C1_LAKgXUAMPaOi.jpg",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Ciclismo"
+      ],
+      "fuentes": [
+        {
+          "nombre": "05:00 - La Vuelta a España: Stage 9 - Ciclismo",
+          "id_xtream": "454064"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1557379",
+      "agenda_id": "apisports_football_1557379",
+      "titulo": "Chelsea vs Brighton",
+      "torneo": "Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chelsea",
+      "equipo_visitante": "Brighton",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/39.png",
+      "logo_local": "https://media.api-sports.io/football/teams/49.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/51.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CHELSEA",
+        "visitante:BRIGHTON",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 - Chelsea v. Brighton - EPL",
+          "id_xtream": "454065"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1557382",
+      "agenda_id": "apisports_football_1557382",
+      "titulo": "Leeds vs Brentford",
+      "torneo": "Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Leeds",
+      "equipo_visitante": "Brentford",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/39.png",
+      "logo_local": "https://media.api-sports.io/football/teams/63.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/55.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:LEEDS",
+        "visitante:BRENTFORD",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 - EPL - Leeds United vs Brentford",
+          "id_xtream": "454066"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1552743",
+      "agenda_id": "apisports_football_1552743",
+      "titulo": "Paris FC vs Nice",
+      "torneo": "Ligue 1",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Paris FC",
+      "equipo_visitante": "Nice",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/61.png",
+      "logo_local": "https://media.api-sports.io/football/teams/114.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/84.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:PARIS",
+        "visitante:NICE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 - Ligue 1 - Paris FC vs OGC Nice",
+          "id_xtream": "454067"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1557385",
+      "agenda_id": "apisports_football_1557385",
+      "titulo": "Sunderland vs Fulham",
+      "torneo": "Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sunderland",
+      "equipo_visitante": "Fulham",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/39.png",
+      "logo_local": "https://media.api-sports.io/football/teams/746.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/36.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:SUNDERLAND",
+        "visitante:FULHAM",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 - Sunderland v. Fulham - EPL",
+          "id_xtream": "454068"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f2c1a02b8f155793",
+      "agenda_id": "",
+      "titulo": "Bretagne Classic Plouay (228.3km) - Ciclismo",
+      "torneo": "Bretagne Classic Plouay (228.3km) - Ciclismo",
+      "categoria": "Ciclismo",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T13:10:00Z",
+      "hora_local_producto": "08:10",
+      "duracion_min": 240,
+      "logo_torneo": "https://www.marque.bretagne.bzh/app/uploads/2019/05/logo-bretagne-fondnoir-pour-envoi-partenaire-380x149-c-f.png",
+      "logo_local": "https://www.marque.bretagne.bzh/app/uploads/2019/05/logo-bretagne-fondnoir-pour-envoi-partenaire-380x149-c-f.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Ciclismo"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:10 - Bretagne Classic Plouay (228.3km) - Ciclismo",
+          "id_xtream": "454069"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1575145",
+      "agenda_id": "apisports_football_1575145",
+      "titulo": "SC Freiburg vs Werder Bremen",
+      "torneo": "Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "SC Freiburg",
+      "equipo_visitante": "Werder Bremen",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T13:30:00Z",
+      "hora_local_producto": "08:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/78.png",
+      "logo_local": "https://media.api-sports.io/football/teams/160.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/162.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:FREIBURG",
+        "visitante:BREMEN,WERDER",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:30 - Bundesliga - Freiburg vs. Werder Bremen",
+          "id_xtream": "454070"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1492350",
+      "agenda_id": "apisports_football_1492350",
+      "titulo": "Atletico Paranaense vs Fluminense",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atletico Paranaense",
+      "equipo_visitante": "Fluminense",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T14:00:00Z",
+      "hora_local_producto": "09:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/71.png",
+      "logo_local": "https://media.api-sports.io/football/teams/134.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/124.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:PARANAENSE",
+        "visitante:FLUMINENSE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "09:00 - Brasileirao - Athletico Paranaense vs Fluminense",
+          "id_xtream": "454071"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1593114",
+      "agenda_id": "apisports_football_1593114",
+      "titulo": "Bayer Leverkusen W vs VfL Wolfsburg W",
+      "torneo": "Frauen Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bayer Leverkusen W",
+      "equipo_visitante": "VfL Wolfsburg W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T14:00:00Z",
+      "hora_local_producto": "09:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/82.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1859.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1863.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:LEVERKUSEN",
+        "visitante:WOLFSBURG",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "09:00 - Bundesliga Fem - Leverkusen vs. Wolfsburg",
+          "id_xtream": "454072"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1552151",
+      "agenda_id": "apisports_football_1552151",
+      "titulo": "Telstar vs Ajax",
+      "torneo": "Eredivisie",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Telstar",
+      "equipo_visitante": "Ajax",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T14:45:00Z",
+      "hora_local_producto": "09:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/88.png",
+      "logo_local": "https://media.api-sports.io/football/teams/427.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/194.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:TELSTAR",
+        "visitante:AJAX",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "09:45 - Eredivisie - Telstar vs. Ajax",
+          "id_xtream": "454073"
+        }
+      ]
+    },
+    {
+      "id": "xtream_bd367999a6c21529",
+      "agenda_id": "",
+      "titulo": "Cobertura 1 En español vs US Open",
+      "torneo": "Tenis",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cobertura 1 En español",
+      "equipo_visitante": "US Open",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_local": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:00 - Cobertura 1 En español - US Open",
+          "id_xtream": "454074"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1570360",
+      "agenda_id": "apisports_football_1570360",
+      "titulo": "Real Madrid vs Malaga",
+      "torneo": "La Liga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Real Madrid",
+      "equipo_visitante": "Malaga",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/140.png",
+      "logo_local": "https://media.api-sports.io/football/teams/541.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/535.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MADRID,REAL",
+        "visitante:MALAGA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:00 - LES - Real Madrid vs. Malaga",
+          "id_xtream": "454075"
+        }
+      ]
+    },
+    {
+      "id": "xtream_71e673189d57debe",
+      "agenda_id": "",
+      "titulo": "TOUR Championship: Main Feed (Ronda Final) - PGA TOUR",
+      "torneo": "TOUR Championship: Main Feed (Ronda Final) - PGA TOUR",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_local": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:00 - TOUR Championship: Main Feed (Ronda Final) - PGA TOUR",
+          "id_xtream": "454076"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1552744",
+      "agenda_id": "apisports_football_1552744",
+      "titulo": "Rennes vs Le Mans",
+      "torneo": "Ligue 1",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Rennes",
+      "equipo_visitante": "Le Mans",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T15:15:00Z",
+      "hora_local_producto": "10:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/61.png",
+      "logo_local": "https://media.api-sports.io/football/teams/94.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1298.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:RENNES",
+        "visitante:MANS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:15 - Ligue 1 - Rennes vs Le Mans FC",
+          "id_xtream": "454077"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1575141",
+      "agenda_id": "apisports_football_1575141",
+      "titulo": "FC Augsburg vs FC Schalke 04",
+      "torneo": "Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "FC Augsburg",
+      "equipo_visitante": "FC Schalke 04",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/78.png",
+      "logo_local": "https://media.api-sports.io/football/teams/170.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/174.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:AUGSBURG",
+        "visitante:SCHALKE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:30 - Bundesliga - Augsburg vs. Schalke",
+          "id_xtream": "454078"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1557384",
+      "agenda_id": "apisports_football_1557384",
+      "titulo": "Manchester United vs Ipswich",
+      "torneo": "Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Manchester United",
+      "equipo_visitante": "Ipswich",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/39.png",
+      "logo_local": "https://media.api-sports.io/football/teams/33.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/57.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MANCHESTER,UNITED",
+        "visitante:IPSWICH",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:30 - EPL - Manchester United vs Ipswich Town",
+          "id_xtream": "454079"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1553146",
+      "agenda_id": "apisports_football_1553146",
+      "titulo": "Gornik Zabrze vs GKS Katowice",
+      "torneo": "Ekstraklasa",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Gornik Zabrze",
+      "equipo_visitante": "GKS Katowice",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/106.png",
+      "logo_local": "https://media.api-sports.io/football/teams/340.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/3484.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:GORNIK,ZABRZE",
+        "visitante:KATOWICE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:30 - Polonia - Górnik Zabrze vs Katowice",
+          "id_xtream": "454080"
+        }
+      ]
+    },
+    {
+      "id": "xtream_df949710dda240c9",
+      "agenda_id": "",
+      "titulo": "#6 Wisconsin vs #4 Pitt",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "#6 Wisconsin",
+      "equipo_visitante": "#4 Pitt",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - NCAA Volleyball - #6 Wisconsin vs. #4 Pitt",
+          "id_xtream": "454081"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c03998ac8a70dd80",
+      "agenda_id": "",
+      "titulo": "Rider vs Temple",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Rider",
+      "equipo_visitante": "Temple",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - NCAA Volleyball - Rider vs. Temple",
+          "id_xtream": "454082"
+        }
+      ]
+    },
+    {
+      "id": "xtream_1a9e709a3f60d12a",
+      "agenda_id": "",
+      "titulo": "UMBC vs West Virginia",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "UMBC",
+      "equipo_visitante": "West Virginia",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - NCAA Volleyball - UMBC vs. West Virginia",
+          "id_xtream": "454083"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549471",
+      "agenda_id": "apisports_football_1549471",
+      "titulo": "UCV Moquegua vs Alianza Atletico",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UCV Moquegua",
+      "equipo_visitante": "Alianza Atletico",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/281.png",
+      "logo_local": "https://media.api-sports.io/football/teams/22489.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2560.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MOQUEGUA",
+        "visitante:ALIANZA,ATLETICO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - Perú - Deportivo Moquegua vs Alianza Atlético",
+          "id_xtream": "454084"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1582318",
+      "agenda_id": "apisports_football_1582318",
+      "titulo": "Roma W vs Sassuolo W",
+      "torneo": "Serie A Cup Women",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Roma W",
+      "equipo_visitante": "Sassuolo W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/1198.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1892.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1889.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ROMA",
+        "visitante:SASSUOLO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - Serie A Women’s Cup - Roma vs Sassuolo",
+          "id_xtream": "454085"
+        }
+      ]
+    },
+    {
+      "id": "xtream_a8087bee0fc35272",
+      "agenda_id": "",
+      "titulo": "TOUR Championship (Ronda Final) En español - PGA TOUR",
+      "torneo": "TOUR Championship (Ronda Final) En español - PGA TOUR",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_local": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - TOUR Championship (Ronda Final) En español - PGA TOUR",
+          "id_xtream": "454086"
+        }
+      ]
+    },
+    {
+      "id": "xtream_19def0098e7edd4d",
+      "agenda_id": "",
+      "titulo": "TOUR Championship: Featured Group 1 (Ronda Final) - PGA TOUR",
+      "torneo": "TOUR Championship: Featured Group 1 (Ronda Final) - PGA TOUR",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_local": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - TOUR Championship: Featured Group 1 (Ronda Final) - PGA TOUR",
+          "id_xtream": "454087"
+        }
+      ]
+    },
+    {
+      "id": "xtream_26288d8d91ed8535",
+      "agenda_id": "",
+      "titulo": "TOUR Championship: Featured Group 2 (Ronda Final) - PGA TOUR",
+      "torneo": "TOUR Championship: Featured Group 2 (Ronda Final) - PGA TOUR",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_local": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - TOUR Championship: Featured Group 2 (Ronda Final) - PGA TOUR",
+          "id_xtream": "454088"
+        }
+      ]
+    },
+    {
+      "id": "xtream_34791a87d0df5aa9",
+      "agenda_id": "",
+      "titulo": "TOUR Championship: Featured Hole #2 & #15 (Ronda Final) - PGA TOUR",
+      "torneo": "TOUR Championship: Featured Hole #2 & #15 (Ronda Final) - PGA TOUR",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_local": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - TOUR Championship: Featured Hole #2 & #15 (Ronda Final) - PGA TOUR",
+          "id_xtream": "454089"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180058",
+      "agenda_id": "apisports_baseball_180058",
+      "titulo": "Washington Nationals vs Miami Marlins",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Nationals",
+      "equipo_visitante": "Miami Marlins",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:15:00Z",
+      "hora_local_producto": "11:15",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/37.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/19.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NATIONALS",
+        "visitante:MARLINS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:15 - MLB 01 - Marlins at Nationals",
+          "id_xtream": "454090"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2db1f6c5b4bbc467",
+      "agenda_id": "",
+      "titulo": "Loyola Chicago vs Georgia Tech",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Loyola Chicago",
+      "equipo_visitante": "Georgia Tech",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:30 - NCAA Volleyball - Loyola Chicago vs. Georgia Tech",
+          "id_xtream": "454091"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1508527",
+      "agenda_id": "apisports_football_1508527",
+      "titulo": "Washington Spirit W vs Bay FC W",
+      "torneo": "NWSL Women",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Spirit W",
+      "equipo_visitante": "Bay FC W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/254.png",
+      "logo_local": "https://media.api-sports.io/football/teams/3005.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/22943.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:SPIRIT,WASHINGTON",
+        "visitante:BAY",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:30 - NWSL - Washington Spirit vs Bay FC",
+          "id_xtream": "454092"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1511666",
+      "agenda_id": "apisports_football_1511666",
+      "titulo": "Deportes Copiapo vs Antofagasta",
+      "torneo": "Primera B",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportes Copiapo",
+      "equipo_visitante": "Antofagasta",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/266.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2343.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2327.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:COPIAPO",
+        "visitante:ANTOFAGASTA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:30 - Segunda Chile - Dep. Copiapó vs Dep. Antofagasta",
+          "id_xtream": "454093"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1550105",
+      "agenda_id": "apisports_football_1550105",
+      "titulo": "Napoli vs Como",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Napoli",
+      "equipo_visitante": "Como",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/135.png",
+      "logo_local": "https://media.api-sports.io/football/teams/492.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/895.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NAPOLI",
+        "visitante:COMO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:30 - Serie A - Napoli vs. Como",
+          "id_xtream": "454094"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1551672",
+      "agenda_id": "apisports_football_1551672",
+      "titulo": "CS Cartagines vs CS Herediano",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "CS Cartagines",
+      "equipo_visitante": "CS Herediano",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/162.png",
+      "logo_local": "https://media.api-sports.io/football/teams/820.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/815.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CARTAGINES",
+        "visitante:HEREDIANO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - Costa Rica - Cartaginés vs Herediano",
+          "id_xtream": "454096"
+        }
+      ]
+    },
+    {
+      "id": "xtream_9d14287c054e89f7",
+      "agenda_id": "",
+      "titulo": "IndyCar Series Milwaukee Mile (Race 2) - Motor",
+      "torneo": "IndyCar Series Milwaukee Mile (Race 2) - Motor",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://contentmasters.app/logos/motorsportsevents.png",
+      "logo_local": "https://contentmasters.app/logos/motorsportsevents.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - IndyCar Series Milwaukee Mile (Race 2) - Motor",
+          "id_xtream": "454097"
+        }
+      ]
+    },
+    {
+      "id": "xtream_7a3ede4fb1a443a3",
+      "agenda_id": "",
+      "titulo": "St Thomas (MN) vs E Illinois",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "St Thomas (MN)",
+      "equipo_visitante": "E Illinois",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Soccer - St Thomas (MN) vs. E Illinois",
+          "id_xtream": "454098"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d3725e6d867113ad",
+      "agenda_id": "",
+      "titulo": "CSU Northridge vs C Arkansas",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "CSU Northridge",
+      "equipo_visitante": "C Arkansas",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - CSU Northridge vs. C Arkansas",
+          "id_xtream": "454099"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b82d0b60d26f07b1",
+      "agenda_id": "",
+      "titulo": "Delaware vs Lafayette",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Delaware",
+      "equipo_visitante": "Lafayette",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Delaware vs. Lafayette",
+          "id_xtream": "454100"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c0778dd682729738",
+      "agenda_id": "",
+      "titulo": "Florida St vs FGCU",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Florida St",
+      "equipo_visitante": "FGCU",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Florida St vs. FGCU",
+          "id_xtream": "454101"
+        }
+      ]
+    },
+    {
+      "id": "xtream_1ca1010de679d26d",
+      "agenda_id": "",
+      "titulo": "Missouri St vs Wichita St",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Missouri St",
+      "equipo_visitante": "Wichita St",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Missouri St vs. Wichita St",
+          "id_xtream": "454102"
+        }
+      ]
+    },
+    {
+      "id": "xtream_92c6acfbc232ed1b",
+      "agenda_id": "",
+      "titulo": "North Dakota vs Chicago St",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "North Dakota",
+      "equipo_visitante": "Chicago St",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - North Dakota vs. Chicago St",
+          "id_xtream": "454103"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d07622537a9658cd",
+      "agenda_id": "",
+      "titulo": "Northeastern vs South Carolina",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Northeastern",
+      "equipo_visitante": "South Carolina",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Northeastern vs. South Carolina",
+          "id_xtream": "454104"
+        }
+      ]
+    },
+    {
+      "id": "xtream_154dc06f8cdf0bbd",
+      "agenda_id": "",
+      "titulo": "Queens vs Coastal",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Queens",
+      "equipo_visitante": "Coastal",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Queens vs. Coastal",
+          "id_xtream": "454105"
+        }
+      ]
+    },
+    {
+      "id": "xtream_58433fb54cde32d3",
+      "agenda_id": "",
+      "titulo": "Quinnipiac vs Boston College",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Quinnipiac",
+      "equipo_visitante": "Boston College",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Quinnipiac vs. Boston College",
+          "id_xtream": "454106"
+        }
+      ]
+    },
+    {
+      "id": "xtream_4264db1f0f6a4b10",
+      "agenda_id": "",
+      "titulo": "Stony Brook vs #17 Florida",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Stony Brook",
+      "equipo_visitante": "#17 Florida",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Stony Brook vs. #17 Florida",
+          "id_xtream": "454107"
+        }
+      ]
+    },
+    {
+      "id": "xtream_6f2288ccb7090bad",
+      "agenda_id": "",
+      "titulo": "Tenn Tech vs Tulane",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tenn Tech",
+      "equipo_visitante": "Tulane",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Tenn Tech vs. Tulane",
+          "id_xtream": "454108"
+        }
+      ]
+    },
+    {
+      "id": "xtream_3ecd6d8242c68a02",
+      "agenda_id": "",
+      "titulo": "Xavier vs Notre Dame",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Xavier",
+      "equipo_visitante": "Notre Dame",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Volleyball - Xavier vs. Notre Dame",
+          "id_xtream": "454109"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1569896",
+      "agenda_id": "apisports_football_1569896",
+      "titulo": "Cadiz vs Valladolid",
+      "torneo": "Segunda División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cadiz",
+      "equipo_visitante": "Valladolid",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/141.png",
+      "logo_local": "https://media.api-sports.io/football/teams/724.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/720.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CADIZ",
+        "visitante:VALLADOLID",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - Segunda España - Cadiz vs. Valladolid",
+          "id_xtream": "454110"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1569901",
+      "agenda_id": "apisports_football_1569901",
+      "titulo": "Mallorca vs AD Ceuta FC",
+      "torneo": "Segunda División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Mallorca",
+      "equipo_visitante": "AD Ceuta FC",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/141.png",
+      "logo_local": "https://media.api-sports.io/football/teams/798.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/10139.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MALLORCA",
+        "visitante:CEUTA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - Segunda España - Mallorca vs. Ceuta",
+          "id_xtream": "454111"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1583972",
+      "agenda_id": "apisports_football_1583972",
+      "titulo": "FC Viktoria Köln vs Preußen Münster",
+      "torneo": "3. Liga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "FC Viktoria Köln",
+      "equipo_visitante": "Preußen Münster",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/80.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1620.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1313.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:KOLN,VIKTORIA",
+        "visitante:MUNSTER",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:30 - 3 Bundesliga - Viktoria Koln vs. Munster",
+          "id_xtream": "454112"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1570356",
+      "agenda_id": "apisports_football_1570356",
+      "titulo": "Deportivo La Coruna vs Valencia",
+      "torneo": "La Liga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo La Coruna",
+      "equipo_visitante": "Valencia",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/140.png",
+      "logo_local": "https://media.api-sports.io/football/teams/544.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/532.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CORUNA,DEPORTIVO",
+        "visitante:VALENCIA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:30 - LES - Deportivo A Coruña vs. Valencia",
+          "id_xtream": "454115"
+        }
+      ]
+    },
+    {
+      "id": "xtream_7bdc2c2df27dd555",
+      "agenda_id": "",
+      "titulo": "Campbell vs Kansas St",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Campbell",
+      "equipo_visitante": "Kansas St",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:30 - NCAA Volleyball - Campbell vs. Kansas St",
+          "id_xtream": "454116"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180070",
+      "agenda_id": "apisports_baseball_180070",
+      "titulo": "Atlanta Braves vs Colorado Rockies",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlanta Braves",
+      "equipo_visitante": "Colorado Rockies",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:35:00Z",
+      "hora_local_producto": "12:35",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/3.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/10.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BRAVES",
+        "visitante:ROCKIES",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:35 - MLB 02 - Braves vs Rockies",
+          "id_xtream": "454117"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180063",
+      "agenda_id": "apisports_baseball_180063",
+      "titulo": "New York Yankees vs Boston Red Sox",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Yankees",
+      "equipo_visitante": "Boston Red Sox",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:35:00Z",
+      "hora_local_producto": "12:35",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/25.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/5.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:YANKEES",
+        "visitante:RED,SOX",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:35 - MLB 03 - Red Sox vs. Yankees",
+          "id_xtream": "454118"
+        },
+        {
+          "nombre": "12:35 - MLB 04 - Red Sox vs. Yankees Español",
+          "id_xtream": "454119"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180059",
+      "agenda_id": "apisports_baseball_180059",
+      "titulo": "Toronto Blue Jays vs Seattle Mariners",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Toronto Blue Jays",
+      "equipo_visitante": "Seattle Mariners",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:37:00Z",
+      "hora_local_producto": "12:37",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/36.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/32.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BLUE,JAYS",
+        "visitante:MARINERS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:37 - MLB 05 - Blue Jays vs Mariners",
+          "id_xtream": "454120"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180068",
+      "agenda_id": "apisports_baseball_180068",
+      "titulo": "Cleveland Guardians vs Kansas City Royals",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cleveland Guardians",
+      "equipo_visitante": "Kansas City Royals",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:40:00Z",
+      "hora_local_producto": "12:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/9.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/16.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:GUARDIANS",
+        "visitante:ROYALS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:40 - MLB 06 - Guardians vs Royals",
+          "id_xtream": "454121"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180067",
+      "agenda_id": "apisports_baseball_180067",
+      "titulo": "Detroit Tigers vs Los Angeles Dodgers",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Detroit Tigers",
+      "equipo_visitante": "Los Angeles Dodgers",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:40:00Z",
+      "hora_local_producto": "12:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/12.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/18.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:TIGERS",
+        "visitante:DODGERS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:40 - MLB 07 - Dodgers vs. Tigers",
+          "id_xtream": "454122"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180060",
+      "agenda_id": "apisports_baseball_180060",
+      "titulo": "Tampa Bay Rays vs San Diego Padres",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tampa Bay Rays",
+      "equipo_visitante": "San Diego Padres",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T17:40:00Z",
+      "hora_local_producto": "12:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/34.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/30.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:RAYS",
+        "visitante:PADRES",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:40 - MLB 08 - Rays vs Padres",
+          "id_xtream": "454123"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1493094",
+      "agenda_id": "apisports_football_1493094",
+      "titulo": "Banfield vs River Plate",
+      "torneo": "Liga Profesional Argentina",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Banfield",
+      "equipo_visitante": "River Plate",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
+      "logo_local": "https://media.api-sports.io/football/teams/449.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/435.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BANFIELD",
+        "visitante:PLATE,RIVER",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - Arg - Banfield vs. River Plate",
+          "id_xtream": "454124"
+        }
+      ]
+    },
+    {
+      "id": "xtream_1bc54a8b760e0c75",
+      "agenda_id": "",
+      "titulo": "AAPB Sioux City Explorers vs Kane Country Cougars",
+      "torneo": "Beisbol",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "AAPB Sioux City Explorers",
+      "equipo_visitante": "Kane Country Cougars",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://content.sportslogos.net/logos/166/5002/full/aaipb__logo_primary_2021_sportslogosnet-8364.png",
+      "logo_local": "https://content.sportslogos.net/logos/166/5002/full/aaipb__logo_primary_2021_sportslogosnet-8364.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - Beisbol - AAPB Sioux City Explorers vs Kane Country Cougars",
+          "id_xtream": "454126"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1519464",
+      "agenda_id": "apisports_football_1519464",
+      "titulo": "Aucas vs Libertad",
+      "torneo": "Liga Pro",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Aucas",
+      "equipo_visitante": "Libertad",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/242.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1156.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/18762.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:AUCAS",
+        "visitante:LIBERTAD",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - Ecuador - Aucas vs Libertad",
+          "id_xtream": "454127"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1581475",
+      "agenda_id": "apisports_football_1581475",
+      "titulo": "Leones Negros UDG vs Piratas",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Leones Negros UDG",
+      "equipo_visitante": "Piratas",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/263.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2307.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/27935.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:LEONES,NEGROS",
+        "visitante:PIRATAS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - Expansión MX - Leones Negros UdeG vs Piratas",
+          "id_xtream": "454128"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1593297",
+      "agenda_id": "apisports_football_1593297",
+      "titulo": "Asteras Tripolis vs Olympiakos Piraeus",
+      "torneo": "Super League 1",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Asteras Tripolis",
+      "equipo_visitante": "Olympiakos Piraeus",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/197.png",
+      "logo_local": "https://media.api-sports.io/football/teams/955.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/553.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ASTERAS,TRIPOLIS",
+        "visitante:OLYMPIAKOS,PIRAEUS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - Grecia - Asteras Tripolis vs Olympiakos Piraeus",
+          "id_xtream": "454129"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d8828a6333bf2c32",
+      "agenda_id": "",
+      "titulo": "Al Quadisiya vs Al Faisaly",
+      "torneo": "Liga Saudi",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Al Quadisiya",
+      "equipo_visitante": "Al Faisaly",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2488.png",
+      "logo_local": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2488.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - Liga Saudi - Al Quadisiya vs Al Faisaly",
+          "id_xtream": "454130"
+        }
+      ]
+    },
+    {
+      "id": "xtream_183425e0b41b35d6",
+      "agenda_id": "",
+      "titulo": "Charleston vs Memphis",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Charleston",
+      "equipo_visitante": "Memphis",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - NCAA Volleyball - Charleston vs. Memphis",
+          "id_xtream": "454131"
+        }
+      ]
+    },
+    {
+      "id": "xtream_04a59488acaa6ec8",
+      "agenda_id": "",
+      "titulo": "NC A&T vs Charlotte",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "NC A&T",
+      "equipo_visitante": "Charlotte",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - NCAA Volleyball - NC A&T vs. Charlotte",
+          "id_xtream": "454132"
+        }
+      ]
+    },
+    {
+      "id": "xtream_6b0e8fcd0814712c",
+      "agenda_id": "",
+      "titulo": "NC State vs UCF",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "NC State",
+      "equipo_visitante": "UCF",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - NCAA Volleyball - NC State vs. UCF",
+          "id_xtream": "454133"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d7b5cac4eecb8650",
+      "agenda_id": "",
+      "titulo": "Northwestern vs Georgetown",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Northwestern",
+      "equipo_visitante": "Georgetown",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - NCAA Volleyball - Northwestern vs. Georgetown",
+          "id_xtream": "454134"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d0a7dda1f7341878",
+      "agenda_id": "",
+      "titulo": "UAlbany vs Army",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "UAlbany",
+      "equipo_visitante": "Army",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - NCAA Volleyball - UAlbany vs. Army",
+          "id_xtream": "454135"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d44ab3bb3ea210da",
+      "agenda_id": "",
+      "titulo": "UC Riverside vs Samford",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "UC Riverside",
+      "equipo_visitante": "Samford",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - NCAA Volleyball - UC Riverside vs. Samford",
+          "id_xtream": "454136"
+        }
+      ]
+    },
+    {
+      "id": "xtream_fb80c7bceca55391",
+      "agenda_id": "",
+      "titulo": "UTSA vs Arkansas",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "UTSA",
+      "equipo_visitante": "Arkansas",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - NCAA Volleyball - UTSA vs. Arkansas",
+          "id_xtream": "454137"
+        }
+      ]
+    },
+    {
+      "id": "xtream_66f01d2235469c46",
+      "agenda_id": "",
+      "titulo": "Wofford vs Davidson",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Wofford",
+      "equipo_visitante": "Davidson",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - NCAA Volleyball - Wofford vs. Davidson",
+          "id_xtream": "454138"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180064",
+      "agenda_id": "apisports_baseball_180064",
+      "titulo": "Milwaukee Brewers vs Texas Rangers",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Milwaukee Brewers",
+      "equipo_visitante": "Texas Rangers",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:10:00Z",
+      "hora_local_producto": "13:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/20.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/35.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 63,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:MILWAUKEE",
+        "diferencia_min:10"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 - Beisbol - AAPB Fargo-Moorhead RedHawks vs Milwaukee Milkmen",
+          "id_xtream": "454125"
+        },
+        {
+          "nombre": "13:10 - MLB 09 - Brewers vs Rangers",
+          "id_xtream": "454139"
+        },
+        {
+          "nombre": "13:10 - MLB 10 - Brewers vs Rangers Español",
+          "id_xtream": "454140"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180065",
+      "agenda_id": "apisports_baseball_180065",
+      "titulo": "Minnesota Twins vs Chicago White Sox",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Minnesota Twins",
+      "equipo_visitante": "Chicago White Sox",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:10:00Z",
+      "hora_local_producto": "13:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/22.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/7.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:TWINS",
+        "visitante:SOX,WHITE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:10 - MLB 11 - Twins vs White Sox",
+          "id_xtream": "454141"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180061",
+      "agenda_id": "apisports_baseball_180061",
+      "titulo": "St.Louis Cardinals vs Pittsburgh Pirates",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "St.Louis Cardinals",
+      "equipo_visitante": "Pittsburgh Pirates",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:15:00Z",
+      "hora_local_producto": "13:15",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/33.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/28.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CARDINALS",
+        "visitante:PIRATES",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:15 - MLB 12 - Cardinals vs Pirates",
+          "id_xtream": "454142"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549464",
+      "agenda_id": "apisports_football_1549464",
+      "titulo": "ADT vs Sport Huancayo",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "ADT",
+      "equipo_visitante": "Sport Huancayo",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:15:00Z",
+      "hora_local_producto": "13:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/281.png",
+      "logo_local": "https://media.api-sports.io/football/teams/10492.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2555.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ADT",
+        "visitante:HUANCAYO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:15 - Perú - ADT vs Sport Huancayo",
+          "id_xtream": "454143"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1553151",
+      "agenda_id": "apisports_football_1553151",
+      "titulo": "Widzew Łódź vs Lech Poznan",
+      "torneo": "Ekstraklasa",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Widzew Łódź",
+      "equipo_visitante": "Lech Poznan",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:15:00Z",
+      "hora_local_producto": "13:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/106.png",
+      "logo_local": "https://media.api-sports.io/football/teams/6962.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/347.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ODZ,WIDZEW",
+        "visitante:LECH,POZNAN",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:15 - Polonia - Widzew Łódź vs Lech Poznań",
+          "id_xtream": "454144"
+        }
+      ]
+    },
+    {
+      "id": "xtream_8aa37b3d1a6ffcda",
+      "agenda_id": "",
+      "titulo": "Cobertura 2 En español vs US Open",
+      "torneo": "Tenis",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cobertura 2 En español",
+      "equipo_visitante": "US Open",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 210,
+      "logo_torneo": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_local": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:30 - Cobertura 2 En español - US Open",
+          "id_xtream": "454145"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1584393",
+      "agenda_id": "apisports_football_1584393",
+      "titulo": "Samsunspor vs Fenerbahçe",
+      "torneo": "Süper Lig",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Samsunspor",
+      "equipo_visitante": "Fenerbahçe",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/203.png",
+      "logo_local": "https://media.api-sports.io/football/teams/3603.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/611.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:SAMSUNSPOR",
+        "visitante:FENERBAHCE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:30 - Turquía - Samsunspor vs. Fenerbahce",
+          "id_xtream": "454146"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1629054",
+      "agenda_id": "apisports_football_1629054",
+      "titulo": "Penarol vs Club Nacional",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Penarol",
+      "equipo_visitante": "Club Nacional",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/268.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2348.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2356.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:PENAROL",
+        "visitante:NACIONAL",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:30 - Uruguay - Peñarol vs Nacional",
+          "id_xtream": "454147"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1552742",
+      "agenda_id": "apisports_football_1552742",
+      "titulo": "Monaco vs Marseille",
+      "torneo": "Ligue 1",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Monaco",
+      "equipo_visitante": "Marseille",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/61.png",
+      "logo_local": "https://media.api-sports.io/football/teams/91.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/81.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MONACO",
+        "visitante:MARSEILLE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 - Ligue 1 - Monaco vs Olympique Marseille",
+          "id_xtream": "454148"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1550099",
+      "agenda_id": "apisports_football_1550099",
+      "titulo": "Cagliari vs Inter",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cagliari",
+      "equipo_visitante": "Inter",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/135.png",
+      "logo_local": "https://media.api-sports.io/football/teams/490.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/505.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:CAGLIARI,SERIE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 - Serie A - Cagliari vs. Internazionale",
+          "id_xtream": "454149"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1550102",
+      "agenda_id": "apisports_football_1550102",
+      "titulo": "Lazio vs Genoa",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lazio",
+      "equipo_visitante": "Genoa",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/135.png",
+      "logo_local": "https://media.api-sports.io/football/teams/487.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/495.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:LAZIO",
+        "visitante:GENOA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 - Serie A - Lazio vs. Genoa",
+          "id_xtream": "454150"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1492353",
+      "agenda_id": "apisports_football_1492353",
+      "titulo": "Corinthians vs Santos",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Corinthians",
+      "equipo_visitante": "Santos",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/71.png",
+      "logo_local": "https://media.api-sports.io/football/teams/131.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/128.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CORINTHIANS",
+        "visitante:SANTOS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - Brasileirao - Corinthians vs Santos",
+          "id_xtream": "454151"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1492354",
+      "agenda_id": "apisports_football_1492354",
+      "titulo": "Flamengo vs Botafogo",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Flamengo",
+      "equipo_visitante": "Botafogo",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/71.png",
+      "logo_local": "https://media.api-sports.io/football/teams/127.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/120.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:FLAMENGO",
+        "visitante:BOTAFOGO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - Brasileirao - Flamengo vs Botafogo",
+          "id_xtream": "454152"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1505513",
+      "agenda_id": "apisports_football_1505513",
+      "titulo": "Universidad de Concepcion vs Universidad de Chile",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Universidad de Concepcion",
+      "equipo_visitante": "Universidad de Chile",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/265.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2324.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2323.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CONCEPCION",
+        "visitante:CHILE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - Chile - U. de Concepción vs U. de Chile",
+          "id_xtream": "454153"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549753",
+      "agenda_id": "apisports_football_1549753",
+      "titulo": "Águilas Doradas vs Chico",
+      "torneo": "Primera A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Águilas Doradas",
+      "equipo_visitante": "Chico",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1144.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1132.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:AGUILAS",
+        "visitante:CHICO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - Colombia - Rionegro Águilas vs Boyacá Chicó",
+          "id_xtream": "454154"
+        }
+      ]
+    },
+    {
+      "id": "xtream_50ab731a72eec852",
+      "agenda_id": "",
+      "titulo": "Alabama St vs Troy",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Alabama St",
+      "equipo_visitante": "Troy",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - NCAA Volleyball - Alabama St vs. Troy",
+          "id_xtream": "454155"
+        }
+      ]
+    },
+    {
+      "id": "xtream_59b55a161266d60a",
+      "agenda_id": "",
+      "titulo": "Lindenwood vs Saint Louis",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lindenwood",
+      "equipo_visitante": "Saint Louis",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - NCAA Volleyball - Lindenwood vs. Saint Louis",
+          "id_xtream": "454156"
+        }
+      ]
+    },
+    {
+      "id": "xtream_6f279ec989c490be",
+      "agenda_id": "",
+      "titulo": "Little Rock vs Louisiana Tech",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Little Rock",
+      "equipo_visitante": "Louisiana Tech",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - NCAA Volleyball - Little Rock vs. Louisiana Tech",
+          "id_xtream": "454157"
+        }
+      ]
+    },
+    {
+      "id": "xtream_6a659c984b47fc0f",
+      "agenda_id": "",
+      "titulo": "Northern Iowa vs Iowa State",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Northern Iowa",
+      "equipo_visitante": "Iowa State",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - NCAA Volleyball - Northern Iowa vs. Iowa State",
+          "id_xtream": "454158"
+        }
+      ]
+    },
+    {
+      "id": "xtream_3366ee1722059615",
+      "agenda_id": "",
+      "titulo": "Radford vs East Carolina",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Radford",
+      "equipo_visitante": "East Carolina",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - NCAA Volleyball - Radford vs. East Carolina",
+          "id_xtream": "454159"
+        }
+      ]
+    },
+    {
+      "id": "xtream_8ffd155e9e0baf14",
+      "agenda_id": "",
+      "titulo": "UL Monroe vs E Texas A&M",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "UL Monroe",
+      "equipo_visitante": "E Texas A&M",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - NCAA Volleyball - UL Monroe vs. E Texas A&M",
+          "id_xtream": "454160"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1511669",
+      "agenda_id": "apisports_football_1511669",
+      "titulo": "Deportes Temuco vs D. Puerto Montt",
+      "torneo": "Primera B",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportes Temuco",
+      "equipo_visitante": "D. Puerto Montt",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/266.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2317.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2342.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:TEMUCO",
+        "visitante:MONTT,PUERTO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - Segunda Chile - Dep. Temuco vs Dep. Puerto Montt",
+          "id_xtream": "454161"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180057",
+      "agenda_id": "apisports_baseball_180057",
+      "titulo": "New York Mets vs Houston Astros",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Mets",
+      "equipo_visitante": "Houston Astros",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T19:10:00Z",
+      "hora_local_producto": "14:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/24.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/15.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:METS",
+        "visitante:ASTROS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:10 - MLB 13 - Astros vs Mets",
+          "id_xtream": "454162"
+        },
+        {
+          "nombre": "14:10 - MLB 14 - Astros vs Mets Español",
+          "id_xtream": "454163"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1570355",
+      "agenda_id": "apisports_football_1570355",
+      "titulo": "Celta Vigo vs Athletic Club",
+      "torneo": "La Liga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Celta Vigo",
+      "equipo_visitante": "Athletic Club",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T19:30:00Z",
+      "hora_local_producto": "14:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/140.png",
+      "logo_local": "https://media.api-sports.io/football/teams/538.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/531.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CELTA",
+        "visitante:CLUB",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:30 - LES - Celta vs. Ath. Club",
+          "id_xtream": "454164"
+        }
+      ]
+    },
+    {
+      "id": "xtream_73aa5207232c11d0",
+      "agenda_id": "",
+      "titulo": "Santa Barbara vs Arizona",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Santa Barbara",
+      "equipo_visitante": "Arizona",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T19:30:00Z",
+      "hora_local_producto": "14:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:30 - NCAA Volleyball - Santa Barbara vs. Arizona",
+          "id_xtream": "454165"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1493092",
+      "agenda_id": "apisports_football_1493092",
+      "titulo": "Argentinos JRS vs Aldosivi",
+      "torneo": "Liga Profesional Argentina",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Argentinos JRS",
+      "equipo_visitante": "Aldosivi",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
+      "logo_local": "https://media.api-sports.io/football/teams/458.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/463.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ARGENTINOS",
+        "visitante:ALDOSIVI",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - Arg - Argentinos Juniors vs Aldosivi",
+          "id_xtream": "454166"
+        }
+      ]
+    },
+    {
+      "id": "xtream_47b4534533b0762b",
+      "agenda_id": "",
+      "titulo": "Duquesne vs Robert Morris",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Duquesne",
+      "equipo_visitante": "Robert Morris",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Soccer - Duquesne vs. Robert Morris",
+          "id_xtream": "454167"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2fbc4b61002cd0ce",
+      "agenda_id": "",
+      "titulo": "American vs Virginia",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "American",
+      "equipo_visitante": "Virginia",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Volleyball - American vs. Virginia",
+          "id_xtream": "454168"
+        }
+      ]
+    },
+    {
+      "id": "xtream_eb63ff46a9627d7a",
+      "agenda_id": "",
+      "titulo": "Denver vs #23 Colorado",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Denver",
+      "equipo_visitante": "#23 Colorado",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Volleyball - Denver vs. #23 Colorado",
+          "id_xtream": "454169"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2aaa9aa307bb29df",
+      "agenda_id": "",
+      "titulo": "E Washington vs Seattle U",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "E Washington",
+      "equipo_visitante": "Seattle U",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Volleyball - E Washington vs. Seattle U",
+          "id_xtream": "454170"
+        }
+      ]
+    },
+    {
+      "id": "xtream_a7a43891b5ff408b",
+      "agenda_id": "",
+      "titulo": "Georgia St vs South Alabama",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Georgia St",
+      "equipo_visitante": "South Alabama",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Volleyball - Georgia St vs. South Alabama",
+          "id_xtream": "454171"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d8362dccd11068b2",
+      "agenda_id": "",
+      "titulo": "Nevada vs Portland St",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nevada",
+      "equipo_visitante": "Portland St",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Volleyball - Nevada vs. Portland St",
+          "id_xtream": "454172"
+        }
+      ]
+    },
+    {
+      "id": "xtream_39411188d279b7a8",
+      "agenda_id": "",
+      "titulo": "Sacramento St vs Pepperdine",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sacramento St",
+      "equipo_visitante": "Pepperdine",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Volleyball - Sacramento St vs. Pepperdine",
+          "id_xtream": "454173"
+        }
+      ]
+    },
+    {
+      "id": "xtream_6d98aa93517c7724",
+      "agenda_id": "",
+      "titulo": "UNC Wilmington vs #19 North Carolina",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "UNC Wilmington",
+      "equipo_visitante": "#19 North Carolina",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Volleyball - UNC Wilmington vs. #19 North Carolina",
+          "id_xtream": "454174"
+        }
+      ]
+    },
+    {
+      "id": "xtream_759d89d390b47360",
+      "agenda_id": "",
+      "titulo": "W Carolina vs Clemson",
+      "torneo": "NCAA Volleyball",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "W Carolina",
+      "equipo_visitante": "Clemson",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Volleyball - W Carolina vs. Clemson",
+          "id_xtream": "454175"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1534085",
+      "agenda_id": "apisports_football_1534085",
+      "titulo": "AFC Toronto W vs Ottawa Rapid W",
+      "torneo": "Northern Super League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "AFC Toronto W",
+      "equipo_visitante": "Ottawa Rapid W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/1182.png",
+      "logo_local": "https://media.api-sports.io/football/teams/25896.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/25900.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:TORONTO",
+        "visitante:OTTAWA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NSL Women - Toronto vs. Ottawa",
+          "id_xtream": "454176"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180071",
+      "agenda_id": "apisports_baseball_180071",
+      "titulo": "Athletics vs Baltimore Orioles",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Athletics",
+      "equipo_visitante": "Baltimore Orioles",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:05:00Z",
+      "hora_local_producto": "15:05",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/963.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/4.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATHLETICS",
+        "visitante:ORIOLES",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:05 - MLB 15 - Athletics vs Orioles",
+          "id_xtream": "454177"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180066",
+      "agenda_id": "apisports_baseball_180066",
+      "titulo": "Los Angeles Angels vs Philadelphia Phillies",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Los Angeles Angels",
+      "equipo_visitante": "Philadelphia Phillies",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T20:07:00Z",
+      "hora_local_producto": "15:07",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/17.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/27.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ANGELS",
+        "visitante:PHILLIES",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:07 - MLB 16 - Phillies vs Angels",
+          "id_xtream": "454178"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1519470",
+      "agenda_id": "apisports_football_1519470",
+      "titulo": "Orense SC vs Macara",
+      "torneo": "Liga Pro",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Orense SC",
+      "equipo_visitante": "Macara",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/242.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1992.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1155.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ORENSE",
+        "visitante:MACARA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:30 - Ecuador - Orense vs Macará",
+          "id_xtream": "454179"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1490427",
+      "agenda_id": "apisports_football_1490427",
+      "titulo": "Columbus Crew vs New England Revolution",
+      "torneo": "Major League Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Columbus Crew",
+      "equipo_visitante": "New England Revolution",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/253.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1613.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1609.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:COLUMBUS",
+        "visitante:ENGLAND,NEW",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:30 - MLS 01 - Columbus vs. New England",
+          "id_xtream": "454180"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549472",
+      "agenda_id": "apisports_football_1549472",
+      "titulo": "Sport Boys vs Sporting Cristal",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sport Boys",
+      "equipo_visitante": "Sporting Cristal",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/281.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2544.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2546.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BOYS",
+        "visitante:CRISTAL,SPORTING",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:30 - Perú - Sport Boys vs Sporting Cristal",
+          "id_xtream": "454181"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1600580",
+      "agenda_id": "apisports_football_1600580",
+      "titulo": "Águila vs Fuerte San Francisco",
+      "torneo": "Primera Division",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Águila",
+      "equipo_visitante": "Fuerte San Francisco",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/370.png",
+      "logo_local": "https://media.api-sports.io/football/teams/4310.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/22157.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:AGUILA",
+        "visitante:FRANCISCO,FUERTE,SAN",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 - El Salvador - Águila vs Fuerte San Francisco",
+          "id_xtream": "454182"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1592960",
+      "agenda_id": "apisports_football_1592960",
+      "titulo": "Estrella Roja vs CD Olimpia",
+      "torneo": "Liga Nacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Estrella Roja",
+      "equipo_visitante": "CD Olimpia",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/234.png",
+      "logo_local": "https://media.api-sports.io/football/teams/11370.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1051.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ESTRELLA,ROJA",
+        "visitante:OLIMPIA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 - Honduras - Estrella Roja vs Olimpia",
+          "id_xtream": "454183"
+        }
+      ]
+    },
+    {
+      "id": "xtream_00929f4ab0db98c3",
+      "agenda_id": "",
+      "titulo": "Springfield vs W Illinois",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Springfield",
+      "equipo_visitante": "W Illinois",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 - NCAA Soccer - Ill-Springfield vs. W Illinois",
+          "id_xtream": "454184"
+        }
+      ]
+    },
+    {
+      "id": "xtream_0768344186b20716",
+      "agenda_id": "",
+      "titulo": "Le Moyne vs St Bonaventure",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Le Moyne",
+      "equipo_visitante": "St Bonaventure",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 - NCAA Soccer - Le Moyne vs. St Bonaventure",
+          "id_xtream": "454185"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549759",
+      "agenda_id": "apisports_football_1549759",
+      "titulo": "Independiente Medellin vs Llaneros",
+      "torneo": "Primera A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Independiente Medellin",
+      "equipo_visitante": "Llaneros",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T21:10:00Z",
+      "hora_local_producto": "16:10",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1128.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1464.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MEDELLIN",
+        "visitante:LLANEROS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:10 - Colombia - Medellín vs Llaneros",
+          "id_xtream": "454186"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1492355",
+      "agenda_id": "apisports_football_1492355",
+      "titulo": "Gremio vs Chapecoense-sc",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Gremio",
+      "equipo_visitante": "Chapecoense-sc",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/71.png",
+      "logo_local": "https://media.api-sports.io/football/teams/130.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/132.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:GREMIO",
+        "visitante:CHAPECOENSE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:30 - Brasileirao - Grêmio vs Chapecoense",
+          "id_xtream": "454187"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1492356",
+      "agenda_id": "apisports_football_1492356",
+      "titulo": "Mirassol vs Palmeiras",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Mirassol",
+      "equipo_visitante": "Palmeiras",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/71.png",
+      "logo_local": "https://media.api-sports.io/football/teams/7848.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/121.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MIRASSOL",
+        "visitante:PALMEIRAS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:30 - Brasileirao - Mirassol vs Palmeiras",
+          "id_xtream": "454188"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1505508",
+      "agenda_id": "apisports_football_1505508",
+      "titulo": "Colo Colo vs A. Italiano",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Colo Colo",
+      "equipo_visitante": "A. Italiano",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/265.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2315.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2329.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:COLO",
+        "visitante:ITALIANO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:30 - Chile - Colo Colo vs A. Italiano",
+          "id_xtream": "454189"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1511667",
+      "agenda_id": "apisports_football_1511667",
+      "titulo": "Curico Unido vs Recoleta",
+      "torneo": "Primera B",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Curico Unido",
+      "equipo_visitante": "Recoleta",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/266.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2316.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/5644.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CURICO",
+        "visitante:RECOLETA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:30 - Segunda Chile - Curicó U. vs Dep. Recoleta",
+          "id_xtream": "454190"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1603341",
+      "agenda_id": "apisports_football_1603341",
+      "titulo": "América W vs Tijuana W",
+      "torneo": "Liga MX Femenil",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "América W",
+      "equipo_visitante": "Tijuana W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T21:45:00Z",
+      "hora_local_producto": "16:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/673.png",
+      "logo_local": "https://media.api-sports.io/football/teams/14868.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/14872.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:AMERICA",
+        "visitante:TIJUANA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:45 - Liga MX Fem - América vs. Tijuana",
+          "id_xtream": "454191"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1517338",
+      "agenda_id": "apisports_football_1517338",
+      "titulo": "Pacific FC vs HFX Wanderers FC",
+      "torneo": "Canadian Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Pacific FC",
+      "equipo_visitante": "HFX Wanderers FC",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/479.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2622.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2621.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:PACIFIC",
+        "visitante:HFX,WANDERERS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 - Canadian PL - Pacific FC vs HFX Wanderers",
+          "id_xtream": "454192"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c59fec10ef56c69c",
+      "agenda_id": "",
+      "titulo": "#6 Georgetown vs #19 Duke",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "#6 Georgetown",
+      "equipo_visitante": "#19 Duke",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 - NCAA Soccer - #6 Georgetown vs. #19 Duke",
+          "id_xtream": "454193"
+        }
+      ]
+    },
+    {
+      "id": "xtream_203d5f4eab0bdabe",
+      "agenda_id": "",
+      "titulo": "Colgate vs UAlbany",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Colgate",
+      "equipo_visitante": "UAlbany",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 - NCAA Soccer - Colgate vs. UAlbany",
+          "id_xtream": "454194"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1629055",
+      "agenda_id": "apisports_football_1629055",
+      "titulo": "Cerro Largo vs Liverpool Montevideo",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cerro Largo",
+      "equipo_visitante": "Liverpool Montevideo",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/268.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2369.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2358.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CERRO,LARGO",
+        "visitante:LIVERPOOL",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 - Uruguay - Cerro Largo vs Liverpool",
+          "id_xtream": "454195"
+        }
+      ]
+    },
+    {
+      "id": "xtream_226a402f118dc3a5",
+      "agenda_id": "",
+      "titulo": "Arg - Independiente vs Gimnasia Mendoza",
+      "torneo": "Arg - Independiente vs Gimnasia Mendoza",
+      "categoria": "Gimnasia",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T22:15:00Z",
+      "hora_local_producto": "17:15",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Gimnasia"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:15 - Arg - Independiente vs Gimnasia Mendoza",
+          "id_xtream": "454196"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1492352",
+      "agenda_id": "apisports_football_1492352",
+      "titulo": "Bahia vs Internacional",
+      "torneo": "Serie A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bahia",
+      "equipo_visitante": "Internacional",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/71.png",
+      "logo_local": "https://media.api-sports.io/football/teams/118.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/119.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BAHIA",
+        "visitante:INTERNACIONAL",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:30 - Brasileirao - Bahia vs Internacional",
+          "id_xtream": "454197"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f81cec73c278aa33",
+      "agenda_id": "",
+      "titulo": "Cobertura 2 En español vs US Open",
+      "torneo": "Tenis",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cobertura 2 En español",
+      "equipo_visitante": "US Open",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_local": "https://contentmasters.app/logos/golf-eventos.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - Cobertura 2 En español - US Open",
+          "id_xtream": "454198"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1519465",
+      "agenda_id": "apisports_football_1519465",
+      "titulo": "Emelec vs Leones del Norte",
+      "torneo": "Liga Pro",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Emelec",
+      "equipo_visitante": "Leones del Norte",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/242.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1148.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/19034.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:EMELEC",
+        "visitante:LEONES,NORTE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - Ecuador - Emelec vs Leones del Norte",
+          "id_xtream": "454199"
+        }
+      ]
+    },
+    {
+      "id": "tsdb_2432583",
+      "agenda_id": "tsdb_2432583",
+      "titulo": "Ottawa Redblacks vs BC Lions",
+      "torneo": "CFL",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Ottawa Redblacks",
+      "equipo_visitante": "BC Lions",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 220,
+      "logo_torneo": "https://r2.thesportsdb.com/images/media/league/badge/ffypv51488739128.png",
+      "logo_local": "https://r2.thesportsdb.com/images/media/team/badge/k8wjz71546002654.png",
+      "logo_visitante": "https://r2.thesportsdb.com/images/media/team/badge/ysxssy1424732039.png",
+      "tier": 2,
+      "origen": "thesportsdb_respaldo",
+      "origenes": [
+        "thesportsdb_respaldo"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:OTTAWA,REDBLACKS",
+        "visitante:LIONS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - F Americano - CFL Ottawa Redblacks vs BC Lions",
+          "id_xtream": "454200"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1603342",
+      "agenda_id": "apisports_football_1603342",
+      "titulo": "Atlético San Luis W vs Atlas W",
+      "torneo": "Liga MX Femenil",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlético San Luis W",
+      "equipo_visitante": "Atlas W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/673.png",
+      "logo_local": "https://media.api-sports.io/football/teams/14874.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/14873.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATLETICO,LUIS,SAN",
+        "visitante:ATLAS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - Liga MX Fem - Atlético de San Luis vs. Atlas",
+          "id_xtream": "454201"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1490435",
+      "agenda_id": "apisports_football_1490435",
+      "titulo": "St. Louis City vs FC Dallas",
+      "torneo": "Major League Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "St. Louis City",
+      "equipo_visitante": "FC Dallas",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/253.png",
+      "logo_local": "https://media.api-sports.io/football/teams/20787.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1597.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:LOUIS",
+        "visitante:DALLAS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - MLS 02 - St. Louis vs. Dallas",
+          "id_xtream": "454202"
+        }
+      ]
+    },
+    {
+      "id": "xtream_79f185f27c71a577",
+      "agenda_id": "",
+      "titulo": "Bellarmine vs N Kentucky",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bellarmine",
+      "equipo_visitante": "N Kentucky",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - NCAA Soccer - Bellarmine vs. N Kentucky",
+          "id_xtream": "454203"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2d59df1c9e70b4d5",
+      "agenda_id": "",
+      "titulo": "DePaul vs Loyola Chicago",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "DePaul",
+      "equipo_visitante": "Loyola Chicago",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - NCAA Soccer - DePaul vs. Loyola Chicago",
+          "id_xtream": "454204"
+        }
+      ]
+    },
+    {
+      "id": "xtream_fd212e8611e3fd6a",
+      "agenda_id": "",
+      "titulo": "Green Bay vs Bradley",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Green Bay",
+      "equipo_visitante": "Bradley",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - NCAA Soccer - Green Bay vs. Bradley",
+          "id_xtream": "454205"
+        }
+      ]
+    },
+    {
+      "id": "xtream_fad8270510e4ab76",
+      "agenda_id": "",
+      "titulo": "Team Boxing League vs Box",
+      "torneo": "Combate",
+      "categoria": "Combate",
+      "tipo_evento": "duelo",
+      "equipo_local": "Team Boxing League",
+      "equipo_visitante": "Box",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://contentmasters.app/logos/wwe-ufc-box.png",
+      "logo_local": "https://contentmasters.app/logos/wwe-ufc-box.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Combate"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - Team Boxing League - Box",
+          "id_xtream": "454206"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1603343",
+      "agenda_id": "apisports_football_1603343",
+      "titulo": "Guadalajara W vs Pumas UNAM W",
+      "torneo": "Liga MX Femenil",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Guadalajara W",
+      "equipo_visitante": "Pumas UNAM W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T23:06:00Z",
+      "hora_local_producto": "18:06",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/673.png",
+      "logo_local": "https://media.api-sports.io/football/teams/14876.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/14870.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 47,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:LIGA,PUMAS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:06 - Liga MX Fem - Chivas vs. Pumas",
+          "id_xtream": "454207"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549762",
+      "agenda_id": "apisports_football_1549762",
+      "titulo": "Millonarios vs Internacional de Bogota",
+      "torneo": "Primera A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Millonarios",
+      "equipo_visitante": "Internacional de Bogota",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T23:15:00Z",
+      "hora_local_producto": "18:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1125.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1134.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MILLONARIOS",
+        "visitante:BOGOTA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:15 - Colombia - Millonarios vs Inter Bogotá",
+          "id_xtream": "454208"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1592961",
+      "agenda_id": "apisports_football_1592961",
+      "titulo": "Real Espana vs Atlético Choloma",
+      "torneo": "Liga Nacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Real Espana",
+      "equipo_visitante": "Atlético Choloma",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-30T23:15:00Z",
+      "hora_local_producto": "18:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/234.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1058.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/11685.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ESPANA,REAL",
+        "visitante:CHOLOMA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:15 - Honduras - Real España vs Choloma",
+          "id_xtream": "454209"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180069",
+      "agenda_id": "apisports_baseball_180069",
+      "titulo": "Chicago Cubs vs Cincinnati Reds",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chicago Cubs",
+      "equipo_visitante": "Cincinnati Reds",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:20:00Z",
+      "hora_local_producto": "18:20",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/6.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/8.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CUBS",
+        "visitante:REDS",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:20 - MLB 17 - Reds vs. Cubs Español",
+          "id_xtream": "454210"
+        },
+        {
+          "nombre": "18:20 - MLB 18 - Reds at Cubs",
+          "id_xtream": "454211"
+        }
+      ]
+    },
+    {
+      "id": "xtream_babed697510ec592",
+      "agenda_id": "",
+      "titulo": "Women´s Pro League New York vs San Francisco",
+      "torneo": "Beisbol",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Women´s Pro League New York",
+      "equipo_visitante": "San Francisco",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 210,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Women's_Pro_Baseball_League.svg/1280px-Women's_Pro_Baseball_League.svg.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Women's_Pro_Baseball_League.svg/1280px-Women's_Pro_Baseball_League.svg.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 - Beisbol - Women´s Pro League New York vs. San Francisco",
+          "id_xtream": "454212"
+        }
+      ]
+    },
+    {
+      "id": "xtream_5d46029b9daf254f",
+      "agenda_id": "",
+      "titulo": "Chicago St vs Missouri St",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chicago St",
+      "equipo_visitante": "Missouri St",
+      "subtitulo": "",
+      "hora_utc": "2026-08-30T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 - NCAA Soccer - Chicago St vs. Missouri St",
+          "id_xtream": "454213"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1505509",
+      "agenda_id": "apisports_football_1505509",
+      "titulo": "Coquimbo Unido vs Huachipato",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Coquimbo Unido",
+      "equipo_visitante": "Huachipato",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-31T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/265.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2330.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2328.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:COQUIMBO",
+        "visitante:HUACHIPATO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 - Chile - Coquimbo U. vs Huachipato",
+          "id_xtream": "454214"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1598811",
+      "agenda_id": "apisports_football_1598811",
+      "titulo": "Deportivo Saprissa vs Escorpiones Belén",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Saprissa",
+      "equipo_visitante": "Escorpiones Belén",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-31T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/162.png",
+      "logo_local": "https://media.api-sports.io/football/teams/816.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/17377.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:DEPORTIVO,SAPRISSA",
+        "visitante:BELEN,ESCORPIONES",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 - Costa Rica - Deportivo Saprissa vs Escorpiones Belén",
+          "id_xtream": "454215"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1550946",
+      "agenda_id": "apisports_football_1550946",
+      "titulo": "Toluca vs FC Juarez",
+      "torneo": "Liga MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Toluca",
+      "equipo_visitante": "FC Juarez",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-31T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/262.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2281.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2298.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:TOLUCA",
+        "visitante:JUAREZ",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 - Liga MX - Toluca vs. Juárez",
+          "id_xtream": "454216"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c834fefa8dbbe843",
+      "agenda_id": "",
+      "titulo": "Tabasco vs Puebla",
+      "torneo": "LMB 01",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tabasco",
+      "equipo_visitante": "Puebla",
+      "subtitulo": "",
+      "hora_utc": "2026-08-31T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://r2.thesportsdb.com/images/media/league/logo/f975vs1625460045.png",
+      "logo_local": "https://r2.thesportsdb.com/images/media/league/logo/f975vs1625460045.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 - LMB 01 - Tabasco vs Puebla",
+          "id_xtream": "454217"
+        }
+      ]
+    },
+    {
+      "id": "xtream_45e5db6c054f1a34",
+      "agenda_id": "",
+      "titulo": "West Alabama vs Tuskegee",
+      "torneo": "NCAA Football",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "West Alabama",
+      "equipo_visitante": "Tuskegee",
+      "subtitulo": "",
+      "hora_utc": "2026-08-31T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 - NCAA Football - West Alabama vs. Tuskegee",
+          "id_xtream": "454218"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549467",
+      "agenda_id": "apisports_football_1549467",
+      "titulo": "Cienciano vs Cusco",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cienciano",
+      "equipo_visitante": "Cusco",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-31T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/281.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2562.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/10013.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CIENCIANO",
+        "visitante:CUSCO",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 - Perú - Cienciano vs Cusco",
+          "id_xtream": "454219"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1493101",
+      "agenda_id": "apisports_football_1493101",
+      "titulo": "Independ. Rivadavia vs Racing Club",
+      "torneo": "Liga Profesional Argentina",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Independ. Rivadavia",
+      "equipo_visitante": "Racing Club",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-31T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
+      "logo_local": "https://media.api-sports.io/football/teams/473.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/436.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:RIVADAVIA",
+        "visitante:CLUB,RACING",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:30 - Arg - Independiente Rivadavia vs Racing Club",
+          "id_xtream": "454220"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549755",
+      "agenda_id": "apisports_football_1549755",
+      "titulo": "Deportivo Cali vs Bucaramanga",
+      "torneo": "Primera A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Cali",
+      "equipo_visitante": "Bucaramanga",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-31T01:20:00Z",
+      "hora_local_producto": "20:20",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1127.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1131.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CALI,DEPORTIVO",
+        "visitante:BUCARAMANGA",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:20 - Colombia - Deportivo Cali vs Atlético Bucaramanga",
+          "id_xtream": "454221"
+        }
+      ]
+    },
+    {
+      "id": "xtream_bd022c281e11a004",
+      "agenda_id": "",
+      "titulo": "Oral Roberts vs CSU Northridge",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Oral Roberts",
+      "equipo_visitante": "CSU Northridge",
+      "subtitulo": "",
+      "hora_utc": "2026-08-31T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 - NCAA Soccer - Oral Roberts vs. CSU Northridge",
+          "id_xtream": "454222"
+        }
+      ]
+    },
+    {
+      "id": "xtream_08b8c4d1205aec51",
+      "agenda_id": "",
+      "titulo": "San Diego St vs Cal Poly",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Diego St",
+      "equipo_visitante": "Cal Poly",
+      "subtitulo": "",
+      "hora_utc": "2026-08-31T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 - NCAA Soccer - San Diego St vs. Cal Poly",
+          "id_xtream": "454223"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f142236e887edce1",
+      "agenda_id": "",
+      "titulo": "UC Davis vs #1 Stanford",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UC Davis",
+      "equipo_visitante": "#1 Stanford",
+      "subtitulo": "",
+      "hora_utc": "2026-08-31T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 - NCAA Soccer - UC Davis vs. #1 Stanford",
+          "id_xtream": "454224"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c54123d28420b245",
+      "agenda_id": "",
+      "titulo": "UC Irvine vs Pacific",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UC Irvine",
+      "equipo_visitante": "Pacific",
+      "subtitulo": "",
+      "hora_utc": "2026-08-31T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 - NCAA Soccer - UC Irvine vs. Pacific",
+          "id_xtream": "454225"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1550947",
+      "agenda_id": "apisports_football_1550947",
+      "titulo": "Monterrey vs Atletico San Luis",
+      "torneo": "Liga MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Monterrey",
+      "equipo_visitante": "Atletico San Luis",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-08-31T02:10:00Z",
+      "hora_local_producto": "21:10",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/262.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2282.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2314.png",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MONTERREY",
+        "visitante:ATLETICO,LUIS,SAN",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:10 - Liga MX - Monterrey vs. Atlético de San Luis",
+          "id_xtream": "454226"
+        }
+      ]
+    },
+    {
+      "id": "xtream_bdf08cb5b63e7663",
+      "agenda_id": "",
+      "titulo": "Utah Valley vs Santa Clara",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Utah Valley",
+      "equipo_visitante": "Santa Clara",
+      "subtitulo": "",
+      "hora_utc": "2026-08-31T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:30 - NCAA Soccer - Utah Valley vs. Santa Clara",
+          "id_xtream": "454227"
+        }
+      ]
+    }
+  ]
 }
