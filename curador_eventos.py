@@ -66,10 +66,10 @@ DURACION_POR_CATEGORIA = {
     "Hockey": 160, "Combate": 210, "Tenis": 210, "Rugby": 160,
     "Voleibol": 160, "Fútbol Americano": 220, "Handball": 150,
     "Ciclismo": 240, "Snooker": 180, "Golf": 300, "Gimnasia": 150,
-    "Deportes": 150,
+    "Escalada": 180, "Deportes Acuáticos": 150, "Deportes": 150,
 }
 
-DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Escalada", "Atletismo"}
+DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Escalada", "Deportes Acuáticos", "Atletismo"}
 DEPORTES_HIBRIDOS = {"Combate", "Tenis", "Deportes"}
 ARCHIVO_LOGOS_EQUIPOS = Path(os.environ.get("ARCHIVO_LOGOS_EQUIPOS", "logos_equipos.json"))
 
@@ -147,13 +147,15 @@ SESIONES = {
 DEPORTE_PISTAS = {
     "Golf": {"GOLF", "PGA", "DP WORLD", "BMW CHAMPIONSHIP"},
     "Snooker": {"SNOOKER"},
-    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR"},
+    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR", "MOUNTAIN BIKE", "MTB", "BTT", "DESCENSO"},
+    "Escalada": {"ESCALADA", "CLIMBING", "BOULDER", "IFSC", "MURO"},
+    "Deportes Acuáticos": {"PIRAGUISMO", "REMO", "CANOTAJE", "CANOE", "KAYAK", "SURFING", "SURF", "NATACION", "WATERPOLO"},
     "Gimnasia": {"GIMNASIA", "GYMNASTICS", "GYMNASTIQUE", "TURNEN", "ARTISTICA"},
-    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA"},
+    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA", "US OPEN", "AUSTRALIAN OPEN", "ROLAND GARROS", "WIMBLEDON"},
     "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA"},
     "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA", "WNBA"},
     "Béisbol": {"BASEBALL", "BEISBOL", "MLB", "LMB", "LITTLE LEAGUE"},
-    "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR", "SUPERBIKE"},
+    "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR", "SUPERBIKE", "RESISTENCIA DE LA FIA"},
     "Hockey": {"HOCKEY"},
     "Combate": {"UFC", "MMA", "BKFC", "BOXING", "BOXEO", "WWE", "WRESTLING", "KICKBOXING"},
     "Rugby": {"RUGBY"},
@@ -503,7 +505,7 @@ def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[Dict[s
         if metricas_salida is not None:
             metricas_salida.update(cache.get("metricas", {}))
             metricas_salida["cache"] = "vigente"
-        return list(cache.get("eventos", []))
+        return list(cache.get("eventos", []))\
 
     cliente = ClienteApiSports(API_SPORTS_KEY)
     agenda: List[Dict[str, Any]] = []
@@ -579,7 +581,8 @@ def detectar_categorias_fechadas(fecha_local: datetime) -> Tuple[set[str], set[s
             nombre_original = str(categoria.get("category_name") or "")
             if not sid:
                 continue
-            fecha_texto = fecha_xtream_explicita(nombre_original, fecha_local.date())
+            fecha_texto = fecha_xtream_explicita(nombre_original, fecha_local.date())\
+
             if fecha_texto is True or any(normalizar_texto(marca) in normalizar_texto(nombre_original) for marca in variaciones_fecha(fecha_local)):
                 hoy.add(sid)
             elif fecha_texto is False:
