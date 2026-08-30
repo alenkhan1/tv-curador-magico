@@ -1,6 +1,6 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-30T12:22:00Z",
+  "generado_utc": "2026-08-30T13:49:33Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-08-30",
   "agenda": {
@@ -113,20 +113,13 @@
   },
   "xtream": {
     "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 25,
-    "streams_totales": 6731,
-    "descartado_sin_vigencia_o_identidad": 5808,
-    "descartado_categoria_xtream_fuera_de_jornada": 472,
-    "descartado_fecha_xtream_fuera_de_jornada": 21,
-    "descartado_contenido_no_evento": 195,
-    "candidatos": 235
+    "categorias_fuera_de_jornada": 0,
+    "error": "xtream:503 Server Error: Service Unavailable for url: https://mi-dashboard-tv.onrender.com/api/puente_xtream?url=http%3A%2F%2Fstejar.matrivagoweb.com%3A8080%2Fplayer_api.php%3Fusername%3DgzeNxPxgthJb%26password%3DbdfMzp2aSnar%26action%3Dget_live_streams"
   },
   "curacion": {
-    "fuentes_probables": 193,
-    "fuentes_emparejadas": 42,
-    "eventos_unicos": 219
+    "eventos_unicos": 0
   },
-  "eventos_finales_base": 219,
+  "eventos_finales_base": 0,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
@@ -136,12 +129,12 @@
     },
     "fusion": {},
     "canales_mapeados": {
-      "E1": 3,
-      "E2": 3,
-      "TDP": 4
+      "E1": 0,
+      "E2": 0,
+      "TDP": 0
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 219,
-  "actualizado_utc": "2026-08-30T12:22:07Z"
+  "eventos_finales_total": 0,
+  "actualizado_utc": "2026-08-30T13:49:39Z"
 }
