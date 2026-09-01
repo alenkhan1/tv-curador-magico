@@ -67,10 +67,11 @@ DURACION_POR_CATEGORIA = {
     "Voleibol": 160, "Fútbol Americano": 220, "Handball": 150,
     "Ciclismo": 240, "Snooker": 180, "Golf": 300, "Gimnasia": 150,
     "Escalada": 180, "Deportes Acuáticos": 150, "Deportes": 150,
+    "Tejo": 180, "Atletismo": 180, "Otros Deportes": 150,
 }
 
 DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Escalada", "Deportes Acuáticos", "Atletismo"}
-DEPORTES_HIBRIDOS = {"Combate", "Tenis", "Deportes"}
+DEPORTES_HIBRIDOS = {"Combate", "Tenis", "Deportes", "Otros Deportes", "Tejo"}
 ARCHIVO_LOGOS_EQUIPOS = Path(os.environ.get("ARCHIVO_LOGOS_EQUIPOS", "logos_equipos.json"))
 
 def _cargar_cache_equipos() -> Dict[str, str]:
@@ -162,6 +163,7 @@ DEPORTE_PISTAS = {
     "Voleibol": {"VOLLEY", "VOLEIBOL"},
     "Fútbol Americano": {"NFL", "AMERICAN FOOTBALL", "FUTBOL AMERICANO"},
     "Handball": {"HANDBALL", "BALONMANO"},
+    "Tejo": {"TEJO", "TURMEQUE"},
 }
 
 
@@ -320,10 +322,10 @@ class ClienteApiSports:
 
             datos["http"] = respuesta.status_code
             for cabecera, destino in (
-                ("x-ratelimit-requests-limit", "limite_diario"),
-                ("x-ratelimit-requests-remaining", "restantes_diarios"),
-                ("X-RateLimit-Limit", "limite_minuto"),
-                ("X-RateLimit-Remaining", "restantes_minuto"),
+                    ("x-ratelimit-requests-limit", "limite_diario"),
+                    ("x-ratelimit-requests-remaining", "restantes_diarios"),
+                    ("X-RateLimit-Limit", "limite_minuto"),
+                    ("X-RateLimit-Remaining", "restantes_minuto"),
             ):
                 if respuesta.headers.get(cabecera):
                     datos[destino] = respuesta.headers[cabecera]
@@ -372,9 +374,10 @@ def _texto_evento_api(item: Dict[str, Any], config: Dict[str, str]) -> Tuple[str
     return titulo, torneo, "", "", "sencillo", subtitulo
 
 
-def normalizar_evento_api(deporte: str, item: Dict[str, Any], config: Dict[str, str], tz: ZoneInfo) -> Optional[Dict[str, Any]]:
+def normalizar_evento_api(deporte: str, item: Dict[str, Any], config: Dict[str, str], tz: ZoneInfo, fecha_referencia: Optional[date] = None) -> Optional[Dict[str, Any]]:
     inicio = _fecha_evento_api(item)
-    if inicio is None or inicio.astimezone(tz).date() != datetime.now(tz).date():
+    ref = fecha_referencia or datetime.now(tz).date()
+    if inicio is None or inicio.astimezone(tz).date() != ref:
         return None
     titulo, torneo, local, visitante, tipo, subtitulo = _texto_evento_api(item, config)
     if not titulo:
@@ -382,7 +385,6 @@ def normalizar_evento_api(deporte: str, item: Dict[str, Any], config: Dict[str, 
     id_origen = str(_get(item, "fixture.id", "game.id", "race.id", "fight.id", "id") or "")
     if not id_origen:
         id_origen = hashlib.sha1(f"{deporte}|{titulo}|{iso_utc(inicio)}".encode()).hexdigest()[:16]
-
 
     logo_torneo = str(_get(item, "league.logo", "competition.logo", "race.competition.logo") or "")
     if not logo_torneo:
@@ -404,6 +406,7 @@ def normalizar_evento_api(deporte: str, item: Dict[str, Any], config: Dict[str, 
         "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(tz).strftime("%H:%M"),
         "duracion_min": DURACION_POR_CATEGORIA.get(config["categoria"], 150),
         "logo_torneo": logo_torneo, "logo_local": logo_local, "logo_visitante": logo_visitante,
+        "banner": "",
         "tier": 1, "origen": f"api_sports:{deporte}", "origenes": [f"api_sports:{deporte}"],
         "estado": "confirmado", "estado_evento": estado, "confianza": "alta", "puntuacion_confianza": 100,
         "fuentes": [], "metodo_correlacion": "agenda_api_sports", "razones_correlacion": [f"deporte:{deporte}"],
@@ -471,7 +474,7 @@ def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Co
         inicio = parsear_iso_o_timestamp(bruto.get("strTimestamp"))
         if inicio is None:
             inicio = parsear_iso_o_timestamp(f"{bruto.get('dateEvent', '')} {bruto.get('strTime', '00:00:00')}")
-        if inicio is None or inicio.astimezone(tz).date() != datetime.now(tz).date():
+        if inicio is None or inicio.astimezone(tz).date().isoformat() != fecha_consulta:
             continue
         local, visitante = (bruto.get("strHomeTeam") or "").strip(), (bruto.get("strAwayTeam") or "").strip()
         titulo = f"{local} vs {visitante}" if local and visitante else (bruto.get("strEvent") or bruto.get("strLeague") or "").strip()
@@ -490,6 +493,7 @@ def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Co
             "subtitulo": "", "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(tz).strftime("%H:%M"),
             "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150), "logo_torneo": logo_torneo,
             "logo_local": bruto.get("strHomeTeamBadge") or "", "logo_visitante": bruto.get("strAwayTeamBadge") or "",
+            "banner": "",
             "tier": 2, "origen": "thesportsdb_respaldo", "origenes": ["thesportsdb_respaldo"],
             "estado": "confirmado", "estado_evento": "programado", "confianza": "media", "puntuacion_confianza": 78,
             "fuentes": [], "metodo_correlacion": "agenda_thesportsdb_respaldo", "razones_correlacion": [],
@@ -505,10 +509,11 @@ def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[Dict[s
         if metricas_salida is not None:
             metricas_salida.update(cache.get("metricas", {}))
             metricas_salida["cache"] = "vigente"
-        return list(cache.get("eventos", []))\
+        return list(cache.get("eventos", []))
 
     cliente = ClienteApiSports(API_SPORTS_KEY)
     agenda: List[Dict[str, Any]] = []
+    fecha_ref = date.fromisoformat(fecha_consulta)
     for deporte, config in API_CONFIGS.items():
         if deporte not in API_SPORTS_DEPORTES:
             continue
@@ -516,7 +521,7 @@ def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[Dict[s
         datos = cliente.get(deporte, config["host"], config["endpoint"], params)
         for bruto in (datos or {}).get("response") or []:
             if isinstance(bruto, dict):
-                evento = normalizar_evento_api(deporte, bruto, config, tz)
+                evento = normalizar_evento_api(deporte, bruto, config, tz, fecha_referencia=fecha_ref)
                 if evento:
                     agenda.append(evento)
 
@@ -540,6 +545,7 @@ def llamada_xtream(url: str, timeout: int = 60) -> Any:
     respuesta = requests.get(PUENTE_URL, params={"url": url}, timeout=timeout)
     respuesta.raise_for_status()
     return respuesta.json()
+
 
 def detectar_base_media_m3u() -> str:
     """Obtiene el host real de streaming para reproducir leyendo el M3U."""
@@ -581,8 +587,7 @@ def detectar_categorias_fechadas(fecha_local: datetime) -> Tuple[set[str], set[s
             nombre_original = str(categoria.get("category_name") or "")
             if not sid:
                 continue
-            fecha_texto = fecha_xtream_explicita(nombre_original, fecha_local.date())\
-
+            fecha_texto = fecha_xtream_explicita(nombre_original, fecha_local.date())
             if fecha_texto is True or any(normalizar_texto(marca) in normalizar_texto(nombre_original) for marca in variaciones_fecha(fecha_local)):
                 hoy.add(sid)
             elif fecha_texto is False:
@@ -612,12 +617,13 @@ def es_candidato(stream: Dict[str, Any], categorias_hoy: set[str], fecha_local: 
         return True, "categoria_xtream_hoy"
     if hora and (deporte or duelo):
         return True, "hora_y_identidad_sin_fecha"
+    if deporte or duelo:
+        return True, "deporte_o_duelo_sin_hora"
     return False, "sin_vigencia_o_identidad"
 
 
 def obtener_canales_candidatos(fecha_local: datetime) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
     metricas: Counter = Counter()
-    deduplicador: Dict[str, str] = {}
     if not (XTREAM_URL and XTREAM_USER and XTREAM_PASS):
         metricas["error"] = "faltan_credenciales_xtream"
         return [], dict(metricas)
@@ -646,7 +652,9 @@ def obtener_canales_candidatos(fecha_local: datetime) -> Tuple[List[Dict[str, An
         candidatos.append({
             "id_xtream": sid, "nombre_ui": nombre, "texto_normalizado": normalizar_texto(nombre), "tokens": tokenizar(nombre),
             "hora_local": extraer_hora_canal(nombre, fecha_local), "categoria_inferida": inferir_deporte(nombre),
-            "sesion": extraer_sesion(nombre), "categoria_xtream": str(stream.get("category_id") or ""), "motivo_vigencia": motivo, "logo_xtream": str(stream.get("stream_icon") or stream.get("tvg_logo") or ""),
+            "sesion": extraer_sesion(nombre), "categoria_xtream": str(stream.get("category_id") or ""), "motivo_vigencia": motivo,
+            "logo_xtream": str(stream.get("stream_icon") or stream.get("tvg_logo") or ""),
+            "added": stream.get("added"),
         })
     metricas["candidatos"] = len(candidatos)
     return candidatos, dict(metricas)
@@ -698,14 +706,16 @@ def calcular_similitud_simple(titulo: str, torneo: str, canal: str) -> Tuple[int
     return min(puntuacion, 100), comunes
 
 
-def emparejar_evento(canal: Dict[str, Any], agenda: Iterable[Dict[str, Any]]) -> Tuple[Optional[Dict[str, Any]], int, str, List[str]]:
+def emparejar_evento(canal: Dict[str, Any], agenda: Iterable[Dict[str, Any]], *, ignorar_proximidad_fecha: bool = False) -> Tuple[Optional[Dict[str, Any]], int, str, List[str]]:
     mejor, mejor_puntos, mejor_metodo, mejor_razones = None, 0, "sin_coincidencia_verificable", []
     for evento in agenda:
         if not _deportes_compatibles(canal, evento) or not _sesiones_compatibles(canal, evento):
             continue
-        cercano, diferencia = _proximidad_horaria(canal, evento)
-        if not cercano:
-            continue
+        diferencia = None
+        if not ignorar_proximidad_fecha:
+            cercano, diferencia = _proximidad_horaria(canal, evento)
+            if not cercano:
+                continue
 
         local = tokenizar(evento.get("equipo_local", ""))
         visita = tokenizar(evento.get("equipo_visitante", ""))
@@ -744,7 +754,7 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> Tuple[str, str, st
     # Hibridizacion universal - Nivel Premium
     limpio = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", nombre_ui)
     limpio = re.sub(r"(?<!\d)\d{1,2}:\d{2}\s*(?:[APap][Mm])?(?!\d)", "", limpio)
-    limpio = re.sub(r"\b(FHD|HD|SD|OP1|OP2|4K)\b", "", limpio, flags=re.I)
+    limpio = re.sub(r"\b(FHD|HD|SD|OP1|OP2|4K|HEVC|MULTI|ES|SPAIN|LATAM|EVENTOS?)\b", "", limpio, flags=re.I)
     limpio = " ".join(limpio.strip(" -|·:▪/|").split())
 
     es_competicion = categoria in DEPORTES_COMPETICION
@@ -755,7 +765,7 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> Tuple[str, str, st
         duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus|@)\s+(.+)", limpio, flags=re.I)
         if not duelo_match:
             duelo_match = re.search(r"(.+?)\s+(?:x|-)\s+(.+)", limpio, flags=re.I)
-    
+
     if duelo_match:
         parte_izq, parte_der = duelo_match.group(1).strip(), duelo_match.group(2).strip()
         sub_izq = [p.strip() for p in re.split(r"\s*[|·▪/:-]\s*", parte_izq) if p.strip()]
@@ -772,61 +782,126 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> Tuple[str, str, st
     return limpio, "", "sencillo", "", ""
 
 
-
-
-def crear_probable_xtream(canal: Dict[str, Any], tz: ZoneInfo, existentes: Dict[str, str]) -> Optional[Dict[str, Any]]:
+def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, existentes: Dict[str, str]) -> Optional[Dict[str, Any]]:
+    """Crea un evento legítimo no presente en API Sports (ej: Tejo, Surf, deportes raros o regionales)."""
     hora = canal.get("hora_local")
-    if hora is None: return None
-    categoria = canal.get("categoria_inferida") or "Deportes"
+    categoria = canal.get("categoria_inferida") or "Otros Deportes"
     torneo, subtitulo, tipo, local, visitante = analizar_titulo_xtream(canal["nombre_ui"], categoria)
 
-    titulo = f"{local} vs {visitante}" if tipo == "duelo" else torneo
-    # Fuzzy Merging por Franja y Titulo Normalizado
-    clave_dedup = normalizar_texto(titulo) + hora.strftime('%H%M')
+    if not torneo and not local:
+        return None
+
+    titulo = f"{local} vs {visitante}" if tipo == "duelo" else (torneo or canal["nombre_ui"])
+    hora_evento = hora if hora is not None else datetime.now(tz)
+    clave_dedup = normalizar_texto(titulo) + (hora_evento.strftime('%H%M') if hora else "")
     ident = existentes.get(clave_dedup) or hashlib.sha1(clave_dedup.encode("utf-8")).hexdigest()[:16]
     existentes[clave_dedup] = ident
 
-    logo = canal.get("logo_xtream") or resolver_logo_torneo(torneo, categoria)
-    
-    # Recuperación Inmaculada:
-    logo_loc = resolver_logo_equipo(local) or (logo if tipo == "sencillo" else canal.get("logo_xtream", ""))
+    logo_torneo = canal.get("logo_xtream") or resolver_logo_torneo(torneo, categoria)
+    logo_loc = resolver_logo_equipo(local) or (logo_torneo if tipo == "sencillo" else canal.get("logo_xtream", ""))
     logo_vis = resolver_logo_equipo(visitante)
 
     return {
         "id": f"xtream_{ident}", "agenda_id": "", "titulo": titulo, "torneo": torneo, "categoria": categoria,
         "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante, "subtitulo": subtitulo,
-        "hora_utc": iso_utc(hora), "hora_local_producto": hora.astimezone(tz).strftime("%H:%M"),
+        "hora_utc": iso_utc(hora_evento), "hora_local_producto": hora_evento.astimezone(tz).strftime("%H:%M"),
         "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150),
-        "logo_torneo": logo, "logo_local": logo_loc, "logo_visitante": logo_vis,
-        "tier": 3, "origen": "xtream_probable", "origenes": ["xtream"], "estado": "probable",
-        "estado_evento": "programado", "confianza": "media", "puntuacion_confianza": 58, "fuentes": [],
-        "metodo_correlacion": "xtream_vigente_sin_agenda",
-        "razones_correlacion": [canal.get("motivo_vigencia",""), f"categoria:{categoria}"],
+        "logo_torneo": logo_torneo, "logo_local": logo_loc, "logo_visitante": logo_vis,
+        "banner": "",
+        "tier": 3, "origen": "xtream_evento", "origenes": ["xtream"], "estado": "confirmado",
+        "estado_evento": "programado", "confianza": "media", "puntuacion_confianza": 75, "fuentes": [],
+        "metodo_correlacion": "evento_independiente_verificado",
+        "razones_correlacion": [canal.get("motivo_vigencia", ""), f"categoria:{categoria}"],
+    }
+
+# Alias para compatibilidad hacia atrás
+crear_probable_xtream = crear_evento_independiente_xtream
+
+
+def evaluar_frescura_lista(candidatos: List[Dict[str, Any]], agenda_ayer: List[Dict[str, Any]], agenda_hoy: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Evalúa con contraste negativo si la lista Xtream es un residuo de ayer o si está fresca."""
+    coincidencias_ayer = 0
+    coincidencias_hoy = 0
+    total_evaluados = 0
+
+    for canal in candidatos:
+        # Solo contrastamos canales que parezcan duelos o eventos reconocibles
+        if not canal.get("categoria_inferida") and "VS" not in canal["texto_normalizado"]:
+            continue
+        total_evaluados += 1
+        ev_ayer, pts_ayer, _, _ = emparejar_evento(canal, agenda_ayer, ignorar_proximidad_fecha=True)
+        ev_hoy, pts_hoy, _, _ = emparejar_evento(canal, agenda_hoy)
+
+        if ev_ayer and pts_ayer >= 75:
+            coincidencias_ayer += 1
+        if ev_hoy and pts_hoy >= 75:
+            coincidencias_hoy += 1
+
+    es_stale = False
+    if total_evaluados >= 3 and coincidencias_ayer >= 3 and coincidencias_hoy == 0:
+        es_stale = True
+        log.warning("Semáforo de Frescura: Detectada lista Xtream OBSOLETA (de ayer). Coincidencias ayer=%d, hoy=%d", coincidencias_ayer, coincidencias_hoy)
+    else:
+        log.info("Semáforo de Frescura: Lista Xtream VIGENTE. Coincidencias ayer=%d, hoy=%d, evaluados=%d", coincidencias_ayer, coincidencias_hoy, total_evaluados)
+
+    return {
+        "es_stale": es_stale,
+        "coincidencias_ayer": coincidencias_ayer,
+        "coincidencias_hoy": coincidencias_hoy,
+        "evaluados": total_evaluados
     }
 
 
-
-
-def curar_eventos(agenda: List[Dict[str, Any]], candidatos: List[Dict[str, Any]], fecha_producto: date) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, int]]:
+def curar_eventos(agenda_hoy: List[Dict[str, Any]], agenda_ayer: List[Dict[str, Any]], candidatos: List[Dict[str, Any]], fecha_producto: date) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]], Dict[str, Any]]:
     resultados: Dict[str, Dict[str, Any]] = {}
     cuarentena: List[Dict[str, Any]] = []
     metricas: Counter = Counter()
     deduplicador: Dict[str, str] = {}
     tz = obtener_zona_aplicacion()
+
+    frescura = evaluar_frescura_lista(candidatos, agenda_ayer, agenda_hoy)
+    metricas["lista_stale"] = 1 if frescura["es_stale"] else 0
+
     for canal in candidatos:
-        evento, puntos, metodo, razones = emparejar_evento(canal, agenda)
         fuente = {"nombre": canal["nombre_ui"], "id_xtream": canal["id_xtream"]}
+
+        # 1. Contraste principal con agenda oficial de hoy
+        evento, puntos, metodo, razones = emparejar_evento(canal, agenda_hoy)
+
+        # 2. Contraste negativo: Si no coincide con hoy pero sí con ayer, es un residuo del día anterior
+        if evento is None and agenda_ayer:
+            ev_ayer, pts_ayer, _, _ = emparejar_evento(canal, agenda_ayer, ignorar_proximidad_fecha=True)
+            if ev_ayer and pts_ayer >= 70:
+                metricas["descartado_partido_de_ayer"] += 1
+                if len(cuarentena) < MAX_CUARENTENA:
+                    cuarentena.append({**fuente, "motivo": "residuo_partido_de_ayer", "evento_ayer": ev_ayer.get("titulo")})
+                continue
+
+        # 3. Si la lista global fue calificada como obsoleta y el canal no coincidió con hoy, descartar
+        if evento is None and frescura["es_stale"]:
+            metricas["descartado_lista_stale"] += 1
+            if len(cuarentena) < MAX_CUARENTENA:
+                cuarentena.append({**fuente, "motivo": "lista_xtream_no_rotada"})
+            continue
+
+        # 4. Para deportes legítimos no cubiertos por la API (ej: Tejo, deportes especiales de hoy)
         if evento is None and PUBLICAR_XTREAM_PROBABLE:
-            evento = crear_probable_xtream(canal, tz, deduplicador)
-            if evento:
-                puntos = int(evento["puntuacion_confianza"])
-                metodo = str(evento["metodo_correlacion"])
-                razones = list(evento["razones_correlacion"])
+            cat = canal.get("categoria_inferida")
+            # Permitir si tiene hora válida y deporte/duelo, o si pertenece a una categoría fresca
+            if canal.get("hora_local") or cat in {"Tejo", "Deportes Acuáticos", "Escalada", "Gimnasia", "Otros Deportes"}:
+                evento = crear_evento_independiente_xtream(canal, tz, deduplicador)
+                if evento:
+                    puntos = int(evento["puntuacion_confianza"])
+                    metodo = str(evento["metodo_correlacion"])
+                    razones = list(evento["razones_correlacion"])
+                    metricas["eventos_independientes_creados"] += 1
+
         if evento is None:
             metricas["cuarentena"] += 1
             if len(cuarentena) < MAX_CUARENTENA:
                 cuarentena.append({**fuente, "motivo": metodo, "categoria_inferida": canal.get("categoria_inferida"), "texto_analizado": canal["texto_normalizado"]})
             continue
+
         clave = evento["id"]
         if clave not in resultados:
             clon = {k: v for k, v in evento.items() if k != "fuentes"}
@@ -836,37 +911,46 @@ def curar_eventos(agenda: List[Dict[str, Any]], candidatos: List[Dict[str, Any]]
             clon["razones_correlacion"] = razones
             resultados[clave] = clon
         fusionar_fuente(resultados[clave], fuente)
-        metricas["fuentes_emparejadas" if evento.get("agenda_id") else "fuentes_probables"] += 1
+        metricas["fuentes_emparejadas" if evento.get("agenda_id") else "fuentes_independientes"] += 1
+
     if PUBLICAR_AGENDA_SIN_FUENTE:
-        for evento in agenda:
+        for evento in agenda_hoy:
             resultados.setdefault(evento["id"], {k: v for k, v in evento.items()})
+
     eventos = sorted(resultados.values(), key=lambda e: e["hora_utc"])
     metricas["eventos_unicos"] = len(eventos)
-    return eventos, cuarentena, dict(metricas)
+    return eventos, cuarentena, {**dict(metricas), "frescura": frescura}
 
 
 def main() -> None:
     tz = obtener_zona_aplicacion()
     ahora = datetime.now(tz)
-    fecha = ahora.date().isoformat()
-    log.info("=== Curador multideporte v11 EN CANAL | Colombia %s ===", fecha)
-    metricas_agenda: Dict[str, Any] = {}
-    agenda = obtener_agenda_maestra(fecha, metricas_agenda)
+    fecha_hoy = ahora.date().isoformat()
+    fecha_ayer = (ahora.date() - timedelta(days=1)).isoformat()
+    log.info("=== Curador multideporte v12 Inteligente | Colombia %s ===", fecha_hoy)
+
+    metricas_agenda_hoy: Dict[str, Any] = {}
+    agenda_hoy = obtener_agenda_maestra(fecha_hoy, metricas_agenda_hoy)
+
+    # Agenda de ayer para contraste negativo
+    agenda_ayer = cargar_agenda_cache(fecha_ayer) or []
+
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
-    eventos, cuarentena, metricas_curacion = curar_eventos(agenda, candidatos, ahora.date())
+    eventos, cuarentena, metricas_curacion = curar_eventos(agenda_hoy, agenda_ayer, candidatos, ahora.date())
+
     salida = {
-        "version": 11, "generado_utc": iso_utc(datetime.now(timezone.utc)), "zona_horaria_producto": str(tz),
-        "fecha_local_producto": fecha, "base_media": detectar_base_media_m3u(), "eventos": eventos,
+        "version": 12, "generado_utc": iso_utc(datetime.now(timezone.utc)), "zona_horaria_producto": str(tz),
+        "fecha_local_producto": fecha_hoy, "base_media": detectar_base_media_m3u(), "eventos": eventos,
     }
     meta = {
-        "version": 11, "generado_utc": salida["generado_utc"], "zona_horaria_producto": str(tz),
-        "fecha_local_producto": fecha, "agenda": metricas_agenda, "xtream": metricas_xtream,
+        "version": 12, "generado_utc": salida["generado_utc"], "zona_horaria_producto": str(tz),
+        "fecha_local_producto": fecha_hoy, "agenda": metricas_agenda_hoy, "xtream": metricas_xtream,
         "curacion": metricas_curacion, "eventos_finales_base": len(eventos), "cuarentena_guardada": len(cuarentena),
     }
     guardar_json(ARCHIVO_SALIDA, salida)
     guardar_json(ARCHIVO_CUARENTENA, cuarentena)
     guardar_json(ARCHIVO_META, meta)
-    log.info("Finalizado: agenda=%d candidatos=%d eventos=%d cuarentena=%d", len(agenda), len(candidatos), len(eventos), len(cuarentena))
+    log.info("Finalizado: agenda=%d candidatos=%d eventos=%d cuarentena=%d", len(agenda_hoy), len(candidatos), len(eventos), len(cuarentena))
 
 
 if __name__ == "__main__":
