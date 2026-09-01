@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import unittest
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta, timezone, date
 
 import curador_eventos as curador
 import inyector_epg as epg
@@ -100,6 +100,70 @@ class PruebasSistemaCurador(unittest.TestCase):
         self.assertEqual(evento["tipo_evento"], "duelo")
         self.assertEqual(evento["equipo_local"], "Willemstad Curacao")
         self.assertEqual(evento["equipo_visitante"], "Seoul South Korea")
+
+    def test_contraste_negativo_descarta_partido_de_ayer_y_semaforo_detecta_stale(self) -> None:
+        # Agenda de ayer con partido finalizado de ayer
+        ayer_hora = self.hoy - timedelta(days=1)
+        agenda_ayer = [{
+            "id": "apisports_football_1001",
+            "titulo": "Real Madrid vs Barcelona",
+            "torneo": "LaLiga",
+            "categoria": "Fútbol",
+            "tipo_evento": "duelo",
+            "equipo_local": "Real Madrid",
+            "equipo_visitante": "Barcelona",
+            "hora_utc": curador.iso_utc(ayer_hora),
+        }]
+        # Agenda de hoy sin ese partido
+        agenda_hoy = [{
+            "id": "apisports_football_2001",
+            "titulo": "Arsenal vs Chelsea",
+            "torneo": "Premier League",
+            "categoria": "Fútbol",
+            "tipo_evento": "duelo",
+            "equipo_local": "Arsenal",
+            "equipo_visitante": "Chelsea",
+            "hora_utc": curador.iso_utc(self.hoy),
+        }]
+        candidatos = [
+            {
+                "id_xtream": "99901",
+                "nombre_ui": "20:00 - LaLiga - Real Madrid vs Barcelona",
+                "texto_normalizado": "20 00 LALIGA REAL MADRID VS BARCELONA",
+                "tokens": curador.tokenizar("LaLiga Real Madrid vs Barcelona"),
+                "hora_local": self.hoy.replace(hour=20),
+                "categoria_inferida": "Fútbol",
+                "sesion": None,
+                "motivo_vigencia": "hora_y_identidad_sin_fecha"
+            }
+        ]
+        eventos, cuarentena, metricas = curador.curar_eventos(agenda_hoy, agenda_ayer, candidatos, self.hoy.date())
+        # El partido de ayer debe haber sido descartado por contraste negativo
+        self.assertEqual(len(eventos), 0)
+        self.assertEqual(metricas["descartado_partido_de_ayer"], 1)
+        self.assertTrue(any(c.get("motivo") == "residuo_partido_de_ayer" for c in cuarentena))
+
+    def test_deporte_independiente_no_presente_en_api_se_conserva(self) -> None:
+        agenda_hoy = []
+        agenda_ayer = []
+        candidatos = [
+            {
+                "id_xtream": "77701",
+                "nombre_ui": "18:00 - Tejo - Campeonato Nacional de Tejo",
+                "texto_normalizado": "18 00 TEJO CAMPEONATO NACIONAL DE TEJO",
+                "tokens": curador.tokenizar("Tejo Campeonato Nacional de Tejo"),
+                "hora_local": self.hoy.replace(hour=18),
+                "categoria_inferida": "Tejo",
+                "sesion": None,
+                "motivo_vigencia": "hora_y_identidad_sin_fecha"
+            }
+        ]
+        eventos, cuarentena, metricas = curador.curar_eventos(agenda_hoy, agenda_ayer, candidatos, self.hoy.date())
+        # Debe preservarse y crearse como evento independiente verificado
+        self.assertEqual(len(eventos), 1)
+        self.assertEqual(eventos[0]["categoria"], "Tejo")
+        self.assertEqual(eventos[0]["metodo_correlacion"], "evento_independiente_verificado")
+        self.assertEqual(eventos[0]["fuentes"][0]["id_xtream"], "77701")
 
 
 if __name__ == "__main__":
