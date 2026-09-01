@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-01T11:33:54Z",
+  "generado_utc": "2026-09-01T13:07:48Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-01",
   "agenda": {
@@ -112,39 +112,37 @@
     "cache": "vigente"
   },
   "xtream": {
-    "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 25,
-    "streams_totales": 6549,
-    "descartado_sin_vigencia_o_identidad": 5651,
-    "descartado_categoria_xtream_fuera_de_jornada": 472,
-    "descartado_fecha_xtream_fuera_de_jornada": 21,
-    "descartado_contenido_no_evento": 195,
-    "candidatos": 210
+    "categorias_hoy": 1,
+    "categorias_fuera_de_jornada": 0,
+    "streams_totales": 6554,
+    "descartado_sin_hora_programada": 6067,
+    "descartado_contenido_no_evento": 422,
+    "descartado_fecha_xtream_fuera_de_jornada": 2,
+    "candidatos": 63
   },
   "curacion": {
     "lista_stale": 0,
-    "cuarentena": 142,
-    "eventos_independientes_creados": 44,
-    "fuentes_independientes": 44,
-    "fuentes_emparejadas": 24,
+    "eventos_independientes_creados": 28,
+    "fuentes_independientes": 28,
+    "fuentes_emparejadas": 35,
     "eventos_unicos": 59,
     "frescura": {
       "es_stale": false,
-      "coincidencias_ayer": 0,
-      "coincidencias_hoy": 14,
-      "evaluados": 204
+      "coincidencias_ayer": 13,
+      "coincidencias_hoy": 34,
+      "evaluados": 63
     }
   },
   "eventos_finales_base": 59,
-  "cuarentena_guardada": 142,
+  "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
       "programas_leidos": 214503,
-      "rechazados_no_en_vivo": 67,
+      "rechazados_no_en_vivo": 66,
       "admitidos": 14,
       "categoria:Ciclismo": 3,
-      "veto_o_historico": 31,
+      "veto_o_historico": 32,
       "categoria:Snooker": 1,
       "categoria:Tenis": 10
     },
@@ -159,5 +157,5 @@
     "orden_fuentes": "ES,Principal,EN,otros"
   },
   "eventos_finales_total": 73,
-  "actualizado_utc": "2026-09-01T11:33:59Z"
+  "actualizado_utc": "2026-09-01T13:07:54Z"
 }
