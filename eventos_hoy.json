@@ -1,8 +1,8 @@
 {
   "version": 11,
-  "generado_utc": "2026-08-31T23:51:22Z",
+  "generado_utc": "2026-09-01T07:50:50Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-08-31",
+  "fecha_local_producto": "2026-09-01",
   "base_media": "http://stejar.matrivagoweb.com:8080",
   "eventos": [
     {
@@ -15,7 +15,7 @@
       "equipo_local": "Cobertura 1 En español",
       "equipo_visitante": "US Open",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T15:00:00Z",
+      "hora_utc": "2026-09-01T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 210,
       "logo_torneo": "https://contentmasters.app/logos/tennis-events.png",
@@ -52,7 +52,7 @@
       "equipo_local": "Cobertura 2 En español",
       "equipo_visitante": "US Open",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T15:00:00Z",
+      "hora_utc": "2026-09-01T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 210,
       "logo_torneo": "https://contentmasters.app/logos/tennis-events.png",
@@ -80,73 +80,34 @@
       ]
     },
     {
-      "id": "apisports_football_1593115",
-      "agenda_id": "apisports_football_1593115",
-      "titulo": "Bayern Munich W vs Mainz 05 W",
-      "torneo": "Frauen Bundesliga",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Bayern Munich W",
-      "equipo_visitante": "Mainz 05 W",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T16:00:00Z",
-      "hora_local_producto": "11:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/82.png",
-      "logo_local": "https://media.api-sports.io/football/teams/1860.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/21564.png",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:BAYERN,MUNICH",
-        "visitante:MAINZ",
-        "diferencia_min:0"
-      ],
-      "fuentes": [
-        {
-          "nombre": "11:00 - Bundesliga Fem - Bayern Munich vs. Mainz",
-          "id_xtream": "454610"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1550103",
-      "agenda_id": "apisports_football_1550103",
+      "id": "xtream_916e3cc5b4bf46de",
+      "agenda_id": "",
       "titulo": "Lecce vs AS Roma",
       "torneo": "Serie A",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Lecce",
       "equipo_visitante": "AS Roma",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T16:30:00Z",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T16:30:00Z",
       "hora_local_producto": "11:30",
       "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/135.png",
-      "logo_local": "https://media.api-sports.io/football/teams/867.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/497.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "logo_torneo": "https://www.fifplay.com/img/public/serie-a-logo-transparent.png",
+      "logo_local": "https://www.fifplay.com/img/public/serie-a-logo-transparent.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:LECCE",
-        "visitante:ROMA",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
       ],
       "fuentes": [
         {
@@ -165,7 +126,7 @@
       "equipo_local": "Presbyterian",
       "equipo_visitante": "Navy",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T17:00:00Z",
+      "hora_utc": "2026-09-01T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -193,21 +154,21 @@
       ]
     },
     {
-      "id": "apisports_football_1570358",
-      "agenda_id": "apisports_football_1570358",
-      "titulo": "Osasuna vs Getafe",
-      "torneo": "La Liga",
+      "id": "apisports_football_1561915",
+      "agenda_id": "apisports_football_1561915",
+      "titulo": "Wolfsberger AC vs Lask Linz",
+      "torneo": "Bundesliga",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Osasuna",
-      "equipo_visitante": "Getafe",
+      "equipo_local": "Wolfsberger AC",
+      "equipo_visitante": "Lask Linz",
       "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T17:30:00Z",
+      "hora_utc": "2026-09-01T17:30:00Z",
       "hora_local_producto": "12:30",
       "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/140.png",
-      "logo_local": "https://media.api-sports.io/football/teams/727.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/546.png",
+      "logo_torneo": "https://media.api-sports.io/football/leagues/218.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1025.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1026.png",
       "tier": 1,
       "origen": "api_sports:football",
       "origenes": [
@@ -216,12 +177,48 @@
       "estado": "confirmado",
       "estado_evento": "programado",
       "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "puntuacion_confianza": 63,
+      "metodo_correlacion": "evento_simple_verificado",
       "razones_correlacion": [
-        "local:OSASUNA",
-        "visitante:GETAFE",
-        "diferencia_min:0"
+        "tokens:BUNDESLIGA",
+        "diferencia_min:90"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - Bundesliga Fem - Bayern Munich vs. Mainz",
+          "id_xtream": "454610"
+        }
+      ]
+    },
+    {
+      "id": "xtream_a02407169795ffd6",
+      "agenda_id": "",
+      "titulo": "Osasuna vs Getafe",
+      "torneo": "LES",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Osasuna",
+      "equipo_visitante": "Getafe",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://assets.laliga.com/assets/logos/LALIGA_EA_SPORTS_RGB_h_color/LALIGA_EA_SPORTS_RGB_h_color.png",
+      "logo_local": "https://assets.laliga.com/assets/logos/LALIGA_EA_SPORTS_RGB_h_color/LALIGA_EA_SPORTS_RGB_h_color.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -240,7 +237,7 @@
       "equipo_local": "Iona",
       "equipo_visitante": "Syracuse",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T18:00:00Z",
+      "hora_utc": "2026-09-01T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -268,35 +265,34 @@
       ]
     },
     {
-      "id": "apisports_football_1584385",
-      "agenda_id": "apisports_football_1584385",
-      "titulo": "Amed vs Trabzonspor",
-      "torneo": "Süper Lig",
-      "categoria": "Fútbol",
+      "id": "xtream_07f66922a841cf81",
+      "agenda_id": "",
+      "titulo": "Amed SK vs Trabzonspor",
+      "torneo": "Turquía",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "Amed",
+      "equipo_local": "Amed SK",
       "equipo_visitante": "Trabzonspor",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T18:30:00Z",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T18:30:00Z",
       "hora_local_producto": "13:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/203.png",
-      "logo_local": "https://media.api-sports.io/football/teams/3579.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/998.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/S%C3%BCper_Lig_logo.svg/330px-S%C3%BCper_Lig_logo.svg.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/S%C3%BCper_Lig_logo.svg/330px-S%C3%BCper_Lig_logo.svg.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:AMED",
-        "visitante:TRABZONSPOR",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -306,35 +302,34 @@
       ]
     },
     {
-      "id": "apisports_football_1629049",
-      "agenda_id": "apisports_football_1629049",
-      "titulo": "Racing Montevideo vs Albion FC",
-      "torneo": "Primera División",
-      "categoria": "Fútbol",
+      "id": "xtream_d8443d23bf49e15c",
+      "agenda_id": "",
+      "titulo": "Racing vs Albion",
+      "torneo": "Uruguay",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "Racing Montevideo",
-      "equipo_visitante": "Albion FC",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T18:30:00Z",
+      "equipo_local": "Racing",
+      "equipo_visitante": "Albion",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T18:30:00Z",
       "hora_local_producto": "13:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/268.png",
-      "logo_local": "https://media.api-sports.io/football/teams/2359.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/2378.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZMhrbB2fnxlNQnMLa-CNayvWFEOIW5iOfsQ&s_logo.png",
+      "logo_local": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZMhrbB2fnxlNQnMLa-CNayvWFEOIW5iOfsQ&s_logo.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:RACING",
-        "visitante:ALBION",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -344,35 +339,34 @@
       ]
     },
     {
-      "id": "apisports_football_1552452",
-      "agenda_id": "apisports_football_1552452",
-      "titulo": "Dijon vs Saint Etienne",
+      "id": "xtream_baf3e0aa3302919a",
+      "agenda_id": "",
+      "titulo": "Dijon vs Saint",
       "torneo": "Ligue 2",
-      "categoria": "Fútbol",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
       "equipo_local": "Dijon",
-      "equipo_visitante": "Saint Etienne",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T18:45:00Z",
+      "equipo_visitante": "Saint",
+      "subtitulo": "Étienne",
+      "hora_utc": "2026-09-01T18:45:00Z",
       "hora_local_producto": "13:45",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/62.png",
-      "logo_local": "https://media.api-sports.io/football/teams/89.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/1063.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://tiermaker.com/images/media/hero_images/2024/17200865/ligue-2-2024-2025-17200865/172008651717433398.jpg",
+      "logo_local": "https://tiermaker.com/images/media/hero_images/2024/17200865/ligue-2-2024-2025-17200865/172008651717433398.jpg",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:DIJON",
-        "visitante:ETIENNE,SAINT",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -382,35 +376,34 @@
       ]
     },
     {
-      "id": "apisports_football_1550098",
-      "agenda_id": "apisports_football_1550098",
+      "id": "xtream_ab79dea7d38ce76b",
+      "agenda_id": "",
       "titulo": "Atalanta vs Bologna",
       "torneo": "Serie A",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Atalanta",
       "equipo_visitante": "Bologna",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T18:45:00Z",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T18:45:00Z",
       "hora_local_producto": "13:45",
       "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/135.png",
-      "logo_local": "https://media.api-sports.io/football/teams/499.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/500.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "logo_torneo": "https://www.fifplay.com/img/public/serie-a-logo-transparent.png",
+      "logo_local": "https://www.fifplay.com/img/public/serie-a-logo-transparent.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:ATALANTA",
-        "visitante:BOLOGNA",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Fútbol"
       ],
       "fuentes": [
         {
@@ -420,35 +413,34 @@
       ]
     },
     {
-      "id": "apisports_football_1557377",
-      "agenda_id": "apisports_football_1557377",
+      "id": "xtream_7d726dd183cb6d5e",
+      "agenda_id": "",
       "titulo": "Aston Villa vs Arsenal",
-      "torneo": "Premier League",
-      "categoria": "Fútbol",
+      "torneo": "EPL",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
       "equipo_local": "Aston Villa",
       "equipo_visitante": "Arsenal",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T19:00:00Z",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T19:00:00Z",
       "hora_local_producto": "14:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/39.png",
-      "logo_local": "https://media.api-sports.io/football/teams/66.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/42.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://1000marcas.net/wp-content/uploads/2020/03/Premier-League-Logo.png",
+      "logo_local": "https://1000marcas.net/wp-content/uploads/2020/03/Premier-League-Logo.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:ASTON,VILLA",
-        "visitante:ARSENAL",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -458,35 +450,34 @@
       ]
     },
     {
-      "id": "apisports_football_1575476",
-      "agenda_id": "apisports_football_1575476",
+      "id": "xtream_946dddde58999917",
+      "agenda_id": "",
       "titulo": "Benfica vs Estoril",
-      "torneo": "Primeira Liga",
-      "categoria": "Fútbol",
+      "torneo": "Portugal",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
       "equipo_local": "Benfica",
       "equipo_visitante": "Estoril",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T19:15:00Z",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T19:15:00Z",
       "hora_local_producto": "14:15",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/94.png",
-      "logo_local": "https://media.api-sports.io/football/teams/211.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/230.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/5/5a/S%C3%ADmbolo_da_Liga_Portuguesa_de_Futebol_Profissional.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/5/5a/S%C3%ADmbolo_da_Liga_Portuguesa_de_Futebol_Profissional.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:BENFICA",
-        "visitante:ESTORIL",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -496,35 +487,34 @@
       ]
     },
     {
-      "id": "apisports_football_1570354",
-      "agenda_id": "apisports_football_1570354",
-      "titulo": "Barcelona vs Rayo Vallecano",
-      "torneo": "La Liga",
-      "categoria": "Fútbol",
+      "id": "xtream_8290e74452336a8f",
+      "agenda_id": "",
+      "titulo": "Barcelona vs Rayo",
+      "torneo": "LES",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
       "equipo_local": "Barcelona",
-      "equipo_visitante": "Rayo Vallecano",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T19:30:00Z",
+      "equipo_visitante": "Rayo",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T19:30:00Z",
       "hora_local_producto": "14:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/140.png",
-      "logo_local": "https://media.api-sports.io/football/teams/529.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/728.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://assets.laliga.com/assets/logos/LALIGA_EA_SPORTS_RGB_h_color/LALIGA_EA_SPORTS_RGB_h_color.png",
+      "logo_local": "https://assets.laliga.com/assets/logos/LALIGA_EA_SPORTS_RGB_h_color/LALIGA_EA_SPORTS_RGB_h_color.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:BARCELONA",
-        "visitante:RAYO",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -543,7 +533,7 @@
       "equipo_local": "Atletico Grau",
       "equipo_visitante": "FBC Melgar",
       "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T20:00:00Z",
+      "hora_utc": "2026-09-01T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
       "logo_torneo": "https://media.api-sports.io/football/leagues/281.png",
@@ -581,7 +571,7 @@
       "equipo_local": "Northeastern",
       "equipo_visitante": "Siena",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T21:00:00Z",
+      "hora_utc": "2026-09-01T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -609,35 +599,34 @@
       ]
     },
     {
-      "id": "apisports_football_1493096",
-      "agenda_id": "apisports_football_1493096",
-      "titulo": "Defensa Y Justicia vs Platense",
-      "torneo": "Liga Profesional Argentina",
-      "categoria": "Fútbol",
+      "id": "xtream_b098f49e2d20f7a5",
+      "agenda_id": "",
+      "titulo": "Defensa y Justicia vs Platense",
+      "torneo": "Arg",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "Defensa Y Justicia",
+      "equipo_local": "Defensa y Justicia",
       "equipo_visitante": "Platense",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T22:00:00Z",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T22:00:00Z",
       "hora_local_producto": "17:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
-      "logo_local": "https://media.api-sports.io/football/teams/442.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/1064.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:DEFENSA,JUSTICIA",
-        "visitante:PLATENSE",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -647,35 +636,34 @@
       ]
     },
     {
-      "id": "apisports_football_1493098",
-      "agenda_id": "apisports_football_1493098",
-      "titulo": "Estudiantes L.P. vs Newells Old Boys",
-      "torneo": "Liga Profesional Argentina",
-      "categoria": "Fútbol",
+      "id": "xtream_6cd003d680823d9f",
+      "agenda_id": "",
+      "titulo": "Estudiantes vs Newell's Old Boys",
+      "torneo": "Arg",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "Estudiantes L.P.",
-      "equipo_visitante": "Newells Old Boys",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T22:00:00Z",
+      "equipo_local": "Estudiantes",
+      "equipo_visitante": "Newell's Old Boys",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T22:00:00Z",
       "hora_local_producto": "17:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
-      "logo_local": "https://media.api-sports.io/football/teams/450.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/457.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:ESTUDIANTES",
-        "visitante:BOYS,OLD",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -694,7 +682,7 @@
       "equipo_local": "Memphis",
       "equipo_visitante": "Butler",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:00:00Z",
+      "hora_utc": "2026-09-01T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -731,7 +719,7 @@
       "equipo_local": "Wake Forest",
       "equipo_visitante": "Bowling Green",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:00:00Z",
+      "hora_utc": "2026-09-01T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -768,7 +756,7 @@
       "equipo_local": "Yale",
       "equipo_visitante": "Army",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:00:00Z",
+      "hora_utc": "2026-09-01T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -805,7 +793,7 @@
       "equipo_local": "Dayton",
       "equipo_visitante": "#7 Louisville",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:00:00Z",
+      "hora_utc": "2026-09-01T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 150,
       "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/volleyball-men.png",
@@ -833,20 +821,57 @@
       ]
     },
     {
-      "id": "apisports_baseball_179132",
-      "agenda_id": "apisports_baseball_179132",
-      "titulo": "Atlanta Braves vs San Francisco Giants",
+      "id": "xtream_f8cddb5c17347a29",
+      "agenda_id": "",
+      "titulo": "U. La Calera vs Dep. La Serena",
+      "torneo": "Chile",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "U. La Calera",
+      "equipo_visitante": "Dep. La Serena",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T22:15:00Z",
+      "hora_local_producto": "17:15",
+      "duracion_min": 150,
+      "logo_torneo": "https://chilebets.com/wp-content/themes/wovenbase/Assets/images/odds/primera-division-chile.png",
+      "logo_local": "https://chilebets.com/wp-content/themes/wovenbase/Assets/images/odds/primera-division-chile.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:15 - Chile - U. La Calera vs Dep. La Serena",
+          "id_xtream": "454631"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180086",
+      "agenda_id": "apisports_baseball_180086",
+      "titulo": "Pittsburgh Pirates vs San Francisco Giants",
       "torneo": "MLB",
       "categoria": "Béisbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Atlanta Braves",
+      "equipo_local": "Pittsburgh Pirates",
       "equipo_visitante": "San Francisco Giants",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:05:00Z",
-      "hora_local_producto": "17:05",
+      "hora_utc": "2026-09-01T22:40:00Z",
+      "hora_local_producto": "17:40",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
-      "logo_local": "https://media.api-sports.io/baseball/teams/3.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/28.png",
       "logo_visitante": "https://media.api-sports.io/baseball/teams/31.png",
       "tier": 1,
       "origen": "api_sports:baseball",
@@ -860,7 +885,7 @@
       "metodo_correlacion": "evento_simple_verificado",
       "razones_correlacion": [
         "tokens:GIANTS,MLB",
-        "diferencia_min:0"
+        "diferencia_min:35"
       ],
       "fuentes": [
         {
@@ -870,46 +895,8 @@
       ]
     },
     {
-      "id": "apisports_football_1505514",
-      "agenda_id": "apisports_football_1505514",
-      "titulo": "Union La Calera vs D. La Serena",
-      "torneo": "Primera División",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Union La Calera",
-      "equipo_visitante": "D. La Serena",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T22:15:00Z",
-      "hora_local_producto": "17:15",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/265.png",
-      "logo_local": "https://media.api-sports.io/football/teams/2326.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/2341.png",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:CALERA",
-        "visitante:SERENA",
-        "diferencia_min:0"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:15 - Chile - U. La Calera vs Dep. La Serena",
-          "id_xtream": "454631"
-        }
-      ]
-    },
-    {
-      "id": "apisports_baseball_180078",
-      "agenda_id": "apisports_baseball_180078",
+      "id": "apisports_baseball_180093",
+      "agenda_id": "apisports_baseball_180093",
       "titulo": "Cincinnati Reds vs San Diego Padres",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -917,7 +904,7 @@
       "equipo_local": "Cincinnati Reds",
       "equipo_visitante": "San Diego Padres",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:40:00Z",
+      "hora_utc": "2026-09-01T22:40:00Z",
       "hora_local_producto": "17:40",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -946,8 +933,8 @@
       ]
     },
     {
-      "id": "apisports_baseball_180074",
-      "agenda_id": "apisports_baseball_180074",
+      "id": "apisports_baseball_180089",
+      "agenda_id": "apisports_baseball_180089",
       "titulo": "Tampa Bay Rays vs New York Mets",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -955,7 +942,7 @@
       "equipo_local": "Tampa Bay Rays",
       "equipo_visitante": "New York Mets",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:40:00Z",
+      "hora_utc": "2026-09-01T22:40:00Z",
       "hora_local_producto": "17:40",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -984,8 +971,8 @@
       ]
     },
     {
-      "id": "apisports_baseball_180080",
-      "agenda_id": "apisports_baseball_180080",
+      "id": "apisports_baseball_180095",
+      "agenda_id": "apisports_baseball_180095",
       "titulo": "Boston Red Sox vs Seattle Mariners",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -993,7 +980,7 @@
       "equipo_local": "Boston Red Sox",
       "equipo_visitante": "Seattle Mariners",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:45:00Z",
+      "hora_utc": "2026-09-01T22:45:00Z",
       "hora_local_producto": "17:45",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -1022,21 +1009,21 @@
       ]
     },
     {
-      "id": "apisports_baseball_180073",
-      "agenda_id": "apisports_baseball_180073",
-      "titulo": "Washington Nationals vs Miami Marlins",
+      "id": "apisports_baseball_180084",
+      "agenda_id": "apisports_baseball_180084",
+      "titulo": "Washington Nationals vs Atlanta Braves",
       "torneo": "MLB",
       "categoria": "Béisbol",
       "tipo_evento": "duelo",
       "equipo_local": "Washington Nationals",
-      "equipo_visitante": "Miami Marlins",
+      "equipo_visitante": "Atlanta Braves",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T22:45:00Z",
+      "hora_utc": "2026-09-01T22:45:00Z",
       "hora_local_producto": "17:45",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
       "logo_local": "https://media.api-sports.io/baseball/teams/37.png",
-      "logo_visitante": "https://media.api-sports.io/baseball/teams/19.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/3.png",
       "tier": 1,
       "origen": "api_sports:baseball",
       "origenes": [
@@ -1045,11 +1032,10 @@
       "estado": "confirmado",
       "estado_evento": "programado",
       "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "puntuacion_confianza": 51,
+      "metodo_correlacion": "evento_simple_verificado",
       "razones_correlacion": [
-        "local:NATIONALS",
-        "visitante:MARLINS",
+        "tokens:MLB,NATIONALS",
         "diferencia_min:0"
       ],
       "fuentes": [
@@ -1069,7 +1055,7 @@
       "equipo_local": "",
       "equipo_visitante": "",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 150,
       "logo_torneo": "https://1000marcas.net/wp-content/uploads/2020/03/Campeonato-Brasileiro-S%C3%A9rie-A-logo.png",
@@ -1097,35 +1083,34 @@
       ]
     },
     {
-      "id": "apisports_football_1549757",
-      "agenda_id": "apisports_football_1549757",
+      "id": "xtream_a44ee1d370eeb026",
+      "agenda_id": "",
       "titulo": "Deportivo Pasto vs Deportivo Pereira",
-      "torneo": "Primera A",
-      "categoria": "Fútbol",
+      "torneo": "Colombia",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
       "equipo_local": "Deportivo Pasto",
       "equipo_visitante": "Deportivo Pereira",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "subtitulo": "",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
-      "logo_local": "https://media.api-sports.io/football/teams/1126.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/1462.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/1543.png",
+      "logo_local": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/1543.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:DEPORTIVO,PASTO",
-        "visitante:DEPORTIVO,PEREIRA",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -1144,7 +1129,7 @@
       "equipo_local": "#3 Portland",
       "equipo_visitante": "Princeton",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1181,7 +1166,7 @@
       "equipo_local": "Boston U",
       "equipo_visitante": "Providence",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1218,7 +1203,7 @@
       "equipo_local": "G Washington",
       "equipo_visitante": "UMBC",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1255,7 +1240,7 @@
       "equipo_local": "Purdue FW",
       "equipo_visitante": "Dayton",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1292,7 +1277,7 @@
       "equipo_local": "Saint Joseph's",
       "equipo_visitante": "Mount St Marys",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1329,7 +1314,7 @@
       "equipo_local": "St. Thomas (FL)",
       "equipo_visitante": "FIU",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1366,7 +1351,7 @@
       "equipo_local": "UAB",
       "equipo_visitante": "Mercer",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:00:00Z",
+      "hora_utc": "2026-09-01T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1403,7 +1388,7 @@
       "equipo_local": "Harvard",
       "equipo_visitante": "Notre Dame",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:30:00Z",
+      "hora_utc": "2026-09-01T23:30:00Z",
       "hora_local_producto": "18:30",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1431,8 +1416,8 @@
       ]
     },
     {
-      "id": "apisports_baseball_180079",
-      "agenda_id": "apisports_baseball_180079",
+      "id": "apisports_baseball_180094",
+      "agenda_id": "apisports_baseball_180094",
       "titulo": "Chicago Cubs vs Milwaukee Brewers",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -1440,7 +1425,7 @@
       "equipo_local": "Chicago Cubs",
       "equipo_visitante": "Milwaukee Brewers",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:40:00Z",
+      "hora_utc": "2026-09-01T23:40:00Z",
       "hora_local_producto": "18:40",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -1473,8 +1458,8 @@
       ]
     },
     {
-      "id": "apisports_baseball_180075",
-      "agenda_id": "apisports_baseball_180075",
+      "id": "apisports_baseball_180087",
+      "agenda_id": "apisports_baseball_180087",
       "titulo": "Minnesota Twins vs Detroit Tigers",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -1482,7 +1467,7 @@
       "equipo_local": "Minnesota Twins",
       "equipo_visitante": "Detroit Tigers",
       "subtitulo": "",
-      "hora_utc": "2026-08-31T23:40:00Z",
+      "hora_utc": "2026-09-01T23:40:00Z",
       "hora_local_producto": "18:40",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -1520,7 +1505,7 @@
       "equipo_local": "Creighton",
       "equipo_visitante": "Tulsa",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T00:00:00Z",
+      "hora_utc": "2026-09-02T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1557,7 +1542,7 @@
       "equipo_local": "Hou Christian",
       "equipo_visitante": "SMU",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T00:00:00Z",
+      "hora_utc": "2026-09-02T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -1585,35 +1570,34 @@
       ]
     },
     {
-      "id": "apisports_football_1508529",
-      "agenda_id": "apisports_football_1508529",
-      "titulo": "Boston Legacy W vs Angel City W",
-      "torneo": "NWSL Women",
-      "categoria": "Fútbol",
+      "id": "xtream_a6bfca4077f32269",
+      "agenda_id": "",
+      "titulo": "Boston Legacy vs Angel City",
+      "torneo": "NWSL",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "Boston Legacy W",
-      "equipo_visitante": "Angel City W",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-01T00:00:00Z",
+      "equipo_local": "Boston Legacy",
+      "equipo_visitante": "Angel City",
+      "subtitulo": "",
+      "hora_utc": "2026-09-02T00:00:00Z",
       "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/254.png",
-      "logo_local": "https://media.api-sports.io/football/teams/27377.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/18450.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://a2.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2323.png",
+      "logo_local": "https://a2.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2323.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:BOSTON,LEGACY",
-        "visitante:ANGEL,CITY",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -1623,35 +1607,34 @@
       ]
     },
     {
-      "id": "apisports_football_1511665",
-      "agenda_id": "apisports_football_1511665",
-      "titulo": "Cobreloa vs San Marcos de Arica",
-      "torneo": "Primera B",
-      "categoria": "Fútbol",
+      "id": "xtream_b42e2410f2726fc0",
+      "agenda_id": "",
+      "titulo": "Cobreloa vs San Marcos",
+      "torneo": "Segunda Chile",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
       "equipo_local": "Cobreloa",
-      "equipo_visitante": "San Marcos de Arica",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-01T00:00:00Z",
+      "equipo_visitante": "San Marcos",
+      "subtitulo": "",
+      "hora_utc": "2026-09-02T00:00:00Z",
       "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/266.png",
-      "logo_local": "https://media.api-sports.io/football/teams/2332.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/2345.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://cdn.footystats.org/img/competitions/chile-primera-b.png",
+      "logo_local": "https://cdn.footystats.org/img/competitions/chile-primera-b.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:COBRELOA",
-        "visitante:MARCOS,SAN",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -1661,8 +1644,8 @@
       ]
     },
     {
-      "id": "apisports_baseball_180076",
-      "agenda_id": "apisports_baseball_180076",
+      "id": "apisports_baseball_180085",
+      "agenda_id": "apisports_baseball_180085",
       "titulo": "Texas Rangers vs Athletics",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -1670,7 +1653,7 @@
       "equipo_local": "Texas Rangers",
       "equipo_visitante": "Athletics",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T00:05:00Z",
+      "hora_utc": "2026-09-02T00:05:00Z",
       "hora_local_producto": "19:05",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -1699,8 +1682,8 @@
       ]
     },
     {
-      "id": "apisports_baseball_180077",
-      "agenda_id": "apisports_baseball_180077",
+      "id": "apisports_baseball_180097",
+      "agenda_id": "apisports_baseball_180097",
       "titulo": "Houston Astros vs Chicago White Sox",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -1708,7 +1691,7 @@
       "equipo_local": "Houston Astros",
       "equipo_visitante": "Chicago White Sox",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T00:10:00Z",
+      "hora_utc": "2026-09-02T00:10:00Z",
       "hora_local_producto": "19:10",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -1737,96 +1720,20 @@
       ]
     },
     {
-      "id": "apisports_football_1493102",
-      "agenda_id": "apisports_football_1493102",
-      "titulo": "Instituto Cordoba vs San Lorenzo",
-      "torneo": "Liga Profesional Argentina",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Instituto Cordoba",
-      "equipo_visitante": "San Lorenzo",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-01T00:15:00Z",
-      "hora_local_producto": "19:15",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
-      "logo_local": "https://media.api-sports.io/football/teams/478.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/460.png",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:INSTITUTO",
-        "visitante:LORENZO,SAN",
-        "diferencia_min:0"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:15 - Arg - Instituto vs San Lorenzo",
-          "id_xtream": "454655"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1493105",
-      "agenda_id": "apisports_football_1493105",
-      "titulo": "Tigre vs Barracas Central",
-      "torneo": "Liga Profesional Argentina",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Tigre",
-      "equipo_visitante": "Barracas Central",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-01T00:15:00Z",
-      "hora_local_producto": "19:15",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
-      "logo_local": "https://media.api-sports.io/football/teams/452.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/2432.png",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:TIGRE",
-        "visitante:BARRACAS,CENTRAL",
-        "diferencia_min:0"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:15 - Arg - Tigre vs Barracas Central",
-          "id_xtream": "454656"
-        }
-      ]
-    },
-    {
-      "id": "xtream_a877968379693793",
+      "id": "xtream_f5c37814203573b9",
       "agenda_id": "",
-      "titulo": "Sultanes de Monterrey vs Toros de Tijuana",
-      "torneo": "LMB 01",
-      "categoria": "Béisbol",
+      "titulo": "Instituto vs San Lorenzo",
+      "torneo": "Arg",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "Sultanes de Monterrey",
-      "equipo_visitante": "Toros de Tijuana",
+      "equipo_local": "Instituto",
+      "equipo_visitante": "San Lorenzo",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T00:30:00Z",
-      "hora_local_producto": "19:30",
-      "duracion_min": 210,
-      "logo_torneo": "https://contentmasters.app/logos/lmb.png",
-      "logo_local": "https://contentmasters.app/logos/lmb.png",
+      "hora_utc": "2026-09-02T00:15:00Z",
+      "hora_local_producto": "19:15",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
       "logo_visitante": "",
       "tier": 3,
       "origen": "xtream_probable",
@@ -1840,18 +1747,55 @@
       "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
         "hora_y_identidad_sin_fecha",
-        "categoria:Béisbol"
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
-          "nombre": "19:30 - LMB 01 - Sultanes de Monterrey vs Toros de Tijuana",
-          "id_xtream": "454657"
+          "nombre": "19:15 - Arg - Instituto vs San Lorenzo",
+          "id_xtream": "454655"
         }
       ]
     },
     {
-      "id": "apisports_baseball_180082",
-      "agenda_id": "apisports_baseball_180082",
+      "id": "xtream_1c92e663e4bb80f2",
+      "agenda_id": "",
+      "titulo": "Tigre vs Barracas Central",
+      "torneo": "Arg",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tigre",
+      "equipo_visitante": "Barracas Central",
+      "subtitulo": "",
+      "hora_utc": "2026-09-02T00:15:00Z",
+      "hora_local_producto": "19:15",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:15 - Arg - Tigre vs Barracas Central",
+          "id_xtream": "454656"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180091",
+      "agenda_id": "apisports_baseball_180091",
       "titulo": "Colorado Rockies vs Baltimore Orioles",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -1859,7 +1803,7 @@
       "equipo_local": "Colorado Rockies",
       "equipo_visitante": "Baltimore Orioles",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T00:40:00Z",
+      "hora_utc": "2026-09-02T00:40:00Z",
       "hora_local_producto": "19:40",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -1888,35 +1832,34 @@
       ]
     },
     {
-      "id": "apisports_football_1505512",
-      "agenda_id": "apisports_football_1505512",
-      "titulo": "U. Catolica vs O'Higgins",
-      "torneo": "Primera División",
-      "categoria": "Fútbol",
+      "id": "xtream_6ac9500483b946e8",
+      "agenda_id": "",
+      "titulo": "U. Católica vs O'Higgins",
+      "torneo": "Chile",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "U. Catolica",
+      "equipo_local": "U. Católica",
       "equipo_visitante": "O'Higgins",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-01T00:45:00Z",
+      "subtitulo": "",
+      "hora_utc": "2026-09-02T00:45:00Z",
       "hora_local_producto": "19:45",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/265.png",
-      "logo_local": "https://media.api-sports.io/football/teams/2994.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/2320.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://chilebets.com/wp-content/themes/wovenbase/Assets/images/odds/primera-division-chile.png",
+      "logo_local": "https://chilebets.com/wp-content/themes/wovenbase/Assets/images/odds/primera-division-chile.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:CATOLICA",
-        "visitante:HIGGINS",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -1926,73 +1869,34 @@
       ]
     },
     {
-      "id": "apisports_football_1601419",
-      "agenda_id": "apisports_football_1601419",
-      "titulo": "Pitbulls Santa Barbara FC vs Santa Ana",
-      "torneo": "Liga de Ascenso",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Pitbulls Santa Barbara FC",
-      "equipo_visitante": "Santa Ana",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-01T01:00:00Z",
-      "hora_local_producto": "20:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/163.png",
-      "logo_local": "https://media.api-sports.io/football/teams/26343.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/2057.png",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:BARBARA,SANTA",
-        "visitante:SANTA",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "21:00 - NCAA Soocer - #2 San Diego vs. Santa Barbara",
-          "id_xtream": "454665"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1549756",
-      "agenda_id": "apisports_football_1549756",
-      "titulo": "Deportes Tolima vs Cucuta",
-      "torneo": "Primera A",
-      "categoria": "Fútbol",
+      "id": "xtream_b67497301da82178",
+      "agenda_id": "",
+      "titulo": "Deportes Tolima vs Cúcuta Deportivo",
+      "torneo": "Colombia",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
       "equipo_local": "Deportes Tolima",
-      "equipo_visitante": "Cucuta",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-01T01:05:00Z",
+      "equipo_visitante": "Cúcuta Deportivo",
+      "subtitulo": "",
+      "hora_utc": "2026-09-02T01:05:00Z",
       "hora_local_producto": "20:05",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
-      "logo_local": "https://media.api-sports.io/football/teams/1142.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/1470.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/1543.png",
+      "logo_local": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/1543.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:DEPORTES,TOLIMA",
-        "visitante:CUCUTA",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -2002,35 +1906,34 @@
       ]
     },
     {
-      "id": "apisports_football_1603344",
-      "agenda_id": "apisports_football_1603344",
-      "titulo": "Santos Laguna W vs Atlante W",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
+      "id": "xtream_cc25cf1f85afe796",
+      "agenda_id": "",
+      "titulo": "Santos vs Atlante",
+      "torneo": "Liga MX Fem",
+      "categoria": "Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "Santos Laguna W",
-      "equipo_visitante": "Atlante W",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-01T01:06:00Z",
+      "equipo_local": "Santos",
+      "equipo_visitante": "Atlante",
+      "subtitulo": "",
+      "hora_utc": "2026-09-02T01:06:00Z",
       "hora_local_producto": "20:06",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/673.png",
-      "logo_local": "https://media.api-sports.io/football/teams/14883.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/28036.png",
-      "tier": 1,
-      "origen": "api_sports:football",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ligamx.png",
+      "logo_local": "https://contentmasters.app/logos/ligamx.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
       "origenes": [
-        "api_sports:football"
+        "xtream"
       ],
-      "estado": "confirmado",
+      "estado": "probable",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
       "razones_correlacion": [
-        "local:SANTOS",
-        "visitante:ATLANTE",
-        "diferencia_min:0"
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
       ],
       "fuentes": [
         {
@@ -2040,8 +1943,46 @@
       ]
     },
     {
-      "id": "apisports_baseball_180072",
-      "agenda_id": "apisports_baseball_180072",
+      "id": "apisports_baseball_186733",
+      "agenda_id": "apisports_baseball_186733",
+      "titulo": "Monterrey vs Toros de Tijuana",
+      "torneo": "LMB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Monterrey",
+      "equipo_visitante": "Toros de Tijuana",
+      "subtitulo": "",
+      "hora_utc": "2026-09-02T01:30:00Z",
+      "hora_local_producto": "20:30",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/21.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/289.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/297.png",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MONTERREY",
+        "visitante:TIJUANA,TOROS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:30 - LMB 01 - Sultanes de Monterrey vs Toros de Tijuana",
+          "id_xtream": "454657"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_180083",
+      "agenda_id": "apisports_baseball_180083",
       "titulo": "Los Angeles Angels vs New York Yankees",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -2049,7 +1990,7 @@
       "equipo_local": "Los Angeles Angels",
       "equipo_visitante": "New York Yankees",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T01:38:00Z",
+      "hora_utc": "2026-09-02T01:38:00Z",
       "hora_local_producto": "20:38",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -2078,8 +2019,8 @@
       ]
     },
     {
-      "id": "apisports_baseball_180081",
-      "agenda_id": "apisports_baseball_180081",
+      "id": "apisports_baseball_180096",
+      "agenda_id": "apisports_baseball_180096",
       "titulo": "Arizona Diamondbacks vs Philadelphia Phillies",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -2087,7 +2028,7 @@
       "equipo_local": "Arizona Diamondbacks",
       "equipo_visitante": "Philadelphia Phillies",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T01:40:00Z",
+      "hora_utc": "2026-09-02T01:40:00Z",
       "hora_local_producto": "20:40",
       "duracion_min": 210,
       "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
@@ -2120,6 +2061,43 @@
       ]
     },
     {
+      "id": "xtream_60fbab0ab0fec1bf",
+      "agenda_id": "",
+      "titulo": "#2 San Diego vs Santa Barbara",
+      "torneo": "NCAA Soocer",
+      "categoria": "Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "#2 San Diego",
+      "equipo_visitante": "Santa Barbara",
+      "subtitulo": "",
+      "hora_utc": "2026-09-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_local": "https://contentmasters.app/logos/ncaa-1.png",
+      "logo_visitante": "",
+      "tier": 3,
+      "origen": "xtream_probable",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "probable",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 58,
+      "metodo_correlacion": "xtream_vigente_sin_agenda",
+      "razones_correlacion": [
+        "hora_y_identidad_sin_fecha",
+        "categoria:Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 - NCAA Soocer - #2 San Diego vs. Santa Barbara",
+          "id_xtream": "454665"
+        }
+      ]
+    },
+    {
       "id": "xtream_d7101df3bebd40e2",
       "agenda_id": "",
       "titulo": "Denver vs CA Baptist",
@@ -2129,7 +2107,7 @@
       "equipo_local": "Denver",
       "equipo_visitante": "CA Baptist",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T02:00:00Z",
+      "hora_utc": "2026-09-02T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
@@ -2166,7 +2144,7 @@
       "equipo_local": "Fullerton",
       "equipo_visitante": "Seattle U",
       "subtitulo": "",
-      "hora_utc": "2026-09-01T02:00:00Z",
+      "hora_utc": "2026-09-02T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 150,
       "logo_torneo": "https://contentmasters.app/logos/ncaa-1.png",
