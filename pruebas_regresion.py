@@ -62,27 +62,68 @@ class PruebasSistemaCurador(unittest.TestCase):
         self.assertFalse(epg.es_canal_espana("SP: UK: Eurosport 1 HD"))
         self.assertFalse(epg.es_canal_espana("SP: PL: Eurosport 2 HD"))
 
-    def test_consolidar_eventos_epg_mantiene_aislados_e1_y_e2(self) -> None:
-        ahora = datetime(2026, 8, 30, 14, 0, tzinfo=timezone.utc)
+    def test_pais_epg_detecta_prefijos_y_sufijos_de_paises(self) -> None:
+        self.assertEqual(epg.pais_epg("ES: Eurosport 1 HD"), "ES")
+        self.assertEqual(epg.pais_epg("DE: Eurosport 1"), "DE")
+        self.assertEqual(epg.pais_epg("Eurosport1.de"), "DE")
+        self.assertEqual(epg.pais_epg("Eurosport1.fr"), "FR")
+        self.assertEqual(epg.pais_epg("Eurosport1.uk"), "UK")
+        self.assertEqual(epg.pais_epg("Eurosport 1 Spain"), "ES")
+
+    def test_consolidacion_inteligente_unifica_eurosport_y_teledeporte_en_la_vuelta(self) -> None:
+        ahora = datetime(2026, 9, 1, 12, 45, tzinfo=timezone.utc)
         evento_e1 = epg.construir_evento_epg(
-            "DIRECTO Snooker: Wuhan Open", "", ahora, ahora + timedelta(hours=2),
+            "DIRECTO Ciclismo: La Vuelta - Etapa 10", "La Vuelta a España", ahora, ahora + timedelta(hours=3),
             [{"nombre": "SP: ES: Eurosport 1 FHD", "id_xtream": "101"}], [], ahora, consenso_directo=True,
             canal_epg="E1"
         )
-        evento_e2 = epg.construir_evento_epg(
-            "DIRECTO Snooker: Wuhan Open", "", ahora, ahora + timedelta(hours=2),
-            [{"nombre": "SP: ES: Eurosport 2 HD", "id_xtream": "202"}], [], ahora, consenso_directo=True,
-            canal_epg="E2"
+        evento_tdp = epg.construir_evento_epg(
+            "DIRECTO Ciclismo: Vuelta a España - Etapa 10", "La Vuelta a España", ahora, ahora + timedelta(hours=3),
+            [{"nombre": "SP: ES: Teledeporte FHD", "id_xtream": "202"}], [], ahora, consenso_directo=True,
+            canal_epg="TDP"
         )
         self.assertIsNotNone(evento_e1)
-        self.assertIsNotNone(evento_e2)
+        self.assertIsNotNone(evento_tdp)
 
-        consolidados = epg.consolidar_eventos_epg([evento_e1, evento_e2])
-        self.assertEqual(len(consolidados), 2)
-        self.assertEqual(len(consolidados[0]["fuentes"]), 1)
-        self.assertEqual(len(consolidados[1]["fuentes"]), 1)
-        self.assertEqual(consolidados[0]["fuentes"][0]["id_xtream"], "101")
-        self.assertEqual(consolidados[1]["fuentes"][0]["id_xtream"], "202")
+        consolidados = epg.consolidar_eventos_epg([evento_e1, evento_tdp])
+        self.assertEqual(len(consolidados), 1, "Eurosport 1 y Teledeporte emitiendo el mismo evento deben consolidarse en 1 sola tarjeta")
+        self.assertEqual(len(consolidados[0]["fuentes"]), 2, "La tarjeta debe contener las fuentes de ambos canales")
+
+    def test_fusion_con_base_unifica_xtream_y_epg_de_la_vuelta(self) -> None:
+        ahora = datetime(2026, 9, 1, 12, 45, tzinfo=timezone.utc)
+        evento_xtream = {
+            "id": "xtream_3b253bc194511b58",
+            "titulo": "La Vuelta a España: Stage 10 - Ciclismo",
+            "torneo": "La Vuelta a España: Stage 10 - Ciclismo",
+            "categoria": "Ciclismo",
+            "tipo_evento": "sencillo",
+            "hora_utc": curador.iso_utc(ahora),
+            "duracion_min": 240,
+            "origen": "xtream_evento",
+            "origenes": ["xtream"],
+            "fuentes": [{"nombre": "07:45 - La Vuelta a España: Stage 10", "id_xtream": "301"}]
+        }
+        evento_epg = epg.construir_evento_epg(
+            "DIRECTO Ciclismo: La Vuelta - Etapa 10", "La Vuelta a España", ahora, ahora + timedelta(hours=3),
+            [{"nombre": "SP: ES: Eurosport 1 FHD", "id_xtream": "101"}], [], ahora, consenso_directo=True,
+            canal_epg="E1"
+        )
+        self.assertIsNotNone(evento_epg)
+
+        base_fusionada, metricas = epg.fusionar_con_base([evento_xtream], [evento_epg])
+        self.assertEqual(len(base_fusionada), 1, "Xtream y EPG deben fusionarse en una sola tarjeta")
+        self.assertEqual(len(base_fusionada[0]["fuentes"]), 2)
+        self.assertIn("epg", base_fusionada[0]["origenes"])
+        self.assertIn("xtream", base_fusionada[0]["origenes"])
+
+    def test_titulo_invalido_o_muy_corto_es_rechazado(self) -> None:
+        ahora = datetime(2026, 9, 1, 12, 45, tzinfo=timezone.utc)
+        evento_rad = epg.construir_evento_epg(
+            "Rad", "", ahora, ahora + timedelta(hours=2),
+            [{"nombre": "SP: ES: Eurosport 1 FHD", "id_xtream": "101"}], [], ahora, consenso_directo=True,
+            canal_epg="E1"
+        )
+        self.assertIsNone(evento_rad, "Un evento con título corto 'Rad' sin información no debe crearse")
 
     def test_canal_xtream_con_duelo_en_subtitulo_se_analiza_correctamente(self) -> None:
         canal = {
