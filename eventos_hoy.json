@@ -1,75 +1,15 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-01T14:31:44Z",
+  "generado_utc": "2026-09-01T17:50:55Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-01",
   "base_media": "http://stejar.matrivagoweb.com:8080",
   "eventos": [
     {
-      "id": "epg_3e0bf7b288384478",
-      "agenda_id": "",
-      "titulo": "Ronda 2",
-      "torneo": "Ronda 2",
-      "categoria": "Snooker",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Segunda ronda · Abierto de Gran Bretaña de snooker",
-      "titulo_tarjeta": "Ronda 2",
-      "subtitulo_tarjeta": "Segunda ronda · Abierto de Gran Bretaña de…",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-01T12:00:00Z",
-      "hora_local_producto": "07:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "en_canal",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Snooker",
-        "directo:true"
-      ],
-      "canal_epg": "E2",
-      "fuentes": [
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 FHD",
-          "id_xtream": "379388",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 HD",
-          "id_xtream": "379389",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 SD",
-          "id_xtream": "379390",
-          "idioma": "ES",
-          "prioridad": 0
-        }
-      ]
-    },
-    {
       "id": "xtream_3b253bc194511b58",
       "agenda_id": "",
       "titulo": "La Vuelta a España: Stage 10 - Ciclismo",
-      "torneo": "La Vuelta a España - Etapa 10 - Alcaraz - Elche de la…",
+      "torneo": "La Vuelta a España: Stage 10 - Ciclismo",
       "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
@@ -83,15 +23,14 @@
       "logo_visitante": "",
       "banner": "",
       "tier": 3,
-      "origen": "xtream_evento+epg",
+      "origen": "xtream_evento",
       "origenes": [
-        "xtream",
-        "epg"
+        "xtream"
       ],
       "estado": "confirmado",
       "estado_evento": "programado",
       "confianza": "media",
-      "puntuacion_confianza": 88,
+      "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
         "hora_y_deporte_valido",
@@ -100,27 +39,7 @@
       "fuentes": [
         {
           "nombre": "07:45 - La Vuelta a España: Stage 10 - Ciclismo",
-          "id_xtream": "454721",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 FHD",
-          "id_xtream": "379385",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 HD",
-          "id_xtream": "379386",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 SD",
-          "id_xtream": "379387",
-          "idioma": "ES",
-          "prioridad": 0
+          "id_xtream": "454721"
         }
       ]
     },
