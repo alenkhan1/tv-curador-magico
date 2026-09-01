@@ -68,8 +68,8 @@ VETO_EPG = {
     "SURFING ES", "CLUB DE LA MITICA", "HISTORIAS DE", "CRONICAS", "PROGRAMA POR DETERMINAR",
 }
 
-# Filtro de archivos históricos o temporadas pasadas
-PATRON_TEMPORADA_HISTORICA = re.compile(r"\b(19\d\d|20[0-2][0-5])\b|\bT(2[0-5]|\d{1,2})\b", re.I)
+# Filtro de archivos históricos o temporadas pasadas (excluye temporadas vigentes como T26/27 o 2026/2027)
+PATRON_TEMPORADA_HISTORICA = re.compile(r"\b(19\d\d|20[0-1]\d|202[0-5])\b|\bT(1\d|2[0-5]|[1-9])(?!\d|/|-)", re.I)
 
 # Normalización canónica de sinónimos multilingües
 SINONIMOS_TORNEOS = {
@@ -117,7 +117,7 @@ def es_historico_o_veto(titulo: str, descripcion: str = "") -> bool:
 def limpiar_titulo_epg(titulo: str) -> Tuple[str, str]:
     valor = re.sub(r"\[/?COLOR[^\]]*\]", "", titulo or "", flags=re.I)
     valor = re.sub(r"(?i)\b(DIRECTO|VIVO|LIVE|EN DIRECTO|EN VIVO|DIREKT|EN DIRECT)\b", "", valor)
-    valor = re.sub(r"\bT\d{2,4}(/\d{2,4})?\b", "", valor)
+    valor = re.sub(r"\bT\d{2,4}(?:/\d{2,4})?\b", "", valor)
     valor = " ".join(valor.strip(" -:·|▪/").split())
 
     # Canonicalización de sinónimos
@@ -150,7 +150,7 @@ def clave_canal_epg(channel_id: str) -> Optional[str]:
 
 def es_canal_espana(nombre: str) -> bool:
     valor = normalizar_texto(nombre)
-    if any(x in valor for x in ("SP ES", "ESPAÑA", "ESPANOL", "CASTELLANO")):
+    if any(x in valor for x in ("SP ES", "ESPANA", "ESPANOL", "CASTELLANO")):
         return True
     if re.search(r"^(?:SP\s*)?ES\s*[:\-|]", valor) or re.search(r"\b(?:ESP|SPAIN)\b", valor):
         if not any(f"SP {c}" in valor or f" {c} " in valor for c in ("DE", "FR", "IT", "PL", "PT", "RO", "UK", "US")):
@@ -267,15 +267,15 @@ def extraer_participantes_tenis(titulo: str) -> Tuple[str, str]:
 
 
 def construir_evento_epg(
-    titulo_raw: str,
-    descripcion: str,
-    inicio: datetime,
-    fin: Optional[datetime],
-    fuentes: List[Dict[str, Any]],
-    agenda: List[Dict[str, Any]],
-    ahora: datetime,
-    consenso_directo: bool = False,
-    canal_epg: str = "",
+        titulo_raw: str,
+        descripcion: str,
+        inicio: datetime,
+        fin: Optional[datetime],
+        fuentes: List[Dict[str, Any]],
+        agenda: List[Dict[str, Any]],
+        ahora: datetime,
+        consenso_directo: bool = False,
+        canal_epg: str = "",
 ) -> Optional[Dict[str, Any]]:
     if not titulo_raw or es_historico_o_veto(titulo_raw, descripcion):
         return None
@@ -290,7 +290,7 @@ def construir_evento_epg(
     directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}")
     if not directo and oficial:
         directo = True # Rescatado: El texto no decía Directo, pero la API confirma que ocurre AHORA
-    
+
     if not directo:
         return None
 
@@ -352,9 +352,11 @@ def construir_evento_epg(
         "titulo_tarjeta": limitar(torneo, 52), "subtitulo_tarjeta": limitar(subtitulo, 44),
         "modo_presentacion": "competicion" if tipo == "sencillo" else "duelo_equipos",
         "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(obtener_zona_aplicacion()).strftime("%H:%M"),
-        "duracion_min": duracion, "logo_torneo": logo_oficial, 
+        "duracion_min": duracion, "logo_torneo": logo_oficial,
         "logo_local": resolver_logo_equipo(local) or (logo_oficial if tipo == "sencillo" else ""),
-        "logo_visitante": resolver_logo_equipo(visitante) or "", "tier": 2, "origen": "epg_en_canal", "origenes": ["epg"],
+        "logo_visitante": resolver_logo_equipo(visitante) or "",
+        "banner": "",
+        "tier": 2, "origen": "epg_en_canal", "origenes": ["epg"],
         "estado": estado_str, "estado_evento": "programado",
         "confianza": "alta", "puntuacion_confianza": 88,
         "metodo_correlacion": "epg_directo_multi_feed",
@@ -415,7 +417,7 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
                         pais = pais_epg(canal)
                         if clave in mapa and (pais in PAISES_GUIA_PRINCIPAL or not pais):
                             programas_principales.append(item)
-                elemento.clear()
+                    elemento.clear()
         except requests.RequestException as exc:
             log.warning("No se pudo descargar EPG auxiliar %s: %s", url_epg, exc)
         except ET.ParseError as exc:
@@ -505,9 +507,9 @@ def main() -> None:
     tz, ahora = obtener_zona_aplicacion(), datetime.now(timezone.utc)
     fecha = ahora.astimezone(tz).date().isoformat()
     try:
-        salida = json.loads(ARCHIVO_SALIDA.read_text(encoding="utf-8")) if ARCHIVO_SALIDA.exists() else {"version": 11, "eventos": [], "base_media": ""}
+        salida = json.loads(ARCHIVO_SALIDA.read_text(encoding="utf-8")) if ARCHIVO_SALIDA.exists() else {"version": 12, "eventos": [], "base_media": ""}
     except (OSError, ValueError):
-        salida = {"version": 11, "eventos": [], "base_media": ""}
+        salida = {"version": 12, "eventos": [], "base_media": ""}
 
     agenda = cargar_agenda_cache(fecha) or obtener_agenda_maestra(fecha)
     mapa = mapear_streams_canales_lineales()
@@ -515,7 +517,7 @@ def main() -> None:
     eventos, metricas_fusion = fusionar_con_base(list(salida.get("eventos") or []), eventos_epg)
 
     salida.update({
-        "version": 11, "generado_utc": iso_utc(ahora), "zona_horaria_producto": str(tz),
+        "version": 12, "generado_utc": iso_utc(ahora), "zona_horaria_producto": str(tz),
         "fecha_local_producto": fecha, "base_media": salida.get("base_media", ""), "eventos": eventos
     })
     ARCHIVO_SALIDA.write_text(json.dumps(salida, ensure_ascii=False, indent=2), encoding="utf-8")
