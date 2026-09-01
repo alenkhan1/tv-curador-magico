@@ -74,6 +74,21 @@ DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Esc
 DEPORTES_HIBRIDOS = {"Combate", "Tenis", "Deportes", "Otros Deportes", "Tejo"}
 ARCHIVO_LOGOS_EQUIPOS = Path(os.environ.get("ARCHIVO_LOGOS_EQUIPOS", "logos_equipos.json"))
 
+MESES_MAP = {
+    "ENERO": 1, "ENE": 1, "JANUARY": 1, "JAN": 1,
+    "FEBRERO": 2, "FEB": 2, "FEBRUARY": 2,
+    "MARZO": 3, "MAR": 3, "MARCH": 3,
+    "ABRIL": 4, "ABR": 4, "APRIL": 4, "APR": 4,
+    "MAYO": 5, "MAY": 5,
+    "JUNIO": 6, "JUN": 6, "JUNE": 6,
+    "JULIO": 7, "JUL": 7, "JULY": 7,
+    "AGOSTO": 8, "AGO": 8, "AUGUST": 8, "AUG": 8,
+    "SEPTIEMBRE": 9, "SEP": 9, "SEPT": 9, "SEPTEMBER": 9,
+    "OCTUBRE": 10, "OCT": 10, "OCTOBER": 10,
+    "NOVIEMBRE": 11, "NOV": 11, "NOVEMBER": 11,
+    "DICIEMBRE": 12, "DIC": 12, "DECEMBER": 12, "DEC": 12,
+}
+
 def _cargar_cache_equipos() -> Dict[str, str]:
     if not ARCHIVO_LOGOS_EQUIPOS.exists(): return {}
     try:
@@ -133,9 +148,10 @@ TOKENS_GENERICOS = {
 
 VETO_EMISION = {
     "REPETICION", "REPLAY", "RESUMEN", "HIGHLIGHTS", "COMPACTO", "NOTICIAS", "NEWS", "MAGAZINE", "PREVIA",
-    "POSTPARTIDO", "POST PARTIDO", "DOCUMENTAL", "CLASICOS", "MEMORIAS", "VINTAGE", "MEJORES MOMENTOS",
+    "POSTPARTIDO", "POST PARTIDO", "DOCUMENTAL", "DOCUMENTALES", "CLASICOS", "MEMORIAS", "VINTAGE", "MEJORES MOMENTOS",
     "WIEDERHOLUNG", "ZUSAMMENFASSUNG", "DOKUMENTATION", "VORSCHAU", "NACHRICHTEN",
     "REPETICAO", "RESUMO", "DOCUMENTARIO", "REDIFFUSION", "RETROSPECTIVA",
+    "PELICULA", "PELICULAS", "MOVIES", "SERIE", "SERIES", "ANIME", "ANIMACION", "ESTRENOS", "CONCIERTOS",
 }
 
 SESIONES = {
@@ -182,7 +198,15 @@ def tokenizar(texto: Any, *, conservar_genericos: bool = False) -> set[str]:
 
 def contiene_veto(texto: Any) -> bool:
     valor = normalizar_texto(texto)
-    return any(palabra in valor for palabra in VETO_EMISION)
+    if any(palabra in valor for palabra in VETO_EMISION):
+        return True
+    # Veto de series (S01 E02, T01 E05, S1E1, etc.)
+    if re.search(r"\b[ST]\d{1,2}\s*E\d{1,2}\b", valor):
+        return True
+    # Veto de películas con año explícito de estreno en paréntesis (ej: (2018), (2007))
+    if re.search(r"\((?:19\d{2}|20[0-2]\d)\)", str(texto)):
+        return True
+    return False
 
 
 def _pista_completa(valor: str, pista: str) -> bool:
@@ -242,15 +266,29 @@ def parsear_iso_o_timestamp(valor: Any) -> Optional[datetime]:
 
 
 def extraer_hora_canal(texto: str, fecha_base: datetime) -> Optional[datetime]:
-    for match in re.finditer(r"(?<!\d)(\d{1,2}):(\d{2})\s*([APap][Mm])?(?!\d)", texto or ""):
-        hora, minuto = int(match.group(1)), int(match.group(2))
-        ampm = (match.group(3) or "").upper()
-        if ampm == "PM" and hora < 12:
+    """Extrae la hora programada soportando múltiples formatos de listas IPTV (HH:MM, H:MM, HH.MM, HHhMM, AM/PM, hs/hrs)."""
+    if not texto:
+        return None
+
+    # 1. Formato con dos puntos o punto: "12:30", "12.30", "12:30 PM", "8:00 AM", "12:30hrs", "12:30 hs", "12:30h"
+    m = re.search(r"(?<!\d)([01]?\d|2[0-3])[:.]([0-5]\d)\s*([APap][Mm]|[Hh][Rr]?[Ss]?)?(?!\d)", texto)
+    if m:
+        hora, minuto = int(m.group(1)), int(m.group(2))
+        sufijo = (m.group(3) or "").upper()
+        if "PM" in sufijo and hora < 12:
             hora += 12
-        elif ampm == "AM" and hora == 12:
+        elif "AM" in sufijo and hora == 12:
             hora = 0
         if 0 <= hora <= 23 and 0 <= minuto <= 59:
             return fecha_base.replace(hour=hora, minute=minuto, second=0, microsecond=0)
+
+    # 2. Formato europeo con 'h'/'H': "12h30", "20H45", "12h00", "8h30"
+    m = re.search(r"(?<!\d)([01]?\d|2[0-3])[hH]([0-5]\d)(?!\d)", texto)
+    if m:
+        hora, minuto = int(m.group(1)), int(m.group(2))
+        if 0 <= hora <= 23 and 0 <= minuto <= 59:
+            return fecha_base.replace(hour=hora, minute=minuto, second=0, microsecond=0)
+
     return None
 
 
@@ -262,14 +300,44 @@ def variaciones_fecha(fecha: datetime) -> set[str]:
 
 
 def fecha_xtream_explicita(texto: str, fecha_producto: date) -> Optional[bool]:
+    """Detecta si un texto contiene una fecha explícita numérica (31/08) o textual (31 DE AGOSTO) y valida si es hoy."""
+    if not texto:
+        return None
+    # Eliminar marcas de canales 24/7 para evitar falsos positivos con fechas
+    texto_limpio = re.sub(r"\b24/7(?:/365)?\b", "", texto, flags=re.I)
+    norm = normalizar_texto(texto_limpio)
     hallada = False
-    for dia, mes, _ in re.findall(r"(?<!\d)(\d{1,2})[/-](\d{1,2})(?:[/-](\d{2,4}))?(?!\d)", texto or ""):
+
+    # 1. Formato numérico DD/MM o DD-MM o DD/MM/YYYY (evitando 24/7)
+    for dia, mes, _ in re.findall(r"(?<!\d)(\d{1,2})[/-](\d{1,2})(?:[/-](\d{2,4}))?(?!\d)", texto_limpio):
+        if 1 <= int(dia) <= 31 and 1 <= int(mes) <= 12:
+            hallada = True
+            try:
+                if date(fecha_producto.year, int(mes), int(dia)) == fecha_producto:
+                    return True
+            except ValueError:
+                continue
+
+    # 2. Formato textual ("31 DE AGOSTO", "31 AGO", "AGOSTO 31", "31 AUGUST", "AUG 31")
+    meses_re = "|".join(sorted(MESES_MAP.keys(), key=len, reverse=True))
+    for dia, mes_str in re.findall(rf"(?<!\d)(\d{{1,2}})\s*(?:DE\s*)?({meses_re})(?!\w)", norm):
         hallada = True
+        mes_num = MESES_MAP.get(mes_str)
         try:
-            if date(fecha_producto.year, int(mes), int(dia)) == fecha_producto:
+            if mes_num and date(fecha_producto.year, mes_num, int(dia)) == fecha_producto:
                 return True
         except ValueError:
             continue
+
+    for mes_str, dia in re.findall(rf"({meses_re})\s*(?:DE\s*)?(\d{{1,2}})(?!\d)", norm):
+        hallada = True
+        mes_num = MESES_MAP.get(mes_str)
+        try:
+            if mes_num and date(fecha_producto.year, mes_num, int(dia)) == fecha_producto:
+                return True
+        except ValueError:
+            continue
+
     return False if hallada else None
 
 
@@ -577,6 +645,7 @@ def detectar_base_media_m3u() -> str:
 
 
 def detectar_categorias_fechadas(fecha_local: datetime) -> Tuple[set[str], set[str]]:
+    """Identifica categorías fechadas numéricamente o con meses escritos para descartar categorías de ayer."""
     if not XTREAM_URL:
         return set(), set()
     url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_categories"
@@ -598,28 +667,38 @@ def detectar_categorias_fechadas(fecha_local: datetime) -> Tuple[set[str], set[s
 
 
 def es_candidato(stream: Dict[str, Any], categorias_hoy: set[str], fecha_local: datetime, categorias_ajenas: Optional[set[str]] = None) -> Tuple[bool, str]:
+    """Evalúa estrictamente si un stream es un evento válido con hora programada."""
     nombre = str(stream.get("name") or "").strip()
     if not nombre:
         return False, "sin_nombre"
     if contiene_veto(nombre):
         return False, "contenido_no_evento"
+
+    # 1. Comprobación de fecha explícita (numérica o textual, ej: "31 DE AGOSTO")
     fecha_en_texto = fecha_xtream_explicita(nombre, fecha_local.date())
     if fecha_en_texto is False:
         return False, "fecha_xtream_fuera_de_jornada"
     if str(stream.get("category_id") or "") in (categorias_ajenas or set()):
         return False, "categoria_xtream_fuera_de_jornada"
+
+    # 2. REGLA INQUEBRANTABLE: Un evento real SIEMPRE tiene hora programada
     hora = extraer_hora_canal(nombre, fecha_local)
-    deporte, duelo = inferir_deporte(nombre), bool(re.search(r"\b(VS|V|AT)\b|\s[-@]\s", normalizar_texto(nombre)))
+    if hora is None:
+        return False, "sin_hora_programada"
+
+    # 3. Categorización e identidad
+    deporte = inferir_deporte(nombre)
+    duelo = bool(re.search(r"\b(VS|V|AT)\b|\s[-@]\s", normalizar_texto(nombre)))
     categoria_hoy = str(stream.get("category_id") or "") in categorias_hoy
-    if fecha_en_texto is True and (hora or deporte or duelo):
+
+    if fecha_en_texto is True:
         return True, "fecha_xtream_hoy"
-    if categoria_hoy and (hora or deporte or duelo):
+    if categoria_hoy:
         return True, "categoria_xtream_hoy"
-    if hora and (deporte or duelo):
-        return True, "hora_y_identidad_sin_fecha"
     if deporte or duelo:
-        return True, "deporte_o_duelo_sin_hora"
-    return False, "sin_vigencia_o_identidad"
+        return True, "hora_y_deporte_valido"
+
+    return True, "hora_programada_en_canal"
 
 
 def obtener_canales_candidatos(fecha_local: datetime) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
@@ -751,15 +830,15 @@ def fusionar_fuente(evento: Dict[str, Any], fuente: Dict[str, Any]) -> None:
 
 
 def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> Tuple[str, str, str, str, str]:
-    # Hibridizacion universal - Nivel Premium
     limpio = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", nombre_ui)
-    limpio = re.sub(r"(?<!\d)\d{1,2}:\d{2}\s*(?:[APap][Mm])?(?!\d)", "", limpio)
+    limpio = re.sub(r"(?<!\d)([01]?\d|2[0-3])[:.]([0-5]\d)\s*([APap][Mm]|[Hh][Rr]?[Ss]?)?(?!\d)", "", limpio)
+    limpio = re.sub(r"(?<!\d)([01]?\d|2[0-3])[hH]([0-5]\d)(?!\d)", "", limpio)
     limpio = re.sub(r"\b(FHD|HD|SD|OP1|OP2|4K|HEVC|MULTI|ES|SPAIN|LATAM|EVENTOS?)\b", "", limpio, flags=re.I)
     limpio = " ".join(limpio.strip(" -|·:▪/|").split())
 
     es_competicion = categoria in DEPORTES_COMPETICION
 
-    # Pivote de duelo con doble prioridad (vs/@ primero, x/- como respaldo)
+    # Pivote de duelo
     duelo_match = None
     if not es_competicion:
         duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus|@)\s+(.+)", limpio, flags=re.I)
@@ -783,8 +862,11 @@ def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> Tuple[str, str, st
 
 
 def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, existentes: Dict[str, str]) -> Optional[Dict[str, Any]]:
-    """Crea un evento legítimo no presente en API Sports (ej: Tejo, Surf, deportes raros o regionales)."""
+    """Crea un evento legítimo no presente en API Sports (ej: Tejo, deportes raros o regionales). Requiere hora obligatoria."""
     hora = canal.get("hora_local")
+    if hora is None:
+        return None
+
     categoria = canal.get("categoria_inferida") or "Otros Deportes"
     torneo, subtitulo, tipo, local, visitante = analizar_titulo_xtream(canal["nombre_ui"], categoria)
 
@@ -792,8 +874,7 @@ def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, exist
         return None
 
     titulo = f"{local} vs {visitante}" if tipo == "duelo" else (torneo or canal["nombre_ui"])
-    hora_evento = hora if hora is not None else datetime.now(tz)
-    clave_dedup = normalizar_texto(titulo) + (hora_evento.strftime('%H%M') if hora else "")
+    clave_dedup = normalizar_texto(titulo) + hora.strftime('%H%M')
     ident = existentes.get(clave_dedup) or hashlib.sha1(clave_dedup.encode("utf-8")).hexdigest()[:16]
     existentes[clave_dedup] = ident
 
@@ -804,7 +885,7 @@ def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, exist
     return {
         "id": f"xtream_{ident}", "agenda_id": "", "titulo": titulo, "torneo": torneo, "categoria": categoria,
         "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante, "subtitulo": subtitulo,
-        "hora_utc": iso_utc(hora_evento), "hora_local_producto": hora_evento.astimezone(tz).strftime("%H:%M"),
+        "hora_utc": iso_utc(hora), "hora_local_producto": hora.astimezone(tz).strftime("%H:%M"),
         "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150),
         "logo_torneo": logo_torneo, "logo_local": logo_loc, "logo_visitante": logo_vis,
         "banner": "",
@@ -825,7 +906,6 @@ def evaluar_frescura_lista(candidatos: List[Dict[str, Any]], agenda_ayer: List[D
     total_evaluados = 0
 
     for canal in candidatos:
-        # Solo contrastamos canales que parezcan duelos o eventos reconocibles
         if not canal.get("categoria_inferida") and "VS" not in canal["texto_normalizado"]:
             continue
         total_evaluados += 1
@@ -863,6 +943,11 @@ def curar_eventos(agenda_hoy: List[Dict[str, Any]], agenda_ayer: List[Dict[str, 
     metricas["lista_stale"] = 1 if frescura["es_stale"] else 0
 
     for canal in candidatos:
+        # Si el canal no tiene hora programada, jamás se procesa
+        if canal.get("hora_local") is None:
+            metricas["descartado_sin_hora"] += 1
+            continue
+
         fuente = {"nombre": canal["nombre_ui"], "id_xtream": canal["id_xtream"]}
 
         # 1. Contraste principal con agenda oficial de hoy
@@ -886,15 +971,12 @@ def curar_eventos(agenda_hoy: List[Dict[str, Any]], agenda_ayer: List[Dict[str, 
 
         # 4. Para deportes legítimos no cubiertos por la API (ej: Tejo, deportes especiales de hoy)
         if evento is None and PUBLICAR_XTREAM_PROBABLE:
-            cat = canal.get("categoria_inferida")
-            # Permitir si tiene hora válida y deporte/duelo, o si pertenece a una categoría fresca
-            if canal.get("hora_local") or cat in {"Tejo", "Deportes Acuáticos", "Escalada", "Gimnasia", "Otros Deportes"}:
-                evento = crear_evento_independiente_xtream(canal, tz, deduplicador)
-                if evento:
-                    puntos = int(evento["puntuacion_confianza"])
-                    metodo = str(evento["metodo_correlacion"])
-                    razones = list(evento["razones_correlacion"])
-                    metricas["eventos_independientes_creados"] += 1
+            evento = crear_evento_independiente_xtream(canal, tz, deduplicador)
+            if evento:
+                puntos = int(evento["puntuacion_confianza"])
+                metodo = str(evento["metodo_correlacion"])
+                razones = list(evento["razones_correlacion"])
+                metricas["eventos_independientes_creados"] += 1
 
         if evento is None:
             metricas["cuarentena"] += 1
@@ -932,8 +1014,11 @@ def main() -> None:
     metricas_agenda_hoy: Dict[str, Any] = {}
     agenda_hoy = obtener_agenda_maestra(fecha_hoy, metricas_agenda_hoy)
 
-    # Agenda de ayer para contraste negativo
-    agenda_ayer = cargar_agenda_cache(fecha_ayer) or []
+    # Agenda de ayer para contraste negativo (si no está en caché local, se consulta)
+    agenda_ayer = cargar_agenda_cache(fecha_ayer)
+    if not agenda_ayer:
+        log.info("Cargando agenda de ayer (%s) para verificación de frescura y contraste...", fecha_ayer)
+        agenda_ayer = obtener_agenda_maestra(fecha_ayer)
 
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
     eventos, cuarentena, metricas_curacion = curar_eventos(agenda_hoy, agenda_ayer, candidatos, ahora.date())
