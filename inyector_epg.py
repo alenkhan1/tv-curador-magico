@@ -36,6 +36,7 @@ from curador_eventos import (
     normalizar_texto,
     obtener_agenda_maestra,
     obtener_zona_aplicacion,
+    tokenizar,
 )
 from resolvedor_logos import resolver_logo_torneo
 
@@ -68,15 +69,14 @@ VETO_EPG = {
     "SURFING ES", "CLUB DE LA MITICA", "HISTORIAS DE", "CRONICAS", "PROGRAMA POR DETERMINAR",
 }
 
-# Filtro de archivos históricos o temporadas pasadas (excluye temporadas vigentes como T26/27 o 2026/2027)
 PATRON_TEMPORADA_HISTORICA = re.compile(r"\b(19\d\d|20[0-1]\d|202[0-5])\b|\bT(1\d|2[0-5]|[1-9])(?!\d|/|-)", re.I)
 
-# Normalización canónica de sinónimos multilingües
 SINONIMOS_TORNEOS = {
     "CYCLISME : TOUR D'ESPAGNE": "La Vuelta",
     "CYCLISME TOUR D'ESPAGNE": "La Vuelta",
     "TOUR D'ESPAGNE": "La Vuelta",
     "VUELTA A ESPANA": "La Vuelta",
+    "VUELTA CICLISTA A ESPANA": "La Vuelta",
     "CYCLISME : RENEWI TOUR": "Renewi Tour",
     "CYCLISME RENEWI TOUR": "Renewi Tour",
 }
@@ -112,6 +112,24 @@ def es_historico_o_veto(titulo: str, descripcion: str = "") -> bool:
     if PATRON_TEMPORADA_HISTORICA.search(texto):
         return True
     return False
+
+
+def enriquecer_titulo_competicion(torneo: str, subtitulo: str, descripcion: str, categoria: str) -> Tuple[str, str]:
+    """Agrega el nombre canónico de la competición si el título de la EPG solo contiene el número de etapa o detalle menor."""
+    texto_completo = f"{torneo} {subtitulo} {descripcion}"
+    texto_norm = normalizar_texto(texto_completo)
+
+    if categoria == "Ciclismo":
+        if any(v in texto_norm for v in ("VUELTA", "ESPANA", "ESPAÑA")) and "VUELTA" not in normalizar_texto(torneo):
+            torneo = f"La Vuelta a España - {torneo}" if torneo else "La Vuelta a España"
+        elif "TOUR DE FRANCE" in texto_norm and "TOUR" not in normalizar_texto(torneo):
+            torneo = f"Tour de France - {torneo}" if torneo else "Tour de France"
+        elif "GIRO" in texto_norm and "GIRO" not in normalizar_texto(torneo):
+            torneo = f"Giro d'Italia - {torneo}" if torneo else "Giro d'Italia"
+    elif categoria == "Tenis":
+        if "US OPEN" in texto_norm and "US OPEN" not in normalizar_texto(torneo):
+            torneo = f"US Open - {torneo}" if torneo else "US Open"
+    return torneo.strip(" -:"), subtitulo.strip(" -:")
 
 
 def limpiar_titulo_epg(titulo: str) -> Tuple[str, str]:
@@ -152,15 +170,26 @@ def es_canal_espana(nombre: str) -> bool:
     valor = normalizar_texto(nombre)
     if any(x in valor for x in ("SP ES", "ESPANA", "ESPANOL", "CASTELLANO")):
         return True
-    if re.search(r"^(?:SP\s*)?ES\s*[:\-|]", valor) or re.search(r"\b(?:ESP|SPAIN)\b", valor):
+    if re.search(r"^(?:SP\s*)?ES\s*[:\- bureaucracy|]", valor) or re.search(r"\b(?:ESP|SPAIN)\b", valor):
         if not any(f"SP {c}" in valor or f" {c} " in valor for c in ("DE", "FR", "IT", "PL", "PT", "RO", "UK", "US")):
             return True
     return False
 
 
 def pais_epg(channel_id: str) -> str:
-    match = re.match(r"^([A-Z]{2,3})[\s·|:\-]+", (channel_id or "").strip().upper())
-    return match.group(1) if match else ""
+    ch = (channel_id or "").strip().upper()
+    match = re.match(r"^([A-Z]{2,3})[\s·|:\-]+", ch)
+    if match:
+        return match.group(1)
+    if ch.endswith(".DE") or ".DE." in ch or "DEUTSCHLAND" in ch or "DE:" in ch:
+        return "DE"
+    if ch.endswith(".FR") or ".FR." in ch or "FRANCE" in ch or "FR:" in ch:
+        return "FR"
+    if ch.endswith(".UK") or ".UK." in ch or "UNITED KINGDOM" in ch or "UK:" in ch:
+        return "UK"
+    if ch.endswith(".ES") or ".ES." in ch or "SPAIN" in ch or "ESP" in ch or "ES:" in ch:
+        return "ES"
+    return ""
 
 
 def prioridad_guia_epg(channel_id: str) -> int:
@@ -289,7 +318,7 @@ def construir_evento_epg(
 
     directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}")
     if not directo and oficial:
-        directo = True # Rescatado: El texto no decía Directo, pero la API confirma que ocurre AHORA
+        directo = True
 
     if not directo:
         return None
@@ -299,11 +328,14 @@ def construir_evento_epg(
     if not categoria:
         return None
 
+    torneo, subtitulo = enriquecer_titulo_competicion(torneo, subtitulo, descripcion, categoria)
+    if len(normalizar_texto(torneo)) < 4:
+        return None
+
     duracion = max(15, int((fin - inicio).total_seconds() / 60)) if fin else DURACION_POR_CATEGORIA.get(categoria, 150)
     if duracion < 30:
         return None
 
-    # Determinación de modo de presentación y duelos
     es_individual = categoria in DEPORTES_COMPETICION
     local, visitante = "", ""
     if categoria == "Tenis":
@@ -344,7 +376,7 @@ def construir_evento_epg(
     if not INCLUIR_EPG_EN_CANAL:
         return None
 
-    ident = hashlib.sha1(f"{canal_epg}|{normalizar_texto(torneo)}|{normalizar_texto(subtitulo)}|{inicio.strftime('%Y%m%d%H%M')}".encode()).hexdigest()[:16]
+    ident = hashlib.sha1(f"{normalizar_texto(torneo)}|{normalizar_texto(subtitulo)}|{inicio.strftime('%Y%m%d%H%M')}".encode()).hexdigest()[:16]
     return {
         "id": f"epg_{ident}", "agenda_id": "", "titulo": limitar(titulo_final, 75), "torneo": limitar(torneo, 55),
         "categoria": categoria, "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante,
@@ -391,10 +423,11 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
     todos_los_programas: List[Dict[str, Any]] = []
     programas_principales: List[Dict[str, Any]] = []
 
-    for url_epg in URLS_EPG_EUROPA:
+    for idx, url_epg in enumerate(URLS_EPG_EUROPA):
         url_epg = url_epg.strip()
         if not url_epg: continue
-        log.info(f"Descargando matriz EPG para consenso desde: {url_epg[:45]}...")
+        es_guia_espana = (idx == 0) or any(x in url_epg.lower() for x in ("guiatv", "davidmuma", "spain", "esp"))
+        log.info(f"Descargando matriz EPG ({'Principal España' if es_guia_espana else 'Auxiliar Consenso'}): {url_epg[:45]}...")
         try:
             respuesta = requests.get(url_epg, timeout=(10, 60))
             respuesta.raise_for_status()
@@ -415,7 +448,8 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
                         item = {"clave": clave, "canal": canal, "inicio": inicio, "fin": fin, "titulo": titulo, "descripcion": desc}
                         todos_los_programas.append(item)
                         pais = pais_epg(canal)
-                        if clave in mapa and (pais in PAISES_GUIA_PRINCIPAL or not pais):
+                        # Solo la guía de España alimenta los eventos principales
+                        if es_guia_espana and clave in mapa and pais in PAISES_GUIA_PRINCIPAL:
                             programas_principales.append(item)
                     elemento.clear()
         except requests.RequestException as exc:
@@ -455,23 +489,39 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
 
 
 def consolidar_eventos_epg(eventos: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    unicos: Dict[str, Dict[str, Any]] = {}
-    for evento in eventos:
-        canal_origen = str(evento.get("canal_epg") or "")
-        slot = str(evento.get("hora_utc", ""))[:13]
-        if evento.get("agenda_id"):
-            clave = str(evento["agenda_id"])
-        else:
-            clave = f"{canal_origen}_{normalizar_texto(evento['torneo'])}_{normalizar_texto(evento.get('subtitulo', ''))}_{slot}"
+    """Agrupa eventos EPG idénticos de distintos canales (ej: Eurosport 1 y Teledeporte emitiendo La Vuelta a la misma hora)."""
+    agrupados: List[Dict[str, Any]] = []
 
-        previo = unicos.get(clave)
-        if previo is None:
-            unicos[clave] = evento
-        else:
-            for fuente in evento["fuentes"]:
-                fusionar_fuente(previo, fuente)
-            previo["fuentes"] = ordenar_fuentes(previo["fuentes"])
-    return sorted(unicos.values(), key=lambda e: e["hora_utc"])[:MAX_EPG_EVENTOS]
+    for evento in eventos:
+        emparejado = False
+        inicio_ev = _inicio(evento)
+
+        for principal in agrupados:
+            inicio_p = _inicio(principal)
+            if not inicio_ev or not inicio_p:
+                continue
+
+            # Mismo deporte y misma franja horaria (+/- 35 min)
+            if principal.get("categoria") == evento.get("categoria") and abs((inicio_ev - inicio_p).total_seconds()) <= 2100:
+                pts, _ = calcular_similitud_simple(
+                    f"{principal.get('titulo', '')} {principal.get('torneo', '')}",
+                    principal.get("subtitulo", ""),
+                    f"{evento.get('titulo', '')} {evento.get('torneo', '')} {evento.get('subtitulo', '')}"
+                )
+                t1 = tokenizar(f"{principal.get('titulo', '')} {principal.get('torneo', '')}")
+                t2 = tokenizar(f"{evento.get('titulo', '')} {evento.get('torneo', '')}")
+
+                if pts >= 50 or (t1 & t2):
+                    for fuente in evento.get("fuentes", []):
+                        fusionar_fuente(principal, fuente)
+                    principal["fuentes"] = ordenar_fuentes(principal.get("fuentes", []))
+                    emparejado = True
+                    break
+
+        if not emparejado:
+            agrupados.append(evento)
+
+    return sorted(agrupados, key=lambda e: e["hora_utc"])[:MAX_EPG_EVENTOS]
 
 
 def eventos_se_solapan(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
@@ -484,22 +534,52 @@ def eventos_se_solapan(a: Dict[str, Any], b: Dict[str, Any]) -> bool:
 
 
 def fusionar_con_base(base: List[Dict[str, Any]], epg: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]], Dict[str, int]]:
+    """Fusiona eventos EPG con los eventos ya curados de Xtream y API Sports, unificando duplicados de competición."""
     metricas: Counter = Counter()
     resultado = list(base)
-    por_agenda = {str(e.get("agenda_id") or e.get("id")): e for e in resultado if e.get("agenda_id") or str(e.get("id", "")).startswith("apisports_")}
-    for evento in epg:
-        existente = por_agenda.get(str(evento.get("agenda_id") or evento.get("id")))
-        if existente and eventos_se_solapan(existente, evento):
-            for fuente in evento["fuentes"]:
-                fusionar_fuente(existente, fuente)
-            existente["fuentes"] = ordenar_fuentes(existente.get("fuentes") or [])
-            existente["origenes"] = list(dict.fromkeys(list(existente.get("origenes", [])) + ["epg"]))
-            existente["origen"] = f"{existente.get('origen', 'api_sports')}+epg"
-            existente["puntuacion_confianza"] = max(int(existente.get("puntuacion_confianza", 0)), int(evento.get("puntuacion_confianza", 0)))
-            metricas["fusionados"] += 1
-        elif not any(str(e.get("id")) == str(evento.get("id")) for e in resultado):
-            resultado.append(evento)
+
+    for evento_epg in epg:
+        fusionado = False
+        inicio_epg = _inicio(evento_epg)
+
+        for existente in resultado:
+            inicio_ext = _inicio(existente)
+            if not inicio_epg or not inicio_ext:
+                continue
+
+            # 1. Emparejamiento por agenda_id
+            if evento_epg.get("agenda_id") and evento_epg["agenda_id"] == existente.get("agenda_id"):
+                fusionado = True
+            # 2. Emparejamiento por similitud de competición / evento Xtream
+            elif existente.get("categoria") == evento_epg.get("categoria") and abs((inicio_epg - inicio_ext).total_seconds()) <= 2700:
+                pts, _ = calcular_similitud_simple(
+                    f"{existente.get('titulo', '')} {existente.get('torneo', '')}",
+                    existente.get("subtitulo", ""),
+                    f"{evento_epg.get('titulo', '')} {evento_epg.get('torneo', '')} {evento_epg.get('subtitulo', '')}"
+                )
+                t1 = tokenizar(f"{existente.get('titulo', '')} {existente.get('torneo', '')}")
+                t2 = tokenizar(f"{evento_epg.get('titulo', '')} {evento_epg.get('torneo', '')}")
+                if pts >= 45 or (t1 & t2):
+                    fusionado = True
+
+            if fusionado:
+                for fuente in evento_epg.get("fuentes", []):
+                    fusionar_fuente(existente, fuente)
+                existente["fuentes"] = ordenar_fuentes(existente.get("fuentes") or [])
+                existente["origenes"] = list(dict.fromkeys(list(existente.get("origenes", [])) + ["epg"]))
+                if "epg" not in str(existente.get("origen", "")):
+                    existente["origen"] = f"{existente.get('origen', 'xtream')}+epg"
+                existente["puntuacion_confianza"] = max(int(existente.get("puntuacion_confianza", 0)), int(evento_epg.get("puntuacion_confianza", 0)))
+                # Mejorar título si el de EPG o Xtream es más rico
+                if len(evento_epg.get("torneo", "")) > len(existente.get("torneo", "")):
+                    existente["torneo"] = evento_epg["torneo"]
+                metricas["fusionados"] += 1
+                break
+
+        if not fusionado:
+            resultado.append(evento_epg)
             metricas["agregados"] += 1
+
     return sorted(resultado, key=lambda e: e["hora_utc"]), dict(metricas)
 
 
