@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-04T07:17:12Z",
+  "generado_utc": "2026-09-04T12:45:02Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-04",
   "agenda": {
@@ -130,36 +130,37 @@
       "solicitudes": 1,
       "eventos": 1
     },
-    "eventos": 1
+    "eventos": 1,
+    "cache": "vigente"
   },
   "xtream": {
-    "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 1,
-    "streams_totales": 6559,
-    "descartado_sin_hora_programada": 6067,
-    "descartado_contenido_no_evento": 420,
+    "categorias_hoy": 1,
+    "categorias_fuera_de_jornada": 0,
+    "streams_totales": 6589,
+    "descartado_sin_hora_programada": 6071,
+    "descartado_contenido_no_evento": 422,
     "descartado_fecha_xtream_fuera_de_jornada": 2,
-    "descartado_categoria_xtream_fuera_de_jornada": 37,
-    "candidatos": 33
+    "candidatos": 94
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_independientes_creados": 33,
-    "fuentes_independientes": 33,
-    "eventos_unicos": 32,
+    "eventos_independientes_creados": 92,
+    "fuentes_independientes": 92,
+    "fuentes_emparejadas": 2,
+    "eventos_unicos": 92,
     "frescura": {
       "es_stale": false,
       "coincidencias_ayer": 0,
-      "coincidencias_hoy": 0,
-      "evaluados": 30
+      "coincidencias_hoy": 2,
+      "evaluados": 89
     }
   },
-  "eventos_finales_base": 32,
+  "eventos_finales_base": 92,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 218948,
+      "programas_leidos": 215056,
       "rechazados_no_en_vivo": 33,
       "veto_o_historico": 26,
       "admitidos": 4,
@@ -177,6 +178,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 35,
-  "actualizado_utc": "2026-09-04T07:17:18Z"
+  "eventos_finales_total": 95,
+  "actualizado_utc": "2026-09-04T12:45:09Z"
 }
