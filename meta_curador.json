@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-03T22:36:27Z",
+  "generado_utc": "2026-09-04T01:00:24Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-03",
   "agenda": {
@@ -134,33 +134,26 @@
     "cache": "vigente"
   },
   "xtream": {
-    "categorias_hoy": 1,
+    "categorias_hoy": 0,
     "categorias_fuera_de_jornada": 0,
-    "streams_totales": 6559,
-    "descartado_sin_hora_programada": 6067,
-    "descartado_contenido_no_evento": 420,
-    "descartado_fecha_xtream_fuera_de_jornada": 2,
-    "candidatos": 70
+    "error": "xtream:530 Server Error: status code 530 for url: https://mi-dashboard-tv.vercel.app/api/puente_xtream?url=http%3A%2F%2Fstejar.matrivagoweb.com%3A8080%2Fplayer_api.php%3Fusername%3DgzeNxPxgthJb%26password%3DbdfMzp2aSnar%26action%3Dget_live_streams"
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_independientes_creados": 56,
-    "fuentes_independientes": 56,
-    "fuentes_emparejadas": 14,
-    "eventos_unicos": 58,
+    "eventos_unicos": 0,
     "frescura": {
       "es_stale": false,
       "coincidencias_ayer": 0,
-      "coincidencias_hoy": 3,
-      "evaluados": 67
+      "coincidencias_hoy": 0,
+      "evaluados": 0
     }
   },
-  "eventos_finales_base": 58,
+  "eventos_finales_base": 0,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 220228,
+      "programas_leidos": 220419,
       "rechazados_no_en_vivo": 44,
       "veto_o_historico": 9
     },
@@ -172,6 +165,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 58,
-  "actualizado_utc": "2026-09-03T22:36:34Z"
+  "eventos_finales_total": 0,
+  "actualizado_utc": "2026-09-04T01:00:25Z"
 }
