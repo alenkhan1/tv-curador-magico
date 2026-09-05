@@ -360,11 +360,48 @@ def guardar_json(path: Path, contenido: Any) -> None:
 
 
 class ClienteApiSports:
-    def __init__(self, clave: str) -> None:
-        self.clave = clave
+    def __init__(self, clave_o_claves: Union[str, List[str]]) -> None:
+        if isinstance(clave_o_claves, list):
+            self.claves = [k.strip() for k in clave_o_claves if k and k.strip()]
+        else:
+            self.claves = [k.strip() for k in str(clave_o_claves or "").split(",") if k.strip()]
+        self.idx_clave = 0
         self.sesion = requests.Session()
         self.ultimo_request = 0.0
         self.metricas: Dict[str, Dict[str, Any]] = {}
+
+    @property
+    def clave(self) -> str:
+        if 0 <= self.idx_clave < len(self.claves):
+            return self.claves[self.idx_clave]
+        return ""
+
+    def rotar_clave(self, motivo: str) -> bool:
+        if self.idx_clave + 1 < len(self.claves):
+            anterior = self.idx_clave + 1
+            self.idx_clave += 1
+            log.warning(
+                "API-Sports: Clave %d/%d agotada o bloqueada (%s). Rotando automáticamente a clave %d/%d...",
+                anterior, len(self.claves), motivo, self.idx_clave + 1, len(self.claves)
+            )
+            return True
+        log.error("API-Sports: Todas las claves configuradas (%d) han sido agotadas o suspendidas.", len(self.claves))
+        return False
+
+    def _es_bloqueo_o_limite(self, status_code: int, cuerpo: Any, restantes_diarios: Optional[str]) -> Tuple[bool, str]:
+        if status_code in (401, 403):
+            return True, f"HTTP_{status_code}"
+        if status_code == 429:
+            return True, "HTTP_429_demasiadas_peticiones"
+        if restantes_diarios is not None and str(restantes_diarios).strip() == "0":
+            return True, "cuota_diaria_0"
+        if isinstance(cuerpo, dict):
+            errores = cuerpo.get("errors")
+            if errores and errores not in ({}, [], ""):
+                texto = str(errores).lower()
+                if any(k in texto for k in ("suspend", "limit", "reached", "quota", "exceeded", "not allowed", "token")):
+                    return True, str(errores)[:160]
+        return False, ""
 
     def get(self, deporte: str, host: str, endpoint: str, params: Dict[str, str]) -> Optional[Dict[str, Any]]:
         datos = self.metricas.setdefault(deporte, Counter())
@@ -372,48 +409,80 @@ class ClienteApiSports:
             datos["omitido_sin_clave"] += 1
             return None
         url = f"{host.rstrip('/')}/{endpoint.lstrip('/')}"
-        for intento in range(API_SPORTS_MAX_RETRIES + 1):
-            espera = API_SPORTS_MIN_INTERVAL - (time.monotonic() - self.ultimo_request)
-            if espera > 0:
-                time.sleep(espera)
-            try:
-                respuesta = self.sesion.get(url, params=params, headers={"x-apisports-key": self.clave}, timeout=(10, 35))
-                self.ultimo_request = time.monotonic()
-                datos["solicitudes"] += 1
-            except requests.RequestException as exc:
-                datos["errores_red"] += 1
-                log.warning("API-Sports %s sin respuesta: %s", deporte, exc)
-                if intento < API_SPORTS_MAX_RETRIES:
-                    time.sleep(3 * (intento + 1))
+
+        while self.clave:
+            datos["clave_indice"] = self.idx_clave + 1
+            datos["total_claves"] = len(self.claves)
+            rotar = False
+            motivo_rotar = ""
+
+            for intento in range(API_SPORTS_MAX_RETRIES + 1):
+                espera = API_SPORTS_MIN_INTERVAL - (time.monotonic() - self.ultimo_request)
+                if espera > 0:
+                    time.sleep(espera)
+                try:
+                    respuesta = self.sesion.get(
+                        url, params=params, headers={"x-apisports-key": self.clave}, timeout=(10, 35)
+                    )
+                    self.ultimo_request = time.monotonic()
+                    datos["solicitudes"] += 1
+                except requests.RequestException as exc:
+                    datos["errores_red"] += 1
+                    log.warning("API-Sports %s sin respuesta: %s", deporte, exc)
+                    if intento < API_SPORTS_MAX_RETRIES:
+                        time.sleep(3 * (intento + 1))
+                        continue
+                    return None
+
+                datos["http"] = respuesta.status_code
+                restantes = respuesta.headers.get("x-ratelimit-requests-remaining")
+                for cabecera, destino in (
+                        ("x-ratelimit-requests-limit", "limite_diario"),
+                        ("x-ratelimit-requests-remaining", "restantes_diarios"),
+                        ("X-RateLimit-Limit", "limite_minuto"),
+                        ("X-RateLimit-Remaining", "restantes_minuto"),
+                ):
+                    if respuesta.headers.get(cabecera):
+                        datos[destino] = respuesta.headers[cabecera]
+
+                if respuesta.status_code == 200:
+                    try:
+                        cuerpo = respuesta.json()
+                    except ValueError:
+                        datos["json_invalido"] += 1
+                        return None
+                    errores = cuerpo.get("errors") if isinstance(cuerpo, dict) else None
+                    if errores and errores not in ({}, [], ""):
+                        datos["errores_api"] += 1
+                        datos["ultimo_error"] = str(errores)[:240]
+                        es_bloqueo, motivo = self._es_bloqueo_o_limite(200, cuerpo, restantes)
+                        if es_bloqueo:
+                            rotar = True
+                            motivo_rotar = motivo
+                            break
+                    if restantes is not None and str(restantes).strip() == "0":
+                        self.rotar_clave("cuota_diaria_0_despues_de_exito")
+                    return cuerpo if isinstance(cuerpo, dict) else None
+
+                datos[f"http_{respuesta.status_code}"] += 1
+                es_bloqueo, motivo = self._es_bloqueo_o_limite(respuesta.status_code, None, restantes)
+                if es_bloqueo:
+                    rotar = True
+                    motivo_rotar = motivo
+                    break
+
+                if respuesta.status_code in (429, 500, 502, 503, 504) and intento < API_SPORTS_MAX_RETRIES:
+                    time.sleep(6 * (intento + 1))
+                    continue
+                log.warning("API-Sports %s respondió HTTP %s.", deporte, respuesta.status_code)
+                return None
+
+            if rotar:
+                if self.rotar_clave(motivo_rotar):
+                    datos["rotaciones_clave"] += 1
                     continue
                 return None
 
-            datos["http"] = respuesta.status_code
-            for cabecera, destino in (
-                    ("x-ratelimit-requests-limit", "limite_diario"),
-                    ("x-ratelimit-requests-remaining", "restantes_diarios"),
-                    ("X-RateLimit-Limit", "limite_minuto"),
-                    ("X-RateLimit-Remaining", "restantes_minuto"),
-            ):
-                if respuesta.headers.get(cabecera):
-                    datos[destino] = respuesta.headers[cabecera]
-            if respuesta.status_code == 200:
-                try:
-                    cuerpo = respuesta.json()
-                except ValueError:
-                    datos["json_invalido"] += 1
-                    return None
-                errores = cuerpo.get("errors") if isinstance(cuerpo, dict) else None
-                if errores and errores not in ({}, [], ""):
-                    datos["errores_api"] += 1
-                    datos["ultimo_error"] = str(errores)[:240]
-                return cuerpo if isinstance(cuerpo, dict) else None
-            datos[f"http_{respuesta.status_code}"] += 1
-            if respuesta.status_code in (429, 500, 502, 503, 504) and intento < API_SPORTS_MAX_RETRIES:
-                time.sleep(6 * (intento + 1))
-                continue
-            log.warning("API-Sports %s respondió HTTP %s.", deporte, respuesta.status_code)
-            return None
         return None
 
 
@@ -488,7 +557,11 @@ def _leer_cache(fecha_consulta: str, permitir_vencida: bool = False) -> Optional
         datos = json.loads(ARCHIVO_CACHE.read_text(encoding="utf-8"))
         if not isinstance(datos, dict) or datos.get("fecha_local_producto") != fecha_consulta:
             return None
-        edad = time.time() - ARCHIVO_CACHE.stat().st_mtime
+        generado = parsear_iso_o_timestamp(datos.get("generado_utc"))
+        if generado:
+            edad = (datetime.now(timezone.utc) - generado).total_seconds()
+        else:
+            edad = time.time() - ARCHIVO_CACHE.stat().st_mtime
         if permitir_vencida or (MINUTOS_CACHE > 0 and edad <= MINUTOS_CACHE * 60):
             return datos
     except (OSError, ValueError):
@@ -570,7 +643,7 @@ def obtener_respaldo_thesportsdb(fecha_consulta: str, tz: ZoneInfo, metricas: Co
     return eventos
 
 
-def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[Dict[str, Any]] = None, forzar: bool = False) -> List[Dict[str, Any]]:
+def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[Dict[str, Any]] = None, forzar: bool = False, cliente: Optional[ClienteApiSports] = None) -> List[Dict[str, Any]]:
     tz = obtener_zona_aplicacion()
     cache = None if forzar else _leer_cache(fecha_consulta)
     if cache:
@@ -579,7 +652,8 @@ def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[Dict[s
             metricas_salida["cache"] = "vigente"
         return list(cache.get("eventos", []))
 
-    cliente = ClienteApiSports(API_SPORTS_KEY)
+    if cliente is None:
+        cliente = ClienteApiSports(API_SPORTS_KEY)
     agenda: List[Dict[str, Any]] = []
     fecha_ref = date.fromisoformat(fecha_consulta)
     for deporte, config in API_CONFIGS.items():
@@ -1011,14 +1085,16 @@ def main() -> None:
     fecha_ayer = (ahora.date() - timedelta(days=1)).isoformat()
     log.info("=== Curador multideporte v12 Inteligente | Colombia %s ===", fecha_hoy)
 
+    cliente_api = ClienteApiSports(API_SPORTS_KEY)
+
     metricas_agenda_hoy: Dict[str, Any] = {}
-    agenda_hoy = obtener_agenda_maestra(fecha_hoy, metricas_agenda_hoy)
+    agenda_hoy = obtener_agenda_maestra(fecha_hoy, metricas_agenda_hoy, cliente=cliente_api)
 
     # Agenda de ayer para contraste negativo (si no está en caché local, se consulta)
     agenda_ayer = cargar_agenda_cache(fecha_ayer)
     if not agenda_ayer:
         log.info("Cargando agenda de ayer (%s) para verificación de frescura y contraste...", fecha_ayer)
-        agenda_ayer = obtener_agenda_maestra(fecha_ayer)
+        agenda_ayer = obtener_agenda_maestra(fecha_ayer, cliente=cliente_api)
 
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
     eventos, cuarentena, metricas_curacion = curar_eventos(agenda_hoy, agenda_ayer, candidatos, ahora.date())
