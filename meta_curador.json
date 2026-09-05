@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-05T13:31:56Z",
+  "generado_utc": "2026-09-05T14:09:35Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-05",
   "agenda": {
@@ -134,22 +134,28 @@
     "cache": "vigente"
   },
   "xtream": {
-    "categorias_hoy": 0,
+    "categorias_hoy": 1,
     "categorias_fuera_de_jornada": 0,
-    "error": "xtream:404 Client Error: Not Found for url: https://mi-dashboard-tv.vercel.app/api/puente_xtream?url=http%3A%2F%2Fstejar.matrivagoweb.com%3A8080%2Fplayer_api.php%3Fusername%3DgzeNxPxgthJb%26password%3DbdfMzp2aSnar%26action%3Dget_live_streams"
+    "streams_totales": 6689,
+    "descartado_sin_hora_programada": 6067,
+    "descartado_contenido_no_evento": 426,
+    "descartado_fecha_xtream_fuera_de_jornada": 2,
+    "candidatos": 194
   },
   "curacion": {
-    "lista_stale": 0,
+    "lista_stale": 1,
+    "descartado_lista_stale": 171,
+    "descartado_partido_de_ayer": 23,
     "eventos_unicos": 0,
     "frescura": {
-      "es_stale": false,
-      "coincidencias_ayer": 0,
+      "es_stale": true,
+      "coincidencias_ayer": 23,
       "coincidencias_hoy": 0,
-      "evaluados": 0
+      "evaluados": 186
     }
   },
   "eventos_finales_base": 0,
-  "cuarentena_guardada": 0,
+  "cuarentena_guardada": 194,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
@@ -166,12 +172,12 @@
       "agregados": 5
     },
     "canales_mapeados": {
-      "E1": 0,
-      "E2": 0,
-      "TDP": 0
+      "E1": 3,
+      "E2": 3,
+      "TDP": 4
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
   "eventos_finales_total": 5,
-  "actualizado_utc": "2026-09-05T13:32:02Z"
+  "actualizado_utc": "2026-09-05T14:09:41Z"
 }
