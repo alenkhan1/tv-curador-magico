@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-05T14:36:24Z",
+  "generado_utc": "2026-09-05T16:08:08Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-05",
   "base_media": "http://stejar.matrivagoweb.com:8080",
@@ -200,70 +200,10 @@
       ]
     },
     {
-      "id": "epg_5e3dca54a56ec964",
-      "agenda_id": "",
-      "titulo": "Semifinales",
-      "torneo": "Semifinales",
-      "categoria": "Snooker",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Abierto de Gran Bretaña de snooker",
-      "titulo_tarjeta": "Semifinales",
-      "subtitulo_tarjeta": "Abierto de Gran Bretaña de snooker",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-05T12:00:00Z",
-      "hora_local_producto": "07:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "en_canal",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Snooker",
-        "directo:true"
-      ],
-      "canal_epg": "E2",
-      "fuentes": [
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 FHD",
-          "id_xtream": "379388",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 HD",
-          "id_xtream": "379389",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 SD",
-          "id_xtream": "379390",
-          "idioma": "ES",
-          "prioridad": 0
-        }
-      ]
-    },
-    {
       "id": "xtream_441fe97ad5d003b0",
       "agenda_id": "",
       "titulo": "La Vuelta a España: Stage 14 - Ciclismo",
-      "torneo": "La Vuelta a España - Etapa 14 - Jaén - Sierra de la Pa…",
+      "torneo": "La Vuelta a España: Stage 14 - Ciclismo",
       "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
@@ -277,15 +217,14 @@
       "logo_visitante": "",
       "banner": "",
       "tier": 3,
-      "origen": "xtream_evento+epg",
+      "origen": "xtream_evento",
       "origenes": [
-        "xtream",
-        "epg"
+        "xtream"
       ],
       "estado": "confirmado",
       "estado_evento": "programado",
       "confianza": "media",
-      "puntuacion_confianza": 88,
+      "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
         "hora_y_deporte_valido",
@@ -294,27 +233,7 @@
       "fuentes": [
         {
           "nombre": "07:45 - La Vuelta a España: Stage 14 - Ciclismo",
-          "id_xtream": "455174",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 FHD",
-          "id_xtream": "379385",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 HD",
-          "id_xtream": "379386",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 SD",
-          "id_xtream": "379387",
-          "idioma": "ES",
-          "prioridad": 0
+          "id_xtream": "455174"
         }
       ]
     },
@@ -441,7 +360,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Bayer Leverkusen",
       "equipo_visitante": "Union Berlin",
-      "subtitulo": "Halftime",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T13:30:00Z",
       "hora_local_producto": "08:30",
       "duracion_min": 130,
@@ -455,7 +374,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -480,7 +399,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Borussia Mönchengladbach",
       "equipo_visitante": "SV Elversberg",
-      "subtitulo": "Halftime",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T13:30:00Z",
       "hora_local_producto": "08:30",
       "duracion_min": 130,
@@ -494,7 +413,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -519,7 +438,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "SC Paderborn 07",
       "equipo_visitante": "SC Freiburg",
-      "subtitulo": "Halftime",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T13:30:00Z",
       "hora_local_producto": "08:30",
       "duracion_min": 130,
@@ -533,7 +452,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 72,
       "metodo_correlacion": "evento_simple_verificado",
@@ -557,7 +476,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Werder Bremen",
       "equipo_visitante": "RB Leipzig",
-      "subtitulo": "Halftime",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T13:30:00Z",
       "hora_local_producto": "08:30",
       "duracion_min": 130,
@@ -571,7 +490,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -596,7 +515,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Burnley",
       "equipo_visitante": "Bristol City",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -610,7 +529,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -673,7 +592,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "West Brom",
       "equipo_visitante": "Watford",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -687,7 +606,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -712,7 +631,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "West Ham",
       "equipo_visitante": "Derby",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -726,7 +645,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -751,7 +670,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Brentford",
       "equipo_visitante": "Sunderland",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -765,7 +684,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -790,7 +709,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Brighton",
       "equipo_visitante": "Leeds",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -804,7 +723,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -829,7 +748,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Fulham",
       "equipo_visitante": "Crystal Palace",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -843,7 +762,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -868,7 +787,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Manchester City",
       "equipo_visitante": "Coventry",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -882,7 +801,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -907,7 +826,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Nottingham Forest",
       "equipo_visitante": "Tottenham",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -921,7 +840,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -984,7 +903,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "União Leiria U19",
       "equipo_visitante": "Santa Clara U19",
-      "subtitulo": "First Half",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-05T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 130,
@@ -1014,72 +933,6 @@
       ]
     },
     {
-      "id": "epg_493d52f14332c82e",
-      "agenda_id": "",
-      "titulo": "Barcelona - Jaén",
-      "torneo": "Barcelona - Jaén",
-      "categoria": "Fútbol",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Supercopa de España de fútbol sala",
-      "titulo_tarjeta": "Barcelona - Jaén",
-      "subtitulo_tarjeta": "Supercopa de España de fútbol sala",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-05T14:10:00Z",
-      "hora_local_producto": "09:10",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd3%2FSoccerball.svg%2F512px-Soccerball.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd3%2FSoccerball.svg%2F512px-Soccerball.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "en_canal",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Fútbol",
-        "directo:true"
-      ],
-      "canal_epg": "TDP",
-      "fuentes": [
-        {
-          "nombre": "Fútbol\"\"SP: ES: Teledeporte FHD",
-          "id_xtream": "379369",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Fútbol\"\"SP: ES: Teledeporte HD",
-          "id_xtream": "379370",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Fútbol\"\"SP: ES: Teledeporte (Movil)",
-          "id_xtream": "379368",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Fútbol\"\"SP: ES: Teledeporte SD",
-          "id_xtream": "379371",
-          "idioma": "ES",
-          "prioridad": 0
-        }
-      ]
-    },
-    {
       "id": "apisports_football_1570364",
       "agenda_id": "apisports_football_1570364",
       "titulo": "Athletic Club vs Atletico Madrid",
@@ -1088,7 +941,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Athletic Club",
       "equipo_visitante": "Atletico Madrid",
-      "subtitulo": "First Half",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-05T14:15:00Z",
       "hora_local_producto": "09:15",
       "duracion_min": 130,
@@ -1127,7 +980,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Sporting Gijon",
       "equipo_visitante": "Girona",
-      "subtitulo": "First Half",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-05T14:15:00Z",
       "hora_local_producto": "09:15",
       "duracion_min": 130,
@@ -1166,7 +1019,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Rot-Weiß Essen",
       "equipo_visitante": "FC Viktoria Köln",
-      "subtitulo": "First Half",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-05T14:30:00Z",
       "hora_local_producto": "09:30",
       "duracion_min": 130,
@@ -1205,7 +1058,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "NEC Nijmegen",
       "equipo_visitante": "Feyenoord",
-      "subtitulo": "First Half",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-05T14:30:00Z",
       "hora_local_producto": "09:30",
       "duracion_min": 130,
@@ -1395,7 +1248,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Lens",
       "equipo_visitante": "Lorient",
-      "subtitulo": "Not Started",
+      "subtitulo": "Halftime",
       "hora_utc": "2026-09-05T15:15:00Z",
       "hora_local_producto": "10:15",
       "duracion_min": 130,
@@ -1409,7 +1262,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1514,7 +1367,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Volos NFC",
       "equipo_visitante": "Olympiakos Piraeus",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-05T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -1528,7 +1381,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -1629,7 +1482,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Mexico U20 W",
       "equipo_visitante": "Benin U20 W",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-05T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -1643,7 +1496,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
