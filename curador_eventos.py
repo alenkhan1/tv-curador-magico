@@ -43,7 +43,7 @@ API_SPORTS_DEPORTES = {
 XTREAM_URL = (os.environ.get("XTREAM_URL") or "").rstrip("/")
 XTREAM_USER = os.environ.get("XTREAM_USER") or ""
 XTREAM_PASS = os.environ.get("XTREAM_PASS") or ""
-PUENTE_URL = os.environ.get("PUENTE_URL") or "https://mi-dashboard-tv.onrender.com/api/puente_xtream"
+PUENTE_URL = os.environ.get("PUENTE_URL") or "https://zapdashboard.onrender.com/api/puente_xtream"
 
 THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "123").strip()
 USAR_THESPORTSDB_RESPALDO = os.environ.get("USAR_THESPORTSDB_RESPALDO", "true").lower() in {"1", "true", "si", "sí", "yes"}
@@ -73,6 +73,8 @@ DURACION_POR_CATEGORIA = {
 DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Escalada", "Deportes Acuáticos", "Atletismo"}
 DEPORTES_HIBRIDOS = {"Combate", "Tenis", "Deportes", "Otros Deportes", "Tejo"}
 ARCHIVO_LOGOS_EQUIPOS = Path(os.environ.get("ARCHIVO_LOGOS_EQUIPOS", "logos_equipos.json"))
+ARCHIVO_CACHE_XTREAM = Path(os.environ.get("ARCHIVO_CACHE_XTREAM", "canales_xtream_cache.json"))
+
 
 MESES_MAP = {
     "ENERO": 1, "ENE": 1, "JANUARY": 1, "JAN": 1,
@@ -688,6 +690,35 @@ def llamada_xtream(url: str, timeout: int = 60) -> Any:
     respuesta.raise_for_status()
     return respuesta.json()
 
+def obtener_canales_xtream_con_cache(max_horas: float = 18.0) -> List[Dict[str, Any]]:
+    """Obtiene canales Xtream reutilizando la caché de disco para evitar gastar ancho de banda de Render."""
+    if ARCHIVO_CACHE_XTREAM.exists():
+        try:
+            mtime = datetime.fromtimestamp(ARCHIVO_CACHE_XTREAM.stat().st_mtime, tz=timezone.utc)
+            ahora = datetime.now(timezone.utc)
+            antiguedad_horas = (ahora - mtime).total_seconds() / 3600.0
+            if antiguedad_horas < max_horas:
+                log.info(f"Reutilizando caché local de canales Xtream ({ARCHIVO_CACHE_XTREAM}, antigüedad: {antiguedad_horas:.1f}h)")
+                with open(ARCHIVO_CACHE_XTREAM, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    if isinstance(data, list) and data:
+                        return data
+        except Exception as e:
+            log.warning(f"Error al leer caché local de canales: {e}")
+
+    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
+    log.info(f"Descargando catálogo completo de canales Xtream mediante el puente: {PUENTE_URL}")
+    streams = llamada_xtream(url, 75) or []
+    if isinstance(streams, list) and streams:
+        try:
+            with open(ARCHIVO_CACHE_XTREAM, "w", encoding="utf-8") as f:
+                json.dump(streams, f, ensure_ascii=False)
+            log.info(f"Caché de canales guardada en disco: {ARCHIVO_CACHE_XTREAM} ({len(streams)} canales)")
+        except Exception as e:
+            log.warning(f"No se pudo guardar la caché de canales: {e}")
+    return streams
+
+
 
 def detectar_base_media_m3u() -> str:
     """Obtiene el host real de streaming para reproducir leyendo el M3U."""
@@ -783,9 +814,8 @@ def obtener_canales_candidatos(fecha_local: datetime) -> Tuple[List[Dict[str, An
     categorias_hoy, categorias_ajenas = detectar_categorias_fechadas(fecha_local)
     metricas["categorias_hoy"] = len(categorias_hoy)
     metricas["categorias_fuera_de_jornada"] = len(categorias_ajenas)
-    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
     try:
-        streams = llamada_xtream(url, 75) or []
+        streams = obtener_canales_xtream_con_cache() or []
     except (requests.RequestException, TypeError, ValueError) as exc:
         metricas["error"] = f"xtream:{exc}"
         return [], dict(metricas)
