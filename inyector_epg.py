@@ -17,6 +17,7 @@ from typing import Any, Optional, List, Dict, Tuple
 import requests
 
 from curador_eventos import (
+    obtener_canales_xtream_con_cache,
     resolver_logo_equipo,
     ARCHIVO_META,
     ARCHIVO_SALIDA,
@@ -242,9 +243,8 @@ def mapear_streams_canales_lineales() -> Dict[str, List[Dict[str, Any]]]:
     mapa: Dict[str, List[Dict[str, Any]]] = {clave: [] for clave in CANALES_EPG}
     if not (XTREAM_URL and XTREAM_USER and XTREAM_PASS):
         return mapa
-    url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}&action=get_live_streams"
     try:
-        streams = llamada_xtream(url, 75) or []
+        streams = obtener_canales_xtream_con_cache() or []
     except (requests.RequestException, TypeError, ValueError) as exc:
         log.warning("No se pudieron mapear canales lineales: %s", exc)
         return mapa
