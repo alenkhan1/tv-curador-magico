@@ -9,11 +9,11 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-09-05T08:09:04Z",
+  "generado": "2026-09-06T08:26:29Z",
   "resumen": {
-    "total": 2615,
+    "total": 2614,
     "por_motivo": {
-      "pendiente": 2157,
+      "pendiente": 2156,
       "no_encontrado": 458
     },
     "peliculas": {
@@ -21,9 +21,9 @@
       "excluido": 0,
       "sin_nombre": 1,
       "no_encontrado": 443,
-      "fallo_red": 2136,
-      "clasificados": 24063,
-      "sin_identificar": 2579
+      "fallo_red": 2135,
+      "clasificados": 24067,
+      "sin_identificar": 2578
     },
     "series": {
       "adulto": 0,
@@ -31,7 +31,7 @@
       "sin_nombre": 0,
       "no_encontrado": 15,
       "fallo_red": 21,
-      "clasificados": 2582,
+      "clasificados": 2583,
       "sin_identificar": 36
     },
     "alerta": {
@@ -44,7 +44,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 2406,
+      "veces": 2405,
       "ejemplos": [
         "001 Columbia Britanica, una tierra salvaje a preservar",
         "El clan de los zorros",
@@ -796,16 +796,16 @@
       "veces": 21
     },
     {
-      "carpeta": "DRAMA",
-      "veces": 19
-    },
-    {
       "carpeta": "FICCION",
       "veces": 19
     },
     {
       "carpeta": "PELICULAS CASTELLANO PRIME VIDEO (ESPAÑA)",
       "veces": 19
+    },
+    {
+      "carpeta": "DRAMA",
+      "veces": 18
     },
     {
       "carpeta": "AVENTURA",
@@ -8677,18 +8677,6 @@
       "copias": 1
     },
     {
-      "id": "217240",
-      "tipo": "movie",
-      "nombre_original": "Quisiera Ser Millonario (2008)",
-      "titulo_buscado": "Quisiera Ser Millonario",
-      "anio": 2008,
-      "motivo": "pendiente",
-      "carpeta": "DRAMA",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "217250",
       "tipo": "movie",
       "nombre_original": "Rock Star (2001)",
@@ -11174,6 +11162,20 @@
       "motivo": "no_encontrado",
       "carpeta": "ROMANCE",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "223699",
+      "tipo": "movie",
+      "nombre_original": "Un Lugar para el Amor (Dual)",
+      "titulo_buscado": "Un Lugar para el Amor",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "ROMANCE",
+      "etiquetas": [
+        "DUAL"
+      ],
       "prefijo": "",
       "copias": 1
     }
