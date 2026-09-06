@@ -33,13 +33,25 @@ jobs:
       - name: Instalar dependencia HTTP
         run: python -m pip install --disable-pip-version-check requests
 
+      - name: Obtener fecha actual para cache diaria
+        id: fecha_cache
+        run: echo "fecha=$(date -u +'%Y-%m-%d')" >> "$GITHUB_OUTPUT"
+
+      - name: Restaurar cache diaria de canales Xtream
+        uses: actions/cache@v4
+        with:
+          path: canales_xtream_cache.json
+          key: canales-xtream-${{ steps.fecha_cache.outputs.fecha }}
+          restore-keys: |
+            canales-xtream-
+
       - name: Construir agenda y correlacionar señales Xtream
         env:
           API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
-          PUENTE_URL: ${{ secrets.PUENTE_URL }}
+          PUENTE_URL: ${{ secrets.PUENTE_URL || 'https://zapdashboard.onrender.com/api/puente_xtream' }}
           THESPORTSDB_KEY: ${{ secrets.THESPORTSDB_KEY }}
           APP_TIMEZONE: America/Bogota
           # Una llamada por API activa en cada corrida, separada por 7 segundos.
@@ -64,7 +76,7 @@ jobs:
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
-          PUENTE_URL: ${{ secrets.PUENTE_URL }}
+          PUENTE_URL: ${{ secrets.PUENTE_URL || 'https://zapdashboard.onrender.com/api/puente_xtream' }}
           APP_TIMEZONE: America/Bogota
           # EN CANAL: admite emisiones deportivas EPG aunque no digan DIRECTO,
           # pero el inyector excluye repeticiones, resúmenes y contenido editorial.
