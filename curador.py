@@ -60,7 +60,7 @@ XTREAM_URL = (os.environ.get("XTREAM_URL") or "").rstrip("/")
 XTREAM_USER = os.environ.get("XTREAM_USER")
 XTREAM_PASS = os.environ.get("XTREAM_PASS")
 PUENTE_URL = os.environ.get(
-    "PUENTE_URL", "https://mi-dashboard-tv.onrender.com/api/puente_xtream"
+    "PUENTE_URL", "https://zapdashboard.onrender.com/api/puente_xtream"
 )
 
 ARCHIVO_CATALOGO = "catalogo_curado.json"
