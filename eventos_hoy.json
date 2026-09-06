@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-06T18:23:09Z",
+  "generado_utc": "2026-09-06T22:10:45Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-06",
   "base_media": "http://stejar.matrivagoweb.com:8080",
@@ -1532,7 +1532,7 @@
         "api_sports:nfl"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -1764,7 +1764,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1789,7 +1789,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Alaves",
       "equipo_visitante": "Osasuna",
-      "subtitulo": "Second Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T16:30:00Z",
       "hora_local_producto": "11:30",
       "duracion_min": 130,
@@ -1803,7 +1803,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1828,7 +1828,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Malaga",
       "equipo_visitante": "Levante",
-      "subtitulo": "Second Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T16:30:00Z",
       "hora_local_producto": "11:30",
       "duracion_min": 130,
@@ -1842,7 +1842,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1919,7 +1919,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1944,7 +1944,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Fortuna Köln",
       "equipo_visitante": "Fortuna Düsseldorf",
-      "subtitulo": "Halftime",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T17:30:00Z",
       "hora_local_producto": "12:30",
       "duracion_min": 130,
@@ -1958,7 +1958,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -1971,66 +1971,6 @@
         {
           "nombre": "12:30 - 3 Bundesliga - Fortuna Koln vs. Fortuna Dusseldorf",
           "id_xtream": "455441"
-        }
-      ]
-    },
-    {
-      "id": "epg_0f87dbaa09873206",
-      "agenda_id": "",
-      "titulo": "Carrera",
-      "torneo": "Carrera",
-      "categoria": "Motor",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Mundial de Resistencia de la FIA - 6 Horas de Austin",
-      "titulo_tarjeta": "Carrera",
-      "subtitulo_tarjeta": "Mundial de Resistencia de la FIA - 6 Horas…",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-06T17:30:00Z",
-      "hora_local_producto": "12:30",
-      "duracion_min": 420,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "en_canal",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Motor",
-        "directo:true"
-      ],
-      "canal_epg": "E1",
-      "fuentes": [
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 FHD",
-          "id_xtream": "379385",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 HD",
-          "id_xtream": "379386",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 1 SD",
-          "id_xtream": "379387",
-          "idioma": "ES",
-          "prioridad": 0
         }
       ]
     },
@@ -2057,7 +1997,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -2096,7 +2036,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2135,7 +2075,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2174,7 +2114,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2213,7 +2153,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2238,7 +2178,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Rosario Central",
       "equipo_visitante": "Newells Old Boys",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T17:45:00Z",
       "hora_local_producto": "12:45",
       "duracion_min": 130,
@@ -2252,7 +2192,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -2277,7 +2217,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "O'Higgins",
       "equipo_visitante": "Union La Calera",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T17:45:00Z",
       "hora_local_producto": "12:45",
       "duracion_min": 130,
@@ -2291,7 +2231,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2316,7 +2256,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Denver Summit W",
       "equipo_visitante": "NJ/NY Gotham FC W",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -2330,7 +2270,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2343,66 +2283,6 @@
         {
           "nombre": "13:00 - NWSL - Denver vs. Gotham FC",
           "id_xtream": "455449"
-        }
-      ]
-    },
-    {
-      "id": "epg_c4733161acbe1e1a",
-      "agenda_id": "",
-      "titulo": "Final",
-      "torneo": "Final",
-      "categoria": "Snooker",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Abierto de Gran Bretaña de snooker",
-      "titulo_tarjeta": "Final",
-      "subtitulo_tarjeta": "Abierto de Gran Bretaña de snooker",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-06T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 180,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "en_canal",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Snooker",
-        "directo:true"
-      ],
-      "canal_epg": "E2",
-      "fuentes": [
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 FHD",
-          "id_xtream": "379388",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 HD",
-          "id_xtream": "379389",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 SD",
-          "id_xtream": "379390",
-          "idioma": "ES",
-          "prioridad": 0
         }
       ]
     },
@@ -2467,7 +2347,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2506,7 +2386,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -2531,7 +2411,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Jagiellonia",
       "equipo_visitante": "Slask Wroclaw",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T18:15:00Z",
       "hora_local_producto": "13:15",
       "duracion_min": 130,
@@ -2545,7 +2425,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2608,7 +2488,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Deportivo Garcilaso",
       "equipo_visitante": "Atletico Grau",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T18:30:00Z",
       "hora_local_producto": "13:30",
       "duracion_min": 130,
@@ -2622,7 +2502,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -2700,7 +2580,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2725,7 +2605,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Marseille",
       "equipo_visitante": "Paris FC",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T18:45:00Z",
       "hora_local_producto": "13:45",
       "duracion_min": 130,
@@ -2739,7 +2619,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2806,7 +2686,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Cruzeiro",
       "equipo_visitante": "Atletico Paranaense",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -2820,7 +2700,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2845,7 +2725,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Internacional",
       "equipo_visitante": "Santos",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -2859,7 +2739,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2922,7 +2802,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Espanyol",
       "equipo_visitante": "Sevilla",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -2936,7 +2816,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -2961,7 +2841,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Almeria",
       "equipo_visitante": "Cadiz",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -2975,7 +2855,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3039,7 +2919,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Club Nacional",
       "equipo_visitante": "Juventud",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T19:30:00Z",
       "hora_local_producto": "14:30",
       "duracion_min": 130,
@@ -3053,7 +2933,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3092,7 +2972,7 @@
         "api_sports:nfl"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 68,
       "metodo_correlacion": "evento_simple_verificado",
@@ -3124,7 +3004,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Central Cordoba de Santiago",
       "equipo_visitante": "Independiente",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
@@ -3138,7 +3018,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -3163,7 +3043,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Lanus",
       "equipo_visitante": "Defensa Y Justicia",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
@@ -3177,7 +3057,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -3202,7 +3082,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Huachipato",
       "equipo_visitante": "Colo Colo",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
@@ -3216,7 +3096,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3317,7 +3197,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Portland Thorns W",
       "equipo_visitante": "Washington Spirit W",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-06T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
@@ -3331,7 +3211,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3356,7 +3236,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Juan Pablo II College",
       "equipo_visitante": "Alianza Lima",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-06T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
@@ -3370,7 +3250,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -3561,7 +3441,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Internacional de Bogota",
       "equipo_visitante": "Águilas Doradas",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-06T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -3575,7 +3455,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3600,7 +3480,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Delfin SC",
       "equipo_visitante": "Universidad Catolica",
-      "subtitulo": "Not Started",
+      "subtitulo": "Halftime",
       "hora_utc": "2026-09-06T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -3614,7 +3494,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -3639,7 +3519,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Atletico Balboa",
       "equipo_visitante": "Municipal Limeño",
-      "subtitulo": "Not Started",
+      "subtitulo": "Halftime",
       "hora_utc": "2026-09-06T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -3653,7 +3533,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -3754,7 +3634,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Botafogo",
       "equipo_visitante": "Palmeiras",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-06T21:30:00Z",
       "hora_local_producto": "16:30",
       "duracion_min": 130,
@@ -3768,7 +3648,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3871,7 +3751,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Portland Hearts of Pine",
       "equipo_visitante": "Westchester SC",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-06T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -3885,7 +3765,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
