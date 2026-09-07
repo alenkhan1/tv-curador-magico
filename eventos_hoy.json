@@ -1,70 +1,10 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-07T14:18:33Z",
+  "generado_utc": "2026-09-07T18:47:10Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-07",
   "base_media": "http://stejar.matrivagoweb.com:8080",
   "eventos": [
-    {
-      "id": "epg_e408de96b4558aa0",
-      "agenda_id": "",
-      "titulo": "Día 1 - Primera ronda",
-      "torneo": "Día 1 - Primera ronda",
-      "categoria": "Snooker",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Abierto de Inglaterra de snooker",
-      "titulo_tarjeta": "Día 1 - Primera ronda",
-      "subtitulo_tarjeta": "Abierto de Inglaterra de snooker",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-07T12:00:00Z",
-      "hora_local_producto": "07:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "en_canal",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Snooker",
-        "directo:true"
-      ],
-      "canal_epg": "E2",
-      "fuentes": [
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 FHD",
-          "id_xtream": "379388",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 HD",
-          "id_xtream": "379389",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Otros\"\"SP: ES: Eurosport 2 SD",
-          "id_xtream": "379390",
-          "idioma": "ES",
-          "prioridad": 0
-        }
-      ]
-    },
     {
       "id": "apisports_basketball_498276",
       "agenda_id": "apisports_basketball_498276",
@@ -88,7 +28,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -190,7 +130,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "New Caledonia U20 W",
       "equipo_visitante": "China PR U20 W",
-      "subtitulo": "Second Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-07T13:00:00Z",
       "hora_local_producto": "08:00",
       "duracion_min": 130,
@@ -204,7 +144,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -373,72 +313,6 @@
       ]
     },
     {
-      "id": "epg_bf930015285669b8",
-      "agenda_id": "",
-      "titulo": "Japón - España",
-      "torneo": "Japón - España",
-      "categoria": "Baloncesto",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Torneos Clasificación MundoBasket F",
-      "titulo_tarjeta": "Japón - España",
-      "subtitulo_tarjeta": "Torneos Clasificación MundoBasket F",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-07T15:20:00Z",
-      "hora_local_producto": "10:20",
-      "duracion_min": 160,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "programado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Baloncesto",
-        "directo:true"
-      ],
-      "canal_epg": "TDP",
-      "fuentes": [
-        {
-          "nombre": "Fútbol\"\"SP: ES: Teledeporte FHD",
-          "id_xtream": "379369",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Fútbol\"\"SP: ES: Teledeporte HD",
-          "id_xtream": "379370",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Fútbol\"\"SP: ES: Teledeporte (Movil)",
-          "id_xtream": "379368",
-          "idioma": "ES",
-          "prioridad": 0
-        },
-        {
-          "nombre": "Fútbol\"\"SP: ES: Teledeporte SD",
-          "id_xtream": "379371",
-          "idioma": "ES",
-          "prioridad": 0
-        }
-      ]
-    },
-    {
       "id": "xtream_dea7a3076d8be13b",
       "agenda_id": "",
       "titulo": "Cobertura 1 En español vs US Open",
@@ -499,7 +373,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -538,7 +412,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -601,7 +475,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Costa Rica U20 W",
       "equipo_visitante": "Colombia U20 W",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-07T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -615,7 +489,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -716,7 +590,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Wieczysta Kraków",
       "equipo_visitante": "Zaglebie Lubin",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-07T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -730,7 +604,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -755,7 +629,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Getafe",
       "equipo_visitante": "Celta Vigo",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-07T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -769,7 +643,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -988,7 +862,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Al-Hilal Saudi FC",
       "equipo_visitante": "NEOM",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-07T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -1002,7 +876,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -1027,7 +901,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Albion FC",
       "equipo_visitante": "Progreso",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-07T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -1041,7 +915,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1187,7 +1061,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Pogon Szczecin",
       "equipo_visitante": "Wisla Plock",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-07T18:30:00Z",
       "hora_local_producto": "13:30",
       "duracion_min": 130,
@@ -1201,7 +1075,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 45,
       "metodo_correlacion": "evento_simple_verificado",
