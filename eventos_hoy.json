@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-08T07:18:17Z",
+  "generado_utc": "2026-09-08T12:55:27Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-08",
   "base_media": "http://stejar.matrivagoweb.com:8080",
@@ -32,7 +32,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
@@ -92,7 +92,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
@@ -146,6 +146,44 @@
           "id_xtream": "379387",
           "idioma": "ES",
           "prioridad": 0
+        }
+      ]
+    },
+    {
+      "id": "xtream_b4ec7af1fa7bbbca",
+      "agenda_id": "",
+      "titulo": "Corea del Norte vs Portugal",
+      "torneo": "Mundial Fem Sub20",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Corea del Norte",
+      "equipo_visitante": "Portugal",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://cdn.amxinfra.com/clarosports/images/2026/09/mundial-215947-1024x576.jpg",
+      "logo_local": "https://cdn.amxinfra.com/clarosports/images/2026/09/mundial-215947-1024x576.jpg",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 - Mundial Fem Sub20 - Corea del Norte vs. Portugal",
+          "id_xtream": "455565"
         }
       ]
     },
@@ -340,6 +378,52 @@
       ]
     },
     {
+      "id": "apisports_basketball_519446",
+      "agenda_id": "apisports_basketball_519446",
+      "titulo": "Hungary W vs Japan W",
+      "torneo": "World Cup Women",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Hungary W",
+      "equipo_visitante": "Japan W",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T15:45:00Z",
+      "hora_local_producto": "10:45",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/284.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/4179.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/3042.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 76,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:CUP,JAPAN,WOMEN",
+        "diferencia_min:5"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:50 - FIBA Women's World Cup - Japan vs. Spain",
+          "id_xtream": "455573"
+        },
+        {
+          "nombre": "13:45 - FIBA Women's World Cup - Italy vs. China",
+          "id_xtream": "455593"
+        },
+        {
+          "nombre": "13:45 - FIBA Women's World Cup - USA vs. Czechia",
+          "id_xtream": "455594"
+        }
+      ]
+    },
+    {
       "id": "xtream_388f979cbd783ab6",
       "agenda_id": "",
       "titulo": "Day 5 vs Equestre",
@@ -378,6 +462,44 @@
       ]
     },
     {
+      "id": "xtream_856f6471047f3527",
+      "agenda_id": "",
+      "titulo": "España vs Nigeria",
+      "torneo": "Mundial Fem Sub20",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "España",
+      "equipo_visitante": "Nigeria",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://cdn.amxinfra.com/clarosports/images/2026/09/mundial-215947-1024x576.jpg",
+      "logo_local": "https://cdn.amxinfra.com/clarosports/images/2026/09/mundial-215947-1024x576.jpg",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 - Mundial Fem Sub20 - España vs Nigeria",
+          "id_xtream": "455576"
+        }
+      ]
+    },
+    {
       "id": "xtream_dc14fc71c2ead14f",
       "agenda_id": "",
       "titulo": "NHRA DRAG Racing US Nationals vs Motor",
@@ -412,6 +534,44 @@
         {
           "nombre": "11:00 - NHRA DRAG Racing US Nationals - Motor",
           "id_xtream": "455577"
+        }
+      ]
+    },
+    {
+      "id": "xtream_9d745a443bd18f27",
+      "agenda_id": "",
+      "titulo": "FDU vs Villanova",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "FDU",
+      "equipo_visitante": "Villanova",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 - NCAA Soccer - FDU vs. Villanova",
+          "id_xtream": "455581"
         }
       ]
     },
@@ -476,20 +636,20 @@
       ]
     },
     {
-      "id": "xtream_3016b6f0bcb10bb2",
+      "id": "xtream_66fb35979b9639d9",
       "agenda_id": "",
-      "titulo": "USA vs Czechia",
-      "torneo": "FIBA Women's World Cup",
-      "categoria": "Baloncesto",
+      "titulo": "Pogoń Szczecin vs Wisła Płock",
+      "torneo": "Polonia",
+      "categoria": "Otros Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "USA",
-      "equipo_visitante": "Czechia",
+      "equipo_local": "Pogoń Szczecin",
+      "equipo_visitante": "Wisła Płock",
       "subtitulo": "",
-      "hora_utc": "2026-09-08T18:45:00Z",
-      "hora_local_producto": "13:45",
-      "duracion_min": 160,
-      "logo_torneo": "https://pbs.twimg.com/profile_images/2021486224209477633/JesGua1x_400x400.jpg",
-      "logo_local": "https://pbs.twimg.com/profile_images/2021486224209477633/JesGua1x_400x400.jpg",
+      "hora_utc": "2026-09-08T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Logo_ekstraklasa.png",
+      "logo_local": "https://media.api-sports.io/football/teams/348.png",
       "logo_visitante": "",
       "banner": "",
       "tier": 3,
@@ -503,13 +663,51 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
-        "categoria:Baloncesto"
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
       ],
       "fuentes": [
         {
-          "nombre": "13:45 - FIBA Women's World Cup - USA vs. Czechia",
-          "id_xtream": "455594"
+          "nombre": "13:30 - Polonia - Pogoń Szczecin vs Wisła Płock",
+          "id_xtream": "455592"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_519447",
+      "agenda_id": "apisports_basketball_519447",
+      "titulo": "Germany W vs South Korea W",
+      "torneo": "World Cup Women",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Germany W",
+      "equipo_visitante": "South Korea W",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/284.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/4577.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/3047.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 65,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:CUP,GERMANY,WOMEN",
+        "diferencia_min:175"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:50 - FIBA Women's World Cup - Germany vs. Mali",
+          "id_xtream": "455572"
         }
       ]
     },
@@ -552,6 +750,196 @@
       ]
     },
     {
+      "id": "xtream_e9128cf23a057f65",
+      "agenda_id": "",
+      "titulo": "Bromley vs AFC Wimbledon",
+      "torneo": "League One",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bromley",
+      "equipo_visitante": "AFC Wimbledon",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://r2.thesportsdb.com/images/media/league/badge/afedb31688770443.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1832.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1333.png",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - League One - Bromley vs. AFC Wimbledon",
+          "id_xtream": "455599"
+        }
+      ]
+    },
+    {
+      "id": "xtream_fddee1e5bf729e36",
+      "agenda_id": "",
+      "titulo": "Butler vs W Michigan",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Butler",
+      "equipo_visitante": "W Michigan",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - NCAA Soccer - Butler vs. W Michigan",
+          "id_xtream": "455600"
+        }
+      ]
+    },
+    {
+      "id": "xtream_afa00b55825ff85d",
+      "agenda_id": "",
+      "titulo": "Gonzaga vs Loyola Chicago",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Gonzaga",
+      "equipo_visitante": "Loyola Chicago",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 - NCAA Soccer - Gonzaga vs. Loyola Chicago",
+          "id_xtream": "455601"
+        }
+      ]
+    },
+    {
+      "id": "xtream_64f423589e052035",
+      "agenda_id": "",
+      "titulo": "Air Force vs Saint Mary's",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Air Force",
+      "equipo_visitante": "Saint Mary's",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Soccer - Air Force vs. Saint Mary's",
+          "id_xtream": "455604"
+        }
+      ]
+    },
+    {
+      "id": "xtream_6f6e234560fb1e48",
+      "agenda_id": "",
+      "titulo": "Marist vs San Francisco",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Marist",
+      "equipo_visitante": "San Francisco",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 - NCAA Soccer - Marist vs. San Francisco",
+          "id_xtream": "455605"
+        }
+      ]
+    },
+    {
       "id": "xtream_c1fcb31904b741af",
       "agenda_id": "",
       "titulo": "#13 Penn State vs DePaul",
@@ -586,6 +974,44 @@
         {
           "nombre": "15:00 - NCAA Volleyball - #13 Penn State vs. DePaul",
           "id_xtream": "455606"
+        }
+      ]
+    },
+    {
+      "id": "xtream_3ce29949a46ef7ea",
+      "agenda_id": "",
+      "titulo": "Stonehill vs Dartmouth",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Stonehill",
+      "equipo_visitante": "Dartmouth",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 - NCAA Soccer - Stonehill vs. Dartmouth",
+          "id_xtream": "455607"
         }
       ]
     },
@@ -666,6 +1092,234 @@
       ]
     },
     {
+      "id": "xtream_7bf254d466192860",
+      "agenda_id": "",
+      "titulo": "Santa Clara vs #23 Creighton",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Santa Clara",
+      "equipo_visitante": "#23 Creighton",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:30 - NCAA Soccer - Santa Clara vs. #23 Creighton",
+          "id_xtream": "455613"
+        }
+      ]
+    },
+    {
+      "id": "xtream_8e8d543b87fd0d92",
+      "agenda_id": "",
+      "titulo": "#14 High Point vs #13 South Carolina",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "#14 High Point",
+      "equipo_visitante": "#13 South Carolina",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - NCAA Soccer - #14 High Point vs. #13 South Carolina",
+          "id_xtream": "455617"
+        }
+      ]
+    },
+    {
+      "id": "xtream_673870a3db2d1c77",
+      "agenda_id": "",
+      "titulo": "CSU Northridge vs #1 Stanford",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "CSU Northridge",
+      "equipo_visitante": "#1 Stanford",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - NCAA Soccer - CSU Northridge vs. #1 Stanford",
+          "id_xtream": "455618"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d916c29022e2f24e",
+      "agenda_id": "",
+      "titulo": "George Mason vs West Virginia",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "George Mason",
+      "equipo_visitante": "West Virginia",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - NCAA Soccer - George Mason vs. West Virginia",
+          "id_xtream": "455619"
+        }
+      ]
+    },
+    {
+      "id": "xtream_aaa08191852bec59",
+      "agenda_id": "",
+      "titulo": "Rhode Island vs Providence",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Rhode Island",
+      "equipo_visitante": "Providence",
+      "subtitulo": "",
+      "hora_utc": "2026-09-08T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 - NCAA Soccer - Rhode Island vs. Providence",
+          "id_xtream": "455620"
+        }
+      ]
+    },
+    {
+      "id": "xtream_363fd38127c06163",
+      "agenda_id": "",
+      "titulo": "Incarnate Word vs #3 SMU",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Incarnate Word",
+      "equipo_visitante": "#3 SMU",
+      "subtitulo": "",
+      "hora_utc": "2026-09-09T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 - NCAA Soccer - Incarnate Word vs. #3 SMU",
+          "id_xtream": "455625"
+        }
+      ]
+    },
+    {
       "id": "apisports_baseball_185644",
       "agenda_id": "apisports_baseball_185644",
       "titulo": "Athletics vs Toronto Blue Jays",
@@ -740,6 +1394,44 @@
         {
           "nombre": "19:10 - MLB 10 - Cardinals vs Giants",
           "id_xtream": "455626"
+        }
+      ]
+    },
+    {
+      "id": "xtream_057fb784e06be14b",
+      "agenda_id": "",
+      "titulo": "Cal Poly vs LMU",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cal Poly",
+      "equipo_visitante": "LMU",
+      "subtitulo": "",
+      "hora_utc": "2026-09-09T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_local": "https://www.ncaa.com/modules/custom/casablanca_core/img/sportbanners/soccer-men.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 - NCAA Soccer - Cal Poly vs. LMU",
+          "id_xtream": "455632"
         }
       ]
     },
