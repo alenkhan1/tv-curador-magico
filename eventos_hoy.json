@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-09T17:14:24Z",
+  "generado_utc": "2026-09-09T19:50:52Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-09",
   "base_media": "http://iptvpremium.ink:55577",
@@ -878,7 +878,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -941,7 +941,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "France U20 W",
       "equipo_visitante": "Ecuador U20 W",
-      "subtitulo": "Second Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-09T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -955,7 +955,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -1056,7 +1056,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Barcelona",
       "equipo_visitante": "Feyenoord",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-09T16:45:00Z",
       "hora_local_producto": "11:45",
       "duracion_min": 130,
@@ -1070,7 +1070,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1103,7 +1103,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "VfB Stuttgart",
       "equipo_visitante": "Viking",
-      "subtitulo": "First Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-09T16:45:00Z",
       "hora_local_producto": "11:45",
       "duracion_min": 130,
@@ -1117,7 +1117,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1189,7 +1189,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Al-Nassr",
       "equipo_visitante": "Abha",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-09T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -1203,7 +1203,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1232,7 +1232,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Racing Montevideo",
       "equipo_visitante": "Central Espanol",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-09T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -1246,7 +1246,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -1271,7 +1271,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Blackburn Rovers U21",
       "equipo_visitante": "Queens Park Rangers U21",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-09T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -1285,7 +1285,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 45,
       "metodo_correlacion": "evento_simple_verificado",
@@ -1309,7 +1309,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Boston River",
       "equipo_visitante": "Colón",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-09T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -1323,7 +1323,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 76,
       "metodo_correlacion": "evento_simple_verificado",
@@ -1365,7 +1365,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
@@ -1397,14 +1397,15 @@
       "logo_visitante": "https://media.api-sports.io/basketball/teams/3035.png",
       "banner": "",
       "tier": 1,
-      "origen": "api_sports:basketball",
+      "origen": "api_sports:basketball+epg",
       "origenes": [
-        "api_sports:basketball"
+        "api_sports:basketball",
+        "epg"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
-      "puntuacion_confianza": 97,
+      "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
       "razones_correlacion": [
         "local:ITALY",
@@ -1414,7 +1415,9 @@
       "fuentes": [
         {
           "nombre": "13:45 ◘ Italy vs. Australia ◘ FIBA Women's World Cup ◘",
-          "id_xtream": "549248"
+          "id_xtream": "549248",
+          "idioma": "Principal",
+          "prioridad": 10
         }
       ]
     },
@@ -1427,7 +1430,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Chelsea",
       "equipo_visitante": "Leeds",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-09T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -1441,7 +1444,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1470,7 +1473,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Liverpool",
       "equipo_visitante": "Atletico Madrid",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-09T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -1484,7 +1487,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -1517,7 +1520,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Napoli",
       "equipo_visitante": "Arsenal",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-09T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -1531,7 +1534,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -1560,7 +1563,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Paris Saint Germain",
       "equipo_visitante": "Slovan Bratislava",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-09T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -1574,7 +1577,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 68,
       "metodo_correlacion": "evento_simple_verificado",
@@ -1602,7 +1605,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Sporting CP",
       "equipo_visitante": "Galatasaray",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-09T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -1616,7 +1619,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
