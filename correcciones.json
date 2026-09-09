@@ -1,0 +1,17 @@
+{
+  "_ayuda": [
+    "OPCIONAL. El curador funciona perfecto sin que edites este archivo nunca.",
+    "Sirve solo para forzar un caso puntual sin esperar a que TMDB lo resuelva.",
+    "equivalencias: fuerza la identificacion. tipo es 'movie' o 'tv'.",
+    "  {\"tipo\": \"movie\", \"nombre\": \"Gran Turismo De jugador a corredor\", \"tmdb_id\": 442249}",
+    "exclusiones: nunca entra al catalogo. Por nombre o por id del proveedor.",
+    "  {\"tipo\": \"movie\", \"nombre\": \"Evento UFC 300\"} | {\"tipo\": \"movie\", \"id\": 173558}",
+    "forzados: manda el item a una fila concreta, ademas de la que le toque.",
+    "  {\"tipo\": \"movie\", \"nombre\": \"El callejon de los milagros\", \"fila\": \"Retro\"}",
+    "El campo 'nombre' se compara sin acentos, sin mayusculas y sin signos,",
+    "asi que no tienes que copiarlo con precision milimetrica."
+  ],
+  "equivalencias": [],
+  "exclusiones": [],
+  "forzados": []
+}
