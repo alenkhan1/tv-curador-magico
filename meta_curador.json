@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-09T16:08:10Z",
+  "generado_utc": "2026-09-09T17:14:18Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-09",
   "agenda": {
@@ -11,7 +11,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "83",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -21,7 +21,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "83",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -31,7 +31,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "83",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -41,7 +41,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "83",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -51,7 +51,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "84",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -61,7 +61,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "84",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -71,7 +71,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "84",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -81,7 +81,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "84",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -91,7 +91,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "84",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -101,7 +101,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "84",
         "limite_minuto": "10",
         "restantes_minuto": "9",
         "errores_api": 1,
@@ -113,7 +113,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "84",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -123,7 +123,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "84",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       }
@@ -137,24 +137,33 @@
   "xtream": {
     "categorias_hoy": 0,
     "categorias_fuera_de_jornada": 0,
-    "error": "xtream:HTTPSConnectionPool(host='zapdashboard.onrender.com', port=443): Read timed out. (read timeout=75)"
+    "streams_totales": 3025,
+    "descartado_sin_hora_programada": 2774,
+    "descartado_contenido_no_evento": 98,
+    "descartado_sin_nombre": 22,
+    "descartado_fecha_xtream_fuera_de_jornada": 2,
+    "candidatos": 129
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_unicos": 0,
+    "fuentes_emparejadas": 94,
+    "eventos_independientes_creados": 27,
+    "fuentes_independientes": 27,
+    "descartado_partido_de_ayer": 8,
+    "eventos_unicos": 87,
     "frescura": {
       "es_stale": false,
-      "coincidencias_ayer": 0,
-      "coincidencias_hoy": 0,
-      "evaluados": 0
+      "coincidencias_ayer": 32,
+      "coincidencias_hoy": 84,
+      "evaluados": 126
     }
   },
-  "eventos_finales_base": 0,
-  "cuarentena_guardada": 0,
+  "eventos_finales_base": 87,
+  "cuarentena_guardada": 8,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 206386,
+      "programas_leidos": 210797,
       "veto_o_historico": 37,
       "rechazados_no_en_vivo": 30,
       "admitidos": 1,
@@ -170,6 +179,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 1,
-  "actualizado_utc": "2026-09-09T16:08:15Z"
+  "eventos_finales_total": 88,
+  "actualizado_utc": "2026-09-09T17:14:24Z"
 }
