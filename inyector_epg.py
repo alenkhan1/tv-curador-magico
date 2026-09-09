@@ -15,6 +15,10 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Optional, List, Dict, Tuple
 
 import requests
+try:
+    from curl_cffi import requests as cffi_requests
+except ImportError:
+    cffi_requests = None
 
 from curador_eventos import (
     obtener_canales_xtream_con_cache,
@@ -234,7 +238,29 @@ def ordenar_fuentes(fuentes: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 
 def llamada_xtream(url: str, timeout: int = 60) -> Any:
-    respuesta = requests.get(PUENTE_URL, params={"url": url}, timeout=timeout)
+    if PUENTE_URL:
+        try:
+            respuesta = requests.get(PUENTE_URL, params={"url": url}, timeout=timeout)
+            if respuesta.status_code == 200:
+                return respuesta.json()
+            log.warning("El puente respondió HTTP %s, recurriendo a conexión directa...", respuesta.status_code)
+        except Exception as e:
+            log.warning("Fallo en el puente (%s), recurriendo a conexión directa...", e)
+
+    if cffi_requests is not None:
+        try:
+            r = cffi_requests.get(url, impersonate="chrome", timeout=timeout)
+            if r.status_code == 200:
+                return r.json()
+            log.warning("Conexión directa curl_cffi respondió HTTP %s", r.status_code)
+        except Exception as e:
+            log.warning("Fallo en conexión directa curl_cffi: %s", e)
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "Accept-Encoding": "gzip, deflate",
+    }
+    respuesta = requests.get(url, headers=headers, timeout=timeout)
     respuesta.raise_for_status()
     return respuesta.json()
 

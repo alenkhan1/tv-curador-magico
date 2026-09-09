@@ -17,6 +17,10 @@ from typing import Any, Optional, Iterable, List, Dict, Tuple
 from zoneinfo import ZoneInfo
 
 import requests
+try:
+    from curl_cffi import requests as cffi_requests
+except ImportError:
+    cffi_requests = None
 
 from resolvedor_logos import resolver_logo_torneo
 
@@ -85,7 +89,7 @@ MESES_MAP = {
     "JUNIO": 6, "JUN": 6, "JUNE": 6,
     "JULIO": 7, "JUL": 7, "JULY": 7,
     "AGOSTO": 8, "AGO": 8, "AUGUST": 8, "AUG": 8,
-    "SEPTIEMBRE": 9, "SEP": 9, "SEPT": 9, "SEPTEMBER": 9,
+    "SEPTIEMBRE": 9, "SETIEMBRE": 9, "SEP": 9, "SET": 9, "SEPT": 9, "SEPTEMBER": 9,
     "OCTUBRE": 10, "OCT": 10, "OCTOBER": 10,
     "NOVIEMBRE": 11, "NOV": 11, "NOVEMBER": 11,
     "DICIEMBRE": 12, "DIC": 12, "DECEMBER": 12, "DEC": 12,
@@ -298,7 +302,14 @@ def variaciones_fecha(fecha: datetime) -> set[str]:
     meses_es = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"]
     meses_en = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
     d, m = fecha.day, fecha.month
-    return {f"{d:02d}/{m:02d}", f"{d:02d}-{m:02d}", f"{d} {meses_es[m-1]}", f"{d} {meses_en[m-1]}", f"{meses_es[m-1]} {d}", f"{meses_en[m-1]} {d}"}
+    variaciones = {
+        f"{d:02d}/{m:02d}", f"{d:02d}-{m:02d}",
+        f"{d} {meses_es[m-1]}", f"{d} {meses_en[m-1]}",
+        f"{meses_es[m-1]} {d}", f"{meses_en[m-1]} {d}",
+    }
+    if m == 9:
+        variaciones.update({f"{d} SET", f"SET {d}", f"{d} SETIEMBRE", f"SETIEMBRE {d}"})
+    return variaciones
 
 
 def fecha_xtream_explicita(texto: str, fecha_producto: date) -> Optional[bool]:
@@ -686,7 +697,32 @@ def obtener_agenda_maestra(fecha_consulta: str, metricas_salida: Optional[Dict[s
 
 
 def llamada_xtream(url: str, timeout: int = 60) -> Any:
-    respuesta = requests.get(PUENTE_URL, params={"url": url}, timeout=timeout)
+    # 1. Intentar mediante el puente en Render si está configurado
+    if PUENTE_URL:
+        try:
+            respuesta = requests.get(PUENTE_URL, params={"url": url}, timeout=timeout)
+            if respuesta.status_code == 200:
+                return respuesta.json()
+            log.warning("El puente respondió HTTP %s, recurriendo a conexión directa...", respuesta.status_code)
+        except Exception as e:
+            log.warning("Fallo en el puente (%s), recurriendo a conexión directa...", e)
+
+    # 2. Respaldo directo con curl_cffi (impersonate='chrome')
+    if cffi_requests is not None:
+        try:
+            r = cffi_requests.get(url, impersonate="chrome", timeout=timeout)
+            if r.status_code == 200:
+                return r.json()
+            log.warning("Conexión directa curl_cffi respondió HTTP %s", r.status_code)
+        except Exception as e:
+            log.warning("Fallo en conexión directa curl_cffi: %s", e)
+
+    # 3. Respaldo directo con requests estándar y User-Agent de navegador
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+        "Accept-Encoding": "gzip, deflate",
+    }
+    respuesta = requests.get(url, headers=headers, timeout=timeout)
     respuesta.raise_for_status()
     return respuesta.json()
 
