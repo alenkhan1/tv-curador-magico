@@ -1,7 +1,7 @@
 {
   "version": 11,
   "fecha_local_producto": "2026-09-10",
-  "generado_utc": "2026-09-10T08:46:51Z",
+  "generado_utc": "2026-09-10T12:59:37Z",
   "eventos": [
     {
       "id": "apisports_basketball_503888",
@@ -26,7 +26,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -90,7 +90,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -122,7 +122,7 @@
         "api_sports:rugby"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -140,7 +140,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Barcelona U19",
       "equipo_visitante": "Feyenoord U19",
-      "subtitulo": "Second Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T07:30:00Z",
       "hora_local_producto": "02:30",
       "duracion_min": 130,
@@ -154,7 +154,39 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "fuentes": [],
+      "metodo_correlacion": "agenda_api_sports",
+      "razones_correlacion": [
+        "deporte:football"
+      ]
+    },
+    {
+      "id": "apisports_football_1611755",
+      "agenda_id": "apisports_football_1611755",
+      "titulo": "LNZ Cherkasy U19 vs Metalist 1925 U19",
+      "torneo": "U19 League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "LNZ Cherkasy U19",
+      "equipo_visitante": "Metalist 1925 U19",
+      "subtitulo": "Match Finished",
+      "hora_utc": "2026-09-10T08:00:00Z",
+      "hora_local_producto": "03:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/1065.png",
+      "logo_local": "https://media.api-sports.io/football/teams/23077.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/23078.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -186,7 +218,7 @@
         "api_sports:hockey"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -218,7 +250,7 @@
         "api_sports:hockey"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -236,7 +268,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "RTC",
       "equipo_visitante": "Thimphu City",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T09:00:00Z",
       "hora_local_producto": "04:00",
       "duracion_min": 130,
@@ -250,7 +282,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -282,7 +314,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -314,7 +346,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -346,7 +378,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -410,7 +442,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -442,7 +474,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -474,7 +506,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -506,7 +538,7 @@
         "api_sports:hockey"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -584,7 +616,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Coal India",
       "equipo_visitante": "Mohun Bagan",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T09:30:00Z",
       "hora_local_producto": "04:30",
       "duracion_min": 130,
@@ -598,7 +630,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -662,7 +694,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -694,7 +726,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -758,7 +790,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -790,7 +822,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -808,7 +840,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Dinamo Barnaul",
       "equipo_visitante": "Chelyabinsk",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T10:00:00Z",
       "hora_local_producto": "05:00",
       "duracion_min": 130,
@@ -822,7 +854,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -854,7 +886,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -886,7 +918,7 @@
         "api_sports:hockey"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -918,7 +950,7 @@
         "api_sports:volleyball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -968,7 +1000,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Sport Academy Kairat",
       "equipo_visitante": "Astana II",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T11:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 130,
@@ -982,7 +1014,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1000,7 +1032,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Yelimay Semey 2",
       "equipo_visitante": "Akademiya Ontustik",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T11:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 130,
@@ -1014,7 +1046,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1032,7 +1064,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Fenerbahce U19",
       "equipo_visitante": "Roma U19",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T11:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 130,
@@ -1046,7 +1078,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1078,7 +1110,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1142,7 +1174,7 @@
         "api_sports:volleyball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1320,7 +1352,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Aktobe Jas",
       "equipo_visitante": "Turan Turkistan",
-      "subtitulo": "Not Started",
+      "subtitulo": "Halftime",
       "hora_utc": "2026-09-10T12:00:00Z",
       "hora_local_producto": "07:00",
       "duracion_min": 130,
@@ -1334,7 +1366,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1352,7 +1384,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "PSV U19",
       "equipo_visitante": "Shakhtar Donetsk U19",
-      "subtitulo": "Not Started",
+      "subtitulo": "Halftime",
       "hora_utc": "2026-09-10T12:00:00Z",
       "hora_local_producto": "07:00",
       "duracion_min": 130,
@@ -1366,7 +1398,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1384,7 +1416,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Slavia Praha U19",
       "equipo_visitante": "Lens U19",
-      "subtitulo": "Not Started",
+      "subtitulo": "Halftime",
       "hora_utc": "2026-09-10T12:00:00Z",
       "hora_local_producto": "07:00",
       "duracion_min": 130,
@@ -1398,7 +1430,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1448,7 +1480,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Viettel",
       "equipo_visitante": "Công An Nhân Dân",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-10T12:15:00Z",
       "hora_local_producto": "07:15",
       "duracion_min": 130,
@@ -1462,7 +1494,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1480,7 +1512,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Səbail",
       "equipo_visitante": "Mingəçevir",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-10T12:30:00Z",
       "hora_local_producto": "07:30",
       "duracion_min": 130,
@@ -1494,7 +1526,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1512,7 +1544,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Zaqatala",
       "equipo_visitante": "Baku Sportinq",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-10T12:30:00Z",
       "hora_local_producto": "07:30",
       "duracion_min": 130,
@@ -1526,7 +1558,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1544,7 +1576,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Nyva Vinnytsya",
       "equipo_visitante": "Dynamo Kyiv",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-10T12:30:00Z",
       "hora_local_producto": "07:30",
       "duracion_min": 130,
@@ -1558,7 +1590,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1590,7 +1622,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -1622,7 +1654,7 @@
         "api_sports:basketball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "fuentes": [],
@@ -4896,6 +4928,38 @@
       ]
     },
     {
+      "id": "apisports_hockey_443764",
+      "agenda_id": "apisports_hockey_443764",
+      "titulo": "Nybro vs Boras",
+      "torneo": "Club Friendly",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nybro",
+      "equipo_visitante": "Boras",
+      "subtitulo": "",
+      "hora_utc": "2026-09-10T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/205.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/1191.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/1267.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "fuentes": [],
+      "metodo_correlacion": "agenda_api_sports",
+      "razones_correlacion": [
+        "deporte:hockey"
+      ]
+    },
+    {
       "id": "apisports_hockey_445951",
       "agenda_id": "apisports_hockey_445951",
       "titulo": "Gomel vs Neman Grodno",
@@ -6479,6 +6543,38 @@
       "logo_torneo": "https://media.api-sports.io/hockey/leagues/205.png",
       "logo_local": "https://media.api-sports.io/hockey/teams/2475.png",
       "logo_visitante": "https://media.api-sports.io/hockey/teams/1258.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "fuentes": [],
+      "metodo_correlacion": "agenda_api_sports",
+      "razones_correlacion": [
+        "deporte:hockey"
+      ]
+    },
+    {
+      "id": "apisports_hockey_448265",
+      "agenda_id": "apisports_hockey_448265",
+      "titulo": "Karlskrona vs Morrums GoIS",
+      "torneo": "Club Friendly",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Karlskrona",
+      "equipo_visitante": "Morrums GoIS",
+      "subtitulo": "",
+      "hora_utc": "2026-09-10T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/205.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/891.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/1206.png",
       "banner": "",
       "tier": 1,
       "origen": "api_sports:hockey",
@@ -10504,7 +10600,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10514,7 +10610,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10524,7 +10620,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10534,7 +10630,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10544,7 +10640,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10554,7 +10650,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10564,7 +10660,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10574,7 +10670,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10584,7 +10680,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "93",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10594,7 +10690,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9",
         "errores_api": 1,
@@ -10606,7 +10702,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -10616,7 +10712,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "92",
+        "restantes_diarios": "89",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       }
@@ -10625,6 +10721,6 @@
       "solicitudes": 1,
       "eventos": 2
     },
-    "eventos": 328
+    "eventos": 331
   }
 }
