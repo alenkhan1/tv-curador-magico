@@ -1,0 +1,187 @@
+{
+  "version": 12,
+  "generado_utc": "2026-09-10T08:45:26Z",
+  "zona_horaria_producto": "America/Bogota",
+  "fecha_local_producto": "2026-09-10",
+  "agenda": {
+    "api_sports": {
+      "football": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "basketball": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "baseball": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "hockey": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "handball": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "rugby": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "volleyball": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "afl": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "nfl": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "nba": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9",
+        "errores_api": 1,
+        "ultimo_error": "{'timezone': 'The Timezone field do not exist.'}"
+      },
+      "formula-1": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      },
+      "mma": {
+        "clave_indice": 1,
+        "total_claves": 2,
+        "solicitudes": 1,
+        "http": 200,
+        "limite_diario": "100",
+        "restantes_diarios": "94",
+        "limite_minuto": "10",
+        "restantes_minuto": "9"
+      }
+    },
+    "thesportsdb_respaldo": {
+      "solicitudes": 1,
+      "eventos": 2
+    },
+    "eventos": 328
+  },
+  "xtream": {
+    "categorias_hoy": 0,
+    "categorias_fuera_de_jornada": 4,
+    "streams_totales": 3024,
+    "descartado_sin_hora_programada": 2772,
+    "descartado_contenido_no_evento": 98,
+    "descartado_sin_nombre": 22,
+    "descartado_fecha_xtream_fuera_de_jornada": 3,
+    "candidatos": 129
+  },
+  "curacion": {
+    "lista_stale": 0,
+    "descartado_partido_de_ayer": 52,
+    "fuentes_emparejadas": 46,
+    "eventos_independientes_creados": 31,
+    "fuentes_independientes": 31,
+    "eventos_unicos": 45,
+    "frescura": {
+      "es_stale": false,
+      "coincidencias_ayer": 93,
+      "coincidencias_hoy": 4,
+      "evaluados": 126
+    }
+  },
+  "eventos_finales_base": 45,
+  "cuarentena_guardada": 52,
+  "epg": {
+    "politica": "en_canal_consenso_multifeed_estricto",
+    "lectura": {
+      "programas_leidos": 216203,
+      "rechazados_no_en_vivo": 29,
+      "admitidos": 6,
+      "categoria:Ciclismo": 2,
+      "veto_o_historico": 35,
+      "categoria:Snooker": 2,
+      "categoria:Fútbol": 1,
+      "categoria:Baloncesto": 1
+    },
+    "fusion": {
+      "agregados": 5
+    },
+    "canales_mapeados": {
+      "E1": 0,
+      "E2": 0,
+      "TDP": 0
+    },
+    "orden_fuentes": "ES,Principal,EN,otros"
+  },
+  "eventos_finales_total": 50,
+  "actualizado_utc": "2026-09-10T08:45:29Z"
+}
