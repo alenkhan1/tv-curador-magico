@@ -1278,6 +1278,9 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
         except (TypeError, ValueError):
             marca = 0
 
+        ext_bruta = str(item.get("container_extension") or "mp4").strip().lower().lstrip(".")
+        ext = ext_bruta if ext_bruta else "mp4"
+
         grupo["copias"].append({
             "id": sid, "nombre": nombre, "nombre_crudo": nombre,
             "carpeta": cat_nombre,
@@ -1286,6 +1289,7 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
             "idioma_txt": info["idioma_txt"], "temporada": info["temporada"],
             "marca": marca, "etiquetas": info["etiquetas"],
             "prefijo": info["prefijo"],
+            "ext": ext,
         })
 
         fila_forzada = (corr["forzados"][tipo].get(nombre_norm)
@@ -1422,6 +1426,7 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
                       else mejor_copia["id"],
                 "titulo": grupo["titulo"] or mejor_copia["nombre_crudo"],
                 "anio": grupo["anio"] or None,
+                "ext": mejor_copia.get("ext") or "mp4",
                 "alt": [
                     int(c["id"]) for c in grupo["copias"]
                     if c is not mejor_copia and str(c["id"]).isdigit()
@@ -1574,6 +1579,7 @@ def fase2(clasificados, es_serie, total_origen):
             "id": int(mejor["id"]) if str(mejor["id"]).isdigit() else mejor["id"],
             "calidad": mejor["calidad_txt"],
             "idioma": mejor["idioma_txt"],
+            "ext": mejor.get("ext") or "mp4",
             "alt": [int(x["id"]) for x in resto[:3] if str(x["id"]).isdigit()],
             "filas": set(),
             "es_clasico": False,
@@ -1732,6 +1738,8 @@ def fase2(clasificados, es_serie, total_origen):
             item["calidad"] = r["calidad"]
         if r["idioma"]:
             item["idioma"] = r["idioma"]
+        if r.get("ext"):
+            item["ext"] = r["ext"]
         if r["alt"]:
             item["alt"] = r["alt"]
         idx = len(items_planos)
