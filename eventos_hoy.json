@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-10T22:38:46Z",
+  "generado_utc": "2026-09-11T01:08:51Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-10",
   "base_media": "http://elpapanatas.space:8080",
@@ -3348,7 +3348,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -3389,7 +3389,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Aurora",
       "equipo_visitante": "Municipal",
-      "subtitulo": "Second Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -3403,7 +3403,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3500,6 +3500,57 @@
       ]
     },
     {
+      "id": "apisports_football_1549115",
+      "agenda_id": "apisports_football_1549115",
+      "titulo": "Salcedo vs Cibao",
+      "torneo": "CONCACAF Caribbean Club Championship",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Salcedo",
+      "equipo_visitante": "Cibao",
+      "subtitulo": "Match Finished",
+      "hora_utc": "2026-09-10T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/856.png",
+      "logo_local": "https://media.api-sports.io/football/teams/25556.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/8004.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "finalizado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:SALCEDO",
+        "visitante:CIBAO",
+        "diferencia_min:70"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:50 10/09 | Salcedo FC vs. Cibao FC | Concacaf Caribbean Cup ||",
+          "id_xtream": "582365"
+        },
+        {
+          "nombre": "CONCACAF Caribbean Cup | 05:00 PM | Salcedo FC (DOM) vs  Cibao FC (DOM)",
+          "id_xtream": "582405"
+        },
+        {
+          "nombre": "CONCACAF Caribbean Cup | 05:00 PM | Salcedo FC (DOM) vs  Cibao FC (DOM)",
+          "id_xtream": "582417"
+        },
+        {
+          "nombre": "17:50 ◘ Salcedo FC vs. Cibao FC ◘ Concacaf Caribbean Cup ◘◘",
+          "id_xtream": "582642"
+        }
+      ]
+    },
+    {
       "id": "apisports_football_1511681",
       "agenda_id": "apisports_football_1511681",
       "titulo": "Antofagasta vs Cobreloa",
@@ -3508,7 +3559,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Antofagasta",
       "equipo_visitante": "Cobreloa",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
@@ -3522,7 +3573,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3555,7 +3606,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Montreal Roses W",
       "equipo_visitante": "AFC Toronto W",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-10T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
@@ -3569,7 +3620,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3722,57 +3773,6 @@
       ]
     },
     {
-      "id": "apisports_football_1549115",
-      "agenda_id": "apisports_football_1549115",
-      "titulo": "Salcedo vs Cibao",
-      "torneo": "CONCACAF Caribbean Club Championship",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Salcedo",
-      "equipo_visitante": "Cibao",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-11T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/856.png",
-      "logo_local": "https://media.api-sports.io/football/teams/25556.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/8004.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:SALCEDO",
-        "visitante:CIBAO",
-        "diferencia_min:130"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:50 10/09 | Salcedo FC vs. Cibao FC | Concacaf Caribbean Cup ||",
-          "id_xtream": "582365"
-        },
-        {
-          "nombre": "CONCACAF Caribbean Cup | 05:00 PM | Salcedo FC (DOM) vs  Cibao FC (DOM)",
-          "id_xtream": "582405"
-        },
-        {
-          "nombre": "CONCACAF Caribbean Cup | 05:00 PM | Salcedo FC (DOM) vs  Cibao FC (DOM)",
-          "id_xtream": "582417"
-        },
-        {
-          "nombre": "17:50 ◘ Salcedo FC vs. Cibao FC ◘ Concacaf Caribbean Cup ◘◘",
-          "id_xtream": "582642"
-        }
-      ]
-    },
-    {
       "id": "apisports_nfl_23443",
       "agenda_id": "apisports_nfl_23443",
       "titulo": "NCAA",
@@ -3831,7 +3831,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Malacateco",
       "equipo_visitante": "Antigua GFC",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-11T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -3845,7 +3845,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -3874,7 +3874,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Independiente del Valle",
       "equipo_visitante": "Flamengo",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-11T00:30:00Z",
       "hora_local_producto": "19:30",
       "duracion_min": 130,
@@ -3888,7 +3888,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -3929,7 +3929,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Cienciano",
       "equipo_visitante": "Atletico Torque",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-11T00:30:00Z",
       "hora_local_producto": "19:30",
       "duracion_min": 130,
@@ -3943,7 +3943,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -3998,7 +3998,7 @@
         "api_sports:nfl"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -4035,7 +4035,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Alebrijes de Oaxaca",
       "equipo_visitante": "Durango",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-11T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -4049,7 +4049,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -4078,7 +4078,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Millonarios",
       "equipo_visitante": "Deportivo Cali",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-11T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -4092,7 +4092,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
