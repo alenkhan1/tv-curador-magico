@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-12T07:12:34Z",
+  "generado_utc": "2026-09-12T12:13:22Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-12",
   "base_media": "http://elpapanatas.space:8080",
@@ -140,45 +140,156 @@
       ]
     },
     {
-      "id": "epg_d2f5978c27dc5048",
+      "id": "xtream_ae0a4ba418ff846e",
       "agenda_id": "",
-      "titulo": "Atlético Navalcarnero - Alcorcón",
-      "torneo": "Atlético Navalcarnero - Alcorcón",
-      "categoria": "Fútbol",
+      "titulo": "◘ GP San Marino - Free Practice 1 ◘ MotoGP ◘◘",
+      "torneo": "◘ GP San Marino - Free Practice 1 ◘ MotoGP ◘◘",
+      "categoria": "Motor",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Primera División de Fútbol Sala F",
-      "titulo_tarjeta": "Atlético Navalcarnero - Alcorcón",
-      "subtitulo_tarjeta": "Primera División de Fútbol Sala F",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-12T07:55:00Z",
-      "hora_local_producto": "02:55",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd3%2FSoccerball.svg%2F512px-Soccerball.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd3%2FSoccerball.svg%2F512px-Soccerball.svg.png&w=400&output=webp",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T06:55:00Z",
+      "hora_local_producto": "01:55",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/b5315cc7893bd48e1c8bc0ce8505183c.png",
+      "logo_local": "http://www.1play.cool:25461/images/b5315cc7893bd48e1c8bc0ce8505183c.png",
       "logo_visitante": "",
       "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 3,
+      "origen": "xtream_evento",
       "origenes": [
-        "epg"
+        "xtream"
       ],
-      "estado": "programado",
+      "estado": "confirmado",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Fútbol",
-        "directo:true"
+        "hora_y_deporte_valido",
+        "categoria:Motor"
       ],
-      "canal_epg": "TDP",
-      "fuentes": []
+      "fuentes": [
+        {
+          "nombre": "01:55 ◘ GP San Marino - Free Practice 1 ◘ MotoGP ◘◘",
+          "id_xtream": "590933"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d401b2098c2ba299",
+      "agenda_id": "",
+      "titulo": "DP World Tour",
+      "torneo": "DP World Tour",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Amgen Irish Open (Segunda Ronda)",
+      "hora_utc": "2026-09-12T07:30:00Z",
+      "hora_local_producto": "02:30",
+      "duracion_min": 300,
+      "logo_torneo": "https://pbs.twimg.com/media/HRtBWiebwAAdmff.jpg",
+      "logo_local": "https://pbs.twimg.com/media/HRtBWiebwAAdmff.jpg",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "DP World Tour | 02:30 AM | Amgen Irish Open (Segunda Ronda)",
+          "id_xtream": "590733"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b61d78e8e3999c10",
+      "agenda_id": "",
+      "titulo": "◘ Fórmula 3 GP Madrid",
+      "torneo": "◘ Fórmula 3 GP Madrid",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Práctica ◘ F3 ◘◘",
+      "hora_utc": "2026-09-12T07:50:00Z",
+      "hora_local_producto": "02:50",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_local": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "02:50 ◘ Fórmula 3 GP Madrid | Práctica ◘ F3 ◘◘",
+          "id_xtream": "590935"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f09bdee81cc70fa5",
+      "agenda_id": "",
+      "titulo": "◘ Amgen Irish Open ◘ Golf ◘◘",
+      "torneo": "◘ Amgen Irish Open ◘ Golf ◘◘",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T08:30:00Z",
+      "hora_local_producto": "03:30",
+      "duracion_min": 300,
+      "logo_torneo": "http://www.1play.cool:25461/images/9a3aa930600681609078035f8c581e9c.png",
+      "logo_local": "http://www.1play.cool:25461/images/9a3aa930600681609078035f8c581e9c.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "03:30 ◘ Amgen Irish Open ◘ Golf ◘◘",
+          "id_xtream": "590936"
+        }
+      ]
     },
     {
       "id": "xtream_f39dcc2dbe897588",
@@ -219,45 +330,395 @@
       ]
     },
     {
-      "id": "epg_04b11ba18b0ddf22",
+      "id": "xtream_568c6eabdfaf5c6a",
       "agenda_id": "",
-      "titulo": "La Vuelta a España - Etapa 20 - La Calahorra - Collado del Alguacil",
+      "titulo": "◘ Fórmula 2 GP Madrid",
+      "torneo": "◘ Fórmula 2 GP Madrid",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Práctica ◘ F2 ◘◘",
+      "hora_utc": "2026-09-12T08:50:00Z",
+      "hora_local_producto": "03:50",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_local": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "03:50 ◘ Fórmula 2 GP Madrid | Práctica ◘ F2 ◘◘",
+          "id_xtream": "590937"
+        }
+      ]
+    },
+    {
+      "id": "xtream_06195102c67db930",
+      "agenda_id": "",
+      "titulo": "París vs Centre Court (Cuartos de Final)",
+      "torneo": "Premier Padel",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "París",
+      "equipo_visitante": "Centre Court (Cuartos de Final)",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://d1f00kj7ad54bu.cloudfront.net/Pictures/2000xAny/1/4/4/14144_premierpadel2_680106.png",
+      "logo_local": "https://d1f00kj7ad54bu.cloudfront.net/Pictures/2000xAny/1/4/4/14144_premierpadel2_680106.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_programada_en_canal",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Premier Padel | 05:00 AM | París - Centre Court (Cuartos de Final)",
+          "id_xtream": "590731"
+        }
+      ]
+    },
+    {
+      "id": "xtream_22ea2b8768c86efc",
+      "agenda_id": "",
+      "titulo": "París vs Secondary Court (Cuartos de Final)",
+      "torneo": "Premier Padel",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "París",
+      "equipo_visitante": "Secondary Court (Cuartos de Final)",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://d1f00kj7ad54bu.cloudfront.net/Pictures/2000xAny/1/4/4/14144_premierpadel2_680106.png",
+      "logo_local": "https://d1f00kj7ad54bu.cloudfront.net/Pictures/2000xAny/1/4/4/14144_premierpadel2_680106.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_programada_en_canal",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Premier Padel | 05:00 AM | París - Secondary Court (Cuartos de Final)",
+          "id_xtream": "590732"
+        }
+      ]
+    },
+    {
+      "id": "xtream_deed2384030ecfea",
+      "agenda_id": "",
+      "titulo": "Ciclismo",
       "torneo": "La Vuelta a España - Etapa 20 - La Calahorra - Collado…",
       "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "La Vuelta",
-      "titulo_tarjeta": "La Vuelta a España - Etapa 20 - La Calahorra - Coll…",
-      "subtitulo_tarjeta": "La Vuelta",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-12T10:10:00Z",
-      "hora_local_producto": "05:10",
-      "duracion_min": 225,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F23%2FLa_Vuelta_logo.svg%2F512px-La_Vuelta_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F23%2FLa_Vuelta_logo.svg%2F512px-La_Vuelta_logo.svg.png&w=400&output=webp",
+      "subtitulo": "La Vuelta a España: Stage 19",
+      "hora_utc": "2026-09-12T10:15:00Z",
+      "hora_local_producto": "05:15",
+      "duracion_min": 240,
+      "logo_torneo": "https://pbs.twimg.com/media/C1_LAKgXUAMPaOi.jpg",
+      "logo_local": "https://pbs.twimg.com/media/C1_LAKgXUAMPaOi.jpg",
       "logo_visitante": "",
       "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 3,
+      "origen": "xtream_evento+epg",
       "origenes": [
+        "xtream",
         "epg"
       ],
-      "estado": "programado",
+      "estado": "confirmado",
       "estado_evento": "programado",
-      "confianza": "alta",
+      "confianza": "media",
       "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Ciclismo",
-        "directo:true"
+        "hora_y_deporte_valido",
+        "categoria:Ciclismo"
       ],
-      "canal_epg": "TDP",
-      "fuentes": []
+      "fuentes": [
+        {
+          "nombre": "Ciclismo | 05:15 AM | La Vuelta a España: Stage 19",
+          "id_xtream": "590735",
+          "idioma": "ES",
+          "prioridad": 0
+        }
+      ]
+    },
+    {
+      "id": "xtream_ae91ad506bf3a4ea",
+      "agenda_id": "",
+      "titulo": "París vs Centre Court ◘ Premier Padel ◘◘",
+      "torneo": "◘ Premier Padel",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "París",
+      "equipo_visitante": "Centre Court ◘ Premier Padel ◘◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T11:00:00Z",
+      "hora_local_producto": "06:00",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/bfdafbcdff62d0a61e038aa779ef0fbd.png",
+      "logo_local": "http://www.1play.cool:25461/images/bfdafbcdff62d0a61e038aa779ef0fbd.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_programada_en_canal",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "06:00 ◘ Premier Padel: París - Centre Court ◘ Premier Padel ◘◘",
+          "id_xtream": "590938"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2d968d34df790ae5",
+      "agenda_id": "",
+      "titulo": "París vs Secondary Court ◘ Premier Padel ◘◘",
+      "torneo": "◘ Premier Padel",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "París",
+      "equipo_visitante": "Secondary Court ◘ Premier Padel ◘◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T11:00:00Z",
+      "hora_local_producto": "06:00",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/bfdafbcdff62d0a61e038aa779ef0fbd.png",
+      "logo_local": "http://www.1play.cool:25461/images/bfdafbcdff62d0a61e038aa779ef0fbd.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_programada_en_canal",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "06:00 ◘ Premier Padel: París - Secondary Court ◘ Premier Padel ◘◘",
+          "id_xtream": "590939"
+        }
+      ]
+    },
+    {
+      "id": "xtream_3fc4ede736cf64d8",
+      "agenda_id": "",
+      "titulo": "◘ GP San Marino - Practice ◘ MotoGP ◘◘",
+      "torneo": "◘ GP San Marino - Practice ◘ MotoGP ◘◘",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T11:10:00Z",
+      "hora_local_producto": "06:10",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/b5315cc7893bd48e1c8bc0ce8505183c.png",
+      "logo_local": "http://www.1play.cool:25461/images/b5315cc7893bd48e1c8bc0ce8505183c.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "06:10 ◘ GP San Marino - Practice ◘ MotoGP ◘◘",
+          "id_xtream": "590940"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c65191968b56bb06",
+      "agenda_id": "",
+      "titulo": "◘ F1 GP España práctica libre #1",
+      "torneo": "◘ F1 GP España práctica libre #1",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Con Tornello Fossaroli y Cochito López ◘ F1 ◘◘",
+      "hora_utc": "2026-09-12T11:25:00Z",
+      "hora_local_producto": "06:25",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_local": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "06:25 ◘ F1 GP España práctica libre #1 | Con Tornello Fossaroli y Cochito López ◘ F1 ◘◘",
+          "id_xtream": "590941"
+        }
+      ]
+    },
+    {
+      "id": "xtream_85a929fdc32c1af4",
+      "agenda_id": "",
+      "titulo": "◘ F1 GP España práctica libre #1",
+      "torneo": "◘ F1 GP España práctica libre #1",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cámara On Board ◘ F1 ◘◘",
+      "hora_utc": "2026-09-12T11:30:00Z",
+      "hora_local_producto": "06:30",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_local": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "06:30 ◘ F1 GP España práctica libre #1 | Cámara On Board ◘ F1 ◘◘",
+          "id_xtream": "590942"
+        },
+        {
+          "nombre": "06:30 ◘ F1 GP España práctica libre #1 | On Board Colapinto ◘ F1 ◘◘",
+          "id_xtream": "590943"
+        },
+        {
+          "nombre": "06:30 ◘ F1 GP España práctica libre #1 | On Board Piastri ◘ F1 ◘◘",
+          "id_xtream": "590944"
+        }
+      ]
+    },
+    {
+      "id": "xtream_a1edcb635601220e",
+      "agenda_id": "",
+      "titulo": "Inglaterra vs Brasil",
+      "torneo": "Mundial Fem Sub20",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Inglaterra",
+      "equipo_visitante": "Brasil",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://cdn.milenio.com/uploads/media/2026/09/04/donde-ver-el-mundial-femenil.jpg",
+      "logo_local": "https://cdn.milenio.com/uploads/media/2026/09/04/donde-ver-el-mundial-femenil.jpg",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Mundial Fem Sub20 | 07:00 AM | Inglaterra vs. Brasil",
+          "id_xtream": "590699"
+        }
+      ]
     },
     {
       "id": "epg_175df0a34d410121",
@@ -286,7 +747,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
@@ -304,6 +765,318 @@
           "id_xtream": "582142",
           "idioma": "ES",
           "prioridad": 0
+        }
+      ]
+    },
+    {
+      "id": "xtream_6dcb5fd33cd50faf",
+      "agenda_id": "",
+      "titulo": "◘ La Vuelta 26 (etapa 19) ◘ Vuelta a España ◘",
+      "torneo": "◘ La Vuelta 26 (etapa 19) ◘ Vuelta a España ◘",
+      "categoria": "Ciclismo",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T12:45:00Z",
+      "hora_local_producto": "07:45",
+      "duracion_min": 240,
+      "logo_torneo": "http://www.1play.cool:25461/images/dd845e470230bb49fe4cd59e14f3143a.png",
+      "logo_local": "http://www.1play.cool:25461/images/dd845e470230bb49fe4cd59e14f3143a.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Ciclismo"
+      ],
+      "fuentes": [
+        {
+          "nombre": "07:45 ◘ La Vuelta 26 (etapa 19) ◘ Vuelta a España ◘",
+          "id_xtream": "590945"
+        }
+      ]
+    },
+    {
+      "id": "xtream_816dd2c763bd0117",
+      "agenda_id": "",
+      "titulo": "◘ Fórmula 2 GP Madrid",
+      "torneo": "◘ Fórmula 2 GP Madrid",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Clasificación ◘ F2 ◘◘",
+      "hora_utc": "2026-09-12T12:50:00Z",
+      "hora_local_producto": "07:50",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_local": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "07:50 ◘ Fórmula 2 GP Madrid | Clasificación ◘ F2 ◘◘",
+          "id_xtream": "590946"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b990afc98560e796",
+      "agenda_id": "",
+      "titulo": "◘ Tour d'Arménie 2026 ◘ Ciclismo ◘◘",
+      "torneo": "◘ Tour d'Arménie 2026 ◘ Ciclismo ◘◘",
+      "categoria": "Ciclismo",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 240,
+      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
+      "logo_local": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Ciclismo"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 ◘ Tour d'Arménie 2026 ◘ Ciclismo ◘◘",
+          "id_xtream": "590950"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1575158",
+      "agenda_id": "apisports_football_1575158",
+      "titulo": "Borussia Dortmund vs SC Paderborn 07",
+      "torneo": "Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Borussia Dortmund",
+      "equipo_visitante": "SC Paderborn 07",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T13:30:00Z",
+      "hora_local_producto": "08:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/78.png",
+      "logo_local": "https://media.api-sports.io/football/teams/165.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/185.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 63,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:BUNDESLIGA",
+        "diferencia_min:150"
+      ],
+      "fuentes": [
+        {
+          "nombre": "3 Bundesliga | 11:00 AM | Viktoria Koln vs. Hansa Rostock",
+          "id_xtream": "590718"
+        },
+        {
+          "nombre": "11:30 ◘ 1. FC Nurnberg vs. Hannover 96 ◘ 2. Bundesliga ◘◘",
+          "id_xtream": "590967"
+        },
+        {
+          "nombre": "11:30 ◘ SV Darmstadt 98 vs. Arminia Bielefeld ◘ 2. Bundesliga ◘◘",
+          "id_xtream": "590969"
+        }
+      ]
+    },
+    {
+      "id": "xtream_fb9576f1dc9ab2f4",
+      "agenda_id": "",
+      "titulo": "Ciclismo",
+      "torneo": "Ciclismo",
+      "categoria": "Ciclismo",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "GRAND PRIX QUEBEC Quebec City (206km)",
+      "hora_utc": "2026-09-12T13:45:00Z",
+      "hora_local_producto": "08:45",
+      "duracion_min": 240,
+      "logo_torneo": "https://gpcqm.ca/wp-content/uploads/2022/07/Logo-GPCQMWT.jpg",
+      "logo_local": "https://gpcqm.ca/wp-content/uploads/2022/07/Logo-GPCQMWT.jpg",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Ciclismo"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Ciclismo | 08:45 AM | GRAND PRIX QUEBEC Quebec City (206km)",
+          "id_xtream": "590736"
+        }
+      ]
+    },
+    {
+      "id": "apisports_handball_203556",
+      "agenda_id": "apisports_handball_203556",
+      "titulo": "Besiktas vs Guneysu",
+      "torneo": "Superlig",
+      "categoria": "Handball",
+      "tipo_evento": "duelo",
+      "equipo_local": "Besiktas",
+      "equipo_visitante": "Guneysu",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T14:00:00Z",
+      "hora_local_producto": "09:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://media.api-sports.io/handball/leagues/120.png",
+      "logo_local": "https://media.api-sports.io/handball/teams/1124.png",
+      "logo_visitante": "https://media.api-sports.io/handball/teams/4581.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:handball",
+      "origenes": [
+        "api_sports:handball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 72,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:BESIKTAS,SUPERLIG",
+        "diferencia_min:180"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 ◘ Besiktas vs. Erzurumspor ◘ Superlig ◘◘",
+          "id_xtream": "590970"
+        }
+      ]
+    },
+    {
+      "id": "xtream_e6db6c161e1c83af",
+      "agenda_id": "",
+      "titulo": "Al Qadsiah vs Al Ettifaq",
+      "torneo": "Liga Saudi",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Al Qadsiah",
+      "equipo_visitante": "Al Ettifaq",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T14:25:00Z",
+      "hora_local_producto": "09:25",
+      "duracion_min": 150,
+      "logo_torneo": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2488.png",
+      "logo_local": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2488.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2934.png",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Liga Saudi | 09:25 AM | Al Qadsiah vs Al Ettifaq",
+          "id_xtream": "590722"
+        }
+      ]
+    },
+    {
+      "id": "xtream_3aa5386851c5675b",
+      "agenda_id": "",
+      "titulo": "◘ F1 GP España práctica libre #2",
+      "torneo": "◘ F1 GP España práctica libre #2",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Con Tornello Fossaroli y Cochito López ◘ F1 ◘◘",
+      "hora_utc": "2026-09-12T14:55:00Z",
+      "hora_local_producto": "09:55",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_local": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "09:55 ◘ F1 GP España práctica libre #2 | Con Tornello Fossaroli y Cochito López ◘ F1 ◘◘",
+          "id_xtream": "590951"
         }
       ]
     },
@@ -342,6 +1115,584 @@
         {
           "nombre": "[CA]Summer Senior National Diving Championships: Women 3M Prelim (2026-05-24 10:00:05)",
           "id_xtream": "525238"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1561924",
+      "agenda_id": "apisports_football_1561924",
+      "titulo": "SCR Altach vs Grazer AK",
+      "torneo": "Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "SCR Altach",
+      "equipo_visitante": "Grazer AK",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/218.png",
+      "logo_local": "https://media.api-sports.io/football/teams/618.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/4256.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 63,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:BUNDESLIGA",
+        "diferencia_min:150"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Bundesliga | 12:30 PM | Union Berlin vs Schalke 04",
+          "id_xtream": "590705"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b390fa8f98f72f72",
+      "agenda_id": "",
+      "titulo": "DP World Tour",
+      "torneo": "DP World Tour",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Amgen Irish Open (Segunda Ronda) En español",
+      "hora_utc": "2026-09-12T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://pbs.twimg.com/media/HRtBWiebwAAdmff.jpg",
+      "logo_local": "https://pbs.twimg.com/media/HRtBWiebwAAdmff.jpg",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "DP World Tour | 10:00 AM | Amgen Irish Open (Segunda Ronda) En español",
+          "id_xtream": "590734"
+        }
+      ]
+    },
+    {
+      "id": "xtream_0c2a09fd78334414",
+      "agenda_id": "",
+      "titulo": "◘ F1 GP España práctica libre #2",
+      "torneo": "◘ F1 GP España práctica libre #2",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cámara On Board ◘ F1 ◘◘",
+      "hora_utc": "2026-09-12T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_local": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:00 ◘ F1 GP España práctica libre #2 | Cámara On Board ◘ F1 ◘◘",
+          "id_xtream": "590952"
+        },
+        {
+          "nombre": "10:00 ◘ F1 GP España práctica libre #2 | On Board Colapinto ◘ F1 ◘◘",
+          "id_xtream": "590953"
+        },
+        {
+          "nombre": "10:00 ◘ F1 GP España práctica libre #2 | On Board Piastri ◘ F1 ◘◘",
+          "id_xtream": "590954"
+        }
+      ]
+    },
+    {
+      "id": "xtream_6112658f6ebc1dbd",
+      "agenda_id": "",
+      "titulo": "◘ Al Quadisiya vs Al Ittifaq ◘ Pro League ◘",
+      "torneo": "Otros Deportes",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "◘ Al Quadisiya",
+      "equipo_visitante": "Al Ittifaq ◘ Pro League ◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T15:25:00Z",
+      "hora_local_producto": "10:25",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/d0514d7a38b868171f70f985c1b982d4.png",
+      "logo_local": "http://www.1play.cool:25461/images/d0514d7a38b868171f70f985c1b982d4.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:25 ◘ Al Quadisiya vs. Al Ittifaq ◘ Pro League ◘",
+          "id_xtream": "590955"
+        }
+      ]
+    },
+    {
+      "id": "xtream_87963e62743b3a9f",
+      "agenda_id": "",
+      "titulo": "Atletismo",
+      "torneo": "Atletismo",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Ultimate Championship: Day 1",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://i.ytimg.com/vi/vfjphXMelKM/maxresdefault.jpg",
+      "logo_local": "https://i.ytimg.com/vi/vfjphXMelKM/maxresdefault.jpg",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_programada_en_canal",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Atletismo | 11:00 AM | Ultimate Championship: Day 1",
+          "id_xtream": "590737"
+        }
+      ]
+    },
+    {
+      "id": "xtream_908f49e56a4938c5",
+      "agenda_id": "",
+      "titulo": "◘ Amgen Irish Open",
+      "torneo": "◘ Amgen Irish Open",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "En español ◘ Golf ◘◘",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 300,
+      "logo_torneo": "http://www.1play.cool:25461/images/9a3aa930600681609078035f8c581e9c.png",
+      "logo_local": "http://www.1play.cool:25461/images/9a3aa930600681609078035f8c581e9c.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Amgen Irish Open | En español ◘ Golf ◘◘",
+          "id_xtream": "590956"
+        }
+      ]
+    },
+    {
+      "id": "xtream_512a11909eb1e514",
+      "agenda_id": "",
+      "titulo": "◘ Court 10 ◘ US Open ◘◘",
+      "torneo": "◘ Court 10 ◘ US Open ◘◘",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Court 10 ◘ US Open ◘◘",
+          "id_xtream": "590959"
+        }
+      ]
+    },
+    {
+      "id": "xtream_0c7d1debc329d7b3",
+      "agenda_id": "",
+      "titulo": "◘ Court 11 ◘ US Open ◘◘",
+      "torneo": "◘ Court 11 ◘ US Open ◘◘",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Court 11 ◘ US Open ◘◘",
+          "id_xtream": "590960"
+        }
+      ]
+    },
+    {
+      "id": "xtream_e16079fe2d042d91",
+      "agenda_id": "",
+      "titulo": "◘ Court 12 ◘ US Open ◘◘",
+      "torneo": "◘ Court 12 ◘ US Open ◘◘",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Court 12 ◘ US Open ◘◘",
+          "id_xtream": "590961"
+        }
+      ]
+    },
+    {
+      "id": "xtream_e3bf4eb7105a9c10",
+      "agenda_id": "",
+      "titulo": "◘ Court 13 ◘ US Open ◘◘",
+      "torneo": "◘ Court 13 ◘ US Open ◘◘",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Court 13 ◘ US Open ◘◘",
+          "id_xtream": "590962"
+        }
+      ]
+    },
+    {
+      "id": "xtream_9ec0c00f7f641303",
+      "agenda_id": "",
+      "titulo": "◘ Court 14 ◘ US Open ◘◘",
+      "torneo": "◘ Court 14 ◘ US Open ◘◘",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Court 14 ◘ US Open ◘◘",
+          "id_xtream": "590963"
+        }
+      ]
+    },
+    {
+      "id": "xtream_31b94ceb1cc06860",
+      "agenda_id": "",
+      "titulo": "◘ Court 7 ◘ US Open ◘◘",
+      "torneo": "◘ Court 7 ◘ US Open ◘◘",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Court 7 ◘ US Open ◘◘",
+          "id_xtream": "590964"
+        }
+      ]
+    },
+    {
+      "id": "xtream_895eb0beb3cb6be5",
+      "agenda_id": "",
+      "titulo": "París vs Centre Court ◘ Premier Padel ◘◘",
+      "torneo": "◘ Premier Padel",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "París",
+      "equipo_visitante": "Centre Court ◘ Premier Padel ◘◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/bfdafbcdff62d0a61e038aa779ef0fbd.png",
+      "logo_local": "http://www.1play.cool:25461/images/bfdafbcdff62d0a61e038aa779ef0fbd.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_programada_en_canal",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Premier Padel: París - Centre Court ◘ Premier Padel ◘◘",
+          "id_xtream": "590965"
+        }
+      ]
+    },
+    {
+      "id": "xtream_6bc7f5199b951754",
+      "agenda_id": "",
+      "titulo": "◘ Fórmula 3 GP Madrid",
+      "torneo": "◘ Fórmula 3 GP Madrid",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Clasificación ◘ F3 ◘◘",
+      "hora_utc": "2026-09-12T16:20:00Z",
+      "hora_local_producto": "11:20",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_local": "http://www.1play.cool:25461/images/bd19836ddb62c11c55ab251ccaca5645.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:20 ◘ Fórmula 3 GP Madrid | Clasificación ◘ F3 ◘◘",
+          "id_xtream": "590966"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1575165",
+      "agenda_id": "apisports_football_1575165",
+      "titulo": "1. FC Köln vs Werder Bremen",
+      "torneo": "Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "1. FC Köln",
+      "equipo_visitante": "Werder Bremen",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/78.png",
+      "logo_local": "https://media.api-sports.io/football/teams/192.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/162.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 63,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:BUNDESLIGA",
+        "diferencia_min:120"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:30 ◘ Union Berlin vs. Schalke 04 ◘ Bundesliga ◘◘",
+          "id_xtream": "590978"
         }
       ]
     },
@@ -394,6 +1745,44 @@
       ]
     },
     {
+      "id": "xtream_7b9d5e816ca1ea06",
+      "agenda_id": "",
+      "titulo": "Al Ahli vs Al Hazem",
+      "torneo": "Liga Saudi",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Al Ahli",
+      "equipo_visitante": "Al Hazem",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://a.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2488.png",
+      "logo_local": "https://media.api-sports.io/football/teams/5580.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Liga Saudi | 12.00 PM | Al Ahli vs Al Hazem",
+          "id_xtream": "590723"
+        }
+      ]
+    },
+    {
       "id": "apisports_basketball_520886",
       "agenda_id": "apisports_basketball_520886",
       "titulo": "Spain W vs USA W",
@@ -427,6 +1816,44 @@
       ],
       "fuentes": [],
       "canal_epg": "TDP"
+    },
+    {
+      "id": "xtream_3833bf88cb91ad1e",
+      "agenda_id": "",
+      "titulo": "◘ 2026 US Open ◘ US Open ◘◘",
+      "torneo": "◘ 2026 US Open ◘ US Open ◘◘",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:30 ◘ 2026 US Open ◘ US Open ◘◘",
+          "id_xtream": "590971"
+        }
+      ]
     },
     {
       "id": "xtream_d56ac4985f6ae8ac",
@@ -463,6 +1890,243 @@
         {
           "nombre": "[CA]Summer Senior National Diving Championships: Men 10M Prelim (2026-05-24 12:55:00)",
           "id_xtream": "525239"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1611392",
+      "agenda_id": "apisports_football_1611392",
+      "titulo": "MB Rouisset vs Olympique Akbou",
+      "torneo": "Ligue 1",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "MB Rouisset",
+      "equipo_visitante": "Olympique Akbou",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/186.png",
+      "logo_local": "https://media.api-sports.io/football/teams/10777.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/10780.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 55,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:LIGUE,OLYMPIQUE",
+        "diferencia_min:15"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Ligue 1 | 12:45 PM | Rennes vs Olympique Marseille",
+          "id_xtream": "590706"
+        },
+        {
+          "nombre": "13:30 ◘ Rennes vs. Olympique Marseille ◘ Ligue 1 ◘◘",
+          "id_xtream": "590976"
+        },
+        {
+          "nombre": "13:30 ◘ Rennes vs. Olympique Marseille ◘ Ligue 1 ◘◘ SD",
+          "id_xtream": "590977"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b0e59d7b7db0bc61",
+      "agenda_id": "",
+      "titulo": "US Open",
+      "torneo": "US Open",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Semifinales masculinas En español",
+      "hora_utc": "2026-09-12T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://contentmasters.app/logos/tennis-events.png",
+      "logo_local": "https://contentmasters.app/logos/tennis-events.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "US Open | 01:00 PM | Semifinales masculinas En español",
+          "id_xtream": "590738"
+        }
+      ]
+    },
+    {
+      "id": "apisports_nfl_23394",
+      "agenda_id": "apisports_nfl_23394",
+      "titulo": "NCAA",
+      "torneo": "NCAA",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "FCS (Division I-AA)",
+      "hora_utc": "2026-09-12T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 220,
+      "logo_torneo": "https://media.api-sports.io/american-football/leagues/2.png",
+      "logo_local": "https://media.api-sports.io/american-football/teams/896.png",
+      "logo_visitante": "https://media.api-sports.io/american-football/teams/902.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:nfl",
+      "origenes": [
+        "api_sports:nfl"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:NCAA",
+        "diferencia_min:180"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 ◘ American University vs. Colgate ◘ NCAA ◘◘",
+          "id_xtream": "590986"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185733",
+      "agenda_id": "apisports_baseball_185733",
+      "titulo": "Chicago Cubs vs Pittsburgh Pirates",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chicago Cubs",
+      "equipo_visitante": "Pittsburgh Pirates",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T18:20:00Z",
+      "hora_local_producto": "13:20",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/6.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/28.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CHICAGO,CUBS",
+        "visitante:PIRATES,PITTSBURGH",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:20 ◘ Pittsburgh Pirates vs. Chicago Cubs ◘ MLB ◘",
+          "id_xtream": "590974"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1498793",
+      "agenda_id": "apisports_football_1498793",
+      "titulo": "All Boys vs San Telmo",
+      "torneo": "Primera Nacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "All Boys",
+      "equipo_visitante": "San Telmo",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/129.png",
+      "logo_local": "https://media.api-sports.io/football/teams/464.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1932.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 37,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:BOYS,PRIMERA",
+        "diferencia_min:90"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 ◘ Newell's Old Boys vs. Vélez Sarsfield ◘ Primera Argentina ◘",
+          "id_xtream": "590984"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f0d2c6677c604a2a",
+      "agenda_id": "",
+      "titulo": "◘ Alexander Zverev (GER) vs Karen Khachanov (RUS) ◘ US Open ◘",
+      "torneo": "Tenis",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "◘ Alexander Zverev (GER)",
+      "equipo_visitante": "Karen Khachanov (RUS) ◘ US Open ◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Alexander Zverev (GER) vs. Karen Khachanov (RUS) ◘ US Open ◘",
+          "id_xtream": "590980"
         }
       ]
     },
@@ -505,6 +2169,250 @@
       ]
     },
     {
+      "id": "apisports_nfl_22807",
+      "agenda_id": "apisports_nfl_22807",
+      "titulo": "NCAA",
+      "torneo": "NCAA",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "All Division II/III",
+      "hora_utc": "2026-09-12T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 220,
+      "logo_torneo": "https://media.api-sports.io/american-football/leagues/2.png",
+      "logo_local": "https://media.api-sports.io/american-football/teams/284.png",
+      "logo_visitante": "https://media.api-sports.io/american-football/teams/902.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:nfl",
+      "origenes": [
+        "api_sports:nfl"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:NCAA",
+        "diferencia_min:180"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ #23 High Point vs. #4 Georgetown ◘ NCAA ◘◘",
+          "id_xtream": "590991"
+        },
+        {
+          "nombre": "18:00 ◘ Charlotte vs. Florida Atlantic ◘ NCAA ◘◘",
+          "id_xtream": "590992"
+        },
+        {
+          "nombre": "18:00 ◘ Stonehill vs. Brown ◘ NCAA ◘◘",
+          "id_xtream": "590997"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185735",
+      "agenda_id": "apisports_baseball_185735",
+      "titulo": "San Francisco Giants vs San Diego Padres",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Francisco Giants",
+      "equipo_visitante": "San Diego Padres",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T20:05:00Z",
+      "hora_local_producto": "15:05",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/31.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/30.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:FRANCISCO,SAN",
+        "visitante:SAN",
+        "diferencia_min:55"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Beisbol | 04:00 PM | Women´s Pro League San Francisco vs. Boston",
+          "id_xtream": "590728"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185736",
+      "agenda_id": "apisports_baseball_185736",
+      "titulo": "Washington Nationals vs Los Angeles Angels",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Nationals",
+      "equipo_visitante": "Los Angeles Angels",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T20:05:00Z",
+      "hora_local_producto": "15:05",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/37.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/17.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NATIONALS,WASHINGTON",
+        "visitante:ANGELES,ANGELS",
+        "diferencia_min:160"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:45 ◘ Los Angeles Angels vs. Washington Nationals ◘ MLB ◘",
+          "id_xtream": "590989"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185737",
+      "agenda_id": "apisports_baseball_185737",
+      "titulo": "Boston Red Sox vs Kansas City Royals",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boston Red Sox",
+      "equipo_visitante": "Kansas City Royals",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T20:10:00Z",
+      "hora_local_producto": "15:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/5.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/16.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BOSTON,RED,SOX",
+        "visitante:CITY,KANSAS,ROYALS",
+        "diferencia_min:180"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:10 ◘ Kansas City Royals vs. Boston Red Sox ◘ MLB ◘",
+          "id_xtream": "591003"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185738",
+      "agenda_id": "apisports_baseball_185738",
+      "titulo": "Miami Marlins vs Los Angeles Dodgers",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Miami Marlins",
+      "equipo_visitante": "Los Angeles Dodgers",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T20:10:00Z",
+      "hora_local_producto": "15:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/19.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/18.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MARLINS,MIAMI",
+        "visitante:ANGELES,DODGERS",
+        "diferencia_min:180"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:10 ◘ Los Angeles Dodgers vs. Miami Marlins ◘ MLB ◘",
+          "id_xtream": "591004"
+        }
+      ]
+    },
+    {
+      "id": "apisports_nfl_22811",
+      "agenda_id": "apisports_nfl_22811",
+      "titulo": "NCAA",
+      "torneo": "NCAA",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "All Division II/III",
+      "hora_utc": "2026-09-12T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 220,
+      "logo_torneo": "https://media.api-sports.io/american-football/leagues/2.png",
+      "logo_local": "https://media.api-sports.io/american-football/teams/271.png",
+      "logo_visitante": "https://media.api-sports.io/american-football/teams/902.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:nfl",
+      "origenes": [
+        "api_sports:nfl"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:NCAA",
+        "diferencia_min:180"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ South Florida vs. UAB ◘ NCAA ◘◘",
+          "id_xtream": "591014"
+        },
+        {
+          "nombre": "19:00 ◘ Temple vs. Tulsa ◘ NCAA ◘◘",
+          "id_xtream": "591015"
+        }
+      ]
+    },
+    {
       "id": "xtream_86253dc8a5134c74",
       "agenda_id": "",
       "titulo": "[CA]Summer Senior National Diving Championships: Men 10M Final (2026- :00)",
@@ -539,6 +2447,1217 @@
         {
           "nombre": "[CA]Summer Senior National Diving Championships: Men 10M Final (2026-05-24 16:15:00)",
           "id_xtream": "525241"
+        }
+      ]
+    },
+    {
+      "id": "xtream_e45ea3dccb6a5691",
+      "agenda_id": "",
+      "titulo": "Arg",
+      "torneo": "Arg",
+      "categoria": "Gimnasia",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Defensa y Justicia vs Gimnasia Mendoza",
+      "hora_utc": "2026-09-12T21:15:00Z",
+      "hora_local_producto": "16:15",
+      "duracion_min": 150,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_local": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Superliga_Argentina_Logo.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Gimnasia"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Arg | 04:15 PM | Defensa y Justicia vs Gimnasia Mendoza",
+          "id_xtream": "590708"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1557201",
+      "agenda_id": "apisports_football_1557201",
+      "titulo": "Tampa Bay Sun W vs Fort Lauderdale United W",
+      "torneo": "USL Super League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tampa Bay Sun W",
+      "equipo_visitante": "Fort Lauderdale United W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/1130.png",
+      "logo_local": "https://media.api-sports.io/football/teams/24663.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/24661.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 36,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:SUPER,USL",
+        "diferencia_min:30"
+      ],
+      "fuentes": [
+        {
+          "nombre": "USL Super League | 05:30 PM | Lexington SC v. Ascent FC",
+          "id_xtream": "590726"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f307401833c15846",
+      "agenda_id": "",
+      "titulo": "Party Animals vs Savannah Bananas",
+      "torneo": "Beisbol",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Party Animals",
+      "equipo_visitante": "Savannah Bananas",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://digitalshift-assets.sfo2.cdn.digitaloceanspaces.com/pw/5e8ca745-ff0d-423f-afcc-b3ba434a94a4/p-29e04d84-ff02-4cca-9651-2b4f6f45a942/1694095271-full.png",
+      "logo_local": "https://digitalshift-assets.sfo2.cdn.digitaloceanspaces.com/pw/5e8ca745-ff0d-423f-afcc-b3ba434a94a4/p-29e04d84-ff02-4cca-9651-2b4f6f45a942/1694095271-full.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Béisbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Beisbol | 05:00 PM | Banana Ball World Tour: Party Animals vs. Savannah Bananas",
+          "id_xtream": "590727"
+        }
+      ]
+    },
+    {
+      "id": "apisports_nfl_22817",
+      "agenda_id": "apisports_nfl_22817",
+      "titulo": "North Carolina Central vs North Carolina A&T",
+      "torneo": "NCAA",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "North Carolina Central",
+      "equipo_visitante": "North Carolina A&T",
+      "subtitulo": "FCS (Division I-AA)",
+      "hora_utc": "2026-09-12T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 220,
+      "logo_torneo": "https://media.api-sports.io/american-football/leagues/2.png",
+      "logo_local": "https://media.api-sports.io/american-football/teams/302.png",
+      "logo_visitante": "https://media.api-sports.io/american-football/teams/248.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:nfl",
+      "origenes": [
+        "api_sports:nfl"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NORTH",
+        "visitante:NORTH",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "F Americano | 06:00 PM | High School North Kansas City (MO) vs. Liberty North",
+          "id_xtream": "590729"
+        },
+        {
+          "nombre": "18:00 ◘ #1 Stanford vs. North Carolina ◘ NCAA ◘◘",
+          "id_xtream": "590990"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1493991",
+      "agenda_id": "apisports_football_1493991",
+      "titulo": "Richmond Kickers vs Chattanooga Red Wolves",
+      "torneo": "USL League One",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Richmond Kickers",
+      "equipo_visitante": "Chattanooga Red Wolves",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/489.png",
+      "logo_local": "https://media.api-sports.io/football/teams/4024.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/9016.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 63,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:RICHMOND",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Richmond vs. NC State ◘ NCAA Fútbol Americano ◘◘",
+          "id_xtream": "590996"
+        }
+      ]
+    },
+    {
+      "id": "apisports_nfl_21942",
+      "agenda_id": "apisports_nfl_21942",
+      "titulo": "Florida International vs Buffalo State",
+      "torneo": "NCAA",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Florida International",
+      "equipo_visitante": "Buffalo State",
+      "subtitulo": "FBS (Division I-A)",
+      "hora_utc": "2026-09-12T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 220,
+      "logo_torneo": "https://media.api-sports.io/american-football/leagues/2.png",
+      "logo_local": "https://media.api-sports.io/american-football/teams/73.png",
+      "logo_visitante": "https://media.api-sports.io/american-football/teams/141.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:nfl",
+      "origenes": [
+        "api_sports:nfl"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:FLORIDA,INTERNATIONAL",
+        "visitante:STATE",
+        "diferencia_min:120"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Florida International vs. #19 Missouri State ◘ NCAA ◘◘",
+          "id_xtream": "591011"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185740",
+      "agenda_id": "apisports_baseball_185740",
+      "titulo": "Tampa Bay Rays vs Houston Astros",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tampa Bay Rays",
+      "equipo_visitante": "Houston Astros",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T22:10:00Z",
+      "hora_local_producto": "17:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/34.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/15.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BAY,RAYS,TAMPA",
+        "visitante:ASTROS,HOUSTON",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:10 ◘ Houston Astros vs. Tampa Bay Rays ◘ MLB ◘",
+          "id_xtream": "591001"
+        },
+        {
+          "nombre": "18:10 ◘ Houston Astros vs. Tampa Bay Rays ◘ MLB ◘◘ Espanol",
+          "id_xtream": "591002"
+        }
+      ]
+    },
+    {
+      "id": "xtream_a8878e9383eddf5c",
+      "agenda_id": "",
+      "titulo": "◘ Defensa y Justicia vs. Gimnasia Mendoza ◘ Primera Argentina ◘",
+      "torneo": "◘ Defensa y Justicia vs. Gimnasia Mendoza ◘ Primera Argentina ◘",
+      "categoria": "Gimnasia",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T22:15:00Z",
+      "hora_local_producto": "17:15",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/190b720c63ce641a024032b924b72c38.png",
+      "logo_local": "http://www.1play.cool:25461/images/190b720c63ce641a024032b924b72c38.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Gimnasia"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:15 ◘ Defensa y Justicia vs. Gimnasia Mendoza ◘ Primera Argentina ◘",
+          "id_xtream": "590987"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1551683",
+      "agenda_id": "apisports_football_1551683",
+      "titulo": "Inter San Carlos vs Puntarenas FC",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Inter San Carlos",
+      "equipo_visitante": "Puntarenas FC",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/162.png",
+      "logo_local": "https://media.api-sports.io/football/teams/24391.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2045.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 38,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:CARLOS,SAN",
+        "diferencia_min:120"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Costa Rica | 08:00 PM | Pérez Zeledón vs San Carlos",
+          "id_xtream": "590717"
+        },
+        {
+          "nombre": "21:00 ◘ Pérez Zeledón vs. San Carlos ◘ Primera CR ◘",
+          "id_xtream": "591033"
+        }
+      ]
+    },
+    {
+      "id": "xtream_9a4d77199f4d3fe4",
+      "agenda_id": "",
+      "titulo": "KC Current vs Pride",
+      "torneo": "NWSL",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "KC Current",
+      "equipo_visitante": "Pride",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://a2.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2323.png",
+      "logo_local": "https://a2.espncdn.com/combiner/i?img=/i/leaguelogos/soccer/500/2323.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "NWSL | 06:00 PM | KC Current vs. Pride",
+          "id_xtream": "590725"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d81a56b09b9f0d4b",
+      "agenda_id": "",
+      "titulo": "High School St. Joseph Central vs Liberty (MO)",
+      "torneo": "F Americano",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "High School St. Joseph Central",
+      "equipo_visitante": "Liberty (MO)",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://www.kindpng.com/picc/m/2-29448_high-school-football-logo-hd-png-download.png",
+      "logo_local": "https://www.kindpng.com/picc/m/2-29448_high-school-football-logo-hd-png-download.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "F Americano | 06:00 PM | High School St. Joseph Central vs. Liberty (MO)",
+          "id_xtream": "590730"
+        }
+      ]
+    },
+    {
+      "id": "xtream_0c7d0c3f26cd8319",
+      "agenda_id": "",
+      "titulo": "◘ Frances Tiafoe (USA) vs Ben Shelton (USA) ◘ US Open ◘",
+      "torneo": "Tenis",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "◘ Frances Tiafoe (USA)",
+      "equipo_visitante": "Ben Shelton (USA) ◘ US Open ◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_local": "http://www.1play.cool:25461/images/d1d5c4608b26c886ff9650d6e365deac.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Frances Tiafoe (USA) vs. Ben Shelton (USA) ◘ US Open ◘",
+          "id_xtream": "590993"
+        }
+      ]
+    },
+    {
+      "id": "xtream_8e8c1bdbf5e6752e",
+      "agenda_id": "",
+      "titulo": "◘ Norfolk State vs #25 Virginia ◘ NCAA Fútbol Americano ◘◘",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "◘ Norfolk State",
+      "equipo_visitante": "#25 Virginia ◘ NCAA Fútbol Americano ◘◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "http://www.1play.cool:25461/images/5be65a16a1bd3170b728af5b768498fd.png",
+      "logo_local": "https://media.api-sports.io/american-football/teams/159.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Norfolk State vs. #25 Virginia ◘ NCAA Fútbol Americano ◘◘",
+          "id_xtream": "590994"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1493987",
+      "agenda_id": "apisports_football_1493987",
+      "titulo": "Charlotte Independence vs Westchester SC",
+      "torneo": "USL League One",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Charlotte Independence",
+      "equipo_visitante": "Westchester SC",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/489.png",
+      "logo_local": "https://media.api-sports.io/football/teams/3991.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/25488.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 47,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:ONE,USL",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ One Knoxville SC vs. FC Naples ◘ USL League One ◘◘",
+          "id_xtream": "590995"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1493135",
+      "agenda_id": "apisports_football_1493135",
+      "titulo": "Talleres Cordoba vs Union Santa Fe",
+      "torneo": "Liga Profesional Argentina",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Talleres Cordoba",
+      "equipo_visitante": "Union Santa Fe",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
+      "logo_local": "https://media.api-sports.io/football/teams/456.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/441.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 35,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:CORDOBA,LIGA",
+        "diferencia_min:15"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:15 ◘ Jaguares de Córdoba vs. Fortaleza CEIF ◘ Liga Betplay ◘",
+          "id_xtream": "591005"
+        },
+        {
+          "nombre": "20:30 ◘ Santa Fe vs. Deportes Tolima ◘ Liga Betplay ◘",
+          "id_xtream": "591026"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1637484",
+      "agenda_id": "apisports_football_1637484",
+      "titulo": "Cerro Largo vs Central Espanol",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cerro Largo",
+      "equipo_visitante": "Central Espanol",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/268.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2369.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2368.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 37,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:CENTRAL,PRIMERA",
+        "diferencia_min:90"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:30 ◘ Boca Juniors vs. Central Córdoba SdE ◘ Primera Argentina ◘",
+          "id_xtream": "591019"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1581415",
+      "agenda_id": "apisports_football_1581415",
+      "titulo": "Venados FC vs Tepatitlán",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Venados FC",
+      "equipo_visitante": "Tepatitlán",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/263.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2311.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/14279.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 53,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:EXPANSION,LIGA",
+        "diferencia_min:110"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:50 ◘ Correcaminos UAT vs. Cancún FC ◘ Liga de Expansión MX ◘◘",
+          "id_xtream": "591020"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1493685",
+      "agenda_id": "apisports_football_1493685",
+      "titulo": "Pittsburgh Riverhounds vs Loudoun United",
+      "torneo": "USL Championship",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Pittsburgh Riverhounds",
+      "equipo_visitante": "Loudoun United",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/255.png",
+      "logo_local": "https://media.api-sports.io/football/teams/4010.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/3999.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 43,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:UNITED,USL",
+        "diferencia_min:150"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:30 ◘ New Mexico United vs. Indy Eleven ◘ USL Championship ◘◘",
+          "id_xtream": "591025"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185741",
+      "agenda_id": "apisports_baseball_185741",
+      "titulo": "Milwaukee Brewers vs Cincinnati Reds",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Milwaukee Brewers",
+      "equipo_visitante": "Cincinnati Reds",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T23:10:00Z",
+      "hora_local_producto": "18:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/20.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/8.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BREWERS,MILWAUKEE",
+        "visitante:CINCINNATI,REDS",
+        "diferencia_min:35"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:45 ◘ Cincinnati Reds vs. Milwaukee Brewers ◘ MLB ◘",
+          "id_xtream": "591009"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185742",
+      "agenda_id": "apisports_baseball_185742",
+      "titulo": "Atlanta Braves vs Philadelphia Phillies",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlanta Braves",
+      "equipo_visitante": "Philadelphia Phillies",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T23:15:00Z",
+      "hora_local_producto": "18:15",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/3.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/27.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATLANTA,BRAVES",
+        "visitante:PHILADELPHIA,PHILLIES",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:15 ◘ Philadelphia Phillies vs. Atlanta Braves ◘ MLB ◘",
+          "id_xtream": "591006"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185743",
+      "agenda_id": "apisports_baseball_185743",
+      "titulo": "St.Louis Cardinals vs Chicago White Sox",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "St.Louis Cardinals",
+      "equipo_visitante": "Chicago White Sox",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T23:15:00Z",
+      "hora_local_producto": "18:15",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/33.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/7.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CARDINALS,LOUIS",
+        "visitante:CHICAGO,SOX,WHITE",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:15 ◘ Chicago White Sox vs. St. Louis Cardinals ◘ MLB ◘",
+          "id_xtream": "591018"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b61470395483f435",
+      "agenda_id": "",
+      "titulo": "◘ Rutgers vs Boston College ◘ NCAA Fútbol Americano ◘◘",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "◘ Rutgers",
+      "equipo_visitante": "Boston College ◘ NCAA Fútbol Americano ◘◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-12T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 130,
+      "logo_torneo": "http://www.1play.cool:25461/images/5be65a16a1bd3170b728af5b768498fd.png",
+      "logo_local": "https://media.api-sports.io/american-football/teams/143.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 ◘ Rutgers vs. Boston College ◘ NCAA Fútbol Americano ◘◘",
+          "id_xtream": "591008"
+        }
+      ]
+    },
+    {
+      "id": "xtream_23decb48e927b2e3",
+      "agenda_id": "",
+      "titulo": "◘ Smackdown Friday ◘ WWE ◘",
+      "torneo": "◘ Smackdown Friday ◘ WWE ◘",
+      "categoria": "Combate",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-13T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/6fb19ebf137f6cf70c3c27699f9d44e1.png",
+      "logo_local": "http://www.1play.cool:25461/images/6fb19ebf137f6cf70c3c27699f9d44e1.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Combate"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Smackdown Friday ◘ WWE ◘",
+          "id_xtream": "591012"
+        }
+      ]
+    },
+    {
+      "id": "xtream_fcdd1d6f30b6d866",
+      "agenda_id": "",
+      "titulo": "◘ Smackdown Friday ◘ WWE ◘ English",
+      "torneo": "◘ Smackdown Friday ◘ WWE ◘ English",
+      "categoria": "Combate",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-13T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/6fb19ebf137f6cf70c3c27699f9d44e1.png",
+      "logo_local": "http://www.1play.cool:25461/images/6fb19ebf137f6cf70c3c27699f9d44e1.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Combate"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Smackdown Friday ◘ WWE ◘ English",
+          "id_xtream": "591013"
+        }
+      ]
+    },
+    {
+      "id": "xtream_950c42e607045df1",
+      "agenda_id": "",
+      "titulo": "◘ Vinicius Pires vs Rafael Pereira ◘ LFA 241 ◘",
+      "torneo": "Otros Deportes",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "◘ Vinicius Pires",
+      "equipo_visitante": "Rafael Pereira ◘ LFA 241 ◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-13T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/a9f9d8d4b6db81aed3933664f7352542.png",
+      "logo_local": "http://www.1play.cool:25461/images/a9f9d8d4b6db81aed3933664f7352542.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Vinicius Pires vs. Rafael Pereira\t◘ LFA 241 ◘",
+          "id_xtream": "591016"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185816",
+      "agenda_id": "apisports_baseball_185816",
+      "titulo": "Arizona Diamondbacks vs Texas Rangers",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Arizona Diamondbacks",
+      "equipo_visitante": "Texas Rangers",
+      "subtitulo": "",
+      "hora_utc": "2026-09-13T00:10:00Z",
+      "hora_local_producto": "19:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/2.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/35.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ARIZONA,DIAMONDBACKS",
+        "visitante:RANGERS,TEXAS",
+        "diferencia_min:90"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:40 ◘ Texas Rangers vs. Arizona Diamondbacks ◘ MLB ◘",
+          "id_xtream": "591030"
+        }
+      ]
+    },
+    {
+      "id": "xtream_4bff91d7b4e4031a",
+      "agenda_id": "",
+      "titulo": "◘ Maximiliano Maidana vs Luciano Baldor ◘ Boxing ◘",
+      "torneo": "Combate",
+      "categoria": "Combate",
+      "tipo_evento": "duelo",
+      "equipo_local": "◘ Maximiliano Maidana",
+      "equipo_visitante": "Luciano Baldor ◘ Boxing ◘",
+      "subtitulo": "",
+      "hora_utc": "2026-09-13T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 210,
+      "logo_torneo": "http://www.1play.cool:25461/images/4684c60ddc71bc393a1bf007f5452372.png",
+      "logo_local": "http://www.1play.cool:25461/images/4684c60ddc71bc393a1bf007f5452372.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "hora_y_deporte_valido",
+        "categoria:Combate"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Maximiliano Maidana vs. Luciano Baldor\t◘ Boxing ◘",
+          "id_xtream": "591022"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_186835",
+      "agenda_id": "apisports_baseball_186835",
+      "titulo": "Tabasco vs Toros de Tijuana",
+      "torneo": "LMB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tabasco",
+      "equipo_visitante": "Toros de Tijuana",
+      "subtitulo": "",
+      "hora_utc": "2026-09-13T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/21.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/296.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/297.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:TABASCO",
+        "visitante:TIJUANA,TOROS",
+        "diferencia_min:30"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:30 ◘ Toros de Tijuana vs. Olmecas de Tabasco ◘ LMB ◘◘",
+          "id_xtream": "591027"
+        },
+        {
+          "nombre": "20:30 ◘ Toros de Tijuana vs. Olmecas de Tabasco ◘ LMB ◘◘ SD",
+          "id_xtream": "591028"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1603357",
+      "agenda_id": "apisports_football_1603357",
+      "titulo": "Juárez W vs Necaxa W",
+      "torneo": "Liga MX Femenil",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Juárez W",
+      "equipo_visitante": "Necaxa W",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-13T01:10:00Z",
+      "hora_local_producto": "20:10",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/673.png",
+      "logo_local": "https://media.api-sports.io/football/teams/14869.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/14880.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 59,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:LIGA,NECAXA",
+        "diferencia_min:10"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Necaxa vs. Puebla ◘ Liga MX ◘",
+          "id_xtream": "591023"
+        },
+        {
+          "nombre": "22:06 ◘ AtlAS W vs. Atlante W ◘ Liga MX Femenil ◘",
+          "id_xtream": "591037"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_185817",
+      "agenda_id": "apisports_baseball_185817",
+      "titulo": "Athletics vs Seattle Mariners",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Athletics",
+      "equipo_visitante": "Seattle Mariners",
+      "subtitulo": "",
+      "hora_utc": "2026-09-13T01:40:00Z",
+      "hora_local_producto": "20:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/963.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/32.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATHLETICS",
+        "visitante:MARINERS,SEATTLE",
+        "diferencia_min:0"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:40 ◘ Seattle Mariners vs. Athletics ◘ MLB ◘",
+          "id_xtream": "591029"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1550961",
+      "agenda_id": "apisports_football_1550961",
+      "titulo": "Cruz Azul vs Club America",
+      "torneo": "Liga MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cruz Azul",
+      "equipo_visitante": "Club America",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-13T03:15:00Z",
+      "hora_local_producto": "22:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/262.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2295.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2287.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 63,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:AZUL,CRUZ,LIGA",
+        "diferencia_min:135"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Cruz Azul vs. Pumas UNAM ◘ Liga MX Femenil ◘",
+          "id_xtream": "591021"
         }
       ]
     }
