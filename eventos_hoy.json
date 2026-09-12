@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-12T12:13:22Z",
+  "generado_utc": "2026-09-12T16:22:15Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-12",
   "base_media": "http://elpapanatas.space:8080",
@@ -167,7 +167,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -205,7 +205,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Golf"
       ],
       "fuentes": [
@@ -243,7 +243,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -281,7 +281,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Golf"
       ],
       "fuentes": [
@@ -357,7 +357,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -395,7 +395,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_programada_en_canal",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -433,7 +433,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_programada_en_canal",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -447,7 +447,7 @@
       "id": "xtream_deed2384030ecfea",
       "agenda_id": "",
       "titulo": "Ciclismo",
-      "torneo": "La Vuelta a España - Etapa 20 - La Calahorra - Collado…",
+      "torneo": "Ciclismo",
       "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
@@ -461,26 +461,23 @@
       "logo_visitante": "",
       "banner": "",
       "tier": 3,
-      "origen": "xtream_evento+epg",
+      "origen": "xtream_evento",
       "origenes": [
-        "xtream",
-        "epg"
+        "xtream"
       ],
       "estado": "confirmado",
       "estado_evento": "programado",
       "confianza": "media",
-      "puntuacion_confianza": 88,
+      "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Ciclismo"
       ],
       "fuentes": [
         {
           "nombre": "Ciclismo | 05:15 AM | La Vuelta a España: Stage 19",
-          "id_xtream": "590735",
-          "idioma": "ES",
-          "prioridad": 0
+          "id_xtream": "590735"
         }
       ]
     },
@@ -512,7 +509,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_programada_en_canal",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -550,7 +547,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_programada_en_canal",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -588,7 +585,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -626,7 +623,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -664,7 +661,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -710,61 +707,13 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
         {
           "nombre": "Mundial Fem Sub20 | 07:00 AM | Inglaterra vs. Brasil",
           "id_xtream": "590699"
-        }
-      ]
-    },
-    {
-      "id": "epg_175df0a34d410121",
-      "agenda_id": "",
-      "titulo": "Semifinales",
-      "torneo": "Semifinales",
-      "categoria": "Snooker",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Abierto de Inglaterra de snooker",
-      "titulo_tarjeta": "Semifinales",
-      "subtitulo_tarjeta": "Abierto de Inglaterra de snooker",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-12T12:00:00Z",
-      "hora_local_producto": "07:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "en_canal",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Snooker",
-        "directo:true"
-      ],
-      "canal_epg": "E2",
-      "fuentes": [
-        {
-          "nombre": "ES | EUROSPORT 2 M",
-          "id_xtream": "582142",
-          "idioma": "ES",
-          "prioridad": 0
         }
       ]
     },
@@ -796,7 +745,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Ciclismo"
       ],
       "fuentes": [
@@ -834,7 +783,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -872,7 +821,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Ciclismo"
       ],
       "fuentes": [
@@ -891,7 +840,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Borussia Dortmund",
       "equipo_visitante": "SC Paderborn 07",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-12T13:30:00Z",
       "hora_local_producto": "08:30",
       "duracion_min": 130,
@@ -905,7 +854,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 63,
       "metodo_correlacion": "evento_simple_verificado",
@@ -956,7 +905,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Ciclismo"
       ],
       "fuentes": [
@@ -989,7 +938,7 @@
         "api_sports:handball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 72,
       "metodo_correlacion": "evento_simple_verificado",
@@ -1032,7 +981,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -1070,7 +1019,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -1127,7 +1076,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "SCR Altach",
       "equipo_visitante": "Grazer AK",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-12T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 130,
@@ -1141,7 +1090,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 63,
       "metodo_correlacion": "evento_simple_verificado",
@@ -1184,7 +1133,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Golf"
       ],
       "fuentes": [
@@ -1222,7 +1171,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -1268,7 +1217,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -1306,7 +1255,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_programada_en_canal",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -1344,7 +1293,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Golf"
       ],
       "fuentes": [
@@ -1382,7 +1331,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -1420,7 +1369,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -1458,7 +1407,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -1496,7 +1445,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -1534,7 +1483,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -1572,7 +1521,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -1610,7 +1559,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_programada_en_canal",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -1648,7 +1597,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Motor"
       ],
       "fuentes": [
@@ -1772,7 +1721,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -1845,7 +1794,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -1967,7 +1916,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -2120,7 +2069,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -2200,6 +2149,10 @@
         "diferencia_min:180"
       ],
       "fuentes": [
+        {
+          "nombre": "18:00 ◘ #1 Stanford vs. North Carolina ◘ NCAA ◘◘",
+          "id_xtream": "590990"
+        },
         {
           "nombre": "18:00 ◘ #23 High Point vs. #4 Georgetown ◘ NCAA ◘◘",
           "id_xtream": "590991"
@@ -2478,7 +2431,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Gimnasia"
       ],
       "fuentes": [
@@ -2554,56 +2507,13 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Béisbol"
       ],
       "fuentes": [
         {
           "nombre": "Beisbol | 05:00 PM | Banana Ball World Tour: Party Animals vs. Savannah Bananas",
           "id_xtream": "590727"
-        }
-      ]
-    },
-    {
-      "id": "apisports_nfl_22817",
-      "agenda_id": "apisports_nfl_22817",
-      "titulo": "North Carolina Central vs North Carolina A&T",
-      "torneo": "NCAA",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "North Carolina Central",
-      "equipo_visitante": "North Carolina A&T",
-      "subtitulo": "FCS (Division I-AA)",
-      "hora_utc": "2026-09-12T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 220,
-      "logo_torneo": "https://media.api-sports.io/american-football/leagues/2.png",
-      "logo_local": "https://media.api-sports.io/american-football/teams/302.png",
-      "logo_visitante": "https://media.api-sports.io/american-football/teams/248.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:nfl",
-      "origenes": [
-        "api_sports:nfl"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:NORTH",
-        "visitante:NORTH",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "F Americano | 06:00 PM | High School North Kansas City (MO) vs. Liberty North",
-          "id_xtream": "590729"
-        },
-        {
-          "nombre": "18:00 ◘ #1 Stanford vs. North Carolina ◘ NCAA ◘◘",
-          "id_xtream": "590990"
         }
       ]
     },
@@ -2755,7 +2665,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Gimnasia"
       ],
       "fuentes": [
@@ -2835,7 +2745,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -2873,7 +2783,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -2911,7 +2821,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Tenis"
       ],
       "fuentes": [
@@ -2949,7 +2859,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Fútbol"
       ],
       "fuentes": [
@@ -3298,7 +3208,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Fútbol"
       ],
       "fuentes": [
@@ -3336,7 +3246,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Combate"
       ],
       "fuentes": [
@@ -3374,7 +3284,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Combate"
       ],
       "fuentes": [
@@ -3412,7 +3322,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Otros Deportes"
       ],
       "fuentes": [
@@ -3462,6 +3372,44 @@
       ]
     },
     {
+      "id": "apisports_football_1490471",
+      "agenda_id": "apisports_football_1490471",
+      "titulo": "Sporting Kansas City vs Los Angeles FC",
+      "torneo": "Major League Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sporting Kansas City",
+      "equipo_visitante": "Los Angeles FC",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-13T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/253.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1611.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1616.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 37,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:CITY,KANSAS",
+        "diferencia_min:90"
+      ],
+      "fuentes": [
+        {
+          "nombre": "F Americano | 06:00 PM | High School North Kansas City (MO) vs. Liberty North",
+          "id_xtream": "590729"
+        }
+      ]
+    },
+    {
       "id": "xtream_4bff91d7b4e4031a",
       "agenda_id": "",
       "titulo": "◘ Maximiliano Maidana vs Luciano Baldor ◘ Boxing ◘",
@@ -3489,7 +3437,7 @@
       "puntuacion_confianza": 75,
       "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "hora_y_deporte_valido",
+        "categoria_xtream_hoy",
         "categoria:Combate"
       ],
       "fuentes": [
