@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-11T22:38:36Z",
+  "generado_utc": "2026-09-12T01:10:11Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-11",
   "base_media": "http://elpapanatas.space:8080",
@@ -3354,6 +3354,44 @@
       ]
     },
     {
+      "id": "xtream_e8418ace153862d5",
+      "agenda_id": "",
+      "titulo": "American University vs Colgate",
+      "torneo": "Otros Deportes",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "American University",
+      "equipo_visitante": "Colgate",
+      "subtitulo": "NCAA",
+      "hora_utc": "2026-09-11T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 150,
+      "logo_torneo": "http://premieresupport.support:80/images/Ot0G-zkBil5HgfveJ2aD7XIUM3WJvou8nVF76INr6BwNX2WfnMojaH63mO6Zo36N.png",
+      "logo_local": "http://premieresupport.support:80/images/Ot0G-zkBil5HgfveJ2aD7XIUM3WJvou8nVF76INr6BwNX2WfnMojaH63mO6Zo36N.png",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 11/09 | American University vs. Colgate | NCAA ||",
+          "id_xtream": "590628"
+        }
+      ]
+    },
+    {
       "id": "xtream_27c8fb876428cbc0",
       "agenda_id": "",
       "titulo": "Women´s Pro League San Francisco vs Boston",
@@ -3840,7 +3878,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "One Knoxville",
       "equipo_visitante": "Naples",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-11T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
@@ -3854,7 +3892,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -4366,7 +4404,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Jaguares",
       "equipo_visitante": "Fortaleza FC",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-11T23:15:00Z",
       "hora_local_producto": "18:15",
       "duracion_min": 130,
@@ -4380,7 +4418,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -4460,7 +4498,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Lexington W",
       "equipo_visitante": "Carolina Ascent W",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-11T23:30:00Z",
       "hora_local_producto": "18:30",
       "duracion_min": 130,
@@ -4474,7 +4512,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -4572,6 +4610,49 @@
         {
           "nombre": "18:45 ◘ Cincinnati Reds vs. Milwaukee Brewers ◘ MLB ◘",
           "id_xtream": "591009"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1592844",
+      "agenda_id": "apisports_football_1592844",
+      "titulo": "Club Tijuana U21 vs Queretaro U21",
+      "torneo": "Liga MX U21",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Club Tijuana U21",
+      "equipo_visitante": "Queretaro U21",
+      "subtitulo": "Second Half",
+      "hora_utc": "2026-09-11T23:45:00Z",
+      "hora_local_producto": "18:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/1200.png",
+      "logo_local": "https://media.api-sports.io/football/teams/26831.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/26840.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "en_vivo",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:TIJUANA",
+        "visitante:QUERETARO",
+        "diferencia_min:135"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 11/09 | Tijuana vs. Querétaro | Liga MX |",
+          "id_xtream": "590696"
+        },
+        {
+          "nombre": "21:00 11/09 | Tijuana vs. Querétaro | Liga MX |",
+          "id_xtream": "590697"
         }
       ]
     },
@@ -4678,7 +4759,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Oriental",
       "equipo_visitante": "Miramar",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-12T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -4692,7 +4773,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -4721,7 +4802,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Cusco",
       "equipo_visitante": "FBC Melgar",
-      "subtitulo": "Not Started",
+      "subtitulo": "Second Half",
       "hora_utc": "2026-09-12T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -4735,7 +4816,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -4806,7 +4887,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Coritiba",
       "equipo_visitante": "Atletico Paranaense",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-12T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -4820,7 +4901,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -4845,7 +4926,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Kansas City W",
       "equipo_visitante": "Orlando Pride W",
-      "subtitulo": "Not Started",
+      "subtitulo": "Halftime",
       "hora_utc": "2026-09-12T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -4859,7 +4940,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 46,
       "metodo_correlacion": "evento_simple_verificado",
@@ -5062,7 +5143,7 @@
         "api_sports:baseball"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -5095,7 +5176,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Boca Juniors",
       "equipo_visitante": "Central Cordoba de Santiago",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-12T00:30:00Z",
       "hora_local_producto": "19:30",
       "duracion_min": 130,
@@ -5109,7 +5190,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -5146,7 +5227,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Correcaminos Uat",
       "equipo_visitante": "Cancún",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-12T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -5160,7 +5241,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -5189,7 +5270,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Cruz Azul W",
       "equipo_visitante": "Pumas UNAM W",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-12T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -5203,7 +5284,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 100,
       "metodo_correlacion": "duelo_verificado",
@@ -5232,7 +5313,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Necaxa",
       "equipo_visitante": "Puebla",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-12T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -5246,7 +5327,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 97,
       "metodo_correlacion": "duelo_verificado",
@@ -5898,17 +5979,9 @@
       "razones_correlacion": [
         "local:TIJUANA",
         "visitante:QUERETARO",
-        "diferencia_min:70"
+        "diferencia_min:10"
       ],
       "fuentes": [
-        {
-          "nombre": "21:00 11/09 | Tijuana vs. Querétaro | Liga MX |",
-          "id_xtream": "590696"
-        },
-        {
-          "nombre": "21:00 11/09 | Tijuana vs. Querétaro | Liga MX |",
-          "id_xtream": "590697"
-        },
         {
           "nombre": "22:00 ◘ Tijuana vs. Querétaro ◘ Liga MX ◘",
           "id_xtream": "591036"
