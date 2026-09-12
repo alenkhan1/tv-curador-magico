@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-12T16:22:15Z",
+  "generado_utc": "2026-09-12T18:30:17Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-12",
   "base_media": "http://elpapanatas.space:8080",
@@ -1076,7 +1076,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "SCR Altach",
       "equipo_visitante": "Grazer AK",
-      "subtitulo": "Second Half",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-12T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 130,
@@ -1090,7 +1090,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 63,
       "metodo_correlacion": "evento_simple_verificado",
@@ -1616,7 +1616,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "1. FC Köln",
       "equipo_visitante": "Werder Bremen",
-      "subtitulo": "Not Started",
+      "subtitulo": "Match Finished",
       "hora_utc": "2026-09-12T16:30:00Z",
       "hora_local_producto": "11:30",
       "duracion_min": 130,
@@ -1630,7 +1630,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "finalizado",
       "confianza": "alta",
       "puntuacion_confianza": 63,
       "metodo_correlacion": "evento_simple_verificado",
@@ -1672,7 +1672,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
@@ -1851,7 +1851,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "MB Rouisset",
       "equipo_visitante": "Olympique Akbou",
-      "subtitulo": "Not Started",
+      "subtitulo": "First Half",
       "hora_utc": "2026-09-12T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -1865,7 +1865,7 @@
         "api_sports:football"
       ],
       "estado": "confirmado",
-      "estado_evento": "programado",
+      "estado_evento": "en_vivo",
       "confianza": "alta",
       "puntuacion_confianza": 55,
       "metodo_correlacion": "evento_simple_verificado",
@@ -1923,44 +1923,6 @@
         {
           "nombre": "US Open | 01:00 PM | Semifinales masculinas En español",
           "id_xtream": "590738"
-        }
-      ]
-    },
-    {
-      "id": "apisports_nfl_23394",
-      "agenda_id": "apisports_nfl_23394",
-      "titulo": "NCAA",
-      "torneo": "NCAA",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "FCS (Division I-AA)",
-      "hora_utc": "2026-09-12T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 220,
-      "logo_torneo": "https://media.api-sports.io/american-football/leagues/2.png",
-      "logo_local": "https://media.api-sports.io/american-football/teams/896.png",
-      "logo_visitante": "https://media.api-sports.io/american-football/teams/902.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:nfl",
-      "origenes": [
-        "api_sports:nfl"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "evento_simple_verificado",
-      "razones_correlacion": [
-        "tokens:NCAA",
-        "diferencia_min:180"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:00 ◘ American University vs. Colgate ◘ NCAA ◘◘",
-          "id_xtream": "590986"
         }
       ]
     },
@@ -2146,9 +2108,13 @@
       "metodo_correlacion": "evento_simple_verificado",
       "razones_correlacion": [
         "tokens:NCAA",
-        "diferencia_min:180"
+        "diferencia_min:60"
       ],
       "fuentes": [
+        {
+          "nombre": "16:00 ◘ American University vs. Colgate ◘ NCAA ◘◘",
+          "id_xtream": "590986"
+        },
         {
           "nombre": "18:00 ◘ #1 Stanford vs. North Carolina ◘ NCAA ◘◘",
           "id_xtream": "590990"
