@@ -1,129 +1,132 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-13T19:31:12Z",
+  "generado_utc": "2026-09-13T22:28:19Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-13",
   "agenda": {
     "api_sports": {
       "football": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
-        "solicitudes": 1,
+        "solicitudes": 2,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "99",
         "limite_minuto": "10",
-        "restantes_minuto": "9"
+        "restantes_minuto": "9",
+        "errores_api": 1,
+        "ultimo_error": "{'access': 'Your account is suspended, check on https://dashboard.api-football.com.'}",
+        "rotaciones_clave": 1
       },
       "basketball": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "baseball": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "hockey": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "handball": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "rugby": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "volleyball": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "afl": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "nfl": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "nba": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9",
         "errores_api": 1,
         "ultimo_error": "{'timezone': 'The Timezone field do not exist.'}"
       },
       "formula-1": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
       "mma": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "88",
+        "restantes_diarios": "98",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       }
@@ -163,14 +166,10 @@
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
       "programas_leidos": 221172,
-      "rechazados_no_en_vivo": 36,
-      "veto_o_historico": 25,
-      "admitidos": 1,
-      "categoria:Baloncesto": 1
+      "rechazados_no_en_vivo": 37,
+      "veto_o_historico": 25
     },
-    "fusion": {
-      "fusionados": 1
-    },
+    "fusion": {},
     "canales_mapeados": {
       "E1": 1,
       "E2": 1,
@@ -179,5 +178,5 @@
     "orden_fuentes": "ES,Principal,EN,otros"
   },
   "eventos_finales_total": 168,
-  "actualizado_utc": "2026-09-13T19:31:15Z"
+  "actualizado_utc": "2026-09-13T22:28:22Z"
 }
