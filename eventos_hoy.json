@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-13T07:31:06Z",
+  "generado_utc": "2026-09-13T13:21:37Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-13",
   "base_media": "http://elpapanatas.space:8080",
@@ -178,82 +178,6 @@
       ]
     },
     {
-      "id": "apisports_handball_196387",
-      "agenda_id": "apisports_handball_196387",
-      "titulo": "Oviedo W vs Pozuelo de Calatrava W",
-      "torneo": "Division de Honor Women",
-      "categoria": "Handball",
-      "tipo_evento": "duelo",
-      "equipo_local": "Oviedo W",
-      "equipo_visitante": "Pozuelo de Calatrava W",
-      "subtitulo": "",
-      "hora_utc": "2026-09-13T08:55:00Z",
-      "hora_local_producto": "04:00",
-      "duracion_min": 100,
-      "logo_torneo": "https://media.api-sports.io/handball/leagues/108.png",
-      "logo_local": "https://media.api-sports.io/handball/teams/1920.png",
-      "logo_visitante": "https://media.api-sports.io/handball/teams/4909.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:handball+epg",
-      "origenes": [
-        "api_sports:handball",
-        "epg"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "epg_agenda_verificada",
-      "razones_correlacion": [
-        "tokens:CALATRAVA,DIVISION,HONOR,OVIEDO,POZUELO",
-        "directo:true"
-      ],
-      "fuentes": [],
-      "canal_epg": "TDP"
-    },
-    {
-      "id": "epg_1de7556147354f0f",
-      "agenda_id": "",
-      "titulo": "Jornada 1",
-      "torneo": "Jornada 1",
-      "categoria": "Fútbol",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Cartagena - Inter · Liga Prime Futsal",
-      "titulo_tarjeta": "Jornada 1",
-      "subtitulo_tarjeta": "Cartagena - Inter · Liga Prime Futsal",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-13T10:35:00Z",
-      "hora_local_producto": "05:35",
-      "duracion_min": 125,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd3%2FSoccerball.svg%2F512px-Soccerball.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd3%2FSoccerball.svg%2F512px-Soccerball.svg.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
-      "origenes": [
-        "epg"
-      ],
-      "estado": "programado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
-      "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Fútbol",
-        "directo:true"
-      ],
-      "canal_epg": "TDP",
-      "fuentes": []
-    },
-    {
       "id": "epg_0a31a9a9c718ac7b",
       "agenda_id": "",
       "titulo": "Final",
@@ -280,7 +204,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
@@ -328,7 +252,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
