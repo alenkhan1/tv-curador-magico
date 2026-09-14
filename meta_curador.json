@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-14T15:04:07Z",
+  "generado_utc": "2026-09-14T19:53:57Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-14",
   "agenda": {
@@ -11,7 +11,7 @@
         "solicitudes": 2,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9",
         "errores_api": 1,
@@ -24,7 +24,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -34,7 +34,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -44,7 +44,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -54,7 +54,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -64,7 +64,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -74,7 +74,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -84,7 +84,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -94,7 +94,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -104,7 +104,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9",
         "errores_api": 1,
@@ -116,7 +116,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       },
@@ -126,7 +126,7 @@
         "solicitudes": 1,
         "http": 200,
         "limite_diario": "100",
-        "restantes_diarios": "94",
+        "restantes_diarios": "91",
         "limite_minuto": "10",
         "restantes_minuto": "9"
       }
@@ -138,34 +138,34 @@
     "eventos": 240
   },
   "xtream": {
-    "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 4,
-    "streams_totales": 12183,
+    "categorias_hoy": 4,
+    "categorias_fuera_de_jornada": 0,
+    "streams_totales": 11907,
     "descartado_sin_hora_programada": 11200,
-    "descartado_contenido_no_evento": 542,
-    "descartado_fecha_xtream_fuera_de_jornada": 181,
-    "descartado_categoria_xtream_fuera_de_jornada": 230,
-    "candidatos": 30
+    "descartado_contenido_no_evento": 540,
+    "descartado_fecha_xtream_fuera_de_jornada": 7,
+    "candidatos": 160
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_independientes_creados": 30,
-    "fuentes_independientes": 30,
-    "eventos_unicos": 6,
+    "eventos_independientes_creados": 51,
+    "fuentes_independientes": 51,
+    "fuentes_emparejadas": 109,
+    "eventos_unicos": 57,
     "frescura": {
       "es_stale": false,
-      "coincidencias_ayer": 0,
-      "coincidencias_hoy": 0,
-      "evaluados": 0
+      "coincidencias_ayer": 18,
+      "coincidencias_hoy": 104,
+      "evaluados": 116
     }
   },
-  "eventos_finales_base": 6,
+  "eventos_finales_base": 57,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 216800,
-      "rechazados_no_en_vivo": 50,
+      "programas_leidos": 221859,
+      "rechazados_no_en_vivo": 51,
       "veto_o_historico": 32
     },
     "fusion": {},
@@ -176,6 +176,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 6,
-  "actualizado_utc": "2026-09-14T15:04:10Z"
+  "eventos_finales_total": 57,
+  "actualizado_utc": "2026-09-14T19:54:00Z"
 }
