@@ -1,22 +1,25 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-13T07:31:03Z",
+  "generado_utc": "2026-09-14T07:57:03Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-09-13",
+  "fecha_local_producto": "2026-09-14",
   "agenda": {
     "api_sports": {
       "football": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
-        "solicitudes": 1,
+        "solicitudes": 2,
         "http": 200,
         "limite_diario": "100",
         "restantes_diarios": "97",
         "limite_minuto": "10",
-        "restantes_minuto": "9"
+        "restantes_minuto": "9",
+        "errores_api": 1,
+        "ultimo_error": "{'access': 'Your account is suspended, check on https://dashboard.api-football.com.'}",
+        "rotaciones_clave": 1
       },
       "basketball": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -26,7 +29,7 @@
         "restantes_minuto": "9"
       },
       "baseball": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -36,7 +39,7 @@
         "restantes_minuto": "9"
       },
       "hockey": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -46,7 +49,7 @@
         "restantes_minuto": "9"
       },
       "handball": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -56,7 +59,7 @@
         "restantes_minuto": "9"
       },
       "rugby": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -66,7 +69,7 @@
         "restantes_minuto": "9"
       },
       "volleyball": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -76,7 +79,7 @@
         "restantes_minuto": "9"
       },
       "afl": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -86,7 +89,7 @@
         "restantes_minuto": "9"
       },
       "nfl": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -96,7 +99,7 @@
         "restantes_minuto": "9"
       },
       "nba": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -108,7 +111,7 @@
         "ultimo_error": "{'timezone': 'The Timezone field do not exist.'}"
       },
       "formula-1": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -118,7 +121,7 @@
         "restantes_minuto": "9"
       },
       "mma": {
-        "clave_indice": 1,
+        "clave_indice": 2,
         "total_claves": 2,
         "solicitudes": 1,
         "http": 200,
@@ -132,16 +135,16 @@
       "solicitudes": 1,
       "eventos": 2
     },
-    "eventos": 1347
+    "eventos": 234
   },
   "xtream": {
     "categorias_hoy": 0,
     "categorias_fuera_de_jornada": 4,
-    "streams_totales": 12302,
+    "streams_totales": 12183,
     "descartado_sin_hora_programada": 11200,
     "descartado_contenido_no_evento": 542,
-    "descartado_fecha_xtream_fuera_de_jornada": 228,
-    "descartado_categoria_xtream_fuera_de_jornada": 302,
+    "descartado_fecha_xtream_fuera_de_jornada": 181,
+    "descartado_categoria_xtream_fuera_de_jornada": 230,
     "candidatos": 30
   },
   "curacion": {
@@ -161,19 +164,11 @@
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 217089,
-      "rechazados_no_en_vivo": 32,
-      "veto_o_historico": 23,
-      "admitidos": 6,
-      "categoria:Ciclismo": 1,
-      "categoria:Snooker": 1,
-      "categoria:Handball": 1,
-      "categoria:Fútbol": 2,
-      "categoria:Baloncesto": 1
+      "programas_leidos": 215624,
+      "rechazados_no_en_vivo": 46,
+      "veto_o_historico": 32
     },
-    "fusion": {
-      "agregados": 6
-    },
+    "fusion": {},
     "canales_mapeados": {
       "E1": 1,
       "E2": 1,
@@ -181,6 +176,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 12,
-  "actualizado_utc": "2026-09-13T07:31:06Z"
+  "eventos_finales_total": 6,
+  "actualizado_utc": "2026-09-14T07:57:06Z"
 }
