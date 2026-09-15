@@ -9,11 +9,11 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-09-14T09:39:53Z",
+  "generado": "2026-09-15T09:15:52Z",
   "resumen": {
-    "total": 1370,
+    "total": 1369,
     "por_motivo": {
-      "pendiente": 1196,
+      "pendiente": 1195,
       "no_encontrado": 174
     },
     "peliculas": {
@@ -21,9 +21,9 @@
       "excluido": 0,
       "sin_nombre": 0,
       "no_encontrado": 165,
-      "fallo_red": 1167,
-      "clasificados": 13503,
-      "sin_identificar": 1332
+      "fallo_red": 1166,
+      "clasificados": 13505,
+      "sin_identificar": 1331
     },
     "series": {
       "adulto": 0,
@@ -31,7 +31,7 @@
       "sin_nombre": 0,
       "no_encontrado": 9,
       "fallo_red": 29,
-      "clasificados": 1695,
+      "clasificados": 1696,
       "sin_identificar": 38
     },
     "alerta": {
@@ -44,7 +44,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1309,
+      "veces": 1308,
       "ejemplos": [
         "Back to the Beginning Parte 1 (2025)",
         "Back to the Beginning Parte 2 (2025)",
@@ -614,7 +614,7 @@
     },
     {
       "carpeta": "ACCION",
-      "veces": 52
+      "veces": 51
     },
     {
       "carpeta": "SUSPENSO",
@@ -1377,18 +1377,6 @@
       "titulo_buscado": "Las Espadas De Los Guardianes",
       "anio": 2026,
       "motivo": "no_encontrado",
-      "carpeta": "ACCION",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "542252",
-      "tipo": "movie",
-      "nombre_original": "Matrix 1 (1999)",
-      "titulo_buscado": "Matrix 1",
-      "anio": 1999,
-      "motivo": "pendiente",
       "carpeta": "ACCION",
       "etiquetas": [],
       "prefijo": "",
@@ -11149,6 +11137,18 @@
       "nombre_original": "The Dreadful (2026) Terror",
       "titulo_buscado": "The Dreadful Terror",
       "anio": 2026,
+      "motivo": "pendiente",
+      "carpeta": "TERROR",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "551607",
+      "tipo": "movie",
+      "nombre_original": "The Gingerdead Man (La galleta asesina) (2005) Terror, Comedia",
+      "titulo_buscado": "The Gingerdead Man Terror Comedia",
+      "anio": 2005,
       "motivo": "pendiente",
       "carpeta": "TERROR",
       "etiquetas": [],
