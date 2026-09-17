@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-17T13:30:41Z",
+  "generado_utc": "2026-09-17T16:16:52Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-17",
   "agenda": {
@@ -155,22 +155,23 @@
       "solicitudes": 1,
       "eventos": 3
     },
-    "eventos": 3
+    "eventos": 3,
+    "cache": "vigente"
   },
   "xtream": {
-    "categorias_hoy": 0,
+    "categorias_hoy": 4,
     "categorias_fuera_de_jornada": 0,
     "streams_totales": 12009,
-    "descartado_sin_hora_programada": 11200,
-    "descartado_contenido_no_evento": 525,
-    "descartado_fecha_xtream_fuera_de_jornada": 126,
-    "candidatos": 158
+    "descartado_sin_hora_programada": 11284,
+    "descartado_contenido_no_evento": 468,
+    "descartado_fecha_xtream_fuera_de_jornada": 130,
+    "candidatos": 127
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_independientes_creados": 158,
-    "fuentes_independientes": 158,
-    "eventos_unicos": 121,
+    "eventos_independientes_creados": 127,
+    "fuentes_independientes": 127,
+    "eventos_unicos": 114,
     "frescura": {
       "es_stale": false,
       "coincidencias_ayer": 0,
@@ -178,16 +179,22 @@
       "evaluados": 121
     }
   },
-  "eventos_finales_base": 121,
+  "eventos_finales_base": 114,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 217370,
-      "veto_o_historico": 41,
-      "rechazados_no_en_vivo": 41
+      "programas_leidos": 197811,
+      "veto_o_historico": 30,
+      "rechazados_no_en_vivo": 46,
+      "admitidos": 6,
+      "categoria:Ciclismo": 4,
+      "categoria:Snooker": 1,
+      "categoria:Escalada": 1
     },
-    "fusion": {},
+    "fusion": {
+      "agregados": 6
+    },
     "canales_mapeados": {
       "E1": 1,
       "E2": 1,
@@ -195,6 +202,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 121,
-  "actualizado_utc": "2026-09-17T13:30:44Z"
+  "eventos_finales_total": 120,
+  "actualizado_utc": "2026-09-17T16:16:55Z"
 }
