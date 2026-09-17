@@ -158,6 +158,7 @@ VETO_EMISION = {
     "WIEDERHOLUNG", "ZUSAMMENFASSUNG", "DOKUMENTATION", "VORSCHAU", "NACHRICHTEN",
     "REPETICAO", "RESUMO", "DOCUMENTARIO", "REDIFFUSION", "RETROSPECTIVA",
     "PELICULA", "PELICULAS", "MOVIES", "SERIE", "SERIES", "ANIME", "ANIMACION", "ESTRENOS", "CONCIERTOS",
+    "INFORMACION IMPORTANTE", "AVISO IMPORTANTE", "ACTUALIZACION DE LISTA", "MIJAS", "CRKEY",
 }
 
 SESIONES = {
@@ -169,8 +170,8 @@ SESIONES = {
 
 DEPORTE_PISTAS = {
     "Golf": {"GOLF", "PGA", "DP WORLD", "BMW CHAMPIONSHIP"},
-    "Snooker": {"SNOOKER"},
-    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR", "MOUNTAIN BIKE", "MTB", "BTT", "DESCENSO"},
+    "Snooker": {"SNOOKER", "WUHAN OPEN", "BRITISH OPEN", "ENGLISH OPEN", "SHANGHAI MASTERS", "CHINA OPEN", "WORLD SNOOKER"},
+    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR", "MOUNTAIN BIKE", "MTB", "BTT", "DESCENSO", "TOUR DE LUXEMBURGO", "TOUR DE LUXEMBOURG", "GIRO DE LOS ABRUZZOS", "GIRO D ABRUZZO", "GIRO D ITALIA", "GIRO", "TOUR", "CRITERIUM", "PARIS NICE", "DAUPHINE", "TIRRENO", "WALLONIE", "VALONIA", "FLANDES", "FLANDRIEN", "BICICLETA DE MONTANA"},
     "Escalada": {"ESCALADA", "CLIMBING", "BOULDER", "IFSC", "MURO"},
     "Deportes Acuáticos": {"PIRAGUISMO", "REMO", "CANOTAJE", "CANOE", "KAYAK", "SURFING", "SURF", "NATACION", "WATERPOLO"},
     "Gimnasia": {"GIMNASIA", "GYMNASTICS", "GYMNASTIQUE", "TURNEN", "ARTISTICA"},
@@ -178,14 +179,15 @@ DEPORTE_PISTAS = {
     "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA"},
     "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA", "WNBA"},
     "Béisbol": {"BASEBALL", "BEISBOL", "MLB", "LMB", "LITTLE LEAGUE"},
-    "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR", "SUPERBIKE", "RESISTENCIA DE LA FIA"},
+    "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR", "SUPERBIKE", "RESISTENCIA DE LA FIA", "MOTOCROSS", "MXGP", "MX2"},
     "Hockey": {"HOCKEY"},
     "Combate": {"UFC", "MMA", "BKFC", "BOXING", "BOXEO", "WWE", "WRESTLING", "KICKBOXING"},
     "Rugby": {"RUGBY"},
     "Voleibol": {"VOLLEY", "VOLEIBOL"},
     "Fútbol Americano": {"NFL", "AMERICAN FOOTBALL", "FUTBOL AMERICANO"},
-    "Handball": {"HANDBALL", "BALONMANO"},
+    "Handball": {"HANDBALL", "BALONMANO", "ASOBAL", "EHF"},
     "Tejo": {"TEJO", "TURMEQUE"},
+    "Padel": {"PADEL", "PREMIER PADEL", "WORLD PADEL TOUR"},
 }
 
 
@@ -204,8 +206,13 @@ def tokenizar(texto: Any, *, conservar_genericos: bool = False) -> set[str]:
 
 def contiene_veto(texto: Any) -> bool:
     valor = normalizar_texto(texto)
-    if any(palabra in valor for palabra in VETO_EMISION):
-        return True
+    # Límite de palabra exacto para no vetar 'ProSeries' o 'World Series'
+    if any(bool(re.search(rf"(?<![A-Z0-9]){re.escape(palabra)}(?![A-Z0-9])", valor)) for palabra in VETO_EMISION):
+        # Excepción para torneos legítimos con 'SERIES'
+        if "PROSERIES" in valor or "WORLD SERIES" in valor:
+            pass
+        else:
+            return True
     # Veto de series (S01 E02, T01 E05, S1E1, etc.)
     if re.search(r"\b[ST]\d{1,2}\s*E\d{1,2}\b", valor):
         return True
@@ -272,12 +279,12 @@ def parsear_iso_o_timestamp(valor: Any) -> Optional[datetime]:
 
 
 def extraer_hora_canal(texto: str, fecha_base: datetime) -> Optional[datetime]:
-    """Extrae la hora programada soportando múltiples formatos de listas IPTV (HH:MM, H:MM, HH.MM, HHhMM, AM/PM, hs/hrs)."""
+    """Extrae la hora programada soportando formatos válidos de IPTV sin confundir versiones numéricas ni IPs."""
     if not texto:
         return None
 
-    # 1. Formato con dos puntos o punto: "12:30", "12.30", "12:30 PM", "8:00 AM", "12:30hrs", "12:30 hs", "12:30h"
-    m = re.search(r"(?<!\d)([01]?\d|2[0-3])[:.]([0-5]\d)\s*([APap][Mm]|[Hh][Rr]?[Ss]?)?(?!\d)", texto)
+    # 1. Formato estándar con dos puntos: "12:30", "12:30 PM", "8:00 AM", "12:30hrs", "12:30 hs"
+    m = re.search(r"(?<!\d)([01]?\d|2[0-3]):([0-5]\d)\s*([APap][Mm]|[Hh][Rr]?[Ss]?)?(?!\d)", texto)
     if m:
         hora, minuto = int(m.group(1)), int(m.group(2))
         sufijo = (m.group(3) or "").upper()
@@ -288,7 +295,19 @@ def extraer_hora_canal(texto: str, fecha_base: datetime) -> Optional[datetime]:
         if 0 <= hora <= 23 and 0 <= minuto <= 59:
             return fecha_base.replace(hour=hora, minute=minuto, second=0, microsecond=0)
 
-    # 2. Formato europeo con 'h'/'H': "12h30", "20H45", "12h00", "8h30"
+    # 2. Formato con punto "." SOLO si está acompañado obligatoriamente de sufijo horario (AM, PM, hs, hrs, h)
+    m = re.search(r"(?<!\d)([01]?\d|2[0-3])\.([0-5]\d)\s*([APap][Mm]|[Hh][Rr]?[Ss]?)(?!\d)", texto)
+    if m:
+        hora, minuto = int(m.group(1)), int(m.group(2))
+        sufijo = (m.group(3) or "").upper()
+        if "PM" in sufijo and hora < 12:
+            hora += 12
+        elif "AM" in sufijo and hora == 12:
+            hora = 0
+        if 0 <= hora <= 23 and 0 <= minuto <= 59:
+            return fecha_base.replace(hour=hora, minute=minuto, second=0, microsecond=0)
+
+    # 3. Formato europeo con 'h'/'H': "12h30", "20H45", "12h00", "8h30"
     m = re.search(r"(?<!\d)([01]?\d|2[0-3])[hH]([0-5]\d)(?!\d)", texto)
     if m:
         hora, minuto = int(m.group(1)), int(m.group(2))
@@ -313,25 +332,34 @@ def variaciones_fecha(fecha: datetime) -> set[str]:
 
 
 def fecha_xtream_explicita(texto: str, fecha_producto: date) -> Optional[bool]:
-    """Detecta si un texto contiene una fecha explícita numérica (31/08) o textual (31 DE AGOSTO) y valida si es hoy."""
+    """Detecta si un texto contiene una fecha explícita numérica (31/08), ISO (2026-05-24) o textual y valida si es hoy."""
     if not texto:
         return None
-    # Eliminar marcas de canales 24/7 para evitar falsos positivos con fechas
     texto_limpio = re.sub(r"\b24/7(?:/365)?\b", "", texto, flags=re.I)
     norm = normalizar_texto(texto_limpio)
     hallada = False
 
-    # 1. Formato numérico DD/MM o DD-MM o DD/MM/YYYY (evitando 24/7)
-    for dia, mes, _ in re.findall(r"(?<!\d)(\d{1,2})[/-](\d{1,2})(?:[/-](\d{2,4}))?(?!\d)", texto_limpio):
+    # 1. Formato ISO YYYY-MM-DD o YYYY/MM/DD (ej: 2026-05-24)
+    for anio, mes, dia in re.findall(r"\b(20\d\d)[/-](\d{1,2})[/-](\d{1,2})\b", texto_limpio):
+        hallada = True
+        try:
+            if date(int(anio), int(mes), int(dia)) == fecha_producto:
+                return True
+        except ValueError:
+            continue
+
+    # 2. Formato numérico DD/MM o DD-MM o DD/MM/YYYY (evitando 24/7)
+    for dia, mes, anio in re.findall(r"(?<!\d)(\d{1,2})[/-](\d{1,2})(?:[/-](\d{2,4}))?(?!\d)", texto_limpio):
         if 1 <= int(dia) <= 31 and 1 <= int(mes) <= 12:
             hallada = True
             try:
-                if date(fecha_producto.year, int(mes), int(dia)) == fecha_producto:
+                y = int(anio) if anio and len(anio) == 4 else (2000 + int(anio) if anio else fecha_producto.year)
+                if date(y, int(mes), int(dia)) == fecha_producto:
                     return True
             except ValueError:
                 continue
 
-    # 2. Formato textual ("31 DE AGOSTO", "31 AGO", "AGOSTO 31", "31 AUGUST", "AUG 31")
+    # 3. Formato textual ("31 DE AGOSTO", "17 SEPTIEMBRE", "AUG 31")
     meses_re = "|".join(sorted(MESES_MAP.keys(), key=len, reverse=True))
     for dia, mes_str in re.findall(rf"(?<!\d)(\d{{1,2}})\s*(?:DE\s*)?({meses_re})(?!\w)", norm):
         hallada = True
@@ -342,7 +370,7 @@ def fecha_xtream_explicita(texto: str, fecha_producto: date) -> Optional[bool]:
         except ValueError:
             continue
 
-    for mes_str, dia in re.findall(rf"({meses_re})\s*(?:DE\s*)?(\d{{1,2}})(?!\d)", norm):
+    for mes_str, dia in re.findall(rf"\b({meses_re})\s*(?:DE\s*)?(\d{{1,2}})(?!\d)", norm):
         hallada = True
         mes_num = MESES_MAP.get(mes_str)
         try:
@@ -581,6 +609,32 @@ def _leer_cache(fecha_consulta: str, permitir_vencida: bool = False) -> Optional
         return None
     return None
 
+
+
+def rotar_cache_diaria(fecha_hoy: str, fecha_ayer: str) -> None:
+    """Si ARCHIVO_CACHE tiene los datos de ayer y hoy es un nuevo día, lo rota a ARCHIVO_CACHE_AYER."""
+    if ARCHIVO_CACHE.exists():
+        try:
+            datos = json.loads(ARCHIVO_CACHE.read_text(encoding="utf-8"))
+            fecha_guardada = datos.get("fecha_local_producto")
+            if fecha_guardada == fecha_ayer:
+                log.info("Rotando caché de ayer (%s) a %s (costo: 0 llamadas API)", fecha_ayer, ARCHIVO_CACHE_AYER.name)
+                ARCHIVO_CACHE_AYER.write_text(json.dumps(datos, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception as e:
+            log.warning("No se pudo rotar caché de ayer: %s", e)
+
+
+def cargar_agenda_cache_ayer(fecha_ayer: str) -> List[Dict[str, Any]]:
+    """Carga la agenda de ayer desde el archivo de ayer o desde el archivo actual si contenía esa fecha."""
+    for archivo in (ARCHIVO_CACHE_AYER, ARCHIVO_CACHE):
+        if archivo.exists():
+            try:
+                datos = json.loads(archivo.read_text(encoding="utf-8"))
+                if datos.get("fecha_local_producto") == fecha_ayer:
+                    return list(datos.get("eventos", []))
+            except Exception:
+                pass
+    return []
 
 def cargar_agenda_cache(fecha_consulta: str) -> List[Dict[str, Any]]:
     datos = _leer_cache(fecha_consulta, permitir_vencida=True)
@@ -839,7 +893,7 @@ def es_candidato(stream: Dict[str, Any], categorias_hoy: set[str], fecha_local: 
     if deporte or duelo:
         return True, "hora_y_deporte_valido"
 
-    return True, "hora_programada_en_canal"
+    return False, "sin_categoria_ni_deporte_valido"
 
 
 def obtener_canales_candidatos(fecha_local: datetime) -> Tuple[List[Dict[str, Any]], Dict[str, Any]]:
@@ -1154,13 +1208,13 @@ def main() -> None:
     cliente_api = ClienteApiSports(API_SPORTS_KEY)
 
     metricas_agenda_hoy: Dict[str, Any] = {}
+    rotar_cache_diaria(fecha_hoy, fecha_ayer)
     agenda_hoy = obtener_agenda_maestra(fecha_hoy, metricas_agenda_hoy, cliente=cliente_api)
 
-    # Agenda de ayer para contraste negativo (si no está en caché local, se consulta)
-    agenda_ayer = cargar_agenda_cache(fecha_ayer)
+    # Agenda de ayer para contraste negativo: se obtiene exclusivamente de caché para no gastar cuota API
+    agenda_ayer = cargar_agenda_cache_ayer(fecha_ayer)
     if not agenda_ayer:
-        log.info("Cargando agenda de ayer (%s) para verificación de frescura y contraste...", fecha_ayer)
-        agenda_ayer = obtener_agenda_maestra(fecha_ayer, cliente=cliente_api)
+        log.info("No hay agenda previa de ayer (%s) en caché. Se omite llamada API para conservar cuota.", fecha_ayer)
 
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
     eventos, cuarentena, metricas_curacion = curar_eventos(agenda_hoy, agenda_ayer, candidatos, ahora.date())

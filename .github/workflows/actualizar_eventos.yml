@@ -5,7 +5,7 @@ on:
     # UTC. Equivale a 21:20/00:20/03:20/06:20/08:20–12:20/15:20/18:20 Colombia.
     # Las cinco corridas de 13:20 a 17:20 UTC cubren la actualización Xtream
     # observada alrededor de 15:00–18:00 en Madrid.
-    - cron: "20 2,5,8,11,13,14,15,16,17,20,23 * * *"
+    - cron: "0 5,9,13,16,19,22 * * *"
   workflow_dispatch:
 
 concurrency:
@@ -58,7 +58,7 @@ jobs:
           API_SPORTS_MIN_INTERVAL: "7"
           API_SPORTS_MAX_RETRIES: "1"
           API_SPORTS_DEPORTES: football,basketball,baseball,formula-1,hockey,mma,nba,nfl,rugby,volleyball,handball,afl
-          MINUTOS_CACHE: "45"
+          MINUTOS_CACHE: "1440"
           MAX_DIFERENCIA_MIN: "180"
           PUBLICAR_XTREAM_PROBABLE: "true"
           PUBLICAR_AGENDA_SIN_FUENTE: "false"
@@ -109,7 +109,7 @@ jobs:
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          git add eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_actual.json presupuesto_api.json
+          git add eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_actual.json agenda_api_ayer.json presupuesto_api.json
           git diff --cached --quiet && exit 0
           git commit -m "Actualización de cartelera deportiva EN CANAL"
           git pull --rebase origin main

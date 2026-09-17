@@ -54,7 +54,7 @@ log = logging.getLogger("inyector_epg")
 
 URLS_EPG_EUROPA = os.environ.get(
     "URLS_EPG_EUROPA",
-    "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_UK1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz"
+    "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz"
 ).split(",")
 INCLUIR_EPG_EN_CANAL = os.environ.get("INCLUIR_EPG_EN_CANAL", "true").lower() in {"1", "true", "si", "sí", "yes"}
 PUBLICAR_EPG_FUTURO = os.environ.get("PUBLICAR_EPG_FUTURO", "true").lower() in {"1", "true", "si", "sí", "yes"}
@@ -112,7 +112,9 @@ def es_directo_multilingue(texto: str) -> bool:
 def es_historico_o_veto(titulo: str, descripcion: str = "") -> bool:
     texto = f"{titulo} {descripcion}"
     valor = normalizar_texto(texto)
-    if contiene_veto(valor) or any(palabra in valor for palabra in VETO_EPG):
+    if contiene_veto(valor):
+        return True
+    if any(bool(re.search(rf"(?<![A-Z0-9]){re.escape(palabra)}(?![A-Z0-9])", valor)) for palabra in VETO_EPG):
         return True
     if PATRON_TEMPORADA_HISTORICA.search(texto):
         return True
@@ -164,9 +166,9 @@ def clave_canal_epg(channel_id: str) -> Optional[str]:
     valor = normalizar_texto(channel_id)
     if "TELEDEPORTE" in valor or re.search(r"\bTDP\b", valor):
         return "TDP"
-    if re.search(r"\bEUROSPORTS?\s*2\b", valor):
+    if re.search(r"\bEUROSPORTS?[\s._-]*2\b", valor):
         return "E2"
-    if re.search(r"\bEUROSPORTS?\s*1\b", valor):
+    if re.search(r"\bEUROSPORTS?[\s._-]*1\b", valor):
         return "E1"
     return None
 
@@ -342,16 +344,23 @@ def construir_evento_epg(
     # Política estricta: si no hay confirmación de DIRECTO/LIVE, se descarta
     oficial, puntos, tokens = buscar_evento_agenda(titulo_raw, inicio, agenda)
 
-    directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}")
+    torneo, subtitulo = limpiar_titulo_epg(titulo_raw)
+    categoria = inferir_deporte(f"{titulo_raw} {descripcion}")
+    if not categoria:
+        return None
+
+    hora_madrid = inicio.astimezone(ZoneInfo("Europe/Madrid")).hour
+    es_vivo_eurosport = (
+        canal_epg in {"E1", "E2", "TDP"}
+        and categoria in {"Ciclismo", "Snooker", "Tenis", "Motor", "Escalada", "Balonmano", "Gimnasia", "Deportes Acuáticos", "Padel", "Combate", "Golf"}
+        and (11 <= hora_madrid <= 21)
+    )
+
+    directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}") or es_vivo_eurosport
     if not directo and oficial:
         directo = True
 
     if not directo:
-        return None
-
-    torneo, subtitulo = limpiar_titulo_epg(titulo_raw)
-    categoria = inferir_deporte(f"{titulo_raw} {descripcion}")
-    if not categoria:
         return None
 
     torneo, subtitulo = enriquecer_titulo_competicion(torneo, subtitulo, descripcion, categoria)
@@ -434,11 +443,13 @@ def construir_matriz_consenso(programas: List[Dict[str, Any]]) -> Dict[Tuple[str
         slot = p["inicio"].strftime("%Y%m%d%H%M")
         cat = inferir_deporte(f"{p['titulo']} {p['descripcion']}") or ""
         es_live = es_directo_multilingue(f"{p['titulo']} {p['descripcion']}")
-        if es_live and cat:
+        if es_live:
             consenso[(clave, cat, slot)] = True
+            consenso[(clave, "", slot)] = True
             for offset in (-15, 15):
                 slot_cercano = (p["inicio"] + timedelta(minutes=offset)).strftime("%Y%m%d%H%M")
                 consenso[(clave, cat, slot_cercano)] = True
+                consenso[(clave, "", slot_cercano)] = True
     return consenso
 
 
@@ -496,7 +507,7 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
         clave = str(programa["clave"])
         slot = programa["inicio"].strftime("%Y%m%d%H%M")
         categoria = inferir_deporte(f"{titulo} {desc}") or ""
-        es_directo_validado = matriz_live.get((clave, categoria, slot), False)
+        es_directo_validado = matriz_live.get((clave, categoria, slot), False) or matriz_live.get((clave, "", slot), False)
 
         evento = construir_evento_epg(
             titulo, desc, programa["inicio"], programa["fin"],
@@ -617,7 +628,8 @@ def main() -> None:
     except (OSError, ValueError):
         salida = {"version": 12, "eventos": [], "base_media": ""}
 
-    agenda = cargar_agenda_cache(fecha) or obtener_agenda_maestra(fecha)
+    # Usar caché local generada por curador_eventos. NUNCA llamar a la API externa desde el inyector EPG.
+    agenda = cargar_agenda_cache(fecha) or []
     mapa = mapear_streams_canales_lineales()
     eventos_epg, metricas_epg = extraer_eventos_epg(mapa, agenda, ahora.astimezone(tz), ahora)
     eventos, metricas_fusion = fusionar_con_base(list(salida.get("eventos") or []), eventos_epg)
