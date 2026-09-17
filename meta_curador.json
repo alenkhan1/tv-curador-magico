@@ -1,8 +1,8 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-17T01:28:45Z",
+  "generado_utc": "2026-09-17T07:42:52Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-09-16",
+  "fecha_local_producto": "2026-09-17",
   "agenda": {
     "api_sports": {
       "football": {
@@ -153,40 +153,40 @@
     },
     "thesportsdb_respaldo": {
       "solicitudes": 1,
-      "eventos": 0
+      "eventos": 3
     },
-    "eventos": 0,
-    "cache": "venciente_usada_por_fallo"
+    "eventos": 3
   },
   "xtream": {
-    "categorias_hoy": 4,
-    "categorias_fuera_de_jornada": 0,
+    "categorias_hoy": 0,
+    "categorias_fuera_de_jornada": 4,
     "streams_totales": 12009,
     "descartado_sin_hora_programada": 11200,
     "descartado_contenido_no_evento": 525,
-    "descartado_fecha_xtream_fuera_de_jornada": 7,
-    "candidatos": 277
+    "descartado_fecha_xtream_fuera_de_jornada": 126,
+    "descartado_categoria_xtream_fuera_de_jornada": 128,
+    "candidatos": 30
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_independientes_creados": 277,
-    "fuentes_independientes": 277,
-    "eventos_unicos": 178,
+    "eventos_independientes_creados": 30,
+    "fuentes_independientes": 30,
+    "eventos_unicos": 6,
     "frescura": {
       "es_stale": false,
       "coincidencias_ayer": 0,
       "coincidencias_hoy": 0,
-      "evaluados": 232
+      "evaluados": 0
     }
   },
-  "eventos_finales_base": 178,
+  "eventos_finales_base": 6,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 221265,
-      "rechazados_no_en_vivo": 40,
-      "veto_o_historico": 33
+      "programas_leidos": 216913,
+      "veto_o_historico": 41,
+      "rechazados_no_en_vivo": 41
     },
     "fusion": {},
     "canales_mapeados": {
@@ -196,6 +196,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 178,
-  "actualizado_utc": "2026-09-17T01:28:48Z"
+  "eventos_finales_total": 6,
+  "actualizado_utc": "2026-09-17T07:42:56Z"
 }
