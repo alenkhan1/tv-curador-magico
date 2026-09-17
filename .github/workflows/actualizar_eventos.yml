@@ -109,7 +109,9 @@ jobs:
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          git add eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_actual.json agenda_api_ayer.json presupuesto_api.json
+          for archivo in eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_actual.json agenda_api_ayer.json presupuesto_api.json; do
+            [ -f "$archivo" ] && git add "$archivo"
+          done
           git diff --cached --quiet && exit 0
           git commit -m "Actualización de cartelera deportiva EN CANAL"
           git pull --rebase origin main
