@@ -604,6 +604,9 @@ def _leer_cache(fecha_consulta: str, permitir_vencida: bool = False) -> Optional
             edad = (datetime.now(timezone.utc) - generado).total_seconds()
         else:
             edad = time.time() - ARCHIVO_CACHE.stat().st_mtime
+        # Si contiene menos de 5 eventos, fue un fallo por suspensión/cuota de API y no es válida
+        if len(datos.get("eventos", [])) < 5:
+            return None
         if permitir_vencida or (MINUTOS_CACHE > 0 and edad <= MINUTOS_CACHE * 60):
             return datos
     except (OSError, ValueError):
@@ -781,7 +784,7 @@ def llamada_xtream(url: str, timeout: int = 60) -> Any:
     respuesta.raise_for_status()
     return respuesta.json()
 
-def obtener_canales_xtream_con_cache(max_horas: float = 18.0) -> List[Dict[str, Any]]:
+def obtener_canales_xtream_con_cache(max_horas: float = 2.0) -> List[Dict[str, Any]]:
     """Obtiene canales Xtream reutilizando la caché de disco para evitar gastar ancho de banda de Render."""
     if ARCHIVO_CACHE_XTREAM.exists():
         try:
@@ -1164,8 +1167,22 @@ def curar_eventos(agenda_hoy: List[Dict[str, Any]], agenda_ayer: List[Dict[str, 
                 cuarentena.append({**fuente, "motivo": "lista_xtream_no_rotada"})
             continue
 
-        # 4. Para deportes legítimos no cubiertos por la API (ej: Tejo, deportes especiales de hoy)
+        # 4. Para deportes legítimos no cubiertos por la API (ej: Tejo, Pádel, deportes especiales)
         if evento is None and PUBLICAR_XTREAM_PROBABLE:
+            cat = canal.get("categoria_inferida") or ""
+            motivo = canal.get("motivo_vigencia") or ""
+            es_deporte_independiente = cat in {
+                "Tejo", "Padel", "Ciclismo", "Snooker", "Escalada", "Motor", "Gimnasia", "Deportes Acuáticos"
+            }
+            tiene_confirmacion_hoy = motivo in {"fecha_xtream_hoy", "categoria_xtream_hoy"}
+
+            # Si es un deporte cubierto por la API o genérico ("Otros Deportes") y no tiene fecha de hoy, descartar residuo
+            if not es_deporte_independiente and not tiene_confirmacion_hoy:
+                metricas["descartado_sin_verificacion_hoy"] += 1
+                if len(cuarentena) < MAX_CUARENTENA:
+                    cuarentena.append({**fuente, "motivo": "no_es_deporte_independiente_ni_figura_en_agenda_hoy"})
+                continue
+
             evento = crear_evento_independiente_xtream(canal, tz, deduplicador)
             if evento:
                 puntos = int(evento["puntuacion_confianza"])

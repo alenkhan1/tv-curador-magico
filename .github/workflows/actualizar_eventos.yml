@@ -42,8 +42,6 @@ jobs:
         with:
           path: canales_xtream_cache.json
           key: canales-xtream-${{ steps.fecha_cache.outputs.fecha }}
-          restore-keys: |
-            canales-xtream-
 
       - name: Construir agenda y correlacionar señales Xtream
         env:
