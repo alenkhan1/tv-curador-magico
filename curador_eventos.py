@@ -22,7 +22,7 @@ try:
 except ImportError:
     cffi_requests = None
 
-from resolvedor_logos import resolver_logo_torneo
+from resolvedor_logos import resolver_logo_torneo, es_logo_basura
 
 logging.basicConfig(
     level=os.environ.get("LOG_LEVEL", "INFO").upper(),
@@ -75,7 +75,7 @@ DURACION_POR_CATEGORIA = {
     "Tejo": 180, "Atletismo": 180, "Otros Deportes": 150,
 }
 
-DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Escalada", "Deportes Acuáticos", "Atletismo"}
+DEPORTES_COMPETICION = {"Ciclismo", "Snooker", "Golf", "Gimnasia", "Motor", "Escalada", "Deportes Acuáticos", "Atletismo", "Tenis", "Padel"}
 DEPORTES_HIBRIDOS = {"Combate", "Tenis", "Deportes", "Otros Deportes", "Tejo"}
 ARCHIVO_LOGOS_EQUIPOS = Path(os.environ.get("ARCHIVO_LOGOS_EQUIPOS", "logos_equipos.json"))
 ARCHIVO_CACHE_XTREAM = Path(os.environ.get("ARCHIVO_CACHE_XTREAM", "canales_xtream_cache.json"))
@@ -170,25 +170,25 @@ SESIONES = {
 }
 
 DEPORTE_PISTAS = {
-    "Golf": {"GOLF", "PGA", "DP WORLD", "BMW CHAMPIONSHIP"},
+    "Golf": {"GOLF", "PGA", "DP WORLD", "BMW CHAMPIONSHIP", "LIV GOLF", "MASTERS TOURNAMENT"},
     "Snooker": {"SNOOKER", "WUHAN OPEN", "BRITISH OPEN", "ENGLISH OPEN", "SHANGHAI MASTERS", "CHINA OPEN", "WORLD SNOOKER"},
     "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR", "MOUNTAIN BIKE", "MTB", "BTT", "DESCENSO", "TOUR DE LUXEMBURGO", "TOUR DE LUXEMBOURG", "GIRO DE LOS ABRUZZOS", "GIRO D ABRUZZO", "GIRO D ITALIA", "GIRO", "TOUR", "CRITERIUM", "PARIS NICE", "DAUPHINE", "TIRRENO", "WALLONIE", "VALONIA", "FLANDES", "FLANDRIEN", "BICICLETA DE MONTANA"},
     "Escalada": {"ESCALADA", "CLIMBING", "BOULDER", "IFSC", "MURO"},
     "Deportes Acuáticos": {"PIRAGUISMO", "REMO", "CANOTAJE", "CANOE", "KAYAK", "SURFING", "SURF", "NATACION", "WATERPOLO"},
     "Gimnasia": {"GIMNASIA", "GYMNASTICS", "GYMNASTIQUE", "TURNEN", "ARTISTICA"},
-    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA", "US OPEN", "AUSTRALIAN OPEN", "ROLAND GARROS", "WIMBLEDON"},
-    "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA"},
-    "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA", "WNBA"},
-    "Béisbol": {"BASEBALL", "BEISBOL", "MLB", "LMB", "LITTLE LEAGUE"},
-    "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR", "SUPERBIKE", "RESISTENCIA DE LA FIA", "MOTOCROSS", "MXGP", "MX2"},
-    "Hockey": {"HOCKEY"},
-    "Combate": {"UFC", "MMA", "BKFC", "BOXING", "BOXEO", "WWE", "WRESTLING", "KICKBOXING"},
-    "Rugby": {"RUGBY"},
-    "Voleibol": {"VOLLEY", "VOLEIBOL"},
-    "Fútbol Americano": {"NFL", "AMERICAN FOOTBALL", "FUTBOL AMERICANO"},
+    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA", "US OPEN", "AUSTRALIAN OPEN", "ROLAND GARROS", "WIMBLEDON", "OPEN", "MASTERS 1000", "CHALLENGER", "ITF", "GUADALAJARA OPEN", "SP OPEN", "COURT", "GRANDSTAND", "ARTHUR ASHE", "LOUIS ARMSTRONG", "STADIUM 17"},
+    "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA", "UEL", "UCL", "UECL", "EUROPA LEAGUE", "CONFERENCE LEAGUE", "CONFERENCE", "CHAMPIONS", "MUNDIAL FEM", "SUB20", "SUB17", "SUB 20", "SUB 17", "FEMENIL", "FEMENINO", "COPA DEL REY", "FA CUP", "CARABAO", "COPA ITALIA", "DFB POKAL", "LIGUE 1", "EREDIVISIE", "BETPLAY", "LIGA BETPLAY", "LIGA MX", "MLS", "ELIMINATORIAS", "UEFA", "CONMEBOL", "CONCACAF", "CAF", "FIFA"},
+    "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA", "WNBA", "EUROCUP", "ACB"},
+    "Béisbol": {"BASEBALL", "BEISBOL", "MLB", "LMB", "LITTLE LEAGUE", "SERIE DEL CARIBE"},
+    "Motor": {"FORMULA", "F1", "MOTOGP", "MOTO GP", "NASCAR", "RALLY", "INDYCAR", "SUPERBIKE", "RESISTENCIA DE LA FIA", "MOTOCROSS", "MXGP", "MX2", "ARCA", "ARCA RACING", "BRISTOL", "SALEM"},
+    "Hockey": {"HOCKEY", "NHL"},
+    "Combate": {"UFC", "MMA", "BKFC", "BOXING", "BOXEO", "WWE", "WRESTLING", "KICKBOXING", "BELLATOR", "ONE CHAMPIONSHIP"},
+    "Rugby": {"RUGBY", "SIX NATIONS", "SEIS NACIONES", "TOP 14"},
+    "Voleibol": {"VOLLEY", "VOLEIBOL", "CEV"},
+    "Fútbol Americano": {"NFL", "AMERICAN FOOTBALL", "FUTBOL AMERICANO", "NCAA"},
     "Handball": {"HANDBALL", "BALONMANO", "ASOBAL", "EHF"},
     "Tejo": {"TEJO", "TURMEQUE"},
-    "Padel": {"PADEL", "PREMIER PADEL", "WORLD PADEL TOUR"},
+    "Padel": {"PADEL", "PREMIER PADEL", "WORLD PADEL TOUR", "FIP"},
 }
 
 
@@ -930,7 +930,7 @@ def obtener_canales_candidatos(fecha_local: datetime) -> Tuple[List[Dict[str, An
             "id_xtream": sid, "nombre_ui": nombre, "texto_normalizado": normalizar_texto(nombre), "tokens": tokenizar(nombre),
             "hora_local": extraer_hora_canal(nombre, fecha_local), "categoria_inferida": inferir_deporte(nombre),
             "sesion": extraer_sesion(nombre), "categoria_xtream": str(stream.get("category_id") or ""), "motivo_vigencia": motivo,
-            "logo_xtream": str(stream.get("stream_icon") or stream.get("tvg_logo") or ""),
+            "logo_xtream": ("" if es_logo_basura(stream.get("stream_icon") or stream.get("tvg_logo")) else str(stream.get("stream_icon") or stream.get("tvg_logo"))),
             "added": stream.get("added"),
         })
     metricas["candidatos"] = len(candidatos)
@@ -1076,9 +1076,16 @@ def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, exist
     ident = existentes.get(clave_dedup) or hashlib.sha1(clave_dedup.encode("utf-8")).hexdigest()[:16]
     existentes[clave_dedup] = ident
 
-    logo_torneo = canal.get("logo_xtream") or resolver_logo_torneo(torneo, categoria)
-    logo_loc = resolver_logo_equipo(local) or (logo_torneo if tipo == "sencillo" else canal.get("logo_xtream", ""))
-    logo_vis = resolver_logo_equipo(visitante)
+    logo_torneo = resolver_logo_torneo(torneo or titulo, categoria)
+    if not logo_torneo and not es_logo_basura(canal.get("logo_xtream")):
+        logo_torneo = canal.get("logo_xtream")
+
+    if tipo == "sencillo":
+        logo_loc = logo_torneo
+        logo_vis = ""
+    else:
+        logo_loc = resolver_logo_equipo(local)
+        logo_vis = resolver_logo_equipo(visitante)
 
     return {
         "id": f"xtream_{ident}", "agenda_id": "", "titulo": titulo, "torneo": torneo, "categoria": categoria,
