@@ -12,6 +12,7 @@ import re
 import xml.etree.ElementTree as ET
 from collections import Counter
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 from typing import Any, Optional, List, Dict, Tuple
 
 import requests
