@@ -55,6 +55,7 @@ THESPORTSDB_MAX_EVENTOS = max(int(os.environ.get("THESPORTSDB_MAX_EVENTOS", "3")
 THESPORTSDB_MAX_SOLICITUDES_DIA = max(int(os.environ.get("THESPORTSDB_MAX_SOLICITUDES_DIA", "3")), 0)
 
 ARCHIVO_CACHE = Path(os.environ.get("ARCHIVO_CACHE", "agenda_api_actual.json"))
+ARCHIVO_CACHE_AYER = Path(os.environ.get("ARCHIVO_CACHE_AYER", "agenda_api_ayer.json"))
 ARCHIVO_SALIDA = Path(os.environ.get("ARCHIVO_SALIDA", "eventos_hoy.json"))
 ARCHIVO_CUARENTENA = Path(os.environ.get("ARCHIVO_CUARENTENA", "eventos_descartados.json"))
 ARCHIVO_META = Path(os.environ.get("ARCHIVO_META", "meta_curador.json"))
