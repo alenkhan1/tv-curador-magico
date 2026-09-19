@@ -1,8 +1,8 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-18T23:41:26Z",
+  "generado_utc": "2026-09-19T09:03:26Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-09-18",
+  "fecha_local_producto": "2026-09-19",
   "agenda": {
     "api_sports": {
       "football": {
@@ -132,48 +132,49 @@
       "solicitudes": 1,
       "eventos": 2
     },
-    "eventos": 744,
-    "cache": "vigente"
+    "eventos": 2309
   },
   "xtream": {
-    "categorias_hoy": 4,
+    "categorias_hoy": 0,
     "categorias_fuera_de_jornada": 0,
-    "streams_totales": 11978,
-    "descartado_sin_hora_programada": 11284,
-    "descartado_contenido_no_evento": 473,
-    "descartado_fecha_xtream_fuera_de_jornada": 11,
-    "candidatos": 210
+    "error": "xtream:404 Client Error: Not Found for url: http://espartanos.live:8080/player_api.php?username=12user1506&password=123456&action=get_live_streams"
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_independientes_creados": 66,
-    "fuentes_independientes": 66,
-    "fuentes_emparejadas": 144,
-    "eventos_unicos": 118,
+    "eventos_unicos": 0,
     "frescura": {
       "es_stale": false,
-      "coincidencias_ayer": 10,
-      "coincidencias_hoy": 141,
-      "evaluados": 207
+      "coincidencias_ayer": 0,
+      "coincidencias_hoy": 0,
+      "evaluados": 0
     }
   },
-  "eventos_finales_base": 118,
+  "eventos_finales_base": 0,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 202888,
-      "rechazados_no_en_vivo": 46,
-      "veto_o_historico": 39
+      "programas_leidos": 197829,
+      "admitidos": 16,
+      "categoria:Ciclismo": 9,
+      "categoria:Snooker": 1,
+      "veto_o_historico": 15,
+      "rechazados_no_en_vivo": 30,
+      "categoria:Handball": 1,
+      "categoria:Escalada": 2,
+      "categoria:Motor": 2,
+      "categoria:Fútbol": 1
     },
-    "fusion": {},
+    "fusion": {
+      "agregados": 16
+    },
     "canales_mapeados": {
-      "E1": 1,
-      "E2": 1,
+      "E1": 0,
+      "E2": 0,
       "TDP": 0
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 118,
-  "actualizado_utc": "2026-09-18T23:41:29Z"
+  "eventos_finales_total": 16,
+  "actualizado_utc": "2026-09-19T09:03:27Z"
 }
