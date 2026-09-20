@@ -1,8 +1,8 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-19T23:42:57Z",
+  "generado_utc": "2026-09-20T09:30:59Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-09-19",
+  "fecha_local_producto": "2026-09-20",
   "agenda": {
     "api_sports": {
       "football": {
@@ -130,47 +130,46 @@
     },
     "thesportsdb_respaldo": {
       "solicitudes": 1,
-      "eventos": 2
+      "eventos": 3
     },
-    "eventos": 2309,
-    "cache": "vigente"
+    "eventos": 1506
   },
   "xtream": {
-    "categorias_hoy": 4,
-    "categorias_fuera_de_jornada": 0,
+    "categorias_hoy": 0,
+    "categorias_fuera_de_jornada": 4,
     "streams_totales": 12342,
-    "descartado_sin_hora_programada": 11285,
+    "descartado_sin_hora_programada": 11284,
     "descartado_contenido_no_evento": 488,
-    "descartado_fecha_xtream_fuera_de_jornada": 11,
-    "candidatos": 558
+    "descartado_fecha_xtream_fuera_de_jornada": 251,
+    "descartado_categoria_xtream_fuera_de_jornada": 319,
+    "candidatos": 0
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_independientes_creados": 129,
-    "fuentes_independientes": 129,
-    "fuentes_emparejadas": 427,
-    "descartado_partido_de_ayer": 2,
-    "eventos_unicos": 278,
+    "eventos_unicos": 0,
     "frescura": {
       "es_stale": false,
-      "coincidencias_ayer": 67,
-      "coincidencias_hoy": 396,
-      "evaluados": 554
+      "coincidencias_ayer": 0,
+      "coincidencias_hoy": 0,
+      "evaluados": 0
     }
   },
-  "eventos_finales_base": 278,
-  "cuarentena_guardada": 2,
+  "eventos_finales_base": 0,
+  "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 203401,
-      "rechazados_no_en_vivo": 44,
-      "veto_o_historico": 15,
-      "admitidos": 2,
+      "programas_leidos": 197297,
+      "rechazados_no_en_vivo": 33,
+      "admitidos": 13,
+      "categoria:Escalada": 3,
+      "veto_o_historico": 13,
+      "categoria:Ciclismo": 7,
+      "categoria:Snooker": 1,
       "categoria:Motor": 2
     },
     "fusion": {
-      "agregados": 2
+      "agregados": 10
     },
     "canales_mapeados": {
       "E1": 1,
@@ -179,6 +178,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 280,
-  "actualizado_utc": "2026-09-19T23:43:00Z"
+  "eventos_finales_total": 10,
+  "actualizado_utc": "2026-09-20T09:31:03Z"
 }
