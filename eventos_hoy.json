@@ -1,1460 +1,528 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-21T22:21:19Z",
+  "generado_utc": "2026-09-22T09:32:56Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-09-21",
+  "fecha_local_producto": "2026-09-22",
   "base_media": "http://elpapanatas.space:8080",
   "eventos": [
     {
-      "id": "xtream_c0a6d3a016c22eb5",
+      "id": "epg_a020d7aaf1911a6c",
       "agenda_id": "",
-      "titulo": "Singapore Tennis Open presented by BNP Paribas Open",
-      "torneo": "Singapore Tennis Open presented by BNP Paribas Open",
-      "categoria": "Tenis",
+      "titulo": "Copa del mundo de bicicleta de montaña - Soldier Hollow",
+      "torneo": "Copa del mundo de bicicleta de montaña - Soldier Hollow",
+      "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Court 1 - Singapore Tennis Open",
-      "hora_utc": "2026-09-21T05:00:00Z",
-      "hora_local_producto": "00:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Campo a través olímpico F",
+      "titulo_tarjeta": "Copa del mundo de bicicleta de montaña - Soldier Ho…",
+      "subtitulo_tarjeta": "Campo a través olímpico F",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 60,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
+      "tier": 2,
+      "origen": "epg_en_canal",
       "origenes": [
-        "xtream"
+        "epg"
       ],
-      "estado": "confirmado",
+      "estado": "programado",
       "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
+      "confianza": "alta",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
       "razones_correlacion": [
-        "fecha_xtream_hoy",
-        "categoria:Tenis"
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Ciclismo",
+        "directo:true"
       ],
+      "canal_epg": "E1",
       "fuentes": [
         {
-          "nombre": "00:00 21/09 | Singapore Tennis Open presented by BNP Paribas Open / Court 1 | Singapore Tennis Open ||",
-          "id_xtream": "613025"
+          "nombre": "ES | EUROSPORT 1",
+          "id_xtream": "582141",
+          "idioma": "ES",
+          "prioridad": 0
         }
       ]
     },
     {
-      "id": "xtream_52334efce22da8bc",
+      "id": "epg_6084147b34b6518d",
       "agenda_id": "",
-      "titulo": "◘ Singapore Tennis Open presented by BNP Paribas Open",
-      "torneo": "◘ Singapore Tennis Open presented by BNP Paribas Open",
-      "categoria": "Tenis",
+      "titulo": "Snooker",
+      "torneo": "Snooker",
+      "categoria": "Snooker",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Court 1 ◘ Singapore Tennis Open ◘◘",
-      "hora_utc": "2026-09-21T06:00:00Z",
-      "hora_local_producto": "01:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Open de China · Mark Selby vs Noppon Saengkham",
+      "titulo_tarjeta": "Snooker",
+      "subtitulo_tarjeta": "Open de China · Mark Selby vs Noppon Saengk…",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 30,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
+      "tier": 2,
+      "origen": "epg_en_canal",
       "origenes": [
-        "xtream"
+        "epg"
       ],
-      "estado": "confirmado",
+      "estado": "programado",
       "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
+      "confianza": "alta",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
       "razones_correlacion": [
-        "categoria_xtream_hoy",
-        "categoria:Tenis"
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Snooker",
+        "directo:true"
       ],
+      "canal_epg": "E2",
       "fuentes": [
         {
-          "nombre": "01:00 ◘ Singapore Tennis Open presented by BNP Paribas Open / Court 1 ◘ Singapore Tennis Open ◘◘",
-          "id_xtream": "613104"
+          "nombre": "ES | EUROSPORT 2 M",
+          "id_xtream": "582142",
+          "idioma": "ES",
+          "prioridad": 0
         }
       ]
     },
     {
-      "id": "xtream_5dcb96f0d1ad497f",
+      "id": "epg_c82c650d2f547f5d",
       "agenda_id": "",
-      "titulo": "Kaitlin Quevedo vs. Nadia Podoroska",
-      "torneo": "Kaitlin Quevedo vs. Nadia Podoroska",
-      "categoria": "Tenis",
+      "titulo": "Día 6 - Sesión 1",
+      "torneo": "Día 6 - Sesión 1",
+      "categoria": "Combate",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "WTA",
-      "hora_utc": "2026-09-21T13:00:00Z",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Europeo de boxeo",
+      "titulo_tarjeta": "Día 6 - Sesión 1",
+      "subtitulo_tarjeta": "Europeo de boxeo",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T10:30:00Z",
+      "hora_local_producto": "05:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "epg_en_canal",
+      "origenes": [
+        "epg"
+      ],
+      "estado": "programado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
+      "razones_correlacion": [
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Combate",
+        "directo:true"
+      ],
+      "canal_epg": "E2",
+      "fuentes": [
+        {
+          "nombre": "ES | EUROSPORT 2 M",
+          "id_xtream": "582142",
+          "idioma": "ES",
+          "prioridad": 0
+        }
+      ]
+    },
+    {
+      "id": "epg_2c584eeb83bf5550",
+      "agenda_id": "",
+      "titulo": "Copa del mundo de bicicleta de montaña - Soldier Hollow",
+      "torneo": "Copa del mundo de bicicleta de montaña - Soldier Hollow",
+      "categoria": "Ciclismo",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Campo a través olímpico M",
+      "titulo_tarjeta": "Copa del mundo de bicicleta de montaña - Soldier Ho…",
+      "subtitulo_tarjeta": "Campo a través olímpico M",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T11:00:00Z",
+      "hora_local_producto": "06:00",
+      "duracion_min": 60,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "epg_en_canal",
+      "origenes": [
+        "epg"
+      ],
+      "estado": "programado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
+      "razones_correlacion": [
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Ciclismo",
+        "directo:true"
+      ],
+      "canal_epg": "E1",
+      "fuentes": [
+        {
+          "nombre": "ES | EUROSPORT 1",
+          "id_xtream": "582141",
+          "idioma": "ES",
+          "prioridad": 0
+        }
+      ]
+    },
+    {
+      "id": "epg_449afc873d8a82b1",
+      "agenda_id": "",
+      "titulo": "Contrarreloj por equipos",
+      "torneo": "Contrarreloj por equipos",
+      "categoria": "Ciclismo",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Mundial de ciclismo en carretera",
+      "titulo_tarjeta": "Contrarreloj por equipos",
+      "subtitulo_tarjeta": "Mundial de ciclismo en carretera",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T13:00:00Z",
       "hora_local_producto": "08:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "duracion_min": 140,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
+      "tier": 2,
+      "origen": "epg_en_canal",
       "origenes": [
-        "xtream"
+        "epg"
       ],
-      "estado": "confirmado",
+      "estado": "programado",
       "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
+      "confianza": "alta",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
       "razones_correlacion": [
-        "fecha_xtream_hoy",
-        "categoria:Tenis"
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Ciclismo",
+        "directo:true"
       ],
+      "canal_epg": "TDP",
+      "fuentes": []
+    },
+    {
+      "id": "epg_a96653e4a0a8dfac",
+      "agenda_id": "",
+      "titulo": "Abierto de Wuhan de snooker",
+      "torneo": "Abierto de Wuhan de snooker",
+      "categoria": "Snooker",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Zhao Xintong vs Chang Bingyu",
+      "titulo_tarjeta": "Abierto de Wuhan de snooker",
+      "subtitulo_tarjeta": "Zhao Xintong vs Chang Bingyu",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T13:30:00Z",
+      "hora_local_producto": "08:30",
+      "duracion_min": 90,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "epg_en_canal",
+      "origenes": [
+        "epg"
+      ],
+      "estado": "programado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
+      "razones_correlacion": [
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Snooker",
+        "directo:true"
+      ],
+      "canal_epg": "E2",
       "fuentes": [
         {
-          "nombre": "08:00 21/09 | Kaitlin Quevedo vs. Nadia Podoroska | WTA ||",
-          "id_xtream": "613026"
-        },
-        {
-          "nombre": "08:00 21/09 | Kaitlin Quevedo vs. Nadia Podoroska | WTA ||",
-          "id_xtream": "613027"
+          "nombre": "ES | EUROSPORT 2 M",
+          "id_xtream": "582142",
+          "idioma": "ES",
+          "prioridad": 0
         }
       ]
     },
     {
-      "id": "xtream_67217ef52e4fd4fe",
+      "id": "epg_42ff8ab6d6272e7d",
       "agenda_id": "",
-      "titulo": "◘ Kaitlin Quevedo vs. Nadia Podoroska ◘ WTA ◘◘",
-      "torneo": "◘ Kaitlin Quevedo vs. Nadia Podoroska ◘ WTA ◘◘",
-      "categoria": "Tenis",
+      "titulo": "Contrarreloj por equipos",
+      "torneo": "Contrarreloj por equipos",
+      "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "hora_utc": "2026-09-21T14:00:00Z",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Mundial de ciclismo en carretera",
+      "titulo_tarjeta": "Contrarreloj por equipos",
+      "subtitulo_tarjeta": "Mundial de ciclismo en carretera",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T14:00:00Z",
       "hora_local_producto": "09:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
+      "tier": 2,
+      "origen": "epg_en_canal",
       "origenes": [
-        "xtream"
+        "epg"
       ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "categoria_xtream_hoy",
-        "categoria:Tenis"
-      ],
-      "fuentes": [
-        {
-          "nombre": "09:00 ◘ Kaitlin Quevedo vs. Nadia Podoroska ◘ WTA ◘◘",
-          "id_xtream": "613105"
-        },
-        {
-          "nombre": "09:00 ◘ Kaitlin Quevedo vs. Nadia Podoroska ◘ WTA ◘◘",
-          "id_xtream": "613106"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1493137",
-      "agenda_id": "apisports_football_1493137",
-      "titulo": "Aldosivi vs Atletico Tucuman",
-      "torneo": "Liga Profesional Argentina",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Aldosivi",
-      "equipo_visitante": "Atletico Tucuman",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-21T17:30:00Z",
-      "hora_local_producto": "12:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
-      "logo_local": "https://media.api-sports.io/football/teams/463.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/455.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
+      "estado": "programado",
       "estado_evento": "programado",
       "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
       "razones_correlacion": [
-        "local:ALDOSIVI",
-        "visitante:ATLETICO,TUCUMAN",
-        "diferencia_min:60"
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Ciclismo",
+        "directo:true"
       ],
+      "canal_epg": "E1",
       "fuentes": [
         {
-          "nombre": "11:30 21/09 | Aldosivi vs. Atlético Tucumán | Primera División | OP1",
-          "id_xtream": "613028"
-        },
-        {
-          "nombre": "11:30 21/09 | Aldosivi vs. Atlético Tucumán | Primera División | OP2",
-          "id_xtream": "613029"
-        },
-        {
-          "nombre": "Arg | 11:30 AM | Aldosivi vs Atlético Tucumán",
-          "id_xtream": "613059"
-        },
-        {
-          "nombre": "12:30 ◘ Aldosivi vs. Atlético Tucumán ◘ Primera División ◘",
-          "id_xtream": "613107"
+          "nombre": "ES | EUROSPORT 1",
+          "id_xtream": "582141",
+          "idioma": "ES",
+          "prioridad": 0
         }
       ]
     },
     {
-      "id": "apisports_football_1639819",
-      "agenda_id": "apisports_football_1639819",
-      "titulo": "Manta FC vs Orense SC",
-      "torneo": "Liga Pro",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Manta FC",
-      "equipo_visitante": "Orense SC",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-21T19:00:00Z",
-      "hora_local_producto": "14:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/242.png",
-      "logo_local": "https://media.api-sports.io/football/teams/1980.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/1992.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:MANTA",
-        "visitante:ORENSE",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "Ecuador | 01:00 PM | Manta vs Orense",
-          "id_xtream": "613063"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1493138",
-      "agenda_id": "apisports_football_1493138",
-      "titulo": "Barracas Central vs Independ. Rivadavia",
-      "torneo": "Liga Profesional Argentina",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Barracas Central",
-      "equipo_visitante": "Independ. Rivadavia",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-21T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
-      "logo_local": "https://media.api-sports.io/football/teams/2432.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/473.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:BARRACAS,CENTRAL",
-        "visitante:RIVADAVIA",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:00 21/09 | Barracas Central vs. Independiente Rivadavia | Primera División | OP1",
-          "id_xtream": "613030"
-        },
-        {
-          "nombre": "16:00 21/09 | Barracas Central vs. Independiente Rivadavia | Primera División | OP2",
-          "id_xtream": "613031"
-        },
-        {
-          "nombre": "Arg | 04:00 PM | Barracas Central vs Independiente Rivadavia",
-          "id_xtream": "613060"
-        },
-        {
-          "nombre": "17:00 ◘ Barracas Central vs. Independiente Rivadavia ◘ Primera División ◘",
-          "id_xtream": "613108"
-        }
-      ]
-    },
-    {
-      "id": "xtream_25c11e730288848e",
+      "id": "epg_ae6ee3475a41a550",
       "agenda_id": "",
-      "titulo": "Evansville vs #9 Georgetown",
-      "torneo": "Fútbol Americano",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Evansville",
-      "equipo_visitante": "#9 Georgetown",
-      "subtitulo": "NCAA",
-      "hora_utc": "2026-09-21T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 220,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fa%2Fa2%2FNational_Football_League_logo.svg%2F512px-National_Football_League_logo.svg.png&w=400&output=webp",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "fecha_xtream_hoy",
-        "categoria:Fútbol Americano"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:00 21/09 | Evansville vs. #9 Georgetown | NCAA ||",
-          "id_xtream": "613039"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1639787",
-      "agenda_id": "apisports_football_1639787",
-      "titulo": "Central Espanol vs Atletico Torque",
-      "torneo": "Primera División",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Central Espanol",
-      "equipo_visitante": "Atletico Torque",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-21T22:30:00Z",
-      "hora_local_producto": "17:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/268.png",
-      "logo_local": "https://media.api-sports.io/football/teams/2368.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/2365.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:CENTRAL,ESPANOL",
-        "visitante:TORQUE",
-        "diferencia_min:90"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:00 21/09 | Central Español vs. Montevideo City Torque | Primera Uruguay ||",
-          "id_xtream": "613032"
-        },
-        {
-          "nombre": "16:00 21/09 | Central Español vs. Montevideo City Torque | Primera Uruguay || SD",
-          "id_xtream": "613033"
-        },
-        {
-          "nombre": "Uruguay | 04:30 PM | Central Español vs Torque",
-          "id_xtream": "613062"
-        },
-        {
-          "nombre": "17:00 ◘ Central Español vs. Montevideo City Torque ◘ Primera Uruguay ◘◘",
-          "id_xtream": "613109"
-        },
-        {
-          "nombre": "17:00 ◘ Central Español vs. Montevideo City Torque ◘ Primera Uruguay ◘◘ SD",
-          "id_xtream": "613110"
-        }
-      ]
-    },
-    {
-      "id": "apisports_baseball_187482",
-      "agenda_id": "apisports_baseball_187482",
-      "titulo": "Baltimore Orioles vs Toronto Blue Jays",
-      "torneo": "MLB",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Baltimore Orioles",
-      "equipo_visitante": "Toronto Blue Jays",
-      "subtitulo": "",
-      "hora_utc": "2026-09-21T22:35:00Z",
-      "hora_local_producto": "17:35",
-      "duracion_min": 210,
-      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
-      "logo_local": "https://media.api-sports.io/baseball/teams/4.png",
-      "logo_visitante": "https://media.api-sports.io/baseball/teams/36.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:baseball",
-      "origenes": [
-        "api_sports:baseball"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:BALTIMORE,ORIOLES",
-        "visitante:BLUE,JAYS,TORONTO",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:35 21/09 | Toronto Blue Jays vs. Baltimore Orioles | MLB | OP1",
-          "id_xtream": "613034"
-        },
-        {
-          "nombre": "16:35 21/09 | Toronto Blue Jays vs. Baltimore Orioles | MLB | OP2",
-          "id_xtream": "613035"
-        },
-        {
-          "nombre": "17:35 ◘ Toronto Blue Jays vs. Baltimore Orioles ◘ MLB ◘",
-          "id_xtream": "613111"
-        },
-        {
-          "nombre": "17:40 ◘ Toronto Blue Jays vs. Baltimore Orioles ◘ MLB ◘◘ Spanish",
-          "id_xtream": "613112"
-        }
-      ]
-    },
-    {
-      "id": "apisports_baseball_187483",
-      "agenda_id": "apisports_baseball_187483",
-      "titulo": "Detroit Tigers vs Washington Nationals",
-      "torneo": "MLB",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Detroit Tigers",
-      "equipo_visitante": "Washington Nationals",
-      "subtitulo": "",
-      "hora_utc": "2026-09-21T22:40:00Z",
-      "hora_local_producto": "17:40",
-      "duracion_min": 210,
-      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
-      "logo_local": "https://media.api-sports.io/baseball/teams/12.png",
-      "logo_visitante": "https://media.api-sports.io/baseball/teams/37.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:baseball",
-      "origenes": [
-        "api_sports:baseball"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:DETROIT,TIGERS",
-        "visitante:NATIONALS,WASHINGTON",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:40 21/09 | Washington Nationals vs. Detroit Tigers | MLB | OP1",
-          "id_xtream": "613036"
-        },
-        {
-          "nombre": "16:40 21/09 | Washington Nationals vs. Detroit Tigers | MLB | OP2",
-          "id_xtream": "613037"
-        },
-        {
-          "nombre": "17:40 ◘ Washington Nationals vs. Detroit Tigers ◘ MLB ◘",
-          "id_xtream": "613113"
-        }
-      ]
-    },
-    {
-      "id": "apisports_hockey_444568",
-      "agenda_id": "apisports_hockey_444568",
-      "titulo": "Pittsburgh Penguins vs Buffalo Sabres",
-      "torneo": "NHL",
-      "categoria": "Hockey",
-      "tipo_evento": "duelo",
-      "equipo_local": "Pittsburgh Penguins",
-      "equipo_visitante": "Buffalo Sabres",
-      "subtitulo": "",
-      "hora_utc": "2026-09-21T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 160,
-      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
-      "logo_local": "https://media.api-sports.io/hockey/teams/696.png",
-      "logo_visitante": "https://media.api-sports.io/hockey/teams/674.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:hockey",
-      "origenes": [
-        "api_sports:hockey"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:PENGUINS,PITTSBURGH",
-        "visitante:BUFFALO,SABRES",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:00 21/09 | Buffalo Sabres vs. Pittsburgh Penguins | NHL ||",
-          "id_xtream": "613038"
-        },
-        {
-          "nombre": "18:00 ◘ Buffalo Sabres vs. Pittsburgh Penguins ◘ NHL ◘◘",
-          "id_xtream": "613114"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1603369",
-      "agenda_id": "apisports_football_1603369",
-      "titulo": "León W vs Juárez W",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "León W",
-      "equipo_visitante": "Juárez W",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-21T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/673.png",
-      "logo_local": "https://media.api-sports.io/football/teams/14877.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/14869.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:LEON",
-        "visitante:JUAREZ",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:00 21/09 | León vs. Juárez | Liga MX Femenil |",
-          "id_xtream": "613040"
-        },
-        {
-          "nombre": "Liga MX Fem | 05:00 PM | León vs. Juárez",
-          "id_xtream": "613065"
-        },
-        {
-          "nombre": "18:00 ◘ León vs. Juárez ◘ Liga MX Femenil ◘",
-          "id_xtream": "613116"
-        }
-      ]
-    },
-    {
-      "id": "apisports_hockey_444570",
-      "agenda_id": "apisports_hockey_444570",
-      "titulo": "New Jersey Devils vs New York Rangers",
-      "torneo": "NHL",
-      "categoria": "Hockey",
-      "tipo_evento": "duelo",
-      "equipo_local": "New Jersey Devils",
-      "equipo_visitante": "New York Rangers",
-      "subtitulo": "",
-      "hora_utc": "2026-09-21T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 160,
-      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
-      "logo_local": "https://media.api-sports.io/hockey/teams/690.png",
-      "logo_visitante": "https://media.api-sports.io/hockey/teams/692.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:hockey",
-      "origenes": [
-        "api_sports:hockey"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:DEVILS,JERSEY,NEW",
-        "visitante:NEW,RANGERS,YORK",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:00 21/09 | New York Rangers vs. New Jersey Devils | NHL ||",
-          "id_xtream": "613041"
-        },
-        {
-          "nombre": "18:00 ◘ New York Rangers vs. New Jersey Devils ◘ NHL ◘◘",
-          "id_xtream": "613117"
-        }
-      ]
-    },
-    {
-      "id": "apisports_hockey_444571",
-      "agenda_id": "apisports_hockey_444571",
-      "titulo": "Montreal Canadiens vs Ottawa Senators",
-      "torneo": "NHL",
-      "categoria": "Hockey",
-      "tipo_evento": "duelo",
-      "equipo_local": "Montreal Canadiens",
-      "equipo_visitante": "Ottawa Senators",
-      "subtitulo": "",
-      "hora_utc": "2026-09-21T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 160,
-      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
-      "logo_local": "https://media.api-sports.io/hockey/teams/688.png",
-      "logo_visitante": "https://media.api-sports.io/hockey/teams/693.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:hockey",
-      "origenes": [
-        "api_sports:hockey"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:CANADIENS,MONTREAL",
-        "visitante:OTTAWA,SENATORS",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:00 21/09 | Ottawa Senators vs. Montreal Canadiens | NHL |",
-          "id_xtream": "613042"
-        },
-        {
-          "nombre": "18:00 ◘ Ottawa Senators vs. Montreal Canadiens ◘ NHL ◘",
-          "id_xtream": "613118"
-        }
-      ]
-    },
-    {
-      "id": "apisports_hockey_432518",
-      "agenda_id": "apisports_hockey_432518",
-      "titulo": "Washington Capitals vs Philadelphia Flyers",
-      "torneo": "NHL",
-      "categoria": "Hockey",
-      "tipo_evento": "duelo",
-      "equipo_local": "Washington Capitals",
-      "equipo_visitante": "Philadelphia Flyers",
-      "subtitulo": "",
-      "hora_utc": "2026-09-21T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 160,
-      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
-      "logo_local": "https://media.api-sports.io/hockey/teams/703.png",
-      "logo_visitante": "https://media.api-sports.io/hockey/teams/695.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:hockey",
-      "origenes": [
-        "api_sports:hockey"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:CAPITALS,WASHINGTON",
-        "visitante:FLYERS,PHILADELPHIA",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:00 21/09 | Philadelphia Flyers vs. Washington Capitals | NHL ||",
-          "id_xtream": "613043"
-        },
-        {
-          "nombre": "18:00 ◘ Philadelphia Flyers vs. Washington Capitals ◘ NHL ◘◘",
-          "id_xtream": "613119"
-        }
-      ]
-    },
-    {
-      "id": "xtream_bda4235d97b4a1ae",
-      "agenda_id": "",
-      "titulo": "WWE Rwa",
-      "torneo": "WWE Rwa",
+      "titulo": "Día 6 - Sesión 2",
+      "torneo": "Día 6 - Sesión 2",
       "categoria": "Combate",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "WWE",
-      "hora_utc": "2026-09-21T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 210,
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Europeo de boxeo",
+      "titulo_tarjeta": "Día 6 - Sesión 2",
+      "subtitulo_tarjeta": "Europeo de boxeo",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 180,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
+      "tier": 2,
+      "origen": "epg_en_canal",
       "origenes": [
-        "xtream"
+        "epg"
       ],
-      "estado": "confirmado",
+      "estado": "programado",
       "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
+      "confianza": "alta",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
       "razones_correlacion": [
-        "fecha_xtream_hoy",
-        "categoria:Combate"
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Combate",
+        "directo:true"
       ],
+      "canal_epg": "E2",
       "fuentes": [
         {
-          "nombre": "18:00 21/09 | WWE Rwa | WWE |",
-          "id_xtream": "613046"
+          "nombre": "ES | EUROSPORT 2 M",
+          "id_xtream": "582142",
+          "idioma": "ES",
+          "prioridad": 0
         }
       ]
     },
     {
-      "id": "xtream_c059e12a394e00c5",
+      "id": "epg_7a0aa804807d3b40",
       "agenda_id": "",
-      "titulo": "◘ Evansville vs #9 Georgetown ◘ NCAA ◘◘",
-      "torneo": "Fútbol Americano",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "◘ Evansville",
-      "equipo_visitante": "#9 Georgetown ◘ NCAA ◘◘",
-      "subtitulo": "",
-      "hora_utc": "2026-09-21T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 220,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fa%2Fa2%2FNational_Football_League_logo.svg%2F512px-National_Football_League_logo.svg.png&w=400&output=webp",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "categoria_xtream_hoy",
-        "categoria:Fútbol Americano"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Evansville vs. #9 Georgetown ◘ NCAA ◘◘",
-          "id_xtream": "613115"
-        }
-      ]
-    },
-    {
-      "id": "xtream_8b6cb4086f5a35ce",
-      "agenda_id": "",
-      "titulo": "Equipo Scrum",
-      "torneo": "Equipo Scrum",
-      "categoria": "Rugby",
+      "titulo": "Contrarreloj Júnior M",
+      "torneo": "Contrarreloj Júnior M",
+      "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Rugby",
-      "hora_utc": "2026-09-21T23:30:00Z",
-      "hora_local_producto": "18:30",
-      "duracion_min": 160,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F9%2F91%2FRugby_ball.svg%2F512px-Rugby_ball.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F9%2F91%2FRugby_ball.svg%2F512px-Rugby_ball.svg.png&w=400&output=webp",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Mundial de ciclismo en carretera",
+      "titulo_tarjeta": "Contrarreloj Júnior M",
+      "subtitulo_tarjeta": "Mundial de ciclismo en carretera",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T16:05:00Z",
+      "hora_local_producto": "11:05",
+      "duracion_min": 170,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
+      "tier": 2,
+      "origen": "epg_en_canal",
       "origenes": [
-        "xtream"
+        "epg"
       ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "fecha_xtream_hoy",
-        "categoria:Rugby"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:30 21/09 | Equipo Scrum | Rugby ||",
-          "id_xtream": "613052"
-        }
-      ]
-    },
-    {
-      "id": "apisports_hockey_444572",
-      "agenda_id": "apisports_hockey_444572",
-      "titulo": "Chicago Blackhawks vs Minnesota Wild",
-      "torneo": "NHL",
-      "categoria": "Hockey",
-      "tipo_evento": "duelo",
-      "equipo_local": "Chicago Blackhawks",
-      "equipo_visitante": "Minnesota Wild",
-      "subtitulo": "",
-      "hora_utc": "2026-09-22T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 160,
-      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
-      "logo_local": "https://media.api-sports.io/hockey/teams/678.png",
-      "logo_visitante": "https://media.api-sports.io/hockey/teams/687.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:hockey",
-      "origenes": [
-        "api_sports:hockey"
-      ],
-      "estado": "confirmado",
+      "estado": "programado",
       "estado_evento": "programado",
       "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
       "razones_correlacion": [
-        "local:BLACKHAWKS,CHICAGO",
-        "visitante:MINNESOTA,WILD",
-        "diferencia_min:60"
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Ciclismo",
+        "directo:true"
       ],
+      "canal_epg": "E1",
       "fuentes": [
         {
-          "nombre": "18:00 21/09 | Minnesota Wild vs. Chicago Blackhawks | NHL ||",
-          "id_xtream": "613044"
-        },
-        {
-          "nombre": "19:00 ◘ Minnesota Wild vs. Chicago Blackhawks ◘ NHL ◘◘",
-          "id_xtream": "613120"
+          "nombre": "ES | EUROSPORT 1",
+          "id_xtream": "582141",
+          "idioma": "ES",
+          "prioridad": 0
         }
       ]
     },
     {
-      "id": "apisports_football_1603370",
-      "agenda_id": "apisports_football_1603370",
-      "titulo": "Toluca W vs Tigres UANL W",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Toluca W",
-      "equipo_visitante": "Tigres UANL W",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-22T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/673.png",
-      "logo_local": "https://media.api-sports.io/football/teams/14885.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/14884.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:TOLUCA",
-        "visitante:TIGRES,UANL",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:00 21/09 | Toluca vs. Tigres UANL | Liga MX Femenil ||",
-          "id_xtream": "613045"
-        },
-        {
-          "nombre": "Liga MX Fem | 06:00 PM | Toluca vs. Tigres",
-          "id_xtream": "613066"
-        },
-        {
-          "nombre": "19:00 ◘ Toluca vs. Tigres UANL ◘ Liga MX Femenil ◘◘",
-          "id_xtream": "613121"
-        }
-      ]
-    },
-    {
-      "id": "xtream_1fff816e8fb98b76",
+      "id": "epg_fd5e3ad5cc01e7c2",
       "agenda_id": "",
-      "titulo": "◘ WWE Rwa ◘ WWE ◘",
-      "torneo": "◘ WWE Rwa ◘ WWE ◘",
-      "categoria": "Combate",
+      "titulo": "6 Horas de Sao Paulo - Mundial de resistencia de la FIA",
+      "torneo": "6 Horas de Sao Paulo - Mundial de resistencia de la FIA",
+      "categoria": "Motor",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "hora_utc": "2026-09-22T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Carrera",
+      "titulo_tarjeta": "6 Horas de Sao Paulo - Mundial de resistencia de la…",
+      "subtitulo_tarjeta": "Carrera",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
+      "tier": 2,
+      "origen": "epg_en_canal",
       "origenes": [
-        "xtream"
+        "epg"
       ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "categoria_xtream_hoy",
-        "categoria:Combate"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ WWE Rwa ◘ WWE ◘",
-          "id_xtream": "613122"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1493144",
-      "agenda_id": "apisports_football_1493144",
-      "titulo": "Lanus vs Estudiantes L.P.",
-      "torneo": "Liga Profesional Argentina",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Lanus",
-      "equipo_visitante": "Estudiantes L.P.",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-22T00:15:00Z",
-      "hora_local_producto": "19:15",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/128.png",
-      "logo_local": "https://media.api-sports.io/football/teams/446.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/450.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
+      "estado": "programado",
       "estado_evento": "programado",
       "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
       "razones_correlacion": [
-        "local:LANUS",
-        "visitante:ESTUDIANTES",
-        "diferencia_min:60"
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Motor",
+        "directo:true"
       ],
+      "canal_epg": "E2",
       "fuentes": [
         {
-          "nombre": "18:15 21/09 | Lanús vs. Estudiantes | Primera División | OP1",
-          "id_xtream": "613047"
-        },
-        {
-          "nombre": "18:15 21/09 | Lanús vs. Estudiantes | Primera División | OP2",
-          "id_xtream": "613048"
-        },
-        {
-          "nombre": "Arg | 06:15 PM | Lanús vs Estudiantes",
-          "id_xtream": "613061"
-        },
-        {
-          "nombre": "19:15 ◘ Lanús vs. Estudiantes ◘ Primera División ◘",
-          "id_xtream": "613123"
+          "nombre": "ES | EUROSPORT 2 M",
+          "id_xtream": "582142",
+          "idioma": "ES",
+          "prioridad": 0
         }
       ]
     },
     {
-      "id": "apisports_nfl_21544",
-      "agenda_id": "apisports_nfl_21544",
-      "titulo": "Los Angeles Rams vs New York Giants",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Los Angeles Rams",
-      "equipo_visitante": "New York Giants",
-      "subtitulo": "Regular Season",
-      "hora_utc": "2026-09-22T00:15:00Z",
-      "hora_local_producto": "19:15",
-      "duracion_min": 220,
-      "logo_torneo": "https://media.api-sports.io/american-football/leagues/1.png",
-      "logo_local": "https://media.api-sports.io/american-football/teams/31.png",
-      "logo_visitante": "https://media.api-sports.io/american-football/teams/4.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:nfl",
-      "origenes": [
-        "api_sports:nfl"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:ANGELES,RAMS",
-        "visitante:GIANTS,NEW,YORK",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:15 21/09 | New York Giants vs. Los Angeles Rams | NFL |",
-          "id_xtream": "613049"
-        },
-        {
-          "nombre": "18:15 21/09 | New York Giants vs. Los Angeles Rams | NFL |",
-          "id_xtream": "613050"
-        },
-        {
-          "nombre": "19:15 ◘ New York Giants vs. Los Angeles Rams ◘ NFL ◘",
-          "id_xtream": "613124"
-        },
-        {
-          "nombre": "19:15 ◘ New York Giants vs. Los Angeles Rams ◘ NFL ◘",
-          "id_xtream": "613125"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1638747",
-      "agenda_id": "apisports_football_1638747",
-      "titulo": "Corinthians W vs Bahia W",
-      "torneo": "Brasileiro Women",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Corinthians W",
-      "equipo_visitante": "Bahia W",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-22T00:30:00Z",
-      "hora_local_producto": "19:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/74.png",
-      "logo_local": "https://media.api-sports.io/football/teams/1798.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/16496.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 97,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:CORINTHIANS",
-        "visitante:BAHIA",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:30 21/09 | Corinthians vs. Bahia | Brasileiro Feminino |",
-          "id_xtream": "613051"
-        },
-        {
-          "nombre": "19:30 ◘ Corinthians vs. Bahia ◘ Brasileiro Feminino ◘",
-          "id_xtream": "613126"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1639789",
-      "agenda_id": "apisports_football_1639789",
-      "titulo": "Barcelona SC vs Independiente del Valle",
-      "torneo": "Liga Pro",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Barcelona SC",
-      "equipo_visitante": "Independiente del Valle",
-      "subtitulo": "Match Postponed",
-      "hora_utc": "2026-09-22T00:30:00Z",
-      "hora_local_producto": "19:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/242.png",
-      "logo_local": "https://media.api-sports.io/football/teams/1152.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/1153.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:BARCELONA",
-        "visitante:INDEPENDIENTE,VALLE",
-        "diferencia_min:60"
-      ],
-      "fuentes": [
-        {
-          "nombre": "Ecuador |06:30 PM | Barcelona vs Independiente del Valle",
-          "id_xtream": "613064"
-        }
-      ]
-    },
-    {
-      "id": "xtream_ff4a98c7d45ecd84",
+      "id": "epg_7d219d9b54b8e356",
       "agenda_id": "",
-      "titulo": "◘ Equipo Scrum ◘ Rugby ◘◘",
-      "torneo": "◘ Equipo Scrum ◘ Rugby ◘◘",
-      "categoria": "Rugby",
+      "titulo": "Contrarreloj Júnior F",
+      "torneo": "Contrarreloj Júnior F",
+      "categoria": "Ciclismo",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "hora_utc": "2026-09-22T00:30:00Z",
-      "hora_local_producto": "19:30",
-      "duracion_min": 160,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F9%2F91%2FRugby_ball.svg%2F512px-Rugby_ball.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F9%2F91%2FRugby_ball.svg%2F512px-Rugby_ball.svg.png&w=400&output=webp",
+      "participante_local": "",
+      "participante_visitante": "",
+      "subtitulo": "Mundial de ciclismo en carretera",
+      "titulo_tarjeta": "Contrarreloj Júnior F",
+      "subtitulo_tarjeta": "Mundial de ciclismo en carretera",
+      "modo_presentacion": "competicion",
+      "hora_utc": "2026-09-22T19:05:00Z",
+      "hora_local_producto": "14:05",
+      "duracion_min": 115,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
+      "tier": 2,
+      "origen": "epg_en_canal",
       "origenes": [
-        "xtream"
+        "epg"
       ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "categoria_xtream_hoy",
-        "categoria:Rugby"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:30 ◘ Equipo Scrum ◘ Rugby ◘◘",
-          "id_xtream": "613127"
-        }
-      ]
-    },
-    {
-      "id": "apisports_football_1603371",
-      "agenda_id": "apisports_football_1603371",
-      "titulo": "Santos Laguna W vs Cruz Azul W",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Santos Laguna W",
-      "equipo_visitante": "Cruz Azul W",
-      "subtitulo": "Not Started",
-      "hora_utc": "2026-09-22T01:06:00Z",
-      "hora_local_producto": "20:06",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/673.png",
-      "logo_local": "https://media.api-sports.io/football/teams/14883.png",
-      "logo_visitante": "https://media.api-sports.io/football/teams/14875.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:football",
-      "origenes": [
-        "api_sports:football"
-      ],
-      "estado": "confirmado",
+      "estado": "programado",
       "estado_evento": "programado",
       "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
+      "puntuacion_confianza": 88,
+      "metodo_correlacion": "epg_directo_multi_feed",
       "razones_correlacion": [
-        "local:LAGUNA,SANTOS",
-        "visitante:AZUL,CRUZ",
-        "diferencia_min:60"
+        "canal_prioritario",
+        "sin_veto",
+        "categoria:Ciclismo",
+        "directo:true"
       ],
+      "canal_epg": "E1",
       "fuentes": [
         {
-          "nombre": "19:06 21/09 | Santos Laguna vs. Cruz Azul | Liga MX Femenil |",
-          "id_xtream": "613053"
-        },
-        {
-          "nombre": "Liga MX Fem | 07:06 PM | Santos Laguna vs. Cruz Azul",
-          "id_xtream": "613067"
-        },
-        {
-          "nombre": "20:06 ◘ Santos Laguna vs. Cruz Azul ◘ Liga MX Femenil ◘",
-          "id_xtream": "613128"
-        }
-      ]
-    },
-    {
-      "id": "apisports_baseball_187484",
-      "agenda_id": "apisports_baseball_187484",
-      "titulo": "San Francisco Giants vs Minnesota Twins",
-      "torneo": "MLB",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "San Francisco Giants",
-      "equipo_visitante": "Minnesota Twins",
-      "subtitulo": "",
-      "hora_utc": "2026-09-22T01:45:00Z",
-      "hora_local_producto": "20:45",
-      "duracion_min": 210,
-      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
-      "logo_local": "https://media.api-sports.io/baseball/teams/31.png",
-      "logo_visitante": "https://media.api-sports.io/baseball/teams/22.png",
-      "banner": "",
-      "tier": 1,
-      "origen": "api_sports:baseball",
-      "origenes": [
-        "api_sports:baseball"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 100,
-      "metodo_correlacion": "duelo_verificado",
-      "razones_correlacion": [
-        "local:FRANCISCO,GIANTS,SAN",
-        "visitante:MINNESOTA,TWINS",
-        "diferencia_min:65"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:40 21/09 | Minnesota Twins vs. San Francisco Giants | MLB || Spanish OP1",
-          "id_xtream": "613054"
-        },
-        {
-          "nombre": "19:40 21/09 | Minnesota Twins vs. San Francisco Giants | MLB || Spanish OP2",
-          "id_xtream": "613055"
-        },
-        {
-          "nombre": "20:40 ◘ Minnesota Twins vs. San Francisco Giants ◘ MLB ◘◘ Spanish",
-          "id_xtream": "613129"
-        },
-        {
-          "nombre": "20:45 ◘ Minnesota Twins vs. San Francisco Giants ◘ MLB ◘",
-          "id_xtream": "613130"
-        }
-      ]
-    },
-    {
-      "id": "xtream_d7f65770ea904cf3",
-      "agenda_id": "",
-      "titulo": "Korea Open",
-      "torneo": "Korea Open",
-      "categoria": "Tenis",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Center Court - Korea Open",
-      "hora_utc": "2026-09-22T02:00:00Z",
-      "hora_local_producto": "21:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "fecha_xtream_hoy",
-        "categoria:Tenis"
-      ],
-      "fuentes": [
-        {
-          "nombre": "21:00 21/09 | Korea Open / Center Court | Korea Open ||",
-          "id_xtream": "613056"
-        },
-        {
-          "nombre": "21:00 21/09 | Korea Open / Grandstand | Korea Open ||",
-          "id_xtream": "613057"
-        },
-        {
-          "nombre": "21:00 21/09 | Korea Open / Showcourt 1 | Korea Open ||",
-          "id_xtream": "613058"
-        }
-      ]
-    },
-    {
-      "id": "xtream_cc191310b1d8a66e",
-      "agenda_id": "",
-      "titulo": "WTA",
-      "torneo": "WTA",
-      "categoria": "Tenis",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Korea Open - Grandstand",
-      "hora_utc": "2026-09-22T02:00:00Z",
-      "hora_local_producto": "21:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "categoria_xtream_hoy",
-        "categoria:Tenis"
-      ],
-      "fuentes": [
-        {
-          "nombre": "WTA | 09:00 PM | Korea Open / Grandstand",
-          "id_xtream": "613068"
-        },
-        {
-          "nombre": "WTA | 09:00 PM | Singapore Tennis Open presented by BNP Paribas Open (Primera Ronda)",
-          "id_xtream": "613069"
-        },
-        {
-          "nombre": "WTA | 09:00 PM | Korea Open / Showcourt 1",
-          "id_xtream": "613070"
-        },
-        {
-          "nombre": "WTA | 09:00 PM | Korea Open / Center Court",
-          "id_xtream": "613071"
-        }
-      ]
-    },
-    {
-      "id": "xtream_a168bab00070a6d7",
-      "agenda_id": "",
-      "titulo": "WTA",
-      "torneo": "WTA",
-      "categoria": "Tenis",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Singapore Tennis Open presented by BNP Paribas Open - Court 1",
-      "hora_utc": "2026-09-22T03:00:00Z",
-      "hora_local_producto": "22:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "categoria_xtream_hoy",
-        "categoria:Tenis"
-      ],
-      "fuentes": [
-        {
-          "nombre": "WTA | 10:00 PM | Singapore Tennis Open presented by BNP Paribas Open / Court 1",
-          "id_xtream": "613072"
-        }
-      ]
-    },
-    {
-      "id": "xtream_629931687c5b9d70",
-      "agenda_id": "",
-      "titulo": "◘ Korea Open",
-      "torneo": "◘ Korea Open",
-      "categoria": "Tenis",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Center Court ◘ Korea Open ◘◘",
-      "hora_utc": "2026-09-22T03:00:00Z",
-      "hora_local_producto": "22:00",
-      "duracion_min": 210,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 3,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "media",
-      "puntuacion_confianza": 75,
-      "metodo_correlacion": "evento_independiente_verificado",
-      "razones_correlacion": [
-        "categoria_xtream_hoy",
-        "categoria:Tenis"
-      ],
-      "fuentes": [
-        {
-          "nombre": "22:00 ◘ Korea Open / Center Court ◘ Korea Open ◘◘",
-          "id_xtream": "613131"
-        },
-        {
-          "nombre": "22:00 ◘ Korea Open / Grandstand ◘ Korea Open ◘◘",
-          "id_xtream": "613132"
-        },
-        {
-          "nombre": "22:00 ◘ Korea Open / Showcourt 1 ◘ Korea Open ◘◘",
-          "id_xtream": "613133"
+          "nombre": "ES | EUROSPORT 1",
+          "id_xtream": "582141",
+          "idioma": "ES",
+          "prioridad": 0
         }
       ]
     }
