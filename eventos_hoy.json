@@ -1,288 +1,935 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-24T09:37:34Z",
+  "generado_utc": "2026-09-24T17:36:59Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-24",
   "base_media": "http://elpapanatas.space:8080",
   "eventos": [
     {
-      "id": "epg_71f9ec73687945c9",
+      "id": "xtream_e8fda14ea5772807",
       "agenda_id": "",
-      "titulo": "Discovery Golf",
-      "torneo": "Discovery Golf",
+      "titulo": "WTA",
+      "torneo": "WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Singapore Tennis Open - Court 1 (Doubles Quarterfinals)",
+      "hora_utc": "2026-09-24T06:00:00Z",
+      "hora_local_producto": "01:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "WTA | 01:00 AM | Singapore Tennis Open / Court 1 (Doubles Quarterfinals)",
+          "id_xtream": "615924"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2b22248dff8e9187",
+      "agenda_id": "",
+      "titulo": "WTA",
+      "torneo": "WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Korea Open - Center Court (Doubles Quarterfinals)",
+      "hora_utc": "2026-09-24T07:00:00Z",
+      "hora_local_producto": "02:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "WTA | 02:00 AM | Korea Open / Center Court (Doubles Quarterfinals)",
+          "id_xtream": "615925"
+        }
+      ]
+    },
+    {
+      "id": "apisports_formula-1_2587",
+      "agenda_id": "apisports_formula-1_2587",
+      "titulo": "Azerbaijan Grand Prix",
+      "torneo": "Azerbaijan Grand Prix",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T08:30:00Z",
+      "hora_local_producto": "03:30",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:formula-1",
+      "origenes": [
+        "api_sports:formula-1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:AZERBAIJAN,PRIX",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "F1 | 02:30 AM | Grand Prix Azerbaijan: Practice 1",
+          "id_xtream": "615931"
+        },
+        {
+          "nombre": "F1 | 06:00 AM | Grand Prix Azerbaijan: Practice 2",
+          "id_xtream": "615932"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b5810bbfd8cef23f",
+      "agenda_id": "",
+      "titulo": "Fórmula 2 - GP Bakú - Clasificación",
+      "torneo": "Fórmula 2 - GP Bakú - Clasificación",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "F2",
+      "hora_utc": "2026-09-24T08:50:00Z",
+      "hora_local_producto": "03:50",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "03:50 24/09 | Fórmula 2 - GP Bakú - Clasificación | F2 ||",
+          "id_xtream": "615678"
+        }
+      ]
+    },
+    {
+      "id": "xtream_ee66d49ebcd044cd",
+      "agenda_id": "",
+      "titulo": "Japón vs Uruguay",
+      "torneo": "Amistoso",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Japón",
+      "equipo_visitante": "Uruguay",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T09:05:00Z",
+      "hora_local_producto": "04:05",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Amistoso | 4:05 AM | Japón vs Uruguay",
+          "id_xtream": "615912"
+        }
+      ]
+    },
+    {
+      "id": "xtream_af2bf16ac5e53d75",
+      "agenda_id": "",
+      "titulo": "Corea del Sur vs Ecuador",
+      "torneo": "Amistoso",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Corea del Sur",
+      "equipo_visitante": "Ecuador",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Amistoso | 5:00 AM | Corea del Sur vs Ecuador",
+          "id_xtream": "615913"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1628995",
+      "agenda_id": "apisports_football_1628995",
+      "titulo": "Japan vs Uruguay",
+      "torneo": "Friendlies",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Japan",
+      "equipo_visitante": "Uruguay",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T10:05:00Z",
+      "hora_local_producto": "05:05",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/10.png",
+      "logo_local": "https://media.api-sports.io/football/teams/12.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/7.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:JAPAN",
+        "visitante:URUGUAY",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "04:05 24/09 | Japan vs. Uruguay | Amistoso |",
+          "id_xtream": "615680"
+        }
+      ]
+    },
+    {
+      "id": "xtream_aab272f5fb4fd265",
+      "agenda_id": "",
+      "titulo": "FedEx Open de France",
+      "torneo": "FedEx Open de France",
       "categoria": "Golf",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "23/09/2026",
-      "titulo_tarjeta": "Discovery Golf",
-      "subtitulo_tarjeta": "23/09/2026",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-24T09:30:00Z",
-      "hora_local_producto": "04:30",
-      "duracion_min": 30,
+      "subtitulo": "Golf",
+      "hora_utc": "2026-09-24T10:30:00Z",
+      "hora_local_producto": "05:30",
+      "duracion_min": 300,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 3,
+      "origen": "xtream_evento",
       "origenes": [
-        "epg"
+        "xtream"
       ],
-      "estado": "en_canal",
+      "estado": "confirmado",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Golf",
-        "directo:true"
+        "fecha_xtream_hoy",
+        "categoria:Golf"
       ],
-      "canal_epg": "E1",
       "fuentes": [
         {
-          "nombre": "ES | EUROSPORT 1",
-          "id_xtream": "582141",
-          "idioma": "ES",
-          "prioridad": 0
+          "nombre": "05:30 24/09 | FedEx Open de France | Golf ||",
+          "id_xtream": "615682"
         }
       ]
     },
     {
-      "id": "epg_b3f6df447f11a212",
+      "id": "xtream_0008e8d33281a700",
       "agenda_id": "",
-      "titulo": "Día 8 - Sesión 1",
-      "torneo": "Día 8 - Sesión 1",
-      "categoria": "Combate",
+      "titulo": "DP World Tour",
+      "torneo": "DP World Tour",
+      "categoria": "Golf",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Europeo de boxeo",
-      "titulo_tarjeta": "Día 8 - Sesión 1",
-      "subtitulo_tarjeta": "Europeo de boxeo",
-      "modo_presentacion": "competicion",
+      "subtitulo": "FedEx Open de France (Primera Ronda)",
       "hora_utc": "2026-09-24T10:30:00Z",
       "hora_local_producto": "05:30",
-      "duracion_min": 150,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "duracion_min": 300,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F65%2FDP_World_Tour_logo.svg%2F512px-DP_World_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F65%2FDP_World_Tour_logo.svg%2F512px-DP_World_Tour_logo.svg.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 3,
+      "origen": "xtream_evento",
       "origenes": [
-        "epg"
+        "xtream"
       ],
-      "estado": "programado",
+      "estado": "confirmado",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Combate",
-        "directo:true"
+        "categoria_xtream_hoy",
+        "categoria:Golf"
       ],
-      "canal_epg": "E2",
       "fuentes": [
         {
-          "nombre": "ES | EUROSPORT 2 M",
-          "id_xtream": "582142",
-          "idioma": "ES",
-          "prioridad": 0
+          "nombre": "DP World Tour | 05:30 AM | FedEx Open de France (Primera Ronda)",
+          "id_xtream": "615930"
         }
       ]
     },
     {
-      "id": "epg_f90d1cbda33d6799",
+      "id": "apisports_football_1628994",
+      "agenda_id": "apisports_football_1628994",
+      "titulo": "South Korea vs Ecuador",
+      "torneo": "Friendlies",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "South Korea",
+      "equipo_visitante": "Ecuador",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T11:00:00Z",
+      "hora_local_producto": "06:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/10.png",
+      "logo_local": "https://media.api-sports.io/football/teams/17.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2382.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:KOREA",
+        "visitante:ECUADOR",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "05:00 24/09 | Korea Republic vs. Ecuador | Amistoso |",
+          "id_xtream": "615681"
+        }
+      ]
+    },
+    {
+      "id": "xtream_073339146c869c62",
       "agenda_id": "",
-      "titulo": "Ruta Sub - 23 F",
-      "torneo": "Ruta Sub - 23 F",
-      "categoria": "Ciclismo",
+      "titulo": "F1 GP Azerbaiyán práctica libre #2",
+      "torneo": "F1 GP Azerbaiyán práctica libre #2",
+      "categoria": "Motor",
       "tipo_evento": "sencillo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Mundial de ciclismo en carretera",
-      "titulo_tarjeta": "Ruta Sub - 23 F",
-      "subtitulo_tarjeta": "Mundial de ciclismo en carretera",
-      "modo_presentacion": "competicion",
+      "subtitulo": "Con Tornello Fossaroli y Cochito López - F1",
+      "hora_utc": "2026-09-24T11:30:00Z",
+      "hora_local_producto": "06:30",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "06:30 24/09 | F1 GP Azerbaiyán práctica libre #2 | Con Tornello Fossaroli y Cochito López | F1 ||",
+          "id_xtream": "615683"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2ef780950d13d766",
+      "agenda_id": "",
+      "titulo": "F1 GP Azerbaiyán práctica libre #2",
+      "torneo": "F1 GP Azerbaiyán práctica libre #2",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cámara On Board - F1",
+      "hora_utc": "2026-09-24T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "07:00 24/09 |F1 GP Azerbaiyán práctica libre #2 | Cámara On Board | F1 ||",
+          "id_xtream": "615684"
+        },
+        {
+          "nombre": "07:00 24/09 |F1 GP Azerbaiyán práctica libre #2 | On Board Colapinto | F1 ||",
+          "id_xtream": "615685"
+        },
+        {
+          "nombre": "07:00 24/09 |F1 GP Azerbaiyán práctica libre #2 | On Board Verstappen | F1 ||",
+          "id_xtream": "615686"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f2e26fd3d33d8079",
+      "agenda_id": "",
+      "titulo": "La Irenita vs La Dolfina III",
+      "torneo": "Otros Deportes",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "La Irenita",
+      "equipo_visitante": "La Dolfina III",
+      "subtitulo": "Torneo Clasificatorio a Palermo - Polo",
       "hora_utc": "2026-09-24T12:55:00Z",
       "hora_local_producto": "07:55",
-      "duracion_min": 230,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
       "logo_visitante": "",
       "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 3,
+      "origen": "xtream_evento",
       "origenes": [
-        "epg"
+        "xtream"
       ],
-      "estado": "programado",
+      "estado": "confirmado",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Ciclismo",
-        "directo:true"
+        "fecha_xtream_hoy",
+        "categoria:Otros Deportes"
       ],
-      "canal_epg": "TDP",
-      "fuentes": []
+      "fuentes": [
+        {
+          "nombre": "07:55 24/09 | La Irenita vs. La Dolfina III | Torneo Clasificatorio a Palermo | Polo ||",
+          "id_xtream": "615688"
+        }
+      ]
     },
     {
-      "id": "epg_3668ce008e5dc04e",
-      "agenda_id": "",
-      "titulo": "Abierto de Inglaterra de snooker",
-      "torneo": "Abierto de Inglaterra de snooker",
-      "categoria": "Snooker",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Ali Carter vs Mark Williams",
-      "titulo_tarjeta": "Abierto de Inglaterra de snooker",
-      "subtitulo_tarjeta": "Ali Carter vs Mark Williams",
-      "modo_presentacion": "competicion",
+      "id": "apisports_football_1545827",
+      "agenda_id": "apisports_football_1545827",
+      "titulo": "Namibia vs Congo",
+      "torneo": "Africa Cup of Nations - Qualification",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Namibia",
+      "equipo_visitante": "Congo",
+      "subtitulo": "Not Started",
       "hora_utc": "2026-09-24T13:00:00Z",
       "hora_local_producto": "08:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F64%2FWorld_Snooker_Tour_logo.svg%2F512px-World_Snooker_Tour_logo.svg.png&w=400&output=webp",
-      "logo_visitante": "",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/36.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1493.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1517.png",
       "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 1,
+      "origen": "api_sports:football",
       "origenes": [
-        "epg"
+        "api_sports:football"
       ],
-      "estado": "programado",
+      "estado": "confirmado",
       "estado_evento": "programado",
       "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Snooker",
-        "directo:true"
+        "local:NAMIBIA",
+        "visitante:CONGO",
+        "diferencia_min:60"
       ],
-      "canal_epg": "E2",
       "fuentes": [
         {
-          "nombre": "ES | EUROSPORT 2 M",
-          "id_xtream": "582142",
-          "idioma": "ES",
-          "prioridad": 0
+          "nombre": "Clasif Copa Africana | 7:00 AM | Namibia vs Congo",
+          "id_xtream": "615904"
         }
       ]
     },
     {
-      "id": "epg_4bd1e874c4a67532",
+      "id": "xtream_607bd5af859f4835",
       "agenda_id": "",
-      "titulo": "Ruta Sub - 23 F",
-      "torneo": "Ruta Sub - 23 F",
-      "categoria": "Ciclismo",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Mundial de ciclismo en carretera",
-      "titulo_tarjeta": "Ruta Sub - 23 F",
-      "subtitulo_tarjeta": "Mundial de ciclismo en carretera",
-      "modo_presentacion": "competicion",
-      "hora_utc": "2026-09-24T14:00:00Z",
-      "hora_local_producto": "09:00",
-      "duracion_min": 195,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "titulo": "UAE vs Yemen",
+      "torneo": "Copa del Golfo",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "UAE",
+      "equipo_visitante": "Yemen",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T14:55:00Z",
+      "hora_local_producto": "09:55",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
       "logo_visitante": "",
       "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 3,
+      "origen": "xtream_evento",
       "origenes": [
-        "epg"
+        "xtream"
       ],
-      "estado": "programado",
+      "estado": "confirmado",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Ciclismo",
-        "directo:true"
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
       ],
-      "canal_epg": "E1",
       "fuentes": [
         {
-          "nombre": "ES | EUROSPORT 1",
-          "id_xtream": "582141",
-          "idioma": "ES",
-          "prioridad": 0
+          "nombre": "Copa del Golfo | 09:55 AM | UAE vs. Yemen",
+          "id_xtream": "615910"
         }
       ]
     },
     {
-      "id": "epg_841caee5ff658f21",
+      "id": "xtream_1f7c3cdb1f64edeb",
       "agenda_id": "",
-      "titulo": "Día 8 - Sesión 2",
-      "torneo": "Día 8 - Sesión 2",
-      "categoria": "Combate",
-      "tipo_evento": "sencillo",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "participante_local": "",
-      "participante_visitante": "",
-      "subtitulo": "Europeo de boxeo",
-      "titulo_tarjeta": "Día 8 - Sesión 2",
-      "subtitulo_tarjeta": "Europeo de boxeo",
-      "modo_presentacion": "competicion",
+      "titulo": "Mauritania vs República Centroafricana",
+      "torneo": "Clasif Copa Africana",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Mauritania",
+      "equipo_visitante": "República Centroafricana",
+      "subtitulo": "",
       "hora_utc": "2026-09-24T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 150,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
       "logo_visitante": "",
       "banner": "",
-      "tier": 2,
-      "origen": "epg_en_canal",
+      "tier": 3,
+      "origen": "xtream_evento",
       "origenes": [
-        "epg"
+        "xtream"
       ],
-      "estado": "programado",
+      "estado": "confirmado",
       "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 88,
-      "metodo_correlacion": "epg_directo_multi_feed",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
       "razones_correlacion": [
-        "canal_prioritario",
-        "sin_veto",
-        "categoria:Combate",
-        "directo:true"
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
       ],
-      "canal_epg": "E2",
       "fuentes": [
         {
-          "nombre": "ES | EUROSPORT 2 M",
-          "id_xtream": "582142",
-          "idioma": "ES",
-          "prioridad": 0
+          "nombre": "Clasif Copa Africana | 10:00 AM | Mauritania vs República Centroafricana",
+          "id_xtream": "615906"
+        }
+      ]
+    },
+    {
+      "id": "xtream_cded617d49c1ddb3",
+      "agenda_id": "",
+      "titulo": "PGA TOUR",
+      "torneo": "PGA TOUR",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Presidents Cup : ceremonia inaugural",
+      "hora_utc": "2026-09-24T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "PGA TOUR | 10:00 AM | Presidents Cup : ceremonia inaugural",
+          "id_xtream": "615933"
+        }
+      ]
+    },
+    {
+      "id": "xtream_a0b6904a6a0b665c",
+      "agenda_id": "",
+      "titulo": "Velay vs La Ensenada",
+      "torneo": "Otros Deportes",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Velay",
+      "equipo_visitante": "La Ensenada",
+      "subtitulo": "Torneo Clasificatorio a Palermo - Polo",
+      "hora_utc": "2026-09-24T15:25:00Z",
+      "hora_local_producto": "10:25",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:25 24/09 | Velay vs. La Ensenada | Torneo Clasificatorio a Palermo | Polo ||",
+          "id_xtream": "615692"
+        }
+      ]
+    },
+    {
+      "id": "xtream_1292d230f208f0dc",
+      "agenda_id": "",
+      "titulo": "PGA TOUR",
+      "torneo": "PGA TOUR",
+      "categoria": "Golf",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Presidents Cup (1° Ronda) En español",
+      "hora_utc": "2026-09-24T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 300,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Golf"
+      ],
+      "fuentes": [
+        {
+          "nombre": "PGA TOUR | 10:30 AM | Presidents Cup (1° Ronda) En español",
+          "id_xtream": "615934"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1545601",
+      "agenda_id": "apisports_football_1545601",
+      "titulo": "Andorra vs Malta",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Andorra",
+      "equipo_visitante": "Malta",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/5.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1110.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1112.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ANDORRA",
+        "visitante:MALTA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:00 24/09 | Andorra vs. Malta | UEFA Nations League ||",
+          "id_xtream": "615689"
+        },
+        {
+          "nombre": "10:00 24/09 | Andorra vs. Malta | UEFA Nations League || FHD",
+          "id_xtream": "615690"
+        },
+        {
+          "nombre": "10:00 24/09 | Andorra vs. Malta | UEFA Nations League || SD",
+          "id_xtream": "615691"
+        },
+        {
+          "nombre": "12:45 24/09 | Países Bajos vs. Alemania | UEFA Nations League ||",
+          "id_xtream": "615712"
+        },
+        {
+          "nombre": "12:45 24/09 | Países Bajos vs. Alemania | UEFA Nations League || FHD",
+          "id_xtream": "615713"
+        },
+        {
+          "nombre": "12:45 24/09 | Países Bajos vs. Alemania | UEFA Nations League || SD",
+          "id_xtream": "615714"
+        },
+        {
+          "nombre": "UEFA Nations League | 10:00 AM | Andorra vs. Malta",
+          "id_xtream": "615893"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Países Bajos vs. Alemania",
+          "id_xtream": "615897"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Noruega vs. Dinamarca",
+          "id_xtream": "615898"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1545817",
+      "agenda_id": "apisports_football_1545817",
+      "titulo": "Congo DR vs Equatorial Guinea",
+      "torneo": "Africa Cup of Nations - Qualification",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Congo DR",
+      "equipo_visitante": "Equatorial Guinea",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/36.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1508.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1521.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CONGO",
+        "visitante:GUINEA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 10:00 AM | RD del Congo vs Guinea Ecuatorial",
+          "id_xtream": "615905"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187517",
+      "agenda_id": "apisports_baseball_187517",
+      "titulo": "Pittsburgh Pirates vs St.Louis Cardinals",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Pittsburgh Pirates",
+      "equipo_visitante": "St.Louis Cardinals",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T16:35:00Z",
+      "hora_local_producto": "11:35",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/28.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/33.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:PIRATES,PITTSBURGH",
+        "visitante:CARDINALS,LOUIS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "10:35 24/09 | St. Louis Cardinals vs. Pittsburgh Pirates | MLB | OP1",
+          "id_xtream": "615693"
+        },
+        {
+          "nombre": "10:35 24/09 | St. Louis Cardinals vs. Pittsburgh Pirates | MLB | OP2",
+          "id_xtream": "615694"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2d7572b07e67500b",
+      "agenda_id": "",
+      "titulo": "BKFC Fight Night",
+      "torneo": "BKFC Fight Night",
+      "categoria": "Combate",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Bare Knuckle Fighting",
+      "hora_utc": "2026-09-24T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F60%2FBare_Knuckle_Fighting_Championship_logo.png%2F512px-Bare_Knuckle_Fighting_Championship_logo.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F6%2F60%2FBare_Knuckle_Fighting_Championship_logo.png%2F512px-Bare_Knuckle_Fighting_Championship_logo.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Combate"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 24/09 | BKFC Fight Night | Bare Knuckle Fighting |",
+          "id_xtream": "615695"
         }
       ]
     },
@@ -313,7 +960,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
@@ -361,7 +1008,7 @@
       "origenes": [
         "epg"
       ],
-      "estado": "programado",
+      "estado": "en_canal",
       "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 88,
@@ -379,6 +1026,284 @@
           "id_xtream": "582142",
           "idioma": "ES",
           "prioridad": 0
+        }
+      ]
+    },
+    {
+      "id": "xtream_a256532c3cfe9a29",
+      "agenda_id": "",
+      "titulo": "Camerún vs Comoras",
+      "torneo": "Clasif Copa Africana",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Camerún",
+      "equipo_visitante": "Comoras",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 01:00 PM | Camerún vs Comoras",
+          "id_xtream": "615907"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d3cc7843b1fb8c98",
+      "agenda_id": "",
+      "titulo": "Costa de Marfil vs Ghana",
+      "torneo": "Clasif Copa Africana",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Costa de Marfil",
+      "equipo_visitante": "Ghana",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 01:00 PM | Costa de Marfil vs Ghana",
+          "id_xtream": "615908"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2abf5c1a373fc139",
+      "agenda_id": "",
+      "titulo": "Sierra Leona vs Zimbabue",
+      "torneo": "Clasif Copa Africana",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sierra Leona",
+      "equipo_visitante": "Zimbabue",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 01:00 PM | Sierra Leona vs Zimbabue",
+          "id_xtream": "615909"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1637931",
+      "agenda_id": "apisports_football_1637931",
+      "titulo": "Qatar vs Bahrain",
+      "torneo": "Gulf Cup of Nations",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Qatar",
+      "equipo_visitante": "Bahrain",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/25.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1569.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1547.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:QATAR",
+        "visitante:BAHRAIN",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Copa del Golfo | 12:00 PM  | Qatar vs. Bahrain",
+          "id_xtream": "615911"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1612046",
+      "agenda_id": "apisports_football_1612046",
+      "titulo": "Instituto Res. vs Estudiantes Rio Cuarto 2",
+      "torneo": "Reserve League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Instituto Res.",
+      "equipo_visitante": "Estudiantes Rio Cuarto 2",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/906.png",
+      "logo_local": "https://media.api-sports.io/football/teams/20818.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/27271.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:INSTITUTO,RES",
+        "visitante:CUARTO,ESTUDIANTES,RIO",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Arg Torneo Res | 12:00 PM | Instituto Res. vs Estudiantes Rio Cuarto 2",
+          "id_xtream": "615915"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187518",
+      "agenda_id": "apisports_baseball_187518",
+      "titulo": "Kansas City Royals vs Chicago White Sox",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Kansas City Royals",
+      "equipo_visitante": "Chicago White Sox",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T18:10:00Z",
+      "hora_local_producto": "13:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/16.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/7.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CITY,KANSAS,ROYALS",
+        "visitante:CHICAGO,SOX,WHITE",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:10 24/09 | Chicago White Sox vs. Kansas City Royals | MLB | OP1",
+          "id_xtream": "615696"
+        },
+        {
+          "nombre": "12:10 24/09 | Chicago White Sox vs. Kansas City Royals | MLB | OP2",
+          "id_xtream": "615697"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187519",
+      "agenda_id": "apisports_baseball_187519",
+      "titulo": "Chicago Cubs vs Miami Marlins",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chicago Cubs",
+      "equipo_visitante": "Miami Marlins",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T18:20:00Z",
+      "hora_local_producto": "13:20",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/6.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/19.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CHICAGO,CUBS",
+        "visitante:MARLINS,MIAMI",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:20 24/09 | Miami Marlins vs. Chicago Cubs | MLB | OP1",
+          "id_xtream": "615698"
+        },
+        {
+          "nombre": "12:20 24/09 | Miami Marlins vs. Chicago Cubs | MLB | OP2",
+          "id_xtream": "615699"
         }
       ]
     },
@@ -424,6 +1349,1439 @@
       "fuentes": []
     },
     {
+      "id": "apisports_baseball_187520",
+      "agenda_id": "apisports_baseball_187520",
+      "titulo": "Texas Rangers vs New York Mets",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Texas Rangers",
+      "equipo_visitante": "New York Mets",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T18:35:00Z",
+      "hora_local_producto": "13:35",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/35.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/24.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:RANGERS,TEXAS",
+        "visitante:METS,NEW,YORK",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:35 24/09 | New York Mets vs. Texas Rangers | MLB | OP1",
+          "id_xtream": "615700"
+        },
+        {
+          "nombre": "12:35 24/09 | New York Mets vs. Texas Rangers | MLB | OP2",
+          "id_xtream": "615701"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1528878",
+      "agenda_id": "apisports_football_1528878",
+      "titulo": "Austria vs Israel",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Austria",
+      "equipo_visitante": "Israel",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/5.png",
+      "logo_local": "https://media.api-sports.io/football/teams/775.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1116.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:AUSTRIA",
+        "visitante:ISRAEL",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:45 24/09 | Austria vs. Israel | UEFA Nations League ||",
+          "id_xtream": "615702"
+        },
+        {
+          "nombre": "12:45 24/09 | Austria vs. Israel | UEFA Nations League || FHD",
+          "id_xtream": "615703"
+        },
+        {
+          "nombre": "12:45 24/09 | Austria vs. Israel | UEFA Nations League || SD",
+          "id_xtream": "615704"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Austria vs. Israel",
+          "id_xtream": "615895"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1528879",
+      "agenda_id": "apisports_football_1528879",
+      "titulo": "Kosovo vs Rep. Of Ireland",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Kosovo",
+      "equipo_visitante": "Rep. Of Ireland",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/5.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1111.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/776.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 69,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:KOSOVO,NATIONS,UEFA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:45 24/09 | Kosovo vs. Irlanda | UEFA Nations League ||",
+          "id_xtream": "615705"
+        },
+        {
+          "nombre": "12:45 24/09 | Kosovo vs. Irlanda | UEFA Nations League || FHD",
+          "id_xtream": "615706"
+        },
+        {
+          "nombre": "12:45 24/09 | Kosovo vs. Irlanda | UEFA Nations League || SD",
+          "id_xtream": "615707"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Kosovo vs. República de Irlanda",
+          "id_xtream": "615896"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1528880",
+      "agenda_id": "apisports_football_1528880",
+      "titulo": "Liechtenstein vs Lithuania",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Liechtenstein",
+      "equipo_visitante": "Lithuania",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/5.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1107.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1097.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 80,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:LIECHTENSTEIN,NATIONS,UEFA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:45 24/09 | Liechtenstein vs. Lituania | UEFA Nations League ||",
+          "id_xtream": "615708"
+        },
+        {
+          "nombre": "12:45 24/09 | Liechtenstein vs. Lituania | UEFA Nations League || FHD",
+          "id_xtream": "615709"
+        },
+        {
+          "nombre": "12:45 24/09 | Liechtenstein vs. Lituania | UEFA Nations League || SD",
+          "id_xtream": "615710"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Liechtenstein vs. Lituania",
+          "id_xtream": "615894"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1528865",
+      "agenda_id": "apisports_football_1528865",
+      "titulo": "Norway vs Denmark",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Norway",
+      "equipo_visitante": "Denmark",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/5.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1090.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/21.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NORWAY",
+        "visitante:DENMARK",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:45 24/09 | Norway vs. Denmark | UEFA Nations League ||",
+          "id_xtream": "615711"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1528864",
+      "agenda_id": "apisports_football_1528864",
+      "titulo": "Portugal vs Wales",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Portugal",
+      "equipo_visitante": "Wales",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/5.png",
+      "logo_local": "https://media.api-sports.io/football/teams/27.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/767.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 80,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:NATIONS,PORTUGAL,UEFA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:45 24/09 | Portugal vs. Gales | UEFA Nations League ||",
+          "id_xtream": "615715"
+        },
+        {
+          "nombre": "12:45 24/09 | Portugal vs. Gales | UEFA Nations League || FHD",
+          "id_xtream": "615716"
+        },
+        {
+          "nombre": "12:45 24/09 | Portugal vs. Gales | UEFA Nations League || SD",
+          "id_xtream": "615717"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Portugal vs. Gales",
+          "id_xtream": "615899"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1528863",
+      "agenda_id": "apisports_football_1528863",
+      "titulo": "Serbia vs Greece",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Serbia",
+      "equipo_visitante": "Greece",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/5.png",
+      "logo_local": "https://media.api-sports.io/football/teams/14.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1117.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 80,
+      "metodo_correlacion": "evento_simple_verificado",
+      "razones_correlacion": [
+        "tokens:NATIONS,SERBIA,UEFA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:45 24/09 | Serbia vs. Grecia | UEFA Nations League ||",
+          "id_xtream": "615718"
+        },
+        {
+          "nombre": "12:45 24/09 | Serbia vs. Grecia | UEFA Nations League || SD",
+          "id_xtream": "615719"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Serbia vs. Grecia",
+          "id_xtream": "615900"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1639933",
+      "agenda_id": "apisports_football_1639933",
+      "titulo": "Puerto Rico vs Guyana",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Puerto Rico",
+      "equipo_visitante": "Guyana",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/536.png",
+      "logo_local": "https://media.api-sports.io/football/teams/5539.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/5162.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:PUERTO,RICO",
+        "visitante:GUYANA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 24/09 | Puerto Rico vs. Guyana | CONCACAF Nations League ||",
+          "id_xtream": "615720"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187521",
+      "agenda_id": "apisports_baseball_187521",
+      "titulo": "Colorado Rockies vs Arizona Diamondbacks",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Colorado Rockies",
+      "equipo_visitante": "Arizona Diamondbacks",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T19:10:00Z",
+      "hora_local_producto": "14:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/10.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/2.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:COLORADO,ROCKIES",
+        "visitante:ARIZONA,DIAMONDBACKS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:10 24/09 | Arizona Diamondbacks vs. Colorado Rockies | MLB | OP1",
+          "id_xtream": "615721"
+        },
+        {
+          "nombre": "13:10 24/09 | Arizona Diamondbacks vs. Colorado Rockies | MLB |OP2",
+          "id_xtream": "615722"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f73ce75bb850da72",
+      "agenda_id": "",
+      "titulo": "Louisiana vs Old Dominion",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Louisiana",
+      "equipo_visitante": "Old Dominion",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 24/09 | Louisiana vs. Old Dominion | NCAA Women's Soccer ||",
+          "id_xtream": "615723"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1638386",
+      "agenda_id": "apisports_football_1638386",
+      "titulo": "O'Higgins vs Deportes Santa Cruz",
+      "torneo": "Copa Chile",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "O'Higgins",
+      "equipo_visitante": "Deportes Santa Cruz",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/267.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2320.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2346.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:HIGGINS",
+        "visitante:CRUZ,SANTA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Copa Chile | 03:00 PM | O'Higgins vs Dep. Santa Cruz",
+          "id_xtream": "615917"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c073ab93f764a98f",
+      "agenda_id": "",
+      "titulo": "Benedict vs Tuskegee",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Benedict",
+      "equipo_visitante": "Tuskegee",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Benedict vs. Tuskegee | NCAA Women's Soccer ||",
+          "id_xtream": "615728"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c7ec712da0d9bdc9",
+      "agenda_id": "",
+      "titulo": "Georgia Southern vs Georgia State",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Georgia Southern",
+      "equipo_visitante": "Georgia State",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Georgia Southern vs. Georgia State | NCAA Women's Soccer ||",
+          "id_xtream": "615732"
+        }
+      ]
+    },
+    {
+      "id": "xtream_7916ec86ac60adc0",
+      "agenda_id": "",
+      "titulo": "Marshall vs Troy",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Marshall",
+      "equipo_visitante": "Troy",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Marshall vs. Troy | NCAA Women's Soccer ||",
+          "id_xtream": "615733"
+        }
+      ]
+    },
+    {
+      "id": "xtream_783e2862db160851",
+      "agenda_id": "",
+      "titulo": "Memphis vs South Florida",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Memphis",
+      "equipo_visitante": "South Florida",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Memphis vs. South Florida | NCAA Women's Soccer ||",
+          "id_xtream": "615734"
+        }
+      ]
+    },
+    {
+      "id": "xtream_c08692e965b5b943",
+      "agenda_id": "",
+      "titulo": "North Texas vs Charlotte",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "North Texas",
+      "equipo_visitante": "Charlotte",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | North Texas vs. Charlotte | NCAA Women's Soccer ||",
+          "id_xtream": "615737"
+        }
+      ]
+    },
+    {
+      "id": "xtream_05dbf4b9119e006a",
+      "agenda_id": "",
+      "titulo": "Temple vs Rice",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Temple",
+      "equipo_visitante": "Rice",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Temple vs. Rice | NCAA Women's Soccer ||",
+          "id_xtream": "615738"
+        }
+      ]
+    },
+    {
+      "id": "xtream_1a8dd78dc730c9b3",
+      "agenda_id": "",
+      "titulo": "UL Monroe vs James Madison",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UL Monroe",
+      "equipo_visitante": "James Madison",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | UL Monroe vs. James Madison | NCAA Women's Soccer ||",
+          "id_xtream": "615740"
+        }
+      ]
+    },
+    {
+      "id": "xtream_4acfd11ad84a0ca6",
+      "agenda_id": "",
+      "titulo": "UTSA vs East Carolina",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UTSA",
+      "equipo_visitante": "East Carolina",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | UTSA vs. East Carolina | NCAA Women's Soccer ||",
+          "id_xtream": "615741"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1612049",
+      "agenda_id": "apisports_football_1612049",
+      "titulo": "Racing Club Res. vs Independiente Res.",
+      "torneo": "Reserve League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Racing Club Res.",
+      "equipo_visitante": "Independiente Res.",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/906.png",
+      "logo_local": "https://media.api-sports.io/football/teams/18694.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/18689.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CLUB,RACING,RES",
+        "visitante:INDEPENDIENTE,RES",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Arg Torneo Res | 04:00 PM | Racing Club Res. vs Independiente Res.",
+          "id_xtream": "615916"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187538",
+      "agenda_id": "apisports_baseball_187538",
+      "titulo": "Philadelphia Phillies vs Milwaukee Brewers",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Philadelphia Phillies",
+      "equipo_visitante": "Milwaukee Brewers",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T22:05:00Z",
+      "hora_local_producto": "17:05",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/27.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/20.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:PHILADELPHIA,PHILLIES",
+        "visitante:BREWERS,MILWAUKEE",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:05 24/09 | Milwaukee Brewers vs. Philadelphia Phillies | MLB | OP2",
+          "id_xtream": "615724"
+        },
+        {
+          "nombre": "16:05 24/09 | Milwaukee Brewers vs. Philadelphia Phillies | MLB |OP1",
+          "id_xtream": "615725"
+        },
+        {
+          "nombre": "Beisbol | 05:35 PM | AAPB Milwaukee Milkmen vs Kansas City Monarchs",
+          "id_xtream": "615920"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187539",
+      "agenda_id": "apisports_baseball_187539",
+      "titulo": "Boston Red Sox vs Cleveland Guardians",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boston Red Sox",
+      "equipo_visitante": "Cleveland Guardians",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T22:45:00Z",
+      "hora_local_producto": "17:45",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/5.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/9.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BOSTON,RED,SOX",
+        "visitante:CLEVELAND,GUARDIANS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:45 24/09 | Cleveland Guardians vs. Boston Red Sox | MLB | OP1",
+          "id_xtream": "615726"
+        },
+        {
+          "nombre": "16:45 24/09 | Cleveland Guardians vs. Boston Red Sox | MLB | OP2",
+          "id_xtream": "615727"
+        }
+      ]
+    },
+    {
+      "id": "apisports_hockey_432527",
+      "agenda_id": "apisports_hockey_432527",
+      "titulo": "Philadelphia Flyers vs Boston Bruins",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Philadelphia Flyers",
+      "equipo_visitante": "Boston Bruins",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/695.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/673.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:FLYERS,PHILADELPHIA",
+        "visitante:BOSTON,BRUINS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Boston Bruins vs. Philadelphia Flyers | NHL ||",
+          "id_xtream": "615729"
+        }
+      ]
+    },
+    {
+      "id": "apisports_hockey_444581",
+      "agenda_id": "apisports_hockey_444581",
+      "titulo": "Detroit Red Wings vs Buffalo Sabres",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Detroit Red Wings",
+      "equipo_visitante": "Buffalo Sabres",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/682.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/674.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:DETROIT,RED,WINGS",
+        "visitante:BUFFALO,SABRES",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Buffalo Sabres vs. Detroit Red Wings | NHL ||",
+          "id_xtream": "615730"
+        }
+      ]
+    },
+    {
+      "id": "apisports_hockey_444585",
+      "agenda_id": "apisports_hockey_444585",
+      "titulo": "Tampa Bay Lightning vs Florida Panthers",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tampa Bay Lightning",
+      "equipo_visitante": "Florida Panthers",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/699.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/684.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BAY,LIGHTNING,TAMPA",
+        "visitante:FLORIDA,PANTHERS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Florida Panthers vs. Tampa Bay Lightning | NHL ||",
+          "id_xtream": "615731"
+        }
+      ]
+    },
+    {
+      "id": "apisports_hockey_444582",
+      "agenda_id": "apisports_hockey_444582",
+      "titulo": "Carolina Hurricanes vs Nashville Predators",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Carolina Hurricanes",
+      "equipo_visitante": "Nashville Predators",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/676.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/689.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CAROLINA,HURRICANES",
+        "visitante:NASHVILLE,PREDATORS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Nashville Predators vs. Carolina Hurricanes | NHL ||",
+          "id_xtream": "615735"
+        }
+      ]
+    },
+    {
+      "id": "apisports_hockey_444584",
+      "agenda_id": "apisports_hockey_444584",
+      "titulo": "New York Rangers vs New Jersey Devils",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Rangers",
+      "equipo_visitante": "New Jersey Devils",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/692.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/690.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NEW,RANGERS,YORK",
+        "visitante:DEVILS,JERSEY,NEW",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | New Jersey Devils vs. New York Rangers | NHL ||",
+          "id_xtream": "615736"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_495099",
+      "agenda_id": "apisports_basketball_495099",
+      "titulo": "Connecticut Sun W vs Toronto Tempo W",
+      "torneo": "NBA W",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Connecticut Sun W",
+      "equipo_visitante": "Toronto Tempo W",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/164.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/7870.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CONNECTICUT,SUN",
+        "visitante:TEMPO,TORONTO",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 24/09 | Toronto Tempo vs. Connecticut Sun | WNBA |",
+          "id_xtream": "615739"
+        }
+      ]
+    },
+    {
+      "id": "xtream_bebd251f54097faf",
+      "agenda_id": "",
+      "titulo": "App State vs Louisiana Tech",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "App State",
+      "equipo_visitante": "Louisiana Tech",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 24/09 | App State vs. Louisiana Tech | NCAA Women's Soccer ||",
+          "id_xtream": "615747"
+        }
+      ]
+    },
+    {
+      "id": "xtream_9d610728834b05fd",
+      "agenda_id": "",
+      "titulo": "El Show de la F1",
+      "torneo": "El Show de la F1",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "F1",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 24/09 | El Show de la F1 | F1 ||",
+          "id_xtream": "615750"
+        }
+      ]
+    },
+    {
+      "id": "xtream_f2f9834f3c275d7b",
+      "agenda_id": "",
+      "titulo": "Florida Atlantic vs UAB",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Florida Atlantic",
+      "equipo_visitante": "UAB",
+      "subtitulo": "NCAA Women's Soccer",
+      "hora_utc": "2026-09-24T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 24/09 | Florida Atlantic vs. UAB | NCAA Women's Soccer ||",
+          "id_xtream": "615751"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187540",
+      "agenda_id": "apisports_baseball_187540",
+      "titulo": "New York Yankees vs Tampa Bay Rays",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Yankees",
+      "equipo_visitante": "Tampa Bay Rays",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:05:00Z",
+      "hora_local_producto": "18:05",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/25.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/34.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:NEW,YANKEES,YORK",
+        "visitante:BAY,RAYS,TAMPA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:05 24/09 | Tampa Bay Rays vs. New York Yankees | MLB | OP1",
+          "id_xtream": "615742"
+        },
+        {
+          "nombre": "17:05 24/09 | Tampa Bay Rays vs. New York Yankees | MLB | OP2",
+          "id_xtream": "615743"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187541",
+      "agenda_id": "apisports_baseball_187541",
+      "titulo": "Atlanta Braves vs Cincinnati Reds",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlanta Braves",
+      "equipo_visitante": "Cincinnati Reds",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:15:00Z",
+      "hora_local_producto": "18:15",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/3.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/8.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATLANTA,BRAVES",
+        "visitante:CINCINNATI,REDS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:15 24/09 | Cincinnati Reds vs. Atlanta Braves | MLB | OP2",
+          "id_xtream": "615744"
+        },
+        {
+          "nombre": "17:15 24/09 | Cincinnati Reds vs. Atlanta Braves | MLB |OP1",
+          "id_xtream": "615745"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_495100",
+      "agenda_id": "apisports_basketball_495100",
+      "titulo": "Washington Mystics W vs Chicago Sky W",
+      "torneo": "NBA W",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Mystics W",
+      "equipo_visitante": "Chicago Sky W",
+      "subtitulo": "",
+      "hora_utc": "2026-09-24T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/175.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/163.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MYSTICS,WASHINGTON",
+        "visitante:CHICAGO,SKY",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:30 24/09 | Chicago Sky vs. Washington Mystics | WNBA |",
+          "id_xtream": "615746"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1638387",
+      "agenda_id": "apisports_football_1638387",
+      "titulo": "Everton de Vina vs Universidad de Chile",
+      "torneo": "Copa Chile",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Everton de Vina",
+      "equipo_visitante": "Universidad de Chile",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-24T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/267.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2325.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/2323.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:EVERTON",
+        "visitante:CHILE",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Copa Chile | 05:30 PM | Everton vs U. de Chile",
+          "id_xtream": "615918"
+        }
+      ]
+    },
+    {
       "id": "epg_abc1295ff7ae3191",
       "agenda_id": "",
       "titulo": "Jornada 1",
@@ -463,6 +2821,1218 @@
       ],
       "canal_epg": "TDP",
       "fuentes": []
+    },
+    {
+      "id": "apisports_hockey_444586",
+      "agenda_id": "apisports_hockey_444586",
+      "titulo": "St. Louis Blues vs Chicago Blackhawks",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "St. Louis Blues",
+      "equipo_visitante": "Chicago Blackhawks",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/698.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/678.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BLUES,LOUIS",
+        "visitante:BLACKHAWKS,CHICAGO",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 24/09 | Chicago Blackhawks vs. St. Louis Blues | NHL ||",
+          "id_xtream": "615748"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1639934",
+      "agenda_id": "apisports_football_1639934",
+      "titulo": "Dominican Republic vs Nicaragua",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Dominican Republic",
+      "equipo_visitante": "Nicaragua",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/536.png",
+      "logo_local": "https://media.api-sports.io/football/teams/5532.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/5164.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:DOMINICAN,REPUBLIC",
+        "visitante:NICARAGUA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 24/09 | Dominican Republic vs. Nicaragua | CONCACAF Nations League ||",
+          "id_xtream": "615749"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 06:00 PM | República Dominicana vs. Nicaragua",
+          "id_xtream": "615901"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1628953",
+      "agenda_id": "apisports_football_1628953",
+      "titulo": "Gualaceo SC vs Independiente del Valle",
+      "torneo": "Copa Ecuador",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Gualaceo SC",
+      "equipo_visitante": "Independiente del Valle",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/917.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1986.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1153.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:GUALACEO",
+        "visitante:INDEPENDIENTE,VALLE",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 24/09 | Gualaceo vs. Independiente del Valle | Copa Ecuador |",
+          "id_xtream": "615752"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_495101",
+      "agenda_id": "apisports_basketball_495101",
+      "titulo": "Minnesota Lynx W vs Indiana Fever W",
+      "torneo": "NBA W",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Minnesota Lynx W",
+      "equipo_visitante": "Indiana Fever W",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/169.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/166.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:LYNX,MINNESOTA",
+        "visitante:FEVER,INDIANA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 24/09 | Indiana Fever vs. Minnesota Lynx | WNBA |",
+          "id_xtream": "615753"
+        }
+      ]
+    },
+    {
+      "id": "xtream_2e2b45af15f79fad",
+      "agenda_id": "",
+      "titulo": "California Baptist vs UC Irvine",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "California Baptist",
+      "equipo_visitante": "UC Irvine",
+      "subtitulo": "NCAA Men's Soccer",
+      "hora_utc": "2026-09-25T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Fútbol"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 24/09 | California Baptist vs. UC Irvine | NCAA Men's Soccer ||",
+          "id_xtream": "615760"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1639935",
+      "agenda_id": "apisports_football_1639935",
+      "titulo": "Cayman Islands vs Dominica",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cayman Islands",
+      "equipo_visitante": "Dominica",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T00:10:00Z",
+      "hora_local_producto": "19:10",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/536.png",
+      "logo_local": "https://media.api-sports.io/football/teams/8169.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/5531.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CAYMAN,ISLANDS",
+        "visitante:DOMINICA",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:10 24/09 | Cayman Islands vs. Dominica | CONCACAF Nations League ||",
+          "id_xtream": "615754"
+        }
+      ]
+    },
+    {
+      "id": "apisports_nfl_21545",
+      "agenda_id": "apisports_nfl_21545",
+      "titulo": "Green Bay Packers vs Atlanta Falcons",
+      "torneo": "NFL",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Green Bay Packers",
+      "equipo_visitante": "Atlanta Falcons",
+      "subtitulo": "Regular Season",
+      "hora_utc": "2026-09-25T00:15:00Z",
+      "hora_local_producto": "19:15",
+      "duracion_min": 220,
+      "logo_torneo": "https://media.api-sports.io/american-football/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/american-football/teams/15.png",
+      "logo_visitante": "https://media.api-sports.io/american-football/teams/8.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:nfl",
+      "origenes": [
+        "api_sports:nfl"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:BAY,GREEN,PACKERS",
+        "visitante:ATLANTA,FALCONS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:15 24/09 | Atlanta Falcons vs. Green Bay Packers | NFL |",
+          "id_xtream": "615755"
+        },
+        {
+          "nombre": "18:15 24/09 | Atlanta Falcons vs. Green Bay Packers | NFL | Spanish",
+          "id_xtream": "615756"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1639936",
+      "agenda_id": "apisports_football_1639936",
+      "titulo": "Haiti vs Trinidad and Tobago",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Haiti",
+      "equipo_visitante": "Trinidad and Tobago",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T00:20:00Z",
+      "hora_local_producto": "19:20",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/536.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2386.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/5168.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:HAITI",
+        "visitante:TOBAGO,TRINIDAD",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:20 24/09 | Haiti vs. Trinidad and Tobago | CONCACAF Nations League ||",
+          "id_xtream": "615757"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 06:20 PM | Haití vs Trinidad y Tobago",
+          "id_xtream": "615902"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1549794",
+      "agenda_id": "apisports_football_1549794",
+      "titulo": "Atletico Nacional vs Millonarios",
+      "torneo": "Primera A",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atletico Nacional",
+      "equipo_visitante": "Millonarios",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/239.png",
+      "logo_local": "https://media.api-sports.io/football/teams/1137.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/1125.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATLETICO,NACIONAL",
+        "visitante:MILLONARIOS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 24/09 | Atlético Nacional vs. Millonarios | Liga Betplay |",
+          "id_xtream": "615758"
+        },
+        {
+          "nombre": "Colombia | 06:30 PM | Atlético Nacional vs Millonarios",
+          "id_xtream": "615914"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1581432",
+      "agenda_id": "apisports_football_1581432",
+      "titulo": "Alebrijes de Oaxaca vs CA La Paz",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Alebrijes de Oaxaca",
+      "equipo_visitante": "CA La Paz",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/263.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2300.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/19024.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ALEBRIJES,OAXACA",
+        "visitante:PAZ",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 24/09 | Alebrijes de Oaxaca vs. CA La Paz | Liga de Expansión MX |",
+          "id_xtream": "615759"
+        },
+        {
+          "nombre": "Expansión MX | 07:00 PM | Alebrijes de Oaxaca vs. Atlético La Paz",
+          "id_xtream": "615922"
+        }
+      ]
+    },
+    {
+      "id": "apisports_hockey_432528",
+      "agenda_id": "apisports_hockey_432528",
+      "titulo": "Vancouver Canucks vs Edmonton Oilers",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Vancouver Canucks",
+      "equipo_visitante": "Edmonton Oilers",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/701.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/683.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:CANUCKS,VANCOUVER",
+        "visitante:EDMONTON,OILERS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 24/09 | Edmonton Oilers vs. Vancouver Canucks | NHL ||",
+          "id_xtream": "615761"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1581479",
+      "agenda_id": "apisports_football_1581479",
+      "titulo": "Mineros de Zacatecas vs Piratas",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Mineros de Zacatecas",
+      "equipo_visitante": "Piratas",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/263.png",
+      "logo_local": "https://media.api-sports.io/football/teams/2299.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/27935.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MINEROS,ZACATECAS",
+        "visitante:PIRATAS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 24/09 | Mineros de Zacatecas vs. Piratas | Liga de Expansión MX |",
+          "id_xtream": "615762"
+        },
+        {
+          "nombre": "Expansión MX | 07:00 PM | Mineros de Zacatecas vs Piratas",
+          "id_xtream": "615923"
+        }
+      ]
+    },
+    {
+      "id": "apisports_hockey_432530",
+      "agenda_id": "apisports_hockey_432530",
+      "titulo": "Seattle Kraken vs Calgary Flames",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Seattle Kraken",
+      "equipo_visitante": "Calgary Flames",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T01:40:00Z",
+      "hora_local_producto": "20:40",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/1436.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/675.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:KRAKEN,SEATTLE",
+        "visitante:CALGARY,FLAMES",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:40 24/09 | Calgary Flames vs. Seattle Kraken | NHL ||",
+          "id_xtream": "615763"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187543",
+      "agenda_id": "apisports_baseball_187543",
+      "titulo": "Athletics vs Houston Astros",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Athletics",
+      "equipo_visitante": "Houston Astros",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T01:40:00Z",
+      "hora_local_producto": "20:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/963.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/15.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ATHLETICS",
+        "visitante:ASTROS,HOUSTON",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:40 24/09 | Houston Astros vs. Athletics | MLB | OP1",
+          "id_xtream": "615764"
+        },
+        {
+          "nombre": "19:40 24/09 | Houston Astros vs. Athletics | MLB | OP2",
+          "id_xtream": "615765"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187542",
+      "agenda_id": "apisports_baseball_187542",
+      "titulo": "Seattle Mariners vs Los Angeles Angels",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Seattle Mariners",
+      "equipo_visitante": "Los Angeles Angels",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T01:40:00Z",
+      "hora_local_producto": "20:40",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/32.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/17.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MARINERS,SEATTLE",
+        "visitante:ANGELES,ANGELS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:40 24/09 | Los Angeles Angels vs. Seattle Mariners | MLB | OP1",
+          "id_xtream": "615766"
+        },
+        {
+          "nombre": "19:40 24/09 | Los Angeles Angels vs. Seattle Mariners | MLB | OP2",
+          "id_xtream": "615767"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1639937",
+      "agenda_id": "apisports_football_1639937",
+      "titulo": "Costa Rica vs Curaçao",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Costa Rica",
+      "equipo_visitante": "Curaçao",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/536.png",
+      "logo_local": "https://media.api-sports.io/football/teams/29.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/5530.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:COSTA,RICA",
+        "visitante:CURACAO",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 24/09 | Costa Rica vs. Curaçao | CONCACAF Nations League ||",
+          "id_xtream": "615768"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 08:00 PM | Costa Rica vs. Curazao",
+          "id_xtream": "615903"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_495102",
+      "agenda_id": "apisports_basketball_495102",
+      "titulo": "Los Angeles Sparks W vs Golden State Valkyries W",
+      "torneo": "NBA W",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Los Angeles Sparks W",
+      "equipo_visitante": "Golden State Valkyries W",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/168.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/7326.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ANGELES,SPARKS",
+        "visitante:GOLDEN,STATE,VALKYRIES",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 24/09 | Golden State Valkyries vs. Los Angeles Sparks | WNBA |",
+          "id_xtream": "615769"
+        }
+      ]
+    },
+    {
+      "id": "apisports_basketball_495103",
+      "agenda_id": "apisports_basketball_495103",
+      "titulo": "Phoenix Mercury W vs Las Vegas Aces W",
+      "torneo": "NBA W",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Phoenix Mercury W",
+      "equipo_visitante": "Las Vegas Aces W",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/basketball/leagues/13.png",
+      "logo_local": "https://media.api-sports.io/basketball/teams/171.png",
+      "logo_visitante": "https://media.api-sports.io/basketball/teams/167.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:basketball",
+      "origenes": [
+        "api_sports:basketball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MERCURY,PHOENIX",
+        "visitante:ACES,VEGAS",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 24/09 | Las Vegas Aces vs. Phoenix Mercury | WNBA |",
+          "id_xtream": "615770"
+        }
+      ]
+    },
+    {
+      "id": "apisports_hockey_432526",
+      "agenda_id": "apisports_hockey_432526",
+      "titulo": "Vegas Golden Knights vs Utah Mammoth",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Vegas Golden Knights",
+      "equipo_visitante": "Utah Mammoth",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 160,
+      "logo_torneo": "https://media.api-sports.io/hockey/leagues/57.png",
+      "logo_local": "https://media.api-sports.io/hockey/teams/702.png",
+      "logo_visitante": "https://media.api-sports.io/hockey/teams/2483.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:hockey",
+      "origenes": [
+        "api_sports:hockey"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:GOLDEN,KNIGHTS,VEGAS",
+        "visitante:MAMMOTH,UTAH",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 24/09 | Utah Mammoth vs. Vegas Golden Knights | NHL ||",
+          "id_xtream": "615771"
+        }
+      ]
+    },
+    {
+      "id": "xtream_d7f65770ea904cf3",
+      "agenda_id": "",
+      "titulo": "Korea Open",
+      "torneo": "Korea Open",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Grandstand - Tenis",
+      "hora_utc": "2026-09-25T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 24/09 | Korea Open / Grandstand | Tenis ||",
+          "id_xtream": "615774"
+        },
+        {
+          "nombre": "21:00 24/09 | Korea Open | Tenis ||",
+          "id_xtream": "615775"
+        }
+      ]
+    },
+    {
+      "id": "xtream_cd15e7fdbb663c13",
+      "agenda_id": "",
+      "titulo": "Singapore Tennis Open presented by BNP Paribas Open",
+      "torneo": "Singapore Tennis Open presented by BNP Paribas Open",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Center Court - Tenis",
+      "hora_utc": "2026-09-25T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 24/09 | Singapore Tennis Open presented by BNP Paribas Open / Center Court | Tenis ||",
+          "id_xtream": "615776"
+        }
+      ]
+    },
+    {
+      "id": "apisports_football_1559653",
+      "agenda_id": "apisports_football_1559653",
+      "titulo": "Municipal vs Suchitepéquez",
+      "torneo": "Liga Nacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Municipal",
+      "equipo_visitante": "Suchitepéquez",
+      "subtitulo": "Not Started",
+      "hora_utc": "2026-09-25T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://media.api-sports.io/football/leagues/339.png",
+      "logo_local": "https://media.api-sports.io/football/teams/3665.png",
+      "logo_visitante": "https://media.api-sports.io/football/teams/3653.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:football",
+      "origenes": [
+        "api_sports:football"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 97,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:MUNICIPAL",
+        "visitante:SUCHITEPEQUEZ",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Guatemala | 08:00 PM | Municipal vs Suchitepéquez",
+          "id_xtream": "615919"
+        }
+      ]
+    },
+    {
+      "id": "xtream_cc191310b1d8a66e",
+      "agenda_id": "",
+      "titulo": "WTA",
+      "torneo": "WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Singapore Tennis Open - Center Court (Doubles Quarterfinals)",
+      "hora_utc": "2026-09-25T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "WTA | 09:00 PM | Singapore Tennis Open / Center Court (Doubles Quarterfinals)",
+          "id_xtream": "615926"
+        },
+        {
+          "nombre": "WTA | 09:00 PM | Korea Open (Cuartos de Final)",
+          "id_xtream": "615927"
+        },
+        {
+          "nombre": "WTA | 09:00 PM | Korea Open / Grandstand (Doubles Semifinals)",
+          "id_xtream": "615928"
+        }
+      ]
+    },
+    {
+      "id": "apisports_baseball_187544",
+      "agenda_id": "apisports_baseball_187544",
+      "titulo": "Los Angeles Dodgers vs San Diego Padres",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Los Angeles Dodgers",
+      "equipo_visitante": "San Diego Padres",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T02:10:00Z",
+      "hora_local_producto": "21:10",
+      "duracion_min": 210,
+      "logo_torneo": "https://media.api-sports.io/baseball/leagues/1.png",
+      "logo_local": "https://media.api-sports.io/baseball/teams/18.png",
+      "logo_visitante": "https://media.api-sports.io/baseball/teams/30.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "api_sports:baseball",
+      "origenes": [
+        "api_sports:baseball"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 100,
+      "metodo_correlacion": "duelo_verificado",
+      "razones_correlacion": [
+        "local:ANGELES,DODGERS",
+        "visitante:DIEGO,PADRES,SAN",
+        "diferencia_min:60"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:10 24/09 | San Diego Padres vs. Los Angeles Dodgers | MLB | OP1",
+          "id_xtream": "615772"
+        },
+        {
+          "nombre": "20:10 24/09 | San Diego Padres vs. Los Angeles Dodgers | MLB | OP2",
+          "id_xtream": "615773"
+        }
+      ]
+    },
+    {
+      "id": "xtream_3fae6eb9f741cfb1",
+      "agenda_id": "",
+      "titulo": "AFL Women Western Bulldogs vs Port Adelaide Power",
+      "torneo": "F Australiano",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "AFL Women Western Bulldogs",
+      "equipo_visitante": "Port Adelaide Power",
+      "subtitulo": "",
+      "hora_utc": "2026-09-25T03:05:00Z",
+      "hora_local_producto": "22:05",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FOlympic_flag.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Otros Deportes"
+      ],
+      "fuentes": [
+        {
+          "nombre": "F Australiano | 10:05 PM | AFL Women Western Bulldogs vs Port Adelaide Power",
+          "id_xtream": "615921"
+        }
+      ]
+    },
+    {
+      "id": "xtream_bc4454c1ba8f68de",
+      "agenda_id": "",
+      "titulo": "Chengdu Open",
+      "torneo": "Chengdu Open",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tenis",
+      "hora_utc": "2026-09-25T04:00:00Z",
+      "hora_local_producto": "23:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "23:00 24/09 | Chengdu Open | Tenis ||",
+          "id_xtream": "615777"
+        }
+      ]
+    },
+    {
+      "id": "xtream_618551a75ffc7f6d",
+      "agenda_id": "",
+      "titulo": "Singapore Tennis Open presented by BNP Paribas Open",
+      "torneo": "Singapore Tennis Open presented by BNP Paribas Open",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tenis",
+      "hora_utc": "2026-09-25T04:00:00Z",
+      "hora_local_producto": "23:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "23:00 24/09 | Singapore Tennis Open presented by BNP Paribas Open | Tenis ||",
+          "id_xtream": "615778"
+        }
+      ]
+    },
+    {
+      "id": "xtream_ec918edfc904c005",
+      "agenda_id": "",
+      "titulo": "WTA",
+      "torneo": "WTA",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Singapore Tennis Open presented by BNP Paribas Open (Cuartos de Final)",
+      "hora_utc": "2026-09-25T04:00:00Z",
+      "hora_local_producto": "23:00",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "categoria_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "WTA | 11:00 PM | Singapore Tennis Open presented by BNP Paribas Open (Cuartos de Final)",
+          "id_xtream": "615929"
+        }
+      ]
+    },
+    {
+      "id": "xtream_ffd2e53bb1b7a0a4",
+      "agenda_id": "",
+      "titulo": "Hangzhou Open",
+      "torneo": "Hangzhou Open",
+      "categoria": "Tenis",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tenis",
+      "hora_utc": "2026-09-25T04:30:00Z",
+      "hora_local_producto": "23:30",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Tenis"
+      ],
+      "fuentes": [
+        {
+          "nombre": "23:30 24/09 | Hangzhou Open | Tenis ||",
+          "id_xtream": "615779"
+        }
+      ]
+    },
+    {
+      "id": "xtream_b6cd3bf80e9fc952",
+      "agenda_id": "",
+      "titulo": "Fórmula 2 - GP Bakú - Práctica",
+      "torneo": "Fórmula 2 - GP Bakú - Práctica",
+      "categoria": "Motor",
+      "tipo_evento": "sencillo",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "F2",
+      "hora_utc": "2026-09-25T04:50:00Z",
+      "hora_local_producto": "23:50",
+      "duracion_min": 210,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 3,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "media",
+      "puntuacion_confianza": 75,
+      "metodo_correlacion": "evento_independiente_verificado",
+      "razones_correlacion": [
+        "fecha_xtream_hoy",
+        "categoria:Motor"
+      ],
+      "fuentes": [
+        {
+          "nombre": "23:50 24/09 | Fórmula 2 - GP Bakú - Práctica | F2 ||",
+          "id_xtream": "615780"
+        }
+      ]
     }
   ]
 }
