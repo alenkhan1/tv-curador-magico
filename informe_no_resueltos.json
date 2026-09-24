@@ -9,34 +9,34 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-09-23T09:09:07Z",
+  "generado": "2026-09-24T09:04:51Z",
   "resumen": {
-    "total": 1366,
+    "total": 1362,
     "por_motivo": {
-      "pendiente": 1192,
-      "no_encontrado": 174
+      "pendiente": 1190,
+      "no_encontrado": 172
     },
     "peliculas": {
       "adulto": 9,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 165,
-      "fallo_red": 1166,
-      "clasificados": 13525,
-      "sin_identificar": 1331
+      "no_encontrado": 164,
+      "fallo_red": 1165,
+      "clasificados": 13528,
+      "sin_identificar": 1329
     },
     "series": {
       "adulto": 0,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 9,
-      "fallo_red": 26,
-      "clasificados": 1688,
-      "sin_identificar": 35
+      "no_encontrado": 8,
+      "fallo_red": 25,
+      "clasificados": 1690,
+      "sin_identificar": 33
     },
     "alerta": {
-      "porcentaje_peliculas": 9.0,
-      "porcentaje_series": 2.0,
+      "porcentaje_peliculas": 8.9,
+      "porcentaje_series": 1.9,
       "umbral": 15.0,
       "supera_umbral": false
     }
@@ -44,20 +44,13 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1305,
+      "veces": 1303,
       "ejemplos": [
         "Back to the Beginning Parte 1 (2025)",
         "Back to the Beginning Parte 2 (2025)",
         "Nazi Superlsoldier (2024)",
         "Agáchat.maldito.1971.1080p mkv",
         "Alien (1979) 1080p MicroHD x264 60 fps [spa, eng]"
-      ]
-    },
-    {
-      "patron": "CODIGO",
-      "veces": 1,
-      "ejemplos": [
-        "Código: Venganza (2026) Audio Digital"
       ]
     },
     {
@@ -383,13 +376,6 @@
       ]
     },
     {
-      "patron": "025",
-      "veces": 1,
-      "ejemplos": [
-        "025 - El Caldero Mágico (1985)"
-      ]
-    },
-    {
       "patron": "034",
       "veces": 1,
       "ejemplos": [
@@ -586,7 +572,7 @@
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "SAGAS",
-      "veces": 281
+      "veces": 280
     },
     {
       "carpeta": "GENERAL",
@@ -719,20 +705,6 @@
       "motivo": "pendiente",
       "carpeta": "PELICULAS 2024",
       "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "529190",
-      "tipo": "movie",
-      "nombre_original": "Código: Venganza (2026) Audio Digital",
-      "titulo_buscado": "Código: Venganza Digital",
-      "anio": 2026,
-      "motivo": "pendiente",
-      "carpeta": "ESTRENOS 2026",
-      "etiquetas": [
-        "AUDIO"
-      ],
       "prefijo": "",
       "copias": 1
     },
@@ -11152,6 +11124,21 @@
       "motivo": "pendiente",
       "carpeta": "TERROR",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "551617",
+      "tipo": "movie",
+      "nombre_original": "The Last Thing Mary Saw (2021) Terror. Suspenso - HD LAT",
+      "titulo_buscado": "The Last Thing Mary Saw Terror Suspenso",
+      "anio": 2021,
+      "motivo": "pendiente",
+      "carpeta": "TERROR",
+      "etiquetas": [
+        "HD",
+        "LAT"
+      ],
       "prefijo": "",
       "copias": 1
     }
