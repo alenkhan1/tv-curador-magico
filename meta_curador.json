@@ -1,6 +1,6 @@
 {
   "version": 12,
-  "generado_utc": "2026-09-25T09:54:32Z",
+  "generado_utc": "2026-09-25T17:37:26Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-09-25",
   "agenda": {
@@ -132,44 +132,45 @@
       "solicitudes": 1,
       "eventos": 2
     },
-    "eventos": 645
+    "eventos": 645,
+    "cache": "vigente"
   },
   "xtream": {
-    "categorias_hoy": 0,
-    "categorias_fuera_de_jornada": 3,
-    "streams_totales": 11892,
+    "categorias_hoy": 3,
+    "categorias_fuera_de_jornada": 0,
+    "streams_totales": 11914,
     "descartado_sin_hora_programada": 11270,
     "descartado_contenido_no_evento": 468,
-    "descartado_fecha_xtream_fuera_de_jornada": 112,
-    "descartado_categoria_xtream_fuera_de_jornada": 42,
-    "candidatos": 0
+    "descartado_fecha_xtream_fuera_de_jornada": 11,
+    "candidatos": 165
   },
   "curacion": {
     "lista_stale": 0,
-    "eventos_unicos": 0,
+    "eventos_independientes_creados": 41,
+    "fuentes_independientes": 41,
+    "fuentes_emparejadas": 124,
+    "eventos_unicos": 96,
     "frescura": {
       "es_stale": false,
-      "coincidencias_ayer": 0,
-      "coincidencias_hoy": 0,
-      "evaluados": 0
+      "coincidencias_ayer": 13,
+      "coincidencias_hoy": 104,
+      "evaluados": 162
     }
   },
-  "eventos_finales_base": 0,
+  "eventos_finales_base": 96,
   "cuarentena_guardada": 0,
   "epg": {
     "politica": "en_canal_consenso_multifeed_estricto",
     "lectura": {
-      "programas_leidos": 195207,
-      "rechazados_no_en_vivo": 38,
-      "veto_o_historico": 9,
-      "admitidos": 5,
-      "categoria:Ciclismo": 2,
-      "categoria:Snooker": 1,
-      "categoria:Combate": 1,
+      "programas_leidos": 199906,
+      "rechazados_no_en_vivo": 43,
+      "veto_o_historico": 8,
+      "admitidos": 2,
+      "categoria:Ciclismo": 1,
       "categoria:Handball": 1
     },
     "fusion": {
-      "agregados": 5
+      "agregados": 2
     },
     "canales_mapeados": {
       "E1": 1,
@@ -178,6 +179,6 @@
     },
     "orden_fuentes": "ES,Principal,EN,otros"
   },
-  "eventos_finales_total": 5,
-  "actualizado_utc": "2026-09-25T09:54:35Z"
+  "eventos_finales_total": 98,
+  "actualizado_utc": "2026-09-25T17:37:29Z"
 }
