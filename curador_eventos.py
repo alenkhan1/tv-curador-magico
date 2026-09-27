@@ -172,11 +172,11 @@ SESIONES = {
 DEPORTE_PISTAS = {
     "Golf": {"GOLF", "PGA", "DP WORLD", "BMW CHAMPIONSHIP", "LIV GOLF", "MASTERS TOURNAMENT"},
     "Snooker": {"SNOOKER", "WUHAN OPEN", "BRITISH OPEN", "ENGLISH OPEN", "SHANGHAI MASTERS", "CHINA OPEN", "WORLD SNOOKER"},
-    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR", "MOUNTAIN BIKE", "MTB", "BTT", "DESCENSO", "TOUR DE LUXEMBURGO", "TOUR DE LUXEMBOURG", "GIRO DE LOS ABRUZZOS", "GIRO D ABRUZZO", "GIRO D ITALIA", "GIRO", "TOUR", "CRITERIUM", "PARIS NICE", "DAUPHINE", "TIRRENO", "WALLONIE", "VALONIA", "FLANDES", "FLANDRIEN", "BICICLETA DE MONTANA"},
+    "Ciclismo": {"VUELTA", "CYCLING", "CICLISMO", "RADSPORT", "CYCLISME", "TOUR DE FRANCE", "RENEWI TOUR", "MOUNTAIN BIKE", "MTB", "BTT", "DESCENSO", "TOUR DE LUXEMBURGO", "TOUR DE LUXEMBOURG", "GIRO DE LOS ABRUZZOS", "GIRO D ABRUZZO", "GIRO D ITALIA", "GIRO", "CRITERIUM", "PARIS NICE", "DAUPHINE", "TIRRENO", "WALLONIE", "VALONIA", "FLANDES", "FLANDRIEN", "BICICLETA DE MONTANA"},
     "Escalada": {"ESCALADA", "CLIMBING", "BOULDER", "IFSC", "MURO"},
     "Deportes Acuáticos": {"PIRAGUISMO", "REMO", "CANOTAJE", "CANOE", "KAYAK", "SURFING", "SURF", "NATACION", "WATERPOLO"},
     "Gimnasia": {"GIMNASIA", "GYMNASTICS", "GYMNASTIQUE", "TURNEN", "ARTISTICA"},
-    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA", "US OPEN", "AUSTRALIAN OPEN", "ROLAND GARROS", "WIMBLEDON", "OPEN", "MASTERS 1000", "CHALLENGER", "ITF", "GUADALAJARA OPEN", "SP OPEN", "COURT", "GRANDSTAND", "ARTHUR ASHE", "LOUIS ARMSTRONG", "STADIUM 17"},
+    "Tenis": {"TENNIS", "TENIS", "ATP", "WTA", "US OPEN", "AUSTRALIAN OPEN", "ROLAND GARROS", "WIMBLEDON", "MASTERS 1000", "CHALLENGER", "ITF", "GUADALAJARA OPEN", "SP OPEN", "COURT", "GRANDSTAND", "ARTHUR ASHE", "LOUIS ARMSTRONG", "STADIUM 17"},
     "Fútbol": {"SOCCER", "FUTBOL", "LALIGA", "PREMIER LEAGUE", "BUNDESLIGA", "SERIE A", "CHAMPIONS LEAGUE", "LIBERTADORES", "SUDAMERICANA", "UEL", "UCL", "UECL", "EUROPA LEAGUE", "CONFERENCE LEAGUE", "CONFERENCE", "CHAMPIONS", "MUNDIAL FEM", "SUB20", "SUB17", "SUB 20", "SUB 17", "FEMENIL", "FEMENINO", "COPA DEL REY", "FA CUP", "CARABAO", "COPA ITALIA", "DFB POKAL", "LIGUE 1", "EREDIVISIE", "BETPLAY", "LIGA BETPLAY", "LIGA MX", "MLS", "ELIMINATORIAS", "UEFA", "CONMEBOL", "CONCACAF", "CAF", "FIFA"},
     "Baloncesto": {"NBA", "BASKET", "BALONCESTO", "EUROLEAGUE", "FIBA", "WNBA", "EUROCUP", "ACB"},
     "Béisbol": {"BASEBALL", "BEISBOL", "MLB", "LMB", "LITTLE LEAGUE", "SERIE DEL CARIBE"},
@@ -581,7 +581,7 @@ def normalizar_evento_api(deporte: str, item: Dict[str, Any], config: Dict[str, 
     return {
         "id": f"apisports_{deporte}_{id_origen}", "agenda_id": f"apisports_{deporte}_{id_origen}",
         "titulo": titulo, "torneo": torneo, "categoria": config["categoria"], "tipo_evento": tipo,
-        "equipo_local": local, "equipo_visitante": visitante, "subtitulo": subtitulo,
+        "equipo_local": local, "equipo_visitante": visitante, "subtitulo": subtitulo, "referencia": subtitulo,
         "hora_utc": iso_utc(inicio), "hora_local_producto": inicio.astimezone(tz).strftime("%H:%M"),
         "duracion_min": DURACION_POR_CATEGORIA.get(config["categoria"], 150),
         "logo_torneo": logo_torneo, "logo_local": logo_local, "logo_visitante": logo_visitante,
@@ -1080,9 +1080,11 @@ def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, exist
     if not logo_torneo and not es_logo_basura(canal.get("logo_xtream")):
         logo_torneo = canal.get("logo_xtream")
 
-    if tipo == "sencillo":
-        logo_loc = logo_torneo
+    if tipo in ("sencillo", "circuito"):
+        logo_loc = ""
         logo_vis = ""
+        local = ""
+        visitante = ""
     else:
         logo_loc = resolver_logo_equipo(local)
         logo_vis = resolver_logo_equipo(visitante)

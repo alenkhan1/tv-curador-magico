@@ -55,15 +55,31 @@ log = logging.getLogger("inyector_epg")
 
 URLS_EPG_EUROPA = os.environ.get(
     "URLS_EPG_EUROPA",
-    "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz,https://epgshare01.online/epgshare01/epg_ripper_DE1.xml.gz"
+    "https://raw.githubusercontent.com/davidmuma/EPG_dobleM/master/guiatv.xml.gz,"
+    "https://epgshare01.online/epgshare01/epg_ripper_ES1.xml.gz,"
+    "https://epgshare01.online/epgshare01/epg_ripper_CO1.xml.gz,"
+    "https://epgshare01.online/epgshare01/epg_ripper_AR1.xml.gz,"
+    "https://epgshare01.online/epgshare01/epg_ripper_PT1.xml.gz,"
+    "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz"
 ).split(",")
 INCLUIR_EPG_EN_CANAL = os.environ.get("INCLUIR_EPG_EN_CANAL", "true").lower() in {"1", "true", "si", "sí", "yes"}
 PUBLICAR_EPG_FUTURO = os.environ.get("PUBLICAR_EPG_FUTURO", "true").lower() in {"1", "true", "si", "sí", "yes"}
 MAX_EPG_EVENTOS = max(int(os.environ.get("MAX_EPG_EVENTOS", "180")), 0)
 MAX_DIFERENCIA_EPG_MIN = max(int(os.environ.get("MAX_DIFERENCIA_EPG_MIN", "60")), 15)
 
-CANALES_EPG = ("E1", "E2", "TDP")
-PAISES_GUIA_PRINCIPAL = {"", "ES", "ESP"}
+CANALES_EPG = (
+    # España
+    "E1", "E2", "TDP",
+    "DAZN1", "DAZN2", "DAZN3", "DAZN4", "DAZNLALIGA", "DAZNF1",
+    "MLALIGA", "MCAMPEONES", "MDEPORTES", "MVAMOS", "GOLPLAY",
+    # Colombia / LatAm
+    "WINSPORTS", "WINSPORTS+", "DSPORTS", "DSPORTS2", "DSPORTS+", "DSPORTSMOTOR", "DSPORTSFIGHT",
+    # Argentina
+    "TYC", "TNTSPORTS",
+    # Panregional
+    "ESPN", "ESPN2", "ESPN3", "ESPN4", "ESPN5", "ESPN6", "ESPN7", "ESPNEXTRA", "ESPNPREMIUM"
+)
+PAISES_GUIA_PRINCIPAL = {"", "ES", "ESP", "CO", "COL", "AR", "ARG", "MX", "CL", "LATAM"}
 
 VETO_EPG = {
     "REPETICION", "REPLAY", "RESUMEN", "HIGHLIGHTS", "COMPACTO", "NOTICIAS", "NEWS", "MAGAZINE",
@@ -164,24 +180,81 @@ def limitar(texto: str, maximo: int) -> str:
 
 
 def clave_canal_epg(channel_id: str) -> Optional[str]:
-    valor = normalizar_texto(channel_id)
+    valor = normalizar_texto(channel_id).replace(".", " ")
+    # Win Sports (Colombia)
+    if "WIN" in valor and any(k in valor for k in ["+", "PREMIUM", "PLUS"]):
+        return "WINSPORTS+"
+    if "WIN" in valor and "SPORTS" in valor:
+        return "WINSPORTS"
+    # DSports (Latam)
+    if "DSPORTS MOTOR" in valor:
+        return "DSPORTSMOTOR"
+    if "DSPORTS FIGHT" in valor:
+        return "DSPORTSFIGHT"
+    if "DSPORTS 2" in valor or "DTV2" in valor:
+        return "DSPORTS2"
+    if "DSPORTS +" in valor or "DSPORTS+" in valor or "DTS+" in valor:
+        return "DSPORTS+"
+    if "DSPORTS" in valor or "DIRECTV SPORTS" in valor:
+        return "DSPORTS"
+    # Argentina
+    if "TYC" in valor:
+        return "TYC"
+    if "TNT SPORTS" in valor:
+        return "TNTSPORTS"
+    # DAZN (España)
+    if "DAZN F1" in valor:
+        return "DAZNF1"
+    if "DAZN LALIGA" in valor:
+        return "DAZNLALIGA"
+    for n in ("4", "3", "2", "1"):
+        if f"DAZN {n}" in valor or f"DAZN{n}" in valor:
+            return f"DAZN{n}"
+    # Movistar (España)
+    if "LALIGA" in valor and any(k in valor for k in ["M+", "MOVISTAR"]):
+        return "MLALIGA"
+    if "CAMPEONES" in valor:
+        return "MCAMPEONES"
+    if "DEPORTES" in valor and any(k in valor for k in ["M+", "MOVISTAR"]):
+        return "MDEPORTES"
+    if any(k in valor for k in ["VAMOS", "#VAMOS"]):
+        return "MVAMOS"
+    if "GOL PLAY" in valor or "GOL TELEVISION" in valor or "GOL TV" in valor:
+        return "GOLPLAY"
+    # Públicos España
     if "TELEDEPORTE" in valor or re.search(r"\bTDP\b", valor):
         return "TDP"
-    if re.search(r"\bEUROSPORTS?[\s._-]*2\b", valor):
+    if re.search(r"\bEUROSPORTS?\s*2\b", valor):
         return "E2"
-    if re.search(r"\bEUROSPORTS?[\s._-]*1\b", valor):
+    if re.search(r"\bEUROSPORTS?\s*1\b", valor):
         return "E1"
+    # ESPN (Latam y Panregional)
+    for n in ("7", "6", "5", "4", "3", "2"):
+        if re.search(rf"\bESPN\s*{n}\b", valor):
+            return f"ESPN{n}"
+    if "ESPN EXTRA" in valor:
+        return "ESPNEXTRA"
+    if "ESPN PREMIUM" in valor:
+        return "ESPNPREMIUM"
+    if "ESPN" in valor:
+        return "ESPN"
     return None
 
 
-def es_canal_espana(nombre: str) -> bool:
+def es_canal_deportivo_valido(nombre: str) -> bool:
     valor = normalizar_texto(nombre)
-    if any(x in valor for x in ("SP ES", "ESPANA", "ESPANOL", "CASTELLANO")):
+    regiones_validas = (
+        "SP ES", "ESPANA", "ESPANOL", "CASTELLANO", "SPAIN",
+        "COL", "COLOMBIA", "AR", "ARGENTINA", "MX", "MEXICO", 
+        "CL", "CHILE", "LATAM", "LATINO", "USA", "US"
+    )
+    if any(x in valor for x in regiones_validas):
         return True
-    if re.search(r"^(?:SP\s*)?ES\s*[:\- bureaucracy|]", valor) or re.search(r"\b(?:ESP|SPAIN)\b", valor):
-        if not any(f"SP {c}" in valor or f" {c} " in valor for c in ("DE", "FR", "IT", "PL", "PT", "RO", "UK", "US")):
-            return True
+    if re.search(r"^(?:SP\s*)?(?:ES|COL|CO|AR|ARG|MX|CL|LATAM|USA)\s*[:\-·|]", valor) or re.search(r"\b(?:ESP|SPAIN|COL|ARG|LATAM)\b", valor):
+        return True
     return False
+
+es_canal_espana = es_canal_deportivo_valido
 
 
 def pais_epg(channel_id: str) -> str:
@@ -486,8 +559,8 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
                         item = {"clave": clave, "canal": canal, "inicio": inicio, "fin": fin, "titulo": titulo, "descripcion": desc}
                         todos_los_programas.append(item)
                         pais = pais_epg(canal)
-                        # Solo la guía de España alimenta los eventos principales
-                        if es_guia_espana and clave in mapa and pais in PAISES_GUIA_PRINCIPAL:
+                        # Todos los canales deportivos mapeados (España + América) alimentan eventos
+                        if clave in mapa:
                             programas_principales.append(item)
                     elemento.clear()
         except requests.RequestException as exc:
