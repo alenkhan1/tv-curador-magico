@@ -5,6 +5,7 @@ Modulo de Inteligencia Deportiva con Gemini.
 2. Supervisa la parrilla EPG de canales lineales deportivos (Win Sports, Win+, DSports, Eurosport, ESPN, etc.)
    descartando repeticiones, tertulias y noticieros, confirmando solo emisiones en directo y asignando
    metadatos y logos limpios.
+Incorpora control de tasa (Rate Limiting) estricto para respetar el límite de 15 RPM del tier gratuito de Gemini.
 """
 from __future__ import annotations
 
@@ -31,6 +32,7 @@ MODELOS_DISPONIBLES = [
 
 ARCHIVO_CACHE_IA = Path("cache_gemini_deportes.json")
 _memoria_cache: Dict[str, Any] = {}
+_ultimo_timestamp_llamada: float = 0.0
 
 def _cargar_cache():
     global _memoria_cache
@@ -50,10 +52,20 @@ _cargar_cache()
 
 
 def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
-    """Ejecuta consulta a Gemini probando modelos resilientes en caso de 503 o 429."""
+    """
+    Ejecuta consulta a Gemini con control de tasa (Rate Limit <= 15 RPM).
+    Espera un mínimo de 4.2 segundos entre peticiones para evitar HTTP 429.
+    """
+    global _ultimo_timestamp_llamada
     if not GEMINI_API_KEY:
         log.warning("GEMINI_API_KEY no configurada.")
         return None
+
+    # Control de tasa estricto (15 RPM -> mínimo 4.2 seg entre llamadas)
+    tiempo_transcurrido = time.time() - _ultimo_timestamp_llamada
+    if tiempo_transcurrido < 4.2:
+        tiempo_espera = 4.2 - tiempo_transcurrido
+        time.sleep(tiempo_espera)
 
     payload: Dict[str, Any] = {
         "contents": [{"parts": [{"text": prompt}]}]
@@ -72,6 +84,7 @@ def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
             method="POST"
         )
         try:
+            _ultimo_timestamp_llamada = time.time()
             with urllib.request.urlopen(req, timeout=25) as resp:
                 resultado = json.loads(resp.read().decode("utf-8"))
                 candidatos = resultado.get("candidates", [])
@@ -80,17 +93,23 @@ def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
                     if texto.strip():
                         return texto.strip()
         except urllib.error.HTTPError as e:
-            if e.code in (429, 503):
-                log.warning("Gemini modelo %s devolvio HTTP %s (%s). Probando siguiente...", modelo, e.code, e.reason)
+            if e.code == 429:
+                log.warning("Gemini modelo %s devolvio HTTP 429 (Cuota por minuto alcanzada). Pausando 12s...", modelo)
+                time.sleep(12)
+            elif e.code == 503:
+                log.warning("Gemini modelo %s ocupado (HTTP 503). Probando siguiente...", modelo)
+                time.sleep(2)
             else:
                 log.warning("Gemini modelo %s fallo con HTTP %s", modelo, e.code)
-            time.sleep(1)
+                time.sleep(1)
         except Exception as e:
             log.warning("Gemini modelo %s fallo (%s). Probando siguiente...", modelo, e)
             time.sleep(1)
 
     return None
 
+
+_contador_llamadas_indep = 0
 
 def enriquecer_evento_independiente(nombre_ui: str, categoria_sugerida: str = "") -> Optional[Dict[str, Any]]:
     """
@@ -100,10 +119,16 @@ def enriquecer_evento_independiente(nombre_ui: str, categoria_sugerida: str = ""
     - tipo_evento (duelo o circuito)
     - equipos o referencia limpia (cancha, etapa, sesion)
     - logo oficial (si existe certeza)
+    Usa caché en disco y limita a un máximo de 15 llamadas nuevas por ejecución para no saturar.
     """
+    global _contador_llamadas_indep
     clave = f"indep_{nombre_ui.strip()}"
     if clave in _memoria_cache:
         return _memoria_cache[clave]
+
+    if _contador_llamadas_indep >= 15:
+        # Límite de llamadas por corrida para mantener la ejecución rápida y segura
+        return None
 
     prompt = f"""Eres un curador deportivo de elite para television.
 Analiza este evento deportivo emitido hoy en la television:
@@ -122,6 +147,7 @@ Reglas:
 Devuelve unicamente el JSON correspondiente."""
 
     resp = _llamar_gemini(prompt, json_mode=True)
+    _contador_llamadas_indep += 1
     if not resp:
         return None
 
@@ -140,7 +166,7 @@ Devuelve unicamente el JSON correspondiente."""
 def supervisar_parrilla_canales_en_vivo(programas: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Supervisa la lista de programas candidatos de canales lineales deportivos.
-    Gemini analiza en lotes y descarta:
+    Gemini analiza en lotes optimizados (máx 3 lotes) y descarta:
     - Repeticiones antiguas
     - Noticieros, tertulias y programas de debate (ej: Saque Largo, Sportscenter, FShow, Estudio Estadio, etc.)
     Y confirma solo los que son TRANSMISIONES DEPORTIVAS REALES EN VIVO.
@@ -150,8 +176,9 @@ def supervisar_parrilla_canales_en_vivo(programas: List[Dict[str, Any]]) -> List
 
     resultados_aprobados: List[Dict[str, Any]] = []
     lote_tam = 35
+    max_lotes = 3  # Máximo 3 lotes (105 programas) por corrida para no agotar cuota
 
-    for i in range(0, len(programas), lote_tam):
+    for i in range(0, min(len(programas), lote_tam * max_lotes), lote_tam):
         lote = programas[i:i + lote_tam]
         lineas = []
         for idx, p in enumerate(lote):
@@ -220,5 +247,9 @@ Devuelve un JSON array con los indices aprobados y sus metadatos limpios:
         except Exception as e:
             log.warning("Error parseando aprobaciones de Gemini: %s", e)
             resultados_aprobados.extend(lote)
+
+    # Si había más programas fuera del límite de lotes, preservarlos
+    if len(programas) > lote_tam * max_lotes:
+        resultados_aprobados.extend(programas[lote_tam * max_lotes:])
 
     return resultados_aprobados
