@@ -544,7 +544,14 @@ def _texto_evento_api(item: Dict[str, Any], config: Dict[str, str]) -> Tuple[str
     local = str(_get(item, "teams.home.name", "home.name", "fighters.home.name") or "").strip()
     visitante = str(_get(item, "teams.away.name", "away.name", "fighters.away.name") or "").strip()
     torneo = str(_get(item, "league.name", "competition.name", "race.competition.name", "event.name") or "").strip()
-    subtitulo = str(_get(item, "game.stage", "game.week", "fixture.status.long", "race.type", "race.name", "name") or "").strip()
+    subtitulo = str(_get(item, "game.stage", "game.week", "race.type", "race.name", "name") or "").strip()
+    STATUS_TECNICOS = {
+        "NOT STARTED", "MATCH FINISHED", "TIME TO BE DEFINED", "TBD", "NS", "FT", "AET", "PEN",
+        "FIRST HALF", "SECOND HALF", "HALFTIME", "EXTRA TIME", "BREAK TIME", "POSTPONED", "CANCELLED",
+        "ABANDONED", "SUSPENDED", "INTERRUPTED", "IN PLAY", "LIVE"
+    }
+    if subtitulo.upper() in STATUS_TECNICOS:
+        subtitulo = ""
     if local and visitante:
         return f"{local} vs {visitante}", torneo, local, visitante, "duelo", subtitulo
     titulo = str(_get(item, "race.competition.name", "race.name", "fight.name", "event.name", "name", "league.name") or "").strip()
@@ -1067,6 +1074,31 @@ def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, exist
 
     categoria = canal.get("categoria_inferida") or "Otros Deportes"
     torneo, subtitulo, tipo, local, visitante = analizar_titulo_xtream(canal["nombre_ui"], categoria)
+
+    # Enriquecimiento inteligente con Gemini para eventos no cubiertos por API-Sports (ej: Tejo, deportes locales)
+    try:
+        from agente_deportivo_ia import enriquecer_evento_independiente
+        datos_ia = enriquecer_evento_independiente(canal["nombre_ui"], categoria)
+        if datos_ia:
+            if datos_ia.get("torneo"):
+                torneo = str(datos_ia["torneo"]).strip()
+            if datos_ia.get("categoria"):
+                categoria = str(datos_ia["categoria"]).strip()
+            if datos_ia.get("tipo_evento"):
+                tipo = "duelo" if datos_ia["tipo_evento"] == "duelo" else "circuito"
+            if tipo == "duelo":
+                local = str(datos_ia.get("equipo_local") or local).strip()
+                visitante = str(datos_ia.get("equipo_visitante") or visitante).strip()
+                subtitulo = str(datos_ia.get("referencia") or subtitulo).strip()
+            else:
+                local, visitante = "", ""
+                subtitulo = str(datos_ia.get("referencia") or subtitulo).strip()
+            if datos_ia.get("logo_oficial"):
+                logo_torneo_ia = str(datos_ia["logo_oficial"]).strip()
+                if logo_torneo_ia:
+                    canal["logo_xtream"] = logo_torneo_ia
+    except Exception as e:
+        log.debug("Enriquecedor IA no disponible para %s: %s", canal.get("nombre_ui"), e)
 
     if not torneo and not local:
         return None

@@ -243,15 +243,25 @@ def clave_canal_epg(channel_id: str) -> Optional[str]:
 
 def es_canal_deportivo_valido(nombre: str) -> bool:
     valor = normalizar_texto(nombre)
+    # Veto estricto de idiomas no deseados:
+    veto_idiomas = ("FR:", "FRANCE", "FRENCH", "DE:", "GERMAN", "DEUTSCH", "IT:", "ITALIA", "PT:", "PORTUGAL", "NL:", "POLAND")
+    if any(v in valor for v in veto_idiomas):
+        return False
+
     regiones_validas = (
         "SP ES", "ESPANA", "ESPANOL", "CASTELLANO", "SPAIN",
-        "COL", "COLOMBIA", "AR", "ARGENTINA", "MX", "MEXICO", 
-        "CL", "CHILE", "LATAM", "LATINO", "USA", "US"
+        "COL", "COLOMBIA", "AR", "ARGENTINA", "MX", "MEXICO",
+        "CL", "CHILE", "LATAM", "LATINO", "USA", "US", "UK", "EN"
     )
     if any(x in valor for x in regiones_validas):
         return True
-    if re.search(r"^(?:SP\s*)?(?:ES|COL|CO|AR|ARG|MX|CL|LATAM|USA)\s*[:\-·|]", valor) or re.search(r"\b(?:ESP|SPAIN|COL|ARG|LATAM)\b", valor):
+    if re.search(r"^(?:SP\s*)?(?:ES|COL|CO|AR|ARG|MX|CL|LATAM|USA|UK|EN)\s*[:\-·|]", valor) or re.search(r"\b(?:ESP|SPAIN|COL|ARG|LATAM|UK)\b", valor):
         return True
+
+    # Eurosport 1 o 2 sin país marcado se acepta (español por defecto o inglés):
+    if re.search(r"\bEUROSPORTS?\s*[12]\b", valor):
+        return True
+
     return False
 
 es_canal_espana = es_canal_deportivo_valido
@@ -407,6 +417,7 @@ def construir_evento_epg(
         ahora: datetime,
         consenso_directo: bool = False,
         canal_epg: str = "",
+        programa_info: Optional[Dict[str, Any]] = None,
 ) -> Optional[Dict[str, Any]]:
     if not titulo_raw or es_historico_o_veto(titulo_raw, descripcion):
         return None
@@ -430,7 +441,8 @@ def construir_evento_epg(
         and (11 <= hora_madrid <= 21)
     )
 
-    directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}") or es_vivo_eurosport
+    es_confirmado_ia = bool(programa_info and programa_info.get("confirmado_ia"))
+    directo = consenso_directo or es_directo_multilingue(f"{titulo_raw} {descripcion}") or es_vivo_eurosport or es_confirmado_ia
     if not directo and oficial:
         directo = True
 
@@ -438,6 +450,14 @@ def construir_evento_epg(
         return None
 
     torneo, subtitulo = enriquecer_titulo_competicion(torneo, subtitulo, descripcion, categoria)
+    if programa_info:
+        if programa_info.get("torneo_ia"):
+            torneo = str(programa_info["torneo_ia"]).strip()
+        if programa_info.get("categoria_ia"):
+            categoria = str(programa_info["categoria_ia"]).strip()
+        if programa_info.get("referencia_ia"):
+            subtitulo = str(programa_info["referencia_ia"]).strip()
+
     if len(normalizar_texto(torneo)) < 4:
         return None
 
@@ -460,8 +480,13 @@ def construir_evento_epg(
         else:
             tipo = "sencillo"
 
+    if programa_info and programa_info.get("tipo_evento_ia") == "duelo":
+        tipo = "duelo"
+        local = str(programa_info.get("equipo_local_ia") or local).strip()
+        visitante = str(programa_info.get("equipo_visitante_ia") or visitante).strip()
+
     titulo_final = f"{local} vs {visitante}" if tipo == "duelo" else torneo
-    logo_oficial = resolver_logo_torneo(torneo, categoria)
+    logo_oficial = (programa_info and programa_info.get("logo_oficial_ia")) or resolver_logo_torneo(torneo, categoria)
     fuentes = ordenar_fuentes(fuentes)
 
     estado_str = "en_canal" if inicio <= ahora < (fin or inicio + timedelta(minutes=duracion)) else "programado"
@@ -571,6 +596,27 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
     # Matriz de consenso paneuropea por categoría
     matriz_live = construir_matriz_consenso(todos_los_programas)
 
+    # Supervisión inteligente con Gemini para descartar tertulias/repeticiones y confirmar DIRECTO
+    try:
+        from agente_deportivo_ia import supervisar_parrilla_canales_en_vivo
+        candidatos_ia = []
+        for prog in programas_principales:
+            candidatos_ia.append({
+                "canal_epg": prog["clave"],
+                "titulo_raw": prog["titulo"],
+                "descripcion": prog["descripcion"],
+                "inicio": prog["inicio"],
+                "fin": prog["fin"],
+                "clave": prog["clave"],
+                "canal": prog["canal"]
+            })
+        programas_supervisados = supervisar_parrilla_canales_en_vivo(candidatos_ia)
+        if programas_supervisados:
+            programas_principales = programas_supervisados
+            log.info("Supervisión Gemini: %s programas validados como eventos deportivos en directo", len(programas_supervisados))
+    except Exception as e:
+        log.warning("Supervisión Gemini no disponible o error: %s", e)
+
     eventos: List[Dict[str, Any]] = []
     for programa in programas_principales:
         titulo, desc = str(programa["titulo"]), str(programa["descripcion"])
@@ -586,7 +632,7 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
         evento = construir_evento_epg(
             titulo, desc, programa["inicio"], programa["fin"],
             mapa.get(clave, []), agenda, ahora, consenso_directo=es_directo_validado,
-            canal_epg=clave
+            canal_epg=clave, programa_info=programa
         )
 
         if evento:

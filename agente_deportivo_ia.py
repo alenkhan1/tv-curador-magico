@@ -1,30 +1,52 @@
 ﻿# -*- coding: utf-8 -*-
 """
-Módulo de Inteligencia Deportiva con Gemini.
-Normaliza eventos, unifica transmisiones multi-feed y resuelve metadatos oficiales
-para canales deportivos de España y América.
+Modulo de Inteligencia Deportiva con Gemini.
+1. Normaliza y enriquece eventos de la lista Xtream no cubiertos por API-Sports (ej: Tejo, deportes locales).
+2. Supervisa la parrilla EPG de canales lineales deportivos (Win Sports, Win+, DSports, Eurosport, ESPN, etc.)
+   descartando repeticiones, tertulias y noticieros, confirmando solo emisiones en directo y asignando
+   metadatos y logos limpios.
 """
 from __future__ import annotations
 
 import json
 import logging
 import os
+import re
 import time
 import urllib.request
 import urllib.error
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 log = logging.getLogger("agente_deportivo_ia")
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 
-MODELOS_PREFERIDOS = [
-    "gemini-flash-latest",
+MODELOS_DISPONIBLES = [
     "gemini-3.1-flash-lite",
     "gemini-3.5-flash-lite",
-    "gemini-flash-lite-latest",
-    "gemini-3.6-flash"
+    "gemini-3.8-flash",
+    "gemini-flash-latest",
 ]
+
+ARCHIVO_CACHE_IA = Path("cache_gemini_deportes.json")
+_memoria_cache: Dict[str, Any] = {}
+
+def _cargar_cache():
+    global _memoria_cache
+    if ARCHIVO_CACHE_IA.exists():
+        try:
+            _memoria_cache = json.loads(ARCHIVO_CACHE_IA.read_text(encoding="utf-8"))
+        except Exception:
+            _memoria_cache = {}
+
+def _guardar_cache():
+    try:
+        ARCHIVO_CACHE_IA.write_text(json.dumps(_memoria_cache, ensure_ascii=False, indent=2), encoding="utf-8")
+    except Exception as e:
+        log.warning("No se pudo guardar cache de IA: %s", e)
+
+_cargar_cache()
 
 
 def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
@@ -41,7 +63,7 @@ def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
 
     data = json.dumps(payload).encode("utf-8")
 
-    for modelo in MODELOS_PREFERIDOS:
+    for modelo in MODELOS_DISPONIBLES:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent?key={GEMINI_API_KEY}"
         req = urllib.request.Request(
             url,
@@ -58,99 +80,145 @@ def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
                     if texto.strip():
                         return texto.strip()
         except urllib.error.HTTPError as e:
-            log.warning("Gemini modelo %s devolvió HTTP %s (%s). Probando siguiente...", modelo, e.code, e.reason)
+            if e.code in (429, 503):
+                log.warning("Gemini modelo %s devolvio HTTP %s (%s). Probando siguiente...", modelo, e.code, e.reason)
+            else:
+                log.warning("Gemini modelo %s fallo con HTTP %s", modelo, e.code)
             time.sleep(1)
         except Exception as e:
-            log.warning("Gemini modelo %s falló (%s). Probando siguiente...", modelo, e)
+            log.warning("Gemini modelo %s fallo (%s). Probando siguiente...", modelo, e)
             time.sleep(1)
 
     return None
 
 
-def estructurar_canales_xtream(canales: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def enriquecer_evento_independiente(nombre_ui: str, categoria_sugerida: str = "") -> Optional[Dict[str, Any]]:
     """
-    Toma canales de eventos Xtream crudos y los agrupa semánticamente
-    en eventos canónicos únicos, resolviendo torneo, referencia y logos oficiales.
+    Toma un evento deportivo de Xtream no cubierto por API-Sports y extrae con Gemini:
+    - torneo oficial
+    - categoria valida
+    - tipo_evento (duelo o circuito)
+    - equipos o referencia limpia (cancha, etapa, sesion)
+    - logo oficial (si existe certeza)
     """
-    if not canales:
-        return []
+    clave = f"indep_{nombre_ui.strip()}"
+    if clave in _memoria_cache:
+        return _memoria_cache[clave]
 
-    # Procesar en lotes de 60 canales para máxima precisión y rapidez
-    resultados_totales: List[Dict[str, Any]] = []
-    tamano_lote = 60
+    prompt = f"""Eres un curador deportivo de elite para television.
+Analiza este evento deportivo emitido hoy en la television:
+Titulo original en la lista: "{nombre_ui}"
+Categoria inferida: "{categoria_sugerida}"
 
-    for i in range(0, len(canales), tamano_lote):
-        lote = canales[i:i + tamano_lote]
-        lineas_canales = [f"- ID:{c.get('id_xtream', '')} | {c.get('nombre_ui', '')}" for c in lote]
-        texto_canales = "\n".join(lineas_canales)
+Tu mision es estructurar y limpiar los metadatos para que se vean profesionales en pantalla.
+Reglas:
+1. 'torneo': Nombre oficial y limpio de la competicion, liga o campeonato (ej: "Campeonato Nacional de Tejo", "Premier Padel", "Copa Libertadores").
+2. 'categoria': Debe ser una de: ["Futbol", "Baloncesto", "Beisbol", "Tenis", "Ciclismo", "Motor", "Combate", "Golf", "Snooker", "Balonmano", "Rugby", "Padel", "Hockey", "Voleibol", "Futbol Americano", "Otros Deportes"].
+3. 'tipo_evento': "duelo" si es enfrentamiento entre dos equipos/selecciones, o "circuito" si es deporte individual/carrera/torneo.
+4. Si es duelo: 'equipo_local' y 'equipo_visitante' con sus nombres limpios.
+5. Si es circuito: 'equipo_local'="" y 'equipo_visitante'="". En 'referencia' pon cancha, etapa, ronda o sesion (ej: "Cancha Bavaria 5", "Semifinal", "Etapa 4").
+6. 'logo_oficial': URL de Wikimedia Commons o sitio oficial del torneo o federacion (PNG transparente o SVG). Si no existe o dudas, pon "".
 
-        prompt = f"""Eres un curador deportivo de elite para televisión.
-Analiza esta lista de canales y transmisiones deportivas en vivo.
-Tu misión es normalizar, clasificar y unificar las señales en eventos deportivos canónicos.
-
-REGLAS OBLIGATORIAS:
-1. UNIFICACIÓN MULTI-FEED: Si varios canales transmiten el mismo evento (ej: 'DAZN La Vuelta Etapa 10' y 'Eurosport La Vuelta E10'), AGRÚPALOS en un solo objeto con sus IDs y nombres en 'canales_asociados'.
-2. DEPORTES DE EQUIPO (Fútbol, Baloncesto, Béisbol, NFL, Rugby, Balonmano, Hockey, Voleibol):
-   - tipo_evento: "duelo"
-   - torneo: Nombre oficial de la liga (ej: "Liga BetPlay Dimayor", "LaLiga EA Sports", "UEFA Champions League")
-   - referencia: Jornada o fase (ej: "Fecha 10", "Cuartos de final") o ""
-   - equipo_local: Nombre formal del equipo local
-   - equipo_visitante: Nombre formal del equipo visitante
-3. DEPORTES DE CIRCUITO / INDIVIDUALES (Tenis, Ciclismo, Motor/F1/MotoGP, Snooker, Golf, Combate/MMA/Boxeo, Atletismo):
-   - tipo_evento: "circuito"
-   - torneo: Nombre oficial del torneo o Gran Premio (ej: "La Vuelta a España", "ATP Cincinnati Open", "GP de Italia", "British Open")
-   - referencia: Etapa, Cancha, Sesión o Día (ej: "Etapa 10", "P&G Stadium Court", "Carrera", "Día 4").
-   - IMPORTANTE: En deportes de circuito, equipo_local y equipo_visitante DEBEN ser cadenas vacías "". NO pongas nombres de deportistas individuales.
-4. CATEGORÍA: Debe ser estrictamente una de: ["Fútbol", "Baloncesto", "Béisbol", "Tenis", "Ciclismo", "Motor", "Combate", "Golf", "Snooker", "Balonmano", "Rugby", "Pádel", "Hockey", "Voleibol", "Fútbol Americano", "Otros Deportes"].
-5. LOGO OFICIAL: URL directa al logo oficial (SVG o PNG transparente en Wikimedia Commons o sitio oficial del torneo). Si no lo sabes con certeza, pon "".
-
-CANALES A PROCESAR:
-{texto_canales}
-
-Devuelve un array JSON con los eventos normalizados."""
-
-        resp = _llamar_gemini(prompt, json_mode=True)
-        if not resp:
-            continue
-
-        try:
-            eventos = json.loads(resp)
-            if isinstance(eventos, list):
-                resultados_totales.extend(eventos)
-            elif isinstance(eventos, dict) and "eventos" in eventos:
-                resultados_totales.extend(eventos["eventos"])
-        except json.JSONDecodeError as e:
-            log.error("Error parseando respuesta JSON de Gemini: %s", e)
-
-    return resultados_totales
-
-
-def filtrar_programacion_epg_directos(programas: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """
-    Filtra una lista de programas de televisión deportiva para quedarse
-    exclusivamente con transmisiones en directo reales, descartando repeticiones y revistas.
-    """
-    if not programas:
-        return []
-
-    lineas = [f"- {p.get('id', idx)} | Canal: {p.get('canal', '')} | Título: {p.get('titulo', '')} | Sub: {p.get('subtitulo', '')}" for idx, p in enumerate(programas[:70])]
-    texto = "\n".join(lineas)
-
-    prompt = f"""Eres un supervisor de transmisiones deportivas de televisión en directo.
-Analiza esta lista de programas de canales deportivos (Eurosport, Teledeporte, DAZN, Win Sports, DSports, TyC Sports, ESPN).
-Identifica cuáles son eventos deportivos reales en DIRECTO o ESTRENO DE COMPETICIÓN y cuáles son repeticiones antiguas, resúmenes, noticias o tertulias.
-
-Devuelve un array JSON con los IDs de los programas que SÍ son transmisiones deportivas en directo:
-["id1", "id2", ...]
-PROGRAMAS A EVALUAR:
-{texto}"""
+Devuelve unicamente el JSON correspondiente."""
 
     resp = _llamar_gemini(prompt, json_mode=True)
     if not resp:
-        return programas  # Fallback si no responde
+        return None
 
     try:
-        ids_directo = set(json.loads(resp))
-        return [p for idx, p in enumerate(programas) if str(p.get("id", idx)) in ids_directo]
-    except Exception:
+        data = json.loads(resp)
+        if isinstance(data, dict) and data.get("torneo"):
+            _memoria_cache[clave] = data
+            _guardar_cache()
+            return data
+    except Exception as e:
+        log.warning("Error decodificando respuesta de enriquecimiento IA: %s", e)
+
+    return None
+
+
+def supervisar_parrilla_canales_en_vivo(programas: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    Supervisa la lista de programas candidatos de canales lineales deportivos.
+    Gemini analiza en lotes y descarta:
+    - Repeticiones antiguas
+    - Noticieros, tertulias y programas de debate (ej: Saque Largo, Sportscenter, FShow, Estudio Estadio, etc.)
+    Y confirma solo los que son TRANSMISIONES DEPORTIVAS REALES EN VIVO.
+    """
+    if not programas or not GEMINI_API_KEY:
         return programas
+
+    resultados_aprobados: List[Dict[str, Any]] = []
+    lote_tam = 35
+
+    for i in range(0, len(programas), lote_tam):
+        lote = programas[i:i + lote_tam]
+        lineas = []
+        for idx, p in enumerate(lote):
+            lineas.append(f"{idx}. Canal: {p.get('canal_epg', '')} | Titulo: '{p.get('titulo_raw', '')}' | Desc: '{p.get('descripcion', '')[:100]}'")
+        texto_lote = "\n".join(lineas)
+
+        prompt = f"""Eres un supervisor de transmisiones deportivas de television en directo.
+Analiza la siguiente lista de programas programados para emitirse hoy en canales deportivos:
+{texto_lote}
+
+Tu mision:
+Identifica CUALES son eventos deportivos REALES EN DIRECTO / VIVO (partidos de futbol, tenis, padel, etapas de ciclismo, carreras, etc.).
+DESCARTE OBLIGATORIO:
+- Programas de opinion, tertulias, debate o noticieros (ej: 'Saque Largo', 'Planeta Futbol', 'Sportscenter', 'FShow', 'Estudio Estadio', 'La Montonera', 'Conexion TDP', etc.).
+- Repeticiones de partidos o carreras antiguas o historicas.
+- Programas de resumen o highlights.
+
+Devuelve un JSON array con los indices aprobados y sus metadatos limpios:
+[
+  {{
+    "idx": 0,
+    "es_directo": true,
+    "torneo": "Nombre limpio del torneo o competicion",
+    "categoria": "Una de: Futbol, Baloncesto, Beisbol, Tenis, Ciclismo, Motor, Combate, Golf, Snooker, Balonmano, Rugby, Padel, Hockey, Voleibol, Futbol Americano, Otros Deportes",
+    "tipo_evento": "duelo" o "circuito",
+    "equipo_local": "Nombre o vacio",
+    "equipo_visitante": "Nombre o vacio",
+    "referencia": "Fase, etapa, cancha o sesion (ej: 'Pista Central', 'Fecha 12', 'Semifinal')",
+    "logo_oficial": "URL del logo del torneo o federacion si existe certeza, o vacio ''"
+  }}
+]"""
+
+        resp = _llamar_gemini(prompt, json_mode=True)
+        if not resp:
+            # Si falla la IA por cuota o red, conservar el lote para no perder cartelera
+            resultados_aprobados.extend(lote)
+            continue
+
+        try:
+            aprobados = json.loads(resp)
+            if isinstance(aprobados, list):
+                for item in aprobados:
+                    if not isinstance(item, dict) or not item.get("es_directo"):
+                        continue
+                    idx = item.get("idx")
+                    if isinstance(idx, int) and 0 <= idx < len(lote):
+                        prog_original = dict(lote[idx])
+                        if item.get("torneo"):
+                            prog_original["torneo_ia"] = item.get("torneo")
+                        if item.get("categoria"):
+                            prog_original["categoria_ia"] = item.get("categoria")
+                        if item.get("tipo_evento"):
+                            prog_original["tipo_evento_ia"] = item.get("tipo_evento")
+                        if item.get("equipo_local"):
+                            prog_original["equipo_local_ia"] = item.get("equipo_local")
+                        if item.get("equipo_visitante"):
+                            prog_original["equipo_visitante_ia"] = item.get("equipo_visitante")
+                        if item.get("referencia"):
+                            prog_original["referencia_ia"] = item.get("referencia")
+                        if item.get("logo_oficial"):
+                            prog_original["logo_oficial_ia"] = item.get("logo_oficial")
+                        prog_original["confirmado_ia"] = True
+                        resultados_aprobados.append(prog_original)
+            else:
+                resultados_aprobados.extend(lote)
+        except Exception as e:
+            log.warning("Error parseando aprobaciones de Gemini: %s", e)
+            resultados_aprobados.extend(lote)
+
+    return resultados_aprobados
