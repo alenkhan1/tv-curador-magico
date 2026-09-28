@@ -22,7 +22,7 @@ try:
 except ImportError:
     cffi_requests = None
 
-from resolvedor_logos import resolver_logo_torneo, es_logo_basura
+from resolvedor_logos import resolver_logo_torneo, resolver_logo_equipo, es_logo_basura
 
 logging.basicConfig(
     level=os.environ.get("LOG_LEVEL", "INFO").upper(),
@@ -111,7 +111,7 @@ def _guardar_cache_equipos(cache: Dict[str, str]) -> None:
 
 CACHE_EQUIPOS = _cargar_cache_equipos()
 
-def resolver_logo_equipo(nombre: str) -> str:
+def _resolver_logo_equipo_cache(nombre: str) -> str:
     if not nombre: return ""
     return CACHE_EQUIPOS.get(normalizar_texto(nombre), "")
 
@@ -887,14 +887,17 @@ def es_candidato(stream: Dict[str, Any], categorias_hoy: set[str], fecha_local: 
     if str(stream.get("category_id") or "") in (categorias_ajenas or set()):
         return False, "categoria_xtream_fuera_de_jornada"
 
-    # 2. REGLA INQUEBRANTABLE: Un evento real SIEMPRE tiene hora programada
-    hora = extraer_hora_canal(nombre, fecha_local)
-    if hora is None:
-        return False, "sin_hora_programada"
-
-    # 3. Categorización e identidad
+    # 2. Categorización e identidad
     deporte = inferir_deporte(nombre)
     duelo = bool(re.search(r"\b(VS|V|AT)\b|\s[-@]\s", normalizar_texto(nombre)))
+
+    # 3. Hora programada (o inferida si es un duelo explícito sin hora en el nombre)
+    hora = extraer_hora_canal(nombre, fecha_local)
+    if hora is None:
+        if duelo:
+            hora = fecha_local
+        else:
+            return False, "sin_hora_programada" 
     categoria_hoy = str(stream.get("category_id") or "") in categorias_hoy
 
     if fecha_en_texto is True:
@@ -1278,9 +1281,12 @@ def main() -> None:
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
     eventos, cuarentena, metricas_curacion = curar_eventos(agenda_hoy, agenda_ayer, candidatos, ahora.date())
 
+    # FILTRO FINAL ESTRICTO: Solo eventos con al menos una fuente válida
+    eventos_validos = [e for e in eventos if e.get("fuentes") and len(e["fuentes"]) > 0]
+
     salida = {
         "version": 12, "generado_utc": iso_utc(datetime.now(timezone.utc)), "zona_horaria_producto": str(tz),
-        "fecha_local_producto": fecha_hoy, "base_media": detectar_base_media_m3u(), "eventos": eventos,
+        "fecha_local_producto": fecha_hoy, "base_media": detectar_base_media_m3u(), "eventos": eventos_validos,
     }
     meta = {
         "version": 12, "generado_utc": salida["generado_utc"], "zona_horaria_producto": str(tz),
