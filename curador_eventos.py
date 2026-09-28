@@ -67,7 +67,7 @@ PUBLICAR_XTREAM_PROBABLE = os.environ.get("PUBLICAR_XTREAM_PROBABLE", "true").lo
 PUBLICAR_AGENDA_SIN_FUENTE = os.environ.get("PUBLICAR_AGENDA_SIN_FUENTE", "false").lower() in {"1", "true", "si", "sí", "yes"}
 
 DURACION_POR_CATEGORIA = {
-    "Fútbol": 130, "Baloncesto": 160, "Béisbol": 210, "Motor": 210,
+    "Fútbol": 150, "Baloncesto": 160, "Béisbol": 210, "Motor": 210,
     "Hockey": 160, "Combate": 210, "Tenis": 210, "Rugby": 160,
     "Voleibol": 160, "Fútbol Americano": 220, "Handball": 150,
     "Ciclismo": 240, "Snooker": 180, "Golf": 300, "Gimnasia": 150,
@@ -200,9 +200,47 @@ def normalizar_texto(texto: Any) -> str:
     return " ".join(re.sub(r"[^A-Z0-9\s]", " ", valor).split())
 
 
+PAISES_ALIAS_EXPANSION = {
+    "BELGICA": "BELGIUM", "FRANCIA": "FRANCE", "TURQUIA": "TURKIYE TURKEY",
+    "ITALIA": "ITALY", "SUECIA": "SWEDEN", "POLONIA": "POLAND",
+    "HUNGRIA": "HUNGARY", "ALEMANIA": "GERMANY", "INGLATERRA": "ENGLAND",
+    "ESPANA": "SPAIN", "PAISES BAJOS": "NETHERLANDS", "HOLANDA": "NETHERLANDS",
+    "SUIZA": "SWITZERLAND", "IRLANDA": "IRELAND", "DINAMARCA": "DENMARK",
+    "CROACIA": "CROATIA", "ESCOCIA": "SCOTLAND", "GALES": "WALES",
+    "NORUEGA": "NORWAY", "GRECIA": "GREECE", "PORTUGAL": "PORTUGAL",
+    "RUMANIA": "ROMANIA", "BOSNIA": "BOSNIA", "UCRANIA": "UKRAINE",
+    "REPUBLICA CHECA": "CZECH REPUBLIC", "AUSTRIA": "AUSTRIA", "SERBIA": "SERBIA",
+    "ESLOVAQUIA": "SLOVAKIA", "ESLOVENIA": "SLOVENIA", "FINLANDIA": "FINLAND",
+    "ISLANDIA": "ICELAND", "CHIPRE": "CYPRUS", "LETONIA": "LATVIA",
+    "LITUANIA": "LITHUANIA", "ESTONIA": "ESTONIA", "GEORGIA": "GEORGIA",
+    "ARMENIA": "ARMENIA", "MONTENEGRO": "MONTENEGRO", "ALBANIA": "ALBANIA",
+    "MACEDONIA": "NORTH MACEDONIA", "KOSOVO": "KOSOVO", "ISRAEL": "ISRAEL",
+    "JAPON": "JAPAN", "COREA": "KOREA", "ESTADOS UNIDOS": "USA",
+    "MEXICO": "MEXICO", "BRASIL": "BRAZIL", "ARGENTINA": "ARGENTINA",
+    "COLOMBIA": "COLOMBIA", "CHILE": "CHILE", "URUGUAY": "URUGUAY",
+    "PARAGUAY": "PARAGUAY", "PERU": "PERU", "ECUADOR": "ECUADOR",
+    "VENEZUELA": "VENEZUELA", "BOLIVIA": "BOLIVIA", "TUNEZ": "TUNISIA",
+    "BOTSUANA": "BOTSWANA", "MARRUECOS": "MOROCCO", "ARGELIA": "ALGERIA",
+    "EGIPTO": "EGYPT", "SENEGAL": "SENEGAL", "CAMERUN": "CAMEROON",
+    "COSTA DE MARFIL": "IVORY COAST", "GHANA": "GHANA", "NIGERIA": "NIGERIA",
+    "SUDAFRICA": "SOUTH AFRICA", "ZIMBABUE": "ZIMBABWE", "CONGO": "CONGO",
+"SURINAM": "SURINAME", "MARTINICA": "MARTINIQUE",
+    "GRANADA": "GRENADA", "BERMUDAS": "BERMUDA", "BERMUDA": "BERMUDAS",
+    "SANTA LUCIA": "ST LUCIA", "SAN CRISTOBAL": "ST KITTS",
+    "GUADALUPE": "GUADELOUPE",
+}
+
+
 def tokenizar(texto: Any, *, conservar_genericos: bool = False) -> set[str]:
     palabras = {p for p in normalizar_texto(texto).split() if len(p) >= 3 and not p.isdigit()}
-    return palabras if conservar_genericos else palabras - STOPWORDS
+    tokens = palabras if conservar_genericos else palabras - STOPWORDS
+    expandidos = set(tokens)
+    norm = normalizar_texto(texto)
+    for es, en in PAISES_ALIAS_EXPANSION.items():
+        if es in norm or es in tokens:
+            for t_en in en.split():
+                expandidos.add(t_en)
+    return expandidos
 
 
 def contiene_veto(texto: Any) -> bool:
@@ -1019,7 +1057,13 @@ def emparejar_evento(canal: Dict[str, Any], agenda: Iterable[Dict[str, Any]], *,
         local_sig = [t for t in acierto_local if t not in TOKENS_GENERICOS]
         visita_sig = [t for t in acierto_visita if t not in TOKENS_GENERICOS]
 
-        if local and visita and acierto_local and acierto_visita and (local_sig or visita_sig):
+        evento_es_duelo = bool(evento.get("tipo_evento") == "duelo" or (local and visita))
+
+        if evento_es_duelo:
+            # En un duelo entre dos equipos, DEBE coincidir al menos un equipo de forma estricta.
+            # NUNCA emparejar duelos distintos por mero nombre de torneo/liga.
+            if not (local_sig or visita_sig):
+                continue
             puntos = min(100, 84 + 4 * (len(acierto_local) + len(acierto_visita)) + (5 if diferencia is not None else 0))
             metodo, razones = "duelo_verificado", [f"local:{','.join(acierto_local)}", f"visitante:{','.join(acierto_visita)}"]
         else:
