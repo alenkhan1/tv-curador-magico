@@ -88,8 +88,8 @@ MESES_ES_EN = {
 def normalizar_texto(texto: Any) -> str:
     if texto is None:
         return ""
-    valor = uúnicodedata.normalize("NFD", str(texto).upper())
-    valor = "".join(c for c in valor if uúnicodedata.category(c) != "Mn")
+    valor = unicodedata.normalize("NFD", str(texto).upper())
+    valor = "".join(c for c in valor if unicodedata.category(c) != "Mn")
     return " ".join(re.sub(r"[^A-Z0-9\s]", " ", valor).split())
 
 

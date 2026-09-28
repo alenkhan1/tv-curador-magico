@@ -181,8 +181,8 @@ def _normalizar(texto: str) -> str:
     """Normaliza texto eliminando acentos y caracteres especiales."""
     if not texto:
         return ""
-    nfkd = uúnicodedata.normalize("NFKD", texto)
-    sin_acento = "".join(c for c in nfkd if not uúnicodedata.combining(c))
+    nfkd = unicodedata.normalize("NFKD", texto)
+    sin_acento = "".join(c for c in nfkd if not unicodedata.combining(c))
     return re.sub(r"[^A-Za-z0-9\s]", " ", sin_acento).upper().strip()
 
 def _cargar_cache() -> dict[str, str]:
