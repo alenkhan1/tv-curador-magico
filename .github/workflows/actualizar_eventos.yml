@@ -41,27 +41,16 @@ jobs:
           path: canales_xtream_cache.json
           key: canales-xtream-${{ steps.fecha_cache.outputs.fecha }}
 
-      - name: Construir agenda y curar streams con IA
+      - name: Curar streams deportivos con IA (Gemini)
         env:
-          API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
           XTREAM_USER: ${{ secrets.XTREAM_USER }}
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
           PUENTE_URL: ${{ secrets.PUENTE_URL || 'https://zapdashboard.onrender.com/api/puente_xtream' }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
           THESPORTSDB_KEY: ${{ secrets.THESPORTSDB_KEY }}
           APP_TIMEZONE: America/Bogota
-          API_SPORTS_MIN_INTERVAL: "7"
-          API_SPORTS_MAX_RETRIES: "1"
-          API_SPORTS_DEPORTES: football,basketball,baseball,formula-1,hockey,mma,nba,nfl,rugby,volleyball,handball,afl
-          MINUTOS_CACHE: "1440"
-          MAX_DIFERENCIA_MIN: "180"
-          PUBLICAR_XTREAM_PROBABLE: "true"
-          PUBLICAR_AGENDA_SIN_FUENTE: "false"
-          USAR_THESPORTSDB_RESPALDO: "true"
-          THESPORTSDB_MAX_EVENTOS: "3"
-          THESPORTSDB_MAX_SOLICITUDES_DIA: "3"
-          MAX_CUARENTENA: "1000"
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LOG_LEVEL: INFO
         run: python curador_eventos.py
 
@@ -99,7 +88,7 @@ jobs:
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          for archivo in eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_actual.json agenda_api_ayer.json presupuesto_api.json logos_cache.json cache_gemini_deportes.json; do
+          for archivo in eventos_hoy.json eventos_descartados.json meta_curador.json logos_cache.json cache_gemini_deportes.json; do
             [ -f "$archivo" ] && git add "$archivo"
           done
           git diff --cached --quiet && exit 0
