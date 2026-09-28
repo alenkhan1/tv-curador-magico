@@ -298,32 +298,38 @@ def agrupar_streams_candidatos(candidatos: List[Dict[str, Any]], fecha_local: da
 
 
 def curar_eventos_con_gemini(eventos_unicos: List[Dict[str, Any]], fecha_local_str: str) -> List[Dict[str, Any]]:
-    """Gemini valida cada evento único como única Fuente de la Verdad."""
+    """Gemini valida cada evento único en lotes controlados (máx 20 por llamada) como única Fuente de la Verdad."""
     if not eventos_unicos:
         return []
 
-    # Construir lista para Gemini
-    lote = []
-    for i, ev in enumerate(eventos_unicos):
-        lote.append({
-            "indice": i,
-            "titulo": ev["nombre_representativo"],
-            "deporte_sugerido": ev["parsed"]["deporte"],
-            "torneo_sugerido": ev["parsed"]["torneo"],
-            "hora_sugerida": ev["hora_local"].strftime("%H:%M")
-        })
+    TAM_LOTE = 20
+    total_validados = 0
 
-    prompt = f"""Eres el Curador Deportivo Inteligente de AllStream TV.
+    for inicio in range(0, len(eventos_unicos), TAM_LOTE):
+        fin = min(inicio + TAM_LOTE, len(eventos_unicos))
+        sub_eventos = eventos_unicos[inicio:fin]
+
+        lote = []
+        for i, ev in enumerate(sub_eventos):
+            lote.append({
+                "indice": i,
+                "titulo": ev["nombre_representativo"],
+                "deporte_sugerido": ev["parsed"]["deporte"],
+                "torneo_sugerido": ev["parsed"]["torneo"],
+                "hora_sugerida": ev["hora_local"].strftime("%H:%M")
+            })
+
+        prompt = f"""Eres el Curador Deportivo Inteligente de AllStream TV.
 Hoy es {fecha_local_str} (zona horaria America/Bogota).
 
-Analiza las siguientes {len(lote)} transmisiones deportivas detectadas en el catalogo de TV:
+Analiza este lote de {len(lote)} eventos detectados en el catalogo de TV:
 {json.dumps(lote, ensure_ascii=False, indent=2)}
 
-Para cada una responde en JSON un array de objetos con:
+Para cada uno responde en JSON un array de objetos con:
 - indice: int
 - es_valido_hoy: boolean (true si es un partido/evento real y activo programado para hoy {fecha_local_str}; false si es de dias anteriores, repetido o falso)
 - motivo_descarte: string (vacio si es_valido_hoy es true; si es false explicar brevemente, ej. 'partido jugado ayer')
-- deporte: string canonico en espanol ('Fútbol', 'Baloncesto', 'Béisbol', 'Tenis', 'Polo', 'Snooker', 'Ciclismo', 'Motor', 'Combate', 'Fútbol Americano', 'Rugby', 'Pádel', 'Otros Deportes'). Nota: Naciones League, torneos de selecciones y copas africanas son 'Fútbol'.
+- deporte: string canonico en espanol ('Fútbol', 'Baloncesto', 'Béisbol', 'Tenis', 'Polo', 'Snooker', 'Ciclismo', 'Motor', 'Combate', 'Fútbol Americano', 'Rugby', 'Pádel', 'Otros Deportes'). Nota: Naciones League, selecciones y copas africanas son 'Fútbol'.
 - torneo: string nombre oficial y limpio del torneo (ej. 'UEFA Nations League', 'Liga BetPlay Dimayor', 'MLS', 'Abierto Argentino de Polo')
 - tipo_evento: 'duelo' o 'sencillo'
 - equipo_local: string limpio del local (ej. 'Bélgica', 'Fortaleza CEIF', 'Ellerstina')
@@ -331,39 +337,41 @@ Para cada una responde en JSON un array de objetos con:
 - hora_local: string 'HH:MM' confirmada (en formato 24h para Colombia)
 - duracion_min: int duracion estimada
 """
-    log.info("Consultando a Gemini para validar %d eventos unicos de hoy...", len(lote))
-    respuesta = _llamar_gemini(prompt, json_mode=True)
-    if not respuesta:
-        log.warning("No hubo respuesta de Gemini. Se procede con el parseador robusto como respaldo.")
-        return eventos_unicos
+        log.info("Consultando a Gemini lote %d-%d de %d eventos...", inicio + 1, fin, len(eventos_unicos))
+        respuesta = _llamar_gemini(prompt, json_mode=True)
+        if not respuesta:
+            log.warning("Lote %d-%d sin respuesta de Gemini. Se mantiene parseador robusto para este lote.", inicio + 1, fin)
+            continue
 
-    try:
-        datos_ia = json.loads(respuesta)
-        if isinstance(datos_ia, list):
-            for item in datos_ia:
-                idx = item.get("indice")
-                if idx is not None and 0 <= idx < len(eventos_unicos):
-                    ev = eventos_unicos[idx]
-                    ev["es_valido_hoy"] = item.get("es_valido_hoy", True)
-                    ev["motivo_descarte"] = item.get("motivo_descarte", "")
-                    if item.get("deporte"):
-                        ev["parsed"]["deporte"] = item["deporte"]
-                    if item.get("torneo"):
-                        ev["parsed"]["torneo"] = item["torneo"]
-                    if item.get("tipo_evento"):
-                        ev["parsed"]["tipo"] = item["tipo_evento"]
-                    if item.get("equipo_local"):
-                        ev["parsed"]["local"] = item["equipo_local"]
-                    if item.get("equipo_visitante"):
-                        ev["parsed"]["visitante"] = item["equipo_visitante"]
-                    if item.get("hora_local") and re.match(r"^\d{1,2}:\d{2}$", str(item["hora_local"])):
-                        hh, mm = map(int, item["hora_local"].split(":"))
-                        ev["hora_local"] = ev["hora_local"].replace(hour=hh, minute=mm)
-                    if item.get("duracion_min"):
-                        ev["duracion_min"] = int(item["duracion_min"])
-    except Exception as exc:
-        log.error("Error parseando respuesta de Gemini: %s", exc)
+        try:
+            datos_ia = json.loads(respuesta)
+            if isinstance(datos_ia, list):
+                for item in datos_ia:
+                    idx = item.get("indice")
+                    if idx is not None and 0 <= idx < len(sub_eventos):
+                        ev = sub_eventos[idx]
+                        ev["es_valido_hoy"] = item.get("es_valido_hoy", True)
+                        ev["motivo_descarte"] = item.get("motivo_descarte", "")
+                        if item.get("deporte"):
+                            ev["parsed"]["deporte"] = item["deporte"]
+                        if item.get("torneo"):
+                            ev["parsed"]["torneo"] = item["torneo"]
+                        if item.get("tipo_evento"):
+                            ev["parsed"]["tipo"] = item["tipo_evento"]
+                        if item.get("equipo_local"):
+                            ev["parsed"]["local"] = item["equipo_local"]
+                        if item.get("equipo_visitante"):
+                            ev["parsed"]["visitante"] = item["equipo_visitante"]
+                        if item.get("hora_local") and re.match(r"^\d{1,2}:\d{2}$", str(item["hora_local"])):
+                            hh, mm = map(int, item["hora_local"].split(":"))
+                            ev["hora_local"] = ev["hora_local"].replace(hour=hh, minute=mm)
+                        if item.get("duracion_min"):
+                            ev["duracion_min"] = int(item["duracion_min"])
+                        total_validados += 1
+        except Exception as exc:
+            log.error("Error parseando respuesta de Gemini en lote %d-%d: %s", inicio + 1, fin, exc)
 
+    log.info("Gemini proceso y valido exitosamente %d/%d eventos unicos.", total_validados, len(eventos_unicos))
     return eventos_unicos
 
 

@@ -24,9 +24,8 @@ log = logging.getLogger("agente_deportivo_ia")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 
 MODELOS_DISPONIBLES = [
-    "gemini-1.5-flash",
-    "gemini-1.5-flash-latest",
     "gemini-2.0-flash",
+    "gemini-1.5-flash",
     "gemini-1.5-pro",
 ]
 
@@ -51,16 +50,18 @@ def _guardar_cache():
 _cargar_cache()
 
 def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
-    """Ejecuta consulta a Gemini con control de tasa (Rate Limit <= 15 RPM)."""
+    """Ejecuta consulta a Gemini mediante requests con control de tasa y logging detallado."""
     global _ultimo_timestamp_llamada
-    if not GEMINI_API_KEY:
-        log.debug("GEMINI_API_KEY no configurada.")
+    import requests
+    
+    key = os.environ.get("GEMINI_API_KEY", "").strip() or GEMINI_API_KEY
+    if not key:
+        log.warning("GEMINI_API_KEY no encontrada en variables de entorno ni en modulo.")
         return None
 
-    # Control de tasa estricto (15 RPM -> mínimo 4.2 seg entre llamadas)
     tiempo_transcurrido = time.time() - _ultimo_timestamp_llamada
-    if tiempo_transcurrido < 4.2:
-        time.sleep(4.2 - tiempo_transcurrido)
+    if tiempo_transcurrido < 2.0:
+        time.sleep(2.0 - tiempo_transcurrido)
 
     payload: Dict[str, Any] = {
         "contents": [{"parts": [{"text": prompt}]}]
@@ -68,43 +69,33 @@ def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
     if json_mode:
         payload["generationConfig"] = {"responseMimeType": "application/json"}
 
-    data = json.dumps(payload).encode("utf-8")
-    api_key_quoted = urllib.parse.quote(GEMINI_API_KEY)
+    headers = {"Content-Type": "application/json"}
 
     for modelo in MODELOS_DISPONIBLES:
         endpoints = [
-            f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent?key={api_key_quoted}",
-            f"https://generativelanguage.googleapis.com/v1/models/{modelo}:generateContent?key={api_key_quoted}",
+            f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent?key={key}",
+            f"https://generativelanguage.googleapis.com/v1/models/{modelo}:generateContent?key={key}",
         ]
         for url in endpoints:
-            req = urllib.request.Request(
-                url,
-                data=data,
-                headers={"Content-Type": "application/json"},
-                method="POST"
-            )
             try:
                 _ultimo_timestamp_llamada = time.time()
-                with urllib.request.urlopen(req, timeout=30) as resp:
-                    resultado = json.loads(resp.read().decode("utf-8"))
+                resp = requests.post(url, json=payload, headers=headers, timeout=25)
+                if resp.status_code == 200:
+                    resultado = resp.json()
                     candidatos = resultado.get("candidates", [])
                     if candidatos:
-                        texto = candidatos[0].get("content", {}).get("parts", [{}])[0].get("text", "")
-                        if texto.strip():
-                            return texto.strip()
-            except urllib.error.HTTPError as e:
-                err_body = e.read().decode("utf-8", errors="replace")
-                if e.code == 429:
-                    log.warning("Gemini modelo %s devolvio HTTP 429. Pausando 10s...", modelo)
-                    time.sleep(10)
-                elif e.code == 404:
-                    log.debug("Gemini endpoint %s 404: %s", url, err_body[:100])
-                    break # Probar siguiente modelo
+                        partes = candidatos[0].get("content", {}).get("parts", [])
+                        if partes and "text" in partes[0]:
+                            texto = partes[0]["text"].strip()
+                            if texto:
+                                return texto
+                elif resp.status_code == 429:
+                    log.warning("Gemini modelo %s devolvio 429 (Rate Limit). Pausando 5s...", modelo)
+                    time.sleep(5)
                 else:
-                    log.warning("Gemini modelo %s fallo con HTTP %s: %s", modelo, e.code, err_body[:150])
+                    log.warning("Gemini %s (%s) devolvio HTTP %s: %s", modelo, url.split('?')[0].split('/')[-1], resp.status_code, resp.text[:200])
             except Exception as e:
-                log.debug("Gemini modelo %s fallo (%s).", modelo, e)
-                break
+                log.warning("Gemini conexion fallo para %s: %s", modelo, e)
     return None
 
 TORNEOS_CONOCIDOS = [
