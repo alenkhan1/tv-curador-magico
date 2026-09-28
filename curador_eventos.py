@@ -15,7 +15,7 @@ import logging
 import os
 import re
 import time
-import uúnicodedata
+import unicodedata
 from collections import Counter
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -38,6 +38,9 @@ try:
     TZ_LOCAL = ZoneInfo(APP_TIMEZONE)
 except Exception:
     TZ_LOCAL = ZoneInfo("America/Bogota")
+
+def obtener_zona_aplicacion():
+    return TZ_LOCAL
 
 XTREAM_URL = (os.environ.get("XTREAM_URL") or "").rstrip("/")
 XTREAM_USER = os.environ.get("XTREAM_USER") or ""

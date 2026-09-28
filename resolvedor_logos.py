@@ -6,7 +6,7 @@ import json
 import logging
 import os
 import re
-import uúnicodedata
+import unicodedata
 import urllib.parse
 from pathlib import Path
 from typing import Any, Optional
