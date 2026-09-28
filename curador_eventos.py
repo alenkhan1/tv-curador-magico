@@ -115,15 +115,15 @@ def variaciones_fecha(fecha: datetime) -> List[str]:
 
 
 def fecha_xtream_explicita(nombre: str, fecha_referencia: Any) -> Optional[bool]:
-    norm = normalizar_texto(nombre)
-    if not norm:
+    if not nombre:
         return None
-    # 1. Patron DD/MM o DD-MM
-    m_num = re.search(r"\b(0?[1-9]|[12]\d|3[01])\s*[-/\.]\s*(0?[1-9]|1[0-2])\b", norm)
+    # 1. Patron DD/MM, DD-MM o DD.MM directamente sobre el texto sin alterar separadores
+    m_num = re.search(r"\b(0?[1-9]|[12]\d|3[01])\s*[-/\.]\s*(0?[1-9]|1[0-2])\b", nombre)
     if m_num:
         dia, mes = int(m_num.group(1)), int(m_num.group(2))
         return (dia == fecha_referencia.day and mes == fecha_referencia.month)
     # 2. Patron DD DE MES
+    norm = normalizar_texto(nombre)
     m_txt = re.search(r"\b(0?[1-9]|[12]\d|3[01])\s+DE\s+([A-Z]{3,10})\b", norm)
     if m_txt:
         dia = int(m_txt.group(1))
@@ -164,6 +164,32 @@ def extraer_hora_canal(texto: str, base_fecha: datetime) -> Optional[datetime]:
 
 
 # --- Descarga Xtream ---
+
+def detectar_base_media_m3u() -> str:
+    """Obtiene el host real de streaming para reproducir leyendo el M3U."""
+    base_api = XTREAM_URL
+    if not base_api:
+        return ""
+    url_m3u = f"{base_api}/get.php?username={XTREAM_USER}&password={XTREAM_PASS}&type=m3u&output=ts"
+    try:
+        import urllib.parse
+        resp = requests.get(url_m3u, timeout=20, stream=True)
+        if resp.status_code == 200:
+            candidatos = []
+            for linea in resp.iter_lines(decode_unicode=True):
+                if linea and linea.startswith("http"):
+                    parsed = urllib.parse.urlparse(linea.strip())
+                    candidatos.append(f"{parsed.scheme}://{parsed.netloc}")
+                    if len(candidatos) >= 3:
+                        break
+            if len(candidatos) >= 3 and len(set(candidatos)) == 1:
+                base_media = candidatos[0]
+                log.info("Base de media detectada desde M3U: %s", base_media)
+                return base_media
+    except Exception as exc:
+        log.warning("No se pudo detectar base_media desde M3U: %s", exc)
+    return base_api
+
 
 def llamada_xtream(url: str, timeout: int = 40) -> Optional[Any]:
     for intento in range(3):
@@ -503,10 +529,13 @@ def main():
     log.info("Cartelera final: %d eventos | Descartados: %d", len(cartelera), len(descartados))
 
     # 5. Guardar archivos
+    base_media = detectar_base_media_m3u()
     salida = {
         "version": 13,
-        "fecha_local_producto": fecha_str,
         "generado_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "zona_horaria_producto": str(TZ_LOCAL),
+        "fecha_local_producto": fecha_str,
+        "base_media": base_media,
         "eventos": cartelera,
         "metricas": {
             "total_streams": len(streams),

@@ -105,6 +105,10 @@ TORNEOS_CONOCIDOS = [
     ("LIGA BETPLAY", "Liga BetPlay", "Fútbol"),
     ("BETPLAY", "Liga BetPlay", "Fútbol"),
     ("MLS", "MLS", "Fútbol"),
+    ("WNBA", "WNBA", "Baloncesto"),
+    ("NBA", "NBA", "Baloncesto"),
+    ("MLB", "MLB", "Béisbol"),
+    ("NHL", "NHL", "Hockey"),
     ("PREMIER LEAGUE", "Premier League", "Fútbol"),
     ("LALIGA HYPERMOTION", "Segunda División de España", "Fútbol"),
     ("LALIGA SMARTBANK", "Segunda División de España", "Fútbol"),
@@ -137,6 +141,28 @@ def limpiar_string_equipo(s: str) -> str:
     for pat, _, _ in TORNEOS_CONOCIDOS:
         s = re.sub(r"\b" + re.escape(pat) + r"\b", "", s, flags=re.I)
     return " ".join(s.split()).strip(" -:?/")
+
+
+DEPORTES_KEYWORD = [
+    (r"\b(WNBA|NBA|EUROLEAGUE|ACB|BALONCESTO|BASKETBALL)\b", "Baloncesto"),
+    (r"\b(MLB|LMB|BEISBOL|BASEBALL)\b", "Béisbol"),
+    (r"\b(NFL|NCAAF|FUTBOL AMERICANO)\b", "Fútbol Americano"),
+    (r"\b(NHL|HOCKEY)\b", "Hockey"),
+    (r"\b(ATP|WTA|ROLAND GARROS|WIMBLEDON|US OPEN|AUSTRALIAN OPEN|TENIS|TENNIS)\b", "Tenis"),
+    (r"\b(F1|FORMULA 1|MOTOGP|INDYCAR|NASCAR|RALLY)\b", "Motor"),
+    (r"\b(WWE|RAW|SMACKDOWN|UFC|BOXEO|BOXING|MMA)\b", "Combate"),
+    (r"\b(POLO|PALERMO)\b", "Polo"),
+    (r"\b(SNOOKER|BILLAR)\b", "Snooker"),
+    (r"\b(TOUR DE FRANCE|GIRO|VUELTA|CICLISMO|CYCLING)\b", "Ciclismo"),
+    (r"\b(PADEL|PREMIER PADEL)\b", "Pádel"),
+]
+
+def inferir_deporte_rapido(texto: str) -> str:
+    u = texto.upper()
+    for pat, dep in DEPORTES_KEYWORD:
+        if re.search(pat, u):
+            return dep
+    return "Fútbol"
 
 def parsear_stream_robusto(nombre_ui: str) -> Dict[str, Any]:
     """Parseador de alta precisión que limpia caracteres sucios y separa torneo y equipos sin ambigüedad."""
