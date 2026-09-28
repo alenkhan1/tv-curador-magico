@@ -179,7 +179,7 @@ def detectar_base_media_m3u() -> str:
         resp = requests.get(url_m3u, timeout=20, stream=True)
         if resp.status_code == 200:
             candidatos = []
-            for linea in resp.iter_lines(decode_uúnicode=True):
+            for linea in resp.iter_lines(decode_unicode=True):
                 if linea and linea.startswith("http"):
                     parsed = urllib.parse.urlparse(linea.strip())
                     candidatos.append(f"{parsed.scheme}://{parsed.netloc}")
@@ -326,17 +326,17 @@ def agrupar_streams_candidatos(candidatos: List[Dict[str, Any]], fecha_local: da
     return list(grupos.values())
 
 
-def curar_eventos_con_gemini(eventos_uúúnicos: List[Dict[str, Any]], fecha_local_str: str) -> List[Dict[str, Any]]:
+def curar_eventos_con_gemini(eventos_unicos: List[Dict[str, Any]], fecha_local_str: str) -> List[Dict[str, Any]]:
     """Gemini valida cada evento úúnico en lotes controlados (máx 20 por llamada) como úúnica Fuente de la Verdad."""
-    if not eventos_uúúnicos:
+    if not eventos_unicos:
         return []
 
     TAM_LOTE = 20
     total_validados = 0
 
-    for inicio in range(0, len(eventos_uúúnicos), TAM_LOTE):
-        fin = min(inicio + TAM_LOTE, len(eventos_uúúnicos))
-        sub_eventos = eventos_uúúnicos[inicio:fin]
+    for inicio in range(0, len(eventos_unicos), TAM_LOTE):
+        fin = min(inicio + TAM_LOTE, len(eventos_unicos))
+        sub_eventos = eventos_unicos[inicio:fin]
 
         lote = []
         for i, ev in enumerate(sub_eventos):
@@ -366,7 +366,7 @@ Para cada uno responde en JSON un array de objetos con:
 - hora_local: string 'HH:MM' confirmada (en formato 24h para Colombia)
 - duracion_min: int duracion estimada
 """
-        log.info("Consultando a Gemini lote %d-%d de %d eventos...", inicio + 1, fin, len(eventos_uúúnicos))
+        log.info("Consultando a Gemini lote %d-%d de %d eventos...", inicio + 1, fin, len(eventos_unicos))
         respuesta = _llamar_gemini(prompt, json_mode=True)
         if not respuesta:
             log.warning("Lote %d-%d sin respuesta de Gemini. Se mantiene parseador robusto para este lote.", inicio + 1, fin)
@@ -400,8 +400,8 @@ Para cada uno responde en JSON un array de objetos con:
         except Exception as exc:
             log.error("Error parseando respuesta de Gemini en lote %d-%d: %s", inicio + 1, fin, exc)
 
-    log.info("Gemini proceso y valido exitosamente %d/%d eventos uúúnicos.", total_validados, len(eventos_uúúnicos))
-    return eventos_uúúnicos
+    log.info("Gemini proceso y valido exitosamente %d/%d eventos unicos.", total_validados, len(eventos_unicos))
+    return eventos_unicos
 
 
 def construir_cartelera_final(eventos_validados: List[Dict[str, Any]], ahora: datetime) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
@@ -520,12 +520,12 @@ def main():
 
     log.info("Total streams: %d | Candidatos filtrados para hoy: %d", len(streams), len(candidatos))
 
-    # 2. Agrupar por eventos uúúnicos
-    eventos_uúúnicos = agrupar_streams_candidatos(candidatos, ahora_local)
-    log.info("Eventos úúúnicos agrupados: %d", len(eventos_uúúnicos))
+    # 2. Agrupar por eventos unicos
+    eventos_unicos = agrupar_streams_candidatos(candidatos, ahora_local)
+    log.info("Eventos úúúnicos agrupados: %d", len(eventos_unicos))
 
     # 3. Gemini valida y clasifica
-    eventos_validados = curar_eventos_con_gemini(eventos_uúúnicos, fecha_str)
+    eventos_validados = curar_eventos_con_gemini(eventos_unicos, fecha_str)
 
     # 4. Construir cartelera final y descartados
     cartelera, descartados = construir_cartelera_final(eventos_validados, ahora_local)
@@ -543,7 +543,7 @@ def main():
         "metricas": {
             "total_streams": len(streams),
             "candidatos_hoy": len(candidatos),
-            "eventos_uúúnicos": len(eventos_uúúnicos),
+            "eventos_unicos": len(eventos_unicos),
             "eventos_publicados": len(cartelera),
             "descartados": len(descartados)
         }
