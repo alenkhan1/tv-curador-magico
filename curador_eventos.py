@@ -228,11 +228,18 @@ def _pista_completa(valor: str, pista: str) -> bool:
 
 
 def inferir_deporte(texto: Any) -> Optional[str]:
+    from agente_deportivo_ia import parsear_stream_robusto
+    try:
+        p = parsear_stream_robusto(str(texto or ""))
+        if p.get("deporte") and p["deporte"] != "Otros Deportes":
+            return p["deporte"]
+    except Exception:
+        pass
     valor = normalizar_texto(texto)
     for categoria, pistas in DEPORTE_PISTAS.items():
         if any(_pista_completa(valor, pista) for pista in pistas):
             return categoria
-    return None
+    return "Fútbol" if re.search(r"\b(vs\.?|v\.?|versus)\b", valor, flags=re.I) else None
 
 
 def extraer_sesion(texto: Any) -> Optional[str]:
@@ -1038,70 +1045,27 @@ def fusionar_fuente(evento: Dict[str, Any], fuente: Dict[str, Any]) -> None:
 
 
 def analizar_titulo_xtream(nombre_ui: str, categoria: str) -> Tuple[str, str, str, str, str]:
-    limpio = re.sub(r"(?<!\d)\d{1,2}[/-]\d{1,2}(?:[/-]\d{2,4})?(?!\d)", "", nombre_ui)
-    limpio = re.sub(r"(?<!\d)([01]?\d|2[0-3])[:.]([0-5]\d)\s*([APap][Mm]|[Hh][Rr]?[Ss]?)?(?!\d)", "", limpio)
-    limpio = re.sub(r"(?<!\d)([01]?\d|2[0-3])[hH]([0-5]\d)(?!\d)", "", limpio)
-    limpio = re.sub(r"\b(FHD|HD|SD|OP1|OP2|4K|HEVC|MULTI|ES|SPAIN|LATAM|EVENTOS?)\b", "", limpio, flags=re.I)
-    limpio = " ".join(limpio.strip(" -|·:▪/|").split())
-
-    es_competicion = categoria in DEPORTES_COMPETICION
-
-    # Pivote de duelo
-    duelo_match = None
-    if not es_competicion:
-        duelo_match = re.search(r"(.+?)\s+(?:vs\.?|v\.?|versus|@)\s+(.+)", limpio, flags=re.I)
-        if not duelo_match:
-            duelo_match = re.search(r"(.+?)\s+(?:x|-)\s+(.+)", limpio, flags=re.I)
-
-    if duelo_match:
-        parte_izq, parte_der = duelo_match.group(1).strip(), duelo_match.group(2).strip()
-        sub_izq = [p.strip() for p in re.split(r"\s*[|·▪/:-]\s*", parte_izq) if p.strip()]
-        sub_der = [p.strip() for p in re.split(r"\s*[|·▪/:-]\s*", parte_der) if p.strip()]
-
-        torneo, local = (sub_izq[0], sub_izq[-1]) if len(sub_izq) > 1 else (categoria, parte_izq)
-        visitante = sub_der[0] if sub_der else parte_der
-        subtitulo = " - ".join(sub_der[1:]) if len(sub_der) > 1 else ""
-        return torneo, subtitulo, "duelo", local, visitante
-
-    partes = [p.strip() for p in re.split(r"\s*[|·▪/]\s*", limpio) if p.strip()]
-    if len(partes) >= 2:
-        return partes[0], " - ".join(partes[1:]), "sencillo", "", ""
-    return limpio, "", "sencillo", "", ""
+    from agente_deportivo_ia import parsear_stream_robusto
+    p = parsear_stream_robusto(nombre_ui)
+    return p["torneo"], p["subtitulo"], p["tipo"], p["local"], p["visitante"]
 
 
 def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, existentes: Dict[str, str]) -> Optional[Dict[str, Any]]:
-    """Crea un evento legítimo no presente en API Sports (ej: Tejo, deportes raros o regionales). Requiere hora obligatoria."""
+    """Crea un evento legítimo con nombres 100% limpios y resolución de escudos/logos oficiales."""
     hora = canal.get("hora_local")
     if hora is None:
         return None
 
-    categoria = canal.get("categoria_inferida") or "Otros Deportes"
-    torneo, subtitulo, tipo, local, visitante = analizar_titulo_xtream(canal["nombre_ui"], categoria)
+    from agente_deportivo_ia import parsear_stream_robusto
+    from resolvedor_logos import resolver_logo_torneo, resolver_logo_equipo
 
-    # Enriquecimiento inteligente con Gemini para eventos no cubiertos por API-Sports (ej: Tejo, deportes locales)
-    try:
-        from agente_deportivo_ia import enriquecer_evento_independiente
-        datos_ia = enriquecer_evento_independiente(canal["nombre_ui"], categoria)
-        if datos_ia:
-            if datos_ia.get("torneo"):
-                torneo = str(datos_ia["torneo"]).strip()
-            if datos_ia.get("categoria"):
-                categoria = str(datos_ia["categoria"]).strip()
-            if datos_ia.get("tipo_evento"):
-                tipo = "duelo" if datos_ia["tipo_evento"] == "duelo" else "circuito"
-            if tipo == "duelo":
-                local = str(datos_ia.get("equipo_local") or local).strip()
-                visitante = str(datos_ia.get("equipo_visitante") or visitante).strip()
-                subtitulo = str(datos_ia.get("referencia") or subtitulo).strip()
-            else:
-                local, visitante = "", ""
-                subtitulo = str(datos_ia.get("referencia") or subtitulo).strip()
-            if datos_ia.get("logo_oficial"):
-                logo_torneo_ia = str(datos_ia["logo_oficial"]).strip()
-                if logo_torneo_ia:
-                    canal["logo_xtream"] = logo_torneo_ia
-    except Exception as e:
-        log.debug("Enriquecedor IA no disponible para %s: %s", canal.get("nombre_ui"), e)
+    parsed = parsear_stream_robusto(canal["nombre_ui"])
+    tipo = parsed["tipo"]
+    categoria = parsed["deporte"]
+    torneo = parsed["torneo"]
+    local = parsed["local"]
+    visitante = parsed["visitante"]
+    subtitulo = parsed["subtitulo"]
 
     if not torneo and not local:
         return None
@@ -1111,7 +1075,7 @@ def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, exist
     ident = existentes.get(clave_dedup) or hashlib.sha1(clave_dedup.encode("utf-8")).hexdigest()[:16]
     existentes[clave_dedup] = ident
 
-    logo_torneo = resolver_logo_torneo(torneo or titulo, categoria)
+    logo_torneo = resolver_logo_torneo(torneo or titulo, categoria, permitir_red=True)
     if not logo_torneo and not es_logo_basura(canal.get("logo_xtream")):
         logo_torneo = canal.get("logo_xtream")
 
@@ -1121,14 +1085,14 @@ def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, exist
         local = ""
         visitante = ""
     else:
-        logo_loc = resolver_logo_equipo(local)
-        logo_vis = resolver_logo_equipo(visitante)
+        logo_loc = resolver_logo_equipo(local, categoria, permitir_red=True)
+        logo_vis = resolver_logo_equipo(visitante, categoria, permitir_red=True)
 
     return {
         "id": f"xtream_{ident}", "agenda_id": "", "titulo": titulo, "torneo": torneo, "categoria": categoria,
         "tipo_evento": tipo, "equipo_local": local, "equipo_visitante": visitante, "subtitulo": subtitulo,
         "hora_utc": iso_utc(hora), "hora_local_producto": hora.astimezone(tz).strftime("%H:%M"),
-        "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 150),
+        "duracion_min": DURACION_POR_CATEGORIA.get(categoria, 130),
         "logo_torneo": logo_torneo, "logo_local": logo_loc, "logo_visitante": logo_vis,
         "banner": "",
         "tier": 3, "origen": "xtream_evento", "origenes": ["xtream"], "estado": "confirmado",
@@ -1136,6 +1100,8 @@ def crear_evento_independiente_xtream(canal: Dict[str, Any], tz: ZoneInfo, exist
         "metodo_correlacion": "evento_independiente_verificado",
         "razones_correlacion": [canal.get("motivo_vigencia", ""), f"categoria:{categoria}"],
     }
+
+
 
 # Alias para compatibilidad hacia atrás
 crear_probable_xtream = crear_evento_independiente_xtream
@@ -1281,8 +1247,26 @@ def main() -> None:
     candidatos, metricas_xtream = obtener_canales_candidatos(ahora)
     eventos, cuarentena, metricas_curacion = curar_eventos(agenda_hoy, agenda_ayer, candidatos, ahora.date())
 
-    # FILTRO FINAL ESTRICTO: Solo eventos con al menos una fuente válida
-    eventos_validos = [e for e in eventos if e.get("fuentes") and len(e["fuentes"]) > 0]
+    # FILTRO FINAL ESTRICTO:
+    # 1. Solo eventos con al menos una fuente válida.
+    # 2. Excluir eventos que ya finalizaron hace más de 15 minutos en el momento de la ejecución.
+    ahora_utc = datetime.now(timezone.utc)
+    eventos_validos = []
+    for e in eventos:
+        if not e.get("fuentes") or len(e["fuentes"]) == 0:
+            continue
+        hora_utc_str = e.get("hora_utc")
+        if hora_utc_str:
+            try:
+                hora_utc_dt = datetime.fromisoformat(hora_utc_str.replace("Z", "+00:00"))
+                duracion_min = int(e.get("duracion_min", 130))
+                fin_evento_utc = hora_utc_dt + timedelta(minutes=duracion_min)
+                if fin_evento_utc < (ahora_utc - timedelta(minutes=15)):
+                    log.info("Evento finalizado excluido de la cartelera: %s (finalizó %s UTC)", e.get("titulo"), fin_evento_utc.strftime("%H:%M"))
+                    continue
+            except Exception:
+                pass
+        eventos_validos.append(e)
 
     salida = {
         "version": 12, "generado_utc": iso_utc(datetime.now(timezone.utc)), "zona_horaria_producto": str(tz),

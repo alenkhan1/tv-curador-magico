@@ -1,10 +1,8 @@
-name: Actualizar cartelera deportiva multideporte
+﻿name: Actualizar cartelera deportiva multideporte
 
 on:
   schedule:
-    # UTC. Equivale a 21:20/00:20/03:20/06:20/08:20–12:20/15:20/18:20 Colombia.
-    # Las cinco corridas de 13:20 a 17:20 UTC cubren la actualización Xtream
-    # observada alrededor de 15:00–18:00 en Madrid.
+    # Ejecución periódica para mantener la cartelera actualizada
     - cron: "0 5,9,13,16,19,22 * * *"
   workflow_dispatch:
 
@@ -30,7 +28,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Instalar dependencia HTTP
+      - name: Instalar dependencias HTTP
         run: python -m pip install --disable-pip-version-check requests curl_cffi
 
       - name: Obtener fecha actual para cache diaria
@@ -43,7 +41,7 @@ jobs:
           path: canales_xtream_cache.json
           key: canales-xtream-${{ steps.fecha_cache.outputs.fecha }}
 
-      - name: Construir agenda y correlacionar señales Xtream
+      - name: Construir agenda y curar streams con IA
         env:
           API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
@@ -52,7 +50,6 @@ jobs:
           PUENTE_URL: ${{ secrets.PUENTE_URL || 'https://zapdashboard.onrender.com/api/puente_xtream' }}
           THESPORTSDB_KEY: ${{ secrets.THESPORTSDB_KEY }}
           APP_TIMEZONE: America/Bogota
-          # Una llamada por API activa en cada corrida, separada por 7 segundos.
           API_SPORTS_MIN_INTERVAL: "7"
           API_SPORTS_MAX_RETRIES: "1"
           API_SPORTS_DEPORTES: football,basketball,baseball,formula-1,hockey,mma,nba,nfl,rugby,volleyball,handball,afl
@@ -60,7 +57,6 @@ jobs:
           MAX_DIFERENCIA_MIN: "180"
           PUBLICAR_XTREAM_PROBABLE: "true"
           PUBLICAR_AGENDA_SIN_FUENTE: "false"
-          # Respaldo limitado y persistente: tres consultas máximas al día.
           USAR_THESPORTSDB_RESPALDO: "true"
           THESPORTSDB_MAX_EVENTOS: "3"
           THESPORTSDB_MAX_SOLICITUDES_DIA: "3"
@@ -69,7 +65,7 @@ jobs:
           LOG_LEVEL: INFO
         run: python curador_eventos.py
 
-      - name: Integrar EPG europeo dentro de la jornada Colombia
+      - name: Inyectar canales lineales deportivos seleccionados
         env:
           API_SPORTS_KEY: ${{ secrets.API_SPORTS_KEY }}
           XTREAM_URL: ${{ secrets.XTREAM_URL }}
@@ -77,15 +73,9 @@ jobs:
           XTREAM_PASS: ${{ secrets.XTREAM_PASS }}
           PUENTE_URL: ${{ secrets.PUENTE_URL || 'https://zapdashboard.onrender.com/api/puente_xtream' }}
           APP_TIMEZONE: America/Bogota
-          # EN CANAL: admite emisiones deportivas EPG aunque no digan DIRECTO,
-          # pero el inyector excluye repeticiones, resúmenes y contenido editorial.
-          INCLUIR_EPG_EN_CANAL: "true"
-          PUBLICAR_EPG_FUTURO: "true"
-          MAX_EPG_EVENTOS: "180"
-          MAX_DIFERENCIA_EPG_MIN: "210"
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LOG_LEVEL: INFO
-        run: python inyector_epg.py
+        run: python inyector_canales_lineales.py
 
       - name: Resumen operativo
         if: always()
@@ -109,10 +99,10 @@ jobs:
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          for archivo in eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_actual.json agenda_api_ayer.json presupuesto_api.json; do
+          for archivo in eventos_hoy.json eventos_descartados.json meta_curador.json agenda_api_actual.json agenda_api_ayer.json presupuesto_api.json logos_cache.json cache_gemini_deportes.json; do
             [ -f "$archivo" ] && git add "$archivo"
           done
           git diff --cached --quiet && exit 0
-          git commit -m "Actualización de cartelera deportiva EN CANAL"
+          git commit -m "Actualización inteligente de cartelera deportiva"
           git pull --rebase origin main
           git push origin HEAD:main

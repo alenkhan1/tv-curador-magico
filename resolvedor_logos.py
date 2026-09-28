@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """Resolvedor universal de logos y escudos deportivos con TheSportsDB, CDN Proxy (anti-403) y caché local."""
 from __future__ import annotations
 
@@ -51,11 +51,10 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "WIMBLEDON": "https://upload.wikimedia.org/wikipedia/en/b/b9/Wimbledon.svg",
     "AUSTRALIAN OPEN": "https://upload.wikimedia.org/wikipedia/en/7/7b/Australian_Open_logo.svg",
     "CINCINNATI OPEN": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cincinnati_Open_logo.svg/512px-Cincinnati_Open_logo.svg.png",
-    "WINSTON-SALEM": "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/Winston-Salem_Open_logo.svg/512px-Winston-Salem_Open_logo.svg.png",
-    "ABIERTO GNP": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Abierto_GNP_Seguros_Logo.png/512px-Abierto_GNP_Seguros_Logo.png",
-    "GUADALAJARA OPEN": "https://upload.wikimedia.org/wikipedia/en/0/03/WTA_logo_2020.svg",
+    "CHENGDU OPEN": "https://upload.wikimedia.org/wikipedia/commons/3/3f/ATP_Tour_logo.svg",
+    "HANGZHOU OPEN": "https://upload.wikimedia.org/wikipedia/commons/3/3f/ATP_Tour_logo.svg",
 
-    # Fútbol Torneos Mayores
+    # Fútbol Torneos Mayores y Ligas
     "CHAMPIONS LEAGUE": "https://upload.wikimedia.org/wikipedia/commons/f/f3/UEFA_Champions_League_logo_2.svg",
     "UCL": "https://upload.wikimedia.org/wikipedia/commons/f/f3/UEFA_Champions_League_logo_2.svg",
     "EUROPA LEAGUE": "https://logodownload.org/wp-content/uploads/2019/12/europa-league-logo.png",
@@ -64,21 +63,35 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "UEFA NATIONS LEAGUE": "https://upload.wikimedia.org/wikipedia/commons/b/b5/UEFA_logo.svg",
     "NATIONS LEAGUE": "https://upload.wikimedia.org/wikipedia/commons/b/b5/UEFA_logo.svg",
     "UEFA": "https://upload.wikimedia.org/wikipedia/commons/b/b5/UEFA_logo.svg",
+    "CONCACAF NATIONS LEAGUE": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/CONCACAF_logo.svg/512px-CONCACAF_logo.svg.png",
+    "CONCACAF": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/CONCACAF_logo.svg/512px-CONCACAF_logo.svg.png",
+    "COPA AFRICANA": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Confederation_of_African_Football_logo.svg/512px-Confederation_of_African_Football_logo.svg.png",
+    "CAF": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Confederation_of_African_Football_logo.svg/512px-Confederation_of_African_Football_logo.svg.png",
     "CONMEBOL": "https://upload.wikimedia.org/wikipedia/commons/0/0e/CONMEBOL_logo.svg",
     "LIBERTADORES": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Copa_Libertadores_logo_2017.svg",
     "SUDAMERICANA": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Copa_Sudamericana_logo.svg",
     "LALIGA": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg",
     "LA LIGA": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg",
     "LALIGA HYPERMOTION": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg",
+    "LALIGA SMARTBANK": "https://upload.wikimedia.org/wikipedia/commons/0/0f/LaLiga_logo_2023.svg",
     "PREMIER LEAGUE": "https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg",
     "SERIE A": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Serie_A_logo_2019.svg",
     "BUNDESLIGA": "https://upload.wikimedia.org/wikipedia/en/d/df/Bundesliga_logo_%282017%29.svg",
     "LIGUE 1": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Ligue1_McDonald%27s_logo.svg",
     "LIGA BETPLAY": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Liga_BetPlay_Dimayor_logo.png",
+    "DIMAYOR": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Liga_BetPlay_Dimayor_logo.png",
     "BETPLAY": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Liga_BetPlay_Dimayor_logo.png",
     "COPA BETPLAY": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Liga_BetPlay_Dimayor_logo.png",
     "TORNEO BETPLAY": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Liga_BetPlay_Dimayor_logo.png",
+    "MLS": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/MLS_crest_logo_RGB_gradient.svg/512px-MLS_crest_logo_RGB_gradient.svg.png",
+    "MAJOR LEAGUE SOCCER": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/MLS_crest_logo_RGB_gradient.svg/512px-MLS_crest_logo_RGB_gradient.svg.png",
+    "LIGA MX FEMENIL": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Liga_MX_logo.svg/512px-Liga_MX_logo.svg.png",
+    "LIGA MX": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Liga_MX_logo.svg/512px-Liga_MX_logo.svg.png",
+    "SEGUNDA DIVISION URUGUAY": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Asociacion_Uruguaya_de_Futbol_logo.svg/512px-Asociacion_Uruguaya_de_Futbol_logo.svg.png",
+    "PRIMERA DIVISION URUGUAY": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Asociacion_Uruguaya_de_Futbol_logo.svg/512px-Asociacion_Uruguaya_de_Futbol_logo.svg.png",
+    "NCAA": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/512px-NCAA_logo.svg.png",
     "FIFA": "https://upload.wikimedia.org/wikipedia/commons/1/10/FIFA_logo_without_slogan.svg",
+    "AMISTOSO": "https://upload.wikimedia.org/wikipedia/commons/1/10/FIFA_logo_without_slogan.svg",
 
     # Pádel y Escalada
     "PREMIER PADEL": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Premier_Padel_logo.svg",
@@ -111,6 +124,8 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     # Combate
     "UFC": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/512px-UFC_logo.svg.png",
     "BKFC": "https://upload.wikimedia.org/wikipedia/en/thumb/6/60/Bare_Knuckle_Fighting_Championship_logo.png/512px-Bare_Knuckle_Fighting_Championship_logo.png",
+    "WWE RAW": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/WWE_Raw_logo.svg/512px-WWE_Raw_logo.svg.png",
+    "WRESTLING": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/WWE_Raw_logo.svg/512px-WWE_Raw_logo.svg.png",
     "BOXEO": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/512px-UFC_logo.svg.png",
 
     # Golf
@@ -127,10 +142,14 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     # Béisbol
     "MLB": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/512px-Major_League_Baseball_logo.svg.png",
 
+    # Fútbol Americano
+    "NFL": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/512px-National_Football_League_logo.svg.png",
+
     # Polo
-    "POLO": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Olympic_flag.svg",
-    "PALERMO": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Olympic_flag.svg",
-    "ASOCIACION ARGENTINA DE POLO": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Olympic_flag.svg",
+    "POLO": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Polo_pictogram.svg/512px-Polo_pictogram.svg.png",
+    "PALERMO": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Polo_pictogram.svg/512px-Polo_pictogram.svg.png",
+    "CAMPEONATO ARGENTINO DE POLO": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Polo_pictogram.svg/512px-Polo_pictogram.svg.png",
+    "ASOCIACION ARGENTINA DE POLO": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Polo_pictogram.svg/512px-Polo_pictogram.svg.png",
 }
 
 FALLBACK_POR_CATEGORIA_RAW: dict[str, str] = {
@@ -150,34 +169,35 @@ FALLBACK_POR_CATEGORIA_RAW: dict[str, str] = {
     "Baloncesto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/512px-Basketball.png",
     "Rugby": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Rugby_ball.svg/512px-Rugby_ball.svg.png",
     "Fútbol Americano": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/512px-National_Football_League_logo.svg.png",
-    "Polo": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Olympic_flag.svg",
-    "Tejo": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Olympic_flag.svg",
-    "Otros Deportes": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Olympic_flag.svg",
+    "Polo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Polo_pictogram.svg/512px-Polo_pictogram.svg.png",
+    "Tejo": "",
+    "Otros Deportes": "",
 }
 
 CIRCUITO_LOGOS = {k: envolver_cdn_proxy(v) for k, v in CIRCUITO_LOGOS_RAW.items() if envolver_cdn_proxy(v)}
 FALLBACK_POR_CATEGORIA = {k: envolver_cdn_proxy(v) for k, v in FALLBACK_POR_CATEGORIA_RAW.items() if envolver_cdn_proxy(v)}
 
-def _normalizar(texto: Any) -> str:
+def _normalizar(texto: str) -> str:
+    """Normaliza texto eliminando acentos y caracteres especiales."""
     if not texto:
         return ""
-    valor = unicodedata.normalize("NFD", str(texto).upper())
-    valor = "".join(c for c in valor if unicodedata.category(c) != "Mn")
-    return " ".join(re.sub(r"[^A-Z0-9\s]", " ", valor).split())
+    nfkd = unicodedata.normalize("NFKD", texto)
+    sin_acento = "".join(c for c in nfkd if not unicodedata.combining(c))
+    return re.sub(r"[^A-Za-z0-9\s]", " ", sin_acento).upper().strip()
 
 def _cargar_cache() -> dict[str, str]:
-    if not ARCHIVO_CACHE_LOGOS.exists():
-        return {}
-    try:
-        return json.loads(ARCHIVO_CACHE_LOGOS.read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        return {}
+    if ARCHIVO_CACHE_LOGOS.exists():
+        try:
+            return json.loads(ARCHIVO_CACHE_LOGOS.read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+    return {}
 
 def _guardar_cache(cache: dict[str, str]) -> None:
     try:
         ARCHIVO_CACHE_LOGOS.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
-    except OSError as exc:
-        log.warning("No se pudo guardar logos_cache.json: %s", exc)
+    except Exception as e:
+        log.warning("No se pudo guardar la cache de logos: %s", e)
 
 def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False) -> str:
     """Resuelve el logo oficial del torneo con precedencia estricta por palabras completas."""
@@ -222,7 +242,7 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
         except Exception:
             pass
 
-    # 4. Fallback por categoría
+    # 4. Fallback por categoría (nunca bandera olímpica como comodín genérico)
     fallback = FALLBACK_POR_CATEGORIA.get(
         categoria,
         FALLBACK_POR_CATEGORIA.get("Otros Deportes", "")
@@ -231,6 +251,56 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
         cache[clave_cache] = fallback
         _guardar_cache(cache)
     return fallback
+
+
+PAISES_ALIAS = {
+    "BOTSUANA": "Botswana",
+    "TUNEZ": "Tunisia",
+    "ZIMBABUE": "Zimbabwe",
+    "REPUBLICA CENTROAFRICANA": "Central African Republic",
+    "RD DEL CONGO": "DR Congo",
+    "CONGO": "Congo",
+    "GUINEA ECUATORIAL": "Equatorial Guinea",
+    "SIERRA LEONA": "Sierra Leone",
+    "BURKINA FASO": "Burkina Faso",
+    "JAPON": "Japan",
+    "ALEMANIA": "Germany",
+    "ESPANA": "Spain",
+    "ESTADOS UNIDOS": "USA",
+    "PAISES BAJOS": "Netherlands",
+    "INGLATERRA": "England",
+    "SUIZA": "Switzerland",
+    "SUECIA": "Sweden",
+    "POLONIA": "Poland",
+    "RUMANIA": "Romania",
+    "ARGELIA": "Algeria",
+    "MARRUECOS": "Morocco",
+    "EGIPTO": "Egypt",
+    "SENEGAL": "Senegal",
+    "COSTA DE MARFIL": "Ivory Coast",
+    "SUDAFRICA": "South Africa",
+    "CAMERUN": "Cameroon",
+    "NIGERIA": "Nigeria",
+    "GHANA": "Ghana",
+    "CHILE": "Chile",
+    "COLOMBIA": "Colombia",
+    "ARGENTINA": "Argentina",
+    "BRASIL": "Brazil",
+    "PERU": "Peru",
+    "URUGUAY": "Uruguay",
+    "PARAGUAY": "Paraguay",
+    "ECUADOR": "Ecuador",
+    "VENEZUELA": "Venezuela",
+    "BOLIVIA": "Bolivia",
+    "MEXICO": "Mexico",
+    "COSTA RICA": "Costa Rica",
+    "PANAMA": "Panama",
+    "HONDURAS": "Honduras",
+    "EL SALVADOR": "El Salvador",
+    "GUATEMALA": "Guatemala",
+    "JAMAICA": "Jamaica",
+    "CANADA": "Canada",
+}
 
 def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", permitir_red: bool = True) -> str:
     """Resuelve el escudo/logo oficial de un equipo mediante TheSportsDB o Api-Football con caché local."""
@@ -250,7 +320,8 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", permitir_red: bo
 
     # 1. Consulta a TheSportsDB
     try:
-        url_tsdb = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}/searchteams.php?t={urllib.parse.quote(equipo_limpio)}"
+        nombre_busqueda = PAISES_ALIAS.get(equipo_norm, equipo_limpio)
+        url_tsdb = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}/searchteams.php?t={urllib.parse.quote(nombre_busqueda)}"
         resp = requests.get(url_tsdb, timeout=4)
         if resp.status_code == 200:
             data = resp.json()
