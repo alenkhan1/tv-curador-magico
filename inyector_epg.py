@@ -601,15 +601,10 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
         from agente_deportivo_ia import supervisar_parrilla_canales_en_vivo
         candidatos_ia = []
         for prog in programas_principales:
-            candidatos_ia.append({
-                "canal_epg": prog["clave"],
-                "titulo_raw": prog["titulo"],
-                "descripcion": prog["descripcion"],
-                "inicio": prog["inicio"],
-                "fin": prog["fin"],
-                "clave": prog["clave"],
-                "canal": prog["canal"]
-            })
+            candidato = dict(prog)
+            candidato["canal_epg"] = prog.get("clave", "")
+            candidato["titulo_raw"] = prog.get("titulo", "")
+            candidatos_ia.append(candidato)
         programas_supervisados = supervisar_parrilla_canales_en_vivo(candidatos_ia)
         if programas_supervisados:
             programas_principales = programas_supervisados
@@ -619,7 +614,8 @@ def extraer_eventos_epg(mapa: Dict[str, List[Dict[str, Any]]], agenda: List[Dict
 
     eventos: List[Dict[str, Any]] = []
     for programa in programas_principales:
-        titulo, desc = str(programa["titulo"]), str(programa["descripcion"])
+        titulo = str(programa.get("titulo") or programa.get("titulo_raw") or "")
+        desc = str(programa.get("descripcion") or "")
         if es_historico_o_veto(titulo, desc):
             metricas["veto_o_historico"] += 1
             continue
