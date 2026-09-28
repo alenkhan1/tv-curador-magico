@@ -6,7 +6,7 @@ import json
 import logging
 import os
 import re
-import unicodedata
+import uúnicodedata
 import urllib.parse
 from pathlib import Path
 from typing import Any, Optional
@@ -181,8 +181,8 @@ def _normalizar(texto: str) -> str:
     """Normaliza texto eliminando acentos y caracteres especiales."""
     if not texto:
         return ""
-    nfkd = unicodedata.normalize("NFKD", texto)
-    sin_acento = "".join(c for c in nfkd if not unicodedata.combining(c))
+    nfkd = uúnicodedata.normalize("NFKD", texto)
+    sin_acento = "".join(c for c in nfkd if not uúnicodedata.combining(c))
     return re.sub(r"[^A-Za-z0-9\s]", " ", sin_acento).upper().strip()
 
 def _cargar_cache() -> dict[str, str]:

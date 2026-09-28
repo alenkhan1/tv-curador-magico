@@ -23,11 +23,42 @@ log = logging.getLogger("agente_deportivo_ia")
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 
-MODELOS_DISPONIBLES = [
-    "gemini-2.0-flash",
-    "gemini-1.5-flash",
-    "gemini-1.5-pro",
-]
+_modelos_activos_cache: List[str] = []
+
+def _obtener_modelos_candidatos(key: str) -> List[str]:
+    """Descubre y prioriza dinamicamente los modelos activos de Google para evitar 404 por descontinuacion."""
+    global _modelos_activos_cache
+    if _modelos_activos_cache:
+        return _modelos_activos_cache
+
+    try:
+        import requests
+        url = f"https://generativelanguage.googleapis.com/v1beta/models?key={key}"
+        resp = requests.get(url, timeout=10)
+        if resp.status_code == 200:
+            datos = resp.json().get("models", [])
+            disponibles = []
+            for m in datos:
+                metodos = m.get("supportedGenerationMethods", [])
+                if "generateContent" in metodos:
+                    nom = m.get("name", "").replace("models/", "")
+                    disponibles.append(nom)
+            if disponibles:
+                # Priorizar gemini-3.8-flash, luego 2.5-flash y modelos flash
+                disponibles.sort(key=lambda x: (
+                    0 if "3.8-flash" in x else (
+                    1 if "2.5-flash" in x else (
+                    2 if "flash" in x else 3
+                ))))
+                log.info("Modelos descubiertos desde Google ModelService: %s", disponibles[:6])
+                _modelos_activos_cache = disponibles
+                return disponibles
+    except Exception as e:
+        log.warning("No se pudo autodescubrir modelos desde ModelService: %s", e)
+
+    # Fallback si falla el listado
+    _modelos_activos_cache = ["gemini-3.8-flash", "gemini-2.5-flash", "gemini-2.0-flash"]
+    return _modelos_activos_cache
 
 ARCHIVO_CACHE_IA = Path("cache_gemini_deportes.json")
 _memoria_cache: Dict[str, Any] = {}
@@ -71,7 +102,8 @@ def _llamar_gemini(prompt: str, json_mode: bool = True) -> Optional[str]:
 
     headers = {"Content-Type": "application/json"}
 
-    for modelo in MODELOS_DISPONIBLES:
+    modelos = _obtener_modelos_candidatos(key)
+    for modelo in modelos:
         endpoints = [
             f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent?key={key}",
             f"https://generativelanguage.googleapis.com/v1/models/{modelo}:generateContent?key={key}",
@@ -250,7 +282,7 @@ def curar_canales_con_ia(canales: List[Dict[str, Any]], fecha_local: str) -> Lis
     for i, item in enumerate(curados):
         streams_texto.append(f"[{i}] {item['canal']['nombre_ui']}")
 
-    prompt = f"""Eres un curador deportivo de élite para TV en vivo (zona horaria Bogotá/Colombia).
+    prompt = f"""Eres un curador deportivo de éélite para TV en vivo (zona horaria Bogotá/Colombia).
 Fecha local de hoy: {fecha_local}.
 
 Analiza la siguiente lista de nombres de streams:
@@ -259,7 +291,7 @@ Analiza la siguiente lista de nombres de streams:
 Para cada stream responde en JSON un array de objetos con:
 - indice: número entero
 - es_valido_hoy: boolean (false si es un partido que ya se jugó en días pasados, repetición vieja, noticiero o canal sin evento hoy)
-- deporte: categoría canónica ('Fútbol', 'Tenis', 'Baloncesto', 'Polo', 'Ciclismo', 'Motor', 'Combate', 'Fútbol Americano', 'Béisbol', 'Golf', 'Snooker', 'Rugby', 'Pádel', 'Otros Deportes'). Nota: selecciones nacionales o copas africanas son 'Fútbol', NUNCA 'Otros Deportes'.
+- deporte: categoría canóúnica ('Fútbol', 'Tenis', 'Baloncesto', 'Polo', 'Ciclismo', 'Motor', 'Combate', 'Fútbol Americano', 'Béisbol', 'Golf', 'Snooker', 'Rugby', 'Pádel', 'Otros Deportes'). Nota: selecciones nacionales o copas africanas son 'Fútbol', NUNCA 'Otros Deportes'.
 - torneo: nombre limpio oficial del torneo
 - equipo_local: nombre limpio del equipo local (sin la palabra vs, sin el torneo)
 - equipo_visitante: nombre limpio del equipo visitante (sin la palabra vs, sin el torneo)

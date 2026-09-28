@@ -15,7 +15,7 @@ import logging
 import os
 import re
 import time
-import unicodedata
+import uúnicodedata
 from collections import Counter
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -85,8 +85,8 @@ MESES_ES_EN = {
 def normalizar_texto(texto: Any) -> str:
     if texto is None:
         return ""
-    valor = unicodedata.normalize("NFD", str(texto).upper())
-    valor = "".join(c for c in valor if unicodedata.category(c) != "Mn")
+    valor = uúnicodedata.normalize("NFD", str(texto).upper())
+    valor = "".join(c for c in valor if uúnicodedata.category(c) != "Mn")
     return " ".join(re.sub(r"[^A-Z0-9\s]", " ", valor).split())
 
 
@@ -176,7 +176,7 @@ def detectar_base_media_m3u() -> str:
         resp = requests.get(url_m3u, timeout=20, stream=True)
         if resp.status_code == 200:
             candidatos = []
-            for linea in resp.iter_lines(decode_unicode=True):
+            for linea in resp.iter_lines(decode_uúnicode=True):
                 if linea and linea.startswith("http"):
                     parsed = urllib.parse.urlparse(linea.strip())
                     candidatos.append(f"{parsed.scheme}://{parsed.netloc}")
@@ -323,17 +323,17 @@ def agrupar_streams_candidatos(candidatos: List[Dict[str, Any]], fecha_local: da
     return list(grupos.values())
 
 
-def curar_eventos_con_gemini(eventos_unicos: List[Dict[str, Any]], fecha_local_str: str) -> List[Dict[str, Any]]:
-    """Gemini valida cada evento único en lotes controlados (máx 20 por llamada) como única Fuente de la Verdad."""
-    if not eventos_unicos:
+def curar_eventos_con_gemini(eventos_uúúnicos: List[Dict[str, Any]], fecha_local_str: str) -> List[Dict[str, Any]]:
+    """Gemini valida cada evento úúnico en lotes controlados (máx 20 por llamada) como úúnica Fuente de la Verdad."""
+    if not eventos_uúúnicos:
         return []
 
     TAM_LOTE = 20
     total_validados = 0
 
-    for inicio in range(0, len(eventos_unicos), TAM_LOTE):
-        fin = min(inicio + TAM_LOTE, len(eventos_unicos))
-        sub_eventos = eventos_unicos[inicio:fin]
+    for inicio in range(0, len(eventos_uúúnicos), TAM_LOTE):
+        fin = min(inicio + TAM_LOTE, len(eventos_uúúnicos))
+        sub_eventos = eventos_uúúnicos[inicio:fin]
 
         lote = []
         for i, ev in enumerate(sub_eventos):
@@ -355,7 +355,7 @@ Para cada uno responde en JSON un array de objetos con:
 - indice: int
 - es_valido_hoy: boolean (true si es un partido/evento real y activo programado para hoy {fecha_local_str}; false si es de dias anteriores, repetido o falso)
 - motivo_descarte: string (vacio si es_valido_hoy es true; si es false explicar brevemente, ej. 'partido jugado ayer')
-- deporte: string canonico en espanol ('Fútbol', 'Baloncesto', 'Béisbol', 'Tenis', 'Polo', 'Snooker', 'Ciclismo', 'Motor', 'Combate', 'Fútbol Americano', 'Rugby', 'Pádel', 'Otros Deportes'). Nota: Naciones League, selecciones y copas africanas son 'Fútbol'.
+- deporte: string canoúnico en espanol ('Fútbol', 'Baloncesto', 'Béisbol', 'Tenis', 'Polo', 'Snooker', 'Ciclismo', 'Motor', 'Combate', 'Fútbol Americano', 'Rugby', 'Pádel', 'Otros Deportes'). Nota: Naciones League, selecciones y copas africanas son 'Fútbol'.
 - torneo: string nombre oficial y limpio del torneo (ej. 'UEFA Nations League', 'Liga BetPlay Dimayor', 'MLS', 'Abierto Argentino de Polo')
 - tipo_evento: 'duelo' o 'sencillo'
 - equipo_local: string limpio del local (ej. 'Bélgica', 'Fortaleza CEIF', 'Ellerstina')
@@ -363,7 +363,7 @@ Para cada uno responde en JSON un array de objetos con:
 - hora_local: string 'HH:MM' confirmada (en formato 24h para Colombia)
 - duracion_min: int duracion estimada
 """
-        log.info("Consultando a Gemini lote %d-%d de %d eventos...", inicio + 1, fin, len(eventos_unicos))
+        log.info("Consultando a Gemini lote %d-%d de %d eventos...", inicio + 1, fin, len(eventos_uúúnicos))
         respuesta = _llamar_gemini(prompt, json_mode=True)
         if not respuesta:
             log.warning("Lote %d-%d sin respuesta de Gemini. Se mantiene parseador robusto para este lote.", inicio + 1, fin)
@@ -397,8 +397,8 @@ Para cada uno responde en JSON un array de objetos con:
         except Exception as exc:
             log.error("Error parseando respuesta de Gemini en lote %d-%d: %s", inicio + 1, fin, exc)
 
-    log.info("Gemini proceso y valido exitosamente %d/%d eventos unicos.", total_validados, len(eventos_unicos))
-    return eventos_unicos
+    log.info("Gemini proceso y valido exitosamente %d/%d eventos uúúnicos.", total_validados, len(eventos_uúúnicos))
+    return eventos_uúúnicos
 
 
 def construir_cartelera_final(eventos_validados: List[Dict[str, Any]], ahora: datetime) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
@@ -453,7 +453,7 @@ def construir_cartelera_final(eventos_validados: List[Dict[str, Any]], ahora: da
         else:
             titulo = torneo
 
-        # ID determinista unico
+        # ID determinista uúnico
         clave_id = f"{normalizar_texto(titulo)}_{hora_local.strftime('%Y%m%d_%H%M')}"
         ident = hashlib.sha1(clave_id.encode("utf-8")).hexdigest()[:16]
 
@@ -517,12 +517,12 @@ def main():
 
     log.info("Total streams: %d | Candidatos filtrados para hoy: %d", len(streams), len(candidatos))
 
-    # 2. Agrupar por eventos unicos
-    eventos_unicos = agrupar_streams_candidatos(candidatos, ahora_local)
-    log.info("Eventos únicos agrupados: %d", len(eventos_unicos))
+    # 2. Agrupar por eventos uúúnicos
+    eventos_uúúnicos = agrupar_streams_candidatos(candidatos, ahora_local)
+    log.info("Eventos úúúnicos agrupados: %d", len(eventos_uúúnicos))
 
     # 3. Gemini valida y clasifica
-    eventos_validados = curar_eventos_con_gemini(eventos_unicos, fecha_str)
+    eventos_validados = curar_eventos_con_gemini(eventos_uúúnicos, fecha_str)
 
     # 4. Construir cartelera final y descartados
     cartelera, descartados = construir_cartelera_final(eventos_validados, ahora_local)
@@ -540,7 +540,7 @@ def main():
         "metricas": {
             "total_streams": len(streams),
             "candidatos_hoy": len(candidatos),
-            "eventos_unicos": len(eventos_unicos),
+            "eventos_uúúnicos": len(eventos_uúúnicos),
             "eventos_publicados": len(cartelera),
             "descartados": len(descartados)
         }
