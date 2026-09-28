@@ -9,21 +9,21 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-09-27T09:52:40Z",
+  "generado": "2026-09-28T10:40:28Z",
   "resumen": {
-    "total": 1361,
+    "total": 1356,
     "por_motivo": {
-      "pendiente": 1189,
-      "no_encontrado": 172
+      "pendiente": 1186,
+      "no_encontrado": 170
     },
     "peliculas": {
       "adulto": 9,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 164,
-      "fallo_red": 1164,
-      "clasificados": 13534,
-      "sin_identificar": 1328
+      "no_encontrado": 162,
+      "fallo_red": 1161,
+      "clasificados": 13538,
+      "sin_identificar": 1323
     },
     "series": {
       "adulto": 0,
@@ -31,7 +31,7 @@
       "sin_nombre": 0,
       "no_encontrado": 8,
       "fallo_red": 25,
-      "clasificados": 1687,
+      "clasificados": 1690,
       "sin_identificar": 33
     },
     "alerta": {
@@ -44,13 +44,13 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1302,
+      "veces": 1297,
       "ejemplos": [
         "Back to the Beginning Parte 1 (2025)",
         "Back to the Beginning Parte 2 (2025)",
         "Nazi Superlsoldier (2024)",
         "Agáchat.maldito.1971.1080p mkv",
-        "Alien (1979) 1080p MicroHD x264 60 fps [spa, eng]"
+        "Dejando Neverland Parte 22025 1080P mkv"
       ]
     },
     {
@@ -470,7 +470,7 @@
   "etiquetas_mas_frecuentes": [
     {
       "etiqueta": "1080P",
-      "veces": 411
+      "veces": 409
     },
     {
       "etiqueta": "WEBDL",
@@ -478,7 +478,7 @@
     },
     {
       "etiqueta": "X264",
-      "veces": 84
+      "veces": 82
     },
     {
       "etiqueta": "720P",
@@ -572,7 +572,7 @@
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "SAGAS",
-      "veces": 279
+      "veces": 278
     },
     {
       "carpeta": "GENERAL",
@@ -643,12 +643,12 @@
       "veces": 21
     },
     {
-      "carpeta": "PELICULAS 60 FPS",
+      "carpeta": "CLASICAS",
       "veces": 20
     },
     {
-      "carpeta": "CLASICAS",
-      "veces": 20
+      "carpeta": "PELICULAS 60 FPS",
+      "veces": 16
     },
     {
       "carpeta": "DUAL AUDIO",
@@ -724,41 +724,11 @@
       "copias": 1
     },
     {
-      "id": "541230",
-      "tipo": "movie",
-      "nombre_original": "Alien (1979) 1080p MicroHD x264 60 fps [spa, eng]",
-      "titulo_buscado": "Alien MicroHD",
-      "anio": 1979,
-      "motivo": "pendiente",
-      "carpeta": "PELICULAS 60 FPS",
-      "etiquetas": [
-        "1080P",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "541231",
       "tipo": "movie",
       "nombre_original": "Alien - Covenant (2017) 1080p MicroHD x264 60 fps [spa, eng]",
       "titulo_buscado": "Alien Covenant MicroHD",
       "anio": 2017,
-      "motivo": "pendiente",
-      "carpeta": "PELICULAS 60 FPS",
-      "etiquetas": [
-        "1080P",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "541233",
-      "tipo": "movie",
-      "nombre_original": "Aliens (1986) 1080p MicroHD x264 60 fps [spa, eng]",
-      "titulo_buscado": "Aliens MicroHD",
-      "anio": 1986,
       "motivo": "pendiente",
       "carpeta": "PELICULAS 60 FPS",
       "etiquetas": [
@@ -795,30 +765,6 @@
         "1080P",
         "MKV"
       ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "541383",
-      "tipo": "movie",
-      "nombre_original": "El juego del miedo 2 (2005)",
-      "titulo_buscado": "El juego del miedo 2",
-      "anio": 2005,
-      "motivo": "no_encontrado",
-      "carpeta": "PELICULAS 60 FPS",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "541385",
-      "tipo": "movie",
-      "nombre_original": "El juego del miedo (2004)",
-      "titulo_buscado": "El juego del miedo",
-      "anio": 2004,
-      "motivo": "pendiente",
-      "carpeta": "PELICULAS 60 FPS",
-      "etiquetas": [],
       "prefijo": "",
       "copias": 1
     },
@@ -11138,6 +11084,61 @@
       "etiquetas": [
         "HD",
         "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "551650",
+      "tipo": "movie",
+      "nombre_original": "VHS2 (2013) Terror",
+      "titulo_buscado": "VHS2 Terror",
+      "anio": 2013,
+      "motivo": "pendiente",
+      "carpeta": "TERROR",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "551659",
+      "tipo": "movie",
+      "nombre_original": "Whisper (2020) Terror - 1080p LAT",
+      "titulo_buscado": "Whisper Terror",
+      "anio": 2020,
+      "motivo": "pendiente",
+      "carpeta": "TERROR",
+      "etiquetas": [
+        "1080P",
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "551662",
+      "tipo": "movie",
+      "nombre_original": "5 PISTOLEROS ( 1955 ) (1080p)",
+      "titulo_buscado": "5 PISTOLEROS",
+      "anio": 1955,
+      "motivo": "pendiente",
+      "carpeta": "WESTERN",
+      "etiquetas": [
+        "1080P"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "551666",
+      "tipo": "movie",
+      "nombre_original": "A LO LARGO DEL MOHAWK ( 1939 ) (720p)",
+      "titulo_buscado": "A LO LARGO DEL MOHAWK",
+      "anio": 1939,
+      "motivo": "pendiente",
+      "carpeta": "WESTERN",
+      "etiquetas": [
+        "720P"
       ],
       "prefijo": "",
       "copias": 1
