@@ -1,12 +1,328 @@
 {
   "version": 13,
-  "generado_utc": "2026-09-29T22:46:26Z",
+  "generado_utc": "2026-09-30T10:50:38Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-09-29",
+  "fecha_local_producto": "2026-09-30",
   "base_media": "http://espartanos.live:8080",
   "eventos": [
     {
-      "id": "lineal_eurosport_1_0800",
+      "id": "a678a5b58c51d801",
+      "agenda_id": "a678a5b58c51d801",
+      "titulo": "Hubert Hurkacz vs Alejandro Davidovich Fokina",
+      "torneo": "ATP Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Hubert Hurkacz",
+      "equipo_visitante": "Alejandro Davidovich Fokina",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "en_vivo",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "ATP | 05:00 AM | Hubert Hurkacz (POL) vs. Alejandro Davidovich Fokina (ESP) (Final)",
+          "id_xtream": "627846"
+        }
+      ]
+    },
+    {
+      "id": "c1083cda5f04a47b",
+      "agenda_id": "c1083cda5f04a47b",
+      "titulo": "Australia vs Brasil",
+      "torneo": "Amistoso Internacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Australia",
+      "equipo_visitante": "Brasil",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "en_vivo",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "05:00 ◘ Australia vs. Brasil ◘ Amistoso ◘",
+          "id_xtream": "627903"
+        },
+        {
+          "nombre": "05:00 ◘ Australia vs. Brasil ◘ Amistoso ◘ (2)",
+          "id_xtream": "627904"
+        }
+      ]
+    },
+    {
+      "id": "lineal_teledeporte_0500",
+      "agenda_id": "",
+      "titulo": "WTA 250 de Monastir",
+      "torneo": "WTA 250 de Monastir",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Primera Ronda",
+      "referencia": "Primera Ronda",
+      "hora_utc": "2026-09-30T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "lineal_teledeporte",
+      "origenes": [
+        "lineal_teledeporte"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 90,
+      "fuentes": [
+        {
+          "nombre": "TELEDEPORTE FHD (B)",
+          "id_xtream": "581986"
+        },
+        {
+          "nombre": "TELEDEPORTE OP2",
+          "id_xtream": "582145"
+        },
+        {
+          "nombre": "TELEDEPORTE",
+          "id_xtream": "582146"
+        },
+        {
+          "nombre": "Teledeporte",
+          "id_xtream": "627390"
+        }
+      ]
+    },
+    {
+      "id": "3354f0bb4a95bf86",
+      "agenda_id": "3354f0bb4a95bf86",
+      "titulo": "Daniil Medvedev vs Andrey Rublev",
+      "torneo": "ATP Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Daniil Medvedev",
+      "equipo_visitante": "Andrey Rublev",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T10:30:00Z",
+      "hora_local_producto": "05:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "en_vivo",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "ATP | 05:30 AM | Daniil Medvedev (RUS) vs. Andrey Rublev (RUS) (Final)",
+          "id_xtream": "627847"
+        }
+      ]
+    },
+    {
+      "id": "411baced951eca1c",
+      "agenda_id": "411baced951eca1c",
+      "titulo": "Comoras vs Namibia",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Comoras",
+      "equipo_visitante": "Namibia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T11:00:00Z",
+      "hora_local_producto": "06:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "06:00 ◘ Comoras vs. Namibia ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627905"
+        }
+      ]
+    },
+    {
+      "id": "f2685b84f2c1c6d6",
+      "agenda_id": "f2685b84f2c1c6d6",
+      "titulo": "Lesoto vs Marruecos",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lesoto",
+      "equipo_visitante": "Marruecos",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 7:00 AM | Lesoto vs Marruecos",
+          "id_xtream": "627834"
+        }
+      ]
+    },
+    {
+      "id": "aae78a89c53db0e5",
+      "agenda_id": "aae78a89c53db0e5",
+      "titulo": "Sudán del Sur vs Egipto",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sudán del Sur",
+      "equipo_visitante": "Egipto",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 7:00 AM | Sudán del Sur vs Egipto",
+          "id_xtream": "627835"
+        }
+      ]
+    },
+    {
+      "id": "24ac58094ae7251e",
+      "agenda_id": "24ac58094ae7251e",
+      "titulo": "Etiopía vs Senegal",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Etiopía",
+      "equipo_visitante": "Senegal",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 7:00 AM | Etiopía vs Senegal",
+          "id_xtream": "627836"
+        }
+      ]
+    },
+    {
+      "id": "lineal_eurosport_1_0700",
       "agenda_id": "",
       "titulo": "Giro de Emilia",
       "torneo": "Giro de Emilia",
@@ -14,10 +330,10 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Carrera masculina",
-      "referencia": "Carrera masculina",
-      "hora_utc": "2026-09-29T13:00:00Z",
-      "hora_local_producto": "08:00",
+      "subtitulo": "Carrera Masculina",
+      "referencia": "Carrera Masculina",
+      "hora_utc": "2026-09-30T12:00:00Z",
+      "hora_local_producto": "07:00",
       "duracion_min": 120,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F8%2F82%2FGiro_d%2527Italia_logo.svg%2F512px-Giro_d%2527Italia_logo.svg.png&w=400&output=webp",
       "logo_local": "",
@@ -56,22 +372,1780 @@
       ]
     },
     {
+      "id": "ffc58e6e1ff7b997",
+      "agenda_id": "ffc58e6e1ff7b997",
+      "titulo": "Burundi vs Argelia",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Burundi",
+      "equipo_visitante": "Argelia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 ◘ Burundi vs. Argelia ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627908"
+        }
+      ]
+    },
+    {
+      "id": "77159a66284a63b5",
+      "agenda_id": "77159a66284a63b5",
+      "titulo": "Etiopía vs Senegal",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Etiopía",
+      "equipo_visitante": "Senegal",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 ◘ Etiopía vs. Senegal ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627909"
+        }
+      ]
+    },
+    {
+      "id": "a8ed619a8beb0f2e",
+      "agenda_id": "a8ed619a8beb0f2e",
+      "titulo": "Lesoto vs Marruecos",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lesoto",
+      "equipo_visitante": "Marruecos",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 ◘ Lesoto vs. Marruecos ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627910"
+        }
+      ]
+    },
+    {
+      "id": "de1ad567c7cbac0e",
+      "agenda_id": "de1ad567c7cbac0e",
+      "titulo": "Madagascar vs Tanzania",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Madagascar",
+      "equipo_visitante": "Tanzania",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 ◘ Madagascar vs. Tanzania ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627911"
+        }
+      ]
+    },
+    {
+      "id": "8345e57e6a571efe",
+      "agenda_id": "8345e57e6a571efe",
+      "titulo": "Mozambique vs Sudán",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Mozambique",
+      "equipo_visitante": "Sudán",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 ◘ Mozambique vs. Sudán ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627912"
+        }
+      ]
+    },
+    {
+      "id": "065b09e8ed033f58",
+      "agenda_id": "065b09e8ed033f58",
+      "titulo": "Sudán del Sur vs Egipto",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sudán del Sur",
+      "equipo_visitante": "Egipto",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "08:00 ◘ Sudán del Sur vs. Egipto ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627913"
+        }
+      ]
+    },
+    {
+      "id": "6f3aa5cf79bec5af",
+      "agenda_id": "6f3aa5cf79bec5af",
+      "titulo": "Finlandia vs Bielorrusia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Finlandia",
+      "equipo_visitante": "Bielorrusia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 10:00 AM | Finlandia vs. Bielorrusia",
+          "id_xtream": "627817"
+        }
+      ]
+    },
+    {
+      "id": "7a6f74b5bf6252cf",
+      "agenda_id": "7a6f74b5bf6252cf",
+      "titulo": "Moldavia vs Islas Faroe",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Moldavia",
+      "equipo_visitante": "Islas Faroe",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F27872.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 10:00 AM | Moldavia vs. Islas Faroe",
+          "id_xtream": "627818"
+        }
+      ]
+    },
+    {
+      "id": "6e9be6e4269c3655",
+      "agenda_id": "6e9be6e4269c3655",
+      "titulo": "Ghana vs Gambia",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Ghana",
+      "equipo_visitante": "Gambia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 10:00 AM | Ghana vs Gambia",
+          "id_xtream": "627837"
+        }
+      ]
+    },
+    {
+      "id": "32ef6d87cb8d548d",
+      "agenda_id": "32ef6d87cb8d548d",
+      "titulo": "Guinea-Bissau vs Nigeria",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Guinea-Bissau",
+      "equipo_visitante": "Nigeria",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 10:00 AM | Guinea-Bissau vs Nigeria",
+          "id_xtream": "627838"
+        }
+      ]
+    },
+    {
+      "id": "ea04501c0baf91ff",
+      "agenda_id": "ea04501c0baf91ff",
+      "titulo": "Finlandia vs Bielorrusia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Finlandia",
+      "equipo_visitante": "Bielorrusia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Finlandia vs Bielorrusia ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627914"
+        }
+      ]
+    },
+    {
+      "id": "2aa68ac04bcb7c13",
+      "agenda_id": "2aa68ac04bcb7c13",
+      "titulo": "Ghana vs Gambia",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Ghana",
+      "equipo_visitante": "Gambia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Ghana vs. Gambia ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627915"
+        }
+      ]
+    },
+    {
+      "id": "f9d00369799f6b2a",
+      "agenda_id": "f9d00369799f6b2a",
+      "titulo": "Guinea-Bissau vs Nigeria",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Guinea-Bissau",
+      "equipo_visitante": "Nigeria",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Guinea-Bissau vs. Nigeria ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627916"
+        }
+      ]
+    },
+    {
+      "id": "fae9feedb416637d",
+      "agenda_id": "fae9feedb416637d",
+      "titulo": "Islas de Cabo Verde vs Ruanda",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Islas de Cabo Verde",
+      "equipo_visitante": "Ruanda",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Islas de Cabo Verde vs. Ruanda ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627917"
+        }
+      ]
+    },
+    {
+      "id": "2efd3f02b1b84822",
+      "agenda_id": "2efd3f02b1b84822",
+      "titulo": "Moldavia vs Islas Faroe",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Moldavia",
+      "equipo_visitante": "Islas Faroe",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F27872.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Moldavia vs. Islas Faroe ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627918"
+        },
+        {
+          "nombre": "11:00 ◘ Moldavia vs. Islas Faroe ◘ UEFA Nations League ◘◘ SD",
+          "id_xtream": "627919"
+        }
+      ]
+    },
+    {
+      "id": "7c9c61e5f77f3d81",
+      "agenda_id": "7c9c61e5f77f3d81",
+      "titulo": "Uganda vs Libia",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Uganda",
+      "equipo_visitante": "Libia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Uganda vs. Libia ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627920"
+        }
+      ]
+    },
+    {
+      "id": "441ed3116be4e7bd",
+      "agenda_id": "441ed3116be4e7bd",
+      "titulo": "Zambia vs Togo",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Zambia",
+      "equipo_visitante": "Togo",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Zambia vs. Togo ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627921"
+        }
+      ]
+    },
+    {
+      "id": "fe42ac18b3b9187f",
+      "agenda_id": "fe42ac18b3b9187f",
+      "titulo": "Benín vs Mauritania",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Benín",
+      "equipo_visitante": "Mauritania",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "12:00 ◘ Benín vs. Mauritania ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627924"
+        }
+      ]
+    },
+    {
+      "id": "41e20237566d1c97",
+      "agenda_id": "41e20237566d1c97",
+      "titulo": "San Marino vs Albania",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Marino",
+      "equipo_visitante": "Albania",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvfvy3j1626192199.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvonacg1717365654.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | San Marino vs. Albania",
+          "id_xtream": "627819"
+        }
+      ]
+    },
+    {
+      "id": "a12c366af9898710",
+      "agenda_id": "a12c366af9898710",
+      "titulo": "España vs Croacia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "España",
+      "equipo_visitante": "Croacia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fncgqyr1726166942.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F84cfeg1789271106.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | España vs. Croacia",
+          "id_xtream": "627820"
+        }
+      ]
+    },
+    {
+      "id": "35a456f731cd88c8",
+      "agenda_id": "35a456f731cd88c8",
+      "titulo": "Chequia vs Inglaterra",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chequia",
+      "equipo_visitante": "Inglaterra",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvf5ttc1726166739.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Chequia vs. Inglaterra",
+          "id_xtream": "627821"
+        }
+      ]
+    },
+    {
+      "id": "aa95fbd929b2ba82",
+      "agenda_id": "aa95fbd929b2ba82",
+      "titulo": "Eslovenia vs Macedonia del Norte",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eslovenia",
+      "equipo_visitante": "Macedonia del Norte",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fs7k1x51552909864.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Eslovenia vs. Macedonia del Norte",
+          "id_xtream": "627822"
+        }
+      ]
+    },
+    {
+      "id": "83779a90230bc63d",
+      "agenda_id": "83779a90230bc63d",
+      "titulo": "Escocia vs Suiza",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Escocia",
+      "equipo_visitante": "Suiza",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3691i11552945146.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmb7yqe1717365808.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Escocia vs. Suiza",
+          "id_xtream": "627823"
+        }
+      ]
+    },
+    {
+      "id": "69a60f4b92e5d414",
+      "agenda_id": "69a60f4b92e5d414",
+      "titulo": "Bulgaria vs Estonia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bulgaria",
+      "equipo_visitante": "Estonia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0bee7p1552858893.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fn43zxi1730303815.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Bulgaria vs. Estonia",
+          "id_xtream": "627824"
+        }
+      ]
+    },
+    {
+      "id": "31899c77c624e360",
+      "agenda_id": "31899c77c624e360",
+      "titulo": "Luxemburgo vs Islandia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Luxemburgo",
+      "equipo_visitante": "Islandia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnsakoo1713725395.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Luxemburgo vs. Islandia",
+          "id_xtream": "627825"
+        }
+      ]
+    },
+    {
+      "id": "688cf467f37721c5",
+      "agenda_id": "688cf467f37721c5",
+      "titulo": "Eslovaquia vs Kazajistán",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eslovaquia",
+      "equipo_visitante": "Kazajistán",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnjbw8n1717365638.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Eslovaquia vs. Kazajistán",
+          "id_xtream": "627826"
+        }
+      ]
+    },
+    {
+      "id": "7c0d59f0feb1fe1e",
+      "agenda_id": "7c0d59f0feb1fe1e",
+      "titulo": "Islas Vírgenes Británicas vs Islas Turcas y Caicos",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Islas Vírgenes Británicas",
+      "equipo_visitante": "Islas Turcas y Caicos",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "CONCACAF Nations League | 01:00 PM | Islas Vírgenes Británicas vs. Islas Turcas y Caicos",
+          "id_xtream": "627827"
+        }
+      ]
+    },
+    {
+      "id": "6a0ea36a92746c63",
+      "agenda_id": "6a0ea36a92746c63",
+      "titulo": "Congo vs Camerún",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Congo",
+      "equipo_visitante": "Camerún",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 01:00 PM | Congo vs Camerún",
+          "id_xtream": "627839"
+        }
+      ]
+    },
+    {
+      "id": "3dff7df7367435c8",
+      "agenda_id": "3dff7df7367435c8",
+      "titulo": "Gabón vs Níger",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Gabón",
+      "equipo_visitante": "Níger",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 01:00 PM | Gabón vs Níger",
+          "id_xtream": "627840"
+        }
+      ]
+    },
+    {
+      "id": "4273aa25ff917cd4",
+      "agenda_id": "4273aa25ff917cd4",
+      "titulo": "Liberia vs Malí",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Liberia",
+      "equipo_visitante": "Malí",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 01:00 PM | Liberia vs Malí",
+          "id_xtream": "627841"
+        }
+      ]
+    },
+    {
+      "id": "141057a99bdb0372",
+      "agenda_id": "141057a99bdb0372",
+      "titulo": "Philadelphia Phillies vs Atlanta Braves",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Philadelphia Phillies",
+      "equipo_visitante": "Atlanta Braves",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Philadelphia Phillies vs. Atlanta Braves ◘ MLB ◘",
+          "id_xtream": "627925"
+        },
+        {
+          "nombre": "13:00 ◘ Philadelphia Phillies vs. Atlanta Braves ◘ MLB ◘ Spanish",
+          "id_xtream": "627926"
+        },
+        {
+          "nombre": "13:00 ◘ Philadelphia Phillies vs. Atlanta Braves ◘ MLB ◘◘ Spanish",
+          "id_xtream": "627927"
+        }
+      ]
+    },
+    {
+      "id": "66086dc80eece7d0",
+      "agenda_id": "66086dc80eece7d0",
+      "titulo": "Bulgaria vs Estonia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bulgaria",
+      "equipo_visitante": "Estonia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0bee7p1552858893.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fn43zxi1730303815.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ Bulgaria vs. Estonia ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627928"
+        },
+        {
+          "nombre": "13:45 ◘ Bulgaria vs. Estonia ◘ UEFA Nations League ◘◘ SD",
+          "id_xtream": "627929"
+        }
+      ]
+    },
+    {
+      "id": "9319003d3e3e881d",
+      "agenda_id": "9319003d3e3e881d",
+      "titulo": "Escocia vs Suiza",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Escocia",
+      "equipo_visitante": "Suiza",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3691i11552945146.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmb7yqe1717365808.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ Escocia vs. Suiza ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627930"
+        },
+        {
+          "nombre": "13:45 ◘ Escocia vs. Suiza ◘ UEFA Nations League ◘◘ SD",
+          "id_xtream": "627931"
+        }
+      ]
+    },
+    {
+      "id": "6d3c9bdb7523a321",
+      "agenda_id": "6d3c9bdb7523a321",
+      "titulo": "Eslovaquia vs Kazajistán",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eslovaquia",
+      "equipo_visitante": "Kazajistán",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnjbw8n1717365638.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ Eslovaquia vs. Kazakhstan ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627932"
+        },
+        {
+          "nombre": "13:45 ◘ Eslovaquia vs. Kazakhstan ◘ UEFA Nations League ◘◘ SD",
+          "id_xtream": "627933"
+        }
+      ]
+    },
+    {
+      "id": "6354b2dd243f4d7b",
+      "agenda_id": "6354b2dd243f4d7b",
+      "titulo": "Eslovenia vs Macedonia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eslovenia",
+      "equipo_visitante": "Macedonia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fs7k1x51552909864.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ Eslovenia vs. Macedonia ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627934"
+        },
+        {
+          "nombre": "13:45 ◘ Eslovenia vs. Macedonia ◘ UEFA Nations League ◘◘ SD",
+          "id_xtream": "627935"
+        }
+      ]
+    },
+    {
+      "id": "9eed42cb805f9223",
+      "agenda_id": "9eed42cb805f9223",
+      "titulo": "España vs Croacia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "España",
+      "equipo_visitante": "Croacia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fncgqyr1726166942.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F84cfeg1789271106.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ España vs. Croacia ◘ UEFA Nations League\t◘◘",
+          "id_xtream": "627936"
+        },
+        {
+          "nombre": "13:45 ◘ España vs. Croacia ◘ UEFA Nations League\t◘◘ FHD",
+          "id_xtream": "627937"
+        },
+        {
+          "nombre": "13:45 ◘ España vs. Croacia ◘ UEFA Nations League\t◘◘ SD",
+          "id_xtream": "627938"
+        }
+      ]
+    },
+    {
+      "id": "e06202e4408932da",
+      "agenda_id": "e06202e4408932da",
+      "titulo": "Luxemburgo vs Islandia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Luxemburgo",
+      "equipo_visitante": "Islandia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnsakoo1713725395.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ Luxemburgo vs. Islandia ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627939"
+        },
+        {
+          "nombre": "13:45 ◘ Luxemburgo vs. Islandia ◘ UEFA Nations League ◘◘ SD",
+          "id_xtream": "627940"
+        }
+      ]
+    },
+    {
+      "id": "0c2a8c026f6168b9",
+      "agenda_id": "0c2a8c026f6168b9",
+      "titulo": "República Checa vs Inglaterra",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "República Checa",
+      "equipo_visitante": "Inglaterra",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvf5ttc1726166739.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ República Checa vs Inglaterra ◘ UEFA Nations League ◘",
+          "id_xtream": "627941"
+        },
+        {
+          "nombre": "13:45 ◘ República Checa vs Inglaterra ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627942"
+        }
+      ]
+    },
+    {
+      "id": "024e324fe2e67d57",
+      "agenda_id": "024e324fe2e67d57",
+      "titulo": "San Marino vs Albania",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Marino",
+      "equipo_visitante": "Albania",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fb%2Fb5%2FUEFA_logo.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvfvy3j1626192199.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvonacg1717365654.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ San Marino vs. Albania ◘ UEFA Nations League ◘◘",
+          "id_xtream": "627943"
+        },
+        {
+          "nombre": "13:45 ◘ San Marino vs. Albania ◘ UEFA Nations League ◘◘ SD",
+          "id_xtream": "627944"
+        }
+      ]
+    },
+    {
+      "id": "7b07b6a2a32ed8b1",
+      "agenda_id": "7b07b6a2a32ed8b1",
+      "titulo": "Congo vs Camerún",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Congo",
+      "equipo_visitante": "Camerún",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Congo vs. Camerún ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627945"
+        }
+      ]
+    },
+    {
+      "id": "7224984a36a9a726",
+      "agenda_id": "7224984a36a9a726",
+      "titulo": "Gabón vs Níger",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Gabón",
+      "equipo_visitante": "Níger",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Gabón vs. Níger ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627946"
+        }
+      ]
+    },
+    {
+      "id": "05983f852bc796d2",
+      "agenda_id": "05983f852bc796d2",
+      "titulo": "Islas Vírgenes Británicas vs Islas Turcas y Caicos",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Islas Vírgenes Británicas",
+      "equipo_visitante": "Islas Turcas y Caicos",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Islas Vírgenes Británicas vs. Islas Turcas y Caicos ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "627947"
+        }
+      ]
+    },
+    {
+      "id": "2710cf731cf3f112",
+      "agenda_id": "2710cf731cf3f112",
+      "titulo": "Liberia vs Malí",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Liberia",
+      "equipo_visitante": "Malí",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Liberia vs. Malí ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627948"
+        }
+      ]
+    },
+    {
+      "id": "97db972553fb2eb1",
+      "agenda_id": "97db972553fb2eb1",
+      "titulo": "Somalia vs Costa de Marfil",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Somalia",
+      "equipo_visitante": "Costa de Marfil",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Somalia vs. Costa de Marfil ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "627949"
+        }
+      ]
+    },
+    {
+      "id": "7d4845e058893ce8",
+      "agenda_id": "7d4845e058893ce8",
+      "titulo": "William & Mary vs American University",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "William & Mary",
+      "equipo_visitante": "American University",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ William & Mary vs. American University ◘ NCAA Men's Soccer\t◘◘",
+          "id_xtream": "627950"
+        }
+      ]
+    },
+    {
       "id": "lineal_dazn_laliga_1400",
       "agenda_id": "",
-      "titulo": "Rayo Vallecano vs Real Valladolid",
+      "titulo": "Rayo Vallecano vs Barcelona",
       "torneo": "LaLiga EA Sports",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Rayo Vallecano",
-      "equipo_visitante": "Real Valladolid",
-      "subtitulo": "Jornada 7",
-      "referencia": "Jornada 7",
-      "hora_utc": "2026-09-29T19:00:00Z",
+      "equipo_visitante": "Barcelona",
+      "subtitulo": "Jornada Intersemanal",
+      "referencia": "Jornada Intersemanal",
+      "hora_utc": "2026-09-30T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 120,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F0%2F0f%2FLaLiga_logo_2023.svg&w=400&output=webp",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnzhu941655595465.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbnhu8b1719983736.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 2,
       "origen": "lineal_dazn laliga",
@@ -110,22 +2184,22 @@
       ]
     },
     {
-      "id": "ba03a85e1b4535fa",
-      "agenda_id": "ba03a85e1b4535fa",
-      "titulo": "Suriname vs Martinique",
-      "torneo": "CONCACAF Nations League",
+      "id": "99a4241fefb4b213",
+      "agenda_id": "99a4241fefb4b213",
+      "titulo": "Deportivo Pereira vs Santa Fe",
+      "torneo": "Liga BetPlay Dimayor",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Suriname",
-      "equipo_visitante": "Martinique",
+      "equipo_local": "Deportivo Pereira",
+      "equipo_visitante": "Santa Fe",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-29T21:00:00Z",
-      "hora_local_producto": "16:00",
+      "hora_utc": "2026-09-30T19:30:00Z",
+      "hora_local_producto": "14:30",
       "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffpwsu31600976268.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Feka0vx1728750119.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Felw7as1629122545.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -133,7 +2207,7 @@
         "curador_inteligente_gemini"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 95,
       "metodo_correlacion": "gemini_fuente_verdad",
@@ -142,28 +2216,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "CONCACAF Nations League | 04:00 PM | Suriname vs Martinique",
-          "id_xtream": "627314"
+          "nombre": "Colombia | 02:30 PM | Deportivo Pereira vs Santa Fe",
+          "id_xtream": "627842"
         }
       ]
     },
     {
-      "id": "0e72ac5672974078",
-      "agenda_id": "0e72ac5672974078",
-      "titulo": "Cuba vs Bonaire",
+      "id": "7e7249854cf1a918",
+      "agenda_id": "7e7249854cf1a918",
+      "titulo": "Guayana Francesa vs Sint Maarten",
       "torneo": "CONCACAF Nations League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Cuba",
-      "equipo_visitante": "Bonaire",
+      "equipo_local": "Guayana Francesa",
+      "equipo_visitante": "Sint Maarten",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-29T21:00:00Z",
-      "hora_local_producto": "16:00",
-      "duracion_min": 120,
+      "hora_utc": "2026-09-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv89t931724137434.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fflwbqo1600954995.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5a2vju1600974345.png&w=400&output=webp",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -171,7 +2245,7 @@
         "curador_inteligente_gemini"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 95,
       "metodo_correlacion": "gemini_fuente_verdad",
@@ -180,8 +2254,240 @@
       ],
       "fuentes": [
         {
-          "nombre": "16:00 ◘ Cuba vs. Bonaire ◘ CONCACAF Nations League ◘",
-          "id_xtream": "627428"
+          "nombre": "CONCACAF Nations League | 03:00 PM | Guayana Francesa vs Sint Maarten",
+          "id_xtream": "627828"
+        }
+      ]
+    },
+    {
+      "id": "0eab8814b7eb10ef",
+      "agenda_id": "0eab8814b7eb10ef",
+      "titulo": "U.S. Virgin Islands vs Bahamas",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "U.S. Virgin Islands",
+      "equipo_visitante": "Bahamas",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:00 ◘ U.S. Virgin Islands vs. Bahamas ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "627951"
+        }
+      ]
+    },
+    {
+      "id": "5a0d8a0db56634bd",
+      "agenda_id": "5a0d8a0db56634bd",
+      "titulo": "Deportivo Pereira vs Santa Fe",
+      "torneo": "Liga BetPlay",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Pereira",
+      "equipo_visitante": "Santa Fe",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Felw7as1629122545.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:30 ◘ Deportivo Pereira vs. Santa Fe ◘ Liga Betplay ◘",
+          "id_xtream": "627952"
+        }
+      ]
+    },
+    {
+      "id": "965d9e0a9d3318aa",
+      "agenda_id": "965d9e0a9d3318aa",
+      "titulo": "Puerto Montt vs Colo-Colo",
+      "torneo": "Copa Chile",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Puerto Montt",
+      "equipo_visitante": "Colo-Colo",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "15:30 ◘ Puerto Montt vs. Colo-Colo ◘ Copa Chile ◘",
+          "id_xtream": "627953"
+        }
+      ]
+    },
+    {
+      "id": "a4239a489fda6de4",
+      "agenda_id": "a4239a489fda6de4",
+      "titulo": "Chicago White Sox vs Houston Astros",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chicago White Sox",
+      "equipo_visitante": "Houston Astros",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmiwigx1521893583.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 ◘ Chicago White Sox vs. Houston Astros ◘ MLB ◘",
+          "id_xtream": "627954"
+        },
+        {
+          "nombre": "16:00 ◘ Chicago White Sox vs. Houston Astros ◘ MLB ◘ Spanish",
+          "id_xtream": "627955"
+        }
+      ]
+    },
+    {
+      "id": "8cd669d3bd9e94af",
+      "agenda_id": "8cd669d3bd9e94af",
+      "titulo": "Florida Panthers vs Carolina Hurricanes",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Florida Panthers",
+      "equipo_visitante": "Carolina Hurricanes",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 ◘ Florida Panthers vs. Carolina Hurricanes ◘ NHL ◘◘",
+          "id_xtream": "627956"
+        }
+      ]
+    },
+    {
+      "id": "de2b1c31ba0ba58d",
+      "agenda_id": "de2b1c31ba0ba58d",
+      "titulo": "Guayana Francesa vs Sint Maarten",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Guayana Francesa",
+      "equipo_visitante": "Sint Maarten",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5a2vju1600974345.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "16:00 ◘ Guayana Francesa vs. Sint Maarten ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "627957"
         }
       ]
     },
@@ -189,14 +2495,14 @@
       "id": "lineal_win_sports+_1600",
       "agenda_id": "",
       "titulo": "Real Cartagena vs Tigres FC",
-      "torneo": "Torneo BetPlay",
+      "torneo": "Torneo BetPlay Dimayor",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Real Cartagena",
       "equipo_visitante": "Tigres FC",
       "subtitulo": "Fecha 13",
       "referencia": "Fecha 13",
-      "hora_utc": "2026-09-29T21:00:00Z",
+      "hora_utc": "2026-09-30T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 120,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
@@ -240,98 +2546,98 @@
       ]
     },
     {
-      "id": "54e7e7e98d0e7cc5",
-      "agenda_id": "54e7e7e98d0e7cc5",
-      "titulo": "Atlante W vs UNAM Pumas W",
-      "torneo": "Liga MX Femenil",
+      "id": "6734cd6f33906e75",
+      "agenda_id": "6734cd6f33906e75",
+      "titulo": "Anguilla vs Aruba",
+      "torneo": "CONCACAF Nations League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Atlante W",
-      "equipo_visitante": "UNAM Pumas W",
+      "equipo_local": "Anguilla",
+      "equipo_visitante": "Aruba",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-29T21:45:00Z",
-      "hora_local_producto": "16:45",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F36%2FLiga_MX_logo.svg%2F512px-Liga_MX_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F28036.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fo01nvl1695734937.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "en_vivo",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:45 ◘ Atlante W vs. UNAM Pumas W ◘ Liga MX Femenil ◘",
-          "id_xtream": "627435"
-        }
-      ]
-    },
-    {
-      "id": "0c5520ddc98e41e3",
-      "agenda_id": "0c5520ddc98e41e3",
-      "titulo": "Paysandú vs Tacuarembó",
-      "torneo": "Segunda División Uruguay",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Paysandú",
-      "equipo_visitante": "Tacuarembó",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-29T21:45:00Z",
-      "hora_local_producto": "16:45",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fc%2Fcd%2FAsociacion_Uruguaya_de_Futbol_logo.svg%2F512px-Asociacion_Uruguaya_de_Futbol_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9rrdrn1740851540.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fe3jc751727017020.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "en_vivo",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:45 ◘ Paysandú vs. Tacuarembó ◘ Segunda Uruguay ◘◘",
-          "id_xtream": "627443"
-        }
-      ]
-    },
-    {
-      "id": "eb17f6dc35b16103",
-      "agenda_id": "eb17f6dc35b16103",
-      "titulo": "Montevideo Wanderers vs Albion FC",
-      "torneo": "Campeonato Uruguayo",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Montevideo Wanderers",
-      "equipo_visitante": "Albion FC",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-29T22:00:00Z",
+      "hora_utc": "2026-09-30T22:00:00Z",
       "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fe4sbaf1607457641.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffjly6d1600953875.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "CONCACAF Nations League | 05:00 PM | Anguilla vs Aruba",
+          "id_xtream": "627829"
+        }
+      ]
+    },
+    {
+      "id": "475a6d849307b2e8",
+      "agenda_id": "475a6d849307b2e8",
+      "titulo": "Las Vegas Aces vs Indiana Fever",
+      "torneo": "WNBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Las Vegas Aces",
+      "equipo_visitante": "Indiana Fever",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjnvk6x1741462255.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9xp4y31552586027.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:30 ◘ Las Vegas Aces vs. Indiana Fever ◘ WNBA ◘",
+          "id_xtream": "627958"
+        }
+      ]
+    },
+    {
+      "id": "1a92c2a660e59320",
+      "agenda_id": "1a92c2a660e59320",
+      "titulo": "Estados Unidos vs Chile",
+      "torneo": "Amistoso Internacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Estados Unidos",
+      "equipo_visitante": "Chile",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-09-30T23:00:00Z",
+      "hora_local_producto": "18:00",
       "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3i6k5s1766114857.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2378.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F21f0oi1597948195.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5xjsy41591988732.png&w=400&output=webp",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -339,7 +2645,7 @@
         "curador_inteligente_gemini"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 95,
       "metodo_correlacion": "gemini_fuente_verdad",
@@ -348,162 +2654,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "Uruguay | 05:00 PM | Montevideo Wanderers vs. Albion FC",
-          "id_xtream": "627325"
-        },
-        {
-          "nombre": "17:30 ◘ Montevideo Wanderers vs. Albion FC ◘ Primera Uruguay ◘◘",
-          "id_xtream": "627442"
+          "nombre": "Amistoso | 06:00 PM | Estados Unidos vs. Chile",
+          "id_xtream": "627831"
         }
       ]
     },
     {
-      "id": "9ef7dea7d23f7492",
-      "agenda_id": "9ef7dea7d23f7492",
-      "titulo": "León vs América",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "León",
-      "equipo_visitante": "América",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-29T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F36%2FLiga_MX_logo.svg%2F512px-Liga_MX_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpc9gro1752393439.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Famy1xs1581857392.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "en_vivo",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "Liga MX Fem | 05:00 PM | León vs América",
-          "id_xtream": "627326"
-        }
-      ]
-    },
-    {
-      "id": "235547d4c5d9834e",
-      "agenda_id": "235547d4c5d9834e",
-      "titulo": "Surinam vs Martinica",
+      "id": "768c3dde0e5dcc8a",
+      "agenda_id": "768c3dde0e5dcc8a",
+      "titulo": "Anguila vs Aruba",
       "torneo": "CONCACAF Nations League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Surinam",
-      "equipo_visitante": "Martinica",
+      "equipo_local": "Anguila",
+      "equipo_visitante": "Aruba",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-29T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F5240.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Feka0vx1728750119.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "en_vivo",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:00 ◘ Surinam vs. Martinica ◘ CONCACAF Nations League ◘",
-          "id_xtream": "627429"
-        }
-      ]
-    },
-    {
-      "id": "lineal_tyc_sports_1700",
-      "agenda_id": "",
-      "titulo": "Huracán vs Godoy Cruz",
-      "torneo": "Liga Profesional Argentina",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Huracán",
-      "equipo_visitante": "Godoy Cruz",
-      "subtitulo": "Fecha 16",
-      "referencia": "Fecha 16",
-      "hora_utc": "2026-09-29T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkppi2b1775776550.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fd3c0ds1517768584.png&w=400&output=webp",
-      "banner": "",
-      "tier": 2,
-      "origen": "lineal_tyc sports",
-      "origenes": [
-        "lineal_tyc sports"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 90,
-      "fuentes": [
-        {
-          "nombre": "ARG | TyC SPORTS INTERNACIONAL",
-          "id_xtream": "1118"
-        },
-        {
-          "nombre": "ARG | TyC SPORTS HD",
-          "id_xtream": "1119"
-        },
-        {
-          "nombre": "ARG | TYC SPORTS INTERNACIONAL",
-          "id_xtream": "1120"
-        },
-        {
-          "nombre": "49 | TYC SPORTS INT ᴴᴰ",
-          "id_xtream": "58222"
-        },
-        {
-          "nombre": "TyC Sports",
-          "id_xtream": "207978"
-        },
-        {
-          "nombre": "TYC SPORTS HD",
-          "id_xtream": "258796"
-        }
-      ]
-    },
-    {
-      "id": "3f77492c4691ae1d",
-      "agenda_id": "3f77492c4691ae1d",
-      "titulo": "Santa Lucía vs Bermudas",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Santa Lucía",
-      "equipo_visitante": "Bermudas",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-29T23:00:00Z",
+      "hora_utc": "2026-09-30T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F981c6z1752736461.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa0amuq1774759653.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffjly6d1600953875.png&w=400&output=webp",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -520,28 +2692,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "CONCACAF Nations League | 06:00 PM | Santa Lucía vs. Bermudas",
-          "id_xtream": "627315"
+          "nombre": "18:00 ◘ Anguila vs. Aruba ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "627959"
         }
       ]
     },
     {
-      "id": "8287cf0c5e599584",
-      "agenda_id": "8287cf0c5e599584",
-      "titulo": "St. Kitts and Nevis vs Granada",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
+      "id": "f2aa993679488172",
+      "agenda_id": "f2aa993679488172",
+      "titulo": "Montreal Canadiens vs Toronto Maple Leafs",
+      "torneo": "NHL",
+      "categoria": "Hockey",
       "tipo_evento": "duelo",
-      "equipo_local": "St. Kitts and Nevis",
-      "equipo_visitante": "Granada",
+      "equipo_local": "Montreal Canadiens",
+      "equipo_visitante": "Toronto Maple Leafs",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-29T23:00:00Z",
+      "hora_utc": "2026-09-30T23:00:00Z",
       "hora_local_producto": "18:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhjl5781600973144.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5f67qy1600963168.png&w=400&output=webp",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -558,184 +2730,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "CONCACAF Nations League | 06:00 PM | St. Kitts and Nevis vs Granada",
-          "id_xtream": "627316"
-        }
-      ]
-    },
-    {
-      "id": "cf293685875a5d24",
-      "agenda_id": "cf293685875a5d24",
-      "titulo": "Jamaica vs Honduras",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Jamaica",
-      "equipo_visitante": "Honduras",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-29T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv6mk4r1594321722.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwuu4fp1718413719.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "CONCACAF Nations League | 06:00 PM | Jamaica vs Honduras",
-          "id_xtream": "627317"
-        }
-      ]
-    },
-    {
-      "id": "08f83b4aa6183971",
-      "agenda_id": "08f83b4aa6183971",
-      "titulo": "Columbus Crew vs Inter Miami",
-      "torneo": "MLS",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Columbus Crew",
-      "equipo_visitante": "Inter Miami",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-29T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F76%2FMLS_crest_logo_RGB_gradient.svg%2F512px-MLS_crest_logo_RGB_gradient.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fdzs8cp1629059854.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fm4it3e1602103647.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Columbus Crew vs. Inter Miami ◘ MLS ◘",
-          "id_xtream": "627408"
-        },
-        {
-          "nombre": "18:00 ◘ Columbus Crew vs. Inter Miami ◘ MLS ◘ English",
-          "id_xtream": "627409"
-        }
-      ]
-    },
-    {
-      "id": "2633c4065d58d8da",
-      "agenda_id": "2633c4065d58d8da",
-      "titulo": "León vs América",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "León",
-      "equipo_visitante": "América",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-29T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F36%2FLiga_MX_logo.svg%2F512px-Liga_MX_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpc9gro1752393439.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Famy1xs1581857392.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ León vs. América ◘ Liga MX Femenil ◘",
-          "id_xtream": "627436"
-        }
-      ]
-    },
-    {
-      "id": "acf9c3c0dd6a8f56",
-      "agenda_id": "acf9c3c0dd6a8f56",
-      "titulo": "Fortaleza CEIF vs Deportes Tolima",
-      "torneo": "Liga BetPlay",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Fortaleza CEIF",
-      "equipo_visitante": "Deportes Tolima",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-29T23:05:00Z",
-      "hora_local_producto": "18:05",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fw1c6ix1769101721.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4bscjt1766423328.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:05 ◘ Fortaleza CEIF vs. Deportes Tolima ◘ Liga Betplay ◘",
-          "id_xtream": "627410"
+          "nombre": "18:00 ◘ Montreal Canadiens vs. Toronto Maple Leafs ◘ NHL ◘◘",
+          "id_xtream": "627960"
         }
       ]
     },
     {
       "id": "lineal_win_sports+_1820",
       "agenda_id": "",
-      "titulo": "América de Cali vs Independiente Santa Fe",
-      "torneo": "Liga BetPlay",
+      "titulo": "Independiente Medellín vs Junior de Barranquilla",
+      "torneo": "Liga BetPlay Dimayor",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "América de Cali",
-      "equipo_visitante": "Independiente Santa Fe",
+      "equipo_local": "Independiente Medellín",
+      "equipo_visitante": "Junior de Barranquilla",
       "subtitulo": "Fecha 12",
       "referencia": "Fecha 12",
-      "hora_utc": "2026-09-29T23:20:00Z",
+      "hora_utc": "2026-09-30T23:20:00Z",
       "hora_local_producto": "18:20",
       "duracion_min": 120,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flwxcn71576156105.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F16vs771629122765.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 2,
       "origen": "lineal_win sports+",
@@ -774,22 +2790,22 @@
       ]
     },
     {
-      "id": "5d389b4ec27d38b0",
-      "agenda_id": "5d389b4ec27d38b0",
-      "titulo": "Curaçao vs Nicaragua",
-      "torneo": "CONCACAF Nations League",
+      "id": "486354bf9897e94c",
+      "agenda_id": "486354bf9897e94c",
+      "titulo": "México vs Perú",
+      "torneo": "Amistoso Internacional",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Curaçao",
-      "equipo_visitante": "Nicaragua",
+      "equipo_local": "México",
+      "equipo_visitante": "Perú",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T00:00:00Z",
+      "hora_utc": "2026-10-01T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fitygvb1600955363.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fup3xrd1718413389.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3rmosi1748525208.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -806,256 +2822,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "19:00 ◘ Curaçao vs. Nicaragua ◘ CONCACAF Nations League ◘◘",
-          "id_xtream": "627411"
+          "nombre": "Amistoso | 07:00 PM | México vs Perú",
+          "id_xtream": "627832"
         }
       ]
     },
     {
-      "id": "b39067c360eec0f6",
-      "agenda_id": "b39067c360eec0f6",
-      "titulo": "Dominica vs Puerto Rico",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
+      "id": "cdaf309f591e772a",
+      "agenda_id": "cdaf309f591e772a",
+      "titulo": "Boston Red Sox vs New York Yankees",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Dominica",
-      "equipo_visitante": "Puerto Rico",
+      "equipo_local": "Boston Red Sox",
+      "equipo_visitante": "New York Yankees",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T00:00:00Z",
+      "hora_utc": "2026-10-01T00:00:00Z",
       "hora_local_producto": "19:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjor1nx1728748936.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fk5yg341718413296.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ Dominica vs. Puerto Rico ◘ CONCACAF Nations League ◘◘",
-          "id_xtream": "627412"
-        }
-      ]
-    },
-    {
-      "id": "4c46a86c4ea9954b",
-      "agenda_id": "4c46a86c4ea9954b",
-      "titulo": "St. Lucia vs Bermudas",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "St. Lucia",
-      "equipo_visitante": "Bermudas",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2x86cj1774756550.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa0amuq1774759653.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ St. Lucia vs. Bermudas ◘ CONCACAF Nations League ◘",
-          "id_xtream": "627430"
-        }
-      ]
-    },
-    {
-      "id": "4d90db092889d35d",
-      "agenda_id": "4d90db092889d35d",
-      "titulo": "St. Kitts and Nevis vs Granada",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "St. Kitts and Nevis",
-      "equipo_visitante": "Granada",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhjl5781600973144.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5f67qy1600963168.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ St. Kitts and Nevis vs. Granada ◘ CONCACAF Nations League ◘",
-          "id_xtream": "627431"
-        }
-      ]
-    },
-    {
-      "id": "e11d461026506021",
-      "agenda_id": "e11d461026506021",
-      "titulo": "Jamaica vs Honduras",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Jamaica",
-      "equipo_visitante": "Honduras",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv6mk4r1594321722.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwuu4fp1718413719.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ Jamaica vs. Honduras ◘ CONCACAF Nations League ◘",
-          "id_xtream": "627432"
-        }
-      ]
-    },
-    {
-      "id": "e5755858eface069",
-      "agenda_id": "e5755858eface069",
-      "titulo": "Necaxa vs Toluca",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Necaxa",
-      "equipo_visitante": "Toluca",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T00:06:00Z",
-      "hora_local_producto": "19:06",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F36%2FLiga_MX_logo.svg%2F512px-Liga_MX_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ftqdk9e1779772432.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fy64wy91523913186.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "Liga MX Fem | 07:06 PM | Necaxa vs Toluca",
-          "id_xtream": "627327"
-        }
-      ]
-    },
-    {
-      "id": "5db20950b40c02d6",
-      "agenda_id": "5db20950b40c02d6",
-      "titulo": "Tigres UANL vs Atlético San Luis",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Tigres UANL",
-      "equipo_visitante": "Atlético San Luis",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T00:06:00Z",
-      "hora_local_producto": "19:06",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F36%2FLiga_MX_logo.svg%2F512px-Liga_MX_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flh80fx1701423708.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9kgjme1593448412.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:06 ◘ Tigres UANL vs. Atlético San Luis ◘ Liga MX Femenil ◘",
-          "id_xtream": "627413"
-        }
-      ]
-    },
-    {
-      "id": "7e05a42c1b022bd5",
-      "agenda_id": "7e05a42c1b022bd5",
-      "titulo": "Philadelphia Eagles vs Chicago Bears",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Philadelphia Eagles",
-      "equipo_visitante": "Chicago Bears",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T00:15:00Z",
-      "hora_local_producto": "19:15",
       "duracion_min": 180,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fa%2Fa2%2FNational_Football_League_logo.svg%2F512px-National_Football_League_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpnpybf1515852421.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0m51zd1784716955.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fstpsus1425120215.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwqwwxx1423478766.png&w=400&output=webp",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1072,32 +2860,32 @@
       ],
       "fuentes": [
         {
-          "nombre": "19:15 ◘ Philadelphia Eagles vs. Chicago Bears ◘ NFL ◘",
-          "id_xtream": "627438"
+          "nombre": "19:00 ◘ Boston Red Sox vs. New York Yankees ◘ MLB ◘",
+          "id_xtream": "627961"
         },
         {
-          "nombre": "19:15 ◘ Philadelphia Eagles vs. Chicago Bears ◘ NFL ◘ Spanish",
-          "id_xtream": "627439"
+          "nombre": "19:00 ◘ Boston Red Sox vs. New York Yankees ◘ MLB ◘ Spanish",
+          "id_xtream": "627962"
         }
       ]
     },
     {
-      "id": "4152bf5c6d237e23",
-      "agenda_id": "4152bf5c6d237e23",
-      "titulo": "Los Angeles Rams vs Denver Broncos",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
+      "id": "80a1072eaba273fe",
+      "agenda_id": "80a1072eaba273fe",
+      "titulo": "EE. UU. vs Chile",
+      "torneo": "Amistoso Internacional",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Los Angeles Rams",
-      "equipo_visitante": "Denver Broncos",
+      "equipo_local": "EE. UU.",
+      "equipo_visitante": "Chile",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T00:20:00Z",
-      "hora_local_producto": "19:20",
-      "duracion_min": 180,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fa%2Fa2%2FNational_Football_League_logo.svg%2F512px-National_Football_League_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fojw15x1784721865.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzy3m9v1784718707.png&w=400&output=webp",
+      "hora_utc": "2026-10-01T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5xjsy41591988732.png&w=400&output=webp",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1114,27 +2902,241 @@
       ],
       "fuentes": [
         {
-          "nombre": "19:20 ◘ Los Angeles Rams vs. Denver Broncos ◘ NFL ◘",
-          "id_xtream": "627414"
+          "nombre": "19:00 ◘ EE. UU. vs. Chile ◘ Amistoso ◘",
+          "id_xtream": "627963"
+        },
+        {
+          "nombre": "19:00 ◘ EE. UU. vs. Chile ◘ Amistoso ◘ SD",
+          "id_xtream": "627964"
+        }
+      ]
+    },
+    {
+      "id": "c15ec230665adfc8",
+      "agenda_id": "c15ec230665adfc8",
+      "titulo": "Jacksonville vs Memphis",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Jacksonville",
+      "equipo_visitante": "Memphis",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwvucol1564336213.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Jacksonville vs. Memphis ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "627965"
+        }
+      ]
+    },
+    {
+      "id": "7390f4ffd71bc8c5",
+      "agenda_id": "7390f4ffd71bc8c5",
+      "titulo": "New York Rangers vs Boston Bruins",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Rangers",
+      "equipo_visitante": "Boston Bruins",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ New York Rangers vs. Boston Bruins ◘ NHL ◘",
+          "id_xtream": "627966"
+        },
+        {
+          "nombre": "19:00 ◘ New York Rangers vs. Boston Bruins ◘ NHL ◘  Spanish",
+          "id_xtream": "627967"
+        }
+      ]
+    },
+    {
+      "id": "7aaa31d1f576fee7",
+      "agenda_id": "7aaa31d1f576fee7",
+      "titulo": "Medellín vs Millonarios",
+      "torneo": "Liga BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Medellín",
+      "equipo_visitante": "Millonarios",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T00:05:00Z",
+      "hora_local_producto": "19:05",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Colombia | 07:05 PM | Medellín vs Millonarios",
+          "id_xtream": "627843"
+        }
+      ]
+    },
+    {
+      "id": "lineal_tyc_sports_1910",
+      "agenda_id": "",
+      "titulo": "Boca Juniors vs Talleres de Córdoba",
+      "torneo": "Copa Argentina",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boca Juniors",
+      "equipo_visitante": "Talleres de Córdoba",
+      "subtitulo": "Cuartos de Final",
+      "referencia": "Cuartos de Final",
+      "hora_utc": "2026-10-01T00:10:00Z",
+      "hora_local_producto": "19:10",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbm7krb1775741582.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "lineal_tyc sports",
+      "origenes": [
+        "lineal_tyc sports"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 90,
+      "fuentes": [
+        {
+          "nombre": "ARG | TyC SPORTS INTERNACIONAL",
+          "id_xtream": "1118"
+        },
+        {
+          "nombre": "ARG | TyC SPORTS HD",
+          "id_xtream": "1119"
+        },
+        {
+          "nombre": "ARG | TYC SPORTS INTERNACIONAL",
+          "id_xtream": "1120"
+        },
+        {
+          "nombre": "49 | TYC SPORTS INT ᴴᴰ",
+          "id_xtream": "58222"
+        },
+        {
+          "nombre": "TyC Sports",
+          "id_xtream": "207978"
+        },
+        {
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "258796"
+        }
+      ]
+    },
+    {
+      "id": "2f8bd425ad8a6e8f",
+      "agenda_id": "2f8bd425ad8a6e8f",
+      "titulo": "Minnesota Lynx vs New York Liberty",
+      "torneo": "WNBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Minnesota Lynx",
+      "equipo_visitante": "New York Liberty",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:30 ◘ Minnesota Lynx vs. New York Liberty ◘ WNBA ◘",
+          "id_xtream": "627968"
         }
       ]
     },
     {
       "id": "lineal_dsports_1930",
       "agenda_id": "",
-      "titulo": "Independiente Medellín vs Lanús",
+      "titulo": "Independiente vs Lanús",
       "torneo": "Copa Sudamericana",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Independiente Medellín",
+      "equipo_local": "Independiente",
       "equipo_visitante": "Lanús",
-      "subtitulo": "Cuartos de final",
-      "referencia": "Cuartos de final",
-      "hora_utc": "2026-09-30T00:30:00Z",
+      "subtitulo": "Cuartos de Final - Vuelta",
+      "referencia": "Cuartos de Final - Vuelta",
+      "hora_utc": "2026-10-01T00:30:00Z",
       "hora_local_producto": "19:30",
       "duracion_min": 120,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Feb%2FCopa_Sudamericana_logo.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp",
+      "logo_local": "",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fddty0w1769146364.png&w=400&output=webp",
       "banner": "",
       "tier": 2,
@@ -1182,22 +3184,22 @@
       ]
     },
     {
-      "id": "c1e3c6a6ea4afd51",
-      "agenda_id": "c1e3c6a6ea4afd51",
-      "titulo": "Guatemala vs El Salvador",
+      "id": "6736581d4d729ce5",
+      "agenda_id": "6736581d4d729ce5",
+      "titulo": "Belice vs San Vicente y las Granadinas",
       "torneo": "CONCACAF Nations League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Guatemala",
-      "equipo_visitante": "El Salvador",
+      "equipo_local": "Belice",
+      "equipo_visitante": "San Vicente y las Granadinas",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T01:00:00Z",
+      "hora_utc": "2026-10-01T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffvq74e1749157510.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fgjc22e1598134820.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fe86mw51774761610.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1214,104 +3216,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "CONCACAF Nations League | 08:00 PM | Guatemala vs. El Salvador",
-          "id_xtream": "627318"
+          "nombre": "CONCACAF Nations League | 08:00 PM | Belice vs. San Vicente y las Granadinas",
+          "id_xtream": "627830"
         }
       ]
     },
     {
-      "id": "707f08073e922a82",
-      "agenda_id": "707f08073e922a82",
-      "titulo": "León vs Juárez",
-      "torneo": "Liga MX",
+      "id": "f087fc33c0dc5385",
+      "agenda_id": "f087fc33c0dc5385",
+      "titulo": "México vs Perú",
+      "torneo": "Amistoso Internacional",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "León",
-      "equipo_visitante": "Juárez",
+      "equipo_local": "México",
+      "equipo_visitante": "Perú",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T01:00:00Z",
+      "hora_utc": "2026-10-01T01:00:00Z",
       "hora_local_producto": "20:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F36%2FLiga_MX_logo.svg%2F512px-Liga_MX_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpc9gro1752393439.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fb4oy071567446336.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "20:00 ◘ León vs. Juárez ◘ Liga MX ◘",
-          "id_xtream": "627415"
-        }
-      ]
-    },
-    {
-      "id": "96556ef5486a409d",
-      "agenda_id": "96556ef5486a409d",
-      "titulo": "Trinidad and Tobago vs Dominican Republic",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Trinidad and Tobago",
-      "equipo_visitante": "Dominican Republic",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T01:00:00Z",
-      "hora_local_producto": "20:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx0uq8u1598135774.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ftnvu6e1774758597.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "20:00 ◘ Trinidad and Tobago vs. Dominican Republic ◘ CONCACAF Nations League ◘",
-          "id_xtream": "627416"
-        }
-      ]
-    },
-    {
-      "id": "7d0e03637b547003",
-      "agenda_id": "7d0e03637b547003",
-      "titulo": "Necaxa vs Toluca",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Necaxa",
-      "equipo_visitante": "Toluca",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T01:06:00Z",
-      "hora_local_producto": "20:06",
       "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F36%2FLiga_MX_logo.svg%2F512px-Liga_MX_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ftqdk9e1779772432.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fy64wy91523913186.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3rmosi1748525208.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1328,28 +3254,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "20:06 ◘ Necaxa vs. Toluca ◘ Liga MX Femenil ◘",
-          "id_xtream": "627437"
+          "nombre": "20:00 AMISTOSOS ᴾᵖᵛ México vs Perú",
+          "id_xtream": "627898"
         }
       ]
     },
     {
-      "id": "8e225b68d9d96004",
-      "agenda_id": "8e225b68d9d96004",
-      "titulo": "Deportivo Cali vs Rionegro Águilas",
+      "id": "c34d5c08fe3c4196",
+      "agenda_id": "c34d5c08fe3c4196",
+      "titulo": "Medellín vs Millonarios",
       "torneo": "Liga BetPlay",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Deportivo Cali",
-      "equipo_visitante": "Rionegro Águilas",
+      "equipo_local": "Medellín",
+      "equipo_visitante": "Millonarios",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T01:10:00Z",
-      "hora_local_producto": "20:10",
+      "hora_utc": "2026-10-01T01:05:00Z",
+      "hora_local_producto": "20:05",
       "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fisc2yu1580833286.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6d7qas1703002070.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1366,28 +3292,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "20:10 ◘ Deportivo Cali vs. Rionegro Águilas ◘ Liga Betplay ◘",
-          "id_xtream": "627417"
+          "nombre": "20:05 ◘ Medellín vs. Millonarios ◘ Liga Betplay ◘",
+          "id_xtream": "627971"
         }
       ]
     },
     {
-      "id": "fa797a734a7b7715",
-      "agenda_id": "fa797a734a7b7715",
-      "titulo": "Guatemala vs El Salvador",
+      "id": "443814bab4fa9c06",
+      "agenda_id": "443814bab4fa9c06",
+      "titulo": "Belice vs San Vicente y las Granadinas",
       "torneo": "CONCACAF Nations League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Guatemala",
-      "equipo_visitante": "El Salvador",
+      "equipo_local": "Belice",
+      "equipo_visitante": "San Vicente y las Granadinas",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T02:00:00Z",
+      "hora_utc": "2026-10-01T02:00:00Z",
       "hora_local_producto": "21:00",
-      "duracion_min": 120,
+      "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffvq74e1749157510.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fgjc22e1598134820.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fe86mw51774761610.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1404,28 +3330,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "21:00 ◘ Guatemala vs. El Salvador ◘ CONCACAF Nations League ◘",
-          "id_xtream": "627433"
+          "nombre": "21:00 ◘ Belice vs. San Vicente / Granadinas ◘ CONCACAF Nations League ◘",
+          "id_xtream": "627972"
         }
       ]
     },
     {
-      "id": "ebc3f9429758679c",
-      "agenda_id": "ebc3f9429758679c",
-      "titulo": "Necaxa vs América",
-      "torneo": "Liga MX",
-      "categoria": "Fútbol",
+      "id": "d942df421ba80749",
+      "agenda_id": "d942df421ba80749",
+      "titulo": "Chicago Cubs vs San Diego Padres",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Necaxa",
-      "equipo_visitante": "América",
+      "equipo_local": "Chicago Cubs",
+      "equipo_visitante": "San Diego Padres",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T03:10:00Z",
-      "hora_local_producto": "22:10",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F36%2FLiga_MX_logo.svg%2F512px-Liga_MX_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ftqdk9e1779772432.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Famy1xs1581857392.png&w=400&output=webp",
+      "hora_utc": "2026-10-01T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwxbe071521892391.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6wt1cn1617527530.png&w=400&output=webp",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1442,17 +3368,101 @@
       ],
       "fuentes": [
         {
-          "nombre": "22:10 ◘ Necaxa vs. América ◘ Liga MX ◘",
-          "id_xtream": "627418"
+          "nombre": "21:00 ◘ Chicago Cubs vs. San Diego Padres ◘ MLB ◘",
+          "id_xtream": "627973"
+        },
+        {
+          "nombre": "21:00 ◘ Chicago Cubs vs. San Diego Padres ◘ MLB ◘ Spanish",
+          "id_xtream": "627974"
+        },
+        {
+          "nombre": "21:00 ◘ Chicago Cubs vs. San Diego Padres ◘ MLB ◘◘ Spanish",
+          "id_xtream": "627975"
+        }
+      ]
+    },
+    {
+      "id": "331684b5bb0af009",
+      "agenda_id": "331684b5bb0af009",
+      "titulo": "Vancouver Canucks vs Edmonton Oilers",
+      "torneo": "NHL",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Vancouver Canucks",
+      "equipo_visitante": "Edmonton Oilers",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Vancouver Canucks vs. Edmonton Oilers ◘ NHL ◘◘",
+          "id_xtream": "627978"
+        }
+      ]
+    },
+    {
+      "id": "9fc0708c3d32f081",
+      "agenda_id": "9fc0708c3d32f081",
+      "titulo": "Chicago Blackhawks vs Vegas Golden Knights",
+      "torneo": "NHL",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chicago Blackhawks",
+      "equipo_visitante": "Vegas Golden Knights",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:30 ◘ Chicago Blackhawks vs. Vegas Golden Knights ◘ NHL ◘◘",
+          "id_xtream": "627979"
         }
       ]
     }
   ],
   "metricas": {
-    "total_streams": 11831,
-    "candidatos_hoy": 65,
-    "eventos_unicos": 62,
-    "eventos_publicados": 29,
-    "descartados": 33
+    "total_streams": 11927,
+    "candidatos_hoy": 103,
+    "eventos_unicos": 83,
+    "eventos_publicados": 80,
+    "descartados": 3
   }
 }
