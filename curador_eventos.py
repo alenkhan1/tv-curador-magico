@@ -43,6 +43,7 @@ from resolvedor_logos import (
     resolver_logo_torneo,
 )
 from verificador_agy import verificar_lote_eventos_con_agy
+from sanitizador_nombres import sanitizar_evento_crudo
 
 logging.basicConfig(
     level=getattr(logging, os.environ.get("LOG_LEVEL", "INFO").upper(), logging.INFO),
@@ -275,7 +276,7 @@ def procesar_streams_eventos_xtream(
             else:
                 aceptados.append(h)
 
-    # Convertir aceptados al formato JSON canónico
+    # Convertir aceptados al formato JSON canónico profesional y saneado
     eventos_finales = []
     for item in aceptados:
         nombre = item["nombre"]
@@ -285,11 +286,21 @@ def procesar_streams_eventos_xtream(
         coincide_agenda = item.get("agenda")
         agy_info = item.get("agy_info")
 
-        partes = re.split(r"\s+(?:vs\.?|v\.?|-|@)\s+", nombre, flags=re.I)
-        loc = agy_info.get("equipo_local") if agy_info and agy_info.get("equipo_local") else (coincide_agenda.local if coincide_agenda else (partes[0].strip() if len(partes) >= 2 else ""))
-        vis = agy_info.get("equipo_visitante") if agy_info and agy_info.get("equipo_visitante") else (coincide_agenda.visitante if coincide_agenda else (partes[1].strip() if len(partes) >= 2 else ""))
-        dep = agy_info.get("deporte") if agy_info and agy_info.get("deporte") else (coincide_agenda.deporte if coincide_agenda else "Otros Deportes")
-        torneo = agy_info.get("torneo") if agy_info and agy_info.get("torneo") else (coincide_agenda.torneo if coincide_agenda else (grupo or "Evento en Vivo"))
+        # 1. Sanitización profunda de metadatos
+        datos_limpios = sanitizar_evento_crudo(nombre, grupo)
+
+        dep = agy_info.get("deporte") if agy_info and agy_info.get("deporte") else (coincide_agenda.deporte if coincide_agenda else datos_limpios["deporte"])
+        torneo = agy_info.get("torneo") if agy_info and agy_info.get("torneo") else (coincide_agenda.torneo if coincide_agenda else datos_limpios["torneo"])
+        loc = agy_info.get("equipo_local") if agy_info and agy_info.get("equipo_local") else (coincide_agenda.local if coincide_agenda else datos_limpios["local"])
+        vis = agy_info.get("equipo_visitante") if agy_info and agy_info.get("equipo_visitante") else (coincide_agenda.visitante if coincide_agenda else datos_limpios["visitante"])
+        tipo_ev = "duelo" if (loc and vis) else datos_limpios["tipo"]
+
+        if tipo_ev == "duelo" and loc and vis:
+            titulo = f"{loc} vs {vis}"
+            subtitulo = f"{torneo}"
+        else:
+            titulo = datos_limpios["titulo"] or torneo
+            subtitulo = datos_limpios["subtitulo"]
 
         try:
             h, mi = [int(x) for x in hora_stream.split(":")]
@@ -298,21 +309,22 @@ def procesar_streams_eventos_xtream(
         except Exception:
             continue
 
-        logo_tor = resolver_logo_torneo(torneo, dep)
-        logo_l = resolver_logo_equipo(loc, dep) if loc else ""
-        logo_v = resolver_logo_equipo(vis, dep) if vis else ""
+        # 2. Resolución de logos con soporte de red y fallback
+        logo_tor = resolver_logo_torneo(torneo, dep, permitir_red=True)
+        logo_l = resolver_logo_equipo(loc, dep, permitir_red=True) if (tipo_ev == "duelo" and loc) else ""
+        logo_v = resolver_logo_equipo(vis, dep, permitir_red=True) if (tipo_ev == "duelo" and vis) else ""
 
         id_ev = f"xtream_{sid}"
         eventos_finales.append({
             "id": id_ev,
             "agenda_id": "",
-            "titulo": f"{loc} vs {vis}" if loc and vis else nombre,
+            "titulo": titulo,
             "torneo": torneo,
             "categoria": dep,
-            "tipo_evento": "duelo" if loc and vis else "circuito",
+            "tipo_evento": tipo_ev,
             "equipo_local": loc,
             "equipo_visitante": vis,
-            "subtitulo": f"{torneo} | Evento Directo",
+            "subtitulo": subtitulo,
             "referencia": torneo,
             "hora_utc": hora_utc,
             "hora_local_producto": hora_stream,
@@ -321,7 +333,7 @@ def procesar_streams_eventos_xtream(
             "logo_local": logo_l,
             "logo_visitante": logo_v,
             "banner": logo_tor or logo_l,
-            "tier": 2,
+            "tier": 1 if any(k in torneo.upper() for k in ["LALIGA", "PREMIER", "CHAMPIONS", "BETPLAY", "CONMEBOL", "NBA", "MLB"]) else 2,
             "origen": "xtream_evento",
             "origenes": ["xtream_evento"],
             "estado": "confirmado",

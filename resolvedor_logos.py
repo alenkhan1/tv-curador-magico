@@ -35,7 +35,7 @@ def _http_get_json(url: str, headers: dict | None = None, timeout: int = 4) -> d
 
 
 ARCHIVO_CACHE_LOGOS = Path(os.environ.get("ARCHIVO_CACHE_LOGOS", "logos_cache.json"))
-THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "123").strip()
+THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "3").strip()
 API_SPORTS_KEY = os.environ.get("API_SPORTS_KEY", "").strip()
 
 def es_logo_basura(url: Any) -> bool:
@@ -60,6 +60,17 @@ def envolver_cdn_proxy(url: str) -> str:
     return f"https://wsrv.nl/?url={urllib.parse.quote(url_limpia, safe='')}&w=400&output=webp"
 
 CIRCUITO_LOGOS_RAW: dict[str, str] = {
+    # Torneos adicionales y deportes mundiales
+    "PREMIER PADEL": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Premier_Padel_logo.svg",
+    "NPC": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/National_Provincial_Championship_%28rugby_union%29_logo.svg/512px-National_Provincial_Championship_%28rugby_union%29_logo.svg.png",
+    "BUNNINGS NPC": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/National_Provincial_Championship_%28rugby_union%29_logo.svg/512px-National_Provincial_Championship_%28rugby_union%29_logo.svg.png",
+    "SUPER RUGBY": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Super_Rugby_Pacific_logo.svg/512px-Super_Rugby_Pacific_logo.svg.png",
+    "EXTREME FIGHTING CHAMPIONSHIP": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/512px-UFC_logo.svg.png",
+    "EFC": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/512px-UFC_logo.svg.png",
+    "ALFRED DUNHILL": "https://upload.wikimedia.org/wikipedia/en/thumb/6/65/DP_World_Tour_logo.svg/512px-DP_World_Tour_logo.svg.png",
+    "BANK OF UTAH": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/PGA_Tour_logo.svg/512px-PGA_Tour_logo.svg.png",
+    "USL CHAMPIONSHIP": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/USL_Championship_logo.svg/512px-USL_Championship_logo.svg.png",
+
     # Tenis
     "ATP": "https://upload.wikimedia.org/wikipedia/commons/3/3f/ATP_Tour_logo.svg",
     "WTA": "https://upload.wikimedia.org/wikipedia/en/0/03/WTA_logo_2020.svg",
@@ -247,9 +258,8 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     if permitir_red and torneo_norm:
         try:
             url_tsdb = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}/search_all_leagues.php?c={urllib.parse.quote(torneo)}"
-            resp = requests.get(url_tsdb, timeout=4)
-            if resp.status_code == 200:
-                data = resp.json()
+            data = _http_get_json(url_tsdb, timeout=4)
+            if data:
                 leagues = data.get("countries") or []
                 if leagues:
                     badge = leagues[0].get("strBadge") or leagues[0].get("strLogo")
@@ -273,6 +283,13 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
 
 
 PAISES_ALIAS = {
+    "AZERBAIYAN": "Azerbaijan",
+    "DINAMARCA": "Denmark",
+    "HOLANDA": "Netherlands",
+    "GRECIA": "Greece",
+    "CURAZAO": "Curacao",
+    "DOMINICA": "Dominica",
+
     "BELGICA": "Belgium",
     "FRANCIA": "France",
     "TURQUIA": "Turkey",
@@ -361,9 +378,8 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", permitir_red: bo
     try:
         nombre_busqueda = PAISES_ALIAS.get(equipo_norm, equipo_limpio)
         url_tsdb = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}/searchteams.php?t={urllib.parse.quote(nombre_busqueda)}"
-        resp = requests.get(url_tsdb, timeout=4)
-        if resp.status_code == 200:
-            data = resp.json()
+        data = _http_get_json(url_tsdb, timeout=4)
+        if data:
             teams = data.get("teams") or []
             if teams:
                 badge = teams[0].get("strBadge") or teams[0].get("strLogo")
@@ -379,9 +395,8 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", permitir_red: bo
     if API_SPORTS_KEY and ("futbol" in deporte.lower() or "fútbol" in deporte.lower()):
         try:
             url_api = f"https://v3.football.api-sports.io/teams?search={urllib.parse.quote(equipo_limpio)}"
-            resp = requests.get(url_api, headers={"x-apisports-key": API_SPORTS_KEY}, timeout=4)
-            if resp.status_code == 200:
-                data = resp.json()
+            data = _http_get_json(url_api, headers={"x-apisports-key": API_SPORTS_KEY}, timeout=4)
+            if data:
                 res = data.get("response") or []
                 if res:
                     logo = res[0].get("team", {}).get("logo")
