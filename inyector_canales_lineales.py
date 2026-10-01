@@ -167,7 +167,7 @@ def inyectar_eventos_lineales(
             "logo_torneo": logo_torneo,
             "logo_local": logo_loc,
             "logo_visitante": logo_vis,
-            "banner": logo_torneo or logo_loc,
+            "banner": logo_torneo,
             "tier": 1 if any(k in ev.torneo.upper() for k in ["LALIGA", "PREMIER", "CHAMPIONS", "BETPLAY", "CONMEBOL", "NBA", "MLB"]) else 2,
             "origen": "inyector_lineal",
             "origenes": ["inyector_lineal", ev.fuente],

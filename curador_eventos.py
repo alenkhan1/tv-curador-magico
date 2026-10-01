@@ -360,7 +360,7 @@ def procesar_streams_eventos_xtream(
             "logo_torneo": logo_tor,
             "logo_local": logo_l,
             "logo_visitante": logo_v,
-            "banner": logo_tor or logo_l,
+            "banner": logo_tor,
             "tier": 1 if any(k in torneo.upper() for k in ["LALIGA", "PREMIER", "CHAMPIONS", "BETPLAY", "CONMEBOL", "NBA", "MLB"]) else 2,
             "origen": "xtream_evento",
             "origenes": ["xtream_evento"],

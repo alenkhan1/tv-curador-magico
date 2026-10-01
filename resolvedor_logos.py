@@ -69,6 +69,33 @@ def envolver_cdn_proxy(url: str) -> str:
     return f"https://wsrv.nl/?url={urllib.parse.quote(url_limpia, safe='')}&w=400&output=webp"
 
 CIRCUITO_LOGOS_RAW: dict[str, str] = {
+    # Torneos mayores mundiales
+    "NHL": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/05_NHL_Shield.svg/512px-05_NHL_Shield.svg.png",
+    "WNBA": "https://upload.wikimedia.org/wikipedia/en/thumb/8/86/WNBA_logo.svg/512px-WNBA_logo.svg.png",
+    "NBA": "https://upload.wikimedia.org/wikipedia/en/thumb/0/03/National_Basketball_Association_logo.svg/512px-National_Basketball_Association_logo.svg.png",
+    "MLB": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/512px-Major_League_Baseball_logo.svg.png",
+    "NFL": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/512px-National_Football_League_logo.svg.png",
+    "MLS": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/MLS_crest_logo_RGB_gradient.svg/512px-MLS_crest_logo_RGB_gradient.svg.png",
+    "NCAA": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/512px-NCAA_logo.svg.png",
+    "NCAA WOMEN'S SOCCER": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/512px-NCAA_logo.svg.png",
+    "CONCACAF NATIONS LEAGUE": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/CONCACAF_Nations_League_logo.svg/512px-CONCACAF_Nations_League_logo.svg.png",
+    "CONCACAF": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/CONCACAF_Nations_League_logo.svg/512px-CONCACAF_Nations_League_logo.svg.png",
+    "UEFA NATIONS LEAGUE": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/UEFA_Nations_League_logo.svg/512px-UEFA_Nations_League_logo.svg.png",
+    "UEFA WOMEN'S CHAMPIONS LEAGUE": "https://upload.wikimedia.org/wikipedia/commons/f/f3/UEFA_Champions_League_logo_2.svg",
+    "CHAMPIONS LEAGUE FEMENINA": "https://upload.wikimedia.org/wikipedia/commons/f/f3/UEFA_Champions_League_logo_2.svg",
+    "FORMULA 1": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/512px-F1.svg.png",
+    "F1": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/512px-F1.svg.png",
+    "FÓRMULA 1": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/512px-F1.svg.png",
+    "ATP": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/ATP_Tour_logo.svg/512px-ATP_Tour_logo.svg.png",
+    "WTA": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/WTA_Tour_logo_2020.svg/512px-WTA_Tour_logo_2020.svg.png",
+    "JAPAN OPEN": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/ATP_Tour_logo.svg/512px-ATP_Tour_logo.svg.png",
+    "CHINA OPEN": "https://upload.wikimedia.org/wikipedia/en/thumb/3/38/WTA_Tour_logo_2020.svg/512px-WTA_Tour_logo_2020.svg.png",
+    "PREMIER PADEL": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Premier_Padel_logo.svg",
+    "LIGA BETPLAY DIMAYOR": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Liga_BetPlay_Dimayor_logo.png",
+    "LIGA BETPLAY": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Liga_BetPlay_Dimayor_logo.png",
+    "COPA BETPLAY": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Liga_BetPlay_Dimayor_logo.png",
+    "COPA ARGENTINA": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Copa_Argentina_logo.svg/512px-Copa_Argentina_logo.svg.png",
+
     # Torneos adicionales y deportes mundiales
     "PREMIER PADEL": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Premier_Padel_logo.svg",
     "NPC": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6c/National_Provincial_Championship_%28rugby_union%29_logo.svg/512px-National_Provincial_Championship_%28rugby_union%29_logo.svg.png",
@@ -285,6 +312,50 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     return ""
 
 
+
+BANDERAS_PAISES_RAW: dict[str, str] = {
+    "ISLAS CAIMAN": "https://flagcdn.com/w320/ky.png",
+    "PUERTO RICO": "https://flagcdn.com/w320/pr.png",
+    "DOMINICA": "https://flagcdn.com/w320/dm.png",
+    "GUYANA": "https://flagcdn.com/w320/gy.png",
+    "CURAZAO": "https://flagcdn.com/w320/cw.png",
+    "TRINIDAD Y TOBAGO": "https://flagcdn.com/w320/tt.png",
+    "MONTSERRAT": "https://flagcdn.com/w320/ms.png",
+    "ISLAS VIRGENES BRITANICAS": "https://flagcdn.com/w320/vg.png",
+    "SAINT MARTIN": "https://flagcdn.com/w320/mf.png",
+    "ANGUILA": "https://flagcdn.com/w320/ai.png",
+    "ANTIGUA Y BARBUDA": "https://flagcdn.com/w320/ag.png",
+    "REPUBLICA DOMINICANA": "https://flagcdn.com/w320/do.png",
+    "HAITI": "https://flagcdn.com/w320/ht.png",
+    "NICARAGUA": "https://flagcdn.com/w320/ni.png",
+    "COSTA RICA": "https://flagcdn.com/w320/cr.png",
+    "JAMAICA": "https://flagcdn.com/w320/jm.png",
+    "HONDURAS": "https://flagcdn.com/w320/hn.png",
+    "GUATEMALA": "https://flagcdn.com/w320/gt.png",
+    "EL SALVADOR": "https://flagcdn.com/w320/sv.png",
+    "PANAMA": "https://flagcdn.com/w320/pa.png",
+    "CUBA": "https://flagcdn.com/w320/cu.png",
+    "BERMUDA": "https://flagcdn.com/w320/bm.png",
+    "SURINAM": "https://flagcdn.com/w320/sr.png",
+    "AZERBAIYAN": "https://flagcdn.com/w320/az.png",
+    "LIECHTENSTEIN": "https://flagcdn.com/w320/li.png",
+    "DINAMARCA": "https://flagcdn.com/w320/dk.png",
+    "PORTUGAL": "https://flagcdn.com/w320/pt.png",
+    "ALEMANIA": "https://flagcdn.com/w320/de.png",
+    "SERBIA": "https://flagcdn.com/w320/rs.png",
+    "GALES": "https://flagcdn.com/w320/gb-wls.png",
+    "NORUEGA": "https://flagcdn.com/w320/no.png",
+    "GRECIA": "https://flagcdn.com/w320/gr.png",
+    "PAISES BAJOS": "https://flagcdn.com/w320/nl.png",
+    "IRLANDA": "https://flagcdn.com/w320/ie.png",
+    "AUSTRIA": "https://flagcdn.com/w320/at.png",
+    "ISRAEL": "https://flagcdn.com/w320/il.png",
+    "KOSOVO": "https://flagcdn.com/w320/xk.png",
+    "MALTA": "https://flagcdn.com/w320/mt.png",
+    "GIBRALTAR": "https://flagcdn.com/w320/gi.png",
+}
+BANDERAS_PAISES = {k: envolver_cdn_proxy(v) for k, v in BANDERAS_PAISES_RAW.items() if envolver_cdn_proxy(v)}
+
 PAISES_ALIAS = {
     "AZERBAIYAN": "Azerbaijan",
     "DINAMARCA": "Denmark",
@@ -376,6 +447,13 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", permitir_red: bo
 
     if not permitir_red:
         return ""
+
+    # 0. Banderas oficiales para selecciones y países sin escudo de club
+    if equipo_norm in BANDERAS_PAISES:
+        flag_url = BANDERAS_PAISES[equipo_norm]
+        cache[clave_cache] = flag_url
+        _guardar_cache(cache)
+        return flag_url
 
     # 1. Consulta a TheSportsDB
     try:
