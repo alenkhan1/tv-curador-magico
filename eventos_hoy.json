@@ -1,25 +1,109 @@
 {
   "version": 13,
-  "generado_utc": "2026-09-30T22:44:41Z",
+  "generado_utc": "2026-10-01T11:16:15Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-09-30",
+  "fecha_local_producto": "2026-10-01",
   "base_media": "http://espartanos.live:8080",
   "eventos": [
     {
+      "id": "lineal_eurosport_2_0300",
+      "agenda_id": "",
+      "titulo": "ATP 500 China Open",
+      "torneo": "ATP 500 China Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Segunda Ronda",
+      "referencia": "Segunda Ronda",
+      "hora_utc": "2026-10-01T08:00:00Z",
+      "hora_local_producto": "03:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "lineal_eurosport 2",
+      "origenes": [
+        "lineal_eurosport 2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 90,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 2",
+          "id_xtream": "232945"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "258734"
+        },
+        {
+          "nombre": "Eurosport 2 ES",
+          "id_xtream": "265653"
+        },
+        {
+          "nombre": "ES | EUROSPORT 2 M",
+          "id_xtream": "582142"
+        }
+      ]
+    },
+    {
+      "id": "072a2138ccda086a",
+      "agenda_id": "072a2138ccda086a",
+      "titulo": "Nuno Borges vs Novak Djokovic",
+      "torneo": "ATP Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nuno Borges",
+      "equipo_visitante": "Novak Djokovic",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "en_vivo",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "ATP | 05:00 AM | Nuno Borges (POR) vs. Novak Djokovic (SRB) (Primera Ronda)",
+          "id_xtream": "631898"
+        }
+      ]
+    },
+    {
       "id": "lineal_eurosport_1_0800",
       "agenda_id": "",
-      "titulo": "Giro dell'Emilia",
-      "torneo": "Giro dell'Emilia",
+      "titulo": "CRO Race",
+      "torneo": "CRO Race",
       "categoria": "Ciclismo",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Carrera de un día masculina",
-      "referencia": "Carrera de un día masculina",
-      "hora_utc": "2026-09-30T13:00:00Z",
+      "subtitulo": "Etapa 3: Otočac - Opatija",
+      "referencia": "Etapa 3: Otočac - Opatija",
+      "hora_utc": "2026-10-01T13:00:00Z",
       "hora_local_producto": "08:00",
       "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F8%2F82%2FGiro_d%2527Italia_logo.svg%2F512px-Giro_d%2527Italia_logo.svg.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
       "logo_local": "",
       "logo_visitante": "",
       "banner": "",
@@ -56,27 +140,651 @@
       ]
     },
     {
-      "id": "lineal_dazn_laliga_1400",
-      "agenda_id": "",
-      "titulo": "Real Sociedad vs Athletic Club",
-      "torneo": "LaLiga EA Sports",
+      "id": "522fe05db618c963",
+      "agenda_id": "522fe05db618c963",
+      "titulo": "Eritrea vs Sudáfrica",
+      "torneo": "Clasificación Copa Africana",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Real Sociedad",
-      "equipo_visitante": "Athletic Club",
-      "subtitulo": "Jornada adelantada",
-      "referencia": "Jornada adelantada",
-      "hora_utc": "2026-09-30T19:00:00Z",
-      "hora_local_producto": "14:00",
+      "equipo_local": "Eritrea",
+      "equipo_visitante": "Sudáfrica",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fryolcd1598647196.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxjz9j91553368824.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Copa Africana | 10:00 AM | Eritrea vs Sur África",
+          "id_xtream": "631871"
+        }
+      ]
+    },
+    {
+      "id": "9795d9c29b13b3d3",
+      "agenda_id": "9795d9c29b13b3d3",
+      "titulo": "Lituania vs Andorra",
+      "torneo": "Amistoso Internacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lituania",
+      "equipo_visitante": "Andorra",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fl5qspn1552847356.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Amistoso | 10:00 AM | Lituania vs. Andorra",
+          "id_xtream": "631872"
+        },
+        {
+          "nombre": "10:50 ◘ Lituania vs. Andorra ◘ UEFA Women's Champions League ◘◘",
+          "id_xtream": "632063"
+        }
+      ]
+    },
+    {
+      "id": "cf14cd7cf24bc455",
+      "agenda_id": "cf14cd7cf24bc455",
+      "titulo": "Malta vs Alemania",
+      "torneo": "Clasificación Eurocopa Sub-21",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Malta",
+      "equipo_visitante": "Alemania",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fw3knbf1790356155.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1xysi51726167152.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Clasif Euro U21 | 10:00 AM | Malta vs. Germany",
+          "id_xtream": "631874"
+        }
+      ]
+    },
+    {
+      "id": "18c8c413c80ea1f0",
+      "agenda_id": "18c8c413c80ea1f0",
+      "titulo": "Roma vs Barcelona",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Roma",
+      "equipo_visitante": "Barcelona",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T15:45:00Z",
+      "hora_local_producto": "10:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjwro2s1760820674.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwq9sir1639406443.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UCL Fem | 10:45 AM | Roma vs. Barcelona",
+          "id_xtream": "631875"
+        }
+      ]
+    },
+    {
+      "id": "4ba81e99bdb92b76",
+      "agenda_id": "4ba81e99bdb92b76",
+      "titulo": "Paris FC vs Arsenal",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Paris FC",
+      "equipo_visitante": "Arsenal",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T15:45:00Z",
+      "hora_local_producto": "10:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyuvtsy1447594254.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuyhbfe1612467038.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UCL Fem | 10:45 AM | Paris FC vs. Arsenal",
+          "id_xtream": "631876"
+        }
+      ]
+    },
+    {
+      "id": "a252fef8a8b03161",
+      "agenda_id": "a252fef8a8b03161",
+      "titulo": "Häcken vs Juventus",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Häcken",
+      "equipo_visitante": "Juventus",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T15:45:00Z",
+      "hora_local_producto": "10:45",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzyl9m01523905866.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuxf0gr1742983727.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UCL Fem | 10:45 AM | Häcken v Juventus",
+          "id_xtream": "631877"
+        }
+      ]
+    },
+    {
+      "id": "ebc0d197ff67ea23",
+      "agenda_id": "ebc0d197ff67ea23",
+      "titulo": "Eritrea vs Sur África",
+      "torneo": "Clasificación Copa Africana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eritrea",
+      "equipo_visitante": "Sur África",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T16:00:00Z",
+      "hora_local_producto": "11:00",
       "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F0%2F0f%2FLaLiga_logo_2023.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvptvpr1473502986.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmyl7c31677056352.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FConfederation_of_African_Football_logo.svg%2F512px-Confederation_of_African_Football_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fryolcd1598647196.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Eritrea vs. Sur África ◘ Clasificación Copa Africana ◘",
+          "id_xtream": "632064"
+        }
+      ]
+    },
+    {
+      "id": "60c5d2ecb87c37a3",
+      "agenda_id": "60c5d2ecb87c37a3",
+      "titulo": "Häcken vs Juventus",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Häcken",
+      "equipo_visitante": "Juventus",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzyl9m01523905866.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuxf0gr1742983727.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Häcken v Juventus ◘ UEFA Women's Champions League ◘◘",
+          "id_xtream": "632065"
+        }
+      ]
+    },
+    {
+      "id": "ea193889a47da5f3",
+      "agenda_id": "ea193889a47da5f3",
+      "titulo": "Lituania vs Andorra",
+      "torneo": "Amistoso Internacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lituania",
+      "equipo_visitante": "Andorra",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fl5qspn1552847356.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Lituania vs. Andorra ◘ Amistoso ◘",
+          "id_xtream": "632066"
+        }
+      ]
+    },
+    {
+      "id": "a02b82f076fe5e97",
+      "agenda_id": "a02b82f076fe5e97",
+      "titulo": "Villanova vs Creighton",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Villanova",
+      "equipo_visitante": "Creighton",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Villanova vs. Creighton ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632067"
+        }
+      ]
+    },
+    {
+      "id": "ae444529836d9ba4",
+      "agenda_id": "ae444529836d9ba4",
+      "titulo": "Paris FC vs Arsenal FC",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Paris FC",
+      "equipo_visitante": "Arsenal FC",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyuvtsy1447594254.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:30 ◘ Paris FC vs. Arsenal FC ◘ UEFA Women's Champions League ◘◘",
+          "id_xtream": "632068"
+        }
+      ]
+    },
+    {
+      "id": "fee30f17118de793",
+      "agenda_id": "fee30f17118de793",
+      "titulo": "Roma vs Barcelona",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Roma",
+      "equipo_visitante": "Barcelona",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjwro2s1760820674.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwq9sir1639406443.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "11:30 ◘ Roma vs. Barcelona ◘ UEFA Women's Champions League ◘◘",
+          "id_xtream": "632071"
+        }
+      ]
+    },
+    {
+      "id": "66f97bd14b07005a",
+      "agenda_id": "66f97bd14b07005a",
+      "titulo": "Instituto de Córdoba Res. vs Racing Club Res.",
+      "torneo": "Torneo de Reserva de Argentina",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Instituto de Córdoba Res.",
+      "equipo_visitante": "Racing Club Res.",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Arg Torneo Res | 12:00 PM | Instituto Res. vs Racing Club Res.",
+          "id_xtream": "631888"
+        }
+      ]
+    },
+    {
+      "id": "8555b088f1f0dad1",
+      "agenda_id": "8555b088f1f0dad1",
+      "titulo": "Lyon vs Chelsea",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lyon",
+      "equipo_visitante": "Chelsea",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fblk9771656932845.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpbf4ul1782638263.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UCL Fem | 01:00 PM | OL Lyonnes vs. Chelsea FC Women",
+          "id_xtream": "631878"
+        }
+      ]
+    },
+    {
+      "id": "892de279b393d09a",
+      "agenda_id": "892de279b393d09a",
+      "titulo": "Benfica vs Bayern Múnich",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Benfica",
+      "equipo_visitante": "Bayern Múnich",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhj4kyc1781152436.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F01ogkh1716960412.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "UCL Fem | 01:00 PM | Benfica vs. Bayern Munich",
+          "id_xtream": "631879"
+        },
+        {
+          "nombre": "13:45 ◘ Benfica vs. Bayern Munich ◘ UEFA Women's Champions League ◘◘",
+          "id_xtream": "632076"
+        }
+      ]
+    },
+    {
+      "id": "a02fd9587b83cf89",
+      "agenda_id": "a02fd9587b83cf89",
+      "titulo": "Philadelphia Phillies vs Atlanta Braves",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Philadelphia Phillies",
+      "equipo_visitante": "Atlanta Braves",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3xrldf1617528682.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyjs76e1617811496.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Philadelphia Phillies vs. Atlanta Braves ◘ MLB ◘",
+          "id_xtream": "632072"
+        },
+        {
+          "nombre": "13:00 ◘ Philadelphia Phillies vs. Atlanta Braves ◘ MLB ◘ Spanish",
+          "id_xtream": "632073"
+        },
+        {
+          "nombre": "13:00 ◘ Philadelphia Phillies vs. Atlanta Braves ◘ MLB ◘◘ Spanish",
+          "id_xtream": "632074"
+        }
+      ]
+    },
+    {
+      "id": "lineal_movistar_deportes_1330",
+      "agenda_id": "",
+      "titulo": "Baskonia vs Partizan Belgrado",
+      "torneo": "EuroLeague",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Baskonia",
+      "equipo_visitante": "Partizan Belgrado",
+      "subtitulo": "Fase Regular - Jornada 1",
+      "referencia": "Fase Regular - Jornada 1",
+      "hora_utc": "2026-10-01T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F5%2F52%2FEuroleague_Basketball_logo.svg%2F512px-Euroleague_Basketball_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "",
       "tier": 2,
-      "origen": "lineal_dazn laliga",
+      "origen": "lineal_movistar deportes",
       "origenes": [
-        "lineal_dazn laliga"
+        "lineal_movistar deportes"
       ],
       "estado": "confirmado",
       "estado_evento": "programado",
@@ -84,34 +792,216 @@
       "puntuacion_confianza": 90,
       "fuentes": [
         {
-          "nombre": "DAZN LA LIGA HD",
-          "id_xtream": "1162"
-        },
-        {
-          "nombre": "DAZN LA LIGA (HD)",
-          "id_xtream": "1163"
-        },
-        {
-          "nombre": "EVENTS 11 : Dazn La Liga",
-          "id_xtream": "582155"
-        },
-        {
-          "nombre": "EVENTS 19 : DAZN LA LIGA 1 FHD",
-          "id_xtream": "582156"
-        },
-        {
-          "nombre": "DAZN La Liga",
-          "id_xtream": "582167"
-        },
-        {
-          "nombre": "DAZN La Liga HD",
-          "id_xtream": "582168"
+          "nombre": "M. DEPORTES FHD (B)",
+          "id_xtream": "581977"
         }
       ]
     },
     {
-      "id": "a4239a489fda6de4",
-      "agenda_id": "a4239a489fda6de4",
+      "id": "1c8ddbe9c5d7397a",
+      "agenda_id": "1c8ddbe9c5d7397a",
+      "titulo": "OL Lyonnes vs Chelsea",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "OL Lyonnes",
+      "equipo_visitante": "Chelsea",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T18:40:00Z",
+      "hora_local_producto": "13:40",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Ff%2Ff3%2FUEFA_Champions_League_logo_2.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpbf4ul1782638263.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "13:40 ◘ OL Lyonnes vs. Chelsea ◘ UEFA Women's Champions League ◘◘",
+          "id_xtream": "632075"
+        }
+      ]
+    },
+    {
+      "id": "lineal_movistar_#vamos_1345",
+      "agenda_id": "",
+      "titulo": "Real Madrid vs Bayern Múnich",
+      "torneo": "EuroLeague",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Real Madrid",
+      "equipo_visitante": "Bayern Múnich",
+      "subtitulo": "Fase Regular - Jornada 1",
+      "referencia": "Fase Regular - Jornada 1",
+      "hora_utc": "2026-10-01T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2F5%2F52%2FEuroleague_Basketball_logo.svg%2F512px-Euroleague_Basketball_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F01ogkh1716960412.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "lineal_movistar #vamos",
+      "origenes": [
+        "lineal_movistar #vamos"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 90,
+      "fuentes": [
+        {
+          "nombre": "#Vamos Op2",
+          "id_xtream": "582144"
+        },
+        {
+          "nombre": "#Vamos",
+          "id_xtream": "582147"
+        },
+        {
+          "nombre": "#Vamos por M+",
+          "id_xtream": "582164"
+        },
+        {
+          "nombre": "#Vamos por M+ HD",
+          "id_xtream": "582165"
+        },
+        {
+          "nombre": "#Vamos por M+ FHD",
+          "id_xtream": "582166"
+        }
+      ]
+    },
+    {
+      "id": "c288083b21708839",
+      "agenda_id": "c288083b21708839",
+      "titulo": "Cienciano vs Los Chankas",
+      "torneo": "Liga 1",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cienciano",
+      "equipo_visitante": "Los Chankas",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Perú | 02:00 PM | Cienciano vs Los Chankas",
+          "id_xtream": "631894"
+        }
+      ]
+    },
+    {
+      "id": "4f977e969f20ccb5",
+      "agenda_id": "4f977e969f20ccb5",
+      "titulo": "U. San Felipe vs San Luis",
+      "torneo": "Segunda División de Chile",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "U. San Felipe",
+      "equipo_visitante": "San Luis",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Segunda Chile | 03:00 PM | U. San Felipe vs San Luis",
+          "id_xtream": "631892"
+        }
+      ]
+    },
+    {
+      "id": "de8bf7484799eacf",
+      "agenda_id": "de8bf7484799eacf",
+      "titulo": "Central Córdoba SdE Res. vs Newell's Old Boys Res.",
+      "torneo": "Torneo de Reserva de Argentina",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Central Córdoba SdE Res.",
+      "equipo_visitante": "Newell's Old Boys Res.",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Arg Torneo Res | 04:00 PM | Central Córdoba SdE Res. vs Newell's Old Boys Res.",
+          "id_xtream": "631889"
+        }
+      ]
+    },
+    {
+      "id": "0d665f1b22f1a8dd",
+      "agenda_id": "0d665f1b22f1a8dd",
       "titulo": "Chicago White Sox vs Houston Astros",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -120,7 +1010,7 @@
       "equipo_visitante": "Houston Astros",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T21:00:00Z",
+      "hora_utc": "2026-10-01T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 180,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
@@ -133,7 +1023,7 @@
         "curador_inteligente_gemini"
       ],
       "estado": "confirmado",
-      "estado_evento": "en_vivo",
+      "estado_evento": "programado",
       "confianza": "alta",
       "puntuacion_confianza": 95,
       "metodo_correlacion": "gemini_fuente_verdad",
@@ -143,405 +1033,69 @@
       "fuentes": [
         {
           "nombre": "16:00 ◘ Chicago White Sox vs. Houston Astros ◘ MLB ◘",
-          "id_xtream": "627954"
+          "id_xtream": "632079"
         },
         {
           "nombre": "16:00 ◘ Chicago White Sox vs. Houston Astros ◘ MLB ◘ Spanish",
-          "id_xtream": "627955"
+          "id_xtream": "632080"
         }
       ]
     },
     {
-      "id": "8cd669d3bd9e94af",
-      "agenda_id": "8cd669d3bd9e94af",
-      "titulo": "Florida Panthers vs Carolina Hurricanes",
-      "torneo": "NHL",
-      "categoria": "Otros Deportes",
+      "id": "63fdcf132e767b04",
+      "agenda_id": "63fdcf132e767b04",
+      "titulo": "Unión San Felipe vs San Luis",
+      "torneo": "Primera B",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Florida Panthers",
-      "equipo_visitante": "Carolina Hurricanes",
+      "equipo_local": "Unión San Felipe",
+      "equipo_visitante": "San Luis",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-09-30T21:00:00Z",
+      "hora_utc": "2026-10-01T21:00:00Z",
       "hora_local_producto": "16:00",
-      "duracion_min": 150,
-      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F8qtaz11547158220.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv07m3x1547232585.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "en_vivo",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:00 ◘ Florida Panthers vs. Carolina Hurricanes ◘ NHL ◘◘",
-          "id_xtream": "627956"
-        }
-      ]
-    },
-    {
-      "id": "de2b1c31ba0ba58d",
-      "agenda_id": "de2b1c31ba0ba58d",
-      "titulo": "Guayana Francesa vs Sint Maarten",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Guayana Francesa",
-      "equipo_visitante": "Sint Maarten",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T21:00:00Z",
-      "hora_local_producto": "16:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5a2vju1600974345.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "en_vivo",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "16:00 ◘ Guayana Francesa vs. Sint Maarten ◘ CONCACAF Nations League ◘◘",
-          "id_xtream": "627957"
-        }
-      ]
-    },
-    {
-      "id": "lineal_win_sports+_1600",
-      "agenda_id": "",
-      "titulo": "Real Cartagena vs Cúcuta Deportivo",
-      "torneo": "Torneo BetPlay",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Real Cartagena",
-      "equipo_visitante": "Cúcuta Deportivo",
-      "subtitulo": "Fecha 13",
-      "referencia": "Fecha 13",
-      "hora_utc": "2026-09-30T21:00:00Z",
-      "hora_local_producto": "16:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1galb31615832205.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpetg3h1778087075.png&w=400&output=webp",
-      "banner": "",
-      "tier": 2,
-      "origen": "lineal_win sports+",
-      "origenes": [
-        "lineal_win sports+"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 90,
-      "fuentes": [
-        {
-          "nombre": "03 |  WIN SPORTS + (Opc.1)",
-          "id_xtream": "52637"
-        },
-        {
-          "nombre": "04 | WIN SPORTS + (Opc.2)",
-          "id_xtream": "52638"
-        },
-        {
-          "nombre": "05 | WIN SPORTS + (Opc.3)",
-          "id_xtream": "52639"
-        },
-        {
-          "nombre": "06 | WIN SPORTS + (Opc.4)",
-          "id_xtream": "52640"
-        },
-        {
-          "nombre": "Win Sports+",
-          "id_xtream": "207979"
-        },
-        {
-          "nombre": "WIN SPORTS+ HD",
-          "id_xtream": "258809"
-        }
-      ]
-    },
-    {
-      "id": "6734cd6f33906e75",
-      "agenda_id": "6734cd6f33906e75",
-      "titulo": "Anguilla vs Aruba",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Anguilla",
-      "equipo_visitante": "Aruba",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fe4sbaf1607457641.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffjly6d1600953875.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "en_vivo",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "CONCACAF Nations League | 05:00 PM | Anguilla vs Aruba",
-          "id_xtream": "627829"
-        }
-      ]
-    },
-    {
-      "id": "475a6d849307b2e8",
-      "agenda_id": "475a6d849307b2e8",
-      "titulo": "Las Vegas Aces vs Indiana Fever",
-      "torneo": "WNBA",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Las Vegas Aces",
-      "equipo_visitante": "Indiana Fever",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T22:30:00Z",
-      "hora_local_producto": "17:30",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjnvk6x1741462255.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9xp4y31552586027.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "en_vivo",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "17:30 ◘ Las Vegas Aces vs. Indiana Fever ◘ WNBA ◘",
-          "id_xtream": "627958"
-        }
-      ]
-    },
-    {
-      "id": "1a92c2a660e59320",
-      "agenda_id": "1a92c2a660e59320",
-      "titulo": "Estados Unidos vs Chile",
-      "torneo": "Amistoso Internacional",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Estados Unidos",
-      "equipo_visitante": "Chile",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T23:00:00Z",
-      "hora_local_producto": "18:00",
       "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F21f0oi1597948195.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5xjsy41591988732.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "Amistoso | 06:00 PM | Estados Unidos vs. Chile",
-          "id_xtream": "627831"
-        }
-      ]
-    },
-    {
-      "id": "768c3dde0e5dcc8a",
-      "agenda_id": "768c3dde0e5dcc8a",
-      "titulo": "Anguila vs Aruba",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Anguila",
-      "equipo_visitante": "Aruba",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
       "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffjly6d1600953875.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Anguila vs. Aruba ◘ CONCACAF Nations League ◘◘",
-          "id_xtream": "627959"
-        }
-      ]
-    },
-    {
-      "id": "f2aa993679488172",
-      "agenda_id": "f2aa993679488172",
-      "titulo": "Montreal Canadiens vs Toronto Maple Leafs",
-      "torneo": "NHL",
-      "categoria": "Otros Deportes",
-      "tipo_evento": "duelo",
-      "equipo_local": "Montreal Canadiens",
-      "equipo_visitante": "Toronto Maple Leafs",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-09-30T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 150,
-      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fstpryx1421791753.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmxig4p1570129307.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Montreal Canadiens vs. Toronto Maple Leafs ◘ NHL ◘◘",
-          "id_xtream": "627960"
-        }
-      ]
-    },
-    {
-      "id": "lineal_win_sports+_1820",
-      "agenda_id": "",
-      "titulo": "Independiente Medellín vs Junior de Barranquilla",
-      "torneo": "Liga BetPlay Dimayor",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Independiente Medellín",
-      "equipo_visitante": "Junior de Barranquilla",
-      "subtitulo": "Fecha 12",
-      "referencia": "Fecha 12",
-      "hora_utc": "2026-09-30T23:20:00Z",
-      "hora_local_producto": "18:20",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp",
       "logo_visitante": "",
       "banner": "",
-      "tier": 2,
-      "origen": "lineal_win sports+",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
       "origenes": [
-        "lineal_win sports+"
+        "curador_inteligente_gemini"
       ],
       "estado": "confirmado",
       "estado_evento": "programado",
       "confianza": "alta",
-      "puntuacion_confianza": 90,
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
       "fuentes": [
         {
-          "nombre": "03 |  WIN SPORTS + (Opc.1)",
-          "id_xtream": "52637"
-        },
-        {
-          "nombre": "04 | WIN SPORTS + (Opc.2)",
-          "id_xtream": "52638"
-        },
-        {
-          "nombre": "05 | WIN SPORTS + (Opc.3)",
-          "id_xtream": "52639"
-        },
-        {
-          "nombre": "06 | WIN SPORTS + (Opc.4)",
-          "id_xtream": "52640"
-        },
-        {
-          "nombre": "Win Sports+",
-          "id_xtream": "207979"
-        },
-        {
-          "nombre": "WIN SPORTS+ HD",
-          "id_xtream": "258809"
+          "nombre": "16:00 ◘ Unión San Felipe vs. San Luis ◘ Primera B ◘",
+          "id_xtream": "632081"
         }
       ]
     },
     {
-      "id": "486354bf9897e94c",
-      "agenda_id": "486354bf9897e94c",
-      "titulo": "México vs Perú",
-      "torneo": "Amistoso Internacional",
+      "id": "f166afa1b2c4598c",
+      "agenda_id": "f166afa1b2c4598c",
+      "titulo": "Miami FC vs Sporting JAX",
+      "torneo": "USL Championship",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "México",
-      "equipo_visitante": "Perú",
+      "equipo_local": "Miami FC",
+      "equipo_visitante": "Sporting JAX",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T00:00:00Z",
-      "hora_local_producto": "19:00",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
       "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3rmosi1748525208.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Funszat1529144812.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fow77dj1595154153.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fddj2h91744180515.png&w=400&output=webp",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -558,70 +1112,104 @@
       ],
       "fuentes": [
         {
-          "nombre": "Amistoso | 07:00 PM | México vs Perú",
-          "id_xtream": "627832"
+          "nombre": "USL Championship | 05:00 PM | Miami FC vs. Sporting JAX",
+          "id_xtream": "631882"
         }
       ]
     },
     {
-      "id": "cdaf309f591e772a",
-      "agenda_id": "cdaf309f591e772a",
-      "titulo": "Boston Red Sox vs New York Yankees",
-      "torneo": "MLB",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Boston Red Sox",
-      "equipo_visitante": "New York Yankees",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-01T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 180,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fstpsus1425120215.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwqwwxx1423478766.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ Boston Red Sox vs. New York Yankees ◘ MLB ◘",
-          "id_xtream": "627961"
-        },
-        {
-          "nombre": "19:00 ◘ Boston Red Sox vs. New York Yankees ◘ MLB ◘ Spanish",
-          "id_xtream": "627962"
-        }
-      ]
-    },
-    {
-      "id": "80a1072eaba273fe",
-      "agenda_id": "80a1072eaba273fe",
-      "titulo": "EE. UU. vs Chile",
-      "torneo": "Amistoso Internacional",
+      "id": "e1e9ecdfc3f5be2d",
+      "agenda_id": "e1e9ecdfc3f5be2d",
+      "titulo": "Brooklyn FC vs Detroit City FC",
+      "torneo": "USL Championship",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "EE. UU.",
-      "equipo_visitante": "Chile",
+      "equipo_local": "Brooklyn FC",
+      "equipo_visitante": "Detroit City FC",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T00:00:00Z",
-      "hora_local_producto": "19:00",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fp4tzze1765559400.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Faw7ceo1688514082.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "USL Championship | 05:00 PM | Brooklyn FC vs. Detroit City FC",
+          "id_xtream": "631883"
+        }
+      ]
+    },
+    {
+      "id": "481a0a4cc69064bb",
+      "agenda_id": "481a0a4cc69064bb",
+      "titulo": "Chattanooga Red Wolves vs Spokane Velocity",
+      "torneo": "USL League One",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chattanooga Red Wolves",
+      "equipo_visitante": "Spokane Velocity",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9016.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F22785.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "USL League One | 05:00 PM | Chat Red Wolves vs. Spokane Velocity",
+          "id_xtream": "631886"
+        }
+      ]
+    },
+    {
+      "id": "936dd0e0d5da7aff",
+      "agenda_id": "936dd0e0d5da7aff",
+      "titulo": "Montevideo City Torque vs Peñarol",
+      "torneo": "Primera División de Uruguay",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Montevideo City Torque",
+      "equipo_visitante": "Peñarol",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
       "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
       "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5xjsy41591988732.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -638,32 +1226,108 @@
       ],
       "fuentes": [
         {
-          "nombre": "19:00 ◘ EE. UU. vs. Chile ◘ Amistoso ◘",
-          "id_xtream": "627963"
+          "nombre": "Uruguay | 05:00 PM | Montevideo City Torque vs. Peñarol",
+          "id_xtream": "631887"
         },
         {
-          "nombre": "19:00 ◘ EE. UU. vs. Chile ◘ Amistoso ◘ SD",
-          "id_xtream": "627964"
+          "nombre": "17:00 ◘ Montevideo City Torque vs. Peñarol ◘ Primera División ◘◘",
+          "id_xtream": "632086"
         }
       ]
     },
     {
-      "id": "c15ec230665adfc8",
-      "agenda_id": "c15ec230665adfc8",
-      "titulo": "Jacksonville vs Memphis",
+      "id": "9272200d348196dc",
+      "agenda_id": "9272200d348196dc",
+      "titulo": "Atlético Ottawa vs Cavalry FC",
+      "torneo": "Canadian Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlético Ottawa",
+      "equipo_visitante": "Cavalry FC",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Ff%2Ff2%2FPremier_League_Logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Canadian PL | 05:00 PM | Atl. Ottawa vs Cavalry FC",
+          "id_xtream": "631890"
+        }
+      ]
+    },
+    {
+      "id": "e59fc90baeaff358",
+      "agenda_id": "e59fc90baeaff358",
+      "titulo": "Dep. Concepción vs O'Higgins",
+      "torneo": "Copa Chile",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Dep. Concepción",
+      "equipo_visitante": "O'Higgins",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Copa Chile | 05:00 PM | Dep. Concepción vs O'Higgins",
+          "id_xtream": "631891"
+        }
+      ]
+    },
+    {
+      "id": "18476f0bc415a826",
+      "agenda_id": "18476f0bc415a826",
+      "titulo": "American University vs Loyola Maryland",
       "torneo": "NCAA Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Jacksonville",
-      "equipo_visitante": "Memphis",
+      "equipo_local": "American University",
+      "equipo_visitante": "Loyola Maryland",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T00:00:00Z",
-      "hora_local_producto": "19:00",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
       "duracion_min": 105,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Frw1sf41564356971.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwvucol1564336213.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fj4tzaz1580997179.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -680,28 +1344,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "19:00 ◘ Jacksonville vs. Memphis ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "627965"
+          "nombre": "17:00 ◘ American University vs. Loyola Maryland ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632082"
         }
       ]
     },
     {
-      "id": "7390f4ffd71bc8c5",
-      "agenda_id": "7390f4ffd71bc8c5",
-      "titulo": "New York Rangers vs Boston Bruins",
-      "torneo": "NHL",
-      "categoria": "Otros Deportes",
+      "id": "8cfe09e5cbe34cc0",
+      "agenda_id": "8cfe09e5cbe34cc0",
+      "titulo": "Army vs Boston University",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "New York Rangers",
-      "equipo_visitante": "Boston Bruins",
+      "equipo_local": "Army",
+      "equipo_visitante": "Boston University",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 150,
-      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fts2nhq1763454676.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fb1r86e1720023232.png&w=400&output=webp",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fg7dbgv1720291161.png&w=400&output=webp",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -718,32 +1382,180 @@
       ],
       "fuentes": [
         {
-          "nombre": "19:00 ◘ New York Rangers vs. Boston Bruins ◘ NHL ◘",
-          "id_xtream": "627966"
-        },
-        {
-          "nombre": "19:00 ◘ New York Rangers vs. Boston Bruins ◘ NHL ◘  Spanish",
-          "id_xtream": "627967"
+          "nombre": "17:00 ◘ Army vs. Boston University ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632083"
         }
       ]
     },
     {
-      "id": "lineal_tyc_sports_1900",
+      "id": "1b0700e298e0ab01",
+      "agenda_id": "1b0700e298e0ab01",
+      "titulo": "Butler vs Seton Hall",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Butler",
+      "equipo_visitante": "Seton Hall",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 ◘ Butler vs. Seton Hall ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632084"
+        }
+      ]
+    },
+    {
+      "id": "17f2802134141596",
+      "agenda_id": "17f2802134141596",
+      "titulo": "Colgate vs Holy Cross",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Colgate",
+      "equipo_visitante": "Holy Cross",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 ◘ Colgate vs. Holy Cross ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632085"
+        }
+      ]
+    },
+    {
+      "id": "3fc5d32fbff30bc8",
+      "agenda_id": "3fc5d32fbff30bc8",
+      "titulo": "Navy vs Lehigh",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Navy",
+      "equipo_visitante": "Lehigh",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 ◘ Navy vs. Lehigh ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632087"
+        }
+      ]
+    },
+    {
+      "id": "d3221dab69a5a21f",
+      "agenda_id": "d3221dab69a5a21f",
+      "titulo": "UC Riverside vs Sacramento State",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UC Riverside",
+      "equipo_visitante": "Sacramento State",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "17:00 ◘ UC Riverside vs. Sacramento State ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632088"
+        }
+      ]
+    },
+    {
+      "id": "lineal_tyc_sports_1700",
       "agenda_id": "",
-      "titulo": "Boca Juniors vs Talleres de Córdoba",
+      "titulo": "Huracán vs Talleres",
       "torneo": "Copa Argentina",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Boca Juniors",
-      "equipo_visitante": "Talleres de Córdoba",
+      "equipo_local": "Huracán",
+      "equipo_visitante": "Talleres",
       "subtitulo": "Cuartos de final",
       "referencia": "Cuartos de final",
-      "hora_utc": "2026-10-01T00:00:00Z",
-      "hora_local_producto": "19:00",
+      "hora_utc": "2026-10-01T22:00:00Z",
+      "hora_local_producto": "17:00",
       "duracion_min": 120,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbm7krb1775741582.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7hum2t1769310938.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkppi2b1775776550.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F456.png&w=400&output=webp",
       "banner": "",
       "tier": 2,
       "origen": "lineal_tyc sports",
@@ -782,22 +1594,22 @@
       ]
     },
     {
-      "id": "7aaa31d1f576fee7",
-      "agenda_id": "7aaa31d1f576fee7",
-      "titulo": "Medellín vs Millonarios",
-      "torneo": "Liga BetPlay Dimayor",
+      "id": "db074e8b830cd099",
+      "agenda_id": "db074e8b830cd099",
+      "titulo": "DePaul vs Xavier",
+      "torneo": "NCAA Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Medellín",
-      "equipo_visitante": "Millonarios",
+      "equipo_local": "DePaul",
+      "equipo_visitante": "Xavier",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T00:05:00Z",
-      "hora_local_producto": "19:05",
+      "hora_utc": "2026-10-01T22:30:00Z",
+      "hora_local_producto": "17:30",
       "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmc73ix1629122587.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -814,28 +1626,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "Colombia | 07:05 PM | Medellín vs Millonarios",
-          "id_xtream": "627843"
+          "nombre": "17:30 ◘ DePaul vs. Xavier ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632089"
         }
       ]
     },
     {
-      "id": "2f8bd425ad8a6e8f",
-      "agenda_id": "2f8bd425ad8a6e8f",
-      "titulo": "Minnesota Lynx vs New York Liberty",
-      "torneo": "WNBA",
-      "categoria": "Baloncesto",
+      "id": "da3ede0f02104d04",
+      "agenda_id": "da3ede0f02104d04",
+      "titulo": "Deportes Concepción vs O'Higgins",
+      "torneo": "Copa Chile",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Minnesota Lynx",
-      "equipo_visitante": "New York Liberty",
+      "equipo_local": "Deportes Concepción",
+      "equipo_visitante": "O'Higgins",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T00:30:00Z",
-      "hora_local_producto": "19:30",
-      "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Frzyqoj1552586193.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fs3y5hx1702757871.png&w=400&output=webp",
+      "hora_utc": "2026-10-01T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -852,28 +1664,782 @@
       ],
       "fuentes": [
         {
-          "nombre": "19:30 ◘ Minnesota Lynx vs. New York Liberty ◘ WNBA ◘",
-          "id_xtream": "627968"
+          "nombre": "17:30 ◘ Deportes Concepción vs. O'Higgins ◘ Copa Chile ◘",
+          "id_xtream": "632090"
+        }
+      ]
+    },
+    {
+      "id": "2ccf74291549e701",
+      "agenda_id": "2ccf74291549e701",
+      "titulo": "Argentina vs Bolivia",
+      "torneo": "Amistoso Internacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Argentina",
+      "equipo_visitante": "Bolivia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3zplhu1726167477.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4q6qfm1736571383.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Amistoso | 06:00 PM | Argentina vs. Bolivia",
+          "id_xtream": "631873"
+        }
+      ]
+    },
+    {
+      "id": "b9bb176105a764a6",
+      "agenda_id": "b9bb176105a764a6",
+      "titulo": "Alianza Lima vs Palestino",
+      "torneo": "Amistoso Internacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Alianza Lima",
+      "equipo_visitante": "Palestino",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fy5wov41580040189.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F62site1756091114.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Amistoso | 06:00 PM | Alianza Lima vs Palestino",
+          "id_xtream": "631880"
+        }
+      ]
+    },
+    {
+      "id": "d4a72287f4feddc8",
+      "agenda_id": "d4a72287f4feddc8",
+      "titulo": "FC Tulsa vs New Mexico United",
+      "torneo": "USL Championship",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "FC Tulsa",
+      "equipo_visitante": "New Mexico United",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnyfdw21580480972.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4003.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "USL Championship | 06:00 PM | Tulsa vs. New Mexico",
+          "id_xtream": "631884"
+        }
+      ]
+    },
+    {
+      "id": "2e580f4b975271c8",
+      "agenda_id": "2e580f4b975271c8",
+      "titulo": "Atl. Ottawa vs Cavalry",
+      "torneo": "Canadian Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atl. Ottawa",
+      "equipo_visitante": "Cavalry",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Ff%2Ff2%2FPremier_League_Logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Atl. Ottawa vs. Cavalry ◘ Canadian Premier League ◘",
+          "id_xtream": "632091"
+        }
+      ]
+    },
+    {
+      "id": "a66fb78acd644680",
+      "agenda_id": "a66fb78acd644680",
+      "titulo": "Atlanta Dream vs Washington Mystics",
+      "torneo": "WNBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlanta Dream",
+      "equipo_visitante": "Washington Mystics",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Atlanta Dream vs. Washington Mystics ◘ WNBA ◘",
+          "id_xtream": "632092"
+        }
+      ]
+    },
+    {
+      "id": "aff96bc74ab48325",
+      "agenda_id": "aff96bc74ab48325",
+      "titulo": "Brooklyn FC vs Detroit City FC",
+      "torneo": "USL Championship",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Brooklyn FC",
+      "equipo_visitante": "Detroit City FC",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fp4tzze1765559400.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Faw7ceo1688514082.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Brooklyn FC vs. Detroit City FC ◘ USL Championship ◘◘",
+          "id_xtream": "632093"
+        }
+      ]
+    },
+    {
+      "id": "0a2d0a831dfb526b",
+      "agenda_id": "0a2d0a831dfb526b",
+      "titulo": "Bucknell vs Lafayette",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bucknell",
+      "equipo_visitante": "Lafayette",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxnzn2j1580756535.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Bucknell vs. Lafayette ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632094"
+        }
+      ]
+    },
+    {
+      "id": "a2e498dbdd655b8e",
+      "agenda_id": "a2e498dbdd655b8e",
+      "titulo": "Chattanooga Red Wolves SC vs Spokane Velocity FC",
+      "torneo": "USL League One",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chattanooga Red Wolves SC",
+      "equipo_visitante": "Spokane Velocity FC",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Chattanooga Red Wolves SC vs. Spokane Velocity FC ◘ USL League One ◘◘",
+          "id_xtream": "632095"
+        }
+      ]
+    },
+    {
+      "id": "79663988c85d637f",
+      "agenda_id": "79663988c85d637f",
+      "titulo": "Marquette vs Georgetown",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Marquette",
+      "equipo_visitante": "Georgetown",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Marquette vs. Georgetown ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632096"
+        }
+      ]
+    },
+    {
+      "id": "d53f0022c10600de",
+      "agenda_id": "d53f0022c10600de",
+      "titulo": "Miami FC vs Sporting Club Jacksonville",
+      "torneo": "USL Championship",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Miami FC",
+      "equipo_visitante": "Sporting Club Jacksonville",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fow77dj1595154153.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Miami FC vs. Sporting Club Jacksonville ◘ USL Championship ◘◘",
+          "id_xtream": "632097"
+        }
+      ]
+    },
+    {
+      "id": "cdd3658f1a20569d",
+      "agenda_id": "cdd3658f1a20569d",
+      "titulo": "UConn vs St. John's",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UConn",
+      "equipo_visitante": "St. John's",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ UConn vs. St. John's ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632098"
+        }
+      ]
+    },
+    {
+      "id": "lineal_win_sports+_1800",
+      "agenda_id": "",
+      "titulo": "Santa Fe vs Deportivo Pereira",
+      "torneo": "Liga BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Santa Fe",
+      "equipo_visitante": "Deportivo Pereira",
+      "subtitulo": "Fase Todos contra Todos - Fecha 13",
+      "referencia": "Fase Todos contra Todos - Fecha 13",
+      "hora_utc": "2026-10-01T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmw7wt31727451360.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Felw7as1629122545.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "lineal_win sports+",
+      "origenes": [
+        "lineal_win sports+"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 90,
+      "fuentes": [
+        {
+          "nombre": "03 |  WIN SPORTS + (Opc.1)",
+          "id_xtream": "52637"
+        },
+        {
+          "nombre": "04 | WIN SPORTS + (Opc.2)",
+          "id_xtream": "52638"
+        },
+        {
+          "nombre": "05 | WIN SPORTS + (Opc.3)",
+          "id_xtream": "52639"
+        },
+        {
+          "nombre": "06 | WIN SPORTS + (Opc.4)",
+          "id_xtream": "52640"
+        },
+        {
+          "nombre": "Win Sports+",
+          "id_xtream": "207979"
+        },
+        {
+          "nombre": "WIN SPORTS+ HD",
+          "id_xtream": "258809"
+        }
+      ]
+    },
+    {
+      "id": "072cb485b63e76dc",
+      "agenda_id": "072cb485b63e76dc",
+      "titulo": "New York Islanders vs Toronto Maple Leafs",
+      "torneo": "NHL",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Islanders",
+      "equipo_visitante": "Toronto Maple Leafs",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/7a7e1c8a0d5c02db22a0dd5b7c64799f.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmxig4p1570129307.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 ◘ New York Islanders vs. Toronto Maple Leafs ◘ NHL ◘◘",
+          "id_xtream": "632099"
+        }
+      ]
+    },
+    {
+      "id": "6a6d4bb8a7a4c870",
+      "agenda_id": "6a6d4bb8a7a4c870",
+      "titulo": "New York RB vs St. Louis City",
+      "torneo": "MLS",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York RB",
+      "equipo_visitante": "St. Louis City",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F76%2FMLS_crest_logo_RGB_gradient.svg%2F512px-MLS_crest_logo_RGB_gradient.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 ◘ New York RB vs. St. Louis City ◘ MLS ◘",
+          "id_xtream": "632100"
+        },
+        {
+          "nombre": "18:30 ◘ New York RB vs. St. Louis City ◘ MLS ◘ Spanish",
+          "id_xtream": "632101"
+        }
+      ]
+    },
+    {
+      "id": "4d089272eb759c71",
+      "agenda_id": "4d089272eb759c71",
+      "titulo": "Pittsburgh Penguins vs Philadelphia Flyers",
+      "torneo": "NHL",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Pittsburgh Penguins",
+      "equipo_visitante": "Philadelphia Flyers",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-01T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 150,
+      "logo_torneo": "http://www.1play.cool:25461/images/7a7e1c8a0d5c02db22a0dd5b7c64799f.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "18:30 ◘ Pittsburgh Penguins vs. Philadelphia Flyers ◘ NHL ◘◘",
+          "id_xtream": "632102"
+        }
+      ]
+    },
+    {
+      "id": "2a7a81b2a9a8feaf",
+      "agenda_id": "2a7a81b2a9a8feaf",
+      "titulo": "Atlético Nacional vs Junior de Barranquilla",
+      "torneo": "Liga BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlético Nacional",
+      "equipo_visitante": "Junior de Barranquilla",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 105,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fefl4o41576157720.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "Colombia | 07:00 PM | Atlético Nacional vs Junior",
+          "id_xtream": "631881"
+        }
+      ]
+    },
+    {
+      "id": "4f6f91f519dedea0",
+      "agenda_id": "4f6f91f519dedea0",
+      "titulo": "Argentina vs Bolivia",
+      "torneo": "Amistoso Internacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Argentina",
+      "equipo_visitante": "Bolivia",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3zplhu1726167477.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4q6qfm1736571383.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Argentina vs. Bolivia ◘ Amistoso ◘",
+          "id_xtream": "632104"
+        },
+        {
+          "nombre": "19:00 ◘ Argentina vs. Bolivia ◘ Amistoso ◘ FHD",
+          "id_xtream": "632105"
+        },
+        {
+          "nombre": "19:00 ◘ Argentina vs. Bolivia ◘ Amistoso ◘ SD",
+          "id_xtream": "632106"
+        }
+      ]
+    },
+    {
+      "id": "ebe045c3cba30ccf",
+      "agenda_id": "ebe045c3cba30ccf",
+      "titulo": "Boston Red Sox vs New York Yankees",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boston Red Sox",
+      "equipo_visitante": "New York Yankees",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fstpsus1425120215.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwqwwxx1423478766.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Boston Red Sox vs. New York Yankees ◘ MLB ◘",
+          "id_xtream": "632107"
+        },
+        {
+          "nombre": "19:00 ◘ Boston Red Sox vs. New York Yankees ◘ MLB ◘ Spanish",
+          "id_xtream": "632108"
+        }
+      ]
+    },
+    {
+      "id": "72aae0034d36f456",
+      "agenda_id": "72aae0034d36f456",
+      "titulo": "FC Tulsa vs New Mexico United",
+      "torneo": "USL Championship",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "FC Tulsa",
+      "equipo_visitante": "New Mexico United",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnyfdw21580480972.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4003.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ FC Tulsa vs. New Mexico United ◘ USL Championship ◘◘",
+          "id_xtream": "632109"
         }
       ]
     },
     {
       "id": "lineal_dsports_1930",
       "agenda_id": "",
-      "titulo": "Independiente vs Lanús",
+      "titulo": "Athletico Paranaense vs Racing Club",
       "torneo": "Copa Sudamericana",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Independiente",
-      "equipo_visitante": "Lanús",
+      "equipo_local": "Athletico Paranaense",
+      "equipo_visitante": "Racing Club",
       "subtitulo": "Cuartos de final - Vuelta",
       "referencia": "Cuartos de final - Vuelta",
-      "hora_utc": "2026-10-01T00:30:00Z",
+      "hora_utc": "2026-10-02T00:30:00Z",
       "hora_local_producto": "19:30",
       "duracion_min": 120,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Feb%2FCopa_Sudamericana_logo.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Feki4nd1580842605.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fddty0w1769146364.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F21006.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvi4mu41695734959.png&w=400&output=webp",
       "banner": "",
       "tier": 2,
       "origen": "lineal_dsports",
@@ -920,21 +2486,21 @@
       ]
     },
     {
-      "id": "6736581d4d729ce5",
-      "agenda_id": "6736581d4d729ce5",
-      "titulo": "Belice vs San Vicente y las Granadinas",
-      "torneo": "CONCACAF Nations League",
+      "id": "d203219c6be712be",
+      "agenda_id": "d203219c6be712be",
+      "titulo": "Sacramento Republic FC vs Las Vegas Lights FC",
+      "torneo": "USL Championship",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Belice",
-      "equipo_visitante": "San Vicente y las Granadinas",
+      "equipo_local": "Sacramento Republic FC",
+      "equipo_visitante": "Las Vegas Lights FC",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T01:00:00Z",
+      "hora_utc": "2026-10-02T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fe86mw51774761610.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
       "logo_visitante": "",
       "banner": "",
       "tier": 1,
@@ -952,103 +2518,27 @@
       ],
       "fuentes": [
         {
-          "nombre": "CONCACAF Nations League | 08:00 PM | Belice vs. San Vicente y las Granadinas",
-          "id_xtream": "627830"
+          "nombre": "USL Championship | 08:00 PM | Sacramento FC vs. Lights",
+          "id_xtream": "631885"
         }
       ]
     },
     {
-      "id": "f087fc33c0dc5385",
-      "agenda_id": "f087fc33c0dc5385",
-      "titulo": "México vs Perú",
-      "torneo": "Amistoso Internacional",
+      "id": "55f8cae014a09112",
+      "agenda_id": "55f8cae014a09112",
+      "titulo": "FAS vs Isidro Metapán",
+      "torneo": "Liga Mayor de Fútbol de El Salvador",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "México",
-      "equipo_visitante": "Perú",
+      "equipo_local": "FAS",
+      "equipo_visitante": "Isidro Metapán",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T01:00:00Z",
+      "hora_utc": "2026-10-02T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 120,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3rmosi1748525208.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Funszat1529144812.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "20:00 AMISTOSOS ᴾᵖᵛ México vs Perú",
-          "id_xtream": "627898"
-        }
-      ]
-    },
-    {
-      "id": "c34d5c08fe3c4196",
-      "agenda_id": "c34d5c08fe3c4196",
-      "titulo": "Medellín vs Millonarios",
-      "torneo": "Liga BetPlay Dimayor",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Medellín",
-      "equipo_visitante": "Millonarios",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-01T01:05:00Z",
-      "hora_local_producto": "20:05",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmc73ix1629122587.png&w=400&output=webp",
-      "banner": "",
-      "tier": 1,
-      "origen": "curador_inteligente_gemini",
-      "origenes": [
-        "curador_inteligente_gemini"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "programado",
-      "confianza": "alta",
-      "puntuacion_confianza": 95,
-      "metodo_correlacion": "gemini_fuente_verdad",
-      "razones_correlacion": [
-        "validacion_ia_directa"
-      ],
-      "fuentes": [
-        {
-          "nombre": "20:05 ◘ Medellín vs. Millonarios ◘ Liga Betplay ◘",
-          "id_xtream": "627971"
-        }
-      ]
-    },
-    {
-      "id": "ee246428871c0e09",
-      "agenda_id": "ee246428871c0e09",
-      "titulo": "Belice vs San Vicente / Granadinas",
-      "torneo": "CONCACAF Nations League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Belice",
-      "equipo_visitante": "San Vicente / Granadinas",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-01T02:00:00Z",
-      "hora_local_producto": "21:00",
-      "duracion_min": 105,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F07%2FCONCACAF_logo.svg%2F512px-CONCACAF_logo.svg.png&w=400&output=webp",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fe86mw51774761610.png&w=400&output=webp",
+      "logo_local": "",
       "logo_visitante": "",
       "banner": "",
       "tier": 1,
@@ -1066,14 +2556,448 @@
       ],
       "fuentes": [
         {
-          "nombre": "21:00 ◘ Belice vs. San Vicente / Granadinas ◘ CONCACAF Nations League ◘",
-          "id_xtream": "627972"
+          "nombre": "El Salvador | 08:00 PM | FAS vs Isidro Metapán",
+          "id_xtream": "631893"
         }
       ]
     },
     {
-      "id": "d942df421ba80749",
-      "agenda_id": "d942df421ba80749",
+      "id": "c9d3279b16fa7a18",
+      "agenda_id": "c9d3279b16fa7a18",
+      "titulo": "Atlético Nacional vs Junior",
+      "torneo": "Liga BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlético Nacional",
+      "equipo_visitante": "Junior",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fefl4o41576157720.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Atlético Nacional vs. Junior ◘ Liga Betplay ◘",
+          "id_xtream": "632110"
+        }
+      ]
+    },
+    {
+      "id": "1e87fa79b284a329",
+      "agenda_id": "1e87fa79b284a329",
+      "titulo": "Cal Poly vs Cal State Fullerton",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cal Poly",
+      "equipo_visitante": "Cal State Fullerton",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Cal Poly vs. Cal State Fullerton ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632111"
+        }
+      ]
+    },
+    {
+      "id": "0fad1ac6a72dd45d",
+      "agenda_id": "0fad1ac6a72dd45d",
+      "titulo": "Golden State Valkyries vs Dallas Wings",
+      "torneo": "WNBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Golden State Valkyries",
+      "equipo_visitante": "Dallas Wings",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Golden State Valkyries vs. Dallas Wings ◘ WNBA ◘",
+          "id_xtream": "632112"
+        }
+      ]
+    },
+    {
+      "id": "45c1c6448c3f5f34",
+      "agenda_id": "45c1c6448c3f5f34",
+      "titulo": "UC Irvine vs Utah Valley",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UC Irvine",
+      "equipo_visitante": "Utah Valley",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ UC Irvine vs. Utah Valley ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "632113"
+        }
+      ]
+    },
+    {
+      "id": "69cbfb86877e022f",
+      "agenda_id": "69cbfb86877e022f",
+      "titulo": "Utah Valley vs UC Irvine",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Utah Valley",
+      "equipo_visitante": "UC Irvine",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Utah Valley vs. UC Irvine ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632114"
+        }
+      ]
+    },
+    {
+      "id": "lineal_win_sports+_2010",
+      "agenda_id": "",
+      "titulo": "Millonarios vs Junior",
+      "torneo": "Liga BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Millonarios",
+      "equipo_visitante": "Junior",
+      "subtitulo": "Fase Todos contra Todos - Fecha 13",
+      "referencia": "Fase Todos contra Todos - Fecha 13",
+      "hora_utc": "2026-10-02T01:10:00Z",
+      "hora_local_producto": "20:10",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fe%2Fed%2FLiga_BetPlay_Dimayor_logo.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmc73ix1629122587.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F447.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "lineal_win sports+",
+      "origenes": [
+        "lineal_win sports+"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 90,
+      "fuentes": [
+        {
+          "nombre": "03 |  WIN SPORTS + (Opc.1)",
+          "id_xtream": "52637"
+        },
+        {
+          "nombre": "04 | WIN SPORTS + (Opc.2)",
+          "id_xtream": "52638"
+        },
+        {
+          "nombre": "05 | WIN SPORTS + (Opc.3)",
+          "id_xtream": "52639"
+        },
+        {
+          "nombre": "06 | WIN SPORTS + (Opc.4)",
+          "id_xtream": "52640"
+        },
+        {
+          "nombre": "Win Sports+",
+          "id_xtream": "207979"
+        },
+        {
+          "nombre": "WIN SPORTS+ HD",
+          "id_xtream": "258809"
+        }
+      ]
+    },
+    {
+      "id": "c7c35739cea34ab1",
+      "agenda_id": "c7c35739cea34ab1",
+      "titulo": "Darja Vidmanova vs Maria Timofeeva",
+      "torneo": "WTA Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Darja Vidmanova",
+      "equipo_visitante": "Maria Timofeeva",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2F0%2F03%2FWTA_logo_2020.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "WTA | 09:00 PM | Darja Vidmanova (CZE) vs. Maria Timofeeva (UZB)",
+          "id_xtream": "631918"
+        }
+      ]
+    },
+    {
+      "id": "36eed8139d31ac83",
+      "agenda_id": "36eed8139d31ac83",
+      "titulo": "Cal Poly vs UC San Diego",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cal Poly",
+      "equipo_visitante": "UC San Diego",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Cal Poly vs. UC San Diego ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "632115"
+        }
+      ]
+    },
+    {
+      "id": "831661670b4159ac",
+      "agenda_id": "831661670b4159ac",
+      "titulo": "Cal State Bakersfield vs Cal State Northridge",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cal State Bakersfield",
+      "equipo_visitante": "Cal State Northridge",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Cal State Bakersfield vs. Cal State Northridge ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "632116"
+        }
+      ]
+    },
+    {
+      "id": "5478f8bceaf18315",
+      "agenda_id": "5478f8bceaf18315",
+      "titulo": "Cal State Fullerton vs UC Riverside",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cal State Fullerton",
+      "equipo_visitante": "UC Riverside",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Cal State Fullerton vs. UC Riverside ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "632117"
+        }
+      ]
+    },
+    {
+      "id": "00d3ac2e4bb18f7b",
+      "agenda_id": "00d3ac2e4bb18f7b",
+      "titulo": "Cal State Northridge vs Long Beach State",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cal State Northridge",
+      "equipo_visitante": "Long Beach State",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Cal State Northridge vs. Long Beach State ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632118"
+        }
+      ]
+    },
+    {
+      "id": "8db81a06162074f5",
+      "agenda_id": "8db81a06162074f5",
       "titulo": "Chicago Cubs vs San Diego Padres",
       "torneo": "MLB",
       "categoria": "Béisbol",
@@ -1082,7 +3006,7 @@
       "equipo_visitante": "San Diego Padres",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T02:00:00Z",
+      "hora_utc": "2026-10-02T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 180,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Fa6%2FMajor_League_Baseball_logo.svg%2F512px-Major_League_Baseball_logo.svg.png&w=400&output=webp",
@@ -1105,35 +3029,35 @@
       "fuentes": [
         {
           "nombre": "21:00 ◘ Chicago Cubs vs. San Diego Padres ◘ MLB ◘",
-          "id_xtream": "627973"
+          "id_xtream": "632119"
         },
         {
           "nombre": "21:00 ◘ Chicago Cubs vs. San Diego Padres ◘ MLB ◘ Spanish",
-          "id_xtream": "627974"
+          "id_xtream": "632120"
         },
         {
           "nombre": "21:00 ◘ Chicago Cubs vs. San Diego Padres ◘ MLB ◘◘ Spanish",
-          "id_xtream": "627975"
+          "id_xtream": "632121"
         }
       ]
     },
     {
-      "id": "331684b5bb0af009",
-      "agenda_id": "331684b5bb0af009",
-      "titulo": "Vancouver Canucks vs Edmonton Oilers",
+      "id": "a124f6664049c69a",
+      "agenda_id": "a124f6664049c69a",
+      "titulo": "Los Angeles Kings vs Colorado Avalanche",
       "torneo": "NHL",
-      "categoria": "Hockey",
+      "categoria": "Otros Deportes",
       "tipo_evento": "duelo",
-      "equipo_local": "Vancouver Canucks",
-      "equipo_visitante": "Edmonton Oilers",
+      "equipo_local": "Los Angeles Kings",
+      "equipo_visitante": "Colorado Avalanche",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T02:00:00Z",
+      "hora_utc": "2026-10-02T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 150,
-      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxqxxpw1421875519.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuxxsyw1421618428.png&w=400&output=webp",
+      "logo_torneo": "http://www.1play.cool:25461/images/7a7e1c8a0d5c02db22a0dd5b7c64799f.png",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1150,28 +3074,28 @@
       ],
       "fuentes": [
         {
-          "nombre": "21:00 ◘ Vancouver Canucks vs. Edmonton Oilers ◘ NHL ◘◘",
-          "id_xtream": "627978"
+          "nombre": "21:00 ◘ Los Angeles Kings vs. Colorado Avalanche ◘ NHL ◘◘",
+          "id_xtream": "632126"
         }
       ]
     },
     {
-      "id": "9fc0708c3d32f081",
-      "agenda_id": "9fc0708c3d32f081",
-      "titulo": "Chicago Blackhawks vs Vegas Golden Knights",
-      "torneo": "NHL",
-      "categoria": "Hockey",
+      "id": "43f9328dd0d55fd3",
+      "agenda_id": "43f9328dd0d55fd3",
+      "titulo": "Sacramento Republic FC vs Las Vegas Lights FC",
+      "torneo": "USL Championship",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Chicago Blackhawks",
-      "equipo_visitante": "Vegas Golden Knights",
+      "equipo_local": "Sacramento Republic FC",
+      "equipo_visitante": "Las Vegas Lights FC",
       "subtitulo": "",
       "referencia": "",
-      "hora_utc": "2026-10-01T02:30:00Z",
-      "hora_local_producto": "21:30",
-      "duracion_min": 150,
-      "logo_torneo": "http://www.1play.cool:25461/images/cabc4cd0470427a2dbfce781a5360bff.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ftuwyvr1422041801.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7fd4521619536689.png&w=400&output=webp",
+      "hora_utc": "2026-10-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "",
       "tier": 1,
       "origen": "curador_inteligente_gemini",
@@ -1188,17 +3112,169 @@
       ],
       "fuentes": [
         {
-          "nombre": "21:30 ◘ Chicago Blackhawks vs. Vegas Golden Knights ◘ NHL ◘◘",
-          "id_xtream": "627979"
+          "nombre": "21:00 ◘ Sacramento Republic FC vs. Las Vegas Lights FC ◘ USL Championship ◘◘",
+          "id_xtream": "632127"
+        }
+      ]
+    },
+    {
+      "id": "bb54f0fb40550298",
+      "agenda_id": "bb54f0fb40550298",
+      "titulo": "Sacramento State vs UC Santa Barbara",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sacramento State",
+      "equipo_visitante": "UC Santa Barbara",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Sacramento State vs. UC Santa Barbara ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "632128"
+        }
+      ]
+    },
+    {
+      "id": "fe7be4ce88a3dfae",
+      "agenda_id": "fe7be4ce88a3dfae",
+      "titulo": "UC San Diego vs California Baptist",
+      "torneo": "NCAA Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UC San Diego",
+      "equipo_visitante": "California Baptist",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ UC San Diego vs. California Baptist ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "632129"
+        }
+      ]
+    },
+    {
+      "id": "c162dc50ae856c0c",
+      "agenda_id": "c162dc50ae856c0c",
+      "titulo": "Alejandro Tabilo vs Tommy Paul",
+      "torneo": "ATP Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Alejandro Tabilo",
+      "equipo_visitante": "Tommy Paul",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "ATP | 09:30 PM | Alejandro Tabilo (CHI) vs. Tommy Paul (USA) (Primera Ronda)",
+          "id_xtream": "631908"
+        }
+      ]
+    },
+    {
+      "id": "e8c03e0bcbefcfe8",
+      "agenda_id": "e8c03e0bcbefcfe8",
+      "titulo": "Jan-Lennard Struff vs Thiago Agustin Tirante",
+      "torneo": "ATP Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Jan-Lennard Struff",
+      "equipo_visitante": "Thiago Agustin Tirante",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-02T04:00:00Z",
+      "hora_local_producto": "23:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "curador_inteligente_gemini",
+      "origenes": [
+        "curador_inteligente_gemini"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "programado",
+      "confianza": "alta",
+      "puntuacion_confianza": 95,
+      "metodo_correlacion": "gemini_fuente_verdad",
+      "razones_correlacion": [
+        "validacion_ia_directa"
+      ],
+      "fuentes": [
+        {
+          "nombre": "ATP | 11:00 PM | Jan-Lennard Struff (GER) vs. Thiago Agustin Tirante (ARG)",
+          "id_xtream": "631911"
         }
       ]
     }
   ],
   "metricas": {
-    "total_streams": 11927,
-    "candidatos_hoy": 103,
-    "eventos_unicos": 83,
-    "eventos_publicados": 23,
-    "descartados": 60
+    "total_streams": 11917,
+    "candidatos_hoy": 90,
+    "eventos_unicos": 77,
+    "eventos_publicados": 74,
+    "descartados": 3
   }
 }
