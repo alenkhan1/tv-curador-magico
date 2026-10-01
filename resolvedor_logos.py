@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """Resolvedor universal de logos y escudos deportivos con TheSportsDB, CDN Proxy (anti-403) y caché local."""
 from __future__ import annotations
 
@@ -11,9 +11,28 @@ import urllib.parse
 from pathlib import Path
 from typing import Any, Optional
 
-import requests
+try:
+    import requests
+except ImportError:
+    requests = None
 
 log = logging.getLogger("resolvedor_logos")
+
+def _http_get_json(url: str, headers: dict | None = None, timeout: int = 4) -> dict | None:
+    if requests is not None:
+        try:
+            resp = requests.get(url, headers=headers or {}, timeout=timeout)
+            return resp.json() if resp.status_code == 200 else None
+        except Exception:
+            return None
+    import urllib.request, json
+    req = urllib.request.Request(url, headers=headers or {"User-Agent": "Mozilla/5.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return json.loads(r.read().decode("utf-8", errors="ignore"))
+    except Exception:
+        return None
+
 
 ARCHIVO_CACHE_LOGOS = Path(os.environ.get("ARCHIVO_CACHE_LOGOS", "logos_cache.json"))
 THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "123").strip()
@@ -375,3 +394,11 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", permitir_red: bo
             log.debug("Api-Football fallo para equipo %s: %s", equipo_limpio, exc)
 
     return ""
+
+
+def guardar_cache_logos():
+    try:
+        cache = _cargar_cache()
+        return _guardar_cache(cache)
+    except Exception:
+        pass
