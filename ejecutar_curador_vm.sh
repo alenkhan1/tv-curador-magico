@@ -22,7 +22,7 @@ print(f'OK: {len(evs)} eventos verificados, 0 colisiones de ID')
 "
 
 echo "=== [$(date)] Publicando cambios a GitHub ==="
-git add eventos_hoy.json eventos_descartados.json meta_curador.json cache_logos.json || true
+git add eventos_hoy.json eventos_descartados.json meta_curador.json logos_cache.json || true
 if git status --porcelain | grep -q .; then
     git commit -m "Cartelera deportiva actualizada $(date -u '+%Y-%m-%d %H:%M UTC')"
     git push origin main
