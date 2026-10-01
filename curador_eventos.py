@@ -276,8 +276,10 @@ def procesar_streams_eventos_xtream(
             else:
                 aceptados.append(h)
 
-    # Convertir aceptados al formato JSON canónico profesional y saneado
+    # Convertir aceptados al formato JSON canónico profesional, deduplicado y saneado
     eventos_finales = []
+    mapa_duelos_existentes = {}  # Clave normalizada de rivales -> indice en eventos_finales
+
     for item in aceptados:
         nombre = item["nombre"]
         grupo = item["grupo"]
@@ -286,8 +288,11 @@ def procesar_streams_eventos_xtream(
         coincide_agenda = item.get("agenda")
         agy_info = item.get("agy_info")
 
-        # 1. Sanitización profunda de metadatos
+        # 1. Sanitización profunda de metadatos (ignora programas de estudio)
         datos_limpios = sanitizar_evento_crudo(nombre, grupo)
+        if not datos_limpios:
+            descartados.append({"nombre": nombre, "grupo": grupo, "razon": "Programa de estudio o no es en vivo"})
+            continue
 
         dep = agy_info.get("deporte") if agy_info and agy_info.get("deporte") else (coincide_agenda.deporte if coincide_agenda else datos_limpios["deporte"])
         torneo = agy_info.get("torneo") if agy_info and agy_info.get("torneo") else (coincide_agenda.torneo if coincide_agenda else datos_limpios["torneo"])
@@ -314,8 +319,31 @@ def procesar_streams_eventos_xtream(
         logo_l = resolver_logo_equipo(loc, dep, permitir_red=True) if (tipo_ev == "duelo" and loc) else ""
         logo_v = resolver_logo_equipo(vis, dep, permitir_red=True) if (tipo_ev == "duelo" and vis) else ""
 
+        # Deduplicación Canónica: Si el partido entre estos dos rivales ya existe hoy, fusionar streams
+        clave_duelo = ""
+        if tipo_ev == "duelo" and loc and vis:
+            n_l = re.sub(r'[^a-z0-9]', '', loc.lower())
+            n_v = re.sub(r'[^a-z0-9]', '', vis.lower())
+            clave_duelo = "_vs_".join(sorted([n_l, n_v]))
+
+        if clave_duelo and clave_duelo in mapa_duelos_existentes:
+            idx = mapa_duelos_existentes[clave_duelo]
+            ev_existente = eventos_finales[idx]
+            # Agregar como fuente adicional sin superar 4 opciones
+            ids_fuentes = {f["id_xtream"] for f in ev_existente["fuentes"]}
+            if sid not in ids_fuentes and len(ev_existente["fuentes"]) < 4:
+                ev_existente["fuentes"].append({"nombre": nombre, "id_xtream": sid})
+            # Si el existente no tenía logos y este sí los tiene, enriquecerlo
+            if not ev_existente.get("logo_local") and logo_l:
+                ev_existente["logo_local"] = logo_l
+            if not ev_existente.get("logo_visitante") and logo_v:
+                ev_existente["logo_visitante"] = logo_v
+            if not ev_existente.get("logo_torneo") and logo_tor:
+                ev_existente["logo_torneo"] = logo_tor
+            continue
+
         id_ev = f"xtream_{sid}"
-        eventos_finales.append({
+        nuevo_ev = {
             "id": id_ev,
             "agenda_id": "",
             "titulo": titulo,
@@ -341,7 +369,10 @@ def procesar_streams_eventos_xtream(
             "confianza": "alta" if coincide_agenda or agy_info else "media",
             "puntuacion_confianza": 0.9 if coincide_agenda or agy_info else 0.75,
             "fuentes": [{"nombre": nombre, "id_xtream": sid}],
-        })
+        }
+        if clave_duelo:
+            mapa_duelos_existentes[clave_duelo] = len(eventos_finales)
+        eventos_finales.append(nuevo_ev)
 
     log.info("Streams de eventos Xtream procesados: %d aceptados, %d descartados", len(eventos_finales), len(descartados))
     return eventos_finales, descartados

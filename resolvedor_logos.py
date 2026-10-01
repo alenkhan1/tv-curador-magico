@@ -34,6 +34,15 @@ def _http_get_json(url: str, headers: dict | None = None, timeout: int = 4) -> d
         return None
 
 
+
+# Cargar .env si existe en el entorno
+_env_file = Path(".env")
+if _env_file.exists():
+    for _line in _env_file.read_text(encoding="utf-8").splitlines():
+        if "=" in _line and not _line.strip().startswith("#"):
+            _k, _v = _line.split("=", 1)
+            os.environ.setdefault(_k.strip(), _v.strip())
+
 ARCHIVO_CACHE_LOGOS = Path(os.environ.get("ARCHIVO_CACHE_LOGOS", "logos_cache.json"))
 THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "3").strip()
 API_SPORTS_KEY = os.environ.get("API_SPORTS_KEY", "").strip()
@@ -271,15 +280,9 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
         except Exception:
             pass
 
-    # 4. Fallback por categoría (nunca bandera olímpica como comodín genérico)
-    fallback = FALLBACK_POR_CATEGORIA.get(
-        categoria,
-        FALLBACK_POR_CATEGORIA.get("Otros Deportes", "")
-    )
-    if fallback:
-        cache[clave_cache] = fallback
-        _guardar_cache(cache)
-    return fallback
+    # 4. Sin logos genéricos inventados: Si el torneo no es identificado fehacientemente, retornar vacío.
+    # No tapar huecos con el logo de FIFA o una pelota si no corresponde.
+    return ""
 
 
 PAISES_ALIAS = {
