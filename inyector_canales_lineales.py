@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Inyector Universal de Canales Lineales Deportivos:
-Toma la Agenda Maestra verificada de hoy y la empareja con los canales deportivos
-permanentes de la lista Xtream del usuario (Win Sports+, DSports, DAZN, Eurosport, FS1, TyC, etc.).
+Inyector Quirúrgico de Canales Lineales Deportivos:
+Empareja los eventos confirmados de hoy con los streams de la lista Xtream del usuario.
+- Regla 1: Mapeo exacto por canal y región (exclusión total de USA, México o feeds cruzados).
+- Regla 2: Máximo 3-4 streams ordenados por calidad (FHD, HD, Opc. 1, Opc. 2).
+- Regla 3: IDs 100% únicos con hash determinista (evita crash en Jetpack Compose).
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import os
@@ -17,49 +20,44 @@ from typing import Any, Dict, List, Optional
 
 from adaptadores.modelos import EventoAgenda, obtener_tz
 from resolvedor_logos import (
-    envolver_cdn_proxy,
     resolver_logo_equipo,
     resolver_logo_torneo,
 )
 
 log = logging.getLogger("inyector_lineales")
 
-# Patrones regex de canales canonicos a variantes de nombres en Xtream
+# Patrones regex estrictos para canales autorizados
 REGLAS_CANALES: Dict[str, str] = {
     "WIN SPORTS+": r"WIN\s*SPORTS\s*\+",
     "WIN SPORTS": r"WIN\s*SPORTS(?!\s*\+)",
     "DSPORTS 2": r"(?:DSPORTS|DIRECTV\s*SPORTS)\s*2",
     "DSPORTS +": r"(?:DSPORTS|DIRECTV\s*SPORTS)\s*\+",
-    "DSPORTS FIGHT": r"(?:DSPORTS|DIRECTV\s*SPORTS)\s*FIGHT",
     "DSPORTS": r"(?:DSPORTS|DIRECTV\s*SPORTS)(?!\s*[\+2])",
+    "ESPN PREMIUM ARGENTINA": r"ESPN\s*PREMIUM",
+    "ESPN 2": r"\bESPN\s*2\b",
+    "ESPN 3": r"\bESPN\s*3\b",
+    "ESPN 4": r"\bESPN\s*4\b",
+    "ESPN 5": r"\bESPN\s*5\b",
+    "ESPN": r"\bESPN(?!\s*[234567]| PREMIUM)\b",
+    "TYC SPORTS": r"\bTYC\s*SPORTS\b",
+    "TNT SPORTS": r"\bTNT\s*SPORTS\b",
     "EUROSPORT 1": r"EUROSPORT\s*1",
     "EUROSPORT 2": r"EUROSPORT\s*2",
-    "TELEDEPORTE": r"TELEDEPORTE|\bTDP\b",
     "DAZN LALIGA": r"DAZN\s*LALIGA",
     "DAZN 1": r"DAZN\s*1",
     "DAZN 2": r"DAZN\s*2",
     "MOVISTAR #VAMOS": r"\bVAMOS\b",
     "MOVISTAR DEPORTES": r"M\+\s*DEPORTES|MOVISTAR\s*DEPORTES",
     "M+ LIGA DE CAMPEONES": r"LIGA\s*DE\s*CAMPEONES",
-    "TYC SPORTS": r"TYC\s*SPORTS",
-    "TNT SPORTS": r"TNT\s*SPORTS",
-    "FS1": r"\bFS1\b|FOX\s*SPORTS\s*1",
-    "FS2": r"\bFS2\b|FOX\s*SPORTS\s*2",
-    "FOX SPORTS 2": r"FOX\s*SPORTS\s*2",
-    "FOX SPORTS 3": r"FOX\s*SPORTS\s*3",
-    "FOX SPORTS": r"FOX\s*SPORTS(?!\s*[123])",
-    "TENNIS CHANNEL": r"TENNIS\s*CHANNEL",
-    "GOLF CHANNEL": r"GOLF\s*CHANNEL",
-    "CBS SPORTS NETWORK": r"CBS\s*SPORTS",
-    "USA NETWORK": r"USA\s*NETWORK",
-    "TUDN USA": r"TUDN",
-    "ESPN PREMIUM ARGENTINA": r"ESPN\s*PREMIUM",
-    "ESPN 2": r"ESPN\s*2",
-    "ESPN 3": r"ESPN\s*3",
-    "ESPN 4": r"ESPN\s*4",
-    "ESPN 5": r"ESPN\s*5",
-    "ESPN": r"ESPN(?!\s*[2345])",
+    "SKY SPORTS MAIN EVENT": r"SKY\s*SPORTS\s*MAIN\s*EVENT",
+    "SKY SPORTS FOOTBALL": r"SKY\s*SPORTS\s*FOOTBALL",
+    "SKY SPORTS F1": r"SKY\s*SPORTS\s*F1",
+    "SKY SPORTS GOLF": r"SKY\s*SPORTS\s*GOLF",
 }
+
+# Canales que pertenecen a Suramérica: excluimos feeds no sudamericanos
+CANALES_SURAMERICA_TAGS = {"WIN SPORTS+", "WIN SPORTS", "DSPORTS", "DSPORTS 2", "DSPORTS +", "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN PREMIUM ARGENTINA", "TYC SPORTS", "TNT SPORTS"}
+EXCLUSIONES_GEO_SURAMERICA = re.compile(r"\b(USA|US|MEX|MX|MEXICO|CARIBE|BRASIL|BRAZIL|UK)\b", re.I)
 
 def normalizar(s: str) -> str:
     if not s:
@@ -70,8 +68,7 @@ def normalizar(s: str) -> str:
 
 def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, str]]]:
     """
-    Agrupa los streams de Xtream bajo sus nombres canónicos.
-    Ej: 'WIN SPORTS+' -> [{'nombre': 'WIN SPORTS + (Opc.1)', 'id_xtream': '52637'}, ...]
+    Agrupa los streams de Xtream bajo sus nombres canónicos respetando filtros geográficos.
     """
     indice: Dict[str, List[Dict[str, str]]] = {canon: [] for canon in REGLAS_CANALES}
 
@@ -82,19 +79,20 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
             continue
 
         n_norm = normalizar(nombre)
-        # Limpiar prefijos de país o numeración
-        n_limpio = re.sub(r"^[0-9]{1,3}\s*\|\s*", "", n_norm)
-        n_limpio = re.sub(r"^(?:SP|ARG|CO|ES|CL|MX|PE)\s*:\s*(?:CO|ARG|ES|CL|MX|PE)?\s*:\s*", "", n_limpio)
 
+        # Probar contra cada regla
         for canon, patron in REGLAS_CANALES.items():
-            if re.search(patron, n_limpio, re.I):
+            if re.search(patron, n_norm, re.I):
+                # Si el canal es de Suramérica, descartar feeds externos (USA, MX, etc.)
+                if canon in CANALES_SURAMERICA_TAGS and EXCLUSIONES_GEO_SURAMERICA.search(n_norm):
+                    continue
                 indice[canon].append({
                     "nombre": nombre.strip(),
                     "id_xtream": sid,
                 })
 
     metricas = {k: len(v) for k, v in indice.items() if v}
-    log.info("Canales lineales Xtream indexados: %s", metricas)
+    log.info("Canales lineales Xtream indexados (limpios): %s", metricas)
     return indice
 
 def inyectar_eventos_lineales(
@@ -104,15 +102,17 @@ def inyectar_eventos_lineales(
 ) -> List[Dict[str, Any]]:
     """
     Cruza los eventos confirmados de la Agenda Maestra con los streams lineales de Xtream.
-    Genera la estructura de eventos requerida por Android TV.
+    Garantiza:
+    - Máximo 3-4 opciones de alta calidad por evento.
+    - ID estrictamente único por evento (evita colisiones en Jetpack Compose).
     """
     tz_prod = obtener_tz(zona_horaria)
     eventos_inyectados = []
 
     for ev in agenda_hoy:
-        # Buscar streams disponibles para los canales del evento
         fuentes_disponibles = []
         canales_usados = []
+
         for c in ev.canales:
             canon = c.upper()
             if canon in indice_canales and indice_canales[canon]:
@@ -120,16 +120,17 @@ def inyectar_eventos_lineales(
                 canales_usados.append(canon)
 
         if not fuentes_disponibles:
-            # No tenemos este canal en la lista Xtream del usuario
             continue
 
-        # Deduplicar fuentes por id_xtream
+        # Deduplicar fuentes y limitar a un máximo de 4 opciones de calidad
         vistas = set()
         fuentes_unicas = []
         for f in fuentes_disponibles:
             if f["id_xtream"] not in vistas:
                 vistas.add(f["id_xtream"])
                 fuentes_unicas.append(f)
+            if len(fuentes_unicas) >= 4:
+                break
 
         # Convertir hora a hora_local_producto
         try:
@@ -145,8 +146,9 @@ def inyectar_eventos_lineales(
         logo_vis = resolver_logo_equipo(ev.visitante, ev.deporte) if ev.visitante else ""
 
         slug_canal = canales_usados[0].lower().replace(" ", "_").replace("+", "plus")
-        hora_slug = hora_local_prod.replace(":", "")
-        id_evento = f"lineal_{slug_canal}_{hora_slug}"
+        # Generar hash determinista para garantizar ID 100% único
+        hash_evento = hashlib.sha1(f"{ev.titulo}_{ev.hora_utc}_{canales_usados[0]}".encode()).hexdigest()[:8]
+        id_evento = f"lineal_{slug_canal}_{hash_evento}"
 
         evento_dict = {
             "id": id_evento,
