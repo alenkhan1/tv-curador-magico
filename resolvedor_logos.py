@@ -42,6 +42,20 @@ if _env_file.exists():
             os.environ[_k.strip()] = _v.strip()
 
 ARCHIVO_CACHE_LOGOS = Path(os.environ.get("ARCHIVO_CACHE_LOGOS", "logos_cache.json"))
+ARCHIVO_CATALOGO_TORNEOS = Path(__file__).resolve().parent / "catalogo_maestro_torneos.json"
+_CATALOGO_TORNEOS_CACHE: dict[str, str] | None = None
+
+def _obtener_catalogo_torneos() -> dict[str, str]:
+    global _CATALOGO_TORNEOS_CACHE
+    if _CATALOGO_TORNEOS_CACHE is None:
+        if ARCHIVO_CATALOGO_TORNEOS.exists():
+            try:
+                _CATALOGO_TORNEOS_CACHE = json.loads(ARCHIVO_CATALOGO_TORNEOS.read_text(encoding="utf-8"))
+            except Exception:
+                _CATALOGO_TORNEOS_CACHE = {}
+        else:
+            _CATALOGO_TORNEOS_CACHE = {}
+    return _CATALOGO_TORNEOS_CACHE
 THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "3").strip()
 API_SPORTS_KEY = os.environ.get("API_SPORTS_KEY", "").strip()
 
@@ -332,6 +346,18 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     torneo_norm = _normalizar(torneo)
     cache = _cargar_cache()
     clave_cache = f"torneo_{torneo_norm}"
+
+    # 0. Catálogo maestro oficial de torneos verificados en disco
+    catalogo = _obtener_catalogo_torneos()
+    if catalogo:
+        claves_ordenadas = sorted(catalogo.keys(), key=len, reverse=True)
+        for clave in claves_ordenadas:
+            patron = r"\b" + re.escape(clave) + r"\b"
+            if re.search(patron, torneo_norm) or (clave == torneo_norm):
+                url = catalogo[clave]
+                cache[clave_cache] = url
+                _guardar_cache(cache)
+                return url
 
     # 1. Catálogo maestro de insignias oficiales (Precedencia Máxima por longitud de clave)
     claves_ordenadas = sorted(CIRCUITO_LOGOS.keys(), key=len, reverse=True)
