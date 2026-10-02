@@ -1,17 +1,4526 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-02T22:38:44Z",
+  "generado_utc": "2026-10-02T22:45:30Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-02",
   "base_media": "http://espartanos.live:8080",
-  "eventos": [],
+  "eventos": [
+    {
+      "id": "lineal_eurosport_1_3a914578",
+      "agenda_id": "",
+      "titulo": "Shenzhen Open: Cuartos de final",
+      "torneo": "Shenzhen Open: Cuartos de final",
+      "categoria": "Snooker",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Snooker",
+      "referencia": "Snooker",
+      "hora_utc": "2026-10-02T06:00:00Z",
+      "hora_local_producto": "01:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "258733"
+        },
+        {
+          "nombre": "EUROSPORT 1",
+          "id_xtream": "232944"
+        },
+        {
+          "nombre": "EUROSPORTS 1",
+          "id_xtream": "141420"
+        },
+        {
+          "nombre": "UK | EUROSPORTS 1",
+          "id_xtream": "240358"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_a7b947c8",
+      "agenda_id": "",
+      "titulo": "Ciclismo",
+      "torneo": "Ciclismo",
+      "categoria": "Ciclismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Ciclismo",
+      "referencia": "Ciclismo",
+      "hora_utc": "2026-10-02T06:00:00Z",
+      "hora_local_producto": "01:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Ciclismo | 01:00 AM | BMX Racing World Cup Day 1: Mentougou",
+          "id_xtream": "637538"
+        },
+        {
+          "nombre": "Ciclismo | 02:00 AM | UEC Road European Championships U23 Women's Šenčur (88.4km)",
+          "id_xtream": "637539"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_d01e32e2",
+      "agenda_id": "",
+      "titulo": "China Open",
+      "torneo": "China Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tenis",
+      "referencia": "Tenis",
+      "hora_utc": "2026-10-02T06:00:00Z",
+      "hora_local_producto": "01:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "ATP | 01:00 AM | China Open / Capital Group Diamond",
+          "id_xtream": "637550"
+        },
+        {
+          "nombre": "00:00 ◘ China Open ◘ ATP/WTA ◘◘",
+          "id_xtream": "637642"
+        },
+        {
+          "nombre": "00:00 ◘ Lotus Court ◘ China Open ◘◘",
+          "id_xtream": "637643"
+        },
+        {
+          "nombre": "01:00 ◘ Brad Drewett ◘ China Open ◘◘",
+          "id_xtream": "637644"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_ff003084",
+      "agenda_id": "",
+      "titulo": "Southland vs Northland",
+      "torneo": "Rugby",
+      "categoria": "Rugby",
+      "tipo_evento": "duelo",
+      "equipo_local": "Southland",
+      "equipo_visitante": "Northland",
+      "subtitulo": "Rugby",
+      "referencia": "Rugby",
+      "hora_utc": "2026-10-02T06:05:00Z",
+      "hora_local_producto": "01:05",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F57foyk1648907703.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F8ojw051694618128.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "01:05 ◘ Southland vs. Northland ◘ Rugby ◘◘",
+          "id_xtream": "637646"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_7a32e875",
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-02T07:00:00Z",
+      "hora_local_producto": "02:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "F1 | 02:00 AM | Grand Prix Bahrain: Practice 2",
+          "id_xtream": "637561"
+        },
+        {
+          "nombre": "01:00 ◘ Compacto | F1 GP Bahréin en Malasia | Práctica 1 ◘ F1 ◘◘",
+          "id_xtream": "637645"
+        },
+        {
+          "nombre": "02:55 ◘ F1 GP Bahréin en Malasia práctica libre #2 | Con Tornello Fossaroli Cochito López y Fàbrega ◘ F1 ◘◘",
+          "id_xtream": "637648"
+        },
+        {
+          "nombre": "03:00 ◘ F1 GP Bahréin en Malasia práctica libre #2 | Cámara On Board ◘ F1 ◘◘",
+          "id_xtream": "637649"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_4b855108",
+      "agenda_id": "",
+      "titulo": "Premier Padel",
+      "torneo": "Premier Padel",
+      "categoria": "Pádel",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Pádel",
+      "referencia": "Pádel",
+      "hora_utc": "2026-10-02T07:30:00Z",
+      "hora_local_producto": "02:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Premier Padel | 02:30 AM | Rotterdam - Centre Court (Cuartos de Final)",
+          "id_xtream": "637534"
+        },
+        {
+          "nombre": "03:30 ◘ Premier Padel: Rotterdam - Centre Court ◘ Premier Padel ◘◘",
+          "id_xtream": "637652"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_af06596d",
+      "agenda_id": "",
+      "titulo": "China Open",
+      "torneo": "China Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "Renata Zarazua",
+      "equipo_visitante": "Aryna Sabalenka",
+      "subtitulo": "Tenis",
+      "referencia": "Tenis",
+      "hora_utc": "2026-10-02T09:00:00Z",
+      "hora_local_producto": "04:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "04:00 02/10 | HSBC Moon | China Open ||",
+          "id_xtream": "637391"
+        },
+        {
+          "nombre": "05:00 02/10 | China Open | ATP/WTA ||",
+          "id_xtream": "637393"
+        },
+        {
+          "nombre": "05:00 02/10 | Renata Zarazua vs. Aryna Sabalenka | China Open ||",
+          "id_xtream": "637394"
+        },
+        {
+          "nombre": "06:00 ◘ Renata Zarazua vs. Aryna Sabalenka ◘ China Open ◘◘",
+          "id_xtream": "637658"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_4c891e8a",
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-02T09:30:00Z",
+      "hora_local_producto": "04:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "04:30 ◘ Compacto | F1 GP Bahréin en Malasia | Práctica 2 ◘ F1 ◘◘",
+          "id_xtream": "637654"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_250ac0d3",
+      "agenda_id": "",
+      "titulo": "Alfred Dunhill Links Championship",
+      "torneo": "Alfred Dunhill Links Championship",
+      "categoria": "Golf",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Golf",
+      "referencia": "Golf",
+      "hora_utc": "2026-10-02T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "05:00 02/10 | Alfred Dunhill Links Championship | En español | Golf ||",
+          "id_xtream": "637392"
+        },
+        {
+          "nombre": "DP World Tour | 05:00 AM | Alfred Dunhill Links Championship (2° Ronda) En español",
+          "id_xtream": "637567"
+        },
+        {
+          "nombre": "06:00 ◘ Alfred Dunhill Links Championship | En español ◘ Golf ◘◘",
+          "id_xtream": "637656"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_eurosport_1_d409b388",
+      "agenda_id": "",
+      "titulo": "Shenzhen Open: Cuartos de final",
+      "torneo": "Shenzhen Open: Cuartos de final",
+      "categoria": "Snooker",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Snooker",
+      "referencia": "Snooker",
+      "hora_utc": "2026-10-02T11:30:00Z",
+      "hora_local_producto": "06:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "258733"
+        },
+        {
+          "nombre": "EUROSPORT 1",
+          "id_xtream": "232944"
+        },
+        {
+          "nombre": "EUROSPORTS 1",
+          "id_xtream": "141420"
+        },
+        {
+          "nombre": "UK | EUROSPORTS 1",
+          "id_xtream": "240358"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_33c97ebc",
+      "agenda_id": "",
+      "titulo": "China Open",
+      "torneo": "China Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "Yunchaokete Bu",
+      "equipo_visitante": "Novak Djokovic",
+      "subtitulo": "Tenis",
+      "referencia": "Tenis",
+      "hora_utc": "2026-10-02T11:30:00Z",
+      "hora_local_producto": "06:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "06:30 02/10 | Yunchaokete Bu vs. Novak Djokovic | China Open ||",
+          "id_xtream": "637395"
+        },
+        {
+          "nombre": "07:30 ◘ Yunchaokete Bu vs. Novak Djokovic ◘ China Open ◘◘",
+          "id_xtream": "637659"
+        },
+        {
+          "nombre": "06:00 ◘ China Open ◘ ATP/WTA ◘◘",
+          "id_xtream": "637657"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_81ee1e7a",
+      "agenda_id": "",
+      "titulo": "Rumania vs Brasil",
+      "torneo": "World Rugby U20 Championship",
+      "categoria": "Rugby",
+      "tipo_evento": "duelo",
+      "equipo_local": "Rumania",
+      "equipo_visitante": "Brasil",
+      "subtitulo": "World Rugby U20 Championship",
+      "referencia": "World Rugby U20 Championship",
+      "hora_utc": "2026-10-02T11:55:00Z",
+      "hora_local_producto": "06:55",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fro.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fbr.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "06:55 02/10 | Rumania vs. Brasil | World Rugby U20 Championship ||",
+          "id_xtream": "637396"
+        },
+        {
+          "nombre": "07:55 ◘ Rumania vs. Brasil ◘ World Rugby U20 Championship ◘◘",
+          "id_xtream": "637660"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_767a1fc9",
+      "agenda_id": "",
+      "titulo": "LaLiga FC Futures 2026",
+      "torneo": "LaLiga FC Futures 2026",
+      "categoria": "Fútbol",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Fútbol",
+      "referencia": "Fútbol",
+      "hora_utc": "2026-10-02T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "07:00 02/10 | LaLiga FC Futures 2026 | Día #1 | LaLiga ||",
+          "id_xtream": "637397"
+        },
+        {
+          "nombre": "08:00 ◘ LaLiga FC Futures 2026 | Día #1 ◘ LaLiga ◘◘",
+          "id_xtream": "637661"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_2c6ea32c",
+      "agenda_id": "",
+      "titulo": "One Friday Fights",
+      "torneo": "One Friday Fights",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Combate",
+      "referencia": "Combate",
+      "hora_utc": "2026-10-02T12:30:00Z",
+      "hora_local_producto": "07:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "07:30 02/10 | One Friday Fights | MMA |",
+          "id_xtream": "637398"
+        },
+        {
+          "nombre": "08:30 ◘ One Friday Fights ◘ MMA ◘",
+          "id_xtream": "637662"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_a46337ab",
+      "agenda_id": "",
+      "titulo": "Ciclismo",
+      "torneo": "Ciclismo",
+      "categoria": "Ciclismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Ciclismo",
+      "referencia": "Ciclismo",
+      "hora_utc": "2026-10-02T12:30:00Z",
+      "hora_local_producto": "07:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Ciclismo | 07:30 AM | UEC Road European Championships U23 Men's Ljubljana - Šenčur (141.9km)",
+          "id_xtream": "637540"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_5df8f26a",
+      "agenda_id": "",
+      "titulo": "Bank of Utah Championship",
+      "torneo": "Bank of Utah Championship",
+      "categoria": "Golf",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Golf",
+      "referencia": "Golf",
+      "hora_utc": "2026-10-02T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fthumb%2Fc%2Fcf%2FPGA_Tour_logo.svg%2F512px-PGA_Tour_logo.svg.png&w=400&output=webp",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "08:00 02/10 | Bank of Utah Championship: Featured Groups | Golf ||",
+          "id_xtream": "637399"
+        },
+        {
+          "nombre": "PGA Tour | 07:45 AM | Bank of Utah Championship: Featured Groups (Segunda Ronda)",
+          "id_xtream": "637566"
+        },
+        {
+          "nombre": "09:00 ◘ Bank of Utah Championship: Featured Groups ◘ Golf ◘◘",
+          "id_xtream": "637663"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_2f8d99d8",
+      "agenda_id": "",
+      "titulo": "Natacion",
+      "torneo": "Natacion",
+      "categoria": "Natación",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Natación",
+      "referencia": "Natación",
+      "hora_utc": "2026-10-02T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Natacion | 08:00 AM | Swimming WC: Baku Day 2",
+          "id_xtream": "637542"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_2_3dea1196",
+      "agenda_id": "",
+      "titulo": "Kazajistán vs Moldavia",
+      "torneo": "UEFA Nations League Fase de grupos",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Kazajistán",
+      "equipo_visitante": "Moldavia",
+      "subtitulo": "UEFA Nations League Fase de grupos",
+      "referencia": "UEFA Nations League Fase de grupos",
+      "hora_utc": "2026-10-02T14:00:00Z",
+      "hora_local_producto": "09:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fkz.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fmd.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "espn2-andinon",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARGENTINA HD",
+          "id_xtream": "258741"
+        },
+        {
+          "nombre": "ESPN 2 COLOMBIA HD",
+          "id_xtream": "258747"
+        },
+        {
+          "nombre": "ARG | ESPN 2 ᴴᴰ",
+          "id_xtream": "1126"
+        },
+        {
+          "nombre": "ESPN 3 ARGENTINA HD",
+          "id_xtream": "258742"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_eurosport_2_c5a47875",
+      "agenda_id": "",
+      "titulo": "Campeonato de Europa de Tiro: Malakasa",
+      "torneo": "Campeonato de Europa de Tiro: Malakasa",
+      "categoria": "Tiro",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tiro",
+      "referencia": "Tiro",
+      "hora_utc": "2026-10-02T14:30:00Z",
+      "hora_local_producto": "09:30",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "04 | DAZN (ES) EUROSPORTS 2",
+          "id_xtream": "107959"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "258734"
+        },
+        {
+          "nombre": "EUROSPORT 2",
+          "id_xtream": "232945"
+        },
+        {
+          "nombre": "EUROSPORTS 2",
+          "id_xtream": "141421"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_63b22450",
+      "agenda_id": "",
+      "titulo": "Motor",
+      "torneo": "Motor",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-02T14:40:00Z",
+      "hora_local_producto": "09:40",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Motor | 09:40 AM | IMSA MPC at Road Atlanta",
+          "id_xtream": "637563"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_a001aff9",
+      "agenda_id": "",
+      "titulo": "La Irenita vs Velay",
+      "torneo": "Torneo Clasificatorio a Palermo",
+      "categoria": "Polo",
+      "tipo_evento": "duelo",
+      "equipo_local": "La Irenita",
+      "equipo_visitante": "Velay",
+      "subtitulo": "Torneo Clasificatorio a Palermo",
+      "referencia": "Torneo Clasificatorio a Palermo",
+      "hora_utc": "2026-10-02T14:55:00Z",
+      "hora_local_producto": "09:55",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuhsmj31781478894.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "09:55 02/10 | La Irenita vs. Velay | Torneo Clasificatorio a Palermo | Polo ||",
+          "id_xtream": "637401"
+        },
+        {
+          "nombre": "10:55 ◘ La Irenita vs. Velay | Torneo Clasificatorio a Palermo ◘ Polo ◘◘",
+          "id_xtream": "637665"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_879d39f4",
+      "agenda_id": "",
+      "titulo": "Namibia vs Canadá",
+      "torneo": "World Rugby U20 Championship",
+      "categoria": "Rugby",
+      "tipo_evento": "duelo",
+      "equipo_local": "Namibia",
+      "equipo_visitante": "Canadá",
+      "subtitulo": "World Rugby U20 Championship",
+      "referencia": "World Rugby U20 Championship",
+      "hora_utc": "2026-10-02T14:55:00Z",
+      "hora_local_producto": "09:55",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fekrjgn1742103287.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fca.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "09:55 02/10 | Namibia vs. Canadá | World Rugby U20 Championship ||",
+          "id_xtream": "637402"
+        },
+        {
+          "nombre": "10:55 ◘ Namibia vs. Canadá ◘ World Rugby U20 Championship ◘◘",
+          "id_xtream": "637666"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_07bd72b9",
+      "agenda_id": "",
+      "titulo": "Letonia vs Montenegro",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Letonia",
+      "equipo_visitante": "Montenegro",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
+      "hora_utc": "2026-10-02T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Flv.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fme.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "10:00 02/10 | Letonia vs. Montenegro | UEFA Nations League ||",
+          "id_xtream": "637404"
+        },
+        {
+          "nombre": "10:00 02/10 | Letonia vs. Montenegro | UEFA Nations League || SD",
+          "id_xtream": "637405"
+        },
+        {
+          "nombre": "UEFA Nations League | 10:00 AM | Letonia vs. Montenegro",
+          "id_xtream": "637501"
+        },
+        {
+          "nombre": "11:00 ◘ Letonia vs. Montenegro ◘ UEFA Nations League ◘◘",
+          "id_xtream": "637668"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_2105676b",
+      "agenda_id": "",
+      "titulo": "Premier Padel",
+      "torneo": "Premier Padel",
+      "categoria": "Pádel",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Pádel",
+      "referencia": "Pádel",
+      "hora_utc": "2026-10-02T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "10:00 02/10 | Premier Padel: Rotterdam - Secondary Court | Premier Padel ||",
+          "id_xtream": "637406"
+        },
+        {
+          "nombre": "10:30 02/10 | Premier Padel: Rotterdam - Centre Court | Premier Padel ||",
+          "id_xtream": "637407"
+        },
+        {
+          "nombre": "Premier Padel | 10:00 AM | Rotterdam - Secondary Court (Cuartos de Final)",
+          "id_xtream": "637535"
+        },
+        {
+          "nombre": "11:00 ◘ Premier Padel: Rotterdam - Secondary Court ◘ Premier Padel ◘◘",
+          "id_xtream": "637670"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_eurosport_1_09db3b1f",
+      "agenda_id": "",
+      "titulo": "Cross Country: Lake Placid",
+      "torneo": "Cross Country: Lake Placid",
+      "categoria": "Ciclismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Ciclismo",
+      "referencia": "Ciclismo",
+      "hora_utc": "2026-10-02T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F2%2F29%2FUnion_Cycliste_Internationale_logo.svg%2F512px-Union_Cycliste_Internationale_logo.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "258733"
+        },
+        {
+          "nombre": "EUROSPORT 1",
+          "id_xtream": "232944"
+        },
+        {
+          "nombre": "EUROSPORTS 1",
+          "id_xtream": "141420"
+        },
+        {
+          "nombre": "UK | EUROSPORTS 1",
+          "id_xtream": "240358"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_2_2cb13083",
+      "agenda_id": "",
+      "titulo": "Chipre vs Armenia",
+      "torneo": "UEFA Nations League Fase de grupos",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chipre",
+      "equipo_visitante": "Armenia",
+      "subtitulo": "UEFA Nations League Fase de grupos",
+      "referencia": "UEFA Nations League Fase de grupos",
+      "hora_utc": "2026-10-02T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fcy.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fam.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "espn2-andinon",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARGENTINA HD",
+          "id_xtream": "258741"
+        },
+        {
+          "nombre": "ESPN 2 COLOMBIA HD",
+          "id_xtream": "258747"
+        },
+        {
+          "nombre": "ARG | ESPN 2 ᴴᴰ",
+          "id_xtream": "1126"
+        },
+        {
+          "nombre": "10:00 02/10 | Cyprus vs. Armenia | UEFA Nations League ||",
+          "id_xtream": "637403"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_c6b0eb86",
+      "agenda_id": "",
+      "titulo": "Boxeo",
+      "torneo": "Boxeo",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "Elias Faour",
+      "equipo_visitante": "Narek Sachbazjan",
+      "subtitulo": "Combate",
+      "referencia": "Combate",
+      "hora_utc": "2026-10-02T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:00 02/10 | Elias Faour - Narek Sachbazjan | Boxeo |",
+          "id_xtream": "637408"
+        },
+        {
+          "nombre": "12:00 ◘ Elias Faour - Narek Sachbazjan ◘ Boxeo ◘",
+          "id_xtream": "637672"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_28fba3d8",
+      "agenda_id": "",
+      "titulo": "Atletismo",
+      "torneo": "Atletismo",
+      "categoria": "Atletismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Atletismo",
+      "referencia": "Atletismo",
+      "hora_utc": "2026-10-02T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Atletismo | 11:00 AM | Cross Country Running: Bengal Invitational",
+          "id_xtream": "637543"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_381e2052",
+      "agenda_id": "",
+      "titulo": "Ellerstina La Zeta Kazak vs La Dolfina II",
+      "torneo": "Torneo Clasificatorio a Palermo",
+      "categoria": "Polo",
+      "tipo_evento": "duelo",
+      "equipo_local": "Ellerstina La Zeta Kazak",
+      "equipo_visitante": "La Dolfina II",
+      "subtitulo": "Torneo Clasificatorio a Palermo",
+      "referencia": "Torneo Clasificatorio a Palermo",
+      "hora_utc": "2026-10-02T17:25:00Z",
+      "hora_local_producto": "12:25",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:25 02/10 | Ellerstina La Zeta Kazak vs. La Dolfina II | Torneo Clasificatorio a Palermo | Polo ||",
+          "id_xtream": "637409"
+        },
+        {
+          "nombre": "13:25 ◘ Ellerstina La Zeta Kazak vs. La Dolfina II | Torneo Clasificatorio a Palermo ◘ Polo ◘◘",
+          "id_xtream": "637673"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_b5b6969b",
+      "agenda_id": "",
+      "titulo": "Eldense vs Real Oviedo",
+      "torneo": "LaLiga SmartBank",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eldense",
+      "equipo_visitante": "Real Oviedo",
+      "subtitulo": "LaLiga SmartBank",
+      "referencia": "LaLiga SmartBank",
+      "hora_utc": "2026-10-02T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fasdjgc1733549950.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyuwqus1447590681.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:30 02/10 | Eldense vs. Real Oviedo | LaLiga SmartBank |",
+          "id_xtream": "637410"
+        },
+        {
+          "nombre": "13:30 ◘ Eldense vs. Real Oviedo ◘ LaLiga SmartBank ◘",
+          "id_xtream": "637674"
+        },
+        {
+          "nombre": "Segunda España | 12:30 PM | Eldense vs. Oviedo",
+          "id_xtream": "637517"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_e1dbc985",
+      "agenda_id": "",
+      "titulo": "SLB Bristol Flyers vs Manchester Basketball",
+      "torneo": "Basket",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "SLB Bristol Flyers",
+      "equipo_visitante": "Manchester Basketball",
+      "subtitulo": "Basket",
+      "referencia": "Basket",
+      "hora_utc": "2026-10-02T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F27j5tj1736497347.png&w=400&output=webp",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Basket | 12:30 PM | SLB Bristol Flyers vs. Manchester Basketball",
+          "id_xtream": "637527"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_bb4ee2a2",
+      "agenda_id": "",
+      "titulo": "SLB London Lions vs Leicester Riders",
+      "torneo": "Basket",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "SLB London Lions",
+      "equipo_visitante": "Leicester Riders",
+      "subtitulo": "Basket",
+      "referencia": "Basket",
+      "hora_utc": "2026-10-02T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa7ib5s1693986099.png&w=400&output=webp",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Basket | 12:30 PM | SLB London Lions vs. Leicester Riders",
+          "id_xtream": "637528"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_81bf0b46",
+      "agenda_id": "",
+      "titulo": "SLB Newcastle Eagles vs Caledonia Gladiators",
+      "torneo": "Basket",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "SLB Newcastle Eagles",
+      "equipo_visitante": "Caledonia Gladiators",
+      "subtitulo": "Basket",
+      "referencia": "Basket",
+      "hora_utc": "2026-10-02T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F23yfbk1697123058.png&w=400&output=webp",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Basket | 12:30 PM | SLB Newcastle Eagles vs. Caledonia Gladiators",
+          "id_xtream": "637529"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_6b42086d",
+      "agenda_id": "",
+      "titulo": "Motor",
+      "torneo": "Motor",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-02T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Motor | 12:30 PM | IMSA Road Atlanta Qualifying",
+          "id_xtream": "637564"
+        },
+        {
+          "nombre": "Motor | 02:00 PM | IMSA Carrera Cup Road Atlanta 2",
+          "id_xtream": "637565"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_cc31c2fe",
+      "agenda_id": "",
+      "titulo": "Bélgica vs Turquía",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bélgica",
+      "equipo_visitante": "Turquía",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
+      "hora_utc": "2026-10-02T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fbe.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Ftr.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:45 02/10 | Bélgica vs. Turquía | UEFA Nations League ||",
+          "id_xtream": "637412"
+        },
+        {
+          "nombre": "12:45 02/10 | Bélgica vs. Turquía | UEFA Nations League || SD",
+          "id_xtream": "637413"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Bélgica vs. Turquía",
+          "id_xtream": "637506"
+        },
+        {
+          "nombre": "13:45 ◘ Bélgica vs. Turquía ◘ UEFA Nations League ◘◘",
+          "id_xtream": "637676"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_c14fcb06",
+      "agenda_id": "",
+      "titulo": "Hungria vs Georgia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Hungria",
+      "equipo_visitante": "Georgia",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
+      "hora_utc": "2026-10-02T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fhu.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fge.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:45 02/10 | Hungria vs. Georgia | UEFA Nations League ||",
+          "id_xtream": "637417"
+        },
+        {
+          "nombre": "12:45 02/10 | Hungria vs. Georgia | UEFA Nations League || SD",
+          "id_xtream": "637418"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Hungría vs. Georgia",
+          "id_xtream": "637503"
+        },
+        {
+          "nombre": "13:45 ◘ Hungria vs. Georgia ◘ UEFA Nations League ◘◘",
+          "id_xtream": "637681"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_a59711c4",
+      "agenda_id": "",
+      "titulo": "Islas Faroe vs Eslovaquia",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Islas Faroe",
+      "equipo_visitante": "Eslovaquia",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
+      "hora_utc": "2026-10-02T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fsk.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:45 02/10 | Islas Faroe vs. Eslovaquia | UEFA Nations League ||",
+          "id_xtream": "637419"
+        },
+        {
+          "nombre": "12:45 02/10 | Islas Faroe vs. Eslovaquia | UEFA Nations League || SD",
+          "id_xtream": "637420"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Islas Faroe vs. Eslovaquia",
+          "id_xtream": "637508"
+        },
+        {
+          "nombre": "13:45 ◘ Islas Faroe vs. Eslovaquia ◘ UEFA Nations League ◘◘",
+          "id_xtream": "637683"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_9d370abe",
+      "agenda_id": "",
+      "titulo": "Polonia vs Rumania",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Polonia",
+      "equipo_visitante": "Rumania",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
+      "hora_utc": "2026-10-02T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fpl.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fro.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:45 02/10 | Polonia vs. Rumania | UEFA Nations League ||",
+          "id_xtream": "637421"
+        },
+        {
+          "nombre": "12:45 02/10 | Polonia vs. Rumania | UEFA Nations League || SD",
+          "id_xtream": "637422"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Polonia vs. Rumanía",
+          "id_xtream": "637504"
+        },
+        {
+          "nombre": "13:45 ◘ Polonia vs. Rumania ◘ UEFA Nations League ◘◘",
+          "id_xtream": "637685"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_13f6abe8",
+      "agenda_id": "",
+      "titulo": "Ucrania vs Irlanda del Norte",
+      "torneo": "UEFA Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Ucrania",
+      "equipo_visitante": "Irlanda del Norte",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
+      "hora_utc": "2026-10-02T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fua.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fgb-nir.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:45 02/10 | Ucrania vs. Irlanda del Norte | UEFA Nations League ||",
+          "id_xtream": "637423"
+        },
+        {
+          "nombre": "12:45 02/10 | Ucrania vs. Irlanda del Norte | UEFA Nations League ||",
+          "id_xtream": "637424"
+        },
+        {
+          "nombre": "UEFA Nations League | 12:45 PM | Ucrania vs. Irlanda del Norte",
+          "id_xtream": "637505"
+        },
+        {
+          "nombre": "13:45 ◘ Ucrania vs. Irlanda del Norte ◘ UEFA Nations League ◘◘",
+          "id_xtream": "637687"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_b315a4b2",
+      "agenda_id": "",
+      "titulo": "Bélgica vs Portugal",
+      "torneo": "World Rugby U20 Championship",
+      "categoria": "Rugby",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bélgica",
+      "equipo_visitante": "Portugal",
+      "subtitulo": "World Rugby U20 Championship",
+      "referencia": "World Rugby U20 Championship",
+      "hora_utc": "2026-10-02T17:55:00Z",
+      "hora_local_producto": "12:55",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fbe.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fpt.png&w=400&output=webp",
+      "banner": "",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:55 02/10 | Bélgica vs. Portugal | World Rugby U20 Championship ||",
+          "id_xtream": "637425"
+        },
+        {
+          "nombre": "13:55 ◘ Bélgica vs. Portugal ◘ World Rugby U20 Championship ◘◘",
+          "id_xtream": "637689"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_b2a8c965",
+      "agenda_id": "",
+      "titulo": "St. Lucia vs Guadalupe",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "St. Lucia",
+      "equipo_visitante": "Guadalupe",
+      "subtitulo": "CONCACAF Nations League",
+      "referencia": "CONCACAF Nations League",
+      "hora_utc": "2026-10-02T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2x86cj1774756550.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwzn0mr1600964011.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 02/10 | St. Lucia vs. Guadalupe | CONCACAF Nations League ||",
+          "id_xtream": "637426"
+        },
+        {
+          "nombre": "13:00 02/10 | St. Lucia vs. Guadalupe | CONCACAF Nations League ||",
+          "id_xtream": "637427"
+        },
+        {
+          "nombre": "14:00 ◘ St. Lucia vs. Guadalupe ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "637690"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_5e59ef11",
+      "agenda_id": "",
+      "titulo": "UConn vs Villanova",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UConn",
+      "equipo_visitante": "Villanova",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuzifbr1564336981.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F8w35sk1564357973.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 02/10 | UConn vs. Villanova | NCAA Men's Soccer ||",
+          "id_xtream": "637428"
+        },
+        {
+          "nombre": "14:00 ◘ UConn vs. Villanova ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637691"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_eurosport_2_fb0a1c08",
+      "agenda_id": "",
+      "titulo": "Liga Nexus Energía Asobal: Jornada 4",
+      "torneo": "Liga Nexus Energía Asobal: Jornada 4",
+      "categoria": "Balonmano",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Balonmano",
+      "referencia": "Balonmano",
+      "hora_utc": "2026-10-02T18:25:00Z",
+      "hora_local_producto": "13:25",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_asobal.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_asobal.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "04 | DAZN (ES) EUROSPORTS 2",
+          "id_xtream": "107959"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "258734"
+        },
+        {
+          "nombre": "EUROSPORT 2",
+          "id_xtream": "232945"
+        },
+        {
+          "nombre": "EUROSPORTS 2",
+          "id_xtream": "141421"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_3e28d9c6",
+      "agenda_id": "",
+      "titulo": "Francia vs Italia",
+      "torneo": "UEFA Nations League Fase de grupos",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Francia",
+      "equipo_visitante": "Italia",
+      "subtitulo": "UEFA Nations League Fase de grupos",
+      "referencia": "UEFA Nations League Fase de grupos",
+      "hora_utc": "2026-10-02T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Ffr.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fit.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "espn-colombia",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_2_2da51c3a",
+      "agenda_id": "",
+      "titulo": "Bosnia vs Suecia",
+      "torneo": "UEFA Nations League Fase de grupos",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bosnia",
+      "equipo_visitante": "Suecia",
+      "subtitulo": "UEFA Nations League Fase de grupos",
+      "referencia": "UEFA Nations League Fase de grupos",
+      "hora_utc": "2026-10-02T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fba.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fse.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_nations_league.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "espn2-andinon",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARGENTINA HD",
+          "id_xtream": "258741"
+        },
+        {
+          "nombre": "ESPN 2 COLOMBIA HD",
+          "id_xtream": "258747"
+        },
+        {
+          "nombre": "ARG | ESPN 2 ᴴᴰ",
+          "id_xtream": "1126"
+        },
+        {
+          "nombre": "12:45 02/10 | Bosnia and Herzegovina vs. Sweden | UEFA Nations League ||",
+          "id_xtream": "637411"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_fcd45933",
+      "agenda_id": "",
+      "titulo": "18 Akron vs DePaul",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "18 Akron",
+      "equipo_visitante": "DePaul",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fz6bowf1642618359.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5nox0o1581778425.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00 02/10 | #18 Akron vs. DePaul | NCAA Men's Soccer ||",
+          "id_xtream": "637429"
+        },
+        {
+          "nombre": "15:00 ◘ #18 Akron vs. DePaul ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637692"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_b8f7e358",
+      "agenda_id": "",
+      "titulo": "St. Kitts and Nevis vs Cuba",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "St. Kitts and Nevis",
+      "equipo_visitante": "Cuba",
+      "subtitulo": "CONCACAF Nations League",
+      "referencia": "CONCACAF Nations League",
+      "hora_utc": "2026-10-02T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhjl5781600973144.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fcu.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "15:00 02/10 | St. Kitts and Nevis vs. Cuba | CONCACAF Nations League ||",
+          "id_xtream": "637430"
+        },
+        {
+          "nombre": "15:00 02/10 | St. Kitts and Nevis vs. Cuba | CONCACAF Nations League ||",
+          "id_xtream": "637431"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 03:00 PM | St. Kitts and Nevis vs Cuba",
+          "id_xtream": "637509"
+        },
+        {
+          "nombre": "16:00 ◘ St. Kitts and Nevis vs. Cuba ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "637693"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_401f89dd",
+      "agenda_id": "",
+      "titulo": "Surinam vs Guatemala",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Surinam",
+      "equipo_visitante": "Guatemala",
+      "subtitulo": "CONCACAF Nations League",
+      "referencia": "CONCACAF Nations League",
+      "hora_utc": "2026-10-02T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fsr.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fgt.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:00 02/10 | Surinam vs. Guatemala | CONCACAF Nations League ||",
+          "id_xtream": "637432"
+        },
+        {
+          "nombre": "16:00 02/10 | Surinam vs. Guatemala | CONCACAF Nations League ||",
+          "id_xtream": "637433"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 04:00 PM | Surinam vs. Guatemala",
+          "id_xtream": "637510"
+        },
+        {
+          "nombre": "17:00 ◘ Surinam vs. Guatemala ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "637694"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_b5b5f4f2",
+      "agenda_id": "",
+      "titulo": "Marquette vs 25 Xavier",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Marquette",
+      "equipo_visitante": "25 Xavier",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F258wvx1767527069.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fepohhb1587329205.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:30 02/10 | Marquette vs. #25 Xavier | NCAA Men's Soccer ||",
+          "id_xtream": "637435"
+        },
+        {
+          "nombre": "17:30 ◘ Marquette vs. #25 Xavier ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637696"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_491a85cd",
+      "agenda_id": "",
+      "titulo": "New York Rangers vs Detroit Red Wings",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "New York Rangers",
+      "equipo_visitante": "Detroit Red Wings",
+      "subtitulo": "NHL",
+      "referencia": "NHL",
+      "hora_utc": "2026-10-02T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fts2nhq1763454676.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1c24ow1546544080.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:30 02/10 | New York Rangers vs. Detroit Red Wings | NHL |",
+          "id_xtream": "637436"
+        },
+        {
+          "nombre": "17:30 ◘ New York Rangers vs. Detroit Red Wings ◘ NHL ◘",
+          "id_xtream": "637697"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_98da3895",
+      "agenda_id": "",
+      "titulo": "Washington Capitals vs Carolina Hurricanes",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Capitals",
+      "equipo_visitante": "Carolina Hurricanes",
+      "subtitulo": "NHL",
+      "referencia": "NHL",
+      "hora_utc": "2026-10-02T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F99ca9a1638974052.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv07m3x1547232585.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:30 02/10 | Washington Capitals vs. Carolina Hurricanes | NHL ||",
+          "id_xtream": "637437"
+        },
+        {
+          "nombre": "17:30 ◘ Washington Capitals vs. Carolina Hurricanes ◘ NHL ◘◘",
+          "id_xtream": "637698"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_win_sportsplus_6d560d55",
+      "agenda_id": "",
+      "titulo": "Atlético FC vs Real Soacha Cundinamarca",
+      "torneo": "Torneo BetPlay DIMAYOR",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlético FC",
+      "equipo_visitante": "Real Soacha Cundinamarca",
+      "subtitulo": "Torneo BetPlay DIMAYOR",
+      "referencia": "Torneo BetPlay DIMAYOR",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1cow9s1771988208.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3c46781721453110.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "win-sports-mas"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "03 |  WIN SPORTS + (Opc.1)",
+          "id_xtream": "52637"
+        },
+        {
+          "nombre": "04 | WIN SPORTS + (Opc.2)",
+          "id_xtream": "52638"
+        },
+        {
+          "nombre": "05 | WIN SPORTS + (Opc.3)",
+          "id_xtream": "52639"
+        },
+        {
+          "nombre": "06 | WIN SPORTS + (Opc.4)",
+          "id_xtream": "52640"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_2fb0bd4c",
+      "agenda_id": "",
+      "titulo": "23 Old Dominion vs Kentucky",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "23 Old Dominion",
+      "equipo_visitante": "Kentucky",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2opepc1564336540.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzbfves1564336111.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | #23 Old Dominion vs. Kentucky | NCAA Men's Soccer ||",
+          "id_xtream": "637438"
+        },
+        {
+          "nombre": "18:00 ◘ #23 Old Dominion vs. Kentucky ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637699"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_269b42b4",
+      "agenda_id": "",
+      "titulo": "Arkansas State vs Georgia State",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Arkansas State",
+      "equipo_visitante": "Georgia State",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "NCAA Women's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2ltd3o1564335519.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4ym7d91564335942.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Arkansas State vs. Georgia State | NCAA Women's Soccer\t||",
+          "id_xtream": "637439"
+        },
+        {
+          "nombre": "18:00 ◘ Arkansas State vs. Georgia State ◘ NCAA Women's Soccer\t◘◘",
+          "id_xtream": "637700"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_e76c4289",
+      "agenda_id": "",
+      "titulo": "Charlotte vs Tulsa",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Charlotte",
+      "equipo_visitante": "Tulsa",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "NCAA Women's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fh09jf41564335694.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F97u0711564336879.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Charlotte vs. Tulsa | NCAA Women's Soccer ||",
+          "id_xtream": "637440"
+        },
+        {
+          "nombre": "18:00 ◘ Charlotte vs. Tulsa ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "637701"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_af7544c0",
+      "agenda_id": "",
+      "titulo": "Coastal Carolina vs James Madison",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Coastal Carolina",
+      "equipo_visitante": "James Madison",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fp3jizw1564335745.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffdqmd11564356998.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Coastal Carolina vs. James Madison | NCAA Men's Soccer ||",
+          "id_xtream": "637441"
+        },
+        {
+          "nombre": "18:00 ◘ Coastal Carolina vs. James Madison ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637702"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_1c48743b",
+      "agenda_id": "",
+      "titulo": "Florida International vs South Florida",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Florida International",
+      "equipo_visitante": "South Florida",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fd2bwxd1582053610.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F30r5fn1564336938.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Florida International vs. South Florida | NCAA Men's Soccer ||",
+          "id_xtream": "637442"
+        },
+        {
+          "nombre": "18:00 ◘ Florida International vs. South Florida ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637703"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_4bbb582a",
+      "agenda_id": "",
+      "titulo": "Georgia State vs Georgia Southern",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Georgia State",
+      "equipo_visitante": "Georgia Southern",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4ym7d91564335942.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F93j5w61643576745.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Georgia State vs. Georgia Southern | NCAA Men's Soccer ||",
+          "id_xtream": "637443"
+        },
+        {
+          "nombre": "18:00 ◘ Georgia State vs. Georgia Southern ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637704"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_87ff4f52",
+      "agenda_id": "",
+      "titulo": "Kentucky Big Blue Madness",
+      "torneo": "Kentucky Big Blue Madness",
+      "categoria": "Baloncesto",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Baloncesto",
+      "referencia": "Baloncesto",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Kentucky Big Blue Madness | Baloncesto ||",
+          "id_xtream": "637444"
+        },
+        {
+          "nombre": "18:00 ◘ Kentucky Big Blue Madness ◘ Baloncesto ◘◘",
+          "id_xtream": "637705"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_9d9ed1c3",
+      "agenda_id": "",
+      "titulo": "Pittsburgh vs Virginia Tech",
+      "torneo": "NCAA Fútbol Americano",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Pittsburgh",
+      "equipo_visitante": "Virginia Tech",
+      "subtitulo": "NCAA Fútbol Americano",
+      "referencia": "NCAA Fútbol Americano",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx3hydm1568478796.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhwesp71564337090.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Pittsburgh vs. Virginia Tech | En Español | NCAA Fútbol Americano ||",
+          "id_xtream": "637445"
+        },
+        {
+          "nombre": "18:00 ◘ Pittsburgh vs. Virginia Tech | En Español ◘ NCAA Fútbol Americano ◘◘",
+          "id_xtream": "637706"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_825f18f3",
+      "agenda_id": "",
+      "titulo": "Providence vs 3 Georgetown",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Providence",
+      "equipo_visitante": "3 Georgetown",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4wzdtw1736049109.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffeilur1564356770.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Providence vs. #3 Georgetown | NCAA Men's Soccer ||",
+          "id_xtream": "637446"
+        },
+        {
+          "nombre": "18:00 ◘ Providence vs. #3 Georgetown ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637707"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_11c8962d",
+      "agenda_id": "",
+      "titulo": "Santos Laguna vs Puebla",
+      "torneo": "Liga MX Femenil",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Santos Laguna",
+      "equipo_visitante": "Puebla",
+      "subtitulo": "Liga MX Femenil",
+      "referencia": "Liga MX Femenil",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkg9gzh1779771734.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fh0jgg51593451845.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Santos Laguna vs. Puebla | Liga MX Femenil |",
+          "id_xtream": "637447"
+        },
+        {
+          "nombre": "18:00 ◘ Santos Laguna vs. Puebla ◘ Liga MX Femenil ◘",
+          "id_xtream": "637708"
+        },
+        {
+          "nombre": "Liga MX Fem | 05:00 PM | Santos vs Puebla",
+          "id_xtream": "637547"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_bf9f6bd1",
+      "agenda_id": "",
+      "titulo": "Seton Hall vs Butler",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Seton Hall",
+      "equipo_visitante": "Butler",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F369o1m1585411028.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuhndgs1564356431.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Seton Hall vs. Butler | NCAA Men's Soccer ||",
+          "id_xtream": "637448"
+        },
+        {
+          "nombre": "18:00 ◘ Seton Hall vs. Butler ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637709"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_35a12f68",
+      "agenda_id": "",
+      "titulo": "St. John's vs 4 Creighton",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "St. John's",
+      "equipo_visitante": "4 Creighton",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fcun60s1585927866.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzjj9he1581687647.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | St. John's vs. #4 Creighton | NCAA Men's Soccer ||",
+          "id_xtream": "637449"
+        },
+        {
+          "nombre": "18:00 ◘ St. John's vs. #4 Creighton ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637710"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_535f3664",
+      "agenda_id": "",
+      "titulo": "São Paulo vs Santos",
+      "torneo": "Brasileirão",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "São Paulo",
+      "equipo_visitante": "Santos",
+      "subtitulo": "Brasileirão",
+      "referencia": "Brasileirão",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fsxpupx1473538135.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fj8xk9g1679447486.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | São Paulo vs. Santos | Brasileirão |",
+          "id_xtream": "637450"
+        },
+        {
+          "nombre": "Brasileirao | 05:00 PM | São Paulo vs Santos",
+          "id_xtream": "637521"
+        },
+        {
+          "nombre": "18:00 ◘ São Paulo vs. Santos ◘ Brasileirão ◘",
+          "id_xtream": "637711"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_b2c27018",
+      "agenda_id": "",
+      "titulo": "Temple vs Florida Atlantic",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Temple",
+      "equipo_visitante": "Florida Atlantic",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7ykypw1643210047.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa72jia1666264331.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Temple vs. Florida Atlantic | NCAA Men's Soccer ||",
+          "id_xtream": "637451"
+        },
+        {
+          "nombre": "18:00 ◘ Temple vs. Florida Atlantic ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637712"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_72cc7da0",
+      "agenda_id": "",
+      "titulo": "Univ. Concepción vs Huachipato",
+      "torneo": "Primera Chile",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Univ. Concepción",
+      "equipo_visitante": "Huachipato",
+      "subtitulo": "Primera Chile",
+      "referencia": "Primera Chile",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffyj9u51602187758.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuhzow91736214236.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 02/10 | Univ. Concepción vs. Huachipato | Primera Chile |",
+          "id_xtream": "637452"
+        },
+        {
+          "nombre": "18:00 ◘ Univ. Concepción vs. Huachipato ◘ Primera Chile ◘",
+          "id_xtream": "637713"
+        },
+        {
+          "nombre": "Chile | 05:00 PM | U. de Concepción vs Huachipato",
+          "id_xtream": "637523"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_710b0bdd",
+      "agenda_id": "",
+      "titulo": "Montreal vs Ottawa",
+      "torneo": "NSL Women",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Montreal",
+      "equipo_visitante": "Ottawa",
+      "subtitulo": "NSL Women",
+      "referencia": "NSL Women",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fszedpo1648907378.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnsubsf1637782130.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "NSL Women | 05:00 PM | Montreal vs. Ottawa",
+          "id_xtream": "637522"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_c39b6f04",
+      "agenda_id": "",
+      "titulo": "USL Super League",
+      "torneo": "USL Super League",
+      "categoria": "Fútbol",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Fútbol",
+      "referencia": "Fútbol",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "USL Super League | 05:00 PM | Brooklyn FC v. FTL United",
+          "id_xtream": "637525"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_3baae9d0",
+      "agenda_id": "",
+      "titulo": "High School Calvary Christian Academy vs CP Next Level Academy",
+      "torneo": "Basket",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "High School Calvary Christian Academy",
+      "equipo_visitante": "CP Next Level Academy",
+      "subtitulo": "Basket",
+      "referencia": "Basket",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Basket | 05:00 PM | High School Calvary Christian Academy vs CP Next Level Academy",
+          "id_xtream": "637526"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_ddc11982",
+      "agenda_id": "",
+      "titulo": "CFL Hamilton Tiger-Cats vs Ottawa RedBlacks",
+      "torneo": "F Americano",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "CFL Hamilton Tiger-Cats",
+      "equipo_visitante": "Ottawa RedBlacks",
+      "subtitulo": "F Americano",
+      "referencia": "F Americano",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fk8wjz71546002654.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "F Americano | 05:00 PM | CFL Hamilton Tiger-Cats vs Ottawa RedBlacks",
+          "id_xtream": "637530"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_50117fd1",
+      "agenda_id": "",
+      "titulo": "Sprint League Army vs Penn",
+      "torneo": "F Americano",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sprint League Army",
+      "equipo_visitante": "Penn",
+      "subtitulo": "F Americano",
+      "referencia": "F Americano",
+      "hora_utc": "2026-10-02T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F75xpln1564357477.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "F Americano | 05:00 PM | Sprint League Army vs. Penn",
+          "id_xtream": "637532"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_premium_argentina_7c4f2e0f",
+      "agenda_id": "",
+      "titulo": "Independiente vs Instituto",
+      "torneo": "Torneo Betano Torneo Clausura",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Independiente",
+      "equipo_visitante": "Instituto",
+      "subtitulo": "Torneo Betano Torneo Clausura",
+      "referencia": "Torneo Betano Torneo Clausura",
+      "hora_utc": "2026-10-02T22:15:00Z",
+      "hora_local_producto": "17:15",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Feki4nd1580842605.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F478.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "espn-premium-argentina",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN PREMIUM ARGENTINA HD",
+          "id_xtream": "258745"
+        },
+        {
+          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
+          "id_xtream": "1123"
+        },
+        {
+          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
+          "id_xtream": "1124"
+        },
+        {
+          "nombre": "16:30 02/10 | Independiente vs. Instituto | Liga Profesional ||",
+          "id_xtream": "637434"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_8f6b1ac5",
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-02T22:35:00Z",
+      "hora_local_producto": "17:35",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:35 02/10 | GP Japón - Free Practice 2 | F1 ||",
+          "id_xtream": "637453"
+        },
+        {
+          "nombre": "18:35 ◘ GP Japón - Free Practice 2 ◘ F1 ◘◘",
+          "id_xtream": "637714"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_2c9b1526",
+      "agenda_id": "",
+      "titulo": "Barbados vs Bermudas",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Barbados",
+      "equipo_visitante": "Bermudas",
+      "subtitulo": "CONCACAF Nations League",
+      "referencia": "CONCACAF Nations League",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnxix7i1728748494.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa0amuq1774759653.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 02/10 | Barbados vs. Bermudas | CONCACAF Nations League ||",
+          "id_xtream": "637454"
+        },
+        {
+          "nombre": "18:00 02/10 | Barbados vs. Bermudas | CONCACAF Nations League ||",
+          "id_xtream": "637455"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 06:00 PM | Barbados vs Bermudas",
+          "id_xtream": "637511"
+        },
+        {
+          "nombre": "19:00 ◘ Barbados vs. Bermudas ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "637715"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_c1505f43",
+      "agenda_id": "",
+      "titulo": "Bonaire vs Granada",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bonaire",
+      "equipo_visitante": "Granada",
+      "subtitulo": "CONCACAF Nations League",
+      "referencia": "CONCACAF Nations League",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fflwbqo1600954995.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5f67qy1600963168.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 02/10 | Bonaire vs. Granada | CONCACAF Nations League ||",
+          "id_xtream": "637456"
+        },
+        {
+          "nombre": "18:00 02/10 | Bonaire vs. Granada | CONCACAF Nations League ||",
+          "id_xtream": "637457"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 06:00 PM | Bonaire vs. Granada",
+          "id_xtream": "637512"
+        },
+        {
+          "nombre": "19:00 ◘ Bonaire vs. Granada ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "637716"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_9a2cc8d5",
+      "agenda_id": "",
+      "titulo": "Boston Bruins vs Winnipeg Jets",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boston Bruins",
+      "equipo_visitante": "Winnipeg Jets",
+      "subtitulo": "NHL",
+      "referencia": "NHL",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fb1r86e1720023232.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbwn9hr1547233611.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 02/10 | Boston Bruins vs. Winnipeg Jets | NHL ||",
+          "id_xtream": "637458"
+        },
+        {
+          "nombre": "19:00 ◘ Boston Bruins vs. Winnipeg Jets ◘ NHL ◘◘",
+          "id_xtream": "637717"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_3f44eeaf",
+      "agenda_id": "",
+      "titulo": "Martinica vs Honduras",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Martinica",
+      "equipo_visitante": "Honduras",
+      "subtitulo": "CONCACAF Nations League",
+      "referencia": "CONCACAF Nations League",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Feka0vx1728750119.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fhn.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 02/10 | Martinica vs. Honduras | CONCACAF Nations League ||",
+          "id_xtream": "637462"
+        },
+        {
+          "nombre": "18:00 02/10 | Martinica vs. Honduras | CONCACAF Nations League ||",
+          "id_xtream": "637463"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 06:00 PM | Martinica vs. Honduras",
+          "id_xtream": "637513"
+        },
+        {
+          "nombre": "19:00 ◘ Martinica vs. Honduras ◘ CONCACAF Nations League ◘◘",
+          "id_xtream": "637719"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_e78160c3",
+      "agenda_id": "",
+      "titulo": "Rice vs UTSA",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Rice",
+      "equipo_visitante": "UTSA",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "NCAA Women's Soccer",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F57tbpf1564336630.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpjsuq81587325951.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 02/10 | Rice vs. UTSA | NCAA Women's Soccer ||",
+          "id_xtream": "637464"
+        },
+        {
+          "nombre": "19:00 ◘ Rice vs. UTSA ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "637720"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_bbbe2b76",
+      "agenda_id": "",
+      "titulo": "Tulsa vs UAB",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tulsa",
+      "equipo_visitante": "UAB",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F97u0711564336879.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fdsbj9o1564336891.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 02/10 | Tulsa vs. UAB | NCAA Men's Soccer ||",
+          "id_xtream": "637465"
+        },
+        {
+          "nombre": "19:00 ◘ Tulsa vs. UAB ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "637721"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_c6929821",
+      "agenda_id": "",
+      "titulo": "WWE Smackdown",
+      "torneo": "WWE Smackdown",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Combate",
+      "referencia": "Combate",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 02/10 | WWE Smackdown | Wrestling |",
+          "id_xtream": "637466"
+        },
+        {
+          "nombre": "18:00 02/10 | WWE Smackdown | Wrestling | Spanish",
+          "id_xtream": "637467"
+        },
+        {
+          "nombre": "19:00 ◘ WWE Smackdown ◘ Wrestling ◘",
+          "id_xtream": "637722"
+        },
+        {
+          "nombre": "19:00 ◘ WWE Smackdown ◘ Wrestling ◘ Spanish",
+          "id_xtream": "637723"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_ca3918b3",
+      "agenda_id": "",
+      "titulo": "Pride vs San Diego Wave",
+      "torneo": "NWSL",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Pride",
+      "equipo_visitante": "San Diego Wave",
+      "subtitulo": "NWSL",
+      "referencia": "NWSL",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6rrfup1679296038.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhb5yo61644517945.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "NWSL | 06:00 PM | Pride vs. San Diego Wave",
+          "id_xtream": "637524"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_1aa51e3c",
+      "agenda_id": "",
+      "titulo": "High School Park Hill (MO) vs Liberty (MO)",
+      "torneo": "F Americano",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "High School Park Hill (MO)",
+      "equipo_visitante": "Liberty (MO)",
+      "subtitulo": "F Americano",
+      "referencia": "F Americano",
+      "hora_utc": "2026-10-02T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fz26guc1564336125.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "F Americano | 06:00 PM | High School Park Hill (MO) vs. Liberty (MO)",
+          "id_xtream": "637533"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_a56fc0fd",
+      "agenda_id": "",
+      "titulo": "Correcaminos UAT vs Cruz Azul Hidalgo",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Correcaminos UAT",
+      "equipo_visitante": "Cruz Azul Hidalgo",
+      "subtitulo": "Liga de Expansión MX",
+      "referencia": "Liga de Expansión MX",
+      "hora_utc": "2026-10-02T23:50:00Z",
+      "hora_local_producto": "18:50",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fivjbcy1655568374.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fs187km1783492630.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:50 02/10 | Correcaminos UAT vs. Cruz Azul Hidalgo | Liga de Expansión MX ||",
+          "id_xtream": "637471"
+        },
+        {
+          "nombre": "Expansión MX | 07:00 PM | Correcaminos UAT vs. Cruz Azul Hidalgo",
+          "id_xtream": "637544"
+        },
+        {
+          "nombre": "19:50 ◘ Correcaminos UAT vs. Cruz Azul Hidalgo ◘ Liga de Expansión MX ◘◘",
+          "id_xtream": "637727"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_tyc_sports_3e85c9a8",
+      "agenda_id": "",
+      "titulo": "Colombia vs Paraguay",
+      "torneo": "Amistoso",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Colombia",
+      "equipo_visitante": "Paraguay",
+      "subtitulo": "Amistoso",
+      "referencia": "Amistoso",
+      "hora_utc": "2026-10-03T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fco.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fpy.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "tyc-sports",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ARG | TyC SPORTS INTERNACIONAL",
+          "id_xtream": "1118"
+        },
+        {
+          "nombre": "ARG | TyC SPORTS HD",
+          "id_xtream": "1119"
+        },
+        {
+          "nombre": "ARG | TYC SPORTS INTERNACIONAL",
+          "id_xtream": "1120"
+        },
+        {
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "258796"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_d59f4d3c",
+      "agenda_id": "",
+      "titulo": "Dallas Wings vs Golden State Valkyries",
+      "torneo": "Baloncesto Wnba Play Off ¼ Final 3º Partido Dallas Wings  Golden State Valkyries",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Dallas Wings",
+      "equipo_visitante": "Golden State Valkyries",
+      "subtitulo": "Baloncesto Wnba Play Off ¼ Final 3º Partido Dallas Wings  Golden State Valkyries",
+      "referencia": "Baloncesto Wnba Play Off ¼ Final 3º Partido Dallas Wings  Golden State Valkyries",
+      "hora_utc": "2026-10-03T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wnba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvg11pw1552585970.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F24p2fj1738315525.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wnba.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.9,
+      "fuentes": [
+        {
+          "nombre": "19:00 02/10 | Dallas Wings vs. Golden State Valkyries | WNBA |",
+          "id_xtream": "637472"
+        },
+        {
+          "nombre": "19:00 02/10 | Dallas Wings vs. Golden State Valkyries | WNBA | Spanish",
+          "id_xtream": "637473"
+        },
+        {
+          "nombre": "20:00 ◘ Dallas Wings vs. Golden State Valkyries ◘ WNBA ◘",
+          "id_xtream": "637728"
+        },
+        {
+          "nombre": "20:00 ◘ Dallas Wings vs. Golden State Valkyries ◘ WNBA ◘ Spanish",
+          "id_xtream": "637729"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_50b53acf",
+      "agenda_id": "",
+      "titulo": "Pumas UNAM vs Tigres UANL",
+      "torneo": "Liga MX Femenil",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Pumas UNAM",
+      "equipo_visitante": "Tigres UANL",
+      "subtitulo": "Liga MX Femenil",
+      "referencia": "Liga MX Femenil",
+      "hora_utc": "2026-10-03T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fo01nvl1695734937.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flh80fx1701423708.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 02/10 | Pumas UNAM vs. Tigres UANL | Liga MX Femenil ||",
+          "id_xtream": "637474"
+        },
+        {
+          "nombre": "20:00 ◘ Pumas UNAM vs. Tigres UANL ◘ Liga MX Femenil ◘◘",
+          "id_xtream": "637730"
+        },
+        {
+          "nombre": "Liga MX Fem | 07:00 PM | Pumas UNAM vs. Tigres",
+          "id_xtream": "637548"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_04d40de5",
+      "agenda_id": "",
+      "titulo": "St. Louis Blues vs Dallas Stars",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "St. Louis Blues",
+      "equipo_visitante": "Dallas Stars",
+      "subtitulo": "NHL",
+      "referencia": "NHL",
+      "hora_utc": "2026-10-03T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Frsqtwx1422053715.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fqrvywq1422042125.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 02/10 | St. Louis Blues vs. Dallas Stars | NHL ||",
+          "id_xtream": "637475"
+        },
+        {
+          "nombre": "20:00 ◘ St. Louis Blues vs. Dallas Stars ◘ NHL ◘◘",
+          "id_xtream": "637731"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_e3bdab4c",
+      "agenda_id": "",
+      "titulo": "Tepatitlán vs CDS Tampico Madero",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tepatitlán",
+      "equipo_visitante": "CDS Tampico Madero",
+      "subtitulo": "Liga de Expansión MX",
+      "referencia": "Liga de Expansión MX",
+      "hora_utc": "2026-10-03T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fqblqg91602368774.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 02/10 | Tepatitlán vs. CDS Tampico Madero | Liga de Expansión MX |",
+          "id_xtream": "637476"
+        },
+        {
+          "nombre": "Expansión MX | 07:00 PM | Tepatitlán vs CDS Tampico Madero",
+          "id_xtream": "637545"
+        },
+        {
+          "nombre": "20:00 ◘ Tepatitlán vs. CDS Tampico Madero ◘ Liga de Expansión MX ◘",
+          "id_xtream": "637732"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_5_ebc962b6",
+      "agenda_id": "",
+      "titulo": "Boca Juniors vs Unión Santa Fe",
+      "torneo": "Primera División Argentina Torneo Clausura",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boca Juniors",
+      "equipo_visitante": "Unión Santa Fe",
+      "subtitulo": "Primera División Argentina Torneo Clausura",
+      "referencia": "Primera División Argentina Torneo Clausura",
+      "hora_utc": "2026-10-03T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbm7krb1775741582.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbtnx6q1734587495.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "espn-5-sudamerica",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 5 ARGENTINA HD",
+          "id_xtream": "258743"
+        },
+        {
+          "nombre": "ESPN PREMIUM ARGENTINA HD",
+          "id_xtream": "258745"
+        },
+        {
+          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
+          "id_xtream": "1123"
+        },
+        {
+          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
+          "id_xtream": "1124"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_tnt_sports_e979d091",
+      "agenda_id": "",
+      "titulo": "Independiente Rivadavia vs Gimnasia LP",
+      "torneo": "Torneo Betano Torneo Clausura",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Independiente Rivadavia",
+      "equipo_visitante": "Gimnasia LP",
+      "subtitulo": "Torneo Betano Torneo Clausura",
+      "referencia": "Torneo Betano Torneo Clausura",
+      "hora_utc": "2026-10-03T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fqgzi2b1769406125.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fepmttr1678849271.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "tnt-sports",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ARG | TNT SPORTS",
+          "id_xtream": "1121"
+        },
+        {
+          "nombre": "ARG | TNT SPORTS ᴴᴰ",
+          "id_xtream": "1122"
+        },
+        {
+          "nombre": "01 | TNT SPORTS PREMIUM HD",
+          "id_xtream": "45476"
+        },
+        {
+          "nombre": "02 | TNT SPORTS PREMIUM",
+          "id_xtream": "45477"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_5d395120",
+      "agenda_id": "",
+      "titulo": "Anaheim Ducks vs Vegas Golden Knights",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Anaheim Ducks",
+      "equipo_visitante": "Vegas Golden Knights",
+      "subtitulo": "NHL",
+      "referencia": "NHL",
+      "hora_utc": "2026-10-03T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1d465t1719573796.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7fd4521619536689.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:30 02/10 | Anaheim Ducks vs. Vegas Golden Knights | NHL ||",
+          "id_xtream": "637477"
+        },
+        {
+          "nombre": "20:30 ◘ Anaheim Ducks vs. Vegas Golden Knights ◘ NHL ◘◘",
+          "id_xtream": "637733"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_dfcb1bf6",
+      "agenda_id": "",
+      "titulo": "Florida Panthers vs San Jose Sharks",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Florida Panthers",
+      "equipo_visitante": "San Jose Sharks",
+      "subtitulo": "NHL",
+      "referencia": "NHL",
+      "hora_utc": "2026-10-03T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F8qtaz11547158220.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyui7871546193006.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:30 02/10 | Florida Panthers vs. San Jose Sharks | NHL ||",
+          "id_xtream": "637478"
+        },
+        {
+          "nombre": "20:30 ◘ Florida Panthers vs. San Jose Sharks ◘ NHL ◘◘",
+          "id_xtream": "637734"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_dbcbbe69",
+      "agenda_id": "",
+      "titulo": "CFL Saskatchewan Roughriders vs Calgary Stampeders",
+      "torneo": "F Americano",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "CFL Saskatchewan Roughriders",
+      "equipo_visitante": "Calgary Stampeders",
+      "subtitulo": "F Americano",
+      "referencia": "F Americano",
+      "hora_utc": "2026-10-03T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flksemj1565196917.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "F Americano | 07:30 PM | CFL Saskatchewan Roughriders vs Calgary Stampeders",
+          "id_xtream": "637531"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_win_sportsplus_e4f4f0da",
+      "agenda_id": "",
+      "titulo": "Deportivo Cali vs Alianza",
+      "torneo": "Liga BetPlay DIMAYOR",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Cali",
+      "equipo_visitante": "Alianza",
+      "subtitulo": "Liga BetPlay DIMAYOR",
+      "referencia": "Liga BetPlay DIMAYOR",
+      "hora_utc": "2026-10-03T00:45:00Z",
+      "hora_local_producto": "19:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fisc2yu1580833286.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4qhii21589297781.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "win-sports-mas",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "03 |  WIN SPORTS + (Opc.1)",
+          "id_xtream": "52637"
+        },
+        {
+          "nombre": "04 | WIN SPORTS + (Opc.2)",
+          "id_xtream": "52638"
+        },
+        {
+          "nombre": "05 | WIN SPORTS + (Opc.3)",
+          "id_xtream": "52639"
+        },
+        {
+          "nombre": "06 | WIN SPORTS + (Opc.4)",
+          "id_xtream": "52640"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_e7d7b13e",
+      "agenda_id": "",
+      "titulo": "El Salvador vs Jamaica",
+      "torneo": "CONCACAF Nations League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "El Salvador",
+      "equipo_visitante": "Jamaica",
+      "subtitulo": "CONCACAF Nations League",
+      "referencia": "CONCACAF Nations League",
+      "hora_utc": "2026-10-03T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fsv.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fjm.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/concacaf_nations_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:00 02/10 | El Salvador vs. Jamaica | CONCACAF Nations League |",
+          "id_xtream": "637479"
+        },
+        {
+          "nombre": "20:00 02/10 | El Salvador vs. Jamaica | CONCACAF Nations League |",
+          "id_xtream": "637480"
+        },
+        {
+          "nombre": "CONCACAF Nations League | 08:00 PM | El Salvador vs. Jamaica",
+          "id_xtream": "637514"
+        },
+        {
+          "nombre": "21:00 ◘ El Salvador vs. Jamaica ◘ CONCACAF Nations League ◘",
+          "id_xtream": "637735"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_57eab30e",
+      "agenda_id": "",
+      "titulo": "ATP Tokio (Japan Open)",
+      "torneo": "ATP Tokio (Japan Open)",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tenis",
+      "referencia": "Tenis",
+      "hora_utc": "2026-10-03T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:00 02/10 | Kinoshita Group Arena | Japan Open ||",
+          "id_xtream": "637481"
+        },
+        {
+          "nombre": "20:00 02/10 | Kinoshita Group Japan Open | ATP ||",
+          "id_xtream": "637482"
+        },
+        {
+          "nombre": "ATP | 08:00 PM  |Kinoshita Group Japan Open / Kinoshita Group Arena (Doubles Quarterfinals)",
+          "id_xtream": "637551"
+        },
+        {
+          "nombre": "ATP | 08:00 PM | Kinoshita Group Japan Open (Segunda Ronda)",
+          "id_xtream": "637552"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_8b557d2f",
+      "agenda_id": "",
+      "titulo": "Boxeo",
+      "torneo": "Boxeo",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "Naomy Cardenas",
+      "equipo_visitante": "Melanie Timko",
+      "subtitulo": "Combate",
+      "referencia": "Combate",
+      "hora_utc": "2026-10-03T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:00 02/10 | Naomy Cardenas - Melanie Timko | Boxeo |",
+          "id_xtream": "637483"
+        },
+        {
+          "nombre": "21:00 ◘ Naomy Cardenas - Melanie Timko ◘ Boxeo ◘",
+          "id_xtream": "637738"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_fffcb430",
+      "agenda_id": "",
+      "titulo": "Premier Padel",
+      "torneo": "Premier Padel",
+      "categoria": "Pádel",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Pádel",
+      "referencia": "Pádel",
+      "hora_utc": "2026-10-03T01:42:00Z",
+      "hora_local_producto": "20:42",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:42 02/10 | Compacto | Premier Padel Rotterdam: Cuartos de Final | Premier Padel ||",
+          "id_xtream": "637484"
+        },
+        {
+          "nombre": "21:42 ◘ Compacto | Premier Padel Rotterdam: Cuartos de Final ◘ Premier Padel ◘◘",
+          "id_xtream": "637739"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_fabd4964",
+      "agenda_id": "",
+      "titulo": "China Open",
+      "torneo": "China Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tenis",
+      "referencia": "Tenis",
+      "hora_utc": "2026-10-03T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 02/10 | Brad Drewett | WTA China Open ||",
+          "id_xtream": "637485"
+        },
+        {
+          "nombre": "21:00 02/10 | China Open | ATP/WTA ||",
+          "id_xtream": "637487"
+        },
+        {
+          "nombre": "21:00 02/10 | Court 3 | WTA China Open ||",
+          "id_xtream": "637488"
+        },
+        {
+          "nombre": "21:00 02/10 | HSBC Moon | WTA China Open ||",
+          "id_xtream": "637489"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_a715134a",
+      "agenda_id": "",
+      "titulo": "CA La Paz vs Venados",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "CA La Paz",
+      "equipo_visitante": "Venados",
+      "subtitulo": "Liga de Expansión MX",
+      "referencia": "Liga de Expansión MX",
+      "hora_utc": "2026-10-03T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvgxccm1685994885.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv8ihyl1580498473.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 02/10 | CA La Paz vs. Venados | Liga de Expansión MX |",
+          "id_xtream": "637486"
+        },
+        {
+          "nombre": "Expansión MX | 09:00 PM | CA La Paz vs Venados",
+          "id_xtream": "637546"
+        },
+        {
+          "nombre": "22:00 ◘ CA La Paz vs. Venados ◘ Liga de Expansión MX ◘",
+          "id_xtream": "637741"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_b40429d5",
+      "agenda_id": "",
+      "titulo": "Monterrey vs América",
+      "torneo": "Liga MX Femenil",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Monterrey",
+      "equipo_visitante": "América",
+      "subtitulo": "Liga MX Femenil",
+      "referencia": "Liga MX Femenil",
+      "hora_utc": "2026-10-03T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyglj911721542561.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Famy1xs1581857392.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 02/10 | Monterrey vs. América | Liga MX Femenil |",
+          "id_xtream": "637491"
+        },
+        {
+          "nombre": "Liga MX Fem | 09:00 PM | Monterrey vs. América",
+          "id_xtream": "637549"
+        },
+        {
+          "nombre": "22:00 ◘ Monterrey vs. América ◘ Liga MX Femenil ◘",
+          "id_xtream": "637746"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_5bb0bc4c",
+      "agenda_id": "",
+      "titulo": "AFL Women Greater West Sydnet Giants vs Essendon Bombers",
+      "torneo": "F Australiano",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "AFL Women Greater West Sydnet Giants",
+      "equipo_visitante": "Essendon Bombers",
+      "subtitulo": "F Australiano",
+      "referencia": "F Australiano",
+      "hora_utc": "2026-10-03T02:05:00Z",
+      "hora_local_producto": "21:05",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzhuq3b1659039626.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "F Australiano | 09:05 PM | AFL Women Greater West Sydnet Giants vs Essendon Bombers",
+          "id_xtream": "637536"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_2f6fbdd4",
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-03T02:40:00Z",
+      "hora_local_producto": "21:40",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:40 02/10 | GP Japón - Qualifying | F1 ||",
+          "id_xtream": "637493"
+        },
+        {
+          "nombre": "F1 | 10:30 PM | Grand Prix Bahrain: Practice 3",
+          "id_xtream": "637562"
+        },
+        {
+          "nombre": "22:40 ◘ GP Japón - Qualifying ◘ F1 ◘◘",
+          "id_xtream": "637748"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_028afdc1",
+      "agenda_id": "",
+      "titulo": "Ciclismo",
+      "torneo": "Ciclismo",
+      "categoria": "Ciclismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Ciclismo",
+      "referencia": "Ciclismo",
+      "hora_utc": "2026-10-03T03:30:00Z",
+      "hora_local_producto": "22:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "Ciclismo | 10:30 PM | Tour de Langkawi Stage 7",
+          "id_xtream": "637541"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_875ed8fd",
+      "agenda_id": "",
+      "titulo": "China Open",
+      "torneo": "China Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tenis",
+      "referencia": "Tenis",
+      "hora_utc": "2026-10-03T04:00:00Z",
+      "hora_local_producto": "23:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "23:00 02/10 | China Open | ATP/WTA ||",
+          "id_xtream": "637494"
+        },
+        {
+          "nombre": "23:00 02/10 | Lotus Court | China Open ||",
+          "id_xtream": "637495"
+        },
+        {
+          "nombre": "ATP | 11:00 PM | China Open / Lotus Court",
+          "id_xtream": "637554"
+        },
+        {
+          "nombre": "WTA | 11:00 PM | WTA China Open / Capital Group Diamond",
+          "id_xtream": "637560"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_7c01f3eb",
+      "agenda_id": "",
+      "titulo": "AFL Women Western Bulldogs vs St Kilda",
+      "torneo": "F Australiano",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "AFL Women Western Bulldogs",
+      "equipo_visitante": "St Kilda",
+      "subtitulo": "F Australiano",
+      "referencia": "F Australiano",
+      "hora_utc": "2026-10-03T04:05:00Z",
+      "hora_local_producto": "23:05",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Faoui9t1732026465.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "F Australiano | 11:05 PM | AFL Women Western Bulldogs vs St Kilda",
+          "id_xtream": "637537"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_8560a715",
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-03T04:30:00Z",
+      "hora_local_producto": "23:30",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "23:30 | F1 GP Bahréin en Malasia práctica libre #1 | Cámara On Board | F1 ||",
+          "id_xtream": "637496"
+        },
+        {
+          "nombre": "23:30 | F1 GP Bahréin en Malasia práctica libre #1 | On Board Antonelli | F1 ||",
+          "id_xtream": "637497"
+        },
+        {
+          "nombre": "23:30 | F1 GP Bahréin en Malasia práctica libre #1 | On Board Colapinto | F1 ||",
+          "id_xtream": "637498"
+        },
+        {
+          "nombre": "23:30 ◘ F1 GP Bahréin en Malasia práctica libre #1 | Cámara On Board ◘ F1 ◘◘",
+          "id_xtream": "637749"
+        }
+      ],
+      "ronda": ""
+    }
+  ],
   "metricas": {
     "total_agenda_maestra": 22,
-    "total_canales_xtream": 0,
-    "lista_xtream_actualizada_hoy": false,
-    "eventos_lineales_inyectados": 0,
-    "eventos_xtream_aprobados": 0,
-    "eventos_descartados_stale": 0,
-    "total_eventos_publicados": 0
+    "total_canales_xtream": 581,
+    "lista_xtream_actualizada_hoy": true,
+    "eventos_lineales_inyectados": 16,
+    "eventos_xtream_aprobados": 175,
+    "eventos_descartados_stale": 30,
+    "total_eventos_publicados": 108
   }
 }
