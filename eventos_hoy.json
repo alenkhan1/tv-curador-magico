@@ -1,6 +1,6 @@
 {
   "version": "2.3-curador-estricto-hoy",
-  "generado_utc": "2026-10-02T13:21:31Z",
+  "generado_utc": "2026-10-02T13:20:38Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-02",
   "base_media": "http://espartanos.live:8080",
@@ -45,6 +45,42 @@
         {
           "nombre": "ES | EUROSPORT 1",
           "id_xtream": "582141"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_sky_sports_f1_3c6b595a",
+      "agenda_id": "",
+      "titulo": "Bahrain Grand Prix Practice 2 - Sepang International Circuit",
+      "torneo": "F1 2026 season",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "F1 2026 season",
+      "referencia": "F1 2026 season",
+      "hora_utc": "2026-10-02T08:00:00Z",
+      "hora_local_producto": "03:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "wheresthematch_skysports"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "S| Sky Sports F1",
+          "id_xtream": "363571"
         }
       ],
       "ronda": ""
@@ -2616,10 +2652,10 @@
       "hora_utc": "2026-10-03T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 120,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "logo_torneo": "",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fco.png&w=400&output=webp",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fpy.png&w=400&output=webp",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F1%2F10%2FFIFA_logo_without_slogan.svg&w=400&output=webp",
+      "banner": "",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -2797,10 +2833,10 @@
   ],
   "metricas": {
     "total_agenda_maestra": 75,
-    "total_canales_xtream": 729,
-    "eventos_lineales_inyectados": 64,
+    "total_canales_xtream": 872,
+    "eventos_lineales_inyectados": 65,
     "eventos_xtream_aprobados": 0,
-    "eventos_descartados_stale": 275,
-    "total_eventos_publicados": 63
+    "eventos_descartados_stale": 192,
+    "total_eventos_publicados": 64
   }
 }
