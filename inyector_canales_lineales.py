@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Inyector Quirúrgico de Canales Lineales Deportivos:
+Inyector Quir?rgico de Canales Lineales Deportivos:
 Empareja los eventos confirmados de hoy con los streams lineales autorizados de la lista Xtream.
-- Enfoque Suramérica (Colombia y Argentina): Win Sports, ESPN Suramérica, DSports, TyC, TNT Sports.
+- Enfoque Suram?rica (Colombia y Argentina prioritarios): Win Sports, ESPN Suram?rica, DSports, TyC, TNT Sports.
 - Motor: DAZN F1 y Sky Sports F1.
-- Exclusión total de feeds de USA, Brasil, México y apps OTT.
+- Exclusi?n total de feeds de USA, Brasil, M?xico, UK, Espa?a y apps OTT.
 """
 from __future__ import annotations
 
@@ -27,43 +27,53 @@ from resolvedor_logos import (
 log = logging.getLogger("inyector_lineales")
 
 REGLAS_CANALES: Dict[str, str] = {
-    "WIN SPORTS+": r"WIN\s*SPORTS\s*\+",
-    "WIN SPORTS": r"WIN\s*SPORTS(?!\s*\+)",
-    "DSPORTS 2": r"(?:DSPORTS|DIRECTV\s*SPORTS)\s*2",
-    "DSPORTS +": r"(?:DSPORTS|DIRECTV\s*SPORTS)\s*\+",
-    "DSPORTS": r"(?:DSPORTS|DIRECTV\s*SPORTS)(?!\s*[\+2])",
-    "ESPN PREMIUM ARGENTINA": r"ESPN\s*PREMIUM",
-    "ESPN 2": r"ESPN\s*2",
-    "ESPN 3": r"ESPN\s*3",
-    "ESPN 4": r"ESPN\s*4",
-    "ESPN 5": r"ESPN\s*5",
-    "ESPN 6": r"ESPN\s*6",
-    "ESPN 7": r"ESPN\s*7",
-    "ESPN": r"ESPN(?!\s*[234567]| PREMIUM)",
-    "TYC SPORTS": r"TYC\s*SPORTS",
-    "TNT SPORTS": r"TNT\s*SPORTS",
-    "DAZN F1": r"DAZN\s*F1|DAZN\s*FORMULA\s*1",
-    "SKY SPORTS F1": r"SKY\s*SPORTS\s*F1",
+    "WIN SPORTS+": r"\bWIN\s*SPORTS\s*\+",
+    "WIN SPORTS": r"\bWIN\s*SPORTS\b(?!\s*\+)",
+    "DSPORTS 2": r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*2\b",
+    "DSPORTS +": r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*\+",
+    "DSPORTS": r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\b(?!\s*[\+2])",
+    "ESPN PREMIUM ARGENTINA": r"\bESPN\s*PREMIUM\b",
+    "ESPN 2": r"\bESPN\s*2\b",
+    "ESPN 3": r"\bESPN\s*3\b",
+    "ESPN 4": r"\bESPN\s*4\b",
+    "ESPN 5": r"\bESPN\s*5\b",
+    "ESPN 6": r"\bESPN\s*6\b",
+    "ESPN 7": r"\bESPN\s*7\b",
+    "ESPN": r"\bESPN(?:\s*1)?\b(?!\s*(?:[234567]|PREMIUM))",
+    "TYC SPORTS": r"\bTYC\s*SPORTS\b",
+    "TNT SPORTS": r"\bTNT\s*SPORTS\b",
+    "DAZN F1": r"\b(?:DAZN\s*F1|DAZN\s*FORMULA\s*1)\b",
+    "SKY SPORTS F1": r"\bSKY\s*SPORTS\s*F1\b",
 }
 
-# Canales que pertenecen a Suramérica: excluimos feeds no sudamericanos
-CANALES_SURAMERICA_TAGS = {
-    "WIN SPORTS+", "WIN SPORTS", "DSPORTS", "DSPORTS 2", "DSPORTS +",
-    "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7",
-    "ESPN PREMIUM ARGENTINA", "TYC SPORTS", "TNT SPORTS"
-}
-EXCLUSIONES_GEO_SURAMERICA = re.compile(r"(USA|US|MEX|MEXICO|CARIBE|BRASIL|BRAZIL|UK|SPAIN|ESPAÑA)", re.I)
+# Exclusiones geogr?ficas estrictas (no sudamericanas)
+PATRON_EXCLUSION_NOMBRE = re.compile(
+    r"\b(USA|US|MEX|MEXICO|MX|BRASIL|BRAZIL|BR|UK|SPAIN|ESPANA|ESPNU|ESPNEWS)\b|ESPN\s*DEPORTES|\bESPN\s*U\b",
+    re.I
+)
+PATRON_EXCLUSION_CAT = re.compile(
+    r"\b(USA|US|MEX|MEXICO|BRASIL|BRAZIL|BR|UK|SPAIN|ESPANA)\b",
+    re.I
+)
+
+# Priorizaci?n de feeds locales (Colombia y Argentina primero)
+PATRON_PRIORIDAD_SUR = re.compile(
+    r"\b(COLOMBIA|COL|CO|ARGENTINA|ARG|AR)\b|\|(COL|CO|ARG|AR)\||\((COL|CO|ARG|AR)\)",
+    re.I
+)
 
 def normalizar(s: str) -> str:
     if not s:
         return ""
     nfkd = unicodedata.normalize("NFKD", s)
     sin_tildes = "".join(c for c in nfkd if not unicodedata.combining(c))
-    return re.sub(r"\s+", " ", sin_tildes).strip().upper()
+    return re.sub(r"[^A-Z0-9\+]+", " ", sin_tildes.upper()).strip()
 
 def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, str]]]:
     """
-    Agrupa los streams de Xtream bajo sus nombres canónicos respetando filtros geográficos estrictos.
+    Agrupa los streams de Xtream bajo sus nombres can?nicos respetando filtros geogr?ficos estrictos.
+    - Exclusi?n total de feeds no deseados (USA, M?xico, Brasil, UK, Espa?a).
+    - Priorizaci?n de feeds de Colombia y Argentina.
     """
     indice: Dict[str, List[Dict[str, str]]] = {canon: [] for canon in REGLAS_CANALES}
 
@@ -76,17 +86,26 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
 
         n_norm = normalizar(nombre)
         cat_norm = normalizar(cat_nombre)
-        meta_todo = f"{n_norm} {cat_norm}"
+
+        # Exclusi?n geogr?fica estricta
+        if PATRON_EXCLUSION_NOMBRE.search(f" {n_norm} ") or PATRON_EXCLUSION_CAT.search(f" {cat_norm} "):
+            continue
 
         for canon, patron in REGLAS_CANALES.items():
             if re.search(patron, n_norm, re.I):
-                if canon in CANALES_SURAMERICA_TAGS and EXCLUSIONES_GEO_SURAMERICA.search(meta_todo):
-                    continue
-
+                prioridad = 10 if PATRON_PRIORIDAD_SUR.search(n_norm) or PATRON_PRIORIDAD_SUR.search(cat_norm) else 1
                 indice[canon].append({
                     "nombre": nombre.strip(),
                     "id_xtream": sid,
+                    "_prioridad": prioridad
                 })
+                break
+
+    # Ordenar priorizando Colombia y Argentina
+    for canon in indice:
+        indice[canon].sort(key=lambda x: x.get("_prioridad", 1), reverse=True)
+        for item in indice[canon]:
+            item.pop("_prioridad", None)
 
     metricas = {k: len(v) for k, v in indice.items() if v}
     log.info("Canales lineales Xtream indexados (limpios con aislamiento geo): %s", metricas)
@@ -116,7 +135,7 @@ def inyectar_eventos_lineales(
         if not fuentes_disponibles:
             continue
 
-        # Deduplicar fuentes y limitar a un máximo de 4 opciones de calidad
+        # Deduplicar fuentes y limitar a un m?ximo de 4 opciones de calidad
         vistas = set()
         fuentes_unicas = []
         for f in fuentes_disponibles:
@@ -161,7 +180,7 @@ def inyectar_eventos_lineales(
             "logo_local": logo_loc,
             "logo_visitante": logo_vis,
             "banner": logo_torneo,
-            "tier": 1 if any(k in ev.torneo.upper() for k in ["LALIGA", "PREMIER", "CHAMPIONS", "BETPLAY", "CONMEBOL", "NBA", "MLB"]) else 2,
+            "tier": 1 if any(k in (ev.torneo or "").upper() for k in ["LALIGA", "PREMIER", "CHAMPIONS", "BETPLAY", "CONMEBOL", "NBA", "MLB"]) else 2,
             "origen": "inyector_lineal",
             "origenes": ["inyector_lineal", ev.fuente],
             "estado": "confirmado",

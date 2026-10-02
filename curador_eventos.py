@@ -120,19 +120,64 @@ def obtener_canales_xtream(fecha_hoy_iso: str) -> List[Dict[str, Any]]:
 
     return []
 
-def detectar_lista_actualizada_hoy(canales_xtream: List[Dict[str, Any]], d_hoy: int, m_hoy: int) -> bool:
-    """Verifica si la lista contiene streams con la fecha de hoy (DD/MM)."""
-    patron1 = f"{d_hoy:02d}/{m_hoy:02d}"
-    patron2 = f"{d_hoy}/{m_hoy}"
-    coincidencias = 0
+def detectar_lista_actualizada_hoy(
+    canales_xtream: List[Dict[str, Any]], 
+    d_hoy: int, 
+    m_hoy: int,
+    agenda_hoy: Optional[List[EventoAgenda]] = None
+) -> bool:
+    """
+    Verifica con rigor si la lista contiene streams actualizados para hoy (Hora Colombia America/Bogota).
+    - Criterio 1: Streams o categorias con fecha de hoy (DD/MM o D/M) >= 3.
+    - Criterio 2: Listas no categorizadas o sin fechas explicitas: coincidencias con Agenda Maestra de hoy.
+    - Criterio 3: Si contiene streams con la fecha de ayer y 0 de hoy, se declara PENDIENTE (ciclo 23:59 - mediodia).
+    """
+    tz_col = obtener_tz("America/Bogota")
+    ahora_col = datetime.now(tz_col)
+    ayer_col = ahora_col - timedelta(days=1)
+    d_ayer, m_ayer = ayer_col.day, ayer_col.month
+
+    pat_hoy1 = f"{d_hoy:02d}/{m_hoy:02d}"
+    pat_hoy2 = f"{d_hoy}/{m_hoy}"
+    pat_ayer1 = f"{d_ayer:02d}/{m_ayer:02d}"
+    pat_ayer2 = f"{d_ayer}/{m_ayer}"
+
+    coincidencias_hoy = 0
+    coincidencias_ayer = 0
 
     for c in canales_xtream:
         nombre = c.get("name") or c.get("stream_name") or ""
         cat_nombre = c.get("category_name") or ""
-        if patron1 in nombre or patron1 in cat_nombre or patron2 in nombre or patron2 in cat_nombre:
-            coincidencias += 1
-            if coincidencias >= 3:
-                return True
+        meta = f"{nombre} {cat_nombre}"
+        if pat_hoy1 in meta or pat_hoy2 in meta:
+            coincidencias_hoy += 1
+        if pat_ayer1 in meta or pat_ayer2 in meta:
+            coincidencias_ayer += 1
+
+    if coincidencias_hoy >= 3:
+        return True
+
+    # Si hay streams de ayer y ninguno de hoy, la lista es obsoleta/ayer
+    if coincidencias_hoy == 0 and coincidencias_ayer >= 3:
+        log.warning("Lista Xtream contiene %d eventos de ayer (%s) y 0 de hoy (%s). Estado: PENDIENTE (ciclo 23:59 - mediodia).",
+                    coincidencias_ayer, pat_ayer1, pat_hoy1)
+        return False
+
+    # Para listas no categorizadas o sin fechas en titulo: contrastar con agenda hoy
+    if agenda_hoy:
+        coincidencias_agenda = 0
+        for ev in agenda_hoy:
+            if ev.local and ev.visitante:
+                l_u = ev.local.upper()
+                v_u = ev.visitante.upper()
+                for c in canales_xtream:
+                    n_u = (c.get("name") or c.get("stream_name") or "").upper()
+                    if (l_u in n_u and v_u in n_u) or (f"{l_u} VS {v_u}" in n_u):
+                        coincidencias_agenda += 1
+                        if coincidencias_agenda >= 2:
+                            log.info("Lista no categorizada verificada como ACTUALIZADA via Agenda Maestra (%d coincidencias).", coincidencias_agenda)
+                            return True
+
     return False
 
 def procesar_streams_eventos_xtream(
@@ -166,7 +211,12 @@ def procesar_streams_eventos_xtream(
             continue
 
         meta_todo = f"{nombre} {cat_nombre}".upper()
-        if any(k in meta_todo for k in ["EVENT", "PPV", "LALIGA SUR", "DIRECTV SUR", "PARTIDO", " VS ", " V "]) or            patron1 in nombre or patron1 in cat_nombre or patron2 in nombre or patron2 in cat_nombre:
+        es_candidato = (
+            any(k in meta_todo for k in ["EVENT", "PPV", "LALIGA SUR", "DIRECTV SUR", "PARTIDO", " VS ", " V ", " - "]) or
+            any(k in meta_todo for k in ["UFC", "MMA", "F1", "FORMULA 1", "MOTO GP", "ATP", "WTA", "NBA", "MLB", "NFL", "GRAND SLAM", "BOXEO", "BOXING", "CICLISMO", "TOUR DE FRANCE", "GIRO", "VUELTA"]) or
+            patron1 in nombre or patron1 in cat_nombre or patron2 in nombre or patron2 in cat_nombre
+        )
+        if es_candidato:
             streams_candidatos.append(c)
 
     for c in streams_candidatos:
@@ -288,7 +338,7 @@ def ejecutar_curacion():
     indice_canales = construir_indice_canales_lineales(canales_xtream)
     eventos_lineales = inyectar_eventos_lineales(agenda_hoy, indice_canales, APP_TIMEZONE)
 
-    lista_actualizada = detectar_lista_actualizada_hoy(canales_xtream, d_hoy, m_hoy)
+    lista_actualizada = detectar_lista_actualizada_hoy(canales_xtream, d_hoy, m_hoy, agenda_hoy)
     log.info("Estado de actualizacion de lista Xtream para hoy (%s): %s", fecha_hoy_dd_mm, "ACTUALIZADA" if lista_actualizada else "PENDIENTE")
 
     eventos_xtream, descartados = procesar_streams_eventos_xtream(
