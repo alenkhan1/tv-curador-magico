@@ -267,26 +267,28 @@ def procesar_streams_eventos_xtream(
         else:
             hora_str = parsed.get("hora", "00:00")
 
+        # 1. REGLA UNIVERSAL: Descarte de emisiones no en directo (resúmenes, compactos, diferidos, repeticiones)
+        palabras_no_directo = ["compacto", "resumen", "diferido", "retransmision", "retransmisión", "replay", "highlights", "grabacion", "grabación"]
+        if any(w in nombre.lower() for w in palabras_no_directo):
+            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "emision_no_directo_o_resumen"})
+            continue
+
+        # 2. RECONCILIACIÓN UNIVERSAL CON AGENDA MAESTRA (Single Source of Truth)
         coincide_agenda = None
         for ev in agenda_hoy:
             if local and visitante:
+                # Duelos (Fútbol, Baloncesto, Tenis, etc.): Coincidencia por equipos
                 if (normalizar_texto(local) in normalizar_texto(ev.local) or normalizar_texto(local) in normalizar_texto(ev.titulo)) and                    (normalizar_texto(visitante) in normalizar_texto(ev.visitante) or normalizar_texto(visitante) in normalizar_texto(ev.titulo)):
                     coincide_agenda = ev
                     break
-
-        # Filtrado de repeticiones / retransmisiones antiguas de F1 y deportes de circuito
-        es_f1 = any(k in nombre.upper() or k in parsed.get("titulo", "").upper() for k in ["F1", "FÓRMULA 1", "FORMULA 1"]) or (str(c.get('category_id') or '') in ['2', '129'] and bool(re.search(r"\bF1\b", nombre, re.I)))
-        if es_f1:
-            sesion_oficial = None
-            for ev in agenda_hoy:
-                if any(k in ev.deporte.upper() for k in ["FÓRMULA 1", "F1", "FORMULA 1"]) or any(k in ev.torneo.upper() for k in ["FÓRMULA 1", "F1", "FORMULA 1"]):
-                    sesion_oficial = ev
+            elif not local and not visitante:
+                # Deportes de circuito/individuales (Motor, Ciclismo, Golf, etc.): Coincidencia por deporte o torneo
+                norm_ev_dep = normalizar_texto(ev.deporte)
+                norm_ev_tor = normalizar_texto(ev.torneo)
+                norm_str = normalizar_texto(nombre)
+                if (norm_ev_dep and len(norm_ev_dep) >= 3 and norm_ev_dep in norm_str) or                    (norm_ev_tor and len(norm_ev_tor) >= 4 and norm_ev_tor in norm_str):
+                    coincide_agenda = ev
                     break
-            if sesion_oficial:
-                coincide_agenda = sesion_oficial
-            elif any(w in nombre.lower() for w in ["practice", "práctica", "practica", "compacto", "on board", "gp japón", "gp japon", "gp bahr"]):
-                descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "f1_diferido_sin_sesion_oficial_hoy"})
-                continue
 
         if not m_cat_f and not m_f and not coincide_agenda:
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "stream_efimero_sin_confirmacion_hoy"})
