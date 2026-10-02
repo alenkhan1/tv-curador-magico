@@ -117,6 +117,15 @@ def obtener_canales_xtream(fecha_hoy_iso: str) -> List[Dict[str, Any]]:
                 return canales
         except Exception as e:
             log.warning("Fallo al consultar Xtream player_api: %s", e)
+            if CACHE_CANALES.exists():
+                try:
+                    raw = json.loads(CACHE_CANALES.read_text(encoding="utf-8"))
+                    canales = raw.get("canales", []) if isinstance(raw, dict) else raw
+                    if canales:
+                        log.info("Recuperados %d canales desde cache previo tras fallo de API", len(canales))
+                        return canales
+                except Exception:
+                    pass
 
     return []
 
