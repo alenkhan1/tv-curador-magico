@@ -3,9 +3,8 @@
 Gestor de la Agenda Maestra de Directos de Hoy:
 Orquesta adaptadores fijos y verificados:
 - Canales Suramérica (Win Sports, ESPN, DSports, TyC Sports, TNT Sports)
-- Canales España (Movistar Plus, Eurosport 1 y 2 con marca 'EN DIRECTO', DAZN España)
-- Canales UK (Sky Sports Main Event, Football, F1, Golf - sin Cricket)
-Descarta totalmente canales de USA y tablas anuales desfasadas.
+- Canales España (Movistar Plus, Eurosport 1 y 2, Teledeporte, DAZN España)
+- Canales UK (Sky Sports Main Event, Football, F1, Golf vía wheresthematch)
 """
 from __future__ import annotations
 
@@ -17,9 +16,10 @@ from .canales_suramerica import obtener_directos_suramerica
 from .espana import (
     obtener_movistar_directos,
     obtener_eurosport_directos,
+    obtener_teledeporte_directos,
+    obtener_sky_sports_uk_directos,
     obtener_dazn_espana_directos,
 )
-from .skysports import obtener_directos_sky_sports
 from .modelos import EventoAgenda, normalizar_texto
 
 log = logging.getLogger("gestor_agenda")
@@ -32,13 +32,14 @@ def construir_agenda_maestra_hoy(fecha_hoy_iso: str) -> List[EventoAgenda]:
         "suramerica": lambda: obtener_directos_suramerica(fecha_hoy_iso),
         "movistar": lambda: obtener_movistar_directos(fecha_hoy_iso),
         "eurosport": lambda: obtener_eurosport_directos(fecha_hoy_iso),
+        "teledeporte": lambda: obtener_teledeporte_directos(fecha_hoy_iso),
+        "sky_sports": lambda: obtener_sky_sports_uk_directos(fecha_hoy_iso),
         "dazn_es": lambda: obtener_dazn_espana_directos(fecha_hoy_iso),
-        "sky_sports": lambda: obtener_directos_sky_sports(fecha_hoy_iso),
     }
 
     eventos_crudos: List[EventoAgenda] = []
 
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    with ThreadPoolExecutor(max_workers=6) as executor:
         futuros = {executor.submit(fn): nombre for nombre, fn in tareas.items()}
         for fut in as_completed(futuros):
             nombre = futuros[fut]

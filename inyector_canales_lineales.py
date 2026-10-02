@@ -2,7 +2,7 @@
 """
 Inyector Quirúrgico de Canales Lineales Deportivos:
 Empareja los eventos confirmados de hoy con los streams de la lista Xtream del usuario.
-- Regla 1: Mapeo exacto por canal y región (exclusión total de USA, México o feeds cruzados).
+- Regla 1: Mapeo exacto por canal y región (aislamiento estricto de España, UK y Suramérica).
 - Regla 2: Máximo 3-4 streams ordenados por calidad (FHD, HD, Opc. 1, Opc. 2).
 - Regla 3: IDs 100% únicos con hash determinista (evita crash en Jetpack Compose).
 """
@@ -43,14 +43,17 @@ REGLAS_CANALES: Dict[str, str] = {
     "TNT SPORTS": r"\bTNT\s*SPORTS\b",
     "EUROSPORT 1": r"EUROSPORT\s*1",
     "EUROSPORT 2": r"EUROSPORT\s*2",
-    "DAZN LALIGA": r"DAZN\s*LALIGA",
-    "DAZN 1": r"DAZN\s*1",
-    "DAZN 2": r"DAZN\s*2",
+    "TELEDEPORTE": r"\bTELEDEPORTE\b|\bTDP\b",
+    "DAZN LALIGA": r"DAZN\s*LA\s*LIGA",
+    "DAZN 1": r"DAZN\s*1\b(?!\s*BAR)",
+    "DAZN 2": r"DAZN\s*2\b",
+    "DAZN F1": r"DAZN\s*F1|DAZN\s*FORMULA\s*1",
     "MOVISTAR #VAMOS": r"\bVAMOS\b",
     "MOVISTAR DEPORTES": r"M\+\s*DEPORTES|MOVISTAR\s*DEPORTES",
-    "M+ LIGA DE CAMPEONES": r"LIGA\s*DE\s*CAMPEONES",
+    "MOVISTAR LALIGA": r"M\+\s*LALIGA|MOVISTAR\s*LALIGA",
+    "MOVISTAR LIGA DE CAMPEONES": r"LIGA\s*DE\s*CAMPEONES",
     "SKY SPORTS MAIN EVENT": r"SKY\s*SPORTS\s*MAIN\s*EVENT",
-    "SKY SPORTS FOOTBALL": r"SKY\s*SPORTS\s*FOOTBALL",
+    "SKY SPORTS FOOTBALL": r"SKY\s*SPORTS\s*(?:FOOTBALL|PREMIER)",
     "SKY SPORTS F1": r"SKY\s*SPORTS\s*F1",
     "SKY SPORTS GOLF": r"SKY\s*SPORTS\s*GOLF",
 }
@@ -58,6 +61,10 @@ REGLAS_CANALES: Dict[str, str] = {
 # Canales que pertenecen a Suramérica: excluimos feeds no sudamericanos
 CANALES_SURAMERICA_TAGS = {"WIN SPORTS+", "WIN SPORTS", "DSPORTS", "DSPORTS 2", "DSPORTS +", "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN PREMIUM ARGENTINA", "TYC SPORTS", "TNT SPORTS"}
 EXCLUSIONES_GEO_SURAMERICA = re.compile(r"\b(USA|US|MEX|MX|MEXICO|CARIBE|BRASIL|BRAZIL|UK)\b", re.I)
+
+# Canales que pertenecen a España: excluimos feeds de Perú, Argentina, Colombia, Chile, México
+CANALES_ESPANA_TAGS = {"MOVISTAR DEPORTES", "MOVISTAR #VAMOS", "MOVISTAR LALIGA", "MOVISTAR LIGA DE CAMPEONES", "DAZN 1", "DAZN 2", "DAZN LALIGA", "DAZN F1", "EUROSPORT 1", "EUROSPORT 2", "TELEDEPORTE"}
+EXCLUSIONES_GEO_ESPANA = re.compile(r"\b(PERU|PERÚ|ARGENTINA|ARG|COLOMBIA|COL|CHILE|CHI|MEX|MEXICO|USA|CANADA)\b", re.I)
 
 def normalizar(s: str) -> str:
     if not s:
@@ -68,31 +75,37 @@ def normalizar(s: str) -> str:
 
 def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, str]]]:
     """
-    Agrupa los streams de Xtream bajo sus nombres canónicos respetando filtros geográficos.
+    Agrupa los streams de Xtream bajo sus nombres canónicos respetando filtros geográficos estrictos.
     """
     indice: Dict[str, List[Dict[str, str]]] = {canon: [] for canon in REGLAS_CANALES}
 
     for c in canales_xtream:
         nombre = c.get("name") or c.get("stream_name") or ""
         sid = str(c.get("stream_id") or c.get("id") or "")
+        cat_nombre = c.get("category_name") or ""
         if not nombre or not sid:
             continue
 
         n_norm = normalizar(nombre)
+        cat_norm = normalizar(cat_nombre)
+        meta_todo = f"{n_norm} {cat_norm}"
 
         # Probar contra cada regla
         for canon, patron in REGLAS_CANALES.items():
             if re.search(patron, n_norm, re.I):
-                # Si el canal es de Suramérica, descartar feeds externos (USA, MX, etc.)
-                if canon in CANALES_SURAMERICA_TAGS and EXCLUSIONES_GEO_SURAMERICA.search(n_norm):
+                # Regla de aislamiento geográfico:
+                if canon in CANALES_SURAMERICA_TAGS and EXCLUSIONES_GEO_SURAMERICA.search(meta_todo):
                     continue
+                if canon in CANALES_ESPANA_TAGS and EXCLUSIONES_GEO_ESPANA.search(meta_todo):
+                    continue
+
                 indice[canon].append({
                     "nombre": nombre.strip(),
                     "id_xtream": sid,
                 })
 
     metricas = {k: len(v) for k, v in indice.items() if v}
-    log.info("Canales lineales Xtream indexados (limpios): %s", metricas)
+    log.info("Canales lineales Xtream indexados (limpios con aislamiento geo): %s", metricas)
     return indice
 
 def inyectar_eventos_lineales(
@@ -102,9 +115,6 @@ def inyectar_eventos_lineales(
 ) -> List[Dict[str, Any]]:
     """
     Cruza los eventos confirmados de la Agenda Maestra con los streams lineales de Xtream.
-    Garantiza:
-    - Máximo 3-4 opciones de alta calidad por evento.
-    - ID estrictamente único por evento (evita colisiones en Jetpack Compose).
     """
     tz_prod = obtener_tz(zona_horaria)
     eventos_inyectados = []
@@ -142,11 +152,10 @@ def inyectar_eventos_lineales(
 
         # Resolver logos
         logo_torneo = resolver_logo_torneo(ev.torneo or ev.titulo, ev.deporte)
-        logo_loc = resolver_logo_equipo(ev.local, ev.deporte) if ev.local else ""
-        logo_vis = resolver_logo_equipo(ev.visitante, ev.deporte) if ev.visitante else ""
+        logo_loc = resolver_logo_equipo(ev.local, ev.deporte, ev.torneo) if ev.local else ""
+        logo_vis = resolver_logo_equipo(ev.visitante, ev.deporte, ev.torneo) if ev.visitante else ""
 
         slug_canal = canales_usados[0].lower().replace(" ", "_").replace("+", "plus")
-        # Generar hash determinista para garantizar ID 100% único
         hash_evento = hashlib.sha1(f"{ev.titulo}_{ev.hora_utc}_{canales_usados[0]}".encode()).hexdigest()[:8]
         id_evento = f"lineal_{slug_canal}_{hash_evento}"
 
@@ -159,7 +168,7 @@ def inyectar_eventos_lineales(
             "tipo_evento": ev.tipo_evento,
             "equipo_local": ev.local,
             "equipo_visitante": ev.visitante,
-            "subtitulo": f"{ev.torneo} | En vivo por {', '.join(canales_usados)}",
+            "subtitulo": f"{ev.torneo}",
             "referencia": ev.referencia or ev.torneo,
             "hora_utc": ev.hora_utc,
             "hora_local_producto": hora_local_prod,

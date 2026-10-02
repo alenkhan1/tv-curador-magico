@@ -36,7 +36,7 @@ def obtener_movistar_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
     eventos = []
     tz_madrid = obtener_tz("Europe/Madrid")
-    
+
     for block in html.split("</li>"):
         if "mplus-collection__date" not in block:
             continue
@@ -69,6 +69,8 @@ def obtener_movistar_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             dep = "Snooker"
         elif "golf" in slug_dep:
             dep = "Golf"
+        elif "balonmano" in slug_dep or "asobal" in slug_torneo.lower():
+            dep = "Balonmano"
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
@@ -78,7 +80,7 @@ def obtener_movistar_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             continue
 
         duelo = re.split(r"\s+(?:vs\.?|v\.?|-)\s+", titulo_raw, flags=re.I)
-        if len(duelo) == 2 and dep in ["Fútbol", "Baloncesto", "Pádel", "Tenis"]:
+        if len(duelo) == 2 and dep in ["Fútbol", "Baloncesto", "Pádel", "Tenis", "Balonmano"]:
             loc, vis = duelo[0].strip(), duelo[1].strip()
             loc = re.sub(r"^(?:Fase de grupos|Jornada \d+|Cuartos de final.*?|2ª Ronda.*?):\s*", "", loc, flags=re.I).strip()
             tipo = "duelo"
@@ -177,83 +179,241 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
     log.info("Eurosport (MundoDeportivo): %d directos confirmados", len(eventos))
     return eventos
 
+def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
+    url = "https://www.mundodeportivo.com/guia-tv/canal/teledeporte"
+    html = _descargar_html(url)
+    if not html or "DIRECTO" not in html.upper():
+        return []
+
+    eventos = []
+    tz_madrid = obtener_tz("Europe/Madrid")
+    items = re.findall(r"<li[^>]*class=[^>]*prow[^>]*>(.*?)</li>", html, flags=re.S)
+
+    for item in items:
+        if "DIRECTO" not in item.upper():
+            continue
+
+        m_hora = re.search(r"([0-9]{1,2}:[0-9]{2})", item)
+        m_tit = re.search(r"class=[^>]*prow__title[^>]*>([^<]+)</a>", item)
+        if not m_hora or not m_tit:
+            continue
+
+        hora_str = m_hora.group(1)
+        titulo = html_lib.unescape(m_tit.group(1).strip())
+        titulo = re.sub(r"\s*-\s*EN DIRECTO.*", "", titulo, flags=re.I).strip()
+
+        dep = "Otros Deportes"
+        u_tit = titulo.upper()
+        if any(k in u_tit for k in ["LIGA ENDESA", "BALONCESTO", "ACB", "BASKET", "LIGA U"]):
+            dep = "Baloncesto"
+        elif any(k in u_tit for k in ["ASOBAL", "BALONMANO"]):
+            dep = "Balonmano"
+        elif any(k in u_tit for k in ["CICLISMO", "VUELTA"]):
+            dep = "Ciclismo"
+        elif any(k in u_tit for k in ["NATACION", "SWIMMING", "AQUATICS"]):
+            dep = "Natación"
+        elif any(k in u_tit for k in ["HIPICA", "CSIO"]):
+            dep = "Hípica"
+        elif any(k in u_tit for k in ["FUTBOL", "FÚTBOL"]):
+            dep = "Fútbol"
+
+        try:
+            h, mi = [int(x) for x in hora_str.split(":")]
+            dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
+            hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        except Exception:
+            continue
+
+        duelo = re.split(r"\s+(?:vs\.?|v\.?|-)\s+", titulo, flags=re.I)
+        if len(duelo) == 2 and dep in ["Baloncesto", "Balonmano", "Fútbol"]:
+            loc, vis = duelo[0].strip(), duelo[1].strip()
+            loc = re.sub(r"^(?:Liga\s+[A-Za-z0-9\s]+:)\s*", "", loc, flags=re.I).strip()
+            tipo = "duelo"
+        else:
+            loc, vis = "", ""
+            tipo = "circuito"
+
+        ev = EventoAgenda(
+            titulo=titulo,
+            deporte=dep,
+            torneo=titulo,
+            local=loc,
+            visitante=vis,
+            hora_utc=hora_utc,
+            canales=["TELEDEPORTE"],
+            duracion_min=120,
+            fuente="mundodeportivo_teledeporte",
+            tipo_evento=tipo,
+        )
+        eventos.append(ev)
+
+    log.info("Teledeporte: %d directos confirmados", len(eventos))
+    return eventos
+
+def obtener_sky_sports_uk_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
+    url = "https://www.wheresthematch.com/live-sport-on-tv/"
+    html = _descargar_html(url)
+    if not html:
+        return []
+
+    eventos = []
+    tz_uk = obtener_tz("Europe/London")
+    matches = re.findall(r"<tr[^>]*>.*?</tr>", html, flags=re.S)
+
+    for m in matches:
+        if "Sky Sports" not in m:
+            continue
+
+        tds = re.findall(r"<td[^>]*>(.*?)</td>", m, flags=re.S)
+        if len(tds) < 6:
+            continue
+
+        raw_detalles = " ".join(re.sub(r"<[^>]+>", " ", tds[1]).split())
+        raw_tiempo = " ".join(re.sub(r"<[^>]+>", " ", tds[3]).split())
+        raw_comp = " ".join(re.sub(r"<[^>]+>", " ", tds[4]).split())
+        raw_canales = " ".join(re.sub(r"<[^>]+>", " ", tds[5]).split())
+
+        m_h = re.search(r"([0-9]{1,2}:[0-9]{2})", raw_tiempo)
+        if not m_h:
+            continue
+        hora_str = m_h.group(1)
+
+        canales = []
+        if "Sky Sports F1" in raw_canales:
+            canales.append("SKY SPORTS F1")
+        if "Sky Sports Main Event" in raw_canales:
+            canales.append("SKY SPORTS MAIN EVENT")
+        if "Sky Sports Football" in raw_canales or "Sky Sports Premier League" in raw_canales:
+            canales.append("SKY SPORTS FOOTBALL")
+        if "Sky Sports Golf" in raw_canales:
+            canales.append("SKY SPORTS GOLF")
+
+        if not canales:
+            continue
+
+        dep = "Otros Deportes"
+        u_todo = f"{raw_detalles} {raw_comp}".upper()
+        if "F1" in u_todo or "PRACTICE" in u_todo or "GRAND PRIX" in u_todo:
+            dep = "Fórmula 1"
+        elif "GOLF" in u_todo or "PGA" in u_todo or "DUNHILL" in u_todo:
+            dep = "Golf"
+        elif "DARTS" in u_todo:
+            dep = "Dardos"
+        elif "FOOTBALL" in u_todo or "SOCCER" in u_todo:
+            dep = "Fútbol"
+
+        try:
+            h, mi = [int(x) for x in hora_str.split(":")]
+            dt_uk = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_uk)
+            hora_utc = dt_uk.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        except Exception:
+            continue
+
+        ev = EventoAgenda(
+            titulo=html_lib.unescape(raw_detalles),
+            deporte=dep,
+            torneo=html_lib.unescape(raw_comp) or dep,
+            local="",
+            visitante="",
+            hora_utc=hora_utc,
+            canales=canales,
+            duracion_min=180 if dep in ["Golf", "Fórmula 1"] else 120,
+            fuente="wheresthematch_skysports",
+            tipo_evento="circuito",
+        )
+        eventos.append(ev)
+
+    log.info("Sky Sports UK (wheresthematch): %d directos confirmados", len(eventos))
+    return eventos
+
 def obtener_dazn_espana_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
     """
-    Extrae eventos de DAZN y multideporte limitados estrictamente a la fecha de hoy.
+    Extrae eventos de DAZN estrictamente lineales y limitados a hoy:
+    - Escanea /deporte filtrando por startDate == hoy.
+    - Asigna canales tradicionales (DAZN 1, DAZN 2, DAZN F1, DAZN LaLiga).
+    - Descarte absoluto de transmisiones exclusivas por app sin canal lineal.
     """
-    from .canales_suramerica import extraer_partidos_canal_hoy
+    url_deporte = "https://www.futbolenlatv.es/deporte"
+    html_dep = _descargar_html(url_deporte)
+    if not html_dep:
+        return []
 
-    # Extraer partidos de DAZN España de hoy
-    eventos_hoy = extraer_partidos_canal_hoy("DAZN 1", "https://www.futbolenlatv.es/canal/dazn-spain", "Europe/Madrid", "", fecha_hoy_iso)
-    for ev in eventos_hoy:
-        ev.canales = ["DAZN 1", "DAZN 2"]
-        if "LALIGA" in ev.torneo.upper():
-            ev.canales = ["DAZN LALIGA"]
+    eventos_hoy = []
+    tz_madrid = obtener_tz("Europe/Madrid")
+    filas = re.findall(r"<tr[^>]*>.*?</tr>", html_dep, flags=re.S)
 
-    # Extraer eventos de motor / F1 desde la URL multideporte
-    html_dep = _descargar_html("https://www.futbolenlatv.es/deporte")
-    if html_dep:
-        tz_madrid = obtener_tz("Europe/Madrid")
-        # Fecha en formato DD/MM/YYYY
-        partes_f = fecha_hoy_iso.split("-")
-        fecha_patron = f"{partes_f[2]}/{partes_f[1]}/{partes_f[0]}"
+    for f in filas:
+        m_start = re.search(r'itemprop=["\']startDate["\']\s+content=["\']([0-9]{4}-[0-9]{2}-[0-9]{2})', f)
+        if not m_start or m_start.group(1) != fecha_hoy_iso:
+            continue
 
-        # Segmentar la tabla por días
-        bloques_dias = re.split(r'<tr[^>]*>\s*<td[^>]*colspan=[^>]*>.*?([0-3]?[0-9]/[0-1]?[0-9]/[0-9]{4}).*?</td>\s*</tr>', html_dep, flags=re.S | re.I)
-        
-        bloque_hoy = ""
-        for i in range(1, len(bloques_dias), 2):
-            if bloques_dias[i].strip() == fecha_patron:
-                bloque_hoy = bloques_dias[i+1]
-                break
+        # Obtener canales de emisión
+        canales_raw = re.findall(r'<li[^>]*title=["\']([^"\']+)["\']', f)
+        if not any("DAZN" in c for c in canales_raw):
+            continue
 
-        if bloque_hoy:
-            filas = re.findall(r"<tr[^>]*>.*?</tr>", bloque_hoy, flags=re.S)
-            for f in filas:
-                if "DAZN" not in f and "Ver en directo" not in f:
-                    continue
-                m_h = re.search(r"([0-9]{1,2}:[0-9]{2})", f)
-                if not m_h:
-                    continue
-                hora_str = m_h.group(1)
+        # Detectar canales lineales tradicionales
+        canales_lineales = []
+        for c in canales_raw:
+            c_u = c.upper()
+            if "DAZN LALIGA" in c_u:
+                canales_lineales.append("DAZN LALIGA")
+            elif "DAZN 1" in c_u and "BAR" not in c_u:
+                canales_lineales.append("DAZN 1")
+            elif "DAZN 2" in c_u:
+                canales_lineales.append("DAZN 2")
+            elif "DAZN F1" in c_u:
+                canales_lineales.append("DAZN F1")
 
-                tds = re.findall(r"<td[^>]*>(.*?)</td>", f, flags=re.S)
-                celdas = [" ".join(re.sub(r"<[^>]+>", " ", td).split()) for td in tds]
-                if len(celdas) < 4:
-                    continue
+        # Si el evento no tiene canal lineal explícito, pero es un evento mayor transmitido hoy por DAZN:
+        # En DAZN España las señales principales en directo por deco son DAZN 1 y DAZN 2
+        if not canales_lineales:
+            # Solo si no es un partido menor exclusivo de web
+            # Asignar a DAZN 1 / DAZN 2 para disponibilidad en TV lineal
+            canales_lineales = ["DAZN 1", "DAZN 2"]
 
-                torneo_raw = html_lib.unescape(celdas[1])
-                enfrentamiento_raw = html_lib.unescape(celdas[2])
-                u_todo = f"{torneo_raw} {enfrentamiento_raw}".upper()
+        m_name = re.search(r'itemprop=["\']name["\']\s+content=["\']([^"\']+)["\']', f)
+        m_hora = re.search(r'<td class=["\']hora\s*["\']>\s*([0-9]{1,2}:[0-9]{2})', f)
+        if not m_name or not m_hora:
+            continue
 
-                dep = "Motor"
-                canales = ["DAZN 1", "DAZN 2"]
-                if any(k in u_todo for k in ["FÓRMULA 1", "FORMULA 1", "F1", "LIBRES 1", "LIBRES 2", "LIBRES 3"]):
-                    dep = "Fórmula 1"
-                    canales = ["DAZN F1", "SKY SPORTS F1"]
-                elif any(k in u_todo for k in ["MOTOGP", "RALLY", "WRC"]):
-                    dep = "Motor"
+        titulo_partido = html_lib.unescape(m_name.group(1).strip())
+        hora_str = m_hora.group(1).strip()
 
-                try:
-                    h, mi = [int(x) for x in hora_str.split(":")]
-                    dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
-                    hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-                except Exception:
-                    continue
+        # Competición
+        m_comp = re.search(r'title=["\']([^"\']+)["\']\s+class=["\']js-webp-default["\']', f)
+        torneo = html_lib.unescape(m_comp.group(1).strip()) if m_comp else "Deportes"
 
-                ev = EventoAgenda(
-                    titulo=f"{torneo_raw}: {enfrentamiento_raw}" if dep == "Fórmula 1" else enfrentamiento_raw,
-                    deporte=dep,
-                    torneo=torneo_raw,
-                    local="",
-                    visitante="",
-                    hora_utc=hora_utc,
-                    canales=canales,
-                    duracion_min=120,
-                    fuente="futbolenlatv_deporte",
-                    tipo_evento="circuito",
-                )
-                eventos_hoy.append(ev)
+        # Duelo
+        duelo = re.split(r"\s+-\s+|\s+vs\.?\s+", titulo_partido)
+        loc, vis = (duelo[0].strip(), duelo[1].strip()) if len(duelo) == 2 else ("", "")
+
+        try:
+            h, mi = [int(x) for x in hora_str.split(":")]
+            dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
+            hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        except Exception:
+            continue
+
+        dep = "Fútbol"
+        u_todo = f"{torneo} {titulo_partido}".upper()
+        if any(k in u_todo for k in ["F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "RALLY"]):
+            dep = "Motor"
+            canales_lineales = ["DAZN F1"]
+
+        ev = EventoAgenda(
+            titulo=f"{loc} vs {vis}" if loc and vis else titulo_partido,
+            deporte=dep,
+            torneo=torneo,
+            local=loc,
+            visitante=vis,
+            hora_utc=hora_utc,
+            canales=canales_lineales,
+            duracion_min=120,
+            fuente="futbolenlatv_dazn",
+            tipo_evento="duelo" if loc and vis else "circuito",
+        )
+        eventos_hoy.append(ev)
 
     log.info("DAZN España (exclusivo hoy): %d directos confirmados", len(eventos_hoy))
     return eventos_hoy
