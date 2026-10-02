@@ -435,3 +435,59 @@ def obtener_dazn_espana_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
     log.info("DAZN España (exclusivo hoy): %d directos confirmados", len(eventos_hoy))
     return eventos_hoy
+
+
+
+def obtener_dazn_f1_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
+    url_deporte = "https://www.futbolenlatv.es/deporte"
+    html_dep = _descargar_html(url_deporte)
+    if not html_dep:
+        return []
+
+    eventos_f1 = []
+    tz_madrid = obtener_tz("Europe/Madrid")
+    filas = re.findall(r"<tr[^>]*>.*?</tr>", html_dep, flags=re.S)
+
+    for f in filas:
+        m_start = re.search(r'itemprop=["\']startDate["\']\s+content=["\']([0-9]{4}-[0-9]{2}-[0-9]{2})', f)
+        if not m_start or m_start.group(1) != fecha_hoy_iso:
+            continue
+
+        canales_raw = re.findall(r'<li[^>]*title=["\']([^"\']+)["\']', f)
+        if not any("DAZN F1" in c.upper() for c in canales_raw):
+            continue
+
+        m_name = re.search(r'itemprop=["\']name["\']\s+content=["\']([^"\']+)["\']', f)
+        m_hora = re.search(r'<td class=["\']hora\s*["\']>\s*([0-9]{1,2}:[0-9]{2})', f)
+        if not m_name or not m_hora:
+            continue
+
+        titulo = html_lib.unescape(m_name.group(1).strip())
+        hora_str = m_hora.group(1).strip()
+
+        m_comp = re.search(r'title=["\']([^"\']+)["\']\s+class=["\']js-webp-default["\']', f)
+        torneo = html_lib.unescape(m_comp.group(1).strip()) if m_comp else "Fórmula 1"
+
+        try:
+            h, mi = [int(x) for x in hora_str.split(":")]
+            dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
+            hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        except Exception:
+            continue
+
+        ev = EventoAgenda(
+            titulo=titulo,
+            deporte="Motor",
+            torneo=torneo,
+            local="",
+            visitante="",
+            hora_utc=hora_utc,
+            canales=["DAZN F1"],
+            duracion_min=180,
+            fuente="futbolenlatv_dazn_f1",
+            tipo_evento="circuito",
+        )
+        eventos_f1.append(ev)
+
+    log.info("DAZN F1: %d directos de Fórmula 1 confirmados", len(eventos_f1))
+    return eventos_f1

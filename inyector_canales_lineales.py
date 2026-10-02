@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Inyector Quirúrgico de Canales Lineales Deportivos:
-Empareja los eventos confirmados de hoy con los streams de la lista Xtream del usuario.
-- Regla 1: Mapeo exacto por canal y región (aislamiento estricto de España, UK y Suramérica).
-- Regla 2: Máximo 3-4 streams ordenados por calidad (FHD, HD, Opc. 1, Opc. 2).
-- Regla 3: IDs 100% únicos con hash determinista (evita crash en Jetpack Compose).
+Empareja los eventos confirmados de hoy con los streams lineales autorizados de la lista Xtream.
+- Enfoque Suramérica (Colombia y Argentina): Win Sports, ESPN Suramérica, DSports, TyC, TNT Sports.
+- Motor: DAZN F1 y Sky Sports F1.
+- Exclusión total de feeds de USA, Brasil, México y apps OTT.
 """
 from __future__ import annotations
 
@@ -26,7 +26,6 @@ from resolvedor_logos import (
 
 log = logging.getLogger("inyector_lineales")
 
-# Patrones regex estrictos para canales autorizados
 REGLAS_CANALES: Dict[str, str] = {
     "WIN SPORTS+": r"WIN\s*SPORTS\s*\+",
     "WIN SPORTS": r"WIN\s*SPORTS(?!\s*\+)",
@@ -34,37 +33,26 @@ REGLAS_CANALES: Dict[str, str] = {
     "DSPORTS +": r"(?:DSPORTS|DIRECTV\s*SPORTS)\s*\+",
     "DSPORTS": r"(?:DSPORTS|DIRECTV\s*SPORTS)(?!\s*[\+2])",
     "ESPN PREMIUM ARGENTINA": r"ESPN\s*PREMIUM",
-    "ESPN 2": r"\bESPN\s*2\b",
-    "ESPN 3": r"\bESPN\s*3\b",
-    "ESPN 4": r"\bESPN\s*4\b",
-    "ESPN 5": r"\bESPN\s*5\b",
-    "ESPN": r"\bESPN(?!\s*[234567]| PREMIUM)\b",
-    "TYC SPORTS": r"\bTYC\s*SPORTS\b",
-    "TNT SPORTS": r"\bTNT\s*SPORTS\b",
-    "EUROSPORT 1": r"EUROSPORT\s*1",
-    "EUROSPORT 2": r"EUROSPORT\s*2",
-    "TELEDEPORTE": r"\bTELEDEPORTE\b|\bTDP\b",
-    "DAZN LALIGA": r"DAZN\s*LA\s*LIGA",
-    "DAZN 1": r"DAZN\s*1\b(?!\s*BAR)",
-    "DAZN 2": r"DAZN\s*2\b",
+    "ESPN 2": r"ESPN\s*2",
+    "ESPN 3": r"ESPN\s*3",
+    "ESPN 4": r"ESPN\s*4",
+    "ESPN 5": r"ESPN\s*5",
+    "ESPN 6": r"ESPN\s*6",
+    "ESPN 7": r"ESPN\s*7",
+    "ESPN": r"ESPN(?!\s*[234567]| PREMIUM)",
+    "TYC SPORTS": r"TYC\s*SPORTS",
+    "TNT SPORTS": r"TNT\s*SPORTS",
     "DAZN F1": r"DAZN\s*F1|DAZN\s*FORMULA\s*1",
-    "MOVISTAR #VAMOS": r"\bVAMOS\b",
-    "MOVISTAR DEPORTES": r"\bM\.\s*DEPORTES\b|\bM\+\s*DEPORTES\b|\bMOVISTAR\s*DEPORTES\b",
-    "MOVISTAR LALIGA": r"M\+\s*LALIGA|MOVISTAR\s*LALIGA",
-    "MOVISTAR LIGA DE CAMPEONES": r"LIGA\s*DE\s*CAMPEONES",
-    "SKY SPORTS MAIN EVENT": r"SKY\s*SPORTS\s*MAIN\s*EVENT",
-    "SKY SPORTS FOOTBALL": r"SKY\s*SPORTS\s*(?:FOOTBALL|PREMIER)",
     "SKY SPORTS F1": r"SKY\s*SPORTS\s*F1",
-    "SKY SPORTS GOLF": r"SKY\s*SPORTS\s*GOLF",
 }
 
 # Canales que pertenecen a Suramérica: excluimos feeds no sudamericanos
-CANALES_SURAMERICA_TAGS = {"WIN SPORTS+", "WIN SPORTS", "DSPORTS", "DSPORTS 2", "DSPORTS +", "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN PREMIUM ARGENTINA", "TYC SPORTS", "TNT SPORTS"}
-EXCLUSIONES_GEO_SURAMERICA = re.compile(r"\b(USA|US|MEX|MX|MEXICO|CARIBE|BRASIL|BRAZIL|UK)\b", re.I)
-
-# Canales que pertenecen a España: excluimos feeds de Perú, Argentina, Colombia, Chile, México y categorias latinoamericanas
-CANALES_ESPANA_TAGS = {"MOVISTAR DEPORTES", "MOVISTAR #VAMOS", "MOVISTAR LALIGA", "MOVISTAR LIGA DE CAMPEONES", "DAZN 1", "DAZN 2", "DAZN LALIGA", "DAZN F1", "EUROSPORT 1", "EUROSPORT 2", "TELEDEPORTE"}
-EXCLUSIONES_GEO_ESPANA = re.compile(r"\b(PERU|PERÚ|ARGENTINA|ARG|COLOMBIA|COL|CHILE|CHI|MEX|MEXICO|USA|CANADA|LATINO|LATAM)\b", re.I)
+CANALES_SURAMERICA_TAGS = {
+    "WIN SPORTS+", "WIN SPORTS", "DSPORTS", "DSPORTS 2", "DSPORTS +",
+    "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7",
+    "ESPN PREMIUM ARGENTINA", "TYC SPORTS", "TNT SPORTS"
+}
+EXCLUSIONES_GEO_SURAMERICA = re.compile(r"(USA|US|MEX|MEXICO|CARIBE|BRASIL|BRAZIL|UK|SPAIN|ESPAÑA)", re.I)
 
 def normalizar(s: str) -> str:
     if not s:
@@ -90,13 +78,9 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
         cat_norm = normalizar(cat_nombre)
         meta_todo = f"{n_norm} {cat_norm}"
 
-        # Probar contra cada regla
         for canon, patron in REGLAS_CANALES.items():
             if re.search(patron, n_norm, re.I):
-                # Regla de aislamiento geográfico:
                 if canon in CANALES_SURAMERICA_TAGS and EXCLUSIONES_GEO_SURAMERICA.search(meta_todo):
-                    continue
-                if canon in CANALES_ESPANA_TAGS and EXCLUSIONES_GEO_ESPANA.search(meta_todo):
                     continue
 
                 indice[canon].append({

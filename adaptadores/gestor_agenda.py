@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Gestor de la Agenda Maestra de Directos de Hoy:
-Orquesta adaptadores fijos y verificados:
-- Canales Suramérica (Win Sports, ESPN, DSports, TyC Sports, TNT Sports)
-- Canales España (Movistar Plus, Eurosport 1 y 2, Teledeporte, DAZN España)
-- Canales UK (Sky Sports Main Event, Football, F1, Golf vía wheresthematch)
+Orquesta adaptadores fijos y verificados para televisión:
+- Canales Suramérica (Win Sports, ESPN Suramérica, DSports, TyC Sports, TNT Sports)
+- Canales de Motor autorizados (DAZN F1, Sky Sports F1)
+(Se prescinde de Movistar España y DAZN general para evitar desalineaciones y canales ficticios).
 """
 from __future__ import annotations
 
@@ -14,11 +14,8 @@ from typing import List
 
 from .canales_suramerica import obtener_directos_suramerica
 from .espana import (
-    obtener_movistar_directos,
-    obtener_eurosport_directos,
-    obtener_teledeporte_directos,
+    obtener_dazn_f1_directos,
     obtener_sky_sports_uk_directos,
-    obtener_dazn_espana_directos,
 )
 from .modelos import EventoAgenda, normalizar_texto
 
@@ -30,16 +27,13 @@ def construir_agenda_maestra_hoy(fecha_hoy_iso: str) -> List[EventoAgenda]:
     """
     tareas = {
         "suramerica": lambda: obtener_directos_suramerica(fecha_hoy_iso),
-        "movistar": lambda: obtener_movistar_directos(fecha_hoy_iso),
-        "eurosport": lambda: obtener_eurosport_directos(fecha_hoy_iso),
-        "teledeporte": lambda: obtener_teledeporte_directos(fecha_hoy_iso),
-        "sky_sports": lambda: obtener_sky_sports_uk_directos(fecha_hoy_iso),
-        "dazn_es": lambda: obtener_dazn_espana_directos(fecha_hoy_iso),
+        "dazn_f1": lambda: obtener_dazn_f1_directos(fecha_hoy_iso),
+        "sky_sports_f1": lambda: obtener_sky_sports_uk_directos(fecha_hoy_iso),
     }
 
     eventos_crudos: List[EventoAgenda] = []
 
-    with ThreadPoolExecutor(max_workers=6) as executor:
+    with ThreadPoolExecutor(max_workers=3) as executor:
         futuros = {executor.submit(fn): nombre for nombre, fn in tareas.items()}
         for fut in as_completed(futuros):
             nombre = futuros[fut]
@@ -60,7 +54,6 @@ def construir_agenda_maestra_hoy(fecha_hoy_iso: str) -> List[EventoAgenda]:
             vistos.add(clave)
             eventos_dedup.append(ev)
         else:
-            # Si ya existía, enriquecer los canales del evento existente
             for existente in eventos_dedup:
                 if (normalizar_texto(existente.titulo), existente.hora_utc[:16]) == clave:
                     for c in ev.canales:

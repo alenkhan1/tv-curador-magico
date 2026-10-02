@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Curador Deportivo Principal Multifuente con 3 Fases:
-1. Ingesta de Canales Lineales 24/7 emparejados con la Agenda Maestra de Directos de Hoy.
-2. Ingesta Estricta de Eventos Efímeros Xtream (SOLO si tienen fecha confirmada de HOY tanto en categoría como en nombre, descartando canales de transmisión como 'EVENTS 14 : DAZN 1').
-3. FASE 3 DE AUDITORÍA Y PERFECCIONAMIENTO CON AGY (Inteligencia Artificial Pro):
-   - Elimina la categoría 'Otros Deportes' asignando la disciplina exacta (Natación, Snooker, Tiro, etc.).
-   - Reescribe títulos sobrecargados a nombres concisos y profesionales.
-   - Elimina redundancias (Título == Subtítulo).
-   - Descarta magazines residuales y eventos obsoletos.
+Curador Deportivo Principal Multifuente:
+1. Ingesta de Canales Lineales (Win Sports, ESPN Suramérica, DSports, TyC, TNT, DAZN F1) emparejados con la Agenda Maestra de Hoy.
+2. Ingesta Universal de Streams Efímeros Xtream:
+   - Detección inteligente de actualización de la lista: si la lista no contiene los eventos de hoy, se descartan los streams efímeros y solo se usan los canales lineales.
+   - Soporte para cualquier lista Xtream (con carpetas o sin categorizar).
+   - Descarte estricto de canales de transmisión (ej: 'EVENTS 14 : DAZN 1').
+3. Curación Semántica y Deduplicación por Entidad Deportiva (1 Tarjeta = N Fuentes).
+4. Auditoría y Perfeccionamiento con AGY (Gemini Pro en la VM).
+5. Garantía Gráfica para Android TV (EventoCard.kt): Logos de Torneo, Escudos de Equipos y Banderas Oficiales.
 """
 from __future__ import annotations
 
@@ -18,7 +19,7 @@ import os
 import re
 import ssl
 import sys
-import unicodedata
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone, timedelta
@@ -47,12 +48,12 @@ logging.basicConfig(
 )
 log = logging.getLogger("curador_eventos")
 
+REPO_DIR = Path(__file__).resolve().parent
 XTREAM_URL = os.environ.get("XTREAM_URL", "http://espartanos.live:8080").rstrip("/")
 XTREAM_USER = os.environ.get("XTREAM_USER", "12user1506")
 XTREAM_PASS = os.environ.get("XTREAM_PASS", "123456")
 APP_TIMEZONE = os.environ.get("APP_TIMEZONE", "America/Bogota")
-CACHE_CANALES = Path("canales_xtream_cache.json")
-M3U_LOCAL = Path(os.environ.get("M3U_PATH", "C:/Users/Alejandro/Downloads/tv_channels_12user1506_plus.m3u"))
+CACHE_CANALES = REPO_DIR / "canales_xtream_cache.json"
 
 def _crear_contexto_ssl():
     ctx = ssl.create_default_context()
@@ -60,12 +61,20 @@ def _crear_contexto_ssl():
     ctx.verify_mode = ssl.CERT_NONE
     return ctx
 
-def obtener_canales_xtream() -> List[Dict[str, Any]]:
+def obtener_canales_xtream(fecha_hoy_iso: str) -> List[Dict[str, Any]]:
+    """Descarga los canales de Xtream con caché que expira automáticamente para capturar la actualización del mediodía."""
+    ahora_ts = time.time()
+
     if CACHE_CANALES.exists():
         try:
-            canales = json.loads(CACHE_CANALES.read_text(encoding="utf-8"))
-            log.info("Cargados %d canales desde cache local: %s", len(canales), CACHE_CANALES)
-            return canales
+            raw = json.loads(CACHE_CANALES.read_text(encoding="utf-8"))
+            if isinstance(raw, dict) and "canales" in raw:
+                canales = raw.get("canales", [])
+                ts = raw.get("timestamp", 0)
+                f_cap = raw.get("fecha_captura", "")
+                if f_cap == fecha_hoy_iso and (ahora_ts - ts) < 2700:
+                    log.info("Cargados %d canales desde cache vigente (%s, hace %d min)", len(canales), f_cap, int((ahora_ts - ts) / 60))
+                    return canales
         except Exception as e:
             log.warning("No se pudo leer cache: %s", e)
 
@@ -73,10 +82,10 @@ def obtener_canales_xtream() -> List[Dict[str, Any]]:
         api_url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
         try:
             req_cats = urllib.request.Request(f"{api_url}&action=get_live_categories", headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req_cats, timeout=12, context=_crear_contexto_ssl()) as resp:
+            with urllib.request.urlopen(req_cats, timeout=14, context=_crear_contexto_ssl()) as resp:
                 cats = json.loads(resp.read().decode("utf-8", errors="ignore"))
 
-            deporte_kws = ["EVENT", "DEPORT", "SPORT", "FUTBOL", "LALIGA", "PREMIER", "CHAMPIONS", "CONMEBOL", "NBA", "MLB", "UFC", "WWE", "WIN", "DSPORTS", "BEIN", "CLARO", "FOX", "SKY", "DAZN"]
+            deporte_kws = ["EVENT", "DEPORT", "SPORT", "FUTBOL", "LALIGA", "PREMIER", "CHAMPIONS", "CONMEBOL", "NBA", "MLB", "UFC", "WWE", "WIN", "DSPORTS", "BEIN", "CLARO", "FOX", "SKY", "DAZN", "SPECIALS", "PPV"]
             cats_deporte = [c for c in cats if any(k in (c.get("category_name") or "").upper() for k in deporte_kws)]
 
             canales = []
@@ -96,7 +105,13 @@ def obtener_canales_xtream() -> List[Dict[str, Any]]:
 
             if canales:
                 try:
-                    CACHE_CANALES.write_text(json.dumps(canales, ensure_ascii=False, indent=2), encoding="utf-8")
+                    cache_data = {
+                        "fecha_captura": fecha_hoy_iso,
+                        "timestamp": ahora_ts,
+                        "canales": canales
+                    }
+                    CACHE_CANALES.write_text(json.dumps(cache_data, ensure_ascii=False, indent=2), encoding="utf-8")
+                    log.info("Descargados y cacheados %d canales de Xtream para %s", len(canales), fecha_hoy_iso)
                 except Exception:
                     pass
                 return canales
@@ -105,42 +120,66 @@ def obtener_canales_xtream() -> List[Dict[str, Any]]:
 
     return []
 
+def detectar_lista_actualizada_hoy(canales_xtream: List[Dict[str, Any]], d_hoy: int, m_hoy: int) -> bool:
+    """Verifica si la lista contiene streams con la fecha de hoy (DD/MM)."""
+    patron1 = f"{d_hoy:02d}/{m_hoy:02d}"
+    patron2 = f"{d_hoy}/{m_hoy}"
+    coincidencias = 0
+
+    for c in canales_xtream:
+        nombre = c.get("name") or c.get("stream_name") or ""
+        cat_nombre = c.get("category_name") or ""
+        if patron1 in nombre or patron1 in cat_nombre or patron2 in nombre or patron2 in cat_nombre:
+            coincidencias += 1
+            if coincidencias >= 3:
+                return True
+    return False
+
 def procesar_streams_eventos_xtream(
     canales_xtream: List[Dict[str, Any]],
     fecha_hoy_dd_mm: str,
     fecha_hoy_iso: str,
     agenda_hoy: List[EventoAgenda],
     tz_prod: Any,
+    lista_actualizada: bool,
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     eventos_finales = []
     descartados = []
     mapa_duelos_existentes = {}
 
     p_hoy1, p_hoy2 = fecha_hoy_dd_mm.split('/')
-    f_hoy_norm = f"{int(p_hoy1):02d}/{int(p_hoy2):02d}"
+    d_hoy, m_hoy = int(p_hoy1), int(p_hoy2)
+    f_hoy_norm = f"{d_hoy:02d}/{m_hoy:02d}"
+    patron1 = f"{d_hoy:02d}/{m_hoy:02d}"
+    patron2 = f"{d_hoy}/{m_hoy}"
 
-    # REGLA ARQUITECTÓNICA UNIVERSAL:
-    # Las categorías o nombres tipo 'EVENTS 14 : DAZN 1' son CANALES DE TRANSMISIÓN, no eventos.
-    streams_candidatos = [
-        c for c in canales_xtream
-        if any(k in (c.get("category_name") or "").upper() for k in ["EVENT", "PPV", "LALIGA SUR", "M+ DAZN", "DIRECTV SUR"])
-        or any(k in (c.get("name") or "").upper() for k in ["EVENTS", "EVENTO", "PARTIDO", "VS"])
-    ]
+    if not lista_actualizada:
+        log.warning("La lista Xtream aún no tiene la actualización de hoy (%s). Omitiendo streams efímeros para evitar eventos viejos.", fecha_hoy_dd_mm)
+        return [], []
+
+    streams_candidatos = []
+    for c in canales_xtream:
+        nombre = c.get("name") or c.get("stream_name") or ""
+        cat_nombre = c.get("category_name") or ""
+        sid = str(c.get("stream_id") or c.get("id") or "")
+        if not nombre or not sid:
+            continue
+
+        meta_todo = f"{nombre} {cat_nombre}".upper()
+        if any(k in meta_todo for k in ["EVENT", "PPV", "LALIGA SUR", "DIRECTV SUR", "PARTIDO", " VS ", " V "]) or            patron1 in nombre or patron1 in cat_nombre or patron2 in nombre or patron2 in cat_nombre:
+            streams_candidatos.append(c)
 
     for c in streams_candidatos:
         nombre = c.get("name") or c.get("stream_name") or ""
         cat_nombre = c.get("category_name") or ""
-        sid = str(c.get("stream_id") or "")
-        if not nombre or not sid:
-            continue
+        sid = str(c.get("stream_id") or c.get("id") or "")
 
-        # Descartar canales de transmisión etiquetados como eventos
-        # Ej: "EVENTS 14 : Movistar DAZN 1 FHD", "01 | DAZN 1", "02 | DISNEY + (ESP)"
-        if re.search(r"^(?:EVENTS\s*\d+\s*:|0\d+\s*\|)\s*(?:Movistar|DAZN|DISNEY|LALIGA|PREMIERE|TVS|EUROSPORT|ESPN|FOX)", nombre, re.I):
+        # Descartar canales de transmisión etiquetados falsamente como eventos
+        if re.search(r"^(?:EVENTS\s*\d+\s*:|0\d+\s*\|)\s*(?:Movistar|DAZN|DISNEY|LALIGA|PREMIERE|TVS|EUROSPORT|ESPN|FOX|TUDN|GOL|DIRECTV)", nombre, re.I):
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "canal_transmision_no_evento"})
             continue
 
-        # Si la categoría tiene fecha (ej: "01/10 | EVENTOS DIARIOS 1") y no es hoy, DESCARTE TOTAL
+        # Si la categoría tiene fecha explícita y no es hoy, DESCARTE TOTAL
         m_cat_f = re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', cat_nombre)
         if m_cat_f:
             p1, p2 = m_cat_f.group(1).split('/')
@@ -149,7 +188,7 @@ def procesar_streams_eventos_xtream(
                 descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"categoria_antigua ({f_cat_norm} != {f_hoy_norm})"})
                 continue
 
-        # Si el nombre del stream tiene fecha y no es hoy, DESCARTE TOTAL
+        # Si el nombre del stream tiene fecha explícita y no es hoy, DESCARTE TOTAL
         m_f = re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', nombre)
         if m_f:
             p1, p2 = m_f.group(1).split('/')
@@ -158,7 +197,7 @@ def procesar_streams_eventos_xtream(
                 descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"fecha_antigua ({f_norm} != {f_hoy_norm})"})
                 continue
 
-        # Si no tiene fecha explícita ni duelo, verificar coincidencia obligatoria con la Agenda Maestra de hoy
+        # Extraer datos sanitizados del stream
         parsed = sanitizar_evento_crudo(nombre)
         titulo = parsed.get("titulo", nombre)
         torneo = parsed.get("torneo", "Deportes en Vivo")
@@ -170,12 +209,10 @@ def procesar_streams_eventos_xtream(
         coincide_agenda = None
         for ev in agenda_hoy:
             if local and visitante:
-                if (normalizar_texto(local) in normalizar_texto(ev.local) or normalizar_texto(local) in normalizar_texto(ev.titulo)) and \
-                   (normalizar_texto(visitante) in normalizar_texto(ev.visitante) or normalizar_texto(visitante) in normalizar_texto(ev.titulo)):
+                if (normalizar_texto(local) in normalizar_texto(ev.local) or normalizar_texto(local) in normalizar_texto(ev.titulo)) and                    (normalizar_texto(visitante) in normalizar_texto(ev.visitante) or normalizar_texto(visitante) in normalizar_texto(ev.titulo)):
                     coincide_agenda = ev
                     break
 
-        # Regla: Si el stream efímero no tiene fecha confirmada de hoy y no coincide con la agenda, se descarta
         if not m_cat_f and not m_f and not coincide_agenda:
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "stream_efimero_sin_confirmacion_hoy"})
             continue
@@ -241,43 +278,45 @@ def ejecutar_curacion():
     ahora_prod = datetime.now(tz_prod)
     fecha_hoy_iso = ahora_prod.strftime("%Y-%m-%d")
     fecha_hoy_dd_mm = ahora_prod.strftime("%d/%m")
+    d_hoy, m_hoy = int(fecha_hoy_dd_mm.split('/')[0]), int(fecha_hoy_dd_mm.split('/')[1])
+
     log.info("=== INICIANDO CURACION DEPORTIVA MULTIFUENTE (%s) ===", fecha_hoy_iso)
 
     agenda_hoy = construir_agenda_maestra_hoy(fecha_hoy_iso)
-    canales_xtream = obtener_canales_xtream()
+    canales_xtream = obtener_canales_xtream(fecha_hoy_iso)
 
     indice_canales = construir_indice_canales_lineales(canales_xtream)
     eventos_lineales = inyectar_eventos_lineales(agenda_hoy, indice_canales, APP_TIMEZONE)
 
+    lista_actualizada = detectar_lista_actualizada_hoy(canales_xtream, d_hoy, m_hoy)
+    log.info("Estado de actualizacion de lista Xtream para hoy (%s): %s", fecha_hoy_dd_mm, "ACTUALIZADA" if lista_actualizada else "PENDIENTE")
+
     eventos_xtream, descartados = procesar_streams_eventos_xtream(
-        canales_xtream, fecha_hoy_dd_mm, fecha_hoy_iso, agenda_hoy, tz_prod
+        canales_xtream, fecha_hoy_dd_mm, fecha_hoy_iso, agenda_hoy, tz_prod, lista_actualizada
     )
 
-    todos_eventos = list(eventos_lineales)
-    for ex in eventos_xtream:
-        tit_ex = normalizar_texto(ex["titulo"])
-        fusionado = False
-        for el in todos_eventos:
-            if tit_ex == normalizar_texto(el["titulo"]) and el["hora_local_producto"] == ex["hora_local_producto"]:
-                for f in ex["fuentes"]:
-                    if f["id_xtream"] not in [x["id_xtream"] for x in el["fuentes"]]:
-                        el["fuentes"].append(f)
-                fusionado = True
-                break
-        if not fusionado:
-            todos_eventos.append(ex)
+    todos_eventos = list(eventos_lineales) + list(eventos_xtream)
 
-    # FASE 2: CURACIÓN Y PERFECCIONAMIENTO SEMÁNTICO BASE
-    log.info("Fase 2: Fusión temporal, normalización y descarte de duplicados...")
+    # FASE 2: CURACIÓN SEMÁNTICA Y DEDUPLICACIÓN POR ENTIDAD DEPORTIVA
+    log.info("Fase 2: Fusión temporal, normalización y deduplicación por entidad...")
     eventos_fase2 = post_procesar_y_curar_eventos(todos_eventos)
 
-    # FASE 3: AUDITORÍA Y PERFECCIONAMIENTO FINAL CON AGY (Inteligencia Artificial)
+    # FASE 3: AUDITORÍA Y PERFECCIONAMIENTO FINAL CON AGY
     log.info("Fase 3: Auditoría y perfeccionamiento semántico integral con AGY...")
     eventos_pulidos = auditar_catalogo_con_agy(eventos_fase2, fecha_hoy_iso)
 
-    # Re-resolver logos si AGY afinó la categoría o torneo
+    # FASE 4: GARANTÍA GRÁFICA PARA ANDROID TV (EventoCard.kt)
     for ev in eventos_pulidos:
-        ev["logo_torneo"] = resolver_logo_torneo(ev.get("torneo") or ev["titulo"], ev["categoria"])
+        cat = ev.get("categoria", "")
+        tor = ev.get("torneo") or ev["titulo"]
+        loc = ev.get("equipo_local", "")
+        vis = ev.get("equipo_visitante", "")
+
+        ev["logo_torneo"] = resolver_logo_torneo(tor, cat) or ev.get("logo_torneo", "")
+        if loc:
+            ev["logo_local"] = resolver_logo_equipo(loc, cat, tor) or ev.get("logo_local", "")
+        if vis:
+            ev["logo_visitante"] = resolver_logo_equipo(vis, cat, tor) or ev.get("logo_visitante", "")
         ev["banner"] = ev["logo_torneo"]
 
     # Validar unicidad estricta de IDs
@@ -294,7 +333,7 @@ def ejecutar_curacion():
     eventos_verificados.sort(key=lambda x: x.get("hora_utc", ""))
 
     salida_final = {
-        "version": "3.0-curador-universal-agy",
+        "version": "3.1-curador-tv-universal",
         "generado_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "zona_horaria_producto": APP_TIMEZONE,
         "fecha_local_producto": fecha_hoy_iso,
@@ -303,6 +342,7 @@ def ejecutar_curacion():
         "metricas": {
             "total_agenda_maestra": len(agenda_hoy),
             "total_canales_xtream": len(canales_xtream),
+            "lista_xtream_actualizada_hoy": lista_actualizada,
             "eventos_lineales_inyectados": len(eventos_lineales),
             "eventos_xtream_aprobados": len(eventos_xtream),
             "eventos_descartados_stale": len(descartados),
@@ -310,13 +350,14 @@ def ejecutar_curacion():
         }
     }
 
-    Path("eventos_hoy.json").write_text(json.dumps(salida_final, ensure_ascii=False, indent=2), encoding="utf-8")
-    Path("eventos_descartados.json").write_text(json.dumps(descartados, ensure_ascii=False, indent=2), encoding="utf-8")
-    Path("meta_curador.json").write_text(json.dumps(salida_final["metricas"], ensure_ascii=False, indent=2), encoding="utf-8")
+    (REPO_DIR / "eventos_hoy.json").write_text(json.dumps(salida_final, ensure_ascii=False, indent=2), encoding="utf-8")
+    (REPO_DIR / "eventos_descartados.json").write_text(json.dumps(descartados, ensure_ascii=False, indent=2), encoding="utf-8")
+    (REPO_DIR / "meta_curador.json").write_text(json.dumps(salida_final["metricas"], ensure_ascii=False, indent=2), encoding="utf-8")
     guardar_cache_logos()
 
-    log.info("=== CURACION COMPLETADA CON EXITO (UNIVERSAL AGY) ===")
-    log.info("Eventos publicados: %d | Descartados: %d", len(eventos_verificados), len(descartados))
+    log.info("=== CURACION COMPLETADA CON EXITO ===")
+    log.info("Eventos publicados: %d | Descartados: %d | Xtream actualizada: %s",
+             len(eventos_verificados), len(descartados), lista_actualizada)
 
 if __name__ == "__main__":
     ejecutar_curacion()

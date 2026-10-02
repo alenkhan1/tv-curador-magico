@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+﻿#!/usr/bin/env bash
 set -e
 
 REPO_DIR="/home/ubuntu/tv-curador-magico"
@@ -6,9 +6,11 @@ cd "$REPO_DIR"
 
 echo "=== [$(date)] Sincronizando con origin/main ==="
 git fetch origin main
-git rebase origin/main || git rebase --abort
+git checkout -- . 2>/dev/null || true
+git reset --hard origin/main
 
 echo "=== [$(date)] Ejecutando Curador Deportivo Limpio ==="
+export PATH="$HOME/.local/bin:$PATH"
 python3 curador_eventos.py
 
 echo "=== [$(date)] Verificando integridad de eventos_hoy.json ==="
@@ -23,7 +25,7 @@ print(f'OK: {len(evs)} eventos verificados, 0 colisiones de ID')
 "
 
 echo "=== [$(date)] Publicando cambios a GitHub ==="
-git add eventos_hoy.json eventos_descartados.json meta_curador.json logos_cache.json || true
+git add eventos_hoy.json eventos_descartados.json meta_curador.json logos_cache.json 2>/dev/null || true
 if git status --porcelain | grep -q .; then
     git commit -m "Cartelera deportiva actualizada $(date -u '+%Y-%m-%d %H:%M UTC')"
     git pull --rebase origin main || true
