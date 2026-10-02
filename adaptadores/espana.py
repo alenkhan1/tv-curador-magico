@@ -16,16 +16,16 @@ log = logging.getLogger("adaptador_espana")
 PROGRAMAS_NO_DEPORTIVOS = [
     "ESTADIO 2", "TELEDETALLE", "RESUMEN", "INFORMATIVO", "NOTICIAS", "NOTICIAS TELEDEPORTE",
     "EL DIA DESPUES", "UNIVERSO VALDANO", "PLANETA OLIMPICO", "CONEXION TDP", "ZONA BALONCESTO",
-    "PROGRAMA", "PREVIO", "POST", "ESPECIAL", "MAGAZINE", "REPORTAJE"
+    "PROGRAMA", "PREVIO", "POST", "ESPECIAL", "MAGAZINE", "REPORTAJE",
+    "CONTENDER SERIES", "ULTIMATE FIGHTER", "UFC COUNTDOWN", "UFC REWIND", "UFC UNLEASHED"
 ]
 
 def _es_programa_no_deportivo(titulo: str) -> bool:
     t_u = normalizar_texto(titulo).upper()
     for prog in PROGRAMAS_NO_DEPORTIVOS:
-        if prog == t_u or f"{prog}:" in t_u or f"{prog} " in t_u:
+        if prog == t_u or f"{prog}:" in t_u or f"{prog} " in t_u or prog in t_u:
             return True
     return False
-
 def _crear_contexto_ssl():
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
@@ -173,7 +173,7 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
                 dep = "Tiro"
             elif any(k in u_tit for k in ["ASOBAL", "BALONMANO"]):
                 dep = "Balonmano"
-            elif any(k in u_tit for k in ["UFC", "CONTENDER", "COMBATE", "BOXEO"]):
+            elif any(k in u_tit for k in ["UFC", "COMBATE", "BOXEO"]):
                 dep = "Combate"
 
             try:
