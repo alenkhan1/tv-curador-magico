@@ -49,7 +49,7 @@ REGLAS_CANALES: Dict[str, str] = {
     "DAZN 2": r"DAZN\s*2\b",
     "DAZN F1": r"DAZN\s*F1|DAZN\s*FORMULA\s*1",
     "MOVISTAR #VAMOS": r"\bVAMOS\b",
-    "MOVISTAR DEPORTES": r"M\+\s*DEPORTES|MOVISTAR\s*DEPORTES",
+    "MOVISTAR DEPORTES": r"\bM\.\s*DEPORTES\b|\bM\+\s*DEPORTES\b|\bMOVISTAR\s*DEPORTES\b",
     "MOVISTAR LALIGA": r"M\+\s*LALIGA|MOVISTAR\s*LALIGA",
     "MOVISTAR LIGA DE CAMPEONES": r"LIGA\s*DE\s*CAMPEONES",
     "SKY SPORTS MAIN EVENT": r"SKY\s*SPORTS\s*MAIN\s*EVENT",
@@ -62,9 +62,9 @@ REGLAS_CANALES: Dict[str, str] = {
 CANALES_SURAMERICA_TAGS = {"WIN SPORTS+", "WIN SPORTS", "DSPORTS", "DSPORTS 2", "DSPORTS +", "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN PREMIUM ARGENTINA", "TYC SPORTS", "TNT SPORTS"}
 EXCLUSIONES_GEO_SURAMERICA = re.compile(r"\b(USA|US|MEX|MX|MEXICO|CARIBE|BRASIL|BRAZIL|UK)\b", re.I)
 
-# Canales que pertenecen a España: excluimos feeds de Perú, Argentina, Colombia, Chile, México
+# Canales que pertenecen a España: excluimos feeds de Perú, Argentina, Colombia, Chile, México y categorias latinoamericanas
 CANALES_ESPANA_TAGS = {"MOVISTAR DEPORTES", "MOVISTAR #VAMOS", "MOVISTAR LALIGA", "MOVISTAR LIGA DE CAMPEONES", "DAZN 1", "DAZN 2", "DAZN LALIGA", "DAZN F1", "EUROSPORT 1", "EUROSPORT 2", "TELEDEPORTE"}
-EXCLUSIONES_GEO_ESPANA = re.compile(r"\b(PERU|PERÚ|ARGENTINA|ARG|COLOMBIA|COL|CHILE|CHI|MEX|MEXICO|USA|CANADA)\b", re.I)
+EXCLUSIONES_GEO_ESPANA = re.compile(r"\b(PERU|PERÚ|ARGENTINA|ARG|COLOMBIA|COL|CHILE|CHI|MEX|MEXICO|USA|CANADA|LATINO|LATAM)\b", re.I)
 
 def normalizar(s: str) -> str:
     if not s:

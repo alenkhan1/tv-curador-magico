@@ -13,6 +13,19 @@ from .modelos import EventoAgenda, HEADERS_WEB, normalizar_texto, obtener_tz
 
 log = logging.getLogger("adaptador_espana")
 
+PROGRAMAS_NO_DEPORTIVOS = [
+    "ESTADIO 2", "TELEDETALLE", "RESUMEN", "INFORMATIVO", "NOTICIAS", "NOTICIAS TELEDEPORTE",
+    "EL DIA DESPUES", "UNIVERSO VALDANO", "PLANETA OLIMPICO", "CONEXION TDP", "ZONA BALONCESTO",
+    "PROGRAMA", "PREVIO", "POST", "ESPECIAL", "MAGAZINE", "REPORTAJE"
+]
+
+def _es_programa_no_deportivo(titulo: str) -> bool:
+    t_u = normalizar_texto(titulo).upper()
+    for prog in PROGRAMAS_NO_DEPORTIVOS:
+        if prog == t_u or f"{prog}:" in t_u or f"{prog} " in t_u:
+            return True
+    return False
+
 def _crear_contexto_ssl():
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
@@ -54,6 +67,13 @@ def obtener_movistar_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
         slug_dep = m_url.group(1).lower() if m_url else "deportes"
         slug_torneo = m_url.group(2).replace("-", " ").title() if m_url else ""
 
+        # En España el snooker/billar se emite por Eurosport, no por Movistar Deportes
+        if "snooker" in slug_dep or "billar" in slug_dep or "shenzhen" in slug_torneo.lower():
+            continue
+
+        if _es_programa_no_deportivo(titulo_raw):
+            continue
+
         dep = "Otros Deportes"
         if "padel" in slug_dep or "pádel" in slug_dep:
             dep = "Pádel"
@@ -65,8 +85,6 @@ def obtener_movistar_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             dep = "Fútbol"
         elif "ciclismo" in slug_dep:
             dep = "Ciclismo"
-        elif "snooker" in slug_dep or "billar" in slug_dep:
-            dep = "Snooker"
         elif "golf" in slug_dep:
             dep = "Golf"
         elif "balonmano" in slug_dep or "asobal" in slug_torneo.lower():
@@ -138,6 +156,9 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             titulo = html_lib.unescape(m_tit.group(1).strip())
             titulo = re.sub(r"\s*-\s*EN DIRECTO.*", "", titulo, flags=re.I).strip()
 
+            if _es_programa_no_deportivo(titulo):
+                continue
+
             dep = "Otros Deportes"
             u_tit = titulo.upper()
             if any(k in u_tit for k in ["SNOOKER", "BILLAR", "SHENZHEN"]):
@@ -201,6 +222,11 @@ def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
         hora_str = m_hora.group(1)
         titulo = html_lib.unescape(m_tit.group(1).strip())
         titulo = re.sub(r"\s*-\s*EN DIRECTO.*", "", titulo, flags=re.I).strip()
+
+        # Descartar programas informativos, magazines o no deportivos (ej. Estadio 2)
+        if _es_programa_no_deportivo(titulo):
+            log.info("Descartando programa no deportivo de Teledeporte: '%s'", titulo)
+            continue
 
         dep = "Otros Deportes"
         u_tit = titulo.upper()
@@ -273,6 +299,9 @@ def obtener_sky_sports_uk_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
         raw_comp = " ".join(re.sub(r"<[^>]+>", " ", tds[4]).split())
         raw_canales = " ".join(re.sub(r"<[^>]+>", " ", tds[5]).split())
 
+        if _es_programa_no_deportivo(raw_detalles):
+            continue
+
         m_h = re.search(r"([0-9]{1,2}:[0-9]{2})", raw_tiempo)
         if not m_h:
             continue
@@ -295,7 +324,7 @@ def obtener_sky_sports_uk_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
         u_todo = f"{raw_detalles} {raw_comp}".upper()
         if "F1" in u_todo or "PRACTICE" in u_todo or "GRAND PRIX" in u_todo:
             dep = "Fórmula 1"
-        elif "GOLF" in u_todo or "PGA" in u_todo or "DUNHILL" in u_todo:
+        elif "GOLF" in u_todo or "PGA" in u_todo or "DUNHILL" in u_todo or "UTAH" in u_todo:
             dep = "Golf"
         elif "DARTS" in u_todo:
             dep = "Dardos"
@@ -327,12 +356,6 @@ def obtener_sky_sports_uk_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
     return eventos
 
 def obtener_dazn_espana_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
-    """
-    Extrae eventos de DAZN estrictamente lineales y limitados a hoy:
-    - Escanea /deporte filtrando por startDate == hoy.
-    - Asigna canales tradicionales (DAZN 1, DAZN 2, DAZN F1, DAZN LaLiga).
-    - Descarte absoluto de transmisiones exclusivas por app sin canal lineal.
-    """
     url_deporte = "https://www.futbolenlatv.es/deporte"
     html_dep = _descargar_html(url_deporte)
     if not html_dep:
@@ -347,12 +370,10 @@ def obtener_dazn_espana_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
         if not m_start or m_start.group(1) != fecha_hoy_iso:
             continue
 
-        # Obtener canales de emisión
         canales_raw = re.findall(r'<li[^>]*title=["\']([^"\']+)["\']', f)
         if not any("DAZN" in c for c in canales_raw):
             continue
 
-        # Detectar canales lineales tradicionales
         canales_lineales = []
         for c in canales_raw:
             c_u = c.upper()
@@ -365,11 +386,7 @@ def obtener_dazn_espana_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             elif "DAZN F1" in c_u:
                 canales_lineales.append("DAZN F1")
 
-        # Si el evento no tiene canal lineal explícito, pero es un evento mayor transmitido hoy por DAZN:
-        # En DAZN España las señales principales en directo por deco son DAZN 1 y DAZN 2
         if not canales_lineales:
-            # Solo si no es un partido menor exclusivo de web
-            # Asignar a DAZN 1 / DAZN 2 para disponibilidad en TV lineal
             canales_lineales = ["DAZN 1", "DAZN 2"]
 
         m_name = re.search(r'itemprop=["\']name["\']\s+content=["\']([^"\']+)["\']', f)
@@ -380,11 +397,12 @@ def obtener_dazn_espana_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
         titulo_partido = html_lib.unescape(m_name.group(1).strip())
         hora_str = m_hora.group(1).strip()
 
-        # Competición
+        if _es_programa_no_deportivo(titulo_partido):
+            continue
+
         m_comp = re.search(r'title=["\']([^"\']+)["\']\s+class=["\']js-webp-default["\']', f)
         torneo = html_lib.unescape(m_comp.group(1).strip()) if m_comp else "Deportes"
 
-        # Duelo
         duelo = re.split(r"\s+-\s+|\s+vs\.?\s+", titulo_partido)
         loc, vis = (duelo[0].strip(), duelo[1].strip()) if len(duelo) == 2 else ("", "")
 

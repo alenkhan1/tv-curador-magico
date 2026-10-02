@@ -4,7 +4,7 @@ Curador Deportivo Principal Multifuente con 2 Fases (Ingesta + Curación Semánt
 1. Conecta con el proveedor Xtream (player_api.php o M3U, con cache local).
 2. Procesa la Agenda Maestra de directos de hoy mediante los adaptadores web verificados.
 3. Inyecta los canales lineales deportivos con sus eventos confirmados de hoy (Mitad 1).
-4. Procesa y filtra los streams efímeros de eventos Xtream (Mitad 2).
+4. Procesa y filtra los streams efímeros de eventos Xtream (Mitad 2), validando fechas estrictas en nombre Y categoría.
 5. Consolida, deduplica y ejecuta la FASE 2 de Curación Semántica y Perfeccionamiento.
 6. Garantiza IDs 100% únicos, banderas oficiales en selecciones y cero logos basura.
 """
@@ -135,6 +135,9 @@ def procesar_streams_eventos_xtream(
     descartados = []
     mapa_duelos_existentes = {}
 
+    p_hoy1, p_hoy2 = fecha_hoy_dd_mm.split('/')
+    f_hoy_norm = f"{int(p_hoy1):02d}/{int(p_hoy2):02d}"
+
     streams_eventos = [
         c for c in canales_xtream
         if any(k in (c.get("category_name") or "").upper() for k in ["EVENT", "PPV", "LALIGA SUR", "M+ DAZN", "DIRECTV SUR"])
@@ -144,17 +147,30 @@ def procesar_streams_eventos_xtream(
 
     for c in streams_eventos:
         nombre = c.get("name") or c.get("stream_name") or ""
+        cat_nombre = c.get("category_name") or ""
         sid = str(c.get("stream_id") or "")
         if not nombre or not sid:
             continue
 
+        # Descartar canales genéricos o placeholders de OTT
+        if re.search(r"\bDISNEY\s*\+\s*\(ESP|\bPREMIERE\s*Solo\s*eventos|\bTVS\s*Sports\b", nombre, re.I):
+            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "stream_placeholder_ott"})
+            continue
+
+        # Validar fecha en CATEGORÍA (ej: "01/10 | EVENTOS DIARIOS 1")
+        m_cat_f = re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', cat_nombre)
+        if m_cat_f:
+            p1, p2 = m_cat_f.group(1).split('/')
+            f_cat_norm = f"{int(p1):02d}/{int(p2):02d}"
+            if f_cat_norm != f_hoy_norm:
+                descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"categoria_antigua ({f_cat_norm} != {f_hoy_norm})"})
+                continue
+
+        # Validar fecha en NOMBRE del stream (ej: "07:45 01/10 | Bank of Utah")
         m_f = re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', nombre)
         if m_f:
-            f_encontrada = m_f.group(1)
-            p1, p2 = f_encontrada.split('/')
+            p1, p2 = m_f.group(1).split('/')
             f_norm = f"{int(p1):02d}/{int(p2):02d}"
-            p_hoy1, p_hoy2 = fecha_hoy_dd_mm.split('/')
-            f_hoy_norm = f"{int(p_hoy1):02d}/{int(p_hoy2):02d}"
             if f_norm != f_hoy_norm:
                 descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"fecha_antigua ({f_norm} != {f_hoy_norm})"})
                 continue
@@ -167,8 +183,10 @@ def procesar_streams_eventos_xtream(
         m_h = re.search(r"([0-2]?[0-9]:[0-5][0-9])", nombre)
         hora_str = m_h.group(1) if m_h else parsed.get("hora", "00:00")
 
-        if not hora_str:
-            hora_str = "00:00"
+        # Regla estricta: streams efímeros que no tengan fecha y tengan hora 00:00 son canales 24/7 mal etiquetados
+        if not m_cat_f and not m_f and (not m_h or hora_str == "00:00"):
+            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "stream_sin_fecha_hora_fija"})
+            continue
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
@@ -185,7 +203,7 @@ def procesar_streams_eventos_xtream(
                     coincide_agenda = ev
                     break
 
-        cat = coincide_agenda.deporte if coincide_agenda else "Fútbol"
+        cat = coincide_agenda.deporte if coincide_agenda else "Otros Deportes"
         tor = coincide_agenda.torneo if coincide_agenda else torneo
 
         clave_duelo = f"{normalizar_texto(local)}_vs_{normalizar_texto(visitante)}" if local and visitante else ""
@@ -283,7 +301,7 @@ def ejecutar_curacion():
     eventos_verificados.sort(key=lambda x: x.get("hora_utc", ""))
 
     salida_final = {
-        "version": "2.2-curador-semantico-perfecto",
+        "version": "2.3-curador-estricto-hoy",
         "generado_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "zona_horaria_producto": APP_TIMEZONE,
         "fecha_local_producto": fecha_hoy_iso,
