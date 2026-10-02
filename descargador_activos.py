@@ -29,7 +29,7 @@ TORNEOS_CONFIG = [
     {
         'slug': 'fifa.png',
         'url': 'https://commons.wikimedia.org/wiki/Special:FilePath/FIFA_logo_without_slogan.svg?width=400',
-        'aliases': ['FIFA', 'AMISTOSO INTERNACIONAL', 'AMISTOSOS INTERNACIONALES', 'FECHA FIFA', 'PARTIDOS AMISTOSOS', 'INTERNATIONAL FRIENDLIES', 'FRIENDLY MATCH']
+        'aliases': ['FIFA', 'AMISTOSO', 'AMISTOSOS', 'AMISTOSO INTERNACIONAL', 'AMISTOSOS INTERNACIONALES', 'FECHA FIFA', 'PARTIDOS AMISTOSOS', 'INTERNATIONAL FRIENDLIES', 'FRIENDLY MATCH']
     },
     # NCAA / Deportes Universitarios USA
     {
