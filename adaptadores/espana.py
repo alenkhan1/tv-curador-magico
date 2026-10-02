@@ -200,48 +200,91 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
     log.info("Eurosport (MundoDeportivo): %d directos confirmados", len(eventos))
     return eventos
 
+def parse_rtve_teledeporte_title(raw: str) -> Dict[str, str]:
+    m_desde = re.search(r"\s+DESDE\s+.*$", raw, re.I)
+    sin_desde = raw[:m_desde.start()].strip() if m_desde else raw.strip()
+    
+    partes = re.split(r"\s*[\u2013\u2014]\s*", sin_desde)
+    if len(partes) == 2:
+        izq, vis = partes[0].strip(), partes[1].strip()
+        sin_dep = re.sub(r"^(?:BALONCESTO|BALONMANO|FÚTBOL|FUTBOL)\s+", "", izq, flags=re.I).strip()
+        m_jornada = re.search(r"^(.*?)\s+(\d+[ªºa-zA-Z]*\s+JORNADA|\d+[ºªa-zA-Z]*\s+PARTIDO)\s+(.*)$", sin_dep, re.I)
+        if m_jornada:
+            torneo = f"{m_jornada.group(1)} {m_jornada.group(2)}".strip()
+            loc = m_jornada.group(3).strip()
+        else:
+            torneo = sin_dep
+            loc = izq
+
+        return {
+            "tipo": "duelo",
+            "titulo": f"{loc.title()} vs {vis.title()}",
+            "local": loc.title(),
+            "visitante": vis.title(),
+            "torneo": torneo.title() or "Deportes",
+        }
+    else:
+        return {
+            "tipo": "circuito",
+            "titulo": sin_desde.title(),
+            "local": "",
+            "visitante": "",
+            "torneo": sin_desde.title(),
+        }
+
 def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
-    url = "https://www.mundodeportivo.com/guia-tv/canal/teledeporte"
-    html = _descargar_html(url)
-    if not html or "DIRECTO" not in html.upper():
+    """Obtiene la programación 100% oficial de Teledeporte directamente de RTVE."""
+    tz_madrid = obtener_tz("Europe/Madrid")
+    try:
+        dt_hoy = datetime.fromisoformat(fecha_hoy_iso)
+        dias_semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
+        dia_str = dias_semana[dt_hoy.weekday()]
+    except Exception:
+        dia_str = "viernes"
+
+    url = f"https://www.rtve.es/tve/b/teledeporte/modulos/tdp_table_parrilla.php?dia={dia_str}"
+    req = urllib.request.Request(url, headers=HEADERS_WEB)
+    try:
+        with urllib.request.urlopen(req, timeout=12, context=_crear_contexto_ssl()) as resp:
+            raw = resp.read()
+            text_html = raw.decode("iso-8859-1", errors="ignore")
+    except Exception as e:
+        log.warning("Error descargando parrilla oficial de Teledeporte (RTVE): %s", e)
         return []
 
+    clean = re.sub(r"<[^>]+>", " ", text_html)
+    clean = html_lib.unescape(clean)
+
+    matches = re.findall(r"([0-2][0-9]:[0-5][0-9])\s+(.*?)(?=[0-2][0-9]:[0-5][0-9]|$)", clean, flags=re.S)
     eventos = []
-    tz_madrid = obtener_tz("Europe/Madrid")
-    items = re.findall(r"<li[^>]*class=[^>]*prow[^>]*>(.*?)</li>", html, flags=re.S)
 
-    for item in items:
-        if "DIRECTO" not in item.upper():
+    for hora_str, contenido in matches:
+        c_clean = " ".join(contenido.split()).strip()
+        # Solo eventos estrictamente en DIRECTO según la parrilla oficial
+        if "DIRECTO" not in c_clean.upper():
             continue
 
-        m_hora = re.search(r"([0-9]{1,2}:[0-9]{2})", item)
-        m_tit = re.search(r"class=[^>]*prow__title[^>]*>([^<]+)</a>", item)
-        if not m_hora or not m_tit:
+        raw_item = re.sub(r"\bDIRECTO\b\s*", "", c_clean, flags=re.I).strip()
+        if _es_programa_no_deportivo(raw_item) or any(k in raw_item.upper() for k in ["JUEGO DE NACIONES", "ESTADIO 2", "INFORMATIVO", "NOTICIAS", "RUEDA DE PRENSA"]):
+            log.info("Descartando programa/informativo oficial de Teledeporte: '%s'", raw_item)
             continue
 
-        hora_str = m_hora.group(1)
-        titulo = html_lib.unescape(m_tit.group(1).strip())
-        titulo = re.sub(r"\s*-\s*EN DIRECTO.*", "", titulo, flags=re.I).strip()
-
-        # Descartar programas informativos, magazines o no deportivos (ej. Estadio 2)
-        if _es_programa_no_deportivo(titulo):
-            log.info("Descartando programa no deportivo de Teledeporte: '%s'", titulo)
-            continue
-
+        u_tit = raw_item.upper()
         dep = "Otros Deportes"
-        u_tit = titulo.upper()
-        if any(k in u_tit for k in ["LIGA ENDESA", "BALONCESTO", "ACB", "BASKET", "LIGA U"]):
+        if any(k in u_tit for k in ["BALONCESTO", "BASKET", "LIGA ENDESA", "ACB", "LIGA U", "WNBA", "NBA"]):
             dep = "Baloncesto"
-        elif any(k in u_tit for k in ["ASOBAL", "BALONMANO"]):
+        elif any(k in u_tit for k in ["BALONMANO", "ASOBAL", "HANDBALL"]):
             dep = "Balonmano"
-        elif any(k in u_tit for k in ["CICLISMO", "VUELTA"]):
-            dep = "Ciclismo"
-        elif any(k in u_tit for k in ["NATACION", "SWIMMING", "AQUATICS"]):
+        elif any(k in u_tit for k in ["NATACIÓN", "NATACION", "WATERPOLO", "AQUATICS", "SWIMMING"]):
             dep = "Natación"
-        elif any(k in u_tit for k in ["HIPICA", "CSIO"]):
-            dep = "Hípica"
-        elif any(k in u_tit for k in ["FUTBOL", "FÚTBOL"]):
+        elif any(k in u_tit for k in ["CICLISMO", "VUELTA", "TOUR", "GIRO"]):
+            dep = "Ciclismo"
+        elif any(k in u_tit for k in ["FÚTBOL", "FUTBOL"]):
             dep = "Fútbol"
+        elif any(k in u_tit for k in ["TENIS", "ATP", "WTA"]):
+            dep = "Tenis"
+
+        parsed = parse_rtve_teledeporte_title(raw_item)
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
@@ -250,30 +293,21 @@ def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
         except Exception:
             continue
 
-        duelo = re.split(r"\s+(?:vs\.?|v\.?|-)\s+", titulo, flags=re.I)
-        if len(duelo) == 2 and dep in ["Baloncesto", "Balonmano", "Fútbol"]:
-            loc, vis = duelo[0].strip(), duelo[1].strip()
-            loc = re.sub(r"^(?:Liga\s+[A-Za-z0-9\s]+:)\s*", "", loc, flags=re.I).strip()
-            tipo = "duelo"
-        else:
-            loc, vis = "", ""
-            tipo = "circuito"
-
         ev = EventoAgenda(
-            titulo=titulo,
+            titulo=parsed["titulo"],
             deporte=dep,
-            torneo=titulo,
-            local=loc,
-            visitante=vis,
+            torneo=parsed["torneo"],
+            local=parsed["local"],
+            visitante=parsed["visitante"],
             hora_utc=hora_utc,
             canales=["TELEDEPORTE"],
             duracion_min=120,
-            fuente="mundodeportivo_teledeporte",
-            tipo_evento=tipo,
+            fuente="rtve_teledeporte_oficial",
+            tipo_evento=parsed["tipo"],
         )
         eventos.append(ev)
 
-    log.info("Teledeporte: %d directos confirmados", len(eventos))
+    log.info("Teledeporte oficial (RTVE): %d directos confirmados", len(eventos))
     return eventos
 
 def obtener_sky_sports_uk_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
