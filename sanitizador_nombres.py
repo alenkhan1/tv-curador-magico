@@ -12,6 +12,18 @@ import re
 from typing import Dict, Any, Optional
 
 DEPORTES_MAP = {
+    'FÚTBOL AMERICANO': 'Fútbol Americano',
+    'FUTBOL AMERICANO': 'Fútbol Americano',
+    'F AMERICANO': 'Fútbol Americano',
+    'COLLEGE FOOTBALL': 'Fútbol Americano',
+    'NCAA FOOTBALL': 'Fútbol Americano',
+    'NCAA FÚTBOL AMERICANO': 'Fútbol Americano',
+    'NCAA FUTBOL AMERICANO': 'Fútbol Americano',
+    'NFL': 'Fútbol Americano',
+    'NCAAF': 'Fútbol Americano',
+    'CFL': 'Fútbol Americano',
+    'AFL': 'Fútbol Americano',
+    'F AUSTRALIANO': 'Fútbol Americano',
     'WNBA': 'Baloncesto',
     'NBA': 'Baloncesto',
     'BASKETBALL': 'Baloncesto',
@@ -142,9 +154,9 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
 
     # 2. Detección de Deporte Precisa (sin forzar fútbol por 'vs')
     deporte = 'Otros Deportes'
-    for k, v in DEPORTES_MAP.items():
-        if re.search(rf'\b{k}\b', texto_completo.upper()):
-            deporte = v
+    for k in sorted(DEPORTES_MAP.keys(), key=len, reverse=True):
+        if re.search(rf'\b{re.escape(k)}\b', texto_completo.upper()):
+            deporte = DEPORTES_MAP[k]
             break
 
     # Si aún no tiene deporte, buscar indicios inequívocos

@@ -299,6 +299,19 @@ def procesar_streams_eventos_xtream(
                     coincide_agenda = ev
                     break
 
+        # REGLA UNIVERSAL: Deportes con calendario oficial cerrado (Formula 1, MotoGP)
+        # Si un stream dice ser de F1 o MotoGP pero no existe ninguna sesion oficial hoy,
+        # es con total certeza una repeticion/grabacion antigua con fecha erronea del proveedor.
+        es_motor_cerrado = any(k in nombre.upper() or k in parsed.get("titulo", "").upper() for k in ["F1", "FORMULA 1", "FÓRMULA 1", "MOTOGP", "MOTO GP"]) or                            (str(c.get('category_id') or '') in ['2', '129'] and bool(re.search(r"\b(F1|MOTOGP)\b", nombre, re.I)))
+        if es_motor_cerrado and not coincide_agenda:
+            tiene_sesion_oficial = any(
+                any(k in ev.deporte.upper() or k in ev.torneo.upper() for k in ["F1", "FORMULA 1", "MOTOGP", "MOTO GP"])
+                for ev in agenda_hoy
+            )
+            if not tiene_sesion_oficial:
+                descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "motor_sin_sesion_en_calendario_oficial_hoy"})
+                continue
+
         if not m_cat_f and not m_f and not coincide_agenda:
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "stream_efimero_sin_confirmacion_hoy"})
             continue
