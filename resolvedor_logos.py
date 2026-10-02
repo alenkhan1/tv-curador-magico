@@ -35,13 +35,14 @@ def _http_get_json(url: str, headers: dict | None = None, timeout: int = 4) -> d
 
 
 
-# Cargar .env si existe en el entorno
-_env_file = Path(".env")
+# Cargar .env si existe en el directorio del script
+_env_file = Path(__file__).resolve().parent / ".env"
 if _env_file.exists():
     for _line in _env_file.read_text(encoding="utf-8").splitlines():
         if "=" in _line and not _line.strip().startswith("#"):
             _k, _v = _line.split("=", 1)
-            os.environ.setdefault(_k.strip(), _v.strip())
+            os.environ[_k.strip()] = _v.strip()
+
 
 ARCHIVO_CACHE_LOGOS = Path(os.environ.get("ARCHIVO_CACHE_LOGOS", "logos_cache.json"))
 THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "3").strip()
