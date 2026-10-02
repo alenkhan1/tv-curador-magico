@@ -159,8 +159,12 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             if _es_programa_no_deportivo(titulo):
                 continue
 
-            dep = "Otros Deportes"
             u_tit = titulo.upper()
+            if "ASOBAL" in u_tit:
+                # La Liga ASOBAL se emite exclusivamente en abierto por Teledeporte en TV lineal en España
+                continue
+
+            dep = "Otros Deportes"
             if any(k in u_tit for k in ["SNOOKER", "BILLAR", "SHENZHEN"]):
                 dep = "Snooker"
             elif any(k in u_tit for k in ["CICLISMO", "GIRO", "TOUR", "VUELTA", "CROSS COUNTRY", "LAKE PLACID"]):
@@ -171,7 +175,7 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
                 dep = "Escalada"
             elif any(k in u_tit for k in ["TIRO", "SKEET"]):
                 dep = "Tiro"
-            elif any(k in u_tit for k in ["ASOBAL", "BALONMANO"]):
+            elif "BALONMANO" in u_tit:
                 dep = "Balonmano"
             elif any(k in u_tit for k in ["UFC", "CONTENDER", "COMBATE", "BOXEO"]):
                 dep = "Combate"

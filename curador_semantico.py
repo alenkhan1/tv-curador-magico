@@ -69,11 +69,59 @@ def limpiar_texto(s: str) -> str:
     desescapado = html_lib.unescape(s)
     return " ".join(desescapado.split()).strip()
 
+SINONIMOS_EQUIPOS = {
+    "KAZAKHSTAN": "KAZAJISTAN",
+    "MOLDOVA": "MOLDAVIA",
+    "CYPRUS": "CHIPRE",
+    "BELARUS": "BIELORRUSIA",
+    "NORTHERN IRELAND": "IRLANDA DEL NORTE",
+    "IRELAND": "IRLANDA",
+    "SCOTLAND": "ESCOCIA",
+    "WALES": "GALES",
+    "NETHERLANDS": "PAISES BAJOS",
+    "GERMANY": "ALEMANIA",
+    "FRANCE": "FRANCIA",
+    "SPAIN": "ESPANA",
+    "ITALY": "ITALIA",
+    "SWITZERLAND": "SUIZA",
+    "SWEDEN": "SUECIA",
+    "NORWAY": "NORUEGA",
+    "DENMARK": "DINAMARCA",
+    "POLAND": "POLONIA",
+    "CZECH REPUBLIC": "REPUBLICA CHECA",
+    "CZECHIA": "REPUBLICA CHECA",
+    "CROATIA": "CROACIA",
+    "GREECE": "GRECIA",
+    "TURKEY": "TURQUIA",
+    "BELGIUM": "BELGICA",
+    "AUSTRIA": "AUSTRIA",
+    "HUNGARY": "HUNGRIA",
+    "ROMANIA": "RUMANIA",
+    "BULGARIA": "BULGARIA",
+    "ICELAND": "ISLANDIA",
+    "LITHUANIA": "LITUANIA",
+    "LATVIA": "LETONIA",
+    "ESTONIA": "ESTONIA",
+    "SLOVAKIA": "ESLOVAQUIA",
+    "SLOVENIA": "ESLOVENIA",
+    "ALBANIA": "ALBANIA",
+    "BOSNIA": "BOSNIA",
+    "AZERBAIJAN": "AZERBAIYAN",
+    "GEORGIA": "GEORGIA",
+    "FINLAND": "FINLANDIA",
+    "LA PLATA": "LP",
+    "SANTA FE": "SF",
+}
+
 def normalizar_nombre_equipo(nombre: str) -> str:
-    """Remueve prefijos y sufijos de club para emparejar 'CD Eldense' con 'Eldense'."""
+    """Remueve prefijos, sufijos y sinonimia de clubes/paises para emparejamiento estricto."""
     s = _normalizar(nombre)
-    s = re.sub(r"(CD|CF|FC|SD|UD|AD|CA|CSD|REAL|ATLETICO|ATL|DEPORTIVO|DEP|CLUB|DEPORTES)", "", s)
-    s = re.sub(r"(FUTBOL CLUB|SAD|BALOMPIE|BADALONA|CUNDINAMARCA|DE BOGOTA)", "", s)
+    for k, v in SINONIMOS_EQUIPOS.items():
+        s = re.sub(rf"\b{k}\b", v, s)
+    s = re.sub(r"\b(CD|CF|FC|SD|UD|AD|CA|CSD|REAL|ATLETICO|ATL|DEPORTIVO|DEP|CLUB|DEPORTES|FUTBOL CLUB|SAD|BALOMPIE|BADALONA|CUNDINAMARCA|DE BOGOTA)\b", "", s)
+    s = re.sub(r"\b(DE|DEL|LA|LAS|LOS|EL)\b", "", s)
+    s = re.sub(r"\bUNIV\.?\b|\bU\.?\b", "UNIVERSIDAD", s)
+    s = re.sub(r"[^\w\s]", " ", s)
     return " ".join(s.split()).strip()
 
 def deducir_categoria(titulo: str, torneo: str, cat_actual: str) -> str:
@@ -114,8 +162,7 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
     """Determina si dos eventos corresponden a la misma cita deportiva."""
     t1 = _minutos_utc(ev1.get("hora_utc", ""))
     t2 = _minutos_utc(ev2.get("hora_utc", ""))
-    if abs(t1 - t2) > 60:
-        return False
+    diff_min = abs(t1 - t2)
 
     loc1, vis1 = ev1.get("equipo_local", ""), ev1.get("equipo_visitante", "")
     loc2, vis2 = ev2.get("equipo_local", ""), ev2.get("equipo_visitante", "")
@@ -126,11 +173,16 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         l2_n = normalizar_nombre_equipo(loc2)
         v2_n = normalizar_nombre_equipo(vis2)
 
-        if (l1_n == l2_n and v1_n == v2_n) or (l1_n == v2_n and v1_n == l2_n):
+        # Si los dos equipos coinciden exactamente, toleramos hasta 180 min de desfase
+        # para absorber discrepancias de huso horario entre feeds (ej. Arg UTC-3 vs Col UTC-5 o previas)
+        if ((l1_n == l2_n and v1_n == v2_n) or (l1_n == v2_n and v1_n == l2_n)) and diff_min <= 180:
             return True
-        if l1_n and l2_n and v1_n and v2_n:
+        if l1_n and l2_n and v1_n and v2_n and diff_min <= 90:
             if (l1_n in l2_n or l2_n in l1_n) and (v1_n in v2_n or v2_n in v1_n):
                 return True
+
+    if diff_min > 90:
+        return False
 
     # Coincidencia por título y categoría
     tit1 = _normalizar(ev1.get("titulo", ""))
@@ -210,7 +262,19 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
                         exist["fuentes"].append(f)
                         ids_existentes.add(f.get("id_xtream"))
 
-                if exist.get("torneo", "").lower() in ["deportes", "fútbol", "futbol", "deportes en vivo"] and ev.get("torneo", "").lower() not in ["deportes", "fútbol", "futbol", "deportes en vivo"]:
+                # Si el evento entrante es de TV lineal oficial, priorizar sus metadatos limpios
+                if "inyector_lineal" in ev.get("origenes", []) and "inyector_lineal" not in exist.get("origenes", []):
+                    exist["titulo"] = ev["titulo"]
+                    exist["torneo"] = ev["torneo"]
+                    exist["subtitulo"] = ev.get("subtitulo", exist["subtitulo"])
+                    exist["hora_local_producto"] = ev["hora_local_producto"]
+                    exist["hora_utc"] = ev["hora_utc"]
+                    exist["equipo_local"] = ev["equipo_local"]
+                    exist["equipo_visitante"] = ev["equipo_visitante"]
+                    exist["tier"] = ev.get("tier", exist.get("tier", 2))
+                    exist["confianza"] = "alta"
+                    exist["puntuacion_confianza"] = 0.95
+                elif exist.get("torneo", "").lower() in ["deportes", "fútbol", "futbol", "deportes en vivo"] and ev.get("torneo", "").lower() not in ["deportes", "fútbol", "futbol", "deportes en vivo"]:
                     exist["torneo"] = ev["torneo"]
                     exist["subtitulo"] = ev.get("subtitulo", exist["subtitulo"])
 

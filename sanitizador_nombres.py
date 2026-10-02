@@ -87,7 +87,10 @@ PATRONES_TORNEO_CONOCIDOS = [
     (r'\bNHL\b', 'NHL'),
     (r'\bMLB\b', 'MLB'),
     (r'\bMLS\b', 'MLS'),
+    (r'\bNCAA\s*MEN\'?S\s*SOCCER\b', "NCAA Men's Soccer"),
     (r'\bNCAA\s*WOMEN\'?S\s*SOCCER\b', "NCAA Women's Soccer"),
+    (r'\bNCAA\s*F[ÚU]TBOL\s*AMERICANO\b|\bNCAA\s*FOOTBALL\b', "NCAA Fútbol Americano"),
+    (r'\bNCAA\s*BASKETBALL\b|\bNCAA\s*BASKET\b', "NCAA Baloncesto"),
     (r'\bNCAA\b', 'NCAA'),
     (r'\bEXTREME\s*FIGHTING\s*CHAMPIONSHIP\b|\bEFC\b', 'Extreme Fighting Championship'),
     (r'\bALFRED\s*DUNHILL\s*LINKS\b', 'Alfred Dunhill Links Championship'),
@@ -172,11 +175,15 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
     if not bloques_utiles:
         bloques_utiles = [limpiar_fragmento(nombre_sin_fechas)]
 
-    # 6. Localizar el bloque del enfrentamiento (el que tiene vs, v, @)
+    # 6. Localizar el bloque del enfrentamiento (el que tiene vs, v, @ o - en deportes de combate)
     bloque_duelo = None
     bloques_contexto = []
+    patron_duelo = r'\s+(?:vs\.?|versus|\bv\b|@)\s+'
+    if deporte in ['Boxeo', 'Combate', 'MMA'] or any(k in texto_completo.upper() for k in ['BOXEO', 'BOXING', 'UFC', 'COMBATE']):
+        patron_duelo = r'\s+(?:vs\.?|versus|\bv\b|@|-|–)\s+'
+
     for b in bloques_utiles:
-        if re.search(r'\s+(?:vs\.?|versus|\bv\b|@)\s+', b, re.I):
+        if re.search(patron_duelo, b, re.I):
             if not bloque_duelo:
                 bloque_duelo = b
             else:
@@ -186,7 +193,7 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
 
     if bloque_duelo:
         tipo = 'duelo'
-        partes = re.split(r'\s+(?:vs\.?|versus|\bv\b|@)\s+', bloque_duelo, flags=re.I)
+        partes = re.split(patron_duelo, bloque_duelo, flags=re.I)
         local = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?\s*', '', partes[0], flags=re.I).strip(' -:.')
         visitante = partes[1].strip(' -:.')
 

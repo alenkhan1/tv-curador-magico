@@ -253,8 +253,19 @@ def procesar_streams_eventos_xtream(
         torneo = parsed.get("torneo", "Deportes en Vivo")
         local = parsed.get("local", "")
         visitante = parsed.get("visitante", "")
-        m_h = re.search(r"([0-2]?[0-9]:[0-5][0-9])", nombre)
-        hora_str = m_h.group(1) if m_h else parsed.get("hora", "00:00")
+        # Extraer hora con soporte para 12h AM/PM y 24h
+        m_h = re.search(r"\b([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*(AM|PM)?\b", nombre, re.I)
+        if m_h:
+            h = int(m_h.group(1))
+            mi = int(m_h.group(2))
+            ampm = (m_h.group(3) or "").upper()
+            if ampm == "PM" and h < 12:
+                h += 12
+            elif ampm == "AM" and h == 12:
+                h = 0
+            hora_str = f"{h:02d}:{mi:02d}"
+        else:
+            hora_str = parsed.get("hora", "00:00")
 
         coincide_agenda = None
         for ev in agenda_hoy:
@@ -274,7 +285,7 @@ def procesar_streams_eventos_xtream(
         except Exception:
             hora_utc = f"{fecha_hoy_iso}T00:00:00Z"
 
-        cat = coincide_agenda.deporte if coincide_agenda else "Otros Deportes"
+        cat = coincide_agenda.deporte if coincide_agenda else parsed.get("deporte", "Otros Deportes")
         tor = coincide_agenda.torneo if coincide_agenda else torneo
 
         clave_duelo = f"{normalizar_texto(local)}_vs_{normalizar_texto(visitante)}" if local and visitante else ""
