@@ -3,8 +3,9 @@
 Inyector Quir?rgico de Canales Lineales Deportivos:
 Empareja los eventos confirmados de hoy con los streams lineales autorizados de la lista Xtream.
 - Enfoque Suram?rica (Colombia y Argentina prioritarios): Win Sports, ESPN Suram?rica, DSports, TyC, TNT Sports.
+- Enfoque Espa?a autorizado: Eurosport 1, Eurosport 2, Teledeporte.
 - Motor: DAZN F1 y Sky Sports F1.
-- Exclusi?n total de feeds de USA, Brasil, M?xico, UK, Espa?a y apps OTT.
+- Exclusi?n total de feeds de USA, Brasil, M?xico y apps OTT.
 """
 from __future__ import annotations
 
@@ -42,23 +43,37 @@ REGLAS_CANALES: Dict[str, str] = {
     "ESPN": r"\bESPN(?:\s*1)?\b(?!\s*(?:[234567]|PREMIUM))",
     "TYC SPORTS": r"\bTYC\s*SPORTS\b",
     "TNT SPORTS": r"\bTNT\s*SPORTS\b",
+    "EUROSPORT 1": r"\bEUROSPORTS?\s*1\b|\bEUROSPORTS?\b(?!\s*2)",
+    "EUROSPORT 2": r"\bEUROSPORTS?\s*2\b",
+    "TELEDEPORTE": r"\b(?:TELEDEPORTE|TDP)\b",
     "DAZN F1": r"\b(?:DAZN\s*F1|DAZN\s*FORMULA\s*1)\b",
     "SKY SPORTS F1": r"\bSKY\s*SPORTS\s*F1\b",
 }
 
-# Exclusiones geogr?ficas estrictas (no sudamericanas)
-PATRON_EXCLUSION_NOMBRE = re.compile(
+# Canales que pertenecen a Suram?rica: excluimos feeds no sudamericanos
+CANALES_SURAMERICA = {
+    "WIN SPORTS+", "WIN SPORTS", "DSPORTS", "DSPORTS 2", "DSPORTS +",
+    "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7",
+    "ESPN PREMIUM ARGENTINA", "TYC SPORTS", "TNT SPORTS"
+}
+
+# Exclusiones geogr?ficas estrictas solo para feeds de Suram?rica
+PATRON_EXCLUSION_SUR_NOMBRE = re.compile(
     r"\b(USA|US|MEX|MEXICO|MX|BRASIL|BRAZIL|BR|UK|SPAIN|ESPANA|ESPNU|ESPNEWS)\b|ESPN\s*DEPORTES|\bESPN\s*U\b",
     re.I
 )
-PATRON_EXCLUSION_CAT = re.compile(
+PATRON_EXCLUSION_SUR_CAT = re.compile(
     r"\b(USA|US|MEX|MEXICO|BRASIL|BRAZIL|BR|UK|SPAIN|ESPANA)\b",
     re.I
 )
 
-# Priorizaci?n de feeds locales (Colombia y Argentina primero)
+# Priorizaci?n de feeds locales
 PATRON_PRIORIDAD_SUR = re.compile(
     r"\b(COLOMBIA|COL|CO|ARGENTINA|ARG|AR)\b|\|(COL|CO|ARG|AR)\||\((COL|CO|ARG|AR)\)",
+    re.I
+)
+PATRON_PRIORIDAD_ESPANA = re.compile(
+    r"\b(ESPANA|ESPA?A|ES|SPAIN)\b|\|(ES)\||\((ES)\)",
     re.I
 )
 
@@ -72,8 +87,8 @@ def normalizar(s: str) -> str:
 def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, str]]]:
     """
     Agrupa los streams de Xtream bajo sus nombres can?nicos respetando filtros geogr?ficos estrictos.
-    - Exclusi?n total de feeds no deseados (USA, M?xico, Brasil, UK, Espa?a).
-    - Priorizaci?n de feeds de Colombia y Argentina.
+    - Suram?rica: Exclusi?n total de feeds de USA, M?xico y Brasil. Prioridad Colombia y Argentina.
+    - Espa?a (Eurosport, Teledeporte, DAZN F1): Prioridad para se?ales espa?olas.
     """
     indice: Dict[str, List[Dict[str, str]]] = {canon: [] for canon in REGLAS_CANALES}
 
@@ -87,13 +102,17 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
         n_norm = normalizar(nombre)
         cat_norm = normalizar(cat_nombre)
 
-        # Exclusi?n geogr?fica estricta
-        if PATRON_EXCLUSION_NOMBRE.search(f" {n_norm} ") or PATRON_EXCLUSION_CAT.search(f" {cat_norm} "):
-            continue
-
         for canon, patron in REGLAS_CANALES.items():
             if re.search(patron, n_norm, re.I):
-                prioridad = 10 if PATRON_PRIORIDAD_SUR.search(n_norm) or PATRON_PRIORIDAD_SUR.search(cat_norm) else 1
+                if canon in CANALES_SURAMERICA:
+                    if PATRON_EXCLUSION_SUR_NOMBRE.search(f" {n_norm} ") or PATRON_EXCLUSION_SUR_CAT.search(f" {cat_norm} "):
+                        continue
+                    prioridad = 10 if PATRON_PRIORIDAD_SUR.search(n_norm) or PATRON_PRIORIDAD_SUR.search(cat_norm) else 1
+                elif canon in ["TELEDEPORTE", "EUROSPORT 1", "EUROSPORT 2", "DAZN F1"]:
+                    prioridad = 10 if PATRON_PRIORIDAD_ESPANA.search(n_norm) or PATRON_PRIORIDAD_ESPANA.search(cat_norm) else 1
+                else:
+                    prioridad = 1
+
                 indice[canon].append({
                     "nombre": nombre.strip(),
                     "id_xtream": sid,
@@ -101,7 +120,7 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
                 })
                 break
 
-    # Ordenar priorizando Colombia y Argentina
+    # Ordenar por prioridad geogr?fica
     for canon in indice:
         indice[canon].sort(key=lambda x: x.get("_prioridad", 1), reverse=True)
         for item in indice[canon]:

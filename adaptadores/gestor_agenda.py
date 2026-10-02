@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 Gestor de la Agenda Maestra de Directos de Hoy:
-Orquesta adaptadores fijos y verificados para televisión:
-- Canales Suramérica (Win Sports, ESPN Suramérica, DSports, TyC Sports, TNT Sports)
+Orquesta adaptadores fijos y verificados para televisi?n:
+- Canales Suram?rica (Win Sports, ESPN Suram?rica, DSports, TyC Sports, TNT Sports)
+- Canales de Espa?a verificados (Eurosport 1, Eurosport 2, Teledeporte)
 - Canales de Motor autorizados (DAZN F1, Sky Sports F1)
-(Se prescinde de Movistar España y DAZN general para evitar desalineaciones y canales ficticios).
+(Se prescinde de Movistar Espa?a y DAZN general para evitar desalineaciones y canales ficticios).
 """
 from __future__ import annotations
 
@@ -15,7 +16,9 @@ from typing import List
 from .canales_suramerica import obtener_directos_suramerica
 from .espana import (
     obtener_dazn_f1_directos,
+    obtener_eurosport_directos,
     obtener_sky_sports_uk_directos,
+    obtener_teledeporte_directos,
 )
 from .modelos import EventoAgenda, normalizar_texto
 
@@ -29,11 +32,13 @@ def construir_agenda_maestra_hoy(fecha_hoy_iso: str) -> List[EventoAgenda]:
         "suramerica": lambda: obtener_directos_suramerica(fecha_hoy_iso),
         "dazn_f1": lambda: obtener_dazn_f1_directos(fecha_hoy_iso),
         "sky_sports_f1": lambda: obtener_sky_sports_uk_directos(fecha_hoy_iso),
+        "eurosport": lambda: obtener_eurosport_directos(fecha_hoy_iso),
+        "teledeporte": lambda: obtener_teledeporte_directos(fecha_hoy_iso),
     }
 
     eventos_crudos: List[EventoAgenda] = []
 
-    with ThreadPoolExecutor(max_workers=3) as executor:
+    with ThreadPoolExecutor(max_workers=5) as executor:
         futuros = {executor.submit(fn): nombre for nombre, fn in tareas.items()}
         for fut in as_completed(futuros):
             nombre = futuros[fut]
@@ -44,7 +49,7 @@ def construir_agenda_maestra_hoy(fecha_hoy_iso: str) -> List[EventoAgenda]:
             except Exception as e:
                 log.error("Fallo critico en adaptador '%s': %s", nombre, e)
 
-    # Deduplicación por (titulo normalizado, hora_utc)
+    # Deduplicaci?n por (titulo normalizado, hora_utc)
     vistos = set()
     eventos_dedup: List[EventoAgenda] = []
 
