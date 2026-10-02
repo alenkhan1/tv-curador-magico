@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-02T19:52:38Z",
+  "generado_utc": "2026-10-02T20:02:36Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-02",
   "base_media": "http://espartanos.live:8080",
@@ -1891,6 +1891,54 @@
         {
           "nombre": "14:00 ◘ UConn vs. Villanova ◘ NCAA Men's Soccer ◘◘",
           "id_xtream": "637691"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_eurosport_2_fb0a1c08",
+      "agenda_id": "",
+      "titulo": "Liga Nexus Energía Asobal: Jornada 4",
+      "torneo": "Liga Nexus Energía Asobal: Jornada 4",
+      "categoria": "Balonmano",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Balonmano",
+      "referencia": "Balonmano",
+      "hora_utc": "2026-10-02T18:25:00Z",
+      "hora_local_producto": "13:25",
+      "duracion_min": 120,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe4%2FLiga_Asobal_logo.svg%2F512px-Liga_Asobal_logo.svg.png&w=400&output=webp",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe4%2FLiga_Asobal_logo.svg%2F512px-Liga_Asobal_logo.svg.png&w=400&output=webp",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "04 | DAZN (ES) EUROSPORTS 2",
+          "id_xtream": "107959"
+        },
+        {
+          "nombre": "ES | EUROSPORT 2 M",
+          "id_xtream": "582142"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "258734"
+        },
+        {
+          "nombre": "EUROSPORT 2",
+          "id_xtream": "232945"
         }
       ],
       "ronda": ""
@@ -4691,12 +4739,12 @@
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 24,
+    "total_agenda_maestra": 25,
     "total_canales_xtream": 1010,
     "lista_xtream_actualizada_hoy": true,
-    "eventos_lineales_inyectados": 21,
+    "eventos_lineales_inyectados": 22,
     "eventos_xtream_aprobados": 175,
     "eventos_descartados_stale": 82,
-    "total_eventos_publicados": 112
+    "total_eventos_publicados": 113
   }
 }
