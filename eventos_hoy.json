@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-02T23:15:44Z",
+  "generado_utc": "2026-10-02T23:16:00Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-02",
   "base_media": "http://espartanos.live:8080",
@@ -719,7 +719,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_3_51eb67c1",
+      "id": "lineal_espn_2_3dea1196",
       "agenda_id": "",
       "titulo": "Kazajistán vs Moldavia",
       "torneo": "UEFA Nations League Fase de grupos",
@@ -740,7 +740,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn3-argentina",
+        "espn2-andinon",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -749,20 +749,20 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
+          "nombre": "ESPN 2 ARGENTINA HD",
+          "id_xtream": "258741"
+        },
+        {
+          "nombre": "ESPN 2 COLOMBIA HD",
+          "id_xtream": "258747"
+        },
+        {
+          "nombre": "ARG | ESPN 2 ᴴᴰ",
+          "id_xtream": "1126"
+        },
+        {
           "nombre": "ESPN 3 ARGENTINA HD",
           "id_xtream": "258742"
-        },
-        {
-          "nombre": "ESPN 3 COLOMBIA HD",
-          "id_xtream": "258748"
-        },
-        {
-          "nombre": "ARG | ESPN 3",
-          "id_xtream": "1127"
-        },
-        {
-          "nombre": "06 | ESPN 3  (CHI)",
-          "id_xtream": "45484"
         }
       ],
       "ronda": ""
@@ -1092,7 +1092,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn2-argentina",
+        "espn2-andinon",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -1894,7 +1894,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn2-argentina",
+        "espn2-andinon",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -2167,54 +2167,6 @@
         {
           "nombre": "17:30 ◘ Washington Capitals vs. Carolina Hurricanes ◘ NHL ◘◘",
           "id_xtream": "637698"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "lineal_win_sportsplus_6d560d55",
-      "agenda_id": "",
-      "titulo": "Atlético FC vs Real Soacha Cundinamarca",
-      "torneo": "Torneo BetPlay DIMAYOR",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Atlético FC",
-      "equipo_visitante": "Real Soacha Cundinamarca",
-      "subtitulo": "Torneo BetPlay DIMAYOR",
-      "referencia": "Torneo BetPlay DIMAYOR",
-      "hora_utc": "2026-10-02T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1cow9s1771988208.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3c46781721453110.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
-      "tier": 1,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "win-sports-mas"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "03 |  WIN SPORTS + (Opc.1)",
-          "id_xtream": "52637"
-        },
-        {
-          "nombre": "04 | WIN SPORTS + (Opc.2)",
-          "id_xtream": "52638"
-        },
-        {
-          "nombre": "05 | WIN SPORTS + (Opc.3)",
-          "id_xtream": "52639"
-        },
-        {
-          "nombre": "06 | WIN SPORTS + (Opc.4)",
-          "id_xtream": "52640"
         }
       ],
       "ronda": ""
@@ -3416,6 +3368,49 @@
       "ronda": ""
     },
     {
+      "id": "xtream_a23aa56f",
+      "agenda_id": "",
+      "titulo": "Deportivo Cali vs Alianza",
+      "torneo": "Liga BetPlay DIMAYOR",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Cali",
+      "equipo_visitante": "Alianza",
+      "subtitulo": "Liga BetPlay DIMAYOR",
+      "referencia": "Liga BetPlay DIMAYOR",
+      "hora_utc": "2026-10-02T23:45:00Z",
+      "hora_local_producto": "18:45",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fisc2yu1580833286.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4qhii21589297781.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:45 02/10 | Deportivo Cali vs. Alianza | Liga Betplay |",
+          "id_xtream": "637470"
+        },
+        {
+          "nombre": "Colombia | 06:45 PM | Deportivo Cali vs Alianza",
+          "id_xtream": "637516"
+        },
+        {
+          "nombre": "19:45 ◘ Deportivo Cali vs. Alianza ◘ Liga Betplay ◘",
+          "id_xtream": "637726"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "xtream_a56fc0fd",
       "agenda_id": "",
       "titulo": "Correcaminos UAT vs Cruz Azul Hidalgo",
@@ -3839,55 +3834,6 @@
         {
           "nombre": "F Americano | 07:30 PM | CFL Saskatchewan Roughriders vs Calgary Stampeders",
           "id_xtream": "637531"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "lineal_win_sportsplus_e4f4f0da",
-      "agenda_id": "",
-      "titulo": "Deportivo Cali vs Alianza",
-      "torneo": "Liga BetPlay DIMAYOR",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Deportivo Cali",
-      "equipo_visitante": "Alianza",
-      "subtitulo": "Liga BetPlay DIMAYOR",
-      "referencia": "Liga BetPlay DIMAYOR",
-      "hora_utc": "2026-10-03T00:45:00Z",
-      "hora_local_producto": "19:45",
-      "duracion_min": 120,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fisc2yu1580833286.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4qhii21589297781.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
-      "tier": 1,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "win-sports-mas",
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "03 |  WIN SPORTS + (Opc.1)",
-          "id_xtream": "52637"
-        },
-        {
-          "nombre": "04 | WIN SPORTS + (Opc.2)",
-          "id_xtream": "52638"
-        },
-        {
-          "nombre": "05 | WIN SPORTS + (Opc.3)",
-          "id_xtream": "52639"
-        },
-        {
-          "nombre": "06 | WIN SPORTS + (Opc.4)",
-          "id_xtream": "52640"
         }
       ],
       "ronda": ""
@@ -4351,12 +4297,12 @@
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 29,
+    "total_agenda_maestra": 27,
     "total_canales_xtream": 581,
     "lista_xtream_actualizada_hoy": true,
-    "eventos_lineales_inyectados": 16,
+    "eventos_lineales_inyectados": 14,
     "eventos_xtream_aprobados": 175,
     "eventos_descartados_stale": 30,
-    "total_eventos_publicados": 104
+    "total_eventos_publicados": 103
   }
 }
