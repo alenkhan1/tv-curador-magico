@@ -274,16 +274,40 @@ def procesar_streams_eventos_xtream(
                     coincide_agenda = ev
                     break
 
+        # Filtrado de repeticiones / retransmisiones antiguas de F1 y deportes de circuito
+        es_f1 = any(k in nombre.upper() or k in parsed.get("titulo", "").upper() for k in ["F1", "FÓRMULA 1", "FORMULA 1"]) or (str(c.get('category_id') or '') in ['2', '129'] and bool(re.search(r"\bF1\b", nombre, re.I)))
+        if es_f1:
+            sesion_oficial = None
+            for ev in agenda_hoy:
+                if any(k in ev.deporte.upper() for k in ["FÓRMULA 1", "F1", "FORMULA 1"]) or any(k in ev.torneo.upper() for k in ["FÓRMULA 1", "F1", "FORMULA 1"]):
+                    sesion_oficial = ev
+                    break
+            if sesion_oficial:
+                coincide_agenda = sesion_oficial
+            elif any(w in nombre.lower() for w in ["practice", "práctica", "practica", "compacto", "on board", "gp japón", "gp japon", "gp bahr"]):
+                descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "f1_diferido_sin_sesion_oficial_hoy"})
+                continue
+
         if not m_cat_f and not m_f and not coincide_agenda:
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "stream_efimero_sin_confirmacion_hoy"})
             continue
 
-        try:
-            h, mi = [int(x) for x in hora_str.split(":")]
-            dt_local = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_prod)
-            hora_utc = dt_local.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        except Exception:
-            hora_utc = f"{fecha_hoy_iso}T00:00:00Z"
+        # Si coincide con la agenda oficial verificada, la agenda oficial es la Single Source of Truth
+        if coincide_agenda and getattr(coincide_agenda, 'hora_utc', None):
+            hora_utc = coincide_agenda.hora_utc
+            try:
+                dt_u = datetime.fromisoformat(hora_utc.replace("Z", "+00:00"))
+                dt_p = dt_u.astimezone(tz_prod)
+                hora_str = dt_p.strftime("%H:%M")
+            except Exception:
+                pass
+        else:
+            try:
+                h, mi = [int(x) for x in hora_str.split(":")]
+                dt_local = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_prod)
+                hora_utc = dt_local.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            except Exception:
+                hora_utc = f"{fecha_hoy_iso}T00:00:00Z"
 
         cat = coincide_agenda.deporte if coincide_agenda else parsed.get("deporte", "Otros Deportes")
         tor = coincide_agenda.torneo if coincide_agenda else torneo

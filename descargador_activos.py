@@ -25,6 +25,61 @@ DIR_TORNEOS.mkdir(parents=True, exist_ok=True)
 URL_BASE_GITHUB = 'https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos'
 
 TORNEOS_CONFIG = [
+    # FIFA / Amistosos Internacionales
+    {
+        'slug': 'fifa.png',
+        'url': 'https://commons.wikimedia.org/wiki/Special:FilePath/FIFA_logo_without_slogan.svg?width=400',
+        'aliases': ['FIFA', 'AMISTOSO INTERNACIONAL', 'AMISTOSOS INTERNACIONALES', 'FECHA FIFA', 'PARTIDOS AMISTOSOS', 'INTERNATIONAL FRIENDLIES', 'FRIENDLY MATCH']
+    },
+    # NCAA / Deportes Universitarios USA
+    {
+        'slug': 'ncaa.png',
+        'url': 'https://commons.wikimedia.org/wiki/Special:FilePath/NCAA_logo.svg?width=400',
+        'aliases': ['NCAA', 'NCAA FUTBOL AMERICANO', 'NCAA FOOTBALL', 'NCAA MEN S SOCCER', 'NCAA WOMEN S SOCCER', 'COLLEGE FOOTBALL', 'NCAA BASKETBALL']
+    },
+    # Segundas Divisiones Relevantes
+    {
+        'slug': 'liga_expansion_mx.png',
+        'url': 'https://r2.thesportsdb.com/images/media/league/badge/2h0yz01615330546.png',
+        'aliases': ['LIGA DE EXPANSION MX', 'LIGA EXPANSION MX', 'EXPANSION MX', 'EXPANSION', 'SEGUNDA MEXICO']
+    },
+    {
+        'slug': 'efl_championship.png',
+        'url': 'https://r2.thesportsdb.com/images/media/league/badge/ty5a681688770169.png',
+        'aliases': ['EFL CHAMPIONSHIP', 'CHAMPIONSHIP', 'SKY BET CHAMPIONSHIP', 'SEGUNDA DIVISION INGLATERRA']
+    },
+    {
+        'slug': 'serie_b.png',
+        'url': 'https://r2.thesportsdb.com/images/media/league/badge/uf5kph1598011132.png',
+        'aliases': ['SERIE B', 'SERIE BKT', 'ITALIAN SERIE B', 'SEGUNDA ITALIA']
+    },
+    {
+        'slug': 'bundesliga_2.png',
+        'url': 'https://r2.thesportsdb.com/images/media/league/badge/hl40981534764789.png',
+        'aliases': ['2. BUNDESLIGA', '2 BUNDESLIGA', 'GERMAN 2. BUNDESLIGA', 'SEGUNDA BUNDESLIGA']
+    },
+    {
+        'slug': 'primera_nacional.png',
+        'url': 'https://r2.thesportsdb.com/images/media/league/badge/u5tbaw1762466392.png',
+        'aliases': ['PRIMERA NACIONAL', 'PRIMERA B NACIONAL', 'B NACIONAL', 'SEGUNDA DIVISION ARGENTINA']
+    },
+    {
+        'slug': 'torneo_betplay.png',
+        'url': 'https://r2.thesportsdb.com/images/media/league/badge/l2h1ao1615832028.png',
+        'aliases': ['TORNEO BETPLAY', 'TORNEO BETPLAY DIMAYOR', 'PRIMERA B COLOMBIA', 'SEGUNDA COLOMBIA']
+    },
+    # Ftbol Femenino
+    {
+        'slug': 'liga_mx_femenil.png',
+        'url': 'https://commons.wikimedia.org/wiki/Special:FilePath/Liga_MX_Femenil.png?width=400',
+        'aliases': ['LIGA MX FEMENIL', 'LIGA BBVA MX FEMENIL', 'MEXICO FEMENIL']
+    },
+    {
+        'slug': 'liga_f.png',
+        'url': 'https://en.wikipedia.org/wiki/Special:FilePath/Ligafwomen.svg?width=400',
+        'aliases': ['LIGA F', 'PRIMERA DIVISION FEMENINA', 'LIGA FEMENINA ESPANA']
+    },
+
     # Fútbol Internacional
     {
         'slug': 'uefa_nations_league.png',
