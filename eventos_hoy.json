@@ -1,10 +1,46 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-03T07:46:26Z",
+  "generado_utc": "2026-10-03T08:16:09Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-03",
   "base_media": "http://espartanos.live:8080",
   "eventos": [
+    {
+      "id": "lineal_sky_sports_f1_a4166175",
+      "agenda_id": "",
+      "titulo": "F1 2026 season",
+      "torneo": "F1 2026 season",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-03T04:30:00Z",
+      "hora_local_producto": "23:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "wheresthematch_skysports"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "S| Sky Sports F1",
+          "id_xtream": "363571"
+        }
+      ],
+      "ronda": ""
+    },
     {
       "id": "lineal_eurosport_1_3a8b3189",
       "agenda_id": "",
@@ -53,6 +89,42 @@
         {
           "nombre": "EUROSPORTS 1",
           "id_xtream": "141420"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_sky_sports_f1_cf6a9f0c",
+      "agenda_id": "",
+      "titulo": "F1 2026 season",
+      "torneo": "F1 2026 season",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-03T08:00:00Z",
+      "hora_local_producto": "03:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "wheresthematch_skysports"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "S| Sky Sports F1",
+          "id_xtream": "363571"
         }
       ],
       "ronda": ""
@@ -193,6 +265,10 @@
         {
           "nombre": "ARG | ESPN 2 ᴴᴰ",
           "id_xtream": "1126"
+        },
+        {
+          "nombre": "LA | ESPN 2 HD (COL)",
+          "id_xtream": "240447"
         }
       ],
       "ronda": ""
@@ -411,7 +487,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-argentina"
+        "espn-colombia"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -435,8 +511,8 @@
           "id_xtream": "1125"
         },
         {
-          "nombre": "04 | ESPN 1 (Chile)",
-          "id_xtream": "45482"
+          "nombre": "LA | ESPN HD COLOMBIA",
+          "id_xtream": "240446"
         }
       ],
       "ronda": ""
@@ -647,7 +723,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-argentina"
+        "espn-colombia"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -671,8 +747,8 @@
           "id_xtream": "1125"
         },
         {
-          "nombre": "04 | ESPN 1 (Chile)",
-          "id_xtream": "45482"
+          "nombre": "LA | ESPN HD COLOMBIA",
+          "id_xtream": "240446"
         }
       ],
       "ronda": ""
@@ -938,54 +1014,6 @@
       "ronda": ""
     },
     {
-      "id": "lineal_tyc_sports_4f1c676b",
-      "agenda_id": "",
-      "titulo": "Argentina vs Burkina Faso",
-      "torneo": "Amistoso",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Argentina",
-      "equipo_visitante": "Burkina Faso",
-      "subtitulo": "Amistoso",
-      "referencia": "Amistoso",
-      "hora_utc": "2026-10-04T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 120,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Far.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fy38bkz1742102697.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "tyc-sports"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ARG | TyC SPORTS INTERNACIONAL",
-          "id_xtream": "1118"
-        },
-        {
-          "nombre": "ARG | TyC SPORTS HD",
-          "id_xtream": "1119"
-        },
-        {
-          "nombre": "ARG | TYC SPORTS INTERNACIONAL",
-          "id_xtream": "1120"
-        },
-        {
-          "nombre": "TYC SPORTS HD",
-          "id_xtream": "258796"
-        }
-      ],
-      "ronda": ""
-    },
-    {
       "id": "lineal_win_sportsplus_3e45e32d",
       "agenda_id": "",
       "titulo": "Real Cartagena vs Boca Juniors Cali",
@@ -1040,15 +1068,71 @@
         }
       ],
       "ronda": ""
+    },
+    {
+      "id": "lineal_espn_5d2b0c3f",
+      "agenda_id": "",
+      "titulo": "Estados Unidos vs México",
+      "torneo": "Amistoso",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Estados Unidos",
+      "equipo_visitante": "México",
+      "subtitulo": "Amistoso",
+      "referencia": "Amistoso",
+      "hora_utc": "2026-10-04T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fus.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Fmx.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "espn-colombia"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ESPN 2 ARGENTINA HD",
+          "id_xtream": "258741"
+        },
+        {
+          "nombre": "ESPN 2 COLOMBIA HD",
+          "id_xtream": "258747"
+        },
+        {
+          "nombre": "ARG | ESPN 2 ᴴᴰ",
+          "id_xtream": "1126"
+        }
+      ],
+      "ronda": ""
     }
   ],
   "metricas": {
     "total_agenda_maestra": 30,
-    "total_canales_xtream": 834,
+    "total_canales_xtream": 1074,
     "lista_xtream_actualizada_hoy": false,
-    "eventos_lineales_inyectados": 22,
+    "eventos_lineales_inyectados": 24,
     "eventos_xtream_aprobados": 0,
     "eventos_descartados_stale": 0,
-    "total_eventos_publicados": 21
+    "total_eventos_publicados": 23
   }
 }
