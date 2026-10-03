@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-03T14:16:06Z",
+  "generado_utc": "2026-10-03T14:45:41Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-03",
   "base_media": "http://espartanos.live:8080",
@@ -14,8 +14,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Entrenamientos Libres 3",
-      "referencia": "Entrenamientos Libres 3",
+      "subtitulo": "Entrenamientos libres 3",
+      "referencia": "Entrenamientos libres 3",
       "hora_utc": "2026-10-03T04:30:00Z",
       "hora_local_producto": "23:30",
       "duracion_min": 180,
@@ -227,10 +227,6 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "04 | DAZN (ES) EUROSPORTS 2",
-          "id_xtream": "107959"
-        },
-        {
           "nombre": "ES | EUROSPORT 2 M",
           "id_xtream": "582142"
         },
@@ -245,6 +241,10 @@
         {
           "nombre": "EUROSPORTS 2",
           "id_xtream": "141421"
+        },
+        {
+          "nombre": "UK | EUROSPORTS 2",
+          "id_xtream": "240359"
         }
       ],
       "ronda": "Semifinales"
@@ -559,7 +559,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-argentina"
+        "espn-colombia"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -619,10 +619,6 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "04 | DAZN (ES) EUROSPORTS 2",
-          "id_xtream": "107959"
-        },
-        {
           "nombre": "ES | EUROSPORT 2 M",
           "id_xtream": "582142"
         },
@@ -637,6 +633,10 @@
         {
           "nombre": "EUROSPORTS 2",
           "id_xtream": "141421"
+        },
+        {
+          "nombre": "UK | EUROSPORTS 2",
+          "id_xtream": "240359"
         }
       ],
       "ronda": "Jornada 4"
@@ -855,10 +855,6 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "04 | DAZN (ES) EUROSPORTS 2",
-          "id_xtream": "107959"
-        },
-        {
           "nombre": "ES | EUROSPORT 2 M",
           "id_xtream": "582142"
         },
@@ -873,6 +869,10 @@
         {
           "nombre": "EUROSPORTS 2",
           "id_xtream": "141421"
+        },
+        {
+          "nombre": "UK | EUROSPORTS 2",
+          "id_xtream": "240359"
         }
       ],
       "ronda": "Malakasa"
@@ -899,7 +899,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-argentina"
+        "espn-colombia"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1117,18 +1117,6 @@
         {
           "nombre": "ARG | TNT SPORTS ᴴᴰ",
           "id_xtream": "1122"
-        },
-        {
-          "nombre": "01 | TNT SPORTS PREMIUM HD",
-          "id_xtream": "45476"
-        },
-        {
-          "nombre": "02 | TNT SPORTS PREMIUM",
-          "id_xtream": "45477"
-        },
-        {
-          "nombre": "03 | TNT SPORTS PREMIUM 2",
-          "id_xtream": "45479"
         }
       ],
       "ronda": ""
@@ -1271,16 +1259,8 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ARG | TyC SPORTS INTERNACIONAL",
-          "id_xtream": "1118"
-        },
-        {
           "nombre": "ARG | TyC SPORTS HD",
           "id_xtream": "1119"
-        },
-        {
-          "nombre": "ARG | TYC SPORTS INTERNACIONAL",
-          "id_xtream": "1120"
         },
         {
           "nombre": "TYC SPORTS HD",
@@ -1346,7 +1326,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_2_b46c1d9d",
+      "id": "lineal_espn_5d2b0c3f",
       "agenda_id": "",
       "titulo": "Estados Unidos vs México",
       "torneo": "Amistoso",
@@ -1367,13 +1347,25 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn2-argentina"
+        "espn-colombia"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
         {
           "nombre": "ESPN 2 ARGENTINA HD",
           "id_xtream": "258741"
