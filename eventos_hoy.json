@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-03T15:15:53Z",
+  "generado_utc": "2026-10-03T15:46:03Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-03",
   "base_media": "http://espartanos.live:8080",
@@ -8,7 +8,7 @@
     {
       "id": "lineal_dazn_f1_70270fef",
       "agenda_id": "",
-      "titulo": "F1 Gran Premio de Bahrein",
+      "titulo": "F1 Gran Premio de Baréin",
       "torneo": "Fórmula 1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -108,7 +108,7 @@
     {
       "id": "lineal_dazn_f1_7576671b",
       "agenda_id": "",
-      "titulo": "F1 Gran Premio de Bahrein",
+      "titulo": "F1 Gran Premio de Baréin",
       "torneo": "Fórmula 1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -782,50 +782,6 @@
       "ronda": ""
     },
     {
-      "id": "lineal_teledeporte_2107f828",
-      "agenda_id": "",
-      "titulo": "Concurso De Saltos Csio Barcelona Copa De La Reina",
-      "torneo": "Hípica Concurso De Saltos Csio Barcelona Copa De La Reina",
-      "categoria": "Hípica",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-03T18:30:00Z",
-      "hora_local_producto": "13:30",
-      "duracion_min": 120,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "rtve_teledeporte_oficial"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "TELEDEPORTE FHD (B)",
-          "id_xtream": "581986"
-        },
-        {
-          "nombre": "TELEDEPORTE OP2",
-          "id_xtream": "582145"
-        },
-        {
-          "nombre": "TELEDEPORTE",
-          "id_xtream": "582146"
-        }
-      ],
-      "ronda": ""
-    },
-    {
       "id": "lineal_eurosport_2_3b6412a8",
       "agenda_id": "",
       "titulo": "Campeonato de Europa de Tiro",
@@ -1367,28 +1323,24 @@
           "id_xtream": "258746"
         },
         {
-          "nombre": "ESPN 2 ARGENTINA HD",
-          "id_xtream": "258741"
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
         },
         {
-          "nombre": "ESPN 2 COLOMBIA HD",
-          "id_xtream": "258747"
-        },
-        {
-          "nombre": "ARG | ESPN 2 ᴴᴰ",
-          "id_xtream": "1126"
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
         }
       ],
       "ronda": ""
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 35,
+    "total_agenda_maestra": 34,
     "total_canales_xtream": 780,
     "lista_xtream_actualizada_hoy": false,
-    "eventos_lineales_inyectados": 29,
+    "eventos_lineales_inyectados": 28,
     "eventos_xtream_aprobados": 0,
     "eventos_descartados_stale": 0,
-    "total_eventos_publicados": 28
+    "total_eventos_publicados": 27
   }
 }
