@@ -341,6 +341,18 @@ def obtener_sky_sports_uk_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             continue
         hora_str = m_h.group(1)
 
+        # Regla universal: Si wheresthematch incluye fecha textual (ej. 'Sat 3rd October 2026'),
+        # validar que corresponda estrictamente al dia objetivo.
+        m_dia = re.search(r"\b([0-9]{1,2})(?:st|nd|rd|th)?\s+(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)", raw_tiempo, re.I)
+        if m_dia:
+            dia_num = int(m_dia.group(1))
+            try:
+                dt_obj = datetime.fromisoformat(fecha_hoy_iso)
+                if dia_num != dt_obj.day:
+                    continue
+            except Exception:
+                pass
+
         canales = []
         if "Sky Sports F1" in raw_canales:
             canales.append("SKY SPORTS F1")
