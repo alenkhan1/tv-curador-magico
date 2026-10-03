@@ -178,15 +178,23 @@ def inyectar_eventos_lineales(
         if not fuentes_disponibles:
             continue
 
-        # Deduplicar fuentes y limitar a un m?ximo de 4 opciones de calidad
-        vistas = set()
+        # Si hay multiples canales emisores (ej. CARACOL y RCN),
+        # repartir equilibradamente las mejores opciones de cada canal (hasta 3 de cada uno)
         fuentes_unicas = []
-        for f in fuentes_disponibles:
-            if f["id_xtream"] not in vistas:
-                vistas.add(f["id_xtream"])
-                fuentes_unicas.append(f)
-            if len(fuentes_unicas) >= 4:
-                break
+        vistas = set()
+        max_por_canal = 3 if len(canales_usados) > 1 else 5
+
+        for c in canales_priorizados:
+            canon = c.upper()
+            if canon in indice_canales:
+                count_c = 0
+                for f in indice_canales[canon]:
+                    if f["id_xtream"] not in vistas:
+                        vistas.add(f["id_xtream"])
+                        fuentes_unicas.append(f)
+                        count_c += 1
+                        if count_c >= max_por_canal:
+                            break
 
         # Convertir hora a hora_local_producto
         try:
