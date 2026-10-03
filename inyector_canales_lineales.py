@@ -169,7 +169,19 @@ def inyectar_eventos_lineales(
             ev.canales,
             key=lambda x: 0 if x.upper() in ["CARACOL", "RCN"] else 1
         )
-        for c in canales_priorizados:
+
+        # Regla Universal de Soberania y Pureza de Transmisiones Nacionales:
+        # Si el evento involucra a Colombia y cuenta con señales abiertas nacionales oficiales (CARACOL o RCN),
+        # se suprimen feeds extranjeros de cable (como TyC Sports) que no emiten el partido en su señal lineal.
+        es_partido_colombia = any("COLOMBIA" in normalizar(x) for x in [ev.local, ev.visitante, ev.titulo])
+        tiene_senales_nacionales_col = any(c.upper() in ["CARACOL", "RCN"] for c in ev.canales)
+
+        if es_partido_colombia and tiene_senales_nacionales_col:
+            canales_a_procesar = [c for c in canales_priorizados if c.upper() in ["CARACOL", "RCN"]]
+        else:
+            canales_a_procesar = canales_priorizados
+
+        for c in canales_a_procesar:
             canon = c.upper()
             if canon in indice_canales and indice_canales[canon]:
                 fuentes_disponibles.extend(indice_canales[canon])
@@ -184,7 +196,7 @@ def inyectar_eventos_lineales(
         vistas = set()
         max_por_canal = 3 if len(canales_usados) > 1 else 5
 
-        for c in canales_priorizados:
+        for c in canales_a_procesar:
             canon = c.upper()
             if canon in indice_canales:
                 count_c = 0
