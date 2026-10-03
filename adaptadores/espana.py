@@ -492,26 +492,43 @@ def obtener_dazn_f1_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
     eventos_f1 = []
     tz_madrid = obtener_tz("Europe/Madrid")
+    try:
+        d_obj = datetime.fromisoformat(fecha_hoy_iso)
+        pat_dd_mm = d_obj.strftime("%d/%m")
+    except Exception:
+        pat_dd_mm = ""
+
     filas = re.findall(r"<tr[^>]*>.*?</tr>", html_dep, flags=re.S)
+    dentro_de_hoy = False
 
     for f in filas:
-        m_start = re.search(r'itemprop=["\']startDate["\']\s+content=["\']([0-9]{4}-[0-9]{2}-[0-9]{2})', f)
-        if not m_start or m_start.group(1) != fecha_hoy_iso:
+        txt_l = re.sub(r"<[^>]+>", " ", f).lower()
+        if "cabeceratabla" in f.lower() or ("partidos de hoy" in txt_l and ("/" in txt_l or "-" in txt_l)):
+            if (pat_dd_mm and pat_dd_mm in txt_l) or "partidos de hoy" in txt_l:
+                dentro_de_hoy = True
+                continue
+            elif dentro_de_hoy:
+                break
+
+        if not dentro_de_hoy:
             continue
 
-        canales_raw = re.findall(r'<li[^>]*title=["\']([^"\']+)["\']', f)
-        if not any("DAZN F1" in c.upper() for c in canales_raw):
+        canales_raw = re.findall(r'<li[^>]*title=["\x27]([^"\x27]+)["\x27]', f)
+        if not any("DAZN F1" in c.upper() for c in canales_raw) and "DAZN F1" not in f.upper():
             continue
 
-        m_name = re.search(r'itemprop=["\']name["\']\s+content=["\']([^"\']+)["\']', f)
-        m_hora = re.search(r'<td class=["\']hora\s*["\']>\s*([0-9]{1,2}:[0-9]{2})', f)
-        if not m_name or not m_hora:
+        m_hora = re.search(r'<td class=["\x27]hora\s*["\x27]>\s*([0-9]{1,2}:[0-9]{2})', f)
+        if not m_hora:
             continue
-
-        titulo = html_lib.unescape(m_name.group(1).strip())
         hora_str = m_hora.group(1).strip()
 
-        m_comp = re.search(r'title=["\']([^"\']+)["\']\s+class=["\']js-webp-default["\']', f)
+        m_ev = re.search(r'<span class=["\x27]eventoUnico["\x27]>(.*?)</span>', f, flags=re.S)
+        if m_ev:
+            titulo = html_lib.unescape(" ".join(re.sub(r"<[^>]+>", " - ", m_ev.group(1)).split())).strip(" -")
+        else:
+            titulo = "Fórmula 1"
+
+        m_comp = re.search(r'<span class=["\x27]ajusteDoslineas["\x27][^>]*title=["\x27]([^"\x27]+)["\x27]', f)
         torneo = html_lib.unescape(m_comp.group(1).strip()) if m_comp else "Fórmula 1"
 
         try:

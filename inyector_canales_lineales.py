@@ -164,11 +164,16 @@ def inyectar_eventos_lineales(
         fuentes_disponibles = []
         canales_usados = []
 
-        # Priorizar canales nacionales abiertos de Colombia al inicio
-        canales_priorizados = sorted(
-            ev.canales,
-            key=lambda x: 0 if x.upper() in ["CARACOL", "RCN"] else 1
-        )
+        # Priorizar canales en español (Colombia y España) antes que feeds internacionales (UK/DE)
+        def _prioridad_canal(c_nom: str) -> int:
+            cu = c_nom.upper()
+            if cu in ["CARACOL", "RCN"]:
+                return 0
+            if cu in ["DAZN F1", "TELEDEPORTE", "EUROSPORT 1", "EUROSPORT 2", "WIN SPORTS+", "WIN SPORTS", "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "DSPORTS", "TYC SPORTS", "TNT SPORTS"]:
+                return 1
+            return 2
+
+        canales_priorizados = sorted(ev.canales, key=_prioridad_canal)
 
         # Regla Universal de Soberania y Pureza de Transmisiones Nacionales:
         # Si el evento involucra a Colombia y cuenta con señales abiertas nacionales oficiales (CARACOL o RCN),
