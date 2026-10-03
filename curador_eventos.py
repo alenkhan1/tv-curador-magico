@@ -72,7 +72,8 @@ def obtener_canales_xtream(fecha_hoy_iso: str) -> List[Dict[str, Any]]:
                 canales = raw.get("canales", [])
                 ts = raw.get("timestamp", 0)
                 f_cap = raw.get("fecha_captura", "")
-                if f_cap == fecha_hoy_iso and (ahora_ts - ts) < 2700:
+                tiene_caracol = any("CARACOL" in (c.get("name") or "").upper() for c in canales)
+                if f_cap == fecha_hoy_iso and (ahora_ts - ts) < 2700 and tiene_caracol:
                     log.info("Cargados %d canales desde cache vigente (%s, hace %d min)", len(canales), f_cap, int((ahora_ts - ts) / 60))
                     return canales
         except Exception as e:
@@ -85,7 +86,7 @@ def obtener_canales_xtream(fecha_hoy_iso: str) -> List[Dict[str, Any]]:
             with urllib.request.urlopen(req_cats, timeout=14, context=_crear_contexto_ssl()) as resp:
                 cats = json.loads(resp.read().decode("utf-8", errors="ignore"))
 
-            deporte_kws = ["EVENT", "DEPORT", "SPORT", "FUTBOL", "LALIGA", "PREMIER", "CHAMPIONS", "CONMEBOL", "NBA", "MLB", "UFC", "WWE", "WIN", "DSPORTS", "BEIN", "CLARO", "FOX", "SKY", "DAZN", "SPECIALS", "PPV"]
+            deporte_kws = ["EVENT", "DEPORT", "SPORT", "FUTBOL", "LALIGA", "PREMIER", "CHAMPIONS", "CONMEBOL", "NBA", "MLB", "UFC", "WWE", "WIN", "DSPORTS", "BEIN", "CLARO", "FOX", "SKY", "DAZN", "SPECIALS", "PPV", "COLOMBIA"]
             cats_deporte = [c for c in cats if any(k in (c.get("category_name") or "").upper() for k in deporte_kws)]
 
             canales = []

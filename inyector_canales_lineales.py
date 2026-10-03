@@ -28,6 +28,8 @@ from resolvedor_logos import (
 log = logging.getLogger("inyector_lineales")
 
 REGLAS_CANALES: Dict[str, str] = {
+    "CARACOL": r"\bCARACOL\b",
+    "RCN": r"\b(?:CANAL\s*)?RCN\b",
     "WIN SPORTS+": r"\bWIN\s*SPORTS\s*\+",
     "WIN SPORTS": r"\bWIN\s*SPORTS\b(?!\s*\+)",
     "DSPORTS 2": r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*2\b",
@@ -52,6 +54,7 @@ REGLAS_CANALES: Dict[str, str] = {
 
 # Canales que pertenecen a Suram?rica: excluimos feeds no sudamericanos
 CANALES_SURAMERICA = {
+    "CARACOL", "RCN",
     "WIN SPORTS+", "WIN SPORTS", "DSPORTS", "DSPORTS 2", "DSPORTS +",
     "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7",
     "ESPN PREMIUM ARGENTINA", "TYC SPORTS", "TNT SPORTS"
@@ -104,10 +107,26 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
 
         for canon, patron in REGLAS_CANALES.items():
             if re.search(patron, n_norm, re.I):
+                # Reglas estrictas de exclusion para senales nacionales principales de Colombia
+                if canon in ["CARACOL", "RCN"]:
+                    # Excluir explicitamente senales secundarias (HD 2, Internacional, Novelas, etc.)
+                    if re.search(r"\bHD\s*2\b|\bHD2\b|\b(?:CARACOL|RCN)\s*2\b", n_norm):
+                        continue
+                    if any(w in f" {n_norm} " for w in [" INT ", " INTERNACIONAL ", " NOVELAS ", " MAS ", " MÁS ", " RADIO ", " NUESTRA "]):
+                        continue
                 if canon in CANALES_SURAMERICA:
                     if PATRON_EXCLUSION_SUR_NOMBRE.search(f" {n_norm} ") or PATRON_EXCLUSION_SUR_CAT.search(f" {cat_norm} "):
                         continue
-                    prioridad = 10 if PATRON_PRIORIDAD_SUR.search(n_norm) or PATRON_PRIORIDAD_SUR.search(cat_norm) else 1
+                    if canon in ["CARACOL", "RCN"]:
+                        # Maxima prioridad a senales maestras SAT y HD
+                        if "SAT" in n_norm or " HD" in n_norm:
+                            prioridad = 25
+                        elif "OP 1" in n_norm or "OPC 1" in n_norm or "OP1" in n_norm:
+                            prioridad = 20
+                        else:
+                            prioridad = 15
+                    else:
+                        prioridad = 10 if PATRON_PRIORIDAD_SUR.search(n_norm) or PATRON_PRIORIDAD_SUR.search(cat_norm) else 1
                 elif canon in ["TELEDEPORTE", "EUROSPORT 1", "EUROSPORT 2", "DAZN F1"]:
                     prioridad = 10 if PATRON_PRIORIDAD_ESPANA.search(n_norm) or PATRON_PRIORIDAD_ESPANA.search(cat_norm) else 1
                 else:
@@ -145,7 +164,12 @@ def inyectar_eventos_lineales(
         fuentes_disponibles = []
         canales_usados = []
 
-        for c in ev.canales:
+        # Priorizar canales nacionales abiertos de Colombia al inicio
+        canales_priorizados = sorted(
+            ev.canales,
+            key=lambda x: 0 if x.upper() in ["CARACOL", "RCN"] else 1
+        )
+        for c in canales_priorizados:
             canon = c.upper()
             if canon in indice_canales and indice_canales[canon]:
                 fuentes_disponibles.extend(indice_canales[canon])

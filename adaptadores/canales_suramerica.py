@@ -21,6 +21,9 @@ CANALES_VERIFICADOS = [
     ("ESPN 4", "https://www.futbolenvivocolombia.com/canal/espn4-sur", "America/Bogota", ""),
     ("ESPN 5", "https://www.futbolenvivocolombia.com/canal/espn-5-sudamerica", "America/Bogota", ""),
     ("DSPORTS", "https://www.futbolenvivocolombia.com/canal/directv-sports-colombia", "America/Bogota", ""),
+    # Señales Nacionales Abiertas de Colombia (Transmisiones Selección Colombia y eventos patrios)
+    ("CARACOL", "https://www.futbolenvivocolombia.com/canal/caracol-tv", "America/Bogota", ""),
+    ("RCN", "https://www.futbolenvivocolombia.com/canal/rcn-tv", "America/Bogota", ""),
     # Argentina / Cono Sur (hora Argentina: America/Argentina/Buenos_Aires)
     ("ESPN", "https://www.futbolenvivoargentina.com/canal/espn-argentina", "America/Argentina/Buenos_Aires", ""),
     ("ESPN 2", "https://www.futbolenvivoargentina.com/canal/espn2-argentina", "America/Argentina/Buenos_Aires", ""),
@@ -85,7 +88,9 @@ def extraer_partidos_canal_hoy(canal_nombre: str, url: str, tz_name: str, torneo
             local = celdas[2] if len(celdas) >= 3 else ""
             visitante = celdas[3] if len(celdas) >= 4 else ""
 
-            if not local or not visitante:
+            # Soporte para eventos de circuito o pruebas de interes (ej. Ciclismo)
+            es_ciclismo = any(w in f"{competicion} {local} {visitante}".upper() for w in ["CICLISMO", "TOUR DE FRANCIA", "GIRO DE ITALIA", "VUELTA A ESPANA", "VUELTA A ESPAÑA"])
+            if (not local or not visitante) and not es_ciclismo:
                 continue
 
             # Convertir hora a ISO 8601 UTC
