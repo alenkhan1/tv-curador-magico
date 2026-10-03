@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-03T05:16:55Z",
+  "generado_utc": "2026-10-03T05:46:31Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-03",
   "base_media": "http://espartanos.live:8080",
@@ -175,7 +175,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn2-andinon"
+        "espn2-argentina"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -411,7 +411,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-colombia"
+        "espn-argentina"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -647,7 +647,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-colombia"
+        "espn-argentina"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -938,6 +938,54 @@
       "ronda": ""
     },
     {
+      "id": "lineal_tyc_sports_4f1c676b",
+      "agenda_id": "",
+      "titulo": "Argentina vs Burkina Faso",
+      "torneo": "Amistoso",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Argentina",
+      "equipo_visitante": "Burkina Faso",
+      "subtitulo": "Amistoso",
+      "referencia": "Amistoso",
+      "hora_utc": "2026-10-04T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Far.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fy38bkz1742102697.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "tyc-sports"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ARG | TyC SPORTS INTERNACIONAL",
+          "id_xtream": "1118"
+        },
+        {
+          "nombre": "ARG | TyC SPORTS HD",
+          "id_xtream": "1119"
+        },
+        {
+          "nombre": "ARG | TYC SPORTS INTERNACIONAL",
+          "id_xtream": "1120"
+        },
+        {
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "258796"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "lineal_win_sportsplus_3e45e32d",
       "agenda_id": "",
       "titulo": "Real Cartagena vs Boca Juniors Cali",
@@ -994,7 +1042,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_5d2b0c3f",
+      "id": "lineal_espn_2_b46c1d9d",
       "agenda_id": "",
       "titulo": "Estados Unidos vs México",
       "torneo": "Amistoso",
@@ -1015,7 +1063,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-colombia"
+        "espn2-argentina"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1023,36 +1071,28 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN 1 ARGENTINA",
-          "id_xtream": "253004"
+          "nombre": "ESPN 2 ARGENTINA HD",
+          "id_xtream": "258741"
         },
         {
-          "nombre": "ESPN 1 ARGENTINA HD",
-          "id_xtream": "258740"
+          "nombre": "ESPN 2 COLOMBIA HD",
+          "id_xtream": "258747"
         },
         {
-          "nombre": "ESPN 1 COLOMBIA HD",
-          "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
-        },
-        {
-          "nombre": "04 | ESPN 1 (Chile)",
-          "id_xtream": "45482"
+          "nombre": "ARG | ESPN 2 ᴴᴰ",
+          "id_xtream": "1126"
         }
       ],
       "ronda": ""
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 31,
+    "total_agenda_maestra": 32,
     "total_canales_xtream": 834,
     "lista_xtream_actualizada_hoy": false,
-    "eventos_lineales_inyectados": 22,
+    "eventos_lineales_inyectados": 23,
     "eventos_xtream_aprobados": 0,
     "eventos_descartados_stale": 0,
-    "total_eventos_publicados": 21
+    "total_eventos_publicados": 22
   }
 }
