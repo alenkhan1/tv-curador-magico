@@ -9,7 +9,7 @@ import urllib.request
 from datetime import datetime, timezone
 from typing import List
 
-from .modelos import EventoAgenda, HEADERS_WEB, normalizar_texto, obtener_tz
+from .modelos import EventoAgenda, HEADERS_WEB, calcular_duracion_evento, normalizar_texto, obtener_tz
 
 log = logging.getLogger("adaptador_espana")
 
@@ -183,6 +183,22 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             except Exception:
                 continue
 
+            dur_calc = None
+            m_fin = re.search(r"termina\s*(?:<!--\s*-->)?\s*([0-9]{1,2}:[0-9]{2})", item, re.I)
+            if m_fin:
+                try:
+                    hf, mf = [int(x) for x in m_fin.group(1).split(":")]
+                    hi, mi_ = [int(x) for x in hora_str.split(":")]
+                    mins_fin = hf * 60 + mf
+                    mins_ini = hi * 60 + mi_
+                    if mins_fin < mins_ini:
+                        mins_fin += 24 * 60
+                    dur_calc = mins_fin - mins_ini
+                except Exception:
+                    dur_calc = None
+
+            duracion_final = calcular_duracion_evento(dep, titulo, dur_calc)
+
             ev = EventoAgenda(
                 titulo=titulo,
                 deporte=dep,
@@ -191,7 +207,7 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
                 visitante="",
                 hora_utc=hora_utc,
                 canales=[canon],
-                duracion_min=180 if dep in ["Ciclismo", "Tenis", "Snooker"] else 120,
+                duracion_min=duracion_final,
                 fuente=f"mundodeportivo_{canon.lower().replace(' ', '_')}",
                 tipo_evento="circuito",
             )

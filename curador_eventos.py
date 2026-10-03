@@ -27,7 +27,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from adaptadores.gestor_agenda import construir_agenda_maestra_hoy
-from adaptadores.modelos import EventoAgenda, normalizar_texto, obtener_tz
+from adaptadores.modelos import EventoAgenda, calcular_duracion_evento, normalizar_texto, obtener_tz
 from inyector_canales_lineales import (
     construir_indice_canales_lineales,
     inyectar_eventos_lineales,
@@ -360,7 +360,7 @@ def procesar_streams_eventos_xtream(
             "referencia": tor,
             "hora_utc": hora_utc,
             "hora_local_producto": hora_str,
-            "duracion_min": 120,
+            "duracion_min": calcular_duracion_evento(cat, titulo, 120),
             "logo_torneo": logo_tor,
             "logo_local": logo_l,
             "logo_visitante": logo_v,

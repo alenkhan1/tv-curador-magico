@@ -45,6 +45,31 @@ def limpiar_nombre_equipo(s: str) -> str:
     s = re.sub(r"\b(HD|FHD|SD|4K|OP\d+|LIVE|DIRECTO|EN VIVO|ES|SPAIN|LATAM)\b", "", s, flags=re.I)
     return " ".join(s.split()).strip(" -:|/\t\r\n")
 
+
+DEPORTES_ELASTICOS = {
+    "SNOOKER", "BILLAR", "GOLF", "TENIS", "TENNIS", "CICLISMO", "CYCLING",
+    "BEISBOL", "BÉISBOL", "BASEBALL", "MOTOR", "FORMULA 1", "FÓRMULA 1", "F1",
+    "MOTOGP", "COMBATE", "BOXEO", "MMA", "UFC"
+}
+
+def es_deporte_elastico(deporte: str, titulo: str = "") -> bool:
+    texto = normalizar_texto(f"{deporte} {titulo}")
+    return any(k in texto for k in [
+        "SNOOKER", "BILLAR", "GOLF", "TENIS", "TENNIS", "CICLISMO", "CYCLING",
+        "BEISBOL", "BASEBALL", "MOTOR", "FORMULA 1", "F1", "MOTOGP", "COMBATE", "BOXEO", "MMA", "UFC"
+    ])
+
+def calcular_duracion_evento(deporte: str, titulo: str = "", duracion_detectada_min: Optional[int] = None) -> int:
+    elastico = es_deporte_elastico(deporte, titulo)
+    if duracion_detectada_min and duracion_detectada_min > 30:
+        if elastico:
+            return max(duracion_detectada_min + 60, 300)
+        return max(duracion_detectada_min, 125)
+
+    if elastico:
+        return 300
+    return 125
+
 @dataclass
 class EventoAgenda:
     titulo: str
@@ -58,6 +83,10 @@ class EventoAgenda:
     fuente: str = ""
     referencia: str = ""
     tipo_evento: str = "duelo"  # "duelo" o "circuito"
+
+    def __post_init__(self):
+        if self.duracion_min == 120:
+            self.duracion_min = calcular_duracion_evento(self.deporte, self.titulo, 120)
 
     def clave_deduplicacion(self) -> str:
         try:
