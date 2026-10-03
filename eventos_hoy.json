@@ -1,10 +1,58 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-03T10:46:08Z",
+  "generado_utc": "2026-10-03T11:15:49Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-03",
   "base_media": "http://espartanos.live:8080",
   "eventos": [
+    {
+      "id": "lineal_dazn_f1_70270fef",
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-03T04:30:00Z",
+      "hora_local_producto": "23:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EVENTS 09 : DAZN F1",
+          "id_xtream": "582224"
+        },
+        {
+          "nombre": "EVENTS 10 : DAZN F1 LQ",
+          "id_xtream": "582225"
+        },
+        {
+          "nombre": "EVENTS 18 : DAZN F1 FHD EXTRA",
+          "id_xtream": "582230"
+        },
+        {
+          "nombre": "09 | DAZN F1 HD",
+          "id_xtream": "141363"
+        }
+      ],
+      "ronda": ""
+    },
     {
       "id": "lineal_eurosport_1_ca3a23e1",
       "agenda_id": "",
@@ -53,6 +101,54 @@
         {
           "nombre": "EUROSPORTS 1",
           "id_xtream": "141420"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_dazn_f1_7576671b",
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Motor",
+      "referencia": "Motor",
+      "hora_utc": "2026-10-03T08:00:00Z",
+      "hora_local_producto": "03:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EVENTS 09 : DAZN F1",
+          "id_xtream": "582224"
+        },
+        {
+          "nombre": "EVENTS 10 : DAZN F1 LQ",
+          "id_xtream": "582225"
+        },
+        {
+          "nombre": "EVENTS 18 : DAZN F1 FHD EXTRA",
+          "id_xtream": "582230"
+        },
+        {
+          "nombre": "09 | DAZN F1 HD",
+          "id_xtream": "141363"
         }
       ],
       "ronda": ""
@@ -875,12 +971,16 @@
           "id_xtream": "52639"
         },
         {
-          "nombre": "06 | WIN SPORTS + (Opc.4)",
-          "id_xtream": "52640"
+          "nombre": "01 | Win Sports (Opc.1)",
+          "id_xtream": "52635"
         },
         {
-          "nombre": "WIN SPORTS+ HD",
-          "id_xtream": "258809"
+          "nombre": "02 | Win Sports (Opc.2)",
+          "id_xtream": "52636"
+        },
+        {
+          "nombre": "08 | WIN SPORTS ᴴᴰ",
+          "id_xtream": "52649"
         }
       ],
       "ronda": ""
@@ -1075,12 +1175,16 @@
           "id_xtream": "52639"
         },
         {
-          "nombre": "06 | WIN SPORTS + (Opc.4)",
-          "id_xtream": "52640"
+          "nombre": "01 | Win Sports (Opc.1)",
+          "id_xtream": "52635"
         },
         {
-          "nombre": "WIN SPORTS+ HD",
-          "id_xtream": "258809"
+          "nombre": "02 | Win Sports (Opc.2)",
+          "id_xtream": "52636"
+        },
+        {
+          "nombre": "08 | WIN SPORTS ᴴᴰ",
+          "id_xtream": "52649"
         }
       ],
       "ronda": ""
@@ -1227,12 +1331,16 @@
           "id_xtream": "52639"
         },
         {
-          "nombre": "06 | WIN SPORTS + (Opc.4)",
-          "id_xtream": "52640"
+          "nombre": "01 | Win Sports (Opc.1)",
+          "id_xtream": "52635"
         },
         {
-          "nombre": "WIN SPORTS+ HD",
-          "id_xtream": "258809"
+          "nombre": "02 | Win Sports (Opc.2)",
+          "id_xtream": "52636"
+        },
+        {
+          "nombre": "08 | WIN SPORTS ᴴᴰ",
+          "id_xtream": "52649"
         }
       ],
       "ronda": ""
@@ -1295,12 +1403,12 @@
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 34,
+    "total_agenda_maestra": 36,
     "total_canales_xtream": 834,
     "lista_xtream_actualizada_hoy": false,
-    "eventos_lineales_inyectados": 27,
+    "eventos_lineales_inyectados": 29,
     "eventos_xtream_aprobados": 0,
     "eventos_descartados_stale": 0,
-    "total_eventos_publicados": 26
+    "total_eventos_publicados": 28
   }
 }
