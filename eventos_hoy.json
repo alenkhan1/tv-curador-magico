@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-03T13:46:25Z",
+  "generado_utc": "2026-10-03T14:16:06Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-03",
   "base_media": "http://espartanos.live:8080",
@@ -8,7 +8,7 @@
     {
       "id": "lineal_dazn_f1_70270fef",
       "agenda_id": "",
-      "titulo": "F1 Gran Premio de Bahrein",
+      "titulo": "F1 Gran Premio de Baréin",
       "torneo": "Fórmula 1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -108,7 +108,7 @@
     {
       "id": "lineal_dazn_f1_7576671b",
       "agenda_id": "",
-      "titulo": "F1 Gran Premio de Bahrein",
+      "titulo": "F1 Gran Premio de Baréin",
       "torneo": "Fórmula 1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -1344,15 +1344,59 @@
         }
       ],
       "ronda": ""
+    },
+    {
+      "id": "lineal_espn_2_b46c1d9d",
+      "agenda_id": "",
+      "titulo": "Estados Unidos vs México",
+      "torneo": "Amistoso",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Estados Unidos",
+      "equipo_visitante": "México",
+      "subtitulo": "Amistoso",
+      "referencia": "Amistoso",
+      "hora_utc": "2026-10-04T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
+      "logo_local": "https://flagcdn.com/256x192/us.png",
+      "logo_visitante": "https://flagcdn.com/256x192/mx.png",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "espn2-argentina"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARGENTINA HD",
+          "id_xtream": "258741"
+        },
+        {
+          "nombre": "ESPN 2 COLOMBIA HD",
+          "id_xtream": "258747"
+        },
+        {
+          "nombre": "ARG | ESPN 2 ᴴᴰ",
+          "id_xtream": "1126"
+        }
+      ],
+      "ronda": ""
     }
   ],
   "metricas": {
     "total_agenda_maestra": 35,
     "total_canales_xtream": 834,
     "lista_xtream_actualizada_hoy": false,
-    "eventos_lineales_inyectados": 28,
+    "eventos_lineales_inyectados": 29,
     "eventos_xtream_aprobados": 0,
     "eventos_descartados_stale": 0,
-    "total_eventos_publicados": 27
+    "total_eventos_publicados": 28
   }
 }
