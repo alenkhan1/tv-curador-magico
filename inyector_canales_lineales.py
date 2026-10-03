@@ -87,6 +87,50 @@ def normalizar(s: str) -> str:
     sin_tildes = "".join(c for c in nfkd if not unicodedata.combining(c))
     return re.sub(r"[^A-Z0-9\+]+", " ", sin_tildes.upper()).strip()
 
+
+RUIDO_TECNICO_OPERADOR = {
+    # Diales, operadores y descriptores de transmision
+    "EVENTS", "EVENTO", "EVENTOS", "CH", "CANAL", "OP", "OPC", "OP1", "OP2", "OP3", "OP4",
+    "OPC1", "OPC2", "OPCION", "OPTION", "DIRECTO", "VIVO", "LIVE", "SAT", "BACKUP", "EXTRA",
+    "M", "B", "A", "S", "LQ", "HQ", "RAW", "PPV", "LIGA", "DEPORTES", "SPORTS", "SPORT",
+    # Calidades de video
+    "HD", "FHD", "SD", "4K", "UHD", "HEVC", "1080P", "720P", "50FPS", "60FPS",
+    # Indicadores regionales y paises comunes
+    "ES", "ESP", "ESPANA", "ESPAÑA", "SPAIN", "UK", "CO", "COL", "COLOMBIA", 
+    "ARG", "AR", "ARGENTINA", "CL", "CHI", "CHILE", "MX", "MEX", "MEXICO", 
+    "PE", "PERU", "EC", "ECUADOR", "UY", "URU", "URUGUAY", "USA", "US", "LATAM", "SUR", "BR", "BRAZIL"
+}
+
+def es_identidad_pura(nombre_crudo: str, canon: str, patron: str) -> bool:
+    """
+    PRINCIPIO UNIVERSAL DE IDENTIDAD PURA:
+    Un canal candidato a inyectarse en un evento deportivo debe ser el sujeto unico
+    y exclusivo del stream.
+    Si al despojar el canal de prefijos y sufijos tecnicos (diales, calidad, region)
+    quedan palabras sustantivas ajenas (como 'DAZN' en 'DAZN EUROSPORTS 2',
+    o 'CARACOL' en 'RCN CARACOL'), el stream es hibrido/ambiguo y se descarta.
+    """
+    n_norm = normalizar(nombre_crudo)
+    m = re.search(patron, n_norm, re.I)
+    if not m:
+        return False
+
+    antes = n_norm[:m.start()].strip()
+    despues = n_norm[m.end():].strip()
+    residuo = f"{antes} {despues}".strip()
+
+    tokens = [w for w in re.findall(r"[A-Z0-9\+]+", residuo) if not w.isdigit()]
+    canon_tokens = set(normalizar(canon).split())
+
+    for t in tokens:
+        if t in canon_tokens:
+            continue
+        if t in RUIDO_TECNICO_OPERADOR:
+            continue
+        return False
+
+    return True
+
 def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, str]]]:
     """
     Agrupa los streams de Xtream bajo sus nombres can?nicos respetando filtros geogr?ficos estrictos.
@@ -107,6 +151,9 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
 
         for canon, patron in REGLAS_CANALES.items():
             if re.search(patron, n_norm, re.I):
+                # Principio Universal de Identidad Pura (descarte de canales hibridos/contaminados)
+                if not es_identidad_pura(nombre, canon, patron):
+                    continue
                 # Reglas estrictas de exclusion para senales nacionales principales de Colombia
                 if canon in ["CARACOL", "RCN"]:
                     # Excluir explicitamente senales secundarias (HD 2, Internacional, Novelas, etc.)
