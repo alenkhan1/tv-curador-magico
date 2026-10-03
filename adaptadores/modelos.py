@@ -61,13 +61,11 @@ def es_deporte_elastico(deporte: str, titulo: str = "") -> bool:
 
 def calcular_duracion_evento(deporte: str, titulo: str = "", duracion_detectada_min: Optional[int] = None) -> int:
     elastico = es_deporte_elastico(deporte, titulo)
-    if duracion_detectada_min and duracion_detectada_min > 30:
-        if elastico:
-            return max(duracion_detectada_min + 60, 300)
-        return max(duracion_detectada_min, 125)
+    if duracion_detectada_min and duracion_detectada_min > 20:
+        return duracion_detectada_min + (15 if elastico else 10)
 
     if elastico:
-        return 300
+        return 240
     return 125
 
 @dataclass
