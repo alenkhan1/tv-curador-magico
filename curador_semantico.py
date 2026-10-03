@@ -67,6 +67,7 @@ def limpiar_texto(s: str) -> str:
     if not s:
         return ""
     desescapado = html_lib.unescape(s)
+    desescapado = desescapado.replace("\x96", "-").replace("\u2013", "-").replace("\u2014", "-")
     return " ".join(desescapado.split()).strip()
 
 SINONIMOS_EQUIPOS = {
@@ -134,21 +135,32 @@ def deducir_categoria(titulo: str, torneo: str, cat_actual: str) -> str:
                 return deporte
     return cat_actual if cat_actual and cat_actual != "Otros Deportes" else "Otros Deportes"
 
-def desmontar_duelo(titulo: str, categoria: str) -> Tuple[str, str, str, str]:
+def desmontar_duelo(titulo: str, categoria: str) -> Tuple[str, str, str, str, str]:
+    """
+    Desmonta de forma universal enfrentamientos deportivos con ligas, rondas o jornadas.
+    Soporta todos los separadores Unicode (-, –, —, vs, v).
+    Retorna: (tit_limpio, loc, vis, ronda, torneo_extraido)
+    """
     tit = limpiar_texto(titulo)
     ronda = ""
-    m_ronda = PREFIJOS_RONDA.search(tit)
-    if m_ronda:
-        ronda = m_ronda.group(0).rstrip(": ").strip()
-        tit = tit[m_ronda.end():].strip()
+    torneo_extraido = ""
 
     partes = re.split(r"\s+(?:vs\.?|v\.?|-)\s+", tit, flags=re.I)
-    if len(partes) == 2 and categoria in ["Fútbol", "Baloncesto", "Balonmano", "Pádel", "Tenis", "Béisbol", "Fútbol Americano", "Rugby", "Polo", "Hockey"]:
-        loc = limpiar_texto(partes[0])
-        vis = limpiar_texto(partes[1])
-        return f"{loc} vs {vis}", loc, vis, ronda
+    if len(partes) == 2:
+        p0, vis = partes[0].strip(), partes[1].strip()
+        m_ronda = re.search(r"\b(\d+[ªºa]?\s+Jornada|Jornada\s+\d+|Fase\s+de\s+grupos|Fecha\s+\d+|Round\s+\d+|Cuartos\s+de\s+final|Semifinal(?:es)?|Final)\b[:\s]*", p0, re.I)
+        if m_ronda:
+            torneo_pref = p0[:m_ronda.start()].strip()
+            ronda = m_ronda.group(1).strip()
+            loc = p0[m_ronda.end():].strip()
+            torneo_limpio = re.sub(r"^(?:Fútbol\s+(?:Sala\s+)?|Baloncesto\s+|Balonmano\s+)", "", torneo_pref, flags=re.I).strip()
+            return f"{loc} vs {vis}", loc, vis, ronda, torneo_limpio or torneo_pref
+        elif categoria in ["Fútbol", "Baloncesto", "Balonmano", "Pádel", "Tenis", "Béisbol", "Fútbol Americano", "Rugby", "Polo", "Hockey"]:
+            loc = limpiar_texto(p0)
+            vis_limpio = limpiar_texto(vis)
+            return f"{loc} vs {vis_limpio}", loc, vis_limpio, ronda, ""
 
-    return tit, "", "", ronda
+    return tit, "", "", ronda, ""
 
 def _minutos_utc(iso_utc: str) -> int:
     try:
@@ -210,7 +222,9 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
         cat_original = ev.get("categoria", "")
 
         categoria_real = deducir_categoria(tit_original, torneo_original, cat_original)
-        tit_limpio, loc, vis, ronda = desmontar_duelo(tit_original, categoria_real)
+        tit_limpio, loc, vis, ronda, torneo_extra = desmontar_duelo(tit_original, categoria_real)
+        if torneo_extra and (not torneo_original or torneo_original == tit_original or torneo_original.lower() in ["deportes", "deportes en vivo", "fútbol", "futbol"]):
+            torneo_original = torneo_extra
 
         if not loc and ev.get("equipo_local"):
             loc = limpiar_texto(ev.get("equipo_local", ""))
@@ -222,19 +236,45 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
             "Ciclismo", "Motor", "Snooker", "Hípica", "Hipica", "Tiro"
         }
 
+                # Limpieza universal de torneos que arrastran rondas (ej. 'UEFA Nations League Fase de grupos')
+        m_torneo_ronda = re.search(r"\b(Fase\s+de\s+grupos|Jornada\s+\d+|\d+[ªºa]?\s+Jornada|Round\s+\d+|Cuartos\s+de\s+final|Semifinal(?:es)?|Final)\b", torneo_original, re.I)
+        if m_torneo_ronda:
+            if not ronda:
+                ronda = m_torneo_ronda.group(1).strip()
+            torneo_original = torneo_original[:m_torneo_ronda.start()].strip().rstrip(":-–— ")
+
         if categoria_real in DEPORTES_CIRCUITO:
             tipo_ev = "circuito"
-            # En deportes de circuito para TV, el título de la tarjeta es la competición/organización
-            nombre_circuito = torneo_original if torneo_original and torneo_original != "Deportes en Vivo" else tit_original
-            # Si el torneo era el nombre del duelo individual, limpiarlo
-            if any(sep in nombre_circuito.lower() for sep in [" vs ", " v ", " - "]):
-                nombre_circuito = torneo_original if torneo_original and " vs " not in torneo_original.lower() else categoria_real
-            tit_limpio = nombre_circuito
+            # 1. Quitar la categoría del inicio del título si es redundante (ej. 'Hípica Concurso...' -> 'Concurso...')
+            t_base = re.sub(rf"^(?:{categoria_real}|Deportes?|Directo)\s*[:\-–—]?\s*", "", tit_original, flags=re.I).strip()
+            if not t_base:
+                t_base = tit_original
+
+            # 2. Si tiene separador de disciplina y sede/sesion con dos puntos (ej. 'Cross Country: Lake Placid')
+            if ":" in t_base:
+                partes_c = t_base.split(":", 1)
+                disciplina = partes_c[0].strip()
+                detalle_c = partes_c[1].strip()
+                tit_limpio = disciplina
+                ronda = detalle_c
+                torneo_original = disciplina
+            else:
+                tit_limpio = t_base
+                if not torneo_original or torneo_original.lower() in ["deportes", "deportes en vivo", categoria_real.lower()]:
+                    torneo_original = tit_limpio
         elif loc and vis:
             tipo_ev = "duelo"
             tit_limpio = f"{loc} vs {vis}"
         else:
             tipo_ev = ev.get("tipo_evento", "circuito")
+
+        ev["titulo"] = tit_limpio
+        ev["torneo"] = torneo_original or tit_limpio
+        ev["categoria"] = categoria_real
+        ev["tipo_evento"] = tipo_ev
+        ev["equipo_local"] = loc
+        ev["equipo_visitante"] = vis
+        ev["ronda"] = ronda
 
         if categoria_real in ["Fútbol", "Baloncesto", "Balonmano", "Rugby", "Hockey"] and tipo_ev == "circuito":
             if len(tit_limpio.split()) <= 2 and not any(k in tit_limpio.upper() for k in ["CUP", "TOUR", "OPEN", "CIRCUITO"]):
@@ -305,15 +345,16 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
         tipo_ev = ev.get("tipo_evento", "duelo" if loc and vis else "circuito")
 
         if tipo_ev == "duelo":
-            if ronda and torneo_original:
+            if ronda and torneo_original and ronda.lower() not in torneo_original.lower():
                 subtitulo = f"{torneo_original} • {ronda}"
             elif torneo_original and torneo_original.lower() != tit_limpio.lower() and torneo_original.lower() not in ["deportes", "fútbol", "futbol"]:
                 subtitulo = f"{torneo_original}"
             else:
-                subtitulo = f"{categoria_real} en Directo"
+                subtitulo = tit_limpio
             referencia = subtitulo
         else:
-            subtitulo = ronda if ronda else (torneo_original if torneo_original != tit_limpio else categoria_real)
+            # En circuitos: Línea 2 es Sede / Sesión / Ronda. NUNCA la categoría repetida.
+            subtitulo = ronda if ronda and ronda.lower() != categoria_real.lower() and ronda.lower() != tit_limpio.lower() else ""
             referencia = subtitulo
 
         logo_torneo = resolver_logo_torneo(torneo_original or tit_limpio, categoria_real)
