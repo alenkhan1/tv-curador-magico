@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-03T09:16:17Z",
+  "generado_utc": "2026-10-03T09:45:33Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-03",
   "base_media": "http://espartanos.live:8080",
@@ -463,7 +463,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-argentina"
+        "espn-colombia"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -803,7 +803,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-argentina"
+        "espn-colombia"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1250,7 +1250,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_2_b46c1d9d",
+      "id": "lineal_espn_5d2b0c3f",
       "agenda_id": "",
       "titulo": "Estados Unidos vs México",
       "torneo": "Amistoso",
@@ -1271,13 +1271,25 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn2-argentina"
+        "espn-colombia"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
         {
           "nombre": "ESPN 2 ARGENTINA HD",
           "id_xtream": "258741"
