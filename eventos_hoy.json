@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-03T03:16:01Z",
+  "generado_utc": "2026-10-03T03:46:15Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-02",
   "base_media": "http://espartanos.live:8080",
@@ -3895,6 +3895,54 @@
       "ronda": ""
     },
     {
+      "id": "lineal_tyc_sports_08d1b9e3",
+      "agenda_id": "",
+      "titulo": "Argentina vs Burkina Faso",
+      "torneo": "Amistoso",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Argentina",
+      "equipo_visitante": "Burkina Faso",
+      "subtitulo": "Amistoso",
+      "referencia": "Amistoso",
+      "hora_utc": "2026-10-03T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 120,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fflagcdn.com%2Fw320%2Far.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fy38bkz1742102697.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/fifa.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "tyc-sports"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ARG | TyC SPORTS INTERNACIONAL",
+          "id_xtream": "1118"
+        },
+        {
+          "nombre": "ARG | TyC SPORTS HD",
+          "id_xtream": "1119"
+        },
+        {
+          "nombre": "ARG | TYC SPORTS INTERNACIONAL",
+          "id_xtream": "1120"
+        },
+        {
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "258796"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "xtream_50b53acf",
       "agenda_id": "",
       "titulo": "Pumas UNAM vs Tigres UANL",
@@ -4663,12 +4711,12 @@
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 25,
+    "total_agenda_maestra": 26,
     "total_canales_xtream": 834,
     "lista_xtream_actualizada_hoy": true,
-    "eventos_lineales_inyectados": 25,
+    "eventos_lineales_inyectados": 26,
     "eventos_xtream_aprobados": 155,
     "eventos_descartados_stale": 75,
-    "total_eventos_publicados": 109
+    "total_eventos_publicados": 110
   }
 }
