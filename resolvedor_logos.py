@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import time
 import re
 import unicodedata
 import urllib.parse
@@ -43,7 +44,38 @@ if _env_file.exists():
 
 ARCHIVO_CACHE_LOGOS = Path(os.environ.get("ARCHIVO_CACHE_LOGOS", "logos_cache.json"))
 ARCHIVO_CATALOGO_TORNEOS = Path(__file__).resolve().parent / "catalogo_maestro_torneos.json"
+ARCHIVO_CATALOGO_EQUIPOS = Path(__file__).resolve().parent / "catalogo_maestro_equipos.json"
 _CATALOGO_TORNEOS_CACHE: dict[str, str] | None = None
+_CATALOGO_EQUIPOS_CACHE: dict[str, str] | None = None
+
+def _obtener_catalogo_equipos() -> dict[str, str]:
+    global _CATALOGO_EQUIPOS_CACHE
+    if _CATALOGO_EQUIPOS_CACHE is None:
+        if ARCHIVO_CATALOGO_EQUIPOS.exists():
+            try:
+                _CATALOGO_EQUIPOS_CACHE = json.loads(ARCHIVO_CATALOGO_EQUIPOS.read_text(encoding="utf-8"))
+            except Exception:
+                _CATALOGO_EQUIPOS_CACHE = {}
+        else:
+            _CATALOGO_EQUIPOS_CACHE = {}
+    return _CATALOGO_EQUIPOS_CACHE
+
+def _guardar_catalogo_equipos(nuevos: dict[str, str]) -> None:
+    if not nuevos:
+        return
+    cat = _obtener_catalogo_equipos()
+    cat.update(nuevos)
+    tmp_path = ARCHIVO_CATALOGO_EQUIPOS.with_suffix(".tmp")
+    try:
+        tmp_path.write_text(json.dumps(cat, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp_path.replace(ARCHIVO_CATALOGO_EQUIPOS)
+    except Exception as e:
+        log.warning("No se pudo guardar catalogo_maestro_equipos: %s", e)
+        if tmp_path.exists():
+            try:
+                tmp_path.unlink()
+            except Exception:
+                pass
 
 def _obtener_catalogo_torneos() -> dict[str, str]:
     global _CATALOGO_TORNEOS_CACHE
@@ -338,7 +370,8 @@ def _normalizar(texto: str) -> str:
         return ""
     nfkd = unicodedata.normalize("NFKD", texto)
     sin_acento = "".join(c for c in nfkd if not unicodedata.combining(c))
-    return re.sub(r"[^A-Za-z0-9\s]", " ", sin_acento).upper().strip()
+    limpio = re.sub(r"[^A-Za-z0-9\s]", " ", sin_acento).upper().strip()
+    return re.sub(r"\s+", " ", limpio)
 
 def _cargar_cache() -> dict[str, str]:
     if ARCHIVO_CACHE_LOGOS.exists():
@@ -349,10 +382,21 @@ def _cargar_cache() -> dict[str, str]:
     return {}
 
 def _guardar_cache(cache: dict[str, str]) -> None:
+    if not cache:
+        return
+    existente = _cargar_cache()
+    existente.update(cache)
+    tmp_path = ARCHIVO_CACHE_LOGOS.with_suffix(".tmp")
     try:
-        ARCHIVO_CACHE_LOGOS.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp_path.write_text(json.dumps(existente, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp_path.replace(ARCHIVO_CACHE_LOGOS)
     except Exception as e:
         log.warning("No se pudo guardar la cache de logos: %s", e)
+        if tmp_path.exists():
+            try:
+                tmp_path.unlink()
+            except Exception:
+                pass
 
 def guardar_cache_logos() -> None:
     pass
@@ -434,22 +478,38 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
     # 0. Banderas oficiales: Búsqueda exacta y por prefijo de país reconocido
     if equipo_norm in BANDERAS_PAISES:
         flag_url = BANDERAS_PAISES[equipo_norm]
-        cache[clave_cache] = flag_url
-        _guardar_cache(cache)
+        _guardar_catalogo_equipos({clave_cache: flag_url})
         return flag_url
 
     # Soporte para variantes como "España Sub 21", "Selección Colombia", etc.
     for pais_k, flag_u in BANDERAS_PAISES.items():
         if len(pais_k) >= 4 and (equipo_norm.startswith(pais_k + " ") or equipo_norm.endswith(" " + pais_k)):
-            cache[clave_cache] = flag_u
-            _guardar_cache(cache)
+            _guardar_catalogo_equipos({clave_cache: flag_u})
             return flag_u
 
+    # 1. Catálogo maestro permanente de equipos en disco (Prioridad Absoluta)
+    cat_equipos = _obtener_catalogo_equipos()
+    if clave_cache in cat_equipos and cat_equipos[clave_cache] and not es_logo_basura(cat_equipos[clave_cache]):
+        return cat_equipos[clave_cache]
+
+    # Limpieza de ranking universitario americano ("24 Harvard" -> "Harvard")
+    equipo_sin_ranking = re.sub(r"^\d+\s+", "", equipo_limpio).strip()
+    if equipo_sin_ranking != equipo_limpio:
+        clave_sin_rank = f"equipo_{_normalizar(equipo_sin_ranking)}"
+        if clave_sin_rank in cat_equipos and cat_equipos[clave_sin_rank] and not es_logo_basura(cat_equipos[clave_sin_rank]):
+            cat_equipos[clave_cache] = cat_equipos[clave_sin_rank]
+            _guardar_catalogo_equipos({clave_cache: cat_equipos[clave_sin_rank]})
+            return cat_equipos[clave_cache]
+
+    # 2. Caché previo en disco
+    cache = _cargar_cache()
     if clave_cache in cache and cache[clave_cache] and not es_logo_basura(cache[clave_cache]):
         return cache[clave_cache]
 
     if not permitir_red:
         return ""
+
+    time.sleep(0.35)
 
     # 1. Consulta a TheSportsDB
     try:
