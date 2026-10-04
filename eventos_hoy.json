@@ -1,10 +1,97 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-04T19:20:27Z",
+  "generado_utc": "2026-10-04T22:19:56Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-04",
   "base_media": "http://espartanos.live:8080",
   "eventos": [
+    {
+      "id": "lineal_espn_04883427",
+      "agenda_id": "",
+      "titulo": "MotoGP - G.P. Japón (Motegi) Carrera",
+      "torneo": "MotoGP",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T05:00:00Z",
+      "hora_local_producto": "00:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_42f677a6",
+      "agenda_id": "",
+      "titulo": "F1",
+      "torneo": "F1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Gp Domingo",
+      "referencia": "Gp Domingo",
+      "hora_utc": "2026-10-04T05:00:00Z",
+      "hora_local_producto": "00:00",
+      "duracion_min": 135,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.9,
+      "fuentes": [
+        {
+          "nombre": "19:30 MotoGP Domingo de carreras GP Motul de Japón",
+          "id_xtream": "639180"
+        }
+      ],
+      "ronda": "Gp Domingo"
+    },
     {
       "id": "xtream_a57c65bc",
       "agenda_id": "",
@@ -40,6 +127,110 @@
         {
           "nombre": "01:00 ◘ WTA China Open / Court 3 ◘ WTA ◘◘",
           "id_xtream": "639195"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_e2f44c9d",
+      "agenda_id": "",
+      "titulo": "P. Kudermetova vs M. Andreeva",
+      "torneo": "WTA Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "P. Kudermetova",
+      "equipo_visitante": "M. Andreeva",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T05:10:00Z",
+      "hora_local_producto": "00:10",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_932ea7cc",
+      "agenda_id": "",
+      "titulo": "H. Hurkacz vs K. Khachanov",
+      "torneo": "Torneo de Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "H. Hurkacz",
+      "equipo_visitante": "K. Khachanov",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T05:15:00Z",
+      "hora_local_producto": "00:15",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
         }
       ],
       "ronda": ""
@@ -128,9 +319,61 @@
       "ronda": "Final"
     },
     {
-      "id": "lineal_dazn_f1_651bd056",
+      "id": "lineal_espn_1b41a695",
       "agenda_id": "",
-      "titulo": "G.P. Bahrein (Sepang) - Carrera",
+      "titulo": "L. Noskova vs V. Golubic",
+      "torneo": "WTA Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "L. Noskova",
+      "equipo_visitante": "V. Golubic",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T06:40:00Z",
+      "hora_local_producto": "01:40",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_bdb4f6dd",
+      "agenda_id": "",
+      "titulo": "Fórmula 1 - G.P. Bahrein (Sepang) Carrera",
       "torneo": "Fórmula 1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -149,7 +392,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "futbolenlatv_dazn_f1"
+        "www.futbolenvivocolombia.com"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -157,8 +400,128 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "09 | DAZN F1 HD",
-          "id_xtream": "141363"
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_7a87251f",
+      "agenda_id": "",
+      "titulo": "V. Vacherot vs A. Fils",
+      "torneo": "Torneo de Tokio",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "V. Vacherot",
+      "equipo_visitante": "A. Fils",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T07:10:00Z",
+      "hora_local_producto": "02:10",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_ac179bae",
+      "agenda_id": "",
+      "titulo": "A. De Miñaur vs A. Rublev",
+      "torneo": "Torneo de Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "A. De Miñaur",
+      "equipo_visitante": "A. Rublev",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T07:10:00Z",
+      "hora_local_producto": "02:10",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fw39x151770437815.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
         }
       ],
       "ronda": ""
@@ -198,6 +561,110 @@
         {
           "nombre": "03:30 ◘ China Open ◘ ATP ◘◘",
           "id_xtream": "639198"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_f1f118ff",
+      "agenda_id": "",
+      "titulo": "D. Medvedev vs F. Cerúndolo",
+      "torneo": "Torneo de Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "D. Medvedev",
+      "equipo_visitante": "F. Cerúndolo",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T08:40:00Z",
+      "hora_local_producto": "03:40",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_ec50f460",
+      "agenda_id": "",
+      "titulo": "J. Lehecka vs A.D. Vallejo",
+      "torneo": "Torneo de Tokio",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "J. Lehecka",
+      "equipo_visitante": "A.D. Vallejo",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T09:50:00Z",
+      "hora_local_producto": "04:50",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyqxot61678411842.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
         }
       ],
       "ronda": ""
@@ -286,6 +753,58 @@
       "ronda": "Liubliana"
     },
     {
+      "id": "lineal_dsports_6b468ed2",
+      "agenda_id": "",
+      "titulo": "Napoli Femenino vs Como Femminile",
+      "torneo": "Serie A Femminile",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Napoli Femenino",
+      "equipo_visitante": "Como Femminile",
+      "subtitulo": "Serie A Femminile",
+      "referencia": "Serie A Femminile",
+      "hora_utc": "2026-10-04T10:30:00Z",
+      "hora_local_producto": "05:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "03 | DIRECTV SPORTS 1 (COL)",
+          "id_xtream": "253431"
+        },
+        {
+          "nombre": "DSPORTS 1 HD COLOMBIA",
+          "id_xtream": "258834"
+        },
+        {
+          "nombre": "DSPORTS 1 HD ARGENTINA",
+          "id_xtream": "258844"
+        },
+        {
+          "nombre": "02 | DIRECTV SPORTS 1 (CHI)",
+          "id_xtream": "253430"
+        },
+        {
+          "nombre": "08 | DIRECTV SPORTS 1 (CHI)",
+          "id_xtream": "253436"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "xtream_3670924a",
       "agenda_id": "",
       "titulo": "Real Sociedad II vs Granada",
@@ -320,6 +839,110 @@
         {
           "nombre": "07:00 ◘ Real Sociedad II vs. Granada ◘ LaLiga SmartBank ◘",
           "id_xtream": "639203"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_32dcc0c9",
+      "agenda_id": "",
+      "titulo": "A. Zverev vs N. Djokovic",
+      "torneo": "Torneo de Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "A. Zverev",
+      "equipo_visitante": "N. Djokovic",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T11:10:00Z",
+      "hora_local_producto": "06:10",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_63e20e95",
+      "agenda_id": "",
+      "titulo": "S. Bejlek vs N. Osaka",
+      "torneo": "WTA Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "S. Bejlek",
+      "equipo_visitante": "N. Osaka",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T11:10:00Z",
+      "hora_local_producto": "06:10",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Firkwxf1674203370.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
         }
       ],
       "ronda": ""
@@ -576,48 +1199,57 @@
       "ronda": ""
     },
     {
-      "id": "xtream_bea403ff",
+      "id": "lineal_dsports_6dd9a43a",
       "agenda_id": "",
-      "titulo": "Washington Commanders vs Indianapolis Colts",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
+      "titulo": "CR Flamengo Academy vs River Plate Academy",
+      "torneo": "LaLiga Futures",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Washington Commanders",
-      "equipo_visitante": "Indianapolis Colts",
-      "subtitulo": "NFL",
-      "referencia": "NFL",
-      "hora_utc": "2026-10-04T12:30:00Z",
-      "hora_local_producto": "07:30",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Frn0c7v1643826119.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fim99lm1784720368.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "tier": 2,
-      "origen": "xtream_evento",
+      "equipo_local": "CR Flamengo Academy",
+      "equipo_visitante": "River Plate Academy",
+      "subtitulo": "LaLiga Futures",
+      "referencia": "LaLiga Futures",
+      "hora_utc": "2026-10-04T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fsyptwx1473538074.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fo8gp181587215886.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
       "origenes": [
-        "xtream_evento"
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "07:30 04/10 | Washington Commanders vs. Indianapolis Colts | NFL |",
-          "id_xtream": "638970"
+          "nombre": "03 | DIRECTV SPORTS 1 (COL)",
+          "id_xtream": "253431"
         },
         {
-          "nombre": "07:30 04/10 | Washington Commanders vs. Indianapolis Colts | NFL | Spanish",
-          "id_xtream": "638971"
+          "nombre": "DSPORTS 1 HD COLOMBIA",
+          "id_xtream": "258834"
         },
         {
-          "nombre": "08:30 ◘ Washington Commanders vs. Indianapolis Colts ◘ NFL ◘",
-          "id_xtream": "639212"
+          "nombre": "DSPORTS 1 HD ARGENTINA",
+          "id_xtream": "258844"
         },
         {
-          "nombre": "08:30 ◘ Washington Commanders vs. Indianapolis Colts ◘ NFL ◘ Spanish",
-          "id_xtream": "639213"
+          "nombre": "ESPN 3 ARGENTINA HD",
+          "id_xtream": "258742"
+        },
+        {
+          "nombre": "ESPN 3 COLOMBIA HD",
+          "id_xtream": "258748"
+        },
+        {
+          "nombre": "ARG | ESPN 3",
+          "id_xtream": "1127"
         }
       ],
       "ronda": ""
@@ -631,8 +1263,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Azerbaiyán",
       "equipo_visitante": "Lituania",
-      "subtitulo": "UEFA Nations League • Fase de grupos",
-      "referencia": "UEFA Nations League • Fase de grupos",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
       "hora_utc": "2026-10-04T13:00:00Z",
       "hora_local_producto": "08:00",
       "duracion_min": 130,
@@ -644,7 +1276,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn2-andinon",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -669,55 +1301,7 @@
           "id_xtream": "638967"
         }
       ],
-      "ronda": "Fase de grupos"
-    },
-    {
-      "id": "lineal_espn_3_20f78317",
-      "agenda_id": "",
-      "titulo": "CR Flamengo Academy vs River Plate Academy",
-      "torneo": "LaLiga Futures",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "CR Flamengo Academy",
-      "equipo_visitante": "River Plate Academy",
-      "subtitulo": "LaLiga Futures • Semifinales",
-      "referencia": "LaLiga Futures • Semifinales",
-      "hora_utc": "2026-10-04T13:00:00Z",
-      "hora_local_producto": "08:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fsyptwx1473538074.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fo8gp181587215886.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
-      "tier": 1,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "espn3-argentina"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN 3 ARGENTINA HD",
-          "id_xtream": "258742"
-        },
-        {
-          "nombre": "ESPN 3 COLOMBIA HD",
-          "id_xtream": "258748"
-        },
-        {
-          "nombre": "ARG | ESPN 3",
-          "id_xtream": "1127"
-        },
-        {
-          "nombre": "06 | ESPN 3  (CHI)",
-          "id_xtream": "45484"
-        }
-      ],
-      "ronda": "Semifinales"
+      "ronda": ""
     },
     {
       "id": "xtream_7cf6e7bc",
@@ -915,7 +1499,56 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_3_cb70bf8d",
+      "id": "lineal_espn_4_2e91be6c",
+      "agenda_id": "",
+      "titulo": "Washington Commanders vs Indianápolis Colts",
+      "torneo": "NFL",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Commanders",
+      "equipo_visitante": "Indianápolis Colts",
+      "subtitulo": "NFL",
+      "referencia": "NFL",
+      "hora_utc": "2026-10-04T13:30:00Z",
+      "hora_local_producto": "08:30",
+      "duracion_min": 135,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Frn0c7v1643826119.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fim99lm1784720368.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 4 ARGENTINA HD",
+          "id_xtream": "258744"
+        },
+        {
+          "nombre": "07:30 04/10 | Washington Commanders vs. Indianapolis Colts | NFL |",
+          "id_xtream": "638970"
+        },
+        {
+          "nombre": "07:30 04/10 | Washington Commanders vs. Indianapolis Colts | NFL | Spanish",
+          "id_xtream": "638971"
+        },
+        {
+          "nombre": "08:30 ◘ Washington Commanders vs. Indianapolis Colts ◘ NFL ◘",
+          "id_xtream": "639212"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_dsports_5f5cf5c9",
       "agenda_id": "",
       "titulo": "At. Madrid Academy vs Real Betis Academy",
       "torneo": "LaLiga Futures",
@@ -923,8 +1556,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "At. Madrid Academy",
       "equipo_visitante": "Real Betis Academy",
-      "subtitulo": "LaLiga Futures • Semifinales",
-      "referencia": "LaLiga Futures • Semifinales",
+      "subtitulo": "LaLiga Futures",
+      "referencia": "LaLiga Futures",
       "hora_utc": "2026-10-04T13:45:00Z",
       "hora_local_producto": "08:45",
       "duracion_min": 130,
@@ -936,13 +1569,25 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn3-argentina"
+        "www.futbolenvivocolombia.com"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "03 | DIRECTV SPORTS 1 (COL)",
+          "id_xtream": "253431"
+        },
+        {
+          "nombre": "DSPORTS 1 HD COLOMBIA",
+          "id_xtream": "258834"
+        },
+        {
+          "nombre": "DSPORTS 1 HD ARGENTINA",
+          "id_xtream": "258844"
+        },
         {
           "nombre": "ESPN 3 ARGENTINA HD",
           "id_xtream": "258742"
@@ -954,13 +1599,9 @@
         {
           "nombre": "ARG | ESPN 3",
           "id_xtream": "1127"
-        },
-        {
-          "nombre": "06 | ESPN 3  (CHI)",
-          "id_xtream": "45484"
         }
       ],
-      "ronda": "Semifinales"
+      "ronda": ""
     },
     {
       "id": "xtream_f40fe851",
@@ -1067,6 +1708,58 @@
         {
           "nombre": "09:00 LALIGA HYPER. Real Sporting - RC Celta Fortuna",
           "id_xtream": "639121"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_fee51643",
+      "agenda_id": "",
+      "titulo": "K. Muchova vs L. Samsonova",
+      "torneo": "WTA Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "K. Muchova",
+      "equipo_visitante": "L. Samsonova",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-04T14:10:00Z",
+      "hora_local_producto": "09:10",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
         }
       ],
       "ronda": ""
@@ -1185,6 +1878,58 @@
       "ronda": ""
     },
     {
+      "id": "lineal_dsports_2_805988db",
+      "agenda_id": "",
+      "titulo": "Feyenoord Women vs Ajax Femenino",
+      "torneo": "Eredivisie Vrouwen",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Feyenoord Women",
+      "equipo_visitante": "Ajax Femenino",
+      "subtitulo": "Eredivisie Vrouwen",
+      "referencia": "Eredivisie Vrouwen",
+      "hora_utc": "2026-10-04T14:45:00Z",
+      "hora_local_producto": "09:45",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4d5kz21630019812.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "04 | DIRECTV SPORTS 2 (COL)",
+          "id_xtream": "253432"
+        },
+        {
+          "nombre": "DSPORTS 2 HD COLOMBIA",
+          "id_xtream": "258835"
+        },
+        {
+          "nombre": "DSPORTS 2 HD ARGENTINA",
+          "id_xtream": "258845"
+        },
+        {
+          "nombre": "05 | DIRECTV SPORTS 2 (EC)",
+          "id_xtream": "253433"
+        },
+        {
+          "nombre": "09 | DIRECTV SPORTS 2 (CHI)",
+          "id_xtream": "253437"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "xtream_088d5d78",
       "agenda_id": "",
       "titulo": "Fénix vs Uruguay Montevideo",
@@ -1224,7 +1969,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_3_f3ba812a",
+      "id": "lineal_dsports_439438ad",
       "agenda_id": "",
       "titulo": "Sevilla FC Academy vs Palmeiras Academy",
       "torneo": "LaLiga Futures",
@@ -1232,8 +1977,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Sevilla FC Academy",
       "equipo_visitante": "Palmeiras Academy",
-      "subtitulo": "LaLiga Futures • Final",
-      "referencia": "LaLiga Futures • Final",
+      "subtitulo": "LaLiga Futures",
+      "referencia": "LaLiga Futures",
       "hora_utc": "2026-10-04T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 130,
@@ -1245,13 +1990,25 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn3-argentina"
+        "www.futbolenvivocolombia.com"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "03 | DIRECTV SPORTS 1 (COL)",
+          "id_xtream": "253431"
+        },
+        {
+          "nombre": "DSPORTS 1 HD COLOMBIA",
+          "id_xtream": "258834"
+        },
+        {
+          "nombre": "DSPORTS 1 HD ARGENTINA",
+          "id_xtream": "258844"
+        },
         {
           "nombre": "ESPN 3 ARGENTINA HD",
           "id_xtream": "258742"
@@ -1263,13 +2020,61 @@
         {
           "nombre": "ARG | ESPN 3",
           "id_xtream": "1127"
-        },
-        {
-          "nombre": "06 | ESPN 3  (CHI)",
-          "id_xtream": "45484"
         }
       ],
-      "ronda": "Final"
+      "ronda": ""
+    },
+    {
+      "id": "lineal_dsports_6dc84f06",
+      "agenda_id": "",
+      "titulo": "Casademont Zaragoza vs Valencia Basket",
+      "torneo": "Liga Endesa",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Casademont Zaragoza",
+      "equipo_visitante": "Valencia Basket",
+      "subtitulo": "Liga Endesa",
+      "referencia": "Liga Endesa",
+      "hora_utc": "2026-10-04T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyrames1721554095.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9qyc231536398868.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "03 | DIRECTV SPORTS 1 (COL)",
+          "id_xtream": "253431"
+        },
+        {
+          "nombre": "DSPORTS 1 HD COLOMBIA",
+          "id_xtream": "258834"
+        },
+        {
+          "nombre": "DSPORTS 1 HD ARGENTINA",
+          "id_xtream": "258844"
+        },
+        {
+          "nombre": "02 | DIRECTV SPORTS 1 (CHI)",
+          "id_xtream": "253430"
+        },
+        {
+          "nombre": "08 | DIRECTV SPORTS 1 (CHI)",
+          "id_xtream": "253436"
+        }
+      ],
+      "ronda": ""
     },
     {
       "id": "xtream_8dbb450a",
@@ -1397,7 +2202,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_3_6da3e00e",
+      "id": "lineal_dsports_33c7b63d",
       "agenda_id": "",
       "titulo": "River Plate Academy vs Real Betis Academy",
       "torneo": "LaLiga Futures",
@@ -1405,8 +2210,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "River Plate Academy",
       "equipo_visitante": "Real Betis Academy",
-      "subtitulo": "LaLiga Futures • Final",
-      "referencia": "LaLiga Futures • Final",
+      "subtitulo": "LaLiga Futures",
+      "referencia": "LaLiga Futures",
       "hora_utc": "2026-10-04T15:30:00Z",
       "hora_local_producto": "10:30",
       "duracion_min": 130,
@@ -1418,13 +2223,25 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn3-argentina"
+        "www.futbolenvivocolombia.com"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "03 | DIRECTV SPORTS 1 (COL)",
+          "id_xtream": "253431"
+        },
+        {
+          "nombre": "DSPORTS 1 HD COLOMBIA",
+          "id_xtream": "258834"
+        },
+        {
+          "nombre": "DSPORTS 1 HD ARGENTINA",
+          "id_xtream": "258844"
+        },
         {
           "nombre": "ESPN 3 ARGENTINA HD",
           "id_xtream": "258742"
@@ -1436,13 +2253,9 @@
         {
           "nombre": "ARG | ESPN 3",
           "id_xtream": "1127"
-        },
-        {
-          "nombre": "06 | ESPN 3  (CHI)",
-          "id_xtream": "45484"
         }
       ],
-      "ronda": "Final"
+      "ronda": ""
     },
     {
       "id": "xtream_0dabfcf9",
@@ -1570,8 +2383,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Kosovo",
       "equipo_visitante": "Austria",
-      "subtitulo": "UEFA Nations League • Fase de grupos",
-      "referencia": "UEFA Nations League • Fase de grupos",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
       "hora_utc": "2026-10-04T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -1583,7 +2396,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-colombia",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -1612,7 +2425,7 @@
           "id_xtream": "45482"
         }
       ],
-      "ronda": "Fase de grupos"
+      "ronda": ""
     },
     {
       "id": "xtream_9ff25678",
@@ -2013,53 +2826,6 @@
       "ronda": ""
     },
     {
-      "id": "xtream_1dfb2140",
-      "agenda_id": "",
-      "titulo": "New England Patriots vs Buffalo Bills",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "New England Patriots",
-      "equipo_visitante": "Buffalo Bills",
-      "subtitulo": "NFL",
-      "referencia": "NFL",
-      "hora_utc": "2026-10-04T16:00:00Z",
-      "hora_local_producto": "11:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:00 04/10 | New England Patriots vs. Buffalo Bills | NFL |",
-          "id_xtream": "639000"
-        },
-        {
-          "nombre": "11:00 04/10 | New England Patriots vs. Buffalo Bills | NFL | Spanish",
-          "id_xtream": "639001"
-        },
-        {
-          "nombre": "12:00 ◘ New England Patriots vs. Buffalo Bills ◘ NFL ◘",
-          "id_xtream": "639242"
-        },
-        {
-          "nombre": "12:00 ◘ New England Patriots vs. Buffalo Bills ◘ NFL ◘ Spanish",
-          "id_xtream": "639243"
-        }
-      ],
-      "ronda": ""
-    },
-    {
       "id": "xtream_354f9420",
       "agenda_id": "",
       "titulo": "New Hampshire vs Binghamton",
@@ -2294,6 +3060,53 @@
       "ronda": ""
     },
     {
+      "id": "xtream_a9287570",
+      "agenda_id": "",
+      "titulo": "Huracán vs Aldosivi",
+      "torneo": "Liga Argentina",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Huracán",
+      "equipo_visitante": "Aldosivi",
+      "subtitulo": "Liga Argentina",
+      "referencia": "Liga Argentina",
+      "hora_utc": "2026-10-04T16:35:00Z",
+      "hora_local_producto": "11:35",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkppi2b1775776550.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnqrjqb1517767667.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:35 04/10 | Huracán vs. Aldosivi | Liga Argentina ||",
+          "id_xtream": "639008"
+        },
+        {
+          "nombre": "11:45 04/10 | Huracán vs. Aldosivi | Liga Argentina |",
+          "id_xtream": "639009"
+        },
+        {
+          "nombre": "12:35 ◘ Huracán vs. Aldosivi ◘ Liga Argentina ◘◘",
+          "id_xtream": "639250"
+        },
+        {
+          "nombre": "12:45 ◘ Huracán vs. Aldosivi ◘ Liga Argentina ◘",
+          "id_xtream": "639251"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "lineal_eurosport_1_913d0752",
       "agenda_id": "",
       "titulo": "Cross Country",
@@ -2342,22 +3155,71 @@
       "ronda": "Lake Placid"
     },
     {
-      "id": "xtream_7c3d2f79",
+      "id": "lineal_espn_5_d95dc6f0",
       "agenda_id": "",
-      "titulo": "Los Angeles Rams vs Philadelphia Eagles",
+      "titulo": "Philadelphia Eagles vs Los Angeles Rams",
       "torneo": "NFL",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
-      "equipo_local": "Los Angeles Rams",
-      "equipo_visitante": "Philadelphia Eagles",
+      "equipo_local": "Philadelphia Eagles",
+      "equipo_visitante": "Los Angeles Rams",
       "subtitulo": "NFL",
       "referencia": "NFL",
       "hora_utc": "2026-10-04T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fojw15x1784721865.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpnpybf1515852421.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpnpybf1515852421.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fojw15x1784721865.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 5 ARGENTINA HD",
+          "id_xtream": "258743"
+        },
+        {
+          "nombre": "11:00 04/10 | Los Angeles Rams vs. Philadelphia Eagles | NFL |",
+          "id_xtream": "638998"
+        },
+        {
+          "nombre": "11:00 04/10 | Los Angeles Rams vs. Philadelphia Eagles | NFL | Spanish",
+          "id_xtream": "638999"
+        },
+        {
+          "nombre": "12:00 ◘ Los Angeles Rams vs. Philadelphia Eagles ◘ NFL ◘",
+          "id_xtream": "639240"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_d0fdf923",
+      "agenda_id": "",
+      "titulo": "New England Patriots vs Buffalo Bills",
+      "torneo": "NFL",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "New England Patriots",
+      "equipo_visitante": "Buffalo Bills",
+      "subtitulo": "NFL",
+      "referencia": "NFL",
+      "hora_utc": "2026-10-04T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -2370,20 +3232,20 @@
       "puntuacion_confianza": 0.9,
       "fuentes": [
         {
-          "nombre": "11:00 04/10 | Los Angeles Rams vs. Philadelphia Eagles | NFL |",
-          "id_xtream": "638998"
+          "nombre": "11:00 04/10 | New England Patriots vs. Buffalo Bills | NFL |",
+          "id_xtream": "639000"
         },
         {
-          "nombre": "11:00 04/10 | Los Angeles Rams vs. Philadelphia Eagles | NFL | Spanish",
-          "id_xtream": "638999"
+          "nombre": "11:00 04/10 | New England Patriots vs. Buffalo Bills | NFL | Spanish",
+          "id_xtream": "639001"
         },
         {
-          "nombre": "12:00 ◘ Los Angeles Rams vs. Philadelphia Eagles ◘ NFL ◘",
-          "id_xtream": "639240"
+          "nombre": "12:00 ◘ New England Patriots vs. Buffalo Bills ◘ NFL ◘",
+          "id_xtream": "639242"
         },
         {
-          "nombre": "12:00 ◘ Los Angeles Rams vs. Philadelphia Eagles ◘ NFL ◘ Spanish",
-          "id_xtream": "639241"
+          "nombre": "12:00 ◘ New England Patriots vs. Buffalo Bills ◘ NFL ◘ Spanish",
+          "id_xtream": "639243"
         }
       ],
       "ronda": ""
@@ -2584,6 +3446,58 @@
       "ronda": ""
     },
     {
+      "id": "lineal_dsports_7dc6094c",
+      "agenda_id": "",
+      "titulo": "Uruguay vs Ecuador",
+      "torneo": "Conmebol Sub-20 Futsal",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Uruguay",
+      "equipo_visitante": "Ecuador",
+      "subtitulo": "Conmebol Sub-20 Futsal",
+      "referencia": "Conmebol Sub-20 Futsal",
+      "hora_utc": "2026-10-04T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/uy.png",
+      "logo_visitante": "https://flagcdn.com/256x192/ec.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "03 | DIRECTV SPORTS 1 (COL)",
+          "id_xtream": "253431"
+        },
+        {
+          "nombre": "DSPORTS 1 HD COLOMBIA",
+          "id_xtream": "258834"
+        },
+        {
+          "nombre": "DSPORTS 1 HD ARGENTINA",
+          "id_xtream": "258844"
+        },
+        {
+          "nombre": "02 | DIRECTV SPORTS 1 (CHI)",
+          "id_xtream": "253430"
+        },
+        {
+          "nombre": "08 | DIRECTV SPORTS 1 (CHI)",
+          "id_xtream": "253436"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "xtream_6ae70375",
       "agenda_id": "",
       "titulo": "Cerro vs Montevideo Wanderers",
@@ -2770,55 +3684,6 @@
         {
           "nombre": "12:30 Liga F Moeve Valencia CF - Real Sociedad",
           "id_xtream": "639131"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "lineal_tnt_sports_8d652d62",
-      "agenda_id": "",
-      "titulo": "CA Huracán vs Aldosivi",
-      "torneo": "Torneo Betano Torneo Clausura",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "CA Huracán",
-      "equipo_visitante": "Aldosivi",
-      "subtitulo": "Torneo Betano Torneo Clausura",
-      "referencia": "Torneo Betano Torneo Clausura",
-      "hora_utc": "2026-10-04T17:45:00Z",
-      "hora_local_producto": "12:45",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkppi2b1775776550.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnqrjqb1517767667.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "tnt-sports",
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ARG | TNT SPORTS",
-          "id_xtream": "1121"
-        },
-        {
-          "nombre": "ARG | TNT SPORTS ᴴᴰ",
-          "id_xtream": "1122"
-        },
-        {
-          "nombre": "11:35 04/10 | Huracán vs. Aldosivi | Liga Argentina ||",
-          "id_xtream": "639008"
-        },
-        {
-          "nombre": "11:45 04/10 | Huracán vs. Aldosivi | Liga Argentina |",
-          "id_xtream": "639009"
         }
       ],
       "ronda": ""
@@ -3429,8 +4294,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Portugal",
       "equipo_visitante": "Noruega",
-      "subtitulo": "UEFA Nations League • Fase de grupos",
-      "referencia": "UEFA Nations League • Fase de grupos",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
       "hora_utc": "2026-10-04T18:45:00Z",
       "hora_local_producto": "13:45",
       "duracion_min": 130,
@@ -3442,7 +4307,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-colombia",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -3471,7 +4336,7 @@
           "id_xtream": "45482"
         }
       ],
-      "ronda": "Fase de grupos"
+      "ronda": ""
     },
     {
       "id": "lineal_espn_2_9309a40e",
@@ -3482,8 +4347,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Grecia",
       "equipo_visitante": "Alemania",
-      "subtitulo": "UEFA Nations League • Fase de grupos",
-      "referencia": "UEFA Nations League • Fase de grupos",
+      "subtitulo": "UEFA Nations League",
+      "referencia": "UEFA Nations League",
       "hora_utc": "2026-10-04T18:45:00Z",
       "hora_local_producto": "13:45",
       "duracion_min": 130,
@@ -3495,7 +4360,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn2-andinon",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -3520,7 +4385,54 @@
           "id_xtream": "639022"
         }
       ],
-      "ronda": "Fase de grupos"
+      "ronda": ""
+    },
+    {
+      "id": "xtream_0a77c189",
+      "agenda_id": "",
+      "titulo": "Talleres vs Belgrano",
+      "torneo": "Liga Argentina",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "duelo",
+      "equipo_local": "Talleres",
+      "equipo_visitante": "Belgrano",
+      "subtitulo": "Liga Argentina",
+      "referencia": "Liga Argentina",
+      "hora_utc": "2026-10-04T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F456.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0twgzi1517768087.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:45 04/10 | Talleres vs. Belgrano | Liga Argentina ||",
+          "id_xtream": "639042"
+        },
+        {
+          "nombre": "14:45 ◘ Talleres vs. Belgrano ◘ Liga Argentina ◘◘",
+          "id_xtream": "639282"
+        },
+        {
+          "nombre": "14:00 04/10 | Talleres Córdoba vs. Belgrano | Liga Argentina |",
+          "id_xtream": "639053"
+        },
+        {
+          "nombre": "15:00 ◘ Talleres Córdoba vs. Belgrano ◘ Liga Argentina ◘",
+          "id_xtream": "639289"
+        }
+      ],
+      "ronda": ""
     },
     {
       "id": "lineal_win_sportsplus_84bf9fd0",
@@ -3544,7 +4456,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "win-sports-mas",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -3826,100 +4738,6 @@
       "ronda": ""
     },
     {
-      "id": "xtream_80438a85",
-      "agenda_id": "",
-      "titulo": "Denver Broncos vs San Francisco 49ers",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Denver Broncos",
-      "equipo_visitante": "San Francisco 49ers",
-      "subtitulo": "NFL",
-      "referencia": "NFL",
-      "hora_utc": "2026-10-04T19:25:00Z",
-      "hora_local_producto": "14:25",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzy3m9v1784718707.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbqbtg61539537328.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "14:25 04/10 | Denver Broncos vs. San Francisco 49ers | NFL |",
-          "id_xtream": "639055"
-        },
-        {
-          "nombre": "14:25 04/10 | Denver Broncos vs. San Francisco 49ers | NFL | Spanish",
-          "id_xtream": "639056"
-        },
-        {
-          "nombre": "15:25 ◘ Denver Broncos vs. San Francisco 49ers ◘ NFL ◘",
-          "id_xtream": "639291"
-        },
-        {
-          "nombre": "15:25 ◘ Denver Broncos vs. San Francisco 49ers ◘ NFL ◘ Spanish",
-          "id_xtream": "639292"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_edb3986a",
-      "agenda_id": "",
-      "titulo": "Los Angeles Chargers vs Seattle Seahawks",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Los Angeles Chargers",
-      "equipo_visitante": "Seattle Seahawks",
-      "subtitulo": "NFL",
-      "referencia": "NFL",
-      "hora_utc": "2026-10-04T19:25:00Z",
-      "hora_local_producto": "14:25",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "14:25 04/10 | Los Angeles Chargers vs. Seattle Seahawks | NFL |",
-          "id_xtream": "639058"
-        },
-        {
-          "nombre": "14:25 04/10 | Los Angeles Chargers vs. Seattle Seahawks | NFL | Spanish",
-          "id_xtream": "639059"
-        },
-        {
-          "nombre": "15:25 ◘ Los Angeles Chargers vs. Seattle Seahawks ◘ NFL ◘",
-          "id_xtream": "639294"
-        },
-        {
-          "nombre": "15:25 ◘ Los Angeles Chargers vs. Seattle Seahawks ◘ NFL ◘ Spanish",
-          "id_xtream": "639295"
-        }
-      ],
-      "ronda": ""
-    },
-    {
       "id": "xtream_41cfd861",
       "agenda_id": "",
       "titulo": "San Luis vs Unión Española",
@@ -4037,29 +4855,28 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_premium_argentina_13a0b886",
+      "id": "lineal_caracol_6f7380d6",
       "agenda_id": "",
-      "titulo": "Talleres Córdoba vs Belgrano",
-      "torneo": "Torneo Betano Torneo Clausura",
+      "titulo": "Chile vs Colombia",
+      "torneo": "Conmebol Sub-20 Futsal",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Talleres Córdoba",
-      "equipo_visitante": "Belgrano",
-      "subtitulo": "Torneo Betano Torneo Clausura",
-      "referencia": "Torneo Betano Torneo Clausura",
+      "equipo_local": "Chile",
+      "equipo_visitante": "Colombia",
+      "subtitulo": "Conmebol Sub-20 Futsal",
+      "referencia": "Conmebol Sub-20 Futsal",
       "hora_utc": "2026-10-04T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7hum2t1769310938.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0twgzi1517768087.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "tier": 2,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/cl.png",
+      "logo_visitante": "https://flagcdn.com/256x192/co.png",
+      "banner": "",
+      "tier": 1,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-premium-argentina",
-        "xtream_evento"
+        "www.futbolenvivocolombia.com"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -4067,20 +4884,28 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN PREMIUM ARGENTINA HD",
-          "id_xtream": "258745"
+          "nombre": "COL | CARACOL HD (SAT)",
+          "id_xtream": "52086"
         },
         {
-          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
-          "id_xtream": "1123"
+          "nombre": "COL | Caracol ᴴᴰ (Op.1)",
+          "id_xtream": "52087"
         },
         {
-          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
-          "id_xtream": "1124"
+          "nombre": "COL | CARACOL ᴴᴰ (Op.2)",
+          "id_xtream": "52088"
         },
         {
-          "nombre": "13:45 04/10 | Talleres vs. Belgrano | Liga Argentina ||",
-          "id_xtream": "639042"
+          "nombre": "COL | RCN ᴴᴰ (Op.2)",
+          "id_xtream": "52096"
+        },
+        {
+          "nombre": "COL | RCN HD",
+          "id_xtream": "52118"
+        },
+        {
+          "nombre": "COL | RCN (Op.1)",
+          "id_xtream": "52095"
         }
       ],
       "ronda": ""
@@ -4430,6 +5255,102 @@
       "ronda": ""
     },
     {
+      "id": "lineal_espn_5_5962cae5",
+      "agenda_id": "",
+      "titulo": "Seattle Seahawks vs Los Angeles Chargers",
+      "torneo": "NFL",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Seattle Seahawks",
+      "equipo_visitante": "Los Angeles Chargers",
+      "subtitulo": "NFL",
+      "referencia": "NFL",
+      "hora_utc": "2026-10-04T20:25:00Z",
+      "hora_local_producto": "15:25",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1t84c51784752684.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwmi40u1784721460.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 5 ARGENTINA HD",
+          "id_xtream": "258743"
+        },
+        {
+          "nombre": "14:25 04/10 | Los Angeles Chargers vs. Seattle Seahawks | NFL |",
+          "id_xtream": "639058"
+        },
+        {
+          "nombre": "14:25 04/10 | Los Angeles Chargers vs. Seattle Seahawks | NFL | Spanish",
+          "id_xtream": "639059"
+        },
+        {
+          "nombre": "15:25 ◘ Los Angeles Chargers vs. Seattle Seahawks ◘ NFL ◘",
+          "id_xtream": "639294"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "xtream_fecc4b66",
+      "agenda_id": "",
+      "titulo": "Denver Broncos vs San Francisco 49ers",
+      "torneo": "NFL",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Denver Broncos",
+      "equipo_visitante": "San Francisco 49ers",
+      "subtitulo": "NFL",
+      "referencia": "NFL",
+      "hora_utc": "2026-10-04T20:25:00Z",
+      "hora_local_producto": "15:25",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzy3m9v1784718707.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbqbtg61539537328.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.9,
+      "fuentes": [
+        {
+          "nombre": "14:25 04/10 | Denver Broncos vs. San Francisco 49ers | NFL |",
+          "id_xtream": "639055"
+        },
+        {
+          "nombre": "14:25 04/10 | Denver Broncos vs. San Francisco 49ers | NFL | Spanish",
+          "id_xtream": "639056"
+        },
+        {
+          "nombre": "15:25 ◘ Denver Broncos vs. San Francisco 49ers ◘ NFL ◘",
+          "id_xtream": "639291"
+        },
+        {
+          "nombre": "15:25 ◘ Denver Broncos vs. San Francisco 49ers ◘ NFL ◘ Spanish",
+          "id_xtream": "639292"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "xtream_eea8f831",
       "agenda_id": "",
       "titulo": "Kansas City Chiefs vs Las Vegas Raiders",
@@ -4522,7 +5443,7 @@
       "hora_local_producto": "15:45",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fk2i5ho1647977067.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://flagcdn.com/256x192/uy.png",
       "banner": "",
       "tier": 2,
@@ -4849,7 +5770,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "win-sports-mas",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -4906,7 +5827,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "win-sports-mas",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -4999,8 +5920,8 @@
       "hora_local_producto": "17:00",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
-      "logo_local": "",
-      "logo_visitante": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxokycb1778197905.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3gtb8s1719303125.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
       "tier": 1,
       "origen": "xtream_evento",
@@ -5077,8 +5998,8 @@
       "hora_local_producto": "17:00",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F179jmc1751391444.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9jmurg1579798447.png&w=400&output=webp&trim=10",
       "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
@@ -5116,8 +6037,8 @@
       "hora_local_producto": "17:00",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F192hte1625386917.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmbldcf1703410479.png&w=400&output=webp&trim=10",
       "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
@@ -5155,7 +6076,7 @@
       "hora_local_producto": "17:00",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fplo1hz1784764806.png&w=400&output=webp&trim=10",
       "logo_visitante": "",
       "banner": "",
       "tier": 2,
@@ -5254,16 +6175,16 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_99d65260",
+      "id": "lineal_tyc_sports_25cdab70",
       "agenda_id": "",
       "titulo": "Argentinos Juniors vs Tigre",
-      "torneo": "Torneo Betano Torneo Clausura",
+      "torneo": "Primera División Argentina",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Argentinos Juniors",
       "equipo_visitante": "Tigre",
-      "subtitulo": "Torneo Betano Torneo Clausura",
-      "referencia": "Torneo Betano Torneo Clausura",
+      "subtitulo": "Primera División Argentina",
+      "referencia": "Primera División Argentina",
       "hora_utc": "2026-10-04T22:15:00Z",
       "hora_local_producto": "17:15",
       "duracion_min": 130,
@@ -5275,7 +6196,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "espn-argentina",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -5284,28 +6205,72 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN 1 ARGENTINA",
-          "id_xtream": "253004"
+          "nombre": "ARG | TyC SPORTS HD",
+          "id_xtream": "1119"
         },
         {
-          "nombre": "ESPN 1 ARGENTINA HD",
-          "id_xtream": "258740"
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "258796"
         },
         {
-          "nombre": "ESPN 1 COLOMBIA HD",
-          "id_xtream": "258746"
+          "nombre": "16:15 04/10 | Argentinos Juniors vs. Tigre | Liga Argentina |",
+          "id_xtream": "639075"
         },
         {
-          "nombre": "ESPN PREMIUM ARGENTINA HD",
-          "id_xtream": "258745"
+          "nombre": "17:15 ◘ Argentinos Juniors vs. Tigre ◘ Liga Argentina ◘",
+          "id_xtream": "639309"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_dsports_771b1b74",
+      "agenda_id": "",
+      "titulo": "Venezuela vs Brasil",
+      "torneo": "Conmebol Sub-20 Futsal",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Venezuela",
+      "equipo_visitante": "Brasil",
+      "subtitulo": "Conmebol Sub-20 Futsal",
+      "referencia": "Conmebol Sub-20 Futsal",
+      "hora_utc": "2026-10-04T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/ve.png",
+      "logo_visitante": "https://flagcdn.com/256x192/br.png",
+      "banner": "",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "03 | DIRECTV SPORTS 1 (COL)",
+          "id_xtream": "253431"
         },
         {
-          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
-          "id_xtream": "1123"
+          "nombre": "DSPORTS 1 HD COLOMBIA",
+          "id_xtream": "258834"
         },
         {
-          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
-          "id_xtream": "1124"
+          "nombre": "DSPORTS 1 HD ARGENTINA",
+          "id_xtream": "258844"
+        },
+        {
+          "nombre": "02 | DIRECTV SPORTS 1 (CHI)",
+          "id_xtream": "253430"
+        },
+        {
+          "nombre": "08 | DIRECTV SPORTS 1 (CHI)",
+          "id_xtream": "253436"
         }
       ],
       "ronda": ""
@@ -5404,7 +6369,7 @@
       "duracion_min": 130,
       "logo_torneo": "",
       "logo_local": "",
-      "logo_visitante": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9714m51650631899.png&w=400&output=webp&trim=10",
       "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
@@ -5535,7 +6500,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "win-sports-mas",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -5562,45 +6527,6 @@
         {
           "nombre": "WIN SPORTS+ HD",
           "id_xtream": "258809"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_78579d36",
-      "agenda_id": "",
-      "titulo": "Detroit Lions vs Carolina Panthers",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Detroit Lions",
-      "equipo_visitante": "Carolina Panthers",
-      "subtitulo": "NFL",
-      "referencia": "NFL",
-      "hora_utc": "2026-10-04T23:20:00Z",
-      "hora_local_producto": "18:20",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flgsgkr1546168257.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkbqini1784716157.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:20 04/10 | Detroit Lions vs. Carolina Panthers | NFL |",
-          "id_xtream": "639093"
-        },
-        {
-          "nombre": "19:20 ◘ Detroit Lions vs. Carolina Panthers ◘ NFL ◘",
-          "id_xtream": "639322"
         }
       ],
       "ronda": ""
@@ -5730,7 +6656,7 @@
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "",
-      "logo_visitante": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffo0l7i1564335758.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -6089,16 +7015,65 @@
       "ronda": ""
     },
     {
-      "id": "lineal_tnt_sports_b755eced",
+      "id": "lineal_espn_2_22f0c5f2",
+      "agenda_id": "",
+      "titulo": "Carolina Panthers vs Detroit Lions",
+      "torneo": "NFL",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Carolina Panthers",
+      "equipo_visitante": "Detroit Lions",
+      "subtitulo": "NFL",
+      "referencia": "NFL",
+      "hora_utc": "2026-10-05T00:20:00Z",
+      "hora_local_producto": "19:20",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkbqini1784716157.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flgsgkr1546168257.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARGENTINA HD",
+          "id_xtream": "258741"
+        },
+        {
+          "nombre": "ESPN 2 COLOMBIA HD",
+          "id_xtream": "258747"
+        },
+        {
+          "nombre": "ARG | ESPN 2 ᴴᴰ",
+          "id_xtream": "1126"
+        },
+        {
+          "nombre": "18:20 04/10 | Detroit Lions vs. Carolina Panthers | NFL |",
+          "id_xtream": "639093"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_tyc_sports_b3c8968d",
       "agenda_id": "",
       "titulo": "Estudiantes RC vs Racing Avellaneda",
-      "torneo": "Torneo Betano Torneo Clausura",
+      "torneo": "Primera División Argentina",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Estudiantes RC",
       "equipo_visitante": "Racing Avellaneda",
-      "subtitulo": "Torneo Betano Torneo Clausura",
-      "referencia": "Torneo Betano Torneo Clausura",
+      "subtitulo": "Primera División Argentina",
+      "referencia": "Primera División Argentina",
       "hora_utc": "2026-10-05T00:30:00Z",
       "hora_local_producto": "19:30",
       "duracion_min": 130,
@@ -6110,7 +7085,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "tnt-sports",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -6119,12 +7094,12 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ARG | TNT SPORTS",
-          "id_xtream": "1121"
+          "nombre": "ARG | TyC SPORTS HD",
+          "id_xtream": "1119"
         },
         {
-          "nombre": "ARG | TNT SPORTS ᴴᴰ",
-          "id_xtream": "1122"
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "258796"
         },
         {
           "nombre": "19:30 PRIMERA DIVISION LPF ᴾᵖᵛ Estudiantes RC vs Racing Avellaneda",
@@ -6268,7 +7243,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "win-sports-mas",
+        "www.futbolenvivocolombia.com",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -6416,6 +7391,58 @@
         {
           "nombre": "21:00 National Women's League - New Zealand Wellington United vs. Auckland United",
           "id_xtream": "639189"
+        }
+      ],
+      "ronda": ""
+    },
+    {
+      "id": "lineal_espn_7819ded8",
+      "agenda_id": "",
+      "titulo": "D. Vekic vs I. Swiatek",
+      "torneo": "WTA Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "D. Vekic",
+      "equipo_visitante": "I. Swiatek",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-05T03:00:00Z",
+      "hora_local_producto": "22:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
         }
       ],
       "ronda": ""
@@ -6604,6 +7631,58 @@
       "ronda": ""
     },
     {
+      "id": "lineal_espn_361637e5",
+      "agenda_id": "",
+      "titulo": "M. Bouzkova vs Q. Zheng",
+      "torneo": "WTA Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "M. Bouzkova",
+      "equipo_visitante": "Q. Zheng",
+      "subtitulo": "",
+      "referencia": "",
+      "hora_utc": "2026-10-05T04:30:00Z",
+      "hora_local_producto": "23:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "www.futbolenvivocolombia.com"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        },
+        {
+          "nombre": "04 | ESPN 1 (Chile)",
+          "id_xtream": "45482"
+        }
+      ],
+      "ronda": ""
+    },
+    {
       "id": "xtream_85de7efd",
       "agenda_id": "",
       "titulo": "ATP Tokio (Japan Open)",
@@ -6640,12 +7719,12 @@
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 32,
+    "total_agenda_maestra": 55,
     "total_canales_xtream": 741,
     "lista_xtream_actualizada_hoy": true,
-    "eventos_lineales_inyectados": 24,
-    "eventos_xtream_aprobados": 204,
-    "eventos_descartados_stale": 37,
-    "total_eventos_publicados": 163
+    "eventos_lineales_inyectados": 45,
+    "eventos_xtream_aprobados": 205,
+    "eventos_descartados_stale": 36,
+    "total_eventos_publicados": 183
   }
 }
