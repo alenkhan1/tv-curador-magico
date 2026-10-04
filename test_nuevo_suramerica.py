@@ -1,17 +1,18 @@
 ﻿# -*- coding: utf-8 -*-
 from __future__ import annotations
 
-import html as html_lib
 import logging
 import re
 import ssl
 import urllib.request
+import html as html_lib
 from datetime import datetime, timezone
-from typing import Any, Dict, List
+from typing import List, Dict, Any
 
-from .modelos import EventoAgenda, HEADERS_WEB, obtener_tz
+from adaptadores.modelos import EventoAgenda, HEADERS_WEB, obtener_tz
 
-log = logging.getLogger("canales_suramerica")
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger("test_suramerica")
 
 def _crear_contexto_ssl():
     ctx = ssl.create_default_context()
@@ -46,7 +47,7 @@ def normalizar_canales(raw_canales: List[str]) -> List[str]:
     resultado = []
     for raw in raw_canales:
         u = raw.upper()
-        # Exclusiones estrictas: cero canales universitarios, cero feeds USA/MEX/Brasil o redes sociales
+        # Exclusiones estrictas: no USA, no Brasil, no Mexico, no Apps OTT residuales
         if any(exc in u for exc in ["USA", "US", "MEX", "MEXICO", "BRASIL", "BRAZIL", "ESPNU", "NEWS", "YOUTUBE", "TIKTOK"]):
             continue
         for patron, canon in CANAL_MAPPING:
@@ -59,7 +60,7 @@ def normalizar_canales(raw_canales: List[str]) -> List[str]:
 def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[EventoAgenda]:
     req = urllib.request.Request(url, headers=HEADERS_WEB)
     try:
-        with urllib.request.urlopen(req, timeout=18, context=_crear_contexto_ssl()) as resp:
+        with urllib.request.urlopen(req, timeout=16, context=_crear_contexto_ssl()) as resp:
             html = resp.read().decode("utf-8", errors="ignore")
     except Exception as e:
         log.warning("No se pudo descargar %s: %s", url, e)
@@ -107,63 +108,44 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
             continue
         hora_str = m_h.group(1).strip()
 
-        # Disciplina
-        m_dep = re.search(r'<div class=["\']contenedorImgCompeticion["\'][^>]*>.*?title=["\']([^"\']+)["\']', f)
-        dep_raw = m_dep.group(1).strip() if m_dep else ""
-        u_dep = dep_raw.upper()
-        if any(k in u_dep for k in ["MOTOCICLISMO", "AUTOMOVILISMO", "MOTOR"]):
-            deporte = "Motor"
-        elif "TENIS" in u_dep:
-            deporte = "Tenis"
-        elif any(k in u_dep for k in ["BALONCESTO", "BASKET", "BÁSQUET"]):
-            deporte = "Baloncesto"
-        elif "CICLISMO" in u_dep:
-            deporte = "Ciclismo"
-        elif any(k in u_dep for k in ["BÉISBOL", "BEISBOL", "BASEBALL"]):
-            deporte = "Béisbol"
-        elif any(k in u_dep for k in ["BALONMANO", "HANDBALL"]):
-            deporte = "Balonmano"
-        elif "PÁDEL" in u_dep or "PADEL" in u_dep:
-            deporte = "Pádel"
-        elif "RUGBY" in u_dep:
-            deporte = "Rugby"
-        else:
-            deporte = "Fútbol"
+        m_comp = re.search(r'class=["\']ajusteDoslineas["\'][^>]*title=["\']([^"\']+)["\']', f)
+        torneo = html_lib.unescape(m_comp.group(1).strip()) if m_comp else ""
 
-        # Torneo
-        m_tor = re.search(r'<span class=["\']ajusteDoslineas["\'][^>]*>.*?<label title=["\']([^"\']+)["\']', f)
-        if not m_tor:
-            m_tor = re.search(r'<span class=["\']ajusteDoslineas["\'][^>]*title=["\']([^"\']+)["\']', f)
-        torneo = html_lib.unescape(m_tor.group(1).strip()) if m_tor else deporte
+        equipos = [html_lib.unescape(re.sub(r"<[^>]+>", "", e).strip()) for e in re.findall(r'<td class=["\']equipo["\'][^>]*>(.*?)</td>', f, flags=re.S)]
+        equipos = [e for e in equipos if e]
 
-        # Equipos / Duelo
-        m_loc = re.search(r'<td class=["\']local["\'][^>]*>.*?<span title=["\']([^"\']+)["\']', f)
-        m_vis = re.search(r'<td class=["\']visitante["\'][^>]*>.*?<span title=["\']([^"\']+)["\']', f)
-
-        if m_loc and m_vis:
-            loc = html_lib.unescape(m_loc.group(1).strip())
-            vis = html_lib.unescape(m_vis.group(1).strip())
+        m_ev = re.search(r'class=["\']eventoUnico["\'][^>]*>(.*?)<', f)
+        if len(equipos) == 2:
+            loc, vis = equipos[0], equipos[1]
             titulo = f"{loc} vs {vis}"
             tipo = "duelo"
         else:
             loc, vis = "", ""
-            m_ev = re.search(r'<span class=["\']eventoUnico["\'][^>]*>(.*?)</span>', f, flags=re.S)
             if m_ev:
-                raw_ev = html_lib.unescape(m_ev.group(1))
-                clean_ev = " ".join(re.sub(r'<[^>]+>', ' ', raw_ev).split()).strip()
-                titulo = f"{torneo} - {clean_ev}" if torneo and torneo not in clean_ev else clean_ev
+                titulo = html_lib.unescape(m_ev.group(1).strip())
             else:
-                titulo = torneo or "Evento en Vivo"
+                titulo = torneo or "Evento Deportivo"
             tipo = "circuito"
 
-        # Ajuste de deporte secundario si el torneo o titulo lo define
         u_todo = f"{torneo} {titulo}".upper()
-        if "NFL" in u_todo or "FÚTBOL AMERICANO" in u_todo or "NCAA FOOTBALL" in u_todo:
-            deporte = "Fútbol Americano"
-        elif any(k in u_todo for k in ["F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "MOTO2", "MOTO3"]):
+        if any(k in u_todo for k in ["F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "MOTO2", "MOTO3", "NASCAR", "INDYCAR"]):
             deporte = "Motor"
-        elif any(k in u_todo for k in ["ATP", "WTA", "ROLAND GARROS", "WIMBLEDON", "US OPEN"]):
+        elif any(k in u_todo for k in ["TENIS", "ATP", "WTA", "PEKÍN", "TOKIO", "SHANGHAI", "WIMBLEDON", "ROLAND GARROS"]):
             deporte = "Tenis"
+        elif any(k in u_todo for k in ["BÁSQUET", "BASQUET", "BASKETBALL", "NBA", "EUROLIGA", "LIGA ENDESA"]):
+            deporte = "Baloncesto"
+        elif any(k in u_todo for k in ["CICLISMO", "GIRO", "TOUR", "VUELTA"]):
+            deporte = "Ciclismo"
+        elif any(k in u_todo for k in ["BÉISBOL", "BEISBOL", "BASEBALL", "MLB"]):
+            deporte = "Béisbol"
+        elif any(k in u_todo for k in ["BALONMANO", "HANDBALL", "ASOBAL"]):
+            deporte = "Balonmano"
+        elif any(k in u_todo for k in ["RUGBY", "TOP 12", "SEIS NACIONES"]):
+            deporte = "Rugby"
+        elif any(k in u_todo for k in ["PÁDEL", "PADEL"]):
+            deporte = "Pádel"
+        else:
+            deporte = "Fútbol"
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
@@ -175,7 +157,7 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
         ev = EventoAgenda(
             titulo=titulo,
             deporte=deporte,
-            torneo=torneo,
+            torneo=torneo or deporte,
             local=loc,
             visitante=vis,
             hora_utc=hora_utc,
@@ -189,19 +171,13 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
     return eventos
 
 def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
-    """
-    Descarga la agenda deportiva completa de directos de hoy para Suramérica:
-    Cubre Colombia (Win Sports+, Win Sports, ESPN 1..7, DSports, Caracol, RCN)
-    y Argentina (ESPN Premium, TyC Sports, TNT Sports, FOX Sports).
-    Garantía de cero magazines, cero programas de opinión y cero repeticiones.
-    """
     evs_col = extraer_directos_url("https://www.futbolenvivocolombia.com/deporte", "America/Bogota", fecha_hoy_iso)
     evs_arg = extraer_directos_url("https://www.futbolenvivoargentina.com/deporte", "America/Argentina/Buenos_Aires", fecha_hoy_iso)
-
+    
     todos = evs_col + evs_arg
-    vistos: Dict[tuple, EventoAgenda] = {}
-    dedup: List[EventoAgenda] = []
-
+    # Deduplicar por (titulo, hora_utc)
+    vistos = {}
+    dedup = []
     for ev in todos:
         k = (ev.titulo.strip().lower(), ev.hora_utc[:16])
         if k in vistos:
@@ -212,6 +188,12 @@ def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
         else:
             vistos[k] = ev
             dedup.append(ev)
-
-    log.info("Canales Suramérica: %d directos deportivos confirmados para hoy (%s)", len(dedup), fecha_hoy_iso)
+            
     return dedup
+
+if __name__ == "__main__":
+    hoy = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    res = obtener_directos_suramerica(hoy)
+    print(f"Total eventos obtenidos para hoy ({hoy}): {len(res)}")
+    for ev in res:
+        print(f"[{ev.hora_utc}] ({ev.deporte}) {ev.titulo} | Torneo: {ev.torneo} | Canales: {ev.canales}")

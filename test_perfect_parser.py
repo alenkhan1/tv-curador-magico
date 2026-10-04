@@ -1,17 +1,18 @@
 ﻿# -*- coding: utf-8 -*-
 from __future__ import annotations
 
-import html as html_lib
 import logging
 import re
 import ssl
 import urllib.request
+import html as html_lib
 from datetime import datetime, timezone
-from typing import Any, Dict, List
+from typing import List
 
-from .modelos import EventoAgenda, HEADERS_WEB, obtener_tz
+from adaptadores.modelos import EventoAgenda, HEADERS_WEB, obtener_tz
 
-log = logging.getLogger("canales_suramerica")
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger("perfect_parser")
 
 def _crear_contexto_ssl():
     ctx = ssl.create_default_context()
@@ -46,7 +47,6 @@ def normalizar_canales(raw_canales: List[str]) -> List[str]:
     resultado = []
     for raw in raw_canales:
         u = raw.upper()
-        # Exclusiones estrictas: cero canales universitarios, cero feeds USA/MEX/Brasil o redes sociales
         if any(exc in u for exc in ["USA", "US", "MEX", "MEXICO", "BRASIL", "BRAZIL", "ESPNU", "NEWS", "YOUTUBE", "TIKTOK"]):
             continue
         for patron, canon in CANAL_MAPPING:
@@ -59,7 +59,7 @@ def normalizar_canales(raw_canales: List[str]) -> List[str]:
 def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[EventoAgenda]:
     req = urllib.request.Request(url, headers=HEADERS_WEB)
     try:
-        with urllib.request.urlopen(req, timeout=18, context=_crear_contexto_ssl()) as resp:
+        with urllib.request.urlopen(req, timeout=16, context=_crear_contexto_ssl()) as resp:
             html = resp.read().decode("utf-8", errors="ignore")
     except Exception as e:
         log.warning("No se pudo descargar %s: %s", url, e)
@@ -127,6 +127,8 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
             deporte = "Pádel"
         elif "RUGBY" in u_dep:
             deporte = "Rugby"
+        elif "FÚTBOL" in u_dep or "FUTBOL" in u_dep:
+            deporte = "Fútbol"
         else:
             deporte = "Fútbol"
 
@@ -156,15 +158,6 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
                 titulo = torneo or "Evento en Vivo"
             tipo = "circuito"
 
-        # Ajuste de deporte secundario si el torneo o titulo lo define
-        u_todo = f"{torneo} {titulo}".upper()
-        if "NFL" in u_todo or "FÚTBOL AMERICANO" in u_todo or "NCAA FOOTBALL" in u_todo:
-            deporte = "Fútbol Americano"
-        elif any(k in u_todo for k in ["F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "MOTO2", "MOTO3"]):
-            deporte = "Motor"
-        elif any(k in u_todo for k in ["ATP", "WTA", "ROLAND GARROS", "WIMBLEDON", "US OPEN"]):
-            deporte = "Tenis"
-
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
             dt_local = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz)
@@ -188,30 +181,9 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
 
     return eventos
 
-def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
-    """
-    Descarga la agenda deportiva completa de directos de hoy para Suramérica:
-    Cubre Colombia (Win Sports+, Win Sports, ESPN 1..7, DSports, Caracol, RCN)
-    y Argentina (ESPN Premium, TyC Sports, TNT Sports, FOX Sports).
-    Garantía de cero magazines, cero programas de opinión y cero repeticiones.
-    """
-    evs_col = extraer_directos_url("https://www.futbolenvivocolombia.com/deporte", "America/Bogota", fecha_hoy_iso)
-    evs_arg = extraer_directos_url("https://www.futbolenvivoargentina.com/deporte", "America/Argentina/Buenos_Aires", fecha_hoy_iso)
-
-    todos = evs_col + evs_arg
-    vistos: Dict[tuple, EventoAgenda] = {}
-    dedup: List[EventoAgenda] = []
-
-    for ev in todos:
-        k = (ev.titulo.strip().lower(), ev.hora_utc[:16])
-        if k in vistos:
-            existente = vistos[k]
-            for c in ev.canales:
-                if c not in existente.canales:
-                    existente.canales.append(c)
-        else:
-            vistos[k] = ev
-            dedup.append(ev)
-
-    log.info("Canales Suramérica: %d directos deportivos confirmados para hoy (%s)", len(dedup), fecha_hoy_iso)
-    return dedup
+if __name__ == "__main__":
+    hoy = "2026-10-04"
+    evs = extraer_directos_url("https://www.futbolenvivocolombia.com/deporte", "America/Bogota", hoy)
+    print(f"Total directos en Colombia deporte ({hoy}): {len(evs)}")
+    for ev in evs:
+        print(f"[{ev.hora_utc}] ({ev.deporte}) {ev.titulo} | {ev.torneo} | Canales: {ev.canales}")
