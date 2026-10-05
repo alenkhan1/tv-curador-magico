@@ -9,21 +9,21 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-10-03T09:43:11Z",
+  "generado": "2026-10-05T11:14:46Z",
   "resumen": {
-    "total": 1353,
+    "total": 1351,
     "por_motivo": {
-      "pendiente": 1184,
-      "no_encontrado": 169
+      "pendiente": 1181,
+      "no_encontrado": 170
     },
     "peliculas": {
       "adulto": 9,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 162,
-      "fallo_red": 1161,
-      "clasificados": 13558,
-      "sin_identificar": 1323
+      "no_encontrado": 163,
+      "fallo_red": 1158,
+      "clasificados": 13564,
+      "sin_identificar": 1321
     },
     "series": {
       "adulto": 0,
@@ -31,7 +31,7 @@
       "sin_nombre": 0,
       "no_encontrado": 7,
       "fallo_red": 23,
-      "clasificados": 1668,
+      "clasificados": 1669,
       "sin_identificar": 30
     },
     "alerta": {
@@ -44,7 +44,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1294,
+      "veces": 1292,
       "ejemplos": [
         "Back to the Beginning Parte 1 (2025)",
         "Back to the Beginning Parte 2 (2025)",
@@ -470,7 +470,7 @@
   "etiquetas_mas_frecuentes": [
     {
       "etiqueta": "1080P",
-      "veces": 409
+      "veces": 408
     },
     {
       "etiqueta": "WEBDL",
@@ -542,7 +542,7 @@
     },
     {
       "etiqueta": "MKV",
-      "veces": 9
+      "veces": 8
     },
     {
       "etiqueta": "HEVC",
@@ -580,7 +580,7 @@
     },
     {
       "carpeta": "DRAMA",
-      "veces": 95
+      "veces": 94
     },
     {
       "carpeta": "DOCUMENTALES",
@@ -647,12 +647,12 @@
       "veces": 20
     },
     {
-      "carpeta": "PELICULAS 60 FPS",
+      "carpeta": "DUAL AUDIO",
       "veces": 16
     },
     {
-      "carpeta": "DUAL AUDIO",
-      "veces": 16
+      "carpeta": "PELICULAS 60 FPS",
+      "veces": 15
     },
     {
       "carpeta": "SUBTITULADAS",
@@ -846,21 +846,6 @@
       "nombre_original": "La fuerza del delta (1986)1080p mkv",
       "titulo_buscado": "La fuerza del delta",
       "anio": 1986,
-      "motivo": "pendiente",
-      "carpeta": "PELICULAS 60 FPS",
-      "etiquetas": [
-        "1080P",
-        "MKV"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "541552",
-      "tipo": "movie",
-      "nombre_original": "Las Exorcistas (2025) 1080p mkv",
-      "titulo_buscado": "Las Exorcistas",
-      "anio": 2025,
       "motivo": "pendiente",
       "carpeta": "PELICULAS 60 FPS",
       "etiquetas": [
@@ -2719,7 +2704,7 @@
       "nombre_original": "De la China con furor (1972) [1080p] [x264] [spa]",
       "titulo_buscado": "De la China con furor",
       "anio": 1972,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "CHINAS",
       "etiquetas": [
         "1080P"
@@ -5902,18 +5887,6 @@
       ],
       "prefijo": "",
       "copias": 1
-    },
-    {
-      "id": "545609",
-      "tipo": "movie",
-      "nombre_original": "Spider-Man Lotus (2023)",
-      "titulo_buscado": "Spider Man Lotus",
-      "anio": 2023,
-      "motivo": "pendiente",
-      "carpeta": "DRAMA",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 2
     },
     {
       "id": "545610",
@@ -11139,6 +11112,34 @@
       "carpeta": "WESTERN",
       "etiquetas": [
         "720P"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "551672",
+      "tipo": "movie",
+      "nombre_original": "CAMINO A DENVER  ( 1955 ) (720p)",
+      "titulo_buscado": "CAMINO A DENVER",
+      "anio": 1955,
+      "motivo": "pendiente",
+      "carpeta": "WESTERN",
+      "etiquetas": [
+        "720P"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "551673",
+      "tipo": "movie",
+      "nombre_original": "CAMINO AL OESTE  ( 1967 ) (1080p)",
+      "titulo_buscado": "CAMINO AL OESTE",
+      "anio": 1967,
+      "motivo": "pendiente",
+      "carpeta": "WESTERN",
+      "etiquetas": [
+        "1080P"
       ],
       "prefijo": "",
       "copias": 1
