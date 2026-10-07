@@ -9,12 +9,12 @@
     "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
     "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
   ],
-  "generado": "2026-10-06T11:04:17Z",
+  "generado": "2026-10-07T10:53:49Z",
   "resumen": {
-    "total": 1351,
+    "total": 1347,
     "por_motivo": {
-      "pendiente": 1181,
-      "no_encontrado": 170
+      "pendiente": 1178,
+      "no_encontrado": 169
     },
     "peliculas": {
       "adulto": 9,
@@ -22,21 +22,21 @@
       "sin_nombre": 0,
       "no_encontrado": 163,
       "fallo_red": 1158,
-      "clasificados": 13568,
+      "clasificados": 13570,
       "sin_identificar": 1321
     },
     "series": {
       "adulto": 0,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 7,
-      "fallo_red": 23,
-      "clasificados": 1624,
-      "sin_identificar": 30
+      "no_encontrado": 6,
+      "fallo_red": 20,
+      "clasificados": 1588,
+      "sin_identificar": 26
     },
     "alerta": {
       "porcentaje_peliculas": 8.9,
-      "porcentaje_series": 1.8,
+      "porcentaje_series": 1.6,
       "umbral": 15.0,
       "supera_umbral": false
     }
@@ -44,7 +44,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 1292,
+      "veces": 1289,
       "ejemplos": [
         "Back to the Beginning Parte 1 (2025)",
         "Back to the Beginning Parte 2 (2025)",
@@ -450,13 +450,6 @@
       "veces": 1,
       "ejemplos": [
         "Bleach: La guerra sangrienta de los mil años"
-      ]
-    },
-    {
-      "patron": "EL DOCUMENTAL DE BMF",
-      "veces": 1,
-      "ejemplos": [
-        "El documental de BMF: Gastando dinero rápidamente (2022)"
       ]
     },
     {
