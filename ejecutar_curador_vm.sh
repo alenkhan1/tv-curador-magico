@@ -28,12 +28,15 @@ print(f'OK: {len(evs)} eventos verificados, 0 colisiones de ID')
 "
 
 echo "=== [$(date)] Publicando cambios a GitHub ==="
-git add eventos_hoy.json eventos_descartados.json meta_curador.json logos_cache.json catalogo_maestro_equipos.json 2>/dev/null || true
+git add -u 2>/dev/null || true
 if git status --porcelain | grep -q .; then
     git commit -m "Cartelera deportiva actualizada $(date -u '+%Y-%m-%d %H:%M UTC')"
-    git fetch origin main
-    git pull --rebase -X ours origin main || { git rebase --abort; git merge -X ours origin/main -m "Merge origin/main"; }
-    git push origin main
+    git push origin main || {
+        echo "Push fallo, sincronizando con rebase..."
+        git fetch origin main
+        git pull --rebase -X theirs origin main
+        git push origin main
+    }
     echo "=== [$(date)] Cambios publicados con exito en GitHub ==="
 else
     echo "=== [$(date)] Sin cambios nuevos para publicar ==="

@@ -3,8 +3,10 @@
 Conector Integral API-Sports (12 Deportes):
 1. Descarga y cacheo diario de la cartelera oficial multideporte (Fútbol, Baloncesto, Béisbol,
    Hockey, Rugby, Fútbol Americano, Balonmano, Voleibol, Formula 1, MMA, AFL).
-2. Garantía de bajo consumo de API:
+2. Garantía de bajo consumo y protección contra Rate Limit:
    - 1 sola lectura por deporte al día.
+   - Pausa de cortesía (1.2s) entre llamadas para no saturar el límite de 10 req/min.
+   - Reintento automático con backoff ante HTTP 429.
    - Guardado en disco en 'fixtures_api_sports_YYYY-MM-DD.json'.
    - Las ejecuciones subsiguientes del día consumen 0 lecturas.
 3. Actualización de 'catalogo_maestro_equipos.json' y 'catalogo_maestro_torneos.json'
@@ -21,7 +23,9 @@ import logging
 import os
 import re
 import ssl
+import time
 import unicodedata
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -39,7 +43,7 @@ def _crear_ssl():
     ctx.verify_mode = ssl.CERT_NONE
     return ctx
 
-def normalizar_clave(s: str) -> str:
+def normalizar_clave(s: Any) -> str:
     if not s:
         return ""
     nfkd = unicodedata.normalize("NFKD", str(s))
@@ -70,6 +74,25 @@ ENDPOINTS_CONFIG = [
     ("AFL", "https://v1.afl.api-sports.io/games?date={fecha}", None, "teams", "league"),
 ]
 
+def _hacer_request_con_reintento(url: str, headers: dict, timeout: int = 12) -> Optional[dict]:
+    """Realiza una petición HTTP con manejo de rate-limiting (429) y reintento con backoff."""
+    for intento in range(2):
+        req = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=timeout, context=_crear_ssl()) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except urllib.error.HTTPError as he:
+            if he.code == 429 and intento == 0:
+                log.warning("API-Sports Rate Limit (429). Esperando 3s antes de reintentar: %s", url)
+                time.sleep(3.0)
+                continue
+            log.warning("HTTP Error %s en %s: %s", he.code, url, he)
+            return None
+        except Exception as e:
+            log.warning("Error consultando %s: %s", url, e)
+            return None
+    return None
+
 def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, Any]]:
     """Descarga o carga desde caché local los fixtures de los deportes cubiertos por API-Sports para hoy."""
     cache_file = REPO_DIR / f"fixtures_api_sports_{fecha_iso}.json"
@@ -77,6 +100,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
         try:
             fixtures = json.loads(cache_file.read_text(encoding="utf-8"))
             log.info("Cargados %d fixtures de API-Sports desde cache local (%s)", len(fixtures), fecha_iso)
+            guardar_equipos_en_catalogo(fixtures)
             return fixtures
         except Exception as e:
             log.warning("No se pudo leer cache de fixtures: %s", e)
@@ -92,112 +116,115 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
     # 1. Deportes estándar de duelos
     for deporte, url_tpl, root_fixture, teams_key, league_key in ENDPOINTS_CONFIG:
         url = url_tpl.format(fecha=fecha_iso)
-        req = urllib.request.Request(url, headers=headers)
-        try:
-            with urllib.request.urlopen(req, timeout=10, context=_crear_ssl()) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-                items = data.get("response", [])
-                log.info("API-Sports [%s]: %d eventos obtenidos", deporte, len(items))
-                for item in items:
-                    if root_fixture and root_fixture in item:
-                        f_date = item[root_fixture].get("date", "")
-                        f_id = str(item[root_fixture].get("id", ""))
-                    else:
-                        f_date = item.get("date", "")
-                        f_id = str(item.get("id", ""))
+        time.sleep(1.2)  # Respetar rate-limit de 10 req/min
+        data = _hacer_request_con_reintento(url, headers)
+        if not data:
+            continue
 
-                    teams_obj = item.get(teams_key, {})
-                    home_obj = teams_obj.get("home", {})
-                    away_obj = teams_obj.get("away", {})
-                    loc = home_obj.get("name", "").strip()
-                    vis = away_obj.get("name", "").strip()
-                    loc_logo = home_obj.get("logo", "")
-                    vis_logo = away_obj.get("logo", "")
+        items = data.get("response", [])
+        log.info("API-Sports [%s]: %d eventos obtenidos", deporte, len(items))
+        for item in items:
+            if not isinstance(item, dict):
+                continue
 
-                    league_obj = item.get(league_key, {})
-                    torneo = league_obj.get("name", "").strip()
-                    torneo_logo = league_obj.get("logo", "")
-
-                    if loc and vis:
-                        todos_fixtures.append({
-                            "id_api": f_id,
-                            "deporte": deporte,
-                            "local": loc,
-                            "visitante": vis,
-                            "titulo": f"{loc} vs {vis}",
-                            "torneo": torneo,
-                            "hora_utc": f_date,
-                            "logo_local": loc_logo,
-                            "logo_visitante": vis_logo,
-                            "logo_torneo": torneo_logo,
-                            "tipo_evento": "duelo",
-                        })
-        except Exception as e:
-            log.warning("Error consultando API-Sports [%s]: %s", deporte, e)
-
-    # 2. Formula 1 (Carreras / Sesiones de Hoy)
-    try:
-        url_f1 = f"https://v1.formula-1.api-sports.io/races?date={fecha_iso}"
-        req_f1 = urllib.request.Request(url_f1, headers=headers)
-        with urllib.request.urlopen(req_f1, timeout=10, context=_crear_ssl()) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-            items = data.get("response", [])
-            log.info("API-Sports [Motor F1]: %d sesiones obtenidas", len(items))
-            for item in items:
-                comp = item.get("competition", {})
-                circ = item.get("circuit", {})
-                nombre_gp = comp.get("name", "Formula 1")
-                sesion = item.get("type", "")
+            if root_fixture and root_fixture in item:
+                root_obj = item.get(root_fixture) or {}
+                f_date = root_obj.get("date", "")
+                f_id = str(root_obj.get("id", ""))
+            else:
                 f_date = item.get("date", "")
-                img_circuito = circ.get("image", "")
                 f_id = str(item.get("id", ""))
+
+            teams_obj = item.get(teams_key) or {}
+            home_obj = teams_obj.get("home") or {}
+            away_obj = teams_obj.get("away") or {}
+            loc = (home_obj.get("name") or "").strip()
+            vis = (away_obj.get("name") or "").strip()
+            loc_logo = home_obj.get("logo") or ""
+            vis_logo = away_obj.get("logo") or ""
+
+            league_obj = item.get(league_key) or {}
+            torneo = (league_obj.get("name") or "").strip()
+            torneo_logo = league_obj.get("logo") or ""
+
+            if loc and vis:
                 todos_fixtures.append({
                     "id_api": f_id,
-                    "deporte": "Motor",
-                    "local": "",
-                    "visitante": "",
-                    "titulo": f"F1 {nombre_gp}",
-                    "torneo": nombre_gp,
-                    "ronda": sesion,
+                    "deporte": deporte,
+                    "local": loc,
+                    "visitante": vis,
+                    "titulo": f"{loc} vs {vis}",
+                    "torneo": torneo,
+                    "hora_utc": f_date,
+                    "logo_local": loc_logo,
+                    "logo_visitante": vis_logo,
+                    "logo_torneo": torneo_logo,
+                    "tipo_evento": "duelo",
+                })
+
+    # 2. Formula 1 (Carreras / Sesiones de Hoy)
+    time.sleep(1.2)
+    url_f1 = f"https://v1.formula-1.api-sports.io/races?date={fecha_iso}"
+    data_f1 = _hacer_request_con_reintento(url_f1, headers)
+    if data_f1:
+        items_f1 = data_f1.get("response", [])
+        log.info("API-Sports [Motor F1]: %d sesiones obtenidas", len(items_f1))
+        for item in items_f1:
+            if not isinstance(item, dict):
+                continue
+            comp = item.get("competition") or {}
+            circ = item.get("circuit") or {}
+            nombre_gp = comp.get("name") or "Formula 1"
+            sesion = item.get("type") or ""
+            f_date = item.get("date") or ""
+            img_circuito = circ.get("image") or ""
+            f_id = str(item.get("id") or "")
+            todos_fixtures.append({
+                "id_api": f_id,
+                "deporte": "Motor",
+                "local": "",
+                "visitante": "",
+                "titulo": f"F1 {nombre_gp}",
+                "torneo": nombre_gp,
+                "ronda": sesion,
+                "hora_utc": f_date,
+                "logo_local": "",
+                "logo_visitante": "",
+                "logo_torneo": img_circuito,
+                "tipo_evento": "circuito",
+            })
+
+    # 3. MMA / Combate
+    time.sleep(1.2)
+    url_mma = f"https://v1.mma.api-sports.io/fights?date={fecha_iso}"
+    data_mma = _hacer_request_con_reintento(url_mma, headers)
+    if data_mma:
+        items_mma = data_mma.get("response", [])
+        log.info("API-Sports [MMA]: %d combates obtenidos", len(items_mma))
+        for item in items_mma:
+            if not isinstance(item, dict):
+                continue
+            fighters = item.get("fighters") or {}
+            f1_n = (fighters.get("first") or {}).get("name") or ""
+            f2_n = (fighters.get("second") or {}).get("name") or ""
+            f_date = item.get("date") or ""
+            f_id = str(item.get("id") or "")
+            league_mma = item.get("league") or {}
+            torneo_mma = league_mma.get("name") or "UFC"
+            if f1_n and f2_n:
+                todos_fixtures.append({
+                    "id_api": f_id,
+                    "deporte": "Combate",
+                    "local": f1_n.strip(),
+                    "visitante": f2_n.strip(),
+                    "titulo": f"{f1_n.strip()} vs {f2_n.strip()}",
+                    "torneo": torneo_mma.strip(),
                     "hora_utc": f_date,
                     "logo_local": "",
                     "logo_visitante": "",
-                    "logo_torneo": img_circuito,
-                    "tipo_evento": "circuito",
+                    "logo_torneo": "",
+                    "tipo_evento": "duelo",
                 })
-    except Exception as e:
-        log.warning("Error consultando API-Sports [Formula 1]: %s", e)
-
-    # 3. MMA / Combate
-    try:
-        url_mma = f"https://v1.mma.api-sports.io/fights?date={fecha_iso}"
-        req_mma = urllib.request.Request(url_mma, headers=headers)
-        with urllib.request.urlopen(req_mma, timeout=10, context=_crear_ssl()) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-            items = data.get("response", [])
-            log.info("API-Sports [MMA]: %d combates obtenidos", len(items))
-            for item in items:
-                f1_n = item.get("fighters", {}).get("first", {}).get("name", "").strip()
-                f2_n = item.get("fighters", {}).get("second", {}).get("name", "").strip()
-                f_date = item.get("date", "")
-                f_id = str(item.get("id", ""))
-                torneo_mma = item.get("league", {}).get("name", "UFC")
-                if f1_n and f2_n:
-                    todos_fixtures.append({
-                        "id_api": f_id,
-                        "deporte": "Combate",
-                        "local": f1_n,
-                        "visitante": f2_n,
-                        "titulo": f"{f1_n} vs {f2_n}",
-                        "torneo": torneo_mma,
-                        "hora_utc": f_date,
-                        "logo_local": "",
-                        "logo_visitante": "",
-                        "logo_torneo": "",
-                        "tipo_evento": "duelo",
-                    })
-    except Exception as e:
-        log.warning("Error consultando API-Sports [MMA]: %s", e)
 
     if todos_fixtures:
         try:
@@ -206,9 +233,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
         except Exception as e:
             log.warning("No se pudo escribir cache de fixtures: %s", e)
 
-    # Guardar permanentemente equipos y torneos en los catálogos en disco
     guardar_equipos_en_catalogo(todos_fixtures)
-
     return todos_fixtures
 
 def guardar_equipos_en_catalogo(fixtures: List[Dict[str, Any]]) -> None:
@@ -294,7 +319,6 @@ def emparejar_con_api_sports(
     fixtures_lista: List[Dict[str, Any]]
 ) -> Optional[Dict[str, Any]]:
     """Empareja un evento (lineal o Xtream) contra la cartelera oficial de API-Sports."""
-    # Caso Motor / Formula 1
     cat = (evento.get("categoria") or "").upper()
     tit = normalizar_clave(evento.get("titulo") or "")
     if "MOTOR" in cat or "F1" in tit or "FORMULA 1" in tit:
@@ -307,13 +331,11 @@ def emparejar_con_api_sports(
     loc = normalizar_clave(evento.get("equipo_local") or "")
     vis = normalizar_clave(evento.get("equipo_visitante") or "")
 
-    # 1. Coincidencia exacta de claves de duelo
     if loc and vis:
         k = f"{loc}__VS__{vis}"
         if k in indice_fixtures:
             return indice_fixtures[k]
 
-    # 2. Coincidencia por subcadenas si los nombres son largos (ej. 'Águilas Doradas Rionegro' vs 'Águilas Doradas')
     if loc and vis:
         for f in fixtures_lista:
             f_l = normalizar_clave(f.get("local", ""))
@@ -325,7 +347,6 @@ def emparejar_con_api_sports(
             if match_l and match_v:
                 return f
 
-    # 3. Coincidencia por título completo ('EQUIPO A VS EQUIPO B')
     if " VS " in tit:
         partes = tit.split(" VS ")
         if len(partes) == 2:
