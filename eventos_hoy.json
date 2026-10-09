@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-09T22:16:46Z",
+  "generado_utc": "2026-10-09T23:32:01Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-09",
   "base_media": "http://espartanos.live:8080",
@@ -85,7 +85,7 @@
     {
       "id": "lineal_espn_01adeb81",
       "agenda_id": "",
-      "titulo": "ATP Masters 1000 Shanghai",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
@@ -126,10 +126,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -138,14 +134,14 @@
     {
       "id": "lineal_espn_d850c913",
       "agenda_id": "",
-      "titulo": "MotoGP - G.P. Indonesia Libres",
+      "titulo": "MotoGP: G.P. Indonesia - Prácticas Libres",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Pertamina Mandalika International Circuit",
-      "referencia": "Pertamina Mandalika International Circuit",
+      "subtitulo": "Mandalika International Circuit",
+      "referencia": "Mandalika International Circuit",
       "hora_utc": "2026-10-09T07:00:00Z",
       "hora_local_producto": "02:00",
       "duracion_min": 180,
@@ -179,10 +175,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -191,7 +183,7 @@
     {
       "id": "lineal_espn_c97d14a6",
       "agenda_id": "",
-      "titulo": "WTA 1000 Pekín",
+      "titulo": "WTA China Open Pekín",
       "torneo": "WTA Pekín",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
@@ -232,10 +224,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -346,7 +334,7 @@
       "tipo_evento": "circuito",
       "equipo_local": "Qinwen Zheng",
       "equipo_visitante": "Elina Svitolina",
-      "subtitulo": "Pista Principal",
+      "subtitulo": "",
       "referencia": "Qinwen Zheng vs. Elina Svitolina",
       "hora_utc": "2026-10-09T07:00:00Z",
       "hora_local_producto": "02:00",
@@ -374,18 +362,55 @@
       "auditado_agy": true
     },
     {
-      "id": "xtream_c10bf074",
+      "id": "lineal_dazn_f1_3a89476b",
       "agenda_id": "",
-      "titulo": "Fórmula 1",
+      "titulo": "F1: G.P. Singapur - Carrera Sprint",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Marina Bay Street Circuit",
+      "referencia": "Marina Bay Street Circuit",
+      "hora_utc": "2026-10-09T09:00:00Z",
+      "hora_local_producto": "04:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "09 | DAZN F1 HD",
+          "id_xtream": "141363"
+        }
+      ],
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_80552800",
+      "agenda_id": "",
+      "titulo": "F1: G.P. Singapur",
       "torneo": "F1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Circuito",
-      "referencia": "Circuito",
-      "hora_utc": "2026-10-09T07:30:00Z",
-      "hora_local_producto": "02:30",
+      "subtitulo": "Marina Bay Street Circuit",
+      "referencia": "Marina Bay Street Circuit",
+      "hora_utc": "2026-10-09T09:00:00Z",
+      "hora_local_producto": "06:00",
       "duracion_min": 135,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "logo_local": "",
@@ -398,27 +423,27 @@
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
+      "confianza": "alta",
+      "puntuacion_confianza": 0.9,
       "fuentes": [
         {
-          "nombre": "F1 | 02:30 AM | Grand Prix Singapore: Practice 1",
-          "id_xtream": "652872"
+          "nombre": "06:00  09/10 | F1 GP Singapur clasificación sprint | Con Tornello Fossaroli Cochito López y Fàbrega | F1 ||",
+          "id_xtream": "652743"
         },
         {
-          "nombre": "03:15 ◘ F1 GP Singapur práctica libre #1 | Con Tornello Fossaroli Cochito López y Fàbrega ◘ F1 ◘◘",
-          "id_xtream": "652928"
+          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | Cámara On Board | F1 ||",
+          "id_xtream": "652748"
         },
         {
-          "nombre": "03:30 ◘ F1 GP Singapur práctica libre #1 | Cámara On Board ◘ F1 ◘◘",
-          "id_xtream": "652929"
+          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | On Board Colapinto | F1 ||",
+          "id_xtream": "652749"
         },
         {
-          "nombre": "03:30 ◘ F1 GP Singapur práctica libre #1 | On Board Colapinto ◘ F1 ◘◘",
-          "id_xtream": "652930"
+          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | On Board Hamilton | F1 ||",
+          "id_xtream": "652750"
         }
       ],
-      "ronda": "Gran Premio",
+      "ronda": "Gp Singapur",
       "auditado_agy": true
     },
     {
@@ -430,8 +455,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Pista Central",
-      "referencia": "Pista Central",
+      "subtitulo": "Ferrero Tennis Academy",
+      "referencia": "Ferrero Tennis Academy",
       "hora_utc": "2026-10-09T10:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -472,7 +497,7 @@
     {
       "id": "lineal_espn_95f90be5",
       "agenda_id": "",
-      "titulo": "ATP Masters 1000 Shanghai",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
@@ -513,67 +538,15 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
       "auditado_agy": true
     },
     {
-      "id": "xtream_9cf21297",
-      "agenda_id": "",
-      "titulo": "F1 - G.P. Singapur",
-      "torneo": "F1",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Marina Bay Street Circuit",
-      "referencia": "Marina Bay Street Circuit",
-      "hora_utc": "2026-10-09T11:00:00Z",
-      "hora_local_producto": "06:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "06:00  09/10 | F1 GP Singapur clasificación sprint | Con Tornello Fossaroli Cochito López y Fàbrega | F1 ||",
-          "id_xtream": "652743"
-        },
-        {
-          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | Cámara On Board | F1 ||",
-          "id_xtream": "652748"
-        },
-        {
-          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | On Board Colapinto | F1 ||",
-          "id_xtream": "652749"
-        },
-        {
-          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | On Board Hamilton | F1 ||",
-          "id_xtream": "652750"
-        }
-      ],
-      "ronda": "Gp Singapur",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_4168ee16",
       "agenda_id": "",
-      "titulo": "Open de España",
+      "titulo": "DP World Tour: Open de España",
       "torneo": "Open de España presented by Madrid",
       "categoria": "Golf",
       "tipo_evento": "circuito",
@@ -613,7 +586,7 @@
     {
       "id": "xtream_aad34e89",
       "agenda_id": "",
-      "titulo": "China Open",
+      "titulo": "ATP/WTA China Open",
       "torneo": "China Open",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
@@ -689,7 +662,7 @@
     {
       "id": "lineal_espn_7a0de852",
       "agenda_id": "",
-      "titulo": "WTA 1000 Pekín",
+      "titulo": "WTA China Open Pekín",
       "torneo": "WTA Pekín",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
@@ -731,10 +704,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -743,14 +712,14 @@
     {
       "id": "lineal_espn_2640ada0",
       "agenda_id": "",
-      "titulo": "ATP Masters 1000 Shanghai",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "Y. Zhou",
       "equipo_visitante": "L. Musetti",
       "subtitulo": "Qizhong Forest Sports City Arena",
-      "referencia": "Yi Zhou vs. Lorenzo Musetti",
+      "referencia": "Yan Bai / Yi Zhou vs. Lorenzo Musetti",
       "hora_utc": "2026-10-09T11:55:00Z",
       "hora_local_producto": "06:55",
       "duracion_min": 180,
@@ -784,10 +753,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -893,8 +858,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Al Kholood",
       "equipo_visitante": "Al Quadisiya",
-      "subtitulo": "Al-Hazem Club Stadium",
-      "referencia": "Al-Hazem Club Stadium",
+      "subtitulo": "Al Hazem Club Stadium",
+      "referencia": "Al Hazem Club Stadium",
       "hora_utc": "2026-10-09T12:50:00Z",
       "hora_local_producto": "07:50",
       "duracion_min": 130,
@@ -929,43 +894,40 @@
       "auditado_agy": true
     },
     {
-      "id": "xtream_3c2df322",
+      "id": "lineal_dazn_f1_822b84ed",
       "agenda_id": "",
-      "titulo": "F1 - Gran Premio",
-      "torneo": "F1",
+      "titulo": "F1: G.P. Singapur - Clasificación",
+      "torneo": "Fórmula 1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Circuito Principal",
-      "referencia": "Circuito Principal",
+      "subtitulo": "Marina Bay Street Circuit",
+      "referencia": "Marina Bay Street Circuit",
       "hora_utc": "2026-10-09T13:00:00Z",
       "hora_local_producto": "08:00",
-      "duracion_min": 135,
+      "duracion_min": 180,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "logo_local": "",
       "logo_visitante": "",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "tier": 2,
-      "origen": "xtream_evento",
+      "origen": "inyector_lineal",
       "origenes": [
-        "xtream_evento"
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "08:00 09/10 | Compacto | F1 GP Singapur | Clasificación Sprint | F1 ||",
-          "id_xtream": "652753"
-        },
-        {
-          "nombre": "09:00 ◘ Compacto | F1 GP Singapur | Clasificación Sprint ◘ F1 ◘◘",
-          "id_xtream": "652943"
+          "nombre": "09 | DAZN F1 HD",
+          "id_xtream": "141363"
         }
       ],
-      "ronda": "Gran Premio",
+      "ronda": "",
       "auditado_agy": true
     },
     {
@@ -1154,14 +1116,14 @@
     {
       "id": "lineal_espn_13b1e3a1",
       "agenda_id": "",
-      "titulo": "WorldSSP - Estoril Round Superpole",
+      "titulo": "WorldSBK Supersport: Round de Estoril - Superpole",
       "torneo": "Supersport",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Circuito do Estoril",
-      "referencia": "Circuito do Estoril",
+      "subtitulo": "Circuito de Estoril",
+      "referencia": "Circuito de Estoril",
       "hora_utc": "2026-10-09T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 180,
@@ -1195,10 +1157,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -1207,14 +1165,14 @@
     {
       "id": "xtream_fae28e88",
       "agenda_id": "",
-      "titulo": "Wieczysta Kraków vs. Wisła Płock",
+      "titulo": "Wieczysta Kraków vs Wisła Płock",
       "torneo": "Polonia",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Wieczysta Kraków",
       "equipo_visitante": "Wisła Płock",
-      "subtitulo": "Stadion Wieczystej Kraków",
-      "referencia": "Stadion Wieczystej Kraków",
+      "subtitulo": "Stadion Wieczystej",
+      "referencia": "Stadion Wieczystej",
       "hora_utc": "2026-10-09T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 130,
@@ -1243,7 +1201,7 @@
     {
       "id": "xtream_b9884d63",
       "agenda_id": "",
-      "titulo": "Rot-Weiss Essen vs. Preußen Münster",
+      "titulo": "Rot-Weiss Essen vs Preußen Münster",
       "torneo": "3 Bundesliga",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -1412,8 +1370,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Belgica",
       "equipo_visitante": "Polonia",
-      "subtitulo": "Stade Roi Baudouin",
-      "referencia": "Stade Roi Baudouin",
+      "subtitulo": "Estadio Rey Balduino",
+      "referencia": "Estadio Rey Balduino",
       "hora_utc": "2026-10-09T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -1446,7 +1404,7 @@
     {
       "id": "xtream_37cf4cd4",
       "agenda_id": "",
-      "titulo": "PSV Eindhoven vs. SC Heerenveen",
+      "titulo": "PSV vs SC Heerenveen",
       "torneo": "Eredivisie",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -1488,8 +1446,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Alemania",
       "equipo_visitante": "Australia",
-      "subtitulo": "Düsseldorf Arena",
-      "referencia": "Düsseldorf Arena",
+      "subtitulo": "Rhein-Neckar-Arena",
+      "referencia": "Rhein-Neckar-Arena",
       "hora_utc": "2026-10-09T17:20:00Z",
       "hora_local_producto": "12:20",
       "duracion_min": 130,
@@ -1524,7 +1482,7 @@
       "auditado_agy": true
     },
     {
-      "id": "lineal_tnt_sports_4df57712",
+      "id": "lineal_tyc_sports_5e4d4f6a",
       "agenda_id": "",
       "titulo": "Aldosivi vs Sarmiento Junin",
       "torneo": "Liga Profesional Argentina",
@@ -1554,20 +1512,20 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ARG | TNT SPORTS",
-          "id_xtream": "1121"
+          "nombre": "TyC Sports",
+          "id_xtream": "207978"
         },
         {
-          "nombre": "ARG | TNT SPORTS ᴴᴰ",
-          "id_xtream": "1122"
-        },
-        {
-          "nombre": "ARG | TyC SPORTS HD",
-          "id_xtream": "1119"
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "258796"
         },
         {
           "nombre": "11:30 09/10 | Aldosivi vs. Sarmiento | Liga Argentina |",
           "id_xtream": "652759"
+        },
+        {
+          "nombre": "Arg | 11:30 AM | Aldosivi vs Sarmiento",
+          "id_xtream": "652826"
         }
       ],
       "fecha_confirmada": true,
@@ -1744,7 +1702,7 @@
     {
       "id": "lineal_eurosport_2_3f383a93",
       "agenda_id": "",
-      "titulo": "BM Caserío Ciudad Real vs. Fraikin BM. Granollers",
+      "titulo": "BM Caserío Ciudad Real vs. Fraikin BM Granollers",
       "torneo": "Liga Nexus Energía Asobal: BM Caserío Ciudad Real-Fraikin BM. Granollers",
       "categoria": "Balonmano",
       "tipo_evento": "duelo",
@@ -1791,7 +1749,7 @@
       "auditado_agy": true
     },
     {
-      "id": "lineal_espn_3_b397180b",
+      "id": "lineal_espn_5_9af71b6f",
       "agenda_id": "",
       "titulo": "Borussia Dortmund vs Werder Bremen",
       "torneo": "Bundesliga",
@@ -1821,6 +1779,10 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
+          "nombre": "ESPN 5 ARGENTINA HD",
+          "id_xtream": "258743"
+        },
+        {
           "nombre": "ESPN 3 ARGENTINA HD",
           "id_xtream": "258742"
         },
@@ -1829,12 +1791,8 @@
           "id_xtream": "258748"
         },
         {
-          "nombre": "ARG | ESPN 3",
-          "id_xtream": "1127"
-        },
-        {
-          "nombre": "ESPN 5 ARGENTINA HD",
-          "id_xtream": "258743"
+          "nombre": "12:30 09/10 | Borussia Dortmund vs. Werder Bremen | Bundesliga |",
+          "id_xtream": "652764"
         }
       ],
       "fecha_confirmada": true,
@@ -2042,12 +2000,12 @@
           "id_xtream": "258747"
         },
         {
-          "nombre": "ARG | ESPN 2 ᴴᴰ",
-          "id_xtream": "1126"
-        },
-        {
           "nombre": "13:00 09/10 | Málaga vs. Espanyol | LaLiga ||",
           "id_xtream": "652766"
+        },
+        {
+          "nombre": "13:00 09/10 | Málaga vs. Espanyol | LaLiga || SD",
+          "id_xtream": "652767"
         }
       ],
       "fecha_confirmada": true,
@@ -2097,7 +2055,7 @@
     {
       "id": "xtream_a524cbee",
       "agenda_id": "",
-      "titulo": "Navy vs. Army",
+      "titulo": "Navy Midshipmen vs. Army Black Knights",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2359,7 +2317,7 @@
     {
       "id": "lineal_espn_premium_argentina_dd92d723",
       "agenda_id": "",
-      "titulo": "Gimnasia LP vs. Atlético Tucumán",
+      "titulo": "Gimnasia La Plata vs. Atlético Tucumán",
       "torneo": "Liga Argentina",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2391,16 +2349,16 @@
           "id_xtream": "258745"
         },
         {
-          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
-          "id_xtream": "1123"
-        },
-        {
-          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
-          "id_xtream": "1124"
-        },
-        {
           "nombre": "15:00 09/10 | Gimnasia y Esgrima La Plata vs. Atlético Tucumán | Liga Argentina ||",
           "id_xtream": "652773"
+        },
+        {
+          "nombre": "Arg | 03:00 PM | Gimnasia y Esgrima La Plata vs. Atlético Tucumán",
+          "id_xtream": "652827"
+        },
+        {
+          "nombre": "16:00 ◘ Gimnasia y Esgrima La Plata vs. Atlético Tucumán ◘ Liga Argentina ◘◘",
+          "id_xtream": "652963"
         }
       ],
       "ronda": "",
@@ -2409,7 +2367,7 @@
     {
       "id": "xtream_42ed8439",
       "agenda_id": "",
-      "titulo": "American University vs. Lehigh",
+      "titulo": "American University vs. Lehigh Mountain Hawks",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2449,7 +2407,7 @@
     {
       "id": "xtream_3c9143d6",
       "agenda_id": "",
-      "titulo": "Boston University vs. Colgate",
+      "titulo": "Boston University vs. Colgate Raiders",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2489,7 +2447,7 @@
     {
       "id": "xtream_a114a5f6",
       "agenda_id": "",
-      "titulo": "UCF vs. Coastal Carolina",
+      "titulo": "UCF Knights vs. Coastal Carolina Chanticleers",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2529,7 +2487,7 @@
     {
       "id": "xtream_f790ddab",
       "agenda_id": "",
-      "titulo": "California vs. Virginia",
+      "titulo": "California Golden Bears vs. Virginia Cavaliers",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2569,7 +2527,7 @@
     {
       "id": "xtream_76fc1c8d",
       "agenda_id": "",
-      "titulo": "West Virginia vs. Old Dominion",
+      "titulo": "West Virginia Mountaineers vs. Old Dominion Monarchs",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2693,7 +2651,7 @@
     {
       "id": "xtream_e582e807",
       "agenda_id": "",
-      "titulo": "Canadá vs. Dinamarca",
+      "titulo": "Canadá vs Dinamarca",
       "torneo": "Amistoso Internacional",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2729,7 +2687,7 @@
     {
       "id": "xtream_1f7f781c",
       "agenda_id": "",
-      "titulo": "Hamilton Tiger-Cats vs. Edmonton Elks",
+      "titulo": "Hamilton Tiger-Cats vs Edmonton Elks",
       "torneo": "F Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
@@ -2765,14 +2723,14 @@
     {
       "id": "xtream_41637de3",
       "agenda_id": "",
-      "titulo": "Molloy vs. Penn",
+      "titulo": "Molloy vs Penn",
       "torneo": "F Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
       "equipo_local": "Collegiate Sprint League Molloy",
       "equipo_visitante": "Penn (Molloy",
-      "subtitulo": "Franklin Field",
-      "referencia": "Franklin Field",
+      "subtitulo": "Collegiate Sprint Football League",
+      "referencia": "Collegiate Sprint Football League",
       "hora_utc": "2026-10-09T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -2801,14 +2759,14 @@
     {
       "id": "xtream_5ac28729",
       "agenda_id": "",
-      "titulo": "Georgia Southern vs. Marshall",
+      "titulo": "Georgia Southern vs Marshall",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Georgia Southern",
       "equipo_visitante": "Marshall",
-      "subtitulo": "Eagle Field",
-      "referencia": "Eagle Field",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
       "hora_utc": "2026-10-09T22:10:00Z",
       "hora_local_producto": "17:10",
       "duracion_min": 130,
@@ -2839,7 +2797,7 @@
       "auditado_agy": true
     },
     {
-      "id": "lineal_tnt_sports_c4ced3f2",
+      "id": "lineal_espn_034a05f4",
       "agenda_id": "",
       "titulo": "Instituto Cordoba vs Boca Juniors",
       "torneo": "Liga Profesional Argentina",
@@ -2869,14 +2827,6 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ARG | TNT SPORTS",
-          "id_xtream": "1121"
-        },
-        {
-          "nombre": "ARG | TNT SPORTS ᴴᴰ",
-          "id_xtream": "1122"
-        },
-        {
           "nombre": "ESPN CO",
           "id_xtream": "207985"
         },
@@ -2887,6 +2837,10 @@
         {
           "nombre": "ESPN 1 ARGENTINA HD",
           "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
         }
       ],
       "fecha_confirmada": true,
@@ -2896,7 +2850,7 @@
     {
       "id": "xtream_a5be9223",
       "agenda_id": "",
-      "titulo": "Anaheim Ducks vs. Winnipeg Jets",
+      "titulo": "Anaheim Ducks vs Winnipeg Jets",
       "torneo": "NHL",
       "categoria": "Hockey",
       "tipo_evento": "duelo",
@@ -2971,32 +2925,16 @@
           "id_xtream": "207989"
         },
         {
-          "nombre": "COL | RCN (Op.1)",
-          "id_xtream": "52095"
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "258801"
         },
         {
-          "nombre": "01 | Win Sports (Opc.1)",
-          "id_xtream": "52635"
+          "nombre": "Win Sports+",
+          "id_xtream": "207979"
         },
         {
-          "nombre": "02 | Win Sports (Opc.2)",
-          "id_xtream": "52636"
-        },
-        {
-          "nombre": "08 | WIN SPORTS ᴴᴰ",
-          "id_xtream": "52649"
-        },
-        {
-          "nombre": "03 |  WIN SPORTS + (Opc.1)",
-          "id_xtream": "52637"
-        },
-        {
-          "nombre": "04 | WIN SPORTS + (Opc.2)",
-          "id_xtream": "52638"
-        },
-        {
-          "nombre": "05 | WIN SPORTS + (Opc.3)",
-          "id_xtream": "52639"
+          "nombre": "WIN SPORTS+ HD",
+          "id_xtream": "258809"
         }
       ],
       "fecha_confirmada": true,
@@ -3222,14 +3160,14 @@
     {
       "id": "xtream_f19933e3",
       "agenda_id": "",
-      "titulo": "Inca Aruba vs. Platense",
+      "titulo": "Inca Aruba vs Platense",
       "torneo": "Primera Salvador",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Inca Aruba",
       "equipo_visitante": "Platense",
-      "subtitulo": "Estadio Antonio Toledo Valle",
-      "referencia": "Estadio Antonio Toledo Valle",
+      "subtitulo": "Primera División de El Salvador",
+      "referencia": "Primera División de El Salvador",
       "hora_utc": "2026-10-09T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
@@ -3266,7 +3204,7 @@
     {
       "id": "xtream_4d3726fc",
       "agenda_id": "",
-      "titulo": "Memphis Grizzlies vs. Chicago Bulls",
+      "titulo": "Memphis Grizzlies vs Chicago Bulls",
       "torneo": "NBA",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
@@ -3316,8 +3254,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Friday Night",
+      "referencia": "Friday Night",
       "hora_utc": "2026-10-09T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
@@ -3364,8 +3302,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Venezuela",
       "equipo_visitante": "Colombia",
-      "subtitulo": "Estadio Polideportivo de Pueblo Nuevo",
-      "referencia": "Estadio Polideportivo de Pueblo Nuevo",
+      "subtitulo": "Estadio Monumental de Maturín",
+      "referencia": "Estadio Monumental de Maturín",
       "hora_utc": "2026-10-10T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -3393,20 +3331,12 @@
           "id_xtream": "207989"
         },
         {
-          "nombre": "COL | RCN (Op.1)",
-          "id_xtream": "52095"
-        },
-        {
           "nombre": "Canal Caracol",
           "id_xtream": "207982"
         },
         {
           "nombre": "CARACOL",
           "id_xtream": "207997"
-        },
-        {
-          "nombre": "COL | CARACOL HD (SAT)",
-          "id_xtream": "52086"
         }
       ],
       "ronda": "",
@@ -3415,7 +3345,7 @@
     {
       "id": "xtream_e24ec458",
       "agenda_id": "",
-      "titulo": "Deportivo Garcilaso vs. Sport Huancayo",
+      "titulo": "Deportivo Garcilaso vs Sport Huancayo",
       "torneo": "Liga 1",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -3459,7 +3389,7 @@
     {
       "id": "xtream_b2cc00bc",
       "agenda_id": "",
-      "titulo": "Tepatitlán FC vs. Atlético Morelia",
+      "titulo": "Tepatitlán vs Atlético Morelia",
       "torneo": "Liga de Expansión MX",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -3503,7 +3433,7 @@
     {
       "id": "xtream_1b2fb8d4",
       "agenda_id": "",
-      "titulo": "Washington State vs. Utah State",
+      "titulo": "Washington State vs Utah State",
       "torneo": "NCAA Fútbol Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
@@ -3543,7 +3473,7 @@
     {
       "id": "xtream_c9450224",
       "agenda_id": "",
-      "titulo": "North Harbour vs. Taranaki",
+      "titulo": "North Harbour vs Taranaki",
       "torneo": "Bunnings NPC Rugby",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
@@ -3611,20 +3541,20 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ARG | TyC SPORTS HD",
-          "id_xtream": "1119"
+          "nombre": "TyC Sports",
+          "id_xtream": "207978"
+        },
+        {
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "258796"
         },
         {
           "nombre": "ESPN PREMIUM ARGENTINA HD",
           "id_xtream": "258745"
         },
         {
-          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
-          "id_xtream": "1123"
-        },
-        {
-          "nombre": "ARG | ESPN PREMIUM ᴴᴰ",
-          "id_xtream": "1124"
+          "nombre": "18:45 09/10 | Unión Santa Fe vs. Defensa y Justicia | Liga Argentina |",
+          "id_xtream": "652798"
         }
       ],
       "ronda": "",
@@ -3633,14 +3563,14 @@
     {
       "id": "xtream_d2b59048",
       "agenda_id": "",
-      "titulo": "Boxeo Internacional",
+      "titulo": "Gala de Boxeo",
       "torneo": "Boxeo",
       "categoria": "Boxeo",
       "tipo_evento": "circuito",
       "equipo_local": "Luis Castillo",
       "equipo_visitante": "Jorge Zarate",
       "subtitulo": "",
-      "referencia": "Luis Castillo vs. Jorge Zárate",
+      "referencia": "Luis Castillo vs Jorge Zarate",
       "hora_utc": "2026-10-10T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 135,
@@ -3673,7 +3603,7 @@
     {
       "id": "xtream_6c5acb26",
       "agenda_id": "",
-      "titulo": "BC Lions vs. Ottawa Redblacks",
+      "titulo": "BC Lions vs Ottawa Redblacks",
       "torneo": "F Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
@@ -3745,32 +3675,16 @@
           "id_xtream": "207989"
         },
         {
-          "nombre": "COL | RCN (Op.1)",
-          "id_xtream": "52095"
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "258801"
         },
         {
-          "nombre": "01 | Win Sports (Opc.1)",
-          "id_xtream": "52635"
+          "nombre": "Win Sports+",
+          "id_xtream": "207979"
         },
         {
-          "nombre": "02 | Win Sports (Opc.2)",
-          "id_xtream": "52636"
-        },
-        {
-          "nombre": "08 | WIN SPORTS ᴴᴰ",
-          "id_xtream": "52649"
-        },
-        {
-          "nombre": "03 |  WIN SPORTS + (Opc.1)",
-          "id_xtream": "52637"
-        },
-        {
-          "nombre": "04 | WIN SPORTS + (Opc.2)",
-          "id_xtream": "52638"
-        },
-        {
-          "nombre": "05 | WIN SPORTS + (Opc.3)",
-          "id_xtream": "52639"
+          "nombre": "WIN SPORTS+ HD",
+          "id_xtream": "258809"
         }
       ],
       "ronda": "",
@@ -3779,7 +3693,7 @@
     {
       "id": "xtream_c1a991e3",
       "agenda_id": "",
-      "titulo": "Iowa State vs. BYU",
+      "titulo": "Iowa State vs BYU",
       "torneo": "NCAA Fútbol Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
@@ -3819,7 +3733,7 @@
     {
       "id": "xtream_f08e979a",
       "agenda_id": "",
-      "titulo": "Otago vs. Hawke's Bay",
+      "titulo": "Otago vs Hawke's Bay",
       "torneo": "Bunnings NPC Rugby",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
@@ -3895,14 +3809,14 @@
     {
       "id": "lineal_espn_ef89610d",
       "agenda_id": "",
-      "titulo": "MotoGP - G.P. Indonesia Libres 2",
+      "titulo": "MotoGP: G.P. Indonesia - Prácticas Libres 2",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Pertamina Mandalika International Circuit",
-      "referencia": "Pertamina Mandalika International Circuit",
+      "subtitulo": "Mandalika International Circuit",
+      "referencia": "Mandalika International Circuit",
       "hora_utc": "2026-10-10T02:10:00Z",
       "hora_local_producto": "21:10",
       "duracion_min": 180,
@@ -3936,10 +3850,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -3948,14 +3858,14 @@
     {
       "id": "lineal_espn_40b63213",
       "agenda_id": "",
-      "titulo": "MotoGP - G.P. Indonesia Clasificación",
+      "titulo": "MotoGP: G.P. Indonesia - Clasificación",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Pertamina Mandalika International Circuit",
-      "referencia": "Pertamina Mandalika International Circuit",
+      "subtitulo": "Mandalika International Circuit",
+      "referencia": "Mandalika International Circuit",
       "hora_utc": "2026-10-10T02:50:00Z",
       "hora_local_producto": "21:50",
       "duracion_min": 180,
@@ -3989,10 +3899,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -4361,14 +4267,14 @@
     {
       "id": "lineal_espn_7ff3b1d3",
       "agenda_id": "",
-      "titulo": "Moto3 - G.P. Indonesia Clasificación",
+      "titulo": "Moto3: G.P. Indonesia - Clasificación",
       "torneo": "Moto3",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Pertamina Mandalika International Circuit",
-      "referencia": "Pertamina Mandalika International Circuit",
+      "subtitulo": "Mandalika International Circuit",
+      "referencia": "Mandalika International Circuit",
       "hora_utc": "2026-10-10T04:45:00Z",
       "hora_local_producto": "23:45",
       "duracion_min": 180,
@@ -4402,10 +4308,6 @@
         {
           "nombre": "ESPN 1 COLOMBIA HD",
           "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
         }
       ],
       "ronda": "",
@@ -4413,12 +4315,12 @@
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 34,
-    "total_canales_xtream": 789,
+    "total_agenda_maestra": 35,
+    "total_canales_xtream": 528,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 887,
-    "eventos_lineales_inyectados": 23,
-    "eventos_xtream_aprobados": 117,
+    "eventos_lineales_inyectados": 25,
+    "eventos_xtream_aprobados": 111,
     "eventos_contrastados_api": 40,
     "eventos_descartados_stale": 0,
     "total_eventos_publicados": 100
