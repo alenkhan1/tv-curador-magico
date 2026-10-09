@@ -3,10 +3,9 @@
 Curador Deportivo Principal Multifuente:
 1. Ingesta de Canales Lineales (Win Sports, ESPN Suramérica, DSports, TyC, TNT, DAZN F1) emparejados con la Agenda Maestra de Hoy.
 2. Ingesta Universal de Streams Efímeros Xtream:
-   - Detección inteligente y universal de actualización: valida si la lista está vigente para hoy (fechas DD/MM o Contraste Ancla con Agenda Maestra).
-   - Soporte universal tanto para listas con carpetas categorizadas como para listas de carpeta única (con VOD, canales 24/7 y eventos mezclados).
-   - Descarte estricto de canales de transmisión/comodines (ej: 'EVENTS 11 : DAZN 1', '01 | DISNEY + (ESP)').
-   - Descarte de canales 24/7 y VOD de la cartelera efímera.
+   - Filtro maestro por hora de inicio: descarta de inmediato canales 24/7 y VOD sin horario.
+   - Soporte universal para listas categorizadas o listas de carpeta única.
+   - Descarte de canales de transmisión/comodines (ej: 'EVENTS 11 : DAZN 1', '01 | DISNEY + (ESP)').
 3. Curación Semántica y Deduplicación por Entidad Deportiva (1 Tarjeta = N Fuentes).
 4. Auditoría y Perfeccionamiento con AGY (Gemini Pro en la VM).
 5. Garantía Gráfica para Android TV (EventoCard.kt): Logos de Torneo, Escudos de Equipos y Banderas Oficiales.
@@ -152,7 +151,7 @@ def detectar_lista_actualizada_hoy(
     """
     Verifica con rigor y de forma universal si la lista contiene streams actualizados para hoy (Hora Colombia America/Bogota).
     - Criterio 1: Streams o categorias con fecha de hoy (DD/MM o D/M) >= 2.
-    - Criterio 2: Ausencia de residuos de ayer: si contiene streams de ayer y 0 de hoy ni en agenda -> PENDIENTE.
+    - Criterio 2: Ausencia de residuos de ayer: si contiene streams con fecha de ayer y 0 de hoy ni en agenda -> PENDIENTE.
     - Criterio 3 (Contraste Ancla para carpeta única): Si no hay fechas explícitas, valida si al menos
       2 eventos de la lista coinciden con la Agenda Maestra confirmada de hoy.
     """
@@ -184,7 +183,6 @@ def detectar_lista_actualizada_hoy(
 
     # Criterio 2: Fechas explícitas de ayer encontradas y 0 de hoy
     if coincidencias_hoy == 0 and coincidencias_ayer >= 2:
-        # Freno de seguridad: verificar si el ancla de hoy ya tiene partidos activos
         if agenda_hoy:
             for ev in agenda_hoy:
                 if ev.local and ev.visitante:
@@ -239,16 +237,6 @@ RE_COMODINES = re.compile(
     re.I
 )
 RE_HORA = re.compile(r"\b([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*(AM|PM)?\b", re.I)
-DISCIPLINAS_CIRCUITOS = [
-    "F1", "FORMULA 1", "FÓRMULA 1", "MOTOGP", "MOTO 2", "MOTO 3", "MOTO2", "MOTO3", "SUPERBIKE", "INDYCAR", "NASCAR",
-    "UFC", "MMA", "BOXEO", "BOXING", "BKFC", "BARE KNUCKLE", "WWE", "SMACKDOWN", "RAW", "AEW",
-    "ATP", "WTA", "TENIS", "TENNIS", "ROLAND GARROS", "WIMBLEDON", "US OPEN", "AUSTRALIAN OPEN",
-    "PADEL", "PÁDEL", "PREMIER PADEL", "A1 PADEL",
-    "GOLF", "PGA", "LIV", "DP WORLD", "OPEN DE ESPAÑA",
-    "NBA", "EUROLEAGUE", "BASKET", "BALONCESTO",
-    "MLB", "BÉISBOL", "BASEBALL",
-    "NFL", "CICLISMO", "TOUR DE FRANCE", "GIRO", "VUELTA", "RUGBY", "SNOOKER", "TEJO", "HOCKEY", "NHL"
-]
 
 def procesar_streams_eventos_xtream(
     canales_xtream: List[Dict[str, Any]],
@@ -258,6 +246,14 @@ def procesar_streams_eventos_xtream(
     tz_prod: Any,
     lista_actualizada: bool,
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """
+    Embudo Universal Directo:
+    1. Filtro maestro de entrada: si el stream no tiene hora (HH:MM o AM/PM), se ignora de inmediato.
+    2. Descarte rápido de comodines y VOD con hora casual.
+    3. Descarte si tiene fecha explícita de ayer.
+    4. Extracción limpia de Duelos y Circuitos multideporte (F1, MotoGP, Tenis, Pádel, Golf, Tejo, etc.).
+    5. Fusión con la Agenda Maestra de canales lineales (1 tarjeta = N fuentes).
+    """
     eventos_finales = []
     descartados = []
     mapa_duelos_existentes = {}
@@ -271,7 +267,6 @@ def procesar_streams_eventos_xtream(
         log.warning("La lista Xtream aún no tiene la actualización de hoy (%s). Omitiendo streams efímeros para evitar eventos viejos.", fecha_hoy_dd_mm)
         return [], []
 
-    streams_candidatos = []
     for c in canales_xtream:
         nombre = c.get("name") or c.get("stream_name") or ""
         sid = str(c.get("stream_id") or c.get("id") or "")
@@ -279,44 +274,23 @@ def procesar_streams_eventos_xtream(
         if not nombre or not sid:
             continue
 
-        # Descarte de VOD
-        if stype in ["movie", "series"] or any(k in nombre for k in ["Temporada", "Season", "T01E", "S01E", "Capitulo"]):
-            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "vod"})
+        # 1. FILTRO MAESTRO: ¿Tiene hora asignada de evento?
+        m_h = RE_HORA.search(nombre)
+        if not m_h:
+            # Canales 24/7 y VOD sin hora se ignoran de la cartelera efímera
             continue
 
-        # Descarte de comodines y enlaces de transmisión
+        # 2. Descarte de canales comodín / enlaces vacíos de transmisión
         if RE_COMODINES.search(nombre):
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "canal_transmision_no_evento"})
             continue
 
-        # Descarte de no directo (resúmenes / diferidos / repeticiones)
-        if any(w in nombre.lower() for w in ["compacto", "resumen", "diferido", "retransmision", "retransmisión", "replay", "highlights", "grabacion", "grabación"]):
-            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "emision_no_directo_o_resumen"})
+        # 3. Descarte de VOD o series con hora casual
+        if stype in ["movie", "series"] or any(k in nombre for k in ["Temporada", "Season", "T01E", "S01E", "Capitulo"]):
+            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "vod"})
             continue
 
-        # Requiere hora asignada de evento (HH:MM o AM/PM)
-        m_h = RE_HORA.search(nombre)
-        if not m_h:
-            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "canal_lineal_sin_hora_evento"})
-            continue
-
-        streams_candidatos.append(c)
-
-    for c in streams_candidatos:
-        nombre = c.get("name") or c.get("stream_name") or ""
-        cat_nombre = c.get("category_name") or ""
-        sid = str(c.get("stream_id") or c.get("id") or "")
-
-        # Si la categoría tiene fecha explícita y no es hoy, descarte
-        m_cat_f = re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', cat_nombre)
-        if m_cat_f:
-            p1, p2 = m_cat_f.group(1).split('/')
-            f_cat_norm = f"{int(p1):02d}/{int(p2):02d}"
-            if f_cat_norm != f_hoy_norm:
-                descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"categoria_antigua ({f_cat_norm} != {f_hoy_norm})"})
-                continue
-
-        # Si el nombre del stream tiene fecha explícita y no es hoy, descarte
+        # 4. Descarte de fecha explícita antigua (ayer u otro día)
         m_f = re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', nombre)
         if m_f:
             p1, p2 = m_f.group(1).split('/')
@@ -325,10 +299,10 @@ def procesar_streams_eventos_xtream(
                 descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"fecha_antigua ({f_norm} != {f_hoy_norm})"})
                 continue
 
-        # Sanitizar evento
+        # 5. Extracción y sanitización de datos del evento
+        cat_nombre = c.get("category_name") or ""
         parsed = sanitizar_evento_crudo(nombre, cat_nombre)
         if not parsed:
-            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "programa_basura_o_invalido"})
             continue
 
         titulo = parsed.get("titulo", nombre)
@@ -338,8 +312,7 @@ def procesar_streams_eventos_xtream(
         tipo = parsed.get("tipo", "duelo" if local and visitante else "circuito")
         deporte = parsed.get("deporte", "Otros Deportes")
 
-        # Extraer hora formateada
-        m_h = RE_HORA.search(nombre)
+        # Conversión de hora a formato 24h
         h = int(m_h.group(1))
         mi = int(m_h.group(2))
         ampm = (m_h.group(3) or "").upper()
@@ -349,7 +322,7 @@ def procesar_streams_eventos_xtream(
             h = 0
         hora_str = f"{h:02d}:{mi:02d}"
 
-        # Reconciliación con Agenda Maestra oficial
+        # Reconciliación con Agenda Maestra oficial si coincide
         coincide_agenda = None
         for ev in agenda_hoy:
             if local and visitante and ev.local and ev.visitante:
