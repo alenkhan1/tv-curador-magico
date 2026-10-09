@@ -1,9 +1,10 @@
-﻿name: Actualizar cartelera deportiva multideporte
+name: Actualizar cartelera deportiva multideporte
 
 on:
-  schedule:
-    # Ejecución periódica para mantener la cartelera actualizada
-    - cron: "0 5,9,13,16,19,22 * * *"
+  # schedule desactivado: el ejecutor maestro oficial con AGY es la VM de Oracle Cloud
+  # schedule:
+  # # Ejecución periódica para mantener la cartelera actualizada
+  # - cron: "0 5,9,13,16,19,22 * * *"
   workflow_dispatch:
 
 concurrency:
