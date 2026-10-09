@@ -33,23 +33,26 @@ Eres el Auditor y Curador Deportivo en Jefe. Tu misión es depurar la cartelera 
 Lista de eventos huérfanos a auditar:
 {json.dumps(lote, ensure_ascii=False, indent=1)}
 
-Reglas obligatorias:
+Reglas obligatorias para la interfaz de Android TV:
 1. 'descartar': true si es programa de debate, noticiero, magazine de estudio, resumen de TV o repetición en diferido. SOLO eventos deportivos reales en directo.
-2. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Golf, Rugby, Natación, Snooker, Polo, Tejo, etc.). NUNCA 'Otros Deportes'.
-3. 'titulo_pulido':
-   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (sin prefijos de canal o jornada).
-   - Si es CIRCUITO (MMA, F1, Boxeo, Tenis, Ciclismo, Golf, Pádel): Título limpio del evento u organizador (ej: 'UFC Fight Night', 'F1 Gran Premio de Singapur', 'Premier Padel Madrid', 'China Open'). REGLA: NUNCA pongas nombres de deportistas individuales en el título de circuito.
-4. 'subtitulo_pulido':
-   - Si es DUELO: Nombre del torneo (ej: 'Liga BetPlay', 'UEFA Nations League', 'Torneo Betplay').
-   - Si es CIRCUITO: Estadio, circuito o fase (ej: 'Wembley Stadium', 'Main Card', 'Cuartos de final').
+2. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Boxeo, MMA, Golf, Rugby, Natación, Snooker, etc.). NUNCA 'Otros Deportes'.
+3. 'tipo_evento': 'duelo' si son dos equipos/rivales enfrentados, o 'circuito' si es torneo/sesión (UFC, Motor, Tenis, Golf, etc.).
+4. 'titulo_pulido':
+   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (limpio, sin viñetas ni basura).
+   - Si es CIRCUITO: Título conciso del evento u organizador para el botón pequeño de la TV (ej: 'UFC Fight Night 324', 'Rolex Shanghai Masters', 'NASCAR Ecosave 200'). REGLA: NUNCA pongas nombres de deportistas en el título de circuito.
+5. 'subtitulo_pulido': Sede, estadio, cancha o pista (ej: 'Crystal Stadium', 'Stadium Court', 'Court 4', 'Bristol Motor Speedway').
+6. 'participantes':
+   - Si es CIRCUITO y se conocen los contrincantes principales o plato fuerte (ej: 'McGregor vs Pepito Pereza', 'Novak Djokovic - Hubert Hurkacz'), ponlos aquí. Estos nombres van bajo la pantalla preview del reproductor, NO en el botón pequeño. Si no se conocen, deja cadena vacía.
 
 Responde ÚNICAMENTE con un JSON Array:
 [
   {{
     "id": "id original",
-    "titulo_pulido": "Título limpio",
-    "subtitulo_pulido": "Subtítulo limpio",
+    "titulo_pulido": "Título limpio para el botón",
+    "subtitulo_pulido": "Sede o Cancha",
+    "participantes": "Contrincantes bajo preview si aplica",
     "categoria_exacta": "Deporte exacto",
+    "tipo_evento": "duelo o circuito",
     "descartar": false
   }}
 ]
@@ -110,11 +113,13 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         tit = ev.get("titulo", "")
         tipo = ev.get("tipo_evento", "")
 
-        necesita = (
-            cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"] or
-            cat in ["Pádel", "Padel", "Tejo", "Snooker", "Combate", "Polo", "Hípica", "Hipica", "Tiro", "Natación", "Natacion"] or
-            (tipo == "circuito" and any(sep in tit.lower() for sep in [" vs ", " v ", " - "]))
-        )
+        # Auditar cualquier evento huérfano (no contrastado por API de duelos),
+        # eventos de circuito (para asegurar cancha limpia y participantes bajo preview),
+        # o eventos con viñetas residuales o nombres genéricos
+        tiene_viñetas = any(c in tit for c in ["◘", "■", "♦", "►", "●", "▼", "▲", "|"])
+        es_circuito = tipo == "circuito" or cat in ["Tenis", "Motor", "Combate", "Boxeo", "MMA", "Golf", "Ciclismo", "Pádel", "Padel"]
+        cat_dudosa = cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"]
+        necesita = (not ev.get("contrastado_api")) or es_circuito or tiene_viñetas or cat_dudosa
         if necesita:
             eventos_a_auditar.append({
                 "id": ev.get("id"),
@@ -154,8 +159,15 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 continue
             ev["titulo"] = aud.get("titulo_pulido") or ev["titulo"]
             ev["subtitulo"] = aud.get("subtitulo_pulido") or ev["subtitulo"]
-            ev["referencia"] = ev["subtitulo"]
+            # Los contrincantes van bajo la pantalla preview (cajón inferior en EventosPreviewPlayer.kt)
+            partic = (aud.get("participantes") or "").strip()
+            if partic:
+                ev["referencia"] = partic
+            else:
+                ev["referencia"] = ev["subtitulo"]
             ev["categoria"] = aud.get("categoria_exacta") or ev["categoria"]
+            if aud.get("tipo_evento") in ["duelo", "circuito"]:
+                ev["tipo_evento"] = aud["tipo_evento"]
             ev["auditado_agy"] = True
         eventos_finales.append(ev)
 

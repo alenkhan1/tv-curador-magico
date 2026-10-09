@@ -192,6 +192,12 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         if l1_n and l2_n and v1_n and v2_n and diff_min <= 90:
             if (l1_n in l2_n or l2_n in l1_n) and (v1_n in v2_n or v2_n in v1_n):
                 return True
+            # Tolerancia para transliteraciones árabes/asiáticas (ej. Al Quadisiya vs Al Qadsiah)
+            from difflib import SequenceMatcher
+            sim_loc = SequenceMatcher(None, l1_n, l2_n).ratio()
+            sim_vis = SequenceMatcher(None, v1_n, v2_n).ratio()
+            if (sim_loc >= 0.85 and sim_vis >= 0.65) or (sim_loc >= 0.65 and sim_vis >= 0.85):
+                return True
 
     if diff_min > 90:
         return False
@@ -202,6 +208,29 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
     cat1 = _normalizar(ev1.get("categoria", ""))
     cat2 = _normalizar(ev2.get("categoria", ""))
 
+    es_circuito = (
+        ev1.get("tipo_evento") == "circuito" or ev2.get("tipo_evento") == "circuito" or
+        cat1 in ["TENIS", "MOTOR", "COMBATE", "BOXEO", "MMA", "GOLF", "CICLISMO", "PADEL"] or
+        cat2 in ["TENIS", "MOTOR", "COMBATE", "BOXEO", "MMA", "GOLF", "CICLISMO", "PADEL"]
+    )
+
+    if es_circuito:
+        # REGLA SAGRADA DE CIRCUITOS Y TENIS:
+        # NUNCA fusionar canchas distintas (Stadium Court vs Show Court 3 vs Court 4).
+        # Cada cancha activa en cada horario es una tarjeta independiente con su botón.
+        ref1 = _normalizar(ev1.get("subtitulo", "") or ev1.get("referencia", ""))
+        ref2 = _normalizar(ev2.get("subtitulo", "") or ev2.get("referencia", ""))
+        pat_cancha = r"\b(STADIUM|CENTRE|CENTER|COURT\s*\d+|PISTA\s*\d+|CANCHA\s*\d+|GRANDSTAND|SHOW\s*COURT)\b"
+        cancha1 = re.search(pat_cancha, f"{tit1} {ref1}")
+        cancha2 = re.search(pat_cancha, f"{tit2} {ref2}")
+        if cancha1 and cancha2 and cancha1.group(0) != cancha2.group(0):
+            return False
+
+        # Solo fusionar si tienen idéntico título y horario muy cercano
+        if tit1 == tit2 and diff_min <= 60:
+            return True
+        return False
+
     if tit1 == tit2:
         return True
 
@@ -209,7 +238,7 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         palabras1 = set(tit1.split())
         palabras2 = set(tit2.split())
         inter = palabras1.intersection(palabras2)
-        if len(inter) >= 2 and any(k in tit1 for k in ["OPEN", "PRIX", "FIGHT", "NIGHT", "UFC", "F1", "TOUR", "CUP", "LAKE PLACID"]):
+        if len(inter) >= 2 and any(k in tit1 for k in ["OPEN", "PRIX", "FIGHT", "NIGHT", "UFC", "F1", "TOUR", "CUP"]):
             return True
 
     return False

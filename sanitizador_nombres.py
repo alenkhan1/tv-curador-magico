@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Sanitizador Deportivo Inteligente:
 - Extrae de forma limpia Duelos y Circuitos.
@@ -150,10 +150,10 @@ SUBTITULOS_TRADUCCION = {
 }
 
 def limpiar_fragmento(s: str) -> str:
-    s = re.sub(r'[\u2010-\u2015\u2022\u2212*~#]+', ' ', s)
+    s = re.sub(r'[\u2010-\u2015\u2022\u2212*~#◘■♦►●▼▲]+', ' ', s)
     s = re.sub(r'\b(En español|Español|Spanish|OP\d+|FHD|HD|SD|4K|ES|EN|LIVE|EN VIVO)\b', '', s, flags=re.I)
     s = re.sub(r'\s+', ' ', s)
-    return s.strip(' -:|')
+    return s.strip(' -:|◘■♦►●▼▲')
 
 def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Optional[Dict[str, Any]]:
     """
@@ -188,7 +188,7 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
     nombre_sin_fechas = re.sub(r'\b[0-3]?[0-9]/[0-1]?[0-9]\b', '', nombre_stream)
 
     # 5. Dividir ÚNICAMENTE por – o | (NUNCA por / para preservar canchas y torneos)
-    bloques = [limpiar_fragmento(b) for b in re.split(r'[\u2010-\u2015|]+', nombre_sin_fechas) if b.strip()]
+    bloques = [limpiar_fragmento(b) for b in re.split(r'[\u2010-\u2015|◘■♦►●▼▲]+', nombre_sin_fechas) if b.strip()]
 
     # Filtrar bloques que solo son horas (ej. 17:55, 07:00 PM) o números residuales
     bloques_utiles = []
@@ -196,6 +196,11 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
         b_clean = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?\s*', '', b, flags=re.I).strip(' -:.')
         if b_clean and not re.match(r'^(?:[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?|\d{1,2})$', b_clean, re.I):
             bloques_utiles.append(b_clean)
+
+    # Si el primer bloque es una categoría genérica y hay más bloques, descartar el prefijo genérico
+    GENERICOS_PREFIJO = {'MOTOR', 'DEPORTES', 'LIVE', 'DIRECTO', 'EVENTO', 'EN VIVO', 'SPORTS', 'SPORT', 'FUTBOL', 'SOCCER'}
+    if len(bloques_utiles) > 1 and bloques_utiles[0].upper() in GENERCIOS_PREFIJO if 'GENERCIOS_PREFIJO' in dir() else len(bloques_utiles) > 1 and bloques_utiles[0].upper() in GENERICOS_PREFIJO:
+        bloques_utiles = bloques_utiles[1:]
 
     if not bloques_utiles:
         bloques_utiles = [limpiar_fragmento(nombre_sin_fechas)]

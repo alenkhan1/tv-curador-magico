@@ -6,7 +6,7 @@ import logging
 import re
 import ssl
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import List
 
 from .modelos import EventoAgenda, HEADERS_WEB, calcular_duracion_evento, normalizar_texto, obtener_tz
@@ -92,7 +92,10 @@ def obtener_movistar_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
-            dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
+            d_esp = datetime.fromisoformat(fecha_hoy_iso)
+            if h < 6:
+                d_esp += timedelta(days=1)
+            dt_madrid = d_esp.replace(hour=h, minute=mi, second=0, microsecond=0, tzinfo=tz_madrid)
             hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         except Exception:
             continue
@@ -178,7 +181,10 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
             try:
                 h, mi = [int(x) for x in hora_str.split(":")]
-                dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
+                d_esp = datetime.fromisoformat(fecha_hoy_iso)
+                if h < 6:
+                    d_esp += timedelta(days=1)
+                dt_madrid = d_esp.replace(hour=h, minute=mi, second=0, microsecond=0, tzinfo=tz_madrid)
                 hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
             except Exception:
                 continue
@@ -304,7 +310,10 @@ def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
-            dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
+            d_esp = datetime.fromisoformat(fecha_hoy_iso)
+            if h < 6:
+                d_esp += timedelta(days=1)
+            dt_madrid = d_esp.replace(hour=h, minute=mi, second=0, microsecond=0, tzinfo=tz_madrid)
             hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         except Exception:
             continue
@@ -470,7 +479,10 @@ def obtener_dazn_espana_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
-            dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
+            d_esp = datetime.fromisoformat(fecha_hoy_iso)
+            if h < 6:
+                d_esp += timedelta(days=1)
+            dt_madrid = d_esp.replace(hour=h, minute=mi, second=0, microsecond=0, tzinfo=tz_madrid)
             hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         except Exception:
             continue
@@ -549,7 +561,10 @@ def obtener_dazn_f1_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
-            dt_madrid = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_madrid)
+            d_esp = datetime.fromisoformat(fecha_hoy_iso)
+            if h < 6:
+                d_esp += timedelta(days=1)
+            dt_madrid = d_esp.replace(hour=h, minute=mi, second=0, microsecond=0, tzinfo=tz_madrid)
             hora_utc = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
         except Exception:
             continue

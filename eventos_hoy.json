@@ -1,6 +1,6 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-09T20:10:23Z",
+  "generado_utc": "2026-10-09T22:10:59Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-09",
   "base_media": "http://espartanos.live:8080",
@@ -8,14 +8,14 @@
     {
       "id": "lineal_espn_6a2fbc7d",
       "agenda_id": "",
-      "titulo": "ATP Masters 1000 Shanghai",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "B. Shelton",
       "equipo_visitante": "D. Altmaier",
-      "subtitulo": "Shanghai Qizhong Tennis Center",
-      "referencia": "Shanghai Qizhong Tennis Center",
+      "subtitulo": "Qizhong Forest Sports City Arena",
+      "referencia": "Ben Shelton vs. Daniel Altmaier",
       "hora_utc": "2026-10-09T04:10:00Z",
       "hora_local_producto": "23:10",
       "duracion_min": 180,
@@ -67,8 +67,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "National Tennis Center",
+      "referencia": "National Tennis Center",
       "hora_utc": "2026-10-09T06:00:00Z",
       "hora_local_producto": "01:00",
       "duracion_min": 135,
@@ -95,25 +95,26 @@
           "id_xtream": "652922"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
-      "id": "xtream_be760b9e",
+      "id": "xtream_6a18efb2",
       "agenda_id": "",
-      "titulo": "◘ Northland vs Tasman ◘ NPC ◘◘",
-      "torneo": "Bunnings NPC Rugby",
+      "titulo": "Northland vs Tasman",
+      "torneo": "Bunnings NPC",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
-      "equipo_local": "◘ Northland",
-      "equipo_visitante": "Tasman ◘ NPC ◘◘",
-      "subtitulo": "Bunnings NPC Rugby",
-      "referencia": "Bunnings NPC Rugby",
+      "equipo_local": "Northland",
+      "equipo_visitante": "Tasman",
+      "subtitulo": "Bunnings NPC",
+      "referencia": "Bunnings NPC",
       "hora_utc": "2026-10-09T06:10:00+00:00",
       "hora_local_producto": "01:05",
       "duracion_min": 130,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F80.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F8ojw051694618128.png&w=400&output=webp",
-      "logo_visitante": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F236.png&w=400&output=webp&trim=10",
       "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F80.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
@@ -137,14 +138,14 @@
     {
       "id": "lineal_espn_01adeb81",
       "agenda_id": "",
-      "titulo": "ATP Masters 1000 Shanghai",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "A. Zverev",
       "equipo_visitante": "Y. Wu",
-      "subtitulo": "Shanghai Qizhong Tennis Center",
-      "referencia": "Shanghai Qizhong Tennis Center",
+      "subtitulo": "Qizhong Forest Sports City Arena",
+      "referencia": "Alexander Zverev vs. Yibing Wu",
       "hora_utc": "2026-10-09T06:30:00Z",
       "hora_local_producto": "01:30",
       "duracion_min": 180,
@@ -156,60 +157,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "tenis"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN CO",
-          "id_xtream": "207985"
-        },
-        {
-          "nombre": "ESPN 1 ARGENTINA",
-          "id_xtream": "253004"
-        },
-        {
-          "nombre": "ESPN 1 ARGENTINA HD",
-          "id_xtream": "258740"
-        },
-        {
-          "nombre": "ESPN 1 COLOMBIA HD",
-          "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
-        }
-      ],
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "lineal_espn_c97d14a6",
-      "agenda_id": "",
-      "titulo": "WTA 1000 Pekín",
-      "torneo": "WTA Pekín",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "Q. Zheng",
-      "equipo_visitante": "E. Svitolina",
-      "subtitulo": "National Tennis Center",
-      "referencia": "National Tennis Center",
-      "hora_utc": "2026-10-09T07:00:00Z",
-      "hora_local_producto": "02:00",
-      "duracion_min": 180,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "tenis"
+        "deporte"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -243,14 +191,14 @@
     {
       "id": "lineal_espn_d850c913",
       "agenda_id": "",
-      "titulo": "MotoGP Gran Premio de Indonesia",
+      "titulo": "MotoGP - GP de Indonesia (Libres)",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Entrenamientos Libres",
-      "referencia": "Entrenamientos Libres",
+      "subtitulo": "Pertamina Mandalika International Circuit",
+      "referencia": "Pertamina Mandalika International Circuit",
       "hora_utc": "2026-10-09T07:00:00Z",
       "hora_local_producto": "02:00",
       "duracion_min": 180,
@@ -258,6 +206,59 @@
       "logo_local": "",
       "logo_visitante": "",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "deporte"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN CO",
+          "id_xtream": "207985"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA",
+          "id_xtream": "253004"
+        },
+        {
+          "nombre": "ESPN 1 ARGENTINA HD",
+          "id_xtream": "258740"
+        },
+        {
+          "nombre": "ESPN 1 COLOMBIA HD",
+          "id_xtream": "258746"
+        },
+        {
+          "nombre": "ARG | ESPN ᴴᴰ",
+          "id_xtream": "1125"
+        }
+      ],
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "lineal_espn_c97d14a6",
+      "agenda_id": "",
+      "titulo": "WTA 1000 China Open",
+      "torneo": "WTA Pekín",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "Q. Zheng",
+      "equipo_visitante": "E. Svitolina",
+      "subtitulo": "National Tennis Center (Pekín)",
+      "referencia": "Qinwen Zheng vs. Elina Svitolina",
+      "hora_utc": "2026-10-09T07:00:00Z",
+      "hora_local_producto": "02:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -344,14 +345,14 @@
     {
       "id": "xtream_f0a1f337",
       "agenda_id": "",
-      "titulo": "MotoGP",
+      "titulo": "MotoGP GP de Indonesia",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Gp Indonesia",
-      "referencia": "Gp Indonesia",
+      "subtitulo": "Mandalika International Street Circuit",
+      "referencia": "Mandalika International Street Circuit",
       "hora_utc": "2026-10-09T07:00:00Z",
       "hora_local_producto": "18:35",
       "duracion_min": 135,
@@ -386,19 +387,20 @@
           "id_xtream": "652985"
         }
       ],
-      "ronda": "Gp Indonesia"
+      "ronda": "Gp Indonesia",
+      "auditado_agy": true
     },
     {
-      "id": "xtream_ec54da77",
+      "id": "xtream_8d806571",
       "agenda_id": "",
-      "titulo": "WTA 1000 Pekín",
-      "torneo": "◘ Qinwen Zheng vs Elina Svitolina ◘ WTA ◘◘",
+      "titulo": "WTA Tour",
+      "torneo": "WTA",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
-      "equipo_local": "◘ Qinwen Zheng",
-      "equipo_visitante": "Elina Svitolina ◘ WTA ◘◘",
-      "subtitulo": "National Tennis Center",
-      "referencia": "National Tennis Center",
+      "equipo_local": "Qinwen Zheng",
+      "equipo_visitante": "Elina Svitolina",
+      "subtitulo": "",
+      "referencia": "Qinwen Zheng vs. Elina Svitolina",
       "hora_utc": "2026-10-09T07:00:00Z",
       "hora_local_producto": "02:00",
       "duracion_min": 135,
@@ -425,18 +427,18 @@
       "auditado_agy": true
     },
     {
-      "id": "lineal_dazn_f1_d109ac75",
+      "id": "lineal_dazn_f1_3a89476b",
       "agenda_id": "",
-      "titulo": "F1 Gran Premio de Singapur",
+      "titulo": "Fórmula 1 - GP de Singapur (Sprint)",
       "torneo": "Fórmula 1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Libres 1",
-      "referencia": "Libres 1",
-      "hora_utc": "2026-10-09T08:30:00Z",
-      "hora_local_producto": "03:30",
+      "subtitulo": "Marina Bay Street Circuit",
+      "referencia": "Marina Bay Street Circuit",
+      "hora_utc": "2026-10-09T09:00:00Z",
+      "hora_local_producto": "04:00",
       "duracion_min": 180,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "logo_local": "",
@@ -462,17 +464,17 @@
       "auditado_agy": true
     },
     {
-      "id": "xtream_d887e6c5",
+      "id": "xtream_80552800",
       "agenda_id": "",
-      "titulo": "F1",
+      "titulo": "Fórmula 1 - GP de Singapur",
       "torneo": "F1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Gp Singapur",
-      "referencia": "Gp Singapur",
-      "hora_utc": "2026-10-09T08:30:00Z",
+      "subtitulo": "Marina Bay Street Circuit",
+      "referencia": "Marina Bay Street Circuit",
+      "hora_utc": "2026-10-09T09:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 135,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
@@ -506,59 +508,20 @@
           "id_xtream": "652750"
         }
       ],
-      "ronda": "Gp Singapur"
-    },
-    {
-      "id": "xtream_3f279453",
-      "agenda_id": "",
-      "titulo": "WTA 1000 Pekín",
-      "torneo": "WTA",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "Elise Mertens",
-      "equipo_visitante": "Iga Swiatek",
-      "subtitulo": "Pista Central",
-      "referencia": "Pista Central",
-      "hora_utc": "2026-10-09T10:00:00Z",
-      "hora_local_producto": "05:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "05:00 09/10 | Elise Mertens vs. Iga Swiatek | WTA ||",
-          "id_xtream": "652742"
-        },
-        {
-          "nombre": "06:00 ◘ Elise Mertens vs. Iga Swiatek ◘ WTA ◘◘",
-          "id_xtream": "652933"
-        }
-      ],
-      "ronda": "",
+      "ronda": "Gp Singapur",
       "auditado_agy": true
     },
     {
       "id": "xtream_d693c213",
       "agenda_id": "",
-      "titulo": "ATP",
+      "titulo": "ATP Challenger Villena",
       "torneo": "Tenis Atp Challenger Villena ¼",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Final",
-      "referencia": "Final",
+      "subtitulo": "Academia Equelite",
+      "referencia": "Academia Equelite",
       "hora_utc": "2026-10-09T10:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -593,19 +556,20 @@
           "id_xtream": "652865"
         }
       ],
-      "ronda": "Final"
+      "ronda": "Final",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_95f90be5",
       "agenda_id": "",
-      "titulo": "ATP Masters 1000 Shanghai",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "N. Djokovic",
       "equipo_visitante": "H. Hurkacz",
-      "subtitulo": "Shanghai Qizhong Tennis Center",
-      "referencia": "Shanghai Qizhong Tennis Center",
+      "subtitulo": "Qizhong Forest Sports City Arena",
+      "referencia": "Novak Djokovic vs. Hubert Hurkacz",
       "hora_utc": "2026-10-09T10:10:00Z",
       "hora_local_producto": "05:10",
       "duracion_min": 180,
@@ -617,7 +581,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "tenis"
+        "deporte"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -651,14 +615,14 @@
     {
       "id": "xtream_4168ee16",
       "agenda_id": "",
-      "titulo": "Open de España presented by Madrid",
+      "titulo": "Open de España de Golf",
       "torneo": "Open de España presented by Madrid",
       "categoria": "Golf",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Club de Campo Villa de Madrid",
+      "referencia": "Club de Campo Villa de Madrid",
       "hora_utc": "2026-10-09T11:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 135,
@@ -685,19 +649,20 @@
           "id_xtream": "652936"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_aad34e89",
       "agenda_id": "",
-      "titulo": "China Open",
+      "titulo": "ATP/WTA China Open",
       "torneo": "China Open",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "National Tennis Center (Pekín)",
+      "referencia": "National Tennis Center (Pekín)",
       "hora_utc": "2026-10-09T11:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 135,
@@ -724,7 +689,8 @@
           "id_xtream": "652937"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_cdcf4d29",
@@ -759,19 +725,20 @@
           "id_xtream": "652870"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_7a0de852",
       "agenda_id": "",
-      "titulo": "WTA 1000 Pekín",
+      "titulo": "WTA 1000 China Open",
       "torneo": "WTA Pekín",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "E. Mertens",
       "equipo_visitante": "I. Swiatek",
-      "subtitulo": "National Tennis Center",
-      "referencia": "National Tennis Center",
+      "subtitulo": "National Tennis Center (Pekín)",
+      "referencia": "Elise Mertens vs. Iga Swiatek",
       "hora_utc": "2026-10-09T11:10:00Z",
       "hora_local_producto": "06:10",
       "duracion_min": 180,
@@ -783,7 +750,8 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "tenis"
+        "deporte",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -817,14 +785,14 @@
     {
       "id": "lineal_espn_2640ada0",
       "agenda_id": "",
-      "titulo": "ATP Masters 1000 Shanghai",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "Y. Zhou",
       "equipo_visitante": "L. Musetti",
-      "subtitulo": "Shanghai Qizhong Tennis Center",
-      "referencia": "Shanghai Qizhong Tennis Center",
+      "subtitulo": "Qizhong Forest Sports City Arena",
+      "referencia": "Yunchaokete Zhou vs. Lorenzo Musetti",
       "hora_utc": "2026-10-09T11:55:00Z",
       "hora_local_producto": "06:55",
       "duracion_min": 180,
@@ -836,7 +804,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "tenis"
+        "deporte"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -871,13 +839,13 @@
       "id": "lineal_espn_4_5495ca0d",
       "agenda_id": "",
       "titulo": "Dallas Mavericks vs Houston Rockets",
-      "torneo": "NBA Pretemporada",
+      "torneo": "NBA",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Dallas Mavericks",
       "equipo_visitante": "Houston Rockets",
-      "subtitulo": "NBA Pretemporada",
-      "referencia": "NBA Pretemporada",
+      "subtitulo": "NBA",
+      "referencia": "NBA",
       "hora_utc": "2026-10-09T12:00:00+00:00",
       "hora_local_producto": "07:00",
       "duracion_min": 130,
@@ -889,7 +857,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "baloncesto",
+        "deporte",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -902,58 +870,21 @@
           "id_xtream": "258744"
         },
         {
-          "nombre": "ESPN 4 HD",
-          "id_xtream": "207957"
-        },
-        {
           "nombre": "06:00 09/10 | Houston Rockets vs. Dallas Mavericks | NBA |",
           "id_xtream": "652744"
         },
         {
           "nombre": "06:00 09/10 | Houston Rockets vs. Dallas Mavericks | NBA |",
           "id_xtream": "652745"
+        },
+        {
+          "nombre": "07:00 ◘ Houston Rockets vs. Dallas Mavericks ◘ NBA ◘",
+          "id_xtream": "652935"
         }
       ],
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
-    },
-    {
-      "id": "lineal_dazn_f1_ff2f8e19",
-      "agenda_id": "",
-      "titulo": "F1 Gran Premio de Singapur",
-      "torneo": "Fórmula 1",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Clasificación Sprint",
-      "referencia": "Clasificación Sprint",
-      "hora_utc": "2026-10-09T12:30:00Z",
-      "hora_local_producto": "07:30",
-      "duracion_min": 180,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenlatv_dazn_f1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "09 | DAZN F1 HD",
-          "id_xtream": "141363"
-        }
-      ],
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "xtream_62651222",
@@ -1004,8 +935,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Al Kholood",
       "equipo_visitante": "Al Quadisiya",
-      "subtitulo": "Saudi Pro League",
-      "referencia": "Saudi Pro League",
+      "subtitulo": "Al-Hazem Club Stadium",
+      "referencia": "Al-Hazem Club Stadium",
       "hora_utc": "2026-10-09T12:50:00Z",
       "hora_local_producto": "07:50",
       "duracion_min": 130,
@@ -1030,45 +961,51 @@
         {
           "nombre": "08:50 ◘ Al Kholood vs. Al Quadisiya ◘ Pro League ◘",
           "id_xtream": "652942"
+        },
+        {
+          "nombre": "Liga Saudi | 07:50 AM | Al Kholood Club vs. Al Qadsiah FC",
+          "id_xtream": "652845"
         }
       ],
       "ronda": "",
       "auditado_agy": true
     },
     {
-      "id": "xtream_a2b9be7d",
+      "id": "lineal_dazn_f1_822b84ed",
       "agenda_id": "",
-      "titulo": "Al Kholood Club vs Al Qadsiah FC",
-      "torneo": "Liga Saudi",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Al Kholood Club",
-      "equipo_visitante": "Al Qadsiah FC",
-      "subtitulo": "Liga Saudi",
-      "referencia": "Liga Saudi",
-      "hora_utc": "2026-10-09T12:50:00Z",
-      "hora_local_producto": "07:50",
-      "duracion_min": 130,
-      "logo_torneo": "",
+      "titulo": "Fórmula 1 - GP de Singapur (Clasificación)",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Marina Bay Street Circuit",
+      "referencia": "Marina Bay Street Circuit",
+      "hora_utc": "2026-10-09T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fok63wb1719134839.png&w=400&output=webp&trim=10",
-      "banner": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "tier": 2,
-      "origen": "xtream_evento",
+      "origen": "inyector_lineal",
       "origenes": [
-        "xtream_evento"
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "Liga Saudi | 07:50 AM | Al Kholood Club vs. Al Qadsiah FC",
-          "id_xtream": "652845"
+          "nombre": "09 | DAZN F1 HD",
+          "id_xtream": "141363"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_afec099b",
@@ -1113,12 +1050,12 @@
     {
       "id": "xtream_0016b392",
       "agenda_id": "",
-      "titulo": "Al Fateh vs Al-Ahli",
+      "titulo": "Al-Fateh vs Al-Ahli Jeddah",
       "torneo": "Pro League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Al Fateh",
-      "equipo_visitante": "Al-Ahli",
+      "equipo_local": "Al-Fateh",
+      "equipo_visitante": "Al-Ahli Jeddah",
       "subtitulo": "Pro League",
       "referencia": "Pro League",
       "hora_utc": "2026-10-09T14:55:00+00:00",
@@ -1126,7 +1063,7 @@
       "duracion_min": 130,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2931.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4529.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2929.png&w=400&output=webp&trim=10",
       "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
@@ -1143,12 +1080,61 @@
           "id_xtream": "652755"
         },
         {
-          "nombre": "Liga Saudi | 09:00 AM | Al Fateh vs. Al Ahli",
-          "id_xtream": "652846"
-        },
-        {
           "nombre": "09:55 ◘ Al Fateh vs. Al-Ahli ◘ Pro League ◘",
           "id_xtream": "652945"
+        },
+        {
+          "nombre": "Liga Saudi | 09:00 AM | Al Fateh vs. Al Ahli",
+          "id_xtream": "652846"
+        }
+      ],
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": ""
+    },
+    {
+      "id": "xtream_bbbbee69",
+      "agenda_id": "",
+      "titulo": "Puebla U21 vs Club Leon U21",
+      "torneo": "Liga MX U21",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Puebla U21",
+      "equipo_visitante": "Club Leon U21",
+      "subtitulo": "Liga MX U21",
+      "referencia": "Liga MX U21",
+      "hora_utc": "2026-10-09T15:00:00+00:00",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F1200.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F26839.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F26830.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F1200.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 09/10 | Puebla vs. León | Liga MX |",
+          "id_xtream": "652800"
+        },
+        {
+          "nombre": "19:00 09/10 | Puebla vs. León | Liga MX |",
+          "id_xtream": "652801"
+        },
+        {
+          "nombre": "20:00 ◘ Puebla vs. León ◘ Liga MX ◘",
+          "id_xtream": "652988"
+        },
+        {
+          "nombre": "Liga MX | 07:00 PM | Puebla vs. Club León",
+          "id_xtream": "652858"
         }
       ],
       "fecha_confirmada": true,
@@ -1158,21 +1144,21 @@
     {
       "id": "xtream_00bc1866",
       "agenda_id": "",
-      "titulo": "Tigres UANL vs Toluca",
-      "torneo": "Liga MX",
+      "titulo": "Tigres UANL U21 vs Toluca U21",
+      "torneo": "Liga MX U21",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Tigres UANL",
-      "equipo_visitante": "Toluca",
-      "subtitulo": "Liga MX",
-      "referencia": "Liga MX",
+      "equipo_local": "Tigres UANL U21",
+      "equipo_visitante": "Toluca U21",
+      "subtitulo": "Liga MX U21",
+      "referencia": "Liga MX U21",
       "hora_utc": "2026-10-09T15:00:00+00:00",
       "hora_local_producto": "21:00",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flh80fx1701423708.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fy64wy91523913186.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F1200.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F26842.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F26843.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F1200.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -1192,6 +1178,10 @@
           "id_xtream": "652811"
         },
         {
+          "nombre": "22:00 ◘ Tigres UANL vs. Toluca ◘ Liga MX ◘",
+          "id_xtream": "652996"
+        },
+        {
           "nombre": "Liga MX | 09:00 PM | Tigres vs Toluca",
           "id_xtream": "652859"
         }
@@ -1201,53 +1191,16 @@
       "ronda": ""
     },
     {
-      "id": "xtream_45947ce5",
-      "agenda_id": "",
-      "titulo": "Puebla vs Club León",
-      "torneo": "Liga MX",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Puebla",
-      "equipo_visitante": "Club León",
-      "subtitulo": "Liga MX",
-      "referencia": "Liga MX",
-      "hora_utc": "2026-10-09T15:00:00+00:00",
-      "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fh0jgg51593451845.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpc9gro1752393439.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "Liga MX | 07:00 PM | Puebla vs. Club León",
-          "id_xtream": "652858"
-        }
-      ],
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": ""
-    },
-    {
       "id": "lineal_espn_13b1e3a1",
       "agenda_id": "",
-      "titulo": "WorldSBK Supersport Round de Estoril",
+      "titulo": "WorldSBK Supersport - Round de Estoril (Superpole)",
       "torneo": "Supersport",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Superpole",
-      "referencia": "Superpole",
+      "subtitulo": "Circuito do Estoril",
+      "referencia": "Circuito do Estoril",
       "hora_utc": "2026-10-09T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 180,
@@ -1299,8 +1252,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Wieczysta Kraków",
       "equipo_visitante": "Wisła Płock",
-      "subtitulo": "I Liga",
-      "referencia": "I Liga",
+      "subtitulo": "Stadion Wieczystej",
+      "referencia": "Stadion Wieczystej",
       "hora_utc": "2026-10-09T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 130,
@@ -1329,14 +1282,14 @@
     {
       "id": "xtream_b9884d63",
       "agenda_id": "",
-      "titulo": "Essen vs Preußen Münster",
+      "titulo": "Rot-Weiss Essen vs. Preußen Münster",
       "torneo": "3 Bundesliga",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Essen",
       "equipo_visitante": "Preußen Münster",
-      "subtitulo": "3 Bundesliga",
-      "referencia": "3 Bundesliga",
+      "subtitulo": "Stadion an der Hafenstraße",
+      "referencia": "Stadion an der Hafenstraße",
       "hora_utc": "2026-10-09T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -1359,16 +1312,17 @@
           "id_xtream": "652840"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_d9f106a9",
       "agenda_id": "",
-      "titulo": "1. FC Heidenheim 1846 vs 1. FC Kaiserslautern",
+      "titulo": "1. FC Heidenheim vs 1. FC Kaiserslautern",
       "torneo": "2. Bundesliga",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "1. FC Heidenheim 1846",
+      "equipo_local": "1. FC Heidenheim",
       "equipo_visitante": "1. FC Kaiserslautern",
       "subtitulo": "2. Bundesliga",
       "referencia": "2. Bundesliga",
@@ -1376,7 +1330,7 @@
       "hora_local_producto": "10:20",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga_2.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flbj7g01608236988.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F180.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F745.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga_2.png",
       "tier": 2,
@@ -1406,20 +1360,20 @@
       "id": "xtream_1ea46454",
       "agenda_id": "",
       "titulo": "Eintracht Braunschweig vs Holstein Kiel",
-      "torneo": "Bundesliga 2",
+      "torneo": "2. Bundesliga",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Eintracht Braunschweig",
       "equipo_visitante": "Holstein Kiel",
-      "subtitulo": "Bundesliga 2",
-      "referencia": "Bundesliga 2",
+      "subtitulo": "2. Bundesliga",
+      "referencia": "2. Bundesliga",
       "hora_utc": "2026-10-09T16:30:00+00:00",
       "hora_local_producto": "10:20",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga_2.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F744.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F191.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga_2.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -1446,12 +1400,12 @@
     {
       "id": "xtream_f75f1102",
       "agenda_id": "",
-      "titulo": "Galatasaray vs Kasimpasa",
+      "titulo": "Galatasaray vs Kasımpaşa",
       "torneo": "Süper Lig",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Galatasaray",
-      "equipo_visitante": "Kasimpasa",
+      "equipo_visitante": "Kasımpaşa",
       "subtitulo": "Süper Lig",
       "referencia": "Süper Lig",
       "hora_utc": "2026-10-09T17:00:00+00:00",
@@ -1459,7 +1413,7 @@
       "duracion_min": 130,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F203.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F645.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1004.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
       "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F203.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
@@ -1497,8 +1451,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Belgica",
       "equipo_visitante": "Polonia",
-      "subtitulo": "Amistoso Internacional",
-      "referencia": "Amistoso Internacional",
+      "subtitulo": "Estadio Internacional",
+      "referencia": "Estadio Internacional",
       "hora_utc": "2026-10-09T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -1537,8 +1491,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "PSV",
       "equipo_visitante": "SC Heerenveen",
-      "subtitulo": "Eredivisie",
-      "referencia": "Eredivisie",
+      "subtitulo": "Philips Stadion",
+      "referencia": "Philips Stadion",
       "hora_utc": "2026-10-09T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -1573,8 +1527,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Alemania",
       "equipo_visitante": "Australia",
-      "subtitulo": "Amistoso Internacional",
-      "referencia": "Amistoso Internacional",
+      "subtitulo": "Estadio Internacional",
+      "referencia": "Estadio Internacional",
       "hora_utc": "2026-10-09T17:20:00Z",
       "hora_local_producto": "12:20",
       "duracion_min": 130,
@@ -1611,21 +1565,21 @@
     {
       "id": "lineal_tnt_sports_4df57712",
       "agenda_id": "",
-      "titulo": "Aldosivi vs Sarmiento",
-      "torneo": "Torneo Betano",
+      "titulo": "Aldosivi vs Sarmiento Junin",
+      "torneo": "Liga Profesional Argentina",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Aldosivi",
-      "equipo_visitante": "Sarmiento",
-      "subtitulo": "Torneo Betano",
-      "referencia": "Torneo Betano",
+      "equipo_visitante": "Sarmiento Junin",
+      "subtitulo": "Liga Profesional Argentina",
+      "referencia": "Liga Profesional Argentina",
       "hora_utc": "2026-10-09T17:30:00+00:00",
       "hora_local_producto": "12:30",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F463.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxxofu71677634191.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F474.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -1651,12 +1605,8 @@
           "id_xtream": "1119"
         },
         {
-          "nombre": "TyC Sports",
-          "id_xtream": "207978"
-        },
-        {
-          "nombre": "TYC SPORTS HD",
-          "id_xtream": "258796"
+          "nombre": "11:30 09/10 | Aldosivi vs. Sarmiento | Liga Argentina |",
+          "id_xtream": "652759"
         }
       ],
       "fecha_confirmada": true,
@@ -1666,12 +1616,12 @@
     {
       "id": "xtream_84f1cfc5",
       "agenda_id": "",
-      "titulo": "Moreirense vs Gil Vicente",
+      "titulo": "Moreirense vs GIL Vicente",
       "torneo": "Primeira Liga",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Moreirense",
-      "equipo_visitante": "Gil Vicente",
+      "equipo_visitante": "GIL Vicente",
       "subtitulo": "Primeira Liga",
       "referencia": "Primeira Liga",
       "hora_utc": "2026-10-09T17:45:00+00:00",
@@ -1705,57 +1655,14 @@
       "ronda": ""
     },
     {
-      "id": "xtream_23eaab26",
-      "agenda_id": "",
-      "titulo": "Lens vs Olympique Lyonnais",
-      "torneo": "Ligue 1",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Lens",
-      "equipo_visitante": "Olympique Lyonnais",
-      "subtitulo": "Ligue 1",
-      "referencia": "Ligue 1",
-      "hora_utc": "2026-10-09T17:45:00Z",
-      "hora_local_producto": "12:45",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ligue_1.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F116.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fblk9771656932845.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ligue_1.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "12:45 09/10 | Lens vs. Olympique Lyonnais | Ligue 1 |",
-          "id_xtream": "652765"
-        },
-        {
-          "nombre": "Ligue 1 | 12:45 PM | RC Lens vs Olympique Lyon",
-          "id_xtream": "652824"
-        },
-        {
-          "nombre": "13:45 ◘ Lens vs. Olympique Lyonnais ◘ Ligue 1 ◘",
-          "id_xtream": "652955"
-        }
-      ],
-      "ronda": ""
-    },
-    {
       "id": "xtream_70b62ea1",
       "agenda_id": "",
-      "titulo": "Al Nassr vs Diriyah",
+      "titulo": "Al-Nassr vs Al Diriyah",
       "torneo": "Pro League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Al Nassr",
-      "equipo_visitante": "Diriyah",
+      "equipo_local": "Al-Nassr",
+      "equipo_visitante": "Al Diriyah",
       "subtitulo": "Pro League",
       "referencia": "Pro League",
       "hora_utc": "2026-10-09T18:00:00+00:00",
@@ -1763,7 +1670,7 @@
       "duracion_min": 130,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2939.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0m7ub31782452735.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F26738.png&w=400&output=webp&trim=10",
       "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
@@ -1796,20 +1703,20 @@
       "id": "xtream_87ed675e",
       "agenda_id": "",
       "titulo": "Libertad vs Leones del Norte",
-      "torneo": "Ecuador",
+      "torneo": "Liga Pro",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Libertad",
       "equipo_visitante": "Leones del Norte",
-      "subtitulo": "Ecuador",
-      "referencia": "Ecuador",
+      "subtitulo": "Liga Pro",
+      "referencia": "Liga Pro",
       "hora_utc": "2026-10-09T18:00:00+00:00",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
-      "logo_torneo": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F242.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F18762.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F19034.png&w=400&output=webp&trim=10",
-      "banner": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F242.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -1838,8 +1745,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "West Ham United",
       "equipo_visitante": "Queens Park Rangers",
-      "subtitulo": "Championship",
-      "referencia": "Championship",
+      "subtitulo": "London Stadium",
+      "referencia": "London Stadium",
       "hora_utc": "2026-10-09T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -1876,14 +1783,14 @@
     {
       "id": "lineal_eurosport_2_3f383a93",
       "agenda_id": "",
-      "titulo": "Liga Nexus Energía Asobal: BM Caserío Ciudad Real-Fraikin BM. Granollers",
+      "titulo": "BM Caserío Ciudad Real vs. Fraikin BM. Granollers",
       "torneo": "Liga Nexus Energía Asobal: BM Caserío Ciudad Real-Fraikin BM. Granollers",
       "categoria": "Balonmano",
-      "tipo_evento": "circuito",
+      "tipo_evento": "duelo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Pabellón Quijote Arena",
+      "referencia": "Pabellón Quijote Arena",
       "hora_utc": "2026-10-09T18:10:00Z",
       "hora_local_producto": "13:10",
       "duracion_min": 130,
@@ -1917,49 +1824,6 @@
         {
           "nombre": "UK | EUROSPORTS 2",
           "id_xtream": "240359"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_bbbdc3ca",
-      "agenda_id": "",
-      "titulo": "Sporting Braga vs. Sporting CP",
-      "torneo": "Primeira Liga",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Sporting Braga",
-      "equipo_visitante": "Sporting CP",
-      "subtitulo": "Primeira Liga",
-      "referencia": "Primeira Liga",
-      "hora_utc": "2026-10-09T18:15:00Z",
-      "hora_local_producto": "13:15",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primeira_liga.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F10905.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F228.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primeira_liga.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "13:15 09/10 | Sporting Braga vs. Sporting CP | Primeira Liga |",
-          "id_xtream": "652769"
-        },
-        {
-          "nombre": "Portugal | 01:15 PM | Sporting Braga vs Sporting CP",
-          "id_xtream": "652825"
-        },
-        {
-          "nombre": "14:15 ◘ Sporting Braga vs. Sporting CP ◘ Primeira Liga ◘",
-          "id_xtream": "652959"
         }
       ],
       "ronda": "",
@@ -2019,21 +1883,21 @@
     {
       "id": "xtream_56c6982e",
       "agenda_id": "",
-      "titulo": "Raków Częstochowa vs Katowice",
-      "torneo": "Polonia",
+      "titulo": "Raków Częstochowa vs GKS Katowice",
+      "torneo": "Ekstraklasa",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Raków Częstochowa",
-      "equipo_visitante": "Katowice",
-      "subtitulo": "Polonia",
-      "referencia": "Polonia",
+      "equipo_visitante": "GKS Katowice",
+      "subtitulo": "Ekstraklasa",
+      "referencia": "Ekstraklasa",
       "hora_utc": "2026-10-09T18:30:00+00:00",
       "hora_local_producto": "12:30",
       "duracion_min": 130,
-      "logo_torneo": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F106.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F3491.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F354.png&w=400&output=webp&trim=10",
-      "banner": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F3484.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F106.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -2056,21 +1920,21 @@
     {
       "id": "xtream_a750489a",
       "agenda_id": "",
-      "titulo": "SLB Leicester Riders vs Bristol Flyers",
-      "torneo": "Basket",
+      "titulo": "Leicester Riders vs Bristol Flyers",
+      "torneo": "SLB",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
-      "equipo_local": "SLB Leicester Riders",
+      "equipo_local": "Leicester Riders",
       "equipo_visitante": "Bristol Flyers",
-      "subtitulo": "Basket",
-      "referencia": "Basket",
+      "subtitulo": "SLB",
+      "referencia": "SLB",
       "hora_utc": "2026-10-09T18:30:00+00:00",
       "hora_local_producto": "12:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp&trim=10",
-      "logo_local": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fleagues%2F108.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa7ib5s1693986099.png&w=400&output=webp",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1324.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fleagues%2F108.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -2093,21 +1957,21 @@
     {
       "id": "xtream_a8b27da4",
       "agenda_id": "",
-      "titulo": "SLB Manchester Basketball vs Cheshire Phoenix",
-      "torneo": "Basket",
+      "titulo": "Manchester Basketball vs Cheshire Phoenix",
+      "torneo": "SLB",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
-      "equipo_local": "SLB Manchester Basketball",
+      "equipo_local": "Manchester Basketball",
       "equipo_visitante": "Cheshire Phoenix",
-      "subtitulo": "Basket",
-      "referencia": "Basket",
+      "subtitulo": "SLB",
+      "referencia": "SLB",
       "hora_utc": "2026-10-09T18:30:00+00:00",
       "hora_local_producto": "12:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp&trim=10",
-      "logo_local": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fleagues%2F108.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F27j5tj1736497347.png&w=400&output=webp",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1325.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F7%2F7a%2FBasketball.png%2F512px-Basketball.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fleagues%2F108.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -2128,72 +1992,29 @@
       "ronda": ""
     },
     {
-      "id": "xtream_82501979",
-      "agenda_id": "",
-      "titulo": "Montevideo City Torque vs. Danubio",
-      "torneo": "Primera División",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Montevideo City Torque",
-      "equipo_visitante": "Danubio",
-      "subtitulo": "Primera División de Uruguay",
-      "referencia": "Primera División de Uruguay",
-      "hora_utc": "2026-10-09T18:30:00Z",
-      "hora_local_producto": "13:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv7urjn1580234584.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvtryqv1473541135.png&w=400&output=webp",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "13:30 09/10 | Montevideo City Torque vs. Danubio | Primera División ||",
-          "id_xtream": "652770"
-        },
-        {
-          "nombre": "Uruguay | 02:00 PM | Montevideo City Torque vs. Danubio",
-          "id_xtream": "652833"
-        },
-        {
-          "nombre": "14:30 ◘ Montevideo City Torque vs. Danubio ◘ Primera División ◘◘",
-          "id_xtream": "652960"
-        }
-      ],
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "lineal_espn_4_b70ed840",
       "agenda_id": "",
-      "titulo": "Lens vs O. Lyonnais",
-      "torneo": "Francia Ligue 1",
+      "titulo": "Lens vs Lyon",
+      "torneo": "Ligue 1",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Lens",
-      "equipo_visitante": "O. Lyonnais",
-      "subtitulo": "Francia Ligue 1",
-      "referencia": "Francia Ligue 1",
-      "hora_utc": "2026-10-09T18:45:00Z",
+      "equipo_visitante": "Lyon",
+      "subtitulo": "Ligue 1",
+      "referencia": "Ligue 1",
+      "hora_utc": "2026-10-09T18:45:00+00:00",
       "hora_local_producto": "13:45",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ligue_1.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F116.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fblk9771656932845.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fblk9771656932845.png&w=400&output=webp",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ligue_1.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "deporte",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -2205,23 +2026,33 @@
           "id_xtream": "258744"
         },
         {
-          "nombre": "ESPN 4 HD",
-          "id_xtream": "207957"
+          "nombre": "12:45 09/10 | Lens vs. Olympique Lyonnais | Ligue 1 |",
+          "id_xtream": "652765"
+        },
+        {
+          "nombre": "13:45 ◘ Lens vs. Olympique Lyonnais ◘ Ligue 1 ◘",
+          "id_xtream": "652955"
+        },
+        {
+          "nombre": "Ligue 1 | 12:45 PM | RC Lens vs Olympique Lyon",
+          "id_xtream": "652824"
         }
       ],
+      "fecha_confirmada": true,
+      "contrastado_api": true,
       "ronda": ""
     },
     {
       "id": "lineal_espn_2_87d285e1",
       "agenda_id": "",
-      "titulo": "Málaga vs Espanyol",
-      "torneo": "La Liga EA Sports",
+      "titulo": "Malaga vs Espanyol",
+      "torneo": "La Liga",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Málaga",
+      "equipo_local": "Malaga",
       "equipo_visitante": "Espanyol",
-      "subtitulo": "La Liga EA Sports",
-      "referencia": "La Liga EA Sports",
+      "subtitulo": "La Liga",
+      "referencia": "La Liga",
       "hora_utc": "2026-10-09T19:00:00+00:00",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -2254,8 +2085,8 @@
           "id_xtream": "1126"
         },
         {
-          "nombre": "ESPN 2 HD",
-          "id_xtream": "207955"
+          "nombre": "13:00 09/10 | Málaga vs. Espanyol | LaLiga ||",
+          "id_xtream": "652766"
         }
       ],
       "fecha_confirmada": true,
@@ -2265,14 +2096,14 @@
     {
       "id": "xtream_e8dec597",
       "agenda_id": "",
-      "titulo": "Kennesaw State vs Jacksonville State",
+      "titulo": "Kennesaw State vs. Jacksonville State",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Kennesaw State",
       "equipo_visitante": "Jacksonville State",
-      "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "subtitulo": "Fifth Third Stadium",
+      "referencia": "Fifth Third Stadium",
       "hora_utc": "2026-10-09T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -2299,19 +2130,20 @@
           "id_xtream": "652961"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_a524cbee",
       "agenda_id": "",
-      "titulo": "Navy vs Army",
+      "titulo": "Navy vs. Army",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Navy",
       "equipo_visitante": "Army",
-      "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "subtitulo": "Glenn Warner Soccer Facility",
+      "referencia": "Glenn Warner Soccer Facility",
       "hora_utc": "2026-10-09T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -2334,39 +2166,45 @@
           "id_xtream": "652772"
         },
         {
+          "nombre": "15:00 ◘ Navy vs. Army ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "652962"
+        },
+        {
           "nombre": "17:00 09/10 | Army vs. Navy | NCAA Men's Soccer ||",
           "id_xtream": "652787"
         },
         {
-          "nombre": "15:00 ◘ Navy vs. Army ◘ NCAA Women's Soccer ◘◘",
-          "id_xtream": "652962"
+          "nombre": "18:00 ◘ Army vs. Navy ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "652976"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_dsports_2_133ae119",
       "agenda_id": "",
       "titulo": "SC Braga vs Sporting CP",
-      "torneo": "Liga portuguesa",
+      "torneo": "Primeira Liga",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "SC Braga",
       "equipo_visitante": "Sporting CP",
-      "subtitulo": "Liga portuguesa",
-      "referencia": "Liga portuguesa",
+      "subtitulo": "Primeira Liga",
+      "referencia": "Primeira Liga",
       "hora_utc": "2026-10-09T19:15:00+00:00",
       "hora_local_producto": "14:15",
       "duracion_min": 130,
-      "logo_torneo": "",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primeira_liga.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F217.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F228.png&w=400&output=webp&trim=10",
-      "banner": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primeira_liga.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "deporte",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -2386,12 +2224,8 @@
           "id_xtream": "258845"
         },
         {
-          "nombre": "05 | DIRECTV SPORTS 2 (EC)",
-          "id_xtream": "253433"
-        },
-        {
-          "nombre": "09 | DIRECTV SPORTS 2 (CHI)",
-          "id_xtream": "253437"
+          "nombre": "13:15 09/10 | Sporting Braga vs. Sporting CP | Primeira Liga |",
+          "id_xtream": "652769"
         }
       ],
       "fecha_confirmada": true,
@@ -2399,23 +2233,23 @@
       "ronda": ""
     },
     {
-      "id": "xtream_c4709b3a",
+      "id": "xtream_82501979",
       "agenda_id": "",
-      "titulo": "Gimnasia y Esgrima La Plata vs Atlético Tucumán",
-      "torneo": "Liga Argentina",
+      "titulo": "Atletico Torque vs Danubio",
+      "torneo": "Primera División",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Gimnasia y Esgrima La Plata",
-      "equipo_visitante": "Atlético Tucumán",
-      "subtitulo": "Liga Argentina",
-      "referencia": "Liga Argentina",
-      "hora_utc": "2026-10-09T20:00:00Z",
-      "hora_local_producto": "15:00",
+      "equipo_local": "Atletico Torque",
+      "equipo_visitante": "Danubio",
+      "subtitulo": "Primera División",
+      "referencia": "Primera División",
+      "hora_utc": "2026-10-09T20:00:00+00:00",
+      "hora_local_producto": "13:30",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fdtqto61775838814.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fm5i2q21775755577.png&w=400&output=webp",
-      "banner": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2365.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvtryqv1473541135.png&w=400&output=webp",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -2427,25 +2261,27 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "15:00 09/10 | Gimnasia y Esgrima La Plata vs. Atlético Tucumán | Liga Argentina ||",
-          "id_xtream": "652773"
+          "nombre": "13:30 09/10 | Montevideo City Torque vs. Danubio | Primera División ||",
+          "id_xtream": "652770"
         },
         {
-          "nombre": "Arg | 03:00 PM | Gimnasia y Esgrima La Plata vs. Atlético Tucumán",
-          "id_xtream": "652827"
+          "nombre": "Uruguay | 02:00 PM | Montevideo City Torque vs. Danubio",
+          "id_xtream": "652833"
         },
         {
-          "nombre": "16:00 ◘ Gimnasia y Esgrima La Plata vs. Atlético Tucumán ◘ Liga Argentina ◘◘",
-          "id_xtream": "652963"
+          "nombre": "14:30 ◘ Montevideo City Torque vs. Danubio ◘ Primera División ◘◘",
+          "id_xtream": "652960"
         }
       ],
+      "fecha_confirmada": true,
+      "contrastado_api": true,
       "ronda": ""
     },
     {
-      "id": "xtream_a0c345ac",
+      "id": "xtream_2a5fbe3d",
       "agenda_id": "",
-      "titulo": "Motor",
-      "torneo": "Motor",
+      "titulo": "NASCAR Ecosave 200",
+      "torneo": "Nascar Ecosave 200",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
@@ -2454,11 +2290,11 @@
       "referencia": "",
       "hora_utc": "2026-10-09T20:00:00Z",
       "hora_local_producto": "15:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp&trim=10",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0f%2FNASCAR_logo.svg%2F512px-NASCAR_logo.svg.png&w=400&output=webp&trim=10",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F3%2F33%2FF1.svg%2F512px-F1.svg.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0f%2FNASCAR_logo.svg%2F512px-NASCAR_logo.svg.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -2474,26 +2310,27 @@
           "id_xtream": "652871"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_de834894",
       "agenda_id": "",
-      "titulo": "Delfin vs Mushuc Runa",
-      "torneo": "Ecuador",
+      "titulo": "Delfin SC vs Mushuc Runa SC",
+      "torneo": "Liga Pro",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Delfin",
-      "equipo_visitante": "Mushuc Runa",
-      "subtitulo": "Ecuador",
-      "referencia": "Ecuador",
+      "equipo_local": "Delfin SC",
+      "equipo_visitante": "Mushuc Runa SC",
+      "subtitulo": "Liga Pro",
+      "referencia": "Liga Pro",
       "hora_utc": "2026-10-09T20:30:00+00:00",
       "hora_local_producto": "14:30",
       "duracion_min": 130,
-      "logo_torneo": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F242.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1149.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1162.png&w=400&output=webp&trim=10",
-      "banner": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F242.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -2516,21 +2353,21 @@
     {
       "id": "xtream_efd943b6",
       "agenda_id": "",
-      "titulo": "Platense vs Juticalpa",
-      "torneo": "Liga Honduras",
+      "titulo": "Platense FC vs Juticalpa",
+      "torneo": "Liga Nacional",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Platense",
+      "equipo_local": "Platense FC",
       "equipo_visitante": "Juticalpa",
-      "subtitulo": "Liga Honduras",
-      "referencia": "Liga Honduras",
+      "subtitulo": "Liga Nacional",
+      "referencia": "Liga Nacional",
       "hora_utc": "2026-10-09T21:00:00+00:00",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flbs14n1769317149.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F339.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1057.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1053.png&w=400&output=webp&trim=10",
-      "banner": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F339.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -2561,14 +2398,14 @@
     {
       "id": "lineal_espn_premium_argentina_dd92d723",
       "agenda_id": "",
-      "titulo": "Gimnasia LP vs Atlético Tucumán",
+      "titulo": "Gimnasia LP vs. Atlético Tucumán",
       "torneo": "Torneo Betano",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Gimnasia LP",
       "equipo_visitante": "Atlético Tucumán",
-      "subtitulo": "Torneo Betano",
-      "referencia": "Torneo Betano",
+      "subtitulo": "Estadio Juan Carmelo Zerillo",
+      "referencia": "Estadio Juan Carmelo Zerillo",
       "hora_utc": "2026-10-09T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -2580,7 +2417,8 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "deporte",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -2600,23 +2438,24 @@
           "id_xtream": "1124"
         },
         {
-          "nombre": "ESPN Premium HD",
-          "id_xtream": "207960"
+          "nombre": "15:00 09/10 | Gimnasia y Esgrima La Plata vs. Atlético Tucumán | Liga Argentina ||",
+          "id_xtream": "652773"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_42ed8439",
       "agenda_id": "",
-      "titulo": "American University vs Lehigh",
+      "titulo": "American University vs. Lehigh",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "American University",
       "equipo_visitante": "Lehigh",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
+      "subtitulo": "Reeves Field",
+      "referencia": "Reeves Field",
       "hora_utc": "2026-10-09T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -2643,19 +2482,20 @@
           "id_xtream": "652965"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_3c9143d6",
       "agenda_id": "",
-      "titulo": "Boston University vs Colgate",
+      "titulo": "Boston University vs. Colgate",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Boston University",
       "equipo_visitante": "Colgate",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
+      "subtitulo": "Nickerson Field",
+      "referencia": "Nickerson Field",
       "hora_utc": "2026-10-09T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -2682,19 +2522,20 @@
           "id_xtream": "652966"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_a114a5f6",
       "agenda_id": "",
-      "titulo": "UCF vs Coastal Carolina",
+      "titulo": "UCF vs. Coastal Carolina",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "UCF",
       "equipo_visitante": "Coastal Carolina",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
+      "subtitulo": "UCF Soccer and Track Stadium",
+      "referencia": "UCF Soccer and Track Stadium",
       "hora_utc": "2026-10-09T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -2721,19 +2562,20 @@
           "id_xtream": "652967"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_f790ddab",
       "agenda_id": "",
-      "titulo": "California vs Virginia",
+      "titulo": "California vs. Virginia",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "California",
       "equipo_visitante": "Virginia",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
+      "subtitulo": "Edwards Stadium",
+      "referencia": "Edwards Stadium",
       "hora_utc": "2026-10-09T21:03:00Z",
       "hora_local_producto": "16:03",
       "duracion_min": 130,
@@ -2760,109 +2602,20 @@
           "id_xtream": "652968"
         }
       ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_58e4efc0",
-      "agenda_id": "",
-      "titulo": "Deportivo Maldonado vs Liverpool FC",
-      "torneo": "Primera División",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Deportivo Maldonado",
-      "equipo_visitante": "Liverpool FC",
-      "subtitulo": "Primera División",
-      "referencia": "Primera División",
-      "hora_utc": "2026-10-09T21:30:00Z",
-      "hora_local_producto": "16:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0fmxza1580234592.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fsva2pw1737969735.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "16:30 09/10 | Deportivo Maldonado vs. Liverpool FC | Primera División ||",
-          "id_xtream": "652779"
-        },
-        {
-          "nombre": "Uruguay | 05:00 PM | Deportivo Maldonado vs. Liverpool FC",
-          "id_xtream": "652834"
-        },
-        {
-          "nombre": "17:30 ◘ Deportivo Maldonado vs. Liverpool FC ◘ Primera División ◘◘",
-          "id_xtream": "652969"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_d6c1f87b",
-      "agenda_id": "",
-      "titulo": "Tapatío CD vs Atlético La Paz",
-      "torneo": "Liga de Expansión MX",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Tapatío CD",
-      "equipo_visitante": "Atlético La Paz",
-      "subtitulo": "Liga de Expansión MX",
-      "referencia": "Liga de Expansión MX",
-      "hora_utc": "2026-10-09T21:50:00Z",
-      "hora_local_producto": "16:50",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_expansion_mx.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmako3w1648062511.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5qh7ci1655569387.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_expansion_mx.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "16:50 09/10 | Tapatío CD vs. Atlético La Paz | Liga de Expansión MX ||",
-          "id_xtream": "652783"
-        },
-        {
-          "nombre": "Expansión MX | 07:00 PM | Tapatío CD vs. Atlético La Paz",
-          "id_xtream": "652860"
-        },
-        {
-          "nombre": "17:00 09/10 | Tapatío vs. CA La Paz | Liga de Expansión MX |",
-          "id_xtream": "652788"
-        },
-        {
-          "nombre": "17:50 ◘ Tapatío CD vs. Atlético La Paz ◘ Liga de Expansión MX ◘◘",
-          "id_xtream": "652973"
-        }
-      ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_76fc1c8d",
       "agenda_id": "",
-      "titulo": "15 West Virginia vs Old Dominion",
+      "titulo": "West Virginia vs. Old Dominion",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "15 West Virginia",
       "equipo_visitante": "Old Dominion",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
+      "subtitulo": "Dick Dlesk Soccer Stadium",
+      "referencia": "Dick Dlesk Soccer Stadium",
       "hora_utc": "2026-10-09T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -2889,12 +2642,13 @@
           "id_xtream": "652974"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_272edb85",
       "agenda_id": "",
-      "titulo": "Alianza vs Rionegro Águilas",
+      "titulo": "Alianza vs. Rionegro Águilas",
       "torneo": "Liga BetPlay DIMAYOR",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -2936,7 +2690,8 @@
           "id_xtream": "652975"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_44e05a69",
@@ -2971,7 +2726,8 @@
           "id_xtream": "652848"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_e582e807",
@@ -3012,14 +2768,14 @@
     {
       "id": "xtream_1f7f781c",
       "agenda_id": "",
-      "titulo": "CFL Hamilton Tiger-Cats vs Edmonton Elks",
+      "titulo": "Hamilton Tiger-Cats vs. Edmonton Elks",
       "torneo": "F Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
       "equipo_local": "CFL Hamilton Tiger-Cats",
       "equipo_visitante": "Edmonton Elks",
-      "subtitulo": "F Americano",
-      "referencia": "F Americano",
+      "subtitulo": "Tim Hortons Field",
+      "referencia": "Tim Hortons Field",
       "hora_utc": "2026-10-09T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -3042,19 +2798,20 @@
           "id_xtream": "652853"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_41637de3",
       "agenda_id": "",
-      "titulo": "Collegiate Sprint League Molloy vs Penn (Molloy",
+      "titulo": "Molloy vs. Penn",
       "torneo": "F Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
       "equipo_local": "Collegiate Sprint League Molloy",
       "equipo_visitante": "Penn (Molloy",
-      "subtitulo": "F Americano",
-      "referencia": "F Americano",
+      "subtitulo": "Collegiate Sprint Football League",
+      "referencia": "Collegiate Sprint Football League",
       "hora_utc": "2026-10-09T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -3077,12 +2834,13 @@
           "id_xtream": "652855"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_5ac28729",
       "agenda_id": "",
-      "titulo": "Georgia Southern vs Marshall",
+      "titulo": "Georgia Southern vs. Marshall",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -3116,26 +2874,27 @@
           "id_xtream": "652978"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_tnt_sports_c4ced3f2",
       "agenda_id": "",
-      "titulo": "Instituto vs Boca Juniors",
-      "torneo": "Torneo Betano",
+      "titulo": "Instituto Cordoba vs Boca Juniors",
+      "torneo": "Liga Profesional Argentina",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Instituto",
+      "equipo_local": "Instituto Cordoba",
       "equipo_visitante": "Boca Juniors",
-      "subtitulo": "Torneo Betano",
-      "referencia": "Torneo Betano",
+      "subtitulo": "Liga Profesional Argentina",
+      "referencia": "Liga Profesional Argentina",
       "hora_utc": "2026-10-09T22:30:00+00:00",
       "hora_local_producto": "17:30",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F478.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F478.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbm7krb1775741582.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -3176,14 +2935,14 @@
     {
       "id": "xtream_a5be9223",
       "agenda_id": "",
-      "titulo": "Anaheim Ducks vs Winnipeg Jets",
+      "titulo": "Anaheim Ducks vs. Winnipeg Jets",
       "torneo": "NHL",
       "categoria": "Hockey",
       "tipo_evento": "duelo",
       "equipo_local": "Anaheim Ducks",
       "equipo_visitante": "Winnipeg Jets",
-      "subtitulo": "NHL",
-      "referencia": "NHL",
+      "subtitulo": "Honda Center",
+      "referencia": "Honda Center",
       "hora_utc": "2026-10-09T22:30:00Z",
       "hora_local_producto": "17:30",
       "duracion_min": 130,
@@ -3210,7 +2969,8 @@
           "id_xtream": "652979"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_4_81b63de2",
@@ -3244,10 +3004,6 @@
         {
           "nombre": "ESPN 4 ARGENTINA HD",
           "id_xtream": "258744"
-        },
-        {
-          "nombre": "ESPN 4 HD",
-          "id_xtream": "207957"
         }
       ],
       "fecha_confirmada": true,
@@ -3257,21 +3013,21 @@
     {
       "id": "lineal_rcn_1f2f8aa0",
       "agenda_id": "",
-      "titulo": "Alianza vs Águilas Doradas Rionegro",
-      "torneo": "Liga Colombiana",
+      "titulo": "Alianza Valledupar vs Águilas Doradas",
+      "torneo": "Primera A",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Alianza",
-      "equipo_visitante": "Águilas Doradas Rionegro",
-      "subtitulo": "Liga Colombiana",
-      "referencia": "Liga Colombiana",
+      "equipo_local": "Alianza Valledupar",
+      "equipo_visitante": "Águilas Doradas",
+      "subtitulo": "Primera A",
+      "referencia": "Primera A",
       "hora_utc": "2026-10-09T23:00:00+00:00",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4qhii21589297781.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F239.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fefldut1715066310.png&w=400&output=webp",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6d7qas1703002070.png&w=400&output=webp",
-      "banner": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F239.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -3284,16 +3040,16 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
+          "nombre": "Canal RCN",
+          "id_xtream": "207984"
+        },
+        {
           "nombre": "RCN HD",
           "id_xtream": "207989"
         },
         {
-          "nombre": "COL | RCN ᴴᴰ (Op.2)",
-          "id_xtream": "52096"
-        },
-        {
-          "nombre": "COL | RCN HD",
-          "id_xtream": "52118"
+          "nombre": "COL | RCN (Op.1)",
+          "id_xtream": "52095"
         },
         {
           "nombre": "01 | Win Sports (Opc.1)",
@@ -3325,22 +3081,67 @@
       "ronda": ""
     },
     {
+      "id": "xtream_58e4efc0",
+      "agenda_id": "",
+      "titulo": "Deportivo Maldonado vs Liverpool Montevideo",
+      "torneo": "Primera División",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Maldonado",
+      "equipo_visitante": "Liverpool Montevideo",
+      "subtitulo": "Primera División",
+      "referencia": "Primera División",
+      "hora_utc": "2026-10-09T23:00:00+00:00",
+      "hora_local_producto": "16:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0fmxza1580234592.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2358.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:30 09/10 | Deportivo Maldonado vs. Liverpool FC | Primera División ||",
+          "id_xtream": "652779"
+        },
+        {
+          "nombre": "Uruguay | 05:00 PM | Deportivo Maldonado vs. Liverpool FC",
+          "id_xtream": "652834"
+        },
+        {
+          "nombre": "17:30 ◘ Deportivo Maldonado vs. Liverpool FC ◘ Primera División ◘◘",
+          "id_xtream": "652969"
+        }
+      ],
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": ""
+    },
+    {
       "id": "xtream_7b664abb",
       "agenda_id": "",
-      "titulo": "Pittsburgh Penguins vs Columbus Blue Jackets",
+      "titulo": "Columbus Blue Jackets vs Pittsburgh Penguins",
       "torneo": "NHL",
       "categoria": "Hockey",
       "tipo_evento": "duelo",
-      "equipo_local": "Pittsburgh Penguins",
-      "equipo_visitante": "Columbus Blue Jackets",
+      "equipo_local": "Columbus Blue Jackets",
+      "equipo_visitante": "Pittsburgh Penguins",
       "subtitulo": "NHL",
       "referencia": "NHL",
       "hora_utc": "2026-10-09T23:00:00+00:00",
       "hora_local_producto": "16:30",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F696.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fssytwt1421792535.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fssytwt1421792535.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F696.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -3368,20 +3169,20 @@
     {
       "id": "xtream_d6b5e512",
       "agenda_id": "",
-      "titulo": "Seattle Kraken vs Detroit Red Wings",
+      "titulo": "Detroit Red Wings vs Seattle Kraken",
       "torneo": "NHL",
       "categoria": "Hockey",
       "tipo_evento": "duelo",
-      "equipo_local": "Seattle Kraken",
-      "equipo_visitante": "Detroit Red Wings",
+      "equipo_local": "Detroit Red Wings",
+      "equipo_visitante": "Seattle Kraken",
       "subtitulo": "NHL",
       "referencia": "NHL",
       "hora_utc": "2026-10-09T23:00:00+00:00",
       "hora_local_producto": "16:30",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzsx49m1595775836.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1c24ow1546544080.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1c24ow1546544080.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzsx49m1595775836.png&w=400&output=webp",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -3407,6 +3208,55 @@
       "ronda": ""
     },
     {
+      "id": "xtream_d6c1f87b",
+      "agenda_id": "",
+      "titulo": "Tapatío vs CA La Paz",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tapatío",
+      "equipo_visitante": "CA La Paz",
+      "subtitulo": "Liga de Expansión MX",
+      "referencia": "Liga de Expansión MX",
+      "hora_utc": "2026-10-09T23:00:00+00:00",
+      "hora_local_producto": "16:50",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_expansion_mx.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmako3w1648062511.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvgxccm1685994885.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_expansion_mx.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:50 09/10 | Tapatío CD vs. Atlético La Paz | Liga de Expansión MX ||",
+          "id_xtream": "652783"
+        },
+        {
+          "nombre": "Expansión MX | 07:00 PM | Tapatío CD vs. Atlético La Paz",
+          "id_xtream": "652860"
+        },
+        {
+          "nombre": "17:50 ◘ Tapatío CD vs. Atlético La Paz ◘ Liga de Expansión MX ◘◘",
+          "id_xtream": "652973"
+        },
+        {
+          "nombre": "17:00 09/10 | Tapatío vs. CA La Paz | Liga de Expansión MX |",
+          "id_xtream": "652788"
+        }
+      ],
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": ""
+    },
+    {
       "id": "xtream_70c462c2",
       "agenda_id": "",
       "titulo": "BKFC Fight Night",
@@ -3415,8 +3265,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Main Card",
-      "referencia": "Main Card",
+      "subtitulo": "",
+      "referencia": "",
       "hora_utc": "2026-10-09T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 135,
@@ -3493,20 +3343,20 @@
     {
       "id": "xtream_4d3726fc",
       "agenda_id": "",
-      "titulo": "Memphis Grizzlies vs Chicago Bulls",
+      "titulo": "Memphis Grizzlies vs. Chicago Bulls",
       "torneo": "NBA",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Memphis Grizzlies",
       "equipo_visitante": "Chicago Bulls",
-      "subtitulo": "NBA",
-      "referencia": "NBA",
+      "subtitulo": "FedExForum",
+      "referencia": "FedExForum",
       "hora_utc": "2026-10-09T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv44qp21778197640.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fehq8l31778197349.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F146.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F136.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
       "tier": 1,
       "origen": "xtream_evento",
@@ -3531,19 +3381,20 @@
           "id_xtream": "652982"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_57deb07a",
       "agenda_id": "",
-      "titulo": "WWE SmackDown",
+      "titulo": "WWE Friday Night SmackDown",
       "torneo": "Smackdown Friday",
       "categoria": "Combate",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Friday Night SmackDown",
-      "referencia": "Friday Night SmackDown",
+      "subtitulo": "",
+      "referencia": "",
       "hora_utc": "2026-10-09T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
@@ -3568,57 +3419,30 @@
         {
           "nombre": "18:00 09/10 | Smackdown Friday | WWE | En Español",
           "id_xtream": "652796"
+        },
+        {
+          "nombre": "19:00 ◘ Smackdown Friday ◘ WWE ◘",
+          "id_xtream": "652983"
+        },
+        {
+          "nombre": "19:00 ◘ Smackdown Friday ◘ WWE ◘ En Español",
+          "id_xtream": "652984"
         }
       ],
       "ronda": "",
       "auditado_agy": true
     },
     {
-      "id": "xtream_e61d46d5",
-      "agenda_id": "",
-      "titulo": "◘ Army vs Navy ◘ NCAA Men's",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "◘ Army",
-      "equipo_visitante": "Navy ◘ NCAA Men's",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
-      "hora_utc": "2026-10-09T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3lz50f1780824514.png&w=400&output=webp&trim=10",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Army vs. Navy ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "652976"
-        }
-      ],
-      "ronda": ""
-    },
-    {
       "id": "lineal_rcn_9be1cdc9",
       "agenda_id": "",
-      "titulo": "Venezuela vs Colombia",
+      "titulo": "Venezuela vs. Colombia",
       "torneo": "Fútbol",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Venezuela",
       "equipo_visitante": "Colombia",
-      "subtitulo": "Venezuela vs Colombia",
-      "referencia": "Venezuela vs Colombia",
+      "subtitulo": "Estadio Monumental de Maturín",
+      "referencia": "Estadio Monumental de Maturín",
       "hora_utc": "2026-10-10T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -3638,43 +3462,44 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
+          "nombre": "Canal RCN",
+          "id_xtream": "207984"
+        },
+        {
           "nombre": "RCN HD",
           "id_xtream": "207989"
         },
         {
-          "nombre": "COL | RCN ᴴᴰ (Op.2)",
-          "id_xtream": "52096"
+          "nombre": "COL | RCN (Op.1)",
+          "id_xtream": "52095"
         },
         {
-          "nombre": "COL | RCN HD",
-          "id_xtream": "52118"
+          "nombre": "Canal Caracol",
+          "id_xtream": "207982"
+        },
+        {
+          "nombre": "CARACOL",
+          "id_xtream": "207997"
         },
         {
           "nombre": "COL | CARACOL HD (SAT)",
           "id_xtream": "52086"
-        },
-        {
-          "nombre": "COL | Caracol ᴴᴰ (Op.1)",
-          "id_xtream": "52087"
-        },
-        {
-          "nombre": "COL | CARACOL ᴴᴰ (Op.2)",
-          "id_xtream": "52088"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_e24ec458",
       "agenda_id": "",
-      "titulo": "Deportivo Garcilaso vs Sport Huancayo",
+      "titulo": "Deportivo Garcilaso vs. Sport Huancayo",
       "torneo": "Liga 1",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Deportivo Garcilaso",
       "equipo_visitante": "Sport Huancayo",
-      "subtitulo": "Liga 1",
-      "referencia": "Liga 1",
+      "subtitulo": "Estadio Inca Garcilaso de la Vega",
+      "referencia": "Estadio Inca Garcilaso de la Vega",
       "hora_utc": "2026-10-10T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -3705,62 +3530,20 @@
           "id_xtream": "652987"
         }
       ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_bbbbee69",
-      "agenda_id": "",
-      "titulo": "Puebla vs León",
-      "torneo": "Liga MX",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Puebla",
-      "equipo_visitante": "León",
-      "subtitulo": "Liga MX",
-      "referencia": "Liga MX",
-      "hora_utc": "2026-10-10T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fh0jgg51593451845.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpc9gro1752393439.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:00 09/10 | Puebla vs. León | Liga MX |",
-          "id_xtream": "652800"
-        },
-        {
-          "nombre": "19:00 09/10 | Puebla vs. León | Liga MX |",
-          "id_xtream": "652801"
-        },
-        {
-          "nombre": "20:00 ◘ Puebla vs. León ◘ Liga MX ◘",
-          "id_xtream": "652988"
-        }
-      ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_b2cc00bc",
       "agenda_id": "",
-      "titulo": "Tepatitlán vs Atlético Morelia",
+      "titulo": "Tepatitlán vs. Atlético Morelia",
       "torneo": "Liga de Expansión MX",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Tepatitlán",
       "equipo_visitante": "Atlético Morelia",
-      "subtitulo": "Liga de Expansión MX",
-      "referencia": "Liga de Expansión MX",
+      "subtitulo": "Estadio Gregorio Tepa Gómez",
+      "referencia": "Estadio Gregorio Tepa Gómez",
       "hora_utc": "2026-10-10T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -3791,25 +3574,26 @@
           "id_xtream": "652989"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_1b2fb8d4",
       "agenda_id": "",
-      "titulo": "Washington State vs Utah State",
+      "titulo": "Washington State vs. Utah State",
       "torneo": "NCAA Fútbol Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
       "equipo_local": "Washington State",
       "equipo_visitante": "Utah State",
-      "subtitulo": "NCAA Fútbol Americano",
-      "referencia": "NCAA Fútbol Americano",
+      "subtitulo": "Gesa Field",
+      "referencia": "Gesa Field",
       "hora_utc": "2026-10-10T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Faog7rm1564337122.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbiszga1564337039.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F201.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F45.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -3830,64 +3614,25 @@
           "id_xtream": "652990"
         }
       ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_7a0b4ba8",
-      "agenda_id": "",
-      "titulo": "WWE SmackDown",
-      "torneo": "◘ Smackdown Friday ◘ WWE ◘",
-      "categoria": "Combate",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Friday Night SmackDown",
-      "referencia": "Friday Night SmackDown",
-      "hora_utc": "2026-10-10T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp&trim=10",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ Smackdown Friday ◘ WWE ◘",
-          "id_xtream": "652983"
-        },
-        {
-          "nombre": "19:00 ◘ Smackdown Friday ◘ WWE ◘ En Español",
-          "id_xtream": "652984"
-        }
-      ],
       "ronda": "",
       "auditado_agy": true
     },
     {
       "id": "xtream_c9450224",
       "agenda_id": "",
-      "titulo": "North Harbour vs Taranaki",
+      "titulo": "North Harbour vs. Taranaki",
       "torneo": "Bunnings NPC Rugby",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
       "equipo_local": "North Harbour",
       "equipo_visitante": "Taranaki",
-      "subtitulo": "Bunnings NPC Rugby",
-      "referencia": "Bunnings NPC Rugby",
+      "subtitulo": "North Harbour Stadium",
+      "referencia": "North Harbour Stadium",
       "hora_utc": "2026-10-10T00:30:00Z",
       "hora_local_producto": "19:30",
       "duracion_min": 130,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F80.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fqee9p31648907679.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F231.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fy4qamm1648907716.png&w=400&output=webp",
       "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F80.png&w=400&output=webp&trim=10",
       "tier": 2,
@@ -3909,19 +3654,20 @@
           "id_xtream": "652992"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_tyc_sports_9cc7cf02",
       "agenda_id": "",
-      "titulo": "Unión Santa Fe vs Defensa y Justicia",
+      "titulo": "Unión de Santa Fe vs. Defensa y Justicia",
       "torneo": "Torneo Betano",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Unión Santa Fe",
       "equipo_visitante": "Defensa y Justicia",
-      "subtitulo": "Torneo Betano",
-      "referencia": "Torneo Betano",
+      "subtitulo": "Estadio 15 de Abril",
+      "referencia": "Estadio 15 de Abril",
       "hora_utc": "2026-10-10T00:45:00Z",
       "hora_local_producto": "19:45",
       "duracion_min": 130,
@@ -3946,14 +3692,6 @@
           "id_xtream": "1119"
         },
         {
-          "nombre": "TyC Sports",
-          "id_xtream": "207978"
-        },
-        {
-          "nombre": "TYC SPORTS HD",
-          "id_xtream": "258796"
-        },
-        {
           "nombre": "ESPN PREMIUM ARGENTINA HD",
           "id_xtream": "258745"
         },
@@ -3966,19 +3704,20 @@
           "id_xtream": "1124"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_d2b59048",
       "agenda_id": "",
-      "titulo": "Boxeo Internacional",
+      "titulo": "Noche de Boxeo",
       "torneo": "Boxeo",
-      "categoria": "Combate",
+      "categoria": "Boxeo",
       "tipo_evento": "circuito",
       "equipo_local": "Luis Castillo",
       "equipo_visitante": "Jorge Zarate",
-      "subtitulo": "Combate Estelar",
-      "referencia": "Combate Estelar",
+      "subtitulo": "",
+      "referencia": "Luis Castillo vs. Jorge Zárate",
       "hora_utc": "2026-10-10T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 135,
@@ -4011,14 +3750,14 @@
     {
       "id": "xtream_6c5acb26",
       "agenda_id": "",
-      "titulo": "CFL BC Lions vs Ottawa Redblacks",
+      "titulo": "BC Lions vs. Ottawa Redblacks",
       "torneo": "F Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
       "equipo_local": "CFL BC Lions",
       "equipo_visitante": "Ottawa Redblacks",
-      "subtitulo": "F Americano",
-      "referencia": "F Americano",
+      "subtitulo": "BC Place",
+      "referencia": "BC Place",
       "hora_utc": "2026-10-10T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -4041,25 +3780,26 @@
           "id_xtream": "652854"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_rcn_56947bbc",
       "agenda_id": "",
-      "titulo": "Once Caldas vs Llaneros",
+      "titulo": "Once Caldas vs. Llaneros",
       "torneo": "Liga Colombiana",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Once Caldas",
       "equipo_visitante": "Llaneros",
-      "subtitulo": "Liga Colombiana",
-      "referencia": "Liga Colombiana",
+      "subtitulo": "Estadio Palogrande",
+      "referencia": "Estadio Palogrande",
       "hora_utc": "2026-10-10T01:10:00Z",
       "hora_local_producto": "20:10",
       "duracion_min": 130,
       "logo_torneo": "",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fnuh9kd1778085916.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fq1w56m1615832197.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1464.png&w=400&output=webp&trim=10",
       "banner": "",
       "tier": 2,
       "origen": "inyector_lineal",
@@ -4074,16 +3814,16 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
+          "nombre": "Canal RCN",
+          "id_xtream": "207984"
+        },
+        {
           "nombre": "RCN HD",
           "id_xtream": "207989"
         },
         {
-          "nombre": "COL | RCN ᴴᴰ (Op.2)",
-          "id_xtream": "52096"
-        },
-        {
-          "nombre": "COL | RCN HD",
-          "id_xtream": "52118"
+          "nombre": "COL | RCN (Op.1)",
+          "id_xtream": "52095"
         },
         {
           "nombre": "01 | Win Sports (Opc.1)",
@@ -4110,25 +3850,26 @@
           "id_xtream": "52639"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_c1a991e3",
       "agenda_id": "",
-      "titulo": "Iowa State vs 8 BYU",
+      "titulo": "Iowa State vs. BYU",
       "torneo": "NCAA Fútbol Americano",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
       "equipo_local": "Iowa State",
       "equipo_visitante": "8 BYU",
-      "subtitulo": "NCAA Fútbol Americano",
-      "referencia": "NCAA Fútbol Americano",
+      "subtitulo": "Jack Trice Stadium",
+      "referencia": "Jack Trice Stadium",
       "hora_utc": "2026-10-10T01:15:00Z",
       "hora_local_producto": "20:15",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4jixla1564336059.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fypg2cw1641184997.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F151.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F136.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -4149,19 +3890,20 @@
           "id_xtream": "652994"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_f08e979a",
       "agenda_id": "",
-      "titulo": "Otago vs Hawke's Bay",
+      "titulo": "Otago vs. Hawke's Bay",
       "torneo": "Bunnings NPC Rugby",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
       "equipo_local": "Otago",
       "equipo_visitante": "Hawke's Bay",
-      "subtitulo": "Bunnings NPC Rugby",
-      "referencia": "Bunnings NPC Rugby",
+      "subtitulo": "Forsyth Barr Stadium",
+      "referencia": "Forsyth Barr Stadium",
       "hora_utc": "2026-10-10T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 130,
@@ -4188,7 +3930,8 @@
           "id_xtream": "652995"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_1573bf5c",
@@ -4223,19 +3966,20 @@
           "id_xtream": "652869"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_ef89610d",
       "agenda_id": "",
-      "titulo": "MotoGP Gran Premio de Indonesia",
+      "titulo": "MotoGP - GP de Indonesia (Libres 2)",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Entrenamientos Libres 2",
-      "referencia": "Entrenamientos Libres 2",
+      "subtitulo": "Pertamina Mandalika International Circuit",
+      "referencia": "Pertamina Mandalika International Circuit",
       "hora_utc": "2026-10-10T02:10:00Z",
       "hora_local_producto": "21:10",
       "duracion_min": 180,
@@ -4281,14 +4025,14 @@
     {
       "id": "lineal_espn_40b63213",
       "agenda_id": "",
-      "titulo": "MotoGP Gran Premio de Indonesia",
+      "titulo": "MotoGP - GP de Indonesia (Clasificación)",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Clasificación",
-      "referencia": "Clasificación",
+      "subtitulo": "Pertamina Mandalika International Circuit",
+      "referencia": "Pertamina Mandalika International Circuit",
       "hora_utc": "2026-10-10T02:50:00Z",
       "hora_local_producto": "21:50",
       "duracion_min": 180,
@@ -4334,14 +4078,14 @@
     {
       "id": "xtream_fd9042ba",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters / Augmented Reality Feed",
+      "titulo": "Rolex Shanghai Masters (AR Feed)",
       "torneo": "Rolex Shanghai Masters / Augmented Reality Feed",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Qizhong Forest Sports City Arena",
+      "referencia": "Qizhong Forest Sports City Arena",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4362,21 +4106,26 @@
         {
           "nombre": "22:00 09/10 | Rolex Shanghai Masters / Augmented Reality Feed | ATP ||",
           "id_xtream": "652812"
+        },
+        {
+          "nombre": "23:00 ◘ Rolex Shanghai Masters / Augmented Reality Feed ◘ ATP ◘◘",
+          "id_xtream": "652997"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_3c6b4fce",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters / Court 4",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Rolex Shanghai Masters / Court 4",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Court 4",
+      "referencia": "Court 4",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4397,21 +4146,26 @@
         {
           "nombre": "22:00 09/10 | Rolex Shanghai Masters / Court 4 | ATP ||",
           "id_xtream": "652813"
+        },
+        {
+          "nombre": "23:00 ◘ Rolex Shanghai Masters / Court 4 ◘ ATP ◘◘",
+          "id_xtream": "652998"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_e532d5b6",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters / Court 6",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Rolex Shanghai Masters / Court 6",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Court 6",
+      "referencia": "Court 6",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4432,21 +4186,26 @@
         {
           "nombre": "22:00 09/10 | Rolex Shanghai Masters / Court 6 | ATP ||",
           "id_xtream": "652814"
+        },
+        {
+          "nombre": "23:00 ◘ Rolex Shanghai Masters / Court 6 ◘ ATP ◘◘",
+          "id_xtream": "652999"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_bcc17a40",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters / Court 7",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Rolex Shanghai Masters / Court 7",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Court 7",
+      "referencia": "Court 7",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4467,21 +4226,26 @@
         {
           "nombre": "22:00 09/10 | Rolex Shanghai Masters / Court 7 | ATP ||",
           "id_xtream": "652815"
+        },
+        {
+          "nombre": "23:00 ◘ Rolex Shanghai Masters / Court 7 ◘ ATP ◘◘",
+          "id_xtream": "653000"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_deabaa04",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters / Grandstand 2",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Rolex Shanghai Masters / Grandstand 2",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Grandstand 2",
+      "referencia": "Grandstand 2",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4502,21 +4266,26 @@
         {
           "nombre": "22:00 09/10 | Rolex Shanghai Masters / Grandstand 2 | ATP ||",
           "id_xtream": "652816"
+        },
+        {
+          "nombre": "23:00 ◘ Rolex Shanghai Masters / Grandstand 2 ◘ ATP ◘◘",
+          "id_xtream": "653001"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_2ae1b23c",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters / Showcourt 3",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Rolex Shanghai Masters / Showcourt 3",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Showcourt 3",
+      "referencia": "Showcourt 3",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4537,21 +4306,26 @@
         {
           "nombre": "22:00 09/10 | Rolex Shanghai Masters / Showcourt 3 | ATP ||",
           "id_xtream": "652817"
+        },
+        {
+          "nombre": "23:00 ◘ Rolex Shanghai Masters / Showcourt 3 ◘ ATP ◘◘",
+          "id_xtream": "653002"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_297c32a4",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters / Stadium Court",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Rolex Shanghai Masters / Stadium Court",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Stadium Court",
+      "referencia": "Stadium Court",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4572,9 +4346,14 @@
         {
           "nombre": "22:00 09/10 | Rolex Shanghai Masters / Stadium Court | ATP ||",
           "id_xtream": "652818"
+        },
+        {
+          "nombre": "23:00 ◘ Rolex Shanghai Masters / Stadium Court ◘ ATP ◘◘",
+          "id_xtream": "653003"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_2d7ea8b1",
@@ -4585,8 +4364,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "Qizhong Forest Sports City Arena",
+      "referencia": "Qizhong Forest Sports City Arena",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4607,44 +4386,14 @@
         {
           "nombre": "22:00 09/10 | Rolex Shanghai Masters | ATP ||",
           "id_xtream": "652819"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_55e0eba5",
-      "agenda_id": "",
-      "titulo": "◘ Tigres UANL vs Toluca ◘ Liga MX ◘",
-      "torneo": "Otros Deportes",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "◘ Tigres UANL",
-      "equipo_visitante": "Toluca ◘ Liga MX ◘",
-      "subtitulo": "Otros Deportes",
-      "referencia": "Otros Deportes",
-      "hora_utc": "2026-10-10T03:00:00Z",
-      "hora_local_producto": "22:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flh80fx1701423708.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
+        },
         {
-          "nombre": "22:00 ◘ Tigres UANL vs. Toluca ◘ Liga MX ◘",
-          "id_xtream": "652996"
+          "nombre": "23:00 ◘ Rolex Shanghai Masters ◘ ATP ◘◘",
+          "id_xtream": "653004"
         }
       ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_3c37418b",
@@ -4655,8 +4404,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
+      "subtitulo": "National Tennis Center",
+      "referencia": "National Tennis Center",
       "hora_utc": "2026-10-10T04:00:00Z",
       "hora_local_producto": "23:00",
       "duracion_min": 135,
@@ -4683,299 +4432,20 @@
           "id_xtream": "652868"
         }
       ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_dcf5a9e5",
-      "agenda_id": "",
-      "titulo": "◘ Rolex Shanghai Masters / Augmented Reality Feed ◘ ATP ◘◘",
-      "torneo": "◘ Rolex Shanghai Masters / Augmented Reality Feed ◘ ATP ◘◘",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-10T04:00:00Z",
-      "hora_local_producto": "23:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "23:00 ◘ Rolex Shanghai Masters / Augmented Reality Feed ◘ ATP ◘◘",
-          "id_xtream": "652997"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_2c223ad2",
-      "agenda_id": "",
-      "titulo": "◘ Rolex Shanghai Masters / Court 4 ◘ ATP ◘◘",
-      "torneo": "◘ Rolex Shanghai Masters / Court 4 ◘ ATP ◘◘",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-10T04:00:00Z",
-      "hora_local_producto": "23:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "23:00 ◘ Rolex Shanghai Masters / Court 4 ◘ ATP ◘◘",
-          "id_xtream": "652998"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_85582246",
-      "agenda_id": "",
-      "titulo": "◘ Rolex Shanghai Masters / Court 6 ◘ ATP ◘◘",
-      "torneo": "◘ Rolex Shanghai Masters / Court 6 ◘ ATP ◘◘",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-10T04:00:00Z",
-      "hora_local_producto": "23:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "23:00 ◘ Rolex Shanghai Masters / Court 6 ◘ ATP ◘◘",
-          "id_xtream": "652999"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_72c3c07f",
-      "agenda_id": "",
-      "titulo": "◘ Rolex Shanghai Masters / Court 7 ◘ ATP ◘◘",
-      "torneo": "◘ Rolex Shanghai Masters / Court 7 ◘ ATP ◘◘",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-10T04:00:00Z",
-      "hora_local_producto": "23:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "23:00 ◘ Rolex Shanghai Masters / Court 7 ◘ ATP ◘◘",
-          "id_xtream": "653000"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_77afce07",
-      "agenda_id": "",
-      "titulo": "◘ Rolex Shanghai Masters / Grandstand 2 ◘ ATP ◘◘",
-      "torneo": "◘ Rolex Shanghai Masters / Grandstand 2 ◘ ATP ◘◘",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-10T04:00:00Z",
-      "hora_local_producto": "23:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "23:00 ◘ Rolex Shanghai Masters / Grandstand 2 ◘ ATP ◘◘",
-          "id_xtream": "653001"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_a3cb0694",
-      "agenda_id": "",
-      "titulo": "◘ Rolex Shanghai Masters / Showcourt 3 ◘ ATP ◘◘",
-      "torneo": "◘ Rolex Shanghai Masters / Showcourt 3 ◘ ATP ◘◘",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-10T04:00:00Z",
-      "hora_local_producto": "23:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "23:00 ◘ Rolex Shanghai Masters / Showcourt 3 ◘ ATP ◘◘",
-          "id_xtream": "653002"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_f532378d",
-      "agenda_id": "",
-      "titulo": "◘ Rolex Shanghai Masters / Stadium Court ◘ ATP ◘◘",
-      "torneo": "◘ Rolex Shanghai Masters / Stadium Court ◘ ATP ◘◘",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-10T04:00:00Z",
-      "hora_local_producto": "23:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "23:00 ◘ Rolex Shanghai Masters / Stadium Court ◘ ATP ◘◘",
-          "id_xtream": "653003"
-        }
-      ],
-      "ronda": ""
-    },
-    {
-      "id": "xtream_9b7272fa",
-      "agenda_id": "",
-      "titulo": "◘ Rolex Shanghai Masters ◘ ATP ◘◘",
-      "torneo": "◘ Rolex Shanghai Masters ◘ ATP ◘◘",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "",
-      "hora_utc": "2026-10-10T04:00:00Z",
-      "hora_local_producto": "23:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "23:00 ◘ Rolex Shanghai Masters ◘ ATP ◘◘",
-          "id_xtream": "653004"
-        }
-      ],
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_7ff3b1d3",
       "agenda_id": "",
-      "titulo": "Moto3 Gran Premio de Indonesia",
+      "titulo": "Moto3 - GP de Indonesia (Clasificación)",
       "torneo": "Moto3",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Clasificación",
-      "referencia": "Clasificación",
+      "subtitulo": "Pertamina Mandalika International Circuit",
+      "referencia": "Pertamina Mandalika International Circuit",
       "hora_utc": "2026-10-10T04:45:00Z",
       "hora_local_producto": "23:45",
       "duracion_min": 180,
@@ -5025,9 +4495,9 @@
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 887,
     "eventos_lineales_inyectados": 27,
-    "eventos_xtream_aprobados": 161,
-    "eventos_contrastados_api": 46,
+    "eventos_xtream_aprobados": 111,
+    "eventos_contrastados_api": 41,
     "eventos_descartados_stale": 0,
-    "total_eventos_publicados": 119
+    "total_eventos_publicados": 102
   }
 }

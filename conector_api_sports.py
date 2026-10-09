@@ -3,16 +3,14 @@
 Conector Integral API-Sports (12 Deportes):
 1. Descarga y cacheo diario de la cartelera oficial multideporte (Fútbol, Baloncesto, Béisbol,
    Hockey, Rugby, Fútbol Americano, Balonmano, Voleibol, Formula 1, MMA, AFL).
-2. Garantía de bajo consumo y protección contra Rate Limit:
+2. Sincronización estricta con la zona horaria del producto (America/Bogota):
+   - Abarca las 24 horas del día local completo para incluir los partidos nocturnos (Liga MX, etc.).
    - 1 sola lectura por deporte al día.
-   - Pausa de cortesía (1.2s) entre llamadas para no saturar el límite de 10 req/min.
-   - Reintento automático con backoff ante HTTP 429.
    - Guardado en disco en 'fixtures_api_sports_YYYY-MM-DD.json'.
-   - Las ejecuciones subsiguientes del día consumen 0 lecturas.
 3. Actualización de 'catalogo_maestro_equipos.json' y 'catalogo_maestro_torneos.json'
    con los escudos y logos oficiales en HD con proxy anti-403 (wsrv.nl).
 4. Emparejamiento inteligente de eventos lineales y Xtream para:
-   - Corroborar fecha y hora UTC oficial.
+   - Corroborar fecha y hora oficial.
    - Inyectar nombres oficiales de equipos y torneo.
    - Asignar escudos HD oficiales de local, visitante y torneo.
 """
@@ -36,6 +34,7 @@ log = logging.getLogger("conector_api_sports")
 
 REPO_DIR = Path(__file__).resolve().parent
 API_SPORTS_KEY_DEFAULT = "8b4421b0de525a42888c4dbe24f8d825"
+APP_TIMEZONE_DEFAULT = "America/Bogota"
 
 def _crear_ssl():
     ctx = ssl.create_default_context()
@@ -48,7 +47,12 @@ def normalizar_clave(s: Any) -> str:
         return ""
     nfkd = unicodedata.normalize("NFKD", str(s))
     sin_tildes = "".join(c for c in nfkd if not unicodedata.combining(c))
-    return re.sub(r"[^A-Z0-9]+", " ", sin_tildes.upper()).strip()
+    limpio = re.sub(r"[^A-Z0-9]+", " ", sin_tildes.upper()).strip()
+    # Eliminar prefijos/sufijos institucionales comunes para comparación pura de entidad
+    palabras = limpio.split()
+    ignoradas = {"CLUB", "FC", "CF", "CD", "DEPORTIVO", "ATLETICO", "BALOMPIE", "SPORTING", "REAL", "OLYMPIQUE"}
+    filtradas = [p for p in palabras if p not in ignoradas or len(palabras) == 1]
+    return " ".join(filtradas) if filtradas else limpio
 
 def envolver_proxy_wsrv(url: str) -> str:
     if not url or not isinstance(url, str):
@@ -63,19 +67,18 @@ def envolver_proxy_wsrv(url: str) -> str:
     return f"https://wsrv.nl/?url={urllib.parse.quote(url_s, safe='')}&w=400&output=webp&trim=10"
 
 ENDPOINTS_CONFIG = [
-    ("Fútbol", "https://v3.football.api-sports.io/fixtures?date={fecha}", "fixture", "teams", "league"),
-    ("Baloncesto", "https://v1.basketball.api-sports.io/games?date={fecha}", None, "teams", "league"),
-    ("Béisbol", "https://v1.baseball.api-sports.io/games?date={fecha}", None, "teams", "league"),
-    ("Hockey", "https://v1.hockey.api-sports.io/games?date={fecha}", None, "teams", "league"),
-    ("Rugby", "https://v1.rugby.api-sports.io/games?date={fecha}", None, "teams", "league"),
-    ("Fútbol Americano", "https://v1.american-football.api-sports.io/games?date={fecha}", None, "teams", "league"),
-    ("Balonmano", "https://v1.handball.api-sports.io/games?date={fecha}", None, "teams", "league"),
-    ("Voleibol", "https://v1.volleyball.api-sports.io/games?date={fecha}", None, "teams", "league"),
-    ("AFL", "https://v1.afl.api-sports.io/games?date={fecha}", None, "teams", "league"),
+    ("Fútbol", "https://v3.football.api-sports.io/fixtures?date={fecha}&timezone={tz}", "fixture", "teams", "league"),
+    ("Baloncesto", "https://v1.basketball.api-sports.io/games?date={fecha}&timezone={tz}", None, "teams", "league"),
+    ("Béisbol", "https://v1.baseball.api-sports.io/games?date={fecha}&timezone={tz}", None, "teams", "league"),
+    ("Hockey", "https://v1.hockey.api-sports.io/games?date={fecha}&timezone={tz}", None, "teams", "league"),
+    ("Rugby", "https://v1.rugby.api-sports.io/games?date={fecha}&timezone={tz}", None, "teams", "league"),
+    ("Fútbol Americano", "https://v1.american-football.api-sports.io/games?date={fecha}&timezone={tz}", None, "teams", "league"),
+    ("Balonmano", "https://v1.handball.api-sports.io/games?date={fecha}&timezone={tz}", None, "teams", "league"),
+    ("Voleibol", "https://v1.volleyball.api-sports.io/games?date={fecha}&timezone={tz}", None, "teams", "league"),
+    ("AFL", "https://v1.afl.api-sports.io/games?date={fecha}&timezone={tz}", None, "teams", "league"),
 ]
 
 def _hacer_request_con_reintento(url: str, headers: dict, timeout: int = 12) -> Optional[dict]:
-    """Realiza una petición HTTP con manejo de rate-limiting (429) y reintento con backoff."""
     for intento in range(2):
         req = urllib.request.Request(url, headers=headers)
         try:
@@ -93,8 +96,8 @@ def _hacer_request_con_reintento(url: str, headers: dict, timeout: int = 12) -> 
             return None
     return None
 
-def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, Any]]:
-    """Descarga o carga desde caché local los fixtures de los deportes cubiertos por API-Sports para hoy."""
+def descargar_fixtures_dia(fecha_iso: str, api_key: str = "", tz_producto: str = "") -> List[Dict[str, Any]]:
+    """Descarga o carga desde caché local los fixtures sincronizados con la zona horaria del producto."""
     cache_file = REPO_DIR / f"fixtures_api_sports_{fecha_iso}.json"
     if cache_file.exists():
         try:
@@ -106,6 +109,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
             log.warning("No se pudo leer cache de fixtures: %s", e)
 
     key_actual = (api_key or os.environ.get("API_SPORTS_KEY") or API_SPORTS_KEY_DEFAULT).strip()
+    tz_actual = (tz_producto or os.environ.get("APP_TIMEZONE") or APP_TIMEZONE_DEFAULT).strip()
     if not key_actual:
         log.warning("API_SPORTS_KEY no configurada. Omitiendo descarga de fixtures.")
         return []
@@ -115,25 +119,38 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
 
     # 1. Deportes estándar de duelos
     for deporte, url_tpl, root_fixture, teams_key, league_key in ENDPOINTS_CONFIG:
-        url = url_tpl.format(fecha=fecha_iso)
-        time.sleep(1.2)  # Respetar rate-limit de 10 req/min
+        url = url_tpl.format(fecha=fecha_iso, tz=tz_actual)
+        time.sleep(1.2)
         data = _hacer_request_con_reintento(url, headers)
         if not data:
             continue
 
         items = data.get("response", [])
-        log.info("API-Sports [%s]: %d eventos obtenidos", deporte, len(items))
+        log.info("API-Sports [%s]: %d eventos obtenidos (tz: %s)", deporte, len(items), tz_actual)
         for item in items:
             if not isinstance(item, dict):
                 continue
 
+            ts = None
             if root_fixture and root_fixture in item:
                 root_obj = item.get(root_fixture) or {}
                 f_date = root_obj.get("date", "")
                 f_id = str(root_obj.get("id", ""))
+                ts = root_obj.get("timestamp")
             else:
                 f_date = item.get("date", "")
                 f_id = str(item.get("id", ""))
+                ts = item.get("timestamp")
+
+            if ts:
+                try:
+                    f_utc = datetime.fromtimestamp(int(ts), tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                except Exception:
+                    f_utc = f_date
+            else:
+                f_utc = f_date
+
+            f_local_str = f_date[11:16] if len(f_date) >= 16 else ""
 
             teams_obj = item.get(teams_key) or {}
             home_obj = teams_obj.get("home") or {}
@@ -155,16 +172,17 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
                     "visitante": vis,
                     "titulo": f"{loc} vs {vis}",
                     "torneo": torneo,
-                    "hora_utc": f_date,
+                    "hora_utc": f_utc,
+                    "hora_local": f_local_str,
                     "logo_local": loc_logo,
                     "logo_visitante": vis_logo,
                     "logo_torneo": torneo_logo,
                     "tipo_evento": "duelo",
                 })
 
-    # 2. Formula 1 (Carreras / Sesiones de Hoy)
+    # 2. Formula 1
     time.sleep(1.2)
-    url_f1 = f"https://v1.formula-1.api-sports.io/races?date={fecha_iso}"
+    url_f1 = f"https://v1.formula-1.api-sports.io/races?date={fecha_iso}&timezone={tz_actual}"
     data_f1 = _hacer_request_con_reintento(url_f1, headers)
     if data_f1:
         items_f1 = data_f1.get("response", [])
@@ -188,6 +206,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
                 "torneo": nombre_gp,
                 "ronda": sesion,
                 "hora_utc": f_date,
+                "hora_local": f_date[11:16] if len(f_date) >= 16 else "",
                 "logo_local": "",
                 "logo_visitante": "",
                 "logo_torneo": img_circuito,
@@ -196,7 +215,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
 
     # 3. MMA / Combate
     time.sleep(1.2)
-    url_mma = f"https://v1.mma.api-sports.io/fights?date={fecha_iso}"
+    url_mma = f"https://v1.mma.api-sports.io/fights?date={fecha_iso}&timezone={tz_actual}"
     data_mma = _hacer_request_con_reintento(url_mma, headers)
     if data_mma:
         items_mma = data_mma.get("response", [])
@@ -220,6 +239,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
                     "titulo": f"{f1_n.strip()} vs {f2_n.strip()}",
                     "torneo": torneo_mma.strip(),
                     "hora_utc": f_date,
+                    "hora_local": f_date[11:16] if len(f_date) >= 16 else "",
                     "logo_local": "",
                     "logo_visitante": "",
                     "logo_torneo": "",
@@ -237,7 +257,6 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "") -> List[Dict[str, 
     return todos_fixtures
 
 def guardar_equipos_en_catalogo(fixtures: List[Dict[str, Any]]) -> None:
-    """Almacena permanentemente en disco (Append-Only) todo equipo o torneo verificado en la API."""
     cat_path = REPO_DIR / "catalogo_maestro_equipos.json"
     tor_path = REPO_DIR / "catalogo_maestro_torneos.json"
 
@@ -331,26 +350,29 @@ def emparejar_con_api_sports(
     loc = normalizar_clave(evento.get("equipo_local") or "")
     vis = normalizar_clave(evento.get("equipo_visitante") or "")
 
+    # 1. Coincidencia exacta de claves normalizadas
     if loc and vis:
         k = f"{loc}__VS__{vis}"
         if k in indice_fixtures:
             return indice_fixtures[k]
 
+    # 2. Coincidencia por subcadenas o inclusión de nombres
     if loc and vis:
         for f in fixtures_lista:
             f_l = normalizar_clave(f.get("local", ""))
             f_v = normalizar_clave(f.get("visitante", ""))
             if not f_l or not f_v:
                 continue
-            match_l = (loc == f_l) or (len(loc) >= 5 and loc in f_l) or (len(f_l) >= 5 and f_l in loc)
-            match_v = (vis == f_v) or (len(vis) >= 5 and vis in f_v) or (len(f_v) >= 5 and f_v in vis)
+            match_l = (loc == f_l) or (len(loc) >= 4 and loc in f_l) or (len(f_l) >= 4 and f_l in loc)
+            match_v = (vis == f_v) or (len(vis) >= 4 and vis in f_v) or (len(f_v) >= 4 and f_v in vis)
             if match_l and match_v:
                 return f
 
+    # 3. Coincidencia por desglose del título
     if " VS " in tit:
         partes = tit.split(" VS ")
         if len(partes) == 2:
-            p_l, p_v = partes[0].strip(), partes[1].strip()
+            p_l, p_v = normalizar_clave(partes[0]), normalizar_clave(partes[1])
             k = f"{p_l}__VS__{p_v}"
             if k in indice_fixtures:
                 return indice_fixtures[k]
@@ -359,7 +381,9 @@ def emparejar_con_api_sports(
                 f_v = normalizar_clave(f.get("visitante", ""))
                 if not f_l or not f_v:
                     continue
-                if (len(p_l) >= 5 and (p_l in f_l or f_l in p_l)) and (len(p_v) >= 5 and (p_v in f_v or f_v in p_v)):
+                match_l = (p_l == f_l) or (len(p_l) >= 4 and p_l in f_l) or (len(f_l) >= 4 and f_l in p_l)
+                match_v = (p_v == f_v) or (len(p_v) >= 4 and p_v in f_v) or (len(f_v) >= 4 and f_v in p_v)
+                if match_l and match_v:
                     return f
 
     return None

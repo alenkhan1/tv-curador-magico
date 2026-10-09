@@ -186,9 +186,25 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
                 })
                 break
 
-    # Ordenar por prioridad geogr?fica
+    # Ordenar por prioridad geográfica y aplicar aislamiento estricto
     for canon in indice:
-        indice[canon].sort(key=lambda x: x.get("_prioridad", 1), reverse=True)
+        if canon in CANALES_SURAMERICA:
+            # Si existen señales de prioridad alta (confirmadas con país/región como COLOMBIA o ARGENTINA),
+            # se purgan las señales genéricas sin país (prioridad 1) para evitar meter feeds de USA/México con NFL.
+            max_p = max((x.get("_prioridad", 1) for x in indice[canon]), default=1)
+            if max_p >= 10:
+                indice[canon] = [x for x in indice[canon] if x.get("_prioridad", 1) >= 10]
+            else:
+                indice[canon].sort(key=lambda x: x.get("_prioridad", 1), reverse=True)
+        elif canon in ["TELEDEPORTE", "EUROSPORT 1", "EUROSPORT 2", "DAZN F1"]:
+            max_p = max((x.get("_prioridad", 1) for x in indice[canon]), default=1)
+            if max_p >= 10:
+                indice[canon] = [x for x in indice[canon] if x.get("_prioridad", 1) >= 10]
+            else:
+                indice[canon].sort(key=lambda x: x.get("_prioridad", 1), reverse=True)
+        else:
+            indice[canon].sort(key=lambda x: x.get("_prioridad", 1), reverse=True)
+
         for item in indice[canon]:
             item.pop("_prioridad", None)
 

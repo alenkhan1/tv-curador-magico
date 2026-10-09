@@ -469,10 +469,15 @@ def ejecutar_curacion():
             if match.get("logo_torneo"):
                 ev["logo_torneo"] = envolver_proxy_wsrv(match["logo_torneo"])
             if match.get("local") and match.get("visitante"):
-                if not ev.get("equipo_local") or not ev.get("equipo_visitante"):
-                    ev["equipo_local"] = match["local"]
-                    ev["equipo_visitante"] = match["visitante"]
-                    ev["titulo"] = f"{match['local']} vs {match['visitante']}"
+                ev["equipo_local"] = match["local"]
+                ev["equipo_visitante"] = match["visitante"]
+                ev["titulo"] = f"{match['local']} vs. {match['visitante']}"
+                ev["tipo_evento"] = "duelo"
+            if match.get("torneo"):
+                ev["torneo"] = match["torneo"]
+                if not ev.get("subtitulo") or ev["subtitulo"].lower() in ["deportes", "futbol", "fútbol", "en vivo"]:
+                    ev["subtitulo"] = match["torneo"]
+                    ev["referencia"] = match["torneo"]
 
     log.info("Eventos contrastados y corroborados con API-Sports: %d/%d", emparejados_api, len(todos_eventos))
 
