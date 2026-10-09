@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Modulo de Inteligencia Deportiva con Gemini.
 1. Filtra y normaliza eventos de la lista Xtream (ej: FPC, MLS, Tenis, Polo, Eliminatorias, etc.).
