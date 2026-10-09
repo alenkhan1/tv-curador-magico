@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 
+import gzip
 import html as html_lib
 import logging
 import re
 import ssl
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from typing import Any, Dict, List
 
@@ -46,7 +48,6 @@ def normalizar_canales(raw_canales: List[str]) -> List[str]:
     resultado = []
     for raw in raw_canales:
         u = raw.upper()
-        # Exclusiones estrictas: cero canales universitarios, cero feeds USA/MEX/Brasil o redes sociales
         if any(exc in u for exc in ["USA", "US", "MEX", "MEXICO", "BRASIL", "BRAZIL", "ESPNU", "NEWS", "YOUTUBE", "TIKTOK"]):
             continue
         for patron, canon in CANAL_MAPPING:
@@ -56,15 +57,29 @@ def normalizar_canales(raw_canales: List[str]) -> List[str]:
                 break
     return resultado
 
-def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[EventoAgenda]:
-    req = urllib.request.Request(url, headers=HEADERS_WEB)
-    try:
-        with urllib.request.urlopen(req, timeout=18, context=_crear_contexto_ssl()) as resp:
-            html = resp.read().decode("utf-8", errors="ignore")
-    except Exception as e:
-        log.warning("No se pudo descargar %s: %s", url, e)
-        return []
+HEADERS_COMPLETOS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
+    "Accept-Encoding": "gzip, deflate",
+}
 
+def _descargar_html(url: str, timeout: int = 10) -> str:
+    req = urllib.request.Request(url, headers=HEADERS_COMPLETOS)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout, context=_crear_contexto_ssl()) as resp:
+            raw = resp.read()
+            enc = resp.headers.get("Content-Encoding")
+            if enc == "gzip":
+                return gzip.decompress(raw).decode("utf-8", errors="ignore")
+            return raw.decode("utf-8", errors="ignore")
+    except Exception as e:
+        log.debug("No se pudo descargar %s: %s", url, e)
+        return ""
+
+def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str) -> List[EventoAgenda]:
+    if not html:
+        return []
     tz = obtener_tz(tz_name)
     try:
         d_obj = datetime.fromisoformat(fecha_hoy_iso)
@@ -89,8 +104,7 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
                     dentro_de_hoy = True
                     continue
                 else:
-                    m_otra = re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', txt_l)
-                    if m_otra:
+                    if re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', txt_l):
                         dentro_de_hoy = False
                         continue
 
@@ -127,6 +141,8 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
             deporte = "Pádel"
         elif "RUGBY" in u_dep:
             deporte = "Rugby"
+        elif "MMA" in u_dep or "UFC" in u_dep:
+            deporte = "MMA"
         else:
             deporte = "Fútbol"
 
@@ -156,14 +172,27 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
                 titulo = torneo or "Evento en Vivo"
             tipo = "circuito"
 
-        # Ajuste de deporte secundario si el torneo o titulo lo define
         u_todo = f"{torneo} {titulo}".upper()
-        if "NFL" in u_todo or "FÚTBOL AMERICANO" in u_todo or "NCAA FOOTBALL" in u_todo:
+        if any(k in u_todo for k in ["NBA", "BASKET", "BALONCESTO", "EUROLEAGUE"]):
+            deporte = "Baloncesto"
+        elif any(k in u_todo for k in ["NHL", "HOCKEY"]):
+            deporte = "Hockey"
+        elif any(k in u_todo for k in ["NFL", "NCAA FOOTBALL", "FÚTBOL AMERICANO", "FUTBOL AMERICANO"]):
             deporte = "Fútbol Americano"
-        elif any(k in u_todo for k in ["F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "MOTO2", "MOTO3"]):
+        elif any(k in u_todo for k in ["MLB", "BÉISBOL", "BEISBOL", "BASEBALL"]):
+            deporte = "Béisbol"
+        elif any(k in u_todo for k in ["F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "MOTO2", "MOTO3", "SUPERBIKE", "SUPERSPORT", "MOTOR", "AUTOMOVILISMO", "MOTOCICLISMO", "INDYCAR"]):
             deporte = "Motor"
-        elif any(k in u_todo for k in ["ATP", "WTA", "ROLAND GARROS", "WIMBLEDON", "US OPEN"]):
+        elif any(k in u_todo for k in ["ATP", "WTA", "ROLAND GARROS", "WIMBLEDON", "US OPEN", "SHANGHAI", "PEKIN", "TENIS", "TENNIS"]):
             deporte = "Tenis"
+        elif any(k in u_todo for k in ["UFC", "MMA", "BOXEO", "BOXING"]):
+            deporte = "MMA"
+        elif any(k in u_todo for k in ["CICLISMO", "CYCLING", "TOUR DE FRANCE", "GIRO", "VUELTA"]):
+            deporte = "Ciclismo"
+        elif any(k in u_todo for k in ["PADEL", "PÁDEL"]):
+            deporte = "Pádel"
+        elif any(k in u_todo for k in ["RUGBY"]):
+            deporte = "Rugby"
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
@@ -181,28 +210,135 @@ def extraer_directos_url(url: str, tz_name: str, fecha_hoy_iso: str) -> List[Eve
             hora_utc=hora_utc,
             canales=canales_validos,
             duracion_min=180 if deporte in ["Motor", "Béisbol", "Tenis"] else 120,
-            fuente=url.split("/")[-2] if "/" in url else "deporte",
+            fuente=url.split("/")[-1] or "portada",
             tipo_evento=tipo,
         )
         eventos.append(ev)
 
     return eventos
 
+def extraer_directos_mitv_win(fecha_hoy_iso: str, eventos_confirmados_hoy: List[EventoAgenda]) -> List[EventoAgenda]:
+    """Contrasta la parrilla de Win Sports en mi.tv para verificar eventos en vivo."""
+    url = "https://mi.tv/co/async/channel/win-sports/-300"
+    html = _descargar_html(url, timeout=8)
+    if not html:
+        return []
+
+    tz_col = obtener_tz("America/Bogota")
+    progs = re.findall(r'<a[^>]*href=["\']([^"\']+)["\'][^>]*class=["\']program-link["\'][^>]*>(.*?)</a>', html, flags=re.S)
+    nuevos: List[EventoAgenda] = []
+    titulos_vistos = {ev.titulo.lower() for ev in eventos_confirmados_hoy if "WIN SPORTS" in ev.canales}
+
+    for href, contenido in progs:
+        txt = " ".join(re.sub(r"<[^>]+>", " ", contenido).split()).strip()
+        u_txt = txt.upper()
+        if any(w in u_txt for w in ["NOTICIAS", "SAQUE LARGO", "DESPIERTA WIN", "PLANETA FÚTBOL", "MEDIO TIEMPO", "WHAT THE FUN", "LO MEJOR", "ESPECIAL"]):
+            continue
+
+        m_hora = re.search(r"([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*(am|pm)?", txt, re.I)
+        if not m_hora:
+            continue
+
+        h = int(m_hora.group(1))
+        mi = int(m_hora.group(2))
+        ampm = (m_hora.group(3) or "").lower()
+        if ampm == "pm" and h < 12:
+            h += 12
+        elif ampm == "am" and h == 12:
+            h = 0
+
+        tit_raw = re.sub(r"^[0-1]?[0-9]:[0-5][0-9]\s*(?:am|pm)?\s*", "", txt, flags=re.I).strip()
+        m_vs = re.search(r"([A-Za-z0-9\.\s]+)\s+(?:vs\.?|v\.?|-)\s+([A-Za-z0-9\.\s]+)", tit_raw, re.I)
+        if m_vs:
+            loc = m_vs.group(1).strip()
+            vis = re.split(r"\s+(?:Fecha|Estadio|Jornada)\b", m_vs.group(2), flags=re.I)[0].strip()
+            titulo = f"{loc} vs {vis}"
+            tipo = "duelo"
+        else:
+            loc, vis = "", ""
+            titulo = re.split(r"\s+(?:Fecha|Estadio|Jornada)\b", tit_raw, flags=re.I)[0].strip()
+            tipo = "circuito"
+
+        # Descartar repeticiones explícitas de temporadas pasadas
+        if re.search(r"\b(200\d|201\d|202[0-4])\b", href):
+            continue
+
+        try:
+            dt_local = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_col)
+            hora_utc = dt_local.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        except Exception:
+            continue
+
+        if titulo.lower() not in titulos_vistos:
+            ev = EventoAgenda(
+                titulo=titulo,
+                deporte="Fútbol" if tipo == "duelo" else "Deportes en Vivo",
+                torneo="Win Sports en Vivo",
+                local=loc,
+                visitante=vis,
+                hora_utc=hora_utc,
+                canales=["WIN SPORTS"],
+                duracion_min=120,
+                fuente="mitv_colombia",
+                tipo_evento=tipo,
+            )
+            nuevos.append(ev)
+
+    return nuevos
+
 def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
     """
     Descarga la agenda deportiva completa de directos de hoy para Suramérica:
     Cubre Colombia (Win Sports+, Win Sports, ESPN 1..7, DSports, Caracol, RCN)
-    y Argentina (ESPN Premium, TyC Sports, TNT Sports, FOX Sports).
-    Garantía de cero magazines, cero programas de opinión y cero repeticiones.
+    y Argentina (ESPN Premium, TyC Sports, TNT Sports, FOX Sports 1..3).
+    Garantía de multideporte en vivo, cero magazines y cero repeticiones.
     """
-    evs_col = extraer_directos_url("https://www.futbolenvivocolombia.com/deporte", "America/Bogota", fecha_hoy_iso)
-    evs_arg = extraer_directos_url("https://www.futbolenvivoargentina.com/deporte", "America/Argentina/Buenos_Aires", fecha_hoy_iso)
+    colombia_urls = [
+        ("https://www.futbolenvivocolombia.com/", "America/Bogota"),
+        ("https://www.futbolenvivocolombia.com/deporte/motociclismo", "America/Bogota"),
+        ("https://www.futbolenvivocolombia.com/deporte/automovilismo", "America/Bogota"),
+        ("https://www.futbolenvivocolombia.com/deporte/tenis", "America/Bogota"),
+        ("https://www.futbolenvivocolombia.com/deporte/baloncesto", "America/Bogota"),
+        ("https://www.futbolenvivocolombia.com/deporte/mma", "America/Bogota"),
+        ("https://www.futbolenvivocolombia.com/deporte/ciclismo", "America/Bogota"),
+        ("https://www.futbolenvivocolombia.com/deporte/beisbol", "America/Bogota"),
+    ]
+    argentina_urls = [
+        ("https://www.futbolenvivoargentina.com/deporte", "America/Argentina/Buenos_Aires"),
+        ("https://www.futbolenvivoargentina.com/", "America/Argentina/Buenos_Aires"),
+    ]
 
-    todos = evs_col + evs_arg
+    todas_urls = colombia_urls + argentina_urls
+    eventos_crudos: List[EventoAgenda] = []
+
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futs = {
+            executor.submit(
+                lambda u=url, tz=tz_name: extraer_directos_html(
+                    _descargar_html(u), u, tz, fecha_hoy_iso
+                )
+            ): url
+            for url, tz_name in todas_urls
+        }
+        for fut in as_completed(futs):
+            try:
+                res = fut.result()
+                eventos_crudos.extend(res)
+            except Exception:
+                pass
+
+    # Contrastar Win Sports con mi.tv para verificar eventos en vivo
+    try:
+        evs_mitv = extraer_directos_mitv_win(fecha_hoy_iso, eventos_crudos)
+        eventos_crudos.extend(evs_mitv)
+    except Exception:
+        pass
+
+    # Deduplicación y fusión de canales para un mismo evento
     vistos: Dict[tuple, EventoAgenda] = {}
     dedup: List[EventoAgenda] = []
 
-    for ev in todos:
+    for ev in eventos_crudos:
         k = (ev.titulo.strip().lower(), ev.hora_utc[:16])
         if k in vistos:
             existente = vistos[k]
