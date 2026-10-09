@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import gzip
@@ -11,7 +11,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from typing import Any, Dict, List
 
-from .modelos import EventoAgenda, HEADERS_WEB, obtener_tz
+from .mitv import obtener_directos_win_sports
+from .modelos import EventoAgenda, obtener_tz
 
 log = logging.getLogger("canales_suramerica")
 
@@ -22,7 +23,7 @@ def _crear_contexto_ssl():
     return ctx
 
 CANAL_MAPPING = [
-    (r"\bWIN\s*(?:F[UÚ]TBOL\s*\+|SPORTS\s*\+)", "WIN SPORTS+"),
+    (r"\bWIN\s*(?:F[Uú]TBOL\s*\+|SPORTS\s*\+)", "WIN SPORTS+"),
     (r"\bWIN\s*SPORTS\b(?!\s*\+)", "WIN SPORTS"),
     (r"\bESPN\s*PREMIUM\b", "ESPN PREMIUM ARGENTINA"),
     (r"\bESPN\s*2\b", "ESPN 2"),
@@ -217,81 +218,13 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
 
     return eventos
 
-def extraer_directos_mitv_win(fecha_hoy_iso: str, eventos_confirmados_hoy: List[EventoAgenda]) -> List[EventoAgenda]:
-    """Contrasta la parrilla de Win Sports en mi.tv para verificar eventos en vivo."""
-    url = "https://mi.tv/co/async/channel/win-sports/-300"
-    html = _descargar_html(url, timeout=8)
-    if not html:
-        return []
-
-    tz_col = obtener_tz("America/Bogota")
-    progs = re.findall(r'<a[^>]*href=["\']([^"\']+)["\'][^>]*class=["\']program-link["\'][^>]*>(.*?)</a>', html, flags=re.S)
-    nuevos: List[EventoAgenda] = []
-    titulos_vistos = {ev.titulo.lower() for ev in eventos_confirmados_hoy if "WIN SPORTS" in ev.canales}
-
-    for href, contenido in progs:
-        txt = " ".join(re.sub(r"<[^>]+>", " ", contenido).split()).strip()
-        u_txt = txt.upper()
-        if any(w in u_txt for w in ["NOTICIAS", "SAQUE LARGO", "DESPIERTA WIN", "PLANETA FÚTBOL", "MEDIO TIEMPO", "WHAT THE FUN", "LO MEJOR", "ESPECIAL"]):
-            continue
-
-        m_hora = re.search(r"([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*(am|pm)?", txt, re.I)
-        if not m_hora:
-            continue
-
-        h = int(m_hora.group(1))
-        mi = int(m_hora.group(2))
-        ampm = (m_hora.group(3) or "").lower()
-        if ampm == "pm" and h < 12:
-            h += 12
-        elif ampm == "am" and h == 12:
-            h = 0
-
-        tit_raw = re.sub(r"^[0-1]?[0-9]:[0-5][0-9]\s*(?:am|pm)?\s*", "", txt, flags=re.I).strip()
-        m_vs = re.search(r"([A-Za-z0-9\.\s]+)\s+(?:vs\.?|v\.?|-)\s+([A-Za-z0-9\.\s]+)", tit_raw, re.I)
-        if m_vs:
-            loc = m_vs.group(1).strip()
-            vis = re.split(r"\s+(?:Fecha|Estadio|Jornada)\b", m_vs.group(2), flags=re.I)[0].strip()
-            titulo = f"{loc} vs {vis}"
-            tipo = "duelo"
-        else:
-            loc, vis = "", ""
-            titulo = re.split(r"\s+(?:Fecha|Estadio|Jornada)\b", tit_raw, flags=re.I)[0].strip()
-            tipo = "circuito"
-
-        # Descartar repeticiones explícitas de temporadas pasadas
-        if re.search(r"\b(200\d|201\d|202[0-4])\b", href):
-            continue
-
-        try:
-            dt_local = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_col)
-            hora_utc = dt_local.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        except Exception:
-            continue
-
-        if titulo.lower() not in titulos_vistos:
-            ev = EventoAgenda(
-                titulo=titulo,
-                deporte="Fútbol" if tipo == "duelo" else "Deportes en Vivo",
-                torneo="Win Sports en Vivo",
-                local=loc,
-                visitante=vis,
-                hora_utc=hora_utc,
-                canales=["WIN SPORTS"],
-                duracion_min=120,
-                fuente="mitv_colombia",
-                tipo_evento=tipo,
-            )
-            nuevos.append(ev)
-
-    return nuevos
-
 def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
     """
     Descarga la agenda deportiva completa de directos de hoy para Suramérica:
     Cubre Colombia (Win Sports+, Win Sports, ESPN 1..7, DSports, Caracol, RCN)
     y Argentina (ESPN Premium, TyC Sports, TNT Sports, FOX Sports 1..3).
-    Garantía de multideporte en vivo, cero magazines y cero repeticiones.
+    Garantía de multideporte en vivo, contraste riguroso con mi.tv para Win Sports,
+    cero magazines y cero repeticiones.
     """
     colombia_urls = [
         ("https://www.futbolenvivocolombia.com/", "America/Bogota"),
@@ -327,12 +260,12 @@ def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
             except Exception:
                 pass
 
-    # Contrastar Win Sports con mi.tv para verificar eventos en vivo
+    # Contraste riguroso de Win Sports en las dos webs: futbolenvivocolombia y mi.tv
     try:
-        evs_mitv = extraer_directos_mitv_win(fecha_hoy_iso, eventos_crudos)
+        evs_mitv = obtener_directos_win_sports(fecha_hoy_iso, eventos_referencia_futbolenvivo=eventos_crudos)
         eventos_crudos.extend(evs_mitv)
-    except Exception:
-        pass
+    except Exception as e:
+        log.warning("Fallo en contraste con mi.tv: %s", e)
 
     # Deduplicación y fusión de canales para un mismo evento
     vistos: Dict[tuple, EventoAgenda] = {}
