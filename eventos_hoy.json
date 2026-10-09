@@ -1,63 +1,10 @@
 {
   "version": "3.1-curador-tv-universal",
-  "generado_utc": "2026-10-09T22:10:59Z",
+  "generado_utc": "2026-10-09T22:16:46Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-09",
   "base_media": "http://espartanos.live:8080",
   "eventos": [
-    {
-      "id": "lineal_espn_6a2fbc7d",
-      "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters",
-      "torneo": "Masters Shanghai",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "B. Shelton",
-      "equipo_visitante": "D. Altmaier",
-      "subtitulo": "Qizhong Forest Sports City Arena",
-      "referencia": "Ben Shelton vs. Daniel Altmaier",
-      "hora_utc": "2026-10-09T04:10:00Z",
-      "hora_local_producto": "23:10",
-      "duracion_min": 180,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "deporte"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN CO",
-          "id_xtream": "207985"
-        },
-        {
-          "nombre": "ESPN 1 ARGENTINA",
-          "id_xtream": "253004"
-        },
-        {
-          "nombre": "ESPN 1 ARGENTINA HD",
-          "id_xtream": "258740"
-        },
-        {
-          "nombre": "ESPN 1 COLOMBIA HD",
-          "id_xtream": "258746"
-        },
-        {
-          "nombre": "ARG | ESPN ᴴᴰ",
-          "id_xtream": "1125"
-        }
-      ],
-      "ronda": "",
-      "auditado_agy": true
-    },
     {
       "id": "xtream_03e37a0e",
       "agenda_id": "",
@@ -138,7 +85,7 @@
     {
       "id": "lineal_espn_01adeb81",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters",
+      "titulo": "ATP Masters 1000 Shanghai",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
@@ -157,7 +104,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "tenis"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -191,7 +138,7 @@
     {
       "id": "lineal_espn_d850c913",
       "agenda_id": "",
-      "titulo": "MotoGP - GP de Indonesia (Libres)",
+      "titulo": "MotoGP - G.P. Indonesia Libres",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -210,7 +157,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "motociclismo"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -244,13 +191,13 @@
     {
       "id": "lineal_espn_c97d14a6",
       "agenda_id": "",
-      "titulo": "WTA 1000 China Open",
+      "titulo": "WTA 1000 Pekín",
       "torneo": "WTA Pekín",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "Q. Zheng",
       "equipo_visitante": "E. Svitolina",
-      "subtitulo": "National Tennis Center (Pekín)",
+      "subtitulo": "National Tennis Center",
       "referencia": "Qinwen Zheng vs. Elina Svitolina",
       "hora_utc": "2026-10-09T07:00:00Z",
       "hora_local_producto": "02:00",
@@ -263,7 +210,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "tenis"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -351,8 +298,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Mandalika International Street Circuit",
-      "referencia": "Mandalika International Street Circuit",
+      "subtitulo": "Mandalika International Circuit",
+      "referencia": "Mandalika International Circuit",
       "hora_utc": "2026-10-09T07:00:00Z",
       "hora_local_producto": "18:35",
       "duracion_min": 135,
@@ -399,7 +346,7 @@
       "tipo_evento": "circuito",
       "equipo_local": "Qinwen Zheng",
       "equipo_visitante": "Elina Svitolina",
-      "subtitulo": "",
+      "subtitulo": "Pista Principal",
       "referencia": "Qinwen Zheng vs. Elina Svitolina",
       "hora_utc": "2026-10-09T07:00:00Z",
       "hora_local_producto": "02:00",
@@ -427,55 +374,18 @@
       "auditado_agy": true
     },
     {
-      "id": "lineal_dazn_f1_3a89476b",
+      "id": "xtream_c10bf074",
       "agenda_id": "",
-      "titulo": "Fórmula 1 - GP de Singapur (Sprint)",
-      "torneo": "Fórmula 1",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Marina Bay Street Circuit",
-      "referencia": "Marina Bay Street Circuit",
-      "hora_utc": "2026-10-09T09:00:00Z",
-      "hora_local_producto": "04:00",
-      "duracion_min": 180,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenlatv_dazn_f1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "09 | DAZN F1 HD",
-          "id_xtream": "141363"
-        }
-      ],
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_80552800",
-      "agenda_id": "",
-      "titulo": "Fórmula 1 - GP de Singapur",
+      "titulo": "Fórmula 1",
       "torneo": "F1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Marina Bay Street Circuit",
-      "referencia": "Marina Bay Street Circuit",
-      "hora_utc": "2026-10-09T09:00:00Z",
-      "hora_local_producto": "06:00",
+      "subtitulo": "Circuito",
+      "referencia": "Circuito",
+      "hora_utc": "2026-10-09T07:30:00Z",
+      "hora_local_producto": "02:30",
       "duracion_min": 135,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "logo_local": "",
@@ -488,27 +398,27 @@
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.9,
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "06:00  09/10 | F1 GP Singapur clasificación sprint | Con Tornello Fossaroli Cochito López y Fàbrega | F1 ||",
-          "id_xtream": "652743"
+          "nombre": "F1 | 02:30 AM | Grand Prix Singapore: Practice 1",
+          "id_xtream": "652872"
         },
         {
-          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | Cámara On Board | F1 ||",
-          "id_xtream": "652748"
+          "nombre": "03:15 ◘ F1 GP Singapur práctica libre #1 | Con Tornello Fossaroli Cochito López y Fàbrega ◘ F1 ◘◘",
+          "id_xtream": "652928"
         },
         {
-          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | On Board Colapinto | F1 ||",
-          "id_xtream": "652749"
+          "nombre": "03:30 ◘ F1 GP Singapur práctica libre #1 | Cámara On Board ◘ F1 ◘◘",
+          "id_xtream": "652929"
         },
         {
-          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | On Board Hamilton | F1 ||",
-          "id_xtream": "652750"
+          "nombre": "03:30 ◘ F1 GP Singapur práctica libre #1 | On Board Colapinto ◘ F1 ◘◘",
+          "id_xtream": "652930"
         }
       ],
-      "ronda": "Gp Singapur",
+      "ronda": "Gran Premio",
       "auditado_agy": true
     },
     {
@@ -520,8 +430,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Academia Equelite",
-      "referencia": "Academia Equelite",
+      "subtitulo": "Pista Central",
+      "referencia": "Pista Central",
       "hora_utc": "2026-10-09T10:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -562,7 +472,7 @@
     {
       "id": "lineal_espn_95f90be5",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters",
+      "titulo": "ATP Masters 1000 Shanghai",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
@@ -581,7 +491,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "tenis"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -613,9 +523,57 @@
       "auditado_agy": true
     },
     {
+      "id": "xtream_9cf21297",
+      "agenda_id": "",
+      "titulo": "F1 - G.P. Singapur",
+      "torneo": "F1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Marina Bay Street Circuit",
+      "referencia": "Marina Bay Street Circuit",
+      "hora_utc": "2026-10-09T11:00:00Z",
+      "hora_local_producto": "06:00",
+      "duracion_min": 135,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "06:00  09/10 | F1 GP Singapur clasificación sprint | Con Tornello Fossaroli Cochito López y Fàbrega | F1 ||",
+          "id_xtream": "652743"
+        },
+        {
+          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | Cámara On Board | F1 ||",
+          "id_xtream": "652748"
+        },
+        {
+          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | On Board Colapinto | F1 ||",
+          "id_xtream": "652749"
+        },
+        {
+          "nombre": "06:30  09/10 | F1 GP Singapur clasificación sprint | On Board Hamilton | F1 ||",
+          "id_xtream": "652750"
+        }
+      ],
+      "ronda": "Gp Singapur",
+      "auditado_agy": true
+    },
+    {
       "id": "xtream_4168ee16",
       "agenda_id": "",
-      "titulo": "Open de España de Golf",
+      "titulo": "Open de España",
       "torneo": "Open de España presented by Madrid",
       "categoria": "Golf",
       "tipo_evento": "circuito",
@@ -655,14 +613,14 @@
     {
       "id": "xtream_aad34e89",
       "agenda_id": "",
-      "titulo": "ATP/WTA China Open",
+      "titulo": "China Open",
       "torneo": "China Open",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "National Tennis Center (Pekín)",
-      "referencia": "National Tennis Center (Pekín)",
+      "subtitulo": "National Tennis Center",
+      "referencia": "National Tennis Center",
       "hora_utc": "2026-10-09T11:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 135,
@@ -731,13 +689,13 @@
     {
       "id": "lineal_espn_7a0de852",
       "agenda_id": "",
-      "titulo": "WTA 1000 China Open",
+      "titulo": "WTA 1000 Pekín",
       "torneo": "WTA Pekín",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "E. Mertens",
       "equipo_visitante": "I. Swiatek",
-      "subtitulo": "National Tennis Center (Pekín)",
+      "subtitulo": "National Tennis Center",
       "referencia": "Elise Mertens vs. Iga Swiatek",
       "hora_utc": "2026-10-09T11:10:00Z",
       "hora_local_producto": "06:10",
@@ -750,7 +708,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "tenis",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -785,14 +743,14 @@
     {
       "id": "lineal_espn_2640ada0",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters",
+      "titulo": "ATP Masters 1000 Shanghai",
       "torneo": "Masters Shanghai",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "Y. Zhou",
       "equipo_visitante": "L. Musetti",
       "subtitulo": "Qizhong Forest Sports City Arena",
-      "referencia": "Yunchaokete Zhou vs. Lorenzo Musetti",
+      "referencia": "Yi Zhou vs. Lorenzo Musetti",
       "hora_utc": "2026-10-09T11:55:00Z",
       "hora_local_producto": "06:55",
       "duracion_min": 180,
@@ -804,7 +762,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "tenis"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -857,7 +815,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "baloncesto",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -971,40 +929,43 @@
       "auditado_agy": true
     },
     {
-      "id": "lineal_dazn_f1_822b84ed",
+      "id": "xtream_3c2df322",
       "agenda_id": "",
-      "titulo": "Fórmula 1 - GP de Singapur (Clasificación)",
-      "torneo": "Fórmula 1",
+      "titulo": "F1 - Gran Premio",
+      "torneo": "F1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Marina Bay Street Circuit",
-      "referencia": "Marina Bay Street Circuit",
+      "subtitulo": "Circuito Principal",
+      "referencia": "Circuito Principal",
       "hora_utc": "2026-10-09T13:00:00Z",
       "hora_local_producto": "08:00",
-      "duracion_min": 180,
+      "duracion_min": 135,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "logo_local": "",
       "logo_visitante": "",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "tier": 2,
-      "origen": "inyector_lineal",
+      "origen": "xtream_evento",
       "origenes": [
-        "inyector_lineal",
-        "futbolenlatv_dazn_f1"
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "09 | DAZN F1 HD",
-          "id_xtream": "141363"
+          "nombre": "08:00 09/10 | Compacto | F1 GP Singapur | Clasificación Sprint | F1 ||",
+          "id_xtream": "652753"
+        },
+        {
+          "nombre": "09:00 ◘ Compacto | F1 GP Singapur | Clasificación Sprint ◘ F1 ◘◘",
+          "id_xtream": "652943"
         }
       ],
-      "ronda": "",
+      "ronda": "Gran Premio",
       "auditado_agy": true
     },
     {
@@ -1193,7 +1154,7 @@
     {
       "id": "lineal_espn_13b1e3a1",
       "agenda_id": "",
-      "titulo": "WorldSBK Supersport - Round de Estoril (Superpole)",
+      "titulo": "WorldSSP - Estoril Round Superpole",
       "torneo": "Supersport",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -1212,7 +1173,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "motociclismo"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1252,8 +1213,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Wieczysta Kraków",
       "equipo_visitante": "Wisła Płock",
-      "subtitulo": "Stadion Wieczystej",
-      "referencia": "Stadion Wieczystej",
+      "subtitulo": "Stadion Wieczystej Kraków",
+      "referencia": "Stadion Wieczystej Kraków",
       "hora_utc": "2026-10-09T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 130,
@@ -1451,8 +1412,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Belgica",
       "equipo_visitante": "Polonia",
-      "subtitulo": "Estadio Internacional",
-      "referencia": "Estadio Internacional",
+      "subtitulo": "Stade Roi Baudouin",
+      "referencia": "Stade Roi Baudouin",
       "hora_utc": "2026-10-09T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -1485,7 +1446,7 @@
     {
       "id": "xtream_37cf4cd4",
       "agenda_id": "",
-      "titulo": "PSV vs. SC Heerenveen",
+      "titulo": "PSV Eindhoven vs. SC Heerenveen",
       "torneo": "Eredivisie",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -1527,8 +1488,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Alemania",
       "equipo_visitante": "Australia",
-      "subtitulo": "Estadio Internacional",
-      "referencia": "Estadio Internacional",
+      "subtitulo": "Düsseldorf Arena",
+      "referencia": "Düsseldorf Arena",
       "hora_utc": "2026-10-09T17:20:00Z",
       "hora_local_producto": "12:20",
       "duracion_min": 130,
@@ -1584,7 +1545,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -1789,8 +1750,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Pabellón Quijote Arena",
-      "referencia": "Pabellón Quijote Arena",
+      "subtitulo": "Quijote Arena",
+      "referencia": "Quijote Arena",
       "hora_utc": "2026-10-09T18:10:00Z",
       "hora_local_producto": "13:10",
       "duracion_min": 130,
@@ -1851,7 +1812,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -2013,7 +1974,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -2064,7 +2025,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -2102,8 +2063,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Kennesaw State",
       "equipo_visitante": "Jacksonville State",
-      "subtitulo": "Fifth Third Stadium",
-      "referencia": "Fifth Third Stadium",
+      "subtitulo": "Fifth Third Bank Stadium",
+      "referencia": "Fifth Third Bank Stadium",
       "hora_utc": "2026-10-09T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -2203,7 +2164,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -2399,7 +2360,7 @@
       "id": "lineal_espn_premium_argentina_dd92d723",
       "agenda_id": "",
       "titulo": "Gimnasia LP vs. Atlético Tucumán",
-      "torneo": "Torneo Betano",
+      "torneo": "Liga Argentina",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Gimnasia LP",
@@ -2409,15 +2370,15 @@
       "hora_utc": "2026-10-09T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_torneo": "",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fepmttr1678849271.png&w=400&output=webp",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fm5i2q21775755577.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "banner": "",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -2648,14 +2609,14 @@
     {
       "id": "xtream_272edb85",
       "agenda_id": "",
-      "titulo": "Alianza vs. Rionegro Águilas",
+      "titulo": "Alianza FC vs. Águilas Doradas",
       "torneo": "Liga BetPlay DIMAYOR",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Alianza",
       "equipo_visitante": "Rionegro Águilas",
-      "subtitulo": "Liga BetPlay DIMAYOR",
-      "referencia": "Liga BetPlay DIMAYOR",
+      "subtitulo": "Estadio Armando Maestre Pavajeau",
+      "referencia": "Estadio Armando Maestre Pavajeau",
       "hora_utc": "2026-10-09T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -2810,8 +2771,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Collegiate Sprint League Molloy",
       "equipo_visitante": "Penn (Molloy",
-      "subtitulo": "Collegiate Sprint Football League",
-      "referencia": "Collegiate Sprint Football League",
+      "subtitulo": "Franklin Field",
+      "referencia": "Franklin Field",
       "hora_utc": "2026-10-09T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -2846,8 +2807,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Georgia Southern",
       "equipo_visitante": "Marshall",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
+      "subtitulo": "Eagle Field",
+      "referencia": "Eagle Field",
       "hora_utc": "2026-10-09T22:10:00Z",
       "hora_local_producto": "17:10",
       "duracion_min": 130,
@@ -2899,7 +2860,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -2973,44 +2934,6 @@
       "auditado_agy": true
     },
     {
-      "id": "lineal_espn_4_81b63de2",
-      "agenda_id": "",
-      "titulo": "Washington Capitals vs New York Rangers",
-      "torneo": "NHL",
-      "categoria": "Hockey",
-      "tipo_evento": "duelo",
-      "equipo_local": "Washington Capitals",
-      "equipo_visitante": "New York Rangers",
-      "subtitulo": "NHL",
-      "referencia": "NHL",
-      "hora_utc": "2026-10-09T23:00:00+00:00",
-      "hora_local_producto": "18:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F99ca9a1638974052.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fts2nhq1763454676.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "deporte"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN 4 ARGENTINA HD",
-          "id_xtream": "258744"
-        }
-      ],
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": ""
-    },
-    {
       "id": "lineal_rcn_1f2f8aa0",
       "agenda_id": "",
       "titulo": "Alianza Valledupar vs Águilas Doradas",
@@ -3032,7 +2955,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "portada"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -3305,8 +3228,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Inca Aruba",
       "equipo_visitante": "Platense",
-      "subtitulo": "Primera División de El Salvador",
-      "referencia": "Primera División de El Salvador",
+      "subtitulo": "Estadio Antonio Toledo Valle",
+      "referencia": "Estadio Antonio Toledo Valle",
       "hora_utc": "2026-10-09T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
@@ -3387,7 +3310,7 @@
     {
       "id": "xtream_57deb07a",
       "agenda_id": "",
-      "titulo": "WWE Friday Night SmackDown",
+      "titulo": "WWE SmackDown",
       "torneo": "Smackdown Friday",
       "categoria": "Combate",
       "tipo_evento": "circuito",
@@ -3441,8 +3364,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Venezuela",
       "equipo_visitante": "Colombia",
-      "subtitulo": "Estadio Monumental de Maturín",
-      "referencia": "Estadio Monumental de Maturín",
+      "subtitulo": "Estadio Polideportivo de Pueblo Nuevo",
+      "referencia": "Estadio Polideportivo de Pueblo Nuevo",
       "hora_utc": "2026-10-10T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -3536,7 +3459,7 @@
     {
       "id": "xtream_b2cc00bc",
       "agenda_id": "",
-      "titulo": "Tepatitlán vs. Atlético Morelia",
+      "titulo": "Tepatitlán FC vs. Atlético Morelia",
       "torneo": "Liga de Expansión MX",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
@@ -3660,8 +3583,8 @@
     {
       "id": "lineal_tyc_sports_9cc7cf02",
       "agenda_id": "",
-      "titulo": "Unión de Santa Fe vs. Defensa y Justicia",
-      "torneo": "Torneo Betano",
+      "titulo": "Unión Santa Fe vs. Defensa y Justicia",
+      "torneo": "Fútbol",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Unión Santa Fe",
@@ -3671,15 +3594,15 @@
       "hora_utc": "2026-10-10T00:45:00Z",
       "hora_local_producto": "19:45",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_torneo": "",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbtnx6q1734587495.png&w=400&output=webp",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3guvlh1775778978.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "banner": "",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -3710,7 +3633,7 @@
     {
       "id": "xtream_d2b59048",
       "agenda_id": "",
-      "titulo": "Noche de Boxeo",
+      "titulo": "Boxeo Internacional",
       "torneo": "Boxeo",
       "categoria": "Boxeo",
       "tipo_evento": "circuito",
@@ -3787,7 +3710,7 @@
       "id": "lineal_rcn_56947bbc",
       "agenda_id": "",
       "titulo": "Once Caldas vs. Llaneros",
-      "torneo": "Liga Colombiana",
+      "torneo": "Fútbol",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Once Caldas",
@@ -3805,7 +3728,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte",
+        "portada",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -3972,7 +3895,7 @@
     {
       "id": "lineal_espn_ef89610d",
       "agenda_id": "",
-      "titulo": "MotoGP - GP de Indonesia (Libres 2)",
+      "titulo": "MotoGP - G.P. Indonesia Libres 2",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -3991,7 +3914,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "motociclismo"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -4025,7 +3948,7 @@
     {
       "id": "lineal_espn_40b63213",
       "agenda_id": "",
-      "titulo": "MotoGP - GP de Indonesia (Clasificación)",
+      "titulo": "MotoGP - G.P. Indonesia Clasificación",
       "torneo": "MotoGP",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -4044,7 +3967,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "deporte"
+        "motociclismo"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -4078,14 +4001,14 @@
     {
       "id": "xtream_fd9042ba",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters (AR Feed)",
+      "titulo": "Rolex Shanghai Masters",
       "torneo": "Rolex Shanghai Masters / Augmented Reality Feed",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Qizhong Forest Sports City Arena",
-      "referencia": "Qizhong Forest Sports City Arena",
+      "subtitulo": "Augmented Reality Feed",
+      "referencia": "Augmented Reality Feed",
       "hora_utc": "2026-10-10T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -4438,7 +4361,7 @@
     {
       "id": "lineal_espn_7ff3b1d3",
       "agenda_id": "",
-      "titulo": "Moto3 - GP de Indonesia (Clasificación)",
+      "titulo": "Moto3 - G.P. Indonesia Clasificación",
       "torneo": "Moto3",
       "categoria": "Motor",
       "tipo_evento": "circuito",
@@ -4490,14 +4413,14 @@
     }
   ],
   "metricas": {
-    "total_agenda_maestra": 38,
+    "total_agenda_maestra": 34,
     "total_canales_xtream": 789,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 887,
-    "eventos_lineales_inyectados": 27,
-    "eventos_xtream_aprobados": 111,
-    "eventos_contrastados_api": 41,
+    "eventos_lineales_inyectados": 23,
+    "eventos_xtream_aprobados": 117,
+    "eventos_contrastados_api": 40,
     "eventos_descartados_stale": 0,
-    "total_eventos_publicados": 102
+    "total_eventos_publicados": 100
   }
 }
