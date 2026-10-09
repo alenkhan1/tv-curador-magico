@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Sanitizador Deportivo Inteligente:
 - Extrae de forma limpia Duelos y Circuitos.
@@ -28,8 +28,6 @@ DEPORTES_MAP = {
     'NBA': 'Baloncesto',
     'BASKETBALL': 'Baloncesto',
     'BALONCESTO': 'Baloncesto',
-    'NFL': 'Fútbol Americano',
-    'NCAAF': 'Fútbol Americano',
     'NHL': 'Hockey',
     'HOCKEY': 'Hockey',
     'MLB': 'Béisbol',
@@ -43,20 +41,35 @@ DEPORTES_MAP = {
     'CHINA OPEN': 'Tenis',
     'PADEL': 'Pádel',
     'PÁDEL': 'Pádel',
+    'PREMIER PADEL': 'Pádel',
+    'A1 PADEL': 'Pádel',
     'GOLF': 'Golf',
     'PGA': 'Golf',
+    'LIV GOLF': 'Golf',
     'LIV': 'Golf',
     'DP WORLD': 'Golf',
+    'EUROPEAN TOUR': 'Golf',
     'RUGBY': 'Rugby',
     'NPC': 'Rugby',
     'F1': 'Fórmula 1',
     'FORMULA 1': 'Fórmula 1',
+    'FÓRMULA 1': 'Fórmula 1',
     'MOTOGP': 'MotoGP',
+    'MOTO GP': 'MotoGP',
+    'MOTO2': 'MotoGP',
+    'MOTO3': 'MotoGP',
     'MMA': 'MMA',
     'UFC': 'MMA',
     'EFC': 'MMA',
+    'BKFC': 'MMA',
+    'BARE KNUCKLE': 'MMA',
     'BOXING': 'Boxeo',
     'BOXEO': 'Boxeo',
+    'WWE': 'Lucha Libre',
+    'SMACKDOWN': 'Lucha Libre',
+    'RAW': 'Lucha Libre',
+    'AEW': 'Lucha Libre',
+    'TEJO': 'Tejo',
     'SNOOKER': 'Snooker',
     'CYCLING': 'Ciclismo',
     'CICLISMO': 'Ciclismo',
@@ -137,7 +150,7 @@ SUBTITULOS_TRADUCCION = {
 }
 
 def limpiar_fragmento(s: str) -> str:
-    s = re.sub(r'[◘•*~#]+', ' ', s)
+    s = re.sub(r'[\u2010-\u2015\u2022\u2212*~#]+', ' ', s)
     s = re.sub(r'\b(En español|Español|Spanish|OP\d+|FHD|HD|SD|4K|ES|EN|LIVE|EN VIVO)\b', '', s, flags=re.I)
     s = re.sub(r'\s+', ' ', s)
     return s.strip(' -:|')
@@ -174,8 +187,8 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
     # 4. Limpieza PREVIA: Eliminar fechas pegadas (ej. 01/10 o 1/10) para no romper en "01"
     nombre_sin_fechas = re.sub(r'\b[0-3]?[0-9]/[0-1]?[0-9]\b', '', nombre_stream)
 
-    # 5. Dividir ÚNICAMENTE por ◘ o | (NUNCA por / para preservar canchas y torneos)
-    bloques = [limpiar_fragmento(b) for b in re.split(r'[◘|]+', nombre_sin_fechas) if b.strip()]
+    # 5. Dividir ÚNICAMENTE por – o | (NUNCA por / para preservar canchas y torneos)
+    bloques = [limpiar_fragmento(b) for b in re.split(r'[\u2010-\u2015|]+', nombre_sin_fechas) if b.strip()]
 
     # Filtrar bloques que solo son horas (ej. 17:55, 07:00 PM) o números residuales
     bloques_utiles = []
@@ -187,12 +200,12 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
     if not bloques_utiles:
         bloques_utiles = [limpiar_fragmento(nombre_sin_fechas)]
 
-    # 6. Localizar el bloque del enfrentamiento (el que tiene vs, v, @ o - en deportes de combate)
+    # 6. Localizar el bloque del enfrentamiento (el que tiene vs, v., v, @ o - en combate)
     bloque_duelo = None
     bloques_contexto = []
-    patron_duelo = r'\s+(?:vs\.?|versus|\bv\b|@)\s+'
-    if deporte in ['Boxeo', 'Combate', 'MMA'] or any(k in texto_completo.upper() for k in ['BOXEO', 'BOXING', 'UFC', 'COMBATE']):
-        patron_duelo = r'\s+(?:vs\.?|versus|\bv\b|@|-|–)\s+'
+    patron_duelo = r'\s+(?:vs\.?|versus|\bv\.?\b|@)\s+'
+    if deporte in ['Boxeo', 'Combate', 'MMA'] or any(k in texto_completo.upper() for k in ['BOXEO', 'BOXING', 'UFC', 'COMBATE', 'BKFC']):
+        patron_duelo = r'\s+(?:vs\.?|versus|\bv\.?\b|@|-|\u2013)\s+'
 
     for b in bloques_utiles:
         if re.search(patron_duelo, b, re.I):
@@ -223,11 +236,11 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
         segmento_principal = bloques_utiles[0]
         
         # Casos especiales de Fórmula 1: "GP Japón - Free Practice 1"
-        if 'GP' in segmento_principal.upper() or deporte == 'Fórmula 1':
+        if 'GP' in segmento_principal.upper() or deporte in ['Fórmula 1', 'MotoGP']:
             m_gp = re.search(r'(GP\s+[A-Za-zÁÉÍÓÚáéíóúñ]+)', segmento_principal, re.I)
             nom_gp = m_gp.group(1).title() if m_gp else 'Gran Premio'
-            torneo_final = 'Fórmula 1'
-            titulo = f'F1: {nom_gp}'
+            torneo_final = deporte
+            titulo = f"{'F1' if deporte == 'Fórmula 1' else 'MotoGP'}: {nom_gp}"
             
             # Buscar sesión
             sesion = 'Sesión en Vivo'
@@ -238,12 +251,12 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
                     break
             subtitulo = sesion
         else:
-            # Tenis / Golf / Padel
+            # Tenis / Golf / Padel / Otros Circuitos
             sub = 'Directo'
             t_base = torneo_detectado or segmento_principal
 
             # Subdividir cancha o ronda si viene con slash / o guión
-            partes_sub = re.split(r'[/:\-–]', segmento_principal)
+            partes_sub = re.split(r'[/:\-\u2013]', segmento_principal)
             partes_sub = [p.strip() for p in partes_sub if p.strip()]
 
             if len(partes_sub) >= 2:
