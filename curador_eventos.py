@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Curador Deportivo Principal Multifuente:
 1. Ingesta de Canales Lineales (Win Sports, ESPN Suramérica, DSports, TyC, TNT, DAZN F1) emparejados con la Agenda Maestra de Hoy.
@@ -41,6 +41,13 @@ from resolvedor_logos import (
 from sanitizador_nombres import sanitizar_evento_crudo
 from curador_semantico import post_procesar_y_curar_eventos
 from auditor_agy import auditar_catalogo_con_agy
+from conector_api_sports import (
+    descargar_fixtures_dia,
+    guardar_equipos_en_catalogo,
+    construir_indice_fixtures,
+    emparejar_con_api_sports,
+    envolver_proxy_wsrv,
+)
 
 logging.basicConfig(
     level=getattr(logging, os.environ.get("LOG_LEVEL", "INFO").upper(), logging.INFO),
@@ -53,6 +60,7 @@ XTREAM_URL = os.environ.get("XTREAM_URL", "http://espartanos.live:8080").rstrip(
 XTREAM_USER = os.environ.get("XTREAM_USER", "12user1506")
 XTREAM_PASS = os.environ.get("XTREAM_PASS", "123456")
 APP_TIMEZONE = os.environ.get("APP_TIMEZONE", "America/Bogota")
+API_SPORTS_KEY = os.environ.get("API_SPORTS_KEY", "8b4421b0de525a42888c4dbe24f8d825")
 CACHE_CANALES = REPO_DIR / "canales_xtream_cache.json"
 
 def _crear_contexto_ssl():
@@ -436,13 +444,46 @@ def ejecutar_curacion():
 
     todos_eventos = list(eventos_lineales) + list(eventos_xtream)
 
-    # FASE 2: CURACIÓN SEMÁNTICA Y DEDUPLICACIÓN POR ENTIDAD DEPORTIVA
+    # FASE 1.5: CONTRASTE Y ENRIQUECIMIENTO CON API-SPORTS (12 DEPORTES)
+    log.info("Fase 1.5: Contraste y corroboracion oficial con API-Sports (12 Deportes)...")
+    fixtures_dia = descargar_fixtures_dia(fecha_hoy_iso, API_SPORTS_KEY)
+    guardar_equipos_en_catalogo(fixtures_dia)
+    indice_fixtures = construir_indice_fixtures(fixtures_dia)
+
+    emparejados_api = 0
+    for ev in todos_eventos:
+        match = emparejar_con_api_sports(ev, indice_fixtures, fixtures_dia)
+        if match:
+            emparejados_api += 1
+            ev["hora_utc"] = match.get("hora_utc") or ev.get("hora_utc")
+            ev["fecha_confirmada"] = True
+            ev["contrastado_api"] = True
+            if match.get("deporte"):
+                ev["categoria"] = match["deporte"]
+            if match.get("torneo") and (not ev.get("torneo") or ev["torneo"].lower() in ["deportes", "fútbol", "futbol", "deportes en vivo"]):
+                ev["torneo"] = match["torneo"]
+            if match.get("logo_local"):
+                ev["logo_local"] = envolver_proxy_wsrv(match["logo_local"])
+            if match.get("logo_visitante"):
+                ev["logo_visitante"] = envolver_proxy_wsrv(match["logo_visitante"])
+            if match.get("logo_torneo"):
+                ev["logo_torneo"] = envolver_proxy_wsrv(match["logo_torneo"])
+            if match.get("local") and match.get("visitante"):
+                if not ev.get("equipo_local") or not ev.get("equipo_visitante"):
+                    ev["equipo_local"] = match["local"]
+                    ev["equipo_visitante"] = match["visitante"]
+                    ev["titulo"] = f"{match['local']} vs {match['visitante']}"
+
+    log.info("Eventos contrastados y corroborados con API-Sports: %d/%d", emparejados_api, len(todos_eventos))
+
+    # FASE 2: CURACIÓN SEMÁNTICA Y DEDUPLICACIÓN POR ENTIDAD DEPORTIVA (1 TARJETA = N FUENTES)
     log.info("Fase 2: Fusión temporal, normalización y deduplicación por entidad...")
     eventos_fase2 = post_procesar_y_curar_eventos(todos_eventos)
 
-    # FASE 3: AUDITORÍA Y PERFECCIONAMIENTO FINAL CON AGY
-    log.info("Fase 3: Auditoría y perfeccionamiento semántico integral con AGY...")
-    eventos_pulidos = auditar_catalogo_con_agy(eventos_fase2, fecha_hoy_iso)
+    # FASE 3: AUDITORÍA Y PERFECCIONAMIENTO DE EVENTOS HUÉRFANOS CON AGY
+    log.info("Fase 3: Auditoría y perfeccionamiento de eventos huérfanos con AGY en la VM...")
+    eventos_pulidos, descartados_agy = auditar_catalogo_con_agy(eventos_fase2, fecha_hoy_iso)
+    descartados.extend(descartados_agy)
 
     # FASE 4: GARANTÍA GRÁFICA PARA ANDROID TV (EventoCard.kt)
     for ev in eventos_pulidos:
@@ -451,12 +492,12 @@ def ejecutar_curacion():
         loc = ev.get("equipo_local", "")
         vis = ev.get("equipo_visitante", "")
 
-        ev["logo_torneo"] = resolver_logo_torneo(tor, cat) or ev.get("logo_torneo", "")
+        ev["logo_torneo"] = ev.get("logo_torneo") or resolver_logo_torneo(tor, cat) or ""
         if loc:
-            ev["logo_local"] = resolver_logo_equipo(loc, cat, tor) or ev.get("logo_local", "")
+            ev["logo_local"] = ev.get("logo_local") or resolver_logo_equipo(loc, cat, tor) or ""
         if vis:
-            ev["logo_visitante"] = resolver_logo_equipo(vis, cat, tor) or ev.get("logo_visitante", "")
-        ev["banner"] = ev["logo_torneo"]
+            ev["logo_visitante"] = ev.get("logo_visitante") or resolver_logo_equipo(vis, cat, tor) or ""
+        ev["banner"] = ev.get("banner") or ev["logo_torneo"]
 
     # Validar unicidad estricta de IDs
     ids_vistos = set()
@@ -482,8 +523,10 @@ def ejecutar_curacion():
             "total_agenda_maestra": len(agenda_hoy),
             "total_canales_xtream": len(canales_xtream),
             "lista_xtream_actualizada_hoy": lista_actualizada,
+            "fixtures_api_sports_hoy": len(fixtures_dia),
             "eventos_lineales_inyectados": len(eventos_lineales),
             "eventos_xtream_aprobados": len(eventos_xtream),
+            "eventos_contrastados_api": emparejados_api,
             "eventos_descartados_stale": len(descartados),
             "total_eventos_publicados": len(eventos_verificados),
         }

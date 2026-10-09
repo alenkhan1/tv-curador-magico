@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Auditor Semántico Deportivo con Antigravity (AGY):
-Envía ÚNICAMENTE los eventos ambiguos o no clasificados en lotes ligeros a AGY en la VM para:
-1. Reclasificar deportes huérfanos ('Otros Deportes' -> 'Natación', 'Snooker', 'Pádel', 'Golf', etc.).
+Envía ÚNICAMENTE los eventos huérfanos o no clasificados en un LOTE CONSOLIDADO ÚNICO a AGY en la VM para:
+1. Reclasificar deportes huérfanos ('Otros Deportes' -> 'Natación', 'Snooker', 'Pádel', 'Golf', 'Tejo', etc.).
 2. Reescribir títulos a nombres deportivos concisos y profesionales según EventoCard.kt:
    - Duelo: 'Local vs Visitante'
    - Circuito: 'Nombre del Evento/Torneo' (cero nombres individuales en la tarjeta de TV).
 3. Eliminar redundancias (evitar que Título == Subtítulo).
-4. Descartar cualquier evento huérfano, del pasado o que sea un simple programa/magazine.
+4. Descartar cualquier evento que sea un simple programa/magazine o repetición diferida.
 """
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ import os
 import re
 import subprocess
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 log = logging.getLogger("auditor_agy")
 
@@ -30,17 +30,17 @@ def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str) -> Dic
     prompt_texto = f"""Hoy es {fecha_hoy_iso}.
 Eres el Auditor y Curador Deportivo en Jefe. Tu misión es depurar la cartelera para una app de Android TV.
 
-Lista de eventos a auditar:
+Lista de eventos huérfanos a auditar:
 {json.dumps(lote, ensure_ascii=False, indent=1)}
 
 Reglas obligatorias:
-1. 'descartar': true si es programa de debate, noticiero, magazine, resumen de TV o partido antiguo en diferido. SOLO eventos deportivos en directo.
-2. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Golf, Rugby, Natación, Snooker, Polo, etc.). NUNCA 'Otros Deportes'.
+1. 'descartar': true si es programa de debate, noticiero, magazine de estudio, resumen de TV o repetición en diferido. SOLO eventos deportivos reales en directo.
+2. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Golf, Rugby, Natación, Snooker, Polo, Tejo, etc.). NUNCA 'Otros Deportes'.
 3. 'titulo_pulido':
-   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (sin prefijos como 'Jornada 4:').
-   - Si es CIRCUITO (MMA, F1, Boxeo, Tenis, Ciclismo, Golf): Título limpio del evento u organizador (ej: 'UFC Fight Night', 'F1 Gran Premio de Singapur', 'China Open'). REGLA: NUNCA pongas nombres de deportistas individuales en el título de circuito.
+   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (sin prefijos de canal o jornada).
+   - Si es CIRCUITO (MMA, F1, Boxeo, Tenis, Ciclismo, Golf, Pádel): Título limpio del evento u organizador (ej: 'UFC Fight Night', 'F1 Gran Premio de Singapur', 'Premier Padel Madrid', 'China Open'). REGLA: NUNCA pongas nombres de deportistas individuales en el título de circuito.
 4. 'subtitulo_pulido':
-   - Si es DUELO: Nombre del torneo (ej: 'Liga BetPlay', 'UEFA Nations League').
+   - Si es DUELO: Nombre del torneo (ej: 'Liga BetPlay', 'UEFA Nations League', 'Torneo Betplay').
    - Si es CIRCUITO: Estadio, circuito o fase (ej: 'Wembley Stadium', 'Main Card', 'Cuartos de final').
 
 Responde ÚNICAMENTE con un JSON Array:
@@ -58,7 +58,7 @@ Responde ÚNICAMENTE con un JSON Array:
     try:
         if Path(AGY_PATH).exists():
             cmd = [AGY_PATH, "-p", prompt_texto, "--effort", "low", "--dangerously-skip-permissions", "--output-format", "json", "--print-timeout", "45s"]
-            res = subprocess.run(cmd, capture_output=True, text=True, timeout=95)
+            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=95)
             if res.returncode == 0:
                 salida_texto = res.stdout
         else:
@@ -74,7 +74,7 @@ Responde ÚNICAMENTE con un JSON Array:
                 f"{ORACLE_USER}@{ORACLE_HOST}",
                 f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
             ]
-            res = subprocess.run(cmd_ssh, capture_output=True, text=True, timeout=60)
+            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60)
             if res.returncode == 0:
                 salida_texto = res.stdout
     except Exception as e:
@@ -96,18 +96,23 @@ Responde ÚNICAMENTE con un JSON Array:
 
     return {}
 
-def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) -> List[Dict[str, Any]]:
+def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Audita los eventos huérfanos o no contrastados en un ÚNICO lote consolidado con AGY."""
     if not eventos:
-        return []
+        return [], []
 
-    # Filtrar únicamente los eventos que requieren auditoría para máxima velocidad
     eventos_a_auditar = []
     for ev in eventos:
+        if ev.get("contrastado_api") is True:
+            continue
+
         cat = ev.get("categoria", "")
         tit = ev.get("titulo", "")
         tipo = ev.get("tipo_evento", "")
+
         necesita = (
-            cat in ["Otros Deportes", "", "Deportes en Vivo"] or
+            cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"] or
+            cat in ["Pádel", "Padel", "Tejo", "Snooker", "Combate", "Polo", "Hípica", "Hipica", "Tiro", "Natación", "Natacion"] or
             (tipo == "circuito" and any(sep in tit.lower() for sep in [" vs ", " v ", " - "]))
         )
         if necesita:
@@ -122,13 +127,13 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
             })
 
     if not eventos_a_auditar:
-        log.info("Todos los eventos están debidamente clasificados (%d eventos). Se omite AGY.", len(eventos))
-        return eventos
+        log.info("Todos los eventos están debidamente contrastados o clasificados (%d eventos). Se omite AGY.", len(eventos))
+        return eventos, []
 
-    tamano_lote = 8
+    tamano_lote = 35
     mapa_audit = {}
     total_lotes = (len(eventos_a_auditar) + tamano_lote - 1) // tamano_lote
-    log.info("Iniciando auditoría AGY enfocada en %d eventos (%d lotes)...", len(eventos_a_auditar), total_lotes)
+    log.info("Iniciando auditoría AGY en lote consolidado para %d eventos huérfanos (%d lotes)...", len(eventos_a_auditar), total_lotes)
 
     for i in range(0, len(eventos_a_auditar), tamano_lote):
         sub_lote = eventos_a_auditar[i:i + tamano_lote]
@@ -138,17 +143,22 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         mapa_audit.update(res_lote)
 
     eventos_finales = []
+    eventos_descartados = []
     for ev in eventos:
         aud = mapa_audit.get(ev.get("id"))
         if aud:
             if aud.get("descartar") is True:
-                log.info("AGY descartó evento por auditoría: '%s'", ev.get("titulo"))
+                log.info("AGY descartó evento por no ser directo/oficial: '%s'", ev.get("titulo"))
+                ev["motivo_descarte"] = "descartado_por_auditoria_agy"
+                eventos_descartados.append(ev)
                 continue
             ev["titulo"] = aud.get("titulo_pulido") or ev["titulo"]
             ev["subtitulo"] = aud.get("subtitulo_pulido") or ev["subtitulo"]
             ev["referencia"] = ev["subtitulo"]
             ev["categoria"] = aud.get("categoria_exacta") or ev["categoria"]
+            ev["auditado_agy"] = True
         eventos_finales.append(ev)
 
-    log.info("Auditoría AGY finalizada: %d aprobados (%d modificados por AGY)", len(eventos_finales), len(mapa_audit))
-    return eventos_finales
+    log.info("Auditoría AGY finalizada: %d aprobados (%d pulidos por AGY, %d descartados)", 
+             len(eventos_finales), len([e for e in eventos_finales if e.get("auditado_agy")]), len(eventos_descartados))
+    return eventos_finales, eventos_descartados
