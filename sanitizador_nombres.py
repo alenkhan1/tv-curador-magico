@@ -198,7 +198,11 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
             bloques_utiles.append(b_clean)
 
     # Si el primer bloque es una categoría genérica y hay más bloques, descartar el prefijo genérico
-    GENERICOS_PREFIJO = {'MOTOR', 'DEPORTES', 'LIVE', 'DIRECTO', 'EVENTO', 'EN VIVO', 'SPORTS', 'SPORT', 'FUTBOL', 'SOCCER'}
+    GENERICOS_PREFIJO = {
+        'MOTOR', 'DEPORTES', 'LIVE', 'DIRECTO', 'EVENTO', 'EN VIVO', 'SPORTS', 'SPORT',
+        'FUTBOL', 'SOCCER', 'ATP', 'WTA', 'PGA', 'PGA TOUR', 'BOXEO', 'COMBATE', 'UFC',
+        'TENIS', 'TENNIS', 'GOLF', 'BASKET', 'BALONCESTO', 'BASEBALL', 'BEISBOL'
+    }
     if len(bloques_utiles) > 1 and bloques_utiles[0].upper() in GENERCIOS_PREFIJO if 'GENERCIOS_PREFIJO' in dir() else len(bloques_utiles) > 1 and bloques_utiles[0].upper() in GENERICOS_PREFIJO:
         bloques_utiles = bloques_utiles[1:]
 
@@ -279,6 +283,7 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
             subtitulo = sub
 
     return {
+        'titulo_original_crudo': nombre_stream.strip(),
         'tipo': tipo,
         'deporte': deporte,
         'titulo': titulo,
