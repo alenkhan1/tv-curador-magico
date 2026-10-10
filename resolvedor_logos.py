@@ -479,17 +479,29 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
     cache = _cargar_cache()
     clave_cache = f"equipo_{equipo_norm}"
 
-    # 0. Banderas oficiales: Búsqueda exacta y por prefijo de país reconocido
-    if equipo_norm in BANDERAS_PAISES:
-        flag_url = BANDERAS_PAISES[equipo_norm]
-        _guardar_catalogo_equipos({clave_cache: flag_url})
-        return flag_url
+        # 0. Banderas oficiales: ÚNICAMENTE para selecciones nacionales o torneos de países
+    es_torneo_selecciones = any(t in _normalizar(torneo) for t in [
+        "NATIONS LEAGUE", "MUNDIAL", "COPA AMERICA", "EUROCOPA", "ELIMINATORIAS",
+        "AMISTOSO INTERNACIONAL", "QUALIFIERS", "FRIENDLIES", "WORLD CUP", "OLYMPIC"
+    ])
+    es_nombre_seleccion = any(s in equipo_norm for s in [
+        "SELECCION", "SELECCION DE", "SUB 1", "SUB 2", "SUB-1", "SUB-2", "U1", "U2", "U 1", "U 2", "NATIONAL"
+    ])
 
-    # Soporte para variantes como "España Sub 21", "Selección Colombia", etc.
-    for pais_k, flag_u in BANDERAS_PAISES.items():
-        if len(pais_k) >= 4 and (equipo_norm.startswith(pais_k + " ") or equipo_norm.endswith(" " + pais_k)):
-            _guardar_catalogo_equipos({clave_cache: flag_u})
-            return flag_u
+    if equipo_norm in BANDERAS_PAISES:
+        # Si el torneo es explícitamente de clubes (ej. Segunda Division, Premier, Serie A), no asumir que es selección
+        es_liga_clubes = any(l in _normalizar(torneo) for l in [
+            "SEGUNDA", "PRIMERA DIVISION", "PREMIER", "LALIGA", "SERIE A", "BUNDESLIGA", "LIGUE 1", "BETPLAY", "LIGA MX"
+        ])
+        if not es_liga_clubes or es_torneo_selecciones or es_nombre_seleccion:
+            flag_url = BANDERAS_PAISES[equipo_norm]
+            return flag_url
+
+    # Variantes como "España Sub 21", "Selección Colombia" (SOLO si no es club)
+    if es_torneo_selecciones or es_nombre_seleccion:
+        for pais_k, flag_u in BANDERAS_PAISES.items():
+            if len(pais_k) >= 4 and (equipo_norm.startswith(pais_k + " ") or equipo_norm.endswith(" " + pais_k)):
+                return flag_u
 
     # 1. Catálogo maestro permanente de equipos en disco (Prioridad Absoluta)
     cat_equipos = _obtener_catalogo_equipos()
