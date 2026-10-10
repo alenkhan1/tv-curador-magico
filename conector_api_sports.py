@@ -42,13 +42,68 @@ def _crear_ssl():
     ctx.verify_mode = ssl.CERT_NONE
     return ctx
 
+SINONIMOS_PAISES_API = {
+    "ESTADOS UNIDOS": "USA",
+    "EEUU": "USA",
+    "EE UU": "USA",
+    "UNITED STATES": "USA",
+    "ESPANA": "SPAIN",
+    "ALEMANIA": "GERMANY",
+    "DEUTSCHLAND": "GERMANY",
+    "INGLATERRA": "ENGLAND",
+    "PAISES BAJOS": "NETHERLANDS",
+    "HOLANDA": "NETHERLANDS",
+    "FRANCIA": "FRANCE",
+    "ITALIA": "ITALY",
+    "BRASIL": "BRAZIL",
+    "ARGENTINA": "ARGENTINA",
+    "COLOMBIA": "COLOMBIA",
+    "MEXICO": "MEXICO",
+    "URUGUAY": "URUGUAY",
+    "CHILE": "CHILE",
+    "PERU": "PERU",
+    "ECUADOR": "ECUADOR",
+    "VENEZUELA": "VENEZUELA",
+    "PARAGUAY": "PARAGUAY",
+    "BOLIVIA": "BOLIVIA",
+    "PORTUGAL": "PORTUGAL",
+    "BELGICA": "BELGIUM",
+    "SUIZA": "SWITZERLAND",
+    "SUECIA": "SWEDEN",
+    "NORUEGA": "NORWAY",
+    "DINAMARCA": "DENMARK",
+    "POLONIA": "POLAND",
+    "CROACIA": "CROATIA",
+    "TURQUIA": "TURKEY",
+    "JAPON": "JAPAN",
+    "COREA DEL SUR": "SOUTH KOREA",
+    "ARABIA SAUDITA": "SAUDI ARABIA",
+    "MARRUECOS": "MOROCCO",
+    "EGIPTO": "EGYPT",
+    "SENEGAL": "SENEGAL",
+    "NIGERIA": "NIGERIA",
+    "CAMERUN": "CAMEROON",
+    "AUSTRALIA": "AUSTRALIA",
+    "NUEVA ZELANDA": "NEW ZEALAND",
+}
+
 def normalizar_clave(s: Any) -> str:
     if not s:
         return ""
-    nfkd = unicodedata.normalize("NFKD", str(s))
+    # 1. Unificar acrónimos con puntos (ej. N.E.C. -> NEC, U.D. -> UD, C.D. -> CD)
+    s_clean = re.sub(r'\b([A-Za-z])\.([A-Za-z])\.?([A-Za-z])?\.?', lambda m: ''.join(g for g in m.groups() if g), str(s))
+    nfkd = unicodedata.normalize("NFKD", s_clean)
     sin_tildes = "".join(c for c in nfkd if not unicodedata.combining(c))
     limpio = re.sub(r"[^A-Z0-9]+", " ", sin_tildes.upper()).strip()
-    # Eliminar prefijos/sufijos institucionales comunes para comparación pura de entidad
+
+    # 2. Remover marcas de categoría/femenino que varían entre la guía y la API oficial
+    limpio = re.sub(r"\b(W|WOMEN|FEMENINO|FEM|FEMENIL|DAMAS|SUB\s*\d+|U\d+)\b", "", limpio).strip()
+
+    # 3. Mapear sinónimos universales de selecciones y países
+    for k, v in SINONIMOS_PAISES_API.items():
+        limpio = re.sub(rf"\b{k}\b", v, limpio)
+
+    # 4. Eliminar prefijos/sufijos institucionales comunes para comparación pura de entidad
     palabras = limpio.split()
     ignoradas = {"CLUB", "FC", "CF", "CD", "DEPORTIVO", "ATLETICO", "BALOMPIE", "SPORTING", "REAL", "OLYMPIQUE"}
     filtradas = [p for p in palabras if p not in ignoradas or len(palabras) == 1]
