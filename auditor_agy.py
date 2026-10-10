@@ -2,12 +2,13 @@
 """
 Auditor Semántico Deportivo con Antigravity (AGY):
 Envía ÚNICAMENTE los eventos huérfanos o no clasificados en un LOTE CONSOLIDADO ÚNICO a AGY en la VM para:
-1. Reclasificar deportes huérfanos ('Otros Deportes' -> 'Natación', 'Snooker', 'Pádel', 'Golf', 'Tejo', etc.).
+1. Reclasificar deportes huérfanos ('Otros Deportes' -> 'Natación', 'Snooker', 'Pádel', 'Golf', etc.).
 2. Reescribir títulos a nombres deportivos concisos y profesionales según EventoCard.kt:
    - Duelo: 'Local vs Visitante'
    - Circuito: 'Nombre del Evento/Torneo' (cero nombres individuales en la tarjeta de TV).
-3. Eliminar redundancias (evitar que Título == Subtítulo).
-4. Descartar cualquier evento que sea un simple programa/magazine o repetición diferida.
+3. Extraer los contrincantes/peleadores para el cajón preview del reproductor (Línea 3 en EventosPreviewPlayer.kt).
+4. Eliminar redundancias (evitar que Título == Subtítulo).
+5. Descartar cualquier evento que sea un simple programa/magazine o repetición diferida.
 """
 from __future__ import annotations
 
@@ -26,29 +27,69 @@ AGY_PATH = os.environ.get("AGY_PATH", "/home/ubuntu/.local/bin/agy")
 ORACLE_HOST = os.environ.get("ORACLE_HOST", "51.170.138.241")
 ORACLE_USER = os.environ.get("ORACLE_USER", "ubuntu")
 
+def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
+    if not salida_texto:
+        return []
+    try:
+        obj = json.loads(salida_texto)
+        if isinstance(obj, list):
+            return obj
+        if isinstance(obj, dict):
+            for k in ["response", "content", "text", "output"]:
+                if k in obj and isinstance(obj[k], str):
+                    sub = _extraer_datos_json(obj[k])
+                    if sub:
+                        return sub
+            for v in obj.values():
+                if isinstance(v, list) and v and isinstance(v[0], dict):
+                    return v
+    except Exception:
+        pass
+
+    m_codeblock = re.search(r'```(?:json)?\s*(\[\s*\{.*?\}\s*\])\s*```', salida_texto, flags=re.S)
+    if m_codeblock:
+        try:
+            return json.loads(m_codeblock.group(1))
+        except Exception:
+            pass
+
+    m_array = re.search(r'\[\s*\{.*\}\s*\]', salida_texto, flags=re.S)
+    if m_array:
+        try:
+            return json.loads(m_array.group(0))
+        except Exception:
+            pass
+
+    return []
+
 def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str) -> Dict[str, Dict[str, Any]]:
     prompt_texto = f"""Hoy es {fecha_hoy_iso}.
 Eres el Auditor y Curador Deportivo en Jefe. Tu misión es depurar la cartelera para una app de Android TV.
+Tienes el texto original crudo de cada canal o feed.
 
-Lista de eventos huérfanos a auditar:
+Lista de eventos a auditar:
 {json.dumps(lote, ensure_ascii=False, indent=1)}
 
 Reglas obligatorias para la interfaz de Android TV:
 1. 'descartar': true si es programa de debate, noticiero, magazine de estudio, resumen de TV o repetición en diferido. SOLO eventos deportivos reales en directo.
 2. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Boxeo, MMA, Golf, Rugby, Natación, Snooker, etc.). NUNCA 'Otros Deportes'.
-3. 'tipo_evento': 'duelo' si son dos equipos/rivales enfrentados, o 'circuito' si es torneo/sesión (UFC, Motor, Tenis, Golf, etc.).
+3. 'tipo_evento':
+   - 'duelo' si son dos equipos, clubes o selecciones enfrentados.
+   - 'circuito' si es velada de combate (Boxeo, UFC, MMA), sesión de carreras (Motor), torneo de tenis, golf, etc.
 4. 'titulo_pulido':
-   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (limpio, sin viñetas ni basura).
-   - Si es CIRCUITO: Título conciso del evento u organizador para el botón pequeño de la TV (ej: 'UFC Fight Night 324', 'Rolex Shanghai Masters', 'NASCAR Ecosave 200'). REGLA: NUNCA pongas nombres de deportistas en el título de circuito.
-5. 'subtitulo_pulido': Sede, estadio, cancha o pista (ej: 'Crystal Stadium', 'Stadium Court', 'Court 4', 'Bristol Motor Speedway').
-6. 'participantes':
-   - Si es CIRCUITO y se conocen los contrincantes principales o plato fuerte (ej: 'McGregor vs Pepito Pereza', 'Novak Djokovic - Hubert Hurkacz'), ponlos aquí. Estos nombres van bajo la pantalla preview del reproductor, NO en el botón pequeño. Si no se conocen, deja cadena vacía.
+   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (limpio, sin prefijos, números de dial ni viñetas).
+   - Si es CIRCUITO / COMBATE: Título conciso del evento, velada u organización para el botón de la TV (ej: 'UFC Fight Night 246', 'Gran Noche de Boxeo', 'Rolex Shanghai Masters', 'NASCAR Cup Series'). REGLA SAGRADA: NUNCA pongas nombres de deportistas individuales en el botón de circuito.
+5. 'torneo_pulido': Nombre oficial del torneo, liga o velada (ej. 'Amistoso Internacional Femenino', 'UFC Fight Night', 'Liga BetPlay').
+6. 'subtitulo_pulido': Sede, coliseo, cancha, pista o sesión (ej. 'Stadium Court', 'Bogotá', 'Apex Las Vegas', 'Clasificación'). Si no hay sede conocida, deja cadena vacía "".
+7. 'participantes':
+   - Si es CIRCUITO / COMBATE y en el texto original vienen los contrincantes principales o protagonistas (ej. 'Happy Lora vs. Unhappy Lora', 'Brandon Moreno vs Amir Albazi', 'Alcaraz vs Sinner'), ponlos aquí limpios. Estos nombres van bajo la pantalla preview del reproductor, NUNCA en el botón pequeño.
 
 Responde ÚNICAMENTE con un JSON Array:
 [
   {{
     "id": "id original",
     "titulo_pulido": "Título limpio para el botón",
+    "torneo_pulido": "Torneo o Liga oficial",
     "subtitulo_pulido": "Sede o Cancha",
     "participantes": "Contrincantes bajo preview si aplica",
     "categoria_exacta": "Deporte exacto",
@@ -87,15 +128,9 @@ Responde ÚNICAMENTE con un JSON Array:
     if not salida_texto:
         return {}
 
-    try:
-        data_env = json.loads(salida_texto)
-        resp_str = data_env.get("response", "")
-        m_json = re.search(r'\[\s*\{.*\}\s*\]', resp_str, flags=re.S)
-        if m_json:
-            datos = json.loads(m_json.group(0))
-            return {item.get("id"): item for item in datos if "id" in item}
-    except Exception as e:
-        log.warning("No se pudo parsear JSON devuelto por AGY: %s", e)
+    datos = _extraer_datos_json(salida_texto)
+    if datos:
+        return {item.get("id"): item for item in datos if isinstance(item, dict) and "id" in item}
 
     return {}
 
@@ -116,13 +151,16 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         # Auditar cualquier evento huérfano (no contrastado por API de duelos),
         # eventos de circuito (para asegurar cancha limpia y participantes bajo preview),
         # o eventos con viñetas residuales o nombres genéricos
-        tiene_viñetas = any(c in tit for c in ["◘", "■", "♦", "►", "●", "▼", "▲", "|"])
+        tiene_vinetas = any(c in tit for c in ["•", "–", "—", ">", "|", "■", "►"])
         es_circuito = tipo == "circuito" or cat in ["Tenis", "Motor", "Combate", "Boxeo", "MMA", "Golf", "Ciclismo", "Pádel", "Padel"]
         cat_dudosa = cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"]
-        necesita = (not ev.get("contrastado_api")) or es_circuito or tiene_viñetas or cat_dudosa
+        necesita = (not ev.get("contrastado_api")) or es_circuito or tiene_vinetas or cat_dudosa
         if necesita:
+            # ENVIAR SIEMPRE EL TEXTO ORIGINAL CRUDO PARA QUE AGY RAZONE CON EL 100% DE INFORMACIÓN
+            raw_tit = ev.get("titulo_original_crudo") or ev.get("titulo_original") or ev.get("titulo")
             eventos_a_auditar.append({
                 "id": ev.get("id"),
+                "texto_original": raw_tit,
                 "titulo": ev.get("titulo"),
                 "subtitulo": ev.get("subtitulo"),
                 "categoria": ev.get("categoria"),
@@ -157,17 +195,35 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 ev["motivo_descarte"] = "descartado_por_auditoria_agy"
                 eventos_descartados.append(ev)
                 continue
+
             ev["titulo"] = aud.get("titulo_pulido") or ev["titulo"]
             ev["subtitulo"] = aud.get("subtitulo_pulido") or ev["subtitulo"]
-            # Los contrincantes van bajo la pantalla preview (cajón inferior en EventosPreviewPlayer.kt)
-            partic = (aud.get("participantes") or "").strip()
-            if partic:
-                ev["referencia"] = partic
-            else:
-                ev["referencia"] = ev["subtitulo"]
             ev["categoria"] = aud.get("categoria_exacta") or ev["categoria"]
-            if aud.get("tipo_evento") in ["duelo", "circuito"]:
-                ev["tipo_evento"] = aud["tipo_evento"]
+
+            # Sincronizar torneo oficial
+            if aud.get("torneo_pulido"):
+                ev["torneo"] = aud["torneo_pulido"]
+            elif aud.get("tipo_evento") == "circuito" and aud.get("titulo_pulido"):
+                ev["torneo"] = aud["titulo_pulido"]
+
+            # Si es duelo, extraer equipos locales y visitantes para que la Fase 4 resuelva escudos
+            if aud.get("tipo_evento") == "duelo":
+                ev["tipo_evento"] = "duelo"
+                partes = re.split(r"\s+(?:vs\.?|contra|v\.)\s+", ev["titulo"], flags=re.I)
+                if len(partes) == 2:
+                    ev["equipo_local"] = partes[0].strip()
+                    ev["equipo_visitante"] = partes[1].strip()
+                ev["referencia"] = ev["subtitulo"] or ev.get("torneo") or ev["titulo"]
+            elif aud.get("tipo_evento") == "circuito":
+                ev["tipo_evento"] = "circuito"
+                ev["equipo_local"] = ""
+                ev["equipo_visitante"] = ""
+                partic = (aud.get("participantes") or "").strip()
+                if partic:
+                    ev["referencia"] = partic
+                else:
+                    ev["referencia"] = ev.get("referencia") or ev["subtitulo"] or ev["torneo"]
+
             ev["auditado_agy"] = True
         eventos_finales.append(ev)
 
