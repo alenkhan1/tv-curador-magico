@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import gzip
@@ -11,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from typing import Any, Dict, List
 
-from .mitv import obtener_directos_win_sports
+from .mitv import obtener_directos_lineales_mitv
 from .modelos import EventoAgenda, obtener_tz
 
 log = logging.getLogger("canales_suramerica")
@@ -23,7 +23,7 @@ def _crear_contexto_ssl():
     return ctx
 
 CANAL_MAPPING = [
-    (r"\bWIN\s*(?:F[Uú]TBOL\s*\+|SPORTS\s*\+)", "WIN SPORTS+"),
+    (r"\bWIN\s*(?:F[UÚ]TBOL\s*\+|SPORTS\s*\+)", "WIN SPORTS+"),
     (r"\bWIN\s*SPORTS\b(?!\s*\+)", "WIN SPORTS"),
     (r"\bESPN\s*PREMIUM\b", "ESPN PREMIUM ARGENTINA"),
     (r"\bESPN\s*2\b", "ESPN 2"),
@@ -32,7 +32,7 @@ CANAL_MAPPING = [
     (r"\bESPN\s*5\b", "ESPN 5"),
     (r"\bESPN\s*6\b", "ESPN 6"),
     (r"\bESPN\s*7\b", "ESPN 7"),
-    (r"\bESPN\b(?!\s*(?:[234567]|PREMIUM))", "ESPN"),
+    (r"\bESPN\s*(?:1|COLOMBIA|SUR\s*1)\b", "ESPN"),
     (r"\bTYC\s*SPORTS\b", "TYC SPORTS"),
     (r"\bTNT\s*SPORTS\b", "TNT SPORTS"),
     (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*2\b", "DSPORTS 2"),
@@ -49,7 +49,12 @@ def normalizar_canales(raw_canales: List[str]) -> List[str]:
     resultado = []
     for raw in raw_canales:
         u = raw.upper()
-        if any(exc in u for exc in ["USA", "US", "MEX", "MEXICO", "BRASIL", "BRAZIL", "ESPNU", "NEWS", "YOUTUBE", "TIKTOK"]):
+        # Descarte de feeds no sudamericanos y de plataformas OTT exclusivas
+        if any(exc in u for exc in [
+            "USA", "US", "MEX", "MEXICO", "BRASIL", "BRAZIL", "ESPNU", "NEWS", "YOUTUBE", "TIKTOK",
+            "DISNEY", "STAR+", "VIX", "HBO", "MAX", "RTVE PLAY", "APPLE", "PRIME", "DGO", "CLARO VIDEO",
+            "TENNIS TV", "PARAMOUNT", "PLUTO"
+        ]):
             continue
         for patron, canon in CANAL_MAPPING:
             if re.search(patron, u):
@@ -223,8 +228,9 @@ def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
     Descarga la agenda deportiva completa de directos de hoy para Suramérica:
     Cubre Colombia (Win Sports+, Win Sports, ESPN 1..7, DSports, Caracol, RCN)
     y Argentina (ESPN Premium, TyC Sports, TNT Sports, FOX Sports 1..3).
-    Garantía de multideporte en vivo, contraste riguroso con mi.tv para Win Sports,
-    cero magazines y cero repeticiones.
+    Garantía de multideporte en vivo canal por canal:
+    - Contraste riguroso con mi.tv para Win Sports y ESPN.
+    - Cero noticieros, cero magazines y cero repeticiones.
     """
     colombia_urls = [
         ("https://www.futbolenvivocolombia.com/", "America/Bogota"),
@@ -260,9 +266,9 @@ def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
             except Exception:
                 pass
 
-    # Contraste riguroso de Win Sports en las dos webs: futbolenvivocolombia y mi.tv
+    # Contraste y extracción canal por canal en mi.tv (Win Sports y ESPN)
     try:
-        evs_mitv = obtener_directos_win_sports(fecha_hoy_iso, eventos_referencia_futbolenvivo=eventos_crudos)
+        evs_mitv = obtener_directos_lineales_mitv(fecha_hoy_iso, eventos_referencia_futbolenvivo=eventos_crudos)
         eventos_crudos.extend(evs_mitv)
     except Exception as e:
         log.warning("Fallo en contraste con mi.tv: %s", e)

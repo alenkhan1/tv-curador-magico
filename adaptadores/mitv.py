@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from __future__ import annotations
 
 import gzip
@@ -39,40 +39,56 @@ def _descargar_html(url: str, timeout: int = 8) -> str:
         log.debug("No se pudo descargar %s: %s", url, e)
         return ""
 
-def obtener_directos_win_sports(
+PROGRAMAS_ESTUDIO_NOTICIAS = [
+    # Win Sports
+    "NOTICIAS", "PRIMER TOQUE", "SAQUE LARGO", "LINEA DE 4", "LÍNEA DE 4",
+    "SHOW", "LO MEJOR", "RESUMEN", "DESPIERTA WIN", "PLANETA FÚTBOL", "PLANETA",
+    "MEDIO TIEMPO", "WHAT THE FUN", "ESPECIAL", "DETRÁS DE LA GLORIA", "DETRAS DE LA GLORIA",
+    "CAMPAÑAS", "CAMPANAS", "DOCUMENTAL", "HISTORIA",
+    # ESPN
+    "SPORTSCENTER", "F90", "F360", "BALON DIVIDIDO", "BALÓN DIVIDIDO",
+    "EQUIPO F", "GENERACION F", "GENERACIÓN F", "FSHOW", "ESPN KNOCKOUT MAGAZINE",
+    "NEXO", "ESPN FC", "DEBATE", "CRONOMETRO", "CRONÓMETRO", "FUERA DE JUEGO",
+]
+
+def obtener_directos_lineales_mitv(
     fecha_hoy_iso: str,
     eventos_referencia_futbolenvivo: Optional[List[EventoAgenda]] = None
 ) -> List[EventoAgenda]:
     """
-    Consulta la programación de Win Sports y Win Sports+ en mi.tv aplicando
-    filtro estricto: solo acepta eventos explícitamente etiquetados como 'En Vivo' / 'Directo',
-    o eventos contrastados contra la cartelera de hoy de futbolenvivocolombia,
-    descartando categóricamente programas de estudio y repeticiones nocturnas/madrugada.
+    Consulta la programación oficial canal por canal en mi.tv para:
+    - Win Sports+ y Win Sports
+    - ESPN, ESPN 2 y ESPN 3 (Señales de Suramérica/Colombia)
+    Filtro estricto: descarta programas de estudio/noticieros (SportsCenter, F90, Primer Toque),
+    excluye repeticiones y solo acepta eventos deportivos en directo/vivo confirmados.
     """
     canales_mitv = [
         ("WIN SPORTS+", "https://mi.tv/co/async/channel/win-sports-hd/-300"),
         ("WIN SPORTS", "https://mi.tv/co/async/channel/win-sports/-300"),
+        ("ESPN", "https://mi.tv/co/async/channel/espn/-300"),
+        ("ESPN 2", "https://mi.tv/co/async/channel/espn-2/-300"),
+        ("ESPN 3", "https://mi.tv/co/async/channel/espn-3/-300"),
     ]
     tz_col = obtener_tz("America/Bogota")
     nuevos: List[EventoAgenda] = []
 
-    # Extraer eventos de Win Sports de referencia para contraste
-    ref_win = []
+    # Extraer eventos de referencia para contraste
+    ref_eventos = []
     if eventos_referencia_futbolenvivo:
         for ev in eventos_referencia_futbolenvivo:
-            if any("WIN" in c.upper() for c in ev.canales):
-                try:
-                    dt = datetime.fromisoformat(ev.hora_utc.replace("Z", "+00:00")).astimezone(tz_col)
-                    min_dia = dt.hour * 60 + dt.minute
-                except Exception:
-                    min_dia = -1
-                ref_win.append({
-                    "ev": ev,
-                    "loc": ev.local.lower(),
-                    "vis": ev.visitante.lower(),
-                    "titulo": ev.titulo.lower(),
-                    "min_dia": min_dia,
-                })
+            try:
+                dt = datetime.fromisoformat(ev.hora_utc.replace("Z", "+00:00")).astimezone(tz_col)
+                min_dia = dt.hour * 60 + dt.minute
+            except Exception:
+                min_dia = -1
+            ref_eventos.append({
+                "ev": ev,
+                "loc": (ev.local or "").lower(),
+                "vis": (ev.visitante or "").lower(),
+                "titulo": (ev.titulo or "").lower(),
+                "canales": [c.upper() for c in ev.canales],
+                "min_dia": min_dia,
+            })
 
     for canon_canal, url in canales_mitv:
         html = _descargar_html(url, timeout=8)
@@ -89,13 +105,8 @@ def obtener_directos_win_sports(
             txt = " ".join(re.sub(r"<[^>]+>", " ", contenido).split()).strip()
             u_txt = txt.upper()
 
-            # 1. Filtro estricto: Descarte de programas fijos de estudio, noticias y debate
-            if any(w in u_txt for w in [
-                "NOTICIAS", "PRIMER TOQUE", "SAQUE LARGO", "LINEA DE 4", "LÍNEA DE 4",
-                "SHOW", "LO MEJOR", "RESUMEN", "DESPIERTA WIN", "PLANETA FÚTBOL", "PLANETA",
-                "MEDIO TIEMPO", "WHAT THE FUN", "ESPECIAL", "DETRÁS DE LA GLORIA", "DETRAS DE LA GLORIA",
-                "CAMPAÑAS", "CAMPANAS", "DOCUMENTAL", "HISTORIA"
-            ]):
+            # 1. Filtro estricto: Descarte de noticieros, magazines y programas de estudio
+            if any(w in u_txt for w in PROGRAMAS_ESTUDIO_NOTICIAS):
                 continue
 
             # 2. Descarte de repeticiones históricas por año en la URL
@@ -119,12 +130,12 @@ def obtener_directos_win_sports(
             # 3. ¿Tiene etiqueta explícita de En Vivo / Directo?
             es_en_vivo_tag = any(w in u_txt for w in ["EN VIVO", "DIRECTO", "EN DIRECTO", "LIVE", "VIVO"])
 
-            # 4. Contraste riguroso con futbolenvivocolombia
+            # 4. Contraste riguroso con la cartelera de referencia
             contrastado = False
             ev_ref_match = None
-            if ref_win:
+            if ref_eventos:
                 txt_lower = txt.lower()
-                for r in ref_win:
+                for r in ref_eventos:
                     palabras_clave = [p for p in (r["loc"] + " " + r["vis"]).split() if len(p) > 3]
                     coincidencias = [p for p in palabras_clave if p in txt_lower]
                     if len(coincidencias) >= 2 or (r["loc"] and r["loc"] in txt_lower) or (r["vis"] and r["vis"] in txt_lower):
@@ -134,11 +145,11 @@ def obtener_directos_win_sports(
                             ev_ref_match = r["ev"]
                             break
 
-            # Si no tiene etiqueta explícita de En Vivo Y tampoco contrasta con la cartelera de hoy -> DESCARTAR (repetición)
+            # Si no tiene etiqueta explícita de En Vivo Y tampoco contrasta con evento deportivo de hoy -> DESCARTAR
             if not es_en_vivo_tag and not contrastado:
                 continue
 
-            # Si contrastó con un evento de futbolenvivo, enriquecer el canal exacto de Win
+            # Si contrastó con un evento de referencia, enriquecer el canal exacto 1 a 1
             if contrastado and ev_ref_match:
                 if canon_canal not in ev_ref_match.canales:
                     ev_ref_match.canales.append(canon_canal)
@@ -146,6 +157,7 @@ def obtener_directos_win_sports(
 
             # Si es un evento nuevo con etiqueta explícita En Vivo
             tit_raw = re.sub(r"^[0-1]?[0-9]:[0-5][0-9]\s*(?:am|pm)?\s*", "", txt, flags=re.I).strip()
+            tit_raw = re.sub(r"\b(?:EN VIVO|DIRECTO|EN DIRECTO|LIVE|VIVO)\b", "", tit_raw, flags=re.I).strip()
             m_vs = re.search(r"([A-Za-z0-9\.\s]+)\s+(?:vs\.?|v\.?|-)\s+([A-Za-z0-9\.\s]+)", tit_raw, re.I)
             if m_vs:
                 loc = m_vs.group(1).strip()
@@ -177,5 +189,12 @@ def obtener_directos_win_sports(
             )
             nuevos.append(ev)
 
-    log.info("Win Sports (mi.tv contrastado): %d eventos nuevos confirmados en vivo", len(nuevos))
+    log.info("Canales lineales mi.tv (Win Sports y ESPN): %d directos confirmados canal por canal", len(nuevos))
     return nuevos
+
+# Alias de compatibilidad
+def obtener_directos_win_sports(
+    fecha_hoy_iso: str,
+    eventos_referencia_futbolenvivo: Optional[List[EventoAgenda]] = None
+) -> List[EventoAgenda]:
+    return obtener_directos_lineales_mitv(fecha_hoy_iso, eventos_referencia_futbolenvivo)
