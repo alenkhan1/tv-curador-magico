@@ -182,7 +182,7 @@ def _duelo_coincide_con_fixtures(
         # Coincidencia directa o cruzada
         if (loc_n in f_loc or f_loc in loc_n) and (vis_n in f_vis or f_vis in vis_n):
             return True
-        if (loc_n in f_vis or f_vis in loc_n) and (vis_n in f_loc or f_loc in vis_vis):
+        if (loc_n in f_vis or f_vis in loc_n) and (vis_n in f_loc or f_loc in vis_n):
             return True
     return False
 
