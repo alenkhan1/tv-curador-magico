@@ -219,7 +219,7 @@
     "hora_local_producto": "01:00",
     "duracion_min": 130,
     "logo_torneo": "",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1138.png&w=400&output=webp&trim=10",
+    "logo_local": "",
     "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp&trim=10",
     "banner": "",
     "tier": 2,
@@ -265,7 +265,7 @@
     "texto_original_crudo": "América de Cali vs. Ind. Medellín. Fecha 14, Estadio Olímpico Pascual Guerrero. Vive los partidos de la 103º edición de la Categoría Primera A de fútbol profesional colombiano. Los amantes del fútbol podrán disfrutar de una competición que reune a los mejores 20 equipos a nivel nacional",
     "titulo_original_crudo": "América de Cali vs. Ind. Medellín. Fecha 14, Estadio Olímpico Pascual Guerrero. Vive los partidos de la 103º edición de la Categoría Primera A de fútbol profesional colombiano. Los amantes del fútbol podrán disfrutar de una competición que reune a los mejores 20 equipos a nivel nacional",
     "ronda": "",
-    "motivo_descarte": "repeticion_resumen"
+    "motivo_descarte": "partido_jugado_ayer"
   },
   {
     "id": "lineal_win_sportsplus_1aaeadd7",
@@ -328,6 +328,64 @@
     "texto_original_crudo": "Orsomarso vs. Boca Jrs. de Cali. Fecha 5, Estadio Daniel Villa Zapata. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
     "titulo_original_crudo": "Orsomarso vs. Boca Jrs. de Cali. Fecha 5, Estadio Daniel Villa Zapata. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
     "ronda": "",
+    "motivo_descarte": "repeticion_resumen"
+  },
+  {
+    "id": "lineal_espn_c6b93545",
+    "agenda_id": "",
+    "titulo": "ATP World Tour Masters 1000 - Rolex Shanghai Masters - Tercera ronda, Qi Zhong Tennis Center, Shanghai, China",
+    "torneo": "ATP World Tour Masters 1000 - Rolex Shanghai Masters - Tercera ronda, Qi Zhong Tennis Center, Shanghai, China",
+    "categoria": "Tenis",
+    "tipo_evento": "circuito",
+    "equipo_local": "",
+    "equipo_visitante": "",
+    "subtitulo": "",
+    "referencia": "ATP World Tour Masters 1000 - Rolex Shanghai Masters",
+    "hora_utc": "2026-10-12T10:00:00Z",
+    "hora_local_producto": "05:00",
+    "duracion_min": 180,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "mitv_espn"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "ESPN 1 HD | AR",
+        "id_xtream": "591974",
+        "canal_lineal": "ESPN"
+      },
+      {
+        "nombre": "ESPN 1 FHD | ARG",
+        "id_xtream": "591975",
+        "canal_lineal": "ESPN"
+      },
+      {
+        "nombre": "ESPN 1 CO FHD",
+        "id_xtream": "591976",
+        "canal_lineal": "ESPN"
+      },
+      {
+        "nombre": "ESPN FHD | AR",
+        "id_xtream": "712743",
+        "canal_lineal": "ESPN"
+      }
+    ],
+    "canales_candidatos": [
+      "ESPN"
+    ],
+    "texto_original_crudo": "Tercera ronda, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
+    "titulo_original_crudo": "Tercera ronda, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
+    "ronda": "ATP World Tour Masters 1000 - Rolex Shanghai Masters - Tercera ronda, Qi Zhong Tennis Center, Shanghai, China",
     "motivo_descarte": "repeticion_resumen"
   },
   {
@@ -434,7 +492,7 @@
     "texto_original_crudo": "Sassuolo vs. Milan. Fecha 6, Mapei Stadium – Città del Tricolore. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
     "titulo_original_crudo": "Sassuolo vs. Milan. Fecha 6, Mapei Stadium – Città del Tricolore. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
     "ronda": "",
-    "motivo_descarte": "repeticion_resumen"
+    "motivo_descarte": "partido_jugado_ayer"
   },
   {
     "id": "lineal_espn_3_68fc1632",
@@ -487,7 +545,7 @@
     "texto_original_crudo": "Crystal Palace vs. Nottingham Forest. Fecha 6, Selhurst Park. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
     "titulo_original_crudo": "Crystal Palace vs. Nottingham Forest. Fecha 6, Selhurst Park. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
     "ronda": "",
-    "motivo_descarte": "repeticion_resumen"
+    "motivo_descarte": "partido_jugado_ayer"
   },
   {
     "id": "lineal_espn_3_0e20417b",
@@ -540,7 +598,7 @@
     "texto_original_crudo": "Dep. Alavés vs. Atl. de Madrid. Fecha 8, Estadio de Mendizorroza. Vive las emociones de los partidos de la 96º edición de LaLiga EA Sports, la máxima competición profesional de fútbol en España, en la cual participan 20 equipos en formato de liga",
     "titulo_original_crudo": "Dep. Alavés vs. Atl. de Madrid. Fecha 8, Estadio de Mendizorroza. Vive las emociones de los partidos de la 96º edición de LaLiga EA Sports, la máxima competición profesional de fútbol en España, en la cual participan 20 equipos en formato de liga",
     "ronda": "",
-    "motivo_descarte": "repeticion_resumen"
+    "motivo_descarte": "partido_jugado_ayer"
   },
   {
     "id": "lineal_espn_3_f8268357",
@@ -863,7 +921,7 @@
     ],
     "titulo_original_crudo": "UFC Fight Night",
     "ronda": "",
-    "motivo_descarte": "partido_jugado_ayer"
+    "motivo_descarte": "repeticion_resumen"
   },
   {
     "id": "xtream_81e862a4",
@@ -900,7 +958,7 @@
     ],
     "titulo_original_crudo": "UFC Fight Night: Portugués",
     "ronda": "",
-    "motivo_descarte": "partido_jugado_ayer"
+    "motivo_descarte": "repeticion_resumen"
   },
   {
     "id": "xtream_7463f34d",
@@ -937,6 +995,6 @@
     ],
     "titulo_original_crudo": "UFC Fight Night: English",
     "ronda": "",
-    "motivo_descarte": "partido_jugado_ayer"
+    "motivo_descarte": "repeticion_resumen"
   }
 ]
