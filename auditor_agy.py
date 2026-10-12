@@ -83,21 +83,35 @@ Reglas obligatorias de decisión:
      * Torneos locales, regionales o formativos/juveniles (ej. Torneo de Las Américas, ligas femeninas, fútbol base) que se emitan hoy en directo.
      * Torneos en curso hoy (ej. Rolex Shanghai Masters, tenis ATP/WTA, veladas de combate, NFL Monday Night Football, MLB).
      * Cualquier deporte minoritario o local (billar, tejo, dados, etc.) transmitido EN VIVO hoy. NUNCA descartes un evento solo por ser un deporte o torneo minoritario o local.
-3. 'motivo_descarte': Si 'descartar' es true, indica la razón precisa (ej: 'partido_jugado_ayer', 'repeticion_resumen', 'fecha_ajena', 'magazine_noticias'). Si es false, deja cadena vacía "".
+3. 'motivo_descarte': Si 'descartar' es true, indica la razon precisa (ej: 'partido_jugado_ayer', 'repeticion_resumen', 'fecha_ajena', 'magazine_noticias'). Si es false, deja cadena vacia "".
 
-4. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Boxeo, MMA, Golf, Rugby, Natación, Snooker, etc.). NUNCA 'Otros Deportes'.
+4. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Futbol, Baloncesto, Beisbol, Balonmano, Tenis, Padel, Motor, Ciclismo, Combate, Boxeo, MMA, Golf, Rugby, Natacion, Snooker, etc.). NUNCA 'Otros Deportes'.
 
-5. 'tipo_evento':
-   - 'duelo' si son dos equipos, clubes o selecciones enfrentados.
-   - 'circuito' si es velada de combate (Boxeo, UFC, MMA), sesión de carreras (Motor), torneo de tenis, golf, etc.
+5. 'tipo_evento' y REGLA SAGRADA DEPORTES DE EQUIPO:
+   - DEPORTES DE EQUIPO (Beisbol / MLB, Futbol Americano / NFL, Baloncesto / NBA, Futbol, Hockey / NHL): Son OBLIGATORIAMENTE 'duelo'. NUNCA los dejes como 'circuito' ni con titulo huerfano como 'MLB' o 'NFL'. Si la guia dice 'MLB: Serie de Campeonato' o 'NFL Monday Night' o no menciona los dos equipos, INVESTIGA que equipos juegan hoy ({fecha_hoy_iso}) a esa hora en esa liga:
+     * 'tipo_evento': 'duelo'
+     * 'titulo_pulido': 'Equipo Local vs. Equipo Visitante'
+     * 'torneo_pulido': 'MLB' (o 'NFL', 'NBA', etc.)
+   - 'circuito': UNICAMENTE veladas de combate (UFC, Boxeo, MMA, WWE), sesion de carreras (Motor), torneos individuales de Tenis, Golf, Ciclismo, etc.
 
 6. 'titulo_pulido':
-   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (limpio, sin prefijos, números de dial ni viñetas).
-   - Si es CIRCUITO / COMBATE: Título conciso del evento, velada u organización para el botón de la TV (ej: 'UFC Fight Night 246', 'Gran Noche de Boxeo', 'Rolex Shanghai Masters', 'NASCAR Cup Series'). REGLA SAGRADA: NUNCA pongas nombres de deportistas individuales en el botón de circuito.
+   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (limpio, sin prefijos, numeros de dial ni vinetas).
+   - Si es CIRCUITO / COMBATE / SHOW: Titulo conciso del evento, velada u organizacion para el boton de la TV (ej: 'UFC Fight Night 246', 'Gran Noche de Boxeo', 'Rolex Shanghai Masters', 'WWE Raw', 'NASCAR Cup Series'). REGLA SAGRADA: NUNCA pongas nombres de deportistas individuales en el boton de circuito.
 
-7. 'torneo_pulido': Nombre oficial del torneo, liga o velada (ej. 'Amistoso Internacional Femenino', 'UFC Fight Night', 'Liga BetPlay').
-8. 'subtitulo_pulido': Sede, coliseo, cancha, pista o sesión (ej. 'Stadium Court', 'Bogotá', 'Apex Las Vegas', 'Clasificación'). Si no hay sede conocida, deja cadena vacía "".
-9. 'participantes': Para circuito o combate, contrincantes principales extraídos del texto original.
+7. 'torneo_pulido': Nombre oficial del torneo, liga o velada (ej. 'Amistoso Internacional Femenino', 'UFC Fight Night', 'Liga BetPlay', 'MLB', 'NFL').
+
+8. 'subtitulo_pulido' (OBLIGATORIO Y DESCRIPTIVO):
+   - Para SHOWS SEMANALES O VELADAS (ej: WWE Raw, WWE SmackDown, UFC Fight Night): NUNCA lo dejes vacio ni repitas el titulo. Provee SIEMPRE la ciudad/recinto (ej: 'TD Garden, Boston, MA' o 'Apex, Las Vegas') y/o los combates estelares anunciados.
+   - Para otros circuitos o torneos: Sede, coliseo, cancha, pista o sesion (ej. 'Stadium Court', 'Bogota', 'Clasificacion'). Si no hay sede conocida, deja cadena vacia "".
+
+9. 'participantes': Para circuito o combate, contrincantes principales extraidos del texto original.
+
+10. 'canales_confirmados' (ASIGNACION EXACTA DE CANAL LINEAL):
+    - Si el evento tiene canales lineales asignados con variantes o senales hermanas (ej: Win Sports vs Win Sports+, ESPN vs ESPN 2/3/4/5/6/7/Premium, Eurosport 1 vs Eurosport 2, DSports vs DSports 2/+):
+      Determina con precision en que canal o canales se emite en directo.
+      Si se transmite por 'Win Sports+', el canal confirmado debe ser ["WIN SPORTS+"] y NO "Win Sports".
+      Si se transmite por 'ESPN 2', el canal confirmado debe ser ["ESPN 2"] y NO "ESPN" o "ESPN 3".
+      Devuelve 'canales_confirmados': ["CANAL EXACTO"]. Si no aplica o es stream general de evento, devuelve [].
 
 Lista de eventos a auditar:
 {json.dumps(lote, ensure_ascii=False, indent=1)}
@@ -113,7 +127,8 @@ Responde ÚNICAMENTE con un JSON Array:
     "subtitulo_pulido": "Sede o Cancha",
     "participantes": "Contrincantes bajo preview si aplica",
     "categoria_exacta": "Deporte exacto",
-    "tipo_evento": "duelo o circuito"
+    "tipo_evento": "duelo o circuito",
+    "canales_confirmados": ["CANAL EXACTO"]
   }}
 ]
 """
@@ -179,10 +194,14 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         if necesita:
             raw_tit = ev.get("texto_original_crudo") or ev.get("titulo_original_crudo") or ev.get("titulo_original") or ev.get("titulo") or ""
             fuentes_nombres = [f.get("nombre") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("nombre")][:3]
+            canales_cands = ev.get("canales_candidatos") or list(dict.fromkeys([
+                f.get("canal_lineal") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("canal_lineal")
+            ]))
             eventos_a_auditar.append({
                 "id": ev.get("id"),
                 "texto_original_crudo": raw_tit,
                 "canales_fuente": fuentes_nombres,
+                "canales_candidatos": canales_cands,
                 "titulo_propuesto": ev.get("titulo"),
                 "torneo": ev.get("torneo"),
                 "categoria": ev.get("categoria"),
@@ -227,6 +246,23 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 ev["torneo"] = aud["torneo_pulido"]
             elif aud.get("tipo_evento") == "circuito" and aud.get("titulo_pulido"):
                 ev["torneo"] = aud["titulo_pulido"]
+
+            # Poda quirurgica de canales lineales segun canales_confirmados por AGY
+            canales_conf = aud.get("canales_confirmados")
+            if canales_conf and isinstance(canales_conf, list) and len(canales_conf) > 0:
+                canales_conf_set = {c.strip().upper() for c in canales_conf if c and isinstance(c, str)}
+                fuentes_filtradas = []
+                for f in ev.get("fuentes", []):
+                    c_lin = (f.get("canal_lineal") or "").strip().upper()
+                    f_nom = (f.get("nombre") or "").strip().upper()
+                    if c_lin:
+                        if any(cc == c_lin for cc in canales_conf_set):
+                            fuentes_filtradas.append(f)
+                    else:
+                        if any(cc in f_nom for cc in canales_conf_set):
+                            fuentes_filtradas.append(f)
+                if fuentes_filtradas:
+                    ev["fuentes"] = fuentes_filtradas
 
             # Si es duelo, extraer equipos locales y visitantes para que la Fase 4 resuelva escudos
             if aud.get("tipo_evento") == "duelo":

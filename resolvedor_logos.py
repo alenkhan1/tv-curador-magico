@@ -99,7 +99,9 @@ def es_logo_basura(url: Any) -> bool:
     patrones_basura = [
         ":25461", ":80/images", "premieresupport", "1play.cool",
         "placeholder", "generic", "logo_generico", "stadium.png",
-        "icons8.com", "ppv", "default_channel", "no_logo", "blank.png"
+        "icons8.com", "ppv", "default_channel", "no_logo", "blank.png",
+        "american-football/leagues/1.png", "image_not_available",
+        "not_available", "not-available", "no-image", "no_image"
     ]
     return any(p in u for p in patrones_basura)
 
@@ -201,7 +203,6 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "SNOOKER": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/World_Snooker_Tour_logo.svg/512px-World_Snooker_Tour_logo.svg.png",
     "SHENZHEN OPEN": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/World_Snooker_Tour_logo.svg/512px-World_Snooker_Tour_logo.svg.png",
     "UFC": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/512px-UFC_logo.svg.png",
-    "BOXEO": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/512px-UFC_logo.svg.png",
 }
 
 FALLBACK_POR_CATEGORIA_RAW: dict[str, str] = {
@@ -212,7 +213,7 @@ FALLBACK_POR_CATEGORIA_RAW: dict[str, str] = {
     "Snooker": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/World_Snooker_Tour_logo.svg/512px-World_Snooker_Tour_logo.svg.png",
     "Motor": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/F1.svg/512px-F1.svg.png",
     "Golf": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/PGA_Tour_logo.svg/512px-PGA_Tour_logo.svg.png",
-    "Combate": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/UFC_logo.svg/512px-UFC_logo.svg.png",
+    "Combate": "",
     "Balonmano": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Liga_Asobal_logo.svg/512px-Liga_Asobal_logo.svg.png",
     "Beisbol": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/512px-Major_League_Baseball_logo.svg.png",
     "Béisbol": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/512px-Major_League_Baseball_logo.svg.png",
@@ -405,6 +406,52 @@ def _guardar_cache(cache: dict[str, str]) -> None:
 def guardar_cache_logos() -> None:
     pass
 
+
+DISCRIMINADORES_TORNEO: set[str] = {
+    # Confederaciones
+    "AFC", "CAF", "CONCACAF", "OFC", "UEFA", "CONMEBOL",
+    # Paises / Regiones
+    "ENGLAND", "INGLATERRA", "SPAIN", "ESPANA", "ESPANOLA",
+    "MEXICO", "MX", "COLOMBIA", "COLOMBIANA", "ARGENTINA", "ARGENTINO",
+    "BRASIL", "BRAZIL", "BRASILEIRAO", "CHILE", "CHILENA", "PERU", "PERUANA",
+    "ECUADOR", "ECUATORIANA", "URUGUAY", "URUGUAYA", "PARAGUAY", "PARAGUAYA",
+    "VENEZUELA", "BOLIVIA", "PORTUGAL", "PORTUGUESA", "FRANCIA", "FRANCE",
+    "ITALIA", "ITALY", "ITALIANA", "ALEMANIA", "GERMANY", "ALEMANA",
+    "PAISES BAJOS", "NETHERLANDS", "HOLANDA", "BELGICA", "BELGIUM",
+    "ESCOCIA", "SCOTLAND", "SCOTTISH", "RUSIA", "RUSSIAN", "RUSSIA",
+    "CANADA", "CANADIAN", "EEUU", "USA", "ESTADOS UNIDOS", "AMERICAN",
+    "SAUDI", "ARABIA", "QATAR", "JAPON", "JAPAN", "COREA", "KOREA",
+    "CHINA", "AUSTRALIA", "AUSTRALIAN", "INDIA", "INDIAN", "TURQUIA", "TURKEY",
+    "GRECIA", "GREECE", "POLONIA", "POLAND",
+    # Marcas y sponsors exclusivos de ligas nacionales
+    "BETPLAY", "BETANO", "DIMAYOR", "HYPERMOTION", "ENDESA", "ASOBAL", "EFL",
+    # Genero y categorias formativas
+    "FEMENINA", "FEMENIL", "WOMEN", "WOMENS", "FEM",
+    "SUB 20", "SUB 17", "SUB 23", "U20", "U17", "U23",
+    # Disciplinas deportivas especificas que comparten nombres genericos
+    "PADEL", "FUTSAL", "PLAYA", "3X3"
+}
+
+SINONIMOS_DISCRIMINADORES: dict[str, str] = {
+    "MEXICO": "MX", "MX": "MX",
+    "COLOMBIA": "COLOMBIANA", "COLOMBIANA": "COLOMBIANA",
+    "ARGENTINA": "ARGENTINO", "ARGENTINO": "ARGENTINO",
+    "BRASIL": "BRAZIL", "BRAZIL": "BRAZIL",
+    "FEMENINA": "FEM", "FEMENIL": "FEM", "WOMEN": "FEM", "WOMENS": "FEM", "FEM": "FEM",
+    "ENGLAND": "INGLATERRA", "INGLATERRA": "INGLATERRA",
+    "SPAIN": "ESPANA", "ESPANA": "ESPANA", "ESPANOLA": "ESPANA",
+}
+
+def _normalizar_mods_torneo(mods: set[str]) -> set[str]:
+    return {SINONIMOS_DISCRIMINADORES.get(m, m) for m in mods}
+
+def son_torneos_compatibles(torneo_norm: str, clave: str) -> bool:
+    if clave == torneo_norm:
+        return True
+    mods_torneo = _normalizar_mods_torneo({d for d in DISCRIMINADORES_TORNEO if re.search(r"\b" + re.escape(d) + r"\b", torneo_norm)})
+    mods_clave = _normalizar_mods_torneo({d for d in DISCRIMINADORES_TORNEO if re.search(r"\b" + re.escape(d) + r"\b", clave)})
+    return mods_torneo == mods_clave
+
 def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False) -> str:
     """Resuelve el logo oficial del torneo con precedencia estricta por palabras completas."""
     if not torneo and not categoria:
@@ -420,7 +467,9 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
         claves_ordenadas = sorted(catalogo.keys(), key=len, reverse=True)
         for clave in claves_ordenadas:
             patron = r"\b" + re.escape(clave) + r"\b"
-            if re.search(patron, torneo_norm) or (clave == torneo_norm):
+            if (clave == torneo_norm) or re.search(patron, torneo_norm):
+                if not son_torneos_compatibles(torneo_norm, clave):
+                    continue
                 url = catalogo[clave]
                 cache[clave_cache] = url
                 _guardar_cache(cache)
@@ -430,15 +479,22 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     claves_ordenadas = sorted(CIRCUITO_LOGOS.keys(), key=len, reverse=True)
     for clave in claves_ordenadas:
         patron = r"\b" + re.escape(clave) + r"\b"
-        if re.search(patron, torneo_norm):
+        if (clave == torneo_norm) or re.search(patron, torneo_norm):
+            if not son_torneos_compatibles(torneo_norm, clave):
+                continue
             url = CIRCUITO_LOGOS[clave]
             cache[clave_cache] = url
             _guardar_cache(cache)
             return url
 
-    # 2. Caché previo en disco
+    # 2. Caché previo en disco con invalidación de falsos positivos
     if clave_cache in cache and cache[clave_cache] and not es_logo_basura(cache[clave_cache]):
-        return cache[clave_cache]
+        cached_url = cache[clave_cache]
+        # Invalida UEFA Champions League si el torneo pertenece a otra confederación
+        if "uefa_champions_league" in cached_url.lower() and any(k in torneo_norm for k in ["AFC", "CAF", "CONCACAF", "OFC", "EHF"]):
+            pass
+        else:
+            return cached_url
 
     # 3. Consulta de red a TheSportsDB
     if permitir_red and THESPORTSDB_KEY:

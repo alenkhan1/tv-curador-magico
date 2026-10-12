@@ -182,6 +182,7 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
                 indice[canon].append({
                     "nombre": nombre.strip(),
                     "id_xtream": sid,
+                    "canal_lineal": canon,
                     "_prioridad": prioridad
                 })
                 break
@@ -271,7 +272,9 @@ def inyectar_eventos_lineales(
                 for f in indice_canales[canon]:
                     if f["id_xtream"] not in vistas:
                         vistas.add(f["id_xtream"])
-                        fuentes_unicas.append(f)
+                        item_f = dict(f)
+                        item_f["canal_lineal"] = canon
+                        fuentes_unicas.append(item_f)
                         count_c += 1
                         if count_c >= max_por_canal:
                             break
@@ -319,6 +322,7 @@ def inyectar_eventos_lineales(
             "confianza": "alta",
             "puntuacion_confianza": 0.95,
             "fuentes": fuentes_unicas,
+            "canales_candidatos": list(dict.fromkeys(canales_usados)),
             "texto_original_crudo": getattr(ev, "texto_original_crudo", "") or ev.titulo,
             "titulo_original_crudo": getattr(ev, "texto_original_crudo", "") or ev.titulo,
         }

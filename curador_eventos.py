@@ -41,6 +41,7 @@ from resolvedor_logos import (
     guardar_cache_logos,
     resolver_logo_equipo,
     resolver_logo_torneo,
+    es_logo_basura,
 )
 from sanitizador_nombres import sanitizar_evento_crudo
 from curador_semantico import post_procesar_y_curar_eventos
@@ -607,8 +608,10 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
                 ev["logo_local"] = envolver_proxy_wsrv(match["logo_local"])
             if match.get("logo_visitante"):
                 ev["logo_visitante"] = envolver_proxy_wsrv(match["logo_visitante"])
-            if match.get("logo_torneo"):
-                ev["logo_torneo"] = envolver_proxy_wsrv(match["logo_torneo"])
+            if match.get("logo_torneo") and not es_logo_basura(match["logo_torneo"]):
+                logo_existente = ev.get("logo_torneo", "")
+                if not logo_existente or ("assets/logos/torneos/" not in logo_existente and "flagcdn.com" not in logo_existente):
+                    ev["logo_torneo"] = envolver_proxy_wsrv(match["logo_torneo"])
             if match.get("local") and match.get("visitante"):
                 ev["equipo_local"] = match["local"]
                 ev["equipo_visitante"] = match["visitante"]
@@ -631,14 +634,34 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     eventos_pulidos, descartados_agy = auditar_catalogo_con_agy(eventos_fase2, fecha_hoy_iso)
     descartados.extend(descartados_agy)
 
-    # FASE 4: GARANTÍA GRÁFICA PARA ANDROID TV (EventoCard.kt)
+        # Re-emparejamiento con API-Sports para duelos resueltos por AGY (ej. MLB, NFL)
+    for ev in eventos_pulidos:
+        if ev.get("tipo_evento") == "duelo" and not ev.get("contrastado_api"):
+            match = emparejar_con_api_sports(ev, indice_fixtures, fixtures_dia)
+            if match:
+                ev["contrastado_api"] = True
+                if match.get("logo_local"):
+                    ev["logo_local"] = envolver_proxy_wsrv(match["logo_local"])
+                if match.get("logo_visitante"):
+                    ev["logo_visitante"] = envolver_proxy_wsrv(match["logo_visitante"])
+                if match.get("logo_torneo") and not es_logo_basura(match["logo_torneo"]):
+                    logo_existente = ev.get("logo_torneo", "")
+                    if not logo_existente or ("assets/logos/torneos/" not in logo_existente and "flagcdn.com" not in logo_existente):
+                        ev["logo_torneo"] = envolver_proxy_wsrv(match["logo_torneo"])
+
+    # FASE 4: GARANTIA GRAFICA PARA ANDROID TV (EventoCard.kt)
     for ev in eventos_pulidos:
         cat = ev.get("categoria", "")
         tor = ev.get("torneo") or ev["titulo"]
         loc = ev.get("equipo_local", "")
         vis = ev.get("equipo_visitante", "")
 
-        ev["logo_torneo"] = ev.get("logo_torneo") or resolver_logo_torneo(tor, cat) or ""
+        logo_cat = resolver_logo_torneo(tor, cat)
+        if logo_cat and ("assets/logos/torneos/" in logo_cat or "flagcdn.com" in logo_cat):
+            ev["logo_torneo"] = logo_cat
+        elif not ev.get("logo_torneo") or es_logo_basura(ev["logo_torneo"]):
+            ev["logo_torneo"] = logo_cat or ""
+
         if loc:
             ev["logo_local"] = ev.get("logo_local") or resolver_logo_equipo(loc, cat, tor) or ""
         if vis:
