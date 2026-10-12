@@ -1,6 +1,6 @@
 {
   "version": "3.2-curador-tv-universal",
-  "generado_utc": "2026-10-12T14:40:03Z",
+  "generado_utc": "2026-10-12T16:08:00Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-12",
   "base_media": "http://avefenixtv.com:8080",
@@ -14,7 +14,7 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Milán",
+      "subtitulo": "Milán, Italia",
       "referencia": "Premier Padel",
       "hora_utc": "2026-10-12T07:00:00Z",
       "hora_local_producto": "02:00",
@@ -55,7 +55,7 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Octavos de final, Qi Zhong Tennis Center",
+      "subtitulo": "Qizhong Forest Sports City Arena, Shanghai",
       "referencia": "ATP World Tour Masters 1000 - Rolex Shanghai Masters",
       "hora_utc": "2026-10-12T10:00:00Z",
       "hora_local_producto": "05:00",
@@ -77,28 +77,23 @@
       "fuentes": [
         {
           "nombre": "ESPN 1 HD | AR",
-          "id_xtream": "591974"
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 1 FHD | ARG",
-          "id_xtream": "591975"
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 1 CO FHD",
-          "id_xtream": "591976"
-        },
-        {
-          "nombre": "ESPN 2 HD | ARG",
-          "id_xtream": "591980"
-        },
-        {
-          "nombre": "ESPN 2 ARG | FHD",
-          "id_xtream": "591981"
-        },
-        {
-          "nombre": "ESPN 2 CO",
-          "id_xtream": "591982"
+          "id_xtream": "591976",
+          "canal_lineal": "ESPN"
         }
+      ],
+      "canales_candidatos": [
+        "ESPN",
+        "ESPN 2"
       ],
       "texto_original_crudo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
       "titulo_original_crudo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
@@ -119,7 +114,7 @@
       "hora_utc": "2026-10-12T12:00:00Z",
       "hora_local_producto": "07:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F720.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F722.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
@@ -144,14 +139,50 @@
       "ronda": ""
     },
     {
+      "id": "xtream_a72a43e1",
+      "agenda_id": "",
+      "titulo": "RWS: World Championship Superfight Night",
+      "torneo": "RWS: World Championship Superfight Night",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "referencia": "RWS: World Championship Superfight Night",
+      "hora_utc": "2026-10-12T12:10:00Z",
+      "hora_local_producto": "07:10",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/efl_championship.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/efl_championship.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "07:10 | RWS: World Championship Superfight Night | Lucha",
+          "id_xtream": "1727174"
+        }
+      ],
+      "titulo_original_crudo": "RWS: World Championship Superfight Night",
+      "ronda": ""
+    },
+    {
       "id": "xtream_9b2963bc",
       "agenda_id": "",
-      "titulo": "Rumania vs. Hong Kong China",
-      "torneo": "Test Match Internacional",
+      "titulo": "Rumania vs. Hong Kong",
+      "torneo": "Test Match Rugby",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
       "equipo_local": "Rumania",
-      "equipo_visitante": "Hong Kong China",
+      "equipo_visitante": "Hong Kong",
       "subtitulo": "Rugby",
       "referencia": "Rugby",
       "hora_utc": "2026-10-12T12:50:00Z",
@@ -159,7 +190,7 @@
       "duracion_min": 130,
       "logo_torneo": "",
       "logo_local": "https://flagcdn.com/256x192/ro.png",
-      "logo_visitante": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4462.png&w=400&output=webp&trim=10",
       "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
@@ -183,13 +214,13 @@
     {
       "id": "lineal_win_sportsplus_8dbb92df",
       "agenda_id": "",
-      "titulo": "Torneo de Las Américas",
+      "titulo": "Final",
       "torneo": "Torneo de Las Américas",
       "categoria": "Fútbol",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Final",
+      "subtitulo": "Cali, Colombia",
       "referencia": "Torneo de Las Américas",
       "hora_utc": "2026-10-12T13:00:00Z",
       "hora_local_producto": "08:00",
@@ -211,28 +242,23 @@
       "fuentes": [
         {
           "nombre": "Win Sports + SD",
-          "id_xtream": "13768"
+          "id_xtream": "13768",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports + HD",
-          "id_xtream": "13769"
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports + HD",
-          "id_xtream": "13770"
-        },
-        {
-          "nombre": "Win Sports SD",
-          "id_xtream": "13766"
-        },
-        {
-          "nombre": "Win Sports HD",
-          "id_xtream": "13767"
-        },
-        {
-          "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803"
+          "id_xtream": "13770",
+          "canal_lineal": "WIN SPORTS+"
         }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+",
+        "WIN SPORTS"
       ],
       "texto_original_crudo": "Final. Torneo de Las Américas. Disfruta del certamen de fútbol formativo más importante del país",
       "titulo_original_crudo": "Final. Torneo de Las Américas. Disfruta del certamen de fútbol formativo más importante del país",
@@ -242,12 +268,12 @@
     {
       "id": "xtream_bb6abea9",
       "agenda_id": "",
-      "titulo": "Pakhtakor vs. Al Qadsiah Club",
+      "titulo": "Pakhtakor vs. Al Qadsiah",
       "torneo": "AFC Champions League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Pakhtakor",
-      "equipo_visitante": "Al Qadsiah Club",
+      "equipo_visitante": "Al Qadsiah",
       "subtitulo": "UEFA Champions League",
       "referencia": "UEFA Champions League",
       "hora_utc": "2026-10-12T13:30:00Z",
@@ -294,7 +320,7 @@
       "hora_utc": "2026-10-12T14:15:00Z",
       "hora_local_producto": "09:15",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9580.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F715.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
@@ -367,11 +393,11 @@
     {
       "id": "xtream_6032709d",
       "agenda_id": "",
-      "titulo": "Al Wasl FC vs. Al Ahli Saudi",
+      "titulo": "Al Wasl vs. Al Ahli Saudi",
       "torneo": "AFC Champions League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Al Wasl FC",
+      "equipo_local": "Al Wasl",
       "equipo_visitante": "Al Ahli Saudi",
       "subtitulo": "UEFA Champions League",
       "referencia": "UEFA Champions League",
@@ -409,7 +435,7 @@
       "id": "xtream_915b2753",
       "agenda_id": "",
       "titulo": "Canadá vs. Portugal",
-      "torneo": "Test Match Internacional",
+      "torneo": "Test Match Rugby",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
       "equipo_local": "Canadá",
@@ -456,7 +482,7 @@
       "hora_utc": "2026-10-12T16:30:00Z",
       "hora_local_producto": "11:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F499.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F517.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
@@ -474,28 +500,38 @@
       "fuentes": [
         {
           "nombre": "ESPN 2 HD | ARG",
-          "id_xtream": "591980"
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 ARG | FHD",
-          "id_xtream": "591981"
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 CO",
-          "id_xtream": "591982"
+          "id_xtream": "591982",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 1 HD | AR",
-          "id_xtream": "591974"
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 1 FHD | ARG",
-          "id_xtream": "591975"
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 1 CO FHD",
-          "id_xtream": "591976"
+          "id_xtream": "591976",
+          "canal_lineal": "ESPN"
         }
+      ],
+      "canales_candidatos": [
+        "ESPN 2",
+        "ESPN"
       ],
       "texto_original_crudo": "13:30 Serie A Italiana Atalanta Venezia FC Disney+ Premium ESPN 2",
       "titulo_original_crudo": "13:30 Serie A Italiana Atalanta Venezia FC Disney+ Premium ESPN 2",
@@ -517,7 +553,7 @@
       "hora_utc": "2026-10-12T16:30:00Z",
       "hora_local_producto": "11:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F718.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F545.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
@@ -544,13 +580,13 @@
     {
       "id": "lineal_win_sportsplus_759e091f",
       "agenda_id": "",
-      "titulo": "Torneo de Las Américas",
+      "titulo": "Final",
       "torneo": "Torneo de Las Américas",
       "categoria": "Fútbol",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Final",
+      "subtitulo": "Cali, Colombia",
       "referencia": "Torneo de Las Américas",
       "hora_utc": "2026-10-12T17:00:00Z",
       "hora_local_producto": "12:00",
@@ -572,28 +608,23 @@
       "fuentes": [
         {
           "nombre": "Win Sports + SD",
-          "id_xtream": "13768"
+          "id_xtream": "13768",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports + HD",
-          "id_xtream": "13769"
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports + HD",
-          "id_xtream": "13770"
-        },
-        {
-          "nombre": "Win Sports SD",
-          "id_xtream": "13766"
-        },
-        {
-          "nombre": "Win Sports HD",
-          "id_xtream": "13767"
-        },
-        {
-          "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803"
+          "id_xtream": "13770",
+          "canal_lineal": "WIN SPORTS+"
         }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+",
+        "WIN SPORTS"
       ],
       "texto_original_crudo": "Final. Torneo de Las Américas. Disfruta del certamen de fútbol formativo más importante del país",
       "titulo_original_crudo": "Final. Torneo de Las Américas. Disfruta del certamen de fútbol formativo más importante del país",
@@ -651,7 +682,7 @@
       "hora_utc": "2026-10-12T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fleagues%2F57.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F674.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F684.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
@@ -689,10 +720,10 @@
       "hora_utc": "2026-10-12T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F479.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://media.api-sports.io/football/leagues/479.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F48dk0h1582572865.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkevy591770133070.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F479.png&w=400&output=webp&trim=10",
+      "banner": "https://media.api-sports.io/football/leagues/479.png",
       "tier": 1,
       "origen": "xtream_evento",
       "origenes": [
@@ -768,7 +799,7 @@
       "hora_utc": "2026-10-12T18:15:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F17.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2939.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4217.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
@@ -806,7 +837,7 @@
       "hora_utc": "2026-10-12T18:45:00Z",
       "hora_local_producto": "13:45",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F503.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F494.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
@@ -824,40 +855,54 @@
       "fuentes": [
         {
           "nombre": "ESPN 2 HD | ARG",
-          "id_xtream": "591980"
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 ARG | FHD",
-          "id_xtream": "591981"
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 CO",
-          "id_xtream": "591982"
+          "id_xtream": "591982",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 1 HD | AR",
-          "id_xtream": "591974"
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 1 FHD | ARG",
-          "id_xtream": "591975"
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 1 CO FHD",
-          "id_xtream": "591976"
+          "id_xtream": "591976",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 5",
-          "id_xtream": "591992"
+          "id_xtream": "591992",
+          "canal_lineal": "ESPN 5"
         },
         {
           "nombre": "ESPN 5 SUR",
-          "id_xtream": "591993"
+          "id_xtream": "591993",
+          "canal_lineal": "ESPN 5"
         },
         {
           "nombre": "ESPN 5",
-          "id_xtream": "591994"
+          "id_xtream": "591994",
+          "canal_lineal": "ESPN 5"
         }
+      ],
+      "canales_candidatos": [
+        "ESPN 2",
+        "ESPN",
+        "ESPN 5"
       ],
       "texto_original_crudo": "15:45 Serie A Italiana Torino Udinese Disney+ Premium ESPN 2",
       "titulo_original_crudo": "15:45 Serie A Italiana Torino Udinese Disney+ Premium ESPN 2",
@@ -869,7 +914,7 @@
       "id": "xtream_ddeaaee4",
       "agenda_id": "",
       "titulo": "Bélgica vs. Namibia",
-      "torneo": "Test Match Internacional",
+      "torneo": "Test Match Rugby",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
       "equipo_local": "Bélgica",
@@ -916,7 +961,7 @@
       "hora_utc": "2026-10-12T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F539.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F536.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
@@ -934,20 +979,26 @@
       "fuentes": [
         {
           "nombre": "DIRECTV SPORTS 2 AR",
-          "id_xtream": "69549"
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2"
         },
         {
           "nombre": "DIRECTV SPORTS 2 CO",
-          "id_xtream": "69568"
+          "id_xtream": "69568",
+          "canal_lineal": "DSPORTS 2"
         },
         {
           "nombre": "DSPORTS 2 ARG",
-          "id_xtream": "712757"
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2"
         },
         {
           "nombre": "14:00 ◘ Levante vs. Sevilla ◘ LaLiga ◘",
           "id_xtream": "1728062"
         }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
       ],
       "texto_original_crudo": "16:00 La Liga EA Sports Levante Sevilla FC DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports 2 (612/1612)",
       "titulo_original_crudo": "16:00 La Liga EA Sports Levante Sevilla FC DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports 2 (612/1612)",
@@ -969,7 +1020,7 @@
       "hora_utc": "2026-10-12T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1346.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F34.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
@@ -987,28 +1038,38 @@
       "fuentes": [
         {
           "nombre": "ESPN 3 HD | AR",
-          "id_xtream": "591986"
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3"
         },
         {
           "nombre": "ESPN 3 FHD | ARG",
-          "id_xtream": "591987"
+          "id_xtream": "591987",
+          "canal_lineal": "ESPN 3"
         },
         {
           "nombre": "ESPN 3 HD| AR",
-          "id_xtream": "712745"
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3"
         },
         {
           "nombre": "ESPN 2 HD | ARG",
-          "id_xtream": "591980"
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 ARG | FHD",
-          "id_xtream": "591981"
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 CO",
-          "id_xtream": "591982"
+          "id_xtream": "591982",
+          "canal_lineal": "ESPN 2"
         }
+      ],
+      "canales_candidatos": [
+        "ESPN 3",
+        "ESPN 2"
       ],
       "texto_original_crudo": "16:00 Premier League Coventry City Newcastle Disney+ Premium ESPN 3",
       "titulo_original_crudo": "16:00 Premier League Coventry City Newcastle Disney+ Premium ESPN 3",
@@ -1030,7 +1091,7 @@
       "hora_utc": "2026-10-12T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F446.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F438.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
@@ -1048,24 +1109,33 @@
       "fuentes": [
         {
           "nombre": "ESPN 2 HD | ARG",
-          "id_xtream": "591980"
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 ARG | FHD",
-          "id_xtream": "591981"
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 CO",
-          "id_xtream": "591982"
+          "id_xtream": "591982",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN PREMIUM | AR",
-          "id_xtream": "591997"
+          "id_xtream": "591997",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA"
         },
         {
           "nombre": "ESPN Premium  | AR FHD",
-          "id_xtream": "712747"
+          "id_xtream": "712747",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA"
         }
+      ],
+      "canales_candidatos": [
+        "ESPN 2",
+        "ESPN PREMIUM ARGENTINA"
       ],
       "texto_original_crudo": "16:00 Torneo Betano Torneo Clausura Lanús Vélez Sarsfield ESPN Premium ESPN",
       "titulo_original_crudo": "16:00 Torneo Betano Torneo Clausura Lanús Vélez Sarsfield ESPN Premium ESPN",
@@ -1087,7 +1157,7 @@
       "hora_utc": "2026-10-12T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F147.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F120.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
@@ -1125,7 +1195,7 @@
       "hora_utc": "2026-10-12T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F719.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F547.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga_hypermotion.png",
@@ -1158,6 +1228,114 @@
       "ronda": ""
     },
     {
+      "id": "xtream_7586702b",
+      "agenda_id": "",
+      "titulo": "UFC Fight Night",
+      "torneo": "UFC Fight Night",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "referencia": "UFC Fight Night",
+      "hora_utc": "2026-10-12T19:55:00Z",
+      "hora_local_producto": "14:55",
+      "duracion_min": 135,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:55 | UFC Fight Night: En Español | UFC",
+          "id_xtream": "1727175"
+        }
+      ],
+      "titulo_original_crudo": "UFC Fight Night",
+      "ronda": ""
+    },
+    {
+      "id": "xtream_81e862a4",
+      "agenda_id": "",
+      "titulo": "UFC Fight Night • Portugués",
+      "torneo": "UFC Fight Night • Portugués",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "referencia": "UFC Fight Night: Portugués",
+      "hora_utc": "2026-10-12T19:55:00Z",
+      "hora_local_producto": "14:55",
+      "duracion_min": 135,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:55 | UFC Fight Night: En Portugués | UFC",
+          "id_xtream": "1727176"
+        }
+      ],
+      "titulo_original_crudo": "UFC Fight Night: Portugués",
+      "ronda": ""
+    },
+    {
+      "id": "xtream_7463f34d",
+      "agenda_id": "",
+      "titulo": "UFC Fight Night • English",
+      "torneo": "UFC Fight Night • English",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "referencia": "UFC Fight Night: English",
+      "hora_utc": "2026-10-12T19:55:00Z",
+      "hora_local_producto": "14:55",
+      "duracion_min": 135,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:55 | UFC Fight Night: English | UFC",
+          "id_xtream": "1727177"
+        }
+      ],
+      "titulo_original_crudo": "UFC Fight Night: English",
+      "ronda": ""
+    },
+    {
       "id": "xtream_e51e9724",
       "agenda_id": "",
       "titulo": "HFX Wanderers FC vs Cavalry FC",
@@ -1174,7 +1352,7 @@
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F479.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2621.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2619.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F479.png&w=400&output=webp&trim=10",
+      "banner": "https://media.api-sports.io/football/leagues/479.png",
       "tier": 1,
       "origen": "xtream_evento",
       "origenes": [
@@ -1204,13 +1382,13 @@
       "tipo_evento": "duelo",
       "equipo_local": "Universidad de Chile",
       "equipo_visitante": "Ñublense",
-      "subtitulo": "Primera División",
-      "referencia": "Primera División",
+      "subtitulo": "Estadio Nacional Julio Martínez Prádanos",
+      "referencia": "Estadio Nacional Julio Martínez Prádanos",
       "hora_utc": "2026-10-12T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpo0o3c1578347873.png&w=400&output=webp",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F265.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2323.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2337.png&w=400&output=webp&trim=10",
       "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
       "tier": 2,
@@ -1230,7 +1408,8 @@
       ],
       "titulo_original_crudo": "Universidad Chile vs Ñublense",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "contrastado_api": true
     },
     {
       "id": "xtream_119fdb91",
@@ -1273,13 +1452,13 @@
       "id": "lineal_win_sportsplus_b1448bf0",
       "agenda_id": "",
       "titulo": "Orsomarso vs. Boca Juniors de Cali",
-      "torneo": "Torneo BetPlay",
+      "torneo": "Torneo BetPlay Dimayor",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Orsomarso",
       "equipo_visitante": "Boca Juniors de Cali",
-      "subtitulo": "Orsomarso vs Boca Juniors Cali",
-      "referencia": "Orsomarso vs Boca Juniors Cali",
+      "subtitulo": "Estadio Francisco Rivera Escobar",
+      "referencia": "Estadio Francisco Rivera Escobar",
       "hora_utc": "2026-10-12T20:30:00Z",
       "hora_local_producto": "15:30",
       "duracion_min": 130,
@@ -1300,28 +1479,38 @@
       "fuentes": [
         {
           "nombre": "Win Sports + SD",
-          "id_xtream": "13768"
+          "id_xtream": "13768",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports + HD",
-          "id_xtream": "13769"
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports + HD",
-          "id_xtream": "13770"
+          "id_xtream": "13770",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports SD",
-          "id_xtream": "13766"
+          "id_xtream": "13766",
+          "canal_lineal": "WIN SPORTS"
         },
         {
           "nombre": "Win Sports HD",
-          "id_xtream": "13767"
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS"
         },
         {
           "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803"
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS"
         }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+",
+        "WIN SPORTS"
       ],
       "texto_original_crudo": "15:30 Orsomarso Boca Juniors Cali Win Fútbol + Win Play Win Sports",
       "titulo_original_crudo": "15:30 Orsomarso Boca Juniors Cali Win Fútbol + Win Play Win Sports",
@@ -1380,7 +1569,7 @@
       "hora_utc": "2026-10-12T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 135,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F1.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F20.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F18.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
@@ -1421,14 +1610,14 @@
       "tipo_evento": "duelo",
       "equipo_local": "Los Angeles Dodgers",
       "equipo_visitante": "Milwaukee Brewers",
-      "subtitulo": "NLCS - Juego 2",
-      "referencia": "NLCS - Juego 2",
+      "subtitulo": "NLCS: Juego 2",
+      "referencia": "NLCS: Juego 2",
       "hora_utc": "2026-10-12T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 135,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F18.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F20.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F20.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F18.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
       "tier": 1,
       "origen": "xtream_evento",
@@ -1447,23 +1636,24 @@
       ],
       "titulo_original_crudo": "Los Angeles Dodgers vs Milwaukee Brewers (NLCS: Game 2)",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "contrastado_api": true
     },
     {
       "id": "xtream_4bed2d0a",
       "agenda_id": "",
       "titulo": "Gimnasia Mendoza vs. Newell's Old Boys",
-      "torneo": "Liga Profesional Argentina",
+      "torneo": "Liga Profesional de Fútbol",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Gimnasia Mendoza",
       "equipo_visitante": "Newell's Old Boys",
-      "subtitulo": "Liga Profesional Argentina",
-      "referencia": "Liga Profesional Argentina",
+      "subtitulo": "Estadio Víctor Antonio Legrotaglie",
+      "referencia": "Estadio Víctor Antonio Legrotaglie",
       "hora_utc": "2026-10-12T21:15:00Z",
       "hora_local_producto": "16:15",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1jxpz51677637810.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F23aftf1580842633.png&w=400&output=webp&trim=10",
       "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
@@ -1490,13 +1680,13 @@
       "id": "lineal_tyc_sports_ebf6a54f",
       "agenda_id": "",
       "titulo": "Gimnasia Mendoza vs. Newell's Old Boys",
-      "torneo": "Liga Profesional Argentina",
+      "torneo": "Liga Profesional de Fútbol",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Gimnasia Mendoza",
       "equipo_visitante": "Newell's Old Boys",
-      "subtitulo": "Torneo Betano",
-      "referencia": "Torneo Betano",
+      "subtitulo": "Estadio Víctor Antonio Legrotaglie",
+      "referencia": "Estadio Víctor Antonio Legrotaglie",
       "hora_utc": "2026-10-12T21:30:00Z",
       "hora_local_producto": "16:30",
       "duracion_min": 130,
@@ -1518,16 +1708,17 @@
       "fuentes": [
         {
           "nombre": "TyC Sports",
-          "id_xtream": "712754"
+          "id_xtream": "712754",
+          "canal_lineal": "TYC SPORTS"
         },
         {
           "nombre": "TYC SPORTS HD",
-          "id_xtream": "712755"
-        },
-        {
-          "nombre": "16:30 ◘ Gimnasia Mendoza vs. Newell's Old Boys ◘ Liga Profesional ◘",
-          "id_xtream": "1728070"
+          "id_xtream": "712755",
+          "canal_lineal": "TYC SPORTS"
         }
+      ],
+      "canales_candidatos": [
+        "TYC SPORTS"
       ],
       "texto_original_crudo": "18:30 Torneo Betano Torneo Clausura Gimnasia Mendoza Newell&#39;s Old Boys TNT Sports Premium TNT Sports en HBO MAX (Suscripción Pack fútbol)",
       "titulo_original_crudo": "18:30 Torneo Betano Torneo Clausura Gimnasia Mendoza Newell&#39;s Old Boys TNT Sports Premium TNT Sports en HBO MAX (Suscripción Pack fútbol)",
@@ -1548,7 +1739,7 @@
       "hora_utc": "2026-10-12T22:30:00Z",
       "hora_local_producto": "17:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F132.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F134.png&w=400&output=webp&trim=10",
       "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
@@ -1565,28 +1756,38 @@
       "fuentes": [
         {
           "nombre": "Win Sports SD",
-          "id_xtream": "13766"
+          "id_xtream": "13766",
+          "canal_lineal": "WIN SPORTS"
         },
         {
           "nombre": "Win Sports HD",
-          "id_xtream": "13767"
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS"
         },
         {
           "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803"
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS"
         },
         {
           "nombre": "Win Sports + SD",
-          "id_xtream": "13768"
+          "id_xtream": "13768",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports + HD",
-          "id_xtream": "13769"
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
           "nombre": "Win Sports + HD",
-          "id_xtream": "13770"
+          "id_xtream": "13770",
+          "canal_lineal": "WIN SPORTS+"
         }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS",
+        "WIN SPORTS+"
       ],
       "texto_original_crudo": "17:30 Chapecoense At. Paranaense Fanatiz (Míralo en vivo) Win Play Win Sports",
       "titulo_original_crudo": "17:30 Chapecoense At. Paranaense Fanatiz (Míralo en vivo) Win Play Win Sports",
@@ -1597,20 +1798,20 @@
     {
       "id": "xtream_afa72042",
       "agenda_id": "",
-      "titulo": "Chapecoense vs. Athletico Paranaense",
+      "titulo": "Chapecoense vs. Athletico-PR",
       "torneo": "Brasileirão",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Chapecoense",
-      "equipo_visitante": "Athletico Paranaense",
-      "subtitulo": "Brasileirão",
-      "referencia": "Brasileirão",
+      "equipo_visitante": "Athletico-PR",
+      "subtitulo": "Arena Condá",
+      "referencia": "Arena Condá",
       "hora_utc": "2026-10-12T22:30:00Z",
       "hora_local_producto": "17:30",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwy0e1i1765900601.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F21006.png&w=400&output=webp",
+      "logo_visitante": "",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -1645,7 +1846,7 @@
       "hora_utc": "2026-10-12T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fleagues%2F12.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F161.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F134.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
@@ -1683,7 +1884,7 @@
       "hora_utc": "2026-10-12T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fleagues%2F12.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F132.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F152.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
@@ -1721,7 +1922,7 @@
       "hora_utc": "2026-10-12T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fleagues%2F57.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F690.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F693.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
@@ -1760,8 +1961,8 @@
       "hora_local_producto": "18:00",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhkafe61739948361.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fc4ul0t1512145103.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F161.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F134.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
       "tier": 1,
       "origen": "xtream_evento",
@@ -1780,7 +1981,44 @@
       ],
       "titulo_original_crudo": "Nets vs Wizards",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "contrastado_api": true
+    },
+    {
+      "id": "xtream_76088960",
+      "agenda_id": "",
+      "titulo": "Thunders vs Hawks",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Thunders",
+      "equipo_visitante": "Hawks",
+      "subtitulo": "NBA",
+      "referencia": "NBA",
+      "hora_utc": "2026-10-12T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9e5cxi1642097069.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmbtef81564357063.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00  Thunders vs. Hawks | NBA",
+          "id_xtream": "1728117"
+        }
+      ],
+      "titulo_original_crudo": "Thunders vs Hawks",
+      "ronda": ""
     },
     {
       "id": "xtream_08804186",
@@ -1796,7 +2034,7 @@
       "hora_utc": "2026-10-12T23:30:00Z",
       "hora_local_producto": "18:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fleagues%2F12.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F151.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F149.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
@@ -1821,6 +2059,42 @@
       "ronda": ""
     },
     {
+      "id": "xtream_64a7a6a7",
+      "agenda_id": "",
+      "titulo": "Timberwolves vs Knicks",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Timberwolves",
+      "equipo_visitante": "Knicks",
+      "subtitulo": "NBA",
+      "referencia": "NBA",
+      "hora_utc": "2026-10-12T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fepenxg1781034811.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4k8obt1778226764.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:30  Timberwolves vs. Knicks | NBA",
+          "id_xtream": "1728119"
+        }
+      ],
+      "titulo_original_crudo": "Timberwolves vs Knicks",
+      "ronda": ""
+    },
+    {
       "id": "lineal_espn_3_26471efa",
       "agenda_id": "",
       "titulo": "Tampa Bay Rays vs Cleveland Guardians",
@@ -1834,7 +2108,7 @@
       "hora_utc": "2026-10-13T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 180,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F1.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F34.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F9.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
@@ -1852,20 +2126,26 @@
       "fuentes": [
         {
           "nombre": "ESPN 3 HD | AR",
-          "id_xtream": "591986"
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3"
         },
         {
           "nombre": "ESPN 3 FHD | ARG",
-          "id_xtream": "591987"
+          "id_xtream": "591987",
+          "canal_lineal": "ESPN 3"
         },
         {
           "nombre": "ESPN 3 HD| AR",
-          "id_xtream": "712745"
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3"
         },
         {
           "nombre": "19:00 ◘ Cleveland Guardians vs. Tampa Bay Rays ◘ MLB ◘",
           "id_xtream": "1728078"
         }
+      ],
+      "canales_candidatos": [
+        "ESPN 3"
       ],
       "texto_original_crudo": "19:00 MLB Tampa Bay Rays Cleveland Guardians Disney+ Premium ESPN 3",
       "titulo_original_crudo": "19:00 MLB Tampa Bay Rays Cleveland Guardians Disney+ Premium ESPN 3",
@@ -1877,7 +2157,7 @@
       "id": "lineal_rcn_6ddfb28e",
       "agenda_id": "",
       "titulo": "Venezuela vs. Colombia",
-      "torneo": "Amistoso Internacional",
+      "torneo": "Amistoso Internacional Femenino",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Venezuela",
@@ -1904,28 +2184,38 @@
       "fuentes": [
         {
           "nombre": "RCN",
-          "id_xtream": "13780"
+          "id_xtream": "13780",
+          "canal_lineal": "RCN"
         },
         {
           "nombre": "RCN HD",
-          "id_xtream": "13781"
+          "id_xtream": "13781",
+          "canal_lineal": "RCN"
         },
         {
           "nombre": "RCN FHD",
-          "id_xtream": "13782"
+          "id_xtream": "13782",
+          "canal_lineal": "RCN"
         },
         {
           "nombre": "Caracol",
-          "id_xtream": "13775"
+          "id_xtream": "13775",
+          "canal_lineal": "CARACOL"
         },
         {
           "nombre": "Caracol HD",
-          "id_xtream": "13776"
+          "id_xtream": "13776",
+          "canal_lineal": "CARACOL"
         },
         {
           "nombre": "Caracol FHD",
-          "id_xtream": "13777"
+          "id_xtream": "13777",
+          "canal_lineal": "CARACOL"
         }
+      ],
+      "canales_candidatos": [
+        "RCN",
+        "CARACOL"
       ],
       "texto_original_crudo": "19:00 Venezuela Colombia ditu Gol Caracol YouTube Canal RCN App Canal RCN YouTube RCN TV Caracol TV",
       "titulo_original_crudo": "19:00 Venezuela Colombia ditu Gol Caracol YouTube Canal RCN App Canal RCN YouTube RCN TV Caracol TV",
@@ -1935,20 +2225,20 @@
     {
       "id": "lineal_espn_3_677b4c8e",
       "agenda_id": "",
-      "titulo": "MLB Postseason",
+      "titulo": "Cleveland Guardians vs. Tampa Bay Rays",
       "torneo": "MLB",
       "categoria": "Béisbol",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Juego 1 - Series de Campeonato",
-      "referencia": "MLB",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cleveland Guardians",
+      "equipo_visitante": "Tampa Bay Rays",
+      "subtitulo": "Juego 1 - Serie de Campeonato ALCS",
+      "referencia": "Juego 1 - Serie de Campeonato ALCS",
       "hora_utc": "2026-10-13T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 180,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "logo_local": "",
-      "logo_visitante": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F34.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F9.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
       "tier": 1,
       "origen": "inyector_lineal",
@@ -1963,21 +2253,28 @@
       "fuentes": [
         {
           "nombre": "ESPN 3 HD | AR",
-          "id_xtream": "591986"
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3"
         },
         {
           "nombre": "ESPN 3 FHD | ARG",
-          "id_xtream": "591987"
+          "id_xtream": "591987",
+          "canal_lineal": "ESPN 3"
         },
         {
           "nombre": "ESPN 3 HD| AR",
-          "id_xtream": "712745"
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3"
         }
+      ],
+      "canales_candidatos": [
+        "ESPN 3"
       ],
       "texto_original_crudo": "Juego 1 - Series de Campeonato. MLB. Vive los partidos de la temporada 2026 de la MLB, con las emociones de la liga de béisbol más importante del mundo",
       "titulo_original_crudo": "Juego 1 - Series de Campeonato. MLB. Vive los partidos de la temporada 2026 de la MLB, con las emociones de la liga de béisbol más importante del mundo",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "contrastado_api": true
     },
     {
       "id": "xtream_5b9c0ea6",
@@ -1993,7 +2290,7 @@
       "hora_utc": "2026-10-13T00:00:00Z",
       "hora_local_producto": "18:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fleagues%2F57.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F687.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F702.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
@@ -2031,7 +2328,7 @@
       "hora_utc": "2026-10-13T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F794.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F135.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
@@ -2064,15 +2361,15 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
+      "subtitulo": "USA",
       "referencia": "WWE Raw",
       "hora_utc": "2026-10-13T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/WWE_Logo.svg/512px-WWE_Logo.svg.png",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0d%2FUFC_logo.svg%2F512px-UFC_logo.svg.png&w=400&output=webp&trim=10",
+      "banner": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/WWE_Logo.svg/512px-WWE_Logo.svg.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -2101,14 +2398,14 @@
       "tipo_evento": "duelo",
       "equipo_local": "Cleveland Guardians",
       "equipo_visitante": "Tampa Bay Rays",
-      "subtitulo": "ALCS - Juego 1",
-      "referencia": "ALCS - Juego 1",
+      "subtitulo": "ALCS: Juego 1",
+      "referencia": "ALCS: Juego 1",
       "hora_utc": "2026-10-13T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 135,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F9.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F34.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F34.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F9.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
       "tier": 1,
       "origen": "xtream_evento",
@@ -2127,7 +2424,8 @@
       ],
       "titulo_original_crudo": "Cleveland Guardians vs Tampa Bay Rays (ALCS: Game 1)",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "contrastado_api": true
     },
     {
       "id": "lineal_espn_2_9ddb57d8",
@@ -2143,7 +2441,7 @@
       "hora_utc": "2026-10-13T00:15:00Z",
       "hora_local_producto": "19:15",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fleagues%2F1.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F31.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F20.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
@@ -2161,28 +2459,38 @@
       "fuentes": [
         {
           "nombre": "ESPN 2 HD | ARG",
-          "id_xtream": "591980"
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 ARG | FHD",
-          "id_xtream": "591981"
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 2 CO",
-          "id_xtream": "591982"
+          "id_xtream": "591982",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "ESPN 1 HD | AR",
-          "id_xtream": "591974"
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 1 FHD | ARG",
-          "id_xtream": "591975"
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN"
         },
         {
           "nombre": "ESPN 1 CO FHD",
-          "id_xtream": "591976"
+          "id_xtream": "591976",
+          "canal_lineal": "ESPN"
         }
+      ],
+      "canales_candidatos": [
+        "ESPN 2",
+        "ESPN"
       ],
       "texto_original_crudo": "21:15 NFL Liga Regular Los Angeles Rams Buffalo Bills DAZN (Ver en directo) Disney+ Premium ESPN 2",
       "titulo_original_crudo": "21:15 NFL Liga Regular Los Angeles Rams Buffalo Bills DAZN (Ver en directo) Disney+ Premium ESPN 2",
@@ -2204,7 +2512,7 @@
       "hora_utc": "2026-10-13T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fleagues%2F12.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F160.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F158.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
@@ -2226,6 +2534,42 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "titulo_original_crudo": "Utah Jazz vs. San Antonio Spurs",
+      "ronda": ""
+    },
+    {
+      "id": "xtream_085b1f31",
+      "agenda_id": "",
+      "titulo": "Spurs vs Jazz",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Spurs",
+      "equipo_visitante": "Jazz",
+      "subtitulo": "NBA",
+      "referencia": "NBA",
+      "hora_utc": "2026-10-13T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuprptt1423351492.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2074.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:00  Spurs vs. Jazz | NBA",
+          "id_xtream": "1728122"
+        }
+      ],
+      "titulo_original_crudo": "Spurs vs Jazz",
       "ronda": ""
     },
     {
@@ -2277,8 +2621,8 @@
     "eventos_lineales_inyectados": 28,
     "eventos_xtream_aprobados": 63,
     "eventos_contrastados_api": 43,
-    "eventos_descartados_stale": 60,
-    "total_eventos_publicados": 51,
-    "hora_actualizacion_utc": "2026-10-12T14:40:03Z"
+    "eventos_descartados_stale": 53,
+    "total_eventos_publicados": 58,
+    "hora_actualizacion_utc": "2026-10-12T16:08:00Z"
   }
 }
