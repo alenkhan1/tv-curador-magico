@@ -61,11 +61,23 @@ logging.basicConfig(
 log = logging.getLogger("curador_eventos")
 
 REPO_DIR = Path(__file__).resolve().parent
-XTREAM_URL = os.environ.get("XTREAM_URL", "http://espartanos.live:8080").rstrip("/")
-XTREAM_USER = os.environ.get("XTREAM_USER", "12user1506")
-XTREAM_PASS = os.environ.get("XTREAM_PASS", "123456")
+# Cargar variables de entorno desde .env si existe
+_env_path = REPO_DIR / ".env"
+if _env_path.exists():
+    try:
+        for _line in _env_path.read_text(encoding="utf-8").splitlines():
+            _line = _line.strip()
+            if _line and not _line.startswith("#") and "=" in _line:
+                _k, _v = _line.split("=", 1)
+                os.environ.setdefault(_k.strip(), _v.strip())
+    except Exception:
+        pass
+
+XTREAM_URL = (os.environ.get("XTREAM_URL") or "").rstrip("/")
+XTREAM_USER = os.environ.get("XTREAM_USER")
+XTREAM_PASS = os.environ.get("XTREAM_PASS")
 APP_TIMEZONE = os.environ.get("APP_TIMEZONE", "America/Bogota")
-API_SPORTS_KEY = os.environ.get("API_SPORTS_KEY", "8b4421b0de525a42888c4dbe24f8d825")
+API_SPORTS_KEY = os.environ.get("API_SPORTS_KEY")
 CACHE_CANALES = REPO_DIR / "canales_xtream_cache.json"
 META_FILE = REPO_DIR / "meta_curador.json"
 

@@ -14,6 +14,11 @@ git reset --hard origin/main
 
 echo "=== [$(date)] Ejecutando Curador Deportivo Limpio ($*) ==="
 export PATH="$HOME/.local/bin:$PATH"
+if [ -f "$REPO_DIR/.env" ]; then
+    set -a
+    source "$REPO_DIR/.env"
+    set +a
+fi
 python3 curador_eventos.py "$@"
 
 if [ -f "eventos_hoy.json" ]; then
