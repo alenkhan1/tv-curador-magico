@@ -657,10 +657,10 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         vis = ev.get("equipo_visitante", "")
 
         logo_cat = resolver_logo_torneo(tor, cat)
-        if logo_cat and ("assets/logos/torneos/" in logo_cat or "flagcdn.com" in logo_cat):
+        if logo_cat:
             ev["logo_torneo"] = logo_cat
         elif not ev.get("logo_torneo") or es_logo_basura(ev["logo_torneo"]):
-            ev["logo_torneo"] = logo_cat or ""
+            ev["logo_torneo"] = ""
 
         if loc:
             ev["logo_local"] = ev.get("logo_local") or resolver_logo_equipo(loc, cat, tor) or ""

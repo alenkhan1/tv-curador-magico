@@ -27,6 +27,17 @@ from resolvedor_logos import (
 
 log = logging.getLogger("inyector_lineales")
 
+FAMILIAS_CANALES_HERMANOS: List[List[str]] = [
+    # Familia Win Sports: Win Sports+ tiene maxima prioridad sobre la senal basica
+    ["WIN SPORTS+", "WIN SPORTS"],
+    # Familia DSports: senales especificas sobre la generica
+    ["DSPORTS 2", "DSPORTS +", "DSPORTS"],
+    # Familia Eurosport: senales especificas 1 vs 2
+    ["EUROSPORT 1", "EUROSPORT 2"],
+    # Familia ESPN: cada dial es una senal lineal independiente
+    ["ESPN PREMIUM ARGENTINA", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7", "ESPN"],
+]
+
 REGLAS_CANALES: Dict[str, str] = {
     "CARACOL": r"\bCARACOL\b",
     "RCN": r"\b(?:CANAL\s*)?RCN\b",
@@ -249,6 +260,26 @@ def inyectar_eventos_lineales(
             canales_a_procesar = [c for c in canales_priorizados if c.upper() in ["CARACOL", "RCN"]]
         else:
             canales_a_procesar = canales_priorizados
+
+        # Desambiguacion de Canales Hermanos Mutuamente Excluyentes:
+        # Si un evento tiene multiples variantes de la misma familia (ej. WIN SPORTS+ y WIN SPORTS),
+        # se conserva UNICAMENTE la senal mas especifica/prioritaria para evitar transmisiones cruzadas.
+        canales_desambiguados = []
+        familias_vistas = set()
+        for c in canales_a_procesar:
+            c_u = c.upper()
+            familia_encontrada = None
+            for idx_f, fam in enumerate(FAMILIAS_CANALES_HERMANOS):
+                if c_u in fam:
+                    familia_encontrada = idx_f
+                    break
+            if familia_encontrada is not None:
+                if familia_encontrada not in familias_vistas:
+                    familias_vistas.add(familia_encontrada)
+                    canales_desambiguados.append(c)
+            else:
+                canales_desambiguados.append(c)
+        canales_a_procesar = canales_desambiguados
 
         for c in canales_a_procesar:
             canon = c.upper()
