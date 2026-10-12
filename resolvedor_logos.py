@@ -227,153 +227,304 @@ CIRCUITO_LOGOS = {k: envolver_cdn_proxy(v) for k, v in CIRCUITO_LOGOS_RAW.items(
 FALLBACK_POR_CATEGORIA = {k: envolver_cdn_proxy(v) for k, v in FALLBACK_POR_CATEGORIA_RAW.items() if envolver_cdn_proxy(v)}
 
 # Banderas oficiales directas para todas las selecciones del mundo en FlagCDN HD (Universal)
-BANDERAS_PAISES_RAW: dict[str, str] = {
-    # Europa
-    "ESPANA": "https://flagcdn.com/256x192/es.png", "SPAIN": "https://flagcdn.com/256x192/es.png",
-    "REPUBLICA CHECA": "https://flagcdn.com/256x192/cz.png", "CHEQUIA": "https://flagcdn.com/256x192/cz.png",
-    "CZECH REPUBLIC": "https://flagcdn.com/256x192/cz.png", "CZECHIA": "https://flagcdn.com/256x192/cz.png",
-    "R CHECA": "https://flagcdn.com/256x192/cz.png", "REP CHECA": "https://flagcdn.com/256x192/cz.png",
-    "FRANCIA": "https://flagcdn.com/256x192/fr.png", "FRANCE": "https://flagcdn.com/256x192/fr.png",
-    "ITALIA": "https://flagcdn.com/256x192/it.png", "ITALY": "https://flagcdn.com/256x192/it.png",
-    "ALEMANIA": "https://flagcdn.com/256x192/de.png", "GERMANY": "https://flagcdn.com/256x192/de.png",
-    "INGLATERRA": "https://flagcdn.com/256x192/gb-eng.png", "ENGLAND": "https://flagcdn.com/256x192/gb-eng.png",
-    "ESCOCIA": "https://flagcdn.com/256x192/gb-sct.png", "SCOTLAND": "https://flagcdn.com/256x192/gb-sct.png",
-    "GALES": "https://flagcdn.com/256x192/gb-wls.png", "WALES": "https://flagcdn.com/256x192/gb-wls.png",
-    "IRLANDA DEL NORTE": "https://flagcdn.com/256x192/gb-nir.png", "NORTHERN IRELAND": "https://flagcdn.com/256x192/gb-nir.png",
-    "PORTUGAL": "https://flagcdn.com/256x192/pt.png",
-    "PAISES BAJOS": "https://flagcdn.com/256x192/nl.png", "HOLANDA": "https://flagcdn.com/256x192/nl.png", "NETHERLANDS": "https://flagcdn.com/256x192/nl.png",
-    "BELGICA": "https://flagcdn.com/256x192/be.png", "BELGIUM": "https://flagcdn.com/256x192/be.png",
-    "CROACIA": "https://flagcdn.com/256x192/hr.png", "CROATIA": "https://flagcdn.com/256x192/hr.png",
-    "SUIZA": "https://flagcdn.com/256x192/ch.png", "SWITZERLAND": "https://flagcdn.com/256x192/ch.png",
-    "DINAMARCA": "https://flagcdn.com/256x192/dk.png", "DENMARK": "https://flagcdn.com/256x192/dk.png",
-    "SUECIA": "https://flagcdn.com/256x192/se.png", "SWEDEN": "https://flagcdn.com/256x192/se.png",
-    "POLONIA": "https://flagcdn.com/256x192/pl.png", "POLAND": "https://flagcdn.com/256x192/pl.png",
-    "TURQUIA": "https://flagcdn.com/256x192/tr.png", "TURKEY": "https://flagcdn.com/256x192/tr.png", "TURKIYE": "https://flagcdn.com/256x192/tr.png",
-    "SERBIA": "https://flagcdn.com/256x192/rs.png",
-    "AUSTRIA": "https://flagcdn.com/256x192/at.png",
-    "HUNGRIA": "https://flagcdn.com/256x192/hu.png", "HUNGARY": "https://flagcdn.com/256x192/hu.png",
-    "IRLANDA": "https://flagcdn.com/256x192/ie.png", "IRELAND": "https://flagcdn.com/256x192/ie.png", "REPUBLICA DE IRLANDA": "https://flagcdn.com/256x192/ie.png",
-    "NORUEGA": "https://flagcdn.com/256x192/no.png", "NORWAY": "https://flagcdn.com/256x192/no.png",
-    "GRECIA": "https://flagcdn.com/256x192/gr.png", "GREECE": "https://flagcdn.com/256x192/gr.png",
-    "RUMANIA": "https://flagcdn.com/256x192/ro.png", "ROMANIA": "https://flagcdn.com/256x192/ro.png",
-    "ESLOVAQUIA": "https://flagcdn.com/256x192/sk.png", "SLOVAKIA": "https://flagcdn.com/256x192/sk.png",
-    "ESLOVENIA": "https://flagcdn.com/256x192/si.png", "SLOVENIA": "https://flagcdn.com/256x192/si.png",
-    "ISLANDIA": "https://flagcdn.com/256x192/is.png", "ICELAND": "https://flagcdn.com/256x192/is.png",
-    "FINLANDIA": "https://flagcdn.com/256x192/fi.png", "FINLAND": "https://flagcdn.com/256x192/fi.png",
-    "ALBANIA": "https://flagcdn.com/256x192/al.png",
-    "KAZAJISTAN": "https://flagcdn.com/256x192/kz.png", "KAZAKHSTAN": "https://flagcdn.com/256x192/kz.png",
-    "MOLDAVIA": "https://flagcdn.com/256x192/md.png", "MOLDOVA": "https://flagcdn.com/256x192/md.png",
-    "LETONIA": "https://flagcdn.com/256x192/lv.png", "LATVIA": "https://flagcdn.com/256x192/lv.png",
-    "MONTENEGRO": "https://flagcdn.com/256x192/me.png",
-    "CHIPRE": "https://flagcdn.com/256x192/cy.png", "CYPRUS": "https://flagcdn.com/256x192/cy.png",
-    "ARMENIA": "https://flagcdn.com/256x192/am.png",
-    "GEORGIA": "https://flagcdn.com/256x192/ge.png",
-    "BULGARIA": "https://flagcdn.com/256x192/bg.png",
-    "ESTONIA": "https://flagcdn.com/256x192/ee.png",
-    "LITUANIA": "https://flagcdn.com/256x192/lt.png", "LITHUANIA": "https://flagcdn.com/256x192/lt.png",
-    "LUXEMBURGO": "https://flagcdn.com/256x192/lu.png", "LUXEMBOURG": "https://flagcdn.com/256x192/lu.png",
-    "BIELORRUSIA": "https://flagcdn.com/256x192/by.png", "BELARUS": "https://flagcdn.com/256x192/by.png",
-    "SAN MARINO": "https://flagcdn.com/256x192/sm.png",
-    "ISLAS FEROE": "https://flagcdn.com/256x192/fo.png", "FAROE ISLANDS": "https://flagcdn.com/256x192/fo.png",
-    "BOSNIA": "https://flagcdn.com/256x192/ba.png", "BOSNIA Y HERZEGOVINA": "https://flagcdn.com/256x192/ba.png",
-    "MACEDONIA DEL NORTE": "https://flagcdn.com/256x192/mk.png", "NORTH MACEDONIA": "https://flagcdn.com/256x192/mk.png",
-    "KOSOVO": "https://flagcdn.com/256x192/xk.png",
-    "MALTA": "https://flagcdn.com/256x192/mt.png",
-    "GIBRALTAR": "https://flagcdn.com/256x192/gi.png",
-    "ANDORRA": "https://flagcdn.com/256x192/ad.png",
-    "LIECHTENSTEIN": "https://flagcdn.com/256x192/li.png",
-    "AZERBAIYAN": "https://flagcdn.com/256x192/az.png", "AZERBAIJAN": "https://flagcdn.com/256x192/az.png",
-    "ISRAEL": "https://flagcdn.com/256x192/il.png",
-    "UCRANIA": "https://flagcdn.com/256x192/ua.png", "UKRAINE": "https://flagcdn.com/256x192/ua.png",
-
-    # America del Sur
-    "ARGENTINA": "https://flagcdn.com/256x192/ar.png",
-    "BRASIL": "https://flagcdn.com/256x192/br.png", "BRAZIL": "https://flagcdn.com/256x192/br.png",
-    "COLOMBIA": "https://flagcdn.com/256x192/co.png",
-    "URUGUAY": "https://flagcdn.com/256x192/uy.png",
-    "CHILE": "https://flagcdn.com/256x192/cl.png",
-    "ECUADOR": "https://flagcdn.com/256x192/ec.png",
-    "PERU": "https://flagcdn.com/256x192/pe.png",
-    "PARAGUAY": "https://flagcdn.com/256x192/py.png",
-    "VENEZUELA": "https://flagcdn.com/256x192/ve.png",
-    "BOLIVIA": "https://flagcdn.com/256x192/bo.png",
-
-    # Concacaf y Caribe
-    "ESTADOS UNIDOS": "https://flagcdn.com/256x192/us.png", "USA": "https://flagcdn.com/256x192/us.png",
-    "EEUU": "https://flagcdn.com/256x192/us.png", "EE UU": "https://flagcdn.com/256x192/us.png", "UNITED STATES": "https://flagcdn.com/256x192/us.png",
-    "MEXICO": "https://flagcdn.com/256x192/mx.png",
-    "CANADA": "https://flagcdn.com/256x192/ca.png",
-    "COSTA RICA": "https://flagcdn.com/256x192/cr.png",
-    "PANAMA": "https://flagcdn.com/256x192/pa.png",
-    "HONDURAS": "https://flagcdn.com/256x192/hn.png",
-    "EL SALVADOR": "https://flagcdn.com/256x192/sv.png",
-    "GUATEMALA": "https://flagcdn.com/256x192/gt.png",
-    "JAMAICA": "https://flagcdn.com/256x192/jm.png",
-    "HAITI": "https://flagcdn.com/256x192/ht.png",
-    "REPUBLICA DOMINICANA": "https://flagcdn.com/256x192/do.png", "DOMINICAN REPUBLIC": "https://flagcdn.com/256x192/do.png",
-    "TRINIDAD Y TOBAGO": "https://flagcdn.com/256x192/tt.png", "TRINIDAD AND TOBAGO": "https://flagcdn.com/256x192/tt.png",
-    "CURAZAO": "https://flagcdn.com/256x192/cw.png", "CURACAO": "https://flagcdn.com/256x192/cw.png",
-    "PUERTO RICO": "https://flagcdn.com/256x192/pr.png",
-    "SURINAM": "https://flagcdn.com/256x192/sr.png", "SURINAME": "https://flagcdn.com/256x192/sr.png",
-    "NICARAGUA": "https://flagcdn.com/256x192/ni.png",
-    "CUBA": "https://flagcdn.com/256x192/cu.png",
-    "BERMUDA": "https://flagcdn.com/256x192/bm.png",
-    "GUYANA": "https://flagcdn.com/256x192/gy.png",
-    "BELICE": "https://flagcdn.com/256x192/bz.png", "BELIZE": "https://flagcdn.com/256x192/bz.png",
-
-    # Asia / Africa / Oceania
-    "JAPON": "https://flagcdn.com/256x192/jp.png", "JAPAN": "https://flagcdn.com/256x192/jp.png",
-    "COREA DEL SUR": "https://flagcdn.com/256x192/kr.png", "SOUTH KOREA": "https://flagcdn.com/256x192/kr.png",
-    "COREA DEL NORTE": "https://flagcdn.com/256x192/kp.png", "NORTH KOREA": "https://flagcdn.com/256x192/kp.png",
-    "CHINA": "https://flagcdn.com/256x192/cn.png",
-    "AUSTRALIA": "https://flagcdn.com/256x192/au.png",
-    "NUEVA ZELANDA": "https://flagcdn.com/256x192/nz.png", "NEW ZEALAND": "https://flagcdn.com/256x192/nz.png",
-    "ARABIA SAUDITA": "https://flagcdn.com/256x192/sa.png", "ARABIA SAUDI": "https://flagcdn.com/256x192/sa.png", "SAUDI ARABIA": "https://flagcdn.com/256x192/sa.png",
-    "QATAR": "https://flagcdn.com/256x192/qa.png", "CATAR": "https://flagcdn.com/256x192/qa.png",
-    "IRAN": "https://flagcdn.com/256x192/ir.png",
-    "IRAK": "https://flagcdn.com/256x192/iq.png", "IRAQ": "https://flagcdn.com/256x192/iq.png",
-    "EMIRATOS ARABES UNIDOS": "https://flagcdn.com/256x192/ae.png", "EAU": "https://flagcdn.com/256x192/ae.png", "UAE": "https://flagcdn.com/256x192/ae.png",
-    "TAILANDIA": "https://flagcdn.com/256x192/th.png", "THAILAND": "https://flagcdn.com/256x192/th.png",
-    "VIETNAM": "https://flagcdn.com/256x192/vn.png",
-    "INDONESIA": "https://flagcdn.com/256x192/id.png",
-    "MALASIA": "https://flagcdn.com/256x192/my.png", "MALAYSIA": "https://flagcdn.com/256x192/my.png",
-    "FILIPINAS": "https://flagcdn.com/256x192/ph.png", "PHILIPPINES": "https://flagcdn.com/256x192/ph.png",
-    "INDIA": "https://flagcdn.com/256x192/in.png",
-    "PAKISTAN": "https://flagcdn.com/256x192/pk.png",
-    "UZBEKISTAN": "https://flagcdn.com/256x192/uz.png",
-    "MARRUECOS": "https://flagcdn.com/256x192/ma.png", "MOROCCO": "https://flagcdn.com/256x192/ma.png",
-    "EGIPTO": "https://flagcdn.com/256x192/eg.png", "EGYPT": "https://flagcdn.com/256x192/eg.png",
-    "SENEGAL": "https://flagcdn.com/256x192/sn.png",
-    "ARGELIA": "https://flagcdn.com/256x192/dz.png", "ALGERIA": "https://flagcdn.com/256x192/dz.png",
-    "NIGERIA": "https://flagcdn.com/256x192/ng.png",
-    "CAMERUN": "https://flagcdn.com/256x192/cm.png", "CAMEROON": "https://flagcdn.com/256x192/cm.png",
-    "SUDAFRICA": "https://flagcdn.com/256x192/za.png", "SOUTH AFRICA": "https://flagcdn.com/256x192/za.png",
-    "GHANA": "https://flagcdn.com/256x192/gh.png",
-    "COSTA DE MARFIL": "https://flagcdn.com/256x192/ci.png", "IVORY COAST": "https://flagcdn.com/256x192/ci.png",
-    "TUNEZ": "https://flagcdn.com/256x192/tn.png", "TUNISIA": "https://flagcdn.com/256x192/tn.png",
-    "BURKINA FASO": "https://flagcdn.com/256x192/bf.png",
-    "MALI": "https://flagcdn.com/256x192/ml.png",
-    "CONGO": "https://flagcdn.com/256x192/cg.png",
-    "RD CONGO": "https://flagcdn.com/256x192/cd.png",
-    "GUINEA": "https://flagcdn.com/256x192/gn.png",
-    "GUINEA ECUATORIAL": "https://flagcdn.com/256x192/gq.png",
-    "GABON": "https://flagcdn.com/256x192/ga.png",
-    "ANGOLA": "https://flagcdn.com/256x192/ao.png",
-    "ZAMBIA": "https://flagcdn.com/256x192/zm.png",
-    "KENIA": "https://flagcdn.com/256x192/ke.png", "KENYA": "https://flagcdn.com/256x192/ke.png",
-    "UGANDA": "https://flagcdn.com/256x192/ug.png",
-    "TANZANIA": "https://flagcdn.com/256x192/tz.png",
-    "ETIOPIA": "https://flagcdn.com/256x192/et.png", "ETHIOPIA": "https://flagcdn.com/256x192/et.png",
-    "CABO VERDE": "https://flagcdn.com/256x192/cv.png", "CAPE VERDE": "https://flagcdn.com/256x192/cv.png",
-    "NAMIBIA": "https://flagcdn.com/256x192/na.png",
-    "FIYI": "https://flagcdn.com/256x192/fj.png", "FIJI": "https://flagcdn.com/256x192/fj.png",
-    "SAMOA": "https://flagcdn.com/256x192/ws.png",
-    "TONGA": "https://flagcdn.com/256x192/to.png",
-    "GEORGIA": "https://flagcdn.com/256x192/ge.png",
-    "ZIMBABWE": "https://flagcdn.com/256x192/zw.png",
+# ==============================================================================
+# CATALOGO UNIVERSAL ISO-3166-1 ALPHA-2 DE PAISES Y TERRITORIOS
+# ==============================================================================
+ISO_PAISES_RAW = {
+    'af': ['AFGANISTAN', 'AFGHANISTAN'],
+    'al': ['ALBANIA'],
+    'dz': ['ARGELIA', 'ALGERIA'],
+    'ad': ['ANDORRA'],
+    'ao': ['ANGOLA'],
+    'ag': ['ANTIGUA Y BARBUDA', 'ANTIGUA AND BARBUDA'],
+    'ar': ['ARGENTINA'],
+    'am': ['ARMENIA'],
+    'au': ['AUSTRALIA'],
+    'at': ['AUSTRIA'],
+    'az': ['AZERBAIYAN', 'AZERBAIJAN'],
+    'bs': ['BAHAMAS'],
+    'bh': ['BAREIN', 'BAHRAIN'],
+    'bd': ['BANGLADESH'],
+    'bb': ['BARBADOS'],
+    'by': ['BIELORRUSIA', 'BELARUS'],
+    'be': ['BELGICA', 'BELGIUM'],
+    'bz': ['BELICE', 'BELIZE'],
+    'bj': ['BENIN'],
+    'bt': ['BUTAN', 'BHUTAN'],
+    'bo': ['BOLIVIA'],
+    'ba': ['BOSNIA Y HERZEGOVINA', 'BOSNIA AND HERZEGOVINA', 'BOSNIA'],
+    'bw': ['BOTSUANA', 'BOTSWANA'],
+    'br': ['BRASIL', 'BRAZIL'],
+    'bn': ['BRUNEI'],
+    'bg': ['BULGARIA'],
+    'bf': ['BURKINA FASO'],
+    'bi': ['BURUNDI'],
+    'cv': ['CABO VERDE', 'CAPE VERDE'],
+    'kh': ['CAMBOYA', 'CAMBODIA'],
+    'cm': ['CAMERUN', 'CAMEROON'],
+    'ca': ['CANADA'],
+    'cf': ['REPUBLICA CENTROAFRICANA', 'CENTRAL AFRICAN REPUBLIC'],
+    'td': ['CHAD'],
+    'cl': ['CHILE'],
+    'cn': ['CHINA'],
+    'co': ['COLOMBIA'],
+    'km': ['COMORAS', 'COMOROS'],
+    'cg': ['CONGO', 'REPUBLICA DEL CONGO'],
+    'cd': ['RD CONGO', 'REPUBLICA DEMOCRATICA DEL CONGO', 'DR CONGO'],
+    'cr': ['COSTA RICA'],
+    'ci': ['COSTA DE MARFIL', 'IVORY COAST', 'COTE D IVOIRE'],
+    'hr': ['CROACIA', 'CROATIA'],
+    'cu': ['CUBA'],
+    'cy': ['CHIPRE', 'CYPRUS'],
+    'cz': ['CHEQUIA', 'REPUBLICA CHECA', 'CZECHIA', 'CZECH REPUBLIC'],
+    'dk': ['DINAMARCA', 'DENMARK'],
+    'dj': ['YIBUTI', 'DJIBOUTI'],
+    'dm': ['DOMINICA'],
+    'do': ['REPUBLICA DOMINICANA', 'DOMINICAN REPUBLIC'],
+    'ec': ['ECUADOR'],
+    'eg': ['EGIPTO', 'EGYPT'],
+    'sv': ['EL SALVADOR'],
+    'gq': ['GUINEA ECUATORIAL', 'EQUATORIAL GUINEA'],
+    'er': ['ERITREA'],
+    'ee': ['ESTONIA'],
+    'sz': ['ESWATINI', 'SUAZILANDIA', 'SWAZILAND'],
+    'et': ['ETIOPIA', 'ETHIOPIA'],
+    'fj': ['FIYI', 'FIJI'],
+    'fi': ['FINLANDIA', 'FINLAND'],
+    'fr': ['FRANCIA', 'FRANCE'],
+    'ga': ['GABON'],
+    'gm': ['GAMBIA'],
+    'ge': ['GEORGIA'],
+    'de': ['ALEMANIA', 'GERMANY'],
+    'gh': ['GHANA'],
+    'gr': ['GRECIA', 'GREECE'],
+    'gd': ['GRANADA', 'GRENADA'],
+    'gt': ['GUATEMALA'],
+    'gn': ['GUINEA'],
+    'gw': ['GUINEA BISSAU', 'GUINEA-BISSAU'],
+    'gy': ['GUYANA'],
+    'ht': ['HAITI'],
+    'hn': ['HONDURAS'],
+    'hu': ['HUNGRIA', 'HUNGARY'],
+    'is': ['ISLANDIA', 'ICELAND'],
+    'in': ['INDIA'],
+    'id': ['INDONESIA'],
+    'ir': ['IRAN'],
+    'iq': ['IRAK', 'IRAQ'],
+    'ie': ['IRLANDA', 'IRELAND'],
+    'il': ['ISRAEL'],
+    'it': ['ITALIA', 'ITALY'],
+    'jm': ['JAMAICA'],
+    'jp': ['JAPON', 'JAPAN'],
+    'jo': ['JORDANIA', 'JORDAN'],
+    'kz': ['KAZAJISTAN', 'KAZAKHSTAN'],
+    'ke': ['KENIA', 'KENYA'],
+    'ki': ['KIRIBATI'],
+    'kp': ['COREA DEL NORTE', 'NORTH KOREA'],
+    'kr': ['COREA DEL SUR', 'SOUTH KOREA', 'COREA', 'KOREA'],
+    'kw': ['KUWAIT'],
+    'kg': ['KIRGUISTAN', 'KYRGYZSTAN'],
+    'la': ['LAOS'],
+    'lv': ['LETONIA', 'LATVIA'],
+    'lb': ['LIBANO', 'LEBANON'],
+    'ls': ['LESOTO', 'LESOTHO'],
+    'lr': ['LIBERIA'],
+    'ly': ['LIBIA', 'LIBYA'],
+    'li': ['LIECHTENSTEIN'],
+    'lt': ['LITUANIA', 'LITHUANIA'],
+    'lu': ['LUXEMBURGO', 'LUXEMBOURG'],
+    'mg': ['MADAGASCAR'],
+    'mw': ['MALAWI'],
+    'my': ['MALASIA', 'MALAYSIA'],
+    'mv': ['MALDIVAS', 'MALDIVES'],
+    'ml': ['MALI'],
+    'mt': ['MALTA'],
+    'mh': ['ISLAS MARSHALL', 'MARSHALL ISLANDS'],
+    'mr': ['MAURITANIA'],
+    'mu': ['MAURICIO', 'MAURITIUS'],
+    'mx': ['MEXICO'],
+    'fm': ['MICRONESIA'],
+    'md': ['MOLDAVIA', 'MOLDOVA'],
+    'mc': ['MONACO'],
+    'mn': ['MONGOLIA'],
+    'me': ['MONTENEGRO'],
+    'ma': ['MARRUECOS', 'MOROCCO'],
+    'mz': ['MOZAMBIQUE'],
+    'mm': ['MYANMAR', 'BIRMANIA'],
+    'na': ['NAMIBIA'],
+    'nr': ['NAURU'],
+    'np': ['NEPAL'],
+    'nl': ['PAISES BAJOS', 'HOLANDA', 'NETHERLANDS'],
+    'nz': ['NUEVA ZELANDA', 'NEW ZEALAND'],
+    'ni': ['NICARAGUA'],
+    'ne': ['NIGER'],
+    'ng': ['NIGERIA'],
+    'mk': ['MACEDONIA DEL NORTE', 'MACEDONIA', 'NORTH MACEDONIA'],
+    'no': ['NORUEGA', 'NORWAY'],
+    'om': ['OMAN'],
+    'pk': ['PAKISTAN'],
+    'pw': ['PALAOS', 'PALAU'],
+    'ps': ['PALESTINA', 'PALESTINE'],
+    'pa': ['PANAMA'],
+    'pg': ['PAPUA NUEVA GUINEA', 'PAPUA NEW GUINEA'],
+    'py': ['PARAGUAY'],
+    'pe': ['PERU'],
+    'ph': ['FILIPINAS', 'PHILIPPINES'],
+    'pl': ['POLONIA', 'POLAND'],
+    'pt': ['PORTUGAL'],
+    'qa': ['QATAR', 'CATAR'],
+    'ro': ['RUMANIA', 'ROMANIA'],
+    'ru': ['RUSIA', 'RUSSIA'],
+    'rw': ['RUANDA', 'RWANDA'],
+    'kn': ['SAN CRISTOBAL Y NIEVES', 'SAINT KITTS AND NEVIS'],
+    'lc': ['SANTA LUCIA', 'SAINT LUCIA'],
+    'vc': ['SAN VICENTE Y LAS GRANADINAS', 'SAINT VINCENT AND THE GRENADINES'],
+    'ws': ['SAMOA'],
+    'sm': ['SAN MARINO'],
+    'st': ['SANTO TOME Y PRINCIPE', 'SAO TOME AND PRINCIPE'],
+    'sa': ['ARABIA SAUDITA', 'ARABIA SAUDI', 'SAUDI ARABIA'],
+    'sn': ['SENEGAL'],
+    'rs': ['SERBIA'],
+    'sc': ['SEYCHELLES'],
+    'sl': ['SIERRA LEONA', 'SIERRA LEONE'],
+    'sg': ['SINGAPUR', 'SINGAPORE'],
+    'sk': ['ESLOVAQUIA', 'SLOVAKIA'],
+    'si': ['ESLOVENIA', 'SLOVENIA'],
+    'sb': ['ISLAS SALOMON', 'SOLOMON ISLANDS'],
+    'so': ['SOMALIA'],
+    'za': ['SUDAFRICA', 'SOUTH AFRICA'],
+    'ss': ['SUDAN DEL SUR', 'SOUTH SUDAN'],
+    'es': ['ESPANA', 'SPAIN'],
+    'lk': ['SRI LANKA'],
+    'sd': ['SUDAN'],
+    'sr': ['SURINAM', 'SURINAME'],
+    'se': ['SUECIA', 'SWEDEN'],
+    'ch': ['SUIZA', 'SWITZERLAND'],
+    'sy': ['SIRIA', 'SYRIA'],
+    'tj': ['TAYIKISTAN', 'TAJIKISTAN'],
+    'tz': ['TANZANIA'],
+    'th': ['TAILANDIA', 'THAILAND'],
+    'tl': ['TIMOR ORIENTAL', 'TIMOR-LESTE'],
+    'tg': ['TOGO'],
+    'to': ['TONGA'],
+    'tt': ['TRINIDAD Y TOBAGO', 'TRINIDAD AND TOBAGO'],
+    'tn': ['TUNEZ', 'TUNISIA'],
+    'tr': ['TURQUIA', 'TURKEY', 'TURKIYE'],
+    'tm': ['TURKMENISTAN'],
+    'tv': ['TUVALU'],
+    'ug': ['UGANDA'],
+    'ua': ['UCRANIA', 'UKRAINE'],
+    'ae': ['EMIRATOS ARABES UNIDOS', 'EAU', 'UAE', 'UNITED ARAB EMIRATES'],
+    'gb': ['REINO UNIDO', 'UNITED KINGDOM', 'GRAN BRETANA', 'GREAT BRITAIN'],
+    'gb-eng': ['INGLATERRA', 'ENGLAND'],
+    'gb-sct': ['ESCOCIA', 'SCOTLAND'],
+    'gb-wls': ['GALES', 'WALES'],
+    'gb-nir': ['IRLANDA DEL NORTE', 'NORTHERN IRELAND'],
+    'us': ['ESTADOS UNIDOS', 'USA', 'EEUU', 'EE UU', 'UNITED STATES'],
+    'uy': ['URUGUAY'],
+    'uz': ['UZBEKISTAN'],
+    'vu': ['VANUATU'],
+    'va': ['VATICANO', 'VATICAN'],
+    've': ['VENEZUELA'],
+    'vn': ['VIETNAM'],
+    'ye': ['YEMEN'],
+    'zm': ['ZAMBIA'],
+    'zw': ['ZIMBABWE'],
+    'aw': ['ARUBA'],
+    'bm': ['BERMUDA'],
+    'ky': ['ISLAS CAIMAN', 'CAYMAN ISLANDS'],
+    'cw': ['CURAZAO', 'CURACAO'],
+    'fo': ['ISLAS FEROE', 'FAROE ISLANDS'],
+    'gi': ['GIBRALTAR'],
+    'gl': ['GROENLANDIA', 'GREENLAND'],
+    'gu': ['GUAM'],
+    'hk': ['HONG KONG'],
+    'mo': ['MACAO', 'MACAU'],
+    'pr': ['PUERTO RICO'],
+    'pf': ['TAHITI', 'POLINESIA FRANCESA', 'FRENCH POLYNESIA'],
+    'nc': ['NUEVA CALEDONIA', 'NEW CALEDONIA'],
+    'as': ['SAMOA AMERICANA', 'AMERICAN SAMOA'],
+    'ck': ['ISLAS COOK', 'COOK ISLANDS'],
+    'tw': ['TAIWAN', 'CHINESE TAIPEI'],
+    'vi': ['ISLAS VIRGENES', 'VIRGIN ISLANDS'],
 }
 
+BANDERAS_PAISES_RAW: dict[str, str] = {}
+for code, aliases in ISO_PAISES_RAW.items():
+    flag_u = f"https://flagcdn.com/256x192/{code}.png"
+    for alias in aliases:
+        BANDERAS_PAISES_RAW[alias] = flag_u
+
 BANDERAS_PAISES = {k: envolver_cdn_proxy(v) for k, v in BANDERAS_PAISES_RAW.items() if envolver_cdn_proxy(v)}
+
+# Paises ordenados por longitud de caracteres descendente para coincidencia sintactica
+PAISES_ISO_ORDENADOS = sorted(
+    BANDERAS_PAISES.items(),
+    key=lambda item: len(item[0]),
+    reverse=True
+)
+
+TOKENS_PREFIJO_SELECCION = {
+    "SELECCION", "EQUIPO", "NATIONAL", "TEAM", "SELECCION DE", "EQUIPO NACIONAL", "NATIONAL TEAM"
+}
+
+TOKENS_CALIFICADOR_SELECCION = {
+    "SUB", "U", "SUB15", "SUB16", "SUB17", "SUB18", "SUB19", "SUB20", "SUB21", "SUB22", "SUB23",
+    "U15", "U16", "U17", "U18", "U19", "U20", "U21", "U22", "U23",
+    "JUNIOR", "JUVENIL", "MAYOR", "SENIOR", "OLIMPICA", "OLIMPICO", "OLYMPIC",
+    "FEMENINA", "FEMENINO", "FEMENIL", "FEM", "WOMEN", "WOMAN", "MASCULINA", "MASCULINO", "MEN", "MAN",
+    "DE", "DEL"
+}
+
+def es_entidad_seleccion_nacional(equipo_norm: str) -> tuple[bool, str]:
+    """
+    Invarianza Gramatical Estricta (Universal):
+    Determina si un nombre corresponde a una Selección Nacional.
+    Fórmula: [PREFIJO]* + PAIS_ISO + [CALIFICADOR_EDAD_GENERO]*
+
+    Regla Universal: Si contiene cualquier token adicional ajeno a la fórmula
+    (ej. Montevideo, Coronado, Juniors, Real, City, etc.), la regla gramatical
+    lo descarta matemáticamente sin necesidad de listas negras de clubes.
+    """
+    if not equipo_norm:
+        return False, ""
+
+    tokens = equipo_norm.split()
+    if not tokens:
+        return False, ""
+
+    # 1. Coincidencia exacta con país ISO
+    if equipo_norm in BANDERAS_PAISES:
+        return True, BANDERAS_PAISES[equipo_norm]
+
+    # 2. Análisis sintáctico con país compuesto o simple
+    for pais_norm, flag_url in PAISES_ISO_ORDENADOS:
+        pais_tokens = pais_norm.split()
+        len_p = len(pais_tokens)
+
+        encontrado_idx = -1
+        for i in range(len(tokens) - len_p + 1):
+            if tokens[i:i + len_p] == pais_tokens:
+                encontrado_idx = i
+                break
+
+        if encontrado_idx >= 0:
+            prefijo = tokens[:encontrado_idx]
+            sufijo = tokens[encontrado_idx + len_p:]
+
+            prefijo_valido = all(
+                t in TOKENS_PREFIJO_SELECCION or t in {"DE", "DEL"}
+                for t in prefijo
+            )
+            sufijo_valido = all(
+                t in TOKENS_CALIFICADOR_SELECCION or t.isdigit()
+                for t in sufijo
+            )
+
+            if prefijo_valido and sufijo_valido:
+                return True, flag_url
+
+    return False, ""
 
 def _normalizar(texto: str) -> str:
     """Normaliza texto eliminando acentos y caracteres especiales."""
@@ -528,64 +679,32 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
 
     return ""
 
-def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = "", permitir_red: bool = True) -> str:
+def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = "", permitir_red: bool = True, es_seleccion: Optional[bool] = None) -> str:
     """
     Resuelve el escudo/logo o bandera de un equipo.
-    Regla de Oro: En selecciones/países siempre se inyecta la bandera oficial en HD.
+    Principio Universal:
+    - Si es selección nacional (validado gramaticalmente o por bandera es_seleccion), asigna bandera oficial HD.
+    - Si contiene elementos de club o es_seleccion=False, busca escudo oficial de club en catálogos y APIs.
     """
     if not equipo:
         return ""
 
     equipo_limpio = equipo.strip()
     equipo_norm = _normalizar(equipo_limpio)
-    cache = _cargar_cache()
     clave_cache = f"equipo_{equipo_norm}"
 
-        # 0. Banderas oficiales: ÚNICAMENTE para selecciones nacionales o torneos de países
-    # Desambiguación ESTRICTA: Equipos con nombres de países (ej. "Uruguay Montevideo") son CLUBES, NUNCA banderas.
-    PALABRAS_CLUB = {
-        "FC", "CF", "CLUB", "DEPORTIVO", "ATLETICO", "CD", "UD", "SD", "AD", "CA", "CSD", "SC",
-        "MONTEVIDEO", "CITY", "UNITED", "TOWN", "ROVERS", "WANDERERS", "RACING", "SPORTING",
-        "REAL", "JUNIORS", "AC", "AS", "ALIANZA", "INTER", "INTERNACIONAL", "UNIVERSIDAD",
-        "UNIVERSITARIO", "GIMNASIA", "ESTUDIANTES", "DEFENSOR", "DANUBIO", "NACIONAL", "PENAROL",
-        "CENTRAL", "UNION", "INDEPENDIENTE", "BALOMPIE"
-    }
-    TOKENS_SELECCION_VALIDOS = {
-        "SUB", "SUB15", "SUB17", "SUB19", "SUB20", "SUB21", "SUB23",
-        "U15", "U17", "U19", "U20", "U21", "U23",
-        "15", "17", "19", "20", "21", "23",
-        "SELECCION", "SELECCION DE", "NATIONAL", "TEAM", "MASCULINO", "FEMENINO",
-        "FEM", "FEMENIL", "WOMEN", "MEN", "DE"
-    }
-
-    es_club = any(w in equipo_norm.split() for w in PALABRAS_CLUB)
-
-    es_torneo_selecciones = any(t in _normalizar(torneo) for t in [
-        "NATIONS LEAGUE", "MUNDIAL", "COPA AMERICA", "EUROCOPA", "ELIMINATORIAS",
-        "AMISTOSO INTERNACIONAL", "QUALIFIERS", "FRIENDLIES", "WORLD CUP", "OLYMPIC",
-        "TEST MATCH", "RUGBY CHAMPIONSHIP", "SIX NATIONS", "SEIS NACIONES", "WORLD RUGBY",
-        "TORNEO DE LAS NACIONES", "INTERNATIONAL", "INTERNACIONAL"
-    ])
-    es_nombre_seleccion = any(s in equipo_norm for s in [
-        "SELECCION", "SELECCION DE", "SUB 1", "SUB 2", "SUB-1", "SUB-2", "U1", "U2", "U 1", "U 2", "NATIONAL"
-    ])
-
-    if not es_club and equipo_norm in BANDERAS_PAISES:
-        # Si el torneo es explícitamente de clubes (ej. Segunda Division, Premier, Serie A), no asumir que es selección
-        es_liga_clubes = any(l in _normalizar(torneo) for l in [
-            "SEGUNDA", "PRIMERA DIVISION", "PREMIER", "LALIGA", "SERIE A", "BUNDESLIGA", "LIGUE 1", "BETPLAY", "LIGA MX"
-        ])
-        if not es_liga_clubes or es_torneo_selecciones or es_nombre_seleccion:
-            flag_url = BANDERAS_PAISES[equipo_norm]
-            return flag_url
-
-    # Variantes de selecciones como "España Sub 21", "Namibia U20" (SOLO si no es club y sobrante son tokens de selección)
-    if not es_club and (es_torneo_selecciones or es_nombre_seleccion):
-        for pais_k, flag_u in BANDERAS_PAISES.items():
-            if len(pais_k) >= 4 and (equipo_norm.startswith(pais_k + " ") or equipo_norm.endswith(" " + pais_k)):
-                sobrante_tokens = [w for w in equipo_norm.split() if w not in pais_k.split()]
-                if all(tok in TOKENS_SELECCION_VALIDOS or tok.isdigit() for tok in sobrante_tokens):
-                    return flag_u
+    # 0. Resolución Universal de Selecciones Nacionales (Invarianza Gramatical)
+    if es_seleccion is not False:
+        es_nat, flag_url = es_entidad_seleccion_nacional(equipo_norm)
+        if es_nat:
+            # Si el torneo es explícitamente una liga doméstica de clubes de primer nivel, verificar si no es selección forzada
+            torneo_norm = _normalizar(torneo)
+            es_liga_domestica = any(l in torneo_norm for l in [
+                "SEGUNDA", "PRIMERA DIVISION", "PREMIER LEAGUE", "LALIGA", "SERIE A", "BUNDESLIGA",
+                "LIGUE 1", "BETPLAY", "LIGA MX", "BRASILEIRAO"
+            ])
+            if es_seleccion is True or not es_liga_domestica:
+                return flag_url
 
     # 1. Catálogo maestro permanente de equipos en disco (Prioridad Absoluta)
     cat_equipos = _obtener_catalogo_equipos()
