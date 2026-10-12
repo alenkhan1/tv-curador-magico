@@ -114,9 +114,15 @@ SINONIMOS_EQUIPOS = {
     "SANTA FE": "SF",
 }
 
+RE_PAREN_DETALLE = re.compile(
+    r"\s*\((?:ALCS|NLCS|Game|Juego|Round|Ronda|Fase|Match|Leg|Ida|Vuelta|Partido|Serie|\d+).*?\)",
+    re.I
+)
+
 def normalizar_nombre_equipo(nombre: str) -> str:
-    """Remueve prefijos, sufijos y sinonimia de clubes/paises para emparejamiento estricto."""
-    s = _normalizar(nombre)
+    """Remueve prefijos, sufijos, sinonimia y parentesis de clubes/paises para emparejamiento estricto."""
+    s = re.sub(r"\(.*?\)", "", nombre)
+    s = _normalizar(s)
     for k, v in SINONIMOS_EQUIPOS.items():
         s = re.sub(rf"\b{k}\b", v, s)
     s = re.sub(r"\b(CD|CF|FC|SD|UD|AD|CA|CSD|REAL|ATLETICO|ATL|DEPORTIVO|DEP|CLUB|DEPORTES|FUTBOL CLUB|SAD|BALOMPIE|BADALONA|CUNDINAMARCA|DE BOGOTA)\b", "", s)
@@ -148,6 +154,16 @@ def desmontar_duelo(titulo: str, categoria: str) -> Tuple[str, str, str, str, st
     partes = re.split(r"\s+(?:vs\.?|v\.?|-)\s+", tit, flags=re.I)
     if len(partes) == 2:
         p0, vis = partes[0].strip(), partes[1].strip()
+        m_vis_par = RE_PAREN_DETALLE.search(vis)
+        if m_vis_par:
+            if not ronda:
+                ronda = m_vis_par.group(0).strip(" ()")
+            vis = (vis[:m_vis_par.start()] + vis[m_vis_par.end():]).strip()
+        m_loc_par = RE_PAREN_DETALLE.search(p0)
+        if m_loc_par:
+            if not ronda:
+                ronda = m_loc_par.group(0).strip(" ()")
+            p0 = (p0[:m_loc_par.start()] + p0[m_loc_par.end():]).strip()
         m_ronda = re.search(r"\b(\d+[ªºa]?\s+Jornada|Jornada\s+\d+|Fase\s+de\s+grupos|Fecha\s+\d+|Round\s+\d+|Cuartos\s+de\s+final|Semifinal(?:es)?|Final)\b[:\s]*", p0, re.I)
         if m_ronda:
             torneo_pref = p0[:m_ronda.start()].strip()
@@ -185,24 +201,44 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         l2_n = normalizar_nombre_equipo(loc2)
         v2_n = normalizar_nombre_equipo(vis2)
 
-        # Si los dos equipos coinciden exactamente, toleramos hasta 180 min de desfase
-        # para absorber discrepancias de huso horario entre feeds (ej. Arg UTC-3 vs Col UTC-5 o previas)
-        if ((l1_n == l2_n and v1_n == v2_n) or (l1_n == v2_n and v1_n == l2_n)) and diff_min <= 180:
+        # 1. Emparejamiento exacto invariante al orden (Home vs Away o Away vs Home)
+        match_exact = ((l1_n == l2_n and v1_n == v2_n) or (l1_n == v2_n and v1_n == l2_n))
+        if match_exact and diff_min <= 180:
             return True
-        if l1_n and l2_n and v1_n and v2_n and diff_min <= 90:
-            if (l1_n in l2_n or l2_n in l1_n) and (v1_n in v2_n or v2_n in v1_n):
-                return True
-            # Tolerancia para transliteraciones árabes/asiáticas (ej. Al Quadisiya vs Al Qadsiah)
+
+        # 2. Emparejamiento por subcadenas o aproximacion difusa (invariante al orden)
+        if l1_n and l2_n and v1_n and v2_n and diff_min <= 120:
             from difflib import SequenceMatcher
-            sim_loc = SequenceMatcher(None, l1_n, l2_n).ratio()
-            sim_vis = SequenceMatcher(None, v1_n, v2_n).ratio()
-            if (sim_loc >= 0.85 and sim_vis >= 0.65) or (sim_loc >= 0.65 and sim_vis >= 0.85):
+
+            # Comparacion en orden directo
+            sub_dir = (l1_n in l2_n or l2_n in l1_n) and (v1_n in v2_n or v2_n in v1_n)
+            sim_l_dir = SequenceMatcher(None, l1_n, l2_n).ratio()
+            sim_v_dir = SequenceMatcher(None, v1_n, v2_n).ratio()
+            fuzzy_dir = ((sim_l_dir >= 0.82 and sim_v_dir >= 0.65) or 
+                         (sim_l_dir >= 0.65 and sim_v_dir >= 0.82) or 
+                         (sim_l_dir >= 0.75 and sim_v_dir >= 0.75))
+
+            # Comparacion en orden invertido (visitante vs local)
+            sub_inv = (l1_n in v2_n or v2_n in l1_n) and (v1_n in l2_n or l2_n in v1_n)
+            sim_l_inv = SequenceMatcher(None, l1_n, v2_n).ratio()
+            sim_v_inv = SequenceMatcher(None, v1_n, l2_n).ratio()
+            fuzzy_inv = ((sim_l_inv >= 0.82 and sim_v_inv >= 0.65) or 
+                         (sim_l_inv >= 0.65 and sim_v_inv >= 0.82) or 
+                         (sim_l_inv >= 0.75 and sim_v_inv >= 0.75))
+
+            if sub_dir or fuzzy_dir or sub_inv or fuzzy_inv:
+                # Si las categorias son distintas y no son comodin, evitar falsos positivos
+                cat1_raw = ev1.get("categoria", "")
+                cat2_raw = ev2.get("categoria", "")
+                if cat1_raw and cat2_raw and cat1_raw != "Otros Deportes" and cat2_raw != "Otros Deportes":
+                    if cat1_raw != cat2_raw and not (("Fútbol" in cat1_raw or "Futbol" in cat1_raw) and ("Fútbol" in cat2_raw or "Futbol" in cat2_raw)):
+                        return False
                 return True
 
     if diff_min > 90:
         return False
 
-    # Coincidencia por título y categoría
+    # Coincidencia por titulo y categoria
     tit1 = _normalizar(ev1.get("titulo", ""))
     tit2 = _normalizar(ev2.get("titulo", ""))
     cat1 = _normalizar(ev1.get("categoria", ""))
@@ -215,9 +251,6 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
     )
 
     if es_circuito:
-        # REGLA SAGRADA DE CIRCUITOS Y TENIS:
-        # NUNCA fusionar canchas distintas (Stadium Court vs Show Court 3 vs Court 4).
-        # Cada cancha activa en cada horario es una tarjeta independiente con su botón.
         ref1 = _normalizar(ev1.get("subtitulo", "") or ev1.get("referencia", ""))
         ref2 = _normalizar(ev2.get("subtitulo", "") or ev2.get("referencia", ""))
         pat_cancha = r"\b(STADIUM|CENTRE|CENTER|COURT\s*\d+|PISTA\s*\d+|CANCHA\s*\d+|GRANDSTAND|SHOW\s*COURT)\b"
@@ -226,7 +259,6 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         if cancha1 and cancha2 and cancha1.group(0) != cancha2.group(0):
             return False
 
-        # Solo fusionar si tienen idéntico título y horario muy cercano
         if tit1 == tit2 and diff_min <= 60:
             return True
         return False
@@ -366,9 +398,16 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
             if son_mismo_evento(ev, exist):
                 ids_existentes = {f.get("id_xtream") for f in exist.get("fuentes", [])}
                 for f in ev.get("fuentes", []):
-                    if f.get("id_xtream") not in ids_existentes and len(exist["fuentes"]) < 4:
+                    if f.get("id_xtream") not in ids_existentes and len(exist["fuentes"]) < 10:
                         exist["fuentes"].append(f)
                         ids_existentes.add(f.get("id_xtream"))
+
+                if ev.get("subtitulo") and (not exist.get("subtitulo") or exist.get("subtitulo") in ["MLB", "Rugby", "Fútbol", "Futbol"]):
+                    exist["subtitulo"] = ev["subtitulo"]
+                if ev.get("referencia") and (not exist.get("referencia") or exist.get("referencia") in ["MLB", "Rugby", "Fútbol", "Futbol"]):
+                    exist["referencia"] = ev["referencia"]
+                if ev.get("ronda") and not exist.get("ronda"):
+                    exist["ronda"] = ev["ronda"]
 
                 # Preservar metadatos oficiales y logos HD
                 if not exist.get("logo_local") and ev.get("logo_local"):

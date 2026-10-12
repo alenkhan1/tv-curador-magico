@@ -42,6 +42,7 @@ from resolvedor_logos import (
     resolver_logo_equipo,
     resolver_logo_torneo,
     es_logo_basura,
+    es_logo_compatible_con_categoria,
 )
 from sanitizador_nombres import sanitizar_evento_crudo
 from curador_semantico import post_procesar_y_curar_eventos
@@ -608,7 +609,7 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
                 ev["logo_local"] = envolver_proxy_wsrv(match["logo_local"])
             if match.get("logo_visitante"):
                 ev["logo_visitante"] = envolver_proxy_wsrv(match["logo_visitante"])
-            if match.get("logo_torneo") and not es_logo_basura(match["logo_torneo"]):
+            if match.get("logo_torneo") and not es_logo_basura(match["logo_torneo"]) and es_logo_compatible_con_categoria(match["logo_torneo"], ev.get("categoria", "")):
                 logo_existente = ev.get("logo_torneo", "")
                 if not logo_existente or ("assets/logos/torneos/" not in logo_existente and "flagcdn.com" not in logo_existente):
                     ev["logo_torneo"] = envolver_proxy_wsrv(match["logo_torneo"])
@@ -644,13 +645,17 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
                     ev["logo_local"] = envolver_proxy_wsrv(match["logo_local"])
                 if match.get("logo_visitante"):
                     ev["logo_visitante"] = envolver_proxy_wsrv(match["logo_visitante"])
-                if match.get("logo_torneo") and not es_logo_basura(match["logo_torneo"]):
+                if match.get("logo_torneo") and not es_logo_basura(match["logo_torneo"]) and es_logo_compatible_con_categoria(match["logo_torneo"], ev.get("categoria", "")):
                     logo_existente = ev.get("logo_torneo", "")
                     if not logo_existente or ("assets/logos/torneos/" not in logo_existente and "flagcdn.com" not in logo_existente):
                         ev["logo_torneo"] = envolver_proxy_wsrv(match["logo_torneo"])
 
+    # FASE 3.6: DEDUPLICACION Y CONSOLIDACION FINAL TRAS AUDITORIA AGY Y API-SPORTS
+    log.info("Fase 3.6: Deduplicacion y consolidacion final tras auditoria AGY y API-Sports...")
+    eventos_consolidados = post_procesar_y_curar_eventos(eventos_pulidos)
+
     # FASE 4: GARANTIA GRAFICA PARA ANDROID TV (EventoCard.kt)
-    for ev in eventos_pulidos:
+    for ev in eventos_consolidados:
         cat = ev.get("categoria", "")
         tor = ev.get("torneo") or ev["titulo"]
         loc = ev.get("equipo_local", "")
@@ -659,7 +664,7 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         logo_cat = resolver_logo_torneo(tor, cat)
         if logo_cat:
             ev["logo_torneo"] = logo_cat
-        elif not ev.get("logo_torneo") or es_logo_basura(ev["logo_torneo"]):
+        elif not ev.get("logo_torneo") or es_logo_basura(ev["logo_torneo"]) or not es_logo_compatible_con_categoria(ev.get("logo_torneo", ""), cat):
             ev["logo_torneo"] = ""
 
         if loc:
@@ -667,11 +672,13 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         if vis:
             ev["logo_visitante"] = ev.get("logo_visitante") or resolver_logo_equipo(vis, cat, tor) or ""
         ev["banner"] = ev.get("banner") or ev["logo_torneo"]
+        if not es_logo_compatible_con_categoria(ev.get("banner", ""), cat):
+            ev["banner"] = ev.get("logo_torneo", "")
 
     # Validar unicidad estricta de IDs
     ids_vistos = set()
     eventos_verificados = []
-    for ev in eventos_pulidos:
+    for ev in eventos_consolidados:
         ev_id = ev.get("id")
         if ev_id in ids_vistos:
             nuevo_id = f"{ev_id}_{hashlib.sha1((ev['titulo'] + ev['hora_utc']).encode()).hexdigest()[:6]}"

@@ -609,16 +609,85 @@ def son_torneos_compatibles(torneo_norm: str, clave: str) -> bool:
     mods_clave = _normalizar_mods_torneo({d for d in DISCRIMINADORES_TORNEO if re.search(r"\b" + re.escape(d) + r"\b", clave)})
     return mods_torneo == mods_clave
 
+def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
+    """Verifica de forma estricta e invariable que el logo no pertenezca a otra disciplina deportiva."""
+    if not url or not categoria:
+        return True
+    url_low = url.lower()
+    cat_norm = _normalizar(categoria)
+
+    # Logos exclusivos de Futbol / Soccer
+    LOGOS_FUTBOL = [
+        "fifa", "uefa", "conmebol", "concacaf", "laliga", "premier_league", "serie_a",
+        "bundesliga", "ligue_1", "libertadores", "sudamericana", "champions_league",
+        "europa_league", "conference_league", "nations_league", "copa_del_rey",
+        "fa_cup", "efl_championship", "copa_africana", "copa_oro"
+    ]
+    if any(k in url_low for k in LOGOS_FUTBOL):
+        if cat_norm not in ["FUTBOL", "FUTBOL SALA", "SOCCER"]:
+            return False
+
+    # Logos exclusivos de Beisbol
+    LOGOS_BEISBOL = ["mlb", "major_league_baseball", "lmb", "kbo", "npb"]
+    if any(k in url_low for k in LOGOS_BEISBOL):
+        if cat_norm not in ["BEISBOL", "BASEBALL"]:
+            return False
+
+    # Logos exclusivos de Baloncesto
+    LOGOS_BASKET = ["nba", "wnba", "fiba", "euroleague", "acb", "basketball"]
+    if any(k in url_low for k in LOGOS_BASKET):
+        if cat_norm not in ["BALONCESTO", "BASKETBALL", "BASKET"]:
+            return False
+
+    # Logos exclusivos de Futbol Americano
+    LOGOS_NFL = ["nfl", "cfl", "ufl"]
+    if any(k in url_low for k in LOGOS_NFL):
+        if cat_norm not in ["FUTBOL AMERICANO", "NFL"]:
+            return False
+
+    # Logos exclusivos de Tenis
+    LOGOS_TENIS = ["atp", "wta", "itf", "davis_cup", "us_open_tennis", "roland_garros", "wimbledon"]
+    if any(k in url_low for k in LOGOS_TENIS):
+        if cat_norm not in ["TENIS", "TENNIS"]:
+            return False
+
+    # Logos exclusivos de Rugby
+    LOGOS_RUGBY = ["world_rugby", "six_nations", "rugby_championship", "top_14"]
+    if any(k in url_low for k in LOGOS_RUGBY):
+        if cat_norm not in ["RUGBY"]:
+            return False
+
+    # Logos exclusivos de Hockey
+    LOGOS_HOCKEY = ["nhl", "iihf"]
+    if any(k in url_low for k in LOGOS_HOCKEY):
+        if cat_norm not in ["HOCKEY"]:
+            return False
+
+    # Logos exclusivos de Deportes de Combate
+    LOGOS_COMBATE = ["ufc", "bellator", "one_championship", "pfl"]
+    if any(k in url_low for k in LOGOS_COMBATE):
+        if cat_norm not in ["COMBATE", "MMA", "BOXEO"]:
+            return False
+
+    # Logos exclusivos de Motor
+    LOGOS_MOTOR = ["f1", "formula1", "motogp", "moto_gp", "indycar", "wrc", "nascar", "worldsbk"]
+    if any(k in url_low for k in LOGOS_MOTOR):
+        if cat_norm not in ["MOTOR"]:
+            return False
+
+    return True
+
 def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False) -> str:
-    """Resuelve el logo oficial del torneo con precedencia estricta por palabras completas."""
+    """Resuelve el logo oficial del torneo con precedencia estricta por palabras completas y compatibilidad de deporte."""
     if not torneo and not categoria:
         return ""
 
     torneo_norm = _normalizar(torneo)
+    cat_clean = _normalizar(categoria or "")
     cache = _cargar_cache()
-    clave_cache = f"torneo_{torneo_norm}"
+    clave_cache = f"torneo_{cat_clean}_{torneo_norm}" if cat_clean else f"torneo_{torneo_norm}"
 
-    # 0. Catálogo maestro oficial de torneos verificados en disco
+    # 0. Catalogo maestro oficial de torneos verificados en disco
     catalogo = _obtener_catalogo_torneos()
     if catalogo:
         claves_ordenadas = sorted(catalogo.keys(), key=len, reverse=True)
@@ -628,11 +697,13 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
                 if not son_torneos_compatibles(torneo_norm, clave):
                     continue
                 url = catalogo[clave]
+                if not es_logo_compatible_con_categoria(url, categoria):
+                    continue
                 cache[clave_cache] = url
                 _guardar_cache(cache)
                 return url
 
-    # 1. Catálogo maestro de insignias oficiales (Precedencia Máxima por longitud de clave)
+    # 1. Catalogo maestro de insignias oficiales (Precedencia Maxima por longitud de clave)
     claves_ordenadas = sorted(CIRCUITO_LOGOS.keys(), key=len, reverse=True)
     for clave in claves_ordenadas:
         patron = r"\b" + re.escape(clave) + r"\b"
@@ -640,15 +711,19 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
             if not son_torneos_compatibles(torneo_norm, clave):
                 continue
             url = CIRCUITO_LOGOS[clave]
+            if not es_logo_compatible_con_categoria(url, categoria):
+                continue
             cache[clave_cache] = url
             _guardar_cache(cache)
             return url
 
-    # 2. Caché previo en disco con invalidación de falsos positivos
+    # 2. Cache previo en disco con invalidacion de falsos positivos y de disciplina
     if clave_cache in cache and cache[clave_cache] and not es_logo_basura(cache[clave_cache]):
         cached_url = cache[clave_cache]
-        # Invalida UEFA Champions League si el torneo pertenece a otra confederación
-        if "uefa_champions_league" in cached_url.lower() and any(k in torneo_norm for k in ["AFC", "CAF", "CONCACAF", "OFC", "EHF"]):
+        if not es_logo_compatible_con_categoria(cached_url, categoria):
+            pass
+        # Invalida UEFA Champions League si el torneo pertenece a otra confederacion
+        elif "uefa_champions_league" in cached_url.lower() and any(k in torneo_norm for k in ["AFC", "CAF", "CONCACAF", "OFC", "EHF"]):
             pass
         else:
             return cached_url
@@ -662,7 +737,7 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
                 leagues = data["countries"]
                 if leagues:
                     badge = leagues[0].get("strBadge") or leagues[0].get("strLogo")
-                    if badge and not es_logo_basura(badge):
+                    if badge and not es_logo_basura(badge) and es_logo_compatible_con_categoria(badge, categoria):
                         cdn_url = envolver_cdn_proxy(badge)
                         cache[clave_cache] = cdn_url
                         _guardar_cache(cache)
@@ -670,11 +745,11 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
         except Exception:
             pass
 
-    # 4. Fallback por categoria solo si está explícitamente listado
+    # 4. Fallback por categoria solo si esta explicitamente listado y es compatible
     cat_limpia = categoria.strip()
     if cat_limpia in FALLBACK_POR_CATEGORIA:
         url_fb = FALLBACK_POR_CATEGORIA[cat_limpia]
-        if url_fb:
+        if url_fb and es_logo_compatible_con_categoria(url_fb, categoria):
             return url_fb
 
     return ""
