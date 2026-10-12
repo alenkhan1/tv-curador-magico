@@ -81,6 +81,7 @@ class EventoAgenda:
     fuente: str = ""
     referencia: str = ""
     tipo_evento: str = "duelo"  # "duelo" o "circuito"
+    texto_original_crudo: str = ""
 
     def __post_init__(self):
         if self.duracion_min == 120:

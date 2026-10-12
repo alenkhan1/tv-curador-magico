@@ -16,6 +16,11 @@ from .modelos import EventoAgenda, obtener_tz
 
 log = logging.getLogger("canales_suramerica")
 
+RE_REPETICIONES = re.compile(
+    r"\b(?:REVIVE|MEJORES\s+MOMENTOS|REPETICI[OÓ]N|DIFERIDO|EN\s+DIFERIDO|RESUMEN|FLASHBACK|HISTORIA|HISTORIAS|RETRO|REPLAY)\b",
+    re.I
+)
+
 def _crear_contexto_ssl():
     ctx = ssl.create_default_context()
     ctx.check_hostname = False
@@ -218,6 +223,7 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
             duracion_min=180 if deporte in ["Motor", "Béisbol", "Tenis"] else 120,
             fuente=url.split("/")[-1] or "portada",
             tipo_evento=tipo,
+            texto_original_crudo=txt_fila,
         )
         eventos.append(ev)
 

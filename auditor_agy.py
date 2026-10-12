@@ -64,37 +64,53 @@ def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
 
 def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str) -> Dict[str, Dict[str, Any]]:
     prompt_texto = f"""Hoy es {fecha_hoy_iso}.
-Eres el Auditor y Curador Deportivo en Jefe. Tu misión es depurar la cartelera para una app de Android TV.
-Tienes el texto original crudo de cada canal o feed.
+Eres el Auditor y Curador Deportivo en Jefe. Tu misión es ser el JUEZ SUPREMO DE VERACIDAD Y VIGENCIA de la cartelera deportiva para una app de Android TV.
+La app SOLO transmite eventos deportivos REALES EN VIVO Y EN DIRECTO que se disputan HOY ({fecha_hoy_iso}).
+
+Tienes tanto el 'texto_original_crudo' (texto sucio original de la guía o canal) como los canales fuente y datos propuestos.
+
+Reglas obligatorias de decisión:
+1. 'descartar': true OBLIGATORIO si:
+   - Es una REPETICIÓN, DIFERIDO o RESUMEN (el texto original o la fuente menciona 'Revive', 'Resumen', 'Mejores momentos', 'Diferido', 'Replay', 'Clásico', etc.).
+   - Es un partido, duelo o evento que ya se disputó AYER o en fechas pasadas (ej: partidos de fútbol de fin de semana que los canales lineales retransmiten los lunes).
+   - Es un evento con fecha explícita ajena a hoy (ej. nombres con fechas pasadas o futuras como '11.26' o años antiguos).
+   - Es un programa de debate, noticiero, magazine, documental o previa de estudio (SportsCenter, F90, Primer Toque, etc.).
+   - Es un canal de prueba, comodín vacío o evento falso/inventado.
+
+2. 'descartar': false si y solo si:
+   - Es una transmisión deportiva legítima de un evento o partido que se disputa HOY en vivo en la vida real.
+
+3. 'motivo_descarte': Si 'descartar' es true, indica la razón precisa (ej: 'partido_jugado_ayer', 'repeticion_resumen', 'fecha_ajena', 'magazine_noticias'). Si es false, deja cadena vacía "".
+
+4. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Boxeo, MMA, Golf, Rugby, Natación, Snooker, etc.). NUNCA 'Otros Deportes'.
+
+5. 'tipo_evento':
+   - 'duelo' si son dos equipos, clubes o selecciones enfrentados.
+   - 'circuito' si es velada de combate (Boxeo, UFC, MMA), sesión de carreras (Motor), torneo de tenis, golf, etc.
+
+6. 'titulo_pulido':
+   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (limpio, sin prefijos, números de dial ni viñetas).
+   - Si es CIRCUITO / COMBATE: Título conciso del evento, velada u organización para el botón de la TV (ej: 'UFC Fight Night 246', 'Gran Noche de Boxeo', 'Rolex Shanghai Masters', 'NASCAR Cup Series'). REGLA SAGRADA: NUNCA pongas nombres de deportistas individuales en el botón de circuito.
+
+7. 'torneo_pulido': Nombre oficial del torneo, liga o velada (ej. 'Amistoso Internacional Femenino', 'UFC Fight Night', 'Liga BetPlay').
+8. 'subtitulo_pulido': Sede, coliseo, cancha, pista o sesión (ej. 'Stadium Court', 'Bogotá', 'Apex Las Vegas', 'Clasificación'). Si no hay sede conocida, deja cadena vacía "".
+9. 'participantes': Para circuito o combate, contrincantes principales extraídos del texto original.
 
 Lista de eventos a auditar:
 {json.dumps(lote, ensure_ascii=False, indent=1)}
-
-Reglas obligatorias para la interfaz de Android TV:
-1. 'descartar': true si es programa de debate, noticiero, magazine de estudio, resumen de TV o repetición en diferido. SOLO eventos deportivos reales en directo.
-2. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Boxeo, MMA, Golf, Rugby, Natación, Snooker, etc.). NUNCA 'Otros Deportes'.
-3. 'tipo_evento':
-   - 'duelo' si son dos equipos, clubes o selecciones enfrentados.
-   - 'circuito' si es velada de combate (Boxeo, UFC, MMA), sesión de carreras (Motor), torneo de tenis, golf, etc.
-4. 'titulo_pulido':
-   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (limpio, sin prefijos, números de dial ni viñetas).
-   - Si es CIRCUITO / COMBATE: Título conciso del evento, velada u organización para el botón de la TV (ej: 'UFC Fight Night 246', 'Gran Noche de Boxeo', 'Rolex Shanghai Masters', 'NASCAR Cup Series'). REGLA SAGRADA: NUNCA pongas nombres de deportistas individuales en el botón de circuito.
-5. 'torneo_pulido': Nombre oficial del torneo, liga o velada (ej. 'Amistoso Internacional Femenino', 'UFC Fight Night', 'Liga BetPlay').
-6. 'subtitulo_pulido': Sede, coliseo, cancha, pista o sesión (ej. 'Stadium Court', 'Bogotá', 'Apex Las Vegas', 'Clasificación'). Si no hay sede conocida, deja cadena vacía "".
-7. 'participantes':
-   - Si es CIRCUITO / COMBATE y en el texto original vienen los contrincantes principales o protagonistas (ej. 'Happy Lora vs. Unhappy Lora', 'Brandon Moreno vs Amir Albazi', 'Alcaraz vs Sinner'), ponlos aquí limpios. Estos nombres van bajo la pantalla preview del reproductor, NUNCA en el botón pequeño.
 
 Responde ÚNICAMENTE con un JSON Array:
 [
   {{
     "id": "id original",
+    "descartar": false,
+    "motivo_descarte": "",
     "titulo_pulido": "Título limpio para el botón",
     "torneo_pulido": "Torneo o Liga oficial",
     "subtitulo_pulido": "Sede o Cancha",
     "participantes": "Contrincantes bajo preview si aplica",
     "categoria_exacta": "Deporte exacto",
-    "tipo_evento": "duelo o circuito",
-    "descartar": false
+    "tipo_evento": "duelo o circuito"
   }}
 ]
 """
@@ -154,19 +170,21 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         tiene_vinetas = any(c in tit for c in ["•", "–", "—", ">", "|", "■", "►"])
         es_circuito = tipo == "circuito" or cat in ["Tenis", "Motor", "Combate", "Boxeo", "MMA", "Golf", "Ciclismo", "Pádel", "Padel"]
         cat_dudosa = cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"]
-        necesita = (not ev.get("contrastado_api")) or es_circuito or tiene_vinetas or cat_dudosa
+        # Auditar eventos huérfanos, eventos lineales no contrastados, circuitos y deportes dudosos
+        es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte"] for o in ev.get("origenes", []))
+        necesita = (not ev.get("contrastado_api")) or es_lineal or es_circuito or tiene_vinetas or cat_dudosa
         if necesita:
-            # ENVIAR SIEMPRE EL TEXTO ORIGINAL CRUDO PARA QUE AGY RAZONE CON EL 100% DE INFORMACIÓN
-            raw_tit = ev.get("titulo_original_crudo") or ev.get("titulo_original") or ev.get("titulo")
+            raw_tit = ev.get("titulo_original_crudo") or ev.get("titulo_original") or ev.get("titulo") or ""
+            fuentes_nombres = [f.get("nombre") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("nombre")][:3]
             eventos_a_auditar.append({
                 "id": ev.get("id"),
-                "texto_original": raw_tit,
-                "titulo": ev.get("titulo"),
-                "subtitulo": ev.get("subtitulo"),
-                "categoria": ev.get("categoria"),
+                "texto_original_crudo": raw_tit,
+                "canales_fuente": fuentes_nombres,
+                "titulo_propuesto": ev.get("titulo"),
                 "torneo": ev.get("torneo"),
+                "categoria": ev.get("categoria"),
                 "tipo_evento": ev.get("tipo_evento"),
-                "hora": ev.get("hora_local_producto"),
+                "hora_local": ev.get("hora_local_producto"),
             })
 
     if not eventos_a_auditar:
@@ -191,8 +209,9 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         aud = mapa_audit.get(ev.get("id"))
         if aud:
             if aud.get("descartar") is True:
-                log.info("AGY descartó evento por no ser directo/oficial: '%s'", ev.get("titulo"))
-                ev["motivo_descarte"] = "descartado_por_auditoria_agy"
+                motivo = aud.get("motivo_descarte") or "descartado_por_auditoria_agy"
+                log.info("AGY descartó evento ('%s'): '%s'", motivo, ev.get("titulo"))
+                ev["motivo_descarte"] = motivo
                 eventos_descartados.append(ev)
                 continue
 

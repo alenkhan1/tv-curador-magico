@@ -404,14 +404,22 @@ def procesar_streams_eventos_xtream(
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "vod"})
             continue
 
-        # 4. Descarte de fecha explícita antigua (ayer u otro día)
-        m_f = re.search(r'([0-3]?[0-9]/[0-1]?[0-9])', nombre)
+        # 3.1 Descarte de años antiguos en el stream (canales viejos 2020..2025)
+        m_y = re.search(r'\b(20[0-1][0-9]|202[0-5])\b', nombre)
+        if m_y:
+            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"anio_antiguo ({m_y.group(1)})"})
+            continue
+
+        # 4. Descarte de fecha explícita ajena a hoy (soporta / . - como '11.26', '12/10', '12-10')
+        m_f = re.search(r'\b([0-3]?[0-9])[./-]([0-3]?[0-9])\b', nombre)
         if m_f:
-            p1, p2 = m_f.group(1).split('/')
-            f_norm = f"{int(p1):02d}/{int(p2):02d}"
-            if f_norm != f_hoy_norm:
-                descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"fecha_antigua ({f_norm} != {f_hoy_norm})"})
-                continue
+            n1, n2 = int(m_f.group(1)), int(m_f.group(2))
+            es_fecha_valida = (1 <= n1 <= 12 and 1 <= n2 <= 31) or (1 <= n2 <= 12 and 1 <= n1 <= 31)
+            if es_fecha_valida:
+                es_hoy = (n1 == d_hoy and n2 == m_hoy) or (n1 == m_hoy and n2 == d_hoy)
+                if not es_hoy:
+                    descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"fecha_ajena ({m_f.group(0)})"})
+                    continue
 
         # 5. Extracción y sanitización de datos del evento
         cat_nombre = c.get("category_name") or ""

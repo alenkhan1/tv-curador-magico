@@ -51,6 +51,12 @@ PROGRAMAS_ESTUDIO_NOTICIAS = [
     "NEXO", "ESPN FC", "DEBATE", "CRONOMETRO", "CRONÓMETRO", "FUERA DE JUEGO",
 ]
 
+RE_REPETICIONES = re.compile(
+    r"(?:REVIVE|MEJORES\s+MOMENTOS|REPETICI[OÓ]N|DIFERIDO|EN\s+DIFERIDO|RESUMEN|FLASHBACK|HISTORIA|HISTORIAS|RETRO|REPLAY)",
+    re.I
+)
+RE_EN_VIVO = re.compile(r"(?:EN\s+VIVO|DIRECTO|EN\s+DIRECTO|LIVE|VIVO)", re.I)
+
 def obtener_directos_lineales_mitv(
     fecha_hoy_iso: str,
     eventos_referencia_futbolenvivo: Optional[List[EventoAgenda]] = None
@@ -109,6 +115,10 @@ def obtener_directos_lineales_mitv(
             if any(w in u_txt for w in PROGRAMAS_ESTUDIO_NOTICIAS):
                 continue
 
+            # 1.1 Descarte estricto de repeticiones, revives y resúmenes
+            if RE_REPETICIONES.search(txt):
+                continue
+
             # 2. Descarte de repeticiones históricas por año en la URL
             if re.search(r"\b(200\d|201\d|202[0-4])\b", href):
                 continue
@@ -127,8 +137,8 @@ def obtener_directos_lineales_mitv(
                 h = 0
             minutos_mitv = h * 60 + mi
 
-            # 3. ¿Tiene etiqueta explícita de En Vivo / Directo?
-            es_en_vivo_tag = any(w in u_txt for w in ["EN VIVO", "DIRECTO", "EN DIRECTO", "LIVE", "VIVO"])
+            # 3. ¿Tiene etiqueta explícita de En Vivo / Directo? (límite de palabra para evitar que 'Liverpool' active 'LIVE')
+            es_en_vivo_tag = bool(RE_EN_VIVO.search(txt))
 
             # 4. Contraste riguroso con la cartelera de referencia
             contrastado = False
@@ -186,6 +196,7 @@ def obtener_directos_lineales_mitv(
                 duracion_min=120,
                 fuente="mitv_colombia",
                 tipo_evento=tipo,
+                texto_original_crudo=txt,
             )
             nuevos.append(ev)
 
