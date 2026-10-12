@@ -1,48 +1,60 @@
 {
   "version": "3.2-curador-tv-universal",
-  "generado_utc": "2026-10-12T19:03:42Z",
+  "generado_utc": "2026-10-12T19:59:23Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-12",
   "base_media": "http://avefenixtv.com:8080",
   "eventos": [
     {
-      "id": "xtream_e69326cd",
+      "id": "lineal_teledeporte_4c0bc84e",
       "agenda_id": "",
-      "titulo": "Milano Premier Padel",
-      "torneo": "Premier Padel",
-      "categoria": "Pádel",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "Premier Padel",
-      "hora_utc": "2026-10-12T07:00:00Z",
-      "hora_local_producto": "02:00",
+      "titulo": "CN Mataró vs CN Sant Andreu",
+      "torneo": "Supercopa de España Femenina",
+      "categoria": "Waterpolo",
+      "tipo_evento": "duelo",
+      "equipo_local": "CN Mataró",
+      "equipo_visitante": "CN Sant Andreu",
+      "subtitulo": "Supercopa de España Femenina",
+      "referencia": "Final",
+      "hora_utc": "2026-10-12T09:55:00Z",
+      "hora_local_producto": "04:55",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
-      "tier": 1,
-      "origen": "xtream_evento",
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1kas331730630689.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Frbs1t11790546825.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
       "origenes": [
-        "xtream_evento"
+        "inyector_lineal",
+        "rtve_teledeporte_oficial"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "02:00 ◘ Premier Padel: Milán - Centre Court ◘ Premier Padel ◘◘",
-          "id_xtream": "1728040"
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
+          "canal_lineal": "TELEDEPORTE"
         },
         {
-          "nombre": "02:00 ◘ Premier Padel: Milán - Secondary Court ◘ Premier Padel ◘◘",
-          "id_xtream": "1728041"
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE"
+        },
+        {
+          "nombre": "TELEDEPORTES FHD",
+          "id_xtream": "327981",
+          "canal_lineal": "TELEDEPORTE"
         }
       ],
-      "titulo_original_crudo": "Premier Padel",
+      "canales_candidatos": [
+        "TELEDEPORTE"
+      ],
+      "texto_original_crudo": "Waterpolo Supercopa Femenina Assolim Cn Mataró vs Cn Sant Andreu",
+      "titulo_original_crudo": "Waterpolo Supercopa Femenina Assolim Cn Mataró vs Cn Sant Andreu",
       "ronda": "",
       "auditado_agy": true
     },
@@ -143,53 +155,16 @@
       "ronda": ""
     },
     {
-      "id": "xtream_9b2963bc",
+      "id": "lineal_win_sportsplus_8dbb92df",
       "agenda_id": "",
-      "titulo": "Rumania vs Hong Kong China",
-      "torneo": "Test Match",
-      "categoria": "Rugby",
-      "tipo_evento": "duelo",
-      "equipo_local": "Rumania",
-      "equipo_visitante": "Hong Kong China",
-      "subtitulo": "Test Match",
-      "referencia": "Rugby",
-      "hora_utc": "2026-10-12T12:50:00Z",
-      "hora_local_producto": "07:50",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/ro.png",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "07:50 ◘ Rumania vs. Hong Kong China ◘ Rugby ◘◘",
-          "id_xtream": "1728044"
-        }
-      ],
-      "titulo_original_crudo": "Rumania vs Hong Kong China",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "lineal_win_sports_f27d200d",
-      "agenda_id": "",
-      "titulo": "Torneo de Las Américas vs Final",
+      "titulo": "Torneo de Las Américas",
       "torneo": "Torneo de Las Américas",
       "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Torneo de Las Américas",
-      "equipo_visitante": "Final",
-      "subtitulo": "Torneo de Las Américas",
-      "referencia": "Cali, Colombia",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "referencia": "Torneo de Las Américas",
       "hora_utc": "2026-10-12T13:00:00Z",
       "hora_local_producto": "08:00",
       "duracion_min": 130,
@@ -201,7 +176,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "mitv_win_sports"
+        "mitv_win_sportsplus"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -209,72 +184,36 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "Win Sports SD",
-          "id_xtream": "13766",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + SD",
+          "id_xtream": "13768",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "Win Sports HD",
-          "id_xtream": "13767",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13770",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "WIN SPORTS FHD",
-          "id_xtream": "1331804",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13772",
+          "canal_lineal": "WIN SPORTS+"
         }
       ],
       "canales_candidatos": [
-        "WIN SPORTS"
+        "WIN SPORTS+"
       ],
       "texto_original_crudo": "Final. Torneo de Las Américas. Disfruta del certamen de fútbol formativo más importante del país",
       "titulo_original_crudo": "Final. Torneo de Las Américas. Disfruta del certamen de fútbol formativo más importante del país",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_bb6abea9",
-      "agenda_id": "",
-      "titulo": "Pakhtakor vs Al Qadsiah Club",
-      "torneo": "AFC Champions League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Pakhtakor",
-      "equipo_visitante": "Al Qadsiah Club",
-      "subtitulo": "AFC Champions League",
-      "referencia": "Estadio Central Pakhtakor",
-      "hora_utc": "2026-10-12T13:30:00Z",
-      "hora_local_producto": "08:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/17.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4220.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fok63wb1719134839.png&w=400&output=webp&trim=10",
-      "banner": "https://media.api-sports.io/football/leagues/17.png",
-      "tier": 1,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "08:30 ◘ Pakhtaktor vs. Al Qadsiah Club ◘ AFC Champions League ◘◘",
-          "id_xtream": "1728045"
-        },
-        {
-          "nombre": "08:30  Pakhtaktor (UZB) vs. Al Qadsiah Club (KSA) | AFC Champions League",
-          "id_xtream": "1728091"
-        }
-      ],
-      "titulo_original_crudo": "Pakhtaktor vs Al Qadsiah Club",
       "ronda": "",
       "auditado_agy": true
     },
@@ -363,84 +302,6 @@
       "ronda": ""
     },
     {
-      "id": "xtream_6032709d",
-      "agenda_id": "",
-      "titulo": "Al Wasl FC vs Al Ahli Saudi",
-      "torneo": "AFC Champions League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Al Wasl FC",
-      "equipo_visitante": "Al Ahli Saudi",
-      "subtitulo": "AFC Champions League",
-      "referencia": "Zabeel Stadium",
-      "hora_utc": "2026-10-12T15:50:00Z",
-      "hora_local_producto": "10:50",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/17.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fs3o3ew1578859398.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1bbtgb1755192301.png&w=400&output=webp&trim=10",
-      "banner": "https://media.api-sports.io/football/leagues/17.png",
-      "tier": 1,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "10:50 ◘ Al Wasl FC vs. Al Ahli Saudi ◘ AFC Champions League ◘◘",
-          "id_xtream": "1728049"
-        },
-        {
-          "nombre": "10:50  Al Wasl FC (UAE) vs. Al Ahli Saudi (KSA) | AFC Champions League",
-          "id_xtream": "1728095"
-        }
-      ],
-      "titulo_original_crudo": "Al Wasl FC vs Al Ahli Saudi",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_915b2753",
-      "agenda_id": "",
-      "titulo": "Canadá vs Portugal",
-      "torneo": "Test Match",
-      "categoria": "Rugby",
-      "tipo_evento": "duelo",
-      "equipo_local": "Canadá",
-      "equipo_visitante": "Portugal",
-      "subtitulo": "Test Match",
-      "referencia": "Rugby",
-      "hora_utc": "2026-10-12T15:50:00Z",
-      "hora_local_producto": "10:50",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/ca.png",
-      "logo_visitante": "https://flagcdn.com/256x192/pt.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "10:50 ◘ Canadá vs. Portugal ◘ Rugby ◘◘",
-          "id_xtream": "1728050"
-        }
-      ],
-      "titulo_original_crudo": "Canadá vs Portugal",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "lineal_espn_2_5ea0b927",
       "agenda_id": "",
       "titulo": "Atalanta vs Venezia",
@@ -510,8 +371,8 @@
       "canales_candidatos": [
         "ESPN 2"
       ],
-      "texto_original_crudo": "11:30 Atalanta Venezia FC Disney+ Premium ESPN 2",
-      "titulo_original_crudo": "11:30 Atalanta Venezia FC Disney+ Premium ESPN 2",
+      "texto_original_crudo": "13:30 Atalanta Venezia FC Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "13:30 Atalanta Venezia FC Disney+ Premium ESPN 2",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
@@ -555,16 +416,16 @@
       "ronda": ""
     },
     {
-      "id": "lineal_win_sports_0c1c6f6b",
+      "id": "lineal_win_sportsplus_759e091f",
       "agenda_id": "",
-      "titulo": "Torneo de Las Américas vs Final",
+      "titulo": "Torneo de Las Américas",
       "torneo": "Torneo de Las Américas",
       "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Torneo de Las Américas",
-      "equipo_visitante": "Final",
-      "subtitulo": "Torneo de Las Américas",
-      "referencia": "Cali, Colombia",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "",
+      "referencia": "Torneo de Las Américas",
       "hora_utc": "2026-10-12T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -576,7 +437,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "mitv_win_sports"
+        "mitv_win_sportsplus"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -584,68 +445,36 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "Win Sports SD",
-          "id_xtream": "13766",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + SD",
+          "id_xtream": "13768",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "Win Sports HD",
-          "id_xtream": "13767",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13770",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "WIN SPORTS FHD",
-          "id_xtream": "1331804",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13772",
+          "canal_lineal": "WIN SPORTS+"
         }
       ],
       "canales_candidatos": [
-        "WIN SPORTS"
+        "WIN SPORTS+"
       ],
       "texto_original_crudo": "Final. Torneo de Las Américas. Disfruta del certamen de fútbol formativo más importante del país",
       "titulo_original_crudo": "Final. Torneo de Las Américas. Disfruta del certamen de fútbol formativo más importante del país",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_7f35d6a6",
-      "agenda_id": "",
-      "titulo": "West Virginia Mountaineers vs American University Eagles",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "West Virginia Mountaineers",
-      "equipo_visitante": "American University Eagles",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Dick Dlesk Soccer Stadium",
-      "hora_utc": "2026-10-12T17:00:00Z",
-      "hora_local_producto": "12:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyyn0wz1564337133.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fj4tzaz1580997179.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "12:00 ◘ #15 West Virginia vs. American University ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1728053"
-        }
-      ],
-      "titulo_original_crudo": "15 West Virginia vs American University",
       "ronda": "",
       "auditado_agy": true
     },
@@ -686,47 +515,6 @@
       "contrastado_api": true,
       "titulo_original_crudo": "Buffalo Sabres vs. Florida Panthers",
       "ronda": ""
-    },
-    {
-      "id": "xtream_626d483b",
-      "agenda_id": "",
-      "titulo": "Forge FC vs Inter Toronto",
-      "torneo": "Canadian Premier League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Forge FC",
-      "equipo_visitante": "Inter Toronto",
-      "subtitulo": "Canadian Premier League",
-      "referencia": "Tim Hortons Field",
-      "hora_utc": "2026-10-12T17:00:00Z",
-      "hora_local_producto": "12:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://media.api-sports.io/football/leagues/479.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F48dk0h1582572865.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkevy591770133070.png&w=400&output=webp&trim=10",
-      "banner": "https://media.api-sports.io/football/leagues/479.png",
-      "tier": 1,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "12:00 ◘ Forge vs. Inter Toronto ◘ Canadian Premier League ◘",
-          "id_xtream": "1728055"
-        },
-        {
-          "nombre": "12:00  Inter Toronto vs. Forge FC | Liga de Canadá",
-          "id_xtream": "1728100"
-        }
-      ],
-      "titulo_original_crudo": "Forge vs Inter Toronto",
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "xtream_37589f5a",
@@ -805,7 +593,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_5_9d28d701",
+      "id": "lineal_espn_2_6b1e8991",
       "agenda_id": "",
       "titulo": "Torino vs Udinese",
       "torneo": "Serie A",
@@ -835,24 +623,24 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN 5",
-          "id_xtream": "591992",
-          "canal_lineal": "ESPN 5"
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2"
         },
         {
-          "nombre": "ESPN 5 SUR",
-          "id_xtream": "591993",
-          "canal_lineal": "ESPN 5"
+          "nombre": "ESPN 2 ARG | FHD",
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2"
         },
         {
-          "nombre": "ESPN 5",
-          "id_xtream": "591994",
-          "canal_lineal": "ESPN 5"
+          "nombre": "ESPN 2 CO",
+          "id_xtream": "591982",
+          "canal_lineal": "ESPN 2"
         },
         {
-          "nombre": "ESPN 5",
-          "id_xtream": "1229124",
-          "canal_lineal": "ESPN 5"
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2"
         },
         {
           "nombre": "13:45 ◘ Torino vs. Udinese ◘ Serie A ◘",
@@ -872,53 +660,16 @@
         }
       ],
       "canales_candidatos": [
-        "ESPN 5"
+        "ESPN 2"
       ],
-      "texto_original_crudo": "13:45 Torino Udinese Disney+ Premium ESPN 5",
-      "titulo_original_crudo": "13:45 Torino Udinese Disney+ Premium ESPN 5",
+      "texto_original_crudo": "15:45 Torino Udinese Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "15:45 Torino Udinese Disney+ Premium ESPN 2",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
     },
     {
-      "id": "xtream_ddeaaee4",
-      "agenda_id": "",
-      "titulo": "Bélgica vs Namibia",
-      "torneo": "Test Match",
-      "categoria": "Rugby",
-      "tipo_evento": "duelo",
-      "equipo_local": "Bélgica",
-      "equipo_visitante": "Namibia",
-      "subtitulo": "Test Match",
-      "referencia": "Rugby",
-      "hora_utc": "2026-10-12T18:50:00Z",
-      "hora_local_producto": "13:50",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/be.png",
-      "logo_visitante": "https://flagcdn.com/256x192/na.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "13:50 ◘ Bélgica vs. Namibia ◘ Rugby ◘◘",
-          "id_xtream": "1728058"
-        }
-      ],
-      "titulo_original_crudo": "Bélgica vs Namibia",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "lineal_dsports_2_39ee27d7",
+      "id": "lineal_dsports_fad7ba5d",
       "agenda_id": "",
       "titulo": "Levante vs Sevilla",
       "torneo": "La Liga",
@@ -927,7 +678,7 @@
       "equipo_local": "Levante",
       "equipo_visitante": "Sevilla",
       "subtitulo": "La Liga",
-      "referencia": "La Liga",
+      "referencia": "LaLiga",
       "hora_utc": "2026-10-12T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -935,11 +686,11 @@
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F539.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F536.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
-      "tier": 2,
+      "tier": 1,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "portada",
+        "agy_lineales",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -948,19 +699,29 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "DIRECTV SPORTS 2 AR",
-          "id_xtream": "69549",
-          "canal_lineal": "DSPORTS 2"
+          "nombre": "DSPORTS | AR",
+          "id_xtream": "592036",
+          "canal_lineal": "DSPORTS"
         },
         {
-          "nombre": "DIRECTV SPORTS 2 CO",
-          "id_xtream": "69568",
-          "canal_lineal": "DSPORTS 2"
+          "nombre": "DSPORTS  | CO",
+          "id_xtream": "592037",
+          "canal_lineal": "DSPORTS"
         },
         {
-          "nombre": "DSPORTS 2 ARG",
-          "id_xtream": "712757",
-          "canal_lineal": "DSPORTS 2"
+          "nombre": "DIRECTV SPORTS AR",
+          "id_xtream": "69547",
+          "canal_lineal": "DSPORTS"
+        },
+        {
+          "nombre": "DIRECTV SPORTS CH",
+          "id_xtream": "69552",
+          "canal_lineal": "DSPORTS"
+        },
+        {
+          "nombre": "DIRECTV SPORTS EC",
+          "id_xtream": "69557",
+          "canal_lineal": "DSPORTS"
         },
         {
           "nombre": "14:00 ◘ Levante vs. Sevilla ◘ LaLiga ◘",
@@ -976,10 +737,10 @@
         }
       ],
       "canales_candidatos": [
-        "DSPORTS 2"
+        "DSPORTS"
       ],
-      "texto_original_crudo": "14:00 Levante Sevilla FC DGO Amazon Prime Video (Ver en vivo) Paramount+ DAZN (Ver en directo) Win Play DSports 2 (612/1612)",
-      "titulo_original_crudo": "14:00 Levante Sevilla FC DGO Amazon Prime Video (Ver en vivo) Paramount+ DAZN (Ver en directo) Win Play DSports 2 (612/1612)",
+      "texto_original_crudo": "Levante vs Sevilla - En vivo por DSports (610/1610)",
+      "titulo_original_crudo": "Levante vs Sevilla - En vivo por DSports (610/1610)",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
@@ -1200,6 +961,60 @@
       "ronda": ""
     },
     {
+      "id": "lineal_dsports_2_c6a867db",
+      "agenda_id": "",
+      "titulo": "Famalicao vs Alverca",
+      "torneo": "Primeira Liga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Famalicao",
+      "equipo_visitante": "Alverca",
+      "subtitulo": "Primeira Liga",
+      "referencia": "Liga de Portugal",
+      "hora_utc": "2026-10-12T19:15:00Z",
+      "hora_local_producto": "14:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primeira_liga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F242.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4724.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primeira_liga.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2"
+        },
+        {
+          "nombre": "DIRECTV SPORTS 2 CO",
+          "id_xtream": "69568",
+          "canal_lineal": "DSPORTS 2"
+        },
+        {
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "Famalicao vs Alverca - En vivo por DSports 2 (612/1612)",
+      "titulo_original_crudo": "Famalicao vs Alverca - En vivo por DSports 2 (612/1612)",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": ""
+    },
+    {
       "id": "xtream_e51e9724",
       "agenda_id": "",
       "titulo": "HFX Wanderers FC vs Cavalry FC",
@@ -1238,66 +1053,28 @@
       "ronda": ""
     },
     {
-      "id": "xtream_b557518e",
-      "agenda_id": "",
-      "titulo": "Universidad de Chile vs Ñublense",
-      "torneo": "Primera División de Chile",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Universidad de Chile",
-      "equipo_visitante": "Ñublense",
-      "subtitulo": "Primera División de Chile",
-      "referencia": "Estadio Nacional Julio Martínez Prádanos",
-      "hora_utc": "2026-10-12T20:00:00Z",
-      "hora_local_producto": "15:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F265.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2323.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2337.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F370.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "15:00 ◘ Universidad Chile vs. Ñublense ◘ Primera División ◘",
-          "id_xtream": "1728065"
-        }
-      ],
-      "titulo_original_crudo": "Universidad Chile vs Ñublense",
-      "ronda": "",
-      "auditado_agy": true,
-      "contrastado_api": true
-    },
-    {
-      "id": "lineal_win_sportsplus_b1448bf0",
+      "id": "lineal_win_sportsplus_6cb0fa4a",
       "agenda_id": "",
       "titulo": "Orsomarso vs Boca Juniors de Cali",
-      "torneo": "Torneo BetPlay DIMAYOR",
+      "torneo": "Torneo BetPlay Dimayor",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Orsomarso",
       "equipo_visitante": "Boca Juniors de Cali",
-      "subtitulo": "Torneo BetPlay DIMAYOR",
-      "referencia": "Estadio Francisco Rivera Escobar",
+      "subtitulo": "Torneo BetPlay Dimayor",
+      "referencia": "Estadio Daniel Villa Zapata",
       "hora_utc": "2026-10-12T20:30:00Z",
       "hora_local_producto": "15:30",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fo2lntb1615832201.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkws2x41615832171.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkws2x41615832171.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "portada"
+        "mitv_win_sportsplus"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1333,8 +1110,8 @@
       "canales_candidatos": [
         "WIN SPORTS+"
       ],
-      "texto_original_crudo": "15:30 Orsomarso Boca Juniors Cali Win Fútbol + Win Play Win Sports",
-      "titulo_original_crudo": "15:30 Orsomarso Boca Juniors Cali Win Fútbol + Win Play Win Sports",
+      "texto_original_crudo": "Orsomarso vs. Boca Jrs. de Cali. Fecha 5, Estadio Daniel Villa Zapata. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
+      "titulo_original_crudo": "Orsomarso vs. Boca Jrs. de Cali. Fecha 5, Estadio Daniel Villa Zapata. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
       "ronda": "",
       "auditado_agy": true
     },
@@ -1427,60 +1204,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_tyc_sports_ebf6a54f",
-      "agenda_id": "",
-      "titulo": "Gimnasia Mendoza vs Newell's Old Boys",
-      "torneo": "Torneo Clausura",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Gimnasia Mendoza",
-      "equipo_visitante": "Newell's Old Boys",
-      "subtitulo": "Torneo Clausura",
-      "referencia": "Estadio Víctor Antonio Legrotaglie",
-      "hora_utc": "2026-10-12T21:30:00Z",
-      "hora_local_producto": "16:30",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fh11mlf1677636958.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F23aftf1580842633.png&w=400&output=webp",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "portada",
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "TyC Sports",
-          "id_xtream": "712754",
-          "canal_lineal": "TYC SPORTS"
-        },
-        {
-          "nombre": "TYC SPORTS HD",
-          "id_xtream": "712755",
-          "canal_lineal": "TYC SPORTS"
-        },
-        {
-          "nombre": "16:15  Gimnasia y Esgrima vs Newell's | Liga Profesional Argentina",
-          "id_xtream": "1728113"
-        }
-      ],
-      "canales_candidatos": [
-        "TYC SPORTS"
-      ],
-      "texto_original_crudo": "16:30 Torneo Clausura Gimnasia Mendoza Newell&#39;s Old Boys Fanatiz (Míralo en vivo) TyC Sports Internacional",
-      "titulo_original_crudo": "16:30 Torneo Clausura Gimnasia Mendoza Newell&#39;s Old Boys Fanatiz (Míralo en vivo) TyC Sports Internacional",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "lineal_win_sports_c3c84897",
+      "id": "lineal_win_sportsplus_fef277d7",
       "agenda_id": "",
       "titulo": "Chapecoense-sc vs Atletico Paranaense",
       "torneo": "Serie A",
@@ -1489,7 +1213,7 @@
       "equipo_local": "Chapecoense-sc",
       "equipo_visitante": "Atletico Paranaense",
       "subtitulo": "Serie A",
-      "referencia": "Serie A",
+      "referencia": "Fecha 30, Arena Condá",
       "hora_utc": "2026-10-12T22:30:00Z",
       "hora_local_producto": "17:30",
       "duracion_min": 130,
@@ -1501,7 +1225,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "portada"
+        "mitv_win_sportsplus"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1509,71 +1233,39 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "Win Sports SD",
-          "id_xtream": "13766",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + SD",
+          "id_xtream": "13768",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "Win Sports HD",
-          "id_xtream": "13767",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13770",
+          "canal_lineal": "WIN SPORTS+"
         },
         {
-          "nombre": "WIN SPORTS FHD",
-          "id_xtream": "1331804",
-          "canal_lineal": "WIN SPORTS"
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13772",
+          "canal_lineal": "WIN SPORTS+"
         }
       ],
       "canales_candidatos": [
-        "WIN SPORTS"
+        "WIN SPORTS+"
       ],
-      "texto_original_crudo": "17:30 Chapecoense At. Paranaense Fanatiz (Míralo en vivo) Win Play Win Sports",
-      "titulo_original_crudo": "17:30 Chapecoense At. Paranaense Fanatiz (Míralo en vivo) Win Play Win Sports",
+      "texto_original_crudo": "Chapecoense vs. Ath. Paranaense. Fecha 30, Arena Condá. Vive los partidos de la 69º edición del Brasileirão, donde 20 equipos se enfrentan en partidos de ida y vuelta en un todos contra todos. Al final de las 38 fechas el club con la mayor cantidad de puntos será el campeón",
+      "titulo_original_crudo": "Chapecoense vs. Ath. Paranaense. Fecha 30, Arena Condá. Vive los partidos de la 69º edición del Brasileirão, donde 20 equipos se enfrentan en partidos de ida y vuelta en un todos contra todos. Al final de las 38 fechas el club con la mayor cantidad de puntos será el campeón",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
-    },
-    {
-      "id": "xtream_afa72042",
-      "agenda_id": "",
-      "titulo": "Chapecoense vs Athletico-PR",
-      "torneo": "Brasileirão",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Chapecoense",
-      "equipo_visitante": "Athletico-PR",
-      "subtitulo": "Brasileirão",
-      "referencia": "Arena Condá",
-      "hora_utc": "2026-10-12T22:30:00Z",
-      "hora_local_producto": "17:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwy0e1i1765900601.png&w=400&output=webp&trim=10",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "17:30 ◘ Chapecoense vs. Athletico-PR ◘ Brasileirão ◘",
-          "id_xtream": "1728071"
-        }
-      ],
-      "titulo_original_crudo": "Chapecoense vs Athletico-PR",
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "xtream_df116278",
@@ -1648,10 +1340,6 @@
         {
           "nombre": "18:00 ◘ Oklahoma City Thunder vs. Atlanta Hawks ◘ NBA ◘",
           "id_xtream": "1728073"
-        },
-        {
-          "nombre": "18:00  Thunders vs. Hawks | NBA",
-          "id_xtream": "1728117"
         }
       ],
       "fecha_confirmada": true,
@@ -1807,60 +1495,6 @@
       "ronda": ""
     },
     {
-      "id": "lineal_rcn_6ddfb28e",
-      "agenda_id": "",
-      "titulo": "Venezuela vs Colombia",
-      "torneo": "Amistoso Femenino",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Venezuela",
-      "equipo_visitante": "Colombia",
-      "subtitulo": "Amistoso Femenino",
-      "referencia": "Estadio Metropolitano de Lara",
-      "hora_utc": "2026-10-13T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/ve.png",
-      "logo_visitante": "https://flagcdn.com/256x192/co.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "portada"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "RCN",
-          "id_xtream": "13780",
-          "canal_lineal": "RCN"
-        },
-        {
-          "nombre": "RCN HD",
-          "id_xtream": "13781",
-          "canal_lineal": "RCN"
-        },
-        {
-          "nombre": "RCN FHD",
-          "id_xtream": "13782",
-          "canal_lineal": "RCN"
-        }
-      ],
-      "canales_candidatos": [
-        "RCN",
-        "CARACOL"
-      ],
-      "texto_original_crudo": "19:00 Venezuela Colombia ditu Gol Caracol YouTube Canal RCN App Canal RCN YouTube RCN TV Caracol TV",
-      "titulo_original_crudo": "19:00 Venezuela Colombia ditu Gol Caracol YouTube Canal RCN App Canal RCN YouTube RCN TV Caracol TV",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "lineal_espn_b222d4e5",
       "agenda_id": "",
       "titulo": "Los Angeles Rams vs Buffalo Bills",
@@ -1934,7 +1568,7 @@
       "equipo_local": "New York Yankees",
       "equipo_visitante": "Cleveland Guardians",
       "subtitulo": "MLB",
-      "referencia": "Juego 1 - Serie de Campeonato ALCS",
+      "referencia": "Juego 1 - Serie de Campeonato",
       "hora_utc": "2026-10-13T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 180,
@@ -2178,11 +1812,11 @@
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 362,
-    "eventos_lineales_inyectados": 30,
+    "eventos_lineales_inyectados": 29,
     "eventos_xtream_aprobados": 63,
-    "eventos_contrastados_api": 43,
-    "eventos_descartados_stale": 60,
-    "total_eventos_publicados": 46,
-    "hora_actualizacion_utc": "2026-10-12T19:03:42Z"
+    "eventos_contrastados_api": 44,
+    "eventos_descartados_stale": 72,
+    "total_eventos_publicados": 36,
+    "hora_actualizacion_utc": "2026-10-12T19:59:23Z"
   }
 }

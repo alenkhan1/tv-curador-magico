@@ -61,8 +61,11 @@ def normalizar_canales(raw_canales: List[str]) -> List[str]:
             "TENNIS TV", "PARAMOUNT", "PLUTO"
         ]):
             continue
+        CANALES_EXCLUSIVOS_AGY = {"DSPORTS", "DSPORTS 2", "DSPORTS +", "TNT SPORTS", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7"}
         for patron, canon in CANAL_MAPPING:
             if re.search(patron, u):
+                if canon in CANALES_EXCLUSIVOS_AGY:
+                    break
                 if canon not in resultado:
                     resultado.append(canon)
                 break

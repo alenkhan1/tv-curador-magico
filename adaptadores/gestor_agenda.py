@@ -14,6 +14,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List
 
 from .canales_suramerica import obtener_directos_suramerica
+from .canales_ciegos_agy import obtener_directos_canales_ciegos_agy
 from .espana import (
     obtener_dazn_f1_directos,
     obtener_eurosport_directos,
@@ -30,6 +31,7 @@ def construir_agenda_maestra_hoy(fecha_hoy_iso: str) -> List[EventoAgenda]:
     """
     tareas = {
         "suramerica": lambda: obtener_directos_suramerica(fecha_hoy_iso),
+        "canales_ciegos_agy": lambda: obtener_directos_canales_ciegos_agy(fecha_hoy_iso),
         "dazn_f1": lambda: obtener_dazn_f1_directos(fecha_hoy_iso),
         "sky_sports_f1": lambda: obtener_sky_sports_uk_directos(fecha_hoy_iso),
         "eurosport": lambda: obtener_eurosport_directos(fecha_hoy_iso),
@@ -38,7 +40,7 @@ def construir_agenda_maestra_hoy(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
     eventos_crudos: List[EventoAgenda] = []
 
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    with ThreadPoolExecutor(max_workers=6) as executor:
         futuros = {executor.submit(fn): nombre for nombre, fn in tareas.items()}
         for fut in as_completed(futuros):
             nombre = futuros[fut]
