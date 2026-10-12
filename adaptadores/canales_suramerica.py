@@ -108,6 +108,10 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
             dentro_de_hoy = (m_start.group(1) == fecha_hoy_iso)
             if not dentro_de_hoy:
                 continue
+
+        txt_fila = " ".join(re.sub(r"<[^>]+>", " ", f).split()).strip()
+        if RE_REPETICIONES.search(txt_fila):
+            continue
         else:
             txt_l = re.sub(r"<[^>]+>", " ", f).lower()
             if "cabeceratabla" in f.lower() or "partidos de hoy" in txt_l:
@@ -120,6 +124,10 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
                         continue
 
         if not dentro_de_hoy:
+            continue
+
+        txt_fila = " ".join(re.sub(r"<[^>]+>", " ", f).split()).strip()
+        if RE_REPETICIONES.search(txt_fila):
             continue
 
         raw_canales = re.findall(r'<li[^>]*title=["\']([^"\']+)["\']', f)

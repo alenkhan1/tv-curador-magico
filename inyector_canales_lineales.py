@@ -319,6 +319,7 @@ def inyectar_eventos_lineales(
             "confianza": "alta",
             "puntuacion_confianza": 0.95,
             "fuentes": fuentes_unicas,
+            "texto_original_crudo": getattr(ev, "texto_original_crudo", "") or ev.titulo,
             "titulo_original_crudo": getattr(ev, "texto_original_crudo", "") or ev.titulo,
         }
         eventos_inyectados.append(evento_dict)

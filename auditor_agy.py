@@ -78,8 +78,11 @@ Reglas obligatorias de decisión:
    - Es un canal de prueba, comodín vacío o evento falso/inventado.
 
 2. 'descartar': false si y solo si:
-   - Es una transmisión deportiva legítima de un evento o partido que se disputa HOY en vivo en la vida real.
-
+   - Es una transmisión deportiva legítima de un evento o partido que se disputa HOY en vivo en la vida real. Esto incluye:
+     * Duelos y partidos oficiales de hoy (liga local, copas, torneos nacionales e internacionales de hoy).
+     * Torneos locales, regionales o formativos/juveniles (ej. Torneo de Las Américas, ligas femeninas, fútbol base) que se emitan hoy en directo.
+     * Torneos en curso hoy (ej. Rolex Shanghai Masters, tenis ATP/WTA, veladas de combate, NFL Monday Night Football, MLB).
+     * Cualquier deporte minoritario o local (billar, tejo, dados, etc.) transmitido EN VIVO hoy. NUNCA descartes un evento solo por ser un deporte o torneo minoritario o local.
 3. 'motivo_descarte': Si 'descartar' es true, indica la razón precisa (ej: 'partido_jugado_ayer', 'repeticion_resumen', 'fecha_ajena', 'magazine_noticias'). Si es false, deja cadena vacía "".
 
 4. 'categoria_exacta': Corrige SIEMPRE a su disciplina real (Fútbol, Baloncesto, Béisbol, Balonmano, Tenis, Pádel, Motor, Ciclismo, Combate, Boxeo, MMA, Golf, Rugby, Natación, Snooker, etc.). NUNCA 'Otros Deportes'.
@@ -174,7 +177,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte"] for o in ev.get("origenes", []))
         necesita = (not ev.get("contrastado_api")) or es_lineal or es_circuito or tiene_vinetas or cat_dudosa
         if necesita:
-            raw_tit = ev.get("titulo_original_crudo") or ev.get("titulo_original") or ev.get("titulo") or ""
+            raw_tit = ev.get("texto_original_crudo") or ev.get("titulo_original_crudo") or ev.get("titulo_original") or ev.get("titulo") or ""
             fuentes_nombres = [f.get("nombre") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("nombre")][:3]
             eventos_a_auditar.append({
                 "id": ev.get("id"),
