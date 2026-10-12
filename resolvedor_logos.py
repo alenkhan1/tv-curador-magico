@@ -365,6 +365,12 @@ BANDERAS_PAISES_RAW: dict[str, str] = {
     "TANZANIA": "https://flagcdn.com/256x192/tz.png",
     "ETIOPIA": "https://flagcdn.com/256x192/et.png", "ETHIOPIA": "https://flagcdn.com/256x192/et.png",
     "CABO VERDE": "https://flagcdn.com/256x192/cv.png", "CAPE VERDE": "https://flagcdn.com/256x192/cv.png",
+    "NAMIBIA": "https://flagcdn.com/256x192/na.png",
+    "FIYI": "https://flagcdn.com/256x192/fj.png", "FIJI": "https://flagcdn.com/256x192/fj.png",
+    "SAMOA": "https://flagcdn.com/256x192/ws.png",
+    "TONGA": "https://flagcdn.com/256x192/to.png",
+    "GEORGIA": "https://flagcdn.com/256x192/ge.png",
+    "ZIMBABWE": "https://flagcdn.com/256x192/zw.png",
 }
 
 BANDERAS_PAISES = {k: envolver_cdn_proxy(v) for k, v in BANDERAS_PAISES_RAW.items() if envolver_cdn_proxy(v)}
@@ -536,15 +542,35 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
     clave_cache = f"equipo_{equipo_norm}"
 
         # 0. Banderas oficiales: ÚNICAMENTE para selecciones nacionales o torneos de países
+    # Desambiguación ESTRICTA: Equipos con nombres de países (ej. "Uruguay Montevideo") son CLUBES, NUNCA banderas.
+    PALABRAS_CLUB = {
+        "FC", "CF", "CLUB", "DEPORTIVO", "ATLETICO", "CD", "UD", "SD", "AD", "CA", "CSD", "SC",
+        "MONTEVIDEO", "CITY", "UNITED", "TOWN", "ROVERS", "WANDERERS", "RACING", "SPORTING",
+        "REAL", "JUNIORS", "AC", "AS", "ALIANZA", "INTER", "INTERNACIONAL", "UNIVERSIDAD",
+        "UNIVERSITARIO", "GIMNASIA", "ESTUDIANTES", "DEFENSOR", "DANUBIO", "NACIONAL", "PENAROL",
+        "CENTRAL", "UNION", "INDEPENDIENTE", "BALOMPIE"
+    }
+    TOKENS_SELECCION_VALIDOS = {
+        "SUB", "SUB15", "SUB17", "SUB19", "SUB20", "SUB21", "SUB23",
+        "U15", "U17", "U19", "U20", "U21", "U23",
+        "15", "17", "19", "20", "21", "23",
+        "SELECCION", "SELECCION DE", "NATIONAL", "TEAM", "MASCULINO", "FEMENINO",
+        "FEM", "FEMENIL", "WOMEN", "MEN", "DE"
+    }
+
+    es_club = any(w in equipo_norm.split() for w in PALABRAS_CLUB)
+
     es_torneo_selecciones = any(t in _normalizar(torneo) for t in [
         "NATIONS LEAGUE", "MUNDIAL", "COPA AMERICA", "EUROCOPA", "ELIMINATORIAS",
-        "AMISTOSO INTERNACIONAL", "QUALIFIERS", "FRIENDLIES", "WORLD CUP", "OLYMPIC"
+        "AMISTOSO INTERNACIONAL", "QUALIFIERS", "FRIENDLIES", "WORLD CUP", "OLYMPIC",
+        "TEST MATCH", "RUGBY CHAMPIONSHIP", "SIX NATIONS", "SEIS NACIONES", "WORLD RUGBY",
+        "TORNEO DE LAS NACIONES", "INTERNATIONAL", "INTERNACIONAL"
     ])
     es_nombre_seleccion = any(s in equipo_norm for s in [
         "SELECCION", "SELECCION DE", "SUB 1", "SUB 2", "SUB-1", "SUB-2", "U1", "U2", "U 1", "U 2", "NATIONAL"
     ])
 
-    if equipo_norm in BANDERAS_PAISES:
+    if not es_club and equipo_norm in BANDERAS_PAISES:
         # Si el torneo es explícitamente de clubes (ej. Segunda Division, Premier, Serie A), no asumir que es selección
         es_liga_clubes = any(l in _normalizar(torneo) for l in [
             "SEGUNDA", "PRIMERA DIVISION", "PREMIER", "LALIGA", "SERIE A", "BUNDESLIGA", "LIGUE 1", "BETPLAY", "LIGA MX"
@@ -553,11 +579,13 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
             flag_url = BANDERAS_PAISES[equipo_norm]
             return flag_url
 
-    # Variantes como "España Sub 21", "Selección Colombia" (SOLO si no es club)
-    if es_torneo_selecciones or es_nombre_seleccion:
+    # Variantes de selecciones como "España Sub 21", "Namibia U20" (SOLO si no es club y sobrante son tokens de selección)
+    if not es_club and (es_torneo_selecciones or es_nombre_seleccion):
         for pais_k, flag_u in BANDERAS_PAISES.items():
             if len(pais_k) >= 4 and (equipo_norm.startswith(pais_k + " ") or equipo_norm.endswith(" " + pais_k)):
-                return flag_u
+                sobrante_tokens = [w for w in equipo_norm.split() if w not in pais_k.split()]
+                if all(tok in TOKENS_SELECCION_VALIDOS or tok.isdigit() for tok in sobrante_tokens):
+                    return flag_u
 
     # 1. Catálogo maestro permanente de equipos en disco (Prioridad Absoluta)
     cat_equipos = _obtener_catalogo_equipos()
