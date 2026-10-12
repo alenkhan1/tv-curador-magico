@@ -226,11 +226,12 @@ def parse_rtve_teledeporte_title(raw: str) -> Dict[str, str]:
     m_desde = re.search(r"\s+DESDE\s+.*$", raw, re.I)
     sin_desde = raw[:m_desde.start()].strip() if m_desde else raw.strip()
     
-    partes = re.split(r"\s*[\u2013\u2014]\s*", sin_desde)
+    # Soporte universal para en-dash, em-dash, guion medio y caracteres de control
+    partes = re.split(r"\s*(?:[\u2013\u2014\x96]|\s+[\-]\s+)\s*", sin_desde)
     if len(partes) == 2:
         izq, vis = partes[0].strip(), partes[1].strip()
-        sin_dep = re.sub(r"^(?:BALONCESTO|BALONMANO|FÚTBOL|FUTBOL)\s+", "", izq, flags=re.I).strip()
-        m_jornada = re.search(r"^(.*?)\s+(\d+[ªºa-zA-Z]*\s+JORNADA|\d+[ºªa-zA-Z]*\s+PARTIDO)\s+(.*)$", sin_dep, re.I)
+        sin_dep = re.sub(r"^(?:BALONCESTO|BALONMANO|F[ÚU]TBOL|HOCKEY\s+PATINES|HOCKEY|WATERPOLO)\s+", "", izq, flags=re.I).strip()
+        m_jornada = re.search(r"^(.*?)\s+(\d+[ªºa-zA-Z]*\s+(?:JORNADA|PARTIDO|FASE)|FINAL|SEMIFINAL)\s+(.*)$", sin_dep, re.I)
         if m_jornada:
             torneo = f"{m_jornada.group(1)} {m_jornada.group(2)}".strip()
             loc = m_jornada.group(3).strip()
@@ -269,7 +270,7 @@ def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
     try:
         with urllib.request.urlopen(req, timeout=12, context=_crear_contexto_ssl()) as resp:
             raw = resp.read()
-            text_html = raw.decode("iso-8859-1", errors="ignore")
+            text_html = raw.decode("windows-1252", errors="ignore")
     except Exception as e:
         log.warning("Error descargando parrilla oficial de Teledeporte (RTVE): %s", e)
         return []
@@ -297,6 +298,10 @@ def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             dep = "Baloncesto"
         elif any(k in u_tit for k in ["BALONMANO", "ASOBAL", "HANDBALL"]):
             dep = "Balonmano"
+        elif any(k in u_tit for k in ["HOCKEY PATINES", "HOCKEY"]):
+            dep = "Hockey"
+        elif any(k in u_tit for k in ["WATERPOLO"]):
+            dep = "Waterpolo"
         elif any(k in u_tit for k in ["NATACIÓN", "NATACION", "WATERPOLO", "AQUATICS", "SWIMMING"]):
             dep = "Natación"
         elif any(k in u_tit for k in ["CICLISMO", "VUELTA", "TOUR", "GIRO"]):

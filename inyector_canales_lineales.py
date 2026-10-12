@@ -58,7 +58,7 @@ REGLAS_CANALES: Dict[str, str] = {
     "TNT SPORTS": r"\bTNT\s*SPORTS\b",
     "EUROSPORT 1": r"\bEUROSPORTS?\s*1\b|\bEUROSPORTS?\b(?!\s*2)",
     "EUROSPORT 2": r"\bEUROSPORTS?\s*2\b",
-    "TELEDEPORTE": r"\b(?:TELEDEPORTE|TDP)\b",
+    "TELEDEPORTE": r"\b(?:TELEDEPORTES?|TDP)\b",
     "DAZN F1": r"\b(?:DAZN\s*F1|DAZN\s*FORMULA\s*1)\b",
     "SKY SPORTS F1": r"\bSKY\s*SPORTS\s*F1\b",
 }
