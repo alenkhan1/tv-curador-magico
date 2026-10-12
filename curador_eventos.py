@@ -495,7 +495,7 @@ def procesar_streams_eventos_xtream(
                 fuentes_existentes.append({"nombre": nombre, "id_xtream": sid})
             continue
 
-        logo_tor = resolver_logo_torneo(tor, cat)
+        logo_tor = resolver_logo_torneo(tor, cat, local=local, visitante=visitante)
         logo_l = resolver_logo_equipo(local, cat, tor) if local else ""
         logo_v = resolver_logo_equipo(visitante, cat, tor) if visitante else ""
 
@@ -660,8 +660,14 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         tor = ev.get("torneo") or ev["titulo"]
         loc = ev.get("equipo_local", "")
         vis = ev.get("equipo_visitante", "")
+        logo_existente = ev.get("logo_torneo", "")
 
-        logo_cat = resolver_logo_torneo(tor, cat)
+        # Si ya tiene un logo valido y compatible de fixture oficial (API-Sports), preservarlo
+        if logo_existente and not es_logo_basura(logo_existente) and es_logo_compatible_con_categoria(logo_existente, cat):
+            logo_cat = logo_existente
+        else:
+            logo_cat = resolver_logo_torneo(tor, cat, local=loc, visitante=vis)
+
         if logo_cat:
             ev["logo_torneo"] = logo_cat
         elif not ev.get("logo_torneo") or es_logo_basura(ev["logo_torneo"]) or not es_logo_compatible_con_categoria(ev.get("logo_torneo", ""), cat):

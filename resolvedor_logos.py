@@ -220,6 +220,8 @@ FALLBACK_POR_CATEGORIA_RAW: dict[str, str] = {
     "Fútbol": "",
     "Futbol": "",
     "Baloncesto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/512px-Basketball.png",
+    "Rugby": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/World_Rugby_logo.svg/512px-World_Rugby_logo.svg.png",
+    "Hockey": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/International_Ice_Hockey_Federation_logo.svg/512px-International_Ice_Hockey_Federation_logo.svg.png",
     "Otros Deportes": "",
 }
 
@@ -564,6 +566,93 @@ def guardar_cache_logos() -> None:
     pass
 
 
+
+# ==============================================================================
+# DISAMBIGUACION POR ENTIDADES PARTICIPANTES (Universal y Sistemica)
+# ==============================================================================
+CLUBES_POR_PAIS: dict[str, set[str]] = {
+    "BRASIL": {
+        "CHAPECOENSE", "ATHLETICO PARANAENSE", "ATLETICO PARANAENSE", "PARANAENSE", "FLAMENGO", "PALMEIRAS",
+        "CORINTHIANS", "SAO PAULO", "SANTOS", "GREMIO", "INTERNACIONAL", "FLUMINENSE", "VASCO DA GAMA",
+        "VASCO", "BOTAFOGO", "ATLETICO MINEIRO", "CRUZEIRO", "CORITIBA", "BAHIA", "FORTALEZA", "CEARA",
+        "GOIAS", "SPORT RECIFE", "VITORIA", "CUIABA", "JUVENTUDE", "CRICIUMA", "BRAGANTINO", "RED BULL BRAGANTINO",
+        "AVAI", "PONTE PRETA", "VILA NOVA", "NOVORIZONTINO", "MIRASSOL", "OPERARIO", "PAYSANDU", "AMAZONAS", "CRB",
+        "ITUANO", "BRUSQUE", "GUARANI", "BOTAFOGO SP", "TOMBENSE", "VOLTA REDONDA", "FERROVIARIA", "LONDRINA", "REMO"
+    },
+    "CHILE": {
+        "COLO COLO", "UNIVERSIDAD DE CHILE", "U DE CHILE", "UNIVERSIDAD CATOLICA", "U CATOLICA", "COBRELOA",
+        "UNION ESPANOLA", "PALESTINO", "EVERTON", "AUDAX ITALIANO", "O HIGGINS", "OHIGGINS", "HUACHIPATO",
+        "COBRESAL", "COQUIMBO UNIDO", "COQUIMBO", "DEPORTES IQUIQUE", "IQUIQUE", "DEPORTES LA SERENA", "LA SERENA",
+        "CURICO UNIDO", "CURICO", "SANTIAGO MORNING", "DEPORTES RECOLETA", "RECOLETA", "DEP RECOLETA", "MAGALLANES",
+        "RANGERS DE TALCA", "RANGERS", "DEPORTES TEMUCO", "TEMUCO", "DEPORTES ANTOFAGASTA", "ANTOFAGASTA",
+        "SAN MARCOS DE ARICA", "SAN MARCOS", "SAN LUIS DE QUILLOTA", "SAN LUIS", "DEPORTES SANTA CRUZ", "SANTA CRUZ",
+        "UNIVERSIDAD DE CONCEPCION", "U DE CONCEPCION", "BARNECHEA", "LIMACHE", "DEPORTES LIMACHE", "UNION SAN FELIPE",
+        "SAN FELIPE", "NUBLENSE"
+    },
+    "COLOMBIA": {
+        "MILLONARIOS", "SANTA FE", "ATLETICO NACIONAL", "AMERICA DE CALI", "JUNIOR", "DEPORTIVO CALI",
+        "INDEPENDIENTE MEDELLIN", "ONCE CALDAS", "DEPORTES TOLIMA", "LA EQUIDAD", "DEPORTIVO PASTO",
+        "AGUILAS DORADAS", "BUCARAMANGA", "ENVIGADO", "JAGUARES", "DEPORTIVO PEREIRA", "ALIANZA PETROLERA",
+        "ALIANZA FC", "BOYACA CHICO", "PATRIOTAS", "CUCUTA DEPORTIVO", "CUCUTA", "LLANEROS", "REAL SANTANDER",
+        "REAL CARTAGENA", "HUILA", "ATLETICO HUILA", "QUINDIO", "DEPORTES QUINDIO", "BARRANQUILLA", "BOGOTA FC",
+        "CORTULUA", "INTERNACIONAL DE PALMIRA", "ORSOMARSO", "LEONES", "TIGRES FC", "UNION MAGDALENA"
+    },
+    "ARGENTINA": {
+        "BOCA JUNIORS", "BOCA", "RIVER PLATE", "RIVER", "RACING CLUB", "INDEPENDIENTE", "SAN LORENZO",
+        "VELEZ SARSFIELD", "VELEZ", "ESTUDIANTES", "GIMNASIA", "NEWELLS", "ROSARIO CENTRAL", "TALLERES",
+        "BELGRANO", "LANUS", "BANFIELD", "HURACAN", "ARGENTINOS JUNIORS", "DEFENSA Y JUSTICIA", "TIGRE",
+        "GODOY CRUZ", "PLATENSE", "UNION", "COLON", "BARRACAS CENTRAL", "INSTITUTO", "SARMIENTO",
+        "CENTRAL CORDOBA", "ATLETICO TUCUMAN", "FERRO CARRIL OESTE", "FERRO", "QUILMES", "CHACARITA",
+        "SAN MARTIN DE TUCUMAN", "ALL BOYS", "ALMIRANTE BROWN", "DEPORTIVO MORON", "NUEVA CHICAGO"
+    },
+    "ITALIA": {
+        "JUVENTUS", "INTER", "MILAN", "ROMA", "LAZIO", "NAPOLI", "FIORENTINA", "ATALANTA", "TORINO",
+        "BOLOGNA", "MONZA", "GENOA", "UDINESE", "CAGLIARI", "HELLAS VERONA", "VERONA", "LECCE", "EMPOLI",
+        "PARMA", "COMO", "VENEZIA", "SASSUOLO", "FROSINONE", "SALERNITANA", "SAMPDORIA", "PALERMO",
+        "CREMONESE", "BARI", "SPEZIA", "BRESCIA", "PISA", "CESENA", "MODENA", "REGGIANA", "CATANZARO"
+    },
+    "ESPANA": {
+        "REAL MADRID", "BARCELONA", "ATLETICO MADRID", "SEVILLA", "REAL BETIS", "BETIS", "REAL SOCIEDAD",
+        "ATHLETIC CLUB", "ATHLETIC BILBAO", "VALENCIA", "VILLARREAL", "CELTA VIGO", "CELTA", "OSASUNA",
+        "GETAFE", "RAYO VALLECANO", "MALLORCA", "GIRONA", "LAS PALMAS", "ALAVES", "ESPANYOL", "LEGANES",
+        "REAL VALLADOLID", "VALLADOLID", "LEVANTE", "SPORTING GIJON", "REAL OVIEDO", "RACING SANTANDER",
+        "REAL ZARAGOZA", "ZARAGOZA", "ELCHE", "EIBAR", "TENERIFE", "ALBACETE", "BURGOS", "CARTAGENA", "MIRANDES"
+    },
+    "MEXICO": {
+        "AMERICA", "GUADALAJARA", "CHIVAS", "CRUZ AZUL", "PUMAS", "PUMAS UNAM", "TIGRES UANL", "TIGRES",
+        "MONTERREY", "RAYADOS", "TOLUCA", "PACHUCA", "SANTOS LAGUNA", "LEON", "ATLAS", "PUEBLA",
+        "TIJUANA", "XOLOS", "JUAREZ", "FC JUAREZ", "MAZATLAN", "NECAXA", "ATLETICO SAN LUIS", "QUERETARO"
+    },
+    "ECUADOR": {
+        "LDU QUITO", "LIGA DE QUITO", "BARCELONA SC", "EMELEC", "INDEPENDIENTE DEL VALLE", "IDV", "AUCAS",
+        "EL NACIONAL", "UNIVERSIDAD CATOLICA DEL ECUADOR", "DELFIN", "DEPORTIVO CUENCA", "MACARA", "ORENSE"
+    },
+    "URUGUAY": {
+        "PENAROL", "NACIONAL DE MONTEVIDEO", "DEFENSOR SPORTING", "DANUBIO", "LIVERPOOL DE MONTEVIDEO",
+        "MONTEVIDEO WANDERERS", "BOSTON RIVER", "CERRO LARGO", "RACING DE MONTEVIDEO", "PROGRESO"
+    }
+}
+
+def deducir_pais_equipos(local: str, visitante: str) -> str:
+    """Deduce el pais de los clubes participantes utilizando tokens normalizados exactos."""
+    t_local = _normalizar(local) if local else ""
+    t_vis = _normalizar(visitante) if visitante else ""
+    if not t_local and not t_vis:
+        return ""
+
+    for pais, clubes in CLUBES_POR_PAIS.items():
+        for c in clubes:
+            patron = r"\b" + re.escape(c) + r"\b"
+            if (t_local and re.search(patron, t_local)) or (t_vis and re.search(patron, t_vis)):
+                return pais
+    return ""
+
+DISCRIMINADORES_PAISES: set[str] = {
+    "BRASIL", "BRAZIL", "CHILE", "COLOMBIA", "ARGENTINA", "ITALIA", "ITALY",
+    "ESPANA", "SPAIN", "MEXICO", "ECUADOR", "URUGUAY", "PERU", "INGLATERRA", "ENGLAND",
+    "ALEMANIA", "GERMANY", "FRANCIA", "FRANCE"
+}
+
 DISCRIMINADORES_TORNEO: set[str] = {
     # Confederaciones
     "AFC", "CAF", "CONCACAF", "OFC", "UEFA", "CONMEBOL",
@@ -602,7 +691,20 @@ SINONIMOS_DISCRIMINADORES: dict[str, str] = {
 def _normalizar_mods_torneo(mods: set[str]) -> set[str]:
     return {SINONIMOS_DISCRIMINADORES.get(m, m) for m in mods}
 
-def son_torneos_compatibles(torneo_norm: str, clave: str) -> bool:
+def son_torneos_compatibles(torneo_norm: str, clave: str, pais_deducido: str = "") -> bool:
+    if pais_deducido:
+        mods_clave = _normalizar_mods_torneo({d for d in DISCRIMINADORES_TORNEO if re.search(r"\b" + re.escape(d) + r"\b", clave)})
+        pais_norm = SINONIMOS_DISCRIMINADORES.get(pais_deducido, pais_deducido)
+        # Exclusiones estrictas para homonimos conocidos
+        if clave in ["SERIE A", "SERIE A TIM", "SERIE A ENILIVE", "SERIE B", "SERIE BKT"] and pais_deducido != "ITALIA":
+            return False
+        if clave in ["PRIMERA B COLOMBIA", "TORNEO BETPLAY"] and pais_deducido != "COLOMBIA":
+            return False
+        if clave in ["PRIMERA B CHILE", "CAMPEONATO CHILENO", "PRIMERA DIVISION CHILE", "ASCENSO CHILE"] and pais_deducido != "CHILE":
+            return False
+        if any(m in DISCRIMINADORES_PAISES and m != pais_norm for m in mods_clave):
+            return False
+
     if clave == torneo_norm:
         return True
     mods_torneo = _normalizar_mods_torneo({d for d in DISCRIMINADORES_TORNEO if re.search(r"\b" + re.escape(d) + r"\b", torneo_norm)})
@@ -677,24 +779,94 @@ def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
 
     return True
 
-def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False) -> str:
-    """Resuelve el logo oficial del torneo con precedencia estricta por palabras completas y compatibilidad de deporte."""
+def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False, local: str = "", visitante: str = "") -> str:
+    """Resuelve el logo oficial del torneo con precedencia estricta por palabras completas, compatibilidad deportiva y desambiguacion geografica por participantes."""
     if not torneo and not categoria:
         return ""
 
     torneo_norm = _normalizar(torneo)
     cat_clean = _normalizar(categoria or "")
+
+    # Deducir pais por participantes y/o titulo de torneo
+    pais_deducido = ""
+    if local or visitante:
+        pais_deducido = deducir_pais_equipos(local, visitante)
+    if not pais_deducido:
+        for pais_cand in ["BRASIL", "BRAZIL", "CHILE", "COLOMBIA", "ARGENTINA", "ITALIA", "ITALY", "ESPANA", "SPAIN", "MEXICO", "ECUADOR", "URUGUAY", "PERU"]:
+            if re.search(r"" + re.escape(pais_cand) + r"", torneo_norm):
+                pais_deducido = "BRASIL" if pais_cand == "BRAZIL" else ("ITALIA" if pais_cand == "ITALY" else ("ESPANA" if pais_cand == "SPAIN" else pais_cand))
+                break
+
+    # Claves prioritarias especificas cuando se detecta un homonimo
+    claves_prioritarias: list[str] = []
+    if pais_deducido:
+        if any(re.search(r"" + re.escape(x) + r"", torneo_norm) for x in ["SERIE A", "SERIE B"]):
+            if pais_deducido == "BRASIL":
+                if "SERIE B" in torneo_norm:
+                    claves_prioritarias.extend(["SERIE B BRASIL", "BRASILEIRAO B"])
+                else:
+                    claves_prioritarias.extend(["SERIE A BRASIL", "BRASILEIRAO", "CAMPEONATO BRASILEIRO"])
+            elif pais_deducido == "ITALIA":
+                if "SERIE B" in torneo_norm:
+                    claves_prioritarias.extend(["SERIE B", "SERIE BKT"])
+                else:
+                    claves_prioritarias.extend(["SERIE A", "SERIE A TIM", "SERIE A ENILIVE"])
+            elif pais_deducido == "ECUADOR":
+                if "SERIE B" in torneo_norm:
+                    claves_prioritarias.append("LIGA PRO SERIE B")
+                else:
+                    claves_prioritarias.append("LIGA PRO ECUADOR")
+
+        elif any(re.search(r"" + re.escape(x) + r"", torneo_norm) for x in ["PRIMERA B", "SEGUNDA DIVISION", "ASCENSO"]):
+            if pais_deducido == "CHILE":
+                claves_prioritarias.extend(["PRIMERA B CHILE", "ASCENSO CHILE"])
+            elif pais_deducido == "COLOMBIA":
+                claves_prioritarias.extend(["PRIMERA B COLOMBIA", "TORNEO BETPLAY", "TORNEO BETPLAY DIMAYOR"])
+            elif pais_deducido == "ARGENTINA":
+                claves_prioritarias.extend(["PRIMERA B METROPOLITANA", "PRIMERA NACIONAL"])
+
+        elif any(re.search(r"" + re.escape(x) + r"", torneo_norm) for x in ["PRIMERA DIVISION", "PRIMERA A"]):
+            if pais_deducido == "CHILE":
+                claves_prioritarias.extend(["PRIMERA DIVISION CHILE", "CAMPEONATO CHILENO", "CAMPEONATO BETSSON"])
+            elif pais_deducido == "COLOMBIA":
+                claves_prioritarias.extend(["LIGA BETPLAY", "LIGA BETPLAY DIMAYOR", "PRIMERA A"])
+            elif pais_deducido == "ARGENTINA":
+                claves_prioritarias.extend(["PRIMERA DIVISION ARGENTINA", "LIGA PROFESIONAL", "TORNEO BETANO"])
+            elif pais_deducido == "ESPANA":
+                claves_prioritarias.extend(["PRIMERA DIVISION ESPANA", "LALIGA"])
+
+        claves_prioritarias.append(f"{torneo_norm} {pais_deducido}")
+
+    sufijo_cache = f"_{pais_deducido}" if pais_deducido else ""
     cache = _cargar_cache()
-    clave_cache = f"torneo_{cat_clean}_{torneo_norm}" if cat_clean else f"torneo_{torneo_norm}"
+    clave_cache = f"torneo_{cat_clean}_{torneo_norm}{sufijo_cache}" if cat_clean else f"torneo_{torneo_norm}{sufijo_cache}"
 
     # 0. Catalogo maestro oficial de torneos verificados en disco
     catalogo = _obtener_catalogo_torneos()
+    if catalogo and claves_prioritarias:
+        for cp in claves_prioritarias:
+            if cp in catalogo:
+                url = catalogo[cp]
+                if es_logo_compatible_con_categoria(url, categoria):
+                    cache[clave_cache] = url
+                    _guardar_cache(cache)
+                    return url
+
+    if CIRCUITO_LOGOS and claves_prioritarias:
+        for cp in claves_prioritarias:
+            if cp in CIRCUITO_LOGOS:
+                url = CIRCUITO_LOGOS[cp]
+                if es_logo_compatible_con_categoria(url, categoria):
+                    cache[clave_cache] = url
+                    _guardar_cache(cache)
+                    return url
+
     if catalogo:
         claves_ordenadas = sorted(catalogo.keys(), key=len, reverse=True)
         for clave in claves_ordenadas:
-            patron = r"\b" + re.escape(clave) + r"\b"
+            patron = r"" + re.escape(clave) + r""
             if (clave == torneo_norm) or re.search(patron, torneo_norm):
-                if not son_torneos_compatibles(torneo_norm, clave):
+                if not son_torneos_compatibles(torneo_norm, clave, pais_deducido):
                     continue
                 url = catalogo[clave]
                 if not es_logo_compatible_con_categoria(url, categoria):
@@ -706,9 +878,9 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     # 1. Catalogo maestro de insignias oficiales (Precedencia Maxima por longitud de clave)
     claves_ordenadas = sorted(CIRCUITO_LOGOS.keys(), key=len, reverse=True)
     for clave in claves_ordenadas:
-        patron = r"\b" + re.escape(clave) + r"\b"
+        patron = r"" + re.escape(clave) + r""
         if (clave == torneo_norm) or re.search(patron, torneo_norm):
-            if not son_torneos_compatibles(torneo_norm, clave):
+            if not son_torneos_compatibles(torneo_norm, clave, pais_deducido):
                 continue
             url = CIRCUITO_LOGOS[clave]
             if not es_logo_compatible_con_categoria(url, categoria):
@@ -722,7 +894,6 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
         cached_url = cache[clave_cache]
         if not es_logo_compatible_con_categoria(cached_url, categoria):
             pass
-        # Invalida UEFA Champions League si el torneo pertenece a otra confederacion
         elif "uefa_champions_league" in cached_url.lower() and any(k in torneo_norm for k in ["AFC", "CAF", "CONCACAF", "OFC", "EHF"]):
             pass
         else:
