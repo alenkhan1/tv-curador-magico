@@ -202,49 +202,27 @@ def _duelo_coincide_con_fixtures(
 
 def detectar_lista_actualizada_hoy(
     canales_xtream: List[Dict[str, Any]], 
-    d_hoy: int, 
-    m_hoy: int,
     fecha_hoy_iso: str,
+    fecha_ayer_iso: str,
     agenda_hoy: Optional[List[EventoAgenda]] = None,
     fixtures_dia: Optional[List[Dict[str, Any]]] = None,
+    fixtures_ayer: Optional[List[Dict[str, Any]]] = None,
 ) -> bool:
     """
-    Verifica con rigor y de forma universal si la lista contiene streams actualizados para hoy (Hora Colombia America/Bogota).
-    Método Universal Acordado:
-    1. Escaneo de streams con horario de inicio (RE_HORA), sin importar si están en carpetas o lista plana.
-    2. Evaluación de fechas explícitas (DD/MM) si están presentes.
-    3. Muestreo cruzado de 2 a 3 duelos al azar contrastados contra la cartelera oficial de HOY vs AYER.
+    Verifica con rigor y contraste directo contra la API oficial si la lista Xtream contiene streams actualizados para hoy.
+    Principio rector: Los textos/fechas en IPTV son impredecibles y no confiables.
+    La API oficial (API-Sports y Agenda Maestra) es la unica fuente fidedigna de partidos reales.
+    1. Escanea todos los streams con horario de inicio (RE_HORA) que representan duelos entre dos equipos.
+    2. Contrasta exhaustivamente cada duelo contra los fixtures oficiales de HOY vs AYER.
+    3. Si la lista contiene duelos de AYER en igual o mayor numero que de HOY, la lista NO es fresca (Estado: PENDIENTE).
+    4. Solo se certifica si los duelos confirmados de HOY superan contundentemente a los de AYER.
     """
-    tz_col = obtener_tz("America/Bogota")
-    ahora_col = datetime.now(tz_col)
-    ayer_col = ahora_col - timedelta(days=1)
-    fecha_ayer_iso = ayer_col.strftime("%Y-%m-%d")
-    d_ayer, m_ayer = ayer_col.day, ayer_col.month
-
-    pat_hoy1 = f"{d_hoy:02d}/{m_hoy:02d}"
-    pat_hoy2 = f"{d_hoy}/{m_hoy}"
-    pat_ayer1 = f"{d_ayer:02d}/{m_ayer:02d}"
-    pat_ayer2 = f"{d_ayer}/{m_ayer}"
-
-    coincidencias_hoy = 0
-    coincidencias_ayer = 0
-
-    # Extraer duelos candidatos universales con RE_HORA
     duelos_candidatos = []
-
     for c in canales_xtream:
         nombre = c.get("name") or c.get("stream_name") or ""
         cat_nombre = c.get("category_name") or ""
-        meta = f"{nombre} {cat_nombre}"
 
-        if pat_hoy1 in meta or pat_hoy2 in meta:
-            coincidencias_hoy += 1
-        if pat_ayer1 in meta or pat_ayer2 in meta:
-            coincidencias_ayer += 1
-
-        if not RE_HORA.search(nombre):
-            continue
-        if RE_COMODINES.search(nombre):
+        if not RE_HORA.search(nombre) or RE_COMODINES.search(nombre):
             continue
 
         stype = (c.get("stream_type") or "").lower()
@@ -257,102 +235,77 @@ def detectar_lista_actualizada_hoy(
                 "local": parsed["local"],
                 "visitante": parsed["visitante"],
                 "titulo": parsed.get("titulo", nombre),
-                "deporte": parsed.get("deporte", "Fútbol"),
+                "deporte": parsed.get("deporte", "Futbol"),
                 "raw": nombre,
             })
 
-    # Criterio 1: Fechas explícitas de hoy encontradas en abundancia (>= 3) y sin residuos de ayer
-    if coincidencias_hoy >= 3 and coincidencias_ayer == 0:
-        log.info("Lista Xtream certificada como ACTUALIZADA hoy via fechas explícitas (%d coincidencias de hoy).", coincidencias_hoy)
-        return True
+    if not duelos_candidatos:
+        log.warning("No se encontraron duelos candidatos con horario en la lista Xtream.")
+        return False
 
-    # Criterio 2: Muestreo cruzado de 2 a 3 duelos de la cartelera
-    if duelos_candidatos:
-        fixtures_hoy = fixtures_dia if fixtures_dia is not None else descargar_fixtures_dia(fecha_hoy_iso, API_SPORTS_KEY)
-        fixtures_ayer = descargar_fixtures_dia(fecha_ayer_iso, API_SPORTS_KEY)
+    fix_hoy = fixtures_dia if fixtures_dia is not None else descargar_fixtures_dia(fecha_hoy_iso, API_SPORTS_KEY)
+    fix_ayer = fixtures_ayer if fixtures_ayer is not None else descargar_fixtures_dia(fecha_ayer_iso, API_SPORTS_KEY)
 
-        # Seleccionar muestra representativa de hasta 3 duelos
-        # Priorizar eventos que tengan nombres de clubes claros
-        muestra_size = min(3, len(duelos_candidatos))
-        muestra = random.sample(duelos_candidatos, muestra_size)
+    votos_hoy = 0
+    votos_ayer = 0
+    duelos_vistos = set()
 
-        votos_hoy = 0
-        votos_ayer = 0
+    for d in duelos_candidatos:
+        loc, vis = d["local"], d["visitante"]
+        clave_duelo = f"{normalizar_clave(loc)}_vs_{normalizar_clave(vis)}"
+        if clave_duelo in duelos_vistos:
+            continue
+        duelos_vistos.add(clave_duelo)
 
-        for idx, duelo in enumerate(muestra, 1):
-            loc = duelo["local"]
-            vis = duelo["visitante"]
+        # 1. Contraste contra cartelera de HOY (API-Sports y Agenda Maestra)
+        es_de_hoy = _duelo_coincide_con_fixtures(loc, vis, fix_hoy)
+        if not es_de_hoy and agenda_hoy:
+            l_n = normalizar_clave(loc)
+            v_n = normalizar_clave(vis)
+            for ev in agenda_hoy:
+                if ev.local and ev.visitante:
+                    ev_l = normalizar_clave(ev.local)
+                    ev_v = normalizar_clave(ev.visitante)
+                    if (l_n in ev_l or ev_l in l_n) and (v_n in ev_v or ev_v in v_n):
+                        es_de_hoy = True
+                        break
 
-            # 1. Contraste contra cartelera de HOY (API-Sports y Agenda Maestra)
-            es_de_hoy = _duelo_coincide_con_fixtures(loc, vis, fixtures_hoy)
-            if not es_de_hoy and agenda_hoy:
-                l_n = normalizar_clave(loc)
-                v_n = normalizar_clave(vis)
-                for ev in agenda_hoy:
-                    if ev.local and ev.visitante:
-                        ev_l = normalizar_clave(ev.local)
-                        ev_v = normalizar_clave(ev.visitante)
-                        if (l_n in ev_l or ev_l in l_n) and (v_n in ev_v or ev_v in v_n):
-                            es_de_hoy = True
-                            break
+        # 2. Contraste contra cartelera de AYER (API-Sports)
+        es_de_ayer = _duelo_coincide_con_fixtures(loc, vis, fix_ayer)
 
-            # 2. Contraste contra cartelera de AYER (API-Sports)
-            es_de_ayer = _duelo_coincide_con_fixtures(loc, vis, fixtures_ayer)
+        if es_de_hoy and not es_de_ayer:
+            votos_hoy += 1
+            log.info("  [Contraste API] '%s vs %s' -> Confirmado HOY (+1 voto HOY)", loc, vis)
+        elif es_de_ayer and not es_de_hoy:
+            votos_ayer += 1
+            log.warning("  [Contraste API] '%s vs %s' -> Corresponde a AYER (+1 voto AYER)", loc, vis)
+        elif es_de_hoy and es_de_ayer:
+            votos_hoy += 1
 
-            if es_de_hoy and not es_de_ayer:
-                votos_hoy += 1
-                log.info("  [Muestra %d/%d] '%s vs %s' -> Confirmado HOY (+1 voto HOY)", idx, muestra_size, loc, vis)
-            elif es_de_ayer and not es_de_hoy:
-                votos_ayer += 1
-                log.warning("  [Muestra %d/%d] '%s vs %s' -> Corresponde a AYER (+1 voto AYER)", idx, muestra_size, loc, vis)
-            elif es_de_hoy and es_de_ayer:
-                # Partido repetido o vuelta de serie: voto neutro
-                votos_hoy += 1
-                log.info("  [Muestra %d/%d] '%s vs %s' -> Coincide en ambas fechas (+1 voto HOY)", idx, muestra_size, loc, vis)
-            else:
-                log.debug("  [Muestra %d/%d] '%s vs %s' -> Sin fixture oficial registrado", idx, muestra_size, loc, vis)
+    log.info(
+        "Resultado del contraste API universal: %d duelos confirmados HOY | %d duelos confirmados AYER (de %d unicos evaluados)",
+        votos_hoy, votos_ayer, len(duelos_vistos)
+    )
 
-        log.info(
-            "Resultado del muestreo cruzado universal: %d votos HOY | %d votos AYER (Muestra de %d duelos)",
-            votos_hoy, votos_ayer, muestra_size
-        )
-
-        if votos_hoy >= 2:
-            log.info("Lista Xtream CERTIFICADA como ACTUALIZADA hoy via muestreo mayoritario (%d votos HOY).", votos_hoy)
-            return True
-        if votos_ayer >= 2:
-            log.warning("Lista Xtream contiene duelos de AYER (%d votos AYER). Estado: PENDIENTE (esperando actualización de mediodía).", votos_ayer)
-            return False
-        if votos_hoy >= 1 and votos_ayer == 0:
-            log.info("Lista Xtream confirmada para HOY (%d voto HOY, 0 AYER).", votos_hoy)
-            return True
-        if votos_ayer >= 1 and votos_hoy == 0:
-            log.warning("Lista Xtream contiene duelos de AYER (%d voto AYER, 0 HOY). Estado: PENDIENTE.", votos_ayer)
-            return False
-
-    # Criterio 3: Contraste con circuitos de la Agenda Maestra si no hubo duelos
-    if agenda_hoy:
-        coincidencias_agenda = 0
-        for ev in agenda_hoy:
-            if ev.torneo and not ev.local and not ev.visitante:
-                t_u = normalizar_texto(ev.torneo)
-                if len(t_u) >= 5:
-                    for c in canales_xtream:
-                        n_u = normalizar_texto(c.get("name") or c.get("stream_name") or "")
-                        if t_u in n_u:
-                            coincidencias_agenda += 1
-                            if coincidencias_agenda >= 2:
-                                log.info("Lista certificada como ACTUALIZADA hoy via circuitos de Agenda Maestra (%d coincidencias).", coincidencias_agenda)
-                                return True
-
-    # Si hay coincidencias explícitas de ayer y 0 de hoy -> Pendiente
-    if coincidencias_ayer >= 2 and coincidencias_hoy == 0:
+    if votos_ayer >= 2 and votos_ayer >= votos_hoy:
         log.warning(
-            "Lista Xtream contiene %d eventos con fecha de ayer (%s) y 0 de hoy (%s). Estado: PENDIENTE.",
-            coincidencias_ayer, pat_ayer1, pat_hoy1
+            "Lista Xtream RECHAZADA: contiene %d duelos de AYER vs %d de HOY. Estado: PENDIENTE (esperando renovacion de mediodia).",
+            votos_ayer, votos_hoy
         )
         return False
 
+    if votos_hoy >= 3 and votos_hoy > (votos_ayer * 2):
+        log.info(
+            "Lista Xtream CERTIFICADA como ACTUALIZADA hoy via contraste API (%d duelos HOY vs %d AYER).",
+            votos_hoy, votos_ayer
+        )
+        return True
+
+    if votos_ayer > 0 and votos_hoy == 0:
+        log.warning("Lista Xtream contiene duelos de AYER (%d votos AYER, 0 HOY). Estado: PENDIENTE.", votos_ayer)
+        return False
+
+    log.warning("Lista Xtream sin confirmacion suficiente en API (%d HOY, %d AYER). Estado: PENDIENTE.", votos_hoy, votos_ayer)
     return False
 
 def procesar_streams_eventos_xtream(
@@ -362,6 +315,8 @@ def procesar_streams_eventos_xtream(
     agenda_hoy: List[EventoAgenda],
     tz_prod: Any,
     lista_actualizada: bool,
+    fixtures_dia: Optional[List[Dict[str, Any]]] = None,
+    fixtures_ayer: Optional[List[Dict[str, Any]]] = None,
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     """
     Embudo Universal Directo:
@@ -435,6 +390,17 @@ def procesar_streams_eventos_xtream(
         visitante = parsed.get("visitante", "")
         tipo = parsed.get("tipo", "duelo" if local and visitante else "circuito")
         deporte = parsed.get("deporte", "Otros Deportes")
+
+        # 4.1 CERROJO INDIVIDUAL DEPORTIVO: Descarte estricto de duelos disputados AYER segun la API oficial
+        if local and visitante and fixtures_ayer and _duelo_coincide_con_fixtures(local, visitante, fixtures_ayer):
+            es_de_hoy_tambien = bool(fixtures_dia and _duelo_coincide_con_fixtures(local, visitante, fixtures_dia))
+            if not es_de_hoy_tambien:
+                descartados.append({
+                    "nombre": nombre,
+                    "id_xtream": sid,
+                    "razon": f"duelo_disputado_ayer ({local} vs {visitante})"
+                })
+                continue
 
         # Conversión de hora a formato 24h
         h = int(m_h.group(1))
@@ -540,6 +506,7 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     tz_prod = obtener_tz(APP_TIMEZONE)
     ahora_prod = datetime.now(tz_prod)
     fecha_hoy_iso = ahora_prod.strftime("%Y-%m-%d")
+    fecha_ayer_iso = (ahora_prod - timedelta(days=1)).strftime("%Y-%m-%d")
     fecha_hoy_dd_mm = ahora_prod.strftime("%d/%m")
     d_hoy, m_hoy = int(fecha_hoy_dd_mm.split('/')[0]), int(fecha_hoy_dd_mm.split('/')[1])
 
@@ -561,32 +528,33 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     # Fase 1: Descarga de Agenda Maestra de canales lineales
     agenda_hoy = construir_agenda_maestra_hoy(fecha_hoy_iso)
 
-    # Fase 1.5: Descarga o lectura de fixtures oficiales del día
+    # Fase 1.5: Descarga o lectura de fixtures oficiales del dia (HOY y AYER para contraste riguroso)
     fixtures_dia = descargar_fixtures_dia(fecha_hoy_iso, API_SPORTS_KEY)
+    fixtures_ayer = descargar_fixtures_dia(fecha_ayer_iso, API_SPORTS_KEY)
     guardar_equipos_en_catalogo(fixtures_dia)
     indice_fixtures = construir_indice_fixtures(fixtures_dia)
 
     # Descarga universal de canales Xtream
     canales_xtream = obtener_canales_xtream(fecha_hoy_iso)
 
-    # Indexación estricta 1 a 1 de canales lineales autorizados
+    # Indexacion estricta 1 a 1 de canales lineales autorizados
     indice_canales = construir_indice_canales_lineales(canales_xtream)
     eventos_lineales = inyectar_eventos_lineales(agenda_hoy, indice_canales, APP_TIMEZONE)
 
-    # Detección Universal de Lista Xtream con muestreo cruzado de duelos
+    # Deteccion Universal de Lista Xtream con contraste exhaustivo contra API oficial
     lista_actualizada = detectar_lista_actualizada_hoy(
-        canales_xtream, d_hoy, m_hoy, fecha_hoy_iso, agenda_hoy, fixtures_dia
+        canales_xtream, fecha_hoy_iso, fecha_ayer_iso, agenda_hoy, fixtures_dia, fixtures_ayer
     )
     log.info("Estado de actualizacion de lista Xtream para hoy (%s): %s", fecha_hoy_dd_mm, "ACTUALIZADA" if lista_actualizada else "PENDIENTE")
 
-    # Si se invocó únicamente para verificar Xtream y aún no está actualizada:
+    # Si se invoco unicamente para verificar Xtream y aun no esta actualizada:
     if modo_check_xtream and not lista_actualizada:
-        log.info("[CHECK XTREAM] La lista Xtream aún contiene duelos del día anterior. Termina en 2s y espera al siguiente cron.")
+        log.info("[CHECK XTREAM] La lista Xtream aun contiene duelos del dia anterior. Termina en 2s y espera al siguiente cron.")
         return
 
-    # Ingesta de streams efímeros de Xtream (solo si está actualizada hoy)
+    # Ingesta de streams efimeros de Xtream (solo si esta actualizada hoy, con cerrojo individual de ayer)
     eventos_xtream, descartados = procesar_streams_eventos_xtream(
-        canales_xtream, fecha_hoy_dd_mm, fecha_hoy_iso, agenda_hoy, tz_prod, lista_actualizada
+        canales_xtream, fecha_hoy_dd_mm, fecha_hoy_iso, agenda_hoy, tz_prod, lista_actualizada, fixtures_dia, fixtures_ayer
     )
 
     todos_eventos = list(eventos_lineales) + list(eventos_xtream)
