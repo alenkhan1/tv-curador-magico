@@ -112,6 +112,17 @@ SINONIMOS_EQUIPOS = {
     "FINLAND": "FINLANDIA",
     "LA PLATA": "LP",
     "SANTA FE": "SF",
+    "RIONEGRO AGUILAS": "AGUILAS DORADAS",
+    "AGUILAS RIONEGRO": "AGUILAS DORADAS",
+    "TALENTO DORADO": "AGUILAS DORADAS",
+    "SPORTING CP": "SPORTING LISBOA",
+    "SPORTING CLUB DE PORTUGAL": "SPORTING LISBOA",
+    "BAYERN MUNCHEN": "BAYERN MUNICH",
+    "FC BAYERN": "BAYERN MUNICH",
+    "INTERNAZIONALE": "INTER",
+    "INTER MILAN": "INTER",
+    "CLUB BRUGGE KV": "CLUB BRUGGE",
+    "BOCA JRS": "BOCA JUNIORS",
 }
 
 RE_PAREN_DETALLE = re.compile(
@@ -179,12 +190,21 @@ def desmontar_duelo(titulo: str, categoria: str) -> Tuple[str, str, str, str, st
     return tit, "", "", ronda, ""
 
 def _minutos_utc(iso_utc: str) -> int:
+    if not iso_utc:
+        return 0
     try:
         from datetime import datetime
-        dt = datetime.fromisoformat(iso_utc.replace("Z", "+00:00"))
+        dt = datetime.fromisoformat(str(iso_utc).replace("Z", "+00:00"))
         return int(dt.timestamp() // 60)
     except Exception:
-        return 0
+        pass
+    try:
+        m = re.search(r"(\d{1,2}):(\d{2})", str(iso_utc))
+        if m:
+            return int(m.group(1)) * 60 + int(m.group(2))
+    except Exception:
+        pass
+    return 0
 
 def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
     """Determina si dos eventos corresponden a la misma cita deportiva."""
@@ -206,28 +226,35 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         if match_exact and diff_min <= 180:
             return True
 
+        # 1.1 Coincidencia por palabra clave distintiva (>= 5 letras en ambos bandos)
+        toks_v1 = {w for w in v1_n.split() if len(w) >= 5}
+        toks_v2 = {w for w in v2_n.split() if len(w) >= 5}
+        toks_l1 = {w for w in l1_n.split() if len(w) >= 5}
+        toks_l2 = {w for w in l2_n.split() if len(w) >= 5}
+        match_keywords_dir = bool(toks_l1.intersection(toks_l2)) and bool(toks_v1.intersection(toks_v2))
+        match_keywords_inv = bool(toks_l1.intersection(toks_v2)) and bool(toks_v1.intersection(toks_l2))
+        if (match_keywords_dir or match_keywords_inv) and diff_min <= 120:
+            return True
+
         # 2. Emparejamiento por subcadenas o aproximacion difusa (invariante al orden)
         if l1_n and l2_n and v1_n and v2_n and diff_min <= 120:
             from difflib import SequenceMatcher
 
-            # Comparacion en orden directo
             sub_dir = (l1_n in l2_n or l2_n in l1_n) and (v1_n in v2_n or v2_n in v1_n)
             sim_l_dir = SequenceMatcher(None, l1_n, l2_n).ratio()
             sim_v_dir = SequenceMatcher(None, v1_n, v2_n).ratio()
-            fuzzy_dir = ((sim_l_dir >= 0.82 and sim_v_dir >= 0.65) or 
-                         (sim_l_dir >= 0.65 and sim_v_dir >= 0.82) or 
-                         (sim_l_dir >= 0.75 and sim_v_dir >= 0.75))
+            fuzzy_dir = ((sim_l_dir >= 0.80 and sim_v_dir >= 0.60) or 
+                         (sim_l_dir >= 0.60 and sim_v_dir >= 0.80) or 
+                         (sim_l_dir >= 0.70 and sim_v_dir >= 0.70))
 
-            # Comparacion en orden invertido (visitante vs local)
             sub_inv = (l1_n in v2_n or v2_n in l1_n) and (v1_n in l2_n or l2_n in v1_n)
             sim_l_inv = SequenceMatcher(None, l1_n, v2_n).ratio()
             sim_v_inv = SequenceMatcher(None, v1_n, l2_n).ratio()
-            fuzzy_inv = ((sim_l_inv >= 0.82 and sim_v_inv >= 0.65) or 
-                         (sim_l_inv >= 0.65 and sim_v_inv >= 0.82) or 
-                         (sim_l_inv >= 0.75 and sim_v_inv >= 0.75))
+            fuzzy_inv = ((sim_l_inv >= 0.80 and sim_v_inv >= 0.60) or 
+                         (sim_l_inv >= 0.60 and sim_v_inv >= 0.80) or 
+                         (sim_l_inv >= 0.70 and sim_v_inv >= 0.70))
 
             if sub_dir or fuzzy_dir or sub_inv or fuzzy_inv:
-                # Si las categorias son distintas y no son comodin, evitar falsos positivos
                 cat1_raw = ev1.get("categoria", "")
                 cat2_raw = ev2.get("categoria", "")
                 if cat1_raw and cat2_raw and cat1_raw != "Otros Deportes" and cat2_raw != "Otros Deportes":
@@ -235,10 +262,7 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
                         return False
                 return True
 
-    if diff_min > 90:
-        return False
-
-    # Coincidencia por titulo y categoria
+    # Coincidencia para Circuitos y Transmisiones sin Duelo
     tit1 = _normalizar(ev1.get("titulo", ""))
     tit2 = _normalizar(ev2.get("titulo", ""))
     cat1 = _normalizar(ev1.get("categoria", ""))
@@ -251,27 +275,50 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
     )
 
     if es_circuito:
-        ref1 = _normalizar(ev1.get("subtitulo", "") or ev1.get("referencia", ""))
-        ref2 = _normalizar(ev2.get("subtitulo", "") or ev2.get("referencia", ""))
-        pat_cancha = r"\b(STADIUM|CENTRE|CENTER|COURT\s*\d+|PISTA\s*\d+|CANCHA\s*\d+|GRANDSTAND|SHOW\s*COURT)\b"
-        cancha1 = re.search(pat_cancha, f"{tit1} {ref1}")
-        cancha2 = re.search(pat_cancha, f"{tit2} {ref2}")
-        if cancha1 and cancha2 and cancha1.group(0) != cancha2.group(0):
+        # En tenis / padel: Cada partido/sesion es un evento independiente.
+        # NUNCA fusionar partidos distintos. Solo se fusionan si comparten el mismo titulo,
+        # la misma cancha/pista (si esta disponible) y la misma hora exacta (+-30 min).
+        if cat1 in ["TENIS", "PADEL"] or cat2 in ["TENIS", "PADEL"]:
+            part1 = _normalizar(ev1.get("referencia", "") or ev1.get("participantes", ""))
+            part2 = _normalizar(ev2.get("referencia", "") or ev2.get("participantes", ""))
+
+            # Si ambos tienen participantes definidos:
+            if part1 and part2:
+                if part1 != part2:
+                    words1 = set(w for w in part1.split() if len(w) >= 4 and w not in ["CONTRA", "VERSUS"])
+                    words2 = set(w for w in part2.split() if len(w) >= 4 and w not in ["CONTRA", "VERSUS"])
+                    if not (words1 and words2 and (words1.issubset(words2) or words2.issubset(words1) or len(words1 & words2) >= 2)):
+                        return False
+            elif (part1 and not part2) or (part2 and not part1):
+                return False
+
+            # Verificar canchas si estan especificadas en subtitulo o ronda
+            ref1 = _normalizar(f"{ev1.get('subtitulo', '')} {ev1.get('ronda', '')}")
+            ref2 = _normalizar(f"{ev2.get('subtitulo', '')} {ev2.get('ronda', '')}")
+            pat_cancha = r"\b(STADIUM|CENTRE|CENTER|COURT\s*\d+|PISTA\s*\d+|CANCHA\s*\d+|GRANDSTAND|SHOW\s*COURT)\b"
+            cancha1 = re.search(pat_cancha, ref1)
+            cancha2 = re.search(pat_cancha, ref2)
+            if cancha1 and cancha2 and cancha1.group(0) != cancha2.group(0):
+                return False
+
+            if tit1 == tit2 and diff_min <= 30:
+                return True
             return False
 
+        # En combates / veladas (UFC, WWE, Boxeo):
+        # Mismo titulo raiz y misma fecha (+-180 min) se fusionan para consolidar feeds de audio (ESP, ENG, POR).
+        if cat1 in ["COMBATE", "BOXEO", "MMA"] or cat2 in ["COMBATE", "BOXEO", "MMA"]:
+            if tit1 == tit2 and diff_min <= 180:
+                return True
+            return False
+
+        # Otros circuitos generales (F1, Ciclismo):
         if tit1 == tit2 and diff_min <= 60:
             return True
         return False
 
-    if tit1 == tit2:
+    if tit1 and tit2 and tit1 == tit2 and diff_min <= 90:
         return True
-
-    if cat1 and cat2 and cat1 == cat2:
-        palabras1 = set(tit1.split())
-        palabras2 = set(tit2.split())
-        inter = palabras1.intersection(palabras2)
-        if len(inter) >= 2 and any(k in tit1 for k in ["OPEN", "PRIX", "FIGHT", "NIGHT", "UFC", "F1", "TOUR", "CUP"]):
-            return True
 
     return False
 
@@ -283,8 +330,9 @@ def extraer_metadatos_circuito(tit_raw: str, categoria: str) -> Dict[str, str]:
     - Contrincantes / Protagonistas -> Linea 3 bajo la preview del reproductor (referencia)
     """
     s = re.sub(r'\[.*?\]|\(.*?\)', '', tit_raw)
+    s = re.sub(r'\s*[-–—]\s*(?:Português|Portugues|English|Español|Spanish|HD|FHD|4K|Directo|En Vivo).*$', '', s, flags=re.I)
     s = re.sub(r'\s*\d{2,}>\s*', ' > ', s)
-    bloques = [b.strip() for b in re.split(r'[:|>]', s) if b.strip()]
+    bloques = [b.strip() for b in re.split(r'[:|>]|\s+[-–—]\s+', s) if b.strip()]
 
     cat_patt = rf'^(?:{categoria}|Deportes?|Directo|En Vivo|Combate|Boxeo|Tenis|Golf|Motor|Ciclismo)\s*[:\-–—]?\s*'
 
@@ -365,6 +413,7 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
             tit_limpio = meta_c["torneo"]
             torneo_original = meta_c["torneo"]
             ronda = meta_c["subtitulo"]
+            ev["subtitulo"] = meta_c["subtitulo"]
             if meta_c["participantes"]:
                 ev["referencia"] = meta_c["participantes"]
             loc = ""
@@ -478,7 +527,7 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
             referencia = ref_existente or subtitulo
         else:
             # En circuitos: Línea 2 es Sede / Sesión / Ronda. NUNCA la categoría repetida.
-            subtitulo = ronda if ronda and ronda.lower() != categoria_real.lower() and ronda.lower() != tit_limpio.lower() else ""
+            subtitulo = ev.get("subtitulo") or (ronda if ronda and ronda.lower() != categoria_real.lower() and ronda.lower() != tit_limpio.lower() else "")
             referencia = ref_existente or subtitulo
 
         # PROTECCIÓN ABSOLUTA DE LOGOS OFICIALES DE LA API Y RESOLUCIÓN ROBUSTA

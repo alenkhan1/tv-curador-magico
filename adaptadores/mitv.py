@@ -205,6 +205,17 @@ def obtener_directos_lineales_mitv(
                 tipo = "duelo"
                 torneo = sub_str or f"{canon_canal} en Vivo"
             else:
+                # Solo admitir transmisiones de disciplinas deportivas reales o explicitamente en vivo/directo
+                es_deporte_circuito = any(k in todo for k in [
+                    "TENIS", "ATP", "WTA", "SHANGHAI", "ROLAND GARROS", "WIMBLEDON", "US OPEN",
+                    "MOTOR", "F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "INDYCAR", "NASCAR",
+                    "PADEL", "PÁDEL", "PREMIER PADEL", "GOLF", "PGA", "LIV GOLF",
+                    "CICLISMO", "TOUR", "GIRO", "VUELTA", "SNOOKER", "BILLAR", "BOXEO", "UFC", "COMBATE"
+                ])
+                es_en_vivo_declarado = any(k in todo for k in ["EN VIVO", "DIRECTO", "LIVE"])
+                if not (es_deporte_circuito or es_en_vivo_declarado):
+                    continue  # Descartar programas de relleno, magazines, documentales y resúmenes
+
                 loc, vis = "", ""
                 tipo = "circuito"
                 if sub_str and h2_str:

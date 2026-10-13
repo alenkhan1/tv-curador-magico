@@ -42,6 +42,15 @@ def _crear_ssl():
     ctx.verify_mode = ssl.CERT_NONE
     return ctx
 
+SINONIMOS_EQUIPOS_API = {
+    "RIONEGRO AGUILAS": "AGUILAS DORADAS",
+    "AGUILAS PEREIRA": "AGUILAS DORADAS",
+    "SPORTING CP": "SPORTING LISBOA",
+    "BAYERN MUNCHEN": "BAYERN MUNICH",
+    "INTERNAZIONALE": "INTER",
+    "BOCA JRS": "BOCA JUNIORS",
+}
+
 SINONIMOS_PAISES_API = {
     "ESTADOS UNIDOS": "USA",
     "EEUU": "USA",
@@ -102,6 +111,9 @@ def normalizar_clave(s: Any) -> str:
     # 3. Mapear sinónimos universales de selecciones y países
     for k, v in SINONIMOS_PAISES_API.items():
         limpio = re.sub(rf"\b{k}\b", v, limpio)
+    for k, v in SINONIMOS_EQUIPOS_API.items():
+        if k in limpio:
+            limpio = limpio.replace(k, v)
 
     # 4. Eliminar prefijos/sufijos institucionales comunes para comparación pura de entidad
     palabras = limpio.split()

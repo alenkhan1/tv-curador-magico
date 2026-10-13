@@ -3,8 +3,9 @@
 Sanitizador Deportivo Inteligente:
 - Extrae de forma limpia Duelos y Circuitos.
 - No destruye fechas ni canchas delimitadas por barras.
-- Clasifica deportes por patrones directos (WNBA -> Baloncesto, NFL -> Fútbol Americano, NHL -> Hockey, ATP/WTA -> Tenis).
-- Traduce sesiones de F1, rondas y pistas.
+- Clasifica deportes por patrones directos y términos comunes.
+- Limpia prefijos de idioma (English:, Spanish:, etc.) y sufijos de audio/país.
+- Preserva el 100% del texto crudo original en texto_original_crudo y titulo_original_crudo.
 """
 from __future__ import annotations
 
@@ -58,17 +59,17 @@ DEPORTES_MAP = {
     'MOTO GP': 'MotoGP',
     'MOTO2': 'MotoGP',
     'MOTO3': 'MotoGP',
-    'MMA': 'MMA',
-    'UFC': 'MMA',
-    'EFC': 'MMA',
-    'BKFC': 'MMA',
-    'BARE KNUCKLE': 'MMA',
-    'BOXING': 'Boxeo',
-    'BOXEO': 'Boxeo',
-    'WWE': 'Lucha Libre',
-    'SMACKDOWN': 'Lucha Libre',
-    'RAW': 'Lucha Libre',
-    'AEW': 'Lucha Libre',
+    'MMA': 'Combate',
+    'UFC': 'Combate',
+    'EFC': 'Combate',
+    'BKFC': 'Combate',
+    'BARE KNUCKLE': 'Combate',
+    'BOXING': 'Combate',
+    'BOXEO': 'Combate',
+    'WWE': 'Combate',
+    'SMACKDOWN': 'Combate',
+    'RAW': 'Combate',
+    'AEW': 'Combate',
     'TEJO': 'Tejo',
     'SNOOKER': 'Snooker',
     'CYCLING': 'Ciclismo',
@@ -88,7 +89,7 @@ DEPORTES_MAP = {
 }
 
 PATRONES_BASURA_PROGRAMAS = re.compile(
-    r'\b(SHOW|EL SHOW|PREVIA|PREVIO|DEBATE|NOTICIAS|NOTICIERO|RESUMEN|CRONICA|CRONICAS|MAGAZINE|TERTULIA|ESPECIAL|HIGHLIGHTS|RECAP|REVIEW|CONTENDER\s*SERIES|ULTIMATE\s*FIGHTER|COUNTDOWN|REWIND)\b',
+    r'\b(SHOW|EL SHOW|PREVIA|PREVIO|DEBATE|NOTICIAS|NOTICIERO|RESUMEN|CRONICA|CRONICAS|MAGAZINE|TERTULIA|ESPECIAL|HIGHLIGHTS|RECAP|REVIEW|CONTENDER\s*SERIES|ULTIMATE\s*FIGHTER|COUNTDOWN|REWIND|GOLES DE LA|CAMPE[OÓ]N\s*-\s*CARABAO)\b',
     re.I
 )
 
@@ -99,13 +100,17 @@ PATRONES_TORNEO_CONOCIDOS = [
     (r'\bAFC\s*CHAMPIONS\s*LEAGUE(?:\s*ELITE|\s*TWO)?\b', 'AFC Champions League'),
     (r'\bCAF\s*CHAMPIONS\s*LEAGUE\b', 'CAF Champions League'),
     (r'\bCONCACAF\s*CHAMPIONS\s*(?:CUP|LEAGUE)\b', 'CONCACAF Champions Cup'),
+    (r'\bCONCACAF\s*CARIBBEAN\s*CLUB\b', 'CONCACAF Caribbean Club Championship'),
     (r'\bCANADIAN\s*PREMIER\s*LEAGUE\b', 'Canadian Premier League'),
     (r'\bEHF\s*CHAMPIONS\s*LEAGUE\b', 'EHF Champions League'),
     (r'\bUEFA\s*NATIONS\s*LEAGUE\b', 'UEFA Nations League'),
+    (r'\bUEFA\s*YOUTH\s*LEAGUE\b|\bYOUTH\s*LEAGUE\b', 'UEFA Youth League'),
     (r'\bUEFA\s*WOMEN\'?S\s*CHAMPIONS\s*LEAGUE\b|\bUCL\s*FEM\b', "UEFA Women's Champions League"),
     (r'(?<!\bAFC\s)(?<!\bCAF\s)(?<!\bCONCACAF\s)(?<!\bEHF\s)\b(?:UEFA\s*CHAMPIONS\s*LEAGUE|CHAMPIONS\s*LEAGUE|UCL)\b', 'UEFA Champions League'),
     (r'\bEUROPA\s*LEAGUE\b|\bUEL\b', 'UEFA Europa League'),
     (r'\bCONCACAF\s*NATIONS\s*LEAGUE\b', 'CONCACAF Nations League'),
+    (r'\bCONMEBOL\s*SUDAMERICANA\b|\bSUDAMERICANA\b', 'CONMEBOL Sudamericana'),
+    (r'\bCONMEBOL\s*LIBERTADORES\b|\bLIBERTADORES\b', 'CONMEBOL Libertadores'),
     (r'\bLIGA\s*BETPLAY\b', 'Liga BetPlay DIMAYOR'),
     (r'\bTORNEO\s*BETPLAY\b', 'Torneo BetPlay DIMAYOR'),
     (r'\bCOPA\s*BETPLAY\b', 'Copa BetPlay DIMAYOR'),
@@ -122,13 +127,9 @@ PATRONES_TORNEO_CONOCIDOS = [
     (r'\bNCAA\s*F[ÚU]TBOL\s*AMERICANO\b|\bNCAA\s*FOOTBALL\b', "NCAA Fútbol Americano"),
     (r'\bNCAA\s*BASKETBALL\b|\bNCAA\s*BASKET\b', "NCAA Baloncesto"),
     (r'\bNCAA\b', 'NCAA'),
-    (r'\bEXTREME\s*FIGHTING\s*CHAMPIONSHIP\b|\bEFC\b', 'Extreme Fighting Championship'),
-    (r'\bALFRED\s*DUNHILL\s*LINKS\b', 'Alfred Dunhill Links Championship'),
-    (r'\bBANK\s*OF\s*UTAH\b', 'Bank of Utah Championship'),
-    (r'\bUSL\s*CHAMPIONSHIP\b', 'USL Championship'),
-    (r'\bJAPAN\s*OPEN\b', 'ATP Tokio (Japan Open)'),
-    (r'\bCHINA\s*OPEN\b', 'China Open'),
-    (r'\bAMISTOSO\b', 'Amistoso Internacional'),
+    (r'\bROLEX\s*SHANGHAI\s*MASTERS\b|\bSHANGHAI\s*MASTERS\b', 'Rolex Shanghai Masters'),
+    (r'\bUFC\b', 'UFC'),
+    (r'\bWWE\b', 'WWE'),
 ]
 
 SUBTITULOS_TRADUCCION = {
@@ -154,8 +155,28 @@ SUBTITULOS_TRADUCCION = {
     'PRIMERA RONDA': 'Primera Ronda',
 }
 
+def limpiar_prefijos_idioma(s: str) -> str:
+    s = re.sub(r'^(?:English|Spanish|Español|Portugues|Português|French|Italian|German|HD|FHD|4K|OP\d+|VIP|LIVE|DIRECTO|EN VIVO)\s*[:|-]\s*', '', s, flags=re.I)
+    s = re.sub(r'\b(?:English|Spanish|Español|Portugues|Português)\s*[:|-]\s*', '', s, flags=re.I)
+    s = re.sub(r'\[(?:ENG|ESP|POR|FRA|ITA|GER|HD|FHD|4K)\]', '', s, flags=re.I)
+    s = re.sub(r'\((?:ENG|ESP|POR|FRA|ITA|GER|HD|FHD|4K)\)', '', s, flags=re.I)
+    s = re.sub(r'\s*[-–—]\s*(?:Português|English|Español|Spanish|HD|FHD|4K).*$', '', s, flags=re.I)
+    return s.strip()
+
+def limpiar_sufijo_pais_club(s: str) -> str:
+    return re.sub(r'\s*\((?:Arg|Bra|Nor|Ale|Col|Esp|Eng|Fra|Ita|Mex|Usa|Por|Chi|Uru|Per|Ecu|Par|Bol|Ven)\)', '', s, flags=re.I).strip()
+
+def extraer_contexto_y_equipos(cadena_pre_vs: str):
+    partes = [p.strip() for p in re.split(r'[-–—,]\s*', cadena_pre_vs) if p.strip()]
+    if len(partes) > 1:
+        local = partes[-1]
+        contexto = ' - '.join(partes[:-1])
+        return local, contexto
+    return cadena_pre_vs, ''
+
 def limpiar_fragmento(s: str) -> str:
     s = re.sub(r'[\u2010-\u2015\u2022\u2212*~#◘■♦►●▼▲]+', ' ', s)
+    s = limpiar_prefijos_idioma(s)
     s = re.sub(r'\b(En español|Español|Spanish|OP\d+|FHD|HD|SD|4K|ES|EN|LIVE|EN VIVO)\b', '', s, flags=re.I)
     s = re.sub(r'\s+', ' ', s)
     return s.strip(' -:|◘■♦►●▼▲')
@@ -163,58 +184,62 @@ def limpiar_fragmento(s: str) -> str:
 def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Optional[Dict[str, Any]]:
     """
     Parsea de manera inteligente y rigurosa el stream de IPTV.
+    Entrega campos operativos completamente limpios sin perder el texto original crudo.
     """
-    texto_completo = f'{nombre_stream} {grupo_stream}'
-
-    # 1. Filtro estricto: Descartar programas de estudio / revistas / noticias
     if PATRONES_BASURA_PROGRAMAS.search(nombre_stream):
         return None
 
-    # 2. Detección de Deporte Precisa (sin forzar fútbol por 'vs')
+    texto_completo = f"{nombre_stream} {grupo_stream}"
+
+    # 1. Detección de Deporte Precisa
     deporte = 'Otros Deportes'
     for k in sorted(DEPORTES_MAP.keys(), key=len, reverse=True):
         if re.search(rf'\b{re.escape(k)}\b', texto_completo.upper()):
             deporte = DEPORTES_MAP[k]
             break
 
-    # Si aún no tiene deporte, buscar indicios inequívocos
+    # Si aún no tiene deporte, buscar indicios inequívocos de fútbol
     if deporte == 'Otros Deportes':
-        if any(k in texto_completo.upper() for k in ['FC', 'CF', 'DEPORTIVO', 'ATLETICO', 'SOCCER', 'BALOMPIE']):
+        if any(k in texto_completo.upper() for k in [
+            'FC', 'CF', 'DEPORTIVO', 'ATLETICO', 'SOCCER', 'BALOMPIE', 'LENS', 'SPORTING',
+            'VIKING', 'BAYERN', 'BOCA', 'VASCO', 'INTER', 'BRUGGE', 'ARSENAL', 'LILLE',
+            'GALATASARAY', 'BARCELONA', 'NAPOLI', 'VILLARREAL', 'SLAVIA', 'SABAH', 'U19'
+        ]):
             deporte = 'Fútbol'
 
-    # 3. Detección de Torneo por Patrones Conocidos
+    # 2. Detección de Torneo por Patrones Conocidos
     torneo_detectado = ''
     for pat, nom_torneo in PATRONES_TORNEO_CONOCIDOS:
         if re.search(pat, texto_completo, re.I):
             torneo_detectado = nom_torneo
             break
 
-    # 4. Limpieza PREVIA: Eliminar fechas pegadas (ej. 01/10 o 1/10) para no romper en "01"
+    # 3. Limpieza de fechas y prefijos de idioma
     nombre_sin_fechas = re.sub(r'\b[0-3]?[0-9]/[0-1]?[0-9]\b', '', nombre_stream)
+    nombre_limpio = limpiar_prefijos_idioma(nombre_sin_fechas)
 
-    # 5. Dividir ÚNICAMENTE por – o | (NUNCA por / para preservar canchas y torneos)
-    bloques = [limpiar_fragmento(b) for b in re.split(r'[\u2010-\u2015|◘■♦►●▼▲]+', nombre_sin_fechas) if b.strip()]
+    # 4. Dividir por separadores de bloques
+    bloques = [limpiar_fragmento(b) for b in re.split(r'[\u2010-\u2015|◘■♦►●▼▲]+', nombre_limpio) if b.strip()]
 
-    # Filtrar bloques que solo son horas (ej. 17:55, 07:00 PM) o números residuales
+    # Filtrar bloques que solo son horas o números residuales
     bloques_utiles = []
     for b in bloques:
         b_clean = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?\s*', '', b, flags=re.I).strip(' -:.')
         if b_clean and not re.match(r'^(?:[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?|\d{1,2})$', b_clean, re.I):
             bloques_utiles.append(b_clean)
 
-    # Si el primer bloque es una categoría genérica y hay más bloques, descartar el prefijo genérico
     GENERICOS_PREFIJO = {
         'MOTOR', 'DEPORTES', 'LIVE', 'DIRECTO', 'EVENTO', 'EN VIVO', 'SPORTS', 'SPORT',
         'FUTBOL', 'SOCCER', 'ATP', 'WTA', 'PGA', 'PGA TOUR', 'BOXEO', 'COMBATE', 'UFC',
         'TENIS', 'TENNIS', 'GOLF', 'BASKET', 'BALONCESTO', 'BASEBALL', 'BEISBOL'
     }
-    if len(bloques_utiles) > 1 and bloques_utiles[0].upper() in GENERCIOS_PREFIJO if 'GENERCIOS_PREFIJO' in dir() else len(bloques_utiles) > 1 and bloques_utiles[0].upper() in GENERICOS_PREFIJO:
+    if len(bloques_utiles) > 1 and bloques_utiles[0].upper() in GENERICOS_PREFIJO:
         bloques_utiles = bloques_utiles[1:]
 
     if not bloques_utiles:
-        bloques_utiles = [limpiar_fragmento(nombre_sin_fechas)]
+        bloques_utiles = [limpiar_fragmento(nombre_limpio)]
 
-    # 6. Localizar el bloque del enfrentamiento (el que tiene vs, v., v, @ o - en combate)
+    # 5. Localizar si es un Duelo
     bloque_duelo = None
     bloques_contexto = []
     patron_duelo = r'\s+(?:vs\.?|versus|\bv\.?\b|@)\s+'
@@ -233,30 +258,34 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
     if bloque_duelo:
         tipo = 'duelo'
         partes = re.split(patron_duelo, bloque_duelo, flags=re.I)
-        local = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?\s*', '', partes[0], flags=re.I).strip(' -:.')
-        visitante = partes[1].strip(' -:.')
+        pre_local = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?\s*', '', partes[0], flags=re.I).strip(' -:.')
+        local_raw, contexto_duelo = extraer_contexto_y_equipos(pre_local)
+        visitante_raw = partes[1].strip(' -:.')
+
+        local = limpiar_sufijo_pais_club(local_raw)
+        visitante = limpiar_sufijo_pais_club(visitante_raw)
 
         # Limpiar palabras residuales de deporte en local/vis
         local = re.sub(rf'\b({deporte}|Rugby|Golf|MMA|Padel|Baseball|Soccer|WNBA|NBA|NHL|MLB|NFL)\b.*$', '', local, flags=re.I).strip(' -:.')
         visitante = re.sub(rf'\b({deporte}|Rugby|Golf|MMA|Padel|Baseball|Soccer|WNBA|NBA|NHL|MLB|NFL)\b.*$', '', visitante, flags=re.I).strip(' -:.')
 
-        titulo = f'{local} vs {visitante}'
+        titulo = f"{local} vs. {visitante}"
         torneo_final = torneo_detectado or (bloques_contexto[0] if bloques_contexto else deporte)
-        subtitulo = torneo_final
+        subtitulo = contexto_duelo or torneo_final
+        referencia = contexto_duelo or torneo_final
     else:
         tipo = 'circuito'
         local = ''
         visitante = ''
         segmento_principal = bloques_utiles[0]
-        
-        # Casos especiales de Fórmula 1: "GP Japón - Free Practice 1"
+
+        # Casos especiales de Fórmula 1 / MotoGP
         if 'GP' in segmento_principal.upper() or deporte in ['Fórmula 1', 'MotoGP']:
             m_gp = re.search(r'(GP\s+[A-Za-zÁÉÍÓÚáéíóúñ]+)', segmento_principal, re.I)
             nom_gp = m_gp.group(1).title() if m_gp else 'Gran Premio'
             torneo_final = deporte
             titulo = f"{'F1' if deporte == 'Fórmula 1' else 'MotoGP'}: {nom_gp}"
-            
-            # Buscar sesión
+
             sesion = 'Sesión en Vivo'
             seg_upper = segmento_principal.upper()
             for en_s, es_s in SUBTITULOS_TRADUCCION.items():
@@ -264,31 +293,36 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
                     sesion = es_s
                     break
             subtitulo = sesion
+            referencia = sesion
         else:
-            # Tenis / Golf / Padel / Otros Circuitos
-            sub = 'Directo'
-            t_base = torneo_detectado or segmento_principal
+            # Tenis / Golf / Padel / Circuitos / Combate
+            partes_circ = [p.strip() for p in re.split(r'\s*[-–—]\s*', segmento_principal) if p.strip()]
+            torneo = torneo_detectado or ''
+            subtitulo = ''
+            referencia = ''
 
-            # Subdividir cancha o ronda si viene con slash / o guión
-            partes_sub = re.split(r'[/:\-\u2013]', segmento_principal)
-            partes_sub = [p.strip() for p in partes_sub if p.strip()]
+            for p in partes_circ:
+                if any(k in p for k in ['Masters', 'Open', 'Padel', 'UFC', 'F1', 'Tour', 'Premier', 'WWE', 'MLB', 'NFL']):
+                    if not torneo or len(p) < len(torneo):
+                        torneo = p
+            if not torneo and partes_circ:
+                torneo = partes_circ[0]
 
-            if len(partes_sub) >= 2:
-                sub_candidato = partes_sub[-1]
-                sub_upper = sub_candidato.upper()
-                for en_t, es_t in SUBTITULOS_TRADUCCION.items():
-                    if en_t in sub_upper:
-                        sub = es_t
-                        break
-                if sub == 'Directo':
-                    sub = sub_candidato
+            for p in partes_circ:
+                if any(k in p.lower() for k in ['octavos', 'cuartos', 'semifinal', 'final', 'ronda', 'round', 'prelims', 'main card']):
+                    referencia = p
+                elif any(k in p.lower() for k in ['center', 'centre', 'arena', 'stadium', 'estadio', 'shanghai', 'madrid', 'paris', 'pista', 'cancha']):
+                    subtitulo = p
 
-            torneo_final = torneo_detectado or t_base
-            titulo = torneo_final
-            subtitulo = sub
+            titulo_boton = re.sub(r'^(?:ATP World Tour Masters \d+|ATP \d+|WTA \d+)\s*[-–—]?\s*', '', torneo, flags=re.I).strip()
+            titulo = titulo_boton or torneo or deporte
+            torneo_final = torneo_detectado or titulo
+            subtitulo = subtitulo or torneo_final
+            referencia = referencia or subtitulo
 
     return {
         'titulo_original_crudo': nombre_stream.strip(),
+        'texto_original_crudo': texto_completo.strip(),
         'tipo': tipo,
         'deporte': deporte,
         'titulo': titulo,
@@ -296,4 +330,5 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
         'visitante': visitante,
         'torneo': torneo_final,
         'subtitulo': subtitulo,
+        'referencia': referencia,
     }

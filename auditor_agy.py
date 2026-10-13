@@ -163,10 +163,21 @@ Responde ÚNICAMENTE con un JSON Array:
         return {}
 
     datos = _extraer_datos_json(salida_texto)
+    res_map = {}
     if datos:
-        return {item.get("id"): item for item in datos if isinstance(item, dict) and "id" in item}
-
-    return {}
+        id_set = {str(e.get("id")) for e in lote if e.get("id")}
+        for idx, item in enumerate(datos):
+            if not isinstance(item, dict):
+                continue
+            item_id = str(item.get("id") or "")
+            if item_id and item_id in id_set:
+                res_map[item_id] = item
+            elif idx < len(lote):
+                target_id = str(lote[idx].get("id") or "")
+                if target_id and target_id not in res_map:
+                    item["id"] = target_id
+                    res_map[target_id] = item
+    return res_map
 
 def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     """Audita los eventos huérfanos o no contrastados en un ÚNICO lote consolidado con AGY."""
@@ -193,6 +204,8 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         necesita = (not ev.get("contrastado_api")) or es_lineal or es_circuito or tiene_vinetas or cat_dudosa
         if necesita:
             raw_tit = ev.get("texto_original_crudo") or ev.get("titulo_original_crudo") or ev.get("titulo_original") or ev.get("titulo") or ""
+            if not ev.get("id"):
+                ev["id"] = f"ev_audit_{len(eventos_a_auditar) + 1}_{hashlib.sha1((raw_tit + ev.get('hora_utc', '')).encode()).hexdigest()[:6]}"
             fuentes_nombres = [f.get("nombre") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("nombre")][:3]
             canales_cands = ev.get("canales_candidatos") or list(dict.fromkeys([
                 f.get("canal_lineal") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("canal_lineal")
@@ -213,7 +226,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         log.info("Todos los eventos están debidamente contrastados o clasificados (%d eventos). Se omite AGY.", len(eventos))
         return eventos, []
 
-    tamano_lote = 20
+    tamano_lote = 10
     mapa_audit = {}
     total_lotes = (len(eventos_a_auditar) + tamano_lote - 1) // tamano_lote
     log.info("Iniciando auditoría AGY en lote consolidado para %d eventos huérfanos (%d lotes)...", len(eventos_a_auditar), total_lotes)
@@ -231,19 +244,11 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         aud = mapa_audit.get(ev.get("id"))
         if aud:
             if aud.get("descartar") is True:
-                es_guia_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "mundodeportivo", "espana", "teledeporte", "eurosport"] for o in ev.get("origenes", [])) or any(k in ev.get("fuente", "") for k in ["mundodeportivo", "espana", "teledeporte", "mitv"])
-                if es_guia_lineal and ev.get("fuentes"):
-                    log.info("AGY intento descartar '%s', pero se preserva por ser directo oficial lineal con streams.", ev.get("titulo"))
-                    if aud.get("titulo_pulido"):
-                        ev["titulo"] = aud["titulo_pulido"]
-                    if aud.get("categoria_exacta"):
-                        ev["categoria"] = aud["categoria_exacta"]
-                else:
-                    motivo = aud.get("motivo_descarte") or "descartado_por_auditoria_agy"
-                    log.info("AGY descartó evento ('%s'): '%s'", motivo, ev.get("titulo"))
-                    ev["motivo_descarte"] = motivo
-                    eventos_descartados.append(ev)
-                    continue
+                motivo = aud.get("motivo_descarte") or "descartado_por_auditoria_agy"
+                log.info("AGY descartó evento ('%s'): '%s'", motivo, ev.get("titulo"))
+                ev["motivo_descarte"] = motivo
+                eventos_descartados.append(ev)
+                continue
 
             ev["titulo"] = aud.get("titulo_pulido") or ev["titulo"]
             ev["subtitulo"] = aud.get("subtitulo_pulido") or ev["subtitulo"]
