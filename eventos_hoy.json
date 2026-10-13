@@ -1,6 +1,6 @@
 {
   "version": "3.2-curador-tv-universal",
-  "generado_utc": "2026-10-13T17:13:11Z",
+  "generado_utc": "2026-10-13T22:18:14Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-13",
   "base_media": "http://avefenixtv.com:8080",
@@ -9,13 +9,13 @@
       "id": "xtream_6fbae2a6",
       "agenda_id": "",
       "titulo": "Premier Padel",
-      "torneo": "Milano Premier Padel P1",
+      "torneo": "Premier Padel",
       "categoria": "Pádel",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Allianz Cloud, Milán, Italia",
-      "referencia": "Pista Central: Primera ronda / Treintaidosavos y Dieciseisavos de final (Cuadro Principal masculino y femenino)",
+      "subtitulo": "Premier Padel",
+      "referencia": "Premier Padel",
       "hora_utc": "2026-10-13T07:30:00Z",
       "hora_local_producto": "02:30",
       "duracion_min": 130,
@@ -46,23 +46,84 @@
       "ronda": ""
     },
     {
+      "id": "lineal_espn_3_ar_26362ef6",
+      "agenda_id": "",
+      "titulo": "Sassuolo vs Milan",
+      "torneo": "Fecha 6, Mapei Stadium - Città del Tricolore",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sassuolo",
+      "equipo_visitante": "Milan",
+      "subtitulo": "Fecha 6, Mapei Stadium - Città del Tricolore",
+      "referencia": "Fecha 6, Mapei Stadium – Città del Tricolore",
+      "hora_utc": "2026-10-13T09:00:00Z",
+      "hora_local_producto": "04:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F488.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F31vu4p1705226276.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_3_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 FHD | ARG",
+          "id_xtream": "591987",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "SUR"
+        },
+        {
+          "nombre": "ESPN 3 HD | AR",
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "SUR"
+        },
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "SUR"
+        },
+        {
+          "nombre": "ESPN 3",
+          "id_xtream": "1229122",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "SUR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "Sassuolo vs. Milan. Fecha 6, Mapei Stadium – Città del Tricolore. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
+      "titulo_original_crudo": "Sassuolo vs. Milan. Fecha 6, Mapei Stadium – Città del Tricolore. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
+      "ronda": ""
+    },
+    {
       "id": "lineal_espn_co_0b3fcffd",
       "agenda_id": "",
       "titulo": "ATP World Tour Masters 1000 • Rolex Shanghai Masters",
-      "torneo": "Rolex Shanghai Masters",
+      "torneo": "ATP World Tour Masters 1000 • Rolex Shanghai Masters",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Qizhong Forest Sports City Arena, Shanghái, China",
-      "referencia": "Octavos de final (Sesión Diurna): Alexander Zverev vs. Alexander Bublik, Alex de Minaur vs. Karen Khachanov",
+      "subtitulo": "",
+      "referencia": "ATP World Tour Masters 1000 - Rolex Shanghai Masters",
       "hora_utc": "2026-10-13T10:00:00Z",
       "hora_local_producto": "05:00",
       "duracion_min": 180,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -186,8 +247,8 @@
         "ESPN 2 CO",
         "ESPN 2 AR"
       ],
-      "texto_original_crudo": "13:45 Fase Liga Sabah FK Slavia Praha Disney+ Premium ESPN 2",
-      "titulo_original_crudo": "13:45 Fase Liga Sabah FK Slavia Praha Disney+ Premium ESPN 2",
+      "texto_original_crudo": "11:45 Fase Liga Sabah FK Slavia Praha Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "11:45 Fase Liga Sabah FK Slavia Praha Disney+ Premium ESPN 2",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
@@ -305,12 +366,13 @@
         {
           "nombre": "ESPN 3",
           "id_xtream": "1229122",
-          "canal_lineal": "ESPN 3 CO",
+          "canal_lineal": "ESPN 3 AR",
           "pais": "SUR"
         }
       ],
       "canales_candidatos": [
-        "ESPN 3 CO"
+        "ESPN 3 CO",
+        "ESPN 3 AR"
       ],
       "texto_original_crudo": "Cagliari vs. Juventus. Fecha 6, Unipol Domus. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
       "titulo_original_crudo": "Cagliari vs. Juventus. Fecha 6, Unipol Domus. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
@@ -407,7 +469,7 @@
       "ronda": ""
     },
     {
-      "id": "lineal_espn_2_co_80e1d3b5",
+      "id": "lineal_espn_3_2091f11b",
       "agenda_id": "",
       "titulo": "Internazionale U19 vs Club Brugge U19",
       "torneo": "UEFA Youth League",
@@ -437,30 +499,6 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN 2 CO",
-          "id_xtream": "591982",
-          "canal_lineal": "ESPN 2 CO",
-          "pais": "CO"
-        },
-        {
-          "nombre": "ESPN 2 ARG | FHD",
-          "id_xtream": "591981",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "ESPN 2  FHD | AR",
-          "id_xtream": "712744",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "ESPN 2 HD | ARG",
-          "id_xtream": "591980",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
           "nombre": "ESPN 3 FHD | ARG",
           "id_xtream": "591987",
           "canal_lineal": "ESPN 3",
@@ -479,6 +517,30 @@
           "pais": "SUR"
         },
         {
+          "nombre": "ESPN 1 CO FHD",
+          "id_xtream": "591976",
+          "canal_lineal": "ESPN CO",
+          "pais": "CO"
+        },
+        {
+          "nombre": "ESPN 1 FHD | ARG",
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 1 HD | AR",
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
           "nombre": "14:00 ◘ Internazionale vs. Club Brugge ◘ UEFA Champions League ◘",
           "id_xtream": "1728280"
         },
@@ -492,12 +554,12 @@
         }
       ],
       "canales_candidatos": [
-        "ESPN 2 CO",
-        "ESPN 2 AR",
-        "ESPN 3"
+        "ESPN 3",
+        "ESPN CO",
+        "ESPN AR"
       ],
-      "texto_original_crudo": "16:00 Fase Liga Inter Milan Club Brugge Disney+ Premium ESPN 2",
-      "titulo_original_crudo": "16:00 Fase Liga Inter Milan Club Brugge Disney+ Premium ESPN 2",
+      "texto_original_crudo": "14:00 Fase Liga Inter Milan Club Brugge Disney+ Premium ESPN 3",
+      "titulo_original_crudo": "14:00 Fase Liga Inter Milan Club Brugge Disney+ Premium ESPN 3",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
@@ -506,20 +568,20 @@
       "id": "lineal_espn_co_6797e8b3",
       "agenda_id": "",
       "titulo": "ATP World Tour Masters 1000 • Rolex Shanghai Masters",
-      "torneo": "Rolex Shanghai Masters",
+      "torneo": "ATP World Tour Masters 1000 • Rolex Shanghai Masters",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Qizhong Forest Sports City Arena, Shanghái, China",
-      "referencia": "Octavos de final (Sesión Nocturna): Daniil Medvedev vs. Stefanos Tsitsipas, Casper Ruud vs. Félix Auger-Aliassime",
+      "subtitulo": "",
+      "referencia": "ATP World Tour Masters 1000 - Rolex Shanghai Masters",
       "hora_utc": "2026-10-13T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 180,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F3%2F3f%2FATP_Tour_logo.svg&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -696,13 +758,13 @@
       "id": "lineal_eurosport_1_84349117",
       "agenda_id": "",
       "titulo": "Benelux Tour • Prólogo",
-      "torneo": "Benelux Tour",
+      "torneo": "Benelux Tour • Prólogo",
       "categoria": "Ciclismo",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Circuito Urbano de La Haya, La Haya, Países Bajos",
-      "referencia": "Prólogo contrarreloj individual (3.1 km) • Etapa inaugural masculina y femenina",
+      "subtitulo": "",
+      "referencia": "Benelux Tour: Prólogo",
       "hora_utc": "2026-10-13T15:50:00Z",
       "hora_local_producto": "10:50",
       "duracion_min": 220,
@@ -744,13 +806,13 @@
     {
       "id": "xtream_1343c123",
       "agenda_id": "",
-      "titulo": "Hiper vs La Aguada",
-      "torneo": "Grupo B - Fecha 1",
+      "titulo": "Híper Polo Club vs La Aguada",
+      "torneo": "Abierto de Polo",
       "categoria": "Polo",
       "tipo_evento": "duelo",
-      "equipo_local": "Hiper",
+      "equipo_local": "Híper Polo Club",
       "equipo_visitante": "La Aguada",
-      "subtitulo": "Grupo B - Fecha 1",
+      "subtitulo": "Abierto de Polo",
       "referencia": "Grupo B - Fecha 1",
       "hora_utc": "2026-10-13T15:55:00Z",
       "hora_local_producto": "10:55",
@@ -775,7 +837,8 @@
         }
       ],
       "titulo_original_crudo": "Hiper vs. La Aguada",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_498ba5e1",
@@ -822,14 +885,14 @@
     {
       "id": "xtream_d35cec5c",
       "agenda_id": "",
-      "titulo": "Premier Padel",
-      "torneo": "Milano Premier Padel P1",
+      "titulo": "Milano Premier Padel P1",
+      "torneo": "Premier Padel",
       "categoria": "Pádel",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Allianz Cloud, Milán, Italia",
-      "referencia": "Pista 1: Primera ronda (Cuadro Principal masculino y femenino)",
+      "subtitulo": "Centre Court",
+      "referencia": "Premier Padel",
       "hora_utc": "2026-10-13T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -853,7 +916,8 @@
         }
       ],
       "titulo_original_crudo": "Premier Padel",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_2_co_95dc21bd",
@@ -951,18 +1015,19 @@
         }
       ],
       "titulo_original_crudo": "Holy Cross vs. Cornell",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_95ec285d",
       "agenda_id": "",
       "titulo": "Suecia vs Lituania",
-      "torneo": "Amistoso Internacional",
-      "categoria": "Fútbol",
+      "torneo": "UEFA Women's Championship Qualifying",
+      "categoria": "Futbol",
       "tipo_evento": "duelo",
       "equipo_local": "Suecia",
       "equipo_visitante": "Lituania",
-      "subtitulo": "Amistoso Internacional",
+      "subtitulo": "UEFA Women's Championship Qualifying",
       "referencia": "Amistoso Internacional",
       "hora_utc": "2026-10-13T17:00:00Z",
       "hora_local_producto": "12:00",
@@ -991,18 +1056,19 @@
         }
       ],
       "titulo_original_crudo": "Suecia vs. Lituania",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_96a01a80",
       "agenda_id": "",
-      "titulo": "Premier Padel",
+      "titulo": "Milano Premier Padel P1",
       "torneo": "Premier Padel",
       "categoria": "Pádel",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Premier Padel",
+      "subtitulo": "Secondary Court",
       "referencia": "Premier Padel",
       "hora_utc": "2026-10-13T18:00:00Z",
       "hora_local_producto": "13:00",
@@ -1027,7 +1093,8 @@
         }
       ],
       "titulo_original_crudo": "Premier Padel",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_a41f2bba",
@@ -1075,12 +1142,12 @@
       "id": "xtream_fa942383",
       "agenda_id": "",
       "titulo": "Inglaterra vs Grecia",
-      "torneo": "Amistoso Internacional",
-      "categoria": "Fútbol",
+      "torneo": "UEFA Women's Championship Qualifying",
+      "categoria": "Futbol",
       "tipo_evento": "duelo",
       "equipo_local": "Inglaterra",
       "equipo_visitante": "Grecia",
-      "subtitulo": "Amistoso Internacional",
+      "subtitulo": "UEFA Women's Championship Qualifying",
       "referencia": "Amistoso Internacional",
       "hora_utc": "2026-10-13T18:30:00Z",
       "hora_local_producto": "13:30",
@@ -1109,54 +1176,19 @@
         }
       ],
       "titulo_original_crudo": "Inglaterra vs. Grecia",
-      "ronda": ""
-    },
-    {
-      "id": "xtream_310849fa",
-      "agenda_id": "",
-      "titulo": "UEFA Champions League",
-      "torneo": "UEFA Champions League",
-      "categoria": "Fútbol",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "UEFA Champions League",
-      "referencia": "UEFA Champions League",
-      "hora_utc": "2026-10-13T18:40:00Z",
-      "hora_local_producto": "13:40",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
-      "tier": 1,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "13:40  | UCL al instante | UEFA Champions League",
-          "id_xtream": "1728362"
-        }
-      ],
-      "titulo_original_crudo": "UEFA Champions League",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_59c9f6de",
       "agenda_id": "",
       "titulo": "Las Monjitas vs La Irenita",
-      "torneo": "Grupo B - Fecha 1",
+      "torneo": "Abierto de Polo",
       "categoria": "Polo",
       "tipo_evento": "duelo",
       "equipo_local": "Las Monjitas",
       "equipo_visitante": "La Irenita",
-      "subtitulo": "Grupo B - Fecha 1",
+      "subtitulo": "Abierto de Polo",
       "referencia": "Grupo B - Fecha 1",
       "hora_utc": "2026-10-13T18:55:00Z",
       "hora_local_producto": "13:55",
@@ -1181,7 +1213,8 @@
         }
       ],
       "titulo_original_crudo": "Las Monjitas vs. La Irenita",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_2_co_04cbfb79",
@@ -1492,50 +1525,6 @@
       "ronda": ""
     },
     {
-      "id": "xtream_8245ecb8",
-      "agenda_id": "",
-      "titulo": "UFC",
-      "torneo": "UFC",
-      "categoria": "Combate",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "UFC",
-      "hora_utc": "2026-10-13T19:55:00Z",
-      "hora_local_producto": "14:55",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "14:55 | UFC Fight Night: En Español | UFC",
-          "id_xtream": "1727175"
-        },
-        {
-          "nombre": "14:55 | UFC Fight Night: En Portugués | UFC",
-          "id_xtream": "1727176"
-        },
-        {
-          "nombre": "14:55 | UFC Fight Night: English | UFC",
-          "id_xtream": "1727177"
-        }
-      ],
-      "titulo_original_crudo": "UFC",
-      "ronda": ""
-    },
-    {
       "id": "xtream_be24bf5a",
       "agenda_id": "",
       "titulo": "Massachusetts vs Dartmouth",
@@ -1569,16 +1558,17 @@
         }
       ],
       "titulo_original_crudo": "Massachusetts vs. Dartmouth",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_54cd3226",
       "agenda_id": "",
-      "titulo": "22 Cornell vs Colgate",
+      "titulo": "Cornell vs Colgate",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "22 Cornell",
+      "equipo_local": "Cornell",
       "equipo_visitante": "Colgate",
       "subtitulo": "NCAA Men's Soccer",
       "referencia": "NCAA Men's Soccer",
@@ -1605,7 +1595,8 @@
         }
       ],
       "titulo_original_crudo": "22 Cornell vs. Colgate",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_1d3d97f2",
@@ -1641,7 +1632,8 @@
         }
       ],
       "titulo_original_crudo": "Brown vs. Lehigh",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_ac9757c8",
@@ -1684,11 +1676,11 @@
     {
       "id": "xtream_c194a197",
       "agenda_id": "",
-      "titulo": "Webb vs Virginia",
+      "titulo": "Gardner-Webb vs Virginia",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Webb",
+      "equipo_local": "Gardner-Webb",
       "equipo_visitante": "Virginia",
       "subtitulo": "NCAA Men's Soccer",
       "referencia": "NCAA Men's Soccer",
@@ -1696,7 +1688,7 @@
       "hora_local_producto": "17:03",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F225.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2cvvb01641184446.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
@@ -1715,7 +1707,8 @@
         }
       ],
       "titulo_original_crudo": "Webb vs. Virginia",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_a2347b69",
@@ -1983,7 +1976,8 @@
         }
       ],
       "titulo_original_crudo": "Boston College vs. Boston University",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_40ee5f69",
@@ -2099,7 +2093,8 @@
         }
       ],
       "titulo_original_crudo": "Greensboro College vs. Duke",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_9a7c2bc5",
@@ -2135,7 +2130,8 @@
         }
       ],
       "titulo_original_crudo": "Holy Cross vs. Columbia",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_3ba71ea0",
@@ -2436,7 +2432,8 @@
       ],
       "canales_candidatos": [
         "ESPN 3",
-        "ESPN 3 CO"
+        "ESPN 3 CO",
+        "ESPN 3 AR"
       ],
       "texto_original_crudo": "19:00 MLB Tampa Bay Rays Cleveland Guardians Disney+ Premium ESPN 3",
       "titulo_original_crudo": "19:00 MLB Tampa Bay Rays Cleveland Guardians Disney+ Premium ESPN 3",
@@ -2649,8 +2646,8 @@
     {
       "id": "xtream_876aa698",
       "agenda_id": "",
-      "titulo": "WWE",
-      "torneo": "WWE",
+      "titulo": "WWE NXT",
+      "torneo": "WWE NXT",
       "categoria": "Combate",
       "tipo_evento": "circuito",
       "equipo_local": "",
@@ -2680,7 +2677,8 @@
         }
       ],
       "titulo_original_crudo": "WWE",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_8c635012",
@@ -2940,7 +2938,7 @@
       "hora_local_producto": "20:30",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1138.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp&trim=10",
       "banner": "",
       "tier": 2,
@@ -3235,12 +3233,12 @@
     "total_canales_xtream": 1916,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
-    "fixtures_api_sports_hoy": 484,
-    "eventos_lineales_inyectados": 14,
+    "fixtures_api_sports_hoy": 487,
+    "eventos_lineales_inyectados": 15,
     "eventos_xtream_aprobados": 79,
     "eventos_contrastados_api": 59,
-    "eventos_descartados_stale": 41,
-    "total_eventos_publicados": 71,
-    "hora_actualizacion_utc": "2026-10-13T17:13:11Z"
+    "eventos_descartados_stale": 43,
+    "total_eventos_publicados": 70,
+    "hora_actualizacion_utc": "2026-10-13T22:18:14Z"
   }
 }
