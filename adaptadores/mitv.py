@@ -66,16 +66,16 @@ RE_REPETICIONES = re.compile(
 )
 
 CANALES_MITV = [
-    # Colombia
+    # Colombia (Aislamiento territorial estricto CO)
     ("WIN SPORTS+", "https://mi.tv/co/async/channel/win-sports-hd/-300", "America/Bogota"),
     ("WIN SPORTS", "https://mi.tv/co/async/channel/win-sports/-300", "America/Bogota"),
-    ("ESPN", "https://mi.tv/co/async/channel/espn/-300", "America/Bogota"),
-    ("ESPN 2", "https://mi.tv/co/async/channel/espn-2/-300", "America/Bogota"),
-    ("ESPN 3", "https://mi.tv/co/async/channel/espn-3/-300", "America/Bogota"),
-    # Argentina (Suramérica)
-    ("ESPN", "https://mi.tv/ar/async/channel/espn/-180", "America/Argentina/Buenos_Aires"),
-    ("ESPN 2", "https://mi.tv/ar/async/channel/espn-2/-180", "America/Argentina/Buenos_Aires"),
-    ("ESPN 3", "https://mi.tv/ar/async/channel/espn-3/-180", "America/Argentina/Buenos_Aires"),
+    ("ESPN CO", "https://mi.tv/co/async/channel/espn/-300", "America/Bogota"),
+    ("ESPN 2 CO", "https://mi.tv/co/async/channel/espn-2/-300", "America/Bogota"),
+    ("ESPN 3 CO", "https://mi.tv/co/async/channel/espn-3/-300", "America/Bogota"),
+    # Argentina (Aislamiento territorial estricto AR)
+    ("ESPN AR", "https://mi.tv/ar/async/channel/espn/-180", "America/Argentina/Buenos_Aires"),
+    ("ESPN 2 AR", "https://mi.tv/ar/async/channel/espn-2/-180", "America/Argentina/Buenos_Aires"),
+    ("ESPN 3 AR", "https://mi.tv/ar/async/channel/espn-3/-180", "America/Argentina/Buenos_Aires"),
     ("TYC SPORTS", "https://mi.tv/ar/async/channel/tyc-sports/-180", "America/Argentina/Buenos_Aires"),
 ]
 

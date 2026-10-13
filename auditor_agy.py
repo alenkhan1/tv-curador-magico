@@ -152,7 +152,7 @@ Responde ÚNICAMENTE con un JSON Array:
                 f"{ORACLE_USER}@{ORACLE_HOST}",
                 f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
             ]
-            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60)
+            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=140)
             if res.returncode == 0:
                 salida_texto = res.stdout
     except Exception as e:
@@ -213,7 +213,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         log.info("Todos los eventos están debidamente contrastados o clasificados (%d eventos). Se omite AGY.", len(eventos))
         return eventos, []
 
-    tamano_lote = 35
+    tamano_lote = 5
     mapa_audit = {}
     total_lotes = (len(eventos_a_auditar) + tamano_lote - 1) // tamano_lote
     log.info("Iniciando auditoría AGY en lote consolidado para %d eventos huérfanos (%d lotes)...", len(eventos_a_auditar), total_lotes)
@@ -288,3 +288,86 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
     log.info("Auditoría AGY finalizada: %d aprobados (%d pulidos por AGY, %d descartados)", 
              len(eventos_finales), len([e for e in eventos_finales if e.get("auditado_agy")]), len(eventos_descartados))
     return eventos_finales, eventos_descartados
+
+
+def revisar_y_enriquecer_eventos_incompletos_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) -> List[Dict[str, Any]]:
+    """
+    Revision final de AGY sobre la cartelera:
+    Si hay eventos con informacion escasa o generica (ej. 'WWE Raw', 'UFC', 'Boxeo' sin sede ni combates para la tarjeta informativa),
+    AGY investiga en la web los detalles para completar sede (linea 2) y combates/cartelera (linea 3 de preview).
+    """
+    if not eventos:
+        return []
+
+    candidatos = []
+    for ev in eventos:
+        tipo = ev.get("tipo_evento", "")
+        tit = (ev.get("titulo") or "").strip().upper()
+        sub = (ev.get("subtitulo") or "").strip()
+        ref = (ev.get("referencia") or "").strip()
+        tor = (ev.get("torneo") or "").strip()
+
+        es_generico = any(k == tit or tit.startswith(k) for k in [
+            "WWE RAW", "WWE SMACKDOWN", "WWE", "UFC", "BOXEO", "BOXING",
+            "VELADA DE BOXEO", "DEPORTES EN VIVO", "COMBATE", "MMA"
+        ])
+        falta_sede = (not sub) or (sub.upper() == tor.upper())
+        falta_ref = (not ref) or (ref.upper() == tit) or (ref.upper() == tor.upper())
+
+        if (tipo == "circuito" and (es_generico or falta_sede or falta_ref)) or (es_generico):
+            candidatos.append(ev)
+
+    if not candidatos:
+        log.info("Revision final AGY: Ningun evento presenta datos genericos o incompletos.")
+        return eventos
+
+    log.info("Revision final AGY: Enriqueciendo %d eventos genericos/incompletos...", len(candidatos))
+    for ev in candidatos:
+        prompt_enriquecer = f"""Hoy es {fecha_hoy_iso}.
+Eres el Investigador Deportivo en Jefe para Android TV.
+El siguiente evento deportivo se disputa HOY en vivo, pero necesita datos concretos de sede y cartelera para la pantalla:
+- Título: '{ev.get("titulo")}'
+- Torneo: '{ev.get("torneo")}'
+- Categoría actual: '{ev.get("categoria")}'
+- Texto original: '{ev.get("texto_original_crudo", "")}'
+
+Investiga en la web los datos oficiales de HOY ({fecha_hoy_iso}) y responde ÚNICAMENTE con un JSON:
+{{
+  "subtitulo_pulido": "Ciudad y Recinto/Estadio donde se realiza hoy (ej. 'TD Garden, Boston, MA' o 'Apex, Las Vegas')",
+  "participantes": "Peleas o combates estelares anunciados para hoy, o resumen de la sesión",
+  "categoria_exacta": "Deporte exacto (ej. Lucha Libre, Boxeo, MMA, Tenis, etc.)",
+  "torneo_pulido": "Nombre oficial del torneo o show"
+}}
+"""
+        try:
+            tmp_remote = f"/tmp/agy_enrich_{os.getpid()}_{int(hashlib.sha1(str(ev.get('id')).encode()).hexdigest()[:6], 16)}.txt"
+            subprocess.run(
+                ["ssh", "-o", "ConnectTimeout=10", "-o", "BatchMode=yes", f"{ORACLE_USER}@{ORACLE_HOST}", f"cat > {tmp_remote}"],
+                input=prompt_enriquecer.encode("utf-8"),
+                capture_output=True,
+                timeout=15
+            )
+            cmd_ssh = [
+                "ssh", "-o", "ConnectTimeout=15", "-o", "BatchMode=yes",
+                f"{ORACLE_USER}@{ORACLE_HOST}",
+                f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
+            ]
+            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+            if res.returncode == 0 and res.stdout:
+                datos = _extraer_datos_json(res.stdout)
+                item = datos[0] if (isinstance(datos, list) and datos) else (datos if isinstance(datos, dict) else {})
+                if item:
+                    if item.get("subtitulo_pulido"):
+                        ev["subtitulo"] = item["subtitulo_pulido"]
+                    if item.get("participantes"):
+                        ev["referencia"] = item["participantes"]
+                    if item.get("categoria_exacta"):
+                        ev["categoria"] = item["categoria_exacta"]
+                    if item.get("torneo_pulido"):
+                        ev["torneo"] = item["torneo_pulido"]
+                    log.info("AGY enriqueció con éxito evento '%s': Sede='%s', Ref='%s'",
+                             ev.get("titulo"), ev.get("subtitulo"), ev.get("referencia"))
+        except Exception as e:
+            log.warning("Fallo al enriquecer evento con AGY: %s", e)
+
+    return eventos

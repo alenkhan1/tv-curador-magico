@@ -46,7 +46,7 @@ from resolvedor_logos import (
 )
 from sanitizador_nombres import sanitizar_evento_crudo
 from curador_semantico import post_procesar_y_curar_eventos
-from auditor_agy import auditar_catalogo_con_agy
+from auditor_agy import auditar_catalogo_con_agy, revisar_y_enriquecer_eventos_incompletos_con_agy
 from conector_api_sports import (
     descargar_fixtures_dia,
     guardar_equipos_en_catalogo,
@@ -539,7 +539,20 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
 
     # Indexacion estricta 1 a 1 de canales lineales autorizados
     indice_canales = construir_indice_canales_lineales(canales_xtream)
-    eventos_lineales = inyectar_eventos_lineales(agenda_hoy, indice_canales, APP_TIMEZONE)
+    eventos_lineales_raw = inyectar_eventos_lineales(agenda_hoy, indice_canales, APP_TIMEZONE)
+
+    # Cerrojo de Fixture Oficial en Canales Lineales:
+    # Descarta de raiz repeticiones/diferidos de partidos jugados ayer que no figuren hoy
+    eventos_lineales = []
+    for ev in eventos_lineales_raw:
+        loc = ev.get("equipo_local", "")
+        vis = ev.get("equipo_visitante", "")
+        if loc and vis and fixtures_ayer and _duelo_coincide_con_fixtures(loc, vis, fixtures_ayer):
+            es_hoy = bool(fixtures_dia and _duelo_coincide_con_fixtures(loc, vis, fixtures_dia))
+            if not es_hoy:
+                log.info("Descartado evento lineal jugado ayer segun fixture oficial API: '%s vs %s'", loc, vis)
+                continue
+        eventos_lineales.append(ev)
 
     # Deteccion Universal de Lista Xtream con contraste exhaustivo contra API oficial
     lista_actualizada = detectar_lista_actualizada_hoy(
@@ -621,6 +634,10 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     # FASE 3.6: DEDUPLICACION Y CONSOLIDACION FINAL TRAS AUDITORIA AGY Y API-SPORTS
     log.info("Fase 3.6: Deduplicacion y consolidacion final tras auditoria AGY y API-Sports...")
     eventos_consolidados = post_procesar_y_curar_eventos(eventos_pulidos)
+
+    # FASE 3.8: REVISION FINAL DE AGY (ENRIQUECIMIENTO DE EVENTOS VACIOS O GENERICOS)
+    log.info("Fase 3.8: Revision final de AGY sobre tarjetas genericas o incompletas...")
+    eventos_consolidados = revisar_y_enriquecer_eventos_incompletos_con_agy(eventos_consolidados, fecha_hoy_iso)
 
     # FASE 4: GARANTIA GRAFICA PARA ANDROID TV (EventoCard.kt)
     for ev in eventos_consolidados:
