@@ -213,7 +213,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         log.info("Todos los eventos están debidamente contrastados o clasificados (%d eventos). Se omite AGY.", len(eventos))
         return eventos, []
 
-    tamano_lote = 5
+    tamano_lote = 20
     mapa_audit = {}
     total_lotes = (len(eventos_a_auditar) + tamano_lote - 1) // tamano_lote
     log.info("Iniciando auditoría AGY en lote consolidado para %d eventos huérfanos (%d lotes)...", len(eventos_a_auditar), total_lotes)
@@ -231,11 +231,19 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         aud = mapa_audit.get(ev.get("id"))
         if aud:
             if aud.get("descartar") is True:
-                motivo = aud.get("motivo_descarte") or "descartado_por_auditoria_agy"
-                log.info("AGY descartó evento ('%s'): '%s'", motivo, ev.get("titulo"))
-                ev["motivo_descarte"] = motivo
-                eventos_descartados.append(ev)
-                continue
+                es_guia_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "mundodeportivo", "espana", "teledeporte", "eurosport"] for o in ev.get("origenes", [])) or any(k in ev.get("fuente", "") for k in ["mundodeportivo", "espana", "teledeporte", "mitv"])
+                if es_guia_lineal and ev.get("fuentes"):
+                    log.info("AGY intento descartar '%s', pero se preserva por ser directo oficial lineal con streams.", ev.get("titulo"))
+                    if aud.get("titulo_pulido"):
+                        ev["titulo"] = aud["titulo_pulido"]
+                    if aud.get("categoria_exacta"):
+                        ev["categoria"] = aud["categoria_exacta"]
+                else:
+                    motivo = aud.get("motivo_descarte") or "descartado_por_auditoria_agy"
+                    log.info("AGY descartó evento ('%s'): '%s'", motivo, ev.get("titulo"))
+                    ev["motivo_descarte"] = motivo
+                    eventos_descartados.append(ev)
+                    continue
 
             ev["titulo"] = aud.get("titulo_pulido") or ev["titulo"]
             ev["subtitulo"] = aud.get("subtitulo_pulido") or ev["subtitulo"]
@@ -321,53 +329,67 @@ def revisar_y_enriquecer_eventos_incompletos_con_agy(eventos: List[Dict[str, Any
         log.info("Revision final AGY: Ningun evento presenta datos genericos o incompletos.")
         return eventos
 
-    log.info("Revision final AGY: Enriqueciendo %d eventos genericos/incompletos...", len(candidatos))
-    for ev in candidatos:
-        prompt_enriquecer = f"""Hoy es {fecha_hoy_iso}.
+    candidatos_lote = candidatos[:5]
+    log.info("Revision final AGY: Enriqueciendo %d eventos genericos/incompletos en lote...", len(candidatos_lote))
+    datos_candidatos = [
+        {
+            "id": ev.get("id"),
+            "titulo": ev.get("titulo"),
+            "torneo": ev.get("torneo"),
+            "categoria": ev.get("categoria"),
+            "texto_original": ev.get("texto_original_crudo", ""),
+        }
+        for ev in candidatos_lote
+    ]
+    prompt_enriquecer = f"""Hoy es {fecha_hoy_iso}.
 Eres el Investigador Deportivo en Jefe para Android TV.
-El siguiente evento deportivo se disputa HOY en vivo, pero necesita datos concretos de sede y cartelera para la pantalla:
-- Título: '{ev.get("titulo")}'
-- Torneo: '{ev.get("torneo")}'
-- Categoría actual: '{ev.get("categoria")}'
-- Texto original: '{ev.get("texto_original_crudo", "")}'
+Los siguientes eventos deportivos se disputan HOY en vivo, pero necesitan datos concretos de sede y cartelera para la pantalla:
+{json.dumps(datos_candidatos, ensure_ascii=False, indent=1)}
 
-Investiga en la web los datos oficiales de HOY ({fecha_hoy_iso}) y responde ÚNICAMENTE con un JSON:
-{{
-  "subtitulo_pulido": "Ciudad y Recinto/Estadio donde se realiza hoy (ej. 'TD Garden, Boston, MA' o 'Apex, Las Vegas')",
-  "participantes": "Peleas o combates estelares anunciados para hoy, o resumen de la sesión",
-  "categoria_exacta": "Deporte exacto (ej. Lucha Libre, Boxeo, MMA, Tenis, etc.)",
-  "torneo_pulido": "Nombre oficial del torneo o show"
-}}
+Investiga en la web los datos oficiales de HOY ({fecha_hoy_iso}) y responde UNICAMENTE con un JSON Array:
+[
+  {{
+    "id": "id original del evento",
+    "subtitulo_pulido": "Ciudad y Recinto/Estadio donde se realiza hoy (ej. 'TD Garden, Boston, MA' o 'Apex, Las Vegas')",
+    "participantes": "Peleas o combates estelares anunciados para hoy, o resumen de la sesion",
+    "categoria_exacta": "Deporte exacto (ej. Lucha Libre, Boxeo, MMA, Tenis, etc.)",
+    "torneo_pulido": "Nombre oficial del torneo o show"
+  }}
+]
 """
-        try:
-            tmp_remote = f"/tmp/agy_enrich_{os.getpid()}_{int(hashlib.sha1(str(ev.get('id')).encode()).hexdigest()[:6], 16)}.txt"
-            subprocess.run(
-                ["ssh", "-o", "ConnectTimeout=10", "-o", "BatchMode=yes", f"{ORACLE_USER}@{ORACLE_HOST}", f"cat > {tmp_remote}"],
-                input=prompt_enriquecer.encode("utf-8"),
-                capture_output=True,
-                timeout=15
-            )
-            cmd_ssh = [
-                "ssh", "-o", "ConnectTimeout=15", "-o", "BatchMode=yes",
-                f"{ORACLE_USER}@{ORACLE_HOST}",
-                f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
-            ]
-            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
-            if res.returncode == 0 and res.stdout:
-                datos = _extraer_datos_json(res.stdout)
-                item = datos[0] if (isinstance(datos, list) and datos) else (datos if isinstance(datos, dict) else {})
-                if item:
-                    if item.get("subtitulo_pulido"):
-                        ev["subtitulo"] = item["subtitulo_pulido"]
-                    if item.get("participantes"):
-                        ev["referencia"] = item["participantes"]
-                    if item.get("categoria_exacta"):
-                        ev["categoria"] = item["categoria_exacta"]
-                    if item.get("torneo_pulido"):
-                        ev["torneo"] = item["torneo_pulido"]
-                    log.info("AGY enriqueció con éxito evento '%s': Sede='%s', Ref='%s'",
-                             ev.get("titulo"), ev.get("subtitulo"), ev.get("referencia"))
-        except Exception as e:
-            log.warning("Fallo al enriquecer evento con AGY: %s", e)
+    try:
+        tmp_remote = f"/tmp/agy_enrich_{os.getpid()}_{int(hashlib.sha1(str(datos_candidatos).encode()).hexdigest()[:6], 16)}.txt"
+        subprocess.run(
+            ["ssh", "-o", "ConnectTimeout=10", "-o", "BatchMode=yes", f"{ORACLE_USER}@{ORACLE_HOST}", f"cat > {tmp_remote}"],
+            input=prompt_enriquecer.encode("utf-8"),
+            capture_output=True,
+            timeout=15
+        )
+        cmd_ssh = [
+            "ssh", "-o", "ConnectTimeout=15", "-o", "BatchMode=yes",
+            f"{ORACLE_USER}@{ORACLE_HOST}",
+            f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
+        ]
+        res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=120)
+        if res.returncode == 0 and res.stdout:
+            datos = _extraer_datos_json(res.stdout)
+            if isinstance(datos, list):
+                mapa_enr = {d.get("id"): d for d in datos if isinstance(d, dict) and d.get("id")}
+                for ev in candidatos_lote:
+                    item = mapa_enr.get(ev.get("id"))
+                    if item:
+                        if item.get("subtitulo_pulido"):
+                            ev["subtitulo"] = item["subtitulo_pulido"]
+                        if item.get("participantes"):
+                            ev["referencia"] = item["participantes"]
+                        if item.get("categoria_exacta"):
+                            ev["categoria"] = item["categoria_exacta"]
+                        if item.get("torneo_pulido"):
+                            ev["torneo"] = item["torneo_pulido"]
+                        log.info("AGY enriquecio con exito evento '%s': Sede='%s', Ref='%s'",
+                                 ev.get("titulo"), ev.get("subtitulo"), ev.get("referencia"))
+    except Exception as e:
+        log.warning("Fallo al enriquecer eventos con AGY: %s", e)
 
     return eventos
+

@@ -636,8 +636,15 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     eventos_consolidados = post_procesar_y_curar_eventos(eventos_pulidos)
 
     # FASE 3.8: REVISION FINAL DE AGY (ENRIQUECIMIENTO DE EVENTOS VACIOS O GENERICOS)
-    log.info("Fase 3.8: Revision final de AGY sobre tarjetas genericas o incompletas...")
-    eventos_consolidados = revisar_y_enriquecer_eventos_incompletos_con_agy(eventos_consolidados, fecha_hoy_iso)
+    candidatos_pendientes = [
+        ev for ev in eventos_consolidados
+        if not ev.get("auditado_agy") and any(k == (ev.get("titulo") or "").upper() for k in ["WWE RAW", "WWE SMACKDOWN", "UFC", "BOXEO"])
+    ]
+    if candidatos_pendientes:
+        log.info("Fase 3.8: Revision final de AGY sobre %d tarjetas genericas no auditadas...", len(candidatos_pendientes))
+        eventos_consolidados = revisar_y_enriquecer_eventos_incompletos_con_agy(eventos_consolidados, fecha_hoy_iso)
+    else:
+        log.info("Fase 3.8: Cartelera enriquecida y auditada en Fase 3. Se omite llamada redundante.")
 
     # FASE 4: GARANTIA GRAFICA PARA ANDROID TV (EventoCard.kt)
     for ev in eventos_consolidados:

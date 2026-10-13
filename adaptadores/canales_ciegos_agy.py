@@ -82,7 +82,7 @@ def _consultar_agy_en_vm(prompt_texto: str) -> str:
                 f"{ORACLE_USER}@{ORACLE_HOST}",
                 f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
             ]
-            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=65)
+            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=135)
             if res.returncode == 0:
                 salida_texto = res.stdout
     except Exception as e:
