@@ -920,4 +920,214 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
 
     if permitir_red and THESPORTSDB_KEY:
         try:
-            tsdb_url = f"
+            q_torneo = urllib.parse.quote(torneo)
+            tsdb_base = "https://www.thesportsdb.com/api/v1/json"
+            tsdb_url = f"{tsdb_base}/{THESPORTSDB_KEY}/search_all_leagues.php?c={q_torneo}"
+            data = _http_get_json(tsdb_url, timeout=3)
+            if data and data.get("countries"):
+                leagues = data["countries"]
+                if leagues:
+                    badge = leagues[0].get("strBadge") or leagues[0].get("strLogo")
+                    if badge and not es_logo_basura(badge) and es_logo_compatible_con_categoria(badge, categoria):
+                        cdn_url = envolver_cdn_proxy(badge)
+                        cache[clave_cache] = cdn_url
+                        _guardar_cache(cache)
+                        return cdn_url
+        except Exception:
+            pass
+
+    cat_limpia = categoria.strip()
+    if cat_limpia in FALLBACK_POR_CATEGORIA:
+        url_fb = FALLBACK_POR_CATEGORIA[cat_limpia]
+        if url_fb and es_logo_compatible_con_categoria(url_fb, categoria):
+            return url_fb
+
+    return ""
+
+TRADUCCIONES_CIUDADES_EQUIPOS = {
+    "MOSCU": "MOSCOW",
+    "MUNICH": "MUNCHEN",
+    "ESTAMBUL": "ISTANBUL",
+    "PRAGA": "PRAGUE",
+    "PRAHA": "PRAGUE",
+    "VARSOVIA": "WARSAW",
+    "BELGRADO": "BELGRADE",
+    "BUCAREST": "BUCHAREST",
+    "ATENAS": "ATHENS",
+    "LISBOA": "LISBON",
+    "NAPOLES": "NAPOLI",
+    "MILAN": "MILANO",
+    "TURIN": "TORINO",
+    "COLONIA": "KOLN",
+    "BASILEA": "BASEL",
+    "GINEBRA": "GENEVE",
+    "AMBERES": "ANTWERP",
+    "BRUJAS": "BRUGGE",
+}
+
+PATROCINADORES_CLUBES_PREFIJO = {
+    "SURNE", "BMA365", "ASISA", "UCAM", "CASADEMONT", "DREAMLAND", "BAXI",
+    "COVIRAN", "LEYMA", "MORABANC", "HIOPOS", "EA7", "EMPORIO", "ARMANI",
+    "VIRTUS", "SEGAFREDO", "LDLC", "PARTIZAN", "MOZZART", "CRVENA", "MACCABI",
+    "PLAYTIKA", "PANATHINAIKOS", "AKTOR", "ANADOLU", "FENERBAHCE", "BEKO",
+    "ALBA", "ERA", "NBK"
+}
+
+def _generar_variantes_busqueda_equipo(equipo_limpio: str, deporte: str = "") -> list[str]:
+    """Genera variantes universales (sin patrocinadores iniciales, sin sufijos juveniles y con topónimos en inglés)."""
+    variantes = []
+    def _add(v: str):
+        v_s = " ".join(v.split()).strip()
+        if v_s and len(v_s) >= 3 and v_s not in variantes:
+            variantes.append(v_s)
+
+    _add(equipo_limpio)
+    norm = _normalizar(equipo_limpio)
+
+    tokens_sin_sponsor = [t for t in norm.split() if t not in PATROCINADORES_CLUBES_PREFIJO]
+    if tokens_sin_sponsor and len(tokens_sin_sponsor) < len(norm.split()):
+        limpio_sponsor = " ".join(tokens_sin_sponsor)
+        _add(limpio_sponsor.title())
+        if _normalizar(deporte) == "BALONCESTO" and "BASKET" not in limpio_sponsor:
+            _add(f"{limpio_sponsor.title()} Basket")
+
+    norm_trad = norm
+    for es_c, en_c in TRADUCCIONES_CIUDADES_EQUIPOS.items():
+        norm_trad = re.sub(rf"\b{es_c}\b", en_c, norm_trad)
+    if norm_trad != norm:
+        _add(norm_trad.title())
+
+    sin_suf = re.sub(
+        r"\b(BASKET|BASKETS|BASKETBALL|BALONCESTO|HANDBALL|BALONMANO|FUTSAL|VOLLEY|VOLEIBOL|FC|CF|CD|BC|CB|SC|U19|U20|U21|U23|RES|RESERVE|RESERVA)\b",
+        "",
+        norm_trad
+    )
+    _add(sin_suf.title())
+
+    tokens_finales = [t for t in sin_suf.split() if t not in PATROCINADORES_CLUBES_PREFIJO]
+    if tokens_finales:
+        base_final = " ".join(tokens_finales)
+        if _normalizar(deporte) == "BALONCESTO":
+            _add(f"{base_final.title()} Basket")
+        _add(base_final.title())
+
+    return variantes
+
+def _deporte_tsdb_compatible(str_sport: str, deporte_ev: str) -> bool:
+    if not str_sport or not deporte_ev:
+        return True
+    s_up = str_sport.strip().upper()
+    d_up = _normalizar(deporte_ev)
+    MAPA = {
+        "FUTBOL": {"SOCCER", "FOOTBALL"},
+        "BALONCESTO": {"BASKETBALL"},
+        "BEISBOL": {"BASEBALL"},
+        "HOCKEY": {"ICE HOCKEY", "FIELD HOCKEY", "HOCKEY"},
+        "FUTBOL AMERICANO": {"AMERICAN FOOTBALL", "AUSTRALIAN RULES"},
+        "RUGBY": {"RUGBY"},
+        "BALONMANO": {"HANDBALL"},
+        "VOLEIBOL": {"VOLLEYBALL"},
+    }
+    esperados = MAPA.get(d_up)
+    if esperados:
+        return s_up in esperados
+    return True
+
+def _es_url_logo_equipo_valida(url: str, equipo_norm: str, deporte: str) -> bool:
+    """Valida que la URL no sea basura, corresponda al deporte y no asigne una bandera de país a un club."""
+    if not url or es_logo_basura(url):
+        return False
+    if "flagcdn.com" in url.lower():
+        es_sel, _ = es_entidad_seleccion_nacional(equipo_norm)
+        if not es_sel:
+            return False
+    return es_logo_compatible_con_categoria(url, deporte)
+
+def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = "", permitir_red: bool = True, es_seleccion: Optional[bool] = None) -> str:
+    """
+    Resuelve el escudo/logo o bandera de un equipo con validación estricta de disciplina deportiva.
+    """
+    if not equipo:
+        return ""
+
+    equipo_limpio = equipo.strip()
+    equipo_norm = _normalizar(equipo_limpio)
+    dep_norm = _normalizar(deporte or "Fútbol")
+    clave_cache_dep = f"equipo_{dep_norm}_{equipo_norm}"
+    clave_cache_gen = f"equipo_{equipo_norm}"
+
+    # 0. Resolución Universal de Selecciones Nacionales (Invarianza Gramatical)
+    if es_seleccion is not False:
+        es_nat, flag_url = es_entidad_seleccion_nacional(equipo_norm)
+        if es_nat:
+            torneo_norm = _normalizar(torneo)
+            es_liga_domestica = any(l in torneo_norm for l in [
+                "SEGUNDA", "PRIMERA DIVISION", "PREMIER LEAGUE", "LALIGA", "SERIE A", "BUNDESLIGA",
+                "LIGUE 1", "BETPLAY", "LIGA MX", "BRASILEIRAO", "MLS", "MAJOR LEAGUE SOCCER"
+            ])
+            if es_seleccion is True or not es_liga_domestica:
+                return flag_url
+
+    # 1. Catálogo maestro permanente de equipos en disco (Priorizando llave con deporte)
+    cat_equipos = _obtener_catalogo_equipos()
+    variantes = _generar_variantes_busqueda_equipo(equipo_limpio, deporte)
+    for var in variantes:
+        v_norm = _normalizar(var)
+        for k_cand in [f"equipo_{dep_norm}_{v_norm}", f"equipo_{v_norm}"]:
+            if k_cand in cat_equipos and _es_url_logo_equipo_valida(cat_equipos[k_cand], equipo_norm, deporte):
+                return cat_equipos[k_cand]
+
+    # Limpieza de ranking universitario americano ("24 Harvard" -> "Harvard")
+    equipo_sin_ranking = re.sub(r"^\d+\s+", "", equipo_limpio).strip()
+    if equipo_sin_ranking != equipo_limpio:
+        v_rank = _normalizar(equipo_sin_ranking)
+        for k_cand in [f"equipo_{dep_norm}_{v_rank}", f"equipo_{v_rank}"]:
+            if k_cand in cat_equipos and _es_url_logo_equipo_valida(cat_equipos[k_cand], equipo_norm, deporte):
+                return cat_equipos[k_cand]
+
+    # Búsqueda por inclusión de raíz en catálogo maestro de equipos (>= 5 caracteres y mismo deporte)
+    for var in variantes:
+        var_n = _normalizar(var)
+        if len(var_n) >= 5:
+            patron_v = rf"\b{re.escape(var_n)}\b"
+            for k_cat, url_cat in cat_equipos.items():
+                if not _es_url_logo_equipo_valida(url_cat, equipo_norm, deporte):
+                    continue
+                nom_cat = re.sub(r"^equipo_(?:FUTBOL|BALONCESTO|BEISBOL|HOCKEY|BALONMANO|RUGBY|FUTBOL AMERICANO|VOLEIBOL)_", "", k_cat)
+                nom_cat = nom_cat.replace("equipo_", "")
+                if re.search(patron_v, nom_cat) or (len(nom_cat) >= 5 and re.search(rf"\b{re.escape(nom_cat)}\b", var_n)):
+                    return url_cat
+
+    # 2. Caché previo en disco
+    cache = _cargar_cache()
+    for k_c in [clave_cache_dep, clave_cache_gen]:
+        if k_c in cache and _es_url_logo_equipo_valida(cache[k_c], equipo_norm, deporte):
+            return cache[k_c]
+
+    if not permitir_red:
+        return ""
+
+    # 3. Consulta a TheSportsDB probando las variantes del nombre y validando el deporte del equipo (strSport)
+    for var in variantes:
+        time.sleep(0.28)
+        try:
+            q_param = urllib.parse.quote(var)
+            tsdb_base = "https://www.thesportsdb.com/api/v1/json"
+            tsdb_url = f"{tsdb_base}/{THESPORTSDB_KEY}/searchteams.php?t={q_param}"
+            data = _http_get_json(tsdb_url, timeout=3)
+            if data and data.get("teams"):
+                for team_obj in data["teams"]:
+                    if not _deporte_tsdb_compatible(team_obj.get("strSport", ""), deporte):
+                        continue
+                    badge = team_obj.get("strBadge") or team_obj.get("strLogo")
+                    if badge and not es_logo_basura(badge):
+                        cdn_url = envolver_cdn_proxy(badge)
+                        if _es_url_logo_equipo_valida(cdn_url, equipo_norm, deporte):
+                            cache[clave_cache_dep] = cdn_url
+                            _guardar_cache(cache)
+                            _guardar_catalogo_equipos({clave_cache_dep: cdn_url})
+                            return cdn_url
+        except Exception:
+            pass
+
+    return ""

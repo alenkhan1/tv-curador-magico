@@ -135,16 +135,15 @@ def formatear_titulo_inteligente(texto: str) -> str:
     """
     if not texto:
         return ""
-    # Limpiar numeración de canal IPTV pegada a nombres (ej. 'DIRTVISION 01', 'MLS 04', 'EVENTO 02')
-    s = re.sub(r'\b([A-Za-z]{3,})\s+0\d\b', r'\1', texto.strip())
+    s = re.sub(r'\b([A-Za-z]{3,})\s+0?\d{1,2}\b', r'\1', texto.strip())
     s = re.sub(r'^(?:EVENTO|EVENTS?|CANAL|STREAM|FEED|CH)\s*\d+\s*[:|\-–—]?\s*', '', s, flags=re.I).strip()
 
     palabras = s.split()
     resultado = []
     for idx, p in enumerate(palabras):
-         pref = ""
+        pref = ""
         suf = ""
-        m_ match = re.match(r'^([^\wÁÉÍÓÚÜÑáéíóúüñ]*)(.*?)([^\wÁÉÍÓÚÜÑáéíóúüñ]*)$', p)
+        m_match = re.match(r'^([^\wÁÉÍÓÚÜÑáéíóúüñ]*)(.*?)([^\wÁÉÍÓÚÜÑáéíóúüñ]*)$', p)
         if m_match:
             pref, nucleo, suf = m_match.group(1), m_match.group(2), m_match.group(3)
         else:
@@ -260,7 +259,7 @@ def limpiar_fragmento(s: str) -> str:
     s = re.sub(r'[\u2010-\u2015\u2022\u2212*~#◘■♦►●▼▲]+', ' ', s)
     s = limpiar_prefijos_idioma(s)
     s = re.sub(r'\b(En español|Español|Spanish|OP\d+|FHD|HD|SD|4K|ES|EN|LIVE|EN VIVO|ET|PT|CT)\b', '', s, flags=re.I)
-    s = re.sub(r'\b([A-Za-z]{3,})\s+0\d\b', r'\1', s)
+    s = re.sub(r'\b([A-Za-z]{3,})\s+0?\d{1,2}\b', r'\1', s)
     s = re.sub(r'\s+', ' ', s)
     return s.strip(' -:|◘■♦►●▼▲')
 
@@ -303,7 +302,6 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
     # 4. Dividir por separadores de bloques (incluyendo | y ◘)
     bloques = [limpiar_fragmento(b) for b in re.split(r'[\u2010-\u2015|◘■♦►●▼▲]+', nombre_limpio) if b.strip()]
 
-    # Filtrar bloques que solo son horas o números residuales
     bloques_utiles = []
     for b in bloques:
         b_clean = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?\s*(?:ET|PT|CT)?\s*', '', b, flags=re.I).strip(' -:.')
@@ -384,7 +382,6 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
             subtitulo = sesion
             referencia = sesion
         else:
-            # Separar también por '/' (ej. 'Wuhan Open / Court 1') y tomar todos los bloques útiles (ej. ['DIRTVISION', 'Millbridge Speedway'])
             partes_circ = []
             for bu in bloques_utiles:
                 for p in re.split(r'\s*(?:[-–—/]|•)\s*', bu):

@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Auditor Semántico Deportivo con Antigravity (AGY):
-Envía ÚNICAMENTE los eventos huérfanos o no clasificados en un LOTE CONSOLIDADO ÚNICO a AGY en la VM para:
-1. Reclasificar deportes huérfanos ('Otros Deportes' -> 'Natación', 'Snooker', 'Pádel', 'Golf', etc.).
-2. Reescribir títulos a nombres deportivos concisos y profesionales según EventoCard.kt:
-   - Duelo: 'Local vs Visitante'
-   - Circuito: 'Nombre del Evento/Torneo' (cero nombres individuales en la tarjeta de TV).
-3. Extraer los contrincantes/peleadores para el cajón preview del reproductor (Línea 3 en EventosPreviewPlayer.kt).
-4. Eliminar redundancias (evitar que Título == Subtítulo).
-5. Descartar cualquier evento que sea un simple programa/magazine, partido aplazado o repetición diferida.
+1. Respeta la Bóveda Diaria: jamás re-audita eventos que ya tienen 'curado_integro': True.
+2. Repara nombres corruptos de equipos en duelos a los que les falte algún escudo (ej. 'Sk Slavia Praha Era Nbk' -> 'ERA Nymburk').
+3. En circuitos, exige títulos específicos en Title Case (ej. 'Wuhan Open', 'Dirtvision'), subtítulos cortos para el botón ('Millbridge Speedway', 'Court 1') y detalle en 'participantes'.
+4. Descarta programas multicanal/carruseles ('UCL al instante'), partidos aplazados y repeticiones por huso horario.
 """
 from __future__ import annotations
 
@@ -21,7 +17,7 @@ import subprocess
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-from sanitizador_nombres import es_texto_no_vivo_o_aplazado
+from sanitizador_nombres import es_texto_no_vivo_o_aplazado, formatear_titulo_inteligente
 
 log = logging.getLogger("auditor_agy")
 
@@ -115,50 +111,38 @@ def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
 
 def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str) -> Dict[str, Dict[str, Any]]:
     prompt_texto = f"""Hoy es {fecha_hoy_iso}.
-Eres el Auditor y Curador Deportivo en Jefe. Tu misión es ser el JUEZ SUPREMO DE VERACIDAD Y VIGENCIA de la cartelera deportiva para una app de Android TV.
+Eres el Auditor y Curador Deportivo en Jefe para una app de Android TV.
 La app SOLO transmite eventos deportivos REALES EN VIVO Y EN DIRECTO que se disputan HOY ({fecha_hoy_iso}).
-
-Tienes tanto el 'texto_original_crudo' (texto sucio original de la guía o canal) como los canales fuente, la hora local (Bogotá UTC-5) y los datos propuestos.
 
 Reglas obligatorias de decisión:
 1. 'descartar': true OBLIGATORIO si:
-   - Es un partido APLAZADO, POSTERGADO, SUSPENDIDO o CANCELADO (ej. si el texto menciona 'APLAZADO', 'SUSPENDIDO', 'POSTERGADO').
-   - Es una REPETICIÓN, DIFERIDO o RESUMEN (el texto original menciona 'Revive', 'Resumen', 'Mejores momentos', 'Diferido', 'Replay', 'Compacto', 'Clásico', etc.).
-   - INCOHERENCIA DE HUSO HORARIO (REPETICIÓN ENCUBIERTA): Contrasta la sede real del torneo contra 'hora_local' (Bogotá UTC-5). Por ejemplo, un torneo en vivo en China/Japón (UTC+8/+9, 13 horas delante de Bogotá) se juega entre la medianoche y las 08:00 AM de Bogotá; una emisión a las 09:00 AM, 11:00 AM o en la tarde de Bogotá corresponde a las 22:00-03:00 AM en China y es una REPETICIÓN en diferido -> 'descartar': true.
-   - Es un partido, duelo o evento que ya se disputó AYER o en fechas pasadas.
-   - Es un programa de debate, noticiero, magazine, documental o previa de estudio (SportsCenter, F90, Primer Toque, etc.).
-   - Es un canal de prueba, comodín vacío o evento falso/inventado.
+   - Es un programa multicanal/carrusel de goles o resúmenes sin un partido específico (ej. 'UCL al instante', 'Champions Multi', 'Carrusel', 'Simulcast', 'RedZone', 'Goal Show').
+   - Es un partido APLAZADO, POSTERGADO, SUSPENDIDO o CANCELADO.
+   - Es una REPETICIÓN, DIFERIDO o RESUMEN.
+   - INCOHERENCIA DE HUSO HORARIO (REPETICIÓN ENCUBIERTA): Contrasta la sede real del torneo contra 'hora_local' (Bogotá UTC-5). Un torneo jugado en China/Japón (UTC+8/+9) se juega de madrugada en Bogotá (00:00 a 08:00 AM); si se emite a las 09:00 AM o en la tarde de Bogotá es REPETICIÓN -> 'descartar': true.
+   - Es un partido que ya se jugó en otra fecha o no existe hoy en el calendario real.
+   - Es un programa de debate, noticiero, magazine o previa.
 
-2. 'descartar': false si y solo si:
-   - Es una transmisión deportiva legítima de un evento o partido que se disputa HOY en vivo y en directo en ese horario real.
+2. 'descartar': false si y solo si es una transmisión deportiva competitiva legítima que se disputa HOY en vivo en ese horario.
 
-3. 'motivo_descarte': Si 'descartar' es true, indica la razón precisa (ej: 'partido_aplazado', 'repeticion_diferido_horario', 'partido_jugado_ayer', 'magazine_noticias'). Si es false, deja cadena vacía "".
-
-4. 'categoria_exacta': Usa SIEMPRE el nombre canónico con tildes exactas:
+3. 'categoria_exacta': Usa SIEMPRE el nombre canónico con tildes exactas:
    ('Fútbol', 'Baloncesto', 'Béisbol', 'Balonmano', 'Tenis', 'Pádel', 'Motor', 'Ciclismo', 'Combate', 'Golf', 'Rugby', 'Hockey', 'Natación', 'Snooker', 'Polo', 'Voleibol', 'Atletismo', 'Hípica', 'Fútbol Americano').
-   Nota: Boxeo, MMA, UFC y Lucha Libre/WWE van SIEMPRE bajo la categoría 'Combate'. NUNCA uses 'Futbol' sin tilde ni 'Otros Deportes'.
 
-5. 'tipo_evento' y REGLA SAGRADA DEPORTES DE EQUIPO:
-   - DEPORTES DE EQUIPO (Béisbol / MLB, Fútbol Americano / NFL, Baloncesto / NBA, Fútbol, Hockey / NHL): Son OBLIGATORIAMENTE 'duelo'. NUNCA los dejes como 'circuito' ni con título huérfano como 'MLB' o 'NFL'. Si la guía dice 'MLB: Serie de Campeonato' o 'NFL Monday Night' o no menciona los dos equipos, INVESTIGA qué equipos juegan hoy ({fecha_hoy_iso}) a esa hora en esa liga:
-     * 'tipo_evento': 'duelo'
-     * 'titulo_pulido': 'Equipo Local vs. Equipo Visitante'
-     * 'torneo_pulido': 'MLB' (o 'NFL', 'NBA', etc.)
-   - 'circuito': ÚNICAMENTE veladas de combate (UFC, Boxeo, MMA, WWE), sesiones de carreras (Motor), torneos individuales de Tenis, Golf, Ciclismo, etc.
+4. 'tipo_evento' y LIMPIEZA DE NOMBRES DE CLUBES EN DUELOS:
+   - DEPORTES DE EQUIPO (Fútbol, Baloncesto, Béisbol, Fútbol Americano, Hockey, Balonmano, Rugby): Son OBLIGATORIAMENTE 'duelo'.
+   - Si el nombre de algún club viene corrupto, truncado o con patrocinadores raros que impiden hallar su escudo en bases de datos internacionales (ej. 'Surne Bilbao vs Sk Slavia Praha Era Nbk'), corrige en 'titulo_pulido' a sus nombres institucionales limpios e internacionalmente reconocidos ('Bilbao Basket vs. ERA Nymburk').
 
-6. 'titulo_pulido':
-   - Si es DUELO: 'Equipo Local vs. Equipo Visitante' (limpio, sin prefijos, números de dial ni viñetas).
-   - Si es CIRCUITO / COMBATE / SHOW: Título conciso del evento, velada u organización para el botón de la TV (ej: 'UFC Fight Night', 'Rolex Shanghai Masters', 'WWE Raw', 'Campeonato Mundial de Ciclismo en Pista'). REGLA SAGRADA: NUNCA pongas nombres de deportistas individuales en el botón de circuito.
+5. REGLAS DE ORO PARA CIRCUITOS (Tenis, Motor, Ciclismo, Pádel, Golf, Combate):
+   - 'titulo_pulido' y 'torneo_pulido': Deben contener el NOMBRE ESPECÍFICO del evento en formato Title Case limpio (ej: 'Wuhan Open', 'Rolex Shanghai Masters', 'Dirtvision', 'Premier Padel Milán', 'Giro del Veneto', 'AEW Dynamite').
+     * PROHIBIDO dejar nombres genéricos como 'WTA 1000', 'ATP 1000' o 'Motor' si el texto indica que es 'Wuhan Open' o 'Shanghai Masters'.
+     * PROHIBIDO dejar palabras largas en MAYÚSCULAS ('DIRTVISION 01' -> 'Dirtvision'). Solo siglas cortas oficiales ('UEFA', 'WTA', 'ATP', 'UFC', 'AEW', 'UCI', 'F1') van en mayúsculas.
+   - 'subtitulo_pulido' (Línea 2 del botón pequeño de TV, MÁXIMO 24 CARACTERES):
+     * Solo el nombre corto de la Cancha, Pista, Circuito o Ronda (ej: 'Millbridge Speedway', 'Court 1', 'Centre Court', 'Sesión Vespertina', 'Etapa en Ruta').
+     * PROHIBIDO repetir palabras que ya estén en 'titulo_pulido' y PROHIBIDO poner ciudades/estados largos separados por viñetas.
+   - 'participantes' (Línea 3 debajo del reproductor preview):
+     * Descripción concisa de la especialidad, sede o protagonistas (ej: 'Circuito de tierra • Outlaw Karts', 'Optics Valley Tennis Center • Cuadro Principal WTA 1000').
 
-7. 'torneo_pulido': Nombre oficial del torneo, liga o velada (ej. 'UEFA Champions League', 'Liga BetPlay', 'Rolex Shanghai Masters', 'MLB', 'NFL').
-
-8. 'subtitulo_pulido' (OBLIGATORIO Y DESCRIPTIVO PARA CIRCUITOS):
-   - NUNCA lo dejes vacío en un circuito ni repitas el mismo texto de 'titulo_pulido' o 'torneo_pulido'.
-   - Extrae del 'texto_original_crudo' o investiga la Ronda, Sesión, Cancha o Ciudad/Recinto (ej: 'Octavos de Final • Qi Zhong Tennis Center', 'Sesión Vespertina', 'TD Garden, Boston, MA', 'Apex, Las Vegas').
-
-9. 'participantes': Para circuito o combate, contrincantes principales o descripción de la jornada para mostrar debajo del reproductor preview.
-
-10. 'canales_confirmados' (ASIGNACIÓN EXACTA DE CANAL LINEAL):
-    - Devuelve únicamente el canal exacto donde se emite el evento en directo según el 'texto_original_crudo' (ej: si dice 'por ESPN 2', devuelve ["ESPN 2 CO"] o ["ESPN 2 AR"] según el país; si dice 'por Win Sports+', devuelve ["WIN SPORTS+"]). Si no aplica, devuelve [].
+6. 'canales_confirmados': Si es un evento lineal, devuelve únicamente el canal exacto donde se emite. Si es stream de evento Xtream, devuelve [].
 
 Lista de eventos a auditar:
 {json.dumps(lote, ensure_ascii=False, indent=1)}
@@ -169,13 +153,13 @@ Responde ÚNICAMENTE con un JSON Array:
     "id": "id original",
     "descartar": false,
     "motivo_descarte": "",
-    "titulo_pulido": "Título limpio para el botón",
-    "torneo_pulido": "Torneo o Liga oficial",
-    "subtitulo_pulido": "Ronda, Sesión, Sede o Cancha",
-    "participantes": "Contrincantes o detalle bajo preview",
+    "titulo_pulido": "Título limpio (en duelos: Local vs. Visitante; en circuitos: Nombre específico del evento)",
+    "torneo_pulido": "Torneo específico",
+    "subtitulo_pulido": "Sede o Cancha corta (máx 24 chars, sin repetir título)",
+    "participantes": "Detalle descriptivo bajo el preview",
     "categoria_exacta": "Categoría con tilde exacta",
     "tipo_evento": "duelo o circuito",
-    "canales_confirmados": ["CANAL EXACTO"]
+    "canales_confirmados": []
   }}
 ]
 """
@@ -227,27 +211,33 @@ Responde ÚNICAMENTE con un JSON Array:
     return res_map
 
 def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
-    """Audita los eventos huérfanos, circuitos o sospechosos en un ÚNICO lote consolidado con AGY."""
+    """Audita únicamente los eventos nuevos o incompletos que no estén sellados en la Bóveda Diaria."""
     if not eventos:
         return [], []
 
     eventos_a_auditar = []
     for ev in eventos:
+        # BÓVEDA DIARIA: Si el evento ya fue certificado como íntegro hoy, no se vuelve a auditar
+        if ev.get("curado_integro") is True:
+            continue
+
         raw_tit = ev.get("texto_original_crudo") or ev.get("titulo_original_crudo") or ev.get("titulo_original") or ev.get("titulo") or ""
         sospechoso_no_vivo = es_texto_no_vivo_o_aplazado(raw_tit) or es_texto_no_vivo_o_aplazado(ev.get("titulo", ""))
 
-        if ev.get("contrastado_api") is True and not sospechoso_no_vivo:
+        tipo = ev.get("tipo_evento", "")
+        falta_escudo_duelo = (tipo == "duelo") and (not ev.get("logo_local") or not ev.get("logo_visitante"))
+
+        if ev.get("contrastado_api") is True and not sospechoso_no_vivo and not falta_escudo_duelo:
             continue
 
         cat = ev.get("categoria", "")
         tit = ev.get("titulo", "")
-        tipo = ev.get("tipo_evento", "")
 
         tiene_vinetas = any(c in tit for c in ["•", "–", "—", ">", "|", "■", "►"])
         es_circuito = tipo == "circuito" or cat in ["Tenis", "Motor", "Combate", "Boxeo", "MMA", "Golf", "Ciclismo", "Pádel", "Padel"]
         cat_dudosa = cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"]
         es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte"] for o in ev.get("origenes", []))
-        necesita = sospechoso_no_vivo or (not ev.get("contrastado_api")) or es_lineal or es_circuito or tiene_vinetas or cat_dudosa
+        necesita = sospechoso_no_vivo or falta_escudo_duelo or (not ev.get("contrastado_api")) or es_lineal or es_circuito or tiene_vinetas or cat_dudosa
         if necesita:
             if not ev.get("id"):
                 ev["id"] = f"ev_audit_{len(eventos_a_auditar) + 1}_{hashlib.sha1((raw_tit + ev.get('hora_utc', '')).encode()).hexdigest()[:6]}"
@@ -270,13 +260,13 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
             })
 
     if not eventos_a_auditar:
-        log.info("Todos los eventos están debidamente contrastados o clasificados (%d eventos). Se omite AGY.", len(eventos))
+        log.info("Todos los eventos están debidamente contrastados o sellados en Bóveda (%d eventos). Se omite AGY.", len(eventos))
         return eventos, []
 
     tamano_lote = 10
     mapa_audit = {}
     total_lotes = (len(eventos_a_auditar) + tamano_lote - 1) // tamano_lote
-    log.info("Iniciando auditoría AGY en lote consolidado para %d eventos (%d lotes)...", len(eventos_a_auditar), total_lotes)
+    log.info("Iniciando auditoría AGY en lote consolidado para %d eventos nuevos/incompletos (%d lotes)...", len(eventos_a_auditar), total_lotes)
 
     for i in range(0, len(eventos_a_auditar), tamano_lote):
         sub_lote = eventos_a_auditar[i:i + tamano_lote]
@@ -298,21 +288,20 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 continue
 
             sub_previo = (ev.get("subtitulo") or "").strip()
-            ev["titulo"] = (aud.get("titulo_pulido") or ev["titulo"]).strip()
+            ev["titulo"] = formatear_titulo_inteligente((aud.get("titulo_pulido") or ev["titulo"]).strip())
             ev["categoria"] = _normalizar_categoria_agy(aud.get("categoria_exacta", ""), ev.get("categoria", ""))
 
             if aud.get("torneo_pulido"):
-                ev["torneo"] = aud["torneo_pulido"].strip()
+                ev["torneo"] = formatear_titulo_inteligente(aud["torneo_pulido"].strip())
             elif aud.get("tipo_evento") == "circuito" and aud.get("titulo_pulido"):
-                ev["torneo"] = aud["titulo_pulido"].strip()
+                ev["torneo"] = ev["titulo"]
 
-            sub_agy = (aud.get("subtitulo_pulido") or "").strip()
+            sub_agy = formatear_titulo_inteligente((aud.get("subtitulo_pulido") or "").strip())
             if sub_agy and sub_agy.lower() not in [ev["titulo"].lower(), ev["torneo"].lower(), ev["categoria"].lower()]:
                 ev["subtitulo"] = sub_agy
             elif sub_previo and sub_previo.lower() not in [ev["titulo"].lower(), ev["torneo"].lower(), ev["categoria"].lower()]:
                 ev["subtitulo"] = sub_previo
 
-            # Poda quirúrgica de canales lineales según canales_confirmados por AGY
             canales_conf = aud.get("canales_confirmados")
             if canales_conf and isinstance(canales_conf, list) and len(canales_conf) > 0:
                 canales_conf_set = {c.strip().upper() for c in canales_conf if c and isinstance(c, str)}
@@ -333,8 +322,8 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 ev["tipo_evento"] = "duelo"
                 partes = re.split(r"\s+(?:vs\.?|contra|v\.)\s+", ev["titulo"], flags=re.I)
                 if len(partes) == 2:
-                    ev["equipo_local"] = partes[0].strip()
-                    ev["equipo_visitante"] = partes[1].strip()
+                    ev["equipo_local"] = formatear_titulo_inteligente(partes[0].strip())
+                    ev["equipo_visitante"] = formatear_titulo_inteligente(partes[1].strip())
                 ev["referencia"] = ev.get("subtitulo") or ev.get("torneo") or ev["titulo"]
             elif aud.get("tipo_evento") == "circuito":
                 ev["tipo_evento"] = "circuito"
@@ -357,16 +346,13 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
 
 
 def revisar_y_enriquecer_eventos_incompletos_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) -> List[Dict[str, Any]]:
-    """
-    Revisión final de AGY sobre la cartelera:
-    Si hay eventos de circuito o combate con información escasa o sin subtítulo/sede/cancha,
-    AGY extrae o investiga los detalles para completar sede (línea 2 del botón) y cartelera (línea 3 de preview).
-    """
     if not eventos:
         return []
 
     candidatos = []
     for ev in eventos:
+        if ev.get("curado_integro") is True:
+            continue
         tipo = ev.get("tipo_evento", "")
         tit = (ev.get("titulo") or "").strip().upper()
         sub = (ev.get("subtitulo") or "").strip()
@@ -401,17 +387,23 @@ def revisar_y_enriquecer_eventos_incompletos_con_agy(eventos: List[Dict[str, Any
     ]
     prompt_enriquecer = f"""Hoy es {fecha_hoy_iso}.
 Eres el Investigador Deportivo en Jefe para Android TV.
-Los siguientes eventos deportivos se disputan HOY en vivo, pero necesitan datos concretos de sede/cancha/ronda (para la línea 2 del botón) y cartelera/detalle (para la línea 3 debajo del preview):
+Los siguientes eventos deportivos de circuito se disputan HOY en vivo, pero necesitan datos cortos de sede/cancha (para la línea 2 del botón, máximo 24 caracteres) y descripción (para la línea 3 debajo del preview):
 {json.dumps(datos_candidatos, ensure_ascii=False, indent=1)}
 
-Extrae del 'texto_original' o investiga los datos oficiales de HOY ({fecha_hoy_iso}) y responde ÚNICAMENTE con un JSON Array:
+Reglas:
+- Si alguno NO es un evento competitivo real (ej. es un programa de resumen o carrusel como 'UCL al instante'), pon "descartar": true.
+- 'torneo_pulido': Nombre específico del evento en Title Case limpio (ej. 'Dirtvision', 'Wuhan Open', 'Benelux Tour').
+- 'subtitulo_pulido': SOLO la Sede, Pista, Circuito o Etapa corta sin repetir palabras del título (ej. 'Millbridge Speedway', 'Court 1', 'Etapa en Ruta').
+
+Responde ÚNICAMENTE con un JSON Array:
 [
   {{
     "id": "id original del evento",
-    "subtitulo_pulido": "Ronda/Sesión y Cancha/Recinto donde se realiza hoy (ej. 'Octavos de Final • Qi Zhong Tennis Center', 'Sesión Vespertina', 'TD Garden, Boston, MA')",
-    "participantes": "Partidos destacados, peleas estelares o detalle de la jornada de hoy",
-    "categoria_exacta": "Deporte canónico con tilde ('Fútbol', 'Tenis', 'Ciclismo', 'Combate', 'Motor', 'Baloncesto', 'Béisbol', 'Pádel', 'Golf')",
-    "torneo_pulido": "Nombre oficial corto del torneo o show"
+    "descartar": false,
+    "subtitulo_pulido": "Sede o Cancha corta (máx 24 chars)",
+    "participantes": "Descripción concisa de la especialidad o jornada de hoy",
+    "categoria_exacta": "Deporte canónico con tilde",
+    "torneo_pulido": "Nombre específico corto del torneo o show"
   }}
 ]
 """
@@ -439,6 +431,7 @@ Extrae del 'texto_original' o investiga los datos oficiales de HOY ({fecha_hoy_i
             if res.returncode == 0:
                 salida_texto = res.stdout
 
+        ids_descartar = set()
         if salida_texto:
             datos = _extraer_datos_json(salida_texto)
             if isinstance(datos, list):
@@ -446,17 +439,23 @@ Extrae del 'texto_original' o investiga los datos oficiales de HOY ({fecha_hoy_i
                 for ev in candidatos_lote:
                     item = mapa_enr.get(ev.get("id"))
                     if item:
+                        if item.get("descartar") is True:
+                            ids_descartar.add(ev.get("id"))
+                            continue
+                        if item.get("torneo_pulido"):
+                            ev["torneo"] = formatear_titulo_inteligente(item["torneo_pulido"].strip())
+                            ev["titulo"] = ev["torneo"]
                         if item.get("subtitulo_pulido"):
-                            ev["subtitulo"] = item["subtitulo_pulido"].strip()
+                            ev["subtitulo"] = formatear_titulo_inteligente(item["subtitulo_pulido"].strip())
                             ev["ronda"] = ev["subtitulo"]
                         if item.get("participantes"):
                             ev["referencia"] = item["participantes"].strip()
                         if item.get("categoria_exacta"):
                             ev["categoria"] = _normalizar_categoria_agy(item["categoria_exacta"], ev.get("categoria", ""))
-                        if item.get("torneo_pulido"):
-                            ev["torneo"] = item["torneo_pulido"].strip()
                         log.info("AGY enriquecio con exito evento '%s': Sede='%s', Ref='%s'",
                                  ev.get("titulo"), ev.get("subtitulo"), ev.get("referencia"))
+        if ids_descartar:
+            eventos = [e for e in eventos if e.get("id") not in ids_descartar]
     except Exception as e:
         log.warning("Fallo al enriquecer eventos con AGY: %s", e)
 
