@@ -61,48 +61,39 @@ PROGRAMAS_ESTUDIO_NOTICIAS = [
 ]
 
 RE_REPETICIONES = re.compile(
-    r"\b(?:REVIVE|MEJORES\s+MOMENTOS|REPETICI[OÓ]N|DIFERIDO|EN\s+DIFERIDO|RESUMEN|FLASHBACK|HISTORIA|HISTORIAS|RETRO|REPLAY|COMPACTO)\b",
+    r"\b(?:REVIVE|MEJORES\s+MOMENTOS|REPETICI[OÓ]N|DIFERIDO|EN\s+DIFERIDO|RESUMEN|FLASHBACK|HISTORIA|HISTORIAS|RETRO|REPLAY|COMPACTO|APLAZADO|SUSPENDIDO)\b",
     re.I
 )
 
+# Jurisdicción estricta:
+# - Colombia (mi.tv/co) SOLO para Win Sports+ y Win Sports.
+# - Argentina (mi.tv/ar) para toda la familia ESPN (Cono Sur) y TyC Sports.
 CANALES_MITV = [
-    # Colombia (Aislamiento territorial estricto CO)
     ("WIN SPORTS+", "https://mi.tv/co/async/channel/win-sports-hd/-300", "America/Bogota"),
     ("WIN SPORTS", "https://mi.tv/co/async/channel/win-sports/-300", "America/Bogota"),
-    ("ESPN CO", "https://mi.tv/co/async/channel/espn/-300", "America/Bogota"),
-    ("ESPN 2 CO", "https://mi.tv/co/async/channel/espn-2/-300", "America/Bogota"),
-    ("ESPN 3 CO", "https://mi.tv/co/async/channel/espn-3/-300", "America/Bogota"),
-    # Argentina (Aislamiento territorial estricto AR)
     ("ESPN AR", "https://mi.tv/ar/async/channel/espn/-180", "America/Argentina/Buenos_Aires"),
     ("ESPN 2 AR", "https://mi.tv/ar/async/channel/espn-2/-180", "America/Argentina/Buenos_Aires"),
     ("ESPN 3 AR", "https://mi.tv/ar/async/channel/espn-3/-180", "America/Argentina/Buenos_Aires"),
     ("TYC SPORTS", "https://mi.tv/ar/async/channel/tyc-sports/-180", "America/Argentina/Buenos_Aires"),
 ]
 
+FAMILIAS_MITV = [
+    {"WIN SPORTS+", "WIN SPORTS"},
+    {"ESPN PREMIUM ARGENTINA", "ESPN AR", "ESPN 2 AR", "ESPN 3 AR", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7"},
+]
+
+def _tiene_canal_misma_familia(canal_nuevo: str, canales_existentes: List[str]) -> bool:
+    for fam in FAMILIAS_MITV:
+        if canal_nuevo in fam and any(c in fam for c in canales_existentes):
+            return True
+    return False
+
 def obtener_directos_lineales_mitv(
     fecha_hoy_iso: str,
     eventos_referencia_futbolenvivo: Optional[List[EventoAgenda]] = None
 ) -> List[EventoAgenda]:
-    """
-    Consulta la programación oficial canal por canal en mi.tv para:
-    - Win Sports+ y Win Sports (Colombia)
-    - ESPN, ESPN 2 y ESPN 3 (Señales de Colombia y Argentina)
-    - TyC Sports (Argentina)
-
-    Filtro estricto inicial:
-    - Descarta noticieros, magazines y programas de debate de estudio.
-    - Excluye repeticiones explícitas, diferidos, compactos y resúmenes.
-    - Excluye repeticiones históricas con años anteriores en la URL.
-
-    Para todos los eventos deportivos sobrevivientes:
-    - Si empareja con la cartelera de referencia (futbolenvivo), enriquece el canal 1 a 1.
-    - Si no empareja con referencia, se conserva con su texto original crudo para que AGY
-      en la VM certifique su veracidad temporal (descartando si fue de ayer y confirmando
-      si es un directo genuino de hoy, incluyendo deportes y torneos locales/minoritarios).
-    """
     nuevos: List[EventoAgenda] = []
 
-    # Extraer eventos de referencia para contraste
     ref_eventos = []
     if eventos_referencia_futbolenvivo:
         for ev in eventos_referencia_futbolenvivo:
@@ -140,19 +131,15 @@ def obtener_directos_lineales_mitv(
 
             todo = f"{h2_str} {sub_str} {syn_str}".upper()
 
-            # 1. Filtro estricto: Descarte de noticieros, magazines y programas de estudio
             if any(w in todo for w in PROGRAMAS_ESTUDIO_NOTICIAS):
                 continue
 
-            # 1.1 Descarte estricto de repeticiones, revives, resúmenes y compactos
             if RE_REPETICIONES.search(todo):
                 continue
 
-            # 2. Descarte de repeticiones históricas por año en la URL
             if re.search(r"\b(200\d|201\d|202[0-4])\b", href):
                 continue
 
-            # Hora local
             m_hora = re.search(r"([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*(am|pm)?", time_str, re.I)
             if not m_hora:
                 continue
@@ -171,15 +158,13 @@ def obtener_directos_lineales_mitv(
             except Exception:
                 continue
 
-            # 3. Contraste riguroso con la cartelera de referencia
+            # Contraste estricto contra título y subtítulo (sin usar la sinopsis genérica)
             contrastado = False
             ev_ref_match = None
             if ref_eventos:
-                todo_lower = todo.lower()
+                tit_sub_lower = f"{h2_str} {sub_str}".lower()
                 for r in ref_eventos:
-                    palabras_clave = [p for p in (r["loc"] + " " + r["vis"]).split() if len(p) > 3]
-                    coincidencias = [p for p in palabras_clave if p in todo_lower]
-                    if len(coincidencias) >= 2 or (r["loc"] and r["loc"] in todo_lower and r["vis"] and r["vis"] in todo_lower):
+                    if r["loc"] and r["vis"] and r["loc"] in tit_sub_lower and r["vis"] in tit_sub_lower:
                         try:
                             dt_ref = datetime.fromisoformat(r["hora_utc"].replace("Z", "+00:00"))
                             diff_min = abs((dt_local.astimezone(timezone.utc) - dt_ref).total_seconds()) / 60
@@ -190,31 +175,27 @@ def obtener_directos_lineales_mitv(
                         except Exception:
                             pass
 
-            # Si contrastó con un evento de referencia, enriquecer el canal exacto 1 a 1
             if contrastado and ev_ref_match:
-                if canon_canal not in ev_ref_match.canales:
+                if canon_canal not in ev_ref_match.canales and not _tiene_canal_misma_familia(canon_canal, ev_ref_match.canales):
                     ev_ref_match.canales.append(canon_canal)
                 continue
 
-            # 4. Si no contrastó, extraer como evento deportivo candidato para auditoría AGY
-            m_vs = re.search(r"([A-Za-z0-9\.\s]+)\s+(?:vs\.?|v\.?)\s+([A-Za-z0-9\.\s]+)", h2_str, re.I)
+            m_vs = re.search(r"([A-Za-z0-9\.\sÁÉÍÓÚáéíóúñÑ]+)\s+(?:vs\.?|v\.?)\s+([A-Za-z0-9\.\sÁÉÍÓÚáéíóúñÑ]+)", f"{h2_str} {sub_str}", re.I)
             if m_vs:
                 loc = m_vs.group(1).strip()
-                vis = re.split(r"\s+(?:Fecha|Estadio|Jornada)\b", m_vs.group(2), flags=re.I)[0].strip()
+                vis = re.split(r"\s+(?:Fecha|Estadio|Jornada|Juego|Semifinal|Final)\b", m_vs.group(2), flags=re.I)[0].strip()
                 titulo = f"{loc} vs {vis}"
                 tipo = "duelo"
-                torneo = sub_str or f"{canon_canal} en Vivo"
+                torneo = h2_str if m_vs.group(0) not in h2_str else (sub_str or f"{canon_canal} en Vivo")
             else:
-                # Solo admitir transmisiones de disciplinas deportivas reales o explicitamente en vivo/directo
                 es_deporte_circuito = any(k in todo for k in [
                     "TENIS", "ATP", "WTA", "SHANGHAI", "ROLAND GARROS", "WIMBLEDON", "US OPEN",
                     "MOTOR", "F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "INDYCAR", "NASCAR",
                     "PADEL", "PÁDEL", "PREMIER PADEL", "GOLF", "PGA", "LIV GOLF",
                     "CICLISMO", "TOUR", "GIRO", "VUELTA", "SNOOKER", "BILLAR", "BOXEO", "UFC", "COMBATE"
                 ])
-                es_en_vivo_declarado = any(k in todo for k in ["EN VIVO", "DIRECTO", "LIVE"])
-                if not (es_deporte_circuito or es_en_vivo_declarado):
-                    continue  # Descartar programas de relleno, magazines, documentales y resúmenes
+                if not es_deporte_circuito:
+                    continue
 
                 loc, vis = "", ""
                 tipo = "circuito"
@@ -225,7 +206,6 @@ def obtener_directos_lineales_mitv(
                     titulo = h2_str or sub_str
                     torneo = titulo or f"{canon_canal} en Vivo"
 
-            # Detección tentativa de disciplina
             u_txt = todo.upper()
             if any(k in u_txt for k in ["TENIS", "ATP", "WTA", "SHANGHAI", "ROLAND GARROS", "WIMBLEDON", "US OPEN"]):
                 deporte = "Tenis"
@@ -233,7 +213,7 @@ def obtener_directos_lineales_mitv(
                 deporte = "Fútbol Americano"
             elif any(k in u_txt for k in ["MLB", "BÉISBOL", "BEISBOL", "BASEBALL"]):
                 deporte = "Béisbol"
-            elif any(k in u_txt for k in ["NBA", "BASKET", "BALONCESTO"]):
+            elif any(k in u_txt for k in ["NBA", "WNBA", "BASKET", "BALONCESTO"]):
                 deporte = "Baloncesto"
             elif any(k in u_txt for k in ["MOTOR", "F1", "FÓRMULA 1", "FORMULA 1", "MOTOGP", "INDYCAR"]):
                 deporte = "Motor"
@@ -269,10 +249,9 @@ def obtener_directos_lineales_mitv(
             )
             nuevos.append(ev)
 
-    log.info("Canales lineales mi.tv (Win Sports, ESPN, TyC Sports): %d eventos rescatados/contrastados", len(nuevos))
+    log.info("Canales lineales mi.tv (Win Sports CO, ESPN AR, TyC AR): %d eventos rescatados/contrastados", len(nuevos))
     return nuevos
 
-# Alias de compatibilidad
 def obtener_directos_win_sports(
     fecha_hoy_iso: str,
     eventos_referencia_futbolenvivo: Optional[List[EventoAgenda]] = None

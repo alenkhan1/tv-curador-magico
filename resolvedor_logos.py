@@ -727,7 +727,7 @@ def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
     """Verifica de forma estricta e invariable que el logo o escudo no pertenezca a otra disciplina deportiva."""
     if not url or not categoria:
         return True
-    url_low = url.lower()
+    url_low = urllib.parse.unquote(url).lower()
     cat_norm = _normalizar(categoria)
 
     # 1. Validación estricta de rutas de API-Sports (tanto leagues como teams)

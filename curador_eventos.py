@@ -652,8 +652,12 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         except Exception as e:
             log.debug("Error leyendo meta_curador previo: %s", e)
 
-    # Cargar Bóveda Diaria de eventos ya certificados hoy
-    boveda_hoy, claves_descartadas_hoy, descartados_previos = _cargar_boveda_diaria(fecha_hoy_iso)
+    # Cargar Bóveda Diaria en ejecuciones normales; si se usa --forzar, recalcular todo desde cero con las reglas nuevas
+    if not forzar:
+        boveda_hoy, claves_descartadas_hoy, descartados_previos = _cargar_boveda_diaria(fecha_hoy_iso)
+    else:
+        log.info("[MODO FORZAR] Ignorando Bóveda previa para recalcular el 100% de la cartelera con las reglas actuales.")
+        boveda_hoy, claves_descartadas_hoy, descartados_previos = [], set(), []
 
     # Fase 1: Descarga de Agenda Maestra de canales lineales
     agenda_hoy = construir_agenda_maestra_hoy(fecha_hoy_iso)

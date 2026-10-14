@@ -17,7 +17,7 @@ from .modelos import EventoAgenda, obtener_tz
 log = logging.getLogger("canales_suramerica")
 
 RE_REPETICIONES = re.compile(
-    r"\b(?:REVIVE|MEJORES\s+MOMENTOS|REPETICI[OÓ]N|DIFERIDO|EN\s+DIFERIDO|RESUMEN|FLASHBACK|HISTORIA|HISTORIAS|RETRO|REPLAY)\b",
+    r"\b(?:REVIVE|MEJORES\s+MOMENTOS|REPETICI[OÓ]N|DIFERIDO|EN\s+DIFERIDO|RESUMEN|FLASHBACK|HISTORIA|HISTORIAS|RETRO|REPLAY|APLAZADO|SUSPENDIDO|POSTERGADO)\b",
     re.I
 )
 
@@ -27,48 +27,73 @@ def _crear_contexto_ssl():
     ctx.verify_mode = ssl.CERT_NONE
     return ctx
 
-CANAL_MAPPING = [
+CANAL_MAPPING_CO = [
     (r"\bWIN\s*(?:F[UÚ]TBOL\s*\+|SPORTS\s*\+)", "WIN SPORTS+"),
     (r"\bWIN\s*SPORTS\b(?!\s*\+)", "WIN SPORTS"),
+    (r"\bCARACOL\b(?!\s*INTERNACIONAL)", "CARACOL"),
+    (r"\b(?:CANAL\s*)?RCN\b(?!\s*NUESTRA\s*TELE|\s*INTERNACIONAL|\s*NOVELAS|\s*MAS)", "RCN"),
+]
+
+CANAL_MAPPING_AR = [
     (r"\bESPN\s*PREMIUM\b", "ESPN PREMIUM ARGENTINA"),
-    (r"\bESPN\s*2\b", "ESPN 2"),
-    (r"\bESPN\s*3\b", "ESPN 3"),
+    (r"\bESPN\s*2\b", "ESPN 2 AR"),
+    (r"\bESPN\s*3\b", "ESPN 3 AR"),
     (r"\bESPN\s*4\b", "ESPN 4"),
     (r"\bESPN\s*5\b", "ESPN 5"),
     (r"\bESPN\s*6\b", "ESPN 6"),
     (r"\bESPN\s*7\b", "ESPN 7"),
-    (r"\bESPN\s*(?:1|COLOMBIA|SUR\s*1)\b", "ESPN"),
-    (r"\bTYC\s*SPORTS\b", "TYC SPORTS"),
+    (r"\bESPN\b(?!\s*(?:2|3|4|5|6|7|PREMIUM|EXTRA|DEPORTES|U|NEWS))", "ESPN AR"),
+    (r"\bTYC\s*SPORTS\b(?!\s*INTERNACIONAL|\s*PLAY)", "TYC SPORTS"),
     (r"\bTNT\s*SPORTS\b", "TNT SPORTS"),
     (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*2\b", "DSPORTS 2"),
     (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*\+", "DSPORTS +"),
-    (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\b(?!\s*[\+2])", "DSPORTS"),
-    (r"\bCARACOL\b", "CARACOL"),
-    (r"\b(?:CANAL\s*)?RCN\b", "RCN"),
-    (r"\bFOX\s*SPORTS\s*2\b", "FOX SPORTS 2"),
-    (r"\bFOX\s*SPORTS\s*3\b", "FOX SPORTS 3"),
-    (r"\bFOX\s*SPORTS\b(?!\s*[23])", "FOX SPORTS"),
+    (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\b(?!\s*[\+2])", "DSPORTS AR"),
 ]
 
-def normalizar_canales(raw_canales: List[str]) -> List[str]:
-    resultado = []
+FAMILIAS_EXCLUSIVAS = [
+    {"WIN SPORTS+", "WIN SPORTS"},
+    {"ESPN PREMIUM ARGENTINA", "ESPN AR", "ESPN 2 AR", "ESPN 3 AR", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7"},
+    {"DSPORTS AR", "DSPORTS CO", "DSPORTS", "DSPORTS 2", "DSPORTS +"},
+]
+
+def _pertenece_a_familia_existente(canal_nuevo: str, canales_actuales: List[str]) -> bool:
+    for fam in FAMILIAS_EXCLUSIVAS:
+        if canal_nuevo in fam and any(c in fam for c in canales_actuales):
+            return True
+    return False
+
+def normalizar_canales_por_pais(raw_canales: List[str], pais_guia: str, deporte: str = "") -> List[str]:
+    resultado: List[str] = []
+    mapping = CANAL_MAPPING_CO if pais_guia == "CO" else CANAL_MAPPING_AR
+
     for raw in raw_canales:
         u = raw.upper()
-        # Descarte de feeds no sudamericanos y de plataformas OTT exclusivas
         if any(exc in u for exc in [
             "USA", "US", "MEX", "MEXICO", "BRASIL", "BRAZIL", "ESPNU", "NEWS", "YOUTUBE", "TIKTOK",
             "DISNEY", "STAR+", "VIX", "HBO", "MAX", "RTVE PLAY", "APPLE", "PRIME", "DGO", "CLARO VIDEO",
-            "TENNIS TV", "PARAMOUNT", "PLUTO"
+            "TENNIS TV", "PARAMOUNT", "PLUTO", "FANATIZ", "FLOW", "TELECENTRO", "LPF PLAY", "WIN PLAY",
+            "NUESTRA TELE", "INTERNACIONAL", "TYC SPORTS PLAY"
         ]):
             continue
-        CANALES_EXCLUSIVOS_AGY = {"DSPORTS", "DSPORTS 2", "DSPORTS +", "TNT SPORTS", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7"}
-        for patron, canon in CANAL_MAPPING:
+
+        for patron, canon in mapping:
             if re.search(patron, u):
-                if canon in CANALES_EXCLUSIVOS_AGY:
-                    break
-                if canon not in resultado:
+                if canon not in resultado and not _pertenece_a_familia_existente(canon, resultado):
                     resultado.append(canon)
                 break
+
+        # En Colombia, permitir rescate de ESPN únicamente para Ciclismo si no hay otro canal
+        if pais_guia == "CO" and deporte == "Ciclismo" and not resultado:
+            for patron, canon in CANAL_MAPPING_AR:
+                if "ESPN" in canon and re.search(patron, u):
+                    if canon not in resultado and not _pertenece_a_familia_existente(canon, resultado):
+                        resultado.append(canon)
+                    break
+
+    # Regla Liga BetPlay Colombia: Si el partido ya tiene WIN SPORTS+, no mezclar RCN ni WIN SPORTS básico
+    if "WIN SPORTS+" in resultado:
+        resultado = [c for c in resultado if c not in {"WIN SPORTS", "RCN"}]
+
     return resultado
 
 HEADERS_COMPLETOS = {
@@ -91,7 +116,7 @@ def _descargar_html(url: str, timeout: int = 10) -> str:
         log.debug("No se pudo descargar %s: %s", url, e)
         return ""
 
-def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str) -> List[EventoAgenda]:
+def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str, pais_guia: str) -> List[EventoAgenda]:
     if not html:
         return []
     tz = obtener_tz(tz_name)
@@ -129,13 +154,7 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
         if not dentro_de_hoy:
             continue
 
-        txt_fila = " ".join(re.sub(r"<[^>]+>", " ", f).split()).strip()
         if RE_REPETICIONES.search(txt_fila):
-            continue
-
-        raw_canales = re.findall(r'<li[^>]*title=["\']([^"\']+)["\']', f)
-        canales_validos = normalizar_canales(raw_canales)
-        if not canales_validos:
             continue
 
         m_h = re.search(r'class=["\']hora\s*["\'][^>]*>\s*([0-9]{1,2}:[0-9]{2})', f)
@@ -163,8 +182,8 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
             deporte = "Pádel"
         elif "RUGBY" in u_dep:
             deporte = "Rugby"
-        elif "MMA" in u_dep or "UFC" in u_dep:
-            deporte = "MMA"
+        elif "MMA" in u_dep or "UFC" in u_dep or "BOXEO" in u_dep:
+            deporte = "Combate"
         else:
             deporte = "Fútbol"
 
@@ -208,13 +227,18 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
         elif any(k in u_todo for k in ["ATP", "WTA", "ROLAND GARROS", "WIMBLEDON", "US OPEN", "SHANGHAI", "PEKIN", "TENIS", "TENNIS"]):
             deporte = "Tenis"
         elif any(k in u_todo for k in ["UFC", "MMA", "BOXEO", "BOXING"]):
-            deporte = "MMA"
+            deporte = "Combate"
         elif any(k in u_todo for k in ["CICLISMO", "CYCLING", "TOUR DE FRANCE", "GIRO", "VUELTA"]):
             deporte = "Ciclismo"
         elif any(k in u_todo for k in ["PADEL", "PÁDEL"]):
             deporte = "Pádel"
         elif any(k in u_todo for k in ["RUGBY"]):
             deporte = "Rugby"
+
+        raw_canales = re.findall(r'<li[^>]*title=["\']([^"\']+)["\']', f)
+        canales_validos = normalizar_canales_por_pais(raw_canales, pais_guia, deporte)
+        if not canales_validos:
+            continue
 
         try:
             h, mi = [int(x) for x in hora_str.split(":")]
@@ -232,7 +256,7 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
             hora_utc=hora_utc,
             canales=canales_validos,
             duracion_min=180 if deporte in ["Motor", "Béisbol", "Tenis"] else 120,
-            fuente=url.split("/")[-1] or "portada",
+            fuente=f"futbolenvivo_{pais_guia.lower()}",
             tipo_evento=tipo,
             texto_original_crudo=txt_fila,
         )
@@ -242,39 +266,40 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str)
 
 def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
     """
-    Descarga la agenda deportiva completa de directos de hoy para Suramérica:
-    Cubre Colombia (Win Sports+, Win Sports, ESPN 1..7, DSports, Caracol, RCN)
-    y Argentina (ESPN Premium, TyC Sports, TNT Sports, FOX Sports 1..3).
-    Garantía de multideporte en vivo canal por canal:
-    - Contraste riguroso con mi.tv para Win Sports y ESPN.
-    - Cero noticieros, cero magazines y cero repeticiones.
+    Descarga la agenda deportiva de Suramérica con separación estricta de jurisdicción:
+    - Colombia ('CO'): Exclusivamente para Win Sports+, Win Sports, Caracol y RCN (+ rescate de Ciclismo).
+    - Argentina ('AR'): Única fuente autorizada para toda la familia ESPN (1, 2, 3, 4, 5, 6, 7, Premium),
+      TyC Sports, TNT Sports y DSports, alineada 1 a 1 con los feeds reales del Cono Sur en la lista M3U.
     """
     colombia_urls = [
-        ("https://www.futbolenvivocolombia.com/", "America/Bogota"),
-        ("https://www.futbolenvivocolombia.com/deporte/motociclismo", "America/Bogota"),
-        ("https://www.futbolenvivocolombia.com/deporte/automovilismo", "America/Bogota"),
-        ("https://www.futbolenvivocolombia.com/deporte/tenis", "America/Bogota"),
-        ("https://www.futbolenvivocolombia.com/deporte/baloncesto", "America/Bogota"),
-        ("https://www.futbolenvivocolombia.com/deporte/mma", "America/Bogota"),
-        ("https://www.futbolenvivocolombia.com/deporte/ciclismo", "America/Bogota"),
-        ("https://www.futbolenvivocolombia.com/deporte/beisbol", "America/Bogota"),
+        ("https://www.futbolenvivocolombia.com/", "America/Bogota", "CO"),
+        ("https://www.futbolenvivocolombia.com/deporte/ciclismo", "America/Bogota", "CO"),
     ]
     argentina_urls = [
-        ("https://www.futbolenvivoargentina.com/deporte", "America/Argentina/Buenos_Aires"),
-        ("https://www.futbolenvivoargentina.com/", "America/Argentina/Buenos_Aires"),
+        ("https://www.futbolenvivoargentina.com/", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/tenis", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/baloncesto", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/automovilismo", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/motociclismo", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/ciclismo", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/mma", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/boxeo", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/rugby", "America/Argentina/Buenos_Aires", "AR"),
+        ("https://www.futbolenvivoargentina.com/deporte/beisbol", "America/Argentina/Buenos_Aires", "AR"),
     ]
 
-    todas_urls = colombia_urls + argentina_urls
+    todas_urls = argentina_urls + colombia_urls
     eventos_crudos: List[EventoAgenda] = []
 
     with ThreadPoolExecutor(max_workers=10) as executor:
         futs = {
             executor.submit(
-                lambda u=url, tz=tz_name: extraer_directos_html(
-                    _descargar_html(u), u, tz, fecha_hoy_iso
+                lambda u=url, tz=tz_name, p=pais: extraer_directos_html(
+                    _descargar_html(u), u, tz, fecha_hoy_iso, p
                 )
             ): url
-            for url, tz_name in todas_urls
+            for url, tz_name, pais in todas_urls
         }
         for fut in as_completed(futs):
             try:
@@ -283,14 +308,14 @@ def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
             except Exception:
                 pass
 
-    # Contraste y extracción canal por canal en mi.tv (Win Sports y ESPN)
+    # Contraste y extracción canal por canal en mi.tv (Win Sports CO y ESPN/TyC AR)
     try:
         evs_mitv = obtener_directos_lineales_mitv(fecha_hoy_iso, eventos_referencia_futbolenvivo=eventos_crudos)
         eventos_crudos.extend(evs_mitv)
     except Exception as e:
         log.warning("Fallo en contraste con mi.tv: %s", e)
 
-    # Deduplicación y fusión de canales para un mismo evento
+    # Deduplicación y fusión de canales sin mezclar dos canales distintos de la misma cadena
     vistos: Dict[tuple, EventoAgenda] = {}
     dedup: List[EventoAgenda] = []
 
@@ -299,7 +324,7 @@ def obtener_directos_suramerica(fecha_hoy_iso: str) -> List[EventoAgenda]:
         if k in vistos:
             existente = vistos[k]
             for c in ev.canales:
-                if c not in existente.canales:
+                if c not in existente.canales and not _pertenece_a_familia_existente(c, existente.canales):
                     existente.canales.append(c)
         else:
             vistos[k] = ev

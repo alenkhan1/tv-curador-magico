@@ -1,15 +1,10 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Adaptador Inteligente con AGY para Canales Deportivos sin EPG de Parrilla:
 Investiga y certifica de forma autonoma las transmisiones deportivas EN VIVO de hoy para:
 - Familia DSports: DSports (610), DSports 2 (612), DSports+ (613)
 - TNT Sports Argentina
 - Diales altos de ESPN: ESPN 4, ESPN 5, ESPN 6, ESPN 7 (Suramerica)
-
-Garantiza:
-1. Cero alucinaciones o confusiones entre la app DGO y los diales lineales reales de satelite.
-2. Cero noticieros, cero programas de debate/opinion de estudio y cero repeticiones diferidas.
-3. Cache diario local en disco para velocidad instantanea (0s) en ejecuciones recurrentes.
 """
 from __future__ import annotations
 
@@ -40,7 +35,7 @@ def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
         if isinstance(obj, list):
             return obj
         if isinstance(obj, dict):
-            for k in ["response", "content", "text", "output"]:
+            for k in ["response", "content", "text", "output", "result"]:
                 if k in obj and isinstance(obj[k], str):
                     sub = _extraer_datos_json(obj[k])
                     if sub:
@@ -55,6 +50,13 @@ def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
     if m_codeblock:
         try:
             return json.loads(m_codeblock.group(1))
+        except Exception:
+            pass
+
+    m_array = re.search(r'\[\s*\{.*\}\s*\]', salida_texto, flags=re.S)
+    if m_array:
+        try:
+            return json.loads(m_array.group(0))
         except Exception:
             pass
 
@@ -90,28 +92,25 @@ def _consultar_agy_en_vm(prompt_texto: str) -> str:
     return salida_texto
 
 def obtener_directos_canales_ciegos_agy(fecha_hoy_iso: str, forzar: bool = False) -> List[EventoAgenda]:
-    """
-    Obtiene la parrilla deportiva en directo de hoy para canales sin EPG verificado
-    utilizando a AGY como investigador especializado en la VM.
-    """
     cache_path = CACHE_DIR / f"cache_lineales_ciegos_{fecha_hoy_iso}.json"
 
     if not forzar and cache_path.exists():
         try:
             datos_cache = json.loads(cache_path.read_text(encoding="utf-8"))
-            if isinstance(datos_cache, list):
+            if isinstance(datos_cache, list) and len(datos_cache) > 0:
                 eventos_cache = []
                 for item in datos_cache:
                     try:
                         eventos_cache.append(EventoAgenda(**item))
                     except Exception:
                         pass
-                log.info("Canales ciegos AGY cargados desde cache local (%s): %d eventos", fecha_hoy_iso, len(eventos_cache))
-                return eventos_cache
+                if eventos_cache:
+                    log.info("Canales ciegos AGY cargados desde cache local (%s): %d eventos", fecha_hoy_iso, len(eventos_cache))
+                    return eventos_cache
         except Exception as e:
             log.warning("Error leyendo cache de canales ciegos AGY: %s", e)
 
-    prompt = f"""Investiga exhaustivamente la programacion deportiva EN VIVO y EN DIRECTO para HOY ({fecha_hoy_iso}) emitida exclusivamente por las siguientes senales lineales de television de Suramerica:
+    prompt = f"""Investiga exhaustivamente la programacion deportiva EN VIVO y EN DIRECTO para HOY ({fecha_hoy_iso}) emitida exclusivamente por las siguientes senales lineales de television de Suramerica (Cono Sur / Argentina):
 - DSports (Canal 610 / 1610)
 - DSports 2 (Canal 612 / 1612)
 - DSports+ (Canal 613 / 1613)
@@ -121,8 +120,8 @@ def obtener_directos_canales_ciegos_agy(fecha_hoy_iso: str, forzar: bool = False
 REGLAS OBLIGATORIAS:
 1. UNICAMENTE eventos deportivos que se disputen y transmitan EN VIVO HOY en tiempo real.
 2. EXCLUYE estrictamente: noticieros (Total Sports, DSports Noticias, SportsCenter, TNT Data Sports), programas de debate/opinion (De Futbol Se Habla Asi, F90, Pelota Parada), revistas/magazines, repeticiones y diferidos.
-3. Especifica con precision quirurgica el canal exacto en el arreglo 'canales':
-   - ['DSPORTS'] si es por el canal 610
+3. Especifica con precision quirurgica UN SOLO canal exacto en el arreglo 'canales':
+   - ['DSPORTS AR'] si es por el canal 610
    - ['DSPORTS 2'] si es por el canal 612
    - ['DSPORTS +'] si es por el canal 613
    - ['TNT SPORTS'] si es por TNT Sports Argentina
@@ -134,7 +133,7 @@ Responde UNICAMENTE con un JSON Array valido:
 [
   {{
     "titulo": "Equipo Local vs. Equipo Visitante",
-    "deporte": "Futbol",
+    "deporte": "Fútbol",
     "torneo": "Liga o Competicion",
     "local": "Equipo Local",
     "visitante": "Equipo Visitante",
@@ -166,6 +165,7 @@ Responde UNICAMENTE con un JSON Array valido:
             continue
         tit = it.get("titulo") or ""
         canales = [c.upper().strip() for c in it.get("canales", []) if c]
+        canales = ["DSPORTS AR" if c == "DSPORTS" else c for c in canales]
         hora_utc = it.get("hora_utc") or ""
         if not tit or not canales or not hora_utc:
             continue
@@ -185,7 +185,7 @@ Responde UNICAMENTE con un JSON Array valido:
             local=local,
             visitante=visitante,
             hora_utc=hora_utc,
-            canales=canales,
+            canales=canales[:1],
             fuente="agy_lineales",
             referencia=ref,
             tipo_evento=tipo_ev,

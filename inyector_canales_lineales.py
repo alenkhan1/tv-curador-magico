@@ -2,15 +2,12 @@
 """
 Inyector Quirúrgico de Canales Lineales Deportivos:
 Empareja los eventos confirmados de hoy con los streams lineales autorizados de la lista Xtream.
-- Aislamiento territorial estricto 1 a 1:
-  * Win Sports+, Win Sports, Caracol, RCN -> Colombia exclusivamente.
-  * ESPN CO, ESPN 2 CO -> Feeds Colombia (CO) exclusivamente.
-  * ESPN AR, ESPN 2 AR, ESPN Premium -> Feeds Argentina (AR) exclusivamente.
-  * ESPN 3, ESPN 4, ESPN 5, ESPN 6, ESPN 7 -> Feeds Pan-Regionales Suramérica.
-  * TyC Sports, TNT Sports -> Argentina exclusivamente.
-  * Eurosport 1, Eurosport 2, Teledeporte -> España exclusivamente.
-  * DAZN F1 y Sky Sports F1 -> Feeds autorizados de motor.
-- Exclusión total de feeds de USA, Brasil, México y apps OTT.
+- Jurisdicción exacta verificada contra el Explorador M3U:
+  * Win Sports+, Win Sports, Caracol, RCN -> Colombia (CO) exclusivamente.
+  * ESPN AR, ESPN 2 AR, ESPN 3 AR, ESPN Premium -> Feeds Argentina (AR) exclusivamente.
+  * ESPN 4, ESPN 5, ESPN 6, ESPN 7 -> Feeds Suramérica/Argentina (SUR/AR) exclusivamente (excluyendo MX y Brasil).
+  * DSports AR, DSports 2, DSports +, TyC Sports, TNT Sports -> Cono Sur / Argentina exclusivamente.
+  * Eurosport 1, Eurosport 2, Teledeporte, DAZN F1 -> España (ES) exclusivamente.
 """
 from __future__ import annotations
 
@@ -35,62 +32,64 @@ log = logging.getLogger("inyector_lineales")
 
 FAMILIAS_CANALES_HERMANOS: List[List[str]] = [
     ["WIN SPORTS+", "WIN SPORTS"],
-    ["DSPORTS 2", "DSPORTS +", "DSPORTS AR", "DSPORTS CO", "DSPORTS"],
+    ["DSPORTS 2", "DSPORTS +", "DSPORTS AR", "DSPORTS"],
     ["EUROSPORT 1", "EUROSPORT 2"],
-    ["ESPN PREMIUM ARGENTINA", "ESPN 2 AR", "ESPN 3 AR", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7", "ESPN AR"],
-    ["ESPN 2 CO", "ESPN 3 CO", "ESPN CO"],
+    ["ESPN PREMIUM ARGENTINA", "ESPN AR", "ESPN 2 AR", "ESPN 3 AR", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7"],
 ]
 
 def clasificar_canal_xtream(nombre_crudo: str, cat_cruda: str) -> Optional[Tuple[str, str]]:
     """
-    Clasifica un stream de Xtream en su canal canonico y su territorio exacto.
+    Clasifica un stream de Xtream en su canal canónico y su territorio exacto.
     Devuelve (canon, pais) o None.
     """
-    n = (nombre_crudo or "").upper()
-    c = (cat_cruda or "").upper()
+    n = (nombre_crudo or "").upper().strip()
+    c = (cat_cruda or "").upper().strip()
 
-    # Exclusiones de feeds ajenos y plataformas no deseadas
-    if any(k in c for k in ["USA", "BRASIL", "BRAZIL", "FRANCE", "UK", "GERMANY", "MOVIES", "SERIES", "ADULT"]):
+    # 1. Exclusiones globales de países y carpetas ajenas
+    if any(k in c for k in [
+        "USA", "BRASIL", "BRAZIL", "FRANCE", "UK", "GERMANY", "NETHERLANDS",
+        "CHILE", "PERU", "ECUADOR", "URUGUAY", "MEXICO", "MOVIES", "SERIES", "ADULT"
+    ]):
         return None
-    if any(k in n for k in ["USA:", "US|", "FR|", "BR|", "UK|", "DE|"]):
+    if any(k in n for k in [
+        "USA:", "US|", "FR|", "BR|", "UK :", "UK:", "DE|", "NL :", "NL:",
+        "FCL", "ESPN PE", "ESPN 2 PE", "ESPN EXTRA", "ESPN URUGUAY", "BT SPORT"
+    ]):
         return None
-    if any(k in n for k in ["INTERNACIONAL", "NOVELAS", "HD2", "HD 2", "RCN MAS"]):
+    if re.search(r"\b(MEX|MX|CH|PE|ECUADOR|URUGUAY|BRASIL|DEPORTES|ESPNU|NEWS)\b", n):
+        return None
+    if any(k in n for k in ["INTERNACIONAL", "NOVELAS", "HD2", "HD 2", "RCN MAS", "NUESTRA TELE"]):
         return None
 
-    # Win Sports (Colombia)
+    # 2. Colombia: Win Sports, Caracol y RCN
     if "WIN" in n and "SPORTS" in n:
         if "+" in n:
             return ("WIN SPORTS+", "CO")
         return ("WIN SPORTS", "CO")
 
-    # Caracol y RCN (Colombia)
     if "CARACOL" in n and ("COLOMBIA" in c or "CO" in n):
         return ("CARACOL", "CO")
     if "RCN" in n and ("COLOMBIA" in c or "CO" in n):
         return ("RCN", "CO")
 
-    # TyC Sports (Argentina)
+    # 3. Argentina: TyC Sports y TNT Sports
     if "TYC" in n and "SPORTS" in n:
         return ("TYC SPORTS", "AR")
 
-    # TNT Sports (Argentina)
-    if "TNT" in n and ("SPORT" in n or "PREMIUM" in n) and ("ARGENTINA" in c or "PREMIUM" in c):
-        if not any(k in n for k in ["CHILE", "BRASIL", "BRAZIL", "| CH"]):
-            return ("TNT SPORTS", "AR")
+    if "TNT" in n and ("SPORT" in n or "PREMIUM" in n) and ("ARGENTINA" in c or "PREMIUM" in c or "AR" in n):
+        return ("TNT SPORTS", "AR")
 
-    # DSPORTS
+    # 4. DSports (Priorizando Cono Sur / Argentina)
     if "DSPORTS" in n or "DIRECTV SPORTS" in n:
-        if "2" in n:
-            return ("DSPORTS 2", "SUR")
-        if "+" in n:
-            return ("DSPORTS +", "SUR")
         if "CO" in n or "COLOMBIA" in c:
-            return ("DSPORTS CO", "CO")
-        if "AR" in n or "ARGENTINA" in c:
-            return ("DSPORTS AR", "AR")
-        return ("DSPORTS", "SUR")
+            return None
+        if "2" in n:
+            return ("DSPORTS 2", "AR")
+        if "+" in n or "PLUS" in n:
+            return ("DSPORTS +", "AR")
+        return ("DSPORTS AR", "AR")
 
-    # España
+    # 5. España: Eurosport, Teledeporte y DAZN F1
     if any(k in c for k in ["ESPAÑA", "ESPANA", "SPAIN"]):
         if "EUROSPORT" in n:
             if "2" in n:
@@ -101,44 +100,46 @@ def clasificar_canal_xtream(nombre_crudo: str, cat_cruda: str) -> Optional[Tuple
         if "DAZN" in n and "F1" in n:
             return ("DAZN F1", "ES")
 
-    # ESPN
+    # 6. Familia ESPN: Exclusivamente Feed Cono Sur / Argentina (AR / SUR)
     if "ESPN" in n:
-        if any(k in n for k in ["MEX", "MX", "USA", "DEPORTES", "NEWS", "ESPNU"]):
-            return None
+        es_marcador_ar = bool(re.search(r"\b(AR|ARG)\b", n)) or ("ARGENTINA" in c)
+        es_carpeta_premium_o_ar = ("DEPORTES PREMIUM" in c) or ("ARGENTINA" in c)
 
         if "PREMIUM" in n:
-            if any(k in n for k in ["AR", "ARG"]) or "ARGENTINA" in c:
+            if es_marcador_ar:
                 return ("ESPN PREMIUM ARGENTINA", "AR")
             return None
 
         if "ESPN 2" in n or "ESPN2" in n:
-            if any(k in n for k in ["| AR", "| ARG", "ARG", "AR "]) or "ARGENTINA" in c:
+            if es_marcador_ar:
                 return ("ESPN 2 AR", "AR")
-            if "CO" in n or "COLOMBIA" in c:
-                return ("ESPN 2 CO", "CO")
-            return ("ESPN 2", "SUR")
+            return None
 
         if "ESPN 3" in n or "ESPN3" in n:
-            # ESPN 3 es pan-regional sudamericano
-            return ("ESPN 3", "SUR")
+            if es_marcador_ar:
+                return ("ESPN 3 AR", "AR")
+            return None
 
-        for num in ["4", "5", "6", "7"]:
+        if "ESPN 4" in n or "ESPN4" in n:
+            if es_marcador_ar or "SUR" in n:
+                return ("ESPN 4", "AR")
+            return None
+
+        for num in ["5", "6", "7"]:
             if f"ESPN {num}" in n or f"ESPN{num}" in n:
-                return (f"ESPN {num}", "SUR")
+                if es_carpeta_premium_o_ar or "SUR" in n or es_marcador_ar:
+                    return (f"ESPN {num}", "AR")
+                return None
 
-        # ESPN 1 / basico
-        if "ESPN 1" in n or "ESPN" in n:
-            if any(k in n for k in ["| AR", "| ARG", "ARG", "AR "]) or "ARGENTINA" in c:
-                return ("ESPN AR", "AR")
-            if "CO" in n or "COLOMBIA" in c:
-                return ("ESPN CO", "CO")
-            return ("ESPN", "SUR")
+        # ESPN 1 / básico: Exigir explícitamente marcador AR o ARG (nunca CO, CH, PE ni MEX)
+        if ("ESPN 1" in n or "ESPN" in n) and es_marcador_ar:
+            return ("ESPN AR", "AR")
 
     return None
 
 def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, str]]]:
     """
-    Agrupa los streams de Xtream bajo sus nombres canonicos respetando filtros territoriales estrictos.
+    Agrupa los streams de Xtream bajo sus nombres canónicos respetando filtros territoriales estrictos.
     """
     indice: Dict[str, List[Dict[str, str]]] = {}
 
@@ -171,12 +172,6 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
         }
         indice.setdefault(canon, []).append(item)
 
-    # Aliases pan-regionales para ESPN 3 (sirve a Colombia y Argentina sin conflicto)
-    if "ESPN 3" in indice:
-        indice.setdefault("ESPN 3 CO", indice["ESPN 3"])
-        indice.setdefault("ESPN 3 AR", indice["ESPN 3"])
-
-    # Ordenar por calidad
     for canon in indice:
         indice[canon].sort(key=lambda x: x.get("_prioridad", 0), reverse=True)
         for item in indice[canon]:
@@ -186,44 +181,16 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
     log.info("Canales lineales Xtream indexados con aislamiento territorial: %s", metricas)
     return indice
 
-def _deducir_territorio_evento(ev: EventoAgenda) -> str:
-    """
-    Deduce con precisión el territorio de la fuente de guía ('CO', 'AR', 'ES' o 'SUR')
-    para asignar exclusivamente el feed nacional correspondiente sin mezclar países.
-    """
-    fuente_low = (getattr(ev, "fuente", "") or "").lower()
-    txt_crudo = (getattr(ev, "texto_original_crudo", "") or "").upper()
-    canales_up = [c.upper() for c in (ev.canales or [])]
-
-    # Indicadores explícitos de Colombia
-    if any(k in fuente_low for k in ["_co", "colombia", "portada", "win"]):
-        return "CO"
-    if any(c in ["WIN SPORTS+", "WIN SPORTS", "CARACOL", "RCN", "ESPN CO", "ESPN 2 CO", "DSPORTS CO"] for c in canales_up):
-        return "CO"
-
-    # Indicadores explícitos de Argentina
-    if any(k in fuente_low for k in ["_ar", "argentina", "tyc", "tnt"]):
-        return "AR"
-    if "(ARG)" in txt_crudo or "HS (ARG)" in txt_crudo:
-        return "AR"
-    if any(c in ["TNT SPORTS", "TYC SPORTS", "ESPN PREMIUM ARGENTINA", "ESPN AR", "ESPN 2 AR", "DSPORTS AR"] for c in canales_up):
-        return "AR"
-
-    # Indicadores explícitos de España
-    if any(k in fuente_low for k in ["espana", "rtve", "teledeporte", "eurosport"]):
-        return "ES"
-
-    # Por defecto en producto America/Bogota, priorizar feed CO sobre AR
-    return "CO"
-
 def inyectar_eventos_lineales(
     agenda_hoy: List[EventoAgenda],
     indice_canales: Dict[str, List[Dict[str, str]]],
     zona_horaria: str = "America/Bogota"
 ) -> List[Dict[str, Any]]:
     """
-    Cruza los eventos confirmados de la Agenda Maestra con los streams lineales de Xtream,
-    garantizando que cada evento se conecte unicamente con los streams de su territorio exacto.
+    Cruza los eventos confirmados de la Agenda Maestra con los streams lineales de Xtream:
+    - Toda mención a ESPN, ESPN 2, ESPN 3 o DSports se conecta al Feed Cono Sur (Argentina).
+    - Permite combinar canales de distintas regiones (ej. Teledeporte ES + RCN CO + ESPN AR),
+      pero jamás mezcla dos canales distintos de la misma cadena en un mismo evento.
     """
     tz_prod = obtener_tz(zona_horaria)
     eventos_inyectados = []
@@ -234,26 +201,21 @@ def inyectar_eventos_lineales(
             log.info("Descartando evento lineal no vivo / aplazado desde raíz: '%s' (%s)", ev.titulo, txt_crudo)
             continue
 
-        territorio_ev = _deducir_territorio_evento(ev)
         canales_a_procesar = []
-
         for c in ev.canales:
             cu = c.upper().strip()
-            if cu == "ESPN":
-                canon_esp = "ESPN AR" if territorio_ev == "AR" else "ESPN CO"
-                canales_a_procesar.append(canon_esp if canon_esp in indice_canales else "ESPN")
-            elif cu == "ESPN 2":
-                canon_esp2 = "ESPN 2 AR" if territorio_ev == "AR" else "ESPN 2 CO"
-                canales_a_procesar.append(canon_esp2 if canon_esp2 in indice_canales else "ESPN 2")
-            elif cu == "ESPN 3":
-                canales_a_procesar.append("ESPN 3")
-            elif cu == "DSPORTS":
-                canon_dsp = "DSPORTS AR" if territorio_ev == "AR" else "DSPORTS CO"
-                canales_a_procesar.append(canon_dsp if canon_dsp in indice_canales else "DSPORTS")
+            if cu in {"ESPN", "ESPN 1", "ESPN CO", "ESPN AR"}:
+                canales_a_procesar.append("ESPN AR")
+            elif cu in {"ESPN 2", "ESPN 2 CO", "ESPN 2 AR"}:
+                canales_a_procesar.append("ESPN 2 AR")
+            elif cu in {"ESPN 3", "ESPN 3 CO", "ESPN 3 AR"}:
+                canales_a_procesar.append("ESPN 3 AR")
+            elif cu in {"DSPORTS", "DSPORTS CO", "DSPORTS AR"}:
+                canales_a_procesar.append("DSPORTS AR")
             else:
                 canales_a_procesar.append(cu)
 
-        # Desambiguacion de Canales Hermanos Mutuamente Excluyentes
+        # Desambiguación estricta: máximo 1 canal por familia de cadena
         canales_desambiguados = []
         familias_vistas = set()
         for c_u in canales_a_procesar:
@@ -267,13 +229,14 @@ def inyectar_eventos_lineales(
                     familias_vistas.add(familia_encontrada)
                     canales_desambiguados.append(c_u)
             else:
-                canales_desambiguados.append(c_u)
+                if c_u not in canales_desambiguados:
+                    canales_desambiguados.append(c_u)
         canales_a_procesar = canales_desambiguados
 
         fuentes_unicas = []
         vistas = set()
         canales_usados = []
-        max_por_canal = 3 if len(canales_a_procesar) > 1 else 5
+        max_por_canal = 3
 
         for canon in canales_a_procesar:
             if canon in indice_canales:
