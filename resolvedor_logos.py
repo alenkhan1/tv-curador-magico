@@ -202,6 +202,7 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "ROLEX SHANGHAI MASTERS": f"{REPO_ASSETS_BASE}/atp.png",
     "SHANGHAI MASTERS": f"{REPO_ASSETS_BASE}/atp.png",
     "WTA": f"{REPO_ASSETS_BASE}/wta.png",
+    "WUHAN OPEN": f"{REPO_ASSETS_BASE}/wta.png",
     "JAPAN OPEN": f"{REPO_ASSETS_BASE}/atp.png",
     "CHINA OPEN": f"{REPO_ASSETS_BASE}/wta.png",
     "PREMIER PADEL": f"{REPO_ASSETS_BASE}/premier_padel.png",
@@ -739,12 +740,32 @@ def son_torneos_compatibles(torneo_norm: str, clave: str, pais_deducido: str = "
     return mods_torneo == mods_clave
 
 def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
-    """Verifica de forma estricta e invariable que el logo no pertenezca a otra disciplina deportiva."""
+    """Verifica de forma estricta e invariable que el logo o escudo no pertenezca a otra disciplina deportiva."""
     if not url or not categoria:
         return True
     url_low = url.lower()
     cat_norm = _normalizar(categoria)
 
+    # 1. Validación estricta de rutas de API-Sports (tanto leagues como teams)
+    RUTAS_API_SPORTS = [
+        ("/football/", {"FUTBOL", "FUTBOL SALA", "SOCCER"}),
+        ("/basketball/", {"BALONCESTO", "BASKETBALL", "BASKET", "NBA", "WNBA"}),
+        ("/nba/", {"BALONCESTO", "BASKETBALL", "BASKET", "NBA", "WNBA"}),
+        ("/baseball/", {"BEISBOL", "BASEBALL", "MLB"}),
+        ("/handball/", {"BALONMANO", "HANDBALL"}),
+        ("/hockey/", {"HOCKEY", "NHL"}),
+        ("/rugby/", {"RUGBY"}),
+        ("/american-football/", {"FUTBOL AMERICANO", "NFL", "AFL"}),
+        ("/afl/", {"FUTBOL AMERICANO", "NFL", "AFL"}),
+        ("/volleyball/", {"VOLEIBOL", "VOLLEYBALL"}),
+        ("/formula-1/", {"MOTOR", "FORMULA 1", "F1", "MOTOGP"}),
+        ("/mma/", {"COMBATE", "MMA", "BOXEO", "UFC"}),
+    ]
+    for ruta, cats_validas in RUTAS_API_SPORTS:
+        if ruta in url_low and cat_norm not in cats_validas:
+            return False
+
+    # 2. Logos exclusivos de Torneos de Fútbol / Soccer
     LOGOS_FUTBOL = [
         "fifa", "uefa", "conmebol", "concacaf", "laliga", "premier_league", "serie_a",
         "bundesliga", "ligue_1", "libertadores", "sudamericana", "champions_league",
@@ -797,6 +818,7 @@ def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
             return False
 
     return True
+    
 
 def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False, local: str = "", visitante: str = "") -> str:
     """Resuelve el logo oficial del torneo con precedencia estricta por limites de palabra (\b), compatibilidad deportiva y desambiguacion geografica por participantes."""
@@ -1015,42 +1037,40 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
             if es_seleccion is True or not es_liga_domestica:
                 return flag_url
 
-    # 1. Catálogo maestro permanente de equipos en disco (Prioridad Absoluta + variantes normalizadas)
+    # 1. Catálogo maestro permanente de equipos en disco (filtrando por compatibilidad de deporte)
     cat_equipos = _obtener_catalogo_equipos()
     variantes = _generar_variantes_busqueda_equipo(equipo_limpio)
     for var in variantes:
         k_var = f"equipo_{_normalizar(var)}"
         if k_var in cat_equipos and cat_equipos[k_var] and not es_logo_basura(cat_equipos[k_var]):
-            if k_var != clave_cache:
-                _guardar_catalogo_equipos({clave_cache: cat_equipos[k_var]})
-            return cat_equipos[k_var]
+            if es_logo_compatible_con_categoria(cat_equipos[k_var], deporte):
+                return cat_equipos[k_var]
 
     # Limpieza de ranking universitario americano ("24 Harvard" -> "Harvard")
     equipo_sin_ranking = re.sub(r"^\d+\s+", "", equipo_limpio).strip()
     if equipo_sin_ranking != equipo_limpio:
         clave_sin_rank = f"equipo_{_normalizar(equipo_sin_ranking)}"
         if clave_sin_rank in cat_equipos and cat_equipos[clave_sin_rank] and not es_logo_basura(cat_equipos[clave_sin_rank]):
-            cat_equipos[clave_cache] = cat_equipos[clave_sin_rank]
-            _guardar_catalogo_equipos({clave_cache: cat_equipos[clave_sin_rank]})
-            return cat_equipos[clave_cache]
+            if es_logo_compatible_con_categoria(cat_equipos[clave_sin_rank], deporte):
+                return cat_equipos[clave_sin_rank]
 
-    # Búsqueda por inclusión de raíz en catálogo maestro de equipos (>= 5 caracteres)
+    # Búsqueda por inclusión de raíz en catálogo maestro de equipos (>= 5 caracteres y mismo deporte)
     for var in variantes:
         var_n = _normalizar(var)
         if len(var_n) >= 5:
             patron_v = rf"\b{re.escape(var_n)}\b"
             for k_cat, url_cat in cat_equipos.items():
-                if not url_cat or es_logo_basura(url_cat):
+                if not url_cat or es_logo_basura(url_cat) or not es_logo_compatible_con_categoria(url_cat, deporte):
                     continue
                 nom_cat = k_cat.replace("equipo_", "")
                 if re.search(patron_v, nom_cat) or (len(nom_cat) >= 5 and re.search(rf"\b{re.escape(nom_cat)}\b", var_n)):
-                    _guardar_catalogo_equipos({clave_cache: url_cat})
                     return url_cat
 
     # 2. Caché previo en disco
     cache = _cargar_cache()
     if clave_cache in cache and cache[clave_cache] and not es_logo_basura(cache[clave_cache]):
-        return cache[clave_cache]
+        if es_logo_compatible_con_categoria(cache[clave_cache], deporte):
+            return cache[clave_cache]
 
     if not permitir_red:
         return ""

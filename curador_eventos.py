@@ -22,6 +22,7 @@ import os
 import random
 import re
 import ssl
+import subprocess
 import sys
 import time
 import urllib.parse
@@ -53,6 +54,7 @@ from conector_api_sports import (
     construir_indice_fixtures,
     emparejar_con_api_sports,
     envolver_proxy_wsrv,
+    extraer_marcadores_division,
     normalizar_clave,
 )
 
@@ -389,14 +391,18 @@ def procesar_streams_eventos_xtream(
             h = 0
         hora_str = f"{h:02d}:{mi:02d}"
 
+        div_stream = extraer_marcadores_division(f"{nombre} {torneo}")
         coincide_agenda = None
         for ev in agenda_hoy:
             if local and visitante and ev.local and ev.visitante:
+                div_ev = extraer_marcadores_division(f"{ev.titulo} {ev.torneo} {ev.local} {ev.visitante}")
+                if div_stream != div_ev:
+                    continue
                 l_u = normalizar_texto(local)
                 v_u = normalizar_texto(visitante)
                 ev_l = normalizar_texto(ev.local)
                 ev_v = normalizar_texto(ev.visitante)
-                if (l_u in ev_l or ev_l in l_u) and (v_u in ev_v or ev_v in v_n if 'v_n' in locals() else (v_u in ev_v or ev_v in v_u)):
+                if (l_u in ev_l or ev_l in l_u) and (v_u in ev_v or ev_v in v_u):
                     coincide_agenda = ev
                     break
             elif tipo == "circuito":
@@ -419,7 +425,8 @@ def procesar_streams_eventos_xtream(
             cat = deporte
             tor = torneo
 
-        clave_duelo = f"{normalizar_texto(local)}_vs_{normalizar_texto(visitante)}" if local and visitante else ""
+        div_tag = "_".join(sorted(div_stream))
+        clave_duelo = f"{normalizar_texto(local)}_vs_{normalizar_texto(visitante)}_{div_tag}_{h // 4}" if local and visitante else ""
         clave_circuito = f"{normalizar_texto(titulo)}_{hora_utc[:13]}" if not clave_duelo else ""
 
         if clave_duelo and clave_duelo in mapa_duelos_existentes:
@@ -654,12 +661,17 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
             ev["logo_torneo"] = ""
 
         if loc:
-            ev["logo_local"] = ev.get("logo_local") or resolver_logo_equipo(loc, cat, tor) or ""
+            loc_actual = ev.get("logo_local") or ""
+            if not loc_actual or es_logo_basura(loc_actual) or not es_logo_compatible_con_categoria(loc_actual, cat):
+                ev["logo_local"] = resolver_logo_equipo(loc, cat, tor) or ""
         if vis:
-            ev["logo_visitante"] = ev.get("logo_visitante") or resolver_logo_equipo(vis, cat, tor) or ""
+            vis_actual = ev.get("logo_visitante") or ""
+            if not vis_actual or es_logo_basura(vis_actual) or not es_logo_compatible_con_categoria(vis_actual, cat):
+                ev["logo_visitante"] = resolver_logo_equipo(vis, cat, tor) or ""
+
         ev["banner"] = ev.get("banner") or ev["logo_torneo"]
         if not es_logo_compatible_con_categoria(ev.get("banner", ""), cat):
-            ev["banner"] = ev["logo_torneo", ""] if isinstance(ev.get("logo_torneo"), dict) else ev.get("logo_torneo", "")
+            ev["banner"] = ev.get("logo_torneo", "") if not isinstance(ev.get("logo_torneo"), dict) else ""
 
     # Validar unicidad estricta de IDs
     ids_vistos = set()
@@ -701,6 +713,33 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     (REPO_DIR / "eventos_descartados.json").write_text(json.dumps(descartados, ensure_ascii=False, indent=2), encoding="utf-8")
     META_FILE.write_text(json.dumps(salida_final["metricas"], ensure_ascii=False, indent=2), encoding="utf-8")
     guardar_cache_logos()
+
+    # Sincronización automática con GitHub para que la App Android TV reciba eventos_hoy.json al instante
+    if os.environ.get("NO_GIT_PUSH") != "1":
+        try:
+            archivos_git = [
+                "eventos_hoy.json",
+                "eventos_descartados.json",
+                "meta_curador.json",
+                "catalogo_maestro_equipos.json",
+                "catalogo_maestro_torneos.json",
+                "logos_cache.json",
+            ]
+            archivos_existentes = [a for a in archivos_git if (REPO_DIR / a).exists()]
+            subprocess.run(["git", "add"] + archivos_existentes, cwd=REPO_DIR, check=False, timeout=15)
+            commit_res = subprocess.run(
+                ["git", "commit", "-m", f"chore: actualizar eventos_hoy ({fecha_hoy_iso}) [skip ci]"],
+                cwd=REPO_DIR, capture_output=True, text=True, timeout=15
+            )
+            if commit_res.returncode == 0:
+                subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=REPO_DIR, check=False, timeout=25)
+                push_res = subprocess.run(["git", "push", "origin", "main"], cwd=REPO_DIR, capture_output=True, text=True, timeout=30)
+                if push_res.returncode == 0:
+                    log.info("Cambios de eventos_hoy.json sincronizados y subidos a GitHub exitosamente.")
+                else:
+                    log.warning("No se pudo hacer git push: %s", push_res.stderr)
+        except Exception as e:
+            log.warning("Error sincronizando con GitHub: %s", e)
 
     log.info("=== CURACION COMPLETADA CON EXITO ===")
     log.info("Eventos publicados: %d | Descartados: %d | Xtream procesada hoy: %s",
