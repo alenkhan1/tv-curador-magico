@@ -2,7 +2,12 @@
   {
     "nombre": "12:25  | The Golazo Show | UEFA Champions League",
     "id_xtream": "1729588",
-    "razon": "programa_no_vivo_o_aplazado"
+    "razon": "programa_no_vivo_o_falso_circuito"
+  },
+  {
+    "nombre": "13:40  | UCL al instante | UEFA Champions League",
+    "id_xtream": "1729597",
+    "razon": "programa_no_vivo_o_falso_circuito"
   },
   {
     "nombre": "MLB 05 | Milwaukee Brewers at Philadelphia Phillies | 6:40 PM ET | 9.23",
@@ -70,6 +75,41 @@
     "razon": "fecha_ajena (8.29)"
   },
   {
+    "nombre": "NBA 01 | Brooklyn Nets at Miami Heat | 7:30 PM ET | 10.14",
+    "id_xtream": "597676",
+    "razon": "programa_no_vivo_o_falso_circuito"
+  },
+  {
+    "nombre": "NBA 02 | Charlotte Hornets at Boston Celtics | 7:30 PM ET | 10.14",
+    "id_xtream": "597677",
+    "razon": "programa_no_vivo_o_falso_circuito"
+  },
+  {
+    "nombre": "NBA 03 | Phoenix Suns at San Antonio Spurs | 8:00 PM ET | 10.14",
+    "id_xtream": "597678",
+    "razon": "programa_no_vivo_o_falso_circuito"
+  },
+  {
+    "nombre": "NBA 04 | New Orleans Pelicans at Dallas Mavericks | 8:00 PM ET | 10.14",
+    "id_xtream": "597679",
+    "razon": "programa_no_vivo_o_falso_circuito"
+  },
+  {
+    "nombre": "NBA 05 | Chicago Bulls at Milwaukee Bucks | 8:00 PM ET | 10.14",
+    "id_xtream": "597680",
+    "razon": "programa_no_vivo_o_falso_circuito"
+  },
+  {
+    "nombre": "NBA 06 | Detroit Pistons at Minnesota Timberwolves | 8:00 PM ET | 10.14",
+    "id_xtream": "597681",
+    "razon": "programa_no_vivo_o_falso_circuito"
+  },
+  {
+    "nombre": "NBA 07 | Denver Nuggets at Los Angeles Clippers | 10:30 PM ET | 10.14",
+    "id_xtream": "597682",
+    "razon": "programa_no_vivo_o_falso_circuito"
+  },
+  {
     "nombre": "NHL 12 | Tampa Bay Lightning at New York Islanders | 7:30 PM ET | 10.10",
     "id_xtream": "1727385",
     "razon": "fecha_ajena (10.10)"
@@ -107,7 +147,7 @@
   {
     "nombre": "21:00  | AEW Collision + Countdown to WrestleDream 2026 | Lucha",
     "id_xtream": "1729567",
-    "razon": "programa_no_vivo_o_aplazado"
+    "razon": "programa_no_vivo_o_falso_circuito"
   },
   {
     "nombre": "WNBA 02 | Golden State Valkyries at Las Vegas Aces | 9:30 PM ET | 10.09",
@@ -195,28 +235,84 @@
     "razon": "fecha_ajena (11.26)"
   },
   {
-    "id": "lineal_win_sports_d570c898",
+    "id": "lineal_espn_ar_29f5925a",
+    "agenda_id": "",
+    "titulo": "H. Shi vs L. Fernández",
+    "torneo": "WTA Wuhan",
+    "categoria": "Tenis",
+    "tipo_evento": "duelo",
+    "equipo_local": "H. Shi",
+    "equipo_visitante": "L. Fernández",
+    "subtitulo": "WTA Wuhan",
+    "referencia": "WTA Wuhan",
+    "hora_utc": "2026-10-14T14:10:00Z",
+    "hora_local_producto": "09:10",
+    "duracion_min": 180,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+    "logo_local": "",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwwtw4v1694410008.png&w=400&output=webp&trim=10",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "futbolenvivo_ar"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "ESPN 1 FHD | ARG",
+        "id_xtream": "591975",
+        "canal_lineal": "ESPN AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "ESPN FHD | AR",
+        "id_xtream": "712743",
+        "canal_lineal": "ESPN AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "ESPN 1 HD | AR",
+        "id_xtream": "591974",
+        "canal_lineal": "ESPN AR",
+        "pais": "AR"
+      }
+    ],
+    "canales_candidatos": [
+      "ESPN AR"
+    ],
+    "texto_original_crudo": "11:10 WTA Wuhan 2ª Ronda H. Shi L. Fernández WTA TV ESPN Disney+ Premium",
+    "titulo_original_crudo": "11:10 WTA Wuhan 2ª Ronda H. Shi L. Fernández WTA TV ESPN Disney+ Premium",
+    "ronda": "",
+    "motivo_descarte": "Incoherencia de huso horario (repetición encubierta): En Wuhan (UTC+8) las 09:10 hora Bogotá corresponden a las 22:10 de la noche y este turno/partido ya culminó en la sesión diurna."
+  },
+  {
+    "id": "lineal_win_sportsplus_d6387ee5",
     "agenda_id": "",
     "titulo": "Santa Fe vs Jaguares FC",
-    "torneo": "Fecha 7, Estadio El Campín",
+    "torneo": "Santa Fe vs. Jaguares FC",
     "categoria": "Fútbol",
     "tipo_evento": "duelo",
     "equipo_local": "Santa Fe",
     "equipo_visitante": "Jaguares FC",
-    "subtitulo": "Fecha 7, Estadio El Campín",
-    "referencia": "Fecha 7, Estadio El Campín",
+    "subtitulo": "Santa Fe vs. Jaguares FC",
+    "referencia": "Santa Fe vs. Jaguares FC",
     "hora_utc": "2026-10-14T06:30:00Z",
     "hora_local_producto": "01:30",
     "duracion_min": 130,
     "logo_torneo": "",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmw7wt31727451360.png&w=400&output=webp",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1139.png&w=400&output=webp&trim=10",
     "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fr7ph2b1641767883.png&w=400&output=webp",
     "banner": "",
     "tier": 2,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_win_sports"
+      "mitv_win_sportsplus"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
@@ -224,61 +320,55 @@
     "puntuacion_confianza": 0.95,
     "fuentes": [
       {
-        "nombre": "WIN SPORTS FHD",
-        "id_xtream": "1331804",
-        "canal_lineal": "WIN SPORTS",
+        "nombre": "Win Sports + FHD",
+        "id_xtream": "13771",
+        "canal_lineal": "WIN SPORTS+",
         "pais": "CO"
       },
       {
-        "nombre": "Win Sports HD",
-        "id_xtream": "13767",
-        "canal_lineal": "WIN SPORTS",
+        "nombre": "WIN SPORTS+ FHD",
+        "id_xtream": "1331807",
+        "canal_lineal": "WIN SPORTS+",
         "pais": "CO"
       },
       {
-        "nombre": "WIN SPORTS HD",
-        "id_xtream": "1331803",
-        "canal_lineal": "WIN SPORTS",
-        "pais": "CO"
-      },
-      {
-        "nombre": "Win Sports SD",
-        "id_xtream": "13766",
-        "canal_lineal": "WIN SPORTS",
+        "nombre": "Win Sports + HD",
+        "id_xtream": "13769",
+        "canal_lineal": "WIN SPORTS+",
         "pais": "CO"
       }
     ],
     "canales_candidatos": [
-      "WIN SPORTS"
+      "WIN SPORTS+"
     ],
     "texto_original_crudo": "Santa Fe vs. Jaguares FC. Fecha 7, Estadio El Campín. Vive los partidos de la 103º edición de la Categoría Primera A de fútbol profesional colombiano. Los amantes del fútbol podrán disfrutar de una competición que reune a los mejores 20 equipos a nivel nacional",
     "titulo_original_crudo": "Santa Fe vs. Jaguares FC. Fecha 7, Estadio El Campín. Vive los partidos de la 103º edición de la Categoría Primera A de fútbol profesional colombiano. Los amantes del fútbol podrán disfrutar de una competición que reune a los mejores 20 equipos a nivel nacional",
     "ronda": "",
-    "motivo_descarte": "repeticion_diferido_horario"
+    "motivo_descarte": "Repetición diferida de la Liga Colombiana emitida en la madrugada (01:30 hora Bogotá)."
   },
   {
-    "id": "lineal_win_sports_bf2a6256",
+    "id": "lineal_win_sportsplus_fd216654",
     "agenda_id": "",
-    "titulo": "Atl. Nacional vs Ind Medell",
-    "torneo": "Atl. Nacional vs Ind Medell",
+    "titulo": "Atl. Nacional vs Ind Medellín Cuartos de",
+    "torneo": "Atl. Nacional vs. Ind Medellín",
     "categoria": "Fútbol",
     "tipo_evento": "duelo",
     "equipo_local": "Atl. Nacional",
-    "equipo_visitante": "Ind Medell",
-    "subtitulo": "Atl. Nacional vs Ind Medell • Cuartos de final",
-    "referencia": "Cuartos de final",
+    "equipo_visitante": "Ind Medellín Cuartos de",
+    "subtitulo": "Atl. Nacional vs. Ind Medellín",
+    "referencia": "Atl. Nacional vs. Ind Medellín",
     "hora_utc": "2026-10-14T08:30:00Z",
     "hora_local_producto": "03:30",
     "duracion_min": 130,
     "logo_torneo": "",
     "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6akbge1759013366.png&w=400&output=webp&trim=10",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fmzezh31783226830.png&w=400&output=webp",
     "banner": "",
     "tier": 2,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_win_sports"
+      "mitv_win_sportsplus"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
@@ -286,49 +376,43 @@
     "puntuacion_confianza": 0.95,
     "fuentes": [
       {
-        "nombre": "WIN SPORTS FHD",
-        "id_xtream": "1331804",
-        "canal_lineal": "WIN SPORTS",
+        "nombre": "Win Sports + FHD",
+        "id_xtream": "13771",
+        "canal_lineal": "WIN SPORTS+",
         "pais": "CO"
       },
       {
-        "nombre": "Win Sports HD",
-        "id_xtream": "13767",
-        "canal_lineal": "WIN SPORTS",
+        "nombre": "WIN SPORTS+ FHD",
+        "id_xtream": "1331807",
+        "canal_lineal": "WIN SPORTS+",
         "pais": "CO"
       },
       {
-        "nombre": "WIN SPORTS HD",
-        "id_xtream": "1331803",
-        "canal_lineal": "WIN SPORTS",
-        "pais": "CO"
-      },
-      {
-        "nombre": "Win Sports SD",
-        "id_xtream": "13766",
-        "canal_lineal": "WIN SPORTS",
+        "nombre": "Win Sports + HD",
+        "id_xtream": "13769",
+        "canal_lineal": "WIN SPORTS+",
         "pais": "CO"
       }
     ],
     "canales_candidatos": [
-      "WIN SPORTS"
+      "WIN SPORTS+"
     ],
     "texto_original_crudo": "Atl. Nacional vs. Ind Medellín. Cuartos de final. Vive las emociones de la Copa BetPlay Dimayor",
     "titulo_original_crudo": "Atl. Nacional vs. Ind Medellín. Cuartos de final. Vive las emociones de la Copa BetPlay Dimayor",
-    "ronda": "Cuartos de final",
-    "motivo_descarte": "repeticion_diferido_horario"
+    "ronda": "",
+    "motivo_descarte": "Repetición diferida de la Copa BetPlay en horario de madrugada (03:30 hora Bogotá)."
   },
   {
-    "id": "lineal_espn_co_20e976f3",
+    "id": "lineal_espn_ar_c4ab51b5",
     "agenda_id": "",
-    "titulo": "ATP World Tour Masters 1000 • Rolex Shanghai Masters",
-    "torneo": "ATP World Tour Masters 1000 • Rolex Shanghai Masters",
+    "titulo": "ATP World Tour Masters 1000",
+    "torneo": "ATP World Tour Masters 1000",
     "categoria": "Tenis",
     "tipo_evento": "circuito",
     "equipo_local": "",
     "equipo_visitante": "",
-    "subtitulo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China",
-    "referencia": "ATP World Tour Masters 1000 - Rolex Shanghai Masters",
+    "subtitulo": "Octavos de Final",
+    "referencia": "Rolex Shanghai Masters • Octavos de Final, Qi Zhong Tennis Center, Shanghai, China • ATP World Tour Masters 1000 - Rolex Shanghai Masters",
     "hora_utc": "2026-10-14T14:00:00Z",
     "hora_local_producto": "09:00",
     "duracion_min": 180,
@@ -340,19 +424,13 @@
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_espn_co"
+      "mitv_espn_ar"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
     "confianza": "alta",
     "puntuacion_confianza": 0.95,
     "fuentes": [
-      {
-        "nombre": "ESPN 1 CO FHD",
-        "id_xtream": "591976",
-        "canal_lineal": "ESPN CO",
-        "pais": "CO"
-      },
       {
         "nombre": "ESPN 1 FHD | ARG",
         "id_xtream": "591975",
@@ -373,49 +451,42 @@
       }
     ],
     "canales_candidatos": [
-      "ESPN CO",
       "ESPN AR"
     ],
     "texto_original_crudo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
     "titulo_original_crudo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
-    "ronda": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China",
-    "motivo_descarte": "repeticion_diferido_horario"
+    "ronda": "Octavos de Final",
+    "motivo_descarte": "Incoherencia de huso horario (repetición encubierta): La jornada en Shanghái (UTC+8) a las 09:00 hora Bogotá ya ha concluido (22:00 hora local en China)."
   },
   {
-    "id": "lineal_espn_co_411b1939",
+    "id": "lineal_espn_ar_49960ff3",
     "agenda_id": "",
-    "titulo": "Calvo vs S",
-    "torneo": "Calvo vs S",
+    "titulo": "Calvo vs Sánchez",
+    "torneo": "Calvo vs Sánchez",
     "categoria": "Pádel",
     "tipo_evento": "duelo",
     "equipo_local": "Calvo",
-    "equipo_visitante": "S",
-    "subtitulo": "Calvo vs S • Final",
+    "equipo_visitante": "Sánchez",
+    "subtitulo": "Calvo vs Sánchez • Final",
     "referencia": "Final femenina",
     "hora_utc": "2026-10-14T16:40:00Z",
     "hora_local_producto": "11:40",
     "duracion_min": 130,
-    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9899.png&w=400&output=webp&trim=10",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fop4nx31784052943.png&w=400&output=webp&trim=10",
-    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+    "logo_torneo": "",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkrh52y1735230576.png&w=400&output=webp&trim=10",
+    "logo_visitante": "",
+    "banner": "",
     "tier": 2,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_espn_co"
+      "mitv_espn_ar"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
     "confianza": "alta",
     "puntuacion_confianza": 0.95,
     "fuentes": [
-      {
-        "nombre": "ESPN 1 CO FHD",
-        "id_xtream": "591976",
-        "canal_lineal": "ESPN CO",
-        "pais": "CO"
-      },
       {
         "nombre": "ESPN 1 FHD | ARG",
         "id_xtream": "591975",
@@ -436,37 +507,36 @@
       }
     ],
     "canales_candidatos": [
-      "ESPN CO",
       "ESPN AR"
     ],
     "texto_original_crudo": "Fernández / Calvo vs. Sánchez / Ustero. Final femenina. Vive toda la emoción de los partidos que son parte del torneo Premier Padel Alemania en su edición del 2026. Disfruta de los enfrentamientos y conoce a los talentos que participan para llevarse el título",
     "titulo_original_crudo": "Fernández / Calvo vs. Sánchez / Ustero. Final femenina. Vive toda la emoción de los partidos que son parte del torneo Premier Padel Alemania en su edición del 2026. Disfruta de los enfrentamientos y conoce a los talentos que participan para llevarse el título",
     "ronda": "Final",
-    "motivo_descarte": "partido_jugado_ayer"
+    "motivo_descarte": "Repetición diferida de una final de Premier Padel ya disputada previamente."
   },
   {
-    "id": "lineal_espn_co_ccd67bab",
+    "id": "lineal_eurosport_1_fa653d10",
     "agenda_id": "",
-    "titulo": "Fecha 2, Raiffeisen Arena - LASK (Aut) vs. Liverpool (Ing)",
-    "torneo": "Fecha 2, Raiffeisen Arena",
-    "categoria": "Fútbol",
+    "titulo": "Benelux Tour",
+    "torneo": "Benelux Tour",
+    "categoria": "Ciclismo",
     "tipo_evento": "circuito",
     "equipo_local": "",
     "equipo_visitante": "",
     "subtitulo": "",
-    "referencia": "",
-    "hora_utc": "2026-10-14T05:00:00Z",
-    "hora_local_producto": "00:00",
-    "duracion_min": 130,
-    "logo_torneo": "",
+    "referencia": "Benelux Tour",
+    "hora_utc": "2026-10-14T08:35:00Z",
+    "hora_local_producto": "03:35",
+    "duracion_min": 115,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
     "logo_local": "",
     "logo_visitante": "",
-    "banner": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
     "tier": 2,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_espn_co"
+      "mundodeportivo_eurosport_1"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
@@ -474,62 +544,49 @@
     "puntuacion_confianza": 0.95,
     "fuentes": [
       {
-        "nombre": "ESPN 1 CO FHD",
-        "id_xtream": "591976",
-        "canal_lineal": "ESPN CO",
-        "pais": "CO"
+        "nombre": "EUROSPORT FHD",
+        "id_xtream": "327982",
+        "canal_lineal": "EUROSPORT 1",
+        "pais": "ES"
       },
       {
-        "nombre": "ESPN 1 FHD | ARG",
-        "id_xtream": "591975",
-        "canal_lineal": "ESPN AR",
-        "pais": "AR"
-      },
-      {
-        "nombre": "ESPN FHD | AR",
-        "id_xtream": "712743",
-        "canal_lineal": "ESPN AR",
-        "pais": "AR"
-      },
-      {
-        "nombre": "ESPN 1 HD | AR",
-        "id_xtream": "591974",
-        "canal_lineal": "ESPN AR",
-        "pais": "AR"
+        "nombre": "EUROSPORT 1 HD",
+        "id_xtream": "327938",
+        "canal_lineal": "EUROSPORT 1",
+        "pais": "ES"
       }
     ],
     "canales_candidatos": [
-      "ESPN CO",
-      "ESPN AR"
+      "EUROSPORT 1"
     ],
-    "texto_original_crudo": "LASK (Aut) vs. Liverpool (Ing). Fecha 2, Raiffeisen Arena. Vive los partidos de la 72º edición de la UEFA Champions League, la competición internacional de fútbol más prestigiosa a nivel de clubes de Europa",
-    "titulo_original_crudo": "LASK (Aut) vs. Liverpool (Ing). Fecha 2, Raiffeisen Arena. Vive los partidos de la 72º edición de la UEFA Champions League, la competición internacional de fútbol más prestigiosa a nivel de clubes de Europa",
+    "texto_original_crudo": "Benelux Tour",
+    "titulo_original_crudo": "Benelux Tour",
     "ronda": "",
-    "motivo_descarte": "repeticion_diferido_horario"
+    "motivo_descarte": "Repetición / No se disputa hoy: el Benelux Tour (Renewi Tour) se corrió en agosto y no está en calendario en octubre."
   },
   {
-    "id": "lineal_espn_2_co_6a06af3d",
+    "id": "lineal_eurosport_1_43131112",
     "agenda_id": "",
-    "titulo": "Fecha 2, Raiffeisen Arena - LASK (Aut) vs. Liverpool (Ing)",
-    "torneo": "Fecha 2, Raiffeisen Arena",
-    "categoria": "Fútbol",
+    "titulo": "Benelux Tour",
+    "torneo": "Benelux Tour",
+    "categoria": "Ciclismo",
     "tipo_evento": "circuito",
     "equipo_local": "",
     "equipo_visitante": "",
     "subtitulo": "",
-    "referencia": "",
-    "hora_utc": "2026-10-14T16:30:00Z",
-    "hora_local_producto": "11:30",
-    "duracion_min": 130,
-    "logo_torneo": "",
+    "referencia": "Benelux Tour",
+    "hora_utc": "2026-10-14T12:20:00Z",
+    "hora_local_producto": "07:20",
+    "duracion_min": 115,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
     "logo_local": "",
     "logo_visitante": "",
-    "banner": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
     "tier": 2,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_espn_2_co"
+      "mundodeportivo_eurosport_1"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
@@ -537,95 +594,120 @@
     "puntuacion_confianza": 0.95,
     "fuentes": [
       {
-        "nombre": "ESPN 2 CO",
-        "id_xtream": "591982",
-        "canal_lineal": "ESPN 2 CO",
-        "pais": "CO"
+        "nombre": "EUROSPORT FHD",
+        "id_xtream": "327982",
+        "canal_lineal": "EUROSPORT 1",
+        "pais": "ES"
       },
       {
-        "nombre": "ESPN 2 ARG | FHD",
-        "id_xtream": "591981",
-        "canal_lineal": "ESPN 2 AR",
-        "pais": "AR"
-      },
-      {
-        "nombre": "ESPN 2  FHD | AR",
-        "id_xtream": "712744",
-        "canal_lineal": "ESPN 2 AR",
-        "pais": "AR"
-      },
-      {
-        "nombre": "ESPN 2 HD | ARG",
-        "id_xtream": "591980",
-        "canal_lineal": "ESPN 2 AR",
-        "pais": "AR"
+        "nombre": "EUROSPORT 1 HD",
+        "id_xtream": "327938",
+        "canal_lineal": "EUROSPORT 1",
+        "pais": "ES"
       }
     ],
     "canales_candidatos": [
-      "ESPN 2 CO",
-      "ESPN 2 AR"
+      "EUROSPORT 1"
     ],
-    "texto_original_crudo": "LASK (Aut) vs. Liverpool (Ing). Fecha 2, Raiffeisen Arena. Vive los partidos de la 72º edición de la UEFA Champions League, la competición internacional de fútbol más prestigiosa a nivel de clubes de Europa",
-    "titulo_original_crudo": "LASK (Aut) vs. Liverpool (Ing). Fecha 2, Raiffeisen Arena. Vive los partidos de la 72º edición de la UEFA Champions League, la competición internacional de fútbol más prestigiosa a nivel de clubes de Europa",
+    "texto_original_crudo": "Benelux Tour",
+    "titulo_original_crudo": "Benelux Tour",
     "ronda": "",
-    "motivo_descarte": "repeticion_diferido_horario"
+    "motivo_descarte": "Repetición / No se disputa hoy: el Benelux Tour (Renewi Tour) se disputó en agosto y no en esta fecha."
   },
   {
-    "id": "xtream_f2ca87f4",
+    "id": "xtream_9ee046ce",
     "agenda_id": "",
-    "titulo": "AEW Collision",
-    "torneo": "AEW Collision",
-    "categoria": "Combate",
-    "tipo_evento": "circuito",
-    "equipo_local": "",
-    "equipo_visitante": "",
-    "subtitulo": "",
-    "referencia": "",
+    "titulo": "UCF vs LSU",
+    "torneo": "NCAA Women's Soccer",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "UCF",
+    "equipo_visitante": "LSU",
+    "subtitulo": "NCAA Women's Soccer",
+    "referencia": "NCAA Women's Soccer",
+    "hora_utc": "2026-10-15T00:00:00Z",
+    "hora_local_producto": "19:00",
+    "duracion_min": 130,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv3nqtc1564336904.png&w=400&output=webp",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjcj91i1564336177.png&w=400&output=webp",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "19:00 ◘ UCF vs. LSU ◘ NCAA Women's Soccer ◘◘",
+        "id_xtream": "1729529"
+      }
+    ],
+    "texto_original_crudo": "19:00 ◘ UCF vs. LSU ◘ NCAA Women's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+    "titulo_original_crudo": "19:00 ◘ UCF vs. LSU ◘ NCAA Women's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+    "ronda": "",
+    "motivo_descarte": "Partido no programado para hoy en el calendario real; el cruce entre UCF y LSU se disputó en agosto."
+  },
+  {
+    "id": "xtream_2cff1739",
+    "agenda_id": "",
+    "titulo": "UC Irvine vs UC Santa Barbara",
+    "torneo": "NCAA Men's Soccer",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "UC Irvine",
+    "equipo_visitante": "UC Santa Barbara",
+    "subtitulo": "NCAA Men's Soccer",
+    "referencia": "NCAA Men's Soccer",
+    "hora_utc": "2026-10-15T01:00:00Z",
+    "hora_local_producto": "20:00",
+    "duracion_min": 130,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fagadit1587215636.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fz3n9u71587216097.png&w=400&output=webp&trim=10",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "20:00 ◘ UC Irvine vs. UC Santa Barbara ◘ NCAA Men's Soccer ◘◘",
+        "id_xtream": "1729543"
+      }
+    ],
+    "texto_original_crudo": "20:00 ◘ UC Irvine vs. UC Santa Barbara ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+    "titulo_original_crudo": "20:00 ◘ UC Irvine vs. UC Santa Barbara ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+    "ronda": "",
+    "motivo_descarte": "Encuentro masculino inexistente hoy en el calendario oficial; el duelo masculino está pautado para el 24 de octubre."
+  },
+  {
+    "id": "xtream_6fa08f17",
+    "agenda_id": "",
+    "titulo": "Cal Poly vs Cal State Northridge",
+    "torneo": "NCAA Men's Soccer",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Cal Poly",
+    "equipo_visitante": "Cal State Northridge",
+    "subtitulo": "NCAA Men's Soccer",
+    "referencia": "NCAA Men's Soccer",
     "hora_utc": "2026-10-15T02:00:00Z",
     "hora_local_producto": "21:00",
-    "duracion_min": 135,
-    "logo_torneo": "",
-    "logo_local": "",
-    "logo_visitante": "",
-    "banner": "",
-    "tier": 2,
-    "origen": "xtream_evento",
-    "origenes": [
-      "xtream_evento"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "media",
-    "puntuacion_confianza": 0.75,
-    "fuentes": [
-      {
-        "nombre": "21:00 ◘ AEW Collision ◘ AEW ◘",
-        "id_xtream": "1729546"
-      }
-    ],
-    "texto_original_crudo": "21:00 ◘ AEW Collision ◘ AEW ◘ ✨Eventos Diarios 14/10✨",
-    "titulo_original_crudo": "21:00 ◘ AEW Collision ◘ AEW ◘ ✨Eventos Diarios 14/10✨",
-    "ronda": "",
-    "motivo_descarte": "repeticion_diferido_horario"
-  },
-  {
-    "id": "xtream_d1a0a07f",
-    "agenda_id": "",
-    "titulo": "Asisa Joventut vs MoraBanc Andorra",
-    "torneo": "Liga Endesa",
-    "categoria": "Baloncesto",
-    "tipo_evento": "duelo",
-    "equipo_local": "Asisa Joventut",
-    "equipo_visitante": "MoraBanc Andorra",
-    "subtitulo": "Liga Endesa",
-    "referencia": "Liga Endesa",
-    "hora_utc": "2026-10-14T17:50:00Z",
-    "hora_local_producto": "12:50",
     "duracion_min": 130,
-    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
-    "logo_local": "",
-    "logo_visitante": "https://flagcdn.com/256x192/ad.png",
-    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbu56i61564356445.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6yqj1a1581457728.png&w=400&output=webp&trim=10",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
     "tier": 2,
     "origen": "xtream_evento",
     "origenes": [
@@ -637,14 +719,14 @@
     "puntuacion_confianza": 0.75,
     "fuentes": [
       {
-        "nombre": "12:50  | Asisa Joventut vs. MoraBanc Andorra | Liga Endesa",
-        "id_xtream": "1729589"
+        "nombre": "21:00 ◘ Cal Poly vs. Cal State Northridge ◘ NCAA Men's Soccer ◘◘",
+        "id_xtream": "1729548"
       }
     ],
-    "texto_original_crudo": "12:50  | Asisa Joventut vs. MoraBanc Andorra | Liga Endesa ✮✮[Eventos Diarios | Exclusivos]✮✮",
-    "titulo_original_crudo": "12:50  | Asisa Joventut vs. MoraBanc Andorra | Liga Endesa ✮✮[Eventos Diarios | Exclusivos]✮✮",
+    "texto_original_crudo": "21:00 ◘ Cal Poly vs. Cal State Northridge ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+    "titulo_original_crudo": "21:00 ◘ Cal Poly vs. Cal State Northridge ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
     "ronda": "",
-    "motivo_descarte": "repeticion_diferido_horario"
+    "motivo_descarte": "Cruce inexistente hoy; Cal Poly recibe a Utah Valley y CSUN visita a UC Riverside."
   },
   {
     "id": "xtream_2d08906d",
@@ -682,83 +764,7 @@
     "texto_original_crudo": "21:00 ◘ Cal State Fullerton vs. Long Beach State ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
     "titulo_original_crudo": "21:00 ◘ Cal State Fullerton vs. Long Beach State ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
     "ronda": "",
-    "motivo_descarte": "evento_falso_inexistente"
-  },
-  {
-    "id": "xtream_b8374bd2",
-    "agenda_id": "",
-    "titulo": "California Baptist vs Cal State Fullerton",
-    "torneo": "NCAA Men's Soccer",
-    "categoria": "Fútbol",
-    "tipo_evento": "duelo",
-    "equipo_local": "California Baptist",
-    "equipo_visitante": "Cal State Fullerton",
-    "subtitulo": "NCAA Men's Soccer",
-    "referencia": "NCAA Men's Soccer",
-    "hora_utc": "2026-10-15T02:00:00Z",
-    "hora_local_producto": "21:00",
-    "duracion_min": 130,
-    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4m6o2a1637337652.png&w=400&output=webp&trim=10",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3ulim21780827888.png&w=400&output=webp&trim=10",
-    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-    "tier": 2,
-    "origen": "xtream_evento",
-    "origenes": [
-      "xtream_evento"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "media",
-    "puntuacion_confianza": 0.75,
-    "fuentes": [
-      {
-        "nombre": "21:00 ◘ California Baptist vs. Cal State Fullerton ◘ NCAA Men's Soccer ◘◘",
-        "id_xtream": "1729551"
-      }
-    ],
-    "texto_original_crudo": "21:00 ◘ California Baptist vs. Cal State Fullerton ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-    "titulo_original_crudo": "21:00 ◘ California Baptist vs. Cal State Fullerton ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-    "ronda": "",
-    "motivo_descarte": "partido_jugado_en_otra_fecha"
-  },
-  {
-    "id": "xtream_abbcc389",
-    "agenda_id": "",
-    "titulo": "Utah Valley vs Cal Poly",
-    "torneo": "NCAA Men's Soccer",
-    "categoria": "Fútbol",
-    "tipo_evento": "duelo",
-    "equipo_local": "Utah Valley",
-    "equipo_visitante": "Cal Poly",
-    "subtitulo": "NCAA Men's Soccer",
-    "referencia": "NCAA Men's Soccer",
-    "hora_utc": "2026-10-15T02:00:00Z",
-    "hora_local_producto": "21:00",
-    "duracion_min": 130,
-    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1a9wo31587325289.png&w=400&output=webp&trim=10",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbu56i61564356445.png&w=400&output=webp&trim=10",
-    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-    "tier": 2,
-    "origen": "xtream_evento",
-    "origenes": [
-      "xtream_evento"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "media",
-    "puntuacion_confianza": 0.75,
-    "fuentes": [
-      {
-        "nombre": "21:00 ◘ Utah Valley vs. Cal Poly ◘ NCAA Men's Soccer ◘◘",
-        "id_xtream": "1729554"
-      }
-    ],
-    "texto_original_crudo": "21:00 ◘ Utah Valley vs. Cal Poly ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-    "titulo_original_crudo": "21:00 ◘ Utah Valley vs. Cal Poly ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-    "ronda": "",
-    "motivo_descarte": "partido_jugado_en_otra_fecha"
+    "motivo_descarte": "Partido inexistente hoy; Long Beach State no tiene equipo de fútbol masculino y Fullerton juega ante California Baptist."
   },
   {
     "id": "xtream_655b44af",
@@ -796,178 +802,7 @@
     "texto_original_crudo": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
     "titulo_original_crudo": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
     "ronda": "",
-    "motivo_descarte": "partido_jugado_en_otra_fecha"
-  },
-  {
-    "id": "xtream_140e4665",
-    "agenda_id": "",
-    "titulo": "UFC",
-    "torneo": "UFC",
-    "categoria": "Combate",
-    "tipo_evento": "circuito",
-    "equipo_local": "",
-    "equipo_visitante": "",
-    "subtitulo": "",
-    "referencia": "",
-    "hora_utc": "2026-10-14T19:55:00Z",
-    "hora_local_producto": "14:55",
-    "duracion_min": 135,
-    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-    "logo_local": "",
-    "logo_visitante": "",
-    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-    "tier": 2,
-    "origen": "xtream_evento",
-    "origenes": [
-      "xtream_evento"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "media",
-    "puntuacion_confianza": 0.75,
-    "fuentes": [
-      {
-        "nombre": "14:55 | UFC Fight Night: En Español | UFC",
-        "id_xtream": "1727175"
-      },
-      {
-        "nombre": "14:55 | UFC Fight Night: En Portugués | UFC",
-        "id_xtream": "1727176"
-      },
-      {
-        "nombre": "14:55 | UFC Fight Night: English | UFC",
-        "id_xtream": "1727177"
-      }
-    ],
-    "texto_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-    "titulo_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-    "ronda": "",
-    "motivo_descarte": "repeticion_diferido"
-  },
-  {
-    "nombre": "13:40  | UCL al instante | UEFA Champions League",
-    "id_xtream": "1729597",
-    "razon": "programa_no_vivo_o_falso_circuito"
-  },
-  {
-    "nombre": "NBA 01 | Brooklyn Nets at Miami Heat | 7:30 PM ET | 10.14",
-    "id_xtream": "597676",
-    "razon": "programa_no_vivo_o_falso_circuito"
-  },
-  {
-    "nombre": "NBA 02 | Charlotte Hornets at Boston Celtics | 7:30 PM ET | 10.14",
-    "id_xtream": "597677",
-    "razon": "programa_no_vivo_o_falso_circuito"
-  },
-  {
-    "nombre": "NBA 03 | Phoenix Suns at San Antonio Spurs | 8:00 PM ET | 10.14",
-    "id_xtream": "597678",
-    "razon": "programa_no_vivo_o_falso_circuito"
-  },
-  {
-    "nombre": "NBA 04 | New Orleans Pelicans at Dallas Mavericks | 8:00 PM ET | 10.14",
-    "id_xtream": "597679",
-    "razon": "programa_no_vivo_o_falso_circuito"
-  },
-  {
-    "nombre": "NBA 05 | Chicago Bulls at Milwaukee Bucks | 8:00 PM ET | 10.14",
-    "id_xtream": "597680",
-    "razon": "programa_no_vivo_o_falso_circuito"
-  },
-  {
-    "nombre": "NBA 06 | Detroit Pistons at Minnesota Timberwolves | 8:00 PM ET | 10.14",
-    "id_xtream": "597681",
-    "razon": "programa_no_vivo_o_falso_circuito"
-  },
-  {
-    "nombre": "NBA 07 | Denver Nuggets at Los Angeles Clippers | 10:30 PM ET | 10.14",
-    "id_xtream": "597682",
-    "razon": "programa_no_vivo_o_falso_circuito"
-  },
-  {
-    "id": "xtream_140e4665",
-    "agenda_id": "",
-    "titulo": "UFC Fight Night",
-    "torneo": "UFC Fight Night",
-    "categoria": "Artes Marciales Mixtas",
-    "tipo_evento": "circuito",
-    "equipo_local": "",
-    "equipo_visitante": "",
-    "subtitulo": "Meta Apex, las Vegas",
-    "referencia": "Cartelera estelar y preliminares de artes marciales mixtas",
-    "hora_utc": "2026-10-14T19:55:00Z",
-    "hora_local_producto": "14:55",
-    "duracion_min": 135,
-    "logo_torneo": "",
-    "logo_local": "",
-    "logo_visitante": "",
-    "banner": "",
-    "tier": 2,
-    "origen": "xtream_evento",
-    "origenes": [
-      "xtream_evento"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "media",
-    "puntuacion_confianza": 0.75,
-    "fuentes": [
-      {
-        "nombre": "14:55 | UFC Fight Night: En Español | UFC",
-        "id_xtream": "1727175"
-      },
-      {
-        "nombre": "14:55 | UFC Fight Night: English | UFC",
-        "id_xtream": "1727177"
-      },
-      {
-        "nombre": "14:55 | UFC Fight Night: En Portugués | UFC",
-        "id_xtream": "1727176"
-      }
-    ],
-    "texto_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-    "titulo_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-    "ronda": "Meta Apex, las Vegas",
-    "curado_integro": true,
-    "motivo_descarte": "No hay cartelera oficial de UFC en vivo programada para hoy miércoles 14 de octubre de 2026; se trata de una retransmisión o feed diferido."
-  },
-  {
-    "id": "xtream_655b44af",
-    "agenda_id": "",
-    "titulo": "Utah Valley vs California Baptist",
-    "torneo": "NCAA Men's Soccer",
-    "categoria": "Fútbol",
-    "tipo_evento": "duelo",
-    "equipo_local": "Utah Valley",
-    "equipo_visitante": "California Baptist",
-    "subtitulo": "NCAA Men's Soccer",
-    "referencia": "NCAA Men's Soccer",
-    "hora_utc": "2026-10-15T02:00:00Z",
-    "hora_local_producto": "21:00",
-    "duracion_min": 130,
-    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-    "logo_local": "",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4m6o2a1637337652.png&w=400&output=webp&trim=10",
-    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-    "tier": 2,
-    "origen": "xtream_evento",
-    "origenes": [
-      "xtream_evento"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "media",
-    "puntuacion_confianza": 0.75,
-    "fuentes": [
-      {
-        "nombre": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘",
-        "id_xtream": "1729555"
-      }
-    ],
-    "texto_original_crudo": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-    "titulo_original_crudo": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-    "ronda": "",
-    "motivo_descarte": "Partido inexistente en el calendario masculino de hoy; el duelo programado entre ambas instituciones para esta fecha corresponde a la división femenina en campo de California Baptist."
+    "motivo_descarte": "Partido erróneo o duplicado ficticio; ambos equipos tienen otros rivales asignados en vivo hoy (Utah Valley vs. Cal Poly y California Baptist vs. Cal State Fullerton)."
   },
   {
     "id": "xtream_140e4665",
@@ -1013,6 +848,6 @@
     "texto_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
     "titulo_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
     "ronda": "UFC Fight Night: UFC",
-    "motivo_descarte": "No hay cartelera oficial de UFC en vivo programada para hoy miércoles 14 de octubre de 2026; se trata de una retransmisión o feed diferido."
+    "motivo_descarte": "No hay cartelera oficial de UFC programada para hoy miércoles 14 de octubre de 2026; se trata de una repetición o emisión enlatada."
   }
 ]
