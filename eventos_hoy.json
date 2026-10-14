@@ -1,6 +1,6 @@
 {
-  "version": "3.2-curador-tv-universal",
-  "generado_utc": "2026-10-14T15:04:55Z",
+  "version": "3.3-curador-tv-boveda-inmutable",
+  "generado_utc": "2026-10-14T16:56:27Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-14",
   "base_media": "http://avefenixtv.com:8080",
@@ -45,7 +45,8 @@
       "texto_original_crudo": "02:30 ◘ Premier Padel: Milán - Centre Court ◘ Premier Padel ◘◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "02:30 ◘ Premier Padel: Milán - Centre Court ◘ Premier Padel ◘◘ ✨Eventos Diarios 14/10✨",
       "ronda": "Centre Court • Milán",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_eurosport_1_fa653d10",
@@ -94,7 +95,8 @@
       ],
       "texto_original_crudo": "Benelux Tour",
       "titulo_original_crudo": "Benelux Tour",
-      "ronda": "Etapa en Ruta • Bélgica / Países Bajos"
+      "ronda": "Etapa en Ruta • Bélgica / Países Bajos",
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_co_68d0da9a",
@@ -130,45 +132,7 @@
           "id_xtream": "591976",
           "canal_lineal": "ESPN CO",
           "pais": "CO"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN CO",
-        "ESPN AR"
-      ],
-      "texto_original_crudo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
-      "titulo_original_crudo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
-      "ronda": "Octavos de final • Qi Zhong Tennis Center",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_5b39b347",
-      "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters",
-      "torneo": "Rolex Shanghai Masters",
-      "categoria": "Tenis",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Pista Central • Qizhong Forest Sports City Arena",
-      "referencia": "Jornada en vivo Rolex Shanghai Masters",
-      "hora_utc": "2026-10-14T10:00:00Z",
-      "hora_local_producto": "05:00",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.9,
-      "fuentes": [
+        },
         {
           "nombre": "05:00 ◘ Rolex Shanghai Masters ◘ ATP ◘◘",
           "id_xtream": "1729467"
@@ -178,10 +142,15 @@
           "id_xtream": "1729468"
         }
       ],
-      "texto_original_crudo": "05:00 ◘ Rolex Shanghai Masters ◘ ATP ◘◘ ✨Eventos Diarios 14/10✨",
-      "titulo_original_crudo": "05:00 ◘ Rolex Shanghai Masters ◘ ATP ◘◘ ✨Eventos Diarios 14/10✨",
-      "ronda": "Pista Central • Qizhong Forest Sports City Arena",
-      "auditado_agy": true
+      "canales_candidatos": [
+        "ESPN CO",
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
+      "titulo_original_crudo": "Octavos de final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
+      "ronda": "Octavos de final • Qi Zhong Tennis Center",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_eurosport_2_db8bd8d1",
@@ -230,7 +199,8 @@
       ],
       "texto_original_crudo": "UCI Track Cycling World Championships: Shanghái",
       "titulo_original_crudo": "UCI Track Cycling World Championships: Shanghái",
-      "ronda": "UCI Track Cycling World Championships: Shanghái"
+      "ronda": "UCI Track Cycling World Championships: Shanghái",
+      "curado_integro": true
     },
     {
       "id": "lineal_teledeporte_556651d8",
@@ -285,7 +255,8 @@
       ],
       "texto_original_crudo": "Ciclismo En Pista Campeonato Del Mundo Sesión Vespertina",
       "titulo_original_crudo": "Ciclismo En Pista Campeonato Del Mundo Sesión Vespertina",
-      "ronda": "Ciclismo En Pista Campeonato Del Mundo Sesión Vespertina"
+      "ronda": "Ciclismo En Pista Campeonato Del Mundo Sesión Vespertina",
+      "curado_integro": true
     },
     {
       "id": "xtream_a5b72fc7",
@@ -328,7 +299,8 @@
       "titulo_original_crudo": "07:00 ◘ AS Roma vs. Real Madrid ◘ UEFA Youth League ◘◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_eurosport_1_43131112",
@@ -377,7 +349,8 @@
       ],
       "texto_original_crudo": "Benelux Tour",
       "titulo_original_crudo": "Benelux Tour",
-      "ronda": "Etapa en Ruta • Bélgica / Países Bajos"
+      "ronda": "Etapa en Ruta • Bélgica / Países Bajos",
+      "curado_integro": true
     },
     {
       "id": "lineal_eurosport_1_e5e76c1d",
@@ -426,7 +399,8 @@
       ],
       "texto_original_crudo": "Giro del Veneto",
       "titulo_original_crudo": "Giro del Veneto",
-      "ronda": "Carrera de un día • Verona a Vicenza (167 km)"
+      "ronda": "Carrera de un día • Verona a Vicenza (167 km)",
+      "curado_integro": true
     },
     {
       "id": "xtream_e6cd47b5",
@@ -469,7 +443,8 @@
       "titulo_original_crudo": "09:00 ◘ Manchester City vs. PSG ◘ UEFA Youth League ◘◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_dsports_2_e1bdead2",
@@ -536,7 +511,8 @@
       ],
       "texto_original_crudo": "Dynamo Makhachkala vs. Zenit – 12:30 (Arg) Copa de Rusia EN VIVO por DSports 2",
       "titulo_original_crudo": "Dynamo Makhachkala vs. Zenit – 12:30 (Arg) Copa de Rusia EN VIVO por DSports 2",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_c73688fe",
@@ -574,7 +550,8 @@
       "texto_original_crudo": "11:00 ◘ Premier Padel: Milán - Centre Court ◘ Premier Padel ◘◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "11:00 ◘ Premier Padel: Milán - Centre Court ◘ Premier Padel ◘◘ ✨Eventos Diarios 14/10✨",
       "ronda": "Centre Court • Allianz Cloud, Milán",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_2_co_0cd3e317",
@@ -636,7 +613,8 @@
       "titulo_original_crudo": "13:45 Fase Liga Feyenoord Como 1907 Disney+ Premium FOX Sports",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_9b85b88c",
@@ -687,7 +665,8 @@
       "titulo_original_crudo": "11:45 ◘ LASK Linz vs. Liverpool ◘ UEFA Champions League ◘◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_teledeporte_357f07a5",
@@ -744,7 +723,8 @@
       "titulo_original_crudo": "Bma365 Bamberg Baskets vs Ucam Murcia",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_dsports_plus_95b879f0",
@@ -801,7 +781,8 @@
       "titulo_original_crudo": "Anadolu Efes vs. Bayern Munich – 14:30 (Arg) Euroliga EN VIVO por DSports+",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_dsports_2_5cf60bc5",
@@ -870,7 +851,46 @@
       "titulo_original_crudo": "CSKA Moscú vs. Rostov – 14:30 (Arg) Copa de Rusia EN VIVO por DSports 2",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_d1a0a07f",
+      "agenda_id": "",
+      "titulo": "Asisa Joventut vs MoraBanc Andorra",
+      "torneo": "Liga Endesa",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Asisa Joventut",
+      "equipo_visitante": "MoraBanc Andorra",
+      "subtitulo": "Liga Endesa",
+      "referencia": "Liga Endesa",
+      "hora_utc": "2026-10-14T17:50:00Z",
+      "hora_local_producto": "12:50",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvuqqry1425410580.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4oyjtu1538210898.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:50  | Asisa Joventut vs. MoraBanc Andorra | Liga Endesa",
+          "id_xtream": "1729589"
+        }
+      ],
+      "texto_original_crudo": "12:50  | Asisa Joventut vs. MoraBanc Andorra | Liga Endesa ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "12:50  | Asisa Joventut vs. MoraBanc Andorra | Liga Endesa ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_tnt_sports_c93ed481",
@@ -927,56 +947,8 @@
       "titulo_original_crudo": "15:00 hs Platense vs. Defensa y Justicia Torneo Proyección EN VIVO por TNT Sports",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
-    },
-    {
-      "id": "lineal_espn_premium_argentina_cb9c811f",
-      "agenda_id": "",
-      "titulo": "San Martín SJ Reserva vs Deportivo Riestra Reserva",
-      "torneo": "Fútbol",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "San Martín SJ Reserva",
-      "equipo_visitante": "Deportivo Riestra Reserva",
-      "subtitulo": "San Martín SJ Reserva vs Deportivo Riestra Reserva",
-      "referencia": "Fútbol",
-      "hora_utc": "2026-10-14T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F484.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F476.png&w=400&output=webp&trim=10",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "portada"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN Premium  | AR FHD",
-          "id_xtream": "712747",
-          "canal_lineal": "ESPN PREMIUM ARGENTINA",
-          "pais": "AR"
-        },
-        {
-          "nombre": "ESPN PREMIUM | AR",
-          "id_xtream": "591997",
-          "canal_lineal": "ESPN PREMIUM ARGENTINA",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN PREMIUM ARGENTINA"
-      ],
-      "texto_original_crudo": "15:00 San Martín SJ Reserva Deportivo Riestra Reserva LPF Play ESPN Premium",
-      "titulo_original_crudo": "15:00 San Martín SJ Reserva Deportivo Riestra Reserva LPF Play ESPN Premium",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_e7fbb6ca",
@@ -1015,7 +987,8 @@
       "titulo_original_crudo": "13:00 ◘ União Santarém vs. Gil Vicente ◘ Taça de Portugal ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_e0f3db8b",
@@ -1054,7 +1027,8 @@
       "titulo_original_crudo": "13:30 ◘ Boston River vs. River Plate ◘ Copa Uruguay ◘ Tentativo ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_4_d3beb924",
@@ -1132,7 +1106,8 @@
       "titulo_original_crudo": "16:00 hs (Arg) Slovan Bratislava vs. Stuttgart UEFA Champions League EN VIVO por ESPN 4",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_5_a9a1a7c5",
@@ -1216,7 +1191,8 @@
       "texto_original_crudo": "16:00 hs (Arg) Bodø/Glimt vs. Borussia Dortmund UEFA Champions League EN VIVO por ESPN 5",
       "titulo_original_crudo": "16:00 hs (Arg) Bodø/Glimt vs. Borussia Dortmund UEFA Champions League EN VIVO por ESPN 5",
       "ronda": "",
-      "contrastado_api": true
+      "contrastado_api": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_6_2fb7f4f2",
@@ -1287,7 +1263,8 @@
       "texto_original_crudo": "16:00 hs (Arg) Shakhtar Donetsk vs. AEK Atenas UEFA Champions League EN VIVO por ESPN 6",
       "titulo_original_crudo": "16:00 hs (Arg) Shakhtar Donetsk vs. AEK Atenas UEFA Champions League EN VIVO por ESPN 6",
       "ronda": "",
-      "contrastado_api": true
+      "contrastado_api": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_7_7c7abf71",
@@ -1355,141 +1332,8 @@
       "titulo_original_crudo": "16:00 hs (Arg) Real Betis vs. Porto UEFA Champions League EN VIVO por ESPN 7",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
-    },
-    {
-      "id": "lineal_teledeporte_a70fb8fb",
-      "agenda_id": "",
-      "titulo": "Surne Bilbao vs Sk Slavia Praha Era Nbk",
-      "torneo": "Basketball Champions League",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Surne Bilbao",
-      "equipo_visitante": "Sk Slavia Praha Era Nbk",
-      "subtitulo": "Basketball Champions League",
-      "referencia": "Basketball Champions League 2ª Jornada",
-      "hora_utc": "2026-10-14T19:00:00Z",
-      "hora_local_producto": "14:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F387.png&w=400&output=webp&trim=10",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F560.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F387.png&w=400&output=webp&trim=10",
-      "tier": 1,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "rtve_teledeporte_oficial"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "TELEDEPORTES FHD",
-          "id_xtream": "327981",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
-        },
-        {
-          "nombre": "TELEDEPORTES HD",
-          "id_xtream": "327953",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
-        },
-        {
-          "nombre": "TELEDEPORTES",
-          "id_xtream": "327966",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "TELEDEPORTE"
-      ],
-      "texto_original_crudo": "Surne Bilbao vs Sk Slavia Praha Era Nbk",
-      "titulo_original_crudo": "Surne Bilbao vs Sk Slavia Praha Era Nbk",
-      "ronda": ""
-    },
-    {
-      "id": "lineal_espn_3_co_90321b3a",
-      "agenda_id": "",
-      "titulo": "Manchester City vs PSG",
-      "torneo": "Fútbol",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Manchester City",
-      "equipo_visitante": "PSG",
-      "subtitulo": "Manchester City vs PSG",
-      "referencia": "UEFA Champions League",
-      "hora_utc": "2026-10-14T19:00:00Z",
-      "hora_local_producto": "14:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvwpvry1467462651.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhandball%2Fteams%2F4484.png&w=400&output=webp&trim=10",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "portada",
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN 3 FHD | ARG",
-          "id_xtream": "591987",
-          "canal_lineal": "ESPN 3 CO",
-          "pais": "SUR"
-        },
-        {
-          "nombre": "ESPN 3 HD | AR",
-          "id_xtream": "591986",
-          "canal_lineal": "ESPN 3 CO",
-          "pais": "SUR"
-        },
-        {
-          "nombre": "ESPN 3 HD| AR",
-          "id_xtream": "712745",
-          "canal_lineal": "ESPN 3 CO",
-          "pais": "SUR"
-        },
-        {
-          "nombre": "ESPN 3",
-          "id_xtream": "1229122",
-          "canal_lineal": "ESPN 3 AR",
-          "pais": "SUR"
-        },
-        {
-          "nombre": "14:00 ◘ Manchester City vs. PSG ◘ UEFA Champions League ◘",
-          "id_xtream": "1729483"
-        },
-        {
-          "nombre": "14:00 ◘ Manchester City vs. PSG ◘ UEFA Champions League ◘ SD",
-          "id_xtream": "1729484"
-        },
-        {
-          "nombre": "12:25  | English: Manchester City vs. PSG | UEFA Champions League",
-          "id_xtream": "1729583"
-        },
-        {
-          "nombre": "13:40  | Manchester City vs. PSG | UEFA Champions League",
-          "id_xtream": "1729592"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 3 CO",
-        "ESPN 3 AR"
-      ],
-      "texto_original_crudo": "16:00 Fase Liga Manchester City PSG Disney+ Premium FOX Sports",
-      "titulo_original_crudo": "16:00 Fase Liga Manchester City PSG Disney+ Premium FOX Sports",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_2_co_321e2cd3",
@@ -1585,7 +1429,8 @@
       "titulo_original_crudo": "16:00 Fase Liga Aston Villa Fenerbahçe Disney+ Premium ESPN 2",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_aeff2fb3",
@@ -1628,7 +1473,8 @@
       "titulo_original_crudo": "13:50 ◘ Lincoln City FC vs. West Ham United ◘ EFL Cup ◘◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_a0888be0",
@@ -1679,44 +1525,188 @@
       "titulo_original_crudo": "14:00 ◘ Roma vs. Real Madrid ◘ UEFA Champions League ◘ FHD ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_teledeporte_a70fb8fb",
+      "agenda_id": "",
+      "titulo": "Surne Bilbao vs SK Slavia Praha Era Nbk",
+      "torneo": "Basketball Champions League",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Surne Bilbao",
+      "equipo_visitante": "SK Slavia Praha Era Nbk",
+      "subtitulo": "Basketball Champions League",
+      "referencia": "Basketball Champions League 2ª Jornada",
+      "hora_utc": "2026-10-14T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F387.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv7bo1i1664476071.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F560.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F387.png&w=400&output=webp&trim=10",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "rtve_teledeporte_oficial"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "TELEDEPORTES FHD",
+          "id_xtream": "327981",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "TELEDEPORTE"
+      ],
+      "texto_original_crudo": "Surne Bilbao vs Sk Slavia Praha Era Nbk",
+      "titulo_original_crudo": "Surne Bilbao vs Sk Slavia Praha Era Nbk",
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_2_co_aadf68af",
+      "agenda_id": "",
+      "titulo": "Manchester City vs PSG",
+      "torneo": "Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Manchester City",
+      "equipo_visitante": "PSG",
+      "subtitulo": "Manchester City vs PSG",
+      "referencia": "Fútbol",
+      "hora_utc": "2026-10-14T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7914.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7921.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "portada"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 CO",
+          "id_xtream": "591982",
+          "canal_lineal": "ESPN 2 CO",
+          "pais": "CO"
+        },
+        {
+          "nombre": "ESPN 3 FHD | ARG",
+          "id_xtream": "591987",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "SUR"
+        },
+        {
+          "nombre": "ESPN 3 HD | AR",
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "SUR"
+        },
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "SUR"
+        },
+        {
+          "nombre": "14:00 ◘ Manchester City vs. PSG ◘ UEFA Champions League ◘",
+          "id_xtream": "1729483"
+        },
+        {
+          "nombre": "14:00 ◘ Manchester City vs. PSG ◘ UEFA Champions League ◘ SD",
+          "id_xtream": "1729484"
+        },
+        {
+          "nombre": "12:25  | English: Manchester City vs. PSG | UEFA Champions League",
+          "id_xtream": "1729583"
+        },
+        {
+          "nombre": "13:40  | Manchester City vs. PSG | UEFA Champions League",
+          "id_xtream": "1729592"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 CO",
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "14:00 Fase Liga Manchester City PSG Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "14:00 Fase Liga Manchester City PSG Disney+ Premium ESPN 2",
       "ronda": ""
     },
     {
-      "id": "xtream_cdfd0ddb",
+      "id": "xtream_140e4665",
       "agenda_id": "",
-      "titulo": "UEFA Champions League",
-      "torneo": "UEFA Champions League",
-      "categoria": "Fútbol",
+      "titulo": "UFC Fight Night",
+      "torneo": "UFC Fight Night",
+      "categoria": "Artes Marciales Mixtas",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Fase de Liga • Cobertura Multicanal en Directo",
-      "referencia": "UCL al Instante: goles, mejores momentos y seguimiento en vivo de los partidos de la jornada",
-      "hora_utc": "2026-10-14T19:00:00Z",
-      "hora_local_producto": "13:40",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+      "subtitulo": "Meta Apex, las Vegas",
+      "referencia": "Cartelera estelar y preliminares de artes marciales mixtas",
+      "hora_utc": "2026-10-14T19:55:00Z",
+      "hora_local_producto": "14:55",
+      "duracion_min": 135,
+      "logo_torneo": "",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
-      "tier": 1,
+      "banner": "",
+      "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
         "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.9,
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "13:40  | UCL al instante | UEFA Champions League",
-          "id_xtream": "1729597"
+          "nombre": "14:55 | UFC Fight Night: En Español | UFC",
+          "id_xtream": "1727175"
+        },
+        {
+          "nombre": "14:55 | UFC Fight Night: English | UFC",
+          "id_xtream": "1727177"
+        },
+        {
+          "nombre": "14:55 | UFC Fight Night: En Portugués | UFC",
+          "id_xtream": "1727176"
         }
       ],
-      "texto_original_crudo": "13:40  | UCL al instante | UEFA Champions League ⚽️⭐CHAMPIONS LEAGUE⭐⚽️",
-      "titulo_original_crudo": "13:40  | UCL al instante | UEFA Champions League ⚽️⭐CHAMPIONS LEAGUE⭐⚽️",
-      "ronda": "Fase de Liga • Cobertura Multicanal en Directo"
+      "texto_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
+      "titulo_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
+      "ronda": "Meta Apex, las Vegas",
+      "curado_integro": true
     },
     {
       "id": "lineal_rcn_b993e1de",
@@ -1797,7 +1787,8 @@
       "titulo_original_crudo": "18:30 Junior Deportivo Pereira RCN Nuestra Tele",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_tnt_sports_d8a376cc",
@@ -1868,7 +1859,8 @@
       "titulo_original_crudo": "19:00 hs (Arg) Sarmiento vs. River Plate Torneo Clausura EN VIVO por TNT Sports",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_dsports_ar_22db047c",
@@ -1932,7 +1924,46 @@
       ],
       "texto_original_crudo": "Atlético Mineiro vs. Montevideo City Torque 19:00 (Arg) Copa Sudamericana EN VIVO por DSports",
       "titulo_original_crudo": "Atlético Mineiro vs. Montevideo City Torque 19:00 (Arg) Copa Sudamericana EN VIVO por DSports",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_737451d9",
+      "agenda_id": "",
+      "titulo": "Dirtvision",
+      "torneo": "Dirtvision",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Millbridge Speedway",
+      "referencia": "Dirtvision | Millbridge Speedway | 6:15 PM ET | 10 • Millbridge Speedway",
+      "hora_utc": "2026-10-14T22:15:00Z",
+      "hora_local_producto": "17:15",
+      "duracion_min": 135,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "DIRTVISION 01 | Millbridge Speedway | 6:15 PM ET | 10.14",
+          "id_xtream": "1729675"
+        }
+      ],
+      "texto_original_crudo": "DIRTVISION 01 | Millbridge Speedway | 6:15 PM ET | 10.14 MOTOR - EVENT -",
+      "titulo_original_crudo": "DIRTVISION 01 | Millbridge Speedway | 6:15 PM ET | 10.14 MOTOR - EVENT -",
+      "ronda": "Millbridge Speedway",
+      "curado_integro": true
     },
     {
       "id": "xtream_5857d297",
@@ -1969,7 +2000,8 @@
       ],
       "texto_original_crudo": "17:30 ◘ Saint Mary's vs. California ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "17:30 ◘ Saint Mary's vs. California ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_daa448e9",
@@ -2008,7 +2040,8 @@
       "titulo_original_crudo": "18:00 ◘ Comunicaciones vs. Aurora ◘ Liga Guatemala ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_9114c8e5",
@@ -2047,7 +2080,8 @@
       "titulo_original_crudo": "18:00 ◘ Greenville Triumph SC vs. Spokane Velocity FC ◘ USL League One ◘◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_6a4006df",
@@ -2086,7 +2120,8 @@
       "titulo_original_crudo": "18:00 ◘ Hartford Athletic vs. Charleston Battery ◘ USL Championship ◘◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_44d89f09",
@@ -2125,7 +2160,8 @@
       "titulo_original_crudo": "18:00 ◘ Pérez Zeledón vs. Escorpiones Belén ◘ Primera División ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_d51799c8",
@@ -2162,7 +2198,8 @@
       ],
       "texto_original_crudo": "18:00 ◘ Jacksonville vs. South Florida ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "18:00 ◘ Jacksonville vs. South Florida ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_5f75aa35",
@@ -2203,44 +2240,8 @@
       ],
       "texto_original_crudo": "18:00 ◘ UC San Diego vs. Sacramento State ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "18:00 ◘ UC San Diego vs. Sacramento State ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
-    },
-    {
-      "id": "xtream_d6c178f5",
-      "agenda_id": "",
-      "titulo": "DIRTVISION 01",
-      "torneo": "DIRTVISION Millbridge Speedway",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Círculo de Tierra • Millbridge Speedway, Salisbury, NC",
-      "referencia": "Carreras de Outlaw Karts y Micro Sprints en pista de tierra corta",
-      "hora_utc": "2026-10-14T23:15:00Z",
-      "hora_local_producto": "18:15",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "DIRTVISION 01 | Millbridge Speedway | 6:15 PM ET | 10.14",
-          "id_xtream": "1729675"
-        }
-      ],
-      "texto_original_crudo": "DIRTVISION 01 | Millbridge Speedway | 6:15 PM ET | 10.14 MOTOR - EVENT -",
-      "titulo_original_crudo": "DIRTVISION 01 | Millbridge Speedway | 6:15 PM ET | 10.14 MOTOR - EVENT -",
-      "ronda": "Círculo de Tierra • Millbridge Speedway, Salisbury, NC"
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_rcn_30ebe2c3",
@@ -2321,7 +2322,8 @@
       "titulo_original_crudo": "20:30 Santa Fe Jaguares FC RCN Nuestra Tele",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_392b726a",
@@ -2360,7 +2362,8 @@
       "titulo_original_crudo": "18:00 ◘ Montreal Canadiens vs. Washington Capitals ◘ NHL ◘◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_d9327c06",
@@ -2403,7 +2406,8 @@
       "titulo_original_crudo": "18:30 ◘ Brooklyn Nets vs. Miami Heat ◘ NBA ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_2b0e7030",
@@ -2450,7 +2454,8 @@
       "titulo_original_crudo": "18:30 ◘ CF Montréal vs. Atlanta United ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_f76455fb",
@@ -2493,54 +2498,8 @@
       "titulo_original_crudo": "18:30 ◘ Charlotte Hornets vs. Boston Celtics ◘ NBA ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
-    },
-    {
-      "id": "xtream_7e54fa17",
-      "agenda_id": "",
-      "titulo": "FC Cincinnati vs New England Revolution",
-      "torneo": "Major League Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "FC Cincinnati",
-      "equipo_visitante": "New England Revolution",
-      "subtitulo": "Major League Soccer",
-      "referencia": "Major League Soccer",
-      "hora_utc": "2026-10-14T23:30:00Z",
-      "hora_local_producto": "18:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2242.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://flagcdn.com/256x192/gb-eng.png",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:30 ◘ Cincinnati vs. New England ◘ Major League Soccer ◘",
-          "id_xtream": "1729510"
-        },
-        {
-          "nombre": "18:30 ◘ Cincinnati vs. New England ◘ Major League Soccer ◘ English",
-          "id_xtream": "1729511"
-        },
-        {
-          "nombre": "MLS 01 | FC Cincinnati vs. New England Revolution | 7:30 PM ET | 10.14 | EN",
-          "id_xtream": "1729660"
-        }
-      ],
-      "texto_original_crudo": "18:30 ◘ Cincinnati vs. New England ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
-      "titulo_original_crudo": "18:30 ◘ Cincinnati vs. New England ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_a9b9c67d",
@@ -2583,7 +2542,8 @@
       "titulo_original_crudo": "18:30 ◘ Columbus Crew vs. Charlotte ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_ed5e2b91",
@@ -2620,13 +2580,18 @@
         {
           "nombre": "18:30 ◘ DC United vs. New York RB ◘ Major League Soccer ◘ English",
           "id_xtream": "1729514"
+        },
+        {
+          "nombre": "MLS 05 | D.C. United vs. Red Bull New York | 7:30 PM ET | 10.14 | EN",
+          "id_xtream": "1729664"
         }
       ],
       "texto_original_crudo": "18:30 ◘ DC United vs. New York RB ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "18:30 ◘ DC United vs. New York RB ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "ronda": "",
       "auditado_agy": true,
-      "contrastado_api": true
+      "contrastado_api": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_16985e94",
@@ -2673,7 +2638,8 @@
       "titulo_original_crudo": "18:30 ◘ Inter Miami vs. New York City ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_d5654699",
@@ -2716,7 +2682,56 @@
       "titulo_original_crudo": "18:30 ◘ Toronto FC vs. Orlando City SC ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_7e54fa17",
+      "agenda_id": "",
+      "titulo": "FC Cincinnati vs New England Revolution",
+      "torneo": "Major League Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "FC Cincinnati",
+      "equipo_visitante": "New England Revolution",
+      "subtitulo": "Major League Soccer",
+      "referencia": "Major League Soccer",
+      "hora_utc": "2026-10-14T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2242.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F3.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:30 ◘ Cincinnati vs. New England ◘ Major League Soccer ◘",
+          "id_xtream": "1729510"
+        },
+        {
+          "nombre": "18:30 ◘ Cincinnati vs. New England ◘ Major League Soccer ◘ English",
+          "id_xtream": "1729511"
+        },
+        {
+          "nombre": "MLS 01 | FC Cincinnati vs. New England Revolution | 7:30 PM ET | 10.14 | EN",
+          "id_xtream": "1729660"
+        }
+      ],
+      "texto_original_crudo": "18:30 ◘ Cincinnati vs. New England ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
+      "titulo_original_crudo": "18:30 ◘ Cincinnati vs. New England ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_co_23ff7f92",
@@ -2760,7 +2775,8 @@
       "texto_original_crudo": "New York Liberty vs. Atlanta Dream. Juego 5 - Semifinales, Gateway Center Arena. Vive los partidos de la 30º edición de la Liga de Baloncesto femenino profesional de los Estados Unidos. Dieciséis equipos disputan la temporada regular. Los mejores equipos clasificacion a los Playoffs, serie de partidos eliminatorios",
       "titulo_original_crudo": "New York Liberty vs. Atlanta Dream. Juego 5 - Semifinales, Gateway Center Arena. Vive los partidos de la 30º edición de la Liga de Baloncesto femenino profesional de los Estados Unidos. Dieciséis equipos disputan la temporada regular. Los mejores equipos clasificacion a los Playoffs, serie de partidos eliminatorios",
       "ronda": "Semifinales",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_67b53263",
@@ -2806,7 +2822,8 @@
       "texto_original_crudo": "19:00 ◘ AEW Dynamite ◘ AEW ◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "19:00 ◘ AEW Dynamite ◘ AEW ◘ ✨Eventos Diarios 14/10✨",
       "ronda": "Episodio Semanal en Vivo",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_46ebd277",
@@ -2849,7 +2866,8 @@
       "titulo_original_crudo": "19:00 ◘ Chicago Bulls vs. Milwaukee Bucks ◘ NBA ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_2f074040",
@@ -2895,7 +2913,8 @@
       "texto_original_crudo": "19:00 ◘ Club Sando FC vs. Mt. Pleasant FA ◘ CONCACAF Caribbean Cup ◘◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "19:00 ◘ Club Sando FC vs. Mt. Pleasant FA ◘ CONCACAF Caribbean Cup ◘◘ ✨Eventos Diarios 14/10✨",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_530880bd",
@@ -2934,7 +2953,8 @@
       "titulo_original_crudo": "19:00 ◘ Deportivo Maldonado vs. Albion ◘ Copa Uruguay ◘ Tentativo ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_6a8b8751",
@@ -2977,7 +2997,8 @@
       "titulo_original_crudo": "19:00 ◘ Detroit Pistons vs. Minnesota Timberwolves ◘ NBA ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_ac14e89a",
@@ -3024,7 +3045,8 @@
       "titulo_original_crudo": "19:00 ◘ Milwaukee Brewers vs. Los Angeles Dodgers ◘ MLB ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_f086bd24",
@@ -3067,7 +3089,8 @@
       "titulo_original_crudo": "19:00 ◘ New Orleans Pelicans vs. Dallas Mavericks ◘ NBA ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_bbb03cfe",
@@ -3110,7 +3133,8 @@
       "titulo_original_crudo": "19:00 ◘ Phoenix Suns vs. San Antonio Spurs ◘ NBA ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_9ee046ce",
@@ -3147,7 +3171,8 @@
       ],
       "texto_original_crudo": "19:00 ◘ UCF vs. LSU ◘ NCAA Women's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "19:00 ◘ UCF vs. LSU ◘ NCAA Women's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_2_co_965fa096",
@@ -3201,7 +3226,8 @@
       "titulo_original_crudo": "21:30 Semifinales Fluminense Palmeiras FOX Sports Disney+ Premium",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_52fac6c3",
@@ -3248,7 +3274,8 @@
       "titulo_original_crudo": "19:30 ◘ Chicago Fire vs. Philadelphia Union ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_156091bf",
@@ -3287,7 +3314,8 @@
       "titulo_original_crudo": "19:30 ◘ Dallas Stars vs. Colorado Avalanche ◘ NHL ◘◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_471237ce",
@@ -3334,7 +3362,8 @@
       "titulo_original_crudo": "19:30 ◘ Dallas vs. Seattle Sounders FC ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_bd642852",
@@ -3380,7 +3409,8 @@
       "texto_original_crudo": "19:30 ◘ Nashville SC vs. Sporting KC ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "19:30 ◘ Nashville SC vs. Sporting KC ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "ronda": "",
-      "contrastado_api": true
+      "contrastado_api": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_0160b2fe",
@@ -3427,44 +3457,8 @@
       "titulo_original_crudo": "19:30 ◘ St. Louis City vs. Vancouver Whitecaps ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
-    },
-    {
-      "id": "xtream_5417dade",
-      "agenda_id": "",
-      "titulo": "D.C. United vs Red Bull New York",
-      "torneo": "MLS",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "D.C. United",
-      "equipo_visitante": "Red Bull New York",
-      "subtitulo": "MLS",
-      "referencia": "MLS",
-      "hora_utc": "2026-10-15T00:30:00Z",
-      "hora_local_producto": "19:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuwvsyt1467462609.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6bnwoc1784751677.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "MLS 05 | D.C. United vs. Red Bull New York | 7:30 PM ET | 10.14 | EN",
-          "id_xtream": "1729664"
-        }
-      ],
-      "texto_original_crudo": "MLS 05 | D.C. United vs. Red Bull New York | 7:30 PM ET | 10.14 | EN MLS - APPLE TV - ONLY EVENTS",
-      "titulo_original_crudo": "MLS 05 | D.C. United vs. Red Bull New York | 7:30 PM ET | 10.14 | EN MLS - APPLE TV - ONLY EVENTS",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_567aebf2",
@@ -3503,7 +3497,8 @@
       "titulo_original_crudo": "20:00 ◘ Guastatoya vs. Antigua GFC ◘ Liga Guatemala ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_f9b9a1f0",
@@ -3540,7 +3535,8 @@
       ],
       "texto_original_crudo": "20:00 ◘ San Diego State vs. UC Irvine ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "20:00 ◘ San Diego State vs. UC Irvine ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_2cff1739",
@@ -3577,7 +3573,8 @@
       ],
       "texto_original_crudo": "20:00 ◘ UC Irvine vs. UC Santa Barbara ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "20:00 ◘ UC Irvine vs. UC Santa Barbara ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_win_sportsplus_b98e85d4",
@@ -3646,7 +3643,8 @@
       "titulo_original_crudo": "20:30 Atlético Nacional Medellín Win Fútbol + Win Play Win Sports",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_5f28dfec",
@@ -3689,7 +3687,8 @@
       "titulo_original_crudo": "20:30 ◘ Colorado Rapids vs. Minnesota United ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_86b43ed9",
@@ -3731,7 +3730,8 @@
       "texto_original_crudo": "20:30 ◘ Real Salt Lake vs. SJ Earthquakes ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "20:30 ◘ Real Salt Lake vs. SJ Earthquakes ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "ronda": "",
-      "contrastado_api": true
+      "contrastado_api": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_866cad0d",
@@ -3770,7 +3770,8 @@
       "titulo_original_crudo": "21:00 ◘ Alajuelense vs. Herediano ◘ Primera División ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_6fa08f17",
@@ -3807,7 +3808,8 @@
       ],
       "texto_original_crudo": "21:00 ◘ Cal Poly vs. Cal State Northridge ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "21:00 ◘ Cal Poly vs. Cal State Northridge ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_e03cd94a",
@@ -3849,7 +3851,196 @@
       "texto_original_crudo": "21:00 ◘ Cal State Northridge vs. UC Riverside ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "21:00 ◘ Cal State Northridge vs. UC Riverside ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_f2ca87f4",
+      "agenda_id": "",
+      "titulo": "AEW Collision",
+      "torneo": "AEW Collision",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "AEW",
+      "referencia": "AEW",
+      "hora_utc": "2026-10-15T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 135,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ AEW Collision ◘ AEW ◘",
+          "id_xtream": "1729546"
+        }
+      ],
+      "texto_original_crudo": "21:00 ◘ AEW Collision ◘ AEW ◘ ✨Eventos Diarios 14/10✨",
+      "titulo_original_crudo": "21:00 ◘ AEW Collision ◘ AEW ◘ ✨Eventos Diarios 14/10✨",
+      "ronda": "AEW",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_2d08906d",
+      "agenda_id": "",
+      "titulo": "Cal State Fullerton vs Long Beach State",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cal State Fullerton",
+      "equipo_visitante": "Long Beach State",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-15T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3ulim21780827888.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhnqxop1583504303.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Cal State Fullerton vs. Long Beach State ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1729549"
+        }
+      ],
+      "texto_original_crudo": "21:00 ◘ Cal State Fullerton vs. Long Beach State ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "titulo_original_crudo": "21:00 ◘ Cal State Fullerton vs. Long Beach State ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_b8374bd2",
+      "agenda_id": "",
+      "titulo": "California Baptist vs Cal State Fullerton",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "California Baptist",
+      "equipo_visitante": "Cal State Fullerton",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-15T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4m6o2a1637337652.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3ulim21780827888.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ California Baptist vs. Cal State Fullerton ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1729551"
+        }
+      ],
+      "texto_original_crudo": "21:00 ◘ California Baptist vs. Cal State Fullerton ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "titulo_original_crudo": "21:00 ◘ California Baptist vs. Cal State Fullerton ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_abbcc389",
+      "agenda_id": "",
+      "titulo": "Utah Valley vs Cal Poly",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Utah Valley",
+      "equipo_visitante": "Cal Poly",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-15T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbu56i61564356445.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Utah Valley vs. Cal Poly ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1729554"
+        }
+      ],
+      "texto_original_crudo": "21:00 ◘ Utah Valley vs. Cal Poly ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "titulo_original_crudo": "21:00 ◘ Utah Valley vs. Cal Poly ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "ronda": ""
+    },
+    {
+      "id": "xtream_655b44af",
+      "agenda_id": "",
+      "titulo": "Utah Valley vs California Baptist",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Utah Valley",
+      "equipo_visitante": "California Baptist",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "NCAA Men's Soccer",
+      "hora_utc": "2026-10-15T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4m6o2a1637337652.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1729555"
+        }
+      ],
+      "texto_original_crudo": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "titulo_original_crudo": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "ronda": ""
     },
     {
       "id": "xtream_f9e2adcd",
@@ -3892,7 +4083,8 @@
       "titulo_original_crudo": "21:30 ◘ Denver Nuggets vs. Los Angeles Clippers ◘ NBA ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_fd308cee",
@@ -3934,7 +4126,8 @@
       "texto_original_crudo": "21:30 ◘ LA Galaxy vs. Portland Timbers ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "21:30 ◘ LA Galaxy vs. Portland Timbers ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_b8deea57",
@@ -3977,7 +4170,8 @@
       "titulo_original_crudo": "21:30 ◘ Los Angeles FC vs. Austin ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_148e0c4e",
@@ -4020,7 +4214,8 @@
       "titulo_original_crudo": "21:30 ◘ San Diego vs. Houston Dynamo ◘ Major League Soccer ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_c2d8d0b0",
@@ -4058,7 +4253,8 @@
       "texto_original_crudo": "21:50  | Tomateros de Culiacán vs. Venados de Mazatlán | LMB (Mexican League) ✮✮[Eventos Diarios | Exclusivos]✮✮",
       "titulo_original_crudo": "21:50  | Tomateros de Culiacán vs. Venados de Mazatlán | LMB (Mexican League) ✮✮[Eventos Diarios | Exclusivos]✮✮",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_da9ccfc2",
@@ -4097,7 +4293,8 @@
       "titulo_original_crudo": "22:00 ◘ Marquense vs. Mixco ◘ Liga Guatemala ◘ ✨Eventos Diarios 14/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_9f5d5425",
@@ -4130,12 +4327,17 @@
         {
           "nombre": "22:00 ◘ Wuhan Open / Court 1 ◘ WTA ◘◘",
           "id_xtream": "1729561"
+        },
+        {
+          "nombre": "22:00 ◘ Wuhan Open ◘ WTA ◘◘",
+          "id_xtream": "1729562"
         }
       ],
       "texto_original_crudo": "22:00 ◘ Wuhan Open / Court 1 ◘ WTA ◘◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "22:00 ◘ Wuhan Open / Court 1 ◘ WTA ◘◘ ✨Eventos Diarios 14/10✨",
       "ronda": "Court 1 • Optics Valley International Tennis Center",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_d5e11f2e",
@@ -4173,21 +4375,23 @@
       "texto_original_crudo": "22:00 ◘ Wuhan Open ◘ WTA ◘◘ ✨Eventos Diarios 14/10✨",
       "titulo_original_crudo": "22:00 ◘ Wuhan Open ◘ WTA ◘◘ ✨Eventos Diarios 14/10✨",
       "ronda": "Pista Central • Optics Valley International Tennis Center",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     }
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-14",
-    "total_agenda_maestra": 39,
+    "total_agenda_maestra": 24,
     "total_canales_xtream": 1951,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 562,
-    "eventos_lineales_inyectados": 36,
-    "eventos_xtream_aprobados": 106,
-    "eventos_contrastados_api": 73,
-    "eventos_descartados_stale": 52,
-    "total_eventos_publicados": 86,
-    "hora_actualizacion_utc": "2026-10-14T15:04:55Z"
+    "eventos_lineales_inyectados": 15,
+    "eventos_xtream_aprobados": 104,
+    "eventos_contrastados_api": 55,
+    "eventos_sellados_boveda_inmutable": 86,
+    "eventos_descartados_stale": 60,
+    "total_eventos_publicados": 89,
+    "hora_actualizacion_utc": "2026-10-14T16:56:27Z"
   }
 }
