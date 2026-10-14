@@ -3,14 +3,11 @@
 Conector Integral API-Sports (12 Deportes):
 1. Descarga y cacheo diario de la cartelera oficial multideporte (Fútbol, Baloncesto, Béisbol,
    Hockey, Rugby, Fútbol Americano, Balonmano, Voleibol, Formula 1, MMA, AFL, NBA).
-2. Sincronización estricta con la zona horaria del producto (America/Bogota):
-   - Abarca las 24 horas del día local completo para incluir los partidos nocturnos (Liga MX, etc.).
-   - 1 sola lectura por deporte al día.
-   - Guardado en disco en 'fixtures_api_sports_YYYY-MM-DD.json'.
+2. Sincronización estricta con la zona horaria del producto (America/Bogota).
 3. Actualización de 'catalogo_maestro_equipos.json' y 'catalogo_maestro_torneos.json'
    con los escudos y logos oficiales en HD con proxy anti-403 (wsrv.nl).
-4. Emparejamiento inteligente de eventos lineales y Xtream con paridad estricta de
-   división (Mayores vs U19/Sub-20/Reserva/Femenino), ventana horaria y estado activo.
+4. Emparejamiento inteligente con paridad estricta de DEPORTE, DIVISIÓN (Mayores vs U19/Reserva/Fem),
+   VENTANA HORARIA y ESTADO ACTIVO.
 """
 from __future__ import annotations
 
@@ -116,8 +113,6 @@ def normalizar_clave(s: Any) -> str:
         return ""
     sin_tildes = _quitar_tildes_upper(s)
     limpio = re.sub(r"[^A-Z0-9]+", " ", sin_tildes).strip()
-
-    # Remover marcas de categoría/femenino/reserva solo para la llave base de entidad/escudo
     limpio = re.sub(r"\b(W|WOMEN|FEMENINO|FEM|FEMENIL|DAMAS|SUB\s*\d+|U\d+|RES)\b", "", limpio).strip()
 
     for k, v in SINONIMOS_PAISES_API.items():
@@ -134,7 +129,6 @@ def normalizar_clave(s: Any) -> str:
 def extraer_marcadores_division(texto: str) -> Set[str]:
     """
     Extrae marcadores estructurales de división/edad/género ('U19', 'U20', 'U21', 'U23', 'U17', 'RESERVA', 'FEMENINO').
-    Si devuelve conjunto vacío, corresponde a categoría Mayor/Absoluta Masculina.
     """
     u = _quitar_tildes_upper(texto)
     marcadores: Set[str] = set()
@@ -153,6 +147,38 @@ def extraer_marcadores_division(texto: str) -> Set[str]:
     if re.search(r"\b(WOMEN|WOMENS|FEMENINO|FEMENINA|FEMENIL|FEM|DAMAS|LADIES|LIGA\s+F|NWSL|WNBA)\b", u) or re.search(r"\s+W$", u):
         marcadores.add("FEMENINO")
     return marcadores
+
+def _normalizar_deporte_comparacion(dep: str) -> str:
+    d = _quitar_tildes_upper(dep).strip()
+    if d in {"FUTBOL", "SOCCER", "FUTBOL SALA"}:
+        return "FUTBOL"
+    if d in {"BALONCESTO", "BASKETBALL", "BASKET", "NBA", "WNBA"}:
+        return "BALONCESTO"
+    if d in {"BEISBOL", "BASEBALL", "MLB", "LMB", "LMP"}:
+        return "BEISBOL"
+    if d in {"HOCKEY", "NHL"}:
+        return "HOCKEY"
+    if d in {"FUTBOL AMERICANO", "NFL", "AFL", "NCAAF", "CFL"}:
+        return "FUTBOL AMERICANO"
+    if d in {"BALONMANO", "HANDBALL"}:
+        return "BALONMANO"
+    if d in {"RUGBY"}:
+        return "RUGBY"
+    if d in {"VOLEIBOL", "VOLLEYBALL"}:
+        return "VOLEIBOL"
+    if d in {"MOTOR", "FORMULA 1", "F1", "MOTOGP"}:
+        return "MOTOR"
+    if d in {"COMBATE", "MMA", "BOXEO", "UFC", "LUCHA LIBRE"}:
+        return "COMBATE"
+    return d
+
+def _son_deportes_compatibles(evento: Dict[str, Any], fixture: Dict[str, Any]) -> bool:
+    """Garantiza que jamás se cruce un evento de Fútbol con un fixture de Hockey, Baloncesto o Fútbol Americano."""
+    cat_ev = _normalizar_deporte_comparacion(str(evento.get("categoria") or ""))
+    dep_fix = _normalizar_deporte_comparacion(str(fixture.get("deporte") or ""))
+    if not cat_ev or cat_ev in {"OTROS DEPORTES", "DEPORTES", "DEPORTES EN VIVO"}:
+        return True
+    return cat_ev == dep_fix
 
 def _son_divisiones_compatibles(evento: Dict[str, Any], fixture: Dict[str, Any]) -> bool:
     """Garantiza que un partido de Primera/Champions no se cruce jamás con un partido U19, Reserva o Femenino."""
@@ -264,7 +290,6 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "", tz_producto: str =
     headers = {"x-apisports-key": key_actual, "User-Agent": "Mozilla/5.0"}
     todos_fixtures = []
 
-    # 1. Deportes estándar de duelos (9 APIs)
     for deporte, url_tpl, root_fixture, teams_key, league_key in ENDPOINTS_CONFIG:
         url = url_tpl.format(fecha=fecha_iso, tz=tz_actual)
         time.sleep(1.2)
@@ -340,7 +365,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "", tz_producto: str =
                     "status_short": status_short,
                 })
 
-    # 2. API-NBA dedicada (10ª API del panel)
+    # API-NBA dedicada
     time.sleep(1.2)
     url_nba = f"https://v2.nba.api-sports.io/games?date={fecha_iso}"
     data_nba = _hacer_request_con_reintento(url_nba, headers)
@@ -377,7 +402,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "", tz_producto: str =
                     "status_short": "NS",
                 })
 
-    # 3. Formula 1 (11ª API del panel)
+    # Formula 1
     time.sleep(1.2)
     url_f1 = f"https://v1.formula-1.api-sports.io/races?date={fecha_iso}&timezone={tz_actual}"
     data_f1 = _hacer_request_con_reintento(url_f1, headers)
@@ -414,7 +439,7 @@ def descargar_fixtures_dia(fecha_iso: str, api_key: str = "", tz_producto: str =
                 "status_short": st_f1,
             })
 
-    # 4. MMA / Combate (12ª API del panel)
+    # MMA / Combate
     time.sleep(1.2)
     url_mma = f"https://v1.mma.api-sports.io/fights?date={fecha_iso}&timezone={tz_actual}"
     data_mma = _hacer_request_con_reintento(url_mma, headers)
@@ -483,20 +508,31 @@ def guardar_equipos_en_catalogo(fixtures: List[Dict[str, Any]]) -> None:
     nuevos_tor = 0
 
     for f in fixtures:
+        dep_norm = _normalizar_deporte_comparacion(str(f.get("deporte") or ""))
         loc = f.get("local")
         loc_logo = f.get("logo_local")
         if loc and loc_logo:
-            k = f"equipo_{normalizar_clave(loc)}"
-            if k not in cat_equipos:
-                cat_equipos[k] = envolver_proxy_wsrv(loc_logo)
+            url_w = envolver_proxy_wsrv(loc_logo)
+            k_dep = f"equipo_{dep_norm}_{normalizar_clave(loc)}"
+            if k_dep not in cat_equipos:
+                cat_equipos[k_dep] = url_w
+                nuevos_eq += 1
+            k_gen = f"equipo_{normalizar_clave(loc)}"
+            if k_gen not in cat_equipos:
+                cat_equipos[k_gen] = url_w
                 nuevos_eq += 1
 
         vis = f.get("visitante")
         vis_logo = f.get("logo_visitante")
         if vis and vis_logo:
-            k = f"equipo_{normalizar_clave(vis)}"
-            if k not in cat_equipos:
-                cat_equipos[k] = envolver_proxy_wsrv(vis_logo)
+            url_w = envolver_proxy_wsrv(vis_logo)
+            k_dep = f"equipo_{dep_norm}_{normalizar_clave(vis)}"
+            if k_dep not in cat_equipos:
+                cat_equipos[k_dep] = url_w
+                nuevos_eq += 1
+            k_gen = f"equipo_{normalizar_clave(vis)}"
+            if k_gen not in cat_equipos:
+                cat_equipos[k_gen] = url_w
                 nuevos_eq += 1
 
         tor = f.get("torneo")
@@ -520,7 +556,7 @@ def guardar_equipos_en_catalogo(fixtures: List[Dict[str, Any]]) -> None:
         log.info("Añadidos %d nuevos logos de torneo a catalogo_maestro_torneos.json", nuevos_tor)
 
 def construir_indice_fixtures(fixtures: List[Dict[str, Any]]) -> Dict[str, Any]:
-    """Construye un índice que soporta múltiples partidos de los mismos clubes en el día (ej. Mayores y U19)."""
+    """Construye un índice que soporta múltiples partidos de los mismos clubes en el día."""
     indice: Dict[str, List[Dict[str, Any]]] = {}
     for f in fixtures:
         if not _es_estado_fixture_valido(str(f.get("status_short") or "")):
@@ -545,11 +581,13 @@ def _seleccionar_fixture_compatible(
     evento: Dict[str, Any],
     candidatos: List[Dict[str, Any]]
 ) -> Optional[Dict[str, Any]]:
-    """Filtra candidatos exigiendo paridad de división (Mayores vs U19/Reserva/Fem) y cercanía horaria."""
+    """Filtra candidatos exigiendo paridad estricta de DEPORTE, DIVISIÓN (Mayores vs U19/Reserva/Fem) y CERCANÍA HORARIA."""
     hora_ev = str(evento.get("hora_utc") or "")
     validos = []
     for f in candidatos:
         if not _es_estado_fixture_valido(str(f.get("status_short") or "")):
+            continue
+        if not _son_deportes_compatibles(evento, f):
             continue
         if not _son_divisiones_compatibles(evento, f):
             continue
@@ -571,20 +609,20 @@ def emparejar_con_api_sports(
     indice_fixtures: Dict[str, Any],
     fixtures_lista: List[Dict[str, Any]]
 ) -> Optional[Dict[str, Any]]:
-    """Empareja un evento (lineal o Xtream) contra la cartelera oficial de API-Sports respetando división y horario."""
+    """Empareja un evento (lineal o Xtream) contra la cartelera oficial de API-Sports respetando deporte, división y horario."""
     cat = (evento.get("categoria") or "").upper()
     tit = normalizar_clave(evento.get("titulo") or "")
     if "MOTOR" in cat or "F1" in tit or "FORMULA 1" in tit:
         for f in fixtures_lista:
             if f.get("deporte") == "Motor":
                 t_f1 = normalizar_clave(f.get("torneo", ""))
-                if t_f1 and (t_f1 in tit or tit in t_f1 or "SINGAPORE" in tit):
+                if t_f1 and (t_f1 in tit or tit in t_f1):
                     return f
 
     loc = normalizar_clave(evento.get("equipo_local") or "")
     vis = normalizar_clave(evento.get("equipo_visitante") or "")
 
-    # 1. Coincidencia exacta de claves normalizadas con validación de división y hora
+    # 1. Coincidencia exacta de claves normalizadas con validación de deporte, división y hora
     if loc and vis:
         k = f"{loc}__VS__{vis}"
         if k in indice_fixtures:
@@ -593,7 +631,7 @@ def emparejar_con_api_sports(
             if elegido:
                 return elegido
 
-    # 2. Coincidencia por subcadenas o inclusión de nombres con validación de división y hora
+    # 2. Coincidencia por subcadenas o inclusión de nombres con validación de deporte, división y hora
     if loc and vis:
         cands_sub = []
         for f in fixtures_lista:

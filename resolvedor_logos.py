@@ -34,7 +34,6 @@ def _http_get_json(url: str, headers: dict | None = None, timeout: int = 4) -> d
     except Exception:
         return None
 
-# Cargar .env si existe en el directorio del script
 _env_file = Path(__file__).resolve().parent / ".env"
 if _env_file.exists():
     for _line in _env_file.read_text(encoding="utf-8").splitlines():
@@ -122,7 +121,7 @@ def envolver_cdn_proxy(url: str) -> str:
 REPO_ASSETS_BASE = "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos"
 
 CIRCUITO_LOGOS_RAW: dict[str, str] = {
-    # Competiciones Mayores de Selecciones (Diferenciadas por Torneo, Nunca por Confederacion Generica)
+    # Competiciones Mayores de Selecciones
     "UEFA NATIONS LEAGUE": f"{REPO_ASSETS_BASE}/uefa_nations_league.png",
     "NATIONS LEAGUE": f"{REPO_ASSETS_BASE}/uefa_nations_league.png",
     "UEFA EURO": f"{REPO_ASSETS_BASE}/uefa_euro.png",
@@ -165,6 +164,7 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "PREMIER LEAGUE": f"{REPO_ASSETS_BASE}/premier_league.png",
     "FA CUP": f"{REPO_ASSETS_BASE}/fa_cup.png",
     "CARABAO CUP": f"{REPO_ASSETS_BASE}/carabao_cup.png",
+    "EFL CUP": f"{REPO_ASSETS_BASE}/carabao_cup.png",
     "EFL CHAMPIONSHIP": f"{REPO_ASSETS_BASE}/efl_championship.png",
     "SERIE A": f"{REPO_ASSETS_BASE}/serie_a.png",
     "SERIE B": f"{REPO_ASSETS_BASE}/serie_b.png",
@@ -188,6 +188,8 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "LIGA PROFESIONAL ARGENTINA": f"{REPO_ASSETS_BASE}/torneo_betano.png",
     "LIGA PROFESIONAL": f"{REPO_ASSETS_BASE}/torneo_betano.png",
     "TORNEO BETANO": f"{REPO_ASSETS_BASE}/torneo_betano.png",
+    "TORNEO CLAUSURA": f"{REPO_ASSETS_BASE}/torneo_betano.png",
+    "TORNEO APERTURA": f"{REPO_ASSETS_BASE}/torneo_betano.png",
     "PRIMERA DIVISION ARGENTINA": f"{REPO_ASSETS_BASE}/torneo_betano.png",
     "PRIMERA NACIONAL": f"{REPO_ASSETS_BASE}/primera_nacional.png",
     "COPA ARGENTINA": f"{REPO_ASSETS_BASE}/copa_argentina.png",
@@ -220,7 +222,7 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "EUROLEAGUE": f"{REPO_ASSETS_BASE}/euroleague.png",
     "EUROLIGA": f"{REPO_ASSETS_BASE}/euroleague.png",
 
-    # Motor
+    # Motor (SOLO asignados cuando el evento es explícitamente de esa competición)
     "FORMULA 1": f"{REPO_ASSETS_BASE}/f1.png",
     "F1": f"{REPO_ASSETS_BASE}/f1.png",
     "NASCAR": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/NASCAR_logo.svg/512px-NASCAR_logo.svg.png",
@@ -232,6 +234,9 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     # Ciclismo / Snooker / Combate / Golf
     "UCI": f"{REPO_ASSETS_BASE}/uci.png",
     "CAMPEONATO MUNDIAL DE CICLISMO": f"{REPO_ASSETS_BASE}/uci.png",
+    "CICLISMO EN PISTA CAMPEONATO DEL MUNDO": f"{REPO_ASSETS_BASE}/uci.png",
+    "BENELUX TOUR": f"{REPO_ASSETS_BASE}/uci.png",
+    "GIRO DEL VENETO": f"{REPO_ASSETS_BASE}/uci.png",
     "LA VUELTA": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/La_Vuelta_logo.svg/512px-La_Vuelta_logo.svg.png",
     "TOUR DE FRANCE": f"{REPO_ASSETS_BASE}/tour_de_france.png",
     "GIRO D ITALIA": "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Giro_d%27Italia_logo.svg/512px-Giro_d%27Italia_logo.svg.png",
@@ -244,24 +249,11 @@ CIRCUITO_LOGOS_RAW: dict[str, str] = {
     "PGA": f"{REPO_ASSETS_BASE}/pga_tour.png",
 }
 
+# REGLA UNIVERSAL: Cero fallbacks de marcas específicas (como F1, MLB, NBA o ATP) para torneos desconocidos.
+# Si un torneo no tiene su logo oficial exacto, devuelve "" para que la App use el icono vectorial limpio del deporte.
 FALLBACK_POR_CATEGORIA_RAW: dict[str, str] = {
-    "Tenis": f"{REPO_ASSETS_BASE}/atp.png",
-    "Padel": f"{REPO_ASSETS_BASE}/premier_padel.png",
-    "Pádel": f"{REPO_ASSETS_BASE}/premier_padel.png",
-    "Ciclismo": f"{REPO_ASSETS_BASE}/uci.png",
     "Snooker": f"{REPO_ASSETS_BASE}/wst.png",
-    "Motor": f"{REPO_ASSETS_BASE}/f1.png",
-    "Golf": f"{REPO_ASSETS_BASE}/pga_tour.png",
-    "Combate": "",
-    "Balonmano": f"{REPO_ASSETS_BASE}/liga_asobal.png",
-    "Beisbol": f"{REPO_ASSETS_BASE}/mlb.png",
-    "Béisbol": f"{REPO_ASSETS_BASE}/mlb.png",
-    "Fútbol": "",
-    "Futbol": "",
-    "Baloncesto": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Basketball.png/512px-Basketball.png",
-    "Rugby": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/World_Rugby_logo.svg/512px-World_Rugby_logo.svg.png",
-    "Hockey": f"{REPO_ASSETS_BASE}/nhl.png",
-    "Otros Deportes": "",
+    "Ciclismo": f"{REPO_ASSETS_BASE}/uci.png",
 }
 
 CIRCUITO_LOGOS = {k: envolver_cdn_proxy(v) for k, v in CIRCUITO_LOGOS_RAW.items() if envolver_cdn_proxy(v)}
@@ -596,9 +588,6 @@ def _guardar_cache(cache: dict[str, str]) -> None:
 def guardar_cache_logos() -> None:
     pass
 
-# ==============================================================================
-# DISAMBIGUACION POR ENTIDADES PARTICIPANTES (Universal y Sistemica)
-# ==============================================================================
 CLUBES_POR_PAIS: dict[str, set[str]] = {
     "BRASIL": {
         "CHAPECOENSE", "ATHLETICO PARANAENSE", "ATLETICO PARANAENSE", "PARANAENSE", "FLAMENGO", "PALMEIRAS",
@@ -683,9 +672,7 @@ DISCRIMINADORES_PAISES: set[str] = {
 }
 
 DISCRIMINADORES_TORNEO: set[str] = {
-    # Confederaciones
     "AFC", "CAF", "CONCACAF", "OFC", "UEFA", "CONMEBOL",
-    # Paises / Regiones
     "ENGLAND", "INGLATERRA", "SPAIN", "ESPANA", "ESPANOLA",
     "MEXICO", "MX", "COLOMBIA", "COLOMBIANA", "ARGENTINA", "ARGENTINO",
     "BRASIL", "BRAZIL", "BRASILEIRAO", "CHILE", "CHILENA", "PERU", "PERUANA",
@@ -698,12 +685,9 @@ DISCRIMINADORES_TORNEO: set[str] = {
     "SAUDI", "ARABIA", "QATAR", "JAPON", "JAPAN", "COREA", "KOREA",
     "CHINA", "AUSTRALIA", "AUSTRALIAN", "INDIA", "INDIAN", "TURQUIA", "TURKEY",
     "GRECIA", "GREECE", "POLONIA", "POLAND",
-    # Marcas y sponsors exclusivos de ligas nacionales
     "BETPLAY", "BETANO", "DIMAYOR", "HYPERMOTION", "ENDESA", "ASOBAL", "EFL",
-    # Genero y categorias formativas
     "FEMENINA", "FEMENIL", "WOMEN", "WOMENS", "FEM",
     "SUB 20", "SUB 17", "SUB 23", "U20", "U17", "U23",
-    # Disciplinas deportivas especificas que comparten nombres genericos
     "PADEL", "FUTSAL", "PLAYA", "3X3"
 }
 
@@ -818,7 +802,6 @@ def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
             return False
 
     return True
-    
 
 def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False, local: str = "", visitante: str = "") -> str:
     """Resuelve el logo oficial del torneo con precedencia estricta por limites de palabra (\b), compatibilidad deportiva y desambiguacion geografica por participantes."""
@@ -828,7 +811,6 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     torneo_norm = _normalizar(torneo)
     cat_clean = _normalizar(categoria or "")
 
-    # Deducir pais por participantes y/o titulo de torneo usando límites de palabra \b
     pais_deducido = ""
     if local or visitante:
         pais_deducido = deducir_pais_equipos(local, visitante)
@@ -865,7 +847,7 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
             elif pais_deducido == "ARGENTINA":
                 claves_prioritarias.extend(["PRIMERA B METROPOLITANA", "PRIMERA NACIONAL"])
 
-        elif any(re.search(rf"\b{re.escape(x)}\b", torneo_norm) for x in ["PRIMERA DIVISION", "PRIMERA A", "LIGA PROFESIONAL"]):
+        elif any(re.search(rf"\b{re.escape(x)}\b", torneo_norm) for x in ["PRIMERA DIVISION", "PRIMERA A", "LIGA PROFESIONAL", "TORNEO CLAUSURA", "TORNEO APERTURA"]):
             if pais_deducido == "CHILE":
                 claves_prioritarias.extend(["PRIMERA DIVISION CHILE", "CAMPEONATO CHILENO", "CAMPEONATO BETSSON"])
             elif pais_deducido == "COLOMBIA":
@@ -881,7 +863,6 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
     cache = _cargar_cache()
     clave_cache = f"torneo_{cat_clean}_{torneo_norm}{sufijo_cache}" if cat_clean else f"torneo_{torneo_norm}{sufijo_cache}"
 
-    # 0. Prioridades explícitas en CIRCUITO_LOGOS y catálogo local
     if CIRCUITO_LOGOS and claves_prioritarias:
         for cp in claves_prioritarias:
             if cp in CIRCUITO_LOGOS:
@@ -901,7 +882,6 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
                     _guardar_cache(cache)
                     return url
 
-    # 1. Catalogo maestro de insignias oficiales (Precedencia Maxima por longitud de clave con \b)
     claves_ordenadas_circ = sorted(CIRCUITO_LOGOS.keys(), key=len, reverse=True)
     for clave in claves_ordenadas_circ:
         patron = rf"\b{re.escape(clave)}\b"
@@ -915,7 +895,6 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
             _guardar_cache(cache)
             return url
 
-    # 1.5 Catalogo de torneos de API-Sports en disco (con \b)
     if catalogo:
         claves_ordenadas_cat = sorted(catalogo.keys(), key=len, reverse=True)
         for clave in claves_ordenadas_cat:
@@ -930,7 +909,6 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
                 _guardar_cache(cache)
                 return url
 
-    # 2. Cache previo en disco con invalidacion de falsos positivos y de disciplina
     if clave_cache in cache and cache[clave_cache] and not es_logo_basura(cache[clave_cache]):
         cached_url = cache[clave_cache]
         if not es_logo_compatible_con_categoria(cached_url, categoria):
@@ -940,158 +918,6 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
         else:
             return cached_url
 
-    # 3. Consulta de red a TheSportsDB
     if permitir_red and THESPORTSDB_KEY:
         try:
-            tsdb_url = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}/search_all_leagues.php?c={urllib.parse.quote(torneo)}"
-            data = _http_get_json(tsdb_url, timeout=3)
-            if data and data.get("countries"):
-                leagues = data["countries"]
-                if leagues:
-                    badge = leagues[0].get("strBadge") or leagues[0].get("strLogo")
-                    if badge and not es_logo_basura(badge) and es_logo_compatible_con_categoria(badge, categoria):
-                        cdn_url = envolver_cdn_proxy(badge)
-                        cache[clave_cache] = cdn_url
-                        _guardar_cache(cache)
-                        return cdn_url
-        except Exception:
-            pass
-
-    # 4. Fallback por categoria solo si esta explicitamente listado y es compatible
-    cat_limpia = categoria.strip()
-    if cat_limpia in FALLBACK_POR_CATEGORIA:
-        url_fb = FALLBACK_POR_CATEGORIA[cat_limpia]
-        if url_fb and es_logo_compatible_con_categoria(url_fb, categoria):
-            return url_fb
-
-    return ""
-
-TRADUCCIONES_CIUDADES_EQUIPOS = {
-    "MOSCU": "MOSCOW",
-    "MUNICH": "MUNCHEN",
-    "ESTAMBUL": "ISTANBUL",
-    "PRAGA": "PRAGUE",
-    "VARSOVIA": "WARSAW",
-    "BELGRADO": "BELGRADE",
-    "BUCAREST": "BUCHAREST",
-    "ATENAS": "ATHENS",
-    "LISBOA": "LISBON",
-    "NAPOLES": "NAPOLI",
-    "MILAN": "MILANO",
-    "TURIN": "TORINO",
-    "COLONIA": "KOLN",
-    "BASILEA": "BASEL",
-    "GINEBRA": "GENEVE",
-    "AMBERES": "ANTWERP",
-    "BRUJAS": "BRUGGE",
-}
-
-def _generar_variantes_busqueda_equipo(equipo_limpio: str) -> list[str]:
-    """Genera variantes universales (sin sufijos deportivos/juveniles y con topónimos en inglés) para maximizar match en catálogo y TheSportsDB."""
-    variantes = [equipo_limpio]
-    norm = _normalizar(equipo_limpio)
-
-    # Traducir topónimos comunes (ej. CSKA Moscú -> CSKA Moscow)
-    norm_trad = norm
-    for es_c, en_c in TRADUCCIONES_CIUDADES_EQUIPOS.items():
-        norm_trad = re.sub(rf"\b{es_c}\b", en_c, norm_trad)
-    if norm_trad != norm:
-        variantes.append(norm_trad.title())
-
-    # Quitar sufijos o prefijos genéricos de disciplina/patrocinio (ej. Surne Bilbao Basket -> Bilbao Basket / Bilbao)
-    sin_suf = re.sub(
-        r"\b(BASKET|BASKETS|BASKETBALL|BALONCESTO|HANDBALL|BALONMANO|FUTSAL|VOLLEY|VOLEIBOL|FC|CF|CD|BC|CB|U19|U20|U21|U23|RES|RESERVE)\b",
-        "",
-        norm_trad
-    )
-    sin_suf = " ".join(sin_suf.split()).strip()
-    if sin_suf and len(sin_suf) >= 3 and sin_suf.title() not in variantes:
-        variantes.append(sin_suf.title())
-
-    return variantes
-
-def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = "", permitir_red: bool = True, es_seleccion: Optional[bool] = None) -> str:
-    """
-    Resuelve el escudo/logo o bandera de un equipo.
-    Principio Universal:
-    - Si es selección nacional (validado gramaticalmente o por bandera es_seleccion), asigna bandera oficial HD.
-    - Si es club, busca primero en catalogo_maestro_equipos.json (alimentado por la descarga diaria de los 12 deportes de API-Sports),
-      luego en caché local y finalmente en TheSportsDB (cero llamadas 1 a 1 a API-Sports para cuidar cuota Free).
-    """
-    if not equipo:
-        return ""
-
-    equipo_limpio = equipo.strip()
-    equipo_norm = _normalizar(equipo_limpio)
-    clave_cache = f"equipo_{equipo_norm}"
-
-    # 0. Resolución Universal de Selecciones Nacionales (Invarianza Gramatical)
-    if es_seleccion is not False:
-        es_nat, flag_url = es_entidad_seleccion_nacional(equipo_norm)
-        if es_nat:
-            torneo_norm = _normalizar(torneo)
-            es_liga_domestica = any(l in torneo_norm for l in [
-                "SEGUNDA", "PRIMERA DIVISION", "PREMIER LEAGUE", "LALIGA", "SERIE A", "BUNDESLIGA",
-                "LIGUE 1", "BETPLAY", "LIGA MX", "BRASILEIRAO"
-            ])
-            if es_seleccion is True or not es_liga_domestica:
-                return flag_url
-
-    # 1. Catálogo maestro permanente de equipos en disco (filtrando por compatibilidad de deporte)
-    cat_equipos = _obtener_catalogo_equipos()
-    variantes = _generar_variantes_busqueda_equipo(equipo_limpio)
-    for var in variantes:
-        k_var = f"equipo_{_normalizar(var)}"
-        if k_var in cat_equipos and cat_equipos[k_var] and not es_logo_basura(cat_equipos[k_var]):
-            if es_logo_compatible_con_categoria(cat_equipos[k_var], deporte):
-                return cat_equipos[k_var]
-
-    # Limpieza de ranking universitario americano ("24 Harvard" -> "Harvard")
-    equipo_sin_ranking = re.sub(r"^\d+\s+", "", equipo_limpio).strip()
-    if equipo_sin_ranking != equipo_limpio:
-        clave_sin_rank = f"equipo_{_normalizar(equipo_sin_ranking)}"
-        if clave_sin_rank in cat_equipos and cat_equipos[clave_sin_rank] and not es_logo_basura(cat_equipos[clave_sin_rank]):
-            if es_logo_compatible_con_categoria(cat_equipos[clave_sin_rank], deporte):
-                return cat_equipos[clave_sin_rank]
-
-    # Búsqueda por inclusión de raíz en catálogo maestro de equipos (>= 5 caracteres y mismo deporte)
-    for var in variantes:
-        var_n = _normalizar(var)
-        if len(var_n) >= 5:
-            patron_v = rf"\b{re.escape(var_n)}\b"
-            for k_cat, url_cat in cat_equipos.items():
-                if not url_cat or es_logo_basura(url_cat) or not es_logo_compatible_con_categoria(url_cat, deporte):
-                    continue
-                nom_cat = k_cat.replace("equipo_", "")
-                if re.search(patron_v, nom_cat) or (len(nom_cat) >= 5 and re.search(rf"\b{re.escape(nom_cat)}\b", var_n)):
-                    return url_cat
-
-    # 2. Caché previo en disco
-    cache = _cargar_cache()
-    if clave_cache in cache and cache[clave_cache] and not es_logo_basura(cache[clave_cache]):
-        if es_logo_compatible_con_categoria(cache[clave_cache], deporte):
-            return cache[clave_cache]
-
-    if not permitir_red:
-        return ""
-
-    # 3. Consulta a TheSportsDB probando las variantes del nombre (sin tocar API-Sports 1 a 1)
-    for var in variantes:
-        time.sleep(0.30)
-        try:
-            tsdb_url = f"https://www.thesportsdb.com/api/v1/json/{THESPORTSDB_KEY}/searchteams.php?t={urllib.parse.quote(var)}"
-            data = _http_get_json(tsdb_url, timeout=3)
-            if data and data.get("teams"):
-                teams = data["teams"]
-                if teams:
-                    badge = teams[0].get("strBadge") or teams[0].get("strLogo")
-                    if badge and not es_logo_basura(badge):
-                        cdn_url = envolver_cdn_proxy(badge)
-                        cache[clave_cache] = cdn_url
-                        _guardar_cache(cache)
-                        _guardar_catalogo_equipos({clave_cache: cdn_url})
-                        return cdn_url
-        except Exception:
-            pass
-
-    return ""
+            tsdb_url = f"
