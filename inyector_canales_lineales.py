@@ -29,6 +29,7 @@ from resolvedor_logos import (
     resolver_logo_equipo,
     resolver_logo_torneo,
 )
+from sanitizador_nombres import es_texto_no_vivo_o_aplazado
 
 log = logging.getLogger("inyector_lineales")
 
@@ -185,6 +186,36 @@ def construir_indice_canales_lineales(canales_xtream: List[Dict[str, Any]]) -> D
     log.info("Canales lineales Xtream indexados con aislamiento territorial: %s", metricas)
     return indice
 
+def _deducir_territorio_evento(ev: EventoAgenda) -> str:
+    """
+    Deduce con precisión el territorio de la fuente de guía ('CO', 'AR', 'ES' o 'SUR')
+    para asignar exclusivamente el feed nacional correspondiente sin mezclar países.
+    """
+    fuente_low = (getattr(ev, "fuente", "") or "").lower()
+    txt_crudo = (getattr(ev, "texto_original_crudo", "") or "").upper()
+    canales_up = [c.upper() for c in (ev.canales or [])]
+
+    # Indicadores explícitos de Colombia
+    if any(k in fuente_low for k in ["_co", "colombia", "portada", "win"]):
+        return "CO"
+    if any(c in ["WIN SPORTS+", "WIN SPORTS", "CARACOL", "RCN", "ESPN CO", "ESPN 2 CO", "DSPORTS CO"] for c in canales_up):
+        return "CO"
+
+    # Indicadores explícitos de Argentina
+    if any(k in fuente_low for k in ["_ar", "argentina", "tyc", "tnt"]):
+        return "AR"
+    if "(ARG)" in txt_crudo or "HS (ARG)" in txt_crudo:
+        return "AR"
+    if any(c in ["TNT SPORTS", "TYC SPORTS", "ESPN PREMIUM ARGENTINA", "ESPN AR", "ESPN 2 AR", "DSPORTS AR"] for c in canales_up):
+        return "AR"
+
+    # Indicadores explícitos de España
+    if any(k in fuente_low for k in ["espana", "rtve", "teledeporte", "eurosport"]):
+        return "ES"
+
+    # Por defecto en producto America/Bogota, priorizar feed CO sobre AR
+    return "CO"
+
 def inyectar_eventos_lineales(
     agenda_hoy: List[EventoAgenda],
     indice_canales: Dict[str, List[Dict[str, str]]],
@@ -198,18 +229,27 @@ def inyectar_eventos_lineales(
     eventos_inyectados = []
 
     for ev in agenda_hoy:
+        txt_crudo = getattr(ev, "texto_original_crudo", "") or ev.titulo
+        if es_texto_no_vivo_o_aplazado(ev.titulo) or es_texto_no_vivo_o_aplazado(txt_crudo):
+            log.info("Descartando evento lineal no vivo / aplazado desde raíz: '%s' (%s)", ev.titulo, txt_crudo)
+            continue
+
+        territorio_ev = _deducir_territorio_evento(ev)
         canales_a_procesar = []
 
         for c in ev.canales:
-            cu = c.upper()
+            cu = c.upper().strip()
             if cu == "ESPN":
-                canales_a_procesar.extend(["ESPN CO", "ESPN AR"])
+                canon_esp = "ESPN AR" if territorio_ev == "AR" else "ESPN CO"
+                canales_a_procesar.append(canon_esp if canon_esp in indice_canales else "ESPN")
             elif cu == "ESPN 2":
-                canales_a_procesar.extend(["ESPN 2 CO", "ESPN 2 AR"])
+                canon_esp2 = "ESPN 2 AR" if territorio_ev == "AR" else "ESPN 2 CO"
+                canales_a_procesar.append(canon_esp2 if canon_esp2 in indice_canales else "ESPN 2")
             elif cu == "ESPN 3":
                 canales_a_procesar.append("ESPN 3")
             elif cu == "DSPORTS":
-                canales_a_procesar.extend(["DSPORTS CO", "DSPORTS AR"])
+                canon_dsp = "DSPORTS AR" if territorio_ev == "AR" else "DSPORTS CO"
+                canales_a_procesar.append(canon_dsp if canon_dsp in indice_canales else "DSPORTS")
             else:
                 canales_a_procesar.append(cu)
 
@@ -259,7 +299,7 @@ def inyectar_eventos_lineales(
         except Exception:
             hora_local_prod = "00:00"
 
-        logo_torneo = resolver_logo_torneo(ev.torneo or ev.titulo, ev.deporte)
+        logo_torneo = resolver_logo_torneo(ev.torneo or ev.titulo, ev.deporte, local=ev.local, visitante=ev.visitante)
         logo_loc = resolver_logo_equipo(ev.local, ev.deporte, ev.torneo) if ev.local else ""
         logo_vis = resolver_logo_equipo(ev.visitante, ev.deporte, ev.torneo) if ev.visitante else ""
 
@@ -294,8 +334,8 @@ def inyectar_eventos_lineales(
             "puntuacion_confianza": 0.95,
             "fuentes": fuentes_unicas,
             "canales_candidatos": list(dict.fromkeys(canales_usados)),
-            "texto_original_crudo": getattr(ev, "texto_original_crudo", "") or ev.titulo,
-            "titulo_original_crudo": getattr(ev, "texto_original_crudo", "") or ev.titulo,
+            "texto_original_crudo": txt_crudo,
+            "titulo_original_crudo": txt_crudo,
         }
         eventos_inyectados.append(evento_dict)
 

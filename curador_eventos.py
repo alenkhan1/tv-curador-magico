@@ -44,7 +44,7 @@ from resolvedor_logos import (
     es_logo_basura,
     es_logo_compatible_con_categoria,
 )
-from sanitizador_nombres import sanitizar_evento_crudo
+from sanitizador_nombres import sanitizar_evento_crudo, es_texto_no_vivo_o_aplazado
 from curador_semantico import post_procesar_y_curar_eventos
 from auditor_agy import auditar_catalogo_con_agy, revisar_y_enriquecer_eventos_incompletos_con_agy
 from conector_api_sports import (
@@ -123,7 +123,6 @@ def obtener_canales_xtream(fecha_hoy_iso: str) -> List[Dict[str, Any]]:
 
             canales = []
             if len(cats) <= 5 or not cats_deporte:
-                # Proveedor de carpeta única o sin categorías deportivas: descarga integral
                 log.info("Proveedor Xtream con carpeta única o lista plana (%d categorías). Descargando streams completos...", len(cats))
                 s_url = f"{api_url}&action=get_live_streams"
                 req_s = urllib.request.Request(s_url, headers={"User-Agent": "Mozilla/5.0"})
@@ -193,7 +192,6 @@ def _duelo_coincide_con_fixtures(
         f_vis = normalizar_clave(f.get("visitante") or "")
         if not f_loc or not f_vis:
             continue
-        # Coincidencia directa o cruzada
         if (loc_n in f_loc or f_loc in loc_n) and (vis_n in f_vis or f_vis in vis_n):
             return True
         if (loc_n in f_vis or f_vis in loc_n) and (vis_n in f_loc or f_loc in vis_n):
@@ -210,12 +208,6 @@ def detectar_lista_actualizada_hoy(
 ) -> bool:
     """
     Verifica con rigor y contraste directo contra la API oficial si la lista Xtream contiene streams actualizados para hoy.
-    Principio rector: Los textos/fechas en IPTV son impredecibles y no confiables.
-    La API oficial (API-Sports y Agenda Maestra) es la unica fuente fidedigna de partidos reales.
-    1. Escanea todos los streams con horario de inicio (RE_HORA) que representan duelos entre dos equipos.
-    2. Contrasta exhaustivamente cada duelo contra los fixtures oficiales de HOY vs AYER.
-    3. Si la lista contiene duelos de AYER en igual o mayor numero que de HOY, la lista NO es fresca (Estado: PENDIENTE).
-    4. Solo se certifica si los duelos confirmados de HOY superan contundentemente a los de AYER.
     """
     duelos_candidatos = []
     for c in canales_xtream:
@@ -257,7 +249,6 @@ def detectar_lista_actualizada_hoy(
             continue
         duelos_vistos.add(clave_duelo)
 
-        # 1. Contraste contra cartelera de HOY (API-Sports y Agenda Maestra)
         es_de_hoy = _duelo_coincide_con_fixtures(loc, vis, fix_hoy)
         if not es_de_hoy and agenda_hoy:
             l_n = normalizar_clave(loc)
@@ -270,7 +261,6 @@ def detectar_lista_actualizada_hoy(
                         es_de_hoy = True
                         break
 
-        # 2. Contraste contra cartelera de AYER (API-Sports)
         es_de_ayer = _duelo_coincide_con_fixtures(loc, vis, fix_ayer)
 
         if es_de_hoy and not es_de_ayer:
@@ -319,12 +309,7 @@ def procesar_streams_eventos_xtream(
     fixtures_ayer: Optional[List[Dict[str, Any]]] = None,
 ) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
     """
-    Embudo Universal Directo:
-    1. Filtro maestro de entrada: si el stream no tiene hora (HH:MM o AM/PM), se ignora de inmediato.
-    2. Descarte rápido de comodines y VOD con hora casual.
-    3. Descarte si tiene fecha explícita de ayer.
-    4. Extracción limpia de Duelos y Circuitos multideporte.
-    5. Fusión con la Agenda Maestra de canales lineales (1 tarjeta = N fuentes).
+    Embudo Universal Directo para streams efímeros de Xtream.
     """
     eventos_finales = []
     descartados = []
@@ -333,7 +318,6 @@ def procesar_streams_eventos_xtream(
 
     p_hoy1, p_hoy2 = fecha_hoy_dd_mm.split('/')
     d_hoy, m_hoy = int(p_hoy1), int(p_hoy2)
-    f_hoy_norm = f"{d_hoy:02d}/{m_hoy:02d}"
 
     if not lista_actualizada:
         log.warning("La lista Xtream aún no tiene la actualización de hoy (%s). Omitiendo streams efímeros para evitar eventos viejos.", fecha_hoy_dd_mm)
@@ -346,28 +330,23 @@ def procesar_streams_eventos_xtream(
         if not nombre or not sid:
             continue
 
-        # 1. FILTRO MAESTRO: ¿Tiene hora asignada de evento?
         m_h = RE_HORA.search(nombre)
         if not m_h:
             continue
 
-        # 2. Descarte de canales comodín / enlaces vacíos de transmisión
         if RE_COMODINES.search(nombre):
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "canal_transmision_no_evento"})
             continue
 
-        # 3. Descarte de VOD o series con hora casual
         if stype in ["movie", "series"] or any(k in nombre for k in ["Temporada", "Season", "T01E", "S01E", "Capitulo"]):
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "vod"})
             continue
 
-        # 3.1 Descarte de años antiguos en el stream (canales viejos 2020..2025)
         m_y = re.search(r'\b(20[0-1][0-9]|202[0-5])\b', nombre)
         if m_y:
             descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"anio_antiguo ({m_y.group(1)})"})
             continue
 
-        # 4. Descarte de fecha explícita ajena a hoy (soporta / . - como '11.26', '12/10', '12-10')
         m_f = re.search(r'\b([0-3]?[0-9])[./-]([0-3]?[0-9])\b', nombre)
         if m_f:
             n1, n2 = int(m_f.group(1)), int(m_f.group(2))
@@ -378,10 +357,10 @@ def procesar_streams_eventos_xtream(
                     descartados.append({"nombre": nombre, "id_xtream": sid, "razon": f"fecha_ajena ({m_f.group(0)})"})
                     continue
 
-        # 5. Extracción y sanitización de datos del evento
         cat_nombre = c.get("category_name") or ""
         parsed = sanitizar_evento_crudo(nombre, cat_nombre)
         if not parsed:
+            descartados.append({"nombre": nombre, "id_xtream": sid, "razon": "programa_no_vivo_o_aplazado"})
             continue
 
         titulo = parsed.get("titulo", nombre)
@@ -391,7 +370,6 @@ def procesar_streams_eventos_xtream(
         tipo = parsed.get("tipo", "duelo" if local and visitante else "circuito")
         deporte = parsed.get("deporte", "Otros Deportes")
 
-        # 4.1 CERROJO INDIVIDUAL DEPORTIVO: Descarte estricto de duelos disputados AYER segun la API oficial
         if local and visitante and fixtures_ayer and _duelo_coincide_con_fixtures(local, visitante, fixtures_ayer):
             es_de_hoy_tambien = bool(fixtures_dia and _duelo_coincide_con_fixtures(local, visitante, fixtures_dia))
             if not es_de_hoy_tambien:
@@ -402,7 +380,6 @@ def procesar_streams_eventos_xtream(
                 })
                 continue
 
-        # Conversión de hora a formato 24h
         h = int(m_h.group(1))
         mi = int(m_h.group(2))
         ampm = (m_h.group(3) or "").upper()
@@ -412,7 +389,6 @@ def procesar_streams_eventos_xtream(
             h = 0
         hora_str = f"{h:02d}:{mi:02d}"
 
-        # Reconciliación con Agenda Maestra oficial si coincide
         coincide_agenda = None
         for ev in agenda_hoy:
             if local and visitante and ev.local and ev.visitante:
@@ -420,7 +396,7 @@ def procesar_streams_eventos_xtream(
                 v_u = normalizar_texto(visitante)
                 ev_l = normalizar_texto(ev.local)
                 ev_v = normalizar_texto(ev.visitante)
-                if (l_u in ev_l or ev_l in l_u) and (v_u in ev_v or ev_v in v_u):
+                if (l_u in ev_l or ev_l in l_u) and (v_u in ev_v or ev_v in v_n if 'v_n' in locals() else (v_u in ev_v or ev_v in v_u)):
                     coincide_agenda = ev
                     break
             elif tipo == "circuito":
@@ -443,7 +419,6 @@ def procesar_streams_eventos_xtream(
             cat = deporte
             tor = torneo
 
-        # Agrupación y fusión de fuentes
         clave_duelo = f"{normalizar_texto(local)}_vs_{normalizar_texto(visitante)}" if local and visitante else ""
         clave_circuito = f"{normalizar_texto(titulo)}_{hora_utc[:13]}" if not clave_duelo else ""
 
@@ -475,8 +450,8 @@ def procesar_streams_eventos_xtream(
             "tipo_evento": tipo,
             "equipo_local": local,
             "equipo_visitante": visitante,
-            "subtitulo": f"{tor}",
-            "referencia": tor,
+            "subtitulo": parsed.get("subtitulo") or f"{tor}",
+            "referencia": parsed.get("referencia") or tor,
             "hora_utc": hora_utc,
             "hora_local_producto": hora_str,
             "duracion_min": calcular_duracion_evento(cat, titulo, 120),
@@ -492,6 +467,8 @@ def procesar_streams_eventos_xtream(
             "confianza": "alta" if coincide_agenda else "media",
             "puntuacion_confianza": 0.9 if coincide_agenda else 0.75,
             "fuentes": [{"nombre": nombre, "id_xtream": sid}],
+            "texto_original_crudo": parsed.get("texto_original_crudo", nombre),
+            "titulo_original_crudo": parsed.get("titulo_original_crudo", nombre),
         }
         if clave_duelo:
             mapa_duelos_existentes[clave_duelo] = len(eventos_finales)
@@ -502,19 +479,25 @@ def procesar_streams_eventos_xtream(
 
     return eventos_finales, descartados
 
+def _recalcular_hora_local(hora_utc_str: str, tz_prod: Any, fallback: str = "") -> str:
+    if not hora_utc_str:
+        return fallback
+    try:
+        dt_utc = datetime.fromisoformat(str(hora_utc_str).replace("Z", "+00:00"))
+        return dt_utc.astimezone(tz_prod).strftime("%H:%M")
+    except Exception:
+        return fallback
+
 def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     tz_prod = obtener_tz(APP_TIMEZONE)
     ahora_prod = datetime.now(tz_prod)
     fecha_hoy_iso = ahora_prod.strftime("%Y-%m-%d")
     fecha_ayer_iso = (ahora_prod - timedelta(days=1)).strftime("%Y-%m-%d")
     fecha_hoy_dd_mm = ahora_prod.strftime("%d/%m")
-    d_hoy, m_hoy = int(fecha_hoy_dd_mm.split('/')[0]), int(fecha_hoy_dd_mm.split('/')[1])
 
     log.info("=== INICIANDO CURACION DEPORTIVA MULTIFUENTE (%s) ===", fecha_hoy_iso)
 
     # PARADA INTELIGENTE ("ONE & DONE"):
-    # Si la lista Xtream ya fue procesada exitosamente hoy y estamos en modo check de la tarde,
-    # no hay necesidad de volver a ejecutar comprobaciones ni sobreescribir.
     if not forzar and META_FILE.exists():
         try:
             meta_prev = json.loads(META_FILE.read_text(encoding="utf-8"))
@@ -541,10 +524,13 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     indice_canales = construir_indice_canales_lineales(canales_xtream)
     eventos_lineales_raw = inyectar_eventos_lineales(agenda_hoy, indice_canales, APP_TIMEZONE)
 
-    # Cerrojo de Fixture Oficial en Canales Lineales:
-    # Descarta de raiz repeticiones/diferidos de partidos jugados ayer que no figuren hoy
+    # Cerrojo de Fixture Oficial y Aplazados en Canales Lineales:
     eventos_lineales = []
     for ev in eventos_lineales_raw:
+        txt_raw = ev.get("texto_original_crudo") or ev.get("titulo") or ""
+        if es_texto_no_vivo_o_aplazado(txt_raw) or es_texto_no_vivo_o_aplazado(ev.get("titulo", "")):
+            log.info("Descartado evento lineal aplazado/no-vivo: '%s'", txt_raw)
+            continue
         loc = ev.get("equipo_local", "")
         vis = ev.get("equipo_visitante", "")
         if loc and vis and fixtures_ayer and _duelo_coincide_con_fixtures(loc, vis, fixtures_ayer):
@@ -560,26 +546,27 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     )
     log.info("Estado de actualizacion de lista Xtream para hoy (%s): %s", fecha_hoy_dd_mm, "ACTUALIZADA" if lista_actualizada else "PENDIENTE")
 
-    # Si se invoco unicamente para verificar Xtream y aun no esta actualizada:
     if modo_check_xtream and not lista_actualizada:
         log.info("[CHECK XTREAM] La lista Xtream aun contiene duelos del dia anterior. Termina en 2s y espera al siguiente cron.")
         return
 
-    # Ingesta de streams efimeros de Xtream (solo si esta actualizada hoy, con cerrojo individual de ayer)
+    # Ingesta de streams efimeros de Xtream
     eventos_xtream, descartados = procesar_streams_eventos_xtream(
         canales_xtream, fecha_hoy_dd_mm, fecha_hoy_iso, agenda_hoy, tz_prod, lista_actualizada, fixtures_dia, fixtures_ayer
     )
 
     todos_eventos = list(eventos_lineales) + list(eventos_xtream)
 
-    # Contraste y corroboración con API-Sports (12 Deportes)
+    # Contraste y corroboración con API-Sports (12 Deportes con validación de división y ventana horaria)
     log.info("Fase 1.5: Contraste y corroboracion oficial con API-Sports (12 Deportes)...")
     emparejados_api = 0
     for ev in todos_eventos:
         match = emparejar_con_api_sports(ev, indice_fixtures, fixtures_dia)
         if match:
             emparejados_api += 1
-            ev["hora_utc"] = match.get("hora_utc") or ev.get("hora_utc")
+            if match.get("hora_utc"):
+                ev["hora_utc"] = match["hora_utc"]
+                ev["hora_local_producto"] = _recalcular_hora_local(match["hora_utc"], tz_prod, ev.get("hora_local_producto", ""))
             ev["fecha_confirmada"] = True
             ev["contrastado_api"] = True
             if match.get("deporte"):
@@ -599,11 +586,9 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
                 ev["equipo_visitante"] = match["visitante"]
                 ev["titulo"] = f"{match['local']} vs. {match['visitante']}"
                 ev["tipo_evento"] = "duelo"
-            if match.get("torneo"):
-                ev["torneo"] = match["torneo"]
-                if not ev.get("subtitulo") or ev["subtitulo"].lower() in ["deportes", "futbol", "fútbol", "en vivo"]:
-                    ev["subtitulo"] = match["torneo"]
-                    ev["referencia"] = match["torneo"]
+            if match.get("torneo") and (not ev.get("subtitulo") or ev["subtitulo"].lower() in ["deportes", "futbol", "fútbol", "en vivo"]):
+                ev["subtitulo"] = match["torneo"]
+                ev["referencia"] = match["torneo"]
 
     log.info("Eventos contrastados y corroborados con API-Sports: %d/%d", emparejados_api, len(todos_eventos))
 
@@ -616,12 +601,15 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     eventos_pulidos, descartados_agy = auditar_catalogo_con_agy(eventos_fase2, fecha_hoy_iso)
     descartados.extend(descartados_agy)
 
-        # Re-emparejamiento con API-Sports para duelos resueltos por AGY (ej. MLB, NFL)
+    # Re-emparejamiento con API-Sports para duelos resueltos por AGY (ej. MLB, NFL)
     for ev in eventos_pulidos:
         if ev.get("tipo_evento") == "duelo" and not ev.get("contrastado_api"):
             match = emparejar_con_api_sports(ev, indice_fixtures, fixtures_dia)
             if match:
                 ev["contrastado_api"] = True
+                if match.get("hora_utc"):
+                    ev["hora_utc"] = match["hora_utc"]
+                    ev["hora_local_producto"] = _recalcular_hora_local(match["hora_utc"], tz_prod, ev.get("hora_local_producto", ""))
                 if match.get("logo_local"):
                     ev["logo_local"] = envolver_proxy_wsrv(match["logo_local"])
                 if match.get("logo_visitante"):
@@ -635,13 +623,14 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     log.info("Fase 3.6: Deduplicacion y consolidacion final tras auditoria AGY y API-Sports...")
     eventos_consolidados = post_procesar_y_curar_eventos(eventos_pulidos)
 
-    # FASE 3.8: REVISION FINAL DE AGY (ENRIQUECIMIENTO DE EVENTOS VACIOS O GENERICOS)
+    # FASE 3.8: REVISION FINAL DE AGY (ENRIQUECIMIENTO DE EVENTOS DE CIRCUITO SIN SUBTITULO O GENERICOS)
     candidatos_pendientes = [
         ev for ev in eventos_consolidados
-        if not ev.get("auditado_agy") and any(k == (ev.get("titulo") or "").upper() for k in ["WWE RAW", "WWE SMACKDOWN", "UFC", "BOXEO"])
+        if (ev.get("tipo_evento") == "circuito" and not (ev.get("subtitulo") or "").strip())
+        or any(k == (ev.get("titulo") or "").upper() for k in ["WWE RAW", "WWE SMACKDOWN", "UFC", "BOXEO"])
     ]
     if candidatos_pendientes:
-        log.info("Fase 3.8: Revision final de AGY sobre %d tarjetas genericas no auditadas...", len(candidatos_pendientes))
+        log.info("Fase 3.8: Revision final de AGY sobre %d tarjetas de circuito/combate sin subtitulo...", len(candidatos_pendientes))
         eventos_consolidados = revisar_y_enriquecer_eventos_incompletos_con_agy(eventos_consolidados, fecha_hoy_iso)
     else:
         log.info("Fase 3.8: Cartelera enriquecida y auditada en Fase 3. Se omite llamada redundante.")
@@ -654,7 +643,6 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         vis = ev.get("equipo_visitante", "")
         logo_existente = ev.get("logo_torneo", "")
 
-        # Si ya tiene un logo valido y compatible de fixture oficial (API-Sports), preservarlo
         if logo_existente and not es_logo_basura(logo_existente) and es_logo_compatible_con_categoria(logo_existente, cat):
             logo_cat = logo_existente
         else:
@@ -671,7 +659,7 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
             ev["logo_visitante"] = ev.get("logo_visitante") or resolver_logo_equipo(vis, cat, tor) or ""
         ev["banner"] = ev.get("banner") or ev["logo_torneo"]
         if not es_logo_compatible_con_categoria(ev.get("banner", ""), cat):
-            ev["banner"] = ev.get("logo_torneo", "")
+            ev["banner"] = ev["logo_torneo", ""] if isinstance(ev.get("logo_torneo"), dict) else ev.get("logo_torneo", "")
 
     # Validar unicidad estricta de IDs
     ids_vistos = set()
