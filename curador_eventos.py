@@ -43,7 +43,7 @@ from resolvedor_logos import (
     _es_url_logo_equipo_valida,
     _normalizar,
 )
-from sanitizador_nombres import sanitizar_evento_crudo, es_texto_no_vivo_o_aplazado, formatear_titulo_inteligente
+from sanitizador_nombres import sanitizar_evento_crudo, es_texto_no_vivo_o_aplazado, es_estado_aplazado_o_repeticion, formatear_titulo_inteligente
 from curador_semantico import (
     post_procesar_y_curar_eventos,
     son_mismo_evento,
@@ -123,7 +123,7 @@ def es_evento_integramente_curado(ev: Dict[str, Any]) -> bool:
     tit = (ev.get("titulo") or "").strip()
     tor = (ev.get("torneo") or "").strip()
     txt_raw = (ev.get("texto_original_crudo") or "").strip()
-    if not tit or es_texto_no_vivo_o_aplazado(tit) or es_texto_no_vivo_o_aplazado(txt_raw):
+    if not tit or es_texto_no_vivo_o_aplazado(tit) or es_estado_aplazado_o_repeticion(txt_raw):
         return False
 
     # Rechazar si aún tiene numeración de dial ('DIRTVISION 01') o palabras largas en mayúsculas
@@ -680,7 +680,7 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         txt_raw = ev.get("texto_original_crudo") or ev.get("titulo") or ""
         if f"txt_{_normalizar(txt_raw)}" in claves_descartadas_hoy:
             continue
-        if es_texto_no_vivo_o_aplazado(txt_raw) or es_texto_no_vivo_o_aplazado(ev.get("titulo", "")):
+        if es_texto_no_vivo_o_aplazado(ev.get("titulo", "")) or es_estado_aplazado_o_repeticion(txt_raw):
             log.info("Descartado evento lineal aplazado/no-vivo: '%s'", txt_raw)
             continue
         loc = ev.get("equipo_local", "")

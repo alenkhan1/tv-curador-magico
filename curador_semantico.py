@@ -23,7 +23,7 @@ from resolvedor_logos import (
     _normalizar,
 )
 from conector_api_sports import extraer_marcadores_division
-from sanitizador_nombres import formatear_titulo_inteligente, es_texto_no_vivo_o_aplazado
+from sanitizador_nombres import formatear_titulo_inteligente, es_texto_no_vivo_o_aplazado, es_estado_aplazado_o_repeticion
 
 log = logging.getLogger("curador_semantico")
 
@@ -453,7 +453,7 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
         tit_raw = ev.get("texto_original_crudo") or ev.get("titulo_original_crudo") or ev.get("titulo_original") or tit_original
         ev["titulo_original_crudo"] = tit_raw
 
-        if es_texto_no_vivo_o_aplazado(tit_original) or es_texto_no_vivo_o_aplazado(tit_raw):
+        if es_texto_no_vivo_o_aplazado(tit_original) or es_estado_aplazado_o_repeticion(tit_raw):
             log.info("Descartando evento no-vivo / programa multicanal: '%s'", tit_original)
             continue
 

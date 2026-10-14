@@ -107,11 +107,22 @@ PATRONES_BASURA_PROGRAMAS = re.compile(
     re.I
 )
 
+PATRONES_ESTADO_CANCELADO_O_DIFERIDO = re.compile(
+    r'\b(APLAZADO|POSTERGADO|SUSPENDIDO|CANCELADO|REPROGRAMADO|DIFERIDO|EN\s+DIFERIDO|REPETICI[OÓ]N|REPLAY|REVIVE)\b',
+    re.I
+)
+
 def es_texto_no_vivo_o_aplazado(texto: str) -> bool:
-    """Detecta universalmente si un título o descripción corresponde a un evento aplazado, diferido, repetición, carrusel o programa de estudio."""
+    """Evalúa títulos cortos de streams o eventos para descartar programas, carruseles, previas o aplazados."""
     if not texto:
         return False
     return bool(PATRONES_BASURA_PROGRAMAS.search(texto))
+
+def es_estado_aplazado_o_repeticion(texto_largo: str) -> bool:
+    """Evalúa textos crudos o sinopsis largas buscando únicamente estados de partido aplazado/suspendido/diferido (sin falsos positivos por la palabra 'previa' en descripciones de mi.tv)."""
+    if not texto_largo:
+        return False
+    return bool(PATRONES_ESTADO_CANCELADO_O_DIFERIDO.search(texto_largo))
 
 ACRONIMOS_MAYUSCULAS = {
     "UEFA", "FIFA", "CONMEBOL", "CONCACAF", "AFC", "CAF", "OFC", "ATP", "WTA", "ITF",

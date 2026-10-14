@@ -26,7 +26,7 @@ from resolvedor_logos import (
     resolver_logo_equipo,
     resolver_logo_torneo,
 )
-from sanitizador_nombres import es_texto_no_vivo_o_aplazado
+from sanitizador_nombres import es_texto_no_vivo_o_aplazado, es_estado_aplazado_o_repeticion
 
 log = logging.getLogger("inyector_lineales")
 
@@ -197,7 +197,7 @@ def inyectar_eventos_lineales(
 
     for ev in agenda_hoy:
         txt_crudo = getattr(ev, "texto_original_crudo", "") or ev.titulo
-        if es_texto_no_vivo_o_aplazado(ev.titulo) or es_texto_no_vivo_o_aplazado(txt_crudo):
+        if es_texto_no_vivo_o_aplazado(ev.titulo) or es_estado_aplazado_o_repeticion(txt_crudo):
             log.info("Descartando evento lineal no vivo / aplazado desde raíz: '%s' (%s)", ev.titulo, txt_crudo)
             continue
 
