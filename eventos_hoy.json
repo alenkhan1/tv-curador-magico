@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-14T16:56:27Z",
+  "generado_utc": "2026-10-14T16:59:53Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-14",
   "base_media": "http://avefenixtv.com:8080",
@@ -991,6 +991,57 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_premium_argentina_cb9c811f",
+      "agenda_id": "",
+      "titulo": "San Martín SJ (Reserva) vs. Deportivo Riestra (Reserva)",
+      "torneo": "Torneo Proyección",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Martín SJ (Reserva)",
+      "equipo_visitante": "Deportivo Riestra (Reserva)",
+      "subtitulo": "Torneo Proyección",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-14T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F461.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F476.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "deporte"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN Premium  | AR FHD",
+          "id_xtream": "712747",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN PREMIUM | AR",
+          "id_xtream": "591997",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN PREMIUM ARGENTINA"
+      ],
+      "texto_original_crudo": "15:00 Torneo Proyección San Martín SJ Reserva Deportivo Riestra Reserva LPF Play ESPN Premium",
+      "titulo_original_crudo": "15:00 Torneo Proyección San Martín SJ Reserva Deportivo Riestra Reserva LPF Play ESPN Premium",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_e0f3db8b",
       "agenda_id": "",
       "titulo": "Boston River vs CA River Plate",
@@ -1585,28 +1636,28 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_2_co_aadf68af",
+      "id": "lineal_espn_3_co_90321b3a",
       "agenda_id": "",
-      "titulo": "Manchester City vs PSG",
-      "torneo": "Fútbol",
+      "titulo": "Manchester City vs. PSG",
+      "torneo": "UEFA Champions League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Manchester City",
       "equipo_visitante": "PSG",
-      "subtitulo": "Manchester City vs PSG",
-      "referencia": "Fútbol",
+      "subtitulo": "UEFA Champions League",
+      "referencia": "Fase de Liga",
       "hora_utc": "2026-10-14T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
-      "logo_torneo": "",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7914.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7921.png&w=400&output=webp&trim=10",
-      "banner": "",
-      "tier": 2,
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+      "tier": 1,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "portada"
+        "deporte"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1614,98 +1665,32 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN 2 CO",
-          "id_xtream": "591982",
-          "canal_lineal": "ESPN 2 CO",
-          "pais": "CO"
-        },
-        {
           "nombre": "ESPN 3 FHD | ARG",
           "id_xtream": "591987",
-          "canal_lineal": "ESPN 3 AR",
+          "canal_lineal": "ESPN 3 CO",
           "pais": "SUR"
         },
         {
           "nombre": "ESPN 3 HD | AR",
           "id_xtream": "591986",
-          "canal_lineal": "ESPN 3 AR",
+          "canal_lineal": "ESPN 3 CO",
           "pais": "SUR"
         },
         {
           "nombre": "ESPN 3 HD| AR",
           "id_xtream": "712745",
-          "canal_lineal": "ESPN 3 AR",
+          "canal_lineal": "ESPN 3 CO",
           "pais": "SUR"
-        },
-        {
-          "nombre": "14:00 ◘ Manchester City vs. PSG ◘ UEFA Champions League ◘",
-          "id_xtream": "1729483"
-        },
-        {
-          "nombre": "14:00 ◘ Manchester City vs. PSG ◘ UEFA Champions League ◘ SD",
-          "id_xtream": "1729484"
-        },
-        {
-          "nombre": "12:25  | English: Manchester City vs. PSG | UEFA Champions League",
-          "id_xtream": "1729583"
-        },
-        {
-          "nombre": "13:40  | Manchester City vs. PSG | UEFA Champions League",
-          "id_xtream": "1729592"
         }
       ],
       "canales_candidatos": [
-        "ESPN 2 CO",
+        "ESPN 3 CO",
         "ESPN 3 AR"
       ],
-      "texto_original_crudo": "14:00 Fase Liga Manchester City PSG Disney+ Premium ESPN 2",
-      "titulo_original_crudo": "14:00 Fase Liga Manchester City PSG Disney+ Premium ESPN 2",
-      "ronda": ""
-    },
-    {
-      "id": "xtream_140e4665",
-      "agenda_id": "",
-      "titulo": "UFC Fight Night",
-      "torneo": "UFC Fight Night",
-      "categoria": "Artes Marciales Mixtas",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Meta Apex, las Vegas",
-      "referencia": "Cartelera estelar y preliminares de artes marciales mixtas",
-      "hora_utc": "2026-10-14T19:55:00Z",
-      "hora_local_producto": "14:55",
-      "duracion_min": 135,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "14:55 | UFC Fight Night: En Español | UFC",
-          "id_xtream": "1727175"
-        },
-        {
-          "nombre": "14:55 | UFC Fight Night: English | UFC",
-          "id_xtream": "1727177"
-        },
-        {
-          "nombre": "14:55 | UFC Fight Night: En Portugués | UFC",
-          "id_xtream": "1727176"
-        }
-      ],
-      "texto_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-      "titulo_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-      "ronda": "Meta Apex, las Vegas",
+      "texto_original_crudo": "16:00 Champions League Fase Liga Manchester City PSG Disney+ Premium FOX Sports",
+      "titulo_original_crudo": "16:00 Champions League Fase Liga Manchester City PSG Disney+ Premium FOX Sports",
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -3971,19 +3956,19 @@
     {
       "id": "xtream_abbcc389",
       "agenda_id": "",
-      "titulo": "Utah Valley vs Cal Poly",
+      "titulo": "Cal Poly vs. Utah Valley",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Utah Valley",
-      "equipo_visitante": "Cal Poly",
+      "equipo_local": "Cal Poly",
+      "equipo_visitante": "Utah Valley",
       "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
+      "referencia": "Mustang Memorial Field",
       "hora_utc": "2026-10-15T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbu56i61564356445.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbu56i61564356445.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
@@ -4003,44 +3988,9 @@
       ],
       "texto_original_crudo": "21:00 ◘ Utah Valley vs. Cal Poly ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "titulo_original_crudo": "21:00 ◘ Utah Valley vs. Cal Poly ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
-    },
-    {
-      "id": "xtream_655b44af",
-      "agenda_id": "",
-      "titulo": "Utah Valley vs California Baptist",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Utah Valley",
-      "equipo_visitante": "California Baptist",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
-      "hora_utc": "2026-10-15T02:00:00Z",
-      "hora_local_producto": "21:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4m6o2a1637337652.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1729555"
-        }
-      ],
-      "texto_original_crudo": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "titulo_original_crudo": "21:00 ◘ Utah Valley vs. California Baptist ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_f9e2adcd",
@@ -4381,17 +4331,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-14",
-    "total_agenda_maestra": 24,
+    "total_agenda_maestra": 29,
     "total_canales_xtream": 1951,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 562,
-    "eventos_lineales_inyectados": 15,
+    "eventos_lineales_inyectados": 18,
     "eventos_xtream_aprobados": 104,
     "eventos_contrastados_api": 55,
-    "eventos_sellados_boveda_inmutable": 86,
-    "eventos_descartados_stale": 60,
-    "total_eventos_publicados": 89,
-    "hora_actualizacion_utc": "2026-10-14T16:56:27Z"
+    "eventos_sellados_boveda_inmutable": 88,
+    "eventos_descartados_stale": 63,
+    "total_eventos_publicados": 88,
+    "hora_actualizacion_utc": "2026-10-14T16:59:53Z"
   }
 }
