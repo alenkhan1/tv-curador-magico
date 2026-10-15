@@ -59,7 +59,7 @@ ARCHIVO_CORRECCIONES = "correcciones.json"
 ARCHIVO_INFORME = "informe_no_resueltos.json"
 
 SCHEMA = 3          # catalogo completo + nivel "sin_identificar" + campo "backdrop"
-CACHE_VERSION = 1
+CACHE_VERSION = 2
 
 # --- Topes de VITRINA (cuantos posters por fila, NO del catalogo) ----------
 TOPE_GENERO = int(os.environ.get("TOPE_GENERO", "50"))
