@@ -14,7 +14,6 @@ on:
         required: false
         default: "12"
 
-# Nunca dos curadores a la vez: se pisarian la memoria y el commit.
 concurrency:
   group: curador
   cancel-in-progress: false
@@ -28,14 +27,22 @@ jobs:
 
     steps:
       - name: Descargar el repositorio
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
 
       - name: Configurar Python
-        uses: actions/setup-python@v5.6.0
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      - name: Restaurar cache de TMDB
+        uses: actions/cache@v4
+        with:
+          path: cache_tmdb.json.gz
+          key: tmdb-cache-${{ github.run_id }}
+          restore-keys: |
+            tmdb-cache-
 
       - name: Instalar dependencias
         run: pip install --upgrade requests curl_cffi
@@ -54,15 +61,15 @@ jobs:
           PYTHONUNBUFFERED: "1"
         run: python curador.py
 
-      # El curador nunca sobrescribe catalogo_curado.json si la validacion
-      # falla (queda intacto el de la corrida anterior). Aun asi guardamos
-      # SIEMPRE la memoria y el informe: el avance de TMDB no se pierde.
       - name: Guardar cambios en el repositorio
         if: always()
         run: |
           git config --global user.name "Bot Curador"
           git config --global user.email "bot@allstreamtv.com"
-          for f in catalogo_curado.json cache_tmdb.json correcciones.json informe_no_resueltos.json; do
+          if [ -f "cache_tmdb.json.gz" ] && [ -f "cache_tmdb.json" ]; then
+            git rm -f --ignore-unmatch cache_tmdb.json
+          fi
+          for f in catalogo_curado.json cache_tmdb.json.gz correcciones.json informe_no_resueltos.json; do
             if [ -f "$f" ]; then
               git add "$f"
             fi
@@ -108,15 +115,11 @@ jobs:
                   f.write('supera_umbral=%s\n' % str(bool(alerta.get('supera_umbral'))).lower())
           "
 
-      # No bloquea la publicacion (el catalogo ya se guardo en el paso
-      # anterior). Solo deja una senal visible en el resumen del job para
-      # que sea evidente sin tener que abrir el informe a mano.
       - name: Alertar si sube el porcentaje sin identificar
         if: always() && steps.resumen_informe.outputs.supera_umbral == 'true'
         run: |
           echo "::warning::El porcentaje de titulos sin identificar supero el umbral configurado. Revisa informe_no_resueltos.json (seccion 'patrones')."
 
-      # El push puede chocar con otro commit reciente; ya hay reintento arriba.
       - name: Marcar fallo si el curador no valido el catalogo
         if: steps.curador.outcome == 'failure'
         run: |
