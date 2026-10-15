@@ -69,8 +69,10 @@ PISO_FILA = int(os.environ.get("PISO_FILA", "10"))
 
 # --- Reglas temporales (ventana rodante) ------------------------------------
 ANIOS_ANTIGUO = 25
-CLASICO_NOTA_MIN = 7.8
-CLASICO_VOTOS_MIN = 500
+CLASICO_NOTA_MIN = 6.8
+CLASICO_VOTOS_MIN = 150
+RETRO_VOTOS_MIN = 10
+RETRO_POP_MIN = 2.0
 DIAS_ESTRENO_PELICULA = 180
 DIAS_ESTRENO_SERIE = 90
 DIAS_PROVEEDOR_ESTRENO = 150
@@ -104,7 +106,7 @@ TOPE_CANDIDATOS_ALTERNATIVOS = 5
 
 # --- Version de la logica de resolucion -------------------------------------
 # Subimos a 3 para reintentar fallos antiguos con la nueva limpieza posicional
-VERSION_LOGICA_RESOLVER = 3
+VERSION_LOGICA_RESOLVER = 4
 
 # --- Alerta de calidad del informe ------------------------------------------
 UMBRAL_ALERTA_NO_IDENTIFICADO = float(
@@ -266,12 +268,12 @@ def titulo_prohibido(nombre_crudo):
     return False
 
 # ============================================================================
-# LIMPIEZA DE TITULOS (Posicional y segura contra falsos positivos)
+# LIMPIEZA DE TITULOS (Posicional, no destructiva y adaptativa)
 # ============================================================================
 
 PREFIJOS = {
     "ES", "ESP", "SPA", "LAT", "LATINO", "MX", "MEX", "AR", "CO", "CL", "PE",
-    "VE", "US", "UK", "EN", "BR", "PT", "FR", "IT", "JP", "KR", "DE", "RU",
+    "VE", "US", "UK", "EN", "ENG", "BR", "PT", "FR", "IT", "JP", "KR", "DE", "RU",
     "VIP", "4K", "UHD", "HD", "FHD", "SD", "HQ", "NEW", "NUEVO", "NUEVOS",
     "ESTRENO", "ESTRENOS", "PREESTRENO", "CINE", "CINEX", "MULTI", "DUAL",
     "SUB", "SUBS", "VOSE", "VOS", "TOP", "PACK", "SAGA", "COL", "COLECCION",
@@ -287,24 +289,39 @@ CALIDADES = {
     "480P": (1, "SD"), "360P": (1, "SD"), "SD": (1, "SD"), "DVD": (1, "SD"),
 }
 
-FUENTES = {
+FUENTES_ESTRICTAS = {
     "REMUX": 3, "BLURAY": 3, "BDRIP": 3, "BRRIP": 3, "WEBDL": 3, "BDREMUX": 3,
-    "WEBRIP": 2, "HDRIP": 2, "DVDRIP": 2, "HDTV": 2, "WEB": 2, "AMZN": 2,
-    "NF": 2, "DSNP": 2, "HMAX": 2, "ATVP": 2, "HULU": 2,
-    "HDCAM": 0, "CAMRIP": 0, "CAM": 0, "TS": 0, "TELESYNC": 0,
-    "SCREENER": 0, "DVDSCR": 0, "TSRIP": 0,
+    "WEBRIP": 2, "HDRIP": 2, "DVDRIP": 2, "HDTV": 2, "HDCAM": 0, "CAMRIP": 0,
+    "TELESYNC": 0, "SCREENER": 0, "DVDSCR": 0, "TSRIP": 0, "HDTS": 0,
 }
 
-FUENTES_AMBIGUAS = {"MAX": 2, "STAR": 2}
-
-IDIOMAS = {
-    "LATINO": (3, "Latino"), "LAT": (3, "Latino"), "DUAL": (3, "Dual"),
-    "MULTI": (3, "Dual"), "CASTELLANO": (2, "Castellano"),
-    "ESPANOL": (2, "Castellano"), "ESP": (2, "Castellano"),
-    "SUBTITULADO": (1, "Subtitulado"), "SUBS": (1, "Subtitulado"),
-    "SUB": (1, "Subtitulado"), "VOSE": (1, "Subtitulado"),
-    "VOS": (1, "Subtitulado"), "SUBTITULADA": (1, "Subtitulado"),
+FUENTES_AMBIGUAS = {
+    "WEB": 2, "AMZN": 2, "NF": 2, "DSNP": 2, "HMAX": 2, "ATVP": 2,
+    "HULU": 2, "MAX": 2, "STAR": 2, "CAM": 0, "TS": 0,
 }
+
+IDIOMAS_ESTRICTOS = {
+    "TRIALAUDIO": (3, "Tri-Audio"), "TRIPLEAUDIO": (3, "Tri-Audio"),
+    "TRIAUDIO": (3, "Tri-Audio"), "DUALAUDIO": (3, "Dual"),
+    "MULTIAUDIO": (3, "Dual"), "CASTELLANO": (2, "Castellano"),
+    "ESPANOL": (2, "Castellano"), "SUBTITULADO": (1, "Subtitulado"),
+    "SUBTITULADA": (1, "Subtitulado"), "VOSE": (1, "Subtitulado"),
+    "INGLES": (1, "Ingles"),
+}
+
+IDIOMAS_AMBIGUOS = {
+    "LATINO": (3, "Latino"), "LAT": (3, "Latino"),
+    "DUAL": (3, "Dual"), "MULTI": (3, "Dual"),
+    "ESP": (2, "Castellano"), "SPA": (2, "Castellano"), "CAST": (2, "Castellano"),
+    "SUBS": (1, "Subtitulado"), "SUB": (1, "Subtitulado"),
+    "VOS": (1, "Subtitulado"), "ENG": (1, "Ingles"), "EN": (1, "Ingles"),
+}
+
+IDIOMAS = dict(IDIOMAS_ESTRICTOS)
+IDIOMAS.update(IDIOMAS_AMBIGUOS)
+
+FUENTES = dict(FUENTES_ESTRICTAS)
+FUENTES.update(FUENTES_AMBIGUAS)
 
 # Etiquetas tecnicas estrictas que NUNCA son palabras normales de un titulo
 BASURA_ESTRICTA = {
@@ -313,23 +330,20 @@ BASURA_ESTRICTA = {
     "REPACK", "PROPER", "MKV", "MP4", "AVI", "RARBG", "YTS", "YIFY",
     "GALAXYRG", "FGT", "ETRG", "TGX", "MEGUSTA", "ION10", "SPARKS",
     "10BIT", "8BIT", "WEBCAP", "PREAIR", "MULTISUB", "DUBBED", "UNRATED",
-    "REMASTERED", "EXTENDED", "IMAX",
+    "REMASTERED", "EXTENDED", "IMAX", "OPENMATTE", "DOLBYVISION", "LINE",
 }
 
-# Palabras que pueden ser parte de un titulo real ("Walk the Line", "Open Range",
-# "Doctor Strange in the Multiverse of Madness", etc.), por lo que SOLO se
-# descartan si aparecen en la cola del nombre (al final) o tras una etiqueta tecnica.
-BASURA_COLA = {
-    "RIP", "AUDIO", "VOD", "EVO", "PSA", "DV", "DD", "VISION", "OPEN",
-    "MATTE", "LINE", "LIMITED", "INTERNAL", "COMPLETE",
+# Generos que algunos proveedores pegan al final tras el anio
+GENRES_TAIL = {
+    "ACCION", "ANIMACION", "AVENTURA", "BELICA", "CIENCIA FICCION", "COMEDIA",
+    "CRIMEN", "DOCUMENTAL", "DRAMA", "FAMILIA", "FANTASIA", "HISTORIA",
+    "INFANTIL", "MISTERIO", "MUSICA", "ROMANCE", "SUSPENSO", "SUSPENSE",
+    "TERROR", "WESTERN", "BELICO",
 }
 
 RE_EXT = re.compile(r"\.(mp4|mkv|avi|mov|ts|m4v|flv|wmv)\s*$", re.I)
-RE_CORCHETES = re.compile(r"\[([^\]]*)\]")
-RE_PARENTESIS = re.compile(r"\(([^)]*)\)")
 RE_ANIO = re.compile(r"\b(19\d{2}|20\d{2})\b")
 RE_PREFIJO = re.compile(r"^\s*([^\-|:]{1,24})\s*[\-|:]\s+")
-RE_SEPARADORES = re.compile(r"[|_··••‹›»«]+")
 RE_INICIO_SUCIO = re.compile(r"^[^\w¡¿(\"']+", re.UNICODE)
 RE_NUMERO_COLECCION = re.compile(r"^\s*\d{1,3}\s*[\-\.]\s+")
 
@@ -346,6 +360,13 @@ RE_BIGRAMAS = [
     (re.compile(r"\bFULL\s?HD\b", re.I), " FULLHD "),
     (re.compile(r"\bOPEN\s+MATTE\b", re.I), " OPENMATTE "),
     (re.compile(r"\bDOLBY\s+VISION\b", re.I), " DOLBYVISION "),
+    (re.compile(r"\b(?:TRIAL|TRIPLE)\s+AUDIO\b", re.I), " TRIALAUDIO "),
+    (re.compile(r"\bDUAL\s+AUDIO\b", re.I), " DUALAUDIO "),
+    (re.compile(r"\bMULTI\s+AUDIO\b", re.I), " MULTIAUDIO "),
+    (re.compile(r"\bAUDIO\s+LATINO\b", re.I), " LATINO "),
+    (re.compile(r"\bAUDIO\s+CASTELLANO\b", re.I), " CASTELLANO "),
+    (re.compile(r"\bAUDIO\s+ESPA[NÑ]OL\b", re.I), " ESPANOL "),
+    (re.compile(r"\bAUDIO\s+INGLES\b", re.I), " INGLES "),
     (re.compile(r"\b[HXhx][\s\.]?26([45])\b"), r" X26\1 "),
     (re.compile(r"\b[2578]\.[01]\b"), " "),
     (re.compile(r"\bDD\s?\+?\s?5\b", re.I), " "),
@@ -353,16 +374,29 @@ RE_BIGRAMAS = [
     (re.compile(r"\b\d+(?:\.\d+)?\s?Mbps\b", re.I), " "),
 ]
 
-BASURA_ESTRICTA.update({"OPENMATTE", "DOLBYVISION"})
-
-RE_SXXEYY = re.compile(r"\bS\s?\d{1,2}\s?E\s?\d{1,3}\b", re.I)
+# Series y episodios: soporta S01E01, S01 E01 y temporadas por anio S2026E55
+RE_SXXEYY = re.compile(r"\b(?:S|T|TEMP|TEMPORADA)\s*(\d{1,4})\s*(?:E|EP|CAP|CAPITULO|EPISODIO)\s*(\d{1,3})\b", re.I)
 RE_NXNN = re.compile(r"\b\d{1,2}\s?[xX]\s?\d{2,3}\b")
-RE_TEMPORADA = re.compile(
-    r"\b(?:S|T|TEMP|TEMPORADA|SEASON)\s*\.?\s*(\d{1,2})\b", re.I
-)
-RE_EPISODIO = re.compile(
-    r"\b(?:E|EP|CAP|CAPITULO|EPISODIO|EPISODE)\s*\.?\s*\d{1,3}\b", re.I
-)
+RE_TEMPORADA_SOLA = re.compile(r"\b(?:S|T|TEMP|TEMPORADA|SEASON)\s*\.?\s*(\d{1,4})\b", re.I)
+RE_EPISODIO_SOLO = re.compile(r"\b(?:E|EP|CAP|CAPITULO|EPISODIO|EPISODE)\s*\.?\s*(\d{1,3})\b", re.I)
+
+# Titulos numericos donde el numero de 4 digitos es parte del titulo oficial y no el anio de estreno
+TITULOS_NUMERICOS_PROTEGIDOS = {
+    "WONDER WOMAN 1984", "DEATH RACE 2000", "BLADE RUNNER 2049",
+    "2001 A SPACE ODYSSEY", "1917", "1984", "2012", "CLASS OF 1999",
+    "METROPOLIS 2000", "BLUES BROTHERS 2000", "DRACULA 2000",
+    "CYBER CITY OEDO 808", "APOLLO 18", "DISTRICT 9", "AIR FORCE ONE",
+    "SUMMER OF 84", "SUMMER OF 85", "FEBRUARY 1984",
+}
+
+# Distincion de sagas y partes para NO descartarlas
+RE_SAGA_PARTE = re.compile(r"^(?:PARTE|PART|VOLUMEN|VOLUME|VOL|CAPITULO|CHAPTER)\s+[0-9IVXLCDM]+$", re.I)
+RE_SAGA_PALABRA = re.compile(r"^PARTE\s+(?:UNO|DOS|TRES|CUATRO|CINCO)$", re.I)
+RE_DUPLICADO = re.compile(r"^\(\s*\d{1,2}\s*\)$")
+
+def es_parte_saga(contenido):
+    c = normalizar(contenido)
+    return bool(RE_SAGA_PARTE.match(c) or RE_SAGA_PALABRA.match(c))
 
 def absorber_etiquetas(fragmento, info):
     for token in re.split(r"[\s\-\.,;/\\|_]+", fragmento or ""):
@@ -374,8 +408,8 @@ def absorber_etiquetas(fragmento, info):
             if rango > info["calidad"]:
                 info["calidad"], info["calidad_txt"] = rango, txt
             info["etiquetas"].append(norm)
-        elif norm in FUENTES or norm in FUENTES_AMBIGUAS:
-            rango = FUENTES.get(norm, FUENTES_AMBIGUAS.get(norm))
+        elif norm in FUENTES:
+            rango = FUENTES[norm]
             if info["fuente"] is None or rango < info["fuente"]:
                 info["fuente"] = rango
             info["etiquetas"].append(norm)
@@ -384,7 +418,7 @@ def absorber_etiquetas(fragmento, info):
             if rango > info["idioma"]:
                 info["idioma"], info["idioma_txt"] = rango, txt
             info["etiquetas"].append(norm)
-        elif norm in BASURA_ESTRICTA or norm in BASURA_COLA:
+        elif norm in BASURA_ESTRICTA:
             info["etiquetas"].append(norm)
 
 def limpiar_titulo(nombre, es_serie=False):
@@ -398,18 +432,30 @@ def limpiar_titulo(nombre, es_serie=False):
 
     texto = RE_EXT.sub("", nombre.strip())
 
-    # 1) contenido entre corchetes y parentesis -> metadatos
-    for grupo in RE_PARENTESIS.findall(texto) + RE_CORCHETES.findall(texto):
-        m = RE_ANIO.search(grupo)
-        if m and not info["anio"]:
-            candidato = int(m.group(1))
-            if 1900 <= candidato <= ANIO_ACTUAL + 2:
-                info["anio"] = candidato
-        absorber_etiquetas(grupo, info)
-    texto = RE_CORCHETES.sub(" ", texto)
-    texto = RE_PARENTESIS.sub(" ", texto)
+    for patron, reemplazo in RE_BIGRAMAS:
+        texto = patron.sub(reemplazo, texto)
 
-    # 2) numero suelto de coleccion al inicio y prefijos del proveedor (hasta 3 capas)
+    texto = RE_DUPLICADO.sub("", texto.strip()).strip()
+
+    # 1) Metadatos entre corchetes y parentesis (protegiendo sagas)
+    def procesar_parentesis(m):
+        contenido = m.group(1).strip()
+        if not contenido:
+            return ""
+        if es_parte_saga(contenido):
+            return " (" + contenido + ") "
+        m_anio = RE_ANIO.search(contenido)
+        if m_anio and not info["anio"]:
+            cand = int(m_anio.group(1))
+            if 1900 <= cand <= ANIO_ACTUAL + 2:
+                info["anio"] = cand
+        absorber_etiquetas(contenido, info)
+        return " "
+
+    texto = re.sub(r"\(([^)]*)\)", procesar_parentesis, texto)
+    texto = re.sub(r"\[([^\]]*)\]", procesar_parentesis, texto)
+
+    # 2) Prefijos del proveedor al inicio (hasta 3 capas)
     texto = RE_NUMERO_COLECCION.sub("", texto)
     for _ in range(3):
         texto = RE_INICIO_SUCIO.sub("", texto)
@@ -426,104 +472,71 @@ def limpiar_titulo(nombre, es_serie=False):
             break
     texto = RE_INICIO_SUCIO.sub("", texto)
 
-    # 3) marcas de temporada / episodio (solo series)
+    # 3) Marcas de temporada / episodio (solo si es serie)
     if es_serie:
-        m = RE_SXXEYY.search(texto) or RE_TEMPORADA.search(texto)
+        m = RE_SXXEYY.search(texto)
         if m:
-            digitos = re.search(r"\d{1,2}", m.group(0))
-            if digitos:
-                info["temporada"] = int(digitos.group(0))
-        texto = RE_SXXEYY.sub(" ", texto)
-        texto = RE_NXNN.sub(" ", texto)
-        texto = RE_TEMPORADA.sub(" ", texto)
-        texto = RE_EPISODIO.sub(" ", texto)
-
-    # 4) bigramas tecnicos -> token unico
-    for patron, reemplazo in RE_BIGRAMAS:
-        texto = patron.sub(reemplazo, texto)
-
-    texto = RE_SEPARADORES.sub(" ", texto)
-    texto = texto.replace("–", "-").replace("—", "-")
-
-    # 5) Tokenizacion y corte de cola tecnica:
-    # Cuando encontramos una etiqueta tecnica inequívoca (ej. 1080P, WEBDL, X264)
-    # habiendo ya al menos 1 palabra de titulo, activamos 'en_cola_tecnica'.
-    crudos = re.split(r"[\s\-\.,;/\\]+", texto)
-    limpios = []
-    en_cola_tecnica = False
-
-    for idx, token in enumerate(crudos):
-        if not token:
-            continue
-        norm = normalizar(token)
-        if not norm:
-            continue
-
-        # Detectar año (si no es la primera palabra del titulo, como "1917" o "2012")
-        if re.fullmatch(r"(19|20)\d{2}", norm) and len(limpios) >= 1:
-            valor = int(norm)
-            if 1900 <= valor <= ANIO_ACTUAL + 2:
-                if not info["anio"]:
-                    info["anio"] = valor
-                # Todo lo que viene despues del año en un nombre de archivo suele ser basura tecnica
-                en_cola_tecnica = True
-                continue
-
-        if norm in CALIDADES:
-            rango, txt = CALIDADES[norm]
-            if rango > info["calidad"]:
-                info["calidad"], info["calidad_txt"] = rango, txt
-            info["etiquetas"].append(norm)
-            if len(limpios) >= 1:
-                en_cola_tecnica = True
-            continue
-
-        if norm in FUENTES:
-            rango = FUENTES[norm]
-            if info["fuente"] is None or rango < info["fuente"]:
-                info["fuente"] = rango
-            info["etiquetas"].append(norm)
-            if len(limpios) >= 1:
-                en_cola_tecnica = True
-            continue
-
-        if norm in IDIOMAS:
-            rango, txt = IDIOMAS[norm]
-            if rango > info["idioma"]:
-                info["idioma"], info["idioma_txt"] = rango, txt
-            info["etiquetas"].append(norm)
-            if len(limpios) >= 1:
-                en_cola_tecnica = True
-            continue
-
-        if norm in BASURA_ESTRICTA:
-            info["etiquetas"].append(norm)
-            if len(limpios) >= 1:
-                en_cola_tecnica = True
-            continue
-
-        if en_cola_tecnica:
-            # Si ya entramos en la zona tecnica derecha (tras el año o tras 1080p/WEBDL),
-            # descartamos cualquier residuo de grupo pirata o tag secundario
-            info["etiquetas"].append(norm)
-            continue
-
-        limpios.append(token)
-
-    # 6) Limpieza de derecha a izquierda para palabras ambiguas al final (BASURA_COLA y FUENTES_AMBIGUAS)
-    while len(limpios) >= 2:
-        norm_ult = normalizar(limpios[-1])
-        if norm_ult in BASURA_COLA:
-            info["etiquetas"].append(norm_ult)
-            limpios.pop()
-        elif norm_ult in FUENTES_AMBIGUAS:
-            rango = FUENTES_AMBIGUAS[norm_ult]
-            if info["fuente"] is None or rango < info["fuente"]:
-                info["fuente"] = rango
-            info["etiquetas"].append(norm_ult)
-            limpios.pop()
+            info["temporada"] = int(m.group(1))
+            texto = RE_SXXEYY.sub(" ", texto)
         else:
-            break
+            m_temp = RE_TEMPORADA_SOLA.search(texto)
+            if m_temp:
+                info["temporada"] = int(m_temp.group(1))
+            texto = RE_NXNN.sub(" ", texto)
+            texto = RE_TEMPORADA_SOLA.sub(" ", texto)
+            texto = RE_EPISODIO_SOLO.sub(" ", texto)
+
+    texto = re.sub(r"[|_\u00b7\u2022\u2039\u203a\u00bb\u00ab]+", " ", texto)
+    texto = texto.replace("\u2013", "-").replace("\u2014", "-")
+
+    # 4) Tokenizar y podar cola de derecha a izquierda
+    tokens = [t.strip() for t in re.split(r"[\s]+", texto) if t.strip()]
+    en_zona_tecnica = False
+
+    while len(tokens) >= 2:
+        ult = tokens[-1]
+        norm_ult = normalizar(ult)
+
+        if ult in ("-", ":", "--", "-"):
+            tokens.pop()
+            continue
+
+        if norm_ult in BASURA_ESTRICTA or norm_ult in CALIDADES or norm_ult in FUENTES_ESTRICTAS or norm_ult in IDIOMAS_ESTRICTOS:
+            en_zona_tecnica = True
+            absorber_etiquetas(ult, info)
+            tokens.pop()
+            continue
+
+        if norm_ult in GENRES_TAIL and (en_zona_tecnica or len(tokens) > 2):
+            tokens.pop()
+            continue
+
+        if en_zona_tecnica and (norm_ult in FUENTES_AMBIGUAS or norm_ult in IDIOMAS_AMBIGUOS):
+            absorber_etiquetas(ult, info)
+            tokens.pop()
+            continue
+
+        if re.fullmatch(r"(19|20)\d{2}", norm_ult):
+            val_anio = int(norm_ult)
+            if 1900 <= val_anio <= ANIO_ACTUAL + 2:
+                tit_acum = normalizar(" ".join(tokens))
+                es_protegido = tit_acum in TITULOS_NUMERICOS_PROTEGIDOS
+                if not es_protegido and len(tokens) > 1:
+                    if not info["anio"]:
+                        info["anio"] = val_anio
+                    tokens.pop()
+                    continue
+                elif info["anio"] == val_anio and not es_protegido:
+                    tokens.pop()
+                    continue
+
+        break
+
+    if tokens and tokens[-1] in ("-", ":"):
+        tokens.pop()
+
+    res_buscar = " ".join(tokens).strip()
+    res_buscar = re.sub(r"\s+:\s*", ": ", res_buscar)
 
     if info["fuente"] is None:
         info["fuente"] = 2
@@ -532,7 +545,7 @@ def limpiar_titulo(nombre, es_serie=False):
     if not info["idioma"]:
         info["idioma"] = 2
 
-    info["buscar"] = " ".join(" ".join(limpios).split())
+    info["buscar"] = res_buscar
     return info
 
 def titulo_recortado(titulo):
@@ -815,7 +828,7 @@ def puntuar(candidato, consulta_norm, anio_consulta, es_serie):
 
 def tmdb_buscar(titulo, es_serie, anio=None):
     ruta = "search/tv" if es_serie else "search/movie"
-    params = {"query": titulo, "language": "es-ES", "include_adult": "false"}
+    params = {"query": titulo, "language": "es-MX", "include_adult": "false"}
     if anio:
         params["first_air_date_year" if es_serie else "year"] = anio
     datos = tmdb_get(ruta, params)
@@ -850,7 +863,7 @@ def empaquetar(elegido, es_serie):
         "pop": round(float(c.get("popularity") or 0.0), 2),
         "lang": c.get("original_language") or "",
         "paises": paises if isinstance(paises, list) else [],
-        "sinopsis": (c.get("overview") or "").strip(),
+        "sinopsis": (c.get("overview") or "").strip()[:280],
         "ts": int(time.time()),
         "visto": int(time.time()),
     }
@@ -858,7 +871,7 @@ def empaquetar(elegido, es_serie):
 def tmdb_buscar_multilenguaje(titulo, es_serie, anio):
     ruta = "search/tv" if es_serie else "search/movie"
     resultados = []
-    for idioma in ("en-US", "es-MX"):
+    for idioma in ("es-ES", "en-US"):
         # No forzamos el año en la API para no perder estrenos con desfase de 1 año
         params = {"query": titulo, "language": idioma, "include_adult": "false"}
         datos = tmdb_get(ruta, params)
@@ -999,13 +1012,17 @@ def resolver_titulo(titulo, anio, es_serie):
 
 def tmdb_por_id(tmdb_id, es_serie):
     ruta = "tv/%s" % tmdb_id if es_serie else "movie/%s" % tmdb_id
-    datos = tmdb_get(ruta, {"language": "es-ES"})
+    datos = tmdb_get(ruta, {"language": "es-MX"})
     if datos is None:
         return None, "fallo_red"
     if not datos or not datos.get("id"):
         return None, "id_inexistente"
     if not datos.get("poster_path"):
         return None, "sin_poster"
+    if not datos.get("overview"):
+        datos_es = tmdb_get(ruta, {"language": "es-ES"})
+        if datos_es and datos_es.get("overview"):
+            datos["overview"] = datos_es["overview"]
     generos = [g.get("id") for g in (datos.get("genres") or []) if g.get("id")]
     fecha = (datos.get("first_air_date") if es_serie
              else datos.get("release_date")) or ""
@@ -1023,13 +1040,13 @@ def tmdb_por_id(tmdb_id, es_serie):
         "pop": round(float(datos.get("popularity") or 0.0), 2),
         "lang": datos.get("original_language") or "",
         "paises": paises if isinstance(paises, list) else [],
-        "sinopsis": (datos.get("overview") or "").strip(),
+        "sinopsis": (datos.get("overview") or "").strip()[:280],
         "ts": int(time.time()),
         "visto": int(time.time()),
     }, "ok"
 
 def detalles_serie(tmdb_id):
-    datos = tmdb_get("tv/%s" % tmdb_id, {"language": "es-ES"})
+    datos = tmdb_get("tv/%s" % tmdb_id, {"language": "es-MX"})
     if datos is None:
         return None
     if not datos:
@@ -1089,27 +1106,70 @@ def guardar_cache(cache):
     with CACHE_LOCK:
         escribir_json(ARCHIVO_CACHE_GZ, cache, compacto=True)
 
-def purgar_cache_obsoleta(cache):
+MAX_ENTRADAS_PELICULAS = 50000
+MAX_ENTRADAS_SERIES = 15000
+
+def purgar_cache_obsoleta(cache, incluir_series=True):
     """Elimina entradas que no han aparecido en la lista del proveedor
-    durante mas de DIAS_PURGA_DESUSO dias."""
+    durante mas de DIAS_PURGA_DESUSO dias. Si la descarga de series fallo,
+    no se purgan series para evitar perdida accidental.
+    Aplica compactacion preventiva de sinopsis y topes de seguridad para
+    garantizar que nunca se superen los limites de GitHub."""
     ahora = time.time()
     limite_seg = DIAS_PURGA_DESUSO * 86400.0
     borrados = 0
-    for seccion in ("movie", "tv", "detalles_tv"):
+    secciones = ("movie",) if not incluir_series else ("movie", "tv", "detalles_tv")
+    for seccion in secciones:
         mapa = cache.get(seccion) or {}
         claves_borrar = []
         for k, v in mapa.items():
             if not isinstance(v, dict):
                 claves_borrar.append(k)
                 continue
+            # Compactacion preventiva de sinopsis
+            if "sinopsis" in v and isinstance(v["sinopsis"], str) and len(v["sinopsis"]) > 280:
+                v["sinopsis"] = v["sinopsis"][:280].strip()
+
             ultimo_uso = float(v.get("visto") or v.get("ts") or 0)
             if ultimo_uso and (ahora - ultimo_uso) > limite_seg:
                 claves_borrar.append(k)
         for k in claves_borrar:
             del mapa[k]
             borrados += 1
+
+    # Tope de seguridad maximo (Safeguard) para GitHub
+    topes = (("movie", MAX_ENTRADAS_PELICULAS), ("tv", MAX_ENTRADAS_SERIES))
+    for seccion, tope in topes:
+        if seccion in secciones:
+            mapa = cache.get(seccion) or {}
+            exceso = len(mapa) - tope
+            if exceso > 0:
+                ordenados = sorted(
+                    mapa.items(),
+                    key=lambda item: float(item[1].get("visto") or item[1].get("ts") or 0)
+                    if isinstance(item[1], dict) else 0.0
+                )
+                for k, _ in ordenados[:exceso]:
+                    del mapa[k]
+                    borrados += 1
+                print("-> Tope de seguridad: %s entradas mas antiguas purgadas en '%s' para proteger GitHub."
+                      % (exceso, seccion))
+
+    # Limpiar detalles_tv huerfanos (cuyas series ya no existen en cache['tv'])
+    if incluir_series and "detalles_tv" in cache and "tv" in cache:
+        det_map = cache.get("detalles_tv") or {}
+        tvs = cache.get("tv") or {}
+        ids_vivos = {
+            str(v.get("tmdb")) for v in tvs.values()
+            if isinstance(v, dict) and v.get("ok") and v.get("tmdb")
+        }
+        huerfanos = [k for k in det_map if k not in ids_vivos]
+        for k in huerfanos:
+            del det_map[k]
+            borrados += 1
+
     if borrados:
-        print("-> Purga de memoria: %s entradas obsoletas (>%s dias sin uso) eliminadas."
+        print("-> Purga de memoria: %s entradas obsoletas/huerfanas eliminadas (umbral %s dias)."
               % (borrados, DIAS_PURGA_DESUSO))
 
 def cache_vigente(entrada):
@@ -1240,6 +1300,14 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
             continue
 
         info = limpiar_titulo(nombre, es_serie)
+        if not info["anio"]:
+            meta_anio = item.get("year") or item.get("release_date") or item.get("releasedate")
+            if meta_anio:
+                m_a = RE_ANIO.search(str(meta_anio))
+                if m_a:
+                    cand_a = int(m_a.group(1))
+                    if 1900 <= cand_a <= ANIO_ACTUAL + 2:
+                        info["anio"] = cand_a
         titulo_busqueda = info["buscar"] or nombre
 
         k = clave(titulo_busqueda, info["anio"])
@@ -1266,6 +1334,7 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
             "marca": marca, "etiquetas": info["etiquetas"],
             "prefijo": info["prefijo"],
             "ext": ext,
+            "cover": item.get("stream_icon") or item.get("cover") or "",
         })
 
         fila_forzada = (corr["forzados"][tipo].get(nombre_norm)
@@ -1293,7 +1362,8 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
         grupo["forzado_id"] = forzado_id
         entrada = cache[tipo].get(k)
         if isinstance(entrada, dict):
-            entrada["visto"] = ahora_ts
+            if ahora_ts - int(entrada.get("visto") or 0) > 7 * 86400:
+                entrada["visto"] = ahora_ts
         if forzado_id:
             if not (entrada and entrada.get("ok")
                     and entrada.get("tmdb") == forzado_id and cache_vigente(entrada)):
@@ -1363,7 +1433,8 @@ def fase1(items, es_serie, mapa_cat, plano, cache, corr, informe):
                 ids_series.add(sid_tmdb)
                 det_actual = cache["detalles_tv"].get(str(sid_tmdb))
                 if isinstance(det_actual, dict):
-                    det_actual["visto"] = ahora_ts
+                    if ahora_ts - int(det_actual.get("visto") or 0) > 7 * 86400:
+                        det_actual["visto"] = ahora_ts
         faltan = [i for i in ids_series
                   if not detalles_vigentes(cache["detalles_tv"].get(str(i)))]
         if faltan and not presupuesto_agotado():
@@ -1502,7 +1573,7 @@ def elegir_generos(clasificado, es_serie):
         secundaria = diccionario.get(ordenados[0])
     return principal, secundaria
 
-def fase2(clasificados, es_serie, total_origen):
+def fase2(clasificados, es_serie, total_origen, sin_identificar=None):
     etiqueta = "series" if es_serie else "peliculas"
     print("\n=== FASE 2: armando la vitrina de %s ===" % etiqueta)
 
@@ -1611,8 +1682,35 @@ def fase2(clasificados, es_serie, total_origen):
 
         registros.append(registro)
 
+    if sin_identificar:
+        for s in sin_identificar:
+            p_cov = s.get("poster") or ""
+            if p_cov:
+                reg_desc = {
+                    "tmdb": 0,
+                    "titulo": s.get("titulo") or "",
+                    "poster": p_cov,
+                    "backdrop": "",
+                    "anio": s.get("anio"),
+                    "anio_origen": s.get("anio"),
+                    "nota": 0.0,
+                    "votos": 0,
+                    "pop": 1.0,
+                    "sinopsis": "",
+                    "fecha_orden": "",
+                    "id": s.get("id"),
+                    "calidad": "",
+                    "idioma": "",
+                    "ext": s.get("ext") or "mp4",
+                    "alt": [],
+                    "filas": {FILA_SIN_GENERO},
+                    "es_clasico": False,
+                }
+                sin_genero.append(reg_desc)
+                registros.append(reg_desc)
+
     if sin_genero:
-        print(" %s titulos sin genero asignados a '%s'." % (len(sin_genero), FILA_SIN_GENERO))
+        print(" %s titulos (sin catalogar / especiales) asignados a '%s'." % (len(sin_genero), FILA_SIN_GENERO))
     if copias_descartadas:
         print(" %s copias duplicadas de menor calidad conservadas como respaldo." % copias_descartadas)
 
@@ -1707,7 +1805,8 @@ def fase2(clasificados, es_serie, total_origen):
             item["alt"] = r["alt"]
         idx = len(items_planos)
         items_planos.append(item)
-        usados[r["tmdb"]] = idx
+        c_usado = r["tmdb"] if r.get("tmdb") else ("id_%s" % r.get("id"))
+        usados[c_usado] = idx
         return idx
 
     for r in registros:
@@ -1719,7 +1818,7 @@ def fase2(clasificados, es_serie, total_origen):
     nombres_ordenados += sorted(f for f in por_fila if f not in ORDEN_CATEGORIAS)
 
     FILAS_SIN_ROTACION = {"Estrenos"}
-    PORCENTAJE_ANCLAS = 0.4
+    PORCENTAJE_ANCLAS = 0.3
     SEMILLA_DIA = HOY.strftime("%Y-%m-%d")
 
     def seleccionar_con_variedad(nombre, lista, tope):
@@ -1728,7 +1827,37 @@ def fase2(clasificados, es_serie, total_origen):
 
         rng = random.Random("%s|%s" % (SEMILLA_DIA, nombre))
 
-        if nombre in ("Clasicos", "Retro"):
+        if nombre == "Clasicos":
+            if len(lista) <= tope:
+                copia = list(lista)
+                rng.shuffle(copia)
+                return copia
+            n_anclas = max(1, int(round(tope * PORCENTAJE_ANCLAS)))
+            anclas = lista[:n_anclas]
+            resto = lista[n_anclas:]
+            elegidos = rng.sample(resto, min(tope - n_anclas, len(resto)))
+            res = anclas + elegidos
+            rng.shuffle(res)
+            return res
+
+        if nombre == "Retro":
+            # Filtrar ruido con 0 votos o sin carátula
+            filtrada = [r for r in lista if (r.get("votos") or 0) >= 10 or (r.get("pop") or 0.0) >= 2.0]
+            candidatos = filtrada if len(filtrada) >= PISO_FILA else lista
+            if len(candidatos) <= tope:
+                copia = list(candidatos)
+                rng.shuffle(copia)
+                return copia
+            n_anclas = max(1, int(round(tope * PORCENTAJE_ANCLAS)))
+            anclas = candidatos[:n_anclas]
+            resto = candidatos[n_anclas:]
+            elegidos = rng.sample(resto, min(tope - n_anclas, len(resto)))
+            res = anclas + elegidos
+            rng.shuffle(res)
+            return res
+
+        if nombre == "Descubrir":
+            # Rotacion diaria pura sobre el universo sin catalogar / especial
             if len(lista) <= tope:
                 copia = list(lista)
                 rng.shuffle(copia)
@@ -1766,6 +1895,20 @@ def fase2(clasificados, es_serie, total_origen):
         ) else ""
         print(" %-26s %3s items en vitrina (de %s identificados con este genero)%s"
               % (nombre, len(referencias), len(lista), rota))
+
+    # Optimizar peso del JSON: sinopsis solo para vitrina (max 200 chars) y podar alt vacios
+    indices_vitrina = set()
+    for f in filas_finales:
+        indices_vitrina.update(f["items"])
+
+    for idx, item in enumerate(items_planos):
+        if idx in indices_vitrina:
+            if "sinopsis" in item and len(item["sinopsis"]) > 200:
+                item["sinopsis"] = item["sinopsis"][:200].strip()
+        else:
+            item.pop("sinopsis", None)
+        if not item.get("alt"):
+            item.pop("alt", None)
 
     salida = {
         "origen": total_origen,
@@ -1941,11 +2084,11 @@ def main():
         series, True, mapa_serie, plano_serie, cache, corr, informe
     )
 
-    purgar_cache_obsoleta(cache)
+    purgar_cache_obsoleta(cache, incluir_series=bool(series))
     guardar_cache(cache)
 
-    bloque_peli = fase2(clas_peli, False, len(peliculas))
-    bloque_serie = fase2(clas_serie, True, len(series))
+    bloque_peli = fase2(clas_peli, False, len(peliculas), sin_identificar=sin_id_peli)
+    bloque_serie = fase2(clas_serie, True, len(series), sin_identificar=sin_id_serie)
 
     bloque_peli["sin_identificar"] = sin_id_peli
     bloque_serie["sin_identificar"] = sin_id_serie
