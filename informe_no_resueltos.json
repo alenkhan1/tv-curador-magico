@@ -2,41 +2,36 @@
   "_ayuda": [
     "Diagnostico. Estos titulos NO se descartaron: viven en el catalogo",
     "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
-    "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina.",
-    "Revisa 'patrones' de arriba a abajo: arreglar los primeros",
-    "recupera muchos items de golpe hacia el catalogo identificado.",
-    "Si quieres forzar un caso, agregalo a correcciones.json (opcional).",
-    "motivo 'no_encontrado' = TMDB no lo tiene o el nombre sigue sucio.",
-    "motivo 'fallo_red' o 'pendiente' = se reintenta solo en la proxima corrida."
+    "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina."
   ],
-  "generado": "2026-10-15T08:57:13Z",
+  "generado": "2026-10-15T12:21:21Z",
   "resumen": {
-    "total": 558,
+    "total": 673,
     "por_motivo": {
-      "pendiente": 265,
-      "no_encontrado": 293
+      "pendiente": 252,
+      "no_encontrado": 421
     },
     "peliculas": {
       "adulto": 19,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 107,
-      "fallo_red": 129,
-      "clasificados": 37518,
-      "sin_identificar": 236
+      "no_encontrado": 218,
+      "fallo_red": 122,
+      "clasificados": 37412,
+      "sin_identificar": 340
     },
     "series": {
       "adulto": 3,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 186,
-      "fallo_red": 136,
-      "clasificados": 8659,
-      "sin_identificar": 322
+      "no_encontrado": 203,
+      "fallo_red": 130,
+      "clasificados": 8647,
+      "sin_identificar": 333
     },
     "alerta": {
-      "porcentaje_peliculas": 0.6,
-      "porcentaje_series": 3.6,
+      "porcentaje_peliculas": 0.9,
+      "porcentaje_series": 3.7,
       "umbral": 15.0,
       "supera_umbral": false
     }
@@ -44,7 +39,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 514,
+      "veces": 617,
       "ejemplos": [
         "Supremacía cuántica (2026)",
         "¿Por qué me casé otra vez? (2026)",
@@ -118,10 +113,24 @@
       ]
     },
     {
+      "patron": "VIDA DE CRIMEN",
+      "veces": 1,
+      "ejemplos": [
+        "Vida De Crimen: 1984 - 2020 (LAT) (2021)"
+      ]
+    },
+    {
       "patron": "RED PRIVADA",
       "veces": 1,
       "ejemplos": [
         "Red privada: ¿quién mató a Manuel Buendía? (LAT) (2021)"
+      ]
+    },
+    {
+      "patron": "BORAT",
+      "veces": 1,
+      "ejemplos": [
+        "Borat: VHS Cassette of Material Deemed \"Sub-Acceptable\" by Kazakhstan Ministry of Censorship and Circumcision (LAT) (2021)"
       ]
     },
     {
@@ -146,6 +155,13 @@
       ]
     },
     {
+      "patron": "TAYLOR SWIFT",
+      "veces": 1,
+      "ejemplos": [
+        "Taylor Swift: The 1989 World Tour - Live (LAT) (2015)"
+      ]
+    },
+    {
       "patron": "THE OUTER CIRCLE",
       "veces": 1,
       "ejemplos": [
@@ -164,6 +180,13 @@
       "veces": 1,
       "ejemplos": [
         "The Ramones: It's Alive (1974-1996) (LAT) (2007)"
+      ]
+    },
+    {
+      "patron": "ARMITAGE",
+      "veces": 1,
+      "ejemplos": [
+        "Armitage: Dual Matrix (LAT) (2002)"
       ]
     },
     {
@@ -195,10 +218,45 @@
       ]
     },
     {
+      "patron": "IMPLOSION",
+      "veces": 1,
+      "ejemplos": [
+        "Implosion: The Titanic Sub Disaster (ENG) (2025)"
+      ]
+    },
+    {
+      "patron": "AEW ALL IN 2023",
+      "veces": 1,
+      "ejemplos": [
+        "AEW All In 2023: London (ENG)"
+      ]
+    },
+    {
+      "patron": "TULSA BURNING",
+      "veces": 1,
+      "ejemplos": [
+        "Tulsa Burning: The 1921 Race Massacre (ENG) (2021)"
+      ]
+    },
+    {
+      "patron": "THE SPIDER S WEB",
+      "veces": 1,
+      "ejemplos": [
+        "The Spider's Web: Britain's Second Empire (ENG) (2017)"
+      ]
+    },
+    {
       "patron": "KURT BRAUNOHLER",
       "veces": 1,
       "ejemplos": [
         "Kurt Braunohler: Trust Me (ENG) (2017)"
+      ]
+    },
+    {
+      "patron": "VOYAGE OF TIME",
+      "veces": 1,
+      "ejemplos": [
+        "Voyage of Time: The IMAX Experience (ENG) (2016)"
       ]
     },
     {
@@ -258,10 +316,24 @@
       ]
     },
     {
+      "patron": "GANTZ",
+      "veces": 1,
+      "ejemplos": [
+        "Gantz: Génesis (Gantz: Parte 1) (CAST) (2010)"
+      ]
+    },
+    {
       "patron": "LA SIRENITA III",
       "veces": 1,
       "ejemplos": [
         "La Sirenita III: El comienzo de Ariel (CAST) (2008)"
+      ]
+    },
+    {
+      "patron": "SHAFT",
+      "veces": 1,
+      "ejemplos": [
+        "Shaft: The Return (CAST) (2000)"
       ]
     },
     {
@@ -314,6 +386,13 @@
       ]
     },
     {
+      "patron": "FUERZA POLICIAL",
+      "veces": 1,
+      "ejemplos": [
+        "Fuerza policial: Ataque en la India (0)"
+      ]
+    },
+    {
       "patron": "BLEACH",
       "veces": 1,
       "ejemplos": [
@@ -359,7 +438,7 @@
   "etiquetas_mas_frecuentes": [
     {
       "etiqueta": "LAT",
-      "veces": 113
+      "veces": 193
     },
     {
       "etiqueta": "STAR",
@@ -367,57 +446,113 @@
     },
     {
       "etiqueta": "LINE",
+      "veces": 5
+    },
+    {
+      "etiqueta": "DE",
       "veces": 4
+    },
+    {
+      "etiqueta": "SPARKS",
+      "veces": 3
+    },
+    {
+      "etiqueta": "SUB",
+      "veces": 3
     },
     {
       "etiqueta": "VISION",
       "veces": 3
     },
     {
-      "etiqueta": "SPARKS",
+      "etiqueta": "VOS",
       "veces": 2
-    },
-    {
-      "etiqueta": "OPEN",
-      "veces": 2
-    },
-    {
-      "etiqueta": "MAX",
-      "veces": 1
-    },
-    {
-      "etiqueta": "RIP",
-      "veces": 1
     },
     {
       "etiqueta": "WEB",
+      "veces": 2
+    },
+    {
+      "etiqueta": "PROPER",
+      "veces": 2
+    },
+    {
+      "etiqueta": "EL",
+      "veces": 2
+    },
+    {
+      "etiqueta": "AUDIO",
+      "veces": 2
+    },
+    {
+      "etiqueta": "GIFT",
       "veces": 1
     },
     {
-      "etiqueta": "DSNP",
+      "etiqueta": "AT",
       "veces": 1
     },
     {
-      "etiqueta": "WEBDL",
+      "etiqueta": "TOKYO",
       "veces": 1
     },
     {
-      "etiqueta": "1080P",
+      "etiqueta": "DOME",
       "veces": 1
     },
     {
-      "etiqueta": "X264",
+      "etiqueta": "ACCEPTABLE",
+      "veces": 1
+    },
+    {
+      "etiqueta": "BY",
+      "veces": 1
+    },
+    {
+      "etiqueta": "KAZAKHSTAN",
+      "veces": 1
+    },
+    {
+      "etiqueta": "MINISTRY",
+      "veces": 1
+    },
+    {
+      "etiqueta": "OF",
+      "veces": 1
+    },
+    {
+      "etiqueta": "CENSORSHIP",
+      "veces": 1
+    },
+    {
+      "etiqueta": "AND",
+      "veces": 1
+    },
+    {
+      "etiqueta": "CIRCUMCISION",
+      "veces": 1
+    },
+    {
+      "etiqueta": "WORLD",
       "veces": 1
     }
   ],
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "DOCUSERIES (CAST)",
-      "veces": 54
+      "veces": 56
+    },
+    {
+      "carpeta": "DRAMA - (LAT)",
+      "veces": 49
     },
     {
       "carpeta": "SERIES ANIMADAS (LAT)",
-      "veces": 40
+      "veces": 41
+    },
+    {
+      "carpeta": "ACCIÓN - (LAT)",
+      "veces": 38
     },
     {
       "carpeta": "SERIES RETRO (LAT)",
@@ -425,91 +560,83 @@
     },
     {
       "carpeta": "OTRAS PLATAFORMAS (LAT)",
-      "veces": 35
+      "veces": 36
     },
     {
       "carpeta": "NETFLIX (LAT)",
-      "veces": 29
-    },
-    {
-      "carpeta": "DRAMA - (LAT)",
-      "veces": 26
-    },
-    {
-      "carpeta": "ACCIÓN - (LAT)",
-      "veces": 23
-    },
-    {
-      "carpeta": "ACCIÓN - (CAST)",
-      "veces": 17
+      "veces": 30
     },
     {
       "carpeta": "DOCUMENTAL - (LAT)",
-      "veces": 16
+      "veces": 20
+    },
+    {
+      "carpeta": "ACCIÓN - (CAST)",
+      "veces": 18
     },
     {
       "carpeta": "NETFLIX (CAST)",
       "veces": 14
     },
     {
-      "carpeta": "ANIMADAS (CAST)",
+      "carpeta": "DOCUMENTARY - (ENG)",
       "veces": 13
     },
     {
       "carpeta": "DRAMA - (CAST)",
-      "veces": 11
+      "veces": 13
+    },
+    {
+      "carpeta": "ANIMADAS (CAST)",
+      "veces": 13
     },
     {
       "carpeta": "SERIES TV (CAST)",
       "veces": 11
     },
     {
+      "carpeta": "SERIES DOCUMENTALES (LAT)",
+      "veces": 11
+    },
+    {
+      "carpeta": "COMEDIA - (LAT)",
+      "veces": 10
+    },
+    {
+      "carpeta": "TERROR - (LAT)",
+      "veces": 10
+    },
+    {
       "carpeta": "MOVISTAR (CAST)",
       "veces": 10
     },
     {
-      "carpeta": "SERIES DOCUMENTALES (LAT)",
-      "veces": 10
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "veces": 9
     },
     {
-      "carpeta": "ESTRENOS 2026 - (LAT)",
-      "veces": 8
+      "carpeta": "ROMANCE - (LAT)",
+      "veces": 9
     },
     {
       "carpeta": "COMEDIA - (CAST)",
-      "veces": 8
+      "veces": 9
     },
     {
       "carpeta": "SKYSHOWTIME (CAST)",
+      "veces": 9
+    },
+    {
+      "carpeta": "COMEDY - (ENG)",
       "veces": 8
     },
     {
-      "carpeta": "DISNEY (CAST)",
+      "carpeta": "DOCUMENTAL - (CAST)",
       "veces": 8
     },
     {
       "carpeta": "SERIES ANIME (LAT)",
       "veces": 8
-    },
-    {
-      "carpeta": "COMEDY - (ENG)",
-      "veces": 7
-    },
-    {
-      "carpeta": "DOCUMENTARY - (ENG)",
-      "veces": 7
-    },
-    {
-      "carpeta": "DOCUMENTAL - (CAST)",
-      "veces": 7
-    },
-    {
-      "carpeta": "CIENCIA FICCIÓN - (CAST)",
-      "veces": 7
-    },
-    {
-      "carpeta": "CINE 2024 - (LAT)",
-      "veces": 6
     }
   ],
   "items": [
@@ -629,6 +756,20 @@
       "copias": 3
     },
     {
+      "id": "1325649",
+      "tipo": "movie",
+      "nombre_original": "El Momento (LAT) (2026)",
+      "titulo_buscado": "El Momento",
+      "anio": 2026,
+      "motivo": "no_encontrado",
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1325377",
       "tipo": "movie",
       "nombre_original": "Child Star (LAT) (2024)",
@@ -714,20 +855,6 @@
       "copias": 1
     },
     {
-      "id": "1324695",
-      "tipo": "movie",
-      "nombre_original": "Satán (LAT) (2024)",
-      "titulo_buscado": "Satán",
-      "anio": 2024,
-      "motivo": "no_encontrado",
-      "carpeta": "CINE 2024 - (LAT)",
-      "etiquetas": [
-        "LAT"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "1324690",
       "tipo": "movie",
       "nombre_original": "सजनी शिंदे की वायरल वीडियो (LAT) (2023)",
@@ -740,6 +867,20 @@
       ],
       "prefijo": "",
       "copias": 17
+    },
+    {
+      "id": "1324656",
+      "tipo": "movie",
+      "nombre_original": "¡Armados! (LAT) (2025)",
+      "titulo_buscado": "¡Armados!",
+      "anio": 2025,
+      "motivo": "no_encontrado",
+      "carpeta": "CINE 2025 - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
     },
     {
       "id": "1324416",
@@ -798,6 +939,38 @@
       "copias": 1
     },
     {
+      "id": "1323986",
+      "tipo": "movie",
+      "nombre_original": "Yuzuru Hanyu ICE STORY 2023 \"GIFT\" at Tokyo Dome (LAT)",
+      "titulo_buscado": "Yuzuru Hanyu ICE STORY",
+      "anio": 2023,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTAL - (LAT)",
+      "etiquetas": [
+        "LAT",
+        "GIFT",
+        "AT",
+        "TOKYO",
+        "DOME"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1323909",
+      "tipo": "movie",
+      "nombre_original": "Kantara 2 (LAT) (2025)",
+      "titulo_buscado": "Kantara 2",
+      "anio": 2025,
+      "motivo": "no_encontrado",
+      "carpeta": "CINE 2025 - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1323802",
       "tipo": "movie",
       "nombre_original": "En un Sueño (Rüyanda Görürsün) (LAT) (2023)",
@@ -840,6 +1013,48 @@
       "copias": 1
     },
     {
+      "id": "1323572",
+      "tipo": "movie",
+      "nombre_original": "Enmascarado (LAT) (2022)",
+      "titulo_buscado": "Enmascarado",
+      "anio": 2022,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTAL - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1323403",
+      "tipo": "movie",
+      "nombre_original": "Asesino serial (LAT) (2024)",
+      "titulo_buscado": "Asesino serial",
+      "anio": 2024,
+      "motivo": "no_encontrado",
+      "carpeta": "CINE 2024 - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1322833",
+      "tipo": "movie",
+      "nombre_original": "Elementos (LAT) (2023)",
+      "titulo_buscado": "Elementos",
+      "anio": 2023,
+      "motivo": "no_encontrado",
+      "carpeta": "ANIMACIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1322745",
       "tipo": "movie",
       "nombre_original": "千年女優 -軌跡- (LAT) (2001)",
@@ -852,6 +1067,34 @@
       ],
       "prefijo": "",
       "copias": 5
+    },
+    {
+      "id": "1322702",
+      "tipo": "movie",
+      "nombre_original": "La rebelión de 1907 (LAT) (2023)",
+      "titulo_buscado": "La rebelión de",
+      "anio": 2023,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1322472",
+      "tipo": "movie",
+      "nombre_original": "¡Patos! (LAT) (2023)",
+      "titulo_buscado": "¡Patos!",
+      "anio": 2023,
+      "motivo": "no_encontrado",
+      "carpeta": "FAMILIA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
     },
     {
       "id": "1322366",
@@ -882,6 +1125,20 @@
       "copias": 33
     },
     {
+      "id": "1322144",
+      "tipo": "movie",
+      "nombre_original": "Nadie es nadie (LAT) (2023)",
+      "titulo_buscado": "Nadie es nadie",
+      "anio": 2023,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1321990",
       "tipo": "movie",
       "nombre_original": "リトル・フォレスト 四季 (LAT) (2018)",
@@ -908,6 +1165,20 @@
       ],
       "prefijo": "",
       "copias": 1
+    },
+    {
+      "id": "1321573",
+      "tipo": "movie",
+      "nombre_original": "Vida De Crimen: 1984 - 2020 (LAT) (2021)",
+      "titulo_buscado": "Vida De Crimen:",
+      "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTAL - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 2
     },
     {
       "id": "1321481",
@@ -966,6 +1237,29 @@
       "copias": 1
     },
     {
+      "id": "1321051",
+      "tipo": "movie",
+      "nombre_original": "Borat: VHS Cassette of Material Deemed \"Sub-Acceptable\" by Kazakhstan Ministry of Censorship and Circumcision (LAT) (2021)",
+      "titulo_buscado": "Borat: VHS Cassette of Material Deemed",
+      "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "COMEDIA - (LAT)",
+      "etiquetas": [
+        "LAT",
+        "SUB",
+        "ACCEPTABLE",
+        "BY",
+        "KAZAKHSTAN",
+        "MINISTRY",
+        "OF",
+        "CENSORSHIP",
+        "AND",
+        "CIRCUMCISION"
+      ],
+      "prefijo": "",
+      "copias": 2
+    },
+    {
       "id": "1320900",
       "tipo": "movie",
       "nombre_original": "Las monjitas de Durango (LAT) (1997)",
@@ -973,6 +1267,20 @@
       "anio": 1997,
       "motivo": "no_encontrado",
       "carpeta": "OTROS - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1320892",
+      "tipo": "movie",
+      "nombre_original": "El chef (LAT) (2021)",
+      "titulo_buscado": "El chef",
+      "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -1023,6 +1331,20 @@
       "copias": 1
     },
     {
+      "id": "1320340",
+      "tipo": "movie",
+      "nombre_original": "Ostra (LAT) (2020)",
+      "titulo_buscado": "Ostra",
+      "anio": 2020,
+      "motivo": "no_encontrado",
+      "carpeta": "COMEDIA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1320265",
       "tipo": "movie",
       "nombre_original": "بوتاکس (LAT) (2020)",
@@ -1042,13 +1364,27 @@
       "nombre_original": "Elvis Presley: El rey del rock and roll (LAT) (2018)",
       "titulo_buscado": "Elvis Presley: El rey del rock and roll",
       "anio": 2018,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "DOCUMENTAL - (LAT)",
       "etiquetas": [
         "LAT"
       ],
       "prefijo": "",
       "copias": 1
+    },
+    {
+      "id": "1320082",
+      "tipo": "movie",
+      "nombre_original": "Belleza (LAT) (2022)",
+      "titulo_buscado": "Belleza",
+      "anio": 2022,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 2
     },
     {
       "id": "1319792",
@@ -1107,18 +1443,18 @@
       "copias": 1
     },
     {
-      "id": "1319590",
+      "id": "1319303",
       "tipo": "movie",
-      "nombre_original": "Argentina 1985 (LAT) (2022)",
-      "titulo_buscado": "Argentina",
-      "anio": 2022,
+      "nombre_original": "Atleta A (LAT) (2020)",
+      "titulo_buscado": "Atleta A",
+      "anio": 2020,
       "motivo": "no_encontrado",
-      "carpeta": "DRAMA - (LAT)",
+      "carpeta": "DOCUMENTAL - (LAT)",
       "etiquetas": [
         "LAT"
       ],
       "prefijo": "",
-      "copias": 3
+      "copias": 1
     },
     {
       "id": "1319137",
@@ -1163,11 +1499,67 @@
       "copias": 1
     },
     {
+      "id": "1317856",
+      "tipo": "movie",
+      "nombre_original": "El Archivo (LAT) (2020)",
+      "titulo_buscado": "El Archivo",
+      "anio": 2020,
+      "motivo": "no_encontrado",
+      "carpeta": "CIENCIA FICCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1317559",
       "tipo": "movie",
       "nombre_original": "La calle del terror (Parte 1): 1994 (LAT) (2021)",
       "titulo_buscado": "La calle del terror",
       "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "TERROR - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1317517",
+      "tipo": "movie",
+      "nombre_original": "La fotografía (LAT) (2020)",
+      "titulo_buscado": "La fotografía",
+      "anio": 2020,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1317461",
+      "tipo": "movie",
+      "nombre_original": "Sueños S.A. (LAT) (2020)",
+      "titulo_buscado": "Sueños S A",
+      "anio": 2020,
+      "motivo": "no_encontrado",
+      "carpeta": "ANIMACIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1317222",
+      "tipo": "movie",
+      "nombre_original": "Su casa (LAT) (2020)",
+      "titulo_buscado": "Su casa",
+      "anio": 2020,
       "motivo": "no_encontrado",
       "carpeta": "TERROR - (LAT)",
       "etiquetas": [
@@ -1191,6 +1583,104 @@
       "copias": 24
     },
     {
+      "id": "1316271",
+      "tipo": "movie",
+      "nombre_original": "Vencedor (LAT) (2019)",
+      "titulo_buscado": "Vencedor",
+      "anio": 2019,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1316144",
+      "tipo": "movie",
+      "nombre_original": "Los Caballeros (LAT) (2020)",
+      "titulo_buscado": "Los Caballeros",
+      "anio": 2020,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1315930",
+      "tipo": "movie",
+      "nombre_original": "Novato (LAT) (2018)",
+      "titulo_buscado": "Novato",
+      "anio": 2018,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1315835",
+      "tipo": "movie",
+      "nombre_original": "10 y 10 (LAT) (2018)",
+      "titulo_buscado": "10 y 10",
+      "anio": 2018,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1315805",
+      "tipo": "movie",
+      "nombre_original": "Al ritmo! (LAT) (2018)",
+      "titulo_buscado": "Al ritmo!",
+      "anio": 2018,
+      "motivo": "no_encontrado",
+      "carpeta": "COMEDIA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1315737",
+      "tipo": "movie",
+      "nombre_original": "Unidos (LAT) (2020)",
+      "titulo_buscado": "Unidos",
+      "anio": 2020,
+      "motivo": "no_encontrado",
+      "carpeta": "AVENTURA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1315172",
+      "tipo": "movie",
+      "nombre_original": "El Más Grande (LAT) (2018)",
+      "titulo_buscado": "El Más Grande",
+      "anio": 2018,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1315128",
       "tipo": "movie",
       "nombre_original": "Expediente 64 (Los casos del Departamento Q) (LAT) (2018)",
@@ -1203,6 +1693,20 @@
       ],
       "prefijo": "",
       "copias": 2
+    },
+    {
+      "id": "1314879",
+      "tipo": "movie",
+      "nombre_original": "En El Barrio (LAT) (2021)",
+      "titulo_buscado": "En El Barrio",
+      "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
     },
     {
       "id": "1314783",
@@ -1275,6 +1779,20 @@
       "copias": 13
     },
     {
+      "id": "1313466",
+      "tipo": "movie",
+      "nombre_original": "Trampas (LAT) (2016)",
+      "titulo_buscado": "Trampas",
+      "anio": 2016,
+      "motivo": "no_encontrado",
+      "carpeta": "COMEDIA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1313408",
       "tipo": "movie",
       "nombre_original": "Talking to the Air: The Horses of the Last Forbidden Kingdom (LAT) (2016)",
@@ -1282,6 +1800,20 @@
       "anio": 2016,
       "motivo": "no_encontrado",
       "carpeta": "DOCUMENTAL - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1313103",
+      "tipo": "movie",
+      "nombre_original": "La morgue (LAT) (2016)",
+      "titulo_buscado": "La morgue",
+      "anio": 2016,
+      "motivo": "no_encontrado",
+      "carpeta": "TERROR - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -1303,11 +1835,84 @@
       "copias": 4
     },
     {
+      "id": "1312707",
+      "tipo": "movie",
+      "nombre_original": "El Implacable (LAT) (2017)",
+      "titulo_buscado": "El Implacable",
+      "anio": 2017,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1312575",
+      "tipo": "movie",
+      "nombre_original": "Graduación (LAT) (2016)",
+      "titulo_buscado": "Graduación",
+      "anio": 2016,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1312560",
+      "tipo": "movie",
+      "nombre_original": "Taylor Swift: The 1989 World Tour - Live (LAT) (2015)",
+      "titulo_buscado": "Taylor Swift: The",
+      "anio": 2015,
+      "motivo": "no_encontrado",
+      "carpeta": "MÚSICA - (LAT)",
+      "etiquetas": [
+        "LAT",
+        "WORLD",
+        "TOUR",
+        "LIVE"
+      ],
+      "prefijo": "",
+      "copias": 2
+    },
+    {
+      "id": "1312530",
+      "tipo": "movie",
+      "nombre_original": "Tu nombre (LAT) (2016)",
+      "titulo_buscado": "Tu nombre",
+      "anio": 2016,
+      "motivo": "no_encontrado",
+      "carpeta": "ANIMACIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1312223",
       "tipo": "movie",
       "nombre_original": "¡¡Cachún Cachún Ra-Ra!! (Una loca, loca, preparatoria) (LAT) (1984)",
       "titulo_buscado": "¡¡Cachún Cachún Ra Ra!!",
       "anio": 1984,
+      "motivo": "no_encontrado",
+      "carpeta": "COMEDIA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1312202",
+      "tipo": "movie",
+      "nombre_original": "¿Por qué él? (LAT) (2016)",
+      "titulo_buscado": "¿Por qué él?",
+      "anio": 2016,
       "motivo": "no_encontrado",
       "carpeta": "COMEDIA - (LAT)",
       "etiquetas": [
@@ -1338,6 +1943,20 @@
       "anio": 2016,
       "motivo": "no_encontrado",
       "carpeta": "COMEDIA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1311988",
+      "tipo": "movie",
+      "nombre_original": "Hasta el fin (LAT) (2016)",
+      "titulo_buscado": "Hasta el fin",
+      "anio": 2016,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -1401,6 +2020,20 @@
       "copias": 5
     },
     {
+      "id": "1311095",
+      "tipo": "movie",
+      "nombre_original": "Contra el sol (LAT) (2014)",
+      "titulo_buscado": "Contra el sol",
+      "anio": 2014,
+      "motivo": "no_encontrado",
+      "carpeta": "BÉLICA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1310926",
       "tipo": "movie",
       "nombre_original": "Frontera caníbal (Bone Tomahawk) (LAT) (2015)",
@@ -1429,6 +2062,20 @@
       "copias": 1
     },
     {
+      "id": "1310514",
+      "tipo": "movie",
+      "nombre_original": "La salvación (LAT) (2014)",
+      "titulo_buscado": "La salvación",
+      "anio": 2014,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1310469",
       "tipo": "movie",
       "nombre_original": "バイロケーション (LAT) (2013)",
@@ -1441,6 +2088,34 @@
       ],
       "prefijo": "",
       "copias": 14
+    },
+    {
+      "id": "1310362",
+      "tipo": "movie",
+      "nombre_original": "El gran pequeño (LAT) (2015)",
+      "titulo_buscado": "El gran pequeño",
+      "anio": 2015,
+      "motivo": "no_encontrado",
+      "carpeta": "COMEDIA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1310120",
+      "tipo": "movie",
+      "nombre_original": "Lo mejor de lo mejor (LAT) (1989)",
+      "titulo_buscado": "Lo mejor de lo mejor",
+      "anio": 1989,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
     },
     {
       "id": "1310087",
@@ -1478,6 +2153,34 @@
       "anio": 2004,
       "motivo": "no_encontrado",
       "carpeta": "OTROS - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1309767",
+      "tipo": "movie",
+      "nombre_original": "El Virus (LAT) (2013)",
+      "titulo_buscado": "El Virus",
+      "anio": 2013,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1309721",
+      "tipo": "movie",
+      "nombre_original": "Birdman o (La Inesperada Virtud de la Ignorancia) (LAT) (2014)",
+      "titulo_buscado": "Birdman o",
+      "anio": 2014,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -1541,6 +2244,23 @@
       "copias": 3
     },
     {
+      "id": "1309407",
+      "tipo": "movie",
+      "nombre_original": "SCANDAL JAPAN TITLE MATCH LIVE 2012-SCANDAL vs BUDOKAN - (LAT)",
+      "titulo_buscado": "SCANDAL JAPAN TITLE MATCH LIVE",
+      "anio": 2012,
+      "motivo": "no_encontrado",
+      "carpeta": "MÚSICA - (LAT)",
+      "etiquetas": [
+        "LAT",
+        "SCANDAL",
+        "VS",
+        "BUDOKAN"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1309363",
       "tipo": "movie",
       "nombre_original": "連合艦隊司令長官 山本五十六 (LAT) (1968)",
@@ -1548,6 +2268,20 @@
       "anio": 1968,
       "motivo": "pendiente",
       "carpeta": "BÉLICA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1309274",
+      "tipo": "movie",
+      "nombre_original": "Cuernos (LAT) (2013)",
+      "titulo_buscado": "Cuernos",
+      "anio": 2013,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -1576,6 +2310,34 @@
       "anio": 2012,
       "motivo": "no_encontrado",
       "carpeta": "BÉLICA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 2
+    },
+    {
+      "id": "1308710",
+      "tipo": "movie",
+      "nombre_original": "El rifle (LAT) (1952)",
+      "titulo_buscado": "El rifle",
+      "anio": 1952,
+      "motivo": "no_encontrado",
+      "carpeta": "BÉLICA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1308520",
+      "tipo": "movie",
+      "nombre_original": "Blue (LAT) (2003)",
+      "titulo_buscado": "Blue",
+      "anio": 2003,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -1644,7 +2406,7 @@
       "nombre_original": "The Ramones: It's Alive (1974-1996) (LAT) (2007)",
       "titulo_buscado": "The Ramones: It's Alive",
       "anio": 1974,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "MÚSICA - (LAT)",
       "etiquetas": [
         "LAT"
@@ -1660,6 +2422,34 @@
       "anio": 1981,
       "motivo": "pendiente",
       "carpeta": "FAMILIA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1307683",
+      "tipo": "movie",
+      "nombre_original": "Dragon (Wu xia) (LAT) (2011)",
+      "titulo_buscado": "Dragon",
+      "anio": 2011,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 2
+    },
+    {
+      "id": "1307614",
+      "tipo": "movie",
+      "nombre_original": "El Guardia (LAT) (2011)",
+      "titulo_buscado": "El Guardia",
+      "anio": 2011,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -1743,6 +2533,20 @@
       "titulo_buscado": "Кавказский пленник (LAT) (1996)",
       "anio": 1996,
       "motivo": "pendiente",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1307135",
+      "tipo": "movie",
+      "nombre_original": "Otro Mundo (LAT) (2011)",
+      "titulo_buscado": "Otro Mundo",
+      "anio": 2011,
+      "motivo": "no_encontrado",
       "carpeta": "DRAMA - (LAT)",
       "etiquetas": [
         "LAT"
@@ -1933,6 +2737,20 @@
       "copias": 3
     },
     {
+      "id": "1305495",
+      "tipo": "movie",
+      "nombre_original": "Ju-on (LAT) (2000)",
+      "titulo_buscado": "Ju on",
+      "anio": 2000,
+      "motivo": "no_encontrado",
+      "carpeta": "TERROR - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1305448",
       "tipo": "movie",
       "nombre_original": "ハチ公物語 (LAT) (1987)",
@@ -1945,6 +2763,20 @@
       ],
       "prefijo": "",
       "copias": 2
+    },
+    {
+      "id": "1305031",
+      "tipo": "movie",
+      "nombre_original": "El Origen (LAT) (2010)",
+      "titulo_buscado": "El Origen",
+      "anio": 2010,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
     },
     {
       "id": "1305011",
@@ -1975,6 +2807,20 @@
       "copias": 1
     },
     {
+      "id": "1304726",
+      "tipo": "movie",
+      "nombre_original": "El Auto (LAT) (1977)",
+      "titulo_buscado": "El Auto",
+      "anio": 1977,
+      "motivo": "no_encontrado",
+      "carpeta": "TERROR - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1304685",
       "tipo": "movie",
       "nombre_original": "Mary y Max (LAT) (2009)",
@@ -1990,6 +2836,64 @@
       "copias": 1
     },
     {
+      "id": "1304460",
+      "tipo": "movie",
+      "nombre_original": "Armitage: Dual Matrix (LAT) (2002)",
+      "titulo_buscado": "Armitage:",
+      "anio": 2002,
+      "motivo": "no_encontrado",
+      "carpeta": "SUSPENSO - (LAT)",
+      "etiquetas": [
+        "LAT",
+        "DUAL",
+        "MATRIX"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1304439",
+      "tipo": "movie",
+      "nombre_original": "Proyecto A (LAT) (1983)",
+      "titulo_buscado": "Proyecto A",
+      "anio": 1983,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1304205",
+      "tipo": "movie",
+      "nombre_original": "Falcone (LAT) (1999)",
+      "titulo_buscado": "Falcone",
+      "anio": 1999,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1303923",
+      "tipo": "movie",
+      "nombre_original": "En la luna (LAT) (2009)",
+      "titulo_buscado": "En la luna",
+      "anio": 2009,
+      "motivo": "no_encontrado",
+      "carpeta": "CIENCIA FICCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1303361",
       "tipo": "movie",
       "nombre_original": "Los Guardianes: El Tesoro del Rey Salomón (LAT) (2006)",
@@ -1997,6 +2901,34 @@
       "anio": 2006,
       "motivo": "pendiente",
       "carpeta": "FANTASÍA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1303256",
+      "tipo": "movie",
+      "nombre_original": "Rápidos y furiosos (LAT) (2009)",
+      "titulo_buscado": "Rápidos y furiosos",
+      "anio": 2009,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1303112",
+      "tipo": "movie",
+      "nombre_original": "Carrera de la muerte 2000 (LAT) (1975)",
+      "titulo_buscado": "Carrera de la muerte",
+      "anio": 1975,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -2018,6 +2950,34 @@
       "copias": 2
     },
     {
+      "id": "1303052",
+      "tipo": "movie",
+      "nombre_original": "Control total (LAT) (2008)",
+      "titulo_buscado": "Control total",
+      "anio": 2008,
+      "motivo": "no_encontrado",
+      "carpeta": "MISTERIO - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1303013",
+      "tipo": "movie",
+      "nombre_original": "Veracruz (LAT) (1954)",
+      "titulo_buscado": "Veracruz",
+      "anio": 1954,
+      "motivo": "no_encontrado",
+      "carpeta": "WESTERN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1302881",
       "tipo": "movie",
       "nombre_original": "Carreras Clandestinas (Biker Boyz) (LAT) (2003)",
@@ -2025,6 +2985,62 @@
       "anio": 2003,
       "motivo": "no_encontrado",
       "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1302876",
+      "tipo": "movie",
+      "nombre_original": "Nueve (LAT) (2009)",
+      "titulo_buscado": "Nueve",
+      "anio": 2009,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1302543",
+      "tipo": "movie",
+      "nombre_original": "Los guerreros (LAT) (1979)",
+      "titulo_buscado": "Los guerreros",
+      "anio": 1979,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1302534",
+      "tipo": "movie",
+      "nombre_original": "La sospecha (LAT) (1941)",
+      "titulo_buscado": "La sospecha",
+      "anio": 1941,
+      "motivo": "no_encontrado",
+      "carpeta": "MISTERIO - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1302467",
+      "tipo": "movie",
+      "nombre_original": "Siempre (LAT) (1989)",
+      "titulo_buscado": "Siempre",
+      "anio": 1989,
+      "motivo": "no_encontrado",
+      "carpeta": "ROMANCE - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -2060,6 +3076,62 @@
       "copias": 1
     },
     {
+      "id": "1302081",
+      "tipo": "movie",
+      "nombre_original": "Garras (LAT) (1996)",
+      "titulo_buscado": "Garras",
+      "anio": 1996,
+      "motivo": "no_encontrado",
+      "carpeta": "AVENTURA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1301968",
+      "tipo": "movie",
+      "nombre_original": "La leyenda de 1900 (LAT) (1998)",
+      "titulo_buscado": "La leyenda de",
+      "anio": 1998,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1301959",
+      "tipo": "movie",
+      "nombre_original": "Dos Amantes (LAT) (2008)",
+      "titulo_buscado": "Dos Amantes",
+      "anio": 2008,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1301883",
+      "tipo": "movie",
+      "nombre_original": "Voraz (LAT) (1999)",
+      "titulo_buscado": "Voraz",
+      "anio": 1999,
+      "motivo": "no_encontrado",
+      "carpeta": "AVENTURA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1301777",
       "tipo": "movie",
       "nombre_original": "Danny: La Bestia (Unleashed) (LAT) (2005)",
@@ -2067,6 +3139,34 @@
       "anio": 2005,
       "motivo": "no_encontrado",
       "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1301769",
+      "tipo": "movie",
+      "nombre_original": "El Espectro (LAT) (1986)",
+      "titulo_buscado": "El Espectro",
+      "anio": 1986,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1301655",
+      "tipo": "movie",
+      "nombre_original": "Filadelfia (LAT) (1993)",
+      "titulo_buscado": "Filadelfia",
+      "anio": 1993,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -2116,6 +3216,92 @@
       "copias": 1
     },
     {
+      "id": "1301331",
+      "tipo": "movie",
+      "nombre_original": "Fenómeno (LAT) (1996)",
+      "titulo_buscado": "Fenómeno",
+      "anio": 1996,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1301274",
+      "tipo": "movie",
+      "nombre_original": "Historia de amor (LAT) (1970)",
+      "titulo_buscado": "Historia de amor",
+      "anio": 1970,
+      "motivo": "no_encontrado",
+      "carpeta": "ROMANCE - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1301206",
+      "tipo": "movie",
+      "nombre_original": "El demonio (LAT) (2001)",
+      "titulo_buscado": "El demonio",
+      "anio": 2001,
+      "motivo": "no_encontrado",
+      "carpeta": "TERROR - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1300911",
+      "tipo": "movie",
+      "nombre_original": "La aldea (LAT) (2004)",
+      "titulo_buscado": "La aldea",
+      "anio": 2004,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1300625",
+      "tipo": "movie",
+      "nombre_original": "Préparez vos mouchoirs (LAT) (1978)",
+      "titulo_buscado": "Préparez",
+      "anio": 1978,
+      "motivo": "no_encontrado",
+      "carpeta": "ROMANCE - (LAT)",
+      "etiquetas": [
+        "LAT",
+        "VOS",
+        "MOUCHOIRS"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1300461",
+      "tipo": "movie",
+      "nombre_original": "El aro (LAT) (1998)",
+      "titulo_buscado": "El aro",
+      "anio": 1998,
+      "motivo": "no_encontrado",
+      "carpeta": "TERROR - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1300379",
       "tipo": "movie",
       "nombre_original": "Banda en Fuga (Mallrats) (LAT) (1995)",
@@ -2144,6 +3330,48 @@
       "copias": 1
     },
     {
+      "id": "1300243",
+      "tipo": "movie",
+      "nombre_original": "Zodíaco (LAT) (2007)",
+      "titulo_buscado": "Zodíaco",
+      "anio": 2007,
+      "motivo": "no_encontrado",
+      "carpeta": "CRIMEN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1300059",
+      "tipo": "movie",
+      "nombre_original": "Cruzada (LAT) (2005)",
+      "titulo_buscado": "Cruzada",
+      "anio": 2005,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1299875",
+      "tipo": "movie",
+      "nombre_original": "Dunas (LAT) (1984)",
+      "titulo_buscado": "Dunas",
+      "anio": 1984,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1299825",
       "tipo": "movie",
       "nombre_original": "Guerrero de las sombras (LAT) (1992)",
@@ -2151,6 +3379,48 @@
       "anio": 1992,
       "motivo": "pendiente",
       "carpeta": "FANTASÍA - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1299704",
+      "tipo": "movie",
+      "nombre_original": "El aro (LAT) (2002)",
+      "titulo_buscado": "El aro",
+      "anio": 2002,
+      "motivo": "no_encontrado",
+      "carpeta": "TERROR - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1299501",
+      "tipo": "movie",
+      "nombre_original": "Azul profundo (LAT) (1988)",
+      "titulo_buscado": "Azul profundo",
+      "anio": 1988,
+      "motivo": "no_encontrado",
+      "carpeta": "ROMANCE - (LAT)",
+      "etiquetas": [
+        "LAT"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1299447",
+      "tipo": "movie",
+      "nombre_original": "Gladiador (LAT) (2000)",
+      "titulo_buscado": "Gladiador",
+      "anio": 2000,
+      "motivo": "no_encontrado",
+      "carpeta": "ACCIÓN - (LAT)",
       "etiquetas": [
         "LAT"
       ],
@@ -2177,7 +3447,7 @@
       "nombre_original": "Siping (ENG) (2026)",
       "titulo_buscado": "Siping",
       "anio": 2026,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "NEW RELEASES 2026 - (ENG)",
       "etiquetas": [],
       "prefijo": "",
@@ -2220,14 +3490,17 @@
       "copias": 1
     },
     {
-      "id": "1291610",
+      "id": "1291629",
       "tipo": "movie",
-      "nombre_original": "The Potion (ENG) (2026)",
-      "titulo_buscado": "The Potion",
-      "anio": 2026,
-      "motivo": "pendiente",
-      "carpeta": "NEW RELEASES 2026 - (ENG)",
-      "etiquetas": [],
+      "nombre_original": "Implosion: The Titanic Sub Disaster (ENG) (2025)",
+      "titulo_buscado": "Implosion: The Titanic",
+      "anio": 2025,
+      "motivo": "no_encontrado",
+      "carpeta": "MOVIES 2025 - (ENG)",
+      "etiquetas": [
+        "SUB",
+        "DISASTER"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -2282,15 +3555,15 @@
       "copias": 1
     },
     {
-      "id": "1288560",
+      "id": "1288334",
       "tipo": "movie",
-      "nombre_original": "Open Heart (ENG) (2023)",
-      "titulo_buscado": "Heart",
+      "nombre_original": "AEW All In 2023: London (ENG)",
+      "titulo_buscado": "AEW All In",
       "anio": 2023,
       "motivo": "no_encontrado",
-      "carpeta": "DOCUMENTARY - (ENG)",
+      "carpeta": "ACTION - (ENG)",
       "etiquetas": [
-        "OPEN"
+        "LONDON"
       ],
       "prefijo": "",
       "copias": 1
@@ -2310,14 +3583,73 @@
       "copias": 1
     },
     {
+      "id": "1284289",
+      "tipo": "movie",
+      "nombre_original": "Tulsa Burning: The 1921 Race Massacre (ENG) (2021)",
+      "titulo_buscado": "Tulsa Burning: The",
+      "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTARY - (ENG)",
+      "etiquetas": [
+        "RACE",
+        "MASSACRE"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1284071",
       "tipo": "movie",
       "nombre_original": "All the Streets Are Silent: The Convergence of Hip Hop and Skateboarding (1987-1997) (ENG) (2021)",
       "titulo_buscado": "All the Streets Are Silent: The Convergence of Hip Hop and Skateboarding",
       "anio": 1987,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "DOCUMENTARY - (ENG)",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1283149",
+      "tipo": "movie",
+      "nombre_original": "The Sparks Brothers (ENG) (2021)",
+      "titulo_buscado": "The",
+      "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTARY - (ENG)",
+      "etiquetas": [
+        "SPARKS",
+        "BROTHERS"
+      ],
+      "prefijo": "",
+      "copias": 2
+    },
+    {
+      "id": "1279463",
+      "tipo": "movie",
+      "nombre_original": "Away (ENG) (2019)",
+      "titulo_buscado": "Away",
+      "anio": 2019,
+      "motivo": "no_encontrado",
+      "carpeta": "ANIMATION - (ENG)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1278612",
+      "tipo": "movie",
+      "nombre_original": "The Spider's Web: Britain's Second Empire (ENG) (2017)",
+      "titulo_buscado": "The Spider's",
+      "anio": 2017,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTARY - (ENG)",
+      "etiquetas": [
+        "WEB",
+        "BRITAIN S",
+        "SECOND",
+        "EMPIRE"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -2327,8 +3659,20 @@
       "nombre_original": "So What Is Love (ENG) (2019)",
       "titulo_buscado": "So What Is Love",
       "anio": 2019,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "COMEDY - (ENG)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1278224",
+      "tipo": "movie",
+      "nombre_original": "Reason (ENG) (2018)",
+      "titulo_buscado": "Reason",
+      "anio": 2018,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTARY - (ENG)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -2343,6 +3687,36 @@
       "carpeta": "DRAMA - (ENG)",
       "etiquetas": [
         "LINE"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1276691",
+      "tipo": "movie",
+      "nombre_original": "Moments without Proper Names (ENG) (1987)",
+      "titulo_buscado": "Moments without",
+      "anio": 1987,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTARY - (ENG)",
+      "etiquetas": [
+        "PROPER",
+        "NAMES"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1275595",
+      "tipo": "movie",
+      "nombre_original": "The Latino List (ENG) (2011)",
+      "titulo_buscado": "The",
+      "anio": 2011,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTARY - (ENG)",
+      "etiquetas": [
+        "LATINO",
+        "LIST"
       ],
       "prefijo": "",
       "copias": 1
@@ -2368,6 +3742,21 @@
       "motivo": "no_encontrado",
       "carpeta": "COMEDY - (ENG)",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1274865",
+      "tipo": "movie",
+      "nombre_original": "Voyage of Time: The IMAX Experience (ENG) (2016)",
+      "titulo_buscado": "Voyage of Time: The",
+      "anio": 2016,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTARY - (ENG)",
+      "etiquetas": [
+        "IMAX",
+        "EXPERIENCE"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -2498,6 +3887,18 @@
       "copias": 1
     },
     {
+      "id": "1270749",
+      "tipo": "movie",
+      "nombre_original": "Birdman or (The Unexpected Virtue of Ignorance) (ENG) (2014)",
+      "titulo_buscado": "Birdman or",
+      "anio": 2014,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (ENG)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1270498",
       "tipo": "movie",
       "nombre_original": "Brock Enright: Good Times Will Never Be the Same (ENG) (2009)",
@@ -2522,6 +3923,30 @@
       "copias": 1
     },
     {
+      "id": "1269943",
+      "tipo": "movie",
+      "nombre_original": "Party (ENG) (1984)",
+      "titulo_buscado": "Party",
+      "anio": 1984,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (ENG)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1269769",
+      "tipo": "movie",
+      "nombre_original": "The Four (ENG) (2012)",
+      "titulo_buscado": "The Four",
+      "anio": 2012,
+      "motivo": "no_encontrado",
+      "carpeta": "ACTION - (ENG)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1269079",
       "tipo": "movie",
       "nombre_original": "The Star (ENG) (1952)",
@@ -2532,6 +3957,18 @@
       "etiquetas": [
         "STAR"
       ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1268567",
+      "tipo": "movie",
+      "nombre_original": "The Sword (ENG) (1980)",
+      "titulo_buscado": "The Sword",
+      "anio": 1980,
+      "motivo": "no_encontrado",
+      "carpeta": "ACTION - (ENG)",
+      "etiquetas": [],
       "prefijo": "",
       "copias": 1
     },
@@ -2548,6 +3985,21 @@
       "copias": 1
     },
     {
+      "id": "1266569",
+      "tipo": "movie",
+      "nombre_original": "Love with the Proper Stranger (ENG) (1963)",
+      "titulo_buscado": "Love with the",
+      "anio": 1963,
+      "motivo": "no_encontrado",
+      "carpeta": "COMEDY - (ENG)",
+      "etiquetas": [
+        "PROPER",
+        "STRANGER"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1266490",
       "tipo": "movie",
       "nombre_original": "Not the Messiah (He's a Very Naughty Boy) (ENG) (2010)",
@@ -2555,6 +4007,18 @@
       "anio": 2010,
       "motivo": "no_encontrado",
       "carpeta": "COMEDY - (ENG)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1263689",
+      "tipo": "movie",
+      "nombre_original": "The Legend (ENG) (1993)",
+      "titulo_buscado": "The Legend",
+      "anio": 1993,
+      "motivo": "no_encontrado",
+      "carpeta": "ADVENTURE  - (ENG)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -2610,18 +4074,16 @@
       "copias": 1
     },
     {
-      "id": "1259610",
+      "id": "1258977",
       "tipo": "movie",
-      "nombre_original": "Open Range (ENG) (2003)",
-      "titulo_buscado": "Range",
-      "anio": 2003,
+      "nombre_original": "Fire (ENG) (1997)",
+      "titulo_buscado": "Fire",
+      "anio": 1997,
       "motivo": "no_encontrado",
-      "carpeta": "WESTERN  - (ENG)",
-      "etiquetas": [
-        "OPEN"
-      ],
+      "carpeta": "DRAMA - (ENG)",
+      "etiquetas": [],
       "prefijo": "",
-      "copias": 2
+      "copias": 1
     },
     {
       "id": "1228134",
@@ -2704,6 +4166,30 @@
       "motivo": "pendiente",
       "carpeta": "DOCUMENTAL - (CAST)",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1224870",
+      "tipo": "movie",
+      "nombre_original": "Borat. Cinta VHS con material considerado ''sub-aceptable'' por el Ministerio de Censura y Circuncisión de Kazajistán (CAST) (2021)",
+      "titulo_buscado": "Borat Cinta VHS con material considerado",
+      "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "COMEDIA - (CAST)",
+      "etiquetas": [
+        "SUB",
+        "ACEPTABLE",
+        "POR",
+        "EL",
+        "MINISTERIO",
+        "DE",
+        "CENSURA",
+        "Y",
+        "CIRCUNCISION",
+        "DE",
+        "KAZAJISTAN"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -2811,9 +4297,25 @@
       "nombre_original": "Los 4 músicos de Bremen (CAST) (1989)",
       "titulo_buscado": "Los 4 músicos de Bremen",
       "anio": 1989,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "ANIMACIÓN - (CAST)",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1220039",
+      "tipo": "movie",
+      "nombre_original": "An American Girl Story - Ivy & Julie 1976: A Happy Balance (CAST) (2017)",
+      "titulo_buscado": "An American Girl Story Ivy Julie",
+      "anio": 2017,
+      "motivo": "no_encontrado",
+      "carpeta": "FAMILIA - (CAST)",
+      "etiquetas": [
+        "A",
+        "HAPPY",
+        "BALANCE"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -2850,6 +4352,25 @@
       "motivo": "no_encontrado",
       "carpeta": "DRAMA - (CAST)",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1219223",
+      "tipo": "movie",
+      "nombre_original": "11 de septiembre de 1973. El último combate de Salvador Allende (CAST) (1998)",
+      "titulo_buscado": "11 de septiembre de",
+      "anio": 1998,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUMENTAL - (CAST)",
+      "etiquetas": [
+        "EL",
+        "ULTIMO",
+        "COMBATE",
+        "DE",
+        "SALVADOR",
+        "ALLENDE"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -2916,18 +4437,6 @@
       "copias": 1
     },
     {
-      "id": "1218169",
-      "tipo": "movie",
-      "nombre_original": "Mayo De 1940 (CAST) (2015)",
-      "titulo_buscado": "Mayo De",
-      "anio": 2015,
-      "motivo": "no_encontrado",
-      "carpeta": "BÉLICA - (CAST)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "1217145",
       "tipo": "movie",
       "nombre_original": "Varsovia 1944 (CAST) (2014)",
@@ -2935,6 +4444,30 @@
       "anio": 2014,
       "motivo": "no_encontrado",
       "carpeta": "DRAMA - (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1216742",
+      "tipo": "movie",
+      "nombre_original": "El cielo es azul (CAST) (2014)",
+      "titulo_buscado": "El cielo es azul",
+      "anio": 2014,
+      "motivo": "no_encontrado",
+      "carpeta": "OTHERS - (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1216249",
+      "tipo": "movie",
+      "nombre_original": "Hotel (CAST) (1981)",
+      "titulo_buscado": "Hotel",
+      "anio": 1981,
+      "motivo": "no_encontrado",
+      "carpeta": "SUSPENSO - (CAST)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -3005,7 +4538,7 @@
       "nombre_original": "Resident Evil VI (CAST) (2016)",
       "titulo_buscado": "Resident Evil VI",
       "anio": 2016,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "ACCIÓN - (CAST)",
       "etiquetas": [],
       "prefijo": "",
@@ -3144,12 +4677,40 @@
       "copias": 1
     },
     {
+      "id": "1213339",
+      "tipo": "movie",
+      "nombre_original": "No sos vos, soy yo (CAST) (2004)",
+      "titulo_buscado": "No sos",
+      "anio": 2004,
+      "motivo": "no_encontrado",
+      "carpeta": "ROMANCE - (CAST)",
+      "etiquetas": [
+        "VOS",
+        "SOY",
+        "YO"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1213327",
       "tipo": "movie",
       "nombre_original": "最後の忠臣蔵 (CAST) (2010)",
       "titulo_buscado": "最後の忠臣蔵 (CAST) (2010)",
       "anio": 2010,
       "motivo": "pendiente",
+      "carpeta": "DRAMA - (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1213298",
+      "tipo": "movie",
+      "nombre_original": "Guerrera (Sangre y honor) (CAST) (2011)",
+      "titulo_buscado": "Guerrera",
+      "anio": 2011,
+      "motivo": "no_encontrado",
       "carpeta": "DRAMA - (CAST)",
       "etiquetas": [],
       "prefijo": "",
@@ -3187,6 +4748,18 @@
       "anio": 1977,
       "motivo": "pendiente",
       "carpeta": "ACCIÓN - (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1212094",
+      "tipo": "movie",
+      "nombre_original": "Gantz: Génesis (Gantz: Parte 1) (CAST) (2010)",
+      "titulo_buscado": "Gantz: Génesis",
+      "anio": 2010,
+      "motivo": "no_encontrado",
+      "carpeta": "TERROR - (CAST)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -3247,6 +4820,18 @@
       "anio": 1998,
       "motivo": "no_encontrado",
       "carpeta": "FAMILIA - (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1211689",
+      "tipo": "movie",
+      "nombre_original": "El luchador Manco 2 (El luchador manco contra la guillotina voladora) (CAST) (1976)",
+      "titulo_buscado": "El luchador Manco 2",
+      "anio": 1976,
+      "motivo": "no_encontrado",
+      "carpeta": "FANTASÍA - (CAST)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -3456,6 +5041,18 @@
       "copias": 1
     },
     {
+      "id": "1206613",
+      "tipo": "movie",
+      "nombre_original": "Evil (Ondskan) (CAST) (2003)",
+      "titulo_buscado": "Evil",
+      "anio": 2003,
+      "motivo": "no_encontrado",
+      "carpeta": "DRAMA - (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1206444",
       "tipo": "movie",
       "nombre_original": "May, ¿quieres ser mi amigo? (CAST) (2003)",
@@ -3564,6 +5161,18 @@
       "copias": 1
     },
     {
+      "id": "1203704",
+      "tipo": "movie",
+      "nombre_original": "Shaft: The Return (CAST) (2000)",
+      "titulo_buscado": "Shaft: The Return",
+      "anio": 2000,
+      "motivo": "pendiente",
+      "carpeta": "ACCIÓN - (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1203569",
       "tipo": "movie",
       "nombre_original": "Star Trek IV. Némesis (CAST) (2002)",
@@ -3607,7 +5216,9 @@
       "anio": 2024,
       "motivo": "pendiente",
       "carpeta": "APPLE TV (CAST)",
-      "etiquetas": [],
+      "etiquetas": [
+        "AUDIO"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -3655,6 +5266,18 @@
       "anio": 0,
       "motivo": "pendiente",
       "carpeta": "TELENOVELAS (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "17401",
+      "tipo": "tv",
+      "nombre_original": "Will y Grace II (0)",
+      "titulo_buscado": "Will y Grace II",
+      "anio": 0,
+      "motivo": "pendiente",
+      "carpeta": "SKYSHOWTIME (CAST)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -4003,7 +5626,9 @@
       "anio": 2024,
       "motivo": "no_encontrado",
       "carpeta": "NETFLIX (CAST)",
-      "etiquetas": [],
+      "etiquetas": [
+        "LINE"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -4301,6 +5926,18 @@
       "nombre_original": "Titanes mecánicos (2012)",
       "titulo_buscado": "Titanes mecánicos",
       "anio": 2012,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUSERIES (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "14830",
+      "tipo": "tv",
+      "nombre_original": "Titanes Del Mar 3 (2026)",
+      "titulo_buscado": "Titanes Del Mar 3",
+      "anio": 2026,
       "motivo": "no_encontrado",
       "carpeta": "DOCUSERIES (CAST)",
       "etiquetas": [],
@@ -4826,6 +6463,23 @@
       "copias": 1
     },
     {
+      "id": "14198",
+      "tipo": "tv",
+      "nombre_original": "Copa del Rey 2021-2022: la copa de todos",
+      "titulo_buscado": "Copa del Rey",
+      "anio": 2021,
+      "motivo": "no_encontrado",
+      "carpeta": "DOCUSERIES (CAST)",
+      "etiquetas": [
+        "LA",
+        "COPA",
+        "DE",
+        "TODOS"
+      ],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "14165",
       "tipo": "tv",
       "nombre_original": "Caminos Del Flamenco (0)",
@@ -4958,23 +6612,6 @@
       "copias": 1
     },
     {
-      "id": "13814",
-      "tipo": "tv",
-      "nombre_original": "Expediente X S01-S11 DSNP WEB-DL 1080p DDP5.1 H264-LMain",
-      "titulo_buscado": "Expediente X DDP5 1 LMain",
-      "anio": 0,
-      "motivo": "pendiente",
-      "carpeta": "DISNEY (CAST)",
-      "etiquetas": [
-        "DSNP",
-        "WEBDL",
-        "1080P",
-        "X264"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "13734",
       "tipo": "tv",
       "nombre_original": "Commercial Breakdown (2008)",
@@ -4994,6 +6631,18 @@
       "anio": 0,
       "motivo": "pendiente",
       "carpeta": "DISNEY (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "13601",
+      "tipo": "tv",
+      "nombre_original": "Una Nueva Vida Inc (0)",
+      "titulo_buscado": "Una Nueva Vida Inc",
+      "anio": 0,
+      "motivo": "pendiente",
+      "carpeta": "ATRESMEDIA (CAST)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -5287,6 +6936,18 @@
       "copias": 1
     },
     {
+      "id": "12254",
+      "tipo": "tv",
+      "nombre_original": "Fuerza policial: Ataque en la India (0)",
+      "titulo_buscado": "Fuerza policial: Ataque en la India",
+      "anio": 0,
+      "motivo": "pendiente",
+      "carpeta": "AMAZON (CAST)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "12187",
       "tipo": "tv",
       "nombre_original": "이혼보험: 직급 쟁탈전 (2025)",
@@ -5318,7 +6979,9 @@
       "anio": 2026,
       "motivo": "pendiente",
       "carpeta": "DISNEY (CAST)",
-      "etiquetas": [],
+      "etiquetas": [
+        "AUDIO"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -5352,7 +7015,7 @@
       "nombre_original": "Gasparin y sus amigos (1990)",
       "titulo_buscado": "Gasparin y sus amigos",
       "anio": 1990,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "SERIES ANIMADAS (LAT)",
       "etiquetas": [],
       "prefijo": "",
@@ -5546,6 +7209,18 @@
       "anio": 1990,
       "motivo": "no_encontrado",
       "carpeta": "SERIES ANIMADAS (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "3844",
+      "tipo": "tv",
+      "nombre_original": "Avenida Brasil (2012)",
+      "titulo_buscado": "Avenida Brasil",
+      "anio": 2012,
+      "motivo": "no_encontrado",
+      "carpeta": "NOVELAS (LAT)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -5820,7 +7495,7 @@
       "nombre_original": "Court Martial (1965)",
       "titulo_buscado": "Court Martial",
       "anio": 1965,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "SERIES RETRO (LAT)",
       "etiquetas": [],
       "prefijo": "",
@@ -6033,6 +7708,18 @@
       "copias": 1
     },
     {
+      "id": "4831",
+      "tipo": "tv",
+      "nombre_original": "My Love (2006)",
+      "titulo_buscado": "My Love",
+      "anio": 2006,
+      "motivo": "no_encontrado",
+      "carpeta": "SERIES DOCUMENTALES (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "4803",
       "tipo": "tv",
       "nombre_original": "Maraton",
@@ -6158,7 +7845,7 @@
       "nombre_original": "Bleach: Sennen Kessen-hen (2022)",
       "titulo_buscado": "Bleach: Sennen Kessen hen",
       "anio": 2022,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "SERIES ANIME (LAT)",
       "etiquetas": [],
       "prefijo": "",
@@ -6314,6 +8001,18 @@
       "nombre_original": "Efecto Mariposa (2018)",
       "titulo_buscado": "Efecto Mariposa",
       "anio": 2018,
+      "motivo": "no_encontrado",
+      "carpeta": "SERIES ANIMADAS (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "4326",
+      "tipo": "tv",
+      "nombre_original": "The Challenger",
+      "titulo_buscado": "The Challenger",
+      "anio": 0,
       "motivo": "no_encontrado",
       "carpeta": "SERIES ANIMADAS (LAT)",
       "etiquetas": [],
@@ -6578,7 +8277,7 @@
       "nombre_original": "Amanda Sabater (1989)",
       "titulo_buscado": "Amanda Sabater",
       "anio": 1989,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "NOVELAS (LAT)",
       "etiquetas": [],
       "prefijo": "",
@@ -6626,7 +8325,7 @@
       "nombre_original": "Los trabajadores del ferrocarril: La historia no contada de Bhopal 1984",
       "titulo_buscado": "Los trabajadores del ferrocarril: La historia no contada de Bhopal",
       "anio": 1984,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
       "prefijo": "",
@@ -6710,6 +8409,18 @@
       "nombre_original": "Red Alert with The National Lottery",
       "titulo_buscado": "Red Alert with The National Lottery",
       "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "NETFLIX (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "3275",
+      "tipo": "tv",
+      "nombre_original": "Pain (2025)",
+      "titulo_buscado": "Pain",
+      "anio": 2025,
       "motivo": "no_encontrado",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
@@ -6878,7 +8589,7 @@
       "nombre_original": "Diciembre 2001",
       "titulo_buscado": "Diciembre",
       "anio": 2001,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
       "prefijo": "",
@@ -7129,6 +8840,18 @@
       "copias": 1
     },
     {
+      "id": "2232",
+      "tipo": "tv",
+      "nombre_original": "El Terror (2018)",
+      "titulo_buscado": "El Terror",
+      "anio": 2018,
+      "motivo": "no_encontrado",
+      "carpeta": "AMC (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "2150",
       "tipo": "tv",
       "nombre_original": "The English Neighborhood (2024)",
@@ -7237,6 +8960,18 @@
       "copias": 1
     },
     {
+      "id": "927",
+      "tipo": "tv",
+      "nombre_original": "History of the world (2012)",
+      "titulo_buscado": "History of the world",
+      "anio": 2012,
+      "motivo": "no_encontrado",
+      "carpeta": "BBC (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "921",
       "tipo": "tv",
       "nombre_original": "His And Hers (1970)",
@@ -7266,7 +9001,7 @@
       "nombre_original": "Formula 1 (1950)",
       "titulo_buscado": "Formula 1",
       "anio": 1950,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "OTRAS PLATAFORMAS (LAT)",
       "etiquetas": [],
       "prefijo": "",
@@ -7465,12 +9200,24 @@
       "copias": 1
     },
     {
+      "id": "48",
+      "tipo": "tv",
+      "nombre_original": "Búsqueda (2020)",
+      "titulo_buscado": "Búsqueda",
+      "anio": 2020,
+      "motivo": "no_encontrado",
+      "carpeta": "OTRAS PLATAFORMAS (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "5413",
       "tipo": "tv",
       "nombre_original": "El Eclipse (2024)",
       "titulo_buscado": "El Eclipse",
       "anio": 2024,
-      "motivo": "pendiente",
+      "motivo": "no_encontrado",
       "carpeta": "SERIES ANIMADAS (LAT)",
       "etiquetas": [],
       "prefijo": "",
