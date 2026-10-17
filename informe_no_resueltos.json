@@ -4,31 +4,31 @@
     "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
     "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina."
   ],
-  "generado": "2026-10-16T08:48:53Z",
+  "generado": "2026-10-17T08:19:19Z",
   "resumen": {
-    "total": 698,
+    "total": 699,
     "por_motivo": {
+      "no_encontrado": 476,
       "pendiente": 163,
-      "no_encontrado": 475,
       "titulo_vacio": 60
     },
     "peliculas": {
       "adulto": 19,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 257,
-      "fallo_red": 94,
-      "clasificados": 37372,
-      "sin_identificar": 351
+      "no_encontrado": 258,
+      "fallo_red": 95,
+      "clasificados": 37386,
+      "sin_identificar": 353
     },
     "series": {
       "adulto": 3,
       "excluido": 0,
       "sin_nombre": 0,
       "no_encontrado": 218,
-      "fallo_red": 129,
-      "clasificados": 8635,
-      "sin_identificar": 347
+      "fallo_red": 128,
+      "clasificados": 8630,
+      "sin_identificar": 346
     },
     "alerta": {
       "porcentaje_peliculas": 0.9,
@@ -40,13 +40,13 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 644,
+      "veces": 645,
       "ejemplos": [
+        "Solo es una película (It's just a movie) (2025)",
+        "Noticias en peligro (2026)",
         "Supremacía cuántica (2026)",
         "¿Por qué me casé otra vez? (2026)",
-        "Detonación (LAT) (2026)",
-        "Un Macho en El Salón De Belleza",
-        "Summer Sparks (LAT) (2026)"
+        "Detonación (LAT) (2026)"
       ]
     },
     {
@@ -463,7 +463,7 @@
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "DOCUSERIES (CAST)",
-      "veces": 60
+      "veces": 59
     },
     {
       "carpeta": "SERIES ANIMADAS (LAT)",
@@ -550,19 +550,43 @@
       "veces": 10
     },
     {
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "veces": 9
+    },
+    {
       "carpeta": "NEW RELEASES 2026 - (ENG)",
       "veces": 9
     },
     {
       "carpeta": "ATRESMEDIA (CAST)",
       "veces": 9
-    },
-    {
-      "carpeta": "DOCUMENTARY - (ENG)",
-      "veces": 8
     }
   ],
   "items": [
+    {
+      "id": "1730651",
+      "tipo": "movie",
+      "nombre_original": "Solo es una película (It's just a movie) (2025)",
+      "titulo_buscado": "Solo es una película",
+      "anio": 2025,
+      "motivo": "no_encontrado",
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 2
+    },
+    {
+      "id": "1730649",
+      "tipo": "movie",
+      "nombre_original": "Noticias en peligro (2026)",
+      "titulo_buscado": "Noticias en peligro",
+      "anio": 2026,
+      "motivo": "pendiente",
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
     {
       "id": "1728033",
       "tipo": "movie",
@@ -6634,18 +6658,6 @@
       "tipo": "tv",
       "nombre_original": "Expedición al infierno (0)",
       "titulo_buscado": "Expedición al infierno",
-      "anio": 0,
-      "motivo": "pendiente",
-      "carpeta": "DOCUSERIES (CAST)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "14333",
-      "tipo": "tv",
-      "nombre_original": "Escapando De La Secta (0)",
-      "titulo_buscado": "Escapando De La Secta",
       "anio": 0,
       "motivo": "pendiente",
       "carpeta": "DOCUSERIES (CAST)",
