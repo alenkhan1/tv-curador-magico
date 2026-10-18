@@ -82,6 +82,12 @@ def calcular_duracion_evento(deporte: str, titulo: str = "", duracion_detectada_
     if any(k in texto for k in ["BALONCESTO", "BASKET", "BÁSQUET", "NBA", "EUROLEAGUE", "RUGBY"]):
         return 150
 
+    # 6. Futbol, Futsal, Balonmano y Polo: minimo 125 minutos reales (para absorber entretiempo, detenciones y adicion)
+    if any(k in texto for k in ["FUTBOL", "FUTSAL", "SOCCER", "BALONMANO", "HANDBALL", "POLO"]):
+        if duracion_detectada_min:
+            return max(duracion_detectada_min + 30, 125)
+        return 125
+
     # 6. Duración detectada real (si no es el default 120/180)
     if duracion_detectada_min and duracion_detectada_min > 20 and duracion_detectada_min not in (120, 180):
         return duracion_detectada_min + 15
@@ -104,9 +110,8 @@ class EventoAgenda:
     texto_original_crudo: str = ""
 
     def __post_init__(self):
-        # Si la duración es el valor genérico por defecto (120 o 180), calcular la duración específica del deporte
-        if self.duracion_min in (0, 120, 180):
-            self.duracion_min = calcular_duracion_evento(self.deporte, self.titulo)
+        # Recalcular duracion especifica del deporte asegurando margenes reales de transmision
+        self.duracion_min = calcular_duracion_evento(self.deporte, self.titulo, self.duracion_min)
 
     def clave_deduplicacion(self) -> str:
         try:

@@ -69,8 +69,7 @@ RE_REPETICIONES = re.compile(
 # - Colombia (mi.tv/co) SOLO para Win Sports+ y Win Sports.
 # - Argentina (mi.tv/ar) para toda la familia ESPN (Cono Sur) y TyC Sports.
 CANALES_MITV = [
-    ("WIN SPORTS+", "https://mi.tv/co/async/channel/win-sports-hd/-300", "America/Bogota"),
-    ("WIN SPORTS", "https://mi.tv/co/async/channel/win-sports/-300", "America/Bogota"),
+    ("WIN SPORTS", "https://mi.tv/co/async/channel/win-sports-hd/-300", "America/Bogota"),
     ("ESPN AR", "https://mi.tv/ar/async/channel/espn/-180", "America/Argentina/Buenos_Aires"),
     ("ESPN 2 AR", "https://mi.tv/ar/async/channel/espn-2/-180", "America/Argentina/Buenos_Aires"),
     ("ESPN 3 AR", "https://mi.tv/ar/async/channel/espn-3/-180", "America/Argentina/Buenos_Aires"),
