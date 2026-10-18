@@ -238,7 +238,8 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         cat_dudosa = cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"]
         es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte"] for o in ev.get("origenes", []))
         # Auditar si es sospechoso, si le faltan escudos, si es circuito/combate, si es lineal (para verificar exclusividad de app) o huérfano
-        necesita = sospechoso_no_vivo or falta_escudo_duelo or es_lineal or es_circuito or tiene_vinetas or cat_dudosa or (not es_oficial_api)
+        # AGY debe auditar el 100% de los eventos nuevos o pendientes no sellados en Bóveda
+        necesita = True
         if necesita:
             if not ev.get("id"):
                 ev["id"] = f"ev_audit_{len(eventos_a_auditar) + 1}_{hashlib.sha1((raw_tit + ev.get('hora_utc', '')).encode()).hexdigest()[:6]}"
@@ -337,14 +338,19 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 ev["referencia"] = ev.get("subtitulo") or ev.get("torneo") or ev["titulo"]
             elif aud.get("tipo_evento") == "circuito":
                 ev["tipo_evento"] = "circuito"
-                ev["equipo_local"] = ""
-                ev["equipo_visitante"] = ""
+                # Preservar contendientes individuales si existen (Tenis, UFC, Boxeo, etc.)
                 partic = (aud.get("participantes") or "").strip()
                 if partic and partic.lower() not in [ev["titulo"].lower(), ev["torneo"].lower()]:
                     ev["referencia"] = partic
                 else:
                     ev["referencia"] = ev.get("referencia") or ev.get("subtitulo") or ev["torneo"]
-                if ev.get("subtitulo"):
+                ronda_asignada = False
+                for campo in [ev.get("referencia"), ev.get("subtitulo")]:
+                    if campo and any(r in campo.lower() for r in ["final", "semi", "cuarto", "ronda", "round", "jornada", "etapa", "race", "qualif"]):
+                        ev["ronda"] = campo
+                        ronda_asignada = True
+                        break
+                if not ronda_asignada and ev.get("subtitulo"):
                     ev["ronda"] = ev["subtitulo"]
 
             ev["auditado_agy"] = True

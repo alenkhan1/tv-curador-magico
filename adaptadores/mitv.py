@@ -122,6 +122,7 @@ def obtener_directos_lineales_mitv(
         lista_horarios = []
         for _, cont_item in progs:
             m_t = re.search(r"""<span[^>]*class=["']time["'][^>]*>(.*?)</span>""", cont_item)
+            t_s = m_t.group(1).strip() if m_t else ""
             m_h = re.search(r"([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*(am|pm)?", t_s, re.I)
             if m_h:
                 h_p = int(m_h.group(1))

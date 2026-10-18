@@ -16,6 +16,7 @@ import re
 from typing import Any, Dict, List, Tuple
 
 from resolvedor_logos import (
+    deducir_deporte_desde_logo,
     resolver_logo_equipo,
     resolver_logo_torneo,
     es_logo_compatible_con_categoria,
@@ -45,7 +46,7 @@ DEDUCCIONES_DEPORTE = [
     ("Tenis", ["ATP", "WTA", "TENIS", "TENNIS", "CHALLENGER", "ROLAND GARROS", "WIMBLEDON", "US OPEN", "CHINA OPEN", "DAVIS", "JAPAN OPEN", "SHANGHAI MASTERS", "WUHAN OPEN"]),
     ("Motor", ["F1", "FORMULA 1", "FÓRMULA 1", "MOTOGP", "MOTO GP", "WRC", "RALLY", "NASCAR", "INDYCAR", "MOTOR", "DIRTVISION", "SPEEDWAY"]),
     ("Combate", ["UFC", "BOXEO", "BOXING", "COMBATE", "MMA", "BELLATOR", "BKFC", "ONE FRIDAY", "ONE CHAMPIONSHIP", "FIGHT NIGHT", "SMACKDOWN", "WWE", "AEW"]),
-    ("Béisbol", ["MLB", "LMB", "LMP", "MEXICAN LEAGUE", "LIGA MEXICANA DEL PACIFICO", "TOMATEROS", "BEISBOL", "BÉISBOL", "BASEBALL"]),
+    ("Béisbol", ["MLB", "LMB", "LMP", "MEXICAN LEAGUE", "LIGA MEXICANA DEL PACIFICO", "LIDOM", "LIGA DOMINICANA", "LICEY", "ESCOGIDO", "LIDOM", "LIGA DOMINICANA", "LICEY", "ESCOGIDO", "TOMATEROS", "BEISBOL", "BÉISBOL", "BASEBALL"]),
     ("Fútbol Americano", ["NFL", "FUTBOL AMERICANO", "NCAA FOOTBALL", "CFL", "SPRINT LEAGUE", "F AMERICANO", "F AUSTRALIANO"]),
     ("Hockey", ["NHL", "HOCKEY"]),
     ("Rugby", ["RUGBY", "U20 RUGBY", "TOP 14", "SIX NATIONS", "SOUTHLAND", "NORTHLAND"]),
@@ -60,7 +61,7 @@ DEDUCCIONES_DEPORTE = [
         "LIBERTADORES", "SUDAMERICANA", "BETPLAY", "FUTBOL", "FÚTBOL", "COPA ARGENTINA",
         "LIGA MX", "NWSL", "NSL", "CHILE", "ARG", "BOCA JUNIORS", "SANTOS", "UNION",
         "SOACHA", "INDEPENDIENTE", "RIVADAVIA", "GIMNASIA", "DEPORTIVO CALI", "ALIANZA",
-        "SMARTBANK", "BRASILEIRAO", "BRASILEIRÃO", "CONCACAF", "SOCCER", "EXPANSION MX",
+        "SMARTBANK", "BRASILEIRAO", "EREDIVISIE", "SEGUNDA URUGUAY", "LIGA HONDURAS", "KINGS LEAGUE", "QUEENS LEAGUE", "POWERCHAIR", "FIPFA", "BRASILEIRÃO", "CONCACAF", "SOCCER", "EXPANSION MX",
         "CORRECAMINOS", "CRUZ AZUL", "TEPATITLAN", "TAMPICO", "VENADOS", "AMERICA", "USL"
     ]),
 ]
@@ -481,7 +482,12 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
             log.info("Descartando evento no-vivo / programa multicanal: '%s'", tit_original)
             continue
 
-        categoria_real = deducir_categoria(tit_original, torneo_original, cat_original)
+        # Preservar la categoría si ya fue auditada por AGY o API-Sports y es un deporte real
+        cat_existente = ev.get("categoria", "")
+        if (ev.get("auditado_agy") or ev.get("contrastado_api")) and cat_existente and cat_existente not in ["Otros Deportes", "Deportes", ""]:
+            categoria_real = cat_existente
+        else:
+            categoria_real = deducir_categoria(tit_original, torneo_original, cat_original)
         ev["categoria"] = categoria_real
 
         if ev.get("auditado_agy") is True:
@@ -748,6 +754,14 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
         logo_vis = ev.get("logo_visitante")
         if vis and (not logo_vis or not es_logo_compatible_con_categoria(logo_vis, categoria_real)):
             logo_vis = resolver_logo_equipo(vis, categoria_real, torneo_original)
+
+        # Si la categoría actual era 'Otros Deportes' o genérica y se resolvió un escudo oficial, ascender la categoría
+        if categoria_real in ["Otros Deportes", "Deportes", "Deportes en Vivo", ""]:
+            dep_detectado = deducir_deporte_desde_logo(logo_loc) or deducir_deporte_desde_logo(logo_vis) or deducir_deporte_desde_logo(logo_torneo)
+            if dep_detectado:
+                categoria_real = dep_detectado
+                ev["categoria"] = dep_detectado
+                log.info("Categoría ascendida de 'Otros Deportes' a '%s' por escudo oficial: '%s'", dep_detectado, ev.get("titulo"))
 
         ev["subtitulo"] = subtitulo
         ev["referencia"] = referencia

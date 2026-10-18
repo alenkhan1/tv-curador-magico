@@ -723,12 +723,43 @@ def son_torneos_compatibles(torneo_norm: str, clave: str, pais_deducido: str = "
     mods_clave = _normalizar_mods_torneo({d for d in DISCRIMINADORES_TORNEO if re.search(r"\b" + re.escape(d) + r"\b", clave)})
     return mods_torneo == mods_clave
 
+
+def deducir_deporte_desde_logo(url: str) -> str:
+    """Infiere la disciplina deportiva canónica a partir de la URL del logo o escudo oficial."""
+    if not url:
+        return ""
+    u = urllib.parse.unquote(url).lower()
+    if "/football/" in u or "/soccer/" in u or any(k in u for k in ["uefa", "fifa", "conmebol", "concacaf", "laliga", "premier_league", "serie_a", "bundesliga", "ligue_1", "eredivisie", "libertadores", "sudamericana"]):
+        return "Fútbol"
+    if "/baseball/" in u or any(k in u for k in ["mlb", "lmb", "lmp", "lidom"]):
+        return "Béisbol"
+    if "/basketball/" in u or "/nba/" in u or any(k in u for k in ["euroleague", "acb", "wnba"]):
+        return "Baloncesto"
+    if "/formula-1/" in u or any(k in u for k in ["formula1", "motogp", "dirtvision", "nascar", "indycar"]):
+        return "Motor"
+    if "/mma/" in u or any(k in u for k in ["ufc", "bellator", "wwe", "aew", "boxing", "boxeo"]):
+        return "Combate"
+    if "/handball/" in u or "ehf" in u:
+        return "Balonmano"
+    if "/hockey/" in u or "/nhl/" in u:
+        return "Hockey"
+    if "/rugby/" in u:
+        return "Rugby"
+    if "/volleyball/" in u:
+        return "Voleibol"
+    return ""
+
 def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
     """Verifica de forma estricta e invariable que el logo o escudo no pertenezca a otra disciplina deportiva."""
     if not url or not categoria:
         return True
     url_low = urllib.parse.unquote(url).lower()
     cat_norm = _normalizar(categoria)
+
+    # Si la categoría es genérica ('Otros Deportes', 'Deportes', etc.), no rechazar escudos oficiales.
+    # El escudo oficial sirve precisamente para identificar y ascender al deporte real.
+    if cat_norm in ['OTROS DEPORTES', 'DEPORTES', 'DEPORTES EN VIVO', 'EVENTOS', '']:
+        return True
 
     # 1. Validación estricta de rutas de API-Sports (tanto leagues como teams)
     RUTAS_API_SPORTS = [
