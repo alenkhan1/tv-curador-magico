@@ -285,7 +285,9 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         v2_n = normalizar_nombre_equipo(vis2)
 
         match_exact = ((l1_n == l2_n and v1_n == v2_n) or (l1_n == v2_n and v1_n == l2_n))
-        if match_exact and diff_min <= 180:
+        # Si es el duelo exacto el mismo día dentro de 12h, es el mismo partido:
+        # Permite fusionar canales y evita duplicar la tarjeta si una fuente trae un diferido posterior
+        if match_exact and diff_min <= 720:
             return True
 
         toks_v1 = {w for w in v1_n.split() if len(w) >= 5}

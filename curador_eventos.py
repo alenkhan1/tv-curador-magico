@@ -41,6 +41,7 @@ from resolvedor_logos import (
     resolver_logo_torneo,
     es_logo_basura,
     es_logo_compatible_con_categoria,
+    es_entidad_seleccion_nacional,
     _es_url_logo_equipo_valida,
     _normalizar,
 )
@@ -757,11 +758,20 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
             cat_ev = ev.get("categoria", "")
             if match.get("torneo") and (not ev.get("torneo") or ev["torneo"].lower() in ["deportes", "fútbol", "futbol", "deportes en vivo"]):
                 ev["torneo"] = formatear_titulo_inteligente(match["torneo"])
-            if match.get("logo_local"):
+            loc_nom = ev.get("equipo_local") or match.get("local") or ""
+            loc_es_nat, loc_flag = es_entidad_seleccion_nacional(_normalizar(loc_nom))
+            if loc_es_nat and loc_flag:
+                ev["logo_local"] = loc_flag
+            elif match.get("logo_local"):
                 url_l = envolver_proxy_wsrv(match["logo_local"])
                 if es_logo_compatible_con_categoria(url_l, cat_ev):
                     ev["logo_local"] = url_l
-            if match.get("logo_visitante"):
+
+            vis_nom = ev.get("equipo_visitante") or match.get("visitante") or ""
+            vis_es_nat, vis_flag = es_entidad_seleccion_nacional(_normalizar(vis_nom))
+            if vis_es_nat and vis_flag:
+                ev["logo_visitante"] = vis_flag
+            elif match.get("logo_visitante"):
                 url_v = envolver_proxy_wsrv(match["logo_visitante"])
                 if es_logo_compatible_con_categoria(url_v, cat_ev):
                     ev["logo_visitante"] = url_v
@@ -801,11 +811,20 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
                 if match.get("hora_utc"):
                     ev["hora_utc"] = match["hora_utc"]
                     ev["hora_local_producto"] = _recalcular_hora_local(match["hora_utc"], tz_prod, ev.get("hora_local_producto", ""))
-                if match.get("logo_local"):
+                loc_nom = ev.get("equipo_local") or match.get("local") or ""
+                loc_es_nat, loc_flag = es_entidad_seleccion_nacional(_normalizar(loc_nom))
+                if loc_es_nat and loc_flag:
+                    ev["logo_local"] = loc_flag
+                elif match.get("logo_local"):
                     url_l = envolver_proxy_wsrv(match["logo_local"])
                     if es_logo_compatible_con_categoria(url_l, cat_ev):
                         ev["logo_local"] = url_l
-                if match.get("logo_visitante"):
+
+                vis_nom = ev.get("equipo_visitante") or match.get("visitante") or ""
+                vis_es_nat, vis_flag = es_entidad_seleccion_nacional(_normalizar(vis_nom))
+                if vis_es_nat and vis_flag:
+                    ev["logo_visitante"] = vis_flag
+                elif match.get("logo_visitante"):
                     url_v = envolver_proxy_wsrv(match["logo_visitante"])
                     if es_logo_compatible_con_categoria(url_v, cat_ev):
                         ev["logo_visitante"] = url_v
@@ -869,13 +888,21 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         ev["logo_torneo"] = logo_cat or ""
 
         if loc:
-            loc_actual = ev.get("logo_local") or ""
-            if not _es_url_logo_equipo_valida(loc_actual, _normalizar(loc), cat):
-                ev["logo_local"] = resolver_logo_equipo(loc, cat, tor) or ""
+            es_sel_l, flag_l = es_entidad_seleccion_nacional(_normalizar(loc))
+            if es_sel_l and flag_l:
+                ev["logo_local"] = flag_l
+            else:
+                loc_actual = ev.get("logo_local") or ""
+                if not _es_url_logo_equipo_valida(loc_actual, _normalizar(loc), cat):
+                    ev["logo_local"] = resolver_logo_equipo(loc, cat, tor) or ""
         if vis:
-            vis_actual = ev.get("logo_visitante") or ""
-            if not _es_url_logo_equipo_valida(vis_actual, _normalizar(vis), cat):
-                ev["logo_visitante"] = resolver_logo_equipo(vis, cat, tor) or ""
+            es_sel_v, flag_v = es_entidad_seleccion_nacional(_normalizar(vis))
+            if es_sel_v and flag_v:
+                ev["logo_visitante"] = flag_v
+            else:
+                vis_actual = ev.get("logo_visitante") or ""
+                if not _es_url_logo_equipo_valida(vis_actual, _normalizar(vis), cat):
+                    ev["logo_visitante"] = resolver_logo_equipo(vis, cat, tor) or ""
 
         ev["banner"] = ev.get("banner") or ev["logo_torneo"]
         if not es_logo_compatible_con_categoria(ev.get("banner", ""), cat):

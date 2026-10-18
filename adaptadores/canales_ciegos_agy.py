@@ -46,17 +46,17 @@ def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
     except Exception:
         pass
 
-    m_codeblock = re.search(r'```(?:json)?\s*(\[\s*\{.*?\}\s*\])\s*```', salida_texto, flags=re.S)
+    m_codeblock = re.search(r'```(?:json)?\s*(\[\s*\{.*\}\s*\])\s*```', salida_texto, flags=re.S)
     if m_codeblock:
         try:
             return json.loads(m_codeblock.group(1))
         except Exception:
             pass
 
-    m_array = re.search(r'\[\s*\{.*\}\s*\]', salida_texto, flags=re.S)
+    m_array = re.search(r'(\[\s*\{.*\}\s*\])', salida_texto, flags=re.S)
     if m_array:
         try:
-            return json.loads(m_array.group(0))
+            return json.loads(m_array.group(1))
         except Exception:
             pass
 
@@ -118,16 +118,20 @@ def obtener_directos_canales_ciegos_agy(fecha_hoy_iso: str, forzar: bool = False
 - ESPN 4, ESPN 5, ESPN 6, ESPN 7 (Suramerica)
 
 REGLAS OBLIGATORIAS:
-1. UNICAMENTE eventos deportivos que se disputen y transmitan EN VIVO HOY en tiempo real.
-2. EXCLUYE estrictamente: noticieros (Total Sports, DSports Noticias, SportsCenter, TNT Data Sports), programas de debate/opinion (De Futbol Se Habla Asi, F90, Pelota Parada), revistas/magazines, repeticiones y diferidos.
-3. Especifica con precision quirurgica UN SOLO canal exacto en el arreglo 'canales':
+1. UNICAMENTE eventos deportivos que se disputen y transmitan EN VIVO y EN DIRECTO HOY en tiempo real.
+2. COBERTURA TOTAL DE LA JORNADA 24 HORAS: Es indispensable cubrir las tres franjas del dia:
+   - Manana (00:00 a 14:00 hs Argentina)
+   - Tarde (14:00 a 19:30 hs Argentina): transmisiones en vivo de Rugby (Torneo del Interior A y B, Torneo de la URBA / Top 12, Torneo del NOA) emitidas por DSports 2, futbol y automovilismo.
+   - Noche (19:30 a 24:00 hs Argentina): Basquetbol de la Liga Nacional (LNB), futbol nocturno y combates en vivo.
+3. EXCLUYE ESTRICTAMENTE: Repeticiones, diferidos, resumenes, noticieros (Total Sports, DSports Noticias, SportsCenter, TNT Data Sports) y programas de debate/opinion (De Futbol Se Habla Asi, F90, Pelota Parada).
+4. Especifica con precision quirurgica UN SOLO canal exacto en el arreglo 'canales':
    - ['DSPORTS AR'] si es por el canal 610
    - ['DSPORTS 2'] si es por el canal 612
    - ['DSPORTS +'] si es por el canal 613
    - ['TNT SPORTS'] si es por TNT Sports Argentina
    - ['ESPN 4'], ['ESPN 5'], ['ESPN 6'], ['ESPN 7'] segun corresponda
-4. Para deportes de equipo: 'tipo_evento': 'duelo', 'titulo': 'Equipo Local vs. Equipo Visitante', 'local': 'Equipo Local', 'visitante': 'Equipo Visitante'.
-5. Provee hora_utc en formato ISO 8601 estandar (YYYY-MM-DDTHH:MM:SSZ).
+5. Para deportes de equipo: 'tipo_evento': 'duelo', 'titulo': 'Equipo Local vs. Equipo Visitante', 'local': 'Equipo Local', 'visitante': 'Equipo Visitante'.
+6. Provee hora_utc en formato ISO 8601 estandar (YYYY-MM-DDTHH:MM:SSZ).
 
 Responde UNICAMENTE con un JSON Array valido:
 [
