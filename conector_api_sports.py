@@ -54,6 +54,9 @@ SINONIMOS_EQUIPOS_API = {
     "LOKOMOTIV MOSCU": "LOKOMOTIV MOSCOW",
     "SPARTAK MOSCU": "SPARTAK MOSCOW",
     "ESTRELLA ROJA": "CRVENA ZVEZDA",
+    "PSV EINDHOVEN": "PSV",
+    "PSV/EINDHOVEN": "PSV",
+    "EINDHOVEN": "PSV",
 }
 
 SINONIMOS_PAISES_API = {
@@ -577,11 +580,44 @@ def construir_indice_fixtures(fixtures: List[Dict[str, Any]]) -> Dict[str, Any]:
                 indice.setdefault(f"F1_{k_f1}", []).append(f)
     return indice
 
+def _son_torneos_y_paises_compatibles(evento: Dict[str, Any], fixture: Dict[str, Any]) -> bool:
+    """Garantiza que no se emparejen ligas de países contradictorios (ej. Eredivisie holandesa con Serie A italiana)."""
+    tor_ev = normalizar_clave(str(evento.get("torneo") or evento.get("subtitulo") or ""))
+    tor_fix = normalizar_clave(str(fixture.get("torneo") or ""))
+    if not tor_ev or not tor_fix:
+        return True
+
+    genericos = {"FUTBOL", "DEPORTES", "DEPORTE", "DEPORTES EN VIVO", "LIVE", "EVENTO EN VIVO"}
+    if tor_ev in genericos or tor_fix in genericos:
+        return True
+
+    grupos_paises = [
+        ("ITALIA", "ITALY", "SERIE A"),
+        ("PAISES BAJOS", "HOLANDA", "NETHERLANDS", "EREDIVISIE"),
+        ("ESPANA", "SPAIN", "LALIGA", "LA LIGA"),
+        ("INGLATERRA", "ENGLAND", "PREMIER LEAGUE"),
+        ("ALEMANIA", "GERMANY", "BUNDESLIGA"),
+        ("FRANCIA", "FRANCE", "LIGUE 1"),
+        ("ARGENTINA", "LIGA PROFESIONAL", "TORNEO BETANO"),
+        ("COLOMBIA", "LIGA BETPLAY", "COPA BETPLAY"),
+        ("BRASIL", "BRAZIL", "BRASILEIRAO"),
+    ]
+    p_ev, p_fix = None, None
+    for g in grupos_paises:
+        if any(x in tor_ev for x in g):
+            p_ev = g[0]
+        if any(x in tor_fix for x in g):
+            p_fix = g[0]
+
+    if p_ev and p_fix and p_ev != p_fix:
+        return False
+    return True
+
 def _seleccionar_fixture_compatible(
     evento: Dict[str, Any],
     candidatos: List[Dict[str, Any]]
 ) -> Optional[Dict[str, Any]]:
-    """Filtra candidatos exigiendo paridad estricta de DEPORTE, DIVISIÓN (Mayores vs U19/Reserva/Fem) y CERCANÍA HORARIA."""
+    """Filtra candidatos exigiendo paridad estricta de DEPORTE, DIVISIÓN, PAÍS/LIGA y CERCANÍA HORARIA."""
     hora_ev = str(evento.get("hora_utc") or "")
     validos = []
     for f in candidatos:
@@ -590,6 +626,8 @@ def _seleccionar_fixture_compatible(
         if not _son_deportes_compatibles(evento, f):
             continue
         if not _son_divisiones_compatibles(evento, f):
+            continue
+        if not _son_torneos_y_paises_compatibles(evento, f):
             continue
         if not _horas_compatibles(hora_ev, str(f.get("hora_utc") or ""), max_diff_min=180):
             continue
@@ -639,8 +677,8 @@ def emparejar_con_api_sports(
             f_v = normalizar_clave(f.get("visitante", ""))
             if not f_l or not f_v:
                 continue
-            match_l = (loc == f_l) or (len(loc) >= 4 and loc in f_l) or (len(f_l) >= 4 and f_l in loc)
-            match_v = (vis == f_v) or (len(vis) >= 4 and vis in f_v) or (len(f_v) >= 4 and f_v in vis)
+            match_l = (loc == f_l) or (len(loc) >= 3 and loc in f_l) or (len(f_l) >= 3 and f_l in loc)
+            match_v = (vis == f_v) or (len(vis) >= 3 and vis in f_v) or (len(f_v) >= 3 and f_v in vis)
             if match_l and match_v:
                 cands_sub.append(f)
         elegido = _seleccionar_fixture_compatible(evento, cands_sub)

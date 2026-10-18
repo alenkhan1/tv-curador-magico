@@ -116,6 +116,8 @@ La app SOLO transmite eventos deportivos REALES EN VIVO Y EN DIRECTO que se disp
 
 Reglas obligatorias de decisión:
 1. 'descartar': true OBLIGATORIO si:
+   - EXCLUSIVO DE APP / STREAMING (ANTI-OTT): Esta aplicación SOLO cuenta con canales lineales de cable (ESPN 1 al 7 AR, ESPN Premium, TyC Sports, TNT Sports, DSports AR, Win Sports). Si el evento SOLO se transmite por aplicaciones de streaming (Disney+ Premium, DGO, Star+, WTA TV, Tennis TV, Paramount+, Apple TV) y NO se emite en las señales de cable mencionadas -> 'descartar': true, motivo: "exclusivo_app_streaming".
+   - INCOHERENCIA GROSERA DE ENTIDADES: Si los equipos pertenecen a un país o liga totalmente ajena al torneo (ej. clubes holandeses asignados a la Serie A italiana).
    - Es un programa multicanal/carrusel de goles o resúmenes sin un partido específico (ej. 'UCL al instante', 'Champions Multi', 'Carrusel', 'Simulcast', 'RedZone', 'Goal Show').
    - Es un partido APLAZADO, POSTERGADO, SUSPENDIDO o CANCELADO.
    - Es una REPETICIÓN, DIFERIDO o RESUMEN.
@@ -226,9 +228,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
 
         tipo = ev.get("tipo_evento", "")
         falta_escudo_duelo = (tipo == "duelo") and (not ev.get("logo_local") or not ev.get("logo_visitante"))
-
-        if ev.get("contrastado_api") is True and not sospechoso_no_vivo and not falta_escudo_duelo:
-            continue
+        es_oficial_api = ev.get("contrastado_api") is True
 
         cat = ev.get("categoria", "")
         tit = ev.get("titulo", "")
@@ -237,7 +237,8 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         es_circuito = tipo == "circuito" or cat in ["Tenis", "Motor", "Combate", "Boxeo", "MMA", "Golf", "Ciclismo", "Pádel", "Padel"]
         cat_dudosa = cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"]
         es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte"] for o in ev.get("origenes", []))
-        necesita = sospechoso_no_vivo or falta_escudo_duelo or (not ev.get("contrastado_api")) or es_lineal or es_circuito or tiene_vinetas or cat_dudosa
+        # Auditar si es sospechoso, si le faltan escudos, si es circuito/combate, si es lineal (para verificar exclusividad de app) o huérfano
+        necesita = sospechoso_no_vivo or falta_escudo_duelo or es_lineal or es_circuito or tiene_vinetas or cat_dudosa or (not es_oficial_api)
         if necesita:
             if not ev.get("id"):
                 ev["id"] = f"ev_audit_{len(eventos_a_auditar) + 1}_{hashlib.sha1((raw_tit + ev.get('hora_utc', '')).encode()).hexdigest()[:6]}"
@@ -257,6 +258,8 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 "tipo_evento": ev.get("tipo_evento"),
                 "hora_local": ev.get("hora_local_producto"),
                 "hora_utc": ev.get("hora_utc"),
+                "duracion_min": ev.get("duracion_min"),
+                "oficial_api": ev.get("contrastado_api", False),
             })
 
     if not eventos_a_auditar:
@@ -288,13 +291,20 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 continue
 
             sub_previo = (ev.get("subtitulo") or "").strip()
-            ev["titulo"] = formatear_titulo_inteligente((aud.get("titulo_pulido") or ev["titulo"]).strip())
-            ev["categoria"] = _normalizar_categoria_agy(aud.get("categoria_exacta", ""), ev.get("categoria", ""))
+            es_oficial = ev.get("contrastado_api") is True
 
-            if aud.get("torneo_pulido"):
-                ev["torneo"] = formatear_titulo_inteligente(aud["torneo_pulido"].strip())
-            elif aud.get("tipo_evento") == "circuito" and aud.get("titulo_pulido"):
-                ev["torneo"] = ev["titulo"]
+            # Si el evento ya viene contrastado oficialmente por API-Sports, AGY actúa como
+            # control de calidad no destructivo: NO altera títulos ni torneos ya certificados:
+            if not es_oficial:
+                ev["titulo"] = formatear_titulo_inteligente((aud.get("titulo_pulido") or ev["titulo"]).strip())
+                ev["categoria"] = _normalizar_categoria_agy(aud.get("categoria_exacta", ""), ev.get("categoria", ""))
+                if aud.get("torneo_pulido"):
+                    ev["torneo"] = formatear_titulo_inteligente(aud["torneo_pulido"].strip())
+                elif aud.get("tipo_evento") == "circuito" and aud.get("titulo_pulido"):
+                    ev["torneo"] = ev["titulo"]
+            else:
+                if not ev.get("categoria") or ev.get("categoria") in ["Deportes", "Otros Deportes"]:
+                    ev["categoria"] = _normalizar_categoria_agy(aud.get("categoria_exacta", ""), ev.get("categoria", ""))
 
             sub_agy = formatear_titulo_inteligente((aud.get("subtitulo_pulido") or "").strip())
             if sub_agy and sub_agy.lower() not in [ev["titulo"].lower(), ev["torneo"].lower(), ev["categoria"].lower()]:
@@ -321,7 +331,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
             if aud.get("tipo_evento") == "duelo":
                 ev["tipo_evento"] = "duelo"
                 partes = re.split(r"\s+(?:vs\.?|contra|v\.)\s+", ev["titulo"], flags=re.I)
-                if len(partes) == 2:
+                if len(partes) == 2 and not es_oficial:
                     ev["equipo_local"] = formatear_titulo_inteligente(partes[0].strip())
                     ev["equipo_visitante"] = formatear_titulo_inteligente(partes[1].strip())
                 ev["referencia"] = ev.get("subtitulo") or ev.get("torneo") or ev["titulo"]

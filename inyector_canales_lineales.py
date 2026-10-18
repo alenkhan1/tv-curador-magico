@@ -79,9 +79,14 @@ def clasificar_canal_xtream(nombre_crudo: str, cat_cruda: str) -> Optional[Tuple
     if "TNT" in n and ("SPORT" in n or "PREMIUM" in n) and ("ARGENTINA" in c or "PREMIUM" in c or "AR" in n):
         return ("TNT SPORTS", "AR")
 
-    # 4. DSports (Priorizando Cono Sur / Argentina)
+    # 4. DSports (Exclusivamente feeds Cono Sur / Argentina)
     if "DSPORTS" in n or "DIRECTV SPORTS" in n:
-        if "CO" in n or "COLOMBIA" in c:
+        if re.search(r"\b(?:CO|COLOMBIA|EC|ECUADOR|PE|PERU|CL|CHILE|UY|URUGUAY|VE|VENEZUELA)\b", n):
+            return None
+        if any(exc in c for exc in ["COLOMBIA", "ECUADOR", "PERU", "CHILE", "URUGUAY", "VENEZUELA"]):
+            return None
+        # Excluir canales secundarios 3, 4, 5, etc. que no son señales lineales continuas en Xtream
+        if re.search(r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*[3456789]\b", n):
             return None
         if "2" in n:
             return ("DSPORTS 2", "AR")

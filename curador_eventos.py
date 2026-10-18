@@ -566,7 +566,7 @@ def procesar_streams_eventos_xtream(
             "referencia": parsed.get("referencia") or tor,
             "hora_utc": hora_utc,
             "hora_local_producto": hora_str,
-            "duracion_min": calcular_duracion_evento(cat, titulo, 120),
+            "duracion_min": calcular_duracion_evento(cat, titulo),
             "logo_torneo": logo_tor,
             "logo_local": logo_l,
             "logo_visitante": logo_v,

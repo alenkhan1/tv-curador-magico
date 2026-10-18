@@ -42,12 +42,13 @@ CANAL_MAPPING_AR = [
     (r"\bESPN\s*5\b", "ESPN 5"),
     (r"\bESPN\s*6\b", "ESPN 6"),
     (r"\bESPN\s*7\b", "ESPN 7"),
-    (r"\bESPN\b(?!\s*(?:2|3|4|5|6|7|PREMIUM|EXTRA|DEPORTES|U|NEWS))", "ESPN AR"),
+    (r"\bESPN\s*1\b", "ESPN AR"),
+    (r"\bESPN\b(?!\s*(?:[1-7]|PREMIUM|EXTRA|DEPORTES|U|NEWS))", "ESPN AR"),
     (r"\bTYC\s*SPORTS\b(?!\s*INTERNACIONAL|\s*PLAY)", "TYC SPORTS"),
     (r"\bTNT\s*SPORTS\b", "TNT SPORTS"),
     (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*2\b", "DSPORTS 2"),
     (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\s*\+", "DSPORTS +"),
-    (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\b(?!\s*[\+2])", "DSPORTS AR"),
+    (r"\b(?:DSPORTS|DIRECTV\s*SPORTS)\b(?!\s*(?:[\+23456789]|PLUS|EXTRA|NOTICIAS))", "DSPORTS AR"),
 ]
 
 FAMILIAS_EXCLUSIVAS = [
@@ -62,22 +63,43 @@ def _pertenece_a_familia_existente(canal_nuevo: str, canales_actuales: List[str]
             return True
     return False
 
+PLATAFORMAS_OTT = {
+    "DISNEY", "STAR+", "DGO", "VIX", "HBO", "MAX", "RTVE PLAY", "APPLE", "PRIME",
+    "CLARO VIDEO", "TENNIS TV", "WTA TV", "PARAMOUNT", "PLUTO", "FANATIZ", "FLOW",
+    "TELECENTRO", "LPF PLAY", "WIN PLAY", "TYC SPORTS PLAY"
+}
+
 def normalizar_canales_por_pais(raw_canales: List[str], pais_guia: str, deporte: str = "") -> List[str]:
     resultado: List[str] = []
     mapping = CANAL_MAPPING_CO if pais_guia == "CO" else CANAL_MAPPING_AR
+
+    # Detectar si el evento viene etiquetado con plataformas de streaming OTT
+    tiene_plataforma_ott = any(
+        any(ott in raw.upper() for ott in PLATAFORMAS_OTT)
+        for raw in raw_canales
+    )
 
     for raw in raw_canales:
         u = raw.upper()
         if any(exc in u for exc in [
             "USA", "US", "MEX", "MEXICO", "BRASIL", "BRAZIL", "ESPNU", "NEWS", "YOUTUBE", "TIKTOK",
-            "DISNEY", "STAR+", "VIX", "HBO", "MAX", "RTVE PLAY", "APPLE", "PRIME", "DGO", "CLARO VIDEO",
-            "TENNIS TV", "PARAMOUNT", "PLUTO", "FANATIZ", "FLOW", "TELECENTRO", "LPF PLAY", "WIN PLAY",
-            "NUESTRA TELE", "INTERNACIONAL", "TYC SPORTS PLAY"
-        ]):
+            "NUESTRA TELE", "INTERNACIONAL"
+        ] + list(PLATAFORMAS_OTT)):
             continue
 
         for patron, canon in mapping:
             if re.search(patron, u):
+                # Regla de oro Anti-OTT:
+                # Si el evento está marcado con Disney+/DGO/Star+/WTA TV/etc. y el canal detectado es
+                # únicamente 'ESPN AR' (genérico, sin número 1 explícito) o 'DSPORTS AR' (genérico):
+                # en portales de agenda esto significa que es una transmisión exclusiva de App con branding de ESPN/DGO.
+                # NO se debe admitir como canal lineal a menos que se haya especificado un canal lineal numerado
+                # (ESPN 2..7, ESPN Premium, DSports 2..+, etc.) o se verifique por EPG mi.tv.
+                if tiene_plataforma_ott and canon in {"ESPN AR", "DSPORTS AR"}:
+                    es_canal_1_explicito = bool(re.search(r"\b(?:ESPN|DSPORTS)\s*1\b", u))
+                    if not es_canal_1_explicito:
+                        continue
+
                 if canon not in resultado and not _pertenece_a_familia_existente(canon, resultado):
                     resultado.append(canon)
                 break

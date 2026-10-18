@@ -242,6 +242,30 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         if div1 != div2:
             return False
 
+        # Validación estricta de país/liga: prohibir fusionar duelos de ligas nacionales distintas
+        t1_norm = _normalizar(ev1.get("torneo", ""))
+        t2_norm = _normalizar(ev2.get("torneo", ""))
+        if t1_norm and t2_norm:
+            grupos_paises = [
+                ("ITALIA", "SERIE A"),
+                ("PAISES BAJOS", "HOLANDA", "EREDIVISIE"),
+                ("ESPANA", "LALIGA", "LA LIGA"),
+                ("INGLATERRA", "PREMIER LEAGUE"),
+                ("ALEMANIA", "BUNDESLIGA"),
+                ("FRANCIA", "LIGUE 1"),
+                ("ARGENTINA", "LIGA PROFESIONAL", "TORNEO BETANO"),
+                ("COLOMBIA", "LIGA BETPLAY", "COPA BETPLAY"),
+                ("BRASIL", "BRASILEIRAO"),
+            ]
+            p1, p2 = None, None
+            for g in grupos_paises:
+                if any(x in t1_norm for x in g):
+                    p1 = g[0]
+                if any(x in t2_norm for x in g):
+                    p2 = g[0]
+            if p1 and p2 and p1 != p2:
+                return False
+
         l1_n = normalizar_nombre_equipo(loc1)
         v1_n = normalizar_nombre_equipo(vis1)
         l2_n = normalizar_nombre_equipo(loc2)

@@ -118,7 +118,26 @@ def obtener_directos_lineales_mitv(
             flags=re.S
         )
 
-        for href, contenido in progs:
+        # Pre-parsear horarios de inicio para calcular la duración real en la grilla lineal
+        lista_horarios = []
+        for _, cont_item in progs:
+            m_t = re.search(r"""<span[^>]*class=["']time["'][^>]*>(.*?)</span>""", cont_item)
+            m_h = re.search(r"([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*(am|pm)?", t_s, re.I)
+            if m_h:
+                h_p = int(m_h.group(1))
+                mi_p = int(m_h.group(2))
+                ap_p = (m_h.group(3) or "").lower()
+                if ap_p == "pm" and h_p < 12: h_p += 12
+                elif ap_p == "am" and h_p == 12: h_p = 0
+                try:
+                    dt_p = datetime.fromisoformat(f"{fecha_hoy_iso}T{h_p:02d}:{mi_p:02d}:00").replace(tzinfo=tz)
+                    lista_horarios.append(dt_p)
+                except Exception:
+                    lista_horarios.append(None)
+            else:
+                lista_horarios.append(None)
+
+        for idx_prog, (href, contenido) in enumerate(progs):
             m_time = re.search(r'<span[^>]*class=["\']time["\'][^>]*>(.*?)</span>', contenido)
             m_h2 = re.search(r'<h2[^>]*>(.*?)</h2>', contenido, flags=re.S)
             m_sub = re.search(r'<span[^>]*class=["\']sub-title["\'][^>]*>(.*?)</span>', contenido, flags=re.S)
@@ -234,6 +253,15 @@ def obtener_directos_lineales_mitv(
 
             texto_crudo = f"{h2_str}. {sub_str}. {syn_str}".strip(". ")
 
+            # Duración exacta según la grilla lineal hasta que comience el siguiente programa
+            duracion_lineal = None
+            if idx_prog + 1 < len(lista_horarios) and lista_horarios[idx_prog + 1] and dt_local:
+                diff_m = int((lista_horarios[idx_prog + 1] - dt_local).total_seconds() / 60)
+                if diff_m < 0:
+                    diff_m += 1440
+                if 25 <= diff_m <= 360:
+                    duracion_lineal = diff_m
+
             ev = EventoAgenda(
                 titulo=titulo,
                 deporte=deporte,
@@ -242,7 +270,7 @@ def obtener_directos_lineales_mitv(
                 visitante=vis,
                 hora_utc=hora_utc,
                 canales=[canon_canal],
-                duracion_min=180 if deporte in ["Motor", "Béisbol", "Tenis", "Fútbol Americano"] else 120,
+                duracion_min=duracion_lineal or (180 if deporte in ["Motor", "Béisbol", "Tenis", "Fútbol Americano"] else 120),
                 fuente=f"mitv_{canon_canal.lower().replace(' ', '_').replace('+', 'plus')}",
                 tipo_evento=tipo,
                 texto_original_crudo=texto_crudo,

@@ -60,13 +60,33 @@ def es_deporte_elastico(deporte: str, titulo: str = "") -> bool:
     ])
 
 def calcular_duracion_evento(deporte: str, titulo: str = "", duracion_detectada_min: Optional[int] = None) -> int:
-    elastico = es_deporte_elastico(deporte, titulo)
-    if duracion_detectada_min and duracion_detectada_min > 20:
-        return duracion_detectada_min + (15 if elastico else 10)
+    texto = normalizar_texto(f"{deporte} {titulo}")
 
-    if elastico:
+    # 1. Deportes de combate (UFC, MMA, Boxeo, WWE): 360 min (6 horas completas para cartelera estelar)
+    if any(k in texto for k in ["UFC", "MMA", "COMBATE", "BOXEO", "BOXING", "KNOCKOUT", "WWE", "FIGHT NIGHT"]):
+        return 360
+
+    # 2. Golf, Ciclismo, Snooker y Billar: 300 min (5 horas)
+    if any(k in texto for k in ["GOLF", "PGA", "LIV GOLF", "CICLISMO", "CYCLING", "TOUR", "GIRO", "VUELTA", "SNOOKER", "BILLAR"]):
+        return 300
+
+    # 3. Motor (F1, MotoGP, Superbike, Indycar) y Béisbol / NFL: 240 min (4 horas)
+    if any(k in texto for k in ["MOTOR", "FORMULA 1", "FÓRMULA 1", "F1", "MOTOGP", "SUPERBIKE", "SUPERSPORT", "INDYCAR", "NASCAR", "BEISBOL", "BÉISBOL", "BASEBALL", "MLB", "NFL", "FUTBOL AMERICANO", "FÚTBOL AMERICANO"]):
         return 240
-    return 125
+
+    # 4. Tenis y Pádel: 240 min (4 horas para absorber partidos largos de varios sets o lluvia)
+    if any(k in texto for k in ["TENIS", "TENNIS", "ATP", "WTA", "PADEL", "PÁDEL"]):
+        return 240
+
+    # 5. Baloncesto y Rugby: 150 min (2.5 horas)
+    if any(k in texto for k in ["BALONCESTO", "BASKET", "BÁSQUET", "NBA", "EUROLEAGUE", "RUGBY"]):
+        return 150
+
+    # 6. Duración detectada real (si no es el default 120/180)
+    if duracion_detectada_min and duracion_detectada_min > 20 and duracion_detectada_min not in (120, 180):
+        return duracion_detectada_min + 15
+
+    return 130
 
 @dataclass
 class EventoAgenda:
@@ -84,8 +104,9 @@ class EventoAgenda:
     texto_original_crudo: str = ""
 
     def __post_init__(self):
-        if self.duracion_min == 120:
-            self.duracion_min = calcular_duracion_evento(self.deporte, self.titulo, 120)
+        # Si la duración es el valor genérico por defecto (120 o 180), calcular la duración específica del deporte
+        if self.duracion_min in (0, 120, 180):
+            self.duracion_min = calcular_duracion_evento(self.deporte, self.titulo)
 
     def clave_deduplicacion(self) -> str:
         try:
