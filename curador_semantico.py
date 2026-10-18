@@ -219,7 +219,7 @@ def desmontar_duelo(titulo: str, categoria: str) -> Tuple[str, str, str, str, st
         elif categoria in DEPORTES_ESTRICTO_DUELO or categoria in ["Pádel", "Tenis"]:
             loc = formatear_titulo_inteligente(limpiar_texto(p0))
             vis_limpio = formatear_titulo_inteligente(limpiar_texto(vis))
-            return f"{loc} vs {vis_limpio}", loc, vis_limpio, ronda, ""
+            return f"{loc} vs {vis_limpio}", loc, vis_limpio, ronda, torneo_extraido
 
     return formatear_titulo_inteligente(tit), "", "", ronda, ""
 
