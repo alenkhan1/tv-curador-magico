@@ -135,6 +135,9 @@ Reglas obligatorias de decisión:
    - Si el nombre de algún club viene corrupto, truncado o con patrocinadores raros que impiden hallar su escudo en bases de datos internacionales (ej. 'Surne Bilbao vs Sk Slavia Praha Era Nbk'), corrige en 'titulo_pulido' a sus nombres institucionales limpios e internacionalmente reconocidos ('Bilbao Basket vs. ERA Nymburk').
 
 5. REGLAS DE ORO PARA CIRCUITOS (Tenis, Motor, Ciclismo, Pádel, Golf, Combate):
+   - DEPORTES COMO TENIS, PÁDEL, MOTOR, CICLISMO Y COMBATE: Son obligatoriamente 'tipo_evento': 'circuito'.
+   - 'torneo_pulido': Debe contener SIEMPRE el NOMBRE ESPECÍFICO del torneo (ej: 'Wuhan Open', 'Kinoshita Group Japan Open', 'Rolex Shanghai Masters', 'Dirtvision', 'Premier Padel Milán'). PROHIBIDO dejar nombres genéricos como 'WTA', 'WTA 1000', 'ATP', 'Tenis' o 'Motor'.
+   - Si el texto original trae contendientes individuales (ej. 'Maja Chwalinska vs. Sonay Kartal'), consérvalos en 'participantes' y pon la ronda ('Final', 'Semifinal', 'Cuartos') en 'subtitulo_pulido'.
    - 'titulo_pulido' y 'torneo_pulido': Deben contener el NOMBRE ESPECÍFICO del evento en formato Title Case limpio (ej: 'Wuhan Open', 'Rolex Shanghai Masters', 'Dirtvision', 'Premier Padel Milán', 'Giro del Veneto', 'AEW Dynamite').
      * PROHIBIDO dejar nombres genéricos como 'WTA 1000', 'ATP 1000' o 'Motor' si el texto indica que es 'Wuhan Open' o 'Shanghai Masters'.
      * PROHIBIDO dejar palabras largas en MAYÚSCULAS ('DIRTVISION 01' -> 'Dirtvision'). Solo siglas cortas oficiales ('UEFA', 'WTA', 'ATP', 'UFC', 'AEW', 'UCI', 'F1') van en mayúsculas.
@@ -336,9 +339,22 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                     ev["equipo_local"] = formatear_titulo_inteligente(partes[0].strip())
                     ev["equipo_visitante"] = formatear_titulo_inteligente(partes[1].strip())
                 ev["referencia"] = ev.get("subtitulo") or ev.get("torneo") or ev["titulo"]
-            elif aud.get("tipo_evento") == "circuito":
+            elif aud.get("tipo_evento") == "circuito" or ev.get("categoria") in ["Tenis", "Motor", "Combate", "Boxeo", "MMA", "Golf", "Ciclismo", "Pádel", "Padel"]:
                 ev["tipo_evento"] = "circuito"
-                # Preservar contendientes individuales si existen (Tenis, UFC, Boxeo, etc.)
+                # Si el título previo traía contendientes con vs, preservarlos en equipo_local y equipo_visitante
+                m_vs = re.split(r"\s+(?:vs\.?|contra|v\.)\s+", ev.get("titulo", ""), flags=re.I)
+                if len(m_vs) == 2 and not ev.get("equipo_local"):
+                    ev["equipo_local"] = formatear_titulo_inteligente(m_vs[0].strip())
+                    ev["equipo_visitante"] = formatear_titulo_inteligente(m_vs[1].strip())
+
+                tor_pulido = (aud.get("torneo_pulido") or "").strip()
+                if tor_pulido and tor_pulido.upper() not in ["WTA", "WTA 1000", "ATP", "ATP 1000", "TENIS", "MOTOR"]:
+                    ev["torneo"] = formatear_titulo_inteligente(tor_pulido)
+                    ev["titulo"] = ev["torneo"]
+                elif aud.get("titulo_pulido") and " vs" not in aud.get("titulo_pulido").lower():
+                    ev["titulo"] = formatear_titulo_inteligente(aud["titulo_pulido"].strip())
+                    ev["torneo"] = ev["titulo"]
+
                 partic = (aud.get("participantes") or "").strip()
                 if partic and partic.lower() not in [ev["titulo"].lower(), ev["torneo"].lower()]:
                     ev["referencia"] = partic
