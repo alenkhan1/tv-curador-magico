@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-17T22:30:36Z",
+  "generado_utc": "2026-10-18T03:29:06Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-17",
   "base_media": "http://avefenixtv.com:8080",
@@ -56,28 +56,28 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_eurosport_1_c32530d9",
+      "id": "lineal_dsports_2_36ca7b79",
       "agenda_id": "",
-      "titulo": "Maratón de Ámsterdam",
-      "torneo": "Maratón de Ámsterdam",
-      "categoria": "Atletismo",
+      "titulo": "Mundial de Ciclismo en Pista",
+      "torneo": "Mundial de Ciclismo en Pista",
+      "categoria": "Ciclismo",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Ámsterdam",
-      "referencia": "Edición 48ª • 42,195 km élite masculina y femenina",
-      "hora_utc": "2026-10-17T06:45:00Z",
-      "hora_local_producto": "01:45",
-      "duracion_min": 175,
-      "logo_torneo": "",
+      "subtitulo": "Sesión Vespertina",
+      "referencia": "Sesión Vespertina • Shanghai Track Cycling World Championships",
+      "hora_utc": "2026-10-17T05:25:00Z",
+      "hora_local_producto": "00:25",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "mundodeportivo_eurosport_1"
+        "futbolenvivo_ar"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -85,37 +85,86 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
+          "nombre": "DSPORTS 2",
+          "id_xtream": "592038",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
         },
         {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
         }
       ],
       "canales_candidatos": [
-        "EUROSPORT 1"
+        "DSPORTS 2"
       ],
-      "texto_original_crudo": "TCS Amsterdam Marathon",
-      "titulo_original_crudo": "TCS Amsterdam Marathon",
-      "ronda": "Ámsterdam",
+      "texto_original_crudo": "02:25 Campeonato Mundo Pista Shanghai 2026 DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "titulo_original_crudo": "02:25 Campeonato Mundo Pista Shanghai 2026 DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "ronda": "Sesión Vespertina",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_6c9e9fcf",
+      "agenda_id": "",
+      "titulo": "Everton vs Chelsea",
+      "torneo": "Everton vs. Chelsea",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Everton",
+      "equipo_visitante": "Chelsea",
+      "subtitulo": "Everton vs. Chelsea",
+      "referencia": "Premier League",
+      "hora_utc": "2026-10-17T07:00:00Z",
+      "hora_local_producto": "06:20",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7193.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F15391.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.9,
+      "fuentes": [
+        {
+          "nombre": "06:20 ◘ Everton vs. Chelsea ◘ Premier League ◘◘",
+          "id_xtream": "1730666"
+        },
+        {
+          "nombre": "06:20 | Everton vs. Chelsea | Premier League",
+          "id_xtream": "1730969"
+        }
+      ],
+      "texto_original_crudo": "06:20 ◘ Everton vs. Chelsea ◘ Premier League ◘◘ ✨Eventos Diarios 17/10✨",
+      "titulo_original_crudo": "06:20 ◘ Everton vs. Chelsea ◘ Premier League ◘◘ ✨Eventos Diarios 17/10✨",
+      "ronda": "",
       "curado_integro": true
     },
     {
       "id": "xtream_3a8e28d2",
       "agenda_id": "",
-      "titulo": "Sebastian Fundora vs. Ermal Hadribeaj",
-      "torneo": "Campeonato Mundial WBC Superwélter",
+      "titulo": "Sebastian Fundora vs Ermal Hadribeaj",
+      "torneo": "Sebastian Fundora vs. Ermal Hadribeaj",
       "categoria": "Combate",
       "tipo_evento": "duelo",
       "equipo_local": "Sebastian Fundora",
       "equipo_visitante": "Ermal Hadribeaj",
-      "subtitulo": "Campeonato Mundial WBC Superwélter",
-      "referencia": "The Chelsea las Vegas",
+      "subtitulo": "Sebastian Fundora vs. Ermal Hadribeaj",
+      "referencia": "Boxeo",
       "hora_utc": "2026-10-17T07:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 135,
@@ -148,20 +197,19 @@
       ],
       "texto_original_crudo": "19:00 ◘ Sebastian Fundora vs. Ermal Hadribeaj ◘ Boxeo ◘ ✨Eventos Diarios 17/10✨",
       "titulo_original_crudo": "19:00 ◘ Sebastian Fundora vs. Ermal Hadribeaj ◘ Boxeo ◘ ✨Eventos Diarios 17/10✨",
-      "ronda": "",
-      "auditado_agy": true
+      "ronda": ""
     },
     {
       "id": "xtream_787b415f",
       "agenda_id": "",
-      "titulo": "DP World India Championship",
-      "torneo": "DP World India Championship",
+      "titulo": "India Championship",
+      "torneo": "India Championship",
       "categoria": "Golf",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "",
-      "referencia": "DP World India Championship",
+      "subtitulo": "DLF Golf & CC",
+      "referencia": "Jornada del circuito europeo DP World Tour",
       "hora_utc": "2026-10-17T07:30:00Z",
       "hora_local_producto": "02:30",
       "duracion_min": 135,
@@ -186,7 +234,8 @@
       ],
       "texto_original_crudo": "02:30 ◘ DP World India Championship ◘ Golf ◘◘ ✨Eventos Diarios 17/10✨",
       "titulo_original_crudo": "02:30 ◘ DP World India Championship ◘ Golf ◘◘ ✨Eventos Diarios 17/10✨",
-      "ronda": ""
+      "ronda": "DLF Golf & CC",
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_ar_693b7418",
@@ -248,14 +297,14 @@
     {
       "id": "lineal_espn_ar_29a54401",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters",
+      "titulo": "Alexander Zverev vs. Alejandro Davidovich Fokina",
       "torneo": "Rolex Shanghai Masters",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Stadium Court",
-      "referencia": "Stadium Court • Alexander Zverev vs. Alejandro Davidovich Fokina • Semifinales ATP Masters 1000",
+      "subtitulo": "Semifinal",
+      "referencia": "Qizhong Forest Sports City Arena • Pista Central",
       "hora_utc": "2026-10-17T08:30:00Z",
       "hora_local_producto": "03:30",
       "duracion_min": 180,
@@ -298,7 +347,7 @@
       ],
       "texto_original_crudo": "Alexander Zverev (Ger) vs. Alejandro Davidovich Fokina (Esp). Semifinal, Qi Zhong Tennis Center. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
       "titulo_original_crudo": "Alexander Zverev (Ger) vs. Alejandro Davidovich Fokina (Esp). Semifinal, Qi Zhong Tennis Center. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
-      "ronda": "Stadium Court",
+      "ronda": "Semifinal",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -368,6 +417,63 @@
       "texto_original_crudo": "UCI Track Cycling World Championships: Shanghái",
       "titulo_original_crudo": "UCI Track Cycling World Championships: Shanghái",
       "ronda": "Shanghái",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_cd52cf96",
+      "agenda_id": "",
+      "titulo": "WorldSBK GP de España",
+      "torneo": "Superbike World Championship",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Carrera Superpole",
+      "referencia": "Carrera Superpole • Circuito de Jerez • Superbike",
+      "hora_utc": "2026-10-17T09:10:00Z",
+      "hora_local_producto": "04:10",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe0%2FWorldSBK_logo.svg%2F512px-WorldSBK_logo.svg.png&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe0%2FWorldSBK_logo.svg%2F512px-WorldSBK_logo.svg.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 FHD | ARG",
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 1 HD | AR",
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "06:10 Superbike G.P. España (Jerez) Carrera Superpole ESPN Disney+ Premium",
+      "titulo_original_crudo": "06:10 Superbike G.P. España (Jerez) Carrera Superpole ESPN Disney+ Premium",
+      "ronda": "Carrera Superpole",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -592,6 +698,56 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_2_6302f3c3_0a8c10",
+      "agenda_id": "",
+      "titulo": "FIA WEC: 6h Barcelona",
+      "torneo": "FIA WEC: 6h Barcelona",
+      "categoria": "Automovilismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Circuit de Barcelona",
+      "referencia": "Carrera de resistencia de 6 horas",
+      "hora_utc": "2026-10-17T09:30:00Z",
+      "hora_local_producto": "04:30",
+      "duracion_min": 430,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 2 FHD",
+          "id_xtream": "327954",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "327964",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 2"
+      ],
+      "texto_original_crudo": "FIA World Endurance Championship: 6h de Barcelona",
+      "titulo_original_crudo": "FIA World Endurance Championship: 6h de Barcelona",
+      "ronda": "Circuit de Barcelona",
+      "curado_integro": true
+    },
+    {
       "id": "xtream_140fa4df",
       "agenda_id": "",
       "titulo": "Circuito de Jerez",
@@ -627,6 +783,63 @@
       "texto_original_crudo": "04:50 ◘ Spanish - Circuito de Jerez - Ángel Nieto - Race 1 ◘ Superbike ◘◘ ✨Eventos Diarios 17/10✨",
       "titulo_original_crudo": "04:50 ◘ Spanish - Circuito de Jerez - Ángel Nieto - Race 1 ◘ Superbike ◘◘ ✨Eventos Diarios 17/10✨",
       "ronda": "Ángel Nieto"
+    },
+    {
+      "id": "lineal_dsports_ar_053125c4",
+      "agenda_id": "",
+      "titulo": "Casademont Zaragoza vs. Força Lleida",
+      "torneo": "Liga Endesa",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Casademont Zaragoza",
+      "equipo_visitante": "Força Lleida",
+      "subtitulo": "Liga Endesa",
+      "referencia": "Jornada",
+      "hora_utc": "2026-10-17T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1173.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1123.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS | AR",
+          "id_xtream": "592036",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS AR",
+          "id_xtream": "69547",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS EC",
+          "id_xtream": "69557",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS AR"
+      ],
+      "texto_original_crudo": "07:00 Liga Endesa Liga Regular Casademont Zaragoza iLERNA Lleida Básquet Pass DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+      "titulo_original_crudo": "07:00 Liga Endesa Liga Regular Casademont Zaragoza iLERNA Lleida Básquet Pass DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_dsports_ar_0b09bfb0",
@@ -972,14 +1185,14 @@
     {
       "id": "lineal_espn_ar_31fd2548",
       "agenda_id": "",
-      "titulo": "Rolex Shanghai Masters",
+      "titulo": "Rafael Jódar vs. Daniil Medvedev",
       "torneo": "Rolex Shanghai Masters",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Stadium Court",
-      "referencia": "Stadium Court • Rafael Jódar vs. Daniil Medvedev • Semifinales ATP Masters 1000",
+      "subtitulo": "Semifinal",
+      "referencia": "Qizhong Forest Sports City Arena • Pista Central",
       "hora_utc": "2026-10-17T11:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 180,
@@ -1022,7 +1235,64 @@
       ],
       "texto_original_crudo": "Rafael Jodar (Esp) vs. Daniil Medvedev (Rus). Semifinal, Qi Zhong Tennis Center, Shanghai, China. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
       "titulo_original_crudo": "Rafael Jodar (Esp) vs. Daniil Medvedev (Rus). Semifinal, Qi Zhong Tennis Center, Shanghai, China. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
-      "ronda": "Stadium Court",
+      "ronda": "Semifinal",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_9b672ef4",
+      "agenda_id": "",
+      "titulo": "WorldSBK GP de España",
+      "torneo": "Superbike World Championship",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Carrera",
+      "referencia": "Carrera • Circuito de Jerez • Sportbike",
+      "hora_utc": "2026-10-17T11:00:00Z",
+      "hora_local_producto": "06:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9832.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 FHD | ARG",
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 1 HD | AR",
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "08:00 Sportbike G.P. España (Jerez) Carrera 2 ESPN Disney+ Premium",
+      "titulo_original_crudo": "08:00 Sportbike G.P. España (Jerez) Carrera 2 ESPN Disney+ Premium",
+      "ronda": "Carrera",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -1423,11 +1693,11 @@
       "titulo": "Samingdet vs. Kiewpayak",
       "torneo": "Rajadamnern World Series",
       "categoria": "Combate",
-      "tipo_evento": "duelo",
-      "equipo_local": "Samingdet",
-      "equipo_visitante": "Kiewpayak",
-      "subtitulo": "Rajadamnern World Series",
-      "referencia": "Rajadamnern Stadium",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Rajadamnern Stadium",
+      "referencia": "Rajadamnern Stadium • Samingdet PK Saenchai vs. Kiewpayak Jitmuangnon • Muay Thai",
       "hora_utc": "2026-10-17T12:10:00Z",
       "hora_local_producto": "07:10",
       "duracion_min": 130,
@@ -1452,8 +1722,9 @@
       ],
       "texto_original_crudo": "07:10 | RWS: Samingdet vs. Kiewpayak | Lucha ✮PPV PREMIUM✮",
       "titulo_original_crudo": "07:10 | RWS: Samingdet vs. Kiewpayak | Lucha ✮PPV PREMIUM✮",
-      "ronda": "",
-      "auditado_agy": true
+      "ronda": "Rajadamnern Stadium",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_54c1079c",
@@ -1807,14 +2078,14 @@
     {
       "id": "xtream_ff30156e",
       "agenda_id": "",
-      "titulo": "WorldSBK Round de España",
+      "titulo": "World SBK",
       "torneo": "FIM Superbike World Championship",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Circuito de Jerez",
-      "referencia": "Carrera 1 • Circuito de Jerez - Ángel Nieto",
+      "subtitulo": "Carrera",
+      "referencia": "Circuito de Jerez • Campeonato Mundial de Superbikes",
       "hora_utc": "2026-10-17T13:25:00Z",
       "hora_local_producto": "08:25",
       "duracion_min": 130,
@@ -1839,7 +2110,7 @@
       ],
       "texto_original_crudo": "08:25 | World SBK - Race 1 - Spanish | FIM Superbike World Championship ✮✮[Eventos Diarios | Exclusivos]✮✮",
       "titulo_original_crudo": "08:25 | World SBK - Race 1 - Spanish | FIM Superbike World Championship ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "ronda": "Circuito de Jerez",
+      "ronda": "Carrera",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -2143,14 +2414,14 @@
     {
       "id": "xtream_bf9dd7e1",
       "agenda_id": "",
-      "titulo": "FIA WEC Horas de Barcelona",
+      "titulo": "FIA WEC",
       "torneo": "FIA World Endurance Championship",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Circuit de Catalunya",
-      "referencia": "Circuit de Catalunya • Sesión de Clasificación y Hyperpole • Circuit de Barcelona-Catalunya",
+      "subtitulo": "Clasificación",
+      "referencia": "Sesión de clasificación • Hypercar & LMGT3",
       "hora_utc": "2026-10-17T13:30:00Z",
       "hora_local_producto": "08:30",
       "duracion_min": 130,
@@ -2175,7 +2446,64 @@
       ],
       "texto_original_crudo": "08:30 | FIA WEC - Clasificación | Automovilismo ✮✮[Eventos Diarios | Exclusivos]✮✮",
       "titulo_original_crudo": "08:30 | FIA WEC - Clasificación | Automovilismo ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "ronda": "Circuit de Catalunya",
+      "ronda": "Clasificación",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_0546b642",
+      "agenda_id": "",
+      "titulo": "WorldSBK GP de España",
+      "torneo": "Superbike World Championship",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Carrera",
+      "referencia": "Carrera • Circuito de Jerez • Superbike",
+      "hora_utc": "2026-10-17T13:30:00Z",
+      "hora_local_producto": "08:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe0%2FWorldSBK_logo.svg%2F512px-WorldSBK_logo.svg.png&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe0%2FWorldSBK_logo.svg%2F512px-WorldSBK_logo.svg.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 FHD | ARG",
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 1 HD | AR",
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "10:30 Superbike G.P. España (Jerez) Carrera 2 ESPN Disney+ Premium",
+      "titulo_original_crudo": "10:30 Superbike G.P. España (Jerez) Carrera 2 ESPN Disney+ Premium",
+      "ronda": "Carrera",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -2188,8 +2516,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Soave",
-      "referencia": "Carrera 1.Pro • 195 km con subida a la Diesel Farm",
+      "subtitulo": "Carrera Masculina",
+      "referencia": "UCI ProSeries • Véneto, Italia",
       "hora_utc": "2026-10-17T13:45:00Z",
       "hora_local_producto": "08:45",
       "duracion_min": 85,
@@ -2226,20 +2554,21 @@
       ],
       "texto_original_crudo": "Veneto Classic: Masculino",
       "titulo_original_crudo": "Veneto Classic: Masculino",
-      "ronda": "Soave",
-      "curado_integro": true
+      "ronda": "Carrera Masculina",
+      "curado_integro": true,
+      "auditado_agy": true
     },
     {
       "id": "lineal_teledeporte_9521b705",
       "agenda_id": "",
-      "titulo": "Poio Pescamar Fs vs Melilla CD Torreblanca",
-      "torneo": "Sala Primera División Femenina",
+      "titulo": "Poio Pescamar FS vs. Melilla CD Torreblanca",
+      "torneo": "Primera División Femenina de Fútbol Sala",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Poio Pescamar Fs",
+      "equipo_local": "Poio Pescamar FS",
       "equipo_visitante": "Melilla CD Torreblanca",
-      "subtitulo": "Sala Primera División Femenina",
-      "referencia": "Sala Primera División Femenina 4ª Jornada",
+      "subtitulo": "Primera División Femenina de Fútbol Sala • 4ª Jornada",
+      "referencia": "Jornada",
       "hora_utc": "2026-10-17T13:55:00Z",
       "hora_local_producto": "08:55",
       "duracion_min": 130,
@@ -2282,7 +2611,8 @@
       ],
       "texto_original_crudo": "FÚTBOL SALA PRIMERA DIVISIÓN FEMENINA 4ª JORNADA POIO PESCAMAR FS – MELILLA CD TORREBLANCA DESDE POIO (PONTEVEDRA)",
       "titulo_original_crudo": "FÚTBOL SALA PRIMERA DIVISIÓN FEMENINA 4ª JORNADA POIO PESCAMAR FS – MELILLA CD TORREBLANCA DESDE POIO (PONTEVEDRA)",
-      "ronda": ""
+      "ronda": "4ª Jornada",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_ar_4e33ee9c",
@@ -2488,6 +2818,57 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_tyc_sports_2c667e3e",
+      "agenda_id": "",
+      "titulo": "San Lorenzo vs. Oberá TC",
+      "torneo": "Liga Nacional de Básquet",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Lorenzo",
+      "equipo_visitante": "Oberá TC",
+      "subtitulo": "Liga Nacional de Básquet",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-10-17T14:05:00Z",
+      "hora_local_producto": "09:05",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F37wke41775741605.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa66sht1648565513.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "TYC SPORTS HD",
+          "id_xtream": "712755",
+          "canal_lineal": "TYC SPORTS",
+          "pais": "AR"
+        },
+        {
+          "nombre": "TyC Sports",
+          "id_xtream": "712754",
+          "canal_lineal": "TYC SPORTS",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "TYC SPORTS"
+      ],
+      "texto_original_crudo": "11:05 LNB San Lorenzo Basquet Oberá TC TyC Sports TyC Sports Play",
+      "titulo_original_crudo": "11:05 LNB San Lorenzo Basquet Oberá TC TyC Sports TyC Sports Play",
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -2713,7 +3094,7 @@
       "equipo_local": "",
       "equipo_visitante": "",
       "subtitulo": "Preliminares",
-      "referencia": "Preliminares • Cartelera preliminar • Peso Pesado",
+      "referencia": "Cartelera Preliminar • Peso Pesado",
       "hora_utc": "2026-10-17T14:57:00Z",
       "hora_local_producto": "09:57",
       "duracion_min": 130,
@@ -3421,107 +3802,16 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_eurosport_1_9e2fa05b",
-      "agenda_id": "",
-      "titulo": "Maratón de Ámsterdam",
-      "torneo": "Maratón de Ámsterdam",
-      "categoria": "Atletismo",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Ámsterdam",
-      "referencia": "Edición 48ª • 42,195 km élite masculina y femenina",
-      "hora_utc": "2026-10-17T16:00:00Z",
-      "hora_local_producto": "11:00",
-      "duracion_min": 70,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mundodeportivo_eurosport_1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "EUROSPORT 1"
-      ],
-      "texto_original_crudo": "TCS Amsterdam Marathon",
-      "titulo_original_crudo": "TCS Amsterdam Marathon",
-      "ronda": "Ámsterdam",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_fa70c215",
-      "agenda_id": "",
-      "titulo": "Milans Volkovs vs Joel McIntyre",
-      "torneo": "Boxeo",
-      "categoria": "Combate",
-      "tipo_evento": "duelo",
-      "equipo_local": "Milans Volkovs",
-      "equipo_visitante": "Joel McIntyre",
-      "subtitulo": "Boxeo",
-      "referencia": "Boxeo",
-      "hora_utc": "2026-10-17T16:00:00Z",
-      "hora_local_producto": "11:00",
-      "duracion_min": 135,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:00 ◘ Milans Volkovs vs. Joel McIntyre ◘ Boxeo ◘",
-          "id_xtream": "1730706"
-        },
-        {
-          "nombre": "11:00 | Volkovs vs. Mcintyre | Lucha",
-          "id_xtream": "1730954"
-        }
-      ],
-      "texto_original_crudo": "11:00 ◘ Milans Volkovs vs. Joel McIntyre ◘ Boxeo ◘ ✨Eventos Diarios 17/10✨",
-      "titulo_original_crudo": "11:00 ◘ Milans Volkovs vs. Joel McIntyre ◘ Boxeo ◘ ✨Eventos Diarios 17/10✨",
-      "ronda": ""
-    },
-    {
       "id": "xtream_76cec89f",
       "agenda_id": "",
-      "titulo": "Mississippi State Bulldogs vs. LSU Tigers",
+      "titulo": "Mississippi State vs. LSU",
       "torneo": "NCAA College Football",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
-      "equipo_local": "Mississippi State Bulldogs",
-      "equipo_visitante": "LSU Tigers",
-      "subtitulo": "NCAA College Football",
-      "referencia": "Davis Wade Stadium",
+      "equipo_local": "Mississippi State",
+      "equipo_visitante": "LSU",
+      "subtitulo": "Semana",
+      "referencia": "Semana",
       "hora_utc": "2026-10-17T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -3549,44 +3839,6 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_09918a21",
-      "agenda_id": "",
-      "titulo": "Army vs. Holy Cross",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Army",
-      "equipo_visitante": "Holy Cross",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Fase Regular",
-      "hora_utc": "2026-10-17T16:00:00Z",
-      "hora_local_producto": "11:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fylpo3m1564356823.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:00 ◘ Army vs. Holy Cross ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1730698"
-        }
-      ],
-      "texto_original_crudo": "11:00 ◘ Army vs. Holy Cross ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "titulo_original_crudo": "11:00 ◘ Army vs. Holy Cross ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "xtream_a58db39b",
@@ -3671,14 +3923,14 @@
     {
       "id": "xtream_3a8e78f0",
       "agenda_id": "",
-      "titulo": "Glory 110",
+      "titulo": "Glory 110: Trindade vs. Demirkapu",
       "torneo": "Glory Kickboxing",
       "categoria": "Combate",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
       "subtitulo": "Preliminares",
-      "referencia": "Preliminares • Trindade vs. Demirkapu • Kickboxing Internacional",
+      "referencia": "Glory 110 • Combates Preliminares Kickboxing",
       "hora_utc": "2026-10-17T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -3712,23 +3964,102 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_feb6d714",
+      "id": "xtream_fa70c215",
       "agenda_id": "",
-      "titulo": "Oktagon",
-      "torneo": "Oktagon",
-      "categoria": "Otros Deportes",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Lucha",
-      "referencia": "Lucha",
+      "titulo": "Milans Volkovs vs Joel McIntyre",
+      "torneo": "Boxeo",
+      "categoria": "Combate",
+      "tipo_evento": "duelo",
+      "equipo_local": "Milans Volkovs",
+      "equipo_visitante": "Joel McIntyre",
+      "subtitulo": "Boxeo",
+      "referencia": "Boxeo",
       "hora_utc": "2026-10-17T16:00:00Z",
       "hora_local_producto": "11:00",
-      "duracion_min": 130,
+      "duracion_min": 135,
       "logo_torneo": "",
       "logo_local": "",
       "logo_visitante": "",
       "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Milans Volkovs vs. Joel McIntyre ◘ Boxeo ◘",
+          "id_xtream": "1730706"
+        },
+        {
+          "nombre": "11:00 | Volkovs vs. Mcintyre | Lucha",
+          "id_xtream": "1730954"
+        }
+      ],
+      "texto_original_crudo": "11:00 ◘ Milans Volkovs vs. Joel McIntyre ◘ Boxeo ◘ ✨Eventos Diarios 17/10✨",
+      "titulo_original_crudo": "11:00 ◘ Milans Volkovs vs. Joel McIntyre ◘ Boxeo ◘ ✨Eventos Diarios 17/10✨",
+      "ronda": ""
+    },
+    {
+      "id": "xtream_09918a21",
+      "agenda_id": "",
+      "titulo": "Army vs. Holy Cross",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Army",
+      "equipo_visitante": "Holy Cross",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-10-17T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fylpo3m1564356823.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Army vs. Holy Cross ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1730698"
+        }
+      ],
+      "texto_original_crudo": "11:00 ◘ Army vs. Holy Cross ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "titulo_original_crudo": "11:00 ◘ Army vs. Holy Cross ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_feb6d714",
+      "agenda_id": "",
+      "titulo": "Oktagon",
+      "torneo": "Oktagon MMA",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cartelera Principal",
+      "referencia": "Cartelera Principal • Evento Oficial • Artes Marciales Mixtas",
+      "hora_utc": "2026-10-17T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -3746,7 +4077,9 @@
       ],
       "texto_original_crudo": "11:00 | OKTAGON 95 | Lucha ✮PPV PREMIUM✮",
       "titulo_original_crudo": "11:00 | OKTAGON 95 | Lucha ✮PPV PREMIUM✮",
-      "ronda": "Lucha"
+      "ronda": "Cartelera Principal",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_25813825",
@@ -3789,14 +4122,14 @@
     {
       "id": "lineal_teledeporte_612ceac6",
       "agenda_id": "",
-      "titulo": "Mirai Euskotren vs Azulmarino Mallorca Palma",
+      "titulo": "IDK Euskotren vs. Azulmarino Mallorca Palma",
       "torneo": "Liga Femenina Endesa",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
-      "equipo_local": "Mirai Euskotren",
+      "equipo_local": "IDK Euskotren",
       "equipo_visitante": "Azulmarino Mallorca Palma",
-      "subtitulo": "Liga Femenina Endesa",
-      "referencia": "Liga Femenina Endesa 4ª Jornada",
+      "subtitulo": "Liga Femenina Endesa • 4ª Jornada",
+      "referencia": "Jornada",
       "hora_utc": "2026-10-17T16:25:00Z",
       "hora_local_producto": "11:25",
       "duracion_min": 130,
@@ -3839,7 +4172,8 @@
       ],
       "texto_original_crudo": "BALONCESTO LIGA FEMENINA ENDESA 4ª JORNADA MIRAI EUSKOTREN – AZULMARINO MALLORCA PALMA DESDE SAN SEBASTIÁN",
       "titulo_original_crudo": "BALONCESTO LIGA FEMENINA ENDESA 4ª JORNADA MIRAI EUSKOTREN – AZULMARINO MALLORCA PALMA DESDE SAN SEBASTIÁN",
-      "ronda": ""
+      "ronda": "4ª Jornada",
+      "auditado_agy": true
     },
     {
       "id": "lineal_dsports_ar_e64fe10a",
@@ -4137,6 +4471,49 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_ebcd3c01",
+      "agenda_id": "",
+      "titulo": "Smart Modified Tour",
+      "torneo": "Smart Modified Tour",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "North Wilkesboro",
+      "referencia": "North Wilkesboro Speedway • Asphalt Modifieds",
+      "hora_utc": "2026-10-17T16:50:00Z",
+      "hora_local_producto": "11:50",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "FloRacing 01 | SMART Modified Tour at North Wilkesboro | 12:50 PM ET | 10.17",
+          "id_xtream": "1731184"
+        },
+        {
+          "nombre": "FloRacing 02 | Halloween Fest at IRP | 1:15 PM ET | 10.17",
+          "id_xtream": "1731185"
+        }
+      ],
+      "texto_original_crudo": "FloRacing 01 | SMART Modified Tour at North Wilkesboro | 12:50 PM ET | 10.17 MOTOR - EVENT -",
+      "titulo_original_crudo": "FloRacing 01 | SMART Modified Tour at North Wilkesboro | 12:50 PM ET | 10.17 MOTOR - EVENT -",
+      "ronda": "North Wilkesboro",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -4468,8 +4845,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "UMass",
       "equipo_visitante": "Buffalo",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
+      "subtitulo": "Semana",
+      "referencia": "Semana",
       "hora_utc": "2026-10-17T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -4746,6 +5123,63 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_ar_8390ea7b",
+      "agenda_id": "",
+      "titulo": "Joventut Badalona vs. Barça Basket",
+      "torneo": "Liga Endesa",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Joventut Badalona",
+      "equipo_visitante": "Barça Basket",
+      "subtitulo": "Liga Endesa",
+      "referencia": "Jornada",
+      "hora_utc": "2026-10-17T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F2334.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fq6wzc51721548609.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS | AR",
+          "id_xtream": "592036",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS AR",
+          "id_xtream": "69547",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS EC",
+          "id_xtream": "69557",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS AR"
+      ],
+      "texto_original_crudo": "14:00 Liga Endesa Liga Regular Joventut Badalona Barça Basket Básquet Pass DGO DSports 4",
+      "titulo_original_crudo": "14:00 Liga Endesa Liga Regular Joventut Badalona Barça Basket Básquet Pass DGO DSports 4",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_4585d24b",
       "agenda_id": "",
       "titulo": "Allen vs. Clark Atlanta",
@@ -4755,7 +5189,7 @@
       "equipo_local": "Allen",
       "equipo_visitante": "Clark Atlanta",
       "subtitulo": "NCAA College Football",
-      "referencia": "Temporada Regular",
+      "referencia": "Semana",
       "hora_utc": "2026-10-17T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -4793,7 +5227,7 @@
       "equipo_local": "New Hampshire",
       "equipo_visitante": "Vermont",
       "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-17T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -4831,7 +5265,7 @@
       "equipo_local": "Princeton",
       "equipo_visitante": "Cornell",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-17T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -5241,56 +5675,6 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_eurosport_1_f5ece531",
-      "agenda_id": "",
-      "titulo": "Northern Ireland Open",
-      "torneo": "Northern Ireland Open",
-      "categoria": "Snooker",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Waterfront Hall",
-      "referencia": "Ronda clasificatoria / Primera ronda del ranking mundial",
-      "hora_utc": "2026-10-17T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 255,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mundodeportivo_eurosport_1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "EUROSPORT 1"
-      ],
-      "texto_original_crudo": "Northern Ireland Open",
-      "titulo_original_crudo": "Northern Ireland Open",
-      "ronda": "Waterfront Hall",
-      "curado_integro": true
-    },
-    {
       "id": "xtream_fdb8b94e",
       "agenda_id": "",
       "titulo": "Daniel Dubois vs Fabio Wardley",
@@ -5328,6 +5712,49 @@
       "ronda": ""
     },
     {
+      "id": "xtream_cc4e4c3e",
+      "agenda_id": "",
+      "titulo": "Short Track Super Series",
+      "torneo": "Stss Octoberfest",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Hagerstown Speedway",
+      "referencia": "Hagerstown Speedway • Modifieds en tierra",
+      "hora_utc": "2026-10-17T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "FloRacing 03 | STSS Octoberfest at Hagerstown | 2:00 PM ET | 10.17",
+          "id_xtream": "1731186"
+        },
+        {
+          "nombre": "FloRacing 04 | CARS Tour at South Boston | 2:30 PM ET | 10.17",
+          "id_xtream": "1731187"
+        }
+      ],
+      "texto_original_crudo": "FloRacing 03 | STSS Octoberfest at Hagerstown | 2:00 PM ET | 10.17 MOTOR - EVENT -",
+      "titulo_original_crudo": "FloRacing 03 | STSS Octoberfest at Hagerstown | 2:00 PM ET | 10.17 MOTOR - EVENT -",
+      "ronda": "Hagerstown Speedway",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_845185e2",
       "agenda_id": "",
       "titulo": "Edward Waters vs. Benedict",
@@ -5337,7 +5764,7 @@
       "equipo_local": "Edward Waters",
       "equipo_visitante": "Benedict",
       "subtitulo": "NCAA College Football",
-      "referencia": "Temporada Regular",
+      "referencia": "Semana",
       "hora_utc": "2026-10-17T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -5738,6 +6165,10 @@
         {
           "nombre": "13:30 ◘ Philadelphia Union vs. Charlotte ◘ Major League Soccer ◘",
           "id_xtream": "1730756"
+        },
+        {
+          "nombre": "MLS 01 | Philadelphia Union vs. Charlotte FC | 2:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731196"
         }
       ],
       "texto_original_crudo": "13:30 ◘ Philadelphia Union vs. Charlotte ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -6254,11 +6685,11 @@
     {
       "id": "xtream_d42af14a",
       "agenda_id": "",
-      "titulo": "Albany vs. Njit",
+      "titulo": "UAlbany vs. Njit",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Albany",
+      "equipo_local": "UAlbany",
       "equipo_visitante": "Njit",
       "subtitulo": "NCAA Men's Soccer",
       "referencia": "Fase Regular",
@@ -6453,14 +6884,14 @@
     {
       "id": "xtream_32348015",
       "agenda_id": "",
-      "titulo": "UFC Fight Night 291",
-      "torneo": "UFC Fight Night 291",
-      "categoria": "Artes Marciales Mixtas",
+      "titulo": "UFC Fight Night",
+      "torneo": "UFC Fight Night",
+      "categoria": "Combate",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Rogers Place, Edmonton",
-      "referencia": "Cartelera estelar y preliminares",
+      "subtitulo": "Cartelera Preliminar",
+      "referencia": "Rogers Place, Edmonton • Artes Marciales Mixtas",
       "hora_utc": "2026-10-17T19:55:00Z",
       "hora_local_producto": "14:55",
       "duracion_min": 135,
@@ -6493,54 +6924,9 @@
       ],
       "texto_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
       "titulo_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-      "ronda": "Rogers Place, Edmonton",
+      "ronda": "Cartelera Preliminar",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_32348015_622669",
-      "agenda_id": "",
-      "titulo": "UFC",
-      "torneo": "UFC",
-      "categoria": "Combate",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "UFC Fight Night: UFC",
-      "referencia": "UFC Fight Night: UFC",
-      "hora_utc": "2026-10-17T19:55:00Z",
-      "hora_local_producto": "14:55",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "14:55 | UFC Fight Night: En Español | UFC",
-          "id_xtream": "1730956"
-        },
-        {
-          "nombre": "14:55 | UFC Fight Night: English | UFC",
-          "id_xtream": "1730958"
-        },
-        {
-          "nombre": "14:55 | UFC Fight Night: En Portugués | UFC",
-          "id_xtream": "1730957"
-        }
-      ],
-      "texto_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-      "titulo_original_crudo": "14:55 | UFC Fight Night: En Español | UFC UFC SOLO EVENTOS",
-      "ronda": "UFC Fight Night: UFC"
     },
     {
       "id": "lineal_win_sportsplus_fcc790da",
@@ -6848,14 +7234,14 @@
     {
       "id": "lineal_dsports_2_d312477a",
       "agenda_id": "",
-      "titulo": "Duendes RC vs. Jockey Club de Rosario",
+      "titulo": "Duendes vs. Jockey Club Rosario",
       "torneo": "Torneo Regional del Litoral",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
-      "equipo_local": "Duendes RC",
-      "equipo_visitante": "Jockey Club de Rosario",
+      "equipo_local": "Duendes",
+      "equipo_visitante": "Jockey Club Rosario",
       "subtitulo": "Torneo Regional del Litoral",
-      "referencia": "Rosario",
+      "referencia": "Final",
       "hora_utc": "2026-10-17T20:15:00Z",
       "hora_local_producto": "15:15",
       "duracion_min": 130,
@@ -7057,6 +7443,10 @@
         {
           "nombre": "15:30 ◘ Minnesota United vs. St. Louis City ◘ Major League Soccer ◘",
           "id_xtream": "1730779"
+        },
+        {
+          "nombre": "MLS 02 | Minnesota United vs. St. Louis CITY | 4:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731197"
         }
       ],
       "texto_original_crudo": "15:30 ◘ Minnesota United vs. St. Louis City ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -7105,16 +7495,59 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_d6ef7eea",
+      "agenda_id": "",
+      "titulo": "Lucas Oil Late Model Series",
+      "torneo": "Lucas Oil Dtwc",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Wvms",
+      "referencia": "Wvms • West Virginia Motor Speedway • Dirt Track World Championship",
+      "hora_utc": "2026-10-17T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "FloRacing 05 | Lucas Oil DTWC at WVMS | 4:30 PM ET | 10.17",
+          "id_xtream": "1731188"
+        },
+        {
+          "nombre": "FloRacing 06 | FloZone: FloRacing Championship Weekend | 5:00 PM ET | 10.17",
+          "id_xtream": "1731189"
+        }
+      ],
+      "texto_original_crudo": "FloRacing 05 | Lucas Oil DTWC at WVMS | 4:30 PM ET | 10.17 MOTOR - EVENT -",
+      "titulo_original_crudo": "FloRacing 05 | Lucas Oil DTWC at WVMS | 4:30 PM ET | 10.17 MOTOR - EVENT -",
+      "ronda": "Wvms",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_ba438651",
       "agenda_id": "",
-      "titulo": "Joaquin Buckley vs. Mike Malott",
-      "torneo": "UFC Fight Night 291",
+      "titulo": "Mike Malott vs. Joaquin Buckley",
+      "torneo": "UFC Fight Night",
       "categoria": "Combate",
       "tipo_evento": "duelo",
-      "equipo_local": "Joaquin Buckley",
-      "equipo_visitante": "Mike Malott",
-      "subtitulo": "UFC Fight Night 291",
-      "referencia": "Rogers Place",
+      "equipo_local": "Mike Malott",
+      "equipo_visitante": "Joaquin Buckley",
+      "subtitulo": "UFC Fight Night",
+      "referencia": "Cartelera Estelar",
       "hora_utc": "2026-10-17T21:00:00-05:00",
       "hora_local_producto": "21:00",
       "duracion_min": 135,
@@ -7365,45 +7798,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_ab4a3f34",
-      "agenda_id": "",
-      "titulo": "National Squash League Femenil",
-      "torneo": "National Squash League",
-      "categoria": "Otros Deportes",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "MSquash SoNo",
-      "referencia": "SoNo Sharks vs. New York Queens • Liga Profesional Femenina de Squash",
-      "hora_utc": "2026-10-17T21:00:00Z",
-      "hora_local_producto": "16:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "16:00 | National Squash League: Feminino",
-          "id_xtream": "1731046"
-        }
-      ],
-      "texto_original_crudo": "16:00 | National Squash League: Feminino ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "titulo_original_crudo": "16:00 | National Squash League: Feminino ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "ronda": "MSquash SoNo",
-      "curado_integro": true,
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_11158098",
       "agenda_id": "",
       "titulo": "Brown vs. Penn",
@@ -7532,6 +7926,56 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_2_80743859_11566a",
+      "agenda_id": "",
+      "titulo": "Amsterdam Marathon",
+      "torneo": "Amsterdam Marathon",
+      "categoria": "Atletismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Circuito Urbano",
+      "referencia": "Edición anual del maratón de Ámsterdam",
+      "hora_utc": "2026-10-17T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 70,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 2 FHD",
+          "id_xtream": "327954",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "327964",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 2"
+      ],
+      "texto_original_crudo": "TCS Amsterdam Marathon",
+      "titulo_original_crudo": "TCS Amsterdam Marathon",
+      "ronda": "Circuito Urbano",
+      "curado_integro": true
+    },
+    {
       "id": "xtream_c6fdaa07_a811cd",
       "agenda_id": "",
       "titulo": "Dallas Trinity vs Guadalajara",
@@ -7567,6 +8011,84 @@
       "texto_original_crudo": "16:00 ◘ Dallas Trinity vs. Guadalajara ◘ Women's Club Friendly ◘ ✨Eventos Diarios 17/10✨",
       "titulo_original_crudo": "16:00 ◘ Dallas Trinity vs. Guadalajara ◘ Women's Club Friendly ◘ ✨Eventos Diarios 17/10✨",
       "ronda": ""
+    },
+    {
+      "id": "xtream_ab4a3f34",
+      "agenda_id": "",
+      "titulo": "National Squash League",
+      "torneo": "National Squash League",
+      "categoria": "Otros Deportes",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Rama Femenina",
+      "referencia": "Rama Femenina • Torneo profesional de squash femenino",
+      "hora_utc": "2026-10-17T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:00 | National Squash League: Feminino",
+          "id_xtream": "1731046"
+        }
+      ],
+      "texto_original_crudo": "16:00 | National Squash League: Feminino ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "16:00 | National Squash League: Feminino ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "Rama Femenina",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_fb6644d3",
+      "agenda_id": "",
+      "titulo": "Colón vs. Almirante Brown",
+      "torneo": "Primera Nacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Colón",
+      "equipo_visitante": "Almirante Brown",
+      "subtitulo": "Primera Nacional",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-17T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F448.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F8375.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "[LPF - Argentina] LPF-J006: 1ra Nacional: Colón vs. Alte. Brown | 17:30 SAT 10-17 Fecha 34",
+          "id_xtream": "1731133"
+        }
+      ],
+      "texto_original_crudo": "[LPF - Argentina] LPF-J006: 1ra Nacional: Colón vs. Alte. Brown | 17:30 SAT 10-17 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "[LPF - Argentina] LPF-J006: 1ra Nacional: Colón vs. Alte. Brown | 17:30 SAT 10-17 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "",
+      "auditado_agy": true,
+      "contrastado_api": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_5e166be1",
@@ -7944,7 +8466,7 @@
       "id": "xtream_bda7b438",
       "agenda_id": "",
       "titulo": "FIU vs. Charlotte",
-      "torneo": "NCAA Soccer Masculino",
+      "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "FIU",
@@ -8100,12 +8622,12 @@
       "id": "xtream_d618877e",
       "agenda_id": "",
       "titulo": "Cornell vs. Princeton",
-      "torneo": "NCAA Soccer Masculino",
+      "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Cornell",
       "equipo_visitante": "Princeton",
-      "subtitulo": "NCAA Soccer Masculino",
+      "subtitulo": "NCAA Men's Soccer",
       "referencia": "Fase Regular",
       "hora_utc": "2026-10-17T22:00:00Z",
       "hora_local_producto": "17:00",
@@ -8133,6 +8655,53 @@
       "titulo_original_crudo": "17:00 ◘ #19 Cornell vs. Princeton ◘ NCAA Men's Soccer ◘◘ NCAA EVENTOS DEL DIA",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_d2b75e90",
+      "agenda_id": "",
+      "titulo": "Dirtvision",
+      "torneo": "World of Outlaws",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cedar Lake Speedway",
+      "referencia": "Cedar Lake Speedway • Pista de tierra • Sprint Cars & Late Models",
+      "hora_utc": "2026-10-17T22:15:00Z",
+      "hora_local_producto": "17:15",
+      "duracion_min": 135,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "DIRTVISION 01 | Cedar Lake Speedway | 6:15 PM ET | 10.17",
+          "id_xtream": "1731180"
+        },
+        {
+          "nombre": "DIRTVISION 02 | Millbridge Speedway | 6:15 PM ET | 10.17",
+          "id_xtream": "1731181"
+        },
+        {
+          "nombre": "DIRTVISION 03 | Belle Clair Fairgrounds Park Speedway | 7:15 PM ET | 10.17",
+          "id_xtream": "1731182"
+        }
+      ],
+      "texto_original_crudo": "DIRTVISION 01 | Cedar Lake Speedway | 6:15 PM ET | 10.17 MOTOR - EVENT -",
+      "titulo_original_crudo": "DIRTVISION 01 | Cedar Lake Speedway | 6:15 PM ET | 10.17 MOTOR - EVENT -",
+      "ronda": "Cedar Lake Speedway",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_win_sports_7fd0620d",
@@ -8272,6 +8841,49 @@
       "texto_original_crudo": "17:30 ◘ Athletico-PR vs. Palmeiras ◘ Brasileirão ◘ ✨Eventos Diarios 17/10✨",
       "titulo_original_crudo": "17:30 ◘ Athletico-PR vs. Palmeiras ◘ Brasileirão ◘ ✨Eventos Diarios 17/10✨",
       "ronda": ""
+    },
+    {
+      "id": "xtream_9bae344b",
+      "agenda_id": "",
+      "titulo": "Usac National Sprints",
+      "torneo": "Usac National Sprint Car Championship",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Route Speedway",
+      "referencia": "Route Speedway • Route 66 Speedway • Sprint Cars",
+      "hora_utc": "2026-10-17T22:45:00Z",
+      "hora_local_producto": "17:45",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "FloRacing 07 | USAC National Sprints at Route 66 | 6:45 PM ET | 10.17",
+          "id_xtream": "1731190"
+        },
+        {
+          "nombre": "FloRacing 08 | High Limit Racing at Texas | 7:00 PM ET | 10.17",
+          "id_xtream": "1731191"
+        }
+      ],
+      "texto_original_crudo": "FloRacing 07 | USAC National Sprints at Route 66 | 6:45 PM ET | 10.17 MOTOR - EVENT -",
+      "titulo_original_crudo": "FloRacing 07 | USAC National Sprints at Route 66 | 6:45 PM ET | 10.17 MOTOR - EVENT -",
+      "ronda": "Route Speedway",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_tnt_sports_1bffcef1",
@@ -9338,12 +9950,12 @@
       "id": "xtream_e41b7156",
       "agenda_id": "",
       "titulo": "James Madison vs. Georgia Southern",
-      "torneo": "NCAA Soccer Masculino",
+      "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "James Madison",
       "equipo_visitante": "Georgia Southern",
-      "subtitulo": "NCAA Soccer Masculino",
+      "subtitulo": "NCAA Men's Soccer",
       "referencia": "Fase Regular",
       "hora_utc": "2026-10-17T23:00:00Z",
       "hora_local_producto": "18:00",
@@ -9376,12 +9988,12 @@
       "id": "xtream_c12ef574",
       "agenda_id": "",
       "titulo": "Lafayette vs. Army",
-      "torneo": "NCAA Soccer Femenino",
+      "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Lafayette",
       "equipo_visitante": "Army",
-      "subtitulo": "NCAA Soccer Femenino",
+      "subtitulo": "NCAA Women's Soccer",
       "referencia": "Fase Regular",
       "hora_utc": "2026-10-17T23:00:00Z",
       "hora_local_producto": "18:00",
@@ -9529,6 +10141,10 @@
         {
           "nombre": "18:30 ◘ Atlanta United vs. Inter Miami ◘ Major League Soccer ◘ English",
           "id_xtream": "1730828"
+        },
+        {
+          "nombre": "MLS 03 | Atlanta United vs. Inter Miami CF | 7:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731198"
         }
       ],
       "texto_original_crudo": "18:30 ◘ Atlanta United vs. Inter Miami ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -9653,6 +10269,10 @@
         {
           "nombre": "18:30 ◘ New England vs. Chicago Fire ◘ Major League Soccer ◘ English",
           "id_xtream": "1730832"
+        },
+        {
+          "nombre": "MLS 05 | New England Revolution vs. Chicago Fire FC | 7:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731200"
         }
       ],
       "texto_original_crudo": "18:30 ◘ New England vs. Chicago Fire ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -9697,6 +10317,10 @@
         {
           "nombre": "18:30 ◘ New York City vs. Los Angeles FC ◘ Major League Soccer ◘ English",
           "id_xtream": "1730834"
+        },
+        {
+          "nombre": "MLS 06 | New York City Football Club vs. Los Angeles Football Club | 7:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731201"
         }
       ],
       "texto_original_crudo": "18:30 ◘ New York City vs. Los Angeles FC ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -9741,6 +10365,10 @@
         {
           "nombre": "18:30 ◘ New York RB vs. Toronto FC ◘ Major League Soccer ◘ English",
           "id_xtream": "1730836"
+        },
+        {
+          "nombre": "MLS 07 | New York Red Bulls vs. Toronto FC | 7:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731202"
         }
       ],
       "texto_original_crudo": "18:30 ◘ New York RB vs. Toronto FC ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -9785,6 +10413,10 @@
         {
           "nombre": "18:30 ◘ Orlando City SC vs. DC United ◘ Major League Soccer ◘ English",
           "id_xtream": "1730838"
+        },
+        {
+          "nombre": "MLS 04 | Orlando City vs. D.C. United | 7:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731199"
         }
       ],
       "texto_original_crudo": "18:30 ◘ Orlando City SC vs. DC United ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -9872,6 +10504,45 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_403d3fa8",
+      "agenda_id": "",
+      "titulo": "Dirtvision",
+      "torneo": "World of Outlaws",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Creek County Speedway",
+      "referencia": "Creek County Speedway • Pista de tierra • Sprint Cars",
+      "hora_utc": "2026-10-17T23:45:00Z",
+      "hora_local_producto": "18:45",
+      "duracion_min": 135,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "DIRTVISION 04 | Creek County Speedway | 7:45 PM ET | 10.17",
+          "id_xtream": "1731183"
+        }
+      ],
+      "texto_original_crudo": "DIRTVISION 04 | Creek County Speedway | 7:45 PM ET | 10.17 MOTOR - EVENT -",
+      "titulo_original_crudo": "DIRTVISION 04 | Creek County Speedway | 7:45 PM ET | 10.17 MOTOR - EVENT -",
+      "ronda": "Creek County Speedway",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -10228,14 +10899,14 @@
     {
       "id": "xtream_1dfb94f8",
       "agenda_id": "",
-      "titulo": "Northern Illinois Huskies vs. Tulsa Golden Hurricane",
+      "titulo": "Northern Illinois vs Tulsa",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Northern Illinois Huskies",
-      "equipo_visitante": "Tulsa Golden Hurricane",
+      "equipo_local": "Northern Illinois",
+      "equipo_visitante": "Tulsa",
       "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Fútbol Universitario",
+      "referencia": "NCAA Men's Soccer",
       "hora_utc": "2026-10-18T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -10260,8 +10931,7 @@
       ],
       "texto_original_crudo": "19:00 ◘ Northern Illinois vs. Tulsa ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 17/10✨",
       "titulo_original_crudo": "19:00 ◘ Northern Illinois vs. Tulsa ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 17/10✨",
-      "ronda": "",
-      "auditado_agy": true
+      "ronda": ""
     },
     {
       "id": "xtream_234f530c",
@@ -10298,6 +10968,10 @@
         {
           "nombre": "19:30 ◘ Austin vs. Vancouver Whitecaps ◘ Major League Soccer ◘ English",
           "id_xtream": "1730854"
+        },
+        {
+          "nombre": "MLS 08 | Austin FC vs. Vancouver Whitecaps FC | 8:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731203"
         }
       ],
       "texto_original_crudo": "19:30 ◘ Austin vs. Vancouver Whitecaps ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -10342,6 +11016,10 @@
         {
           "nombre": "19:30 ◘ Houston Dynamo vs. Dallas ◘ Major League Soccer ◘ English",
           "id_xtream": "1730856"
+        },
+        {
+          "nombre": "MLS 09 | Houston Dynamo FC vs. FC Dallas | 8:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731204"
         }
       ],
       "texto_original_crudo": "19:30 ◘ Houston Dynamo vs. Dallas ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -10386,6 +11064,10 @@
         {
           "nombre": "19:30 ◘ Sporting KC vs. Real Salt Lake ◘ Major League Soccer ◘ English",
           "id_xtream": "1730858"
+        },
+        {
+          "nombre": "MLS 10 | Sporting Kansas City vs. Real Salt Lake | 8:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731205"
         }
       ],
       "texto_original_crudo": "19:30 ◘ Sporting KC vs. Real Salt Lake ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -10393,6 +11075,53 @@
       "ronda": "",
       "auditado_agy": true,
       "contrastado_api": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_b2254ae7",
+      "agenda_id": "",
+      "titulo": "Cars Tour West",
+      "torneo": "Cars Tour West",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Kern Raceway",
+      "referencia": "Kevin Harvick's Kern Raceway • Late Models",
+      "hora_utc": "2026-10-18T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "FloRacing 09 | CARS Tour West at Kern | 8:30 PM ET | 10.17",
+          "id_xtream": "1731192"
+        },
+        {
+          "nombre": "FloRacing 10 | NARC Championship Night at Kings | 8:30 PM ET | 10.17",
+          "id_xtream": "1731193"
+        },
+        {
+          "nombre": "FloRacing 11 | AMA EnduroCross at Nampa | 9:00 PM ET | 10.17",
+          "id_xtream": "1731194"
+        }
+      ],
+      "texto_original_crudo": "FloRacing 09 | CARS Tour West at Kern | 8:30 PM ET | 10.17 MOTOR - EVENT -",
+      "titulo_original_crudo": "FloRacing 09 | CARS Tour West at Kern | 8:30 PM ET | 10.17 MOTOR - EVENT -",
+      "ronda": "Kern Raceway",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -10434,43 +11163,6 @@
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
-    },
-    {
-      "id": "xtream_20a6ec64",
-      "agenda_id": "",
-      "titulo": "UFC",
-      "torneo": "UFC",
-      "categoria": "Combate",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "UFC Fight Night: Multiview",
-      "referencia": "UFC Fight Night: Multiview",
-      "hora_utc": "2026-10-18T00:55:00Z",
-      "hora_local_producto": "19:55",
-      "duracion_min": 135,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:55 | UFC Fight Night: Multiview | UFC",
-          "id_xtream": "1730962"
-        }
-      ],
-      "texto_original_crudo": "19:55 | UFC Fight Night: Multiview | UFC UFC SOLO EVENTOS",
-      "titulo_original_crudo": "19:55 | UFC Fight Night: Multiview | UFC UFC SOLO EVENTOS",
-      "ronda": "UFC Fight Night: Multiview"
     },
     {
       "id": "xtream_5f5cffb3",
@@ -11222,14 +11914,14 @@
     {
       "id": "lineal_tyc_sports_d769faa1",
       "agenda_id": "",
-      "titulo": "Walter Crucce vs Ariel Bracamonte",
+      "titulo": "Walter Crucce vs. Ariel Bracamonte",
       "torneo": "Boxeo de Primera",
       "categoria": "Combate",
-      "tipo_evento": "duelo",
-      "equipo_local": "Walter Crucce",
-      "equipo_visitante": "Ariel Bracamonte",
-      "subtitulo": "Boxeo de Primera",
-      "referencia": "Boxeo de primera",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Combate Estelar",
+      "referencia": "Combate Estelar • Cartelera profesional • En vivo por TyC Sports",
       "hora_utc": "2026-10-18T01:30:00Z",
       "hora_local_producto": "20:30",
       "duracion_min": 135,
@@ -11266,7 +11958,9 @@
       ],
       "texto_original_crudo": "Walter Crucce vs. Ariel Bracamonte / Pablo Corzo vs. Luciano Falcao. Boxeo de primera. Las peleas más importantes del boxeo argentino e internacional",
       "titulo_original_crudo": "Walter Crucce vs. Ariel Bracamonte / Pablo Corzo vs. Luciano Falcao. Boxeo de primera. Las peleas más importantes del boxeo argentino e internacional",
-      "ronda": ""
+      "ronda": "Combate Estelar",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_9e02cb1b",
@@ -11467,14 +12161,14 @@
     {
       "id": "xtream_ba76babe",
       "agenda_id": "",
-      "titulo": "Gonzaga Bulldogs vs. UC Riverside Highlanders",
+      "titulo": "Gonzaga vs UC Riverside",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Gonzaga Bulldogs",
-      "equipo_visitante": "UC Riverside Highlanders",
+      "equipo_local": "Gonzaga",
+      "equipo_visitante": "UC Riverside",
       "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Fútbol Universitario",
+      "referencia": "NCAA Men's Soccer",
       "hora_utc": "2026-10-18T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 130,
@@ -11499,45 +12193,7 @@
       ],
       "texto_original_crudo": "21:00 ◘ Gonzaga vs. UC Riverside ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 17/10✨",
       "titulo_original_crudo": "21:00 ◘ Gonzaga vs. UC Riverside ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 17/10✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_d9b838a4",
-      "agenda_id": "",
-      "titulo": "Lucha Libre AAA",
-      "torneo": "Lucha Libre AAA",
-      "categoria": "Otros Deportes",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Austin",
-      "referencia": "Austin • Lucha Libre",
-      "hora_utc": "2026-10-18T02:00:00Z",
-      "hora_local_producto": "21:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "21:00 | Lucha Libre AAA - Austin | Lucha Libre",
-          "id_xtream": "1730963"
-        }
-      ],
-      "texto_original_crudo": "21:00 | Lucha Libre AAA - Austin | Lucha Libre ✮PPV PREMIUM✮",
-      "titulo_original_crudo": "21:00 | Lucha Libre AAA - Austin | Lucha Libre ✮PPV PREMIUM✮",
-      "ronda": "Austin"
+      "ronda": ""
     },
     {
       "id": "lineal_espn_ar_637e0e48",
@@ -11627,6 +12283,10 @@
         {
           "nombre": "21:30 ◘ LA Galaxy vs. San Diego ◘ Major League Soccer ◘",
           "id_xtream": "1730884"
+        },
+        {
+          "nombre": "MLS 12 | LA Galaxy vs. San Diego FC | 10:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731207"
         }
       ],
       "texto_original_crudo": "21:30 ◘ LA Galaxy vs. San Diego ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -11665,6 +12325,10 @@
         {
           "nombre": "21:30 ◘ Portland Timbers vs. Colorado Rapids ◘ Major League Soccer ◘",
           "id_xtream": "1730887"
+        },
+        {
+          "nombre": "MLS 14 | Portland Timbers vs. Colorado Rapids | 10:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731209"
         }
       ],
       "texto_original_crudo": "21:30 ◘ Portland Timbers vs. Colorado Rapids ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -11705,6 +12369,10 @@
         {
           "nombre": "21:30 ◘ Seattle Sounders FC vs. CF Montréal ◘ Major League Soccer ◘",
           "id_xtream": "1730888"
+        },
+        {
+          "nombre": "MLS 13 | Seattle Sounders vs. CF Montréal | 10:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731208"
         }
       ],
       "texto_original_crudo": "21:30 ◘ Seattle Sounders FC vs. CF Montréal ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
@@ -11745,11 +12413,54 @@
         {
           "nombre": "21:30 ◘ SJ Earthquakes vs. Nashville SC ◘ Major League Soccer ◘",
           "id_xtream": "1730889"
+        },
+        {
+          "nombre": "MLS 11 | San Jose Earthquakes vs. Nashville SC | 10:30 PM ET | 10.17 | EN",
+          "id_xtream": "1731206"
         }
       ],
       "texto_original_crudo": "21:30 ◘ SJ Earthquakes vs. Nashville SC ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
       "titulo_original_crudo": "21:30 ◘ SJ Earthquakes vs. Nashville SC ◘ Major League Soccer ◘ ✨Eventos Diarios 17/10✨",
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_e27d94aa",
+      "agenda_id": "",
+      "titulo": "Arca Menards Series West",
+      "torneo": "Arca Menards Series West",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Phoenix Raceway",
+      "referencia": "Phoenix Raceway • Desert Diamond Casino West Valley 100",
+      "hora_utc": "2026-10-18T02:45:00Z",
+      "hora_local_producto": "21:45",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "FloRacing 12 | ARCA West at Phoenix | 10:45 PM ET | 10.17",
+          "id_xtream": "1731195"
+        }
+      ],
+      "texto_original_crudo": "FloRacing 12 | ARCA West at Phoenix | 10:45 PM ET | 10.17 MOTOR - EVENT -",
+      "titulo_original_crudo": "FloRacing 12 | ARCA West at Phoenix | 10:45 PM ET | 10.17 MOTOR - EVENT -",
+      "ronda": "Phoenix Raceway",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -11796,13 +12507,13 @@
       "id": "xtream_4b3c976c",
       "agenda_id": "",
       "titulo": "PFL Chicago",
-      "torneo": "PFL",
+      "torneo": "Professional Fighters League",
       "categoria": "Combate",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Cartelera Estelar",
-      "referencia": "Cartelera Estelar • Wintrust Arena • Chicago, Illinois",
+      "subtitulo": "Main Card",
+      "referencia": "Wintrust Arena • Cartelera Principal MMA",
       "hora_utc": "2026-10-18T03:00:00Z",
       "hora_local_producto": "22:00",
       "duracion_min": 135,
@@ -11831,7 +12542,7 @@
       ],
       "texto_original_crudo": "22:00 | En Español: PFL Chicago - Main Card | MMA ✮PPV PREMIUM✮",
       "titulo_original_crudo": "22:00 | En Español: PFL Chicago - Main Card | MMA ✮PPV PREMIUM✮",
-      "ronda": "Cartelera Estelar",
+      "ronda": "Main Card",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -11882,17 +12593,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-17",
-    "total_agenda_maestra": 82,
-    "total_canales_xtream": 2064,
+    "total_agenda_maestra": 70,
+    "total_canales_xtream": 2067,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 2889,
-    "eventos_lineales_inyectados": 58,
-    "eventos_xtream_aprobados": 253,
-    "eventos_contrastados_api": 147,
-    "eventos_sellados_boveda_inmutable": 231,
-    "eventos_descartados_stale": 73,
-    "total_eventos_publicados": 267,
-    "hora_actualizacion_utc": "2026-10-17T22:30:36Z"
+    "eventos_lineales_inyectados": 46,
+    "eventos_xtream_aprobados": 282,
+    "eventos_contrastados_api": 149,
+    "eventos_sellados_boveda_inmutable": 250,
+    "eventos_descartados_stale": 82,
+    "total_eventos_publicados": 280,
+    "hora_actualizacion_utc": "2026-10-18T03:29:06Z"
   }
 }
