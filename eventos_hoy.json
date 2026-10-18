@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-18T13:59:13Z",
+  "generado_utc": "2026-10-18T15:52:03Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-18",
   "base_media": "http://avefenixtv.com:8080",
@@ -8,14 +8,14 @@
     {
       "id": "lineal_dsports_2_e76a334a",
       "agenda_id": "",
-      "titulo": "Mundial de Ciclismo en Pista Shanghai",
-      "torneo": "UCI Track Cycling World Championships",
+      "titulo": "Campeonato Mundial de Ciclismo en Pista",
+      "torneo": "Mundial Ciclismo en Pista",
       "categoria": "Ciclismo",
       "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Sesión Final",
-      "referencia": "Sesión Final • Shanghai • Pruebas de medalla en pista UCI",
+      "equipo_local": "Campeonato Mundo Pista",
+      "equipo_visitante": "Shanghai 2026",
+      "subtitulo": "Velódromo de Ballerup",
+      "referencia": "Velódromo de Ballerup • Pruebas de Pista • Sesión Final",
       "hora_utc": "2026-10-18T05:25:00Z",
       "hora_local_producto": "00:25",
       "duracion_min": 240,
@@ -58,7 +58,7 @@
       ],
       "texto_original_crudo": "02:25 Campeonato Mundo Pista Shanghai 2026 DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
       "titulo_original_crudo": "02:25 Campeonato Mundo Pista Shanghai 2026 DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
-      "ronda": "Sesión Final",
+      "ronda": "Velódromo de Ballerup",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -71,8 +71,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Día Final",
-      "referencia": "Día Final • Shanghái • Ciclismo en Pista",
+      "subtitulo": "Shanghái",
+      "referencia": "UCI Track Cycling World Championships: Shanghái",
       "hora_utc": "2026-10-18T05:25:00Z",
       "hora_local_producto": "00:25",
       "duracion_min": 300,
@@ -109,28 +109,301 @@
       ],
       "texto_original_crudo": "UCI Track Cycling World Championships: Shanghái",
       "titulo_original_crudo": "UCI Track Cycling World Championships: Shanghái",
-      "ronda": "Día Final",
+      "ronda": "Shanghái",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_teledeporte_7f8865b0",
+      "agenda_id": "",
+      "titulo": "Mundial de Ciclismo en Pista",
+      "torneo": "Mundial de Ciclismo en Pista",
+      "categoria": "Ciclismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Sesión Vespertina",
+      "referencia": "Sesión Vespertina • Shanghai • Pista cubierta UCI",
+      "hora_utc": "2026-10-18T05:30:00Z",
+      "hora_local_producto": "00:30",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "rtve_teledeporte_oficial"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "TELEDEPORTES FHD",
+          "id_xtream": "327981",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "TELEDEPORTE"
+      ],
+      "texto_original_crudo": "CICLISMO EN PISTA CAMPEONATO DEL MUNDO SESIÓN VESPERTINA DESDE SHANGHAI (CHINA)",
+      "titulo_original_crudo": "CICLISMO EN PISTA CAMPEONATO DEL MUNDO SESIÓN VESPERTINA DESDE SHANGHAI (CHINA)",
+      "ronda": "Sesión Vespertina",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_eurosport_1_83341a2d",
+      "agenda_id": "",
+      "titulo": "Maratón de Ámsterdam",
+      "torneo": "TCS Amsterdam Marathon",
+      "categoria": "Atletismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Carrera Élite",
+      "referencia": "Carrera Élite • Ámsterdam • 42K World Athletics Platinum Label",
+      "hora_utc": "2026-10-18T06:45:00Z",
+      "hora_local_producto": "01:45",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "TCS Amsterdam Marathon",
+      "titulo_original_crudo": "TCS Amsterdam Marathon",
+      "ronda": "Carrera Élite",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_2_ar_3a1da7b8",
+      "agenda_id": "",
+      "titulo": "Rolex Shanghai Masters",
+      "torneo": "Rolex Shanghai Masters",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Final",
+      "referencia": "Final • Centre Court • Qizhong Forest Sports City Arena • Final ATP Masters 1000",
+      "hora_utc": "2026-10-18T08:30:00Z",
+      "hora_local_producto": "03:30",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_2_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARG | FHD",
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "Final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
+      "titulo_original_crudo": "Final, Qi Zhong Tennis Center, Shanghai, China. ATP World Tour Masters 1000 - Rolex Shanghai Masters. Disfruta de toda la acción del Rolex Shanghai Masters 2026, un torneo de tenis ATP Tour Masters 1000 que se disputa en pistas duras al aire libre en el Qizhong Forest Sports City Arena, en Shanghái, China",
+      "ronda": "Final",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_eurosport_2_f275013d",
+      "agenda_id": "",
+      "titulo": "FIA WEC: 6 Horas de Barcelona",
+      "torneo": "FIA WEC: 6 Horas de Barcelona",
+      "categoria": "Automovilismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Circuit de Barcelona",
+      "referencia": "Carrera de resistencia de 6 horas para hiperdeportivos y GTs",
+      "hora_utc": "2026-10-18T09:30:00Z",
+      "hora_local_producto": "04:30",
+      "duracion_min": 435,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 2 FHD",
+          "id_xtream": "327954",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "327964",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 2"
+      ],
+      "texto_original_crudo": "FIA World Endurance Championship: 6h de Barcelona",
+      "titulo_original_crudo": "FIA World Endurance Championship: 6h de Barcelona",
+      "ronda": "Circuit de Barcelona",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dsports_2_d4e279ac",
+      "agenda_id": "",
+      "titulo": "Juventus W vs Como 1907 W",
+      "torneo": "Serie a Femminile",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Juventus W",
+      "equipo_visitante": "Como 1907 W",
+      "subtitulo": "Serie a Femminile",
+      "referencia": "Stadio Pozzo-Lamarmora",
+      "hora_utc": "2026-10-18T10:30:00Z",
+      "hora_local_producto": "05:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1886.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F27960.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS 2",
+          "id_xtream": "592038",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "Fútbol Femenino: Juventus vs. Como en vivo por DSPORTS 2 Canal 612 / 1612",
+      "titulo_original_crudo": "Fútbol Femenino: Juventus vs. Como en vivo por DSPORTS 2 Canal 612 / 1612",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
       "id": "lineal_dsports_2_f23e0ec7",
       "agenda_id": "",
-      "titulo": "Juventus Femminile vs. Como Femminile",
-      "torneo": "Serie a Femminile",
+      "titulo": "Juventus Femenino vs. Como Femenino",
+      "torneo": "Serie a Femenina",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Juventus Femminile",
-      "equipo_visitante": "Como Femminile",
-      "subtitulo": "Serie a Femminile",
-      "referencia": "Allianz Training Center",
+      "equipo_local": "Juventus Femenino",
+      "equipo_visitante": "Como Femenino",
+      "subtitulo": "Serie a Femenina",
+      "referencia": "Juventus Training Center",
       "hora_utc": "2026-10-18T10:30:00Z",
       "hora_local_producto": "05:30",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuxf0gr1742983727.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F139.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1886.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F27960.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F139.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -167,7 +440,9 @@
       "texto_original_crudo": "07:30 Juventus Femminile Como Femminile DSports 2 (612/1612) Amazon Prime Video (Ver en vivo) Paramount+ DGO",
       "titulo_original_crudo": "07:30 Juventus Femminile Como Femminile DSports 2 (612/1612) Amazon Prime Video (Ver en vivo) Paramount+ DGO",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "contrastado_api": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_2_ar_76c02a49",
@@ -192,6 +467,7 @@
       "origenes": [
         "inyector_lineal",
         "futbolenvivo_ar",
+        "mitv_espn_ar",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -232,14 +508,14 @@
     {
       "id": "xtream_cb87e6fd",
       "agenda_id": "",
-      "titulo": "Maja Chwalinska vs. Sonay Kartal",
-      "torneo": "Wuhan Open",
+      "titulo": "Maja Chwalinska vs Sonay Kartal",
+      "torneo": "WTA",
       "categoria": "Tenis",
       "tipo_evento": "duelo",
       "equipo_local": "Maja Chwalinska",
       "equipo_visitante": "Sonay Kartal",
-      "subtitulo": "Wuhan Open",
-      "referencia": "Final",
+      "subtitulo": "WTA",
+      "referencia": "WTA",
       "hora_utc": "2026-10-18T10:30:00Z",
       "hora_local_producto": "05:30",
       "duracion_min": 240,
@@ -264,27 +540,26 @@
       ],
       "texto_original_crudo": "05:30 ◘ Maja Chwalinska vs. Sonay Kartal ◘ WTA ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "05:30 ◘ Maja Chwalinska vs. Sonay Kartal ◘ WTA ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "",
-      "auditado_agy": true
+      "ronda": ""
     },
     {
       "id": "xtream_5c55cd75",
       "agenda_id": "",
-      "titulo": "WorldSPB Jerez",
-      "torneo": "Superbike World Championship",
-      "categoria": "Motor",
+      "titulo": "World SSP 300",
+      "torneo": "World SSP 300",
+      "categoria": "Otros Deportes",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Carrera",
-      "referencia": "Circuito de Jerez • Carrera Sportbike 2",
+      "subtitulo": "Race",
+      "referencia": "Race • Superbike",
       "hora_utc": "2026-10-18T10:50:00Z",
       "hora_local_producto": "05:50",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe0%2FWorldSBK_logo.svg%2F512px-WorldSBK_logo.svg.png&w=400&output=webp&trim=10",
+      "logo_torneo": "",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe0%2FWorldSBK_logo.svg%2F512px-WorldSBK_logo.svg.png&w=400&output=webp&trim=10",
+      "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -302,9 +577,7 @@
       ],
       "texto_original_crudo": "05:50 ◘ World SSP 300 - Race 2 ◘ Superbike ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "05:50 ◘ World SSP 300 - Race 2 ◘ Superbike ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "Carrera",
-      "auditado_agy": true,
-      "curado_integro": true
+      "ronda": "Race"
     },
     {
       "id": "xtream_4099e724",
@@ -320,10 +593,10 @@
       "hora_utc": "2026-10-18T11:30:00Z",
       "hora_local_producto": "06:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F79.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F188.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1324.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F79.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -364,10 +637,10 @@
       "hora_utc": "2026-10-18T11:30:00Z",
       "hora_local_producto": "06:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F79.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F785.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F181.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F79.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -441,21 +714,21 @@
     {
       "id": "xtream_f280ab54",
       "agenda_id": "",
-      "titulo": "WorldSSP Jerez",
-      "torneo": "Superbike World Championship",
-      "categoria": "Motor",
+      "titulo": "World SSP",
+      "torneo": "World SSP",
+      "categoria": "Otros Deportes",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Carrera",
-      "referencia": "Circuito de Jerez • Carrera Supersport 2",
+      "subtitulo": "Race",
+      "referencia": "Race • Superbike",
       "hora_utc": "2026-10-18T11:45:00Z",
       "hora_local_producto": "06:45",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe0%2FWorldSBK_logo.svg%2F512px-WorldSBK_logo.svg.png&w=400&output=webp&trim=10",
+      "logo_torneo": "",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe0%2FWorldSBK_logo.svg%2F512px-WorldSBK_logo.svg.png&w=400&output=webp&trim=10",
+      "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -473,9 +746,7 @@
       ],
       "texto_original_crudo": "06:45 ◘ World SSP - Race 2 ◘ Superbike ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "06:45 ◘ World SSP - Race 2 ◘ Superbike ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "Carrera",
-      "auditado_agy": true,
-      "curado_integro": true
+      "ronda": "Race"
     },
     {
       "id": "lineal_espn_3_ar_e958b5d7",
@@ -487,7 +758,7 @@
       "equipo_local": "Osasuna",
       "equipo_visitante": "Racing Santander",
       "subtitulo": "LA Liga",
-      "referencia": "El Sadar",
+      "referencia": "Estadio el Sadar",
       "hora_utc": "2026-10-18T12:00:00Z",
       "hora_local_producto": "07:00",
       "duracion_min": 130,
@@ -500,6 +771,7 @@
       "origenes": [
         "inyector_lineal",
         "futbolenvivo_ar",
+        "mitv_espn_3_ar",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -582,7 +854,7 @@
       "agenda_id": "",
       "titulo": "SC Cambuur vs AZ",
       "torneo": "Eredivisie",
-      "categoria": "Otros Deportes",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "SC Cambuur",
       "equipo_visitante": "AZ",
@@ -591,10 +863,10 @@
       "hora_utc": "2026-10-18T12:20:00Z",
       "hora_local_producto": "07:20",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F88.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F420.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flzqhed1673938793.png&w=400&output=webp&trim=10",
-      "banner": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F88.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -616,48 +888,8 @@
       ],
       "texto_original_crudo": "07:20 ◘ SC Cambuur vs. AZ ◘ Eredivisie ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "07:20 ◘ SC Cambuur vs. AZ ◘ Eredivisie ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
-    },
-    {
-      "id": "xtream_08e318be",
-      "agenda_id": "",
-      "titulo": "Fipfa Powerchair Football World Cup",
-      "torneo": "Fipfa Powerchair Football World Cup",
-      "categoria": "Otros Deportes",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Cancha",
-      "referencia": "Cancha",
-      "hora_utc": "2026-10-18T12:50:00Z",
-      "hora_local_producto": "07:50",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "07:50 ◘ FIPFA Powerchair Football World Cup | Cancha #1 ◘ FIPFA Powerchair Football World Cup ◘◘",
-          "id_xtream": "1731354"
-        },
-        {
-          "nombre": "07:50 ◘ FIPFA Powerchair Football World Cup | Cancha #2 ◘ FIPFA Powerchair Football World Cup ◘◘",
-          "id_xtream": "1731355"
-        }
-      ],
-      "texto_original_crudo": "07:50 ◘ FIPFA Powerchair Football World Cup | Cancha #1 ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "07:50 ◘ FIPFA Powerchair Football World Cup | Cancha #1 ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "Cancha"
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_2_ar_44ccddd2",
@@ -669,7 +901,7 @@
       "equipo_local": "Brighton",
       "equipo_visitante": "Crystal Palace",
       "subtitulo": "Premier League",
-      "referencia": "Amex Stadium",
+      "referencia": "Falmer Stadium",
       "hora_utc": "2026-10-18T13:00:00Z",
       "hora_local_producto": "08:00",
       "duracion_min": 130,
@@ -713,6 +945,66 @@
       ],
       "texto_original_crudo": "10:00 Brighton Crystal Palace Disney+ Premium ESPN 2",
       "titulo_original_crudo": "10:00 Brighton Crystal Palace Disney+ Premium ESPN 2",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_2_ar_35f0c286",
+      "agenda_id": "",
+      "titulo": "Fiorentina vs Como",
+      "torneo": "Fiorentina vs. Como",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Fiorentina",
+      "equipo_visitante": "Como",
+      "subtitulo": "Fiorentina vs. Como",
+      "referencia": "Stadio Artemio Franchi",
+      "hora_utc": "2026-10-18T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F502.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F895.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_2_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARG | FHD",
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "Fiorentina vs. Como. Fecha 7, Stadio Artemio Franchi. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
+      "titulo_original_crudo": "Fiorentina vs. Como. Fecha 7, Stadio Artemio Franchi. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -906,58 +1198,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_0c21742d",
-      "agenda_id": "",
-      "titulo": "Fiorentina vs Como",
-      "torneo": "Serie a",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Fiorentina",
-      "equipo_visitante": "Como",
-      "subtitulo": "Serie a",
-      "referencia": "Serie a",
-      "hora_utc": "2026-10-18T13:00:00Z",
-      "hora_local_producto": "08:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F502.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F895.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "08:00 ◘ Fiorentina vs. Como ◘ Serie A ◘",
-          "id_xtream": "1731360"
-        },
-        {
-          "nombre": "07:30 | En Español: Fiorentina vs. Como | Serie A",
-          "id_xtream": "1731507"
-        },
-        {
-          "nombre": "07:45 | English: Fiorentina vs. Como | Serie A",
-          "id_xtream": "1731509"
-        },
-        {
-          "nombre": "07:50 | Fiorentina vs. Como | Serie A",
-          "id_xtream": "1731512"
-        }
-      ],
-      "texto_original_crudo": "08:00 ◘ Fiorentina vs. Como ◘ Serie A ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "08:00 ◘ Fiorentina vs. Como ◘ Serie A ◘ ✨Eventos Diarios 18/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
       "id": "xtream_1c47565b",
       "agenda_id": "",
       "titulo": "Leeds vs Manchester United",
@@ -1015,10 +1255,10 @@
       "hora_utc": "2026-10-18T13:30:00Z",
       "hora_local_producto": "08:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F78.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F168.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F160.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F78.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -1094,6 +1334,114 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_1_2ba0d9b7",
+      "agenda_id": "",
+      "titulo": "Veneto Classic",
+      "torneo": "Veneto Classic",
+      "categoria": "Ciclismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Prueba Masculina",
+      "referencia": "Prueba Masculina • Véneto • UCI ProSeries",
+      "hora_utc": "2026-10-18T13:45:00Z",
+      "hora_local_producto": "08:45",
+      "duracion_min": 90,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Veneto Classic: Masculino",
+      "titulo_original_crudo": "Veneto Classic: Masculino",
+      "ronda": "Prueba Masculina",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_teledeporte_1617a963",
+      "agenda_id": "",
+      "titulo": "SD Eibar vs. Deportivo Abanca",
+      "torneo": "Liga F",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "SD Eibar",
+      "equipo_visitante": "Deportivo Abanca",
+      "subtitulo": "Liga F • 7ª Jornada",
+      "referencia": "Jornada",
+      "hora_utc": "2026-10-18T13:55:00Z",
+      "hora_local_producto": "08:55",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_f.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fhccive1680933599.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_f.png",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_f.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "rtve_teledeporte_oficial"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "TELEDEPORTES FHD",
+          "id_xtream": "327981",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "TELEDEPORTE"
+      ],
+      "texto_original_crudo": "FÚTBOL LIGA F MOEVE 7ª JORNADA SD EIBAR – DEPORTIVO ABANCA DESDE EIBAR",
+      "titulo_original_crudo": "FÚTBOL LIGA F MOEVE 7ª JORNADA SD EIBAR – DEPORTIVO ABANCA DESDE EIBAR",
+      "ronda": "7ª Jornada",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_tyc_sports_87a2a8bb",
       "agenda_id": "",
       "titulo": "San Lorenzo vs. Oberá TC",
@@ -1103,7 +1451,7 @@
       "equipo_local": "San Lorenzo",
       "equipo_visitante": "Oberá TC",
       "subtitulo": "Liga Nacional de Básquet",
-      "referencia": "Fase Regular",
+      "referencia": "Polideportivo Pando",
       "hora_utc": "2026-10-18T14:05:00Z",
       "hora_local_producto": "09:05",
       "duracion_min": 130,
@@ -1115,7 +1463,8 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "futbolenvivo_ar"
+        "futbolenvivo_ar",
+        "mitv_tyc_sports"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1155,7 +1504,7 @@
       "equipo_local": "Celta de Vigo",
       "equipo_visitante": "Deportivo Alavés",
       "subtitulo": "LaLiga",
-      "referencia": "Jornada",
+      "referencia": "Estadio de Balaídos",
       "hora_utc": "2026-10-18T14:15:00Z",
       "hora_local_producto": "09:15",
       "duracion_min": 130,
@@ -1256,7 +1605,7 @@
       "agenda_id": "",
       "titulo": "Argentina vs Bélgica",
       "torneo": "Fipfa Powerchair Football World Cup",
-      "categoria": "Otros Deportes",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Argentina",
       "equipo_visitante": "Bélgica",
@@ -1265,10 +1614,10 @@
       "hora_utc": "2026-10-18T14:20:00Z",
       "hora_local_producto": "09:20",
       "duracion_min": 130,
-      "logo_torneo": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
       "logo_local": "https://flagcdn.com/256x192/ar.png",
       "logo_visitante": "https://flagcdn.com/256x192/be.png",
-      "banner": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -1286,7 +1635,8 @@
       ],
       "texto_original_crudo": "09:20 ◘ Argentina vs. Bélgica ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "09:20 ◘ Argentina vs. Bélgica ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_0e72b516",
@@ -1298,7 +1648,7 @@
       "equipo_local": "Groningen",
       "equipo_visitante": "Ajax",
       "subtitulo": "Eredivisie",
-      "referencia": "Eredivisie",
+      "referencia": "Euroborg",
       "hora_utc": "2026-10-18T14:45:00Z",
       "hora_local_producto": "09:45",
       "duracion_min": 130,
@@ -1330,6 +1680,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1399,8 +1750,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Sesión Vespertina",
-      "referencia": "Sesión Vespertina • Waterfront Hall • Cuadro Principal",
+      "subtitulo": "Ronda",
+      "referencia": "Ronda • Waterfront Hall • World Snooker Tour",
       "hora_utc": "2026-10-18T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 240,
@@ -1437,7 +1788,7 @@
       ],
       "texto_original_crudo": "Northern Ireland Open",
       "titulo_original_crudo": "Northern Ireland Open",
-      "ronda": "Sesión Vespertina",
+      "ronda": "Ronda",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -1451,7 +1802,7 @@
       "equipo_local": "Le Havre",
       "equipo_visitante": "Auxerre",
       "subtitulo": "Ligue",
-      "referencia": "Ligue",
+      "referencia": "Stade Océane",
       "hora_utc": "2026-10-18T15:15:00Z",
       "hora_local_producto": "10:15",
       "duracion_min": 130,
@@ -1491,6 +1842,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1503,7 +1855,7 @@
       "equipo_local": "Lorient",
       "equipo_visitante": "Monaco",
       "subtitulo": "Ligue",
-      "referencia": "Ligue",
+      "referencia": "Stade du Moustoir",
       "hora_utc": "2026-10-18T15:15:00Z",
       "hora_local_producto": "10:15",
       "duracion_min": 130,
@@ -1543,6 +1895,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1555,7 +1908,7 @@
       "equipo_local": "Paris FC",
       "equipo_visitante": "Rennes",
       "subtitulo": "Ligue",
-      "referencia": "Ligue",
+      "referencia": "Stade Charléty",
       "hora_utc": "2026-10-18T15:15:00Z",
       "hora_local_producto": "10:15",
       "duracion_min": 130,
@@ -1595,6 +1948,124 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sportsplus_9f0ba6a0",
+      "agenda_id": "",
+      "titulo": "Alianza Valledupar vs. Junior",
+      "torneo": "Súper Copa Juvenil FCF",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Alianza Valledupar",
+      "equipo_visitante": "Junior",
+      "subtitulo": "Súper Copa Juvenil FCF",
+      "referencia": "Cuartos de Final (Ida)",
+      "hora_utc": "2026-10-18T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fefldut1715066310.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F447.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_win_sportsplus"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS+ FHD",
+          "id_xtream": "1331807",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+"
+      ],
+      "texto_original_crudo": "Alianza Valledupar vs. Junior FC. Cuartos de final, Ida. Vive toda la emoción de los partidos de fútbol que son parte de la Súper Copa Juvenil en su edición del 2026. Disfruta de los enfrentamientos entre los equipos que participan del torneo base más importante de Colombia",
+      "titulo_original_crudo": "Alianza Valledupar vs. Junior FC. Cuartos de final, Ida. Vive toda la emoción de los partidos de fútbol que son parte de la Súper Copa Juvenil en su edición del 2026. Disfruta de los enfrentamientos entre los equipos que participan del torneo base más importante de Colombia",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_2_ar_9d1592bd",
+      "agenda_id": "",
+      "titulo": "Nottingham Forest vs Arsenal",
+      "torneo": "Nottingham Forest vs. Arsenal",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nottingham Forest",
+      "equipo_visitante": "Arsenal",
+      "subtitulo": "Nottingham Forest vs. Arsenal",
+      "referencia": "City Ground",
+      "hora_utc": "2026-10-18T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F65.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F42.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_2_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARG | FHD",
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "Nottingham Forest vs. Arsenal. Fecha 7, City Ground. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
+      "titulo_original_crudo": "Nottingham Forest vs. Arsenal. Fecha 7, City Ground. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1607,14 +2078,14 @@
       "equipo_local": "Borussia Mönchengladbach",
       "equipo_visitante": "1899 Hoffenheim",
       "subtitulo": "Bundesliga",
-      "referencia": "Bundesliga",
+      "referencia": "Borussia-Park",
       "hora_utc": "2026-10-18T15:30:00Z",
       "hora_local_producto": "10:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F78.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F163.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F167.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F78.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -1643,6 +2114,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1655,7 +2127,7 @@
       "equipo_local": "Curico Unido",
       "equipo_visitante": "Deportes Iquique",
       "subtitulo": "Primera B Chile",
-      "referencia": "Primera B Chile",
+      "referencia": "Estadio LA Granja",
       "hora_utc": "2026-10-18T15:30:00Z",
       "hora_local_producto": "10:30",
       "duracion_min": 130,
@@ -1682,55 +2154,8 @@
       "titulo_original_crudo": "10:30 ◘ Curicó Unido vs. Deportes Iquique ◘ Primera B Chile ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
-    },
-    {
-      "id": "xtream_750ca707",
-      "agenda_id": "",
-      "titulo": "Nottingham Forest vs Arsenal",
-      "torneo": "Premier League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Nottingham Forest",
-      "equipo_visitante": "Arsenal",
-      "subtitulo": "Premier League",
-      "referencia": "Premier League",
-      "hora_utc": "2026-10-18T15:30:00Z",
-      "hora_local_producto": "10:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F65.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F42.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
-      "tier": 1,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "10:30 ◘ Nottingham Forest vs. Arsenal ◘ Premier League ◘◘",
-          "id_xtream": "1731375"
-        },
-        {
-          "nombre": "10:20 | Nottingham Forest vs. Arsenal | Premier League",
-          "id_xtream": "1731538"
-        },
-        {
-          "nombre": "10:30 | Nottingham Forest vs. Arsenal | Premier League",
-          "id_xtream": "1731539"
-        }
-      ],
-      "texto_original_crudo": "10:30 ◘ Nottingham Forest vs. Arsenal ◘ Premier League ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "10:30 ◘ Nottingham Forest vs. Arsenal ◘ Premier League ◘◘ ✨Eventos Diarios 18/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
+      "auditado_agy": true
     },
     {
       "id": "xtream_356bceed",
@@ -1742,7 +2167,7 @@
       "equipo_local": "Union San Felipe",
       "equipo_visitante": "Deportes Temuco",
       "subtitulo": "Primera B Chile",
-      "referencia": "Primera B Chile",
+      "referencia": "Estadio Javier Muñoz D.",
       "hora_utc": "2026-10-18T15:30:00Z",
       "hora_local_producto": "10:30",
       "duracion_min": 130,
@@ -1769,19 +2194,20 @@
       "titulo_original_crudo": "10:30 ◘ Unión San Felipe vs. Deportes Temuco ◘ Primera B Chile ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_0dd78dde",
       "agenda_id": "",
-      "titulo": "Las Monjitas vs Hiper",
+      "titulo": "Las Monjitas vs. Hípico Polo Club",
       "torneo": "Abierto de Tortugas",
       "categoria": "Polo",
       "tipo_evento": "duelo",
       "equipo_local": "Las Monjitas",
-      "equipo_visitante": "Hiper",
+      "equipo_visitante": "Hípico Polo Club",
       "subtitulo": "Abierto de Tortugas",
-      "referencia": "Abierto de Tortugas",
+      "referencia": "Cancha Tortugas",
       "hora_utc": "2026-10-18T15:55:00Z",
       "hora_local_producto": "10:55",
       "duracion_min": 130,
@@ -1806,7 +2232,8 @@
       ],
       "texto_original_crudo": "10:55 ◘ Las Monjitas vs. Hiper Polo Club ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "10:55 ◘ Las Monjitas vs. Hiper Polo Club ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_2_ar_dc91b262",
@@ -1831,6 +2258,7 @@
       "origenes": [
         "inyector_lineal",
         "futbolenvivo_ar",
+        "mitv_espn_ar",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -1878,7 +2306,7 @@
       "equipo_local": "Başakşehir",
       "equipo_visitante": "Gaziantep FK",
       "subtitulo": "Süper Lig",
-      "referencia": "Süper Lig",
+      "referencia": "Başakşehir Fatih Terim",
       "hora_utc": "2026-10-18T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -1910,44 +2338,8 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_54a39317",
-      "agenda_id": "",
-      "titulo": "Middle Tennessee vs Delaware",
-      "torneo": "NCAA Women's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Middle Tennessee",
-      "equipo_visitante": "Delaware",
-      "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
-      "hora_utc": "2026-10-18T16:00:00Z",
-      "hora_local_producto": "11:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fdfwimk1564356605.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:00 ◘ Middle Tennessee vs. Delaware ◘ NCAA Women's Soccer ◘◘",
-          "id_xtream": "1731379"
-        }
-      ],
-      "texto_original_crudo": "11:00 ◘ Middle Tennessee vs. Delaware ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "11:00 ◘ Middle Tennessee vs. Delaware ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
     },
     {
       "id": "xtream_5ff539c7",
@@ -1959,7 +2351,7 @@
       "equipo_local": "Sporting Cristal",
       "equipo_visitante": "Comerciantes Unidos",
       "subtitulo": "Liga Max",
-      "referencia": "Liga Max",
+      "referencia": "Estadio Alberto Gallardo",
       "hora_utc": "2026-10-18T16:00:00Z",
       "hora_local_producto": "11:00",
       "duracion_min": 130,
@@ -1986,398 +2378,8 @@
       "titulo_original_crudo": "11:00 ◘ Sporting Cristal vs. Comerciantes Unidos ◘ Liga Max ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
-    },
-    {
-      "id": "xtream_a69fb338",
-      "agenda_id": "",
-      "titulo": "Umbc vs UMass Lowell",
-      "torneo": "NCAA Women's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Umbc",
-      "equipo_visitante": "UMass Lowell",
-      "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
-      "hora_utc": "2026-10-18T16:00:00Z",
-      "hora_local_producto": "11:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2r21y11721382926.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:00 ◘ UMBC vs. UMass Lowell ◘ NCAA Women's Soccer ◘◘",
-          "id_xtream": "1731382"
-        }
-      ],
-      "texto_original_crudo": "11:00 ◘ UMBC vs. UMass Lowell ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "11:00 ◘ UMBC vs. UMass Lowell ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
-    },
-    {
-      "id": "xtream_00c505b3",
-      "agenda_id": "",
-      "titulo": "Girona vs FC Andorra",
-      "torneo": "Liga Hypermotio",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Girona",
-      "equipo_visitante": "FC Andorra",
-      "subtitulo": "Liga Hypermotio",
-      "referencia": "Liga Hypermotio",
-      "hora_utc": "2026-10-18T16:30:00Z",
-      "hora_local_producto": "11:30",
-      "duracion_min": 300,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F547.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F8157.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:30 ◘ Girona vs. FC Andorra ◘ Liga Hypermotio ◘",
-          "id_xtream": "1731383"
-        },
-        {
-          "nombre": "11:20 | English: Girona FC vs. FC Andorra |",
-          "id_xtream": "1731545"
-        },
-        {
-          "nombre": "11:20 | En Español: Girona FC vs. FC Andorra |",
-          "id_xtream": "1731546"
-        }
-      ],
-      "texto_original_crudo": "11:30 ◘ Girona vs. FC Andorra ◘ Liga Hypermotio ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "11:30 ◘ Girona vs. FC Andorra ◘ Liga Hypermotio ◘ ✨Eventos Diarios 18/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_fc0e9c53",
-      "agenda_id": "",
-      "titulo": "Malaga vs Real Sociedad",
-      "torneo": "LaLiga",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Malaga",
-      "equipo_visitante": "Real Sociedad",
-      "subtitulo": "LaLiga",
-      "referencia": "LaLiga",
-      "hora_utc": "2026-10-18T16:30:00Z",
-      "hora_local_producto": "11:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F535.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F548.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
-      "tier": 1,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:30 ◘ Málaga vs. Real Sociedad ◘ LaLiga ◘",
-          "id_xtream": "1731384"
-        },
-        {
-          "nombre": "11:30 ◘ Málaga vs. Real Sociedad ◘ LaLiga ◘ SD",
-          "id_xtream": "1731385"
-        },
-        {
-          "nombre": "11:20 | English: Malaga CF vs. Real Sociedad |",
-          "id_xtream": "1731544"
-        },
-        {
-          "nombre": "11:30 | En Español: Malaga CF vs. Real Sociedad |",
-          "id_xtream": "1731549"
-        }
-      ],
-      "texto_original_crudo": "11:30 ◘ Málaga vs. Real Sociedad ◘ LaLiga ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "11:30 ◘ Málaga vs. Real Sociedad ◘ LaLiga ◘ ✨Eventos Diarios 18/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_f6eff66a",
-      "agenda_id": "",
-      "titulo": "Valladolid vs Eldense",
-      "torneo": "Liga Hypermotio",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Valladolid",
-      "equipo_visitante": "Eldense",
-      "subtitulo": "Liga Hypermotio",
-      "referencia": "Liga Hypermotio",
-      "hora_utc": "2026-10-18T16:30:00Z",
-      "hora_local_producto": "11:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F720.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9692.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:30 ◘ Real Valladolid vs. Eldense ◘ Liga Hypermotio ◘",
-          "id_xtream": "1731386"
-        },
-        {
-          "nombre": "11:20 | English: Valladolid vs. Eldense |",
-          "id_xtream": "1731547"
-        },
-        {
-          "nombre": "11:20 | En Español: Valladolid vs. Eldense |",
-          "id_xtream": "1731548"
-        }
-      ],
-      "texto_original_crudo": "11:30 ◘ Real Valladolid vs. Eldense ◘ Liga Hypermotio ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "11:30 ◘ Real Valladolid vs. Eldense ◘ Liga Hypermotio ◘ ✨Eventos Diarios 18/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_4fb6c116",
-      "agenda_id": "",
-      "titulo": "Plaza Colonia vs River Plate Uruguay",
-      "torneo": "Segunda Uruguay",
-      "categoria": "Otros Deportes",
-      "tipo_evento": "duelo",
-      "equipo_local": "Plaza Colonia",
-      "equipo_visitante": "River Plate Uruguay",
-      "subtitulo": "Segunda Uruguay",
-      "referencia": "Segunda Uruguay",
-      "hora_utc": "2026-10-18T16:45:00Z",
-      "hora_local_producto": "11:45",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11:45 ◘ Plaza Colonia vs. River Plate Uruguay ◘ Segunda Uruguay ◘◘",
-          "id_xtream": "1731387"
-        },
-        {
-          "nombre": "11:45 | Plaza Colonia vs. River Plate Uruguay | Segunda División de Uruguay",
-          "id_xtream": "1731550"
-        }
-      ],
-      "texto_original_crudo": "11:45 ◘ Plaza Colonia vs. River Plate Uruguay ◘ Segunda Uruguay ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "11:45 ◘ Plaza Colonia vs. River Plate Uruguay ◘ Segunda Uruguay ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
-    },
-    {
-      "id": "lineal_eurosport_1_803ed8d8",
-      "agenda_id": "",
-      "titulo": "Northern Ireland Open",
-      "torneo": "Northern Ireland Open",
-      "categoria": "Snooker",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Mesa Principal",
-      "referencia": "Mesa Principal • Waterfront Hall • Jornada Inaugural",
-      "hora_utc": "2026-10-18T17:00:00Z",
-      "hora_local_producto": "12:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mundodeportivo_eurosport_1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "EUROSPORT 1"
-      ],
-      "texto_original_crudo": "Northern Ireland Open",
-      "titulo_original_crudo": "Northern Ireland Open",
-      "ronda": "Mesa Principal",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_753679b1",
-      "agenda_id": "",
-      "titulo": "24 Florida State vs Pittsburgh",
-      "torneo": "NCAA Women's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "24 Florida State",
-      "equipo_visitante": "Pittsburgh",
-      "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
-      "hora_utc": "2026-10-18T17:00:00Z",
-      "hora_local_producto": "12:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx3hydm1568478796.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "12:00 ◘ #24 Florida State vs. Pittsburgh ◘ NCAA Women's Soccer ◘◘",
-          "id_xtream": "1731388"
-        }
-      ],
-      "texto_original_crudo": "12:00 ◘ #24 Florida State vs. Pittsburgh ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "12:00 ◘ #24 Florida State vs. Pittsburgh ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
-    },
-    {
-      "id": "xtream_41486fc2",
-      "agenda_id": "",
-      "titulo": "American University vs Boston University",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "American University",
-      "equipo_visitante": "Boston University",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
-      "hora_utc": "2026-10-18T17:00:00Z",
-      "hora_local_producto": "12:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fj4tzaz1580997179.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fg7dbgv1720291161.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "12:00 ◘ American University vs. Boston University ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1731389"
-        }
-      ],
-      "texto_original_crudo": "12:00 ◘ American University vs. Boston University ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "12:00 ◘ American University vs. Boston University ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_9a063897",
-      "agenda_id": "",
-      "titulo": "Ball State vs. Toledo",
-      "torneo": "NCAA Women's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Ball State",
-      "equipo_visitante": "Toledo",
-      "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
-      "hora_utc": "2026-10-18T17:00:00Z",
-      "hora_local_producto": "12:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvvm4051564335560.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9908.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "12:00 ◘ Ball State vs. Toledo ◘ NCAA Women's Soccer ◘◘",
-          "id_xtream": "1731391"
-        }
-      ],
-      "texto_original_crudo": "12:00 ◘ Ball State vs. Toledo ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "12:00 ◘ Ball State vs. Toledo ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
+      "auditado_agy": true
     },
     {
       "id": "xtream_419d633d",
@@ -2422,14 +2424,14 @@
     {
       "id": "xtream_22764f20",
       "agenda_id": "",
-      "titulo": "Buffalo vs. Akron",
+      "titulo": "Buffalo vs Akron",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Buffalo",
       "equipo_visitante": "Akron",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "NCAA Women's Soccer",
       "hora_utc": "2026-10-18T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -2455,7 +2457,6 @@
       "texto_original_crudo": "12:00 ◘ Buffalo vs. Akron ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "12:00 ◘ Buffalo vs. Akron ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -2588,14 +2589,14 @@
     {
       "id": "xtream_d60f1c9b",
       "agenda_id": "",
-      "titulo": "Eastern Michigan vs. Ohio",
+      "titulo": "Eastern Michigan vs Ohio",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Eastern Michigan",
       "equipo_visitante": "Ohio",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "NCAA Women's Soccer",
       "hora_utc": "2026-10-18T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -2621,20 +2622,19 @@
       "texto_original_crudo": "12:00 ◘ Eastern Michigan vs. Ohio ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "12:00 ◘ Eastern Michigan vs. Ohio ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
       "id": "xtream_ec95b428",
       "agenda_id": "",
-      "titulo": "Georgia Southern vs. Old Dominion",
+      "titulo": "Georgia Southern vs Old Dominion",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Georgia Southern",
       "equipo_visitante": "Old Dominion",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "NCAA Women's Soccer",
       "hora_utc": "2026-10-18T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -2659,8 +2659,7 @@
       ],
       "texto_original_crudo": "12:00 ◘ Georgia Southern vs. Old Dominion ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "12:00 ◘ Georgia Southern vs. Old Dominion ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "",
-      "auditado_agy": true
+      "ronda": ""
     },
     {
       "id": "xtream_fac3a9f7",
@@ -2705,14 +2704,14 @@
     {
       "id": "xtream_4dc5a428",
       "agenda_id": "",
-      "titulo": "Miami vs. Massachusetts",
+      "titulo": "Miami vs Massachusetts",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Miami",
       "equipo_visitante": "Massachusetts",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "NCAA Women's Soccer",
       "hora_utc": "2026-10-18T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -2738,7 +2737,6 @@
       "texto_original_crudo": "12:00 ◘ Miami vs. Massachusetts ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "12:00 ◘ Miami vs. Massachusetts ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -2904,14 +2902,14 @@
     {
       "id": "xtream_2eae6c27",
       "agenda_id": "",
-      "titulo": "Western Kentucky vs. Florida International",
+      "titulo": "Western Kentucky vs Florida International",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Western Kentucky",
       "equipo_visitante": "Florida International",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "NCAA Women's Soccer",
       "hora_utc": "2026-10-18T17:00:00Z",
       "hora_local_producto": "12:00",
       "duracion_min": 130,
@@ -2937,8 +2935,63 @@
       "texto_original_crudo": "12:00 ◘ Western Kentucky vs. Florida International ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "12:00 ◘ Western Kentucky vs. Florida International ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sportsplus_dc79088b",
+      "agenda_id": "",
+      "titulo": "Universidad Sergio Arboleda vs. Icsin",
+      "torneo": "Liga BetPlay Fútsal FCF",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Universidad Sergio Arboleda",
+      "equipo_visitante": "Icsin",
+      "subtitulo": "Liga BetPlay Fútsal FCF",
+      "referencia": "Cuartos de Final",
+      "hora_utc": "2026-10-18T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 90,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_win_sportsplus"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS+ FHD",
+          "id_xtream": "1331807",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+"
+      ],
+      "texto_original_crudo": "U. Sergio Arboleda vs. Icsin. Cuartos de final, Vuelta. Vive lo más emocionante de los partidos de la Copa LFN de Futsal en su edición 2026. A través del espacio, el público podrá disfrutar del talento y la destreza de los jugadores más destacados a nivel nacional",
+      "titulo_original_crudo": "U. Sergio Arboleda vs. Icsin. Cuartos de final, Vuelta. Vive lo más emocionante de los partidos de la Copa LFN de Futsal en su edición 2026. A través del espacio, el público podrá disfrutar del talento y la destreza de los jugadores más destacados a nivel nacional",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_aee65e2e",
@@ -2950,7 +3003,7 @@
       "equipo_local": "Aurora",
       "equipo_visitante": "Deportivo San Pedro",
       "subtitulo": "Liga Guatemala",
-      "referencia": "Liga Guatemala",
+      "referencia": "Estadio del Ejército",
       "hora_utc": "2026-10-18T17:30:00Z",
       "hora_local_producto": "12:30",
       "duracion_min": 130,
@@ -2978,6 +3031,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -2990,7 +3044,7 @@
       "equipo_local": "Racing Club",
       "equipo_visitante": "Independiente",
       "subtitulo": "Liga Profesional de Fútbol",
-      "referencia": "Fecha",
+      "referencia": "Clásico de Avellaneda",
       "hora_utc": "2026-10-18T17:45:00Z",
       "hora_local_producto": "12:45",
       "duracion_min": 130,
@@ -3109,6 +3163,57 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_1_04be7cac",
+      "agenda_id": "",
+      "titulo": "Northern Ireland Open",
+      "torneo": "Northern Ireland Open",
+      "categoria": "Snooker",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Sesión de Tarde",
+      "referencia": "Sesión de Tarde • Waterfront Hall • World Snooker Tour",
+      "hora_utc": "2026-10-18T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Northern Ireland Open",
+      "titulo_original_crudo": "Northern Ireland Open",
+      "ronda": "Sesión de Tarde",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_fdf76005",
       "agenda_id": "",
       "titulo": "Danubio vs Central Espanol",
@@ -3155,19 +3260,19 @@
     {
       "id": "xtream_219683e0",
       "agenda_id": "",
-      "titulo": "Leones Negros UdeG vs. Alebrijes de Oaxaca",
+      "titulo": "Leones Negros UdeG vs Alebrijes de Oaxaca",
       "torneo": "Liga de Expansión MX",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Leones Negros UdeG",
       "equipo_visitante": "Alebrijes de Oaxaca",
       "subtitulo": "Liga de Expansión MX",
-      "referencia": "Estadio Jalisco",
+      "referencia": "Liga de Expansión MX",
       "hora_utc": "2026-10-18T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_expansion_mx.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fywysws1426824667.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1143.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxkxjzy1754018543.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_expansion_mx.png",
       "tier": 2,
@@ -3188,20 +3293,19 @@
       "texto_original_crudo": "13:00 ◘ Leones Negros UdeG vs. Alebrijes de Oaxaca ◘ Liga de Expansión MX ◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "13:00 ◘ Leones Negros UdeG vs. Alebrijes de Oaxaca ◘ Liga de Expansión MX ◘ ✨Eventos Diarios 18/10✨",
       "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
       "id": "xtream_573565c4",
       "agenda_id": "",
-      "titulo": "Maine vs. New Hampshire",
+      "titulo": "Maine vs New Hampshire",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Maine",
       "equipo_visitante": "New Hampshire",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "NCAA Women's Soccer",
       "hora_utc": "2026-10-18T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -3226,8 +3330,7 @@
       ],
       "texto_original_crudo": "13:00 ◘ Maine vs. New Hampshire ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "13:00 ◘ Maine vs. New Hampshire ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "",
-      "auditado_agy": true
+      "ronda": ""
     },
     {
       "id": "xtream_d877b838",
@@ -3395,14 +3498,14 @@
     {
       "id": "xtream_e4c5e389",
       "agenda_id": "",
-      "titulo": "Vermont vs. Njit",
+      "titulo": "Vermont vs Njit",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Vermont",
       "equipo_visitante": "Njit",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Fase Regular",
+      "referencia": "NCAA Women's Soccer",
       "hora_utc": "2026-10-18T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -3427,8 +3530,48 @@
       ],
       "texto_original_crudo": "13:00 ◘ Vermont vs. NJIT ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "13:00 ◘ Vermont vs. NJIT ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
+      "ronda": ""
+    },
+    {
+      "id": "xtream_c2917084",
+      "agenda_id": "",
+      "titulo": "Deportivo Moron vs Atletico Mitre",
+      "torneo": "Sun-18 Fecha",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Moron",
+      "equipo_visitante": "Atletico Mitre",
+      "subtitulo": "Sun-18 Fecha",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-18T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F469.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F466.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "  -J001: 1ra Nacional: Dep. Morón vs. Mitre (sde) | 15:00 SUN 10-18 Fecha 34",
+          "id_xtream": "1731618"
+        }
+      ],
+      "texto_original_crudo": "-J001: 1ra Nacional: Dep. Morón vs. Mitre (sde) | 15:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J001: 1ra Nacional: Dep. Morón vs. Mitre (sde) | 15:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_aebf7ce1",
@@ -3472,14 +3615,14 @@
     {
       "id": "xtream_e14aec06",
       "agenda_id": "",
-      "titulo": "Pomona-Pitzer vs. MIT",
-      "torneo": "NCAA Men's Water Polo",
+      "titulo": "Pitzer vs MIT",
+      "torneo": "NCAA",
       "categoria": "Polo",
       "tipo_evento": "duelo",
-      "equipo_local": "Pomona-Pitzer",
+      "equipo_local": "Pitzer",
       "equipo_visitante": "MIT",
-      "subtitulo": "NCAA Men's Water Polo",
-      "referencia": "Fase Regular",
+      "subtitulo": "NCAA",
+      "referencia": "Pomona",
       "hora_utc": "2026-10-18T18:30:00Z",
       "hora_local_producto": "13:30",
       "duracion_min": 130,
@@ -3504,8 +3647,48 @@
       ],
       "texto_original_crudo": "13:30 ◘ Pomona-Pitzer vs. MIT ◘ NCAA Men's Water Polo ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "13:30 ◘ Pomona-Pitzer vs. MIT ◘ NCAA Men's Water Polo ◘◘ ✨Eventos Diarios 18/10✨",
+      "ronda": ""
+    },
+    {
+      "id": "xtream_9a19dfcf",
+      "agenda_id": "",
+      "titulo": "Los Andes vs All Boys",
+      "torneo": "Sun-18 Fecha",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Los Andes",
+      "equipo_visitante": "All Boys",
+      "subtitulo": "Sun-18 Fecha",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-18T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F483.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F464.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "-J002: 1ra Nacional: Los Andes vs. All Boys | 15:30 SUN 10-18 Fecha 34",
+          "id_xtream": "1731619"
+        }
+      ],
+      "texto_original_crudo": "-J002: 1ra Nacional: Los Andes vs. All Boys | 15:30 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J002: 1ra Nacional: Los Andes vs. All Boys | 15:30 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_3_ar_d637a3fe",
@@ -3581,10 +3764,10 @@
       "hora_utc": "2026-10-18T18:45:00Z",
       "hora_local_producto": "13:45",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F496.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F487.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -3624,7 +3807,7 @@
       "agenda_id": "",
       "titulo": "Inglaterra vs Argentina",
       "torneo": "Fipfa Powerchair Football World Cup",
-      "categoria": "Otros Deportes",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Inglaterra",
       "equipo_visitante": "Argentina",
@@ -3633,10 +3816,10 @@
       "hora_utc": "2026-10-18T18:50:00Z",
       "hora_local_producto": "13:50",
       "duracion_min": 130,
-      "logo_torneo": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
       "logo_local": "https://flagcdn.com/256x192/gb-eng.png",
       "logo_visitante": "https://flagcdn.com/256x192/ar.png",
-      "banner": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -3654,7 +3837,8 @@
       ],
       "texto_original_crudo": "13:50 ◘ Inglaterra vs. Argentina ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "13:50 ◘ Inglaterra vs. Argentina ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_51d3c97f",
@@ -3703,7 +3887,7 @@
       "equipo_local": "Real Madrid",
       "equipo_visitante": "Sevilla",
       "subtitulo": "LaLiga",
-      "referencia": "Jornada",
+      "referencia": "Santiago Bernabéu",
       "hora_utc": "2026-10-18T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -3717,6 +3901,7 @@
         "inyector_lineal",
         "agy_lineales",
         "futbolenvivo_ar",
+        "mitv_espn_ar",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -4033,7 +4218,7 @@
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F130.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fupsvvu1473538059.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F135.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -4096,6 +4281,57 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_plus_f2340bd4",
+      "agenda_id": "",
+      "titulo": "Canadá Sub-17 vs. Brasil Sub-17",
+      "torneo": "Copa Mundial Femenina Sub-17",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Canadá Sub-17",
+      "equipo_visitante": "Brasil Sub-17",
+      "subtitulo": "Copa Mundial Femenina Sub-17",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-18T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/ca.png",
+      "logo_visitante": "https://flagcdn.com/256x192/br.png",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS+",
+          "id_xtream": "592039",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS +1 AR",
+          "id_xtream": "722195",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS +"
+      ],
+      "texto_original_crudo": "Copa Mundial Femenina Sub-17: Canadá vs. Brasil en vivo por DSPORTS+ Canal 613 / 1613",
+      "titulo_original_crudo": "Copa Mundial Femenina Sub-17: Canadá vs. Brasil en vivo por DSPORTS+ Canal 613 / 1613",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_win_sports_bb5fa967",
       "agenda_id": "",
       "titulo": "Colo-Colo W vs Santa Fe W",
@@ -4105,7 +4341,7 @@
       "equipo_local": "Colo-Colo W",
       "equipo_visitante": "Santa Fe W",
       "subtitulo": "CONMEBOL Libertadores Femenina",
-      "referencia": "Fase Final",
+      "referencia": "Tercer Puesto",
       "hora_utc": "2026-10-18T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
@@ -4275,6 +4511,87 @@
       "ronda": ""
     },
     {
+      "id": "xtream_7b909482",
+      "agenda_id": "",
+      "titulo": "Club Atlético Güemes vs Almagro",
+      "torneo": "Sun-18 Fecha",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Club Atlético Güemes",
+      "equipo_visitante": "Almagro",
+      "subtitulo": "Sun-18 Fecha",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-18T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F3969.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F482.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "  -J005: 1ra Nacional: Atlético Güemes (sde) vs. Almagro | 17:00 SUN 10-18 Fecha 34",
+          "id_xtream": "1731622"
+        }
+      ],
+      "texto_original_crudo": "-J005: 1ra Nacional: Atlético Güemes (sde) vs. Almagro | 17:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J005: 1ra Nacional: Atlético Güemes (sde) vs. Almagro | 17:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_8adb2048",
+      "agenda_id": "",
+      "titulo": "Chaco For Ever vs. Central Norte",
+      "torneo": "Primera Nacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chaco For Ever",
+      "equipo_visitante": "Central Norte",
+      "subtitulo": "Primera Nacional",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-18T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1946.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1951.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "  -J006: 1ra Nacional: Chaco Forever vs. Central Norte | 17:00 SUN 10-18 Fecha 34",
+          "id_xtream": "1731623"
+        }
+      ],
+      "texto_original_crudo": "-J006: 1ra Nacional: Chaco Forever vs. Central Norte | 17:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J006: 1ra Nacional: Chaco Forever vs. Central Norte | 17:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "",
+      "auditado_agy": true,
+      "contrastado_api": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_bc9d8c5d",
       "agenda_id": "",
       "titulo": "Los Angeles Rams vs Arizona Cardinals",
@@ -4372,7 +4689,7 @@
       "equipo_local": "Kansas City Chiefs",
       "equipo_visitante": "Los Angeles Chargers",
       "subtitulo": "NFL",
-      "referencia": "NFL",
+      "referencia": "Semana",
       "hora_utc": "2026-10-18T20:25:00Z",
       "hora_local_producto": "15:25",
       "duracion_min": 240,
@@ -4400,6 +4717,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -4412,7 +4730,7 @@
       "equipo_local": "Alianza Atletico",
       "equipo_visitante": "Universitario",
       "subtitulo": "Liga Max",
-      "referencia": "Liga Max",
+      "referencia": "Torneo Clausura",
       "hora_utc": "2026-10-18T20:30:00Z",
       "hora_local_producto": "15:30",
       "duracion_min": 130,
@@ -4439,26 +4757,27 @@
       "titulo_original_crudo": "15:30 ◘ Alianza Atlético vs. Universitario ◘ Liga Max ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
-      "id": "xtream_47f6db33",
+      "id": "xtream_25845a5f",
       "agenda_id": "",
-      "titulo": "Queens League Americas",
-      "torneo": "Queens League Americas",
-      "categoria": "Otros Deportes",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Semifinales",
-      "referencia": "Semifinales",
-      "hora_utc": "2026-10-18T20:55:00Z",
-      "hora_local_producto": "15:55",
+      "titulo": "Nueva Chicago vs. Gimnasia y Esgrima de Jujuy",
+      "torneo": "Primera Nacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nueva Chicago",
+      "equipo_visitante": "Gimnasia y Esgrima de Jujuy",
+      "subtitulo": "Primera Nacional",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-18T20:30:00Z",
+      "hora_local_producto": "15:30",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primera_nacional.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fh4e2t21552585926.png&w=400&output=webp",
       "logo_visitante": "",
-      "banner": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primera_nacional.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -4470,13 +4789,70 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "15:55 ◘ Queens League Americas | Semifinales ◘ Queens League Americas ◘◘",
-          "id_xtream": "1731447"
+          "nombre": "  -J003: 1ra Nacional: Nueva Chicago vs. Gim. y Esgrima (J) | 15:30 SUN 10-18 Fecha 34",
+          "id_xtream": "1731620"
         }
       ],
-      "texto_original_crudo": "15:55 ◘ Queens League Americas | Semifinales ◘ Queens League Americas ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "15:55 ◘ Queens League Americas | Semifinales ◘ Queens League Americas ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "Semifinales"
+      "texto_original_crudo": "-J003: 1ra Nacional: Nueva Chicago vs. Gim. y Esgrima (J) | 15:30 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J003: 1ra Nacional: Nueva Chicago vs. Gim. y Esgrima (J) | 15:30 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "lineal_espn_3_ar_41306402",
+      "agenda_id": "",
+      "titulo": "Peluche Caligari vs. Krü FC",
+      "torneo": "Queens League Américas",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Peluche Caligari",
+      "equipo_visitante": "Krü FC",
+      "subtitulo": "Queens League Américas • Semifinal",
+      "referencia": "Semifinal",
+      "hora_utc": "2026-10-18T20:55:00Z",
+      "hora_local_producto": "15:55",
+      "duracion_min": 65,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F387.png&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F387.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_3_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 FHD | ARG",
+          "id_xtream": "591987",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 3 HD | AR",
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "Peluche Caligari vs. Krü FC. Semifinal. Un espacio que aborda el desarrollo de la competición de fútbol, Queens League OYSHO Américas. La competencia se juega con un formato similar al del fútbol siete, pero con una serie de reglas innovadoras",
+      "titulo_original_crudo": "Peluche Caligari vs. Krü FC. Semifinal. Un espacio que aborda el desarrollo de la competición de fútbol, Queens League OYSHO Américas. La competencia se juega con un formato similar al del fútbol siete, pero con una serie de reglas innovadoras",
+      "ronda": "Semifinal",
+      "auditado_agy": true
     },
     {
       "id": "lineal_tnt_sports_7b698c78",
@@ -4488,7 +4864,7 @@
       "equipo_local": "Estudiantes de LA Plata",
       "equipo_visitante": "San Lorenzo",
       "subtitulo": "Liga Profesional de Fútbol",
-      "referencia": "Fecha",
+      "referencia": "Estadio UNO",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -4548,7 +4924,7 @@
       "equipo_local": "Estudiantes de Río Cuarto",
       "equipo_visitante": "Aldosivi",
       "subtitulo": "Primera Nacional",
-      "referencia": "Zona B",
+      "referencia": "Estadio Candini",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -4568,14 +4944,6 @@
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
-        {
-          "nombre": "16:00 ◘ Estudiantes Río Cuarto vs Aldosivi ◘ Primera Argentina ◘",
-          "id_xtream": "1731456"
-        },
-        {
-          "nombre": "15:45 | Estudiantes RC vs Aldosivi | Liga Profesional Argentina",
-          "id_xtream": "1731570"
-        },
         {
           "nombre": "ESPN Premium  | AR FHD",
           "id_xtream": "712747",
@@ -4660,6 +5028,56 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_2_c743d7a2",
+      "agenda_id": "",
+      "titulo": "Maratón de Ámsterdam",
+      "torneo": "Maratón de Ámsterdam",
+      "categoria": "Atletismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Circuito Urbano",
+      "referencia": "Edición 50 de la maratón de 42,195 km por las calles de Ámsterdam",
+      "hora_utc": "2026-10-18T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 75,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 2 FHD",
+          "id_xtream": "327954",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "327964",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 2"
+      ],
+      "texto_original_crudo": "TCS Amsterdam Marathon",
+      "titulo_original_crudo": "TCS Amsterdam Marathon",
+      "ronda": "Circuito Urbano",
+      "curado_integro": true
+    },
+    {
       "id": "xtream_7f081902",
       "agenda_id": "",
       "titulo": "Aguilas Cibaenas vs Gigantes del Cibao",
@@ -4669,10 +5087,10 @@
       "equipo_local": "Aguilas Cibaenas",
       "equipo_visitante": "Gigantes del Cibao",
       "subtitulo": "Lidom",
-      "referencia": "Lidom",
+      "referencia": "Serie Regular",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
-      "duracion_min": 130,
+      "duracion_min": 240,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F147.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F149.png&w=400&output=webp&trim=10",
@@ -4697,6 +5115,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -4709,7 +5128,7 @@
       "equipo_local": "Atletico Balboa",
       "equipo_visitante": "Águila",
       "subtitulo": "Primera Salvador",
-      "referencia": "Primera Salvador",
+      "referencia": "Torneo Apertura",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -4736,7 +5155,8 @@
       "titulo_original_crudo": "16:00 ◘ Atlético Balboa vs. Águila ◘ Primera Salvador ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_ada7ca67",
@@ -4748,7 +5168,7 @@
       "equipo_local": "Bay FC W",
       "equipo_visitante": "Portland Thorns W",
       "subtitulo": "Nwsl",
-      "referencia": "Nwsl",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -4776,6 +5196,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -4788,7 +5209,7 @@
       "equipo_local": "Birmingham Legion",
       "equipo_visitante": "Loudoun United",
       "subtitulo": "USL Championship",
-      "referencia": "USL Championship",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -4816,50 +5237,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_a75e8c74",
-      "agenda_id": "",
-      "titulo": "FC Cincinnati vs Columbus Crew",
-      "torneo": "Major League Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "FC Cincinnati",
-      "equipo_visitante": "Columbus Crew",
-      "subtitulo": "Major League Soccer",
-      "referencia": "Major League Soccer",
-      "hora_utc": "2026-10-18T21:00:00Z",
-      "hora_local_producto": "16:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2242.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1613.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "16:00 ◘ Cincinnati vs. Columbus Crew ◘ MLS ◘",
-          "id_xtream": "1731453"
-        },
-        {
-          "nombre": "16:00 ◘ Cincinnati vs. Columbus Crew ◘ MLS ◘ English",
-          "id_xtream": "1731454"
-        }
-      ],
-      "texto_original_crudo": "16:00 ◘ Cincinnati vs. Columbus Crew ◘ MLS ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "16:00 ◘ Cincinnati vs. Columbus Crew ◘ MLS ◘ ✨Eventos Diarios 18/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -4872,10 +5250,10 @@
       "equipo_local": "Estrellas Orientales",
       "equipo_visitante": "Toros del Este",
       "subtitulo": "Lidom",
-      "referencia": "Lidom",
+      "referencia": "Serie Regular",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
-      "duracion_min": 130,
+      "duracion_min": 240,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F148.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F152.png&w=400&output=webp&trim=10",
@@ -4900,6 +5278,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -4912,7 +5291,7 @@
       "equipo_local": "Mixco",
       "equipo_visitante": "Cobán Imperial",
       "subtitulo": "Liga Guatemala",
-      "referencia": "Liga Guatemala",
+      "referencia": "Torneo Apertura",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -4940,63 +5319,27 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_ff7ad163",
-      "agenda_id": "",
-      "titulo": "NC State vs California",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "NC State",
-      "equipo_visitante": "California",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
-      "hora_utc": "2026-10-18T21:00:00Z",
-      "hora_local_producto": "16:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fl4qxzs1564335666.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "16:00 ◘ NC State vs. California ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1731459"
-        }
-      ],
-      "texto_original_crudo": "16:00 ◘ NC State vs. California ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "16:00 ◘ NC State vs. California ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
     },
     {
       "id": "xtream_54742552",
       "agenda_id": "",
-      "titulo": "Policía Nacional vs Estrella Roja",
-      "torneo": "Liga Honduras",
-      "categoria": "Otros Deportes",
+      "titulo": "Policía Nacional vs. Estrella Roja",
+      "torneo": "Liga de Ascenso Honduras",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Policía Nacional",
       "equipo_visitante": "Estrella Roja",
-      "subtitulo": "Liga Honduras",
-      "referencia": "Liga Honduras",
+      "subtitulo": "Liga de Ascenso Honduras",
+      "referencia": "Torneo Apertura",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Frc0rvv1706347088.png&w=400&output=webp&trim=10",
-      "logo_visitante": "",
-      "banner": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F163.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1137.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F11370.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F163.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -5014,26 +5357,28 @@
       ],
       "texto_original_crudo": "16:00 ◘ Policía Nacional vs. Estrella Roja ◘ Liga Honduras ◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "16:00 ◘ Policía Nacional vs. Estrella Roja ◘ Liga Honduras ◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_b238e91e",
       "agenda_id": "",
-      "titulo": "Tigres de Licey vs Leones del Escogido",
+      "titulo": "Tigres del Licey vs. Leones del Escogido",
       "torneo": "Lidom",
-      "categoria": "Otros Deportes",
+      "categoria": "Béisbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Tigres de Licey",
+      "equipo_local": "Tigres del Licey",
       "equipo_visitante": "Leones del Escogido",
       "subtitulo": "Lidom",
-      "referencia": "Lidom",
+      "referencia": "Estadio Quisqueya",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx6mzk41615832215.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "",
+      "duracion_min": 240,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F151.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F150.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -5051,7 +5396,10 @@
       ],
       "texto_original_crudo": "16:00 ◘ Tigres de Licey vs. Leones Del Escogido ◘ LIDOM ◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "16:00 ◘ Tigres de Licey vs. Leones Del Escogido ◘ LIDOM ◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true,
+      "contrastado_api": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_38259ef2",
@@ -5063,7 +5411,7 @@
       "equipo_local": "Vila Nova",
       "equipo_visitante": "Novorizontino",
       "subtitulo": "Serie B",
-      "referencia": "Serie B",
+      "referencia": "Estadio OBA",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 130,
@@ -5091,27 +5439,28 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "xtream_7b10602c",
+      "id": "xtream_f866f65e",
       "agenda_id": "",
-      "titulo": "Cleveland Guardians vs Tampa Bay Rays",
-      "torneo": "MLB",
-      "categoria": "Béisbol",
+      "titulo": "Ferro Carril Oeste vs. Racing de Córdoba",
+      "torneo": "Primera Nacional",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Cleveland Guardians",
-      "equipo_visitante": "Tampa Bay Rays",
-      "subtitulo": "MLB",
-      "referencia": "MLB",
+      "equipo_local": "Ferro Carril Oeste",
+      "equipo_visitante": "Racing de Córdoba",
+      "subtitulo": "Primera Nacional",
+      "referencia": "Fecha",
       "hora_utc": "2026-10-18T21:00:00Z",
       "hora_local_producto": "16:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F9.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F34.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "tier": 1,
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primera_nacional.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F470.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F436.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primera_nacional.png",
+      "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
         "xtream_evento"
@@ -5122,23 +5471,96 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "16:08 ◘ Tampa Bay Rays vs. Cleveland Guardians ◘ MLB ◘",
-          "id_xtream": "1731463"
-        },
-        {
-          "nombre": "16:08 ◘ Tampa Bay Rays vs. Cleveland Guardians ◘ MLB ◘ En Espanoil",
-          "id_xtream": "1731464"
-        },
-        {
-          "nombre": "16:00 | Tampa Bay Rays vs. Cleveland Guardians | MLB",
-          "id_xtream": "1731573"
+          "nombre": "  -J004: 1ra Nacional: Ferro vs. Racing (cba) | 16:00 SUN 10-18 Fecha 34",
+          "id_xtream": "1731621"
         }
       ],
-      "texto_original_crudo": "16:08 ◘ Tampa Bay Rays vs. Cleveland Guardians ◘ MLB ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "16:08 ◘ Tampa Bay Rays vs. Cleveland Guardians ◘ MLB ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "-J004: 1ra Nacional: Ferro vs. Racing (cba) | 16:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J004: 1ra Nacional: Ferro vs. Racing (cba) | 16:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_dae85cd4",
+      "agenda_id": "",
+      "titulo": "Godoy Cruz vs CA Estudiantes",
+      "torneo": "Sun-18 Fecha",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Godoy Cruz",
+      "equipo_visitante": "CA Estudiantes",
+      "subtitulo": "Sun-18 Fecha",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-18T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F439.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1936.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "  -J007: 1ra Nacional: Godoy Cruz vs. Estudiantes | 18:00 SUN 10-18 Fecha 34",
+          "id_xtream": "1731624"
+        }
+      ],
+      "texto_original_crudo": "-J007: 1ra Nacional: Godoy Cruz vs. Estudiantes | 18:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J007: 1ra Nacional: Godoy Cruz vs. Estudiantes | 18:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_dd5be5ad",
+      "agenda_id": "",
+      "titulo": "San Martin S.J. vs Temperley",
+      "torneo": "Sun-18 Fecha",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Martin S.J.",
+      "equipo_visitante": "Temperley",
+      "subtitulo": "Sun-18 Fecha",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-18T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F461.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F454.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F129.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "  -J008: 1ra Nacional: San Martín (sj) vs. Temperley | 18:00 SUN 10-18 Fecha 34",
+          "id_xtream": "1731625"
+        }
+      ],
+      "texto_original_crudo": "-J008: 1ra Nacional: San Martín (sj) vs. Temperley | 18:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J008: 1ra Nacional: San Martín (sj) vs. Temperley | 18:00 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -5151,7 +5573,7 @@
       "equipo_local": "Liverpool Montevideo",
       "equipo_visitante": "Penarol",
       "subtitulo": "Primera Uruguay",
-      "referencia": "Primera Uruguay",
+      "referencia": "Torneo Clausura",
       "hora_utc": "2026-10-18T21:30:00Z",
       "hora_local_producto": "16:30",
       "duracion_min": 130,
@@ -5183,25 +5605,26 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
       "id": "xtream_51fdcc3d",
       "agenda_id": "",
-      "titulo": "Bahia vs Flamengo",
-      "torneo": "Brasileirão",
+      "titulo": "Bahia vs. Flamengo",
+      "torneo": "Brasileirão Serie a",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Bahia",
       "equipo_visitante": "Flamengo",
-      "subtitulo": "Brasileirão",
-      "referencia": "Brasileirão",
+      "subtitulo": "Brasileirão Serie a",
+      "referencia": "Arena Fonte Nova",
       "hora_utc": "2026-10-18T21:30:00Z",
       "hora_local_producto": "16:30",
       "duracion_min": 130,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxuvtsv1473539308.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fsyptwx1473538074.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F118.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F11054.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -5221,44 +5644,8 @@
       "texto_original_crudo": "16:30 ◘ Bahia vs. Flamengo ◘ Brasileirão ◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "16:30 ◘ Bahia vs. Flamengo ◘ Brasileirão ◘ ✨Eventos Diarios 18/10✨",
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_534c7230",
-      "agenda_id": "",
-      "titulo": "17 Missouri State vs Florida Atlantic",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "17 Missouri State",
-      "equipo_visitante": "Florida Atlantic",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "NCAA Men's Soccer",
-      "hora_utc": "2026-10-18T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa72jia1666264331.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "17:00 ◘ #17 Missouri State vs. Florida Atlantic ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1731467"
-        }
-      ],
-      "texto_original_crudo": "17:00 ◘ #17 Missouri State vs. Florida Atlantic ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "17:00 ◘ #17 Missouri State vs. Florida Atlantic ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
     },
     {
       "id": "xtream_5d396f67",
@@ -5270,7 +5657,7 @@
       "equipo_local": "Minnesota Wild",
       "equipo_visitante": "Columbus Blue Jackets",
       "subtitulo": "NHL",
-      "referencia": "NHL",
+      "referencia": "Nationwide Arena",
       "hora_utc": "2026-10-18T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -5298,6 +5685,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -5310,7 +5698,7 @@
       "equipo_local": "Perez Zeledon",
       "equipo_visitante": "CS Herediano",
       "subtitulo": "Primera Costa Rica",
-      "referencia": "Primera Costa Rica",
+      "referencia": "Estadio Municipal PZ",
       "hora_utc": "2026-10-18T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -5337,82 +5725,115 @@
       "titulo_original_crudo": "17:00 ◘ Pérez Zeledón vs. Herediano ◘ Primera Costa Rica ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
-      "id": "xtream_86d87bfb",
+      "id": "lineal_espn_3_ar_9f890f8e",
       "agenda_id": "",
-      "titulo": "Remo vs RB Bragantino",
-      "torneo": "Brasileirão",
+      "titulo": "Krü FC vs. Atlético Parceros",
+      "torneo": "Kings League Américas",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Remo",
-      "equipo_visitante": "RB Bragantino",
-      "subtitulo": "Brasileirão",
-      "referencia": "Brasileirão",
-      "hora_utc": "2026-10-18T22:30:00Z",
-      "hora_local_producto": "17:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1198.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F24485.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "17:30 ◘ Remo vs. RB Bragantino ◘ Brasileirão ◘",
-          "id_xtream": "1731470"
-        }
-      ],
-      "texto_original_crudo": "17:30 ◘ Remo vs. RB Bragantino ◘ Brasileirão ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "17:30 ◘ Remo vs. RB Bragantino ◘ Brasileirão ◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_13387db2",
-      "agenda_id": "",
-      "titulo": "Kings League Americas",
-      "torneo": "Kings League Americas",
-      "categoria": "Otros Deportes",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Semifinales",
-      "referencia": "Semifinales",
+      "equipo_local": "Krü FC",
+      "equipo_visitante": "Atlético Parceros",
+      "subtitulo": "Kings League Américas",
+      "referencia": "Semifinal",
       "hora_utc": "2026-10-18T22:55:00Z",
       "hora_local_producto": "17:55",
-      "duracion_min": 130,
-      "logo_torneo": "",
+      "duracion_min": 65,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F387.png&w=400&output=webp&trim=10",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F387.png&w=400&output=webp&trim=10",
       "tier": 2,
-      "origen": "xtream_evento",
+      "origen": "inyector_lineal",
       "origenes": [
-        "xtream_evento"
+        "inyector_lineal",
+        "mitv_espn_3_ar"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "17:55 ◘ Kings League Americas | Semifinales ◘ Kings League Americas ◘◘",
-          "id_xtream": "1731473"
+          "nombre": "ESPN 3 FHD | ARG",
+          "id_xtream": "591987",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 3 HD | AR",
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
         }
       ],
-      "texto_original_crudo": "17:55 ◘ Kings League Americas | Semifinales ◘ Kings League Americas ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "17:55 ◘ Kings League Americas | Semifinales ◘ Kings League Americas ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "Semifinales"
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "Krü FC vs. Atlético Parceros. Semifinal. Los partidos de fútbol 7 de la competencia Américas Kings League. El público disfrutará de un evento compuesto por doce equipos presididos por futbolistas y streamers de Internet de diversos países de Latinoámerica",
+      "titulo_original_crudo": "Krü FC vs. Atlético Parceros. Semifinal. Los partidos de fútbol 7 de la competencia Américas Kings League. El público disfrutará de un evento compuesto por doce equipos presididos por futbolistas y streamers de Internet de diversos países de Latinoámerica",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "lineal_dsports_plus_514f0f21",
+      "agenda_id": "",
+      "titulo": "Francia Sub-17 vs. Venezuela Sub-17",
+      "torneo": "Copa Mundial Femenina Sub-17",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Francia Sub-17",
+      "equipo_visitante": "Venezuela Sub-17",
+      "subtitulo": "Copa Mundial Femenina Sub-17",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-18T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/fr.png",
+      "logo_visitante": "https://flagcdn.com/256x192/ve.png",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS+",
+          "id_xtream": "592039",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS +1 AR",
+          "id_xtream": "722195",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS +"
+      ],
+      "texto_original_crudo": "Copa Mundial Femenina Sub-17: Francia vs. Venezuela en vivo por DSPORTS+ Canal 613 / 1613",
+      "titulo_original_crudo": "Copa Mundial Femenina Sub-17: Francia vs. Venezuela en vivo por DSPORTS+ Canal 613 / 1613",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_222eace1",
@@ -5685,7 +6106,7 @@
       "equipo_local": "Belgrano Cordoba",
       "equipo_visitante": "River Plate",
       "subtitulo": "Liga Profesional Argentina",
-      "referencia": "Fecha",
+      "referencia": "Julio César Villagra",
       "hora_utc": "2026-10-18T23:15:00Z",
       "hora_local_producto": "18:15",
       "duracion_min": 130,
@@ -5698,6 +6119,7 @@
       "origenes": [
         "inyector_lineal",
         "futbolenvivo_ar",
+        "mitv_tyc_sports",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -5705,18 +6127,6 @@
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
-        {
-          "nombre": "18:00 ◘ Belgrano vs. River Plate ◘ Primera Argentina ◘◘",
-          "id_xtream": "1731474"
-        },
-        {
-          "nombre": "18:00 | Belgrano vs River | Liga Profesional Argentina",
-          "id_xtream": "1731577"
-        },
-        {
-          "nombre": "18:15 | Belgrano vs River | Liga Profesional Argentina",
-          "id_xtream": "1731578"
-        },
         {
           "nombre": "ESPN Premium  | AR FHD",
           "id_xtream": "712747",
@@ -5779,6 +6189,105 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
+    },
+    {
+      "id": "xtream_f278328b",
+      "agenda_id": "",
+      "titulo": "San Martín de Tucumán vs. Midland",
+      "torneo": "Primera Nacional",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Martín de Tucumán",
+      "equipo_visitante": "Midland",
+      "subtitulo": "Primera Nacional",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-18T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primera_nacional.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F455.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1963.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primera_nacional.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "  -J009: 1ra Nacional: San Martín (tuc) vs. Midland | 18:30 SUN 10-18 Fecha 34",
+          "id_xtream": "1731626"
+        }
+      ],
+      "texto_original_crudo": "-J009: 1ra Nacional: San Martín (tuc) vs. Midland | 18:30 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "-J009: 1ra Nacional: San Martín (tuc) vs. Midland | 18:30 SUN 10-18 Fecha 34 ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_af4d6c28",
+      "agenda_id": "",
+      "titulo": "Green Bay Packers vs Dallas Cowboys",
+      "torneo": "Dallas Cowboys vs. Green Bay Packers",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Green Bay Packers",
+      "equipo_visitante": "Dallas Cowboys",
+      "subtitulo": "Dallas Cowboys vs. Green Bay Packers",
+      "referencia": "Lambeau Field",
+      "hora_utc": "2026-10-19T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 210,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F15.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F29.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 FHD | ARG",
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 1 HD | AR",
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "Dallas Cowboys vs. Green Bay Packers. Fecha 6, Lambeau Field. Vive los partidos de la edición 107º de la NFL. El público podrá disfrutar de los encuentros más emocionantes de la mayor liga de fútbol americano profesional de Estados Unidos",
+      "titulo_original_crudo": "Dallas Cowboys vs. Green Bay Packers. Fecha 6, Lambeau Field. Vive los partidos de la edición 107º de la NFL. El público podrá disfrutar de los encuentros más emocionantes de la mayor liga de fútbol americano profesional de Estados Unidos",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_8d515418",
@@ -5946,7 +6455,7 @@
       "equipo_local": "Mayos de Navojoa",
       "equipo_visitante": "Hermosillo",
       "subtitulo": "Liga Mexicana del Pacífico",
-      "referencia": "Liga Mexicana del Pacífico",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-19T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -5974,6 +6483,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -5986,7 +6496,7 @@
       "equipo_local": "Mazatlan",
       "equipo_visitante": "Algodoneros",
       "subtitulo": "Liga Mexicana del Pacífico",
-      "referencia": "Liga Mexicana del Pacífico",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-19T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -6014,6 +6524,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -6026,7 +6537,7 @@
       "equipo_local": "Tigres UANL W",
       "equipo_visitante": "Querétaro W",
       "subtitulo": "Liga MX Femenil",
-      "referencia": "Liga MX Femenil",
+      "referencia": "Apertura 2026",
       "hora_utc": "2026-10-19T00:06:00Z",
       "hora_local_producto": "19:06",
       "duracion_min": 130,
@@ -6058,50 +6569,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_6eecf798",
-      "agenda_id": "",
-      "titulo": "Green Bay Packers vs Dallas Cowboys",
-      "torneo": "NFL",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Green Bay Packers",
-      "equipo_visitante": "Dallas Cowboys",
-      "subtitulo": "NFL",
-      "referencia": "NFL",
-      "hora_utc": "2026-10-19T00:20:00Z",
-      "hora_local_producto": "19:20",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F15.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F29.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:20 ◘ Dallas Cowboys vs. Green Bay Packers ◘ NFL ◘",
-          "id_xtream": "1731487"
-        },
-        {
-          "nombre": "19:20 ◘ Dallas Cowboys vs. Green Bay Packers ◘ NFL ◘ En Espanol",
-          "id_xtream": "1731488"
-        }
-      ],
-      "texto_original_crudo": "19:20 ◘ Dallas Cowboys vs. Green Bay Packers ◘ NFL ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "19:20 ◘ Dallas Cowboys vs. Green Bay Packers ◘ NFL ◘ ✨Eventos Diarios 18/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -6114,7 +6582,7 @@
       "equipo_local": "América W",
       "equipo_visitante": "Pachuca W",
       "subtitulo": "Liga MX Femenil",
-      "referencia": "Liga MX Femenil",
+      "referencia": "Apertura 2026",
       "hora_utc": "2026-10-19T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -6146,6 +6614,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -6158,7 +6627,7 @@
       "equipo_local": "Monterrey",
       "equipo_visitante": "CF Pachuca",
       "subtitulo": "Liga MX",
-      "referencia": "Liga MX",
+      "referencia": "Apertura 2026",
       "hora_utc": "2026-10-19T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -6190,6 +6659,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -6262,7 +6732,7 @@
       "equipo_local": "Marquense",
       "equipo_visitante": "Suchitepéquez",
       "subtitulo": "Liga Guatemala",
-      "referencia": "Liga Guatemala",
+      "referencia": "Torneo Apertura",
       "hora_utc": "2026-10-19T02:10:00Z",
       "hora_local_producto": "21:10",
       "duracion_min": 130,
@@ -6290,6 +6760,7 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -6301,8 +6772,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Center",
-      "referencia": "Center",
+      "subtitulo": "Center Court",
+      "referencia": "Center Court • Utsubo Tennis Center • WTA 250",
       "hora_utc": "2026-10-19T02:30:00Z",
       "hora_local_producto": "21:30",
       "duracion_min": 240,
@@ -6327,7 +6798,8 @@
       ],
       "texto_original_crudo": "21:30 ◘ Kinoshita Group Japan Open / Center ◘ WTA ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "21:30 ◘ Kinoshita Group Japan Open / Center ◘ WTA ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "Center",
+      "ronda": "Center Court",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -6340,7 +6812,7 @@
       "equipo_local": "",
       "equipo_visitante": "",
       "subtitulo": "Court",
-      "referencia": "Court • Utsubo Tennis Center • Cuadro Principal WTA 250",
+      "referencia": "Court • Utsubo Tennis Center • WTA 250",
       "hora_utc": "2026-10-19T02:30:00Z",
       "hora_local_producto": "21:30",
       "duracion_min": 240,
@@ -6376,17 +6848,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-18",
-    "total_agenda_maestra": 51,
-    "total_canales_xtream": 1948,
+    "total_agenda_maestra": 75,
+    "total_canales_xtream": 1957,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 1878,
-    "eventos_lineales_inyectados": 42,
-    "eventos_xtream_aprobados": 161,
-    "eventos_contrastados_api": 125,
-    "eventos_sellados_boveda_inmutable": 108,
-    "eventos_descartados_stale": 71,
-    "total_eventos_publicados": 144,
-    "hora_actualizacion_utc": "2026-10-18T13:59:13Z"
+    "eventos_lineales_inyectados": 65,
+    "eventos_xtream_aprobados": 167,
+    "eventos_contrastados_api": 135,
+    "eventos_sellados_boveda_inmutable": 123,
+    "eventos_descartados_stale": 89,
+    "total_eventos_publicados": 150,
+    "hora_actualizacion_utc": "2026-10-18T15:52:03Z"
   }
 }
