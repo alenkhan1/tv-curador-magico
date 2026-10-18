@@ -1041,6 +1041,16 @@ def _generar_variantes_busqueda_equipo(equipo_limpio: str, deporte: str = "") ->
     _add(equipo_limpio)
     norm = _normalizar(equipo_limpio)
 
+    # Expansion de abreviaturas de clubes argentinos en torneos de ascenso ('Gim. ' -> 'Gimnasia ', '(J)' -> 'Jujuy')
+    norm_exp = re.sub(r'\bGIM\.?\s+', 'GIMNASIA ', norm)
+    norm_exp = re.sub(r'\s*\([Jj]\)', ' JUJUY', norm_exp)
+    norm_exp = re.sub(r'\s*\([Mm]\)', ' MENDOZA', norm_exp)
+    if norm_exp != norm:
+        _add(norm_exp.title())
+        norm_sin_esgrima = re.sub(r'\bY\s+ESGRIMA(\s+DE)?\b', '', norm_exp)
+        if norm_sin_esgrima != norm_exp:
+            _add(' '.join(norm_sin_esgrima.split()).title())
+
     # Variante de rescate sin prefijo geografico literal 'Ciudad ' (ej. 'Yaquis de Ciudad Obregon' -> 'Yaquis de Obregon')
     sin_ciudad = re.sub(r"\bCIUDAD\s+", "", norm)
     if sin_ciudad != norm:

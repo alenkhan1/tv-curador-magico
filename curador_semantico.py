@@ -62,7 +62,7 @@ DEDUCCIONES_DEPORTE = [
         "LIGA MX", "NWSL", "NSL", "CHILE", "ARG", "BOCA JUNIORS", "SANTOS", "UNION",
         "SOACHA", "INDEPENDIENTE", "RIVADAVIA", "GIMNASIA", "DEPORTIVO CALI", "ALIANZA",
         "SMARTBANK", "BRASILEIRAO", "EREDIVISIE", "SEGUNDA URUGUAY", "LIGA HONDURAS", "KINGS LEAGUE", "QUEENS LEAGUE", "POWERCHAIR", "FIPFA", "BRASILEIRÃO", "CONCACAF", "SOCCER", "EXPANSION MX",
-        "CORRECAMINOS", "CRUZ AZUL", "TEPATITLAN", "TAMPICO", "VENADOS", "AMERICA", "USL"
+        "CORRECAMINOS", "CRUZ AZUL", "TEPATITLAN", "TAMPICO", "VENADOS", "AMERICA", "USL", "1RA NACIONAL", "PRIMERA NACIONAL", "NUEVA CHICAGO"
     ]),
 ]
 
@@ -186,6 +186,18 @@ def desmontar_duelo(titulo: str, categoria: str) -> Tuple[str, str, str, str, st
     partes = re.split(r"\s+(?:vs\.?|v\.?|-)\s+", tit, flags=re.I)
     if len(partes) == 2:
         p0, vis = partes[0].strip(), partes[1].strip()
+        # Extraccion de prefijos de torneo y canal (ej. "J003: 1ra Nacional: Nueva Chicago" -> torneo="1ra Nacional", loc="Nueva Chicago")
+        if ":" in p0:
+            subpartes = [sp.strip() for sp in p0.split(":") if sp.strip()]
+            subpartes = [sp for sp in subpartes if not re.match(r"^J\d+$", sp, re.I)]
+            if len(subpartes) >= 2:
+                torneo_extraido = subpartes[0]
+                p0 = subpartes[-1]
+
+        # Expansion de abreviaturas tradicionales de clubes argentinos ('Gim.' -> 'Gimnasia', '(J)' -> 'Jujuy')
+        vis = re.sub(r'\bGim\.?\s+', 'Gimnasia ', vis, flags=re.I)
+        vis = re.sub(r'\s*\([Jj]\)', ' Jujuy', vis)
+        vis = re.sub(r'\s*\([Mm]\)', ' Mendoza', vis)
         m_vis_par = RE_PAREN_DETALLE.search(vis)
         if m_vis_par:
             if not ronda:

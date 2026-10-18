@@ -78,6 +78,8 @@ DEPORTES_MAP = {
     'UFC': 'Combate',
     'EFC': 'Combate',
     'BKFC': 'Combate',
+    '1RA NACIONAL': 'F?tbol',
+    'PRIMERA NACIONAL': 'F?tbol',
     'BARE KNUCKLE': 'Combate',
     'BOXING': 'Combate',
     'BOXEO': 'Combate',
@@ -289,6 +291,7 @@ def extraer_contexto_y_equipos(cadena_pre_vs: str):
 def limpiar_fragmento(s: str) -> str:
     s = re.sub(r'[\u2010-\u2015\u2022\u2212*~#◘■♦►●▼▲]+', ' ', s)
     s = limpiar_prefijos_idioma(s)
+    s = re.sub(r'^[-\s]*J\d{1,4}\s*[:|-]\s*', '', s, flags=re.I)
     s = re.sub(r'\b(En español|Español|Spanish|OP\d+|FHD|HD|SD|4K|ES|EN|LIVE|EN VIVO|ET|PT|CT)\b', '', s, flags=re.I)
     s = re.sub(r'\b([A-Za-z]{3,})\s+0?\d{1,2}\b', r'\1', s)
     s = re.sub(r'\s+', ' ', s)
