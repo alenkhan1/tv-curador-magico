@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-18T18:54:34Z",
+  "generado_utc": "2026-10-18T19:38:48Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-18",
   "base_media": "http://avefenixtv.com:8080",
@@ -474,14 +474,14 @@
     {
       "id": "xtream_cb87e6fd",
       "agenda_id": "",
-      "titulo": "Maja Chwalinska vs Sonay Kartal",
-      "torneo": "WTA",
+      "titulo": "Ningbo Open",
+      "torneo": "Ningbo Open",
       "categoria": "Tenis",
-      "tipo_evento": "duelo",
+      "tipo_evento": "circuito",
       "equipo_local": "Maja Chwalinska",
       "equipo_visitante": "Sonay Kartal",
-      "subtitulo": "WTA",
-      "referencia": "WTA",
+      "subtitulo": "Court",
+      "referencia": "Court • Maja Chwalinska vs. Sonay Kartal • WTA 500",
       "hora_utc": "2026-10-18T10:30:00Z",
       "hora_local_producto": "05:30",
       "duracion_min": 240,
@@ -506,7 +506,9 @@
       ],
       "texto_original_crudo": "05:30 ◘ Maja Chwalinska vs. Sonay Kartal ◘ WTA ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "05:30 ◘ Maja Chwalinska vs. Sonay Kartal ◘ WTA ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "Court",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_5c55cd75",
@@ -1809,61 +1811,6 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_dsports_2_c01ecc80_a69013",
-      "agenda_id": "",
-      "titulo": "Canadá vs Brasil",
-      "torneo": "Fútbol",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Canadá",
-      "equipo_visitante": "Brasil",
-      "subtitulo": "Canadá vs Brasil",
-      "referencia": "Fútbol",
-      "hora_utc": "2026-10-18T15:00:00Z",
-      "hora_local_producto": "10:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/ca.png",
-      "logo_visitante": "https://flagcdn.com/256x192/br.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "DSPORTS 2",
-          "id_xtream": "592038",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "DIRECTV SPORTS 2 AR",
-          "id_xtream": "69549",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "DSPORTS 2 ARG",
-          "id_xtream": "712757",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS 2"
-      ],
-      "texto_original_crudo": "12:00 Fase de grupos Canadá Brasil DSports 2 (612/1612) Amazon Prime Video (Ver en vivo) Paramount+ DGO",
-      "titulo_original_crudo": "12:00 Fase de grupos Canadá Brasil DSports 2 (612/1612) Amazon Prime Video (Ver en vivo) Paramount+ DGO",
-      "ronda": ""
-    },
-    {
       "id": "xtream_e0b75d34",
       "agenda_id": "",
       "titulo": "Le Havre vs Auxerre",
@@ -2266,7 +2213,7 @@
       "equipo_local": "Curico Unido",
       "equipo_visitante": "Deportes Iquique",
       "subtitulo": "Primera B Chile",
-      "referencia": "Primera B Chile",
+      "referencia": "Estadio LA Granja",
       "hora_utc": "2026-10-18T15:30:00Z",
       "hora_local_producto": "10:30",
       "duracion_min": 130,
@@ -2293,7 +2240,8 @@
       "titulo_original_crudo": "10:30 ◘ Curicó Unido vs. Deportes Iquique ◘ Primera B Chile ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_356bceed",
@@ -2305,7 +2253,7 @@
       "equipo_local": "Union San Felipe",
       "equipo_visitante": "Deportes Temuco",
       "subtitulo": "Primera B Chile",
-      "referencia": "Primera B Chile",
+      "referencia": "Municipal de San Felipe",
       "hora_utc": "2026-10-18T15:30:00Z",
       "hora_local_producto": "10:30",
       "duracion_min": 130,
@@ -2332,22 +2280,23 @@
       "titulo_original_crudo": "10:30 ◘ Unión San Felipe vs. Deportes Temuco ◘ Primera B Chile ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_0dd78dde",
       "agenda_id": "",
-      "titulo": "Las Monjitas vs Hiper",
+      "titulo": "Las Monjitas vs. Hípica Polo Club",
       "torneo": "Abierto de Tortugas",
       "categoria": "Polo",
       "tipo_evento": "duelo",
       "equipo_local": "Las Monjitas",
-      "equipo_visitante": "Hiper",
+      "equipo_visitante": "Hípica Polo Club",
       "subtitulo": "Abierto de Tortugas",
-      "referencia": "Abierto de Tortugas",
+      "referencia": "Cancha",
       "hora_utc": "2026-10-18T15:55:00Z",
       "hora_local_producto": "10:55",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd3%2FPolo_pictogram.svg%2F512px-Polo_pictogram.svg.png&w=400&output=webp",
       "logo_visitante": "",
@@ -2369,7 +2318,8 @@
       ],
       "texto_original_crudo": "10:55 ◘ Las Monjitas vs. Hiper Polo Club ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "10:55 ◘ Las Monjitas vs. Hiper Polo Club ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_2_ar_dc91b262",
@@ -2496,17 +2446,17 @@
     {
       "id": "xtream_54a39317",
       "agenda_id": "",
-      "titulo": "Middle Tennessee vs Delaware",
+      "titulo": "Middle Tennessee vs. Delaware",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Middle Tennessee",
       "equipo_visitante": "Delaware",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "referencia": "Dean a. Hayes Stadium",
       "hora_utc": "2026-10-18T16:00:00Z",
       "hora_local_producto": "11:00",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F69.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fdfwimk1564356605.png&w=400&output=webp",
@@ -2528,7 +2478,8 @@
       ],
       "texto_original_crudo": "11:00 ◘ Middle Tennessee vs. Delaware ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "11:00 ◘ Middle Tennessee vs. Delaware ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_5ff539c7",
@@ -2540,10 +2491,10 @@
       "equipo_local": "Sporting Cristal",
       "equipo_visitante": "Comerciantes Unidos",
       "subtitulo": "Liga Max",
-      "referencia": "Liga Max",
+      "referencia": "Estadio Alberto Gallardo",
       "hora_utc": "2026-10-18T16:00:00Z",
       "hora_local_producto": "11:00",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F281.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2546.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2558.png&w=400&output=webp&trim=10",
@@ -2567,22 +2518,23 @@
       "titulo_original_crudo": "11:00 ◘ Sporting Cristal vs. Comerciantes Unidos ◘ Liga Max ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_a69fb338",
       "agenda_id": "",
-      "titulo": "Umbc vs UMass Lowell",
+      "titulo": "Umbc vs. UMass Lowell",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Umbc",
       "equipo_visitante": "UMass Lowell",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "referencia": "Retriever Soccer Park",
       "hora_utc": "2026-10-18T16:00:00Z",
       "hora_local_producto": "11:00",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F181.png&w=400&output=webp&trim=10",
@@ -2604,7 +2556,8 @@
       ],
       "texto_original_crudo": "11:00 ◘ UMBC vs. UMass Lowell ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "11:00 ◘ UMBC vs. UMass Lowell ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_00c505b3",
@@ -3355,17 +3308,17 @@
     {
       "id": "xtream_753679b1",
       "agenda_id": "",
-      "titulo": "24 Florida State vs Pittsburgh",
+      "titulo": "Florida State vs. Pittsburgh",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "24 Florida State",
+      "equipo_local": "Florida State",
       "equipo_visitante": "Pittsburgh",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-10-18T17:00:00Z",
       "hora_local_producto": "12:00",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F49.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx3hydm1568478796.png&w=400&output=webp",
@@ -3387,7 +3340,8 @@
       ],
       "texto_original_crudo": "12:00 ◘ #24 Florida State vs. Pittsburgh ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "12:00 ◘ #24 Florida State vs. Pittsburgh ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_a28e0c78",
@@ -3399,10 +3353,10 @@
       "equipo_local": "CS Cartagines",
       "equipo_visitante": "Deportivo Saprissa",
       "subtitulo": "Primera Costa Rica",
-      "referencia": "Primera Costa Rica",
+      "referencia": "Torneo Apertura",
       "hora_utc": "2026-10-18T17:00:00Z",
       "hora_local_producto": "12:00",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F162.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F820.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F816.png&w=400&output=webp&trim=10",
@@ -3426,22 +3380,23 @@
       "titulo_original_crudo": "12:00 ◘ Cartaginés vs. Deportivo Saprissa ◘ Primera Costa Rica ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_ec95b428",
       "agenda_id": "",
-      "titulo": "Georgia Southern vs Old Dominion",
+      "titulo": "Georgia Southern vs. Old Dominion",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Georgia Southern",
       "equipo_visitante": "Old Dominion",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-10-18T17:00:00Z",
       "hora_local_producto": "12:00",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F232.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2opepc1564336540.png&w=400&output=webp&trim=10",
@@ -3463,7 +3418,8 @@
       ],
       "texto_original_crudo": "12:00 ◘ Georgia Southern vs. Old Dominion ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "12:00 ◘ Georgia Southern vs. Old Dominion ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_aee65e2e",
@@ -3662,10 +3618,6 @@
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
-        {
-          "nombre": "13:00 ◘ France U17 vs. Venezuela U17 ◘ FIFA U17 Women's World Cup ◘",
-          "id_xtream": "1731410"
-        },
         {
           "nombre": "DSPORTS 2",
           "id_xtream": "592038",
@@ -4034,74 +3986,19 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_dsports_2_ce1575de_9f4b39",
-      "agenda_id": "",
-      "titulo": "Francia vs Venezuela",
-      "torneo": "Fútbol",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Francia",
-      "equipo_visitante": "Venezuela",
-      "subtitulo": "Francia vs Venezuela",
-      "referencia": "Fútbol",
-      "hora_utc": "2026-10-18T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/fr.png",
-      "logo_visitante": "https://flagcdn.com/256x192/ve.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "DSPORTS 2",
-          "id_xtream": "592038",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "DIRECTV SPORTS 2 AR",
-          "id_xtream": "69549",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "DSPORTS 2 ARG",
-          "id_xtream": "712757",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS 2"
-      ],
-      "texto_original_crudo": "15:00 Fase de grupos Francia Venezuela DSports 2 (612/1612) Amazon Prime Video (Ver en vivo) Paramount+ DGO DSPORTS+ Plus (613/1613)",
-      "titulo_original_crudo": "15:00 Fase de grupos Francia Venezuela DSports 2 (612/1612) Amazon Prime Video (Ver en vivo) Paramount+ DGO DSPORTS+ Plus (613/1613)",
-      "ronda": ""
-    },
-    {
       "id": "xtream_573565c4",
       "agenda_id": "",
-      "titulo": "Maine vs New Hampshire",
+      "titulo": "Maine vs. New Hampshire",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Maine",
       "equipo_visitante": "New Hampshire",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-10-18T18:00:00Z",
       "hora_local_producto": "13:00",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F200.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F261.png&w=400&output=webp&trim=10",
@@ -4123,7 +4020,8 @@
       ],
       "texto_original_crudo": "13:00 ◘ Maine vs. New Hampshire ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "13:00 ◘ Maine vs. New Hampshire ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_9d882c9a",
@@ -4135,7 +4033,7 @@
       "equipo_local": "San Marcos de Arica",
       "equipo_visitante": "D. Puerto Montt",
       "subtitulo": "Primera B Chile",
-      "referencia": "Primera B Chile",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-10-18T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
@@ -4162,22 +4060,23 @@
       "titulo_original_crudo": "13:00 ◘ San Marcos vs. Puerto Montt ◘ Primera B Chile ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_e4c5e389",
       "agenda_id": "",
-      "titulo": "Vermont vs Njit",
+      "titulo": "Vermont vs. Njit",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Vermont",
       "equipo_visitante": "Njit",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-10-18T18:00:00Z",
       "hora_local_producto": "13:00",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2313.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1990.png&w=400&output=webp&trim=10",
@@ -4199,7 +4098,8 @@
       ],
       "texto_original_crudo": "13:00 ◘ Vermont vs. NJIT ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "13:00 ◘ Vermont vs. NJIT ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_aebf7ce1",
@@ -4211,10 +4111,10 @@
       "equipo_local": "FC Cajamarca",
       "equipo_visitante": "UCV Moquegua",
       "subtitulo": "Liga Max",
-      "referencia": "Liga Max",
+      "referencia": "Segunda División",
       "hora_utc": "2026-10-18T18:15:00Z",
       "hora_local_producto": "13:15",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F281.png&w=400&output=webp&trim=10",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F22543.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F22489.png&w=400&output=webp&trim=10",
@@ -4238,7 +4138,8 @@
       "titulo_original_crudo": "13:15 ◘ FC Cajamarca vs. Deportivo Moquegua ◘ Liga Max ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_9a19dfcf",
@@ -4284,17 +4185,17 @@
     {
       "id": "xtream_e14aec06",
       "agenda_id": "",
-      "titulo": "Pitzer vs MIT",
-      "torneo": "NCAA",
-      "categoria": "Polo",
+      "titulo": "Pomona-Pitzer vs. MIT",
+      "torneo": "NCAA Men's Water Polo",
+      "categoria": "Natación",
       "tipo_evento": "duelo",
-      "equipo_local": "Pitzer",
+      "equipo_local": "Pomona-Pitzer",
       "equipo_visitante": "MIT",
-      "subtitulo": "NCAA",
-      "referencia": "Pomona",
+      "subtitulo": "NCAA Men's Water Polo",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-10-18T18:30:00Z",
       "hora_local_producto": "13:30",
-      "duracion_min": 130,
+      "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
@@ -4316,7 +4217,8 @@
       ],
       "texto_original_crudo": "13:30 ◘ Pomona-Pitzer vs. MIT ◘ NCAA Men's Water Polo ◘◘ ✨Eventos Diarios 18/10✨",
       "titulo_original_crudo": "13:30 ◘ Pomona-Pitzer vs. MIT ◘ NCAA Men's Water Polo ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": ""
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_3_ar_d637a3fe",
@@ -4490,7 +4392,7 @@
       "equipo_local": "LA Hache",
       "equipo_visitante": "LA Irenita Clinova",
       "subtitulo": "Abierto de Tortugas",
-      "referencia": "Tortugas Country Club",
+      "referencia": "Cancha",
       "hora_utc": "2026-10-18T18:55:00Z",
       "hora_local_producto": "13:55",
       "duracion_min": 130,
@@ -4913,6 +4815,44 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_f60eaabc",
+      "agenda_id": "",
+      "titulo": "Bryant vs. UAlbany",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bryant",
+      "equipo_visitante": "UAlbany",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-10-18T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F74.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F730.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Bryant vs. UAlbany ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "1731427"
+        }
+      ],
+      "texto_original_crudo": "14:00 ◘ Bryant vs. UAlbany ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
+      "titulo_original_crudo": "14:00 ◘ Bryant vs. UAlbany ◘ NCAA Women's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
       "id": "lineal_dsports_plus_f2340bd4",
       "agenda_id": "",
       "titulo": "Canadá Sub-17 vs. Brasil Sub-17",
@@ -5157,7 +5097,7 @@
       "equipo_local": "Deportes Santa Cruz",
       "equipo_visitante": "Antofagasta",
       "subtitulo": "Primera B Chile",
-      "referencia": "Estadio Joaquín Muñoz",
+      "referencia": "Estadio Joaquín Muñoz G.",
       "hora_utc": "2026-10-18T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
@@ -5184,6 +5124,44 @@
       "titulo_original_crudo": "15:00 ◘ Deportes Santa Cruz vs. Antofagasta ◘ Primera B Chile ◘ ✨Eventos Diarios 18/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_8d75b2d5",
+      "agenda_id": "",
+      "titulo": "Lindenwood Lions vs. Southern Indiana Screaming Eagles",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lindenwood Lions",
+      "equipo_visitante": "Southern Indiana Screaming Eagles",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Hunter Stadium",
+      "hora_utc": "2026-10-18T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2276.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F103.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "15:00 ◘ Lindenwood vs. Southern Indiana ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1731439"
+        }
+      ],
+      "texto_original_crudo": "15:00 ◘ Lindenwood vs. Southern Indiana ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
+      "titulo_original_crudo": "15:00 ◘ Lindenwood vs. Southern Indiana ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
       "ronda": "",
       "auditado_agy": true
     },
@@ -5317,46 +5295,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_2f603592",
-      "agenda_id": "",
-      "titulo": "Alianza Atletico vs Universitario",
-      "torneo": "Liga Max",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Alianza Atletico",
-      "equipo_visitante": "Universitario",
-      "subtitulo": "Liga Max",
-      "referencia": "Campeones del",
-      "hora_utc": "2026-10-18T20:30:00Z",
-      "hora_local_producto": "15:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F281.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2560.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2540.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F281.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "15:30 ◘ Alianza Atlético vs. Universitario ◘ Liga Max ◘",
-          "id_xtream": "1731445"
-        }
-      ],
-      "texto_original_crudo": "15:30 ◘ Alianza Atlético vs. Universitario ◘ Liga Max ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "15:30 ◘ Alianza Atlético vs. Universitario ◘ Liga Max ◘ ✨Eventos Diarios 18/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_d3d14b70",
       "agenda_id": "",
       "titulo": "Nueva Chicago vs. Gimnasia y Esgrima (Jujuy)",
@@ -5394,6 +5332,46 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_2f603592",
+      "agenda_id": "",
+      "titulo": "Alianza Atletico vs Universitario",
+      "torneo": "Liga Max",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Alianza Atletico",
+      "equipo_visitante": "Universitario",
+      "subtitulo": "Liga Max",
+      "referencia": "Estadio Campeones del",
+      "hora_utc": "2026-10-18T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F281.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2560.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2540.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F281.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "15:30 ◘ Alianza Atlético vs. Universitario ◘ Liga Max ◘",
+          "id_xtream": "1731445"
+        }
+      ],
+      "texto_original_crudo": "15:30 ◘ Alianza Atlético vs. Universitario ◘ Liga Max ◘ ✨Eventos Diarios 18/10✨",
+      "titulo_original_crudo": "15:30 ◘ Alianza Atlético vs. Universitario ◘ Liga Max ◘ ✨Eventos Diarios 18/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_3_ar_41306402",
@@ -6270,6 +6248,44 @@
       "auditado_agy": true
     },
     {
+      "id": "xtream_ff7ad163",
+      "agenda_id": "",
+      "titulo": "NC State Wolfpack vs. California Golden Bears",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "NC State Wolfpack",
+      "equipo_visitante": "California Golden Bears",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Dail Soccer Stadium",
+      "hora_utc": "2026-10-18T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F121.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fl4qxzs1564335666.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:00 ◘ NC State vs. California ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1731459"
+        }
+      ],
+      "texto_original_crudo": "16:00 ◘ NC State vs. California ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
+      "titulo_original_crudo": "16:00 ◘ NC State vs. California ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
       "id": "xtream_f58ff13c",
       "agenda_id": "",
       "titulo": "Liverpool Montevideo vs Penarol",
@@ -6395,6 +6411,44 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_534c7230",
+      "agenda_id": "",
+      "titulo": "Missouri State Bears vs. Florida Atlantic Owls",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Missouri State Bears",
+      "equipo_visitante": "Florida Atlantic Owls",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Betty & Bobby Allison St.",
+      "hora_utc": "2026-10-18T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F83.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa72jia1666264331.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 ◘ #17 Missouri State vs. Florida Atlantic ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1731467"
+        }
+      ],
+      "texto_original_crudo": "17:00 ◘ #17 Missouri State vs. Florida Atlantic ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
+      "titulo_original_crudo": "17:00 ◘ #17 Missouri State vs. Florida Atlantic ◘ NCAA Men's Soccer ◘◘ ✨Eventos Diarios 18/10✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
       "id": "xtream_e539f11c",
       "agenda_id": "",
       "titulo": "Perez Zeledon vs CS Herediano",
@@ -6404,7 +6458,7 @@
       "equipo_local": "Perez Zeledon",
       "equipo_visitante": "CS Herediano",
       "subtitulo": "Primera Costa Rica",
-      "referencia": "Estadio Municipal PZ",
+      "referencia": "Estadio Municipal P.Z.",
       "hora_utc": "2026-10-18T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -6481,7 +6535,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Krü FC",
       "equipo_visitante": "Atlético Parceros",
-      "subtitulo": "Kings League Américas",
+      "subtitulo": "Semifinal",
       "referencia": "Semifinal",
       "hora_utc": "2026-10-18T22:55:00Z",
       "hora_local_producto": "17:55",
@@ -6528,61 +6582,6 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_3_ar_9f890f8e_96a314",
-      "agenda_id": "",
-      "titulo": "FC vs Atlético Parceros",
-      "torneo": "Krü FC vs. Atlético Parceros",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "FC",
-      "equipo_visitante": "Atlético Parceros",
-      "subtitulo": "Krü FC vs. Atlético Parceros",
-      "referencia": "Krü FC vs. Atlético Parceros",
-      "hora_utc": "2026-10-18T22:55:00Z",
-      "hora_local_producto": "17:55",
-      "duracion_min": 65,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F9%2F95%2FAtl%25C3%25A9tico_Parceros_FC_logo.png%2F512px-Atl%25C3%25A9tico_Parceros_FC_logo.png&w=400&output=webp",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mitv_espn_3_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN 3 FHD | ARG",
-          "id_xtream": "591987",
-          "canal_lineal": "ESPN 3 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "ESPN 3 HD | AR",
-          "id_xtream": "591986",
-          "canal_lineal": "ESPN 3 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "ESPN 3 HD| AR",
-          "id_xtream": "712745",
-          "canal_lineal": "ESPN 3 AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 3 AR"
-      ],
-      "texto_original_crudo": "Krü FC vs. Atlético Parceros. Semifinal. Los partidos de fútbol 7 de la competencia Américas Kings League. El público disfrutará de un evento compuesto por doce equipos presididos por futbolistas y streamers de Internet de diversos países de Latinoámerica",
-      "titulo_original_crudo": "Krü FC vs. Atlético Parceros. Semifinal. Los partidos de fútbol 7 de la competencia Américas Kings League. El público disfrutará de un evento compuesto por doce equipos presididos por futbolistas y streamers de Internet de diversos países de Latinoámerica",
-      "ronda": ""
     },
     {
       "id": "lineal_dsports_plus_514f0f21",
@@ -7013,7 +7012,7 @@
       "equipo_local": "Cienciano",
       "equipo_visitante": "UTC Cajamarca",
       "subtitulo": "Liga Max",
-      "referencia": "Inca Garcilaso de LA Vega",
+      "referencia": "Estadio Inca Garcilaso",
       "hora_utc": "2026-10-18T23:30:00Z",
       "hora_local_producto": "18:30",
       "duracion_min": 130,
@@ -7755,7 +7754,7 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-18",
-    "total_agenda_maestra": 64,
+    "total_agenda_maestra": 63,
     "total_canales_xtream": 1957,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
@@ -7763,9 +7762,9 @@
     "eventos_lineales_inyectados": 32,
     "eventos_xtream_aprobados": 167,
     "eventos_contrastados_api": 105,
-    "eventos_sellados_boveda_inmutable": 142,
+    "eventos_sellados_boveda_inmutable": 143,
     "eventos_descartados_stale": 103,
-    "total_eventos_publicados": 166,
-    "hora_actualizacion_utc": "2026-10-18T18:54:34Z"
+    "total_eventos_publicados": 167,
+    "hora_actualizacion_utc": "2026-10-18T19:38:48Z"
   }
 }
