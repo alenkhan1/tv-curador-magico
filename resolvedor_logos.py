@@ -88,6 +88,23 @@ def _obtener_catalogo_torneos() -> dict[str, str]:
             _CATALOGO_TORNEOS_CACHE = {}
     return _CATALOGO_TORNEOS_CACHE
 
+def _guardar_catalogo_torneos(nuevos: dict[str, str]) -> None:
+    if not nuevos:
+        return
+    cat = _obtener_catalogo_torneos()
+    cat.update(nuevos)
+    tmp_path = ARCHIVO_CATALOGO_TORNEOS.with_suffix(".tmp")
+    try:
+        tmp_path.write_text(json.dumps(cat, ensure_ascii=False, indent=2), encoding="utf-8")
+        tmp_path.replace(ARCHIVO_CATALOGO_TORNEOS)
+    except Exception as e:
+        log.warning("No se pudo guardar catalogo_maestro_torneos: %s", e)
+        if tmp_path.exists():
+            try:
+                tmp_path.unlink()
+            except Exception:
+                pass
+
 THESPORTSDB_KEY = (os.environ.get("THESPORTSDB_KEY") or "3").strip()
 API_SPORTS_KEY = os.environ.get("API_SPORTS_KEY", "").strip()
 
@@ -749,7 +766,7 @@ def deducir_deporte_desde_logo(url: str) -> str:
         return "Voleibol"
     return ""
 
-def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
+def es_logo_compatible_con_categoria(url: str, categoria: str, torneo: str = "") -> bool:
     """Verifica de forma estricta e invariable que el logo o escudo no pertenezca a otra disciplina deportiva."""
     if not url or not categoria:
         return True
@@ -760,6 +777,15 @@ def es_logo_compatible_con_categoria(url: str, categoria: str) -> bool:
     # El escudo oficial sirve precisamente para identificar y ascender al deporte real.
     if cat_norm in ['OTROS DEPORTES', 'DEPORTES', 'DEPORTES EN VIVO', 'EVENTOS', '']:
         return True
+
+    # Excepcion universal para deporte universitario americano (NCAA / College):
+    # En las universidades de EE.UU., el departamento atletico tiene un unico escudo oficial para todos los deportes.
+    torneo_norm = _normalizar(torneo)
+    es_universitario = any(k in torneo_norm for k in ["NCAA", "COLLEGE", "UNIVERSITARIO", "UNIVERSIDAD", "NJCAA", "NAIA"]) or                        any(k in url_low for k in ["/ncaa/", "ncaa_logo", "/teams/ncaa"])
+    if es_universitario and cat_norm in {"FUTBOL", "FUTBOL SALA", "SOCCER", "BALONCESTO", "BEISBOL", "HOCKEY", "FUTBOL AMERICANO", "VOLEIBOL", "WATERPOLO", "POLO"}:
+        rutas_colegiales = ["/football/", "/basketball/", "/baseball/", "/hockey/", "/american-football/", "/volleyball/"]
+        if any(r in url_low for r in rutas_colegiales):
+            return True
 
     # 1. Validación estricta de rutas de API-Sports (tanto leagues como teams)
     RUTAS_API_SPORTS = [
@@ -1015,6 +1041,40 @@ def _generar_variantes_busqueda_equipo(equipo_limpio: str, deporte: str = "") ->
     _add(equipo_limpio)
     norm = _normalizar(equipo_limpio)
 
+    # Variante de rescate sin prefijo geografico literal 'Ciudad ' (ej. 'Yaquis de Ciudad Obregon' -> 'Yaquis de Obregon')
+    sin_ciudad = re.sub(r"\bCIUDAD\s+", "", norm)
+    if sin_ciudad != norm:
+        _add(sin_ciudad.title())
+        sin_ciudad_de = re.sub(r"\bDE\s+", "", sin_ciudad)
+        if sin_ciudad_de != sin_ciudad:
+            _add(sin_ciudad_de.title())
+
+    # Variante de rescate sin conectores de clubes tradicionales (ej. 'Gimnasia y Esgrima de Jujuy' -> 'Gimnasia Jujuy')
+    sin_esgrima = re.sub(r"\bY\s+ESGRIMA(\s+DE)?\b", "", norm)
+    if sin_esgrima != norm:
+        _add(sin_esgrima.title())
+        tokens_esgrima = [t for t in sin_esgrima.split() if t not in PATROCINADORES_CLUBES_PREFIJO]
+        if tokens_esgrima:
+            _add(" ".join(tokens_esgrima).title())
+
+    # Abreviaturas universitarias ('U. Sergio Arboleda' -> 'Universidad Sergio Arboleda')
+    if re.search(r"\bU\.\s+", norm) or re.search(r"\bU\s+", norm) or re.search(r"\bUNIV\.\s+", norm):
+        u_exp = re.sub(r"\b(?:U\.|U|UNIV\.|UNIV)\s+", "UNIVERSIDAD ", norm)
+        _add(u_exp.title())
+    if "UNIVERSIDAD" in norm:
+        u_short = re.sub(r"\bUNIVERSIDAD\s+", "U. ", norm)
+        _add(u_short.title())
+        u_short2 = re.sub(r"\bUNIVERSIDAD\s+", "U ", norm)
+        _add(u_short2.title())
+
+    # Abreviaturas americanas / NCAA ('S. ' -> 'Southern ', 'St. ' -> 'State ', 'Georgia S.' -> 'Georgia Southern')
+    if re.search(r"\bS\.\s+", norm):
+        _add(re.sub(r"\bS\.\s+", "SOUTHERN ", norm).title())
+    if norm.endswith(" S") or norm.endswith(" S."):
+        base_s = re.sub(r"\s+S\.?$", "", norm)
+        _add(f"{base_s.title()} Southern")
+        _add(f"{base_s.title()} State")
+
     tokens_sin_sponsor = [t for t in norm.split() if t not in PATROCINADORES_CLUBES_PREFIJO]
     if tokens_sin_sponsor and len(tokens_sin_sponsor) < len(norm.split()):
         limpio_sponsor = " ".join(tokens_sin_sponsor)
@@ -1064,7 +1124,7 @@ def _deporte_tsdb_compatible(str_sport: str, deporte_ev: str) -> bool:
         return s_up in esperados
     return True
 
-def _es_url_logo_equipo_valida(url: str, equipo_norm: str, deporte: str) -> bool:
+def _es_url_logo_equipo_valida(url: str, equipo_norm: str, deporte: str, torneo: str = "") -> bool:
     """Valida que la URL no sea basura, corresponda al deporte y no asigne una bandera de país a un club."""
     if not url or es_logo_basura(url):
         return False
@@ -1072,7 +1132,7 @@ def _es_url_logo_equipo_valida(url: str, equipo_norm: str, deporte: str) -> bool
         es_sel, _ = es_entidad_seleccion_nacional(equipo_norm)
         if not es_sel:
             return False
-    return es_logo_compatible_con_categoria(url, deporte)
+    return es_logo_compatible_con_categoria(url, deporte, torneo)
 
 def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = "", permitir_red: bool = True, es_seleccion: Optional[bool] = None) -> str:
     """
@@ -1105,7 +1165,7 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
     for var in variantes:
         v_norm = _normalizar(var)
         for k_cand in [f"equipo_{dep_norm}_{v_norm}", f"equipo_{v_norm}"]:
-            if k_cand in cat_equipos and _es_url_logo_equipo_valida(cat_equipos[k_cand], equipo_norm, deporte):
+            if k_cand in cat_equipos and _es_url_logo_equipo_valida(cat_equipos[k_cand], equipo_norm, deporte, torneo):
                 return cat_equipos[k_cand]
 
     # Limpieza de ranking universitario americano ("24 Harvard" -> "Harvard")
@@ -1113,7 +1173,7 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
     if equipo_sin_ranking != equipo_limpio:
         v_rank = _normalizar(equipo_sin_ranking)
         for k_cand in [f"equipo_{dep_norm}_{v_rank}", f"equipo_{v_rank}"]:
-            if k_cand in cat_equipos and _es_url_logo_equipo_valida(cat_equipos[k_cand], equipo_norm, deporte):
+            if k_cand in cat_equipos and _es_url_logo_equipo_valida(cat_equipos[k_cand], equipo_norm, deporte, torneo):
                 return cat_equipos[k_cand]
 
     # Búsqueda por inclusión de raíz en catálogo maestro de equipos (>= 5 caracteres y mismo deporte)
@@ -1122,7 +1182,7 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
         if len(var_n) >= 5:
             patron_v = rf"\b{re.escape(var_n)}\b"
             for k_cat, url_cat in cat_equipos.items():
-                if not _es_url_logo_equipo_valida(url_cat, equipo_norm, deporte):
+                if not _es_url_logo_equipo_valida(url_cat, equipo_norm, deporte, torneo):
                     continue
                 nom_cat = re.sub(r"^equipo_(?:FUTBOL|BALONCESTO|BEISBOL|HOCKEY|BALONMANO|RUGBY|FUTBOL AMERICANO|VOLEIBOL)_", "", k_cat)
                 nom_cat = nom_cat.replace("equipo_", "")
@@ -1132,7 +1192,7 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
     # 2. Caché previo en disco
     cache = _cargar_cache()
     for k_c in [clave_cache_dep, clave_cache_gen]:
-        if k_c in cache and _es_url_logo_equipo_valida(cache[k_c], equipo_norm, deporte):
+        if k_c in cache and _es_url_logo_equipo_valida(cache[k_c], equipo_norm, deporte, torneo):
             return cache[k_c]
 
     if not permitir_red:
@@ -1153,7 +1213,7 @@ def resolver_logo_equipo(equipo: str, deporte: str = "Fútbol", torneo: str = ""
                     badge = team_obj.get("strBadge") or team_obj.get("strLogo")
                     if badge and not es_logo_basura(badge):
                         cdn_url = envolver_cdn_proxy(badge)
-                        if _es_url_logo_equipo_valida(cdn_url, equipo_norm, deporte):
+                        if _es_url_logo_equipo_valida(cdn_url, equipo_norm, deporte, torneo):
                             cache[clave_cache_dep] = cdn_url
                             _guardar_cache(cache)
                             _guardar_catalogo_equipos({clave_cache_dep: cdn_url})

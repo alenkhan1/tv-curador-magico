@@ -164,7 +164,10 @@ Responde ÚNICAMENTE con un JSON Array:
     "participantes": "Detalle descriptivo bajo el preview",
     "categoria_exacta": "Categoría con tilde exacta",
     "tipo_evento": "duelo o circuito",
-    "canales_confirmados": []
+    "canales_confirmados": [],
+    "logo_local_url": "",
+    "logo_visitante_url": "",
+    "logo_torneo_url": ""
   }}
 ]
 """
@@ -368,6 +371,50 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                         break
                 if not ronda_asignada and ev.get("subtitulo"):
                     ev["ronda"] = ev["subtitulo"]
+
+                        # Enriquecimiento y persistencia universal de logos resueltos por AGY
+            try:
+                from resolvedor_logos import _guardar_catalogo_equipos, _guardar_catalogo_torneos, _normalizar, envolver_cdn_proxy
+                nuevos_eq = {}
+                loc_name = ev.get("equipo_local")
+                vis_name = ev.get("equipo_visitante")
+                cat_nombre = ev.get("categoria", "")
+
+                url_l = aud.get("logo_local_url")
+                if url_l and not ev.get("logo_local"):
+                    cdn_l = envolver_cdn_proxy(str(url_l).strip())
+                    if cdn_l:
+                        ev["logo_local"] = cdn_l
+                        if loc_name:
+                            n_l = _normalizar(loc_name)
+                            n_c = _normalizar(cat_nombre)
+                            nuevos_eq[f"equipo_{n_c}_{n_l}"] = cdn_l
+                            nuevos_eq[f"equipo_{n_l}"] = cdn_l
+
+                url_v = aud.get("logo_visitante_url")
+                if url_v and not ev.get("logo_visitante"):
+                    cdn_v = envolver_cdn_proxy(str(url_v).strip())
+                    if cdn_v:
+                        ev["logo_visitante"] = cdn_v
+                        if vis_name:
+                            n_v = _normalizar(vis_name)
+                            n_c = _normalizar(cat_nombre)
+                            nuevos_eq[f"equipo_{n_c}_{n_v}"] = cdn_v
+                            nuevos_eq[f"equipo_{n_v}"] = cdn_v
+
+                if nuevos_eq:
+                    _guardar_catalogo_equipos(nuevos_eq)
+
+                url_t = aud.get("logo_torneo_url")
+                if url_t and not ev.get("logo_torneo"):
+                    cdn_t = envolver_cdn_proxy(str(url_t).strip())
+                    if cdn_t:
+                        ev["logo_torneo"] = cdn_t
+                        tor_name = ev.get("torneo")
+                        if tor_name:
+                            _guardar_catalogo_torneos({f"torneo_{_normalizar(tor_name)}": cdn_t})
+            except Exception as e_logos:
+                log.warning("No se pudo procesar logos de AGY: %s", e_logos)
 
             ev["auditado_agy"] = True
         eventos_finales.append(ev)
