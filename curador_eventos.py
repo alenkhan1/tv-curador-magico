@@ -860,6 +860,18 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         if tipo == "circuito" and cat in DEPORTES_ESTRICTO_DUELO:
             continue
 
+        # Garantía incondicional de banderas oficiales para Selecciones Nacionales (incluso en eventos de Bóveda)
+        loc = ev.get("equipo_local", "")
+        vis = ev.get("equipo_visitante", "")
+        if loc:
+            es_sel_l, flag_l = es_entidad_seleccion_nacional(_normalizar(loc))
+            if es_sel_l and flag_l:
+                ev["logo_local"] = flag_l
+        if vis:
+            es_sel_v, flag_v = es_entidad_seleccion_nacional(_normalizar(vis))
+            if es_sel_v and flag_v:
+                ev["logo_visitante"] = flag_v
+
         if ev.get("curado_integro") is True:
             sellados_boveda += 1
             eventos_finales_limpios.append(ev)
