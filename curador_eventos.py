@@ -27,6 +27,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
+from adaptadores.canales_suramerica import PLATAFORMAS_OTT
 from adaptadores.gestor_agenda import construir_agenda_maestra_hoy
 from adaptadores.modelos import EventoAgenda, calcular_duracion_evento, normalizar_texto, obtener_tz
 from inyector_canales_lineales import (
@@ -99,21 +100,33 @@ def _crear_contexto_ssl():
 
 def es_evento_integramente_curado(ev: Dict[str, Any]) -> bool:
     """
-    Certificación Estricta de Calidad para la Bóveda Diaria:
+    Certificacion Estricta de Calidad para la Boveda Diaria:
     Un evento SOLO se sella como inmutable ('curado_integro': True) si cumple el 100% de los requisitos:
-    - Categoría válida y con tilde canónica (nunca 'Otros Deportes' ni vacía).
-    - Título limpio (sin numeración '01'/'02' y sin palabras largas en mayúsculas sostenidas).
-    - Fuentes de reproducción presentes.
+    - Categoria valida y con tilde canonica (nunca 'Otros Deportes' ni vacia).
+    - Titulo limpio (sin numeracion '01'/'02' y sin palabras largas en mayusculas sostenidas).
+    - Fuentes de reproduccion presentes y SIN transmisiones exclusivas de apps de streaming (Disney+, DGO, etc.).
     - Si es DUELO:
-      * Tiene equipo_local y equipo_visitante limpios.
-      * Tiene AMBOS escudos (logo_local y logo_visitante) resueltos y compatibles con su deporte.
-      * Torneo no genérico (no 'Fútbol' ni 'Deportes').
+      * Tiene equipo_local y equipo_visitante limpios y distintos.
+      * Torneo y paises estrictamente compatibles (sin choques entre liga de un pais y equipos de otro).
+      * Tiene AMBOS escudos (logo_local y logo_visitante) distintos, resueltos y compatibles con su deporte.
+      * Torneo no generico (no 'Futbol' ni 'Deportes').
     - Si es CIRCUITO:
-      * Pertenece a un deporte de DEPORTES_CIRCUITO (jamás Fútbol, Baloncesto, Béisbol, NFL o NHL).
-      * Su torneo/título no es un genérico puro ('WTA 1000', 'ATP 1000') si hay nombre específico.
-      * Tiene 'subtitulo' (cancha/sede/sesión) no vacío y distinto del título.
+      * Pertenece a un deporte de DEPORTES_CIRCUITO (jamas Futbol, Baloncesto, Beisbol, NFL o NHL).
+      * Su torneo/titulo no es un generico puro ('WTA 1000', 'ATP 1000') si hay nombre especifico.
+      * Tiene 'subtitulo' (cancha/sede/sesion) no vacio y distinto del titulo.
     """
     if not ev or not ev.get("fuentes"):
+        return False
+
+    # Validar que las fuentes no sean transmisiones exclusivas de plataformas OTT
+    fuentes_validas = []
+    for f in ev.get("fuentes", []):
+        nom = (f.get("nombre") or "").upper()
+        c_lin = (f.get("canal_lineal") or "").upper()
+        if any(ott in nom or ott in c_lin for ott in PLATAFORMAS_OTT):
+            continue
+        fuentes_validas.append(f)
+    if not fuentes_validas:
         return False
 
     cat = (ev.get("categoria") or "").strip()
@@ -126,21 +139,28 @@ def es_evento_integramente_curado(ev: Dict[str, Any]) -> bool:
     if not tit or es_texto_no_vivo_o_aplazado(tit) or es_estado_aplazado_o_repeticion(txt_raw):
         return False
 
-    # Rechazar si aún tiene numeración de dial ('DIRTVISION 01') o palabras largas en mayúsculas
-    if re.search(r'\b[A-Za-z]{3,}\s+0?\d{1,2}\b', tit):
+    # Rechazar si aun tiene numeracion de dial ('DIRTVISION 01') o palabras largas en mayusculas
+    if re.search(r'[A-Za-z]{3,}\s+0?\d{1,2}', tit):
         return False
 
     tipo = ev.get("tipo_evento", "")
     if tipo == "duelo":
         loc = (ev.get("equipo_local") or "").strip()
         vis = (ev.get("equipo_visitante") or "").strip()
-        if not loc or not vis:
+        if not loc or not vis or loc.lower() == vis.lower():
             return False
         if not tor or tor.lower() in ["fútbol", "futbol", "deportes", "deportes en vivo", "baloncesto", "béisbol"]:
             return False
+
+        # Blindaje de compatibilidad Torneo vs Pais
+        from conector_api_sports import _son_torneos_y_paises_compatibles
+        contexto_ev = f"{tit} {ev.get('subtitulo', '')} {loc} {vis}".strip()
+        if not _son_torneos_y_paises_compatibles({"torneo": tor}, {"torneo": contexto_ev}):
+            return False
+
         logo_l = (ev.get("logo_local") or "").strip()
         logo_v = (ev.get("logo_visitante") or "").strip()
-        if not logo_l or not logo_v:
+        if not logo_l or not logo_v or logo_l == logo_v:
             return False
         if not _es_url_logo_equipo_valida(logo_l, _normalizar(loc), cat):
             return False
@@ -621,6 +641,10 @@ def _reconciliar_con_boveda_diaria(
                 canales_lin_exist = {f.get("canal_lineal") for f in b_ev.get("fuentes", []) if f.get("canal_lineal")}
                 for f in ev.get("fuentes", []):
                     c_lin = f.get("canal_lineal")
+                    nom_f = (f.get("nombre") or "").upper()
+                    # Blindaje: jamas inyectar fuentes de streaming de apps exclusivas en un evento blindado
+                    if any(ott in nom_f or (c_lin and ott in c_lin.upper()) for ott in PLATAFORMAS_OTT):
+                        continue
                     if c_lin and canales_lin_exist and c_lin not in canales_lin_exist:
                         continue
                     if f.get("id_xtream") not in ids_exist and len(b_ev["fuentes"]) < 10:
