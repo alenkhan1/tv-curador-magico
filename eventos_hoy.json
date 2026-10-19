@@ -1,64 +1,10 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-19T17:20:27Z",
+  "generado_utc": "2026-10-19T22:20:16Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-19",
   "base_media": "http://avefenixtv.com:8080",
   "eventos": [
-    {
-      "id": "lineal_eurosport_1_d83c301e",
-      "canales_mencionados_fuente": [
-        "EUROSPORT 1"
-      ],
-      "agenda_id": "",
-      "titulo": "Northern Ireland Open",
-      "torneo": "Northern Ireland Open",
-      "categoria": "Snooker",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Sesión de Tarde",
-      "referencia": "Sesión de Tarde • Waterfront Hall, Belfast",
-      "hora_utc": "2026-10-19T12:00:00Z",
-      "hora_local_producto": "07:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mundodeportivo_eurosport_1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "EUROSPORT 1"
-      ],
-      "texto_original_crudo": "Northern Ireland Open (14:00 EUROSPORT 1)",
-      "titulo_original_crudo": "Northern Ireland Open (14:00 EUROSPORT 1)",
-      "ronda": "Sesión de Tarde",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
     {
       "id": "lineal_dsports_2_26c439a7",
       "canales_mencionados_fuente": [
@@ -96,6 +42,10 @@
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "10:00 ◘ Spain U17 vs. Mexico U17 ◘ FIFA U17 Women's World Cup ◘",
+          "id_xtream": "1731873"
+        },
         {
           "nombre": "DSPORTS 2",
           "id_xtream": "592038",
@@ -214,55 +164,16 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_69b36bc9",
-      "agenda_id": "",
-      "titulo": "Argentina vs. Australia",
-      "torneo": "Fipfa Powerchair Football World Cup",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Argentina",
-      "equipo_visitante": "Australia",
-      "subtitulo": "Fipfa Powerchair Football World Cup",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-10-19T15:45:00Z",
-      "hora_local_producto": "10:45",
-      "duracion_min": 125,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
-      "logo_local": "https://flagcdn.com/256x192/ar.png",
-      "logo_visitante": "https://flagcdn.com/256x192/au.png",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "10:45 ◘ Argentina vs. Australia ◘ FIPFA Powerchair Football World Cup ◘◘",
-          "id_xtream": "1731875"
-        }
-      ],
-      "texto_original_crudo": "10:45 ◘ Argentina vs. Australia ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 19/10✨",
-      "titulo_original_crudo": "10:45 ◘ Argentina vs. Australia ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 19/10✨",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_610c5722",
       "agenda_id": "",
-      "titulo": "LA Natividad vs. Don Ercole",
+      "titulo": "LA Dolfina vs. Don Ercole",
       "torneo": "Abierto de Tortugas",
       "categoria": "Polo",
       "tipo_evento": "duelo",
-      "equipo_local": "LA Natividad",
+      "equipo_local": "LA Dolfina",
       "equipo_visitante": "Don Ercole",
       "subtitulo": "Abierto de Tortugas",
-      "referencia": "Tortugas Country Club",
+      "referencia": "Cancha Tortugas",
       "hora_utc": "2026-10-19T15:55:00Z",
       "hora_local_producto": "10:55",
       "duracion_min": 130,
@@ -299,7 +210,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Chihuahua",
       "equipo_visitante": "Aguascalientes",
-      "subtitulo": "MLB Cup México • Fase de Grupos",
+      "subtitulo": "MLB Cup México",
       "referencia": "Fase de Grupos",
       "hora_utc": "2026-10-19T16:00:00Z",
       "hora_local_producto": "11:00",
@@ -329,7 +240,7 @@
       ],
       "texto_original_crudo": "11:00 ◘ Chihuahua vs. Aguascalientes ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
       "titulo_original_crudo": "11:00 ◘ Chihuahua vs. Aguascalientes ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
-      "ronda": "Fase de Grupos",
+      "ronda": "",
       "auditado_agy": true
     },
     {
@@ -526,60 +437,6 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_eurosport_1_fa4a9c40",
-      "canales_mencionados_fuente": [
-        "EUROSPORT 1"
-      ],
-      "agenda_id": "",
-      "titulo": "Northern Ireland Open",
-      "torneo": "Northern Ireland Open",
-      "categoria": "Snooker",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Sesión Nocturna",
-      "referencia": "Sesión Nocturna • Waterfront Hall, Belfast",
-      "hora_utc": "2026-10-19T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mundodeportivo_eurosport_1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "EUROSPORT 1"
-      ],
-      "texto_original_crudo": "Northern Ireland Open (20:00 EUROSPORT 1)",
-      "titulo_original_crudo": "Northern Ireland Open (20:00 EUROSPORT 1)",
-      "ronda": "Sesión Nocturna",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_440bb037",
       "agenda_id": "",
       "titulo": "Al-Hilal Saudi FC vs Al-Hazm",
@@ -703,45 +560,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_6728ef36",
-      "agenda_id": "",
-      "titulo": "Eintracht Frankfurt vs. Köln",
-      "torneo": "Bundesliga",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Eintracht Frankfurt",
-      "equipo_visitante": "Köln",
-      "subtitulo": "Bundesliga",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-10-19T18:30:00Z",
-      "hora_local_producto": "13:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F169.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F10265.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘",
-          "id_xtream": "1731883"
-        }
-      ],
-      "texto_original_crudo": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘ ✨Eventos Diarios 19/10✨",
-      "titulo_original_crudo": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘ ✨Eventos Diarios 19/10✨",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "lineal_espn_2_ar_e6a450be",
       "canales_mencionados_fuente": [
         "Disney+ Premium",
@@ -825,45 +643,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_4000b848",
-      "agenda_id": "",
-      "titulo": "Argentina vs. Italia",
-      "torneo": "Fipfa Powerchair World Cup",
-      "categoria": "Fútbol En Silla Motorizada",
-      "tipo_evento": "duelo",
-      "equipo_local": "Argentina",
-      "equipo_visitante": "Italia",
-      "subtitulo": "Fipfa Powerchair World Cup",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-10-19T18:45:00Z",
-      "hora_local_producto": "13:45",
-      "duracion_min": 125,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/ar.png",
-      "logo_visitante": "https://flagcdn.com/256x192/it.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "13:45 ◘ Argentina vs. Italia ◘ FIPFA Powerchair Football World Cup ◘◘",
-          "id_xtream": "1731884"
-        }
-      ],
-      "texto_original_crudo": "13:45 ◘ Argentina vs. Italia ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 19/10✨",
-      "titulo_original_crudo": "13:45 ◘ Argentina vs. Italia ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 19/10✨",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_78b9bb51",
       "agenda_id": "",
       "titulo": "LA Ensenada vs. LA Zeta Kazak",
@@ -873,7 +652,7 @@
       "equipo_local": "LA Ensenada",
       "equipo_visitante": "LA Zeta Kazak",
       "subtitulo": "Abierto de Tortugas",
-      "referencia": "Cancha",
+      "referencia": "Cancha Tortugas",
       "hora_utc": "2026-10-19T18:55:00Z",
       "hora_local_producto": "13:55",
       "duracion_min": 130,
@@ -1015,6 +794,51 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_b63b0246",
+      "agenda_id": "",
+      "titulo": "Tottenham vs Coventry",
+      "torneo": "Tottenham Hotspur vs. Coventry City",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tottenham",
+      "equipo_visitante": "Coventry",
+      "subtitulo": "Tottenham Hotspur vs. Coventry City",
+      "referencia": "Jornada Regular",
+      "hora_utc": "2026-10-19T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F47.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1346.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.9,
+      "fuentes": [
+        {
+          "nombre": "13:50 ◘ Tottenham Hotspur vs. Coventry City ◘ Premier League ◘◘",
+          "id_xtream": "1731886"
+        },
+        {
+          "nombre": "13:50  | Tottenham Hotspur vs. Coventry City | Premier League",
+          "id_xtream": "1731926"
+        }
+      ],
+      "texto_original_crudo": "13:50 ◘ Tottenham Hotspur vs. Coventry City ◘ Premier League ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:50 ◘ Tottenham Hotspur vs. Coventry City ◘ Premier League ◘◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_a9f82c40",
       "agenda_id": "",
       "titulo": "Chihuahua vs. San Luis Potosí",
@@ -1062,7 +886,7 @@
       "equipo_local": "SC Braga",
       "equipo_visitante": "GIL Vicente",
       "subtitulo": "Primeira Liga",
-      "referencia": "Estádio Municipal",
+      "referencia": "Estádio Municipal Braga",
       "hora_utc": "2026-10-19T19:15:00Z",
       "hora_local_producto": "14:15",
       "duracion_min": 125,
@@ -1318,6 +1142,49 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_fcb721ef",
+      "agenda_id": "",
+      "titulo": "Newell's Old Boys vs. Central Córdoba (SdE)",
+      "torneo": "Liga Profesional Argentina",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Newell's Old Boys",
+      "equipo_visitante": "Central Córdoba (SdE)",
+      "subtitulo": "Liga Profesional Argentina",
+      "referencia": "Coloso Marcelo Bielsa",
+      "hora_utc": "2026-10-19T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F18691.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F18682.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.9,
+      "fuentes": [
+        {
+          "nombre": "17:00 ◘ Newell's Old Boys vs. Central Córdoba SdE ◘ Primera Argentina ◘",
+          "id_xtream": "1731891"
+        },
+        {
+          "nombre": "16:45  | Newell's vs Central Córdoba | Liga Profesional Argentina",
+          "id_xtream": "1731932"
+        }
+      ],
+      "texto_original_crudo": "17:00 ◘ Newell's Old Boys vs. Central Córdoba SdE ◘ Primera Argentina ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "17:00 ◘ Newell's Old Boys vs. Central Córdoba SdE ◘ Primera Argentina ◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_c0ee53f6",
       "agenda_id": "",
       "titulo": "Goias vs Nautico Recife",
@@ -1456,6 +1323,10 @@
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "18:00 ◘ Corinthians vs. Vitória ◘ Brasileirão ◘",
+          "id_xtream": "1731896"
+        },
         {
           "nombre": "WIN SPORTS FHD",
           "id_xtream": "1331804",
@@ -1622,6 +1493,45 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_7af879e4",
+      "agenda_id": "",
+      "titulo": "Buffalo Sabres vs. Toronto Maple Leafs",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Buffalo Sabres",
+      "equipo_visitante": "Toronto Maple Leafs",
+      "subtitulo": "NHL",
+      "referencia": "KeyBank Center",
+      "hora_utc": "2026-10-19T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F674.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F700.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Buffalo Sabres vs. Toronto Maple Leafs ◘ NHL ◘◘",
+          "id_xtream": "1731895"
+        }
+      ],
+      "texto_original_crudo": "18:00 ◘ Buffalo Sabres vs. Toronto Maple Leafs ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "18:00 ◘ Buffalo Sabres vs. Toronto Maple Leafs ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_5c7d478a",
       "agenda_id": "",
       "titulo": "Veracruz vs. Sonora",
@@ -1630,7 +1540,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Veracruz",
       "equipo_visitante": "Sonora",
-      "subtitulo": "MLB Cup México • Fase de Grupos",
+      "subtitulo": "MLB Cup México",
       "referencia": "Fase de Grupos",
       "hora_utc": "2026-10-19T23:00:00Z",
       "hora_local_producto": "18:00",
@@ -1660,7 +1570,7 @@
       ],
       "texto_original_crudo": "18:00 ◘ Veracruz vs. Sonora ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
       "titulo_original_crudo": "18:00 ◘ Veracruz vs. Sonora ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
-      "ronda": "Fase de Grupos",
+      "ronda": "",
       "auditado_agy": true
     },
     {
@@ -1740,6 +1650,14 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
+          "nombre": "19:08 ◘ Cleveland Guardians vs. Tampa Bay Rays ◘ MLB ◘",
+          "id_xtream": "1731902"
+        },
+        {
+          "nombre": "19:00  | Cleveland Guardians vs. Tampa Bay Rays (ALCS Game #6) | MLB",
+          "id_xtream": "1731939"
+        },
+        {
           "nombre": "ESPN 3 FHD | ARG",
           "id_xtream": "591987",
           "canal_lineal": "ESPN 3 AR",
@@ -1801,6 +1719,10 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
+          "nombre": "19:00  | Dream vs. Valkyries | WNBA",
+          "id_xtream": "1731941"
+        },
+        {
           "nombre": "TELEDEPORTES FHD",
           "id_xtream": "327981",
           "canal_lineal": "TELEDEPORTE",
@@ -1829,46 +1751,6 @@
       "ronda": "Final",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_89497461",
-      "agenda_id": "",
-      "titulo": "Sporting San Jose vs San Carlos",
-      "torneo": "Primera Costa Rica",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Sporting San Jose",
-      "equipo_visitante": "San Carlos",
-      "subtitulo": "Primera Costa Rica",
-      "referencia": "Estadio Ernesto Rohrmoser",
-      "hora_utc": "2026-10-20T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F162.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2047.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F823.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F162.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘",
-          "id_xtream": "1731900"
-        }
-      ],
-      "texto_original_crudo": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘ ✨Eventos Diarios 19/10✨",
-      "titulo_original_crudo": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘ ✨Eventos Diarios 19/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "xtream_a8061a02",
@@ -1914,6 +1796,46 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_89497461",
+      "agenda_id": "",
+      "titulo": "Sporting San Jose vs San Carlos",
+      "torneo": "Primera Costa Rica",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sporting San Jose",
+      "equipo_visitante": "San Carlos",
+      "subtitulo": "Primera Costa Rica",
+      "referencia": "Estadio Ernesto Rohrmoser",
+      "hora_utc": "2026-10-20T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F162.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2047.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F823.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F162.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘",
+          "id_xtream": "1731900"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_2_ar_9bb63ba1",
@@ -2224,7 +2146,7 @@
       "equipo_local": "Escorpiones Belén",
       "equipo_visitante": "Puntarenas FC",
       "subtitulo": "Primera Costa Rica",
-      "referencia": "Polideportivo de Belén",
+      "referencia": "Torneo Apertura",
       "hora_utc": "2026-10-20T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 130,
@@ -2265,7 +2187,7 @@
       "equipo_local": "",
       "equipo_visitante": "",
       "subtitulo": "Qingdao, China",
-      "referencia": "Qingdao, China • Regata Internacional de Remo Costero Beach Sprint",
+      "referencia": "Finales y series Beach Sprint desde Qingdao",
       "hora_utc": "2026-10-20T02:10:00Z",
       "hora_local_producto": "21:10",
       "duracion_min": 130,
@@ -2308,24 +2230,24 @@
       ],
       "texto_original_crudo": "REMO CAMPEONATO DEL MUNDO BEACHS SPRINT DESDE QUINGDAO (CHINA)",
       "titulo_original_crudo": "REMO CAMPEONATO DEL MUNDO BEACHS SPRINT DESDE QUINGDAO (CHINA)",
-      "ronda": "Qingdao, China",
+      "ronda": "Finales y series Beach Sprint desde Qingdao",
       "auditado_agy": true,
       "curado_integro": true
     }
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-19",
-    "total_agenda_maestra": 44,
-    "total_canales_xtream": 1768,
+    "total_agenda_maestra": 42,
+    "total_canales_xtream": 1769,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 314,
-    "eventos_lineales_inyectados": 40,
+    "eventos_lineales_inyectados": 20,
     "eventos_xtream_aprobados": 51,
-    "eventos_contrastados_api": 53,
-    "eventos_sellados_boveda_inmutable": 36,
-    "eventos_descartados_stale": 63,
-    "total_eventos_publicados": 45,
-    "hora_actualizacion_utc": "2026-10-19T17:20:27Z"
+    "eventos_contrastados_api": 35,
+    "eventos_sellados_boveda_inmutable": 34,
+    "eventos_descartados_stale": 70,
+    "total_eventos_publicados": 43,
+    "hora_actualizacion_utc": "2026-10-19T22:20:16Z"
   }
 }
