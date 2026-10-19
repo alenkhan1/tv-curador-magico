@@ -206,8 +206,22 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str,
             deporte = "Rugby"
         elif "MMA" in u_dep or "UFC" in u_dep or "BOXEO" in u_dep:
             deporte = "Combate"
+        elif "ciclismo" in url.lower():
+            deporte = "Ciclismo"
+        elif "tenis" in url.lower():
+            deporte = "Tenis"
+        elif "baloncesto" in url.lower():
+            deporte = "Baloncesto"
+        elif "automovilismo" in url.lower() or "motociclismo" in url.lower():
+            deporte = "Motor"
+        elif "rugby" in url.lower():
+            deporte = "Rugby"
+        elif "beisbol" in url.lower():
+            deporte = "Béisbol"
+        elif "boxeo" in url.lower() or "mma" in url.lower():
+            deporte = "Combate"
         else:
-            deporte = "Fútbol"
+            deporte = ""
 
         # Torneo
         m_tor = re.search(r'<span class=["\']ajusteDoslineas["\'][^>]*>.*?<label title=["\']([^"\']+)["\']', f)
@@ -257,6 +271,8 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str,
         elif any(k in u_todo for k in ["RUGBY"]):
             deporte = "Rugby"
 
+        if not deporte:
+            deporte = "Otros Deportes"
         raw_canales = re.findall(r'<li[^>]*title=["\']([^"\']+)["\']', f)
         canales_validos = normalizar_canales_por_pais(raw_canales, pais_guia, deporte)
         if not canales_validos:
@@ -280,6 +296,7 @@ def extraer_directos_html(html: str, url: str, tz_name: str, fecha_hoy_iso: str,
             duracion_min=180 if deporte in ["Motor", "Béisbol", "Tenis"] else 120,
             fuente=f"futbolenvivo_{pais_guia.lower()}",
             tipo_evento=tipo,
+            canales_mencionados=raw_canales,
             texto_original_crudo=txt_fila,
         )
         eventos.append(ev)

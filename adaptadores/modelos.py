@@ -108,6 +108,7 @@ class EventoAgenda:
     referencia: str = ""
     tipo_evento: str = "duelo"  # "duelo" o "circuito"
     texto_original_crudo: str = ""
+    canales_mencionados: List[str] = field(default_factory=list)
 
     def __post_init__(self):
         # Recalcular duracion especifica del deporte asegurando margenes reales de transmision
@@ -141,4 +142,6 @@ class EventoAgenda:
             "fuente": self.fuente,
             "referencia": self.referencia,
             "tipo_evento": self.tipo_evento,
+            "texto_original_crudo": self.texto_original_crudo,
+            "canales_mencionados": self.canales_mencionados,
         }

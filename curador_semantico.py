@@ -643,6 +643,8 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
                     exist["auditado_agy"] = True
                 if ev.get("curado_integro"):
                     exist["curado_integro"] = True
+                if ev.get("canales_mencionados_fuente") and not exist.get("canales_mencionados_fuente"):
+                    exist["canales_mencionados_fuente"] = ev["canales_mencionados_fuente"]
 
                 for o in ev.get("origenes", []):
                     if o not in exist.get("origenes", []):

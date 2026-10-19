@@ -107,45 +107,55 @@ def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
         except Exception:
             pass
 
+    # Fallback: Extraer objetos JSON individuales si el array vino incompleto o con caracteres residuales
+    objs = []
+    for m in re.finditer(r'\{[^{}]*"id"\s*:\s*"[^"]+"[^{}]*\}', salida_texto):
+        try:
+            parsed = json.loads(m.group(0))
+            if isinstance(parsed, dict) and parsed.get("id"):
+                objs.append(parsed)
+        except Exception:
+            pass
+    if objs:
+        return objs
+
     return []
 
-def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str) -> Dict[str, Dict[str, Any]]:
+def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str, es_reintento: bool = False) -> Dict[str, Dict[str, Any]]:
     prompt_texto = f"""Hoy es {fecha_hoy_iso}.
 Eres el Auditor y Curador Deportivo en Jefe para una app de Android TV.
-La app SOLO transmite eventos deportivos REALES EN VIVO Y EN DIRECTO que se disputan HOY ({fecha_hoy_iso}).
+La app transmite EXCLUSIVAMENTE eventos deportivos REALES EN VIVO Y EN DIRECTO que se disputan HOY ({fecha_hoy_iso}).
+PROHIBIDO transmitir programas grabados, repeticiones, diferidos, resúmenes, noticieros o eventos que SOLO se emiten por apps de streaming.
 
 Reglas obligatorias de decisión:
 1. 'descartar': true OBLIGATORIO si:
-   - EXCLUSIVO DE APP / STREAMING (ANTI-OTT): Esta aplicación SOLO cuenta con canales lineales de cable (ESPN 1 al 7 AR, ESPN Premium, TyC Sports, TNT Sports, DSports AR, Win Sports). Si el evento SOLO se transmite por aplicaciones de streaming (Disney+ Premium, DGO, Star+, WTA TV, Tennis TV, Paramount+, Apple TV) y NO se emite en las señales de cable mencionadas -> 'descartar': true, motivo: "exclusivo_app_streaming".
-   - INCOHERENCIA GROSERA DE ENTIDADES: Si los equipos pertenecen a un país o liga totalmente ajena al torneo (ej. clubes holandeses asignados a la Serie A italiana).
-   - Es un programa multicanal/carrusel de goles o resúmenes sin un partido específico (ej. 'UCL al instante', 'Champions Multi', 'Carrusel', 'Simulcast', 'RedZone', 'Goal Show').
+   - EXCLUSIVIDAD DE APP / STREAMING (ANTI-OTT): Esta aplicación SOLO cuenta con canales lineales de cable tradicional (ESPN 1 al 7 AR, ESPN Premium, TyC Sports, TNT Sports, DSports AR, Win Sports).
+     * Revisa atentamente 'canales_mencionados_fuente': Si la fuente menciona apps de streaming como 'TyC Sports Play', 'Tennis TV', 'Disney+ Premium', 'DGO', 'WTA TV' y se trata de torneos o competencias que NO van en vivo por la señal principal de cable tradicional (ej: torneos ATP 250 / WTA / canchas secundarias donde el canal de cable emite noticieros o programas de debate de estudio) -> 'descartar': true, motivo: "exclusivo_app_streaming".
+   - TORNEO CONCLUIDO EN DÍAS PREVIOS / REPETICIÓN: Si el torneo o competencia ya terminó su edición (por ejemplo, la final del Rolex Shanghai Masters se jugó ayer domingo y hoy es lunes) -> 'descartar': true, motivo: "torneo_finalizado_ayer_repeticion".
+   - TRANSMISIÓN DIFERIDA O REDIFUSIÓN: Si en un canal lineal (Eurosport, ESPN, TyC Sports, Win Sports) se emite una repetición matutina o resumen de snooker, tenis, ciclismo o atletismo sin ser una sesión activa EN DIRECTO de hoy -> 'descartar': true, motivo: "repeticion_diferido".
+   - INCOHERENCIA DE HUSO HORARIO (REPETICIÓN ENCUBIERTA): Contrasta la sede real del torneo contra 'hora_local' (Bogotá UTC-5). Un torneo jugado en Asia/Oceanía de madrugada en Bogotá; si se emite a las 09:00 AM o en la tarde de Bogotá es REPETICIÓN -> 'descartar': true.
    - Es un partido APLAZADO, POSTERGADO, SUSPENDIDO o CANCELADO.
-   - Es una REPETICIÓN, DIFERIDO o RESUMEN.
-   - INCOHERENCIA DE HUSO HORARIO (REPETICIÓN ENCUBIERTA): Contrasta la sede real del torneo contra 'hora_local' (Bogotá UTC-5). Un torneo jugado en China/Japón (UTC+8/+9) se juega de madrugada en Bogotá (00:00 a 08:00 AM); si se emite a las 09:00 AM o en la tarde de Bogotá es REPETICIÓN -> 'descartar': true.
-   - Es un partido que ya se jugó en otra fecha o no existe hoy en el calendario real.
+   - Es un programa multicanal/carrusel de goles o resúmenes sin un partido específico.
    - Es un programa de debate, noticiero, magazine o previa.
 
-2. 'descartar': false si y solo si es una transmisión deportiva competitiva legítima que se disputa HOY en vivo en ese horario.
+2. 'descartar': false si y solo si es una transmisión deportiva competitiva legítima que se disputa HOY en vivo en ese horario y se emite en un canal de TV lineal tradicional.
 
-3. 'categoria_exacta': Usa SIEMPRE el nombre canónico con tildes exactas:
+3. 'categoria_exacta': RAZONA Y ASIGNA EL DEPORTE CANÓNICO REAL. No aceptes 'Fútbol' ni categorías dudosas si el torneo o los contendientes indican otro deporte (ej: si dice 'Torneo de Almaty' o contendientes 'Cilic vs Basilashvili', razona que es 'Tenis', NUNCA 'Fútbol'. Si es Snooker, asigna 'Snooker'. Si es Rugby, 'Rugby'). Usa SIEMPRE el nombre canónico con tildes:
    ('Fútbol', 'Baloncesto', 'Béisbol', 'Balonmano', 'Tenis', 'Pádel', 'Motor', 'Ciclismo', 'Combate', 'Golf', 'Rugby', 'Hockey', 'Natación', 'Snooker', 'Polo', 'Voleibol', 'Atletismo', 'Hípica', 'Fútbol Americano').
 
 4. 'tipo_evento' y LIMPIEZA DE NOMBRES DE CLUBES EN DUELOS:
    - DEPORTES DE EQUIPO (Fútbol, Baloncesto, Béisbol, Fútbol Americano, Hockey, Balonmano, Rugby): Son OBLIGATORIAMENTE 'duelo'.
    - Si el nombre de algún club viene corrupto, truncado o con patrocinadores raros que impiden hallar su escudo en bases de datos internacionales (ej. 'Surne Bilbao vs Sk Slavia Praha Era Nbk'), corrige en 'titulo_pulido' a sus nombres institucionales limpios e internacionalmente reconocidos ('Bilbao Basket vs. ERA Nymburk').
 
-5. REGLAS DE ORO PARA CIRCUITOS (Tenis, Motor, Ciclismo, Pádel, Golf, Combate):
-   - DEPORTES COMO TENIS, PÁDEL, MOTOR, CICLISMO Y COMBATE: Son obligatoriamente 'tipo_evento': 'circuito'.
-   - 'torneo_pulido': Debe contener SIEMPRE el NOMBRE ESPECÍFICO del torneo (ej: 'Wuhan Open', 'Kinoshita Group Japan Open', 'Rolex Shanghai Masters', 'Dirtvision', 'Premier Padel Milán'). PROHIBIDO dejar nombres genéricos como 'WTA', 'WTA 1000', 'ATP', 'Tenis' o 'Motor'.
+5. REGLAS DE ORO PARA CIRCUITOS (Tenis, Motor, Ciclismo, Pádel, Golf, Combate, Snooker):
+   - DEPORTES COMO TENIS, PÁDEL, MOTOR, CICLISMO, COMBATE Y SNOOKER: Son obligatoriamente 'tipo_evento': 'circuito'.
+   - 'torneo_pulido': Debe contener SIEMPRE el NOMBRE ESPECÍFICO del torneo (ej: 'Wuhan Open', 'Kinoshita Group Japan Open', 'Northern Ireland Open', 'Dirtvision', 'Premier Padel Milán'). PROHIBIDO dejar nombres genéricos como 'WTA', 'ATP', 'Tenis', 'Snooker' o 'Motor'.
    - Si el texto original trae contendientes individuales (ej. 'Maja Chwalinska vs. Sonay Kartal'), consérvalos en 'participantes' y pon la ronda ('Final', 'Semifinal', 'Cuartos') en 'subtitulo_pulido'.
-   - 'titulo_pulido' y 'torneo_pulido': Deben contener el NOMBRE ESPECÍFICO del evento en formato Title Case limpio (ej: 'Wuhan Open', 'Rolex Shanghai Masters', 'Dirtvision', 'Premier Padel Milán', 'Giro del Veneto', 'AEW Dynamite').
-     * PROHIBIDO dejar nombres genéricos como 'WTA 1000', 'ATP 1000' o 'Motor' si el texto indica que es 'Wuhan Open' o 'Shanghai Masters'.
-     * PROHIBIDO dejar palabras largas en MAYÚSCULAS ('DIRTVISION 01' -> 'Dirtvision'). Solo siglas cortas oficiales ('UEFA', 'WTA', 'ATP', 'UFC', 'AEW', 'UCI', 'F1') van en mayúsculas.
    - 'subtitulo_pulido' (Línea 2 del botón pequeño de TV, MÁXIMO 24 CARACTERES):
-     * Solo el nombre corto de la Cancha, Pista, Circuito o Ronda (ej: 'Millbridge Speedway', 'Court 1', 'Centre Court', 'Sesión Vespertina', 'Etapa en Ruta').
-     * PROHIBIDO repetir palabras que ya estén en 'titulo_pulido' y PROHIBIDO poner ciudades/estados largos separados por viñetas.
+     * Solo el nombre corto de la Cancha, Pista, Circuito, Sede o Ronda (ej: 'Millbridge Speedway', 'Court 1', 'Centre Court', 'Sesión Vespertina', 'Etapa en Ruta').
+     * PROHIBIDO repetir palabras que ya estén en 'titulo_pulido'.
    - 'participantes' (Línea 3 debajo del reproductor preview):
-     * Descripción concisa de la especialidad, sede o protagonistas (ej: 'Circuito de tierra • Outlaw Karts', 'Optics Valley Tennis Center • Cuadro Principal WTA 1000').
+     * Descripción concisa de la especialidad, sede o protagonistas.
 
 6. 'canales_confirmados': Si es un evento lineal, devuelve únicamente el canal exacto donde se emite. Si es stream de evento Xtream, devuelve [].
 
@@ -216,6 +226,16 @@ Responde ÚNICAMENTE con un JSON Array:
                 if target_id and target_id not in res_map:
                     item["id"] = target_id
                     res_map[target_id] = item
+    # Rescate puntual si el lote devolvió incompleto
+    if not es_reintento and len(res_map) < len(lote):
+        faltantes = [e for e in lote if str(e.get("id")) not in res_map]
+        if faltantes:
+            import time
+            time.sleep(2)  # Pausa prudente para proteger cuenta Gemini Pro
+            log.info("AGY devolvió lote parcial (%d/%d). Consultando puntualmente %d faltantes...", len(res_map), len(lote), len(faltantes))
+            res_rescate = _auditar_lote_con_agy(faltantes, fecha_hoy_iso, es_reintento=True)
+            res_map.update(res_rescate)
+
     return res_map
 
 def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
@@ -253,9 +273,11 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
             canales_cands = ev.get("canales_candidatos") or list(dict.fromkeys([
                 f.get("canal_lineal") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("canal_lineal")
             ]))
+            canales_mencionados = ev.get("canales_mencionados_fuente") or ev.get("canales_mencionados") or fuentes_nombres
             eventos_a_auditar.append({
                 "id": ev.get("id"),
                 "texto_original_crudo": raw_tit,
+                "canales_mencionados_fuente": canales_mencionados,
                 "canales_fuente": fuentes_nombres,
                 "canales_candidatos": canales_cands,
                 "titulo_propuesto": ev.get("titulo"),
@@ -284,11 +306,22 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         log.info("Consultando AGY (Lote %d/%d, %d eventos)...", num_lote, total_lotes, len(sub_lote))
         res_lote = _auditar_lote_con_agy(sub_lote, fecha_hoy_iso)
         mapa_audit.update(res_lote)
+        if i + tamano_lote < len(eventos_a_auditar):
+            import time
+            time.sleep(3)  # Pausa prudente entre lotes para no saturar cuenta Gemini Pro
 
     eventos_finales = []
     eventos_descartados = []
     for ev in eventos:
         aud = mapa_audit.get(ev.get("id"))
+        if not aud:
+            # FAIL-CLOSED: Si AGY no certificó explícitamente el evento, NO se publica en la app
+            motivo = "sin_certificacion_agy"
+            log.warning("AGY no certificó explícitamente evento '%s' (ID: %s). Descartando por seguridad.", ev.get("titulo"), ev.get("id"))
+            ev["motivo_descarte"] = motivo
+            eventos_descartados.append(ev)
+            continue
+
         if aud:
             if aud.get("descartar") is True:
                 motivo = aud.get("motivo_descarte") or "descartado_por_auditoria_agy"

@@ -275,8 +275,11 @@ def inyectar_eventos_lineales(
         hash_evento = hashlib.sha1(f"{ev.titulo}_{ev.hora_utc}_{canales_usados[0]}".encode()).hexdigest()[:8]
         id_evento = f"lineal_{slug_canal}_{hash_evento}"
 
+        canales_mencionados_fuente = getattr(ev, "canales_mencionados", []) or []
+
         evento_dict = {
             "id": id_evento,
+            "canales_mencionados_fuente": canales_mencionados_fuente,
             "agenda_id": "",
             "titulo": ev.titulo,
             "torneo": ev.torneo or ev.titulo,

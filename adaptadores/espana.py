@@ -126,6 +126,8 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
                 duracion_min=duracion_final,
                 fuente=f"mundodeportivo_{canon.lower().replace(' ', '_')}",
                 tipo_evento="circuito",
+                texto_original_crudo=f"{titulo} ({hora_str} {canon})",
+                canales_mencionados=[canon],
             )
             eventos.append(ev)
 
