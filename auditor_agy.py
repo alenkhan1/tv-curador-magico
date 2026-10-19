@@ -89,6 +89,16 @@ MAPA_CATEGORIAS_CANONICAS = {
     "NATACIÓN": "Natación",
 }
 
+def _limpiar_sinopsis_inutil(texto: str) -> str:
+    """Elimina parrafos repetitivos de marketing o sinopsis promocional innecesaria."""
+    if not texto:
+        return ""
+    pat_corte = r"\s+(?:Vive\s+(?:los|las|el|la)|El\s+público|Los\s+mejores\s+combates|Con\s+un\s+total|No\s+te\s+pierdas|Disfruta\s+de|Toda\s+la\s+emoción|En\s+vivo\s+y\s+en\s+directo\s+por).*"
+    t_limpio = re.sub(pat_corte, "", texto, flags=re.I).strip(" . -:|")
+    if len(t_limpio) > 130:
+        t_limpio = t_limpio[:130].strip()
+    return t_limpio
+
 def _normalizar_categoria_agy(cat: str, fallback: str = "") -> str:
     if not cat:
         return fallback
@@ -308,9 +318,10 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 f.get("canal_lineal") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("canal_lineal")
             ]))
             canales_mencionados = ev.get("canales_mencionados_fuente") or ev.get("canales_mencionados") or fuentes_nombres
+            txt_conciso = _limpiar_sinopsis_inutil(raw_tit)
             eventos_a_auditar.append({
                 "id": ev.get("id"),
-                "texto_original_crudo": raw_tit,
+                "texto_original_crudo": txt_conciso,
                 "canales_mencionados_fuente": canales_mencionados,
                 "canales_fuente": fuentes_nombres,
                 "canales_candidatos": canales_cands,
@@ -349,7 +360,13 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
     for ev in eventos:
         aud = mapa_audit.get(ev.get("id"))
         if not aud:
-            # FAIL-CLOSED: Si AGY no certificó explícitamente el evento, NO se publica en la app
+            # RESILIENCIA: Si el evento ya fue contrastado y confirmado oficialmente por API-Sports para hoy,
+            # no descartarlo si AGY sufrio un timeout temporal.
+            if ev.get("contrastado_api") is True and ev.get("categoria") not in ["Otros Deportes", ""]:
+                log.info("Evento respaldado por API-Sports oficial conservado: '%s'", ev.get("titulo"))
+                eventos_finales.append(ev)
+                continue
+            # FAIL-CLOSED: Si no tiene confirmacion oficial de API ni certificacion de AGY, descartar
             motivo = "sin_certificacion_agy"
             log.warning("AGY no certificó explícitamente evento '%s' (ID: %s). Descartando por seguridad.", ev.get("titulo"), ev.get("id"))
             ev["motivo_descarte"] = motivo

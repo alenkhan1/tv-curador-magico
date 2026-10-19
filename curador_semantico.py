@@ -252,7 +252,8 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
     if loc1 and vis1 and loc2 and vis2:
         div1 = extraer_marcadores_division(f"{ev1.get('titulo','')} {ev1.get('torneo','')} {loc1} {vis1}")
         div2 = extraer_marcadores_division(f"{ev2.get('titulo','')} {ev2.get('torneo','')} {loc2} {vis2}")
-        if div1 != div2:
+        # Solo son incompatibles si AMBOS especifican marcadores explícitos y son contradictorios (ej. Sub-20 vs Sub-17)
+        if div1 and div2 and div1 != div2:
             return False
 
         # Validación estricta de país/liga: prohibir fusionar duelos de ligas nacionales distintas
@@ -617,6 +618,17 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
 
                 # Ordenar fuentes: Primero los streams efímeros dedicados de Xtream (sin canal_lineal) y detrás los canales lineales de respaldo
                 exist["fuentes"].sort(key=lambda x: 1 if x.get("canal_lineal") else 0)
+
+                # Aglutinar origenes y canales candidatos para no perder ninguna referencia de transmision
+                for orig in ev.get("origenes", []):
+                    if orig not in exist.setdefault("origenes", []):
+                        exist["origenes"].append(orig)
+                for cand in ev.get("canales_candidatos", []):
+                    if cand not in exist.setdefault("canales_candidatos", []):
+                        exist["canales_candidatos"].append(cand)
+                for menc in ev.get("canales_mencionados_fuente", []):
+                    if menc not in exist.setdefault("canales_mencionados_fuente", []):
+                        exist["canales_mencionados_fuente"].append(menc)
 
                 if exist.get("curado_integro") is True:
                     fusionado = True
