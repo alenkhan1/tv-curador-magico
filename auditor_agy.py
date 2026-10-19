@@ -133,7 +133,12 @@ Reglas obligatorias de decisión:
      * Revisa atentamente 'canales_mencionados_fuente': Si la fuente menciona apps de streaming como 'TyC Sports Play', 'Tennis TV', 'Disney+ Premium', 'DGO', 'WTA TV' y se trata de torneos o competencias que NO van en vivo por la señal principal de cable tradicional (ej: torneos ATP 250 / WTA / canchas secundarias donde el canal de cable emite noticieros o programas de debate de estudio) -> 'descartar': true, motivo: "exclusivo_app_streaming".
    - TORNEO CONCLUIDO EN DÍAS PREVIOS / REPETICIÓN: Si el torneo o competencia ya terminó su edición (por ejemplo, la final del Rolex Shanghai Masters se jugó ayer domingo y hoy es lunes) -> 'descartar': true, motivo: "torneo_finalizado_ayer_repeticion".
    - TRANSMISIÓN DIFERIDA O REDIFUSIÓN: Si en un canal lineal (Eurosport, ESPN, TyC Sports, Win Sports) se emite una repetición matutina o resumen de snooker, tenis, ciclismo o atletismo sin ser una sesión activa EN DIRECTO de hoy -> 'descartar': true, motivo: "repeticion_diferido".
-   - INCOHERENCIA DE HUSO HORARIO (REPETICIÓN ENCUBIERTA): Contrasta la sede real del torneo contra 'hora_local' (Bogotá UTC-5). Un torneo jugado en Asia/Oceanía de madrugada en Bogotá; si se emite a las 09:00 AM o en la tarde de Bogotá es REPETICIÓN -> 'descartar': true.
+   - INCOHERENCIA DE HUSO HORARIO (REPETICIÓN ENCUBIERTA):
+     Contrasta la hora UTC del evento contra el huso horario REAL de la CIUDAD SEDE donde se disputa:
+     * Si en la ciudad sede (calculando según su huso horario local a partir de hora_utc) la hora corresponde a un horario competitivo diurno o nocturno normal (entre las 08:00 AM y las 23:30 PM de la sede), es una transmisión LEGÍTIMA EN DIRECTO.
+     * Ejemplo 1 (Asia): Un evento en China (UTC+8) emitido a las 21:10 Bogotá (02:10 UTC) se disputa a las 10:10 AM hora local de China -> ES EN VIVO EN DIRECTO (sesión matinal en China).
+     * Ejemplo 2 (Costa Oeste EE.UU.): Un partido en California/San Francisco (UTC-7) emitido a las 18:50 Bogotá (23:50 UTC, 01:50 AM de España) se disputa a las 16:50 (4:50 PM) hora local de San Francisco -> ES EN VIVO EN DIRECTO (tarde en EE.UU.).
+     * Solo es REPETICIÓN si en la sede local del evento la hora UTC corresponde a una hora inverosímil (como las 02:00, 03:00 o 04:00 de la madrugada local de la ciudad sede) sin justificación.
    - Es un partido APLAZADO, POSTERGADO, SUSPENDIDO o CANCELADO.
    - Es un programa multicanal/carrusel de goles o resúmenes sin un partido específico.
    - Es un programa de debate, noticiero, magazine o previa.

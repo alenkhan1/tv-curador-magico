@@ -158,11 +158,13 @@ def parse_rtve_teledeporte_title(raw: str) -> Dict[str, str]:
             torneo = sin_dep
             loc = izq
 
+        loc_puro = limpiar_nombre_equipo(loc)
+        vis_puro = limpiar_nombre_equipo(vis)
         return {
             "tipo": "duelo",
-            "titulo": f"{loc.title()} vs {vis.title()}",
-            "local": loc.title(),
-            "visitante": vis.title(),
+            "titulo": f"{loc_puro.title()} vs. {vis_puro.title()}",
+            "local": loc_puro.title(),
+            "visitante": vis_puro.title(),
             "torneo": torneo.title() or "Deportes",
         }
     else:

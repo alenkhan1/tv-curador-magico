@@ -724,11 +724,23 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
 
         # Si la categoría actual era 'Otros Deportes' o genérica y se resolvió un escudo oficial, ascender la categoría
         if categoria_real in ["Otros Deportes", "Deportes", "Deportes en Vivo", ""]:
-            dep_detectado = deducir_deporte_desde_logo(logo_loc) or deducir_deporte_desde_logo(logo_vis) or deducir_deporte_desde_logo(logo_torneo)
-            if dep_detectado:
-                categoria_real = dep_detectado
-                ev["categoria"] = dep_detectado
-                log.info("Categoría ascendida de 'Otros Deportes' a '%s' por escudo oficial: '%s'", dep_detectado, ev.get("titulo"))
+            # Verificar si el titulo o torneo ya contiene una disciplina explicita antes de sobreescribir por logo
+            u_tit_comp = f"{ev.get('titulo', '')} {ev.get('torneo', '')}".upper()
+            if any(k in u_tit_comp for k in ["REMO", "ROWING"]):
+                categoria_real = "Remo"
+                ev["categoria"] = "Remo"
+            elif any(k in u_tit_comp for k in ["SNOOKER", "BILLAR"]):
+                categoria_real = "Snooker"
+                ev["categoria"] = "Snooker"
+            elif any(k in u_tit_comp for k in ["CICLISMO", "CYCLING", "VUELTA", "TOUR", "GIRO"]):
+                categoria_real = "Ciclismo"
+                ev["categoria"] = "Ciclismo"
+            else:
+                dep_detectado = deducir_deporte_desde_logo(logo_loc) or deducir_deporte_desde_logo(logo_vis) or deducir_deporte_desde_logo(logo_torneo)
+                if dep_detectado:
+                    categoria_real = dep_detectado
+                    ev["categoria"] = dep_detectado
+                    log.info("Categoría ascendida de 'Otros Deportes' a '%s' por escudo oficial: '%s'", dep_detectado, ev.get("titulo"))
 
         ev["subtitulo"] = subtitulo
         ev["referencia"] = referencia

@@ -43,6 +43,8 @@ def limpiar_nombre_equipo(s: str) -> str:
         return ""
     s = re.sub(r"^[0-9]{1,2}[:.][0-9]{2}\s*(?:AM|PM|am|pm)?\s*", "", s)
     s = re.sub(r"\b(HD|FHD|SD|4K|OP\d+|LIVE|DIRECTO|EN VIVO|ES|SPAIN|LATAM)\b", "", s, flags=re.I)
+    # Limpieza universal de fases competitivas, jornadas u ordinales (ej. '2º Partido Atlanta Dream' -> 'Atlanta Dream')
+    s = re.sub(r"^\s*(?:\d+[ªºa-zA-Z]*\s+(?:PARTIDO|JORNADA|JUEGO|FECHA|ROUND|GAME|MATCH)|FINAL|SEMIFINAL|CUARTOS|IDA|VUELTA)\s*[-:]?\s*", "", s, flags=re.I)
     return " ".join(s.split()).strip(" -:|/\t\r\n")
 
 

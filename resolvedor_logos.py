@@ -955,9 +955,17 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
 
     if catalogo:
         claves_ordenadas_cat = sorted(catalogo.keys(), key=len, reverse=True)
+        STOP_WORDS_TORNEOS = {"DEL", "DE", "LA", "EL", "LOS", "LAS", "AL", "THE", "FOR", "AND", "EN", "CON"}
         for clave in claves_ordenadas_cat:
-            patron = rf"\b{re.escape(clave)}\b"
-            if (clave == torneo_norm) or re.search(patron, torneo_norm):
+            # STOP-WORDS / CLAVES CORTAS: Si la clave tiene <= 3 caracteres o es stop-word,
+            # SOLO puede coincidir si es exactamente igual al nombre completo del torneo.
+            if len(clave) <= 3 or clave in STOP_WORDS_TORNEOS:
+                coincide = (clave == torneo_norm)
+            else:
+                patron = rf"\b{re.escape(clave)}\b"
+                coincide = (clave == torneo_norm) or bool(re.search(patron, torneo_norm))
+
+            if coincide:
                 if not son_torneos_compatibles(torneo_norm, clave, pais_deducido):
                     continue
                 url = catalogo[clave]
