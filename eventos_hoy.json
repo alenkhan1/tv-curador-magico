@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-19T16:45:01Z",
+  "generado_utc": "2026-10-19T17:20:27Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-19",
   "base_media": "http://avefenixtv.com:8080",
@@ -17,8 +17,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Sesión Vespertina",
-      "referencia": "Sesión Vespertina • Waterfront Hall, Belfast • Primera Ronda",
+      "subtitulo": "Sesión de Tarde",
+      "referencia": "Sesión de Tarde • Waterfront Hall, Belfast",
       "hora_utc": "2026-10-19T12:00:00Z",
       "hora_local_producto": "07:00",
       "duracion_min": 240,
@@ -55,25 +55,30 @@
       ],
       "texto_original_crudo": "Northern Ireland Open (14:00 EUROSPORT 1)",
       "titulo_original_crudo": "Northern Ireland Open (14:00 EUROSPORT 1)",
-      "ronda": "Sesión Vespertina",
+      "ronda": "Sesión de Tarde",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_teledeporte_343c3ac2",
-      "canales_mencionados_fuente": [],
+      "id": "lineal_dsports_2_26c439a7",
+      "canales_mencionados_fuente": [
+        "DSports 2 (612/1612)",
+        "DGO",
+        "Paramount+",
+        "Amazon Prime Video (Ver en vivo)"
+      ],
       "agenda_id": "",
       "titulo": "Spain U17 W vs Mexico U17 W",
-      "torneo": "Campeonato del Mundo Sub-17 Femenino",
+      "torneo": "FIFA Mundial Femenino Sub-17",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Spain U17 W",
       "equipo_visitante": "Mexico U17 W",
-      "subtitulo": "Campeonato del Mundo Sub-17 Femenino",
-      "referencia": "Rabat",
+      "subtitulo": "FIFA Mundial Femenino Sub-17",
+      "referencia": "Fase de Grupos",
       "hora_utc": "2026-10-19T15:00:00Z",
       "hora_local_producto": "10:00",
-      "duracion_min": 150,
+      "duracion_min": 130,
       "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
       "logo_local": "https://flagcdn.com/256x192/es.png",
       "logo_visitante": "https://flagcdn.com/256x192/mx.png",
@@ -82,6 +87,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
+        "futbolenvivo_ar",
         "rtve_teledeporte_oficial",
         "xtream_evento"
       ],
@@ -91,29 +97,30 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "TELEDEPORTES FHD",
-          "id_xtream": "327981",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
+          "nombre": "DSPORTS 2",
+          "id_xtream": "592038",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
         },
         {
-          "nombre": "TELEDEPORTES HD",
-          "id_xtream": "327953",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
         },
         {
-          "nombre": "TELEDEPORTES",
-          "id_xtream": "327966",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
         }
       ],
       "canales_candidatos": [
+        "DSPORTS 2",
         "TELEDEPORTE"
       ],
-      "texto_original_crudo": "FÚTBOL CAMPEONATO DEL MUNDO SUB-17 FEMENINO ESPAÑA – MÉXICO DESDE RABAT (MARRUECOS)",
-      "titulo_original_crudo": "FÚTBOL CAMPEONATO DEL MUNDO SUB-17 FEMENINO ESPAÑA – MÉXICO DESDE RABAT (MARRUECOS)",
+      "texto_original_crudo": "12:00 FIFA Mundial Femenino Sub-17 Fase de grupos España México DSports 2 (612/1612) DGO Paramount+ Amazon Prime Video (Ver en vivo)",
+      "titulo_original_crudo": "12:00 FIFA Mundial Femenino Sub-17 Fase de grupos España México DSports 2 (612/1612) DGO Paramount+ Amazon Prime Video (Ver en vivo)",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -171,7 +178,7 @@
       "equipo_local": "Al-Fayha",
       "equipo_visitante": "Al-Ahli Jeddah",
       "subtitulo": "Pro League",
-      "referencia": "Jornada de Liga",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-19T15:05:00Z",
       "hora_local_producto": "10:05",
       "duracion_min": 125,
@@ -255,7 +262,7 @@
       "equipo_local": "LA Natividad",
       "equipo_visitante": "Don Ercole",
       "subtitulo": "Abierto de Tortugas",
-      "referencia": "Cancha",
+      "referencia": "Tortugas Country Club",
       "hora_utc": "2026-10-19T15:55:00Z",
       "hora_local_producto": "10:55",
       "duracion_min": 130,
@@ -282,6 +289,123 @@
       "titulo_original_crudo": "10:55 ◘ La Natividad-La Dolfina vs. Don Ercole ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 19/10✨",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_297faf13",
+      "agenda_id": "",
+      "titulo": "Chihuahua vs. Aguascalientes",
+      "torneo": "MLB Cup México",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chihuahua",
+      "equipo_visitante": "Aguascalientes",
+      "subtitulo": "MLB Cup México • Fase de Grupos",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Chihuahua vs. Aguascalientes ◘ MLB Cup ◘◘",
+          "id_xtream": "1731877"
+        },
+        {
+          "nombre": "11:00  | Chihuahua vs. Aguascalientes (Fase de Grupos) |",
+          "id_xtream": "1731918"
+        }
+      ],
+      "texto_original_crudo": "11:00 ◘ Chihuahua vs. Aguascalientes ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "11:00 ◘ Chihuahua vs. Aguascalientes ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "Fase de Grupos",
+      "auditado_agy": true
+    },
+    {
+      "id": "lineal_espn_2_ar_5f1538a1",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN 2"
+      ],
+      "agenda_id": "",
+      "titulo": "Monza vs Cagliari",
+      "torneo": "Serie a Italiana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Monza",
+      "equipo_visitante": "Cagliari",
+      "subtitulo": "Serie a Italiana",
+      "referencia": "Serie A Italiana",
+      "hora_utc": "2026-10-19T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1579.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F490.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "11:30 ◘ Monza vs. Cagliari ◘ Serie A ◘",
+          "id_xtream": "1731878"
+        },
+        {
+          "nombre": "11:20  | Monza vs. Cagliari | Serie A",
+          "id_xtream": "1731919"
+        },
+        {
+          "nombre": "PEA 01 | Monza vs. Cagliari (Español) | 12:25 PM ET | 10.19",
+          "id_xtream": "1731957"
+        },
+        {
+          "nombre": "ESPN 2 ARG | FHD",
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "13:30 Serie A Italiana Monza Cagliari Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "13:30 Serie A Italiana Monza Cagliari Disney+ Premium ESPN 2",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
     },
     {
       "id": "xtream_70277f7d",
@@ -333,6 +457,75 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_2_ad2b07d3",
+      "canales_mencionados_fuente": [
+        "DSports 2 (612/1612)",
+        "DGO",
+        "Paramount+",
+        "Amazon Prime Video (Ver en vivo)"
+      ],
+      "agenda_id": "",
+      "titulo": "Australia U17 W vs Chile U17 W",
+      "torneo": "FIFA Mundial Femenino Sub-17",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Australia U17 W",
+      "equipo_visitante": "Chile U17 W",
+      "subtitulo": "FIFA Mundial Femenino Sub-17",
+      "referencia": "FIFA Mundial Femenino Sub-17",
+      "hora_utc": "2026-10-19T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "logo_local": "https://flagcdn.com/256x192/au.png",
+      "logo_visitante": "https://flagcdn.com/256x192/cl.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Australia U17 vs. Chile U17 ◘ FIFA U17 Women's World Cup ◘",
+          "id_xtream": "1731880"
+        },
+        {
+          "nombre": "DSPORTS 2",
+          "id_xtream": "592038",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "15:00 FIFA Mundial Femenino Sub-17 Fase de grupos Australia Chile DSports 2 (612/1612) DGO Paramount+ Amazon Prime Video (Ver en vivo)",
+      "titulo_original_crudo": "15:00 FIFA Mundial Femenino Sub-17 Fase de grupos Australia Chile DSports 2 (612/1612) DGO Paramount+ Amazon Prime Video (Ver en vivo)",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
       "id": "lineal_eurosport_1_fa4a9c40",
       "canales_mencionados_fuente": [
         "EUROSPORT 1"
@@ -345,7 +538,7 @@
       "equipo_local": "",
       "equipo_visitante": "",
       "subtitulo": "Sesión Nocturna",
-      "referencia": "Sesión Nocturna • Waterfront Hall, Belfast • Primera Ronda",
+      "referencia": "Sesión Nocturna • Waterfront Hall, Belfast",
       "hora_utc": "2026-10-19T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 240,
@@ -383,6 +576,441 @@
       "texto_original_crudo": "Northern Ireland Open (20:00 EUROSPORT 1)",
       "titulo_original_crudo": "Northern Ireland Open (20:00 EUROSPORT 1)",
       "ronda": "Sesión Nocturna",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_440bb037",
+      "agenda_id": "",
+      "titulo": "Al-Hilal Saudi FC vs Al-Hazm",
+      "torneo": "Pro League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Al-Hilal Saudi FC",
+      "equipo_visitante": "Al-Hazm",
+      "subtitulo": "Pro League",
+      "referencia": "Jornada Regular",
+      "hora_utc": "2026-10-19T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2932.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2945.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Al Hilal vs. Al Hazm ◘ Pro League ◘",
+          "id_xtream": "1731879"
+        }
+      ],
+      "texto_original_crudo": "13:00 ◘ Al Hilal vs. Al Hazm ◘ Pro League ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:00 ◘ Al Hilal vs. Al Hazm ◘ Pro League ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_36645537",
+      "agenda_id": "",
+      "titulo": "United States W U17 vs Samoa U17 W",
+      "torneo": "FIFA U17 Women's World Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "United States W U17",
+      "equipo_visitante": "Samoa U17 W",
+      "subtitulo": "FIFA U17 Women's World Cup",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "logo_local": "https://flagcdn.com/256x192/us.png",
+      "logo_visitante": "https://flagcdn.com/256x192/ws.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ United States U17 vs. Samoa U17 ◘ FIFA U17 Women's World Cup ◘",
+          "id_xtream": "1731881"
+        }
+      ],
+      "texto_original_crudo": "13:00 ◘ United States U17 vs. Samoa U17 ◘ FIFA U17 Women's World Cup ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:00 ◘ United States U17 vs. Samoa U17 ◘ FIFA U17 Women's World Cup ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_107dddff",
+      "agenda_id": "",
+      "titulo": "Celta de Vigo II vs Tenerife",
+      "torneo": "Liga Hypermotion",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Celta de Vigo II",
+      "equipo_visitante": "Tenerife",
+      "subtitulo": "Liga Hypermotion",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-10-19T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9571.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F719.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:30 ◘ Celta de Vigo II vs. Tenerife ◘ Liga Hypermotion ◘",
+          "id_xtream": "1731882"
+        }
+      ],
+      "texto_original_crudo": "13:30 ◘ Celta de Vigo II vs. Tenerife ◘ Liga Hypermotion ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:30 ◘ Celta de Vigo II vs. Tenerife ◘ Liga Hypermotion ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_6728ef36",
+      "agenda_id": "",
+      "titulo": "Eintracht Frankfurt vs. Köln",
+      "torneo": "Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eintracht Frankfurt",
+      "equipo_visitante": "Köln",
+      "subtitulo": "Bundesliga",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-10-19T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F169.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F10265.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘",
+          "id_xtream": "1731883"
+        }
+      ],
+      "texto_original_crudo": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_2_ar_e6a450be",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN 2"
+      ],
+      "agenda_id": "",
+      "titulo": "Parma vs Torino",
+      "torneo": "Serie a Italiana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Parma",
+      "equipo_visitante": "Torino",
+      "subtitulo": "Serie a Italiana",
+      "referencia": "Serie A Italiana",
+      "hora_utc": "2026-10-19T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F523.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F503.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ Parma vs. Torino ◘ Serie A ◘",
+          "id_xtream": "1731885"
+        },
+        {
+          "nombre": "13:25  | English: Parma vs. Torino | Serie A",
+          "id_xtream": "1731923"
+        },
+        {
+          "nombre": "13:30  | Parma vs. Torino | Serie A",
+          "id_xtream": "1731924"
+        },
+        {
+          "nombre": "13:40  | En Español: Parma vs. Torino | Serie A",
+          "id_xtream": "1731925"
+        },
+        {
+          "nombre": "PEA 03 | Parma vs. Torino (Español) | 2:40 PM ET | 10.19",
+          "id_xtream": "1731959"
+        },
+        {
+          "nombre": "ESPN 2 ARG | FHD",
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "15:45 Serie A Italiana Parma Torino Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "15:45 Serie A Italiana Parma Torino Disney+ Premium ESPN 2",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_4000b848",
+      "agenda_id": "",
+      "titulo": "Argentina vs. Italia",
+      "torneo": "Fipfa Powerchair World Cup",
+      "categoria": "Fútbol En Silla Motorizada",
+      "tipo_evento": "duelo",
+      "equipo_local": "Argentina",
+      "equipo_visitante": "Italia",
+      "subtitulo": "Fipfa Powerchair World Cup",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 125,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/ar.png",
+      "logo_visitante": "https://flagcdn.com/256x192/it.png",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:45 ◘ Argentina vs. Italia ◘ FIPFA Powerchair Football World Cup ◘◘",
+          "id_xtream": "1731884"
+        }
+      ],
+      "texto_original_crudo": "13:45 ◘ Argentina vs. Italia ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:45 ◘ Argentina vs. Italia ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_78b9bb51",
+      "agenda_id": "",
+      "titulo": "LA Ensenada vs. LA Zeta Kazak",
+      "torneo": "Abierto de Tortugas",
+      "categoria": "Polo",
+      "tipo_evento": "duelo",
+      "equipo_local": "LA Ensenada",
+      "equipo_visitante": "LA Zeta Kazak",
+      "subtitulo": "Abierto de Tortugas",
+      "referencia": "Cancha",
+      "hora_utc": "2026-10-19T18:55:00Z",
+      "hora_local_producto": "13:55",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:55 ◘ La Ensenada vs. La Zeta Kazak ◘ Abierto de Tortugas ◘◘",
+          "id_xtream": "1731887"
+        }
+      ],
+      "texto_original_crudo": "13:55 ◘ La Ensenada vs. La Zeta Kazak ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:55 ◘ La Ensenada vs. La Zeta Kazak ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "lineal_win_sportsplus_9cd0633c",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play"
+      ],
+      "agenda_id": "",
+      "titulo": "Real Santander vs Leones FC",
+      "torneo": "Real Santander vs Leones",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Real Santander",
+      "equipo_visitante": "Leones FC",
+      "subtitulo": "Real Santander vs Leones",
+      "referencia": "Primera B",
+      "hora_utc": "2026-10-19T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1463.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1143.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co",
+        "mitv_win_sports"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS+ FHD",
+          "id_xtream": "1331807",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+",
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "14:00 Real Santander Leones Win Fútbol + Win Play",
+      "titulo_original_crudo": "14:00 Real Santander Leones Win Fútbol + Win Play",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_580bb993",
+      "agenda_id": "",
+      "titulo": "Getafe vs Rayo Vallecano",
+      "torneo": "LaLiga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Getafe",
+      "equipo_visitante": "Rayo Vallecano",
+      "subtitulo": "LaLiga",
+      "referencia": "Coliseum",
+      "hora_utc": "2026-10-19T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F546.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F728.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Getafe vs. Rayo Vallecano ◘ LaLiga ◘",
+          "id_xtream": "1731888"
+        },
+        {
+          "nombre": "13:50  | English: Getafe CF vs. Rayo Vallecano",
+          "id_xtream": "1731927"
+        },
+        {
+          "nombre": "13:55  | En Español: Getafe CF vs. Rayo Vallecano",
+          "id_xtream": "1731928"
+        }
+      ],
+      "texto_original_crudo": "14:00 ◘ Getafe vs. Rayo Vallecano ◘ LaLiga ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "14:00 ◘ Getafe vs. Rayo Vallecano ◘ LaLiga ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -425,6 +1053,173 @@
       "auditado_agy": true
     },
     {
+      "id": "xtream_b8a4d1f4",
+      "agenda_id": "",
+      "titulo": "SC Braga vs GIL Vicente",
+      "torneo": "Primeira Liga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "SC Braga",
+      "equipo_visitante": "GIL Vicente",
+      "subtitulo": "Primeira Liga",
+      "referencia": "Estádio Municipal",
+      "hora_utc": "2026-10-19T19:15:00Z",
+      "hora_local_producto": "14:15",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primeira_liga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F217.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F762.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primeira_liga.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:15 ◘ Sporting Braga vs. Gil Vicente ◘ Primeira Liga ◘",
+          "id_xtream": "1731889"
+        }
+      ],
+      "texto_original_crudo": "14:15 ◘ Sporting Braga vs. Gil Vicente ◘ Primeira Liga ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "14:15 ◘ Sporting Braga vs. Gil Vicente ◘ Primeira Liga ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "lineal_win_sports_e854bd41",
+      "canales_mencionados_fuente": [
+        "Win Play",
+        "Pluto TV",
+        "Win Sports"
+      ],
+      "agenda_id": "",
+      "titulo": "Deportivo Cali W vs Club Nacional de Football W",
+      "torneo": "Deportivo Cali Femenino vs Nacional Femenino",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Cali W",
+      "equipo_visitante": "Club Nacional de Football W",
+      "subtitulo": "Deportivo Cali Femenino vs Nacional Femenino",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F949.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F15723.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F22549.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F949.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:00 Deportivo Cali Femenino Nacional Femenino Win Play Pluto TV Win Sports",
+      "titulo_original_crudo": "15:00 Deportivo Cali Femenino Nacional Femenino Win Play Pluto TV Win Sports",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sportsplus_7095bd0b",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play"
+      ],
+      "agenda_id": "",
+      "titulo": "Internacional Palmira vs Union Magdalena",
+      "torneo": "Internacional FC Palmira vs Unión Magdalena",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Internacional Palmira",
+      "equipo_visitante": "Union Magdalena",
+      "subtitulo": "Internacional FC Palmira vs Unión Magdalena",
+      "referencia": "Estadio F. Rivera e.",
+      "hora_utc": "2026-10-19T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F23326.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1465.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS+ FHD",
+          "id_xtream": "1331807",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+"
+      ],
+      "texto_original_crudo": "16:00 Internacional FC Palmira Unión Magdalena Win Fútbol + Win Play",
+      "titulo_original_crudo": "16:00 Internacional FC Palmira Unión Magdalena Win Fútbol + Win Play",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_30a8cfd6",
       "agenda_id": "",
       "titulo": "Jalisco vs. Sinaloa",
@@ -463,6 +1258,66 @@
       "auditado_agy": true
     },
     {
+      "id": "lineal_espn_premium_argentina_3a5ae1a7",
+      "canales_mencionados_fuente": [
+        "ESPN Premium"
+      ],
+      "agenda_id": "",
+      "titulo": "Sarmiento Junin vs Barracas Central",
+      "torneo": "Torneo Betano",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sarmiento Junin",
+      "equipo_visitante": "Barracas Central",
+      "subtitulo": "Torneo Betano",
+      "referencia": "Torneo Betano",
+      "hora_utc": "2026-10-19T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F474.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2432.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "16:45  | Sarmiento vs Barracas | Liga Profesional Argentina",
+          "id_xtream": "1731931"
+        },
+        {
+          "nombre": "ESPN Premium  | AR FHD",
+          "id_xtream": "712747",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN PREMIUM | AR",
+          "id_xtream": "591997",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN PREMIUM ARGENTINA"
+      ],
+      "texto_original_crudo": "19:00 Torneo Betano Torneo Clausura Sarmiento Barracas Central ESPN Premium",
+      "titulo_original_crudo": "19:00 Torneo Betano Torneo Clausura Sarmiento Barracas Central ESPN Premium",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
       "id": "xtream_c0ee53f6",
       "agenda_id": "",
       "titulo": "Goias vs Nautico Recife",
@@ -472,7 +1327,7 @@
       "equipo_local": "Goias",
       "equipo_visitante": "Nautico Recife",
       "subtitulo": "Serie B",
-      "referencia": "Estadio da Serrinha",
+      "referencia": "Estádio da Serrinha",
       "hora_utc": "2026-10-19T22:30:00Z",
       "hora_local_producto": "17:30",
       "duracion_min": 130,
@@ -497,6 +1352,134 @@
       ],
       "texto_original_crudo": "17:30 ◘ Goiás vs. Náutico ◘ Serie B ◘ ✨Eventos Diarios 19/10✨",
       "titulo_original_crudo": "17:30 ◘ Goiás vs. Náutico ◘ Serie B ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sportsplus_3543f2b2",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play"
+      ],
+      "agenda_id": "",
+      "titulo": "Real Cartagena vs Patriotas",
+      "torneo": "Real Cartagena vs Patriotas",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Real Cartagena",
+      "equipo_visitante": "Patriotas",
+      "subtitulo": "Real Cartagena vs Patriotas",
+      "referencia": "Estadio Jaime Morón",
+      "hora_utc": "2026-10-19T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1459.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1140.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS+ FHD",
+          "id_xtream": "1331807",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+"
+      ],
+      "texto_original_crudo": "18:00 Real Cartagena Patriotas Win Fútbol + Win Play",
+      "titulo_original_crudo": "18:00 Real Cartagena Patriotas Win Fútbol + Win Play",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sports_232e73a5",
+      "canales_mencionados_fuente": [
+        "Fanatiz (Míralo en vivo)",
+        "Win Play",
+        "Win Sports"
+      ],
+      "agenda_id": "",
+      "titulo": "Corinthians vs Vitoria",
+      "torneo": "Corinthians vs Vitória",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Corinthians",
+      "equipo_visitante": "Vitoria",
+      "subtitulo": "Corinthians vs Vitória",
+      "referencia": "Neo Química Arena",
+      "hora_utc": "2026-10-19T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F131.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F136.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "18:00 Corinthians Vitória Fanatiz (Míralo en vivo) Win Play Win Sports",
+      "titulo_original_crudo": "18:00 Corinthians Vitória Fanatiz (Míralo en vivo) Win Play Win Sports",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -726,6 +1709,67 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_3_ar_a0fdd53d",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Tampa Bay Rays vs Cleveland Guardians",
+      "torneo": "Cleveland Guardians vs. Tampa Bay Rays",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tampa Bay Rays",
+      "equipo_visitante": "Cleveland Guardians",
+      "subtitulo": "Cleveland Guardians vs. Tampa Bay Rays • Alcs Game",
+      "referencia": "Tropicana Field",
+      "hora_utc": "2026-10-20T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F1.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F34.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F9.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F1.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_3_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 FHD | ARG",
+          "id_xtream": "591987",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 3 HD | AR",
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "Cleveland Guardians vs. Tampa Bay Rays. Juego 6 - Series de Campeonato, Tropicana Field. Vive los partidos de la temporada 2026 de la MLB, con las emociones de la liga de béisbol más importante del mundo",
+      "titulo_original_crudo": "Cleveland Guardians vs. Tampa Bay Rays. Juego 6 - Series de Campeonato, Tropicana Field. Vive los partidos de la temporada 2026 de la MLB, con las emociones de la liga de béisbol más importante del mundo",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "Alcs Game",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_teledeporte_0bfa0dee",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
@@ -736,7 +1780,7 @@
       "equipo_local": "Golden State Valkyries W",
       "equipo_visitante": "Atlanta Dream W",
       "subtitulo": "Liga WNBA Play Off • Final",
-      "referencia": "San Francisco • Game",
+      "referencia": "Final • Partido",
       "hora_utc": "2026-10-20T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 150,
@@ -872,6 +1916,145 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_2_ar_9bb63ba1",
+      "canales_mencionados_fuente": [
+        "DAZN (Ver en directo)",
+        "Disney+ Premium",
+        "ESPN 2"
+      ],
+      "agenda_id": "",
+      "titulo": "San Francisco 49ers vs Washington Commanders",
+      "torneo": "NFL",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Francisco 49ers",
+      "equipo_visitante": "Washington Commanders",
+      "subtitulo": "NFL",
+      "referencia": "NFL",
+      "hora_utc": "2026-10-20T00:15:00Z",
+      "hora_local_producto": "19:15",
+      "duracion_min": 360,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F14.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F18.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nfl.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "19:15 ◘ Washington Commanders vs. San Francisco 49ers ◘ NFL ◘",
+          "id_xtream": "1731904"
+        },
+        {
+          "nombre": "19:15 ◘ Washington Commanders vs. San Francisco 49ers ◘ NFL ◘ En Espanol",
+          "id_xtream": "1731905"
+        },
+        {
+          "nombre": "ESPN 2 ARG | FHD",
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "21:15 NFL Liga Regular San Francisco 49ers Washington Commanders DAZN (Ver en directo) Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "21:15 NFL Liga Regular San Francisco 49ers Washington Commanders DAZN (Ver en directo) Disney+ Premium ESPN 2",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_premium_argentina_4d11fe37",
+      "canales_mencionados_fuente": [
+        "ESPN Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Deportivo Riestra vs Union Santa Fe",
+      "torneo": "Torneo Betano",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Riestra",
+      "equipo_visitante": "Union Santa Fe",
+      "subtitulo": "Torneo Betano",
+      "referencia": "Torneo Betano",
+      "hora_utc": "2026-10-20T00:15:00Z",
+      "hora_local_producto": "19:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F476.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F441.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar",
+        "mitv_espn_2_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "19:15 ◘ Deportivo Riestra vs. Unión Santa Fe ◘ Primera Argentina ◘",
+          "id_xtream": "1731903"
+        },
+        {
+          "nombre": "19:00  | Riestra vs Unión | Liga Profesional Argentina",
+          "id_xtream": "1731940"
+        },
+        {
+          "nombre": "ESPN Premium  | AR FHD",
+          "id_xtream": "712747",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN PREMIUM | AR",
+          "id_xtream": "591997",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN PREMIUM ARGENTINA",
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "21:15 Torneo Betano Torneo Clausura Deportivo Riestra Unión Santa Fe ESPN Premium ESPN",
+      "titulo_original_crudo": "21:15 Torneo Betano Torneo Clausura Deportivo Riestra Unión Santa Fe ESPN Premium ESPN",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
       "id": "xtream_c98ee761",
       "agenda_id": "",
       "titulo": "Utah Mammoth vs Pittsburgh Penguins",
@@ -917,6 +2100,76 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_win_sportsplus_c854a38f",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports"
+      ],
+      "agenda_id": "",
+      "titulo": "Deportivo Pasto vs Alianza Valledupar",
+      "torneo": "Deportivo Pasto vs Alianza",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Deportivo Pasto",
+      "equipo_visitante": "Alianza Valledupar",
+      "subtitulo": "Deportivo Pasto vs Alianza",
+      "referencia": "Primera a",
+      "hora_utc": "2026-10-20T01:05:00Z",
+      "hora_local_producto": "20:05",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F239.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1126.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1141.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F239.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co",
+        "mitv_win_sports",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "20:05 ◘ Deportivo Pasto vs. Alianza ◘ Liga Betplay ◘",
+          "id_xtream": "1731907"
+        },
+        {
+          "nombre": "Win Sports + FHD",
+          "id_xtream": "13771",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS+ FHD",
+          "id_xtream": "1331807",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports + HD",
+          "id_xtream": "13769",
+          "canal_lineal": "WIN SPORTS+",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS+",
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "20:05 Deportivo Pasto Alianza Win Fútbol + Win Play Win Sports",
+      "titulo_original_crudo": "20:05 Deportivo Pasto Alianza Win Fútbol + Win Play Win Sports",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
       "id": "xtream_da3db750",
       "agenda_id": "",
       "titulo": "León W vs Atlante W",
@@ -926,7 +2179,7 @@
       "equipo_local": "León W",
       "equipo_visitante": "Atlante W",
       "subtitulo": "Liga MX Femenil",
-      "referencia": "Jornada Regular",
+      "referencia": "Estadio Nou Camp",
       "hora_utc": "2026-10-20T01:06:00Z",
       "hora_local_producto": "20:06",
       "duracion_min": 130,
@@ -971,7 +2224,7 @@
       "equipo_local": "Escorpiones Belén",
       "equipo_visitante": "Puntarenas FC",
       "subtitulo": "Primera Costa Rica",
-      "referencia": "Torneo Apertura",
+      "referencia": "Polideportivo de Belén",
       "hora_utc": "2026-10-20T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 130,
@@ -1011,8 +2264,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Qingdao",
-      "referencia": "Pruebas de velocidad en playa • Qingdao, China",
+      "subtitulo": "Qingdao, China",
+      "referencia": "Qingdao, China • Regata Internacional de Remo Costero Beach Sprint",
       "hora_utc": "2026-10-20T02:10:00Z",
       "hora_local_producto": "21:10",
       "duracion_min": 130,
@@ -1055,24 +2308,24 @@
       ],
       "texto_original_crudo": "REMO CAMPEONATO DEL MUNDO BEACHS SPRINT DESDE QUINGDAO (CHINA)",
       "titulo_original_crudo": "REMO CAMPEONATO DEL MUNDO BEACHS SPRINT DESDE QUINGDAO (CHINA)",
-      "ronda": "Qingdao",
+      "ronda": "Qingdao, China",
       "auditado_agy": true,
       "curado_integro": true
     }
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-19",
-    "total_agenda_maestra": 34,
+    "total_agenda_maestra": 44,
     "total_canales_xtream": 1768,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 314,
-    "eventos_lineales_inyectados": 30,
+    "eventos_lineales_inyectados": 40,
     "eventos_xtream_aprobados": 51,
-    "eventos_contrastados_api": 51,
-    "eventos_sellados_boveda_inmutable": 17,
-    "eventos_descartados_stale": 77,
-    "total_eventos_publicados": 23,
-    "hora_actualizacion_utc": "2026-10-19T16:45:01Z"
+    "eventos_contrastados_api": 53,
+    "eventos_sellados_boveda_inmutable": 36,
+    "eventos_descartados_stale": 63,
+    "total_eventos_publicados": 45,
+    "hora_actualizacion_utc": "2026-10-19T17:20:27Z"
   }
 }
