@@ -23,7 +23,8 @@ PROGRAMAS_NO_DEPORTIVOS = [
 def _es_programa_no_deportivo(titulo: str) -> bool:
     t_u = normalizar_texto(titulo).upper()
     for prog in PROGRAMAS_NO_DEPORTIVOS:
-        if prog == t_u or f"{prog}:" in t_u or f"{prog} " in t_u or prog in t_u:
+        # Usar limites de palabra para evitar que 'PROGRAMA' coincida con 'PROGRAMACION'
+        if re.search(r'\b' + re.escape(prog) + r'\b', t_u):
             return True
     return False
 
@@ -57,7 +58,14 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
         items = re.findall(r"<li[^>]*class=[^>]*prow[^>]*>(.*?)</li>", html, flags=re.S)
         for item in items:
-            if "DIRECTO" not in item.upper():
+            # 1. Si la etiqueta visible dice 'Diferido', es repeticion grabada -> descartar
+            if re.search(r'>\s*Diferido\s*<', item, re.I):
+                continue
+
+            # 2. Quitar los atributos title="..." antes de buscar 'DIRECTO' para no caer en tooltips de diferidos
+            item_sin_tooltips = re.sub(r'title="[^"]*"', '', item)
+            item_sin_tooltips = re.sub(r"title='[^']*'", '', item_sin_tooltips)
+            if "EN DIRECTO" not in item_sin_tooltips.upper() and "prow__t--live" not in item:
                 continue
 
             m_hora = re.search(r"([0-9]{1,2}:[0-9]{2})", item)
@@ -188,6 +196,8 @@ def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
     clean = re.sub(r"<[^>]+>", " ", text_html)
     clean = html_lib.unescape(clean)
+    # Limpiar pie de pagina generico de RTVE para que no mutile ni contamine los eventos de madrugada
+    clean = re.sub(r"Esta programaci[oó]n puede sufrir modificaciones.*", "", clean, flags=re.I)
 
     matches = re.findall(r"([0-2][0-9]:[0-5][0-9])\s+(.*?)(?=[0-2][0-9]:[0-5][0-9]|$)", clean, flags=re.S)
     eventos = []

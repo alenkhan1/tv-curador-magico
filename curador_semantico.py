@@ -656,55 +656,6 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
         if not fusionado:
             ev["fuentes"] = sorted(ev.get("fuentes", []), key=lambda x: 1 if x.get("canal_lineal") else 0)
             eventos_fusionados.append(ev)
-        fusionado = False
-        for exist in eventos_fusionados:
-            if son_mismo_evento(ev, exist):
-                ids_existentes = {f.get("id_xtream") for f in exist.get("fuentes", [])}
-                canales_lin_exist = {f.get("canal_lineal") for f in exist.get("fuentes", []) if f.get("canal_lineal")}
-                for f in ev.get("fuentes", []):
-                    c_lin_nuevo = f.get("canal_lineal")
-                    if c_lin_nuevo and canales_lin_exist and c_lin_nuevo not in canales_lin_exist:
-                        continue
-                    if f.get("id_xtream") not in ids_existentes and len(exist["fuentes"]) < 10:
-                        exist["fuentes"].append(f)
-                        ids_existentes.add(f.get("id_xtream"))
-
-                # Si el evento existente ya estaba sellado en la Bóveda Diaria, solo le sumamos fuentes y no tocamos su metadata
-                if exist.get("curado_integro") is True:
-                    fusionado = True
-                    break
-
-                if ev.get("subtitulo") and (not exist.get("subtitulo") or exist.get("subtitulo") in ["MLB", "Rugby", "Fútbol", "Futbol", exist.get("titulo")]):
-                    exist["subtitulo"] = ev["subtitulo"]
-                if ev.get("referencia") and (not exist.get("referencia") or exist.get("referencia") in ["MLB", "Rugby", "Fútbol", "Futbol", exist.get("titulo")]):
-                    exist["referencia"] = ev["referencia"]
-                if ev.get("ronda") and not exist.get("ronda"):
-                    exist["ronda"] = ev["ronda"]
-
-                if not exist.get("logo_local") and ev.get("logo_local"):
-                    exist["logo_local"] = ev["logo_local"]
-                if not exist.get("logo_visitante") and ev.get("logo_visitante"):
-                    exist["logo_visitante"] = ev["logo_visitante"]
-                if not exist.get("logo_torneo") and ev.get("logo_torneo"):
-                    exist["logo_torneo"] = ev["logo_torneo"]
-                if not exist.get("banner") and ev.get("banner"):
-                    exist["banner"] = ev["banner"]
-                if ev.get("contrastado_api"):
-                    exist["contrastado_api"] = True
-                if ev.get("auditado_agy"):
-                    exist["auditado_agy"] = True
-                if ev.get("curado_integro"):
-                    exist["curado_integro"] = True
-
-                for o in ev.get("origenes", []):
-                    if o not in exist.get("origenes", []):
-                        exist["origenes"].append(o)
-
-                fusionado = True
-                break
-
-        if not fusionado:
-            eventos_fusionados.append(ev)
 
     eventos_pulidos = []
     for ev in eventos_fusionados:

@@ -137,6 +137,7 @@ Reglas obligatorias de decisión:
    - Es un partido APLAZADO, POSTERGADO, SUSPENDIDO o CANCELADO.
    - Es un programa multicanal/carrusel de goles o resúmenes sin un partido específico.
    - Es un programa de debate, noticiero, magazine o previa.
+   - SESIONES MÚLTIPLES EN DEPORTES DE CIRCUITO: En torneos de Snooker, Tenis, Pádel o Dardos, es totalmente normal y legítimo que se disputen MÚLTIPLES SESIONES EN VIVO en una misma jornada (ej: Sesión de Tarde a las 14:00 y Sesión Nocturna a las 20:00). NO descartes una sesión nocturna asumiendo que es repetición de la tarde si corresponde a una sesión competitiva programada en directo para ese horario.
 
 2. 'descartar': false si y solo si es una transmisión deportiva competitiva legítima que se disputa HOY en vivo en ese horario y se emite en un canal de TV lineal tradicional.
 
