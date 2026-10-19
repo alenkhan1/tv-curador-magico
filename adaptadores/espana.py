@@ -9,7 +9,7 @@ import urllib.request
 from datetime import datetime, timezone, timedelta
 from typing import Dict, List
 
-from .modelos import EventoAgenda, HEADERS_WEB, calcular_duracion_evento, normalizar_texto, obtener_tz
+from .modelos import EventoAgenda, HEADERS_WEB, calcular_duracion_evento, normalizar_texto, obtener_tz, limpiar_nombre_equipo
 
 log = logging.getLogger("adaptador_espana")
 
@@ -149,14 +149,22 @@ def parse_rtve_teledeporte_title(raw: str) -> Dict[str, str]:
     partes = re.split(r"\s*(?:[\u2013\u2014\x96]|\s+[\-]\s+)\s*", sin_desde)
     if len(partes) == 2:
         izq, vis = partes[0].strip(), partes[1].strip()
-        sin_dep = re.sub(r"^(?:BALONCESTO|BALONMANO|F[ÚU]TBOL|HOCKEY\s+PATINES|HOCKEY|WATERPOLO)\s+", "", izq, flags=re.I).strip()
-        m_jornada = re.search(r"^(.*?)\s+(\d+[ªºa-zA-Z]*\s+(?:JORNADA|PARTIDO|FASE)|FINAL|SEMIFINAL)\s+(.*)$", sin_dep, re.I)
+        sin_dep = re.sub(r"^(?:F[ÚU]TBOL|BALONCESTO|BASKET|BALONMANO|VOLEIBOL|RUGBY|HOCKEY\s+PATINES|HOCKEY|WATERPOLO|B[ÉE]ISBOL)\s+", "", izq, flags=re.I).strip()
+        
+        pat_fase = r'(?:(?:\d+[ªºa-zA-Z]*\s+)?(?:JORNADA|PARTIDO|FASE|ROUND|MATCH|FECHA|GAME)(?:\s+\d+[ªºa-zA-Z]*)?|FINAL|SEMIFINAL|CUARTOS|OCTAVOS|IDA|VUELTA)'
+        m_jornada = re.search(rf'^(.*?)\s+({pat_fase})\s+(.*)$', sin_dep, re.I)
         if m_jornada:
             torneo = f"{m_jornada.group(1)} {m_jornada.group(2)}".strip()
             loc = m_jornada.group(3).strip()
         else:
-            torneo = sin_dep
-            loc = izq
+            palabras_torneo = r'(?:CAMPEONATO\s+(?:DEL\s+)?MUNDO|COPA\s+(?:DEL\s+)?REY|COPA|LIGA|TORNEO|MUNDIAL|EUROCOPA|SUPERCOPA|DIVISION\s+DE\s+HONOR|FASE\s+DE\s+GRUPOS|SUB-\d+(?:\s+FEMENINO|\s+MASCULINO)?|FEMENINO|MASCULINO)'
+            m_tor = re.search(rf'^(.*{palabras_torneo})\s+(.+)$', sin_dep, re.I)
+            if m_tor:
+                torneo = m_tor.group(1).strip()
+                loc = m_tor.group(2).strip()
+            else:
+                torneo = sin_dep
+                loc = izq
 
         loc_puro = limpiar_nombre_equipo(loc)
         vis_puro = limpiar_nombre_equipo(vis)
@@ -216,22 +224,44 @@ def obtener_teledeporte_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
         u_tit = raw_item.upper()
         dep = "Otros Deportes"
-        if any(k in u_tit for k in ["BALONCESTO", "BASKET", "LIGA ENDESA", "ACB", "LIGA U", "WNBA", "NBA"]):
-            dep = "Baloncesto"
-        elif any(k in u_tit for k in ["BALONMANO", "ASOBAL", "HANDBALL"]):
-            dep = "Balonmano"
-        elif any(k in u_tit for k in ["HOCKEY PATINES", "HOCKEY"]):
-            dep = "Hockey"
-        elif any(k in u_tit for k in ["WATERPOLO"]):
-            dep = "Waterpolo"
-        elif any(k in u_tit for k in ["NATACIÓN", "NATACION", "WATERPOLO", "AQUATICS", "SWIMMING"]):
-            dep = "Natación"
-        elif any(k in u_tit for k in ["CICLISMO", "VUELTA", "TOUR", "GIRO"]):
-            dep = "Ciclismo"
-        elif any(k in u_tit for k in ["FÚTBOL", "FUTBOL"]):
-            dep = "Fútbol"
-        elif any(k in u_tit for k in ["TENIS", "ATP", "WTA"]):
-            dep = "Tenis"
+        MANDATORY_SPORTS = [
+            ("FÚTBOL", "Fútbol"), ("FUTBOL", "Fútbol"),
+            ("BALONCESTO", "Baloncesto"), ("BASKET", "Baloncesto"), ("WNBA", "Baloncesto"), ("NBA", "Baloncesto"), ("ACB", "Baloncesto"),
+            ("TENIS", "Tenis"), ("ATP", "Tenis"), ("WTA", "Tenis"),
+            ("CICLISMO", "Ciclismo"), ("VUELTA", "Ciclismo"), ("TOUR", "Ciclismo"), ("GIRO", "Ciclismo"),
+            ("BALONMANO", "Balonmano"), ("HANDBALL", "Balonmano"),
+            ("HOCKEY", "Hockey"),
+            ("WATERPOLO", "Waterpolo"),
+            ("NATACIÓN", "Natación"), ("NATACION", "Natación"), ("AQUATICS", "Natación"), ("SWIMMING", "Natación"),
+            ("REMO", "Remo"), ("ROWING", "Remo"),
+            ("VELA", "Vela"), ("SAILING", "Vela"),
+            ("PIRAGÜISMO", "Piragüismo"), ("PIRAGUISMO", "Piragüismo"), ("CANOE", "Piragüismo"), ("KAYAK", "Piragüismo"),
+            ("ATLETISMO", "Atletismo"), ("ATHLETICS", "Atletismo"),
+            ("GIMNASIA", "Gimnasia"), ("GYMNASTICS", "Gimnasia"),
+            ("BOXEO", "Combate"), ("BOXING", "Combate"), ("JUDO", "Combate"), ("TAEKWONDO", "Combate"), ("LUCHA", "Combate"),
+            ("SNOOKER", "Snooker"), ("BILLAR", "Snooker"),
+            ("PÁDEL", "Pádel"), ("PADEL", "Pádel"),
+            ("PATINAJE", "Patinaje"), ("SKATING", "Patinaje"),
+            ("TRIATLÓN", "Triatlón"), ("TRIATLON", "Triatlón"),
+            ("RUGBY", "Rugby"),
+            ("BÉISBOL", "Béisbol"), ("BEISBOL", "Béisbol"), ("BASEBALL", "Béisbol"),
+            ("MOTOR", "Motor"), ("RALLY", "Motor"), ("MOTOGP", "Motor"),
+            ("GOLF", "Golf"),
+            ("VOLEIBOL", "Voleibol"), ("VOLLEYBALL", "Voleibol"),
+            ("ESGRIMA", "Esgrima"),
+            ("TIRO CON ARCO", "Tiro con Arco"), ("ARCHERY", "Tiro con Arco"),
+            ("HÍPICA", "Hípica"), ("HIPICA", "Hípica"), ("EQUESTRIAN", "Hípica"),
+            ("ESQUÍ", "Esquí"), ("ESQUI", "Esquí"), ("SKI", "Esquí"),
+            ("SURF", "Surf"),
+            ("ESCALADA", "Escalada"), ("CLIMBING", "Escalada"),
+            ("BÁDMINTON", "Bádminton"), ("BADMINTON", "Bádminton"),
+            ("CURLING", "Curling"),
+            ("TEJO", "Tejo"),
+        ]
+        for kw, sport_name in MANDATORY_SPORTS:
+            if re.search(r'\b' + re.escape(kw) + r'\b', u_tit):
+                dep = sport_name
+                break
 
         parsed = parse_rtve_teledeporte_title(raw_item)
 

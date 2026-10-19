@@ -66,13 +66,36 @@ MAPA_CATEGORIAS_CANONICAS = {
     "ATLETISMO": "Atletismo",
     "HIPICA": "Hípica",
     "HÍPICA": "Hípica",
+    "REMO": "Remo",
+    "VELA": "Vela",
+    "PIRAGUISMO": "Piragüismo",
+    "PIRAGÜISMO": "Piragüismo",
+    "GIMNASIA": "Gimnasia",
+    "PATINAJE": "Patinaje",
+    "TRIATLON": "Triatlón",
+    "TRIATLÓN": "Triatlón",
+    "ESGRIMA": "Esgrima",
+    "TIRO CON ARCO": "Tiro con Arco",
+    "ESQUI": "Esquí",
+    "ESQUÍ": "Esquí",
+    "SURF": "Surf",
+    "ESCALADA": "Escalada",
+    "BADMINTON": "Bádminton",
+    "BÁDMINTON": "Bádminton",
+    "CURLING": "Curling",
+    "TEJO": "Tejo",
+    "WATERPOLO": "Waterpolo",
+    "NATACION": "Natación",
+    "NATACIÓN": "Natación",
 }
 
 def _normalizar_categoria_agy(cat: str, fallback: str = "") -> str:
     if not cat:
         return fallback
     c_up = cat.strip().upper()
-    return MAPA_CATEGORIAS_CANONICAS.get(c_up, cat.strip())
+    if c_up in MAPA_CATEGORIAS_CANONICAS:
+        return MAPA_CATEGORIAS_CANONICAS[c_up]
+    return cat.strip().title()
 
 def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
     if not salida_texto:
@@ -129,8 +152,11 @@ PROHIBIDO transmitir programas grabados, repeticiones, diferidos, resúmenes, no
 
 Reglas obligatorias de decisión:
 1. 'descartar': true OBLIGATORIO si:
-   - EXCLUSIVIDAD DE APP / STREAMING (ANTI-OTT): Esta aplicación SOLO cuenta con canales lineales de cable tradicional (ESPN 1 al 7 AR, ESPN Premium, TyC Sports, TNT Sports, DSports AR, Win Sports).
-     * Revisa atentamente 'canales_mencionados_fuente': Si la fuente menciona apps de streaming como 'TyC Sports Play', 'Tennis TV', 'Disney+ Premium', 'DGO', 'WTA TV' y se trata de torneos o competencias que NO van en vivo por la señal principal de cable tradicional (ej: torneos ATP 250 / WTA / canchas secundarias donde el canal de cable emite noticieros o programas de debate de estudio) -> 'descartar': true, motivo: "exclusivo_app_streaming".
+   - EXCLUSIVIDAD DE APP / STREAMING (ANTI-OTT): Esta aplicación cuenta con canales lineales oficiales de TV tradicional (cable y señal abierta):
+     * Señales oficiales de España / Europa: Teledeporte, Eurosport 1, Eurosport 2, DAZN F1, Sky Sports.
+     * Señales oficiales de Sudamérica: ESPN (1 al 7 AR), ESPN Premium, TyC Sports, TNT Sports, DSports (DSports, DSports 2, DSports +), Win Sports, Win Sports+, Caracol, RCN.
+     * Revisa atentamente 'canales_mencionados_fuente': Si la fuente menciona apps de streaming que NO van en vivo por ninguno de los canales lineales anteriores (ej: 'TyC Sports Play', 'Tennis TV', 'Disney+ Premium', 'DGO', 'WTA TV') y se trata de competencias que no emiten en las señales tradicionales de televisión -> 'descartar': true, motivo: "exclusivo_app_streaming".
+   - AUTORIDAD DE PARRILLA OFICIAL DE CANALES LINEALES: Si un evento proviene de la programación oficial de una cadena lineal reconocida (como RTVE Teledeporte o Eurosport) y está explícitamente programado en DIRECTO para el día de hoy, acéptalo como transmisión legítima en vivo y pule sus datos (título, contendientes, torneo). NO lo descartes por suposiciones externas de calendario.
    - TORNEO CONCLUIDO EN DÍAS PREVIOS / REPETICIÓN: Si el torneo o competencia ya terminó su edición (por ejemplo, la final del Rolex Shanghai Masters se jugó ayer domingo y hoy es lunes) -> 'descartar': true, motivo: "torneo_finalizado_ayer_repeticion".
    - TRANSMISIÓN DIFERIDA O REDIFUSIÓN: Si en un canal lineal (Eurosport, ESPN, TyC Sports, Win Sports) se emite una repetición matutina o resumen de snooker, tenis, ciclismo o atletismo sin ser una sesión activa EN DIRECTO de hoy -> 'descartar': true, motivo: "repeticion_diferido".
    - INCOHERENCIA DE HUSO HORARIO (REPETICIÓN ENCUBIERTA):
@@ -146,8 +172,10 @@ Reglas obligatorias de decisión:
 
 2. 'descartar': false si y solo si es una transmisión deportiva competitiva legítima que se disputa HOY en vivo en ese horario y se emite en un canal de TV lineal tradicional.
 
-3. 'categoria_exacta': RAZONA Y ASIGNA EL DEPORTE CANÓNICO REAL. No aceptes 'Fútbol' ni categorías dudosas si el torneo o los contendientes indican otro deporte (ej: si dice 'Torneo de Almaty' o contendientes 'Cilic vs Basilashvili', razona que es 'Tenis', NUNCA 'Fútbol'. Si es Snooker, asigna 'Snooker'. Si es Rugby, 'Rugby'). Usa SIEMPRE el nombre canónico con tildes:
-   ('Fútbol', 'Baloncesto', 'Béisbol', 'Balonmano', 'Tenis', 'Pádel', 'Motor', 'Ciclismo', 'Combate', 'Golf', 'Rugby', 'Hockey', 'Natación', 'Snooker', 'Polo', 'Voleibol', 'Atletismo', 'Hípica', 'Fútbol Americano').
+3. 'categoria_exacta': RAZONA Y ASIGNA EL DEPORTE REAL (UNIVERSAL Y ABIERTO A CUALQUIER DISCIPLINA).
+   - Esta aplicación transmite CUALQUIER deporte competitivo en vivo (Fútbol, Baloncesto, Tenis, Remo, Vela, Snooker, Pádel, Ciclismo, Motor, Balonmano, Hockey, Rugby, Natación, Gimnasia, Atletismo, Combate, Golf, Béisbol, Voleibol, Piragüismo, Patinaje, Triatlón, Tejo, etc.).
+   - PROHIBIDO descartar un evento por pertenecer a un deporte poco convencional.
+   - Si el título o contendientes indican un deporte específico, razona y asígnalo siempre con su nombre canónico en español y con tildes (ej: si es una prueba de regata o botes, 'Remo' o 'Vela'; si es billar inglés, 'Snooker'; si es raqueta de pista, 'Pádel' o 'Tenis'). NUNCA dejes términos genéricos como 'Otros Deportes' o 'Deportes' si la disciplina puede identificarse.
 
 4. 'tipo_evento' y LIMPIEZA DE NOMBRES DE CLUBES EN DUELOS:
    - DEPORTES DE EQUIPO (Fútbol, Baloncesto, Béisbol, Fútbol Americano, Hockey, Balonmano, Rugby): Son OBLIGATORIAMENTE 'duelo'.
