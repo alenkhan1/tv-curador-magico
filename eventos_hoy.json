@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-19T14:01:50Z",
+  "generado_utc": "2026-10-19T15:05:32Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-19",
   "base_media": "http://avefenixtv.com:8080",
@@ -17,8 +17,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Sesión de Tarde",
-      "referencia": "Sesión de Tarde • Waterfront Hall, Belfast",
+      "subtitulo": "Sesión Vespertina",
+      "referencia": "Sesión Vespertina • Waterfront Hall, Belfast",
       "hora_utc": "2026-10-19T12:00:00Z",
       "hora_local_producto": "07:00",
       "duracion_min": 240,
@@ -55,7 +55,7 @@
       ],
       "texto_original_crudo": "Northern Ireland Open (14:00 EUROSPORT 1)",
       "titulo_original_crudo": "Northern Ireland Open (14:00 EUROSPORT 1)",
-      "ronda": "Sesión de Tarde",
+      "ronda": "Sesión Vespertina",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -88,7 +88,6 @@
       "origenes": [
         "inyector_lineal",
         "futbolenvivo_ar",
-        "rtve_teledeporte_oficial",
         "xtream_evento"
       ],
       "estado": "confirmado",
@@ -127,6 +126,47 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_b81b91a0",
+      "agenda_id": "",
+      "titulo": "Kenya U17 W vs China PR U17 W",
+      "torneo": "FIFA U17 Women's World Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Kenya U17 W",
+      "equipo_visitante": "China PR U17 W",
+      "subtitulo": "FIFA U17 Women's World Cup",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "logo_local": "https://flagcdn.com/256x192/ke.png",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F20526.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "10:00 ◘ Kenya U17 vs. China PR U17 ◘ FIFA U17 Women's World Cup ◘",
+          "id_xtream": "1731872"
+        }
+      ],
+      "texto_original_crudo": "10:00 ◘ Kenya U17 vs. China PR U17 ◘ FIFA U17 Women's World Cup ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "10:00 ◘ Kenya U17 vs. China PR U17 ◘ FIFA U17 Women's World Cup ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_2ec96921",
       "agenda_id": "",
       "titulo": "Al-Fayha vs Al-Ahli Jeddah",
@@ -136,7 +176,7 @@
       "equipo_local": "Al-Fayha",
       "equipo_visitante": "Al-Ahli Jeddah",
       "subtitulo": "Pro League",
-      "referencia": "Jornada",
+      "referencia": "Fecha Regular",
       "hora_utc": "2026-10-19T15:05:00Z",
       "hora_local_producto": "10:05",
       "duracion_min": 125,
@@ -157,15 +197,138 @@
         {
           "nombre": "10:05 ◘ Al-Fayha vs. Al-Ahli ◘ Pro League ◘",
           "id_xtream": "1731874"
+        },
+        {
+          "nombre": "09:55  | Al Fayha vs. Al Ahli | Saudi Pro League",
+          "id_xtream": "1731917"
         }
       ],
-      "texto_original_crudo": "10:05 ◘ Al-Fayha vs. Al-Ahli ◘ Pro League ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "10:05 ◘ Al-Fayha vs. Al-Ahli ◘ Pro League ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "10:05 ◘ Al-Fayha vs. Al-Ahli ◘ Pro League ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "10:05 ◘ Al-Fayha vs. Al-Ahli ◘ Pro League ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_69b36bc9",
+      "agenda_id": "",
+      "titulo": "Argentina vs. Australia",
+      "torneo": "Fipfa Powerchair Football World Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Argentina",
+      "equipo_visitante": "Australia",
+      "subtitulo": "Fipfa Powerchair Football World Cup",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T15:45:00Z",
+      "hora_local_producto": "10:45",
+      "duracion_min": 125,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "logo_local": "https://flagcdn.com/256x192/ar.png",
+      "logo_visitante": "https://flagcdn.com/256x192/au.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "10:45 ◘ Argentina vs. Australia ◘ FIPFA Powerchair Football World Cup ◘◘",
+          "id_xtream": "1731875"
+        }
+      ],
+      "texto_original_crudo": "10:45 ◘ Argentina vs. Australia ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "10:45 ◘ Argentina vs. Australia ◘ FIPFA Powerchair Football World Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_610c5722",
+      "agenda_id": "",
+      "titulo": "LA Natividad-La Dolfina vs. Don Ercole",
+      "torneo": "Abierto de Tortugas",
+      "categoria": "Polo",
+      "tipo_evento": "duelo",
+      "equipo_local": "LA Natividad-La Dolfina",
+      "equipo_visitante": "Don Ercole",
+      "subtitulo": "Abierto de Tortugas",
+      "referencia": "Fase Clasificatoria",
+      "hora_utc": "2026-10-19T15:55:00Z",
+      "hora_local_producto": "10:55",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "10:55 ◘ La Natividad-La Dolfina vs. Don Ercole ◘ Abierto de Tortugas ◘◘",
+          "id_xtream": "1731876"
+        }
+      ],
+      "texto_original_crudo": "10:55 ◘ La Natividad-La Dolfina vs. Don Ercole ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "10:55 ◘ La Natividad-La Dolfina vs. Don Ercole ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_297faf13",
+      "agenda_id": "",
+      "titulo": "Chihuahua vs. Aguascalientes",
+      "torneo": "MLB Cup México",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chihuahua",
+      "equipo_visitante": "Aguascalientes",
+      "subtitulo": "MLB Cup México • Fase de Grupos",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:00 ◘ Chihuahua vs. Aguascalientes ◘ MLB Cup ◘◘",
+          "id_xtream": "1731877"
+        },
+        {
+          "nombre": "11:00  | Chihuahua vs. Aguascalientes (Fase de Grupos) |",
+          "id_xtream": "1731918"
+        }
+      ],
+      "texto_original_crudo": "11:00 ◘ Chihuahua vs. Aguascalientes ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "11:00 ◘ Chihuahua vs. Aguascalientes ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "Fase de Grupos",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_2_ar_5f1538a1",
@@ -181,7 +344,7 @@
       "equipo_local": "Monza",
       "equipo_visitante": "Cagliari",
       "subtitulo": "Serie a Italiana",
-      "referencia": "U-Power Stadium",
+      "referencia": "Jornada",
       "hora_utc": "2026-10-19T16:30:00Z",
       "hora_local_producto": "11:30",
       "duracion_min": 130,
@@ -225,6 +388,55 @@
       ],
       "texto_original_crudo": "13:30 Serie A Italiana Monza Cagliari Disney+ Premium ESPN 2",
       "titulo_original_crudo": "13:30 Serie A Italiana Monza Cagliari Disney+ Premium ESPN 2",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_70277f7d",
+      "agenda_id": "",
+      "titulo": "Trabzonspor vs Beşiktaş",
+      "torneo": "Super Lig de Turquía",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Trabzonspor",
+      "equipo_visitante": "Beşiktaş",
+      "subtitulo": "Super Lig de Turquía",
+      "referencia": "Papara Park",
+      "hora_utc": "2026-10-19T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F203.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F998.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F549.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F203.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:50  | Trabzonspor vs. Besiktas | Super Lig de Turquía",
+          "id_xtream": "1731920"
+        },
+        {
+          "nombre": "11:55  | English: Trabzonspor vs. Besiktas | Super Lig de Turquía",
+          "id_xtream": "1731921"
+        },
+        {
+          "nombre": "11:55  | En Español: Trabzonspor vs. Besiktas | Super Lig de Turquía",
+          "id_xtream": "1731922"
+        }
+      ],
+      "texto_original_crudo": "11:50  | Trabzonspor vs. Besiktas | Super Lig de Turquía ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "11:50  | Trabzonspor vs. Besiktas | Super Lig de Turquía ✮✮[Eventos Diarios | Exclusivos]✮✮",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -361,7 +573,7 @@
       "equipo_local": "Al-Hilal Saudi FC",
       "equipo_visitante": "Al-Hazm",
       "subtitulo": "Pro League",
-      "referencia": "Jornada",
+      "referencia": "Fecha Regular",
       "hora_utc": "2026-10-19T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 125,
@@ -384,8 +596,8 @@
           "id_xtream": "1731879"
         }
       ],
-      "texto_original_crudo": "13:00 ◘ Al Hilal vs. Al Hazm ◘ Pro League ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "13:00 ◘ Al Hilal vs. Al Hazm ◘ Pro League ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "13:00 ◘ Al Hilal vs. Al Hazm ◘ Pro League ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:00 ◘ Al Hilal vs. Al Hazm ◘ Pro League ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -425,10 +637,90 @@
           "id_xtream": "1731881"
         }
       ],
-      "texto_original_crudo": "13:00 ◘ United States U17 vs. Samoa U17 ◘ FIFA U17 Women's World Cup ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "13:00 ◘ United States U17 vs. Samoa U17 ◘ FIFA U17 Women's World Cup ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "13:00 ◘ United States U17 vs. Samoa U17 ◘ FIFA U17 Women's World Cup ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:00 ◘ United States U17 vs. Samoa U17 ◘ FIFA U17 Women's World Cup ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_107dddff",
+      "agenda_id": "",
+      "titulo": "Celta de Vigo II vs Tenerife",
+      "torneo": "Liga Hypermotion",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Celta de Vigo II",
+      "equipo_visitante": "Tenerife",
+      "subtitulo": "Liga Hypermotion",
+      "referencia": "Jornada de Liga",
+      "hora_utc": "2026-10-19T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9571.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F719.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F141.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:30 ◘ Celta de Vigo II vs. Tenerife ◘ Liga Hypermotion ◘",
+          "id_xtream": "1731882"
+        }
+      ],
+      "texto_original_crudo": "13:30 ◘ Celta de Vigo II vs. Tenerife ◘ Liga Hypermotion ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:30 ◘ Celta de Vigo II vs. Tenerife ◘ Liga Hypermotion ◘ ✨Eventos Diarios 19/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_6728ef36",
+      "agenda_id": "",
+      "titulo": "Eintracht Frankfurt vs. Köln",
+      "torneo": "Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eintracht Frankfurt",
+      "equipo_visitante": "Köln",
+      "subtitulo": "Bundesliga",
+      "referencia": "Jornada de Liga",
+      "hora_utc": "2026-10-19T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F169.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F10265.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘",
+          "id_xtream": "1731883"
+        }
+      ],
+      "texto_original_crudo": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:30 ◘ Eintracht Frankfurt vs. Köln ◘ Bundesliga ◘ ✨Eventos Diarios 19/10✨",
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
@@ -447,7 +739,7 @@
       "equipo_local": "Parma",
       "equipo_visitante": "Torino",
       "subtitulo": "Serie a Italiana",
-      "referencia": "Stadio Ennio Tardini",
+      "referencia": "Jornada",
       "hora_utc": "2026-10-19T18:45:00Z",
       "hora_local_producto": "13:45",
       "duracion_min": 130,
@@ -498,6 +790,44 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_78b9bb51",
+      "agenda_id": "",
+      "titulo": "LA Ensenada vs. LA Zeta Kazak",
+      "torneo": "Abierto de Tortugas",
+      "categoria": "Polo",
+      "tipo_evento": "duelo",
+      "equipo_local": "LA Ensenada",
+      "equipo_visitante": "LA Zeta Kazak",
+      "subtitulo": "Abierto de Tortugas",
+      "referencia": "Tortugas Country Club",
+      "hora_utc": "2026-10-19T18:55:00Z",
+      "hora_local_producto": "13:55",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:55 ◘ La Ensenada vs. La Zeta Kazak ◘ Abierto de Tortugas ◘◘",
+          "id_xtream": "1731887"
+        }
+      ],
+      "texto_original_crudo": "13:55 ◘ La Ensenada vs. La Zeta Kazak ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "13:55 ◘ La Ensenada vs. La Zeta Kazak ◘ Abierto de Tortugas ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
       "id": "lineal_win_sportsplus_9cd0633c",
       "canales_mencionados_fuente": [
         "Win Fútbol +",
@@ -511,7 +841,7 @@
       "equipo_local": "Real Santander",
       "equipo_visitante": "Leones FC",
       "subtitulo": "Real Santander vs Leones",
-      "referencia": "Estadio Villa Concha",
+      "referencia": "Segunda División",
       "hora_utc": "2026-10-19T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
@@ -562,6 +892,68 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_2_ar_e851b718",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Tottenham vs Coventry",
+      "torneo": "Tottenham Hotspur vs. Coventry City",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tottenham",
+      "equipo_visitante": "Coventry",
+      "subtitulo": "Tottenham Hotspur vs. Coventry City",
+      "referencia": "Tottenham Hotspur Stad",
+      "hora_utc": "2026-10-19T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 155,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F47.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1346.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_2_ar",
+        "mitv_espn_3_ar",
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2 ARG | FHD",
+          "id_xtream": "591981",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "Tottenham Hotspur vs. Coventry City. Fecha 7, Tottenham Hotspur Stadium. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
+      "titulo_original_crudo": "Tottenham Hotspur vs. Coventry City. Fecha 7, Tottenham Hotspur Stadium. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_580bb993",
       "agenda_id": "",
       "titulo": "Getafe vs Rayo Vallecano",
@@ -592,15 +984,61 @@
         {
           "nombre": "14:00 ◘ Getafe vs. Rayo Vallecano ◘ LaLiga ◘",
           "id_xtream": "1731888"
+        },
+        {
+          "nombre": "13:50  | English: Getafe CF vs. Rayo Vallecano",
+          "id_xtream": "1731927"
+        },
+        {
+          "nombre": "13:55  | En Español: Getafe CF vs. Rayo Vallecano",
+          "id_xtream": "1731928"
         }
       ],
-      "texto_original_crudo": "14:00 ◘ Getafe vs. Rayo Vallecano ◘ LaLiga ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "14:00 ◘ Getafe vs. Rayo Vallecano ◘ LaLiga ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "14:00 ◘ Getafe vs. Rayo Vallecano ◘ LaLiga ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "14:00 ◘ Getafe vs. Rayo Vallecano ◘ LaLiga ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_a9f82c40",
+      "agenda_id": "",
+      "titulo": "Chihuahua vs. San Luis Potosí",
+      "torneo": "MLB Cup México",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chihuahua",
+      "equipo_visitante": "San Luis Potosí",
+      "subtitulo": "MLB Cup México • Fase de Grupos",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00  | Chihuahua vs. San Luis Potosí (Fase de Grupos) | MLB Cup",
+          "id_xtream": "1731929"
+        }
+      ],
+      "texto_original_crudo": "14:00  | Chihuahua vs. San Luis Potosí (Fase de Grupos) | MLB Cup ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "14:00  | Chihuahua vs. San Luis Potosí (Fase de Grupos) | MLB Cup ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "Fase de Grupos",
+      "auditado_agy": true
     },
     {
       "id": "xtream_b8a4d1f4",
@@ -635,8 +1073,8 @@
           "id_xtream": "1731889"
         }
       ],
-      "texto_original_crudo": "14:15 ◘ Sporting Braga vs. Gil Vicente ◘ Primeira Liga ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "14:15 ◘ Sporting Braga vs. Gil Vicente ◘ Primeira Liga ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "14:15 ◘ Sporting Braga vs. Gil Vicente ◘ Primeira Liga ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "14:15 ◘ Sporting Braga vs. Gil Vicente ◘ Primeira Liga ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -770,6 +1208,44 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_30a8cfd6",
+      "agenda_id": "",
+      "titulo": "Jalisco vs. Sinaloa",
+      "torneo": "MLB Cup",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Jalisco",
+      "equipo_visitante": "Sinaloa",
+      "subtitulo": "MLB Cup • Fase de Grupos",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-19T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F303.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:00  | Jalisco vs. Sinaloa (Fase de Grupos) | MLB Cup",
+          "id_xtream": "1731930"
+        }
+      ],
+      "texto_original_crudo": "16:00  | Jalisco vs. Sinaloa (Fase de Grupos) | MLB Cup ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "titulo_original_crudo": "16:00  | Jalisco vs. Sinaloa (Fase de Grupos) | MLB Cup ✮✮[Eventos Diarios | Exclusivos]✮✮",
+      "ronda": "Fase de Grupos",
+      "auditado_agy": true
+    },
+    {
       "id": "lineal_tnt_sports_dedf755e",
       "canales_mencionados_fuente": [
         "TNT Sports Premium",
@@ -783,7 +1259,7 @@
       "equipo_local": "Newell's Old Boys",
       "equipo_visitante": "Central Córdoba",
       "subtitulo": "Liga Profesional de Fútbol",
-      "referencia": "Coloso Marcelo Bielsa",
+      "referencia": "Fecha",
       "hora_utc": "2026-10-19T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -844,7 +1320,7 @@
       "equipo_local": "Sarmiento Junin",
       "equipo_visitante": "Barracas Central",
       "subtitulo": "Torneo Betano",
-      "referencia": "Estadio Eva Perón",
+      "referencia": "Fecha",
       "hora_utc": "2026-10-19T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 130,
@@ -856,7 +1332,8 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "futbolenvivo_ar"
+        "futbolenvivo_ar",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -920,8 +1397,8 @@
           "id_xtream": "1731893"
         }
       ],
-      "texto_original_crudo": "17:30 ◘ Goiás vs. Náutico ◘ Serie B ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "17:30 ◘ Goiás vs. Náutico ◘ Serie B ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "17:30 ◘ Goiás vs. Náutico ◘ Serie B ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "17:30 ◘ Goiás vs. Náutico ◘ Serie B ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1087,10 +1564,14 @@
         {
           "nombre": "17:00 ◘ Nacional vs. Deportivo Maldonado ◘ Campeonato Uruguayo ◘◘",
           "id_xtream": "1731890"
+        },
+        {
+          "nombre": "17:00  | Nacional vs. Deportivo Maldonado | Campeonato Uruguayo",
+          "id_xtream": "1731933"
         }
       ],
-      "texto_original_crudo": "17:00 ◘ Nacional vs. Deportivo Maldonado ◘ Campeonato Uruguayo ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "17:00 ◘ Nacional vs. Deportivo Maldonado ◘ Campeonato Uruguayo ◘◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "17:00 ◘ Nacional vs. Deportivo Maldonado ◘ Campeonato Uruguayo ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "17:00 ◘ Nacional vs. Deportivo Maldonado ◘ Campeonato Uruguayo ◘◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1128,10 +1609,14 @@
         {
           "nombre": "17:30 ◘ Colorado Avalanche vs. Philadelphia Flyers ◘ NHL ◘◘",
           "id_xtream": "1731892"
+        },
+        {
+          "nombre": "17:30  | Colorado Avalanche vs. Philadelphia Flyers | NHL",
+          "id_xtream": "1731934"
         }
       ],
-      "texto_original_crudo": "17:30 ◘ Colorado Avalanche vs. Philadelphia Flyers ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "17:30 ◘ Colorado Avalanche vs. Philadelphia Flyers ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "17:30 ◘ Colorado Avalanche vs. Philadelphia Flyers ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "17:30 ◘ Colorado Avalanche vs. Philadelphia Flyers ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1169,51 +1654,16 @@
         {
           "nombre": "18:00 ◘ Anaheim Ducks vs. New York Rangers ◘ NHL ◘◘",
           "id_xtream": "1731894"
+        },
+        {
+          "nombre": "18:00  | Anaheim Ducks vs. New York Rangers | NHL",
+          "id_xtream": "1731937"
         }
       ],
-      "texto_original_crudo": "18:00 ◘ Anaheim Ducks vs. New York Rangers ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "18:00 ◘ Anaheim Ducks vs. New York Rangers ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "18:00 ◘ Anaheim Ducks vs. New York Rangers ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "18:00 ◘ Anaheim Ducks vs. New York Rangers ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_7af879e4",
-      "agenda_id": "",
-      "titulo": "Buffalo Sabres vs. Toronto Maple Leafs",
-      "torneo": "NHL",
-      "categoria": "Hockey",
-      "tipo_evento": "duelo",
-      "equipo_local": "Buffalo Sabres",
-      "equipo_visitante": "Toronto Maple Leafs",
-      "subtitulo": "NHL",
-      "referencia": "KeyBank Center",
-      "hora_utc": "2026-10-19T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F674.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F700.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Buffalo Sabres vs. Toronto Maple Leafs ◘ NHL ◘◘",
-          "id_xtream": "1731895"
-        }
-      ],
-      "texto_original_crudo": "18:00 ◘ Buffalo Sabres vs. Toronto Maple Leafs ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "18:00 ◘ Buffalo Sabres vs. Toronto Maple Leafs ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
@@ -1222,13 +1672,13 @@
       "id": "xtream_5c7d478a",
       "agenda_id": "",
       "titulo": "Veracruz vs. Sonora",
-      "torneo": "MLB Cup",
+      "torneo": "MLB Cup México",
       "categoria": "Béisbol",
       "tipo_evento": "duelo",
       "equipo_local": "Veracruz",
       "equipo_visitante": "Sonora",
-      "subtitulo": "MLB Cup",
-      "referencia": "Campo Principal",
+      "subtitulo": "MLB Cup México • Fase de Grupos",
+      "referencia": "Fase de Grupos",
       "hora_utc": "2026-10-19T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 240,
@@ -1249,11 +1699,15 @@
         {
           "nombre": "18:00 ◘ Veracruz vs. Sonora ◘ MLB Cup ◘◘",
           "id_xtream": "1731899"
+        },
+        {
+          "nombre": "18:00  | Veracruz vs. Sonora (Fase de Grupos) | MLB Cup",
+          "id_xtream": "1731935"
         }
       ],
-      "texto_original_crudo": "18:00 ◘ Veracruz vs. Sonora ◘ MLB Cup ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "18:00 ◘ Veracruz vs. Sonora ◘ MLB Cup ◘◘ ✨Eventos Diarios 18/10✨",
-      "ronda": "",
+      "texto_original_crudo": "18:00 ◘ Veracruz vs. Sonora ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "18:00 ◘ Veracruz vs. Sonora ◘ MLB Cup ◘◘ ✨Eventos Diarios 19/10✨",
+      "ronda": "Fase de Grupos",
       "auditado_agy": true
     },
     {
@@ -1266,7 +1720,7 @@
       "equipo_local": "Toronto Maple Leafs",
       "equipo_visitante": "San Jose Sharks",
       "subtitulo": "NHL",
-      "referencia": "Scotiabank Arena",
+      "referencia": "SAP Center",
       "hora_utc": "2026-10-19T23:30:00Z",
       "hora_local_producto": "18:30",
       "duracion_min": 130,
@@ -1287,10 +1741,14 @@
         {
           "nombre": "18:00 ◘ San Jose Sharks vs. Toronto Maple Leafs ◘ NHL ◘◘",
           "id_xtream": "1731898"
+        },
+        {
+          "nombre": "18:00  | San Jose Sharks vs. Toronto Maple Leafs | NHL",
+          "id_xtream": "1731936"
         }
       ],
-      "texto_original_crudo": "18:00 ◘ San Jose Sharks vs. Toronto Maple Leafs ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "18:00 ◘ San Jose Sharks vs. Toronto Maple Leafs ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "18:00 ◘ San Jose Sharks vs. Toronto Maple Leafs ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "18:00 ◘ San Jose Sharks vs. Toronto Maple Leafs ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1307,7 +1765,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Tampa Bay Rays",
       "equipo_visitante": "Cleveland Guardians",
-      "subtitulo": "Cleveland Guardians vs. Tampa Bay Rays",
+      "subtitulo": "Cleveland Guardians vs. Tampa Bay Rays • Alcs Game",
       "referencia": "Tropicana Field",
       "hora_utc": "2026-10-20T00:00:00Z",
       "hora_local_producto": "19:00",
@@ -1354,7 +1812,7 @@
       "titulo_original_crudo": "Cleveland Guardians vs. Tampa Bay Rays. Juego 6 - Series de Campeonato, Tropicana Field. Vive los partidos de la temporada 2026 de la MLB, con las emociones de la liga de béisbol más importante del mundo",
       "fecha_confirmada": true,
       "contrastado_api": true,
-      "ronda": "",
+      "ronda": "Alcs Game",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -1391,8 +1849,8 @@
           "id_xtream": "1731900"
         }
       ],
-      "texto_original_crudo": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "19:00 ◘ Sporting San José vs. San Carlos ◘ Primera Costa Rica ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1408,7 +1866,7 @@
       "equipo_local": "Toluca W",
       "equipo_visitante": "Santos Laguna W",
       "subtitulo": "Liga MX Femenil",
-      "referencia": "Apertura 2026",
+      "referencia": "Estadio Nemesio Díez",
       "hora_utc": "2026-10-20T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
@@ -1429,10 +1887,14 @@
         {
           "nombre": "19:00 ◘ Toluca vs. Santos Laguna ◘ Liga MX Femenil ◘",
           "id_xtream": "1731901"
+        },
+        {
+          "nombre": "18:40  | Toluca vs. Santos Laguna | Liga MX Femenil",
+          "id_xtream": "1731938"
         }
       ],
-      "texto_original_crudo": "19:00 ◘ Toluca vs. Santos Laguna ◘ Liga MX Femenil ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "19:00 ◘ Toluca vs. Santos Laguna ◘ Liga MX Femenil ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "19:00 ◘ Toluca vs. Santos Laguna ◘ Liga MX Femenil ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "19:00 ◘ Toluca vs. Santos Laguna ◘ Liga MX Femenil ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1454,7 +1916,7 @@
       "equipo_local": "San Francisco 49ers",
       "equipo_visitante": "Washington Commanders",
       "subtitulo": "NFL",
-      "referencia": "Semana Regular",
+      "referencia": "Semana",
       "hora_utc": "2026-10-20T00:15:00Z",
       "hora_local_producto": "19:15",
       "duracion_min": 360,
@@ -1518,7 +1980,7 @@
       "equipo_local": "Deportivo Riestra",
       "equipo_visitante": "Union Santa Fe",
       "subtitulo": "Torneo Betano",
-      "referencia": "Estadio Guillermo Laza",
+      "referencia": "Fecha",
       "hora_utc": "2026-10-20T00:15:00Z",
       "hora_local_producto": "19:15",
       "duracion_min": 130,
@@ -1573,7 +2035,7 @@
       "equipo_local": "Utah Mammoth",
       "equipo_visitante": "Pittsburgh Penguins",
       "subtitulo": "NHL",
-      "referencia": "Temporada Regular",
+      "referencia": "Delta Center",
       "hora_utc": "2026-10-20T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 130,
@@ -1594,10 +2056,14 @@
         {
           "nombre": "19:30 ◘ Pittsburgh Penguins vs. Utah Mammoth ◘ NHL ◘◘",
           "id_xtream": "1731906"
+        },
+        {
+          "nombre": "19:30  | Pittsburgh Penguins vs. Utah Mammoth | NHL",
+          "id_xtream": "1731942"
         }
       ],
-      "texto_original_crudo": "19:30 ◘ Pittsburgh Penguins vs. Utah Mammoth ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "19:30 ◘ Pittsburgh Penguins vs. Utah Mammoth ◘ NHL ◘◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "19:30 ◘ Pittsburgh Penguins vs. Utah Mammoth ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "19:30 ◘ Pittsburgh Penguins vs. Utah Mammoth ◘ NHL ◘◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1619,7 +2085,7 @@
       "equipo_local": "Deportivo Pasto",
       "equipo_visitante": "Alianza Valledupar",
       "subtitulo": "Deportivo Pasto vs Alianza",
-      "referencia": "Estadio LA Libertad",
+      "referencia": "Fecha",
       "hora_utc": "2026-10-20T01:05:00Z",
       "hora_local_producto": "20:05",
       "duracion_min": 130,
@@ -1680,7 +2146,7 @@
       "equipo_local": "León W",
       "equipo_visitante": "Atlante W",
       "subtitulo": "Liga MX Femenil",
-      "referencia": "Apertura 2026",
+      "referencia": "Estadio Nou Camp",
       "hora_utc": "2026-10-20T01:06:00Z",
       "hora_local_producto": "20:06",
       "duracion_min": 130,
@@ -1701,10 +2167,14 @@
         {
           "nombre": "20:06 ◘ León vs. Atlante ◘ Liga MX Femenil ◘",
           "id_xtream": "1731908"
+        },
+        {
+          "nombre": "20:00  | León vs. Atlante | Liga MX Femenil",
+          "id_xtream": "1731943"
         }
       ],
-      "texto_original_crudo": "20:06 ◘ León vs. Atlante ◘ Liga MX Femenil ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "20:06 ◘ León vs. Atlante ◘ Liga MX Femenil ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "20:06 ◘ León vs. Atlante ◘ Liga MX Femenil ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "20:06 ◘ León vs. Atlante ◘ Liga MX Femenil ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1721,7 +2191,7 @@
       "equipo_local": "Escorpiones Belén",
       "equipo_visitante": "Puntarenas FC",
       "subtitulo": "Primera Costa Rica",
-      "referencia": "Torneo Apertura",
+      "referencia": "Polideportivo de Belén",
       "hora_utc": "2026-10-20T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 130,
@@ -1744,8 +2214,8 @@
           "id_xtream": "1731909"
         }
       ],
-      "texto_original_crudo": "21:00 ◘ Escorpiones Belén vs. Puntarenas ◘ Primera Costa Rica ◘ ✨Eventos Diarios 18/10✨",
-      "titulo_original_crudo": "21:00 ◘ Escorpiones Belén vs. Puntarenas ◘ Primera Costa Rica ◘ ✨Eventos Diarios 18/10✨",
+      "texto_original_crudo": "21:00 ◘ Escorpiones Belén vs. Puntarenas ◘ Primera Costa Rica ◘ ✨Eventos Diarios 19/10✨",
+      "titulo_original_crudo": "21:00 ◘ Escorpiones Belén vs. Puntarenas ◘ Primera Costa Rica ◘ ✨Eventos Diarios 19/10✨",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -1754,17 +2224,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-19",
-    "total_agenda_maestra": 45,
-    "total_canales_xtream": 1740,
+    "total_agenda_maestra": 41,
+    "total_canales_xtream": 1768,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 314,
-    "eventos_lineales_inyectados": 40,
-    "eventos_xtream_aprobados": 43,
-    "eventos_contrastados_api": 45,
-    "eventos_sellados_boveda_inmutable": 30,
-    "eventos_descartados_stale": 75,
-    "total_eventos_publicados": 34,
-    "hora_actualizacion_utc": "2026-10-19T14:01:50Z"
+    "eventos_lineales_inyectados": 37,
+    "eventos_xtream_aprobados": 51,
+    "eventos_contrastados_api": 51,
+    "eventos_sellados_boveda_inmutable": 35,
+    "eventos_descartados_stale": 63,
+    "total_eventos_publicados": 44,
+    "hora_actualizacion_utc": "2026-10-19T15:05:32Z"
   }
 }
