@@ -213,7 +213,7 @@ Responde UNICAMENTE con un JSON Array valido:
     try:
         if Path(AGY_PATH).exists():
             cmd = [AGY_PATH, "-p", prompt_texto, "--effort", "low", "--dangerously-skip-permissions"]
-            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60)
+            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=95)
             if res.returncode == 0:
                 salida_texto = res.stdout
         else:
