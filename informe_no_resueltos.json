@@ -4,35 +4,35 @@
     "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
     "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina."
   ],
-  "generado": "2026-10-19T09:41:03Z",
+  "generado": "2026-10-20T09:15:17Z",
   "resumen": {
-    "total": 693,
+    "total": 690,
     "por_motivo": {
-      "no_encontrado": 473,
-      "pendiente": 160,
-      "titulo_vacio": 60
+      "no_encontrado": 470,
+      "pendiente": 159,
+      "titulo_vacio": 61
     },
     "peliculas": {
       "adulto": 19,
       "excluido": 0,
       "sin_nombre": 0,
       "no_encontrado": 258,
-      "fallo_red": 95,
-      "clasificados": 37387,
-      "sin_identificar": 353
+      "fallo_red": 96,
+      "clasificados": 37384,
+      "sin_identificar": 354
     },
     "series": {
       "adulto": 3,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 215,
-      "fallo_red": 125,
-      "clasificados": 8610,
-      "sin_identificar": 340
+      "no_encontrado": 212,
+      "fallo_red": 124,
+      "clasificados": 7959,
+      "sin_identificar": 336
     },
     "alerta": {
       "porcentaje_peliculas": 0.9,
-      "porcentaje_series": 3.8,
+      "porcentaje_series": 4.1,
       "umbral": 15.0,
       "supera_umbral": false
     }
@@ -40,13 +40,13 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 639,
+      "veces": 637,
       "ejemplos": [
         "Solo es una película (It's just a movie) (2025)",
         "Noticias en peligro (2026)",
         "Supremacía cuántica (2026)",
         "¿Por qué me casé otra vez? (2026)",
-        "Detonación (LAT) (2026)"
+        "新劇場版 銀魂 -吉原大炎上- (2026)"
       ]
     },
     {
@@ -54,7 +54,7 @@
       "veces": 2,
       "ejemplos": [
         "Star Wars: Visions presenta — La jedi número 9 (0)",
-        "Star Wars: Visions presenta - La Jedi número 9 (Trial Audio) (2026)"
+        "Star Wars: Visions presenta - La Jedi número 9 [TRIAL AUDIO] (2026)"
       ]
     },
     {
@@ -401,13 +401,6 @@
       ]
     },
     {
-      "patron": "LA BUSQUEDA",
-      "veces": 1,
-      "ejemplos": [
-        "La Búsqueda: más allá de la historia"
-      ]
-    },
-    {
       "patron": "SAS",
       "veces": 1,
       "ejemplos": [
@@ -454,10 +447,6 @@
     {
       "etiqueta": "STAR",
       "veces": 1
-    },
-    {
-      "etiqueta": "INGLES",
-      "veces": 1
     }
   ],
   "carpetas_mas_frecuentes": [
@@ -467,7 +456,7 @@
     },
     {
       "carpeta": "SERIES ANIMADAS (LAT)",
-      "veces": 40
+      "veces": 41
     },
     {
       "carpeta": "SERIES RETRO (LAT)",
@@ -483,7 +472,7 @@
     },
     {
       "carpeta": "NETFLIX (LAT)",
-      "veces": 30
+      "veces": 25
     },
     {
       "carpeta": "DRAMA - (ENG)",
@@ -542,16 +531,16 @@
       "veces": 11
     },
     {
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "veces": 10
+    },
+    {
       "carpeta": "ANIMATION - (ENG)",
       "veces": 10
     },
     {
       "carpeta": "SKYSHOWTIME (CAST)",
       "veces": 10
-    },
-    {
-      "carpeta": "ESTRENOS 2026 - (LAT)",
-      "veces": 9
     },
     {
       "carpeta": "NEW RELEASES 2026 - (ENG)",
@@ -636,6 +625,18 @@
       "copias": 1
     },
     {
+      "id": "1717796",
+      "tipo": "movie",
+      "nombre_original": "新劇場版 銀魂 -吉原大炎上- (2026)",
+      "titulo_buscado": "新劇場版 銀魂 -吉原大炎上-",
+      "anio": 2026,
+      "motivo": "titulo_vacio",
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 3
+    },
+    {
       "id": "1330290",
       "tipo": "movie",
       "nombre_original": "La leyenda de Aang: El último Airbender (2026)",
@@ -664,9 +665,9 @@
     {
       "id": "1326215",
       "tipo": "movie",
-      "nombre_original": "Un Macho en El Salón De Belleza",
+      "nombre_original": "Un Macho en El Salón De Belleza (1987)",
       "titulo_buscado": "Un Macho en El Salón De Belleza",
-      "anio": 0,
+      "anio": 1987,
       "motivo": "pendiente",
       "carpeta": "",
       "etiquetas": [],
@@ -5843,7 +5844,7 @@
       "carpeta": "NETFLIX (CAST)",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 2
+      "copias": 3
     },
     {
       "id": "16608",
@@ -6963,7 +6964,7 @@
       "carpeta": "DISNEY (CAST)",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 2
     },
     {
       "id": "13734",
@@ -7376,7 +7377,7 @@
     {
       "id": "5415",
       "tipo": "tv",
-      "nombre_original": "Star Wars: Visions presenta - La Jedi número 9 (Trial Audio) (2026)",
+      "nombre_original": "Star Wars: Visions presenta - La Jedi número 9 [TRIAL AUDIO] (2026)",
       "titulo_buscado": "Star Wars: Visions presenta - La Jedi número 9",
       "anio": 2026,
       "motivo": "pendiente",
@@ -7585,6 +7586,18 @@
       "nombre_original": "Make 'Em Laugh",
       "titulo_buscado": "Make 'Em Laugh",
       "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "SERIES ANIMADAS (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "5265",
+      "tipo": "tv",
+      "nombre_original": "Baby Doll (2007)",
+      "titulo_buscado": "Baby Doll",
+      "anio": 2007,
       "motivo": "no_encontrado",
       "carpeta": "SERIES ANIMADAS (LAT)",
       "etiquetas": [],
@@ -8698,47 +8711,11 @@
       "copias": 1
     },
     {
-      "id": "3817",
-      "tipo": "tv",
-      "nombre_original": "Zomvivor (2025) {Netflix}",
-      "titulo_buscado": "Zomvivor {Netflix}",
-      "anio": 2025,
-      "motivo": "pendiente",
-      "carpeta": "NETFLIX (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "3811",
-      "tipo": "tv",
-      "nombre_original": "Hawái 5.0",
-      "titulo_buscado": "Hawái",
-      "anio": 0,
-      "motivo": "no_encontrado",
-      "carpeta": "NETFLIX (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "3635",
       "tipo": "tv",
       "nombre_original": "Generations: A Century on the Siksika Reserve",
       "titulo_buscado": "Generations: A Century on the Siksika Reserve",
       "anio": 0,
-      "motivo": "no_encontrado",
-      "carpeta": "NETFLIX (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "3632",
-      "tipo": "tv",
-      "nombre_original": "Los trabajadores del ferrocarril: La historia no contada de Bhopal 1984",
-      "titulo_buscado": "Los trabajadores del ferrocarril: La historia no contada de Bhopal",
-      "anio": 1984,
       "motivo": "no_encontrado",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
@@ -8808,9 +8785,9 @@
     {
       "id": "3328",
       "tipo": "tv",
-      "nombre_original": "Red Alert with The National Lottery",
+      "nombre_original": "Red Alert with The National Lottery (1999)",
       "titulo_buscado": "Red Alert with The National Lottery",
-      "anio": 0,
+      "anio": 1999,
       "motivo": "no_encontrado",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
@@ -8820,9 +8797,9 @@
     {
       "id": "3299",
       "tipo": "tv",
-      "nombre_original": "Cámara del terror",
+      "nombre_original": "Cámara del terror (2019)",
       "titulo_buscado": "Cámara del",
-      "anio": 0,
+      "anio": 2019,
       "motivo": "no_encontrado",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
@@ -8842,36 +8819,12 @@
       "copias": 1
     },
     {
-      "id": "3241",
-      "tipo": "tv",
-      "nombre_original": "Casi muertos (La muerte puede esperar)",
-      "titulo_buscado": "Casi muertos",
-      "anio": 0,
-      "motivo": "no_encontrado",
-      "carpeta": "NETFLIX (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "3229",
       "tipo": "tv",
       "nombre_original": "Nip Tuk",
       "titulo_buscado": "Nip Tuk",
       "anio": 0,
       "motivo": "pendiente",
-      "carpeta": "NETFLIX (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "3219",
-      "tipo": "tv",
-      "nombre_original": "La Búsqueda: más allá de la historia",
-      "titulo_buscado": "La Búsqueda: más allá de la",
-      "anio": 0,
-      "motivo": "no_encontrado",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
       "prefijo": "",
@@ -8962,6 +8915,18 @@
       "copias": 1
     },
     {
+      "id": "2960",
+      "tipo": "tv",
+      "nombre_original": "Headhunters (1994)",
+      "titulo_buscado": "Headhunters",
+      "anio": 1994,
+      "motivo": "no_encontrado",
+      "carpeta": "NETFLIX (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "2907",
       "tipo": "tv",
       "nombre_original": "G.E.O Beyond the Limit",
@@ -8988,9 +8953,9 @@
     {
       "id": "2802",
       "tipo": "tv",
-      "nombre_original": "Diciembre 2001",
+      "nombre_original": "Diciembre 2001 (2023)",
       "titulo_buscado": "Diciembre",
-      "anio": 2001,
+      "anio": 2023,
       "motivo": "no_encontrado",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
@@ -9042,20 +9007,6 @@
       "motivo": "pendiente",
       "carpeta": "NETFLIX (LAT)",
       "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "2584",
-      "tipo": "tv",
-      "nombre_original": "Un escándalo muy inglés",
-      "titulo_buscado": "Un escándalo muy",
-      "anio": 0,
-      "motivo": "no_encontrado",
-      "carpeta": "NETFLIX (LAT)",
-      "etiquetas": [
-        "INGLES"
-      ],
       "prefijo": "",
       "copias": 1
     },
