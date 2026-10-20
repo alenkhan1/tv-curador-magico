@@ -1,53 +1,10 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-20T18:08:45Z",
+  "generado_utc": "2026-10-20T22:18:40Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-20",
   "base_media": "http://avefenixtv.com:8080",
   "eventos": [
-    {
-      "id": "xtream_942a0af1",
-      "agenda_id": "",
-      "titulo": "Paris Saint-Germain Sub-19 vs. Barcelona Sub-19",
-      "torneo": "UEFA Youth League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Paris Saint-Germain Sub-19",
-      "equipo_visitante": "Barcelona Sub-19",
-      "subtitulo": "Fase de Grupos",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-10-20T11:45:00Z",
-      "hora_local_producto": "06:45",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F114.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwq9sir1639406443.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "06:45  | Paris Saint Germain Sub-19 vs. Barcelona Sub-19 | UEFA YOUTH LEAGUE",
-          "id_xtream": "1732048"
-        },
-        {
-          "nombre": "08:45  | Manchester City Sub-19 vs. AEK Athens FC U19 | UEFA YOUTH LEAGUE",
-          "id_xtream": "1732051"
-        }
-      ],
-      "texto_original_crudo": "06:45  | Paris Saint Germain Sub-19 vs. Barcelona Sub-19 | UEFA YOUTH LEAGUE ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "titulo_original_crudo": "06:45  | Paris Saint Germain Sub-19 vs. Barcelona Sub-19 | UEFA YOUTH LEAGUE ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
     {
       "id": "lineal_eurosport_1_acd8b152",
       "canales_mencionados_fuente": [
@@ -173,6 +130,10 @@
         {
           "nombre": "08:50  | Manchester City vs. Aek Athens FC | UEFA Youth League",
           "id_xtream": "1732052"
+        },
+        {
+          "nombre": "08:45  | Manchester City Sub-19 vs. AEK Athens FC U19 | UEFA YOUTH LEAGUE",
+          "id_xtream": "1732051"
         }
       ],
       "texto_original_crudo": "08:50  | Manchester City vs. Aek Athens FC | UEFA Youth League ✮✮[Eventos Diarios | Exclusivos]✮✮",
@@ -212,13 +173,22 @@
       "origenes": [
         "inyector_lineal",
         "agy_lineales",
-        "futbolenvivo_ar"
+        "futbolenvivo_ar",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "10:00 ◘ Argentina Sub-17 vs. Nueva Zelanda Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
+          "id_xtream": "1731967"
+        },
+        {
+          "nombre": "10:00 ◘ Corea del Norte Sub-17 vs. Polonia Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
+          "id_xtream": "1731968"
+        },
         {
           "nombre": "DSPORTS 2",
           "id_xtream": "592038",
@@ -246,49 +216,6 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_5d0009f0",
-      "agenda_id": "",
-      "titulo": "Argentina Sub-17 vs. Nueva Zelanda Sub-17",
-      "torneo": "Copa Mundial Femenina Sub-17 de LA FIFA",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Argentina Sub-17",
-      "equipo_visitante": "Nueva Zelanda Sub-17",
-      "subtitulo": "Fase de Grupos",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-10-20T15:00:00Z",
-      "hora_local_producto": "10:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/ar.png",
-      "logo_visitante": "https://flagcdn.com/256x192/nz.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "10:00 ◘ Argentina Sub-17 vs. Nueva Zelanda Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
-          "id_xtream": "1731967"
-        },
-        {
-          "nombre": "10:00 ◘ Corea del Norte Sub-17 vs. Polonia Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
-          "id_xtream": "1731968"
-        }
-      ],
-      "texto_original_crudo": "10:00 ◘ Argentina Sub-17 vs. Nueva Zelanda Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "10:00 ◘ Argentina Sub-17 vs. Nueva Zelanda Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨Eventos Diarios 20/10✨",
-      "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -332,6 +259,45 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_1c4732bd",
+      "agenda_id": "",
+      "titulo": "Corea del Norte Sub-17 vs. Polonia Sub-17",
+      "torneo": "Copa Mundial Femenina Sub-17 de LA FIFA",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Corea del Norte Sub-17",
+      "equipo_visitante": "Polonia Sub-17",
+      "subtitulo": "Fase de Grupos",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-20T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 125,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/kp.png",
+      "logo_visitante": "https://flagcdn.com/256x192/pl.png",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "10:00 ◘ Corea del Norte Sub-17 vs. Polonia Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
+          "id_xtream": "1731968"
+        }
+      ],
+      "texto_original_crudo": "10:00 ◘ Corea del Norte Sub-17 vs. Polonia Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨Eventos Diarios 20/10✨",
+      "titulo_original_crudo": "10:00 ◘ Corea del Norte Sub-17 vs. Polonia Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨Eventos Diarios 20/10✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_0f965872",
       "agenda_id": "",
       "titulo": "Al Taawoun vs. al Qadsiah",
@@ -340,8 +306,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Al Taawoun",
       "equipo_visitante": "al Qadsiah",
-      "subtitulo": "Jornada Regular",
-      "referencia": "Jornada Regular",
+      "subtitulo": "Jornada",
+      "referencia": "Jornada",
       "hora_utc": "2026-10-20T15:10:00Z",
       "hora_local_producto": "10:10",
       "duracion_min": 125,
@@ -376,45 +342,6 @@
       "titulo_original_crudo": "10:10 ◘ Al Taawon vs. Al Quadisiya ◘ Pro League ◘ ✨Eventos Diarios 20/10✨",
       "ronda": "",
       "auditado_agy": true
-    },
-    {
-      "id": "xtream_f0ac6a62",
-      "agenda_id": "",
-      "titulo": "Fórmula S",
-      "torneo": "Fórmula S",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "Fórmula S",
-      "equipo_visitante": "Kartódromo de Caseros Entre Ríos",
-      "subtitulo": "Kartódromo de Caseros, Entre Ríos",
-      "referencia": "Formula S",
-      "hora_utc": "2026-10-20T15:25:00Z",
-      "hora_local_producto": "10:25",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "10:25  | Fórmula S - Kartódromo de Caseros Entre Ríos | Formula S",
-          "id_xtream": "1732057"
-        }
-      ],
-      "texto_original_crudo": "10:25  | Fórmula S - Kartódromo de Caseros Entre Ríos | Formula S ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "titulo_original_crudo": "10:25  | Fórmula S - Kartódromo de Caseros Entre Ríos | Formula S ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "ronda": "Kartódromo de Caseros, Entre Ríos",
-      "auditado_agy": true,
-      "curado_integro": true
     },
     {
       "id": "lineal_teledeporte_330829b9",
@@ -685,45 +612,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_cf398ac6",
-      "agenda_id": "",
-      "titulo": "Al Ettifaq vs. al Ittihad",
-      "torneo": "Saudi Pro League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Al Ettifaq",
-      "equipo_visitante": "al Ittihad",
-      "subtitulo": "Jornada Regular",
-      "referencia": "Jornada Regular",
-      "hora_utc": "2026-10-20T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F26612.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1572.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "13:00 ◘ Al Ittifaq vs. Al Ittihad ◘ Pro League ◘",
-          "id_xtream": "1731976"
-        }
-      ],
-      "texto_original_crudo": "13:00 ◘ Al Ittifaq vs. Al Ittihad ◘ Pro League ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "13:00 ◘ Al Ittifaq vs. Al Ittihad ◘ Pro League ◘ ✨Eventos Diarios 20/10✨",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_e223ffd1",
       "agenda_id": "",
       "titulo": "Al-Nassr vs Neom",
@@ -772,22 +660,22 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_3d544312",
+      "id": "xtream_85e7c801",
       "agenda_id": "",
-      "titulo": "Marruecos Sub-17 vs. Alemania Sub-17",
+      "titulo": "Nigeria Sub-17 vs. Puerto Rico Sub-17",
       "torneo": "Copa Mundial Femenina Sub-17 de LA FIFA",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Marruecos Sub-17",
-      "equipo_visitante": "Alemania Sub-17",
+      "equipo_local": "Nigeria Sub-17",
+      "equipo_visitante": "Puerto Rico Sub-17",
       "subtitulo": "Fase de Grupos",
       "referencia": "Fase de Grupos",
       "hora_utc": "2026-10-20T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/ma.png",
-      "logo_visitante": "https://flagcdn.com/256x192/de.png",
+      "logo_local": "https://flagcdn.com/256x192/ng.png",
+      "logo_visitante": "https://flagcdn.com/256x192/pr.png",
       "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
@@ -800,16 +688,12 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "13:00 ◘ Marruecos Sub-17 vs. Alemania Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
-          "id_xtream": "1731978"
-        },
-        {
           "nombre": "13:00 ◘ Nigeria Sub-17 vs. Puerto Rico Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
           "id_xtream": "1731979"
         }
       ],
-      "texto_original_crudo": "13:00 ◘ Marruecos Sub-17 vs. Alemania Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "13:00 ◘ Marruecos Sub-17 vs. Alemania Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨Eventos Diarios 20/10✨",
+      "texto_original_crudo": "13:00 ◘ Nigeria Sub-17 vs. Puerto Rico Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨Eventos Diarios 20/10✨",
+      "titulo_original_crudo": "13:00 ◘ Nigeria Sub-17 vs. Puerto Rico Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨Eventos Diarios 20/10✨",
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
@@ -1438,44 +1322,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_6ebbe05c",
-      "agenda_id": "",
-      "titulo": "Laguna vs. Sinaloa",
-      "torneo": "MLB Cup México",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Laguna",
-      "equipo_visitante": "Sinaloa",
-      "subtitulo": "Fase de Grupos",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-10-20T19:00:00Z",
-      "hora_local_producto": "14:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkg9gzh1779771734.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "tier": 1,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "14:00 ◘ Laguna vs. Sinaloa ◘ MLB Cup (Fase de Grupos) ◘",
-          "id_xtream": "1731981"
-        }
-      ],
-      "texto_original_crudo": "14:00 ◘ Laguna vs. Sinaloa ◘ MLB Cup (Fase de Grupos) ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "14:00 ◘ Laguna vs. Sinaloa ◘ MLB Cup (Fase de Grupos) ◘ ✨Eventos Diarios 20/10✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_e4cecd83",
       "agenda_id": "",
       "titulo": "Gillingham vs Port Vale",
@@ -1518,6 +1364,44 @@
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
+    },
+    {
+      "id": "xtream_6ebbe05c",
+      "agenda_id": "",
+      "titulo": "Laguna vs. Sinaloa",
+      "torneo": "MLB Cup",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Laguna",
+      "equipo_visitante": "Sinaloa",
+      "subtitulo": "Fase de Grupos",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-10-20T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkg9gzh1779771734.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Laguna vs. Sinaloa ◘ MLB Cup (Fase de Grupos) ◘",
+          "id_xtream": "1731981"
+        }
+      ],
+      "texto_original_crudo": "14:00 ◘ Laguna vs. Sinaloa ◘ MLB Cup (Fase de Grupos) ◘ ✨Eventos Diarios 20/10✨",
+      "titulo_original_crudo": "14:00 ◘ Laguna vs. Sinaloa ◘ MLB Cup (Fase de Grupos) ◘ ✨Eventos Diarios 20/10✨",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_win_sports_e0375a91",
@@ -1659,45 +1543,6 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
-    },
-    {
-      "id": "xtream_a546d676",
-      "agenda_id": "",
-      "titulo": "Kansas City vs. Pennsylvania",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Kansas City",
-      "equipo_visitante": "Pennsylvania",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-10-20T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1611.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjuof7x1585080271.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "17:00 ◘ #11 Kansas City vs. Pennsylvania ◘ Fútbol Masculino NCAA ◘",
-          "id_xtream": "1731998"
-        }
-      ],
-      "texto_original_crudo": "17:00 ◘ #11 Kansas City vs. Pennsylvania ◘ Fútbol Masculino NCAA ◘ NCAA EVENTOS DEL DIA",
-      "titulo_original_crudo": "17:00 ◘ #11 Kansas City vs. Pennsylvania ◘ Fútbol Masculino NCAA ◘ NCAA EVENTOS DEL DIA",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
     },
     {
       "id": "xtream_388acf2b",
@@ -1863,45 +1708,6 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_f5f47298",
-      "agenda_id": "",
-      "titulo": "Gigantes del Cibao vs. Tigres del Licey",
-      "torneo": "Lidom",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Gigantes del Cibao",
-      "equipo_visitante": "Tigres del Licey",
-      "subtitulo": "Serie Regular",
-      "referencia": "Serie Regular",
-      "hora_utc": "2026-10-20T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F149.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx6mzk41615832215.png&w=400&output=webp",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Gigantes Del Cibao vs. Tigres de Licey ◘ LIDOM ◘",
-          "id_xtream": "1732005"
-        }
-      ],
-      "texto_original_crudo": "18:00 ◘ Gigantes Del Cibao vs. Tigres de Licey ◘ LIDOM ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "18:00 ◘ Gigantes Del Cibao vs. Tigres de Licey ◘ LIDOM ◘ ✨Eventos Diarios 20/10✨",
-      "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -2121,10 +1927,50 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_da7be4d7",
+      "agenda_id": "",
+      "titulo": "Delaware vs Missouri State",
+      "torneo": "NCAA",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Delaware",
+      "equipo_visitante": "Missouri State",
+      "subtitulo": "NCAA",
+      "referencia": "NCAA",
+      "hora_utc": "2026-10-20T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F146.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F239.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Missouri State vs. Delaware ◘ Fútbol Americano NCAA ◘",
+          "id_xtream": "1732009"
+        }
+      ],
+      "texto_original_crudo": "18:00 ◘ Missouri State vs. Delaware ◘ Fútbol Americano NCAA ◘ NCAA EVENTOS DEL DIA",
+      "titulo_original_crudo": "18:00 ◘ Missouri State vs. Delaware ◘ Fútbol Americano NCAA ◘ NCAA EVENTOS DEL DIA",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
       "id": "xtream_f8530159",
       "agenda_id": "",
       "titulo": "Veracruz vs. Cdmx",
-      "torneo": "MLB Cup",
+      "torneo": "MLB Cup México",
       "categoria": "Béisbol",
       "tipo_evento": "duelo",
       "equipo_local": "Veracruz",
@@ -2157,45 +2003,6 @@
       "titulo_original_crudo": "18:00 ◘ Veracruz vs. CDMX ◘ MLB Cup (Fase de Grupos) ◘ ✨Eventos Diarios 20/10✨",
       "ronda": "",
       "auditado_agy": true
-    },
-    {
-      "id": "xtream_84800fe3",
-      "agenda_id": "",
-      "titulo": "Cornell vs. Bucknell",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Cornell",
-      "equipo_visitante": "Bucknell",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-10-20T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxn5yd91763451320.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxnzn2j1580756535.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ #19 Cornell vs. Bucknell ◘ Fútbol Masculino NCAA ◘",
-          "id_xtream": "1732001"
-        }
-      ],
-      "texto_original_crudo": "18:00 ◘ #19 Cornell vs. Bucknell ◘ Fútbol Masculino NCAA ◘ NCAA EVENTOS DEL DIA",
-      "titulo_original_crudo": "18:00 ◘ #19 Cornell vs. Bucknell ◘ Fútbol Masculino NCAA ◘ NCAA EVENTOS DEL DIA",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
     },
     {
       "id": "xtream_26f221f4",
@@ -2272,85 +2079,6 @@
       "titulo_original_crudo": "18:00 ◘ Hofstra vs. Bryant ◘ Fútbol Masculino NCAA ◘ NCAA EVENTOS DEL DIA",
       "ronda": "",
       "auditado_agy": true
-    },
-    {
-      "id": "xtream_37900dbb",
-      "agenda_id": "",
-      "titulo": "Liberty vs. Seton Hall",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Liberty",
-      "equipo_visitante": "Seton Hall",
-      "subtitulo": "NCAA",
-      "referencia": "NCAA",
-      "hora_utc": "2026-10-20T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fz26guc1564336125.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F369o1m1585411028.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Liberty vs. Seton Hall ◘ Fútbol Masculino NCAA ◘",
-          "id_xtream": "1732007"
-        }
-      ],
-      "texto_original_crudo": "18:00 ◘ Liberty vs. Seton Hall ◘ Fútbol Masculino NCAA ◘ NCAA EVENTOS DEL DIA",
-      "titulo_original_crudo": "18:00 ◘ Liberty vs. Seton Hall ◘ Fútbol Masculino NCAA ◘ NCAA EVENTOS DEL DIA",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_da7be4d7",
-      "agenda_id": "",
-      "titulo": "Delaware vs Missouri State",
-      "torneo": "NCAA",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Delaware",
-      "equipo_visitante": "Missouri State",
-      "subtitulo": "NCAA",
-      "referencia": "NCAA",
-      "hora_utc": "2026-10-20T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F146.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F239.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Missouri State vs. Delaware ◘ Fútbol Americano NCAA ◘",
-          "id_xtream": "1732009"
-        }
-      ],
-      "texto_original_crudo": "18:00 ◘ Missouri State vs. Delaware ◘ Fútbol Americano NCAA ◘ NCAA EVENTOS DEL DIA",
-      "titulo_original_crudo": "18:00 ◘ Missouri State vs. Delaware ◘ Fútbol Americano NCAA ◘ NCAA EVENTOS DEL DIA",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
     },
     {
       "id": "lineal_win_sports_da86cf32",
@@ -2522,45 +2250,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_92492928",
-      "agenda_id": "",
-      "titulo": "Cucuta vs Atletico Nacional",
-      "torneo": "Categoría Primera a",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Cucuta",
-      "equipo_visitante": "Atletico Nacional",
-      "subtitulo": "Categoría Primera a",
-      "referencia": "Categoría Primera a",
-      "hora_utc": "2026-10-20T23:30:00Z",
-      "hora_local_producto": "18:30",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1470.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1137.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:30 ◘ Cúcuta Deportivo vs. Atlético Nacional ◘ Categoría Primera A ◘",
-          "id_xtream": "1732017"
-        }
-      ],
-      "texto_original_crudo": "18:30 ◘ Cúcuta Deportivo vs. Atlético Nacional ◘ Categoría Primera A ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "18:30 ◘ Cúcuta Deportivo vs. Atlético Nacional ◘ Categoría Primera A ◘ ✨Eventos Diarios 20/10✨",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": ""
-    },
-    {
       "id": "xtream_d7f83c89",
       "agenda_id": "",
       "titulo": "Toros del Este vs Aguilas Cibaenas",
@@ -2639,6 +2328,45 @@
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
+    },
+    {
+      "id": "xtream_92492928",
+      "agenda_id": "",
+      "titulo": "Cucuta vs Atletico Nacional",
+      "torneo": "Categoría Primera a",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cucuta",
+      "equipo_visitante": "Atletico Nacional",
+      "subtitulo": "Categoría Primera a",
+      "referencia": "Categoría Primera a",
+      "hora_utc": "2026-10-20T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1470.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1137.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_betplay.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:30 ◘ Cúcuta Deportivo vs. Atlético Nacional ◘ Categoría Primera A ◘",
+          "id_xtream": "1732017"
+        }
+      ],
+      "texto_original_crudo": "18:30 ◘ Cúcuta Deportivo vs. Atlético Nacional ◘ Categoría Primera A ◘ ✨Eventos Diarios 20/10✨",
+      "titulo_original_crudo": "18:30 ◘ Cúcuta Deportivo vs. Atlético Nacional ◘ Categoría Primera A ◘ ✨Eventos Diarios 20/10✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": ""
     },
     {
       "id": "xtream_f2232c39",
@@ -2775,7 +2503,7 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Inglés",
+      "subtitulo": "En Inglés",
       "referencia": "AEW Dynamite • AEW",
       "hora_utc": "2026-10-21T00:00:00Z",
       "hora_local_producto": "19:00",
@@ -2801,7 +2529,7 @@
       ],
       "texto_original_crudo": "19:00  | Inglés: AEW Dynamite | AEW ✮✮[Eventos Diarios | Exclusivos]✮✮",
       "titulo_original_crudo": "19:00  | Inglés: AEW Dynamite | AEW ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "ronda": "Inglés",
+      "ronda": "En Inglés",
       "auditado_agy": true
     },
     {
@@ -3248,45 +2976,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_bb0ff1e0",
-      "agenda_id": "",
-      "titulo": "Charros vs. Águilas de Mexicali",
-      "torneo": "Liga Mexicana del Pacífico",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Charros",
-      "equipo_visitante": "Águilas de Mexicali",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-10-21T01:30:00Z",
-      "hora_local_producto": "20:30",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fn9lywa1740582358.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5kq6ge1637689080.png&w=400&output=webp&trim=10",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "20:30 ◘ Charros vs. Águilas De Mexicali ◘ Liga Mexicana del Pacífico ◘",
-          "id_xtream": "1732031"
-        }
-      ],
-      "texto_original_crudo": "20:30 ◘ Charros vs. Águilas De Mexicali ◘ Liga Mexicana del Pacífico ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "20:30 ◘ Charros vs. Águilas De Mexicali ◘ Liga Mexicana del Pacífico ◘ ✨Eventos Diarios 20/10✨",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_f445d0f1",
       "agenda_id": "",
       "titulo": "San Antonio Spurs vs Oklahoma City Thunder",
@@ -3511,45 +3200,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_4eb06e4f",
-      "agenda_id": "",
-      "titulo": "Yaquis de Ciudad Obregón vs. Venados de Mazatlán",
-      "torneo": "Liga Mexicana del Pacífico",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Yaquis de Ciudad Obregón",
-      "equipo_visitante": "Venados de Mazatlán",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-10-21T02:10:00Z",
-      "hora_local_producto": "21:10",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F307.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv8ihyl1580498473.png&w=400&output=webp",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "21:10 ◘ Yaquis De Ciudad Obregón vs. Venados De Mazatlán ◘ Liga Mexicana del Pacífico ◘",
-          "id_xtream": "1732039"
-        }
-      ],
-      "texto_original_crudo": "21:10 ◘ Yaquis De Ciudad Obregón vs. Venados De Mazatlán ◘ Liga Mexicana del Pacífico ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "21:10 ◘ Yaquis De Ciudad Obregón vs. Venados De Mazatlán ◘ Liga Mexicana del Pacífico ◘ ✨Eventos Diarios 20/10✨",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "lineal_espn_4_fb517d0d",
       "canales_mencionados_fuente": [
         "Disney+ Premium",
@@ -3616,45 +3266,6 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_94d805ed",
-      "agenda_id": "",
-      "titulo": "Algodoneros de Guasave vs. Cañeros de los Mochis",
-      "torneo": "Liga Mexicana del Pacífico",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Algodoneros de Guasave",
-      "equipo_visitante": "Cañeros de los Mochis",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-10-21T02:30:00Z",
-      "hora_local_producto": "21:30",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flbw7lg1637689087.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fk3igm01637689092.png&w=400&output=webp&trim=10",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "21:30 ◘ Algodoneros De Guasave vs. Cañeros de los Mochis ◘ Liga Mexicana del Pacífico ◘",
-          "id_xtream": "1732040"
-        }
-      ],
-      "texto_original_crudo": "21:30 ◘ Algodoneros De Guasave vs. Cañeros de los Mochis ◘ Liga Mexicana del Pacífico ◘ ✨Eventos Diarios 20/10✨",
-      "titulo_original_crudo": "21:30 ◘ Algodoneros De Guasave vs. Cañeros de los Mochis ◘ Liga Mexicana del Pacífico ◘ ✨Eventos Diarios 20/10✨",
-      "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -3746,45 +3357,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_e7f68d93",
-      "agenda_id": "",
-      "titulo": "Chivas vs. Necaxa",
-      "torneo": "Liga MX Femenil",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Chivas",
-      "equipo_visitante": "Necaxa",
-      "subtitulo": "Liga MX Femenil",
-      "referencia": "Liga MX Femenil",
-      "hora_utc": "2026-10-21T03:00:00Z",
-      "hora_local_producto": "22:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx_femenil.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F26833.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F26837.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_mx_femenil.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "22:00  | Chivas - Necaxa | Liga MX Femenil",
-          "id_xtream": "1732123"
-        }
-      ],
-      "texto_original_crudo": "22:00  | Chivas - Necaxa | Liga MX Femenil ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "titulo_original_crudo": "22:00  | Chivas - Necaxa | Liga MX Femenil ✮✮[Eventos Diarios | Exclusivos]✮✮",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_b166e640",
       "agenda_id": "",
       "titulo": "Guadalajara W vs Necaxa W",
@@ -3832,12 +3404,12 @@
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 466,
-    "eventos_lineales_inyectados": 45,
+    "eventos_lineales_inyectados": 35,
     "eventos_xtream_aprobados": 97,
-    "eventos_contrastados_api": 83,
-    "eventos_sellados_boveda_inmutable": 66,
-    "eventos_descartados_stale": 72,
-    "total_eventos_publicados": 80,
-    "hora_actualizacion_utc": "2026-10-20T18:08:45Z"
+    "eventos_contrastados_api": 51,
+    "eventos_sellados_boveda_inmutable": 55,
+    "eventos_descartados_stale": 92,
+    "total_eventos_publicados": 69,
+    "hora_actualizacion_utc": "2026-10-20T22:18:40Z"
   }
 }
