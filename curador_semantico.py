@@ -130,6 +130,11 @@ SINONIMOS_EQUIPOS = {
     "RIONEGRO AGUILAS": "AGUILAS DORADAS",
     "AGUILAS RIONEGRO": "AGUILAS DORADAS",
     "TALENTO DORADO": "AGUILAS DORADAS",
+    "INTER BOGOTA": "INTERNACIONAL DE BOGOTA",
+    "INTER DE BOGOTA": "INTERNACIONAL DE BOGOTA",
+    "INTERNACIONAL BOGOTA": "INTERNACIONAL DE BOGOTA",
+    "FORTALEZA CEIF": "FORTALEZA",
+    "FORTALEZA FC": "FORTALEZA",
     "SPORTING CP": "SPORTING LISBOA",
     "SPORTING CLUB DE PORTUGAL": "SPORTING LISBOA",
     "BAYERN MUNCHEN": "BAYERN MUNICH",
@@ -153,7 +158,8 @@ def normalizar_nombre_equipo(nombre: str) -> str:
     s = _normalizar(s)
     for k, v in SINONIMOS_EQUIPOS.items():
         s = re.sub(rf"\b{k}\b", v, s)
-    s = re.sub(r"\b(CD|CF|FC|SD|UD|AD|CA|CSD|REAL|ATLETICO|ATL|DEPORTIVO|DEP|CLUB|DEPORTES|FUTBOL CLUB|SAD|BALOMPIE|BADALONA|CUNDINAMARCA|DE BOGOTA)\b", "", s)
+    s = re.sub(r"\b(CD|CF|FC|SD|UD|AD|CA|CSD|REAL|ATLETICO|ATL|DEPORTIVO|DEP|CLUB|DEPORTES|FUTBOL CLUB|SAD|BALOMPIE|BADALONA|CUNDINAMARCA|DE BOGOTA|BOGOTA|CEIF)\b", "", s)
+    s = re.sub(r"\bINTER\b", "INTERNACIONAL", s)
     s = re.sub(r"\b(DE|DEL|LA|LAS|LOS|EL)\b", "", s)
     s = re.sub(r"\bUNIV\.?\b|\bU\.?\b", "UNIVERSIDAD", s)
     s = re.sub(r"[^\w\s]", " ", s)
@@ -304,6 +310,13 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
         match_keywords_inv = bool(toks_l1.intersection(toks_v2)) and bool(toks_v1.intersection(toks_l2))
         if (match_keywords_dir or match_keywords_inv) and diff_min <= 120:
             return True
+
+        # Invariante Físico de Canal Lineal: Un mismo canal no transmite 2 partidos distintos a la misma hora
+        canales_1 = {f.get("canal_lineal") for f in ev1.get("fuentes", []) if isinstance(f, dict) and f.get("canal_lineal")}
+        canales_2 = {f.get("canal_lineal") for f in ev2.get("fuentes", []) if isinstance(f, dict) and f.get("canal_lineal")}
+        if canales_1 and canales_2 and canales_1.intersection(canales_2) and diff_min <= 15:
+            if l1_n == l2_n or v1_n == v2_n or toks_l1.intersection(toks_l2) or toks_v1.intersection(toks_v2):
+                return True
 
         if l1_n and l2_n and v1_n and v2_n and diff_min <= 120:
             from difflib import SequenceMatcher

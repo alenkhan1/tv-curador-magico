@@ -184,7 +184,7 @@ def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str, es_rei
 REGLAS ESENCIALES:
 1. 'descartar': true si y solo si:
    - Es una REPETICION, DIFERIDO, resumen o redifusion de partidos/torneos jugados previamente (ej: partidos antiguos de Premier League, repeticiones matutinas o grabaciones de dias anteriores). Motivo: 'repeticion_diferido'.
-   - Es 100% exclusivo de app de streaming y NO se emite en ningun canal de TV tradicional lineal. Motivo: 'exclusivo_app_streaming'.
+   - Es 100% exclusivo de app de streaming o senal digital (ej: torneos de tenis ATP/WTA/Challenger en 'TyC Sports Play', 'Tennis TV' o 'Disney+' que NO van por TV lineal tradicional) -> 'descartar': true, motivo: 'exclusivo_app_streaming'.
    - Es un programa de debate, noticiero, previa o programa comodin sin evento especifico. Motivo: 'programa_debate_noticiero'.
    - 'descartar': false si es un evento deportivo competitivo en DIRECTO hoy.
 2. 'categoria_exacta': Nombre exacto del deporte en espanol con tildes (ej: 'Snooker', 'Futbol', 'Tenis', 'Padel', 'Ciclismo', 'Golf', 'Baloncesto', 'Remo', 'Vela', 'Motor', 'Combate'). Snooker es Snooker, no Tenis ni Otros Deportes.

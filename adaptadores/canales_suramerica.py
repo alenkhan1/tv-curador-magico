@@ -94,14 +94,18 @@ def normalizar_canales_por_pais(raw_canales: List[str], pais_guia: str, deporte:
 
         for patron, canon in mapping:
             if re.search(patron, u):
-                # Regla de oro Anti-OTT:
-                # Si el evento está marcado con Disney+/DGO/Star+/WTA TV/etc. y el canal detectado es
-                # únicamente 'ESPN AR' (genérico, sin número 1 explícito) o 'DSPORTS AR' (genérico):
-                # en portales de agenda esto significa que es una transmisión exclusiva de App con branding de ESPN/DGO.
-                # NO se debe admitir como canal lineal a menos que se haya especificado un canal lineal numerado
-                # (ESPN 2..7, ESPN Premium, DSports 2..+, etc.) o se verifique por EPG mi.tv.
-                # Si el evento menciona expresamente la senal lineal (ESPN, DSports, etc.)
-                # junto a plataformas OTT como Disney+ o DGO, se acepta la senal lineal de television.
+                # 1. Regla estricta Anti-OTT para TyC Sports y Streaming de Tenis:
+                #    TyC Sports en televisión lineal JAMÁS emite torneos ATP/WTA/Challengers de circuito ordinario.
+                #    Si el deporte es Tenis y se menciona cualquier plataforma OTT (TyC Sports Play, Tennis TV, etc.),
+                #    es 100% exclusivo de streaming digital -> NO asignar canal lineal TYC SPORTS.
+                if canon == "TYC SPORTS":
+                    if tiene_plataforma_ott or deporte in ["Tenis", "Tennis"] or any(k in u for k in ["PLAY", "TENNIS TV", "WTA TV"]):
+                        continue
+
+                # 2. Canales lineales genéricos (ESPN AR, DSPORTS AR) en tenis de circuito secundario:
+                if tiene_plataforma_ott and canon in {"ESPN AR", "DSPORTS AR"} and deporte in ["Tenis", "Tennis"]:
+                    continue
+
                 if canon not in resultado and not _pertenece_a_familia_existente(canon, resultado):
                     resultado.append(canon)
                 break
