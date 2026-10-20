@@ -203,6 +203,8 @@ def formatear_titulo_inteligente(texto: str) -> str:
     return " ".join(resultado).strip()
 
 PATRONES_TORNEO_CONOCIDOS = [
+    (r'\bLIGA\s*MX\s*FEMENIL\b', 'Liga MX Femenil'),
+    (r'\bLIGA\s*MX\b', 'Liga MX'),
     (r'\bPREMIER\s*PADEL\b', 'Premier Padel'),
     (r'\bBUNNINGS\s*NPC\b|\bNPC\b', 'Bunnings NPC Rugby'),
     (r'\bSUPER\s*RUGBY\b', 'Super Rugby Pacific'),
@@ -318,7 +320,7 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
         if any(k in texto_completo.upper() for k in [
             'FC', 'CF', 'DEPORTIVO', 'ATLETICO', 'SOCCER', 'BALOMPIE', 'LENS', 'SPORTING',
             'VIKING', 'BAYERN', 'BOCA', 'VASCO', 'INTER', 'BRUGGE', 'ARSENAL', 'LILLE',
-            'GALATASARAY', 'BARCELONA', 'NAPOLI', 'VILLARREAL', 'SLAVIA', 'SABAH', 'U19'
+            'GALATASARAY', 'BARCELONA', 'NAPOLI', 'VILLARREAL', 'SLAVIA', 'SABAH', 'U19', 'CHIVAS', 'NECAXA', 'TIGRES', 'LEON', 'CLUB LEON', 'UANL', 'CHAMPIONS LEAGUE', 'FASE LIGA'
         ]):
             deporte = 'Fútbol'
 
@@ -368,6 +370,16 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
                 bloques_contexto.append(b)
         else:
             bloques_contexto.append(b)
+
+    if not bloque_duelo:
+        for b in bloques_utiles:
+            if re.search(r'\s+[-–—]\s+', b):
+                p_cand = re.split(r'\s+[-–—]\s+', b)
+                if len(p_cand) == 2 and not re.search(r'\b(Day|Ronda|Round|Etapa|Stage|Session|Sesi[oó]n|Part\b|\d+$)\b', p_cand[1], re.I):
+                    bloque_duelo = b
+                    patron_duelo = r'\s+[-–—]\s+'
+                    bloques_contexto = [bx for bx in bloques_utiles if bx != b]
+                    break
 
     if bloque_duelo:
         tipo = 'duelo'

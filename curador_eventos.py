@@ -637,7 +637,16 @@ def _reconciliar_con_boveda_diaria(
     for ev in eventos_entrantes:
         encontrado_en_boveda = False
         for b_ev in resultado:
-            if son_mismo_evento(ev, b_ev):
+            mismo_id = ev.get("id") and ev.get("id") == b_ev.get("id")
+            mismo_canal_hora = (
+                ev.get("hora_utc")
+                and ev.get("hora_utc") == b_ev.get("hora_utc")
+                and any(
+                    f.get("canal_lineal") and f.get("canal_lineal") in {fb.get("canal_lineal") for fb in b_ev.get("fuentes", [])}
+                    for f in ev.get("fuentes", [])
+                )
+            )
+            if mismo_id or mismo_canal_hora or son_mismo_evento(ev, b_ev):
                 ids_exist = {f.get("id_xtream") for f in b_ev.get("fuentes", [])}
                 canales_lin_exist = {f.get("canal_lineal") for f in b_ev.get("fuentes", []) if f.get("canal_lineal")}
                 for f in ev.get("fuentes", []):
@@ -887,19 +896,29 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False, fec
         vis = ev.get("equipo_visitante", "")
         tor = ev.get("torneo", "")
 
+        # Re-resolver logo_torneo si AGY pulió el torneo o corrigió la categoría (o el evento no tenía logo)
+        tor_actual = ev.get("torneo") or ev.get("titulo", "")
+        cat_actual = ev.get("categoria", "")
+        logo_tor = ev.get("logo_torneo", "")
+        if not logo_tor or not es_logo_compatible_con_categoria(logo_tor, cat_actual):
+            nuevo_logo_tor = resolver_logo_torneo(tor_actual, cat_actual, local=loc, visitante=vis)
+            if nuevo_logo_tor:
+                ev["logo_torneo"] = nuevo_logo_tor
+                ev["banner"] = nuevo_logo_tor
+
         # Si AGY limpio el nombre de algun club que no tenia escudo previamente, resolverlo ahora
-        if loc and not ev.get("logo_local"):
+        if loc and (not ev.get("logo_local") or not es_logo_compatible_con_categoria(ev.get("logo_local"), cat_actual)):
             es_sel_l, flag_l = es_entidad_seleccion_nacional(_normalizar(loc))
             if es_sel_l and flag_l:
                 ev["logo_local"] = flag_l
             else:
-                ev["logo_local"] = resolver_logo_equipo(loc, cat, tor) or ""
-        if vis and not ev.get("logo_visitante"):
+                ev["logo_local"] = resolver_logo_equipo(loc, cat_actual, tor) or ""
+        if vis and (not ev.get("logo_visitante") or not es_logo_compatible_con_categoria(ev.get("logo_visitante"), cat_actual)):
             es_sel_v, flag_v = es_entidad_seleccion_nacional(_normalizar(vis))
             if es_sel_v and flag_v:
                 ev["logo_visitante"] = flag_v
             else:
-                ev["logo_visitante"] = resolver_logo_equipo(vis, cat, tor) or ""
+                ev["logo_visitante"] = resolver_logo_equipo(vis, cat_actual, tor) or ""
 
         # Evaluar si el evento alcanza el estandar 100% integro para quedar sellado en la Boveda Diaria
         if es_evento_integramente_curado(ev):

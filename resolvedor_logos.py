@@ -998,6 +998,7 @@ def resolver_logo_torneo(torneo: str, categoria: str, permitir_red: bool = False
                         cdn_url = envolver_cdn_proxy(badge)
                         cache[clave_cache] = cdn_url
                         _guardar_cache(cache)
+                        _guardar_catalogo_torneos({torneo_norm: cdn_url})
                         return cdn_url
         except Exception:
             pass
@@ -1108,7 +1109,7 @@ def _generar_variantes_busqueda_equipo(equipo_limpio: str, deporte: str = "") ->
         _add(norm_trad.title())
 
     sin_suf = re.sub(
-        r"\b(BASKET|BASKETS|BASKETBALL|BALONCESTO|HANDBALL|BALONMANO|FUTSAL|VOLLEY|VOLEIBOL|FC|CF|CD|BC|CB|SC|U19|U20|U21|U23|RES|RESERVE|RESERVA)\b",
+        r"\b(BASKET|BASKETS|BASKETBALL|BALONCESTO|HANDBALL|BALONMANO|FUTSAL|VOLLEY|VOLEIBOL|FC|CF|CD|BC|CB|SC|U19|U20|U21|U23|RES|RESERVE|RESERVA|FEMENIL|FEMENINO|FEM|WOMEN|LADIES|WFC)\b",
         "",
         norm_trad
     )

@@ -164,84 +164,56 @@ def _canales_coinciden(c1: str, c2: str) -> bool:
     return False
 
 def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str, es_reintento: bool = False) -> Dict[str, Dict[str, Any]]:
-    prompt_texto = f"""Hoy es {fecha_hoy_iso}.
-Eres el AUDITOR Y REVISOR FINAL de la cartelera deportiva del día para una app de Android TV.
-Los eventos candidatos ya han sido extraídos de las guías oficiales y provistos de sus logos y títulos preliminares.
-Tu misión en última instancia es auditar el JSON ensamblado: certificar que cada transmisión sea 100% legítima en vivo hoy, corregir anomalías en títulos o categorías, y resolver conflictos de señales antes de la entrega definitiva del archivo.
-La app transmite EXCLUSIVAMENTE eventos deportivos REALES EN VIVO Y EN DIRECTO que se disputan HOY ({fecha_hoy_iso}).
-PROHIBIDO transmitir programas grabados, repeticiones, diferidos, resúmenes, noticieros o eventos que SOLO se emiten por apps de streaming.
+    """Audita un lote de eventos con AGY mediante un prompt ligero, rápido y de alta precisión (sub-15s)."""
+    if not lote:
+        return {}
 
-Reglas obligatorias de decision (Auditor y Revisor Deportivo de Ultima Instancia):
-1. 'descartar': true OBLIGATORIO si:
-   - SEÑAL LINEAL ESPN: Habitualmente la señal principal de ESPN no se muestra como 'ESPN 1', sino simplemente como 'ESPN' (o ESPN AR). Si un evento se transmite por 'ESPN', es una señal de TV lineal tradicional legítima; NO lo consideres exclusivo de app streaming ni lo descartes aunque la guía mencione Disney+ en paralelo.
-   - DESAMBIGUACIÓN WIN SPORTS COLOMBIA: Win Sports cuenta con dos señales: Win Sports (básica) y Win Sports+ (premium). Si ambas señales emiten exactamente el mismo partido en simultáneo, conserva únicamente la señal de 'WIN SPORTS+' para ese evento (evitando tarjetas duplicadas). Si dos partidos distintos en vivo se juegan a la misma hora en Win Sports y Win Sports+, MANTÉN AMBOS EVENTOS (el principal en 'WIN SPORTS+' y el secundario en 'WIN SPORTS').
-   - EXCLUSIVIDAD ESTRICTA DE APP / STREAMING: Si un evento es 100% exclusivo de una plataforma digital o movil (ej. canchas secundarias de tenis solo en 'Tennis TV' o 'Disney+', o torneos amateur solo en YouTube/streaming) y NO se transmite por ningun canal de TV lineal tradicional (Teledeporte, Eurosport 1/2, ESPN 1..7, ESPN Premium, TyC Sports, TNT Sports, DSports, Win Sports, Win Sports+, Caracol, RCN) -> 'descartar': true, motivo: "exclusivo_app_streaming".
-   - TRANSMISIONES TELEVISADAS SIMULTANEAS (SIMULCAST): Si un partido relevante (Champions League, torneos de Liga, Copas Conmebol, tenis ATP) menciona 'Disney+', 'Star+' o 'DGO' pero cuenta con transmision televisada por ESPN o DSports, MANTEN EL EVENTO ('descartar': false) y asigna su canal de TV lineal correspondiente.
-   - DESAMBIGUACION WIN SPORTS COLOMBIA: Win Sports cuenta con dos senales: Win Sports (basico) y Win Sports+ (premium). Si dos partidos se solapan en horario con la etiqueta Win Sports+, NO descartes ninguno: asigna el partido principal a 'WIN SPORTS+' y el partido secundario o simultaneo a 'WIN SPORTS'. Si ambas senales emiten exactamente el mismo partido en simultaneo, conserva unicamente 'WIN SPORTS+'.
-   - AUTORIDAD DE PARRILLA OFICIAL DE CANALES LINEALES: Si un evento proviene de la programación oficial de una cadena lineal reconocida (como RTVE Teledeporte o Eurosport) y está explícitamente programado en DIRECTO para el día de hoy, acéptalo como transmisión legítima en vivo y pule sus datos (título, contendientes, torneo). NO lo descartes por suposiciones externas de calendario.
-   - TORNEO CONCLUIDO EN DÍAS PREVIOS / REPETICIÓN: Si el torneo o competencia ya terminó su edición (por ejemplo, la final del Rolex Shanghai Masters se jugó ayer domingo y hoy es lunes) -> 'descartar': true, motivo: "torneo_finalizado_ayer_repeticion".
-   - TRANSMISIÓN DIFERIDA O REDIFUSIÓN: Si en un canal lineal (Eurosport, ESPN, TyC Sports, Win Sports) se emite una repetición matutina o resumen de snooker, tenis, ciclismo o atletismo sin ser una sesión activa EN DIRECTO de hoy -> 'descartar': true, motivo: "repeticion_diferido".
-   - INCOHERENCIA DE HUSO HORARIO (REPETICIÓN ENCUBIERTA):
-     Contrasta la hora UTC del evento contra el huso horario REAL de la CIUDAD SEDE donde se disputa:
-     * Si en la ciudad sede (calculando según su huso horario local a partir de hora_utc) la hora corresponde a un horario competitivo diurno o nocturno normal (entre las 08:00 AM y las 23:30 PM de la sede), es una transmisión LEGÍTIMA EN DIRECTO.
-     * Ejemplo 1 (Asia): Un evento en China (UTC+8) emitido a las 21:10 Bogotá (02:10 UTC) se disputa a las 10:10 AM hora local de China -> ES EN VIVO EN DIRECTO (sesión matinal en China).
-     * Ejemplo 2 (Costa Oeste EE.UU.): Un partido en California/San Francisco (UTC-7) emitido a las 18:50 Bogotá (23:50 UTC, 01:50 AM de España) se disputa a las 16:50 (4:50 PM) hora local de San Francisco -> ES EN VIVO EN DIRECTO (tarde en EE.UU.).
-     * Solo es REPETICIÓN si en la sede local del evento la hora UTC corresponde a una hora inverosímil (como las 02:00, 03:00 o 04:00 de la madrugada local de la ciudad sede) sin justificación.
-   - Es un partido APLAZADO, POSTERGADO, SUSPENDIDO o CANCELADO.
-   - Es un programa multicanal/carrusel de goles o resúmenes sin un partido específico.
-   - Es un programa de debate, noticiero, magazine o previa.
-   - SESIONES MÚLTIPLES EN DEPORTES DE CIRCUITO: En torneos de Snooker, Tenis, Pádel o Dardos, es totalmente normal y legítimo que se disputen MÚLTIPLES SESIONES EN VIVO en una misma jornada (ej: Sesión de Tarde a las 14:00 y Sesión Nocturna a las 20:00). NO descartes una sesión nocturna asumiendo que es repetición de la tarde si corresponde a una sesión competitiva programada en directo para ese horario.
+    lote_resumido = []
+    for ev in lote:
+        lote_resumido.append({
+            "id": ev.get("id"),
+            "titulo": ev.get("texto_original_crudo") or ev.get("titulo_propuesto") or ev.get("titulo"),
+            "canal": ev.get("canales_mencionados_fuente") or ev.get("canales_candidatos"),
+            "hora_utc": ev.get("hora_utc"),
+            "deporte_actual": ev.get("categoria"),
+            "torneo_actual": ev.get("torneo")
+        })
 
-2. 'descartar': false si y solo si es una transmisión deportiva competitiva legítima que se disputa HOY en vivo en ese horario y se emite en un canal de TV lineal tradicional.
+    prompt_texto = f"""Eres el Auditor y Revisor de Eventos Deportivos de TV. Audita y resuelve estos eventos para HOY {fecha_hoy_iso}:
 
-3. 'categoria_exacta': RAZONA Y ASIGNA EL DEPORTE REAL (UNIVERSAL Y ABIERTO A CUALQUIER DISCIPLINA).
-   - Esta aplicación transmite CUALQUIER deporte competitivo en vivo (Fútbol, Baloncesto, Tenis, Remo, Vela, Snooker, Pádel, Ciclismo, Motor, Balonmano, Hockey, Rugby, Natación, Gimnasia, Atletismo, Combate, Golf, Béisbol, Voleibol, Piragüismo, Patinaje, Triatlón, Tejo, etc.).
-   - PROHIBIDO descartar un evento por pertenecer a un deporte poco convencional.
-   - Si el título o contendientes indican un deporte específico, razona y asígnalo siempre con su nombre canónico en español y con tildes (ej: si es una prueba de regata o botes, 'Remo' o 'Vela'; si es billar inglés, 'Snooker'; si es raqueta de pista, 'Pádel' o 'Tenis'). NUNCA dejes términos genéricos como 'Otros Deportes' o 'Deportes' si la disciplina puede identificarse.
+REGLAS ESENCIALES:
+1. 'descartar': true si y solo si:
+   - Es una REPETICION, DIFERIDO, resumen o redifusion de partidos/torneos jugados previamente (ej: partidos antiguos de Premier League, repeticiones matutinas o grabaciones de dias anteriores). Motivo: 'repeticion_diferido'.
+   - Es 100% exclusivo de app de streaming y NO se emite en ningun canal de TV tradicional lineal. Motivo: 'exclusivo_app_streaming'.
+   - Es un programa de debate, noticiero, previa o programa comodin sin evento especifico. Motivo: 'programa_debate_noticiero'.
+   - 'descartar': false si es un evento deportivo competitivo en DIRECTO hoy.
+2. 'categoria_exacta': Nombre exacto del deporte en espanol con tildes (ej: 'Snooker', 'Futbol', 'Tenis', 'Padel', 'Ciclismo', 'Golf', 'Baloncesto', 'Remo', 'Vela', 'Motor', 'Combate'). Snooker es Snooker, no Tenis ni Otros Deportes.
+3. 'torneo_pulido': Nombre oficial del torneo o federacion (ej: 'UEFA Champions League', 'Liga MX Femenil', 'World Snooker Tour', 'Premier League').
+4. 'titulo_pulido': Limpio. En duelos: 'Equipo Local vs. Equipo Visitante'. En circuitos: 'Nombre Especifico del Evento'.
+5. 'tipo_evento': 'duelo' (para deportes de equipo) o 'circuito' (para tenis, snooker, ciclismo, motor, etc.).
 
-4. 'tipo_evento' y LIMPIEZA DE NOMBRES DE CLUBES EN DUELOS:
-   - DEPORTES DE EQUIPO (Fútbol, Baloncesto, Béisbol, Fútbol Americano, Hockey, Balonmano, Rugby): Son OBLIGATORIAMENTE 'duelo'.
-   - Si el nombre de algún club viene corrupto, truncado o con patrocinadores raros que impiden hallar su escudo en bases de datos internacionales (ej. 'Surne Bilbao vs Sk Slavia Praha Era Nbk'), corrige en 'titulo_pulido' a sus nombres institucionales limpios e internacionalmente reconocidos ('Bilbao Basket vs. ERA Nymburk').
+Eventos a auditar:
+{json.dumps(lote_resumido, ensure_ascii=False, indent=1)}
 
-5. REGLAS DE ORO PARA CIRCUITOS (Tenis, Motor, Ciclismo, Pádel, Golf, Combate, Snooker):
-   - DEPORTES COMO TENIS, PÁDEL, MOTOR, CICLISMO, COMBATE Y SNOOKER: Son obligatoriamente 'tipo_evento': 'circuito'.
-   - 'torneo_pulido': Debe contener SIEMPRE el NOMBRE ESPECÍFICO del torneo (ej: 'Wuhan Open', 'Kinoshita Group Japan Open', 'Northern Ireland Open', 'Dirtvision', 'Premier Padel Milán'). PROHIBIDO dejar nombres genéricos como 'WTA', 'ATP', 'Tenis', 'Snooker' o 'Motor'.
-   - Si el texto original trae contendientes individuales (ej. 'Maja Chwalinska vs. Sonay Kartal'), consérvalos en 'participantes' y pon la ronda ('Final', 'Semifinal', 'Cuartos') en 'subtitulo_pulido'.
-   - 'subtitulo_pulido' (Línea 2 del botón pequeño de TV, MÁXIMO 24 CARACTERES):
-     * Solo el nombre corto de la Cancha, Pista, Circuito, Sede o Ronda (ej: 'Millbridge Speedway', 'Court 1', 'Centre Court', 'Sesión Vespertina', 'Etapa en Ruta').
-     * PROHIBIDO repetir palabras que ya estén en 'titulo_pulido'.
-   - 'participantes' (Línea 3 debajo del reproductor preview):
-     * Descripción concisa de la especialidad, sede o protagonistas.
-
-6. 'canales_confirmados': Si es un evento lineal, devuelve únicamente el canal exacto donde se emite. Si es stream de evento Xtream, devuelve [].
-
-Lista de eventos a auditar:
-{json.dumps(lote, ensure_ascii=False, indent=1)}
-
-Responde ÚNICAMENTE con un JSON Array:
+Responde UNICAMENTE con un JSON Array valido:
 [
   {{
-    "id": "id original",
+    "id": "id del evento",
     "descartar": false,
     "motivo_descarte": "",
-    "titulo_pulido": "Título limpio (en duelos: Local vs. Visitante; en circuitos: Nombre específico del evento)",
-    "torneo_pulido": "Torneo específico",
-    "subtitulo_pulido": "Sede o Cancha corta (máx 24 chars, sin repetir título)",
-    "participantes": "Detalle descriptivo bajo el preview",
-    "categoria_exacta": "Categoría con tilde exacta",
-    "tipo_evento": "duelo o circuito",
-    "canales_confirmados": [],
-    "logo_local_url": "",
-    "logo_visitante_url": "",
-    "logo_torneo_url": ""
+    "categoria_exacta": "Deporte exacto",
+    "torneo_pulido": "Torneo oficial",
+    "titulo_pulido": "Titulo limpio",
+    "subtitulo_pulido": "Cancha, sede o ronda",
+    "tipo_evento": "duelo o circuito"
   }}
 ]
 """
     salida_texto = None
     try:
         if Path(AGY_PATH).exists():
-            cmd = [AGY_PATH, "-p", prompt_texto, "--effort", "low", "--dangerously-skip-permissions", "--output-format", "json", "--print-timeout", "120s"]
-            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=150)
+            cmd = [AGY_PATH, "-p", prompt_texto, "--effort", "low", "--dangerously-skip-permissions"]
+            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=60)
             if res.returncode == 0:
                 salida_texto = res.stdout
         else:
@@ -257,7 +229,7 @@ Responde ÚNICAMENTE con un JSON Array:
                 f"{ORACLE_USER}@{ORACLE_HOST}",
                 f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
             ]
-            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=160)
+            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=70)
             if res.returncode == 0:
                 salida_texto = res.stdout
     except Exception as e:

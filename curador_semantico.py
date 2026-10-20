@@ -42,7 +42,7 @@ DEPORTES_CIRCUITO = {
 DEDUCCIONES_DEPORTE = [
     ("Balonmano", ["ASOBAL", "BALONMANO", "HANDBALL", "EHF"]),
     ("Baloncesto", ["ACB", "LIGA ENDESA", "EUROLEAGUE", "EUROLIGA", "NBA", "WNBA", "BASKET", "BALONCESTO", "NCAA BASKET", "CALVARY", "NEXT LEVEL", "BRISTOL FLYERS", "LONDON LIONS", "NEWCASTLE EAGLES", "BIG BLUE MADNESS"]),
-    ("Snooker", ["SNOOKER", "BILLAR", "SHENZHEN"]),
+    ("Snooker", ["SNOOKER", "BILLAR", "SHENZHEN", "NORTHERN IRELAND OPEN", "NORTHERN IRELAND", "UK CHAMPIONSHIP", "WORLD SNOOKER TOUR", "WST", "CRUCIBLE"]),
     ("Ciclismo", ["CICLISMO", "CYCLING", "VUELTA", "GIRO", "TOUR DE FRANCE", "CROSS COUNTRY", "LAKE PLACID", "BENELUX TOUR"]),
     ("Pádel", ["PADEL", "PÁDEL", "PREMIER PADEL", "FIP"]),
     ("Tenis", ["ATP", "WTA", "TENIS", "TENNIS", "CHALLENGER", "ROLAND GARROS", "WIMBLEDON", "US OPEN", "CHINA OPEN", "DAVIS", "JAPAN OPEN", "SHANGHAI MASTERS", "WUHAN OPEN"]),
@@ -62,7 +62,7 @@ DEDUCCIONES_DEPORTE = [
     ("Vela", ["VELA", "SAILING", "REGATA"]),
     ("Tiro", ["MALAKASA", "TIRO AL PLATO", "SHOOTING"]),
     ("Fútbol", [
-        "LALIGA", "PREMIER LEAGUE", "SERIE A", "BUNDESLIGA", "LIGUE 1", "NATIONS LEAGUE",
+        "LALIGA", "PREMIER LEAGUE", "SERIE A", "BUNDESLIGA", "LIGUE 1", "NATIONS LEAGUE", "CHAMPIONS LEAGUE", "UEFA CHAMPIONS", "CHAMPIONS", "EUROPA LEAGUE", "CONFERENCE LEAGUE", "LIGA DE CAMPEONES", "FASE LIGA", "PARIS SAINT-GERMAIN", "PSG", "BARCELONA", "REAL MADRID", "MANCHESTER CITY", "LIVERPOOL", "BAYERN", "JUVENTUS", "INTER DE MILAN",
         "LIBERTADORES", "SUDAMERICANA", "BETPLAY", "FUTBOL", "FÚTBOL", "COPA ARGENTINA",
         "LIGA MX", "NWSL", "NSL", "CHILE", "ARG", "BOCA JUNIORS", "SANTOS", "UNION",
         "SOACHA", "INDEPENDIENTE", "RIVADAVIA", "GIMNASIA LP", "GIMNASIA LA PLATA", "GIMNASIA JUJUY", "GIMNASIA (J)", "GIMNASIA (M)", "GIMNASIA MENDOZA", "DEPORTIVO CALI", "ALIANZA",
@@ -765,6 +765,9 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
             else:
                 dep_detectado = deducir_deporte_desde_logo(logo_loc) or deducir_deporte_desde_logo(logo_vis) or deducir_deporte_desde_logo(logo_torneo)
                 if dep_detectado:
+                    # Protección: No ascender a Balonmano si el texto menciona clubes de fútbol de élite o torneos de fútbol
+                    if dep_detectado == "Balonmano" and any(k in u_tit_comp for k in ["PSG", "BARCELONA", "REAL MADRID", "CHAMPIONS", "FASE LIGA"]):
+                        dep_detectado = "Fútbol"
                     categoria_real = dep_detectado
                     ev["categoria"] = dep_detectado
                     log.info("Categoría ascendida de 'Otros Deportes' a '%s' por escudo oficial: '%s'", dep_detectado, ev.get("titulo"))

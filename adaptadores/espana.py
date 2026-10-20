@@ -92,12 +92,16 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
 
             dep = "Otros Deportes"
             u_tit = titulo.upper()
-            if any(k in u_tit for k in ["SNOOKER", "BILLAR", "SHENZHEN"]):
+            if any(k in u_tit for k in ["SNOOKER", "BILLAR", "SHENZHEN", "NORTHERN IRELAND", "UK CHAMPIONSHIP", "MASTERS SNOOKER", "CRUCIBLE", "WST"]):
                 dep = "Snooker"
             elif any(k in u_tit for k in ["CICLISMO", "GIRO", "TOUR", "VUELTA", "CROSS COUNTRY", "LAKE PLACID"]):
                 dep = "Ciclismo"
-            elif any(k in u_tit for k in ["TENIS", "OPEN", "ATP", "WTA"]):
+            elif any(k in u_tit for k in ["TENIS", "TENNIS", "ATP", "WTA", "ROLAND GARROS", "WIMBLEDON", "DAVIS"]):
                 dep = "Tenis"
+            elif any(k in u_tit for k in ["PADEL", "PÁDEL", "PREMIER PADEL", "FIP"]):
+                dep = "Pádel"
+            elif any(k in u_tit for k in ["GOLF", "PGA", "LIV GOLF", "RYDER"]):
+                dep = "Golf"
             elif any(k in u_tit for k in ["ESCALADA", "CLIMBING"]):
                 dep = "Escalada"
             elif any(k in u_tit for k in ["TIRO", "SKEET"]):
