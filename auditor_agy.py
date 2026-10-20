@@ -319,9 +319,28 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         es_circuito = tipo == "circuito" or cat in ["Tenis", "Motor", "Combate", "Boxeo", "MMA", "Golf", "Ciclismo", "Pádel", "Padel"]
         cat_dudosa = cat in ["Otros Deportes", "", "Deportes en Vivo", "Deportes"]
         es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte"] for o in ev.get("origenes", []))
-        # Auditar si es sospechoso, si le faltan escudos, si es circuito/combate, si es lineal (para verificar exclusividad de app) o huérfano
-        # AGY debe auditar el 100% de los eventos nuevos o pendientes no sellados en Bóveda
-        necesita = True
+        canales_cands_prev = ev.get("canales_candidatos") or [
+            f.get("canal_lineal") for f in ev.get("fuentes", []) if isinstance(f, dict) and f.get("canal_lineal")
+        ]
+        tiene_win = any("WIN" in str(c).upper() for c in canales_cands_prev)
+
+        # AGY como Auditor y Revisor Final de Ultima Instancia:
+        # Se auditan los eventos que requieren revision y resolucion inteligente:
+        # 1. Eventos de circuito o combate (tenis, snooker, ciclismo, motor, etc.) para verificar sesiones y subtitulos.
+        # 2. Eventos no contrastados oficialmente por API-Sports.
+        # 3. Duelos a los que les falte algun escudo de club.
+        # 4. Eventos con categoria dudosa o generica.
+        # 5. Eventos con sospecha de repeticion o vinetas.
+        # 6. Eventos de Win Sports para desambiguar senal basica vs premium.
+        necesita = (
+            not es_oficial_api
+            or es_circuito
+            or falta_escudo_duelo
+            or cat_dudosa
+            or sospechoso_no_vivo
+            or tiene_vinetas
+            or tiene_win
+        )
         if necesita:
             if not ev.get("id"):
                 ev["id"] = f"ev_audit_{len(eventos_a_auditar) + 1}_{hashlib.sha1((raw_tit + ev.get('hora_utc', '')).encode()).hexdigest()[:6]}"
