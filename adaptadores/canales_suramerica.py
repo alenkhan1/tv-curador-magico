@@ -28,10 +28,15 @@ def _crear_contexto_ssl():
     return ctx
 
 CANAL_MAPPING_CO = [
-    (r"\bWIN\s*(?:F[UÚ]TBOL\s*\+|SPORTS\s*\+)", "WIN SPORTS+"),
+    (r"\bWIN\s*(?:F[U?]TBOL\s*\+|SPORTS\s*\+)", "WIN SPORTS+"),
     (r"\bWIN\s*SPORTS\b(?!\s*\+)", "WIN SPORTS"),
     (r"\bCARACOL\b(?!\s*INTERNACIONAL)", "CARACOL"),
     (r"\b(?:CANAL\s*)?RCN\b(?!\s*NUESTRA\s*TELE|\s*INTERNACIONAL|\s*NOVELAS|\s*MAS)", "RCN"),
+    # Diales panregionales de Suramerica (sin senal exclusiva en Argentina pero presentes en Xtream):
+    (r"\bESPN\s*4\b", "ESPN 4"),
+    (r"\bESPN\s*5\b", "ESPN 5"),
+    (r"\bESPN\s*6\b", "ESPN 6"),
+    (r"\bESPN\s*7\b", "ESPN 7"),
 ]
 
 CANAL_MAPPING_AR = [
@@ -95,11 +100,8 @@ def normalizar_canales_por_pais(raw_canales: List[str], pais_guia: str, deporte:
                 # en portales de agenda esto significa que es una transmisión exclusiva de App con branding de ESPN/DGO.
                 # NO se debe admitir como canal lineal a menos que se haya especificado un canal lineal numerado
                 # (ESPN 2..7, ESPN Premium, DSports 2..+, etc.) o se verifique por EPG mi.tv.
-                if tiene_plataforma_ott and canon in {"ESPN AR", "DSPORTS AR"}:
-                    es_canal_1_explicito = bool(re.search(r"\b(?:ESPN|DSPORTS)\s*1\b", u))
-                    if not es_canal_1_explicito:
-                        continue
-
+                # Si el evento menciona expresamente la senal lineal (ESPN, DSports, etc.)
+                # junto a plataformas OTT como Disney+ o DGO, se acepta la senal lineal de television.
                 if canon not in resultado and not _pertenece_a_familia_existente(canon, resultado):
                     resultado.append(canon)
                 break

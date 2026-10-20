@@ -154,18 +154,30 @@ def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
 
     return []
 
+def _canales_coinciden(c1: str, c2: str) -> bool:
+    c1, c2 = c1.upper().strip(), c2.upper().strip()
+    if c1 == c2:
+        return True
+    espn_fam = {"ESPN", "ESPN 1", "ESPN AR", "ESPN CO"}
+    if c1 in espn_fam and c2 in espn_fam:
+        return True
+    return False
+
 def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str, es_reintento: bool = False) -> Dict[str, Dict[str, Any]]:
     prompt_texto = f"""Hoy es {fecha_hoy_iso}.
-Eres el Auditor y Curador Deportivo en Jefe para una app de Android TV.
+Eres el AUDITOR Y REVISOR FINAL de la cartelera deportiva del día para una app de Android TV.
+Los eventos candidatos ya han sido extraídos de las guías oficiales y provistos de sus logos y títulos preliminares.
+Tu misión en última instancia es auditar el JSON ensamblado: certificar que cada transmisión sea 100% legítima en vivo hoy, corregir anomalías en títulos o categorías, y resolver conflictos de señales antes de la entrega definitiva del archivo.
 La app transmite EXCLUSIVAMENTE eventos deportivos REALES EN VIVO Y EN DIRECTO que se disputan HOY ({fecha_hoy_iso}).
 PROHIBIDO transmitir programas grabados, repeticiones, diferidos, resúmenes, noticieros o eventos que SOLO se emiten por apps de streaming.
 
-Reglas obligatorias de decisión:
+Reglas obligatorias de decision (Auditor y Revisor Deportivo de Ultima Instancia):
 1. 'descartar': true OBLIGATORIO si:
-   - EXCLUSIVIDAD DE APP / STREAMING (ANTI-OTT): Esta aplicación cuenta con canales lineales oficiales de TV tradicional (cable y señal abierta):
-     * Señales oficiales de España / Europa: Teledeporte, Eurosport 1, Eurosport 2, DAZN F1, Sky Sports.
-     * Señales oficiales de Sudamérica: ESPN (1 al 7 AR), ESPN Premium, TyC Sports, TNT Sports, DSports (DSports, DSports 2, DSports +), Win Sports, Win Sports+, Caracol, RCN.
-     * Revisa atentamente 'canales_mencionados_fuente': Si la fuente menciona apps de streaming que NO van en vivo por ninguno de los canales lineales anteriores (ej: 'TyC Sports Play', 'Tennis TV', 'Disney+ Premium', 'DGO', 'WTA TV') y se trata de competencias que no emiten en las señales tradicionales de televisión -> 'descartar': true, motivo: "exclusivo_app_streaming".
+   - SEÑAL LINEAL ESPN: Habitualmente la señal principal de ESPN no se muestra como 'ESPN 1', sino simplemente como 'ESPN' (o ESPN AR). Si un evento se transmite por 'ESPN', es una señal de TV lineal tradicional legítima; NO lo consideres exclusivo de app streaming ni lo descartes aunque la guía mencione Disney+ en paralelo.
+   - DESAMBIGUACIÓN WIN SPORTS COLOMBIA: Win Sports cuenta con dos señales: Win Sports (básica) y Win Sports+ (premium). Si ambas señales emiten exactamente el mismo partido en simultáneo, conserva únicamente la señal de 'WIN SPORTS+' para ese evento (evitando tarjetas duplicadas). Si dos partidos distintos en vivo se juegan a la misma hora en Win Sports y Win Sports+, MANTÉN AMBOS EVENTOS (el principal en 'WIN SPORTS+' y el secundario en 'WIN SPORTS').
+   - EXCLUSIVIDAD ESTRICTA DE APP / STREAMING: Si un evento es 100% exclusivo de una plataforma digital o movil (ej. canchas secundarias de tenis solo en 'Tennis TV' o 'Disney+', o torneos amateur solo en YouTube/streaming) y NO se transmite por ningun canal de TV lineal tradicional (Teledeporte, Eurosport 1/2, ESPN 1..7, ESPN Premium, TyC Sports, TNT Sports, DSports, Win Sports, Win Sports+, Caracol, RCN) -> 'descartar': true, motivo: "exclusivo_app_streaming".
+   - TRANSMISIONES TELEVISADAS SIMULTANEAS (SIMULCAST): Si un partido relevante (Champions League, torneos de Liga, Copas Conmebol, tenis ATP) menciona 'Disney+', 'Star+' o 'DGO' pero cuenta con transmision televisada por ESPN o DSports, MANTEN EL EVENTO ('descartar': false) y asigna su canal de TV lineal correspondiente.
+   - DESAMBIGUACION WIN SPORTS COLOMBIA: Win Sports cuenta con dos senales: Win Sports (basico) y Win Sports+ (premium). Si dos partidos se solapan en horario con la etiqueta Win Sports+, NO descartes ninguno: asigna el partido principal a 'WIN SPORTS+' y el partido secundario o simultaneo a 'WIN SPORTS'. Si ambas senales emiten exactamente el mismo partido en simultaneo, conserva unicamente 'WIN SPORTS+'.
    - AUTORIDAD DE PARRILLA OFICIAL DE CANALES LINEALES: Si un evento proviene de la programación oficial de una cadena lineal reconocida (como RTVE Teledeporte o Eurosport) y está explícitamente programado en DIRECTO para el día de hoy, acéptalo como transmisión legítima en vivo y pule sus datos (título, contendientes, torneo). NO lo descartes por suposiciones externas de calendario.
    - TORNEO CONCLUIDO EN DÍAS PREVIOS / REPETICIÓN: Si el torneo o competencia ya terminó su edición (por ejemplo, la final del Rolex Shanghai Masters se jugó ayer domingo y hoy es lunes) -> 'descartar': true, motivo: "torneo_finalizado_ayer_repeticion".
    - TRANSMISIÓN DIFERIDA O REDIFUSIÓN: Si en un canal lineal (Eurosport, ESPN, TyC Sports, Win Sports) se emite una repetición matutina o resumen de snooker, tenis, ciclismo o atletismo sin ser una sesión activa EN DIRECTO de hoy -> 'descartar': true, motivo: "repeticion_diferido".
@@ -228,8 +240,8 @@ Responde ÚNICAMENTE con un JSON Array:
     salida_texto = None
     try:
         if Path(AGY_PATH).exists():
-            cmd = [AGY_PATH, "-p", prompt_texto, "--effort", "low", "--dangerously-skip-permissions", "--output-format", "json", "--print-timeout", "45s"]
-            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=95)
+            cmd = [AGY_PATH, "-p", prompt_texto, "--effort", "low", "--dangerously-skip-permissions", "--output-format", "json", "--print-timeout", "120s"]
+            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=150)
             if res.returncode == 0:
                 salida_texto = res.stdout
         else:
@@ -245,7 +257,7 @@ Responde ÚNICAMENTE con un JSON Array:
                 f"{ORACLE_USER}@{ORACLE_HOST}",
                 f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
             ]
-            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=140)
+            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=160)
             if res.returncode == 0:
                 salida_texto = res.stdout
     except Exception as e:
@@ -340,7 +352,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         log.info("Todos los eventos están debidamente contrastados o sellados en Bóveda (%d eventos). Se omite AGY.", len(eventos))
         return eventos, []
 
-    tamano_lote = 10
+    tamano_lote = 5
     mapa_audit = {}
     total_lotes = (len(eventos_a_auditar) + tamano_lote - 1) // tamano_lote
     log.info("Iniciando auditoría AGY en lote consolidado para %d eventos nuevos/incompletos (%d lotes)...", len(eventos_a_auditar), total_lotes)
@@ -353,22 +365,22 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
         mapa_audit.update(res_lote)
         if i + tamano_lote < len(eventos_a_auditar):
             import time
-            time.sleep(3)  # Pausa prudente entre lotes para no saturar cuenta Gemini Pro
+            time.sleep(4)  # Pausa prudente entre lotes para no saturar cuenta Gemini Pro
 
     eventos_finales = []
     eventos_descartados = []
     for ev in eventos:
         aud = mapa_audit.get(ev.get("id"))
         if not aud:
-            # RESILIENCIA: Si el evento ya fue contrastado y confirmado oficialmente por API-Sports para hoy,
-            # no descartarlo si AGY sufrio un timeout temporal.
-            if ev.get("contrastado_api") is True and ev.get("categoria") not in ["Otros Deportes", ""]:
-                log.info("Evento respaldado por API-Sports oficial conservado: '%s'", ev.get("titulo"))
+            # RESILIENCIA: Si el evento ya fue contrastado oficialmente por API-Sports o proviene de canales lineales confirmados,
+            # no descartarlo si AGY sufrio un timeout temporal o demora de red.
+            es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte", "rtve_teledeporte_oficial", "mundodeportivo_eurosport_1", "mundodeportivo_eurosport_2", "futbolenvivo_ar", "futbolenvivo_co"] for o in ev.get("origenes", [])) or (ev.get("origen") == "inyector_lineal")
+            if (ev.get("contrastado_api") is True or es_lineal) and ev.get("categoria") not in ["Otros Deportes", ""]:
+                log.info("Evento lineal o contrastado conservado tras timeout/omision temporal de AGY: '%s'", ev.get("titulo"))
                 eventos_finales.append(ev)
                 continue
-            # FAIL-CLOSED: Si no tiene confirmacion oficial de API ni certificacion de AGY, descartar
             motivo = "sin_certificacion_agy"
-            log.warning("AGY no certificó explícitamente evento '%s' (ID: %s). Descartando por seguridad.", ev.get("titulo"), ev.get("id"))
+            log.warning("AGY no certific? expl?citamente evento '%s' (ID: %s). Descartando por seguridad.", ev.get("titulo"), ev.get("id"))
             ev["motivo_descarte"] = motivo
             eventos_descartados.append(ev)
             continue
@@ -411,7 +423,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                     c_lin = (f.get("canal_lineal") or "").strip().upper()
                     f_nom = (f.get("nombre") or "").strip().upper()
                     if c_lin:
-                        if any(cc == c_lin for cc in canales_conf_set):
+                        if any(_canales_coinciden(cc, c_lin) for cc in canales_conf_set):
                             fuentes_filtradas.append(f)
                     else:
                         if any(cc in f_nom for cc in canales_conf_set):
@@ -573,8 +585,8 @@ Responde ÚNICAMENTE con un JSON Array:
     salida_texto = None
     try:
         if Path(AGY_PATH).exists():
-            cmd = [AGY_PATH, "-p", prompt_enriquecer, "--effort", "low", "--dangerously-skip-permissions", "--output-format", "json", "--print-timeout", "45s"]
-            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=95)
+            cmd = [AGY_PATH, "-p", prompt_enriquecer, "--effort", "low", "--dangerously-skip-permissions", "--output-format", "json", "--print-timeout", "120s"]
+            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=150)
             if res.returncode == 0:
                 salida_texto = res.stdout
         else:

@@ -33,8 +33,10 @@ DEPORTES_ESTRICTO_DUELO = {
 }
 
 DEPORTES_CIRCUITO = {
-    "Tenis", "Pádel", "Padel", "Golf", "MMA", "Boxeo", "Combate",
-    "Atletismo", "Natación", "Natacion", "Ciclismo", "Motor", "Snooker", "Hípica", "Hipica", "Tiro"
+    "Tenis", "P?del", "Padel", "Golf", "MMA", "Boxeo", "Combate",
+    "Atletismo", "Nataci?n", "Natacion", "Ciclismo", "Motor", "Snooker", "H?pica", "Hipica", "Tiro",
+    "Gimnasia", "Remo", "Vela", "Pirag?ismo", "Piraguismo", "Triatl?n", "Triatlon", "Patinaje",
+    "Esqu?", "Esqui", "Escalada", "Dardos", "Surf", "Esgrima", "B?dminton", "Badminton", "Curling", "Tejo"
 }
 
 DEDUCCIONES_DEPORTE = [
@@ -55,12 +57,15 @@ DEDUCCIONES_DEPORTE = [
     ("Natación", ["NATACION", "NATACIÓN", "AQUATICS", "WATERPOLO"]),
     ("Hípica", ["HIPICA", "HÍPICA", "GRAN PREMIO CIUTAT DE BARCELONA", "CSIO BARCELONA", "EQUESTRIAN"]),
     ("Atletismo", ["ATLETISMO", "ATHLETICS"]),
+    ("Gimnasia", ["GIMNASIA ARTISTICA", "GIMNASIA ARTÍSTICA", "GIMNASIA RITMICA", "GIMNASIA RÍTMICA", "GYMNASTICS", "GIMNASTAS", "GIMNASTA", "GIMNASIA DEPORTIVA"]),
+    ("Remo", ["REMO", "ROWING", "BEACH SPRINT", "BEACHS SPRINT"]),
+    ("Vela", ["VELA", "SAILING", "REGATA"]),
     ("Tiro", ["MALAKASA", "TIRO AL PLATO", "SHOOTING"]),
     ("Fútbol", [
         "LALIGA", "PREMIER LEAGUE", "SERIE A", "BUNDESLIGA", "LIGUE 1", "NATIONS LEAGUE",
         "LIBERTADORES", "SUDAMERICANA", "BETPLAY", "FUTBOL", "FÚTBOL", "COPA ARGENTINA",
         "LIGA MX", "NWSL", "NSL", "CHILE", "ARG", "BOCA JUNIORS", "SANTOS", "UNION",
-        "SOACHA", "INDEPENDIENTE", "RIVADAVIA", "GIMNASIA", "DEPORTIVO CALI", "ALIANZA",
+        "SOACHA", "INDEPENDIENTE", "RIVADAVIA", "GIMNASIA LP", "GIMNASIA LA PLATA", "GIMNASIA JUJUY", "GIMNASIA (J)", "GIMNASIA (M)", "GIMNASIA MENDOZA", "DEPORTIVO CALI", "ALIANZA",
         "SMARTBANK", "BRASILEIRAO", "EREDIVISIE", "SEGUNDA URUGUAY", "LIGA HONDURAS", "KINGS LEAGUE", "QUEENS LEAGUE", "POWERCHAIR", "FIPFA", "BRASILEIRÃO", "CONCACAF", "SOCCER", "EXPANSION MX",
         "CORRECAMINOS", "CRUZ AZUL", "TEPATITLAN", "TAMPICO", "VENADOS", "AMERICA", "USL", "1RA NACIONAL", "PRIMERA NACIONAL", "NUEVA CHICAGO"
     ]),
@@ -499,7 +504,9 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
 
         # Preservar la categoría si ya fue auditada por AGY o API-Sports y es un deporte real
         cat_existente = ev.get("categoria", "")
-        if (ev.get("auditado_agy") or ev.get("contrastado_api")) and cat_existente and cat_existente not in ["Otros Deportes", "Deportes", ""]:
+        if cat_existente and cat_existente not in ["Otros Deportes", "Deportes", "Deportes en Vivo", ""]:
+            categoria_real = cat_existente
+        elif (ev.get("auditado_agy") or ev.get("contrastado_api")) and cat_existente:
             categoria_real = cat_existente
         else:
             categoria_real = deducir_categoria(tit_original, torneo_original, cat_original)
@@ -565,10 +572,11 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
         else:
             # REGLA UNIVERSAL: En deportes de duelo (Fútbol, Baloncesto, Béisbol, NFL, NHL, etc.),
             # si no hay equipo_local y equipo_visitante, se descarta por ser programa/carrusel/canal genérico.
-            if categoria_real in DEPORTES_ESTRICTO_DUELO:
+            es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte", "rtve_teledeporte_oficial", "mundodeportivo_eurosport_1", "mundodeportivo_eurosport_2"] for o in ev.get("origenes", [])) or (ev.get("origen") == "inyector_lineal")
+            if not es_lineal and categoria_real in DEPORTES_ESTRICTO_DUELO:
                 log.info("Descartando evento sin duelo en deporte de equipos (%s): '%s'", categoria_real, tit_limpio)
                 continue
-            tipo_ev = ev.get("tipo_evento", "circuito")
+            tipo_ev = ev.get("tipo_evento") or ("duelo" if (loc and vis) else "circuito")
 
         ev["titulo"] = tit_limpio
         ev["torneo"] = torneo_original or tit_limpio
@@ -602,10 +610,17 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
         fusionado = False
         for exist in eventos_fusionados:
             if son_mismo_evento(ev, exist):
-                ids_existentes = {f.get("id_xtream") for f in exist.get("fuentes", [])}
+                ids_existentes = {f.get("id_xtream") for f in exist.get("fuentes", []) if f.get("id_xtream") is not None}
                 canales_lin_exist = {f.get("canal_lineal") for f in exist.get("fuentes", []) if f.get("canal_lineal")}
                 for f in ev.get("fuentes", []):
                     c_lin_nuevo = f.get("canal_lineal")
+                    # Priorizar WIN SPORTS+ sobre WIN SPORTS si ambas señales emiten exactamente el mismo evento en vivo
+                    if c_lin_nuevo == "WIN SPORTS+" and "WIN SPORTS" in canales_lin_exist:
+                        exist["fuentes"] = [f for f in exist["fuentes"] if f.get("canal_lineal") != "WIN SPORTS"]
+                        canales_lin_exist.remove("WIN SPORTS")
+                    elif c_lin_nuevo == "WIN SPORTS" and "WIN SPORTS+" in canales_lin_exist:
+                        continue
+
                     # Permitir sumar canales de distintas regiones (ej. Teledeporte + RCN + ESPN AR),
                     # pero bloquear mezclar dos canales distintos de la misma cadena (ej. ESPN AR + ESPN 3 AR)
                     if c_lin_nuevo and _conflicto_familia_lineal(c_lin_nuevo, canales_lin_exist):

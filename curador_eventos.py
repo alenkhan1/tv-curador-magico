@@ -658,10 +658,14 @@ def _reconciliar_con_boveda_diaria(
 
     return resultado
 
-def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
+def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False, fecha_override: Optional[str] = None):
     tz_prod = obtener_tz(APP_TIMEZONE)
-    ahora_prod = datetime.now(tz_prod)
-    fecha_hoy_iso = ahora_prod.strftime("%Y-%m-%d")
+    if fecha_override:
+        fecha_hoy_iso = fecha_override
+        ahora_prod = datetime.strptime(fecha_override, "%Y-%m-%d").replace(tzinfo=tz_prod)
+    else:
+        ahora_prod = datetime.now(tz_prod)
+        fecha_hoy_iso = ahora_prod.strftime("%Y-%m-%d")
     fecha_ayer_iso = (ahora_prod - timedelta(days=1)).strftime("%Y-%m-%d")
     fecha_hoy_dd_mm = ahora_prod.strftime("%d/%m")
 
@@ -794,73 +798,15 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
     log.info("Fase 2: Fusión temporal, normalización y deduplicación por entidad...")
     eventos_fase2 = post_procesar_y_curar_eventos(todos_eventos)
 
-    # FASE 3: AUDITORÍA Y PERFECCIONAMIENTO DE EVENTOS NUEVOS/INCOMPLETOS CON AGY
-    log.info("Fase 3: Auditoría y perfeccionamiento de eventos nuevos/incompletos con AGY en la VM...")
-    eventos_pulidos, descartados_agy = auditar_catalogo_con_agy(eventos_fase2, fecha_hoy_iso)
-    descartados_totales.extend(descartados_agy)
-
-    # Re-emparejamiento con API-Sports para duelos cuyos nombres fueron limpiados por AGY
-    for ev in eventos_pulidos:
-        if ev.get("curado_integro") is True:
-            continue
-        if ev.get("tipo_evento") == "duelo" and not ev.get("contrastado_api"):
-            match = emparejar_con_api_sports(ev, indice_fixtures, fixtures_dia)
-            if match:
-                ev["contrastado_api"] = True
-                cat_ev = ev.get("categoria", "")
-                if match.get("hora_utc"):
-                    ev["hora_utc"] = match["hora_utc"]
-                    ev["hora_local_producto"] = _recalcular_hora_local(match["hora_utc"], tz_prod, ev.get("hora_local_producto", ""))
-                loc_nom = ev.get("equipo_local") or match.get("local") or ""
-                loc_es_nat, loc_flag = es_entidad_seleccion_nacional(_normalizar(loc_nom))
-                if loc_es_nat and loc_flag:
-                    ev["logo_local"] = loc_flag
-                elif match.get("logo_local"):
-                    url_l = envolver_proxy_wsrv(match["logo_local"])
-                    if es_logo_compatible_con_categoria(url_l, cat_ev):
-                        ev["logo_local"] = url_l
-
-                vis_nom = ev.get("equipo_visitante") or match.get("visitante") or ""
-                vis_es_nat, vis_flag = es_entidad_seleccion_nacional(_normalizar(vis_nom))
-                if vis_es_nat and vis_flag:
-                    ev["logo_visitante"] = vis_flag
-                elif match.get("logo_visitante"):
-                    url_v = envolver_proxy_wsrv(match["logo_visitante"])
-                    if es_logo_compatible_con_categoria(url_v, cat_ev):
-                        ev["logo_visitante"] = url_v
-                if match.get("logo_torneo") and not es_logo_basura(match["logo_torneo"]) and es_logo_compatible_con_categoria(match["logo_torneo"], cat_ev):
-                    logo_existente = ev.get("logo_torneo", "")
-                    if not logo_existente or ("assets/logos/torneos/" not in logo_existente and "flagcdn.com" not in logo_existente):
-                        ev["logo_torneo"] = envolver_proxy_wsrv(match["logo_torneo"])
-
-    # FASE 3.6: DEDUPLICACION Y CONSOLIDACION FINAL TRAS AUDITORIA AGY Y API-SPORTS
-    log.info("Fase 3.6: Deduplicacion y consolidacion final tras auditoria AGY y API-Sports...")
-    eventos_consolidados = post_procesar_y_curar_eventos(eventos_pulidos)
-
-    # FASE 3.8: REVISION FINAL DE AGY (ENRIQUECIMIENTO DE EVENTOS DE CIRCUITO SIN SUBTITULO)
-    candidatos_pendientes = [
-        ev for ev in eventos_consolidados
-        if not ev.get("curado_integro") and (
-            (ev.get("tipo_evento") == "circuito" and not (ev.get("subtitulo") or "").strip())
-            or any(k == (ev.get("titulo") or "").upper() for k in ["WWE RAW", "WWE SMACKDOWN", "UFC", "BOXEO"])
-        )
-    ]
-    if candidatos_pendientes:
-        log.info("Fase 3.8: Revision final de AGY sobre %d tarjetas de circuito/combate sin subtitulo...", len(candidatos_pendientes))
-        eventos_consolidados = revisar_y_enriquecer_eventos_incompletos_con_agy(eventos_consolidados, fecha_hoy_iso)
-    else:
-        log.info("Fase 3.8: Cartelera enriquecida y auditada. Se omite llamada redundante.")
-
-    # FASE 4: GARANTIA GRAFICA Y SELLADO EN BOVEDA DIARIA
-    sellados_boveda = 0
-    eventos_finales_limpios = []
-    for ev in eventos_consolidados:
+    # FASE 3: MONTAJE Y GARANTIA GRAFICA DE LA CARTELERA CANDIDATA (PREPARACION DEL JSON)
+    log.info("Fase 3: Montaje grafico, escudos, torneos y formateo inteligente...")
+    eventos_candidatos = []
+    for ev in eventos_fase2:
         cat = ev.get("categoria", "")
         tipo = ev.get("tipo_evento", "")
         if tipo == "circuito" and cat in DEPORTES_ESTRICTO_DUELO:
             continue
 
-        # Garantía incondicional de banderas oficiales para Selecciones Nacionales (incluso en eventos de Bóveda)
         loc = ev.get("equipo_local", "")
         vis = ev.get("equipo_visitante", "")
         if loc:
@@ -873,8 +819,7 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
                 ev["logo_visitante"] = flag_v
 
         if ev.get("curado_integro") is True:
-            sellados_boveda += 1
-            eventos_finales_limpios.append(ev)
+            eventos_candidatos.append(ev)
             continue
 
         tor = formatear_titulo_inteligente(ev.get("torneo") or ev["titulo"])
@@ -920,7 +865,43 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False):
         if not es_logo_compatible_con_categoria(ev.get("banner", ""), cat):
             ev["banner"] = ev.get("logo_torneo", "")
 
-        # Evaluar si el evento alcanza el estándar 100% íntegro para quedar sellado en la Bóveda Diaria
+        eventos_candidatos.append(ev)
+
+    # FASE 4: AUDITORIA Y CONTROL DE CALIDAD FINAL CON AGY (EN ULTIMA INSTANCIA)
+    # AGY actua como revisor/auditor sobre el JSON candidato ya armado:
+    # Si detecta fallos, revisa, corrige los que tengan problemas y alli si entrega la cartelera definitiva.
+    log.info("Fase 4: Auditoria y revision final con AGY sobre el JSON candidato (%d eventos)...", len(eventos_candidatos))
+    eventos_auditados, descartados_agy = auditar_catalogo_con_agy(eventos_candidatos, fecha_hoy_iso)
+    descartados_totales.extend(descartados_agy)
+
+    # FASE 5: REPASO DE ESCUDOS PARA NOMBRES CORREGIDOS POR AGY Y SELLADO EN BOVEDA
+    sellados_boveda = 0
+    eventos_finales_limpios = []
+    for ev in eventos_auditados:
+        cat = ev.get("categoria", "")
+        tipo = ev.get("tipo_evento", "")
+        if tipo == "circuito" and cat in DEPORTES_ESTRICTO_DUELO:
+            continue
+
+        loc = ev.get("equipo_local", "")
+        vis = ev.get("equipo_visitante", "")
+        tor = ev.get("torneo", "")
+
+        # Si AGY limpio el nombre de algun club que no tenia escudo previamente, resolverlo ahora
+        if loc and not ev.get("logo_local"):
+            es_sel_l, flag_l = es_entidad_seleccion_nacional(_normalizar(loc))
+            if es_sel_l and flag_l:
+                ev["logo_local"] = flag_l
+            else:
+                ev["logo_local"] = resolver_logo_equipo(loc, cat, tor) or ""
+        if vis and not ev.get("logo_visitante"):
+            es_sel_v, flag_v = es_entidad_seleccion_nacional(_normalizar(vis))
+            if es_sel_v and flag_v:
+                ev["logo_visitante"] = flag_v
+            else:
+                ev["logo_visitante"] = resolver_logo_equipo(vis, cat, tor) or ""
+
+        # Evaluar si el evento alcanza el estandar 100% integro para quedar sellado en la Boveda Diaria
         if es_evento_integramente_curado(ev):
             ev["curado_integro"] = True
             sellados_boveda += 1
@@ -1003,6 +984,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Curador Deportivo Universal Multifuente")
     parser.add_argument("--check-xtream", action="store_true", help="Modo chequeo rápido de lista Xtream (salida en 2s si no está actualizada)")
     parser.add_argument("--forzar", action="store_true", help="Fuerza la ejecución ignorando la bandera One & Done")
+    parser.add_argument("--fecha", type=str, default=None, help="Fuerza la fecha de curación (formato YYYY-MM-DD)")
     args, _ = parser.parse_known_args()
 
-    ejecutar_curacion(modo_check_xtream=args.check_xtream, forzar=args.forzar)
+    ejecutar_curacion(modo_check_xtream=args.check_xtream, forzar=args.forzar, fecha_override=args.fecha)

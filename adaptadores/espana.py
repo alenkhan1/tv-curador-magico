@@ -44,19 +44,29 @@ def _descargar_html(url: str, timeout: int = 12) -> str:
         return ""
 
 def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
-    canales_url = [
-        ("EUROSPORT 1", "https://www.mundodeportivo.com/guia-tv/canal/eurosport-1"),
-        ("EUROSPORT 2", "https://www.mundodeportivo.com/guia-tv/canal/eurosport-2"),
+    canales_slugs = [
+        ("EUROSPORT 1", "eurosport-1"),
+        ("EUROSPORT 2", "eurosport-2"),
     ]
     eventos = []
     tz_madrid = obtener_tz("Europe/Madrid")
 
-    for canon, url in canales_url:
-        html = _descargar_html(url)
-        if not html or "DIRECTO" not in html.upper():
-            continue
+    for canon, slug in canales_slugs:
+        # 1. Probar primero con la fecha especifica y luego la URL general de Mundo Deportivo
+        urls_md = [
+            f"https://www.mundodeportivo.com/guia-tv/canal/{slug}/{fecha_hoy_iso}",
+            f"https://www.mundodeportivo.com/guia-tv/canal/{slug}",
+        ]
+        html = ""
+        for u in urls_md:
+            h_try = _descargar_html(u)
+            if h_try and ("DIRECTO" in h_try.upper() or "prow__t--live" in h_try):
+                html = h_try
+                break
+        if not html:
+            html = _descargar_html(urls_md[0]) or _descargar_html(urls_md[1])
 
-        items = re.findall(r"<li[^>]*class=[^>]*prow[^>]*>(.*?)</li>", html, flags=re.S)
+        items = re.findall(r"<li[^>]*class=[^>]*prow[^>]*>(.*?)</li>", html, flags=re.S) if html else []
         for item in items:
             # 1. Si la etiqueta visible dice 'Diferido', es repeticion grabada -> descartar
             if re.search(r'>\s*Diferido\s*<', item, re.I):
@@ -139,7 +149,83 @@ def obtener_eurosport_directos(fecha_hoy_iso: str) -> List[EventoAgenda]:
             )
             eventos.append(ev)
 
-    log.info("Eurosport (MundoDeportivo): %d directos confirmados", len(eventos))
+    # Complementar con SincroGuia TV de Expansion para asegurar la cobertura 24h
+    try:
+        dt_h = datetime.fromisoformat(fecha_hoy_iso)
+        dias_es = ["lunes", "martes", "mi?rcoles", "jueves", "viernes", "s?bado", "domingo"]
+        dia_nom = dias_es[dt_h.weekday()]
+        pat_dia_sg = f"{dia_nom} {dt_h.day} de "
+
+        for canon, slug in canales_slugs:
+            url_sg = f"https://sincroguia-tv.expansion.com/programacion/{slug}"
+            html_sg = _descargar_html(url_sg)
+            if not html_sg:
+                continue
+            idx_d = html_sg.lower().find(pat_dia_sg)
+            if idx_d != -1:
+                idx_sig = html_sg.lower().find('class="m-schedule-day__title"', idx_d + 30)
+                frag = html_sg[idx_d:idx_sig] if idx_sig != -1 else html_sg[idx_d:idx_d+45000]
+            else:
+                frag = html_sg
+
+            progs_sg = re.findall(r'<div class=[\x22\x27]m-program[\x22\x27][^>]*>(.*?)</div>\s*</div>\s*</div>', frag, flags=re.S)
+            for p in progs_sg:
+                m_name = re.search(r'<h2 class=[\x22\x27]m-program__name[\x22\x27]>.*?<a[^>]*>([^<]+)</a>', p, flags=re.S)
+                m_time = re.search(r'<p class=[\x22\x27]m-program__info[\x22\x27]>\s*([0-9]{1,2}:[0-9]{2})\s*a\s*([0-9]{1,2}:[0-9]{2})h', p)
+                m_sub = re.search(r'<p class=[\x22\x27]m-program__title[\x22\x27]>([^<]+)</p>', p)
+                if not (m_name and m_time):
+                    continue
+                tit_sg = html_lib.unescape(m_name.group(1).strip())
+                if _es_programa_no_deportivo(tit_sg):
+                    continue
+                h_ini_str = m_time.group(1)
+                h_fin_str = m_time.group(2)
+                sub_sg = html_lib.unescape(" ".join(m_sub.group(1).split())) if m_sub else ""
+
+                try:
+                    h_i, mi_i = [int(x) for x in h_ini_str.split(":")]
+                    d_esp = datetime.fromisoformat(fecha_hoy_iso)
+                    if h_i < 6:
+                        d_esp += timedelta(days=1)
+                    dt_madrid = d_esp.replace(hour=h_i, minute=mi_i, second=0, microsecond=0, tzinfo=tz_madrid)
+                    h_utc_sg = dt_madrid.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                except Exception:
+                    continue
+
+                # Evitar duplicar si ya vino por Mundo Deportivo a la misma hora
+                if any(e.canales == [canon] and abs((datetime.fromisoformat(e.hora_utc.replace("Z", "+00:00")) - dt_madrid.astimezone(timezone.utc)).total_seconds()) < 1800 for e in eventos):
+                    continue
+
+                dep_sg = "Otros Deportes"
+                u_tit_sg = f"{tit_sg} {sub_sg}".upper()
+                if any(k in u_tit_sg for k in ["SNOOKER", "BILLAR"]):
+                    dep_sg = "Snooker"
+                elif any(k in u_tit_sg for k in ["CICLISMO", "GIRO", "TOUR", "VUELTA", "MUNDIAL DE CICLISMO"]):
+                    dep_sg = "Ciclismo"
+                elif any(k in u_tit_sg for k in ["TENIS", "OPEN", "ATP", "WTA"]):
+                    dep_sg = "Tenis"
+
+                dur_sg = 180 if dep_sg in ["Snooker", "Ciclismo"] else 120
+
+                ev_sg = EventoAgenda(
+                    titulo=tit_sg,
+                    deporte=dep_sg,
+                    torneo=sub_sg or tit_sg,
+                    local="",
+                    visitante="",
+                    hora_utc=h_utc_sg,
+                    canales=[canon],
+                    duracion_min=dur_sg,
+                    fuente=f"sincroguia_{slug.replace('-', '_')}",
+                    tipo_evento="circuito",
+                    texto_original_crudo=f"{tit_sg} - {sub_sg} ({h_ini_str} a {h_fin_str} {canon})",
+                    canales_mencionados=[canon],
+                )
+                eventos.append(ev_sg)
+    except Exception as e_sg:
+        log.warning("Fallo en complemento SincroGuia para Eurosport: %s", e_sg)
+
+    log.info("Eurosport (MundoDeportivo + SincroGuia): %d directos confirmados", len(eventos))
     return eventos
 
 def parse_rtve_teledeporte_title(raw: str) -> Dict[str, str]:

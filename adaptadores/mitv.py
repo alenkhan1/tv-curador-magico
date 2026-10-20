@@ -10,7 +10,7 @@ import urllib.request
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
-from .modelos import EventoAgenda, obtener_tz
+from .modelos import EventoAgenda, obtener_tz, limpiar_nombre_equipo
 
 log = logging.getLogger("adaptador_mitv")
 
@@ -199,10 +199,14 @@ def obtener_directos_lineales_mitv(
                     ev_ref_match.canales.append(canon_canal)
                 continue
 
-            m_vs = re.search(r"([A-Za-z0-9\.\sÁÉÍÓÚáéíóúñÑ]+)\s+(?:vs\.?|v\.?)\s+([A-Za-z0-9\.\sÁÉÍÓÚáéíóúñÑ]+)", f"{h2_str} {sub_str}", re.I)
+            m_vs = re.search(r"([^:\n\r]+?)\s+(?:vs\.?|v\.?)\s+([^:\n\r]+)", f"{h2_str} {sub_str}", re.I)
             if m_vs:
                 loc = m_vs.group(1).strip()
                 vis = re.split(r"\s+(?:Fecha|Estadio|Jornada|Juego|Semifinal|Final)\b", m_vs.group(2), flags=re.I)[0].strip()
+                loc = re.sub(r"\s*\([A-Za-z]{2,4}\)", "", loc).strip()
+                vis = re.sub(r"\s*\([A-Za-z]{2,4}\)", "", vis).strip()
+                loc = limpiar_nombre_equipo(loc)
+                vis = limpiar_nombre_equipo(vis)
                 titulo = f"{loc} vs {vis}"
                 tipo = "duelo"
                 torneo = h2_str if m_vs.group(0) not in h2_str else (sub_str or f"{canon_canal} en Vivo")

@@ -220,6 +220,10 @@ def inyectar_eventos_lineales(
             else:
                 canales_a_procesar.append(cu)
 
+        # Si ambas señales de Win Sports están listadas para el mismo evento, priorizar WIN SPORTS+
+        if "WIN SPORTS+" in canales_a_procesar and "WIN SPORTS" in canales_a_procesar:
+            canales_a_procesar = [c for c in canales_a_procesar if c != "WIN SPORTS"]
+
         # Desambiguación estricta: máximo 1 canal por familia de cadena
         canales_desambiguados = []
         familias_vistas = set()
