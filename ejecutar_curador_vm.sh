@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
+LOCKFILE="/tmp/curador_eventos.lock"
+exec 200>"$LOCKFILE"
+flock -n 200 || { echo "[$(date)] Otra instancia del curador ya esta en ejecucion. Saliendo de inmediato."; exit 0; }
+
 REPO_DIR="/home/ubuntu/tv-curador-magico"
 cd "$REPO_DIR"
 
