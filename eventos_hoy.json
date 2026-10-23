@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-23T05:19:23Z",
+  "generado_utc": "2026-10-23T22:17:19Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-23",
   "base_media": "http://avefenixtv.com:8080",
@@ -156,11 +156,70 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_ar_9c52d188",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Al-Faisaly FC vs Al-Nassr",
+      "torneo": "Saudi Pro League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Al-Faisaly FC",
+      "equipo_visitante": "Al-Nassr",
+      "subtitulo": "Saudi Pro League",
+      "referencia": "Saudi Pro League",
+      "hora_utc": "2026-10-23T13:30:00Z",
+      "hora_local_producto": "08:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2930.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2939.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DIRECTV SPORTS AR",
+          "id_xtream": "69547",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS URU",
+          "id_xtream": "69570",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV Sports Per",
+          "id_xtream": "151274",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS AR"
+      ],
+      "texto_original_crudo": "Saudi Pro League: Al-Faisaly vs. Al-Nassr en vivo por DSports",
+      "titulo_original_crudo": "Saudi Pro League: Al-Faisaly vs. Al-Nassr en vivo por DSports",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
       "id": "lineal_teledeporte_51723413",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
       "titulo": "Real Madrid vs. Barça Atlètic",
-      "torneo": "Liga Sub-22",
+      "torneo": "Liga U-22",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Real Madrid",
@@ -342,6 +401,64 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dazn_f1_91f4ee0d",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Entrenamientos Libres",
+      "referencia": "Libres • Fórmula 1",
+      "hora_utc": "2026-10-23T17:30:00Z",
+      "hora_local_producto": "12:30",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DAZN F1 FHD",
+          "id_xtream": "155619",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 4K",
+          "id_xtream": "147267",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 HD",
+          "id_xtream": "155616",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "DAZN F1"
+      ],
+      "texto_original_crudo": "G.P. Estados Unidos (Austin) - Libres 3",
+      "titulo_original_crudo": "G.P. Estados Unidos (Austin) - Libres 3",
+      "ronda": "Entrenamientos Libres",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_dsports_2_879b07f8",
       "canales_mencionados_fuente": [
         "DSports 2 (612/1612)",
@@ -451,6 +568,100 @@
       "titulo_original_crudo": "Northern Ireland Open (20:00 EUROSPORT 1)",
       "ronda": "Cuartos de Final",
       "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dsports_plus_e067b675",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Al-Qadisiyah FC vs Al-Hilal Saudi FC",
+      "torneo": "Saudi Pro League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Al-Qadisiyah FC",
+      "equipo_visitante": "Al-Hilal Saudi FC",
+      "subtitulo": "Saudi Pro League",
+      "referencia": "Saudi Pro League",
+      "hora_utc": "2026-10-23T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2933.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2932.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS +1 AR",
+          "id_xtream": "722195",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS +"
+      ],
+      "texto_original_crudo": "Saudi Pro League: Al-Qadisiyah vs. Al-Hilal en vivo por DSports+",
+      "titulo_original_crudo": "Saudi Pro League: Al-Qadisiyah vs. Al-Hilal en vivo por DSports+",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_4_3b3445da",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "VfB Stuttgart vs Borussia Mönchengladbach",
+      "torneo": "Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "VfB Stuttgart",
+      "equipo_visitante": "Borussia Mönchengladbach",
+      "subtitulo": "Bundesliga",
+      "referencia": "Bundesliga",
+      "hora_utc": "2026-10-23T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F172.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F163.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 4 HD | AR",
+          "id_xtream": "712746",
+          "canal_lineal": "ESPN 4",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 4"
+      ],
+      "texto_original_crudo": "Bundesliga: Stuttgart vs Borussia Mönchengladbach en vivo por ESPN 4",
+      "titulo_original_crudo": "Bundesliga: Stuttgart vs Borussia Mönchengladbach en vivo por ESPN 4",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
       "curado_integro": true
     },
     {
@@ -713,6 +924,64 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dazn_f1_88bf30bd",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Clasificación",
+      "referencia": "Clasificación • Fórmula 1",
+      "hora_utc": "2026-10-23T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DAZN F1 FHD",
+          "id_xtream": "155619",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 4K",
+          "id_xtream": "147267",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 HD",
+          "id_xtream": "155616",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "DAZN F1"
+      ],
+      "texto_original_crudo": "G.P. Estados Unidos (Austin) - Clasificación",
+      "titulo_original_crudo": "G.P. Estados Unidos (Austin) - Clasificación",
+      "ronda": "Clasificación",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_tnt_sports_20c090cd",
       "canales_mencionados_fuente": [
         "TNT Sports Premium",
@@ -769,6 +1038,164 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_1_73769b04",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 1"
+      ],
+      "agenda_id": "",
+      "titulo": "World Snooker Tour",
+      "torneo": "World Snooker Tour",
+      "categoria": "Snooker",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cuartos de Final",
+      "referencia": "Abierto de Irlanda del Norte de Snooker - T2627 | Cuartos de Final (23:30 a 01:30 Eurosport) • T2627 | Cuartos de final",
+      "hora_utc": "2026-10-23T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "sincroguia_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Cuartos de final (23:30 a 01:30 EUROSPORT 1)",
+      "titulo_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Cuartos de final (23:30 a 01:30 EUROSPORT 1)",
+      "ronda": "Abierto de Irlanda del Norte de Snooker - T2627 | Cuartos de Final (23:30 a 01:30 Eurosport) • T2627 | Cuartos de final",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_d1139887",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "F1 Academy",
+      "torneo": "F1 Academy",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Austin - Circuit of The Americas",
+      "referencia": "GP Austin • Carrera • Fórmula 1 Academy",
+      "hora_utc": "2026-10-23T22:45:00Z",
+      "hora_local_producto": "17:45",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_3_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "GP Austin - Carrera 1. Fórmula 1 Academy. La F1 Academy es una competición de automovilismo de velocidad femenino de monoplazas. La categoría otorga a las cinco primeras clasificadas de la clasificación puntos para la superlicencia de la FIA, 10, 7, 5, 3 y 1 puntos respectivamente",
+      "titulo_original_crudo": "GP Austin - Carrera 1. Fórmula 1 Academy. La F1 Academy es una competición de automovilismo de velocidad femenino de monoplazas. La categoría otorga a las cinco primeras clasificadas de la clasificación puntos para la superlicencia de la FIA, 10, 7, 5, 3 y 1 puntos respectivamente",
+      "ronda": "Austin - Circuit of The Americas",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dazn_f1_5659f109",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "F1 Academy",
+      "torneo": "F1 Academy",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Carrera",
+      "referencia": "Opening Race • F1 Academy",
+      "hora_utc": "2026-10-23T22:50:00Z",
+      "hora_local_producto": "17:50",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DAZN F1 FHD",
+          "id_xtream": "155619",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 4K",
+          "id_xtream": "147267",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 HD",
+          "id_xtream": "155616",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "DAZN F1"
+      ],
+      "texto_original_crudo": "G.P. Estados Unidos (Austin) - Opening Race",
+      "titulo_original_crudo": "G.P. Estados Unidos (Austin) - Opening Race",
+      "ronda": "Opening Race • F1 Academy",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_win_sports_95e0e5d4",
       "canales_mencionados_fuente": [
         "Win Play",
@@ -781,8 +1208,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Cruzeiro",
       "equipo_visitante": "Remo",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
+      "subtitulo": "Cruzeiro vs Remo",
+      "referencia": "Cruzeiro vs Remo",
       "hora_utc": "2026-10-23T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
@@ -881,6 +1308,57 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_2_ar_cf8e54b0",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "FOX Sports 3",
+        "ESPN 2"
+      ],
+      "agenda_id": "",
+      "titulo": "Milwaukee Brewers vs Tampa Bay Rays",
+      "torneo": "MLB",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Milwaukee Brewers",
+      "equipo_visitante": "Tampa Bay Rays",
+      "subtitulo": "MLB",
+      "referencia": "MLB",
+      "hora_utc": "2026-10-24T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F20.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F34.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "21:00 MLB World Series Milwaukee Brewers Tampa Bay Rays Disney+ Premium FOX Sports 3 ESPN 2",
+      "titulo_original_crudo": "21:00 MLB World Series Milwaukee Brewers Tampa Bay Rays Disney+ Premium FOX Sports 3 ESPN 2",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
       "id": "lineal_tnt_sports_cf08bdc1",
       "canales_mencionados_fuente": [
         "TNT Sports Premium",
@@ -934,6 +1412,104 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_c05b5593",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Legacy Fighting Alliance",
+      "torneo": "Legacy Fighting Alliance",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "LFA 244: Woodley",
+      "equipo_visitante": "Havener",
+      "subtitulo": "Cartelera Principal",
+      "referencia": "Legacy Fighting Alliance • ESPN Knockout",
+      "hora_utc": "2026-10-24T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 360,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_3_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "Legacy Fighting Alliance: 244. ESPN Knockout. Los mejores combates de boxeo y MMA",
+      "titulo_original_crudo": "Legacy Fighting Alliance: 244. ESPN Knockout. Los mejores combates de boxeo y MMA",
+      "ronda": "Cartelera Principal",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dsports_2_a1435442",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Racing de Chivilcoy vs. Boca Juniors",
+      "torneo": "Liga Nacional de Básquet",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Racing de Chivilcoy",
+      "equipo_visitante": "Boca Juniors",
+      "subtitulo": "Fase Regular",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-10-24T01:05:00Z",
+      "hora_local_producto": "20:05",
+      "duracion_min": 145,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F7546.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbm7krb1775741582.png&w=400&output=webp",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "Liga Nacional de Básquet: Racing de Chivilcoy vs Boca Juniors en vivo por DSports 2",
+      "titulo_original_crudo": "Liga Nacional de Básquet: Racing de Chivilcoy vs Boca Juniors en vivo por DSports 2",
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1149,17 +1725,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-23",
-    "total_agenda_maestra": 50,
-    "total_canales_xtream": 1493,
+    "total_agenda_maestra": 57,
+    "total_canales_xtream": 1498,
     "xtream_procesada_hoy": false,
     "lista_xtream_actualizada_hoy": false,
     "fixtures_api_sports_hoy": 958,
-    "eventos_lineales_inyectados": 32,
+    "eventos_lineales_inyectados": 43,
     "eventos_xtream_aprobados": 0,
-    "eventos_contrastados_api": 9,
-    "eventos_sellados_boveda_inmutable": 19,
-    "eventos_descartados_stale": 9,
-    "total_eventos_publicados": 21,
-    "hora_actualizacion_utc": "2026-10-23T05:19:23Z"
+    "eventos_contrastados_api": 13,
+    "eventos_sellados_boveda_inmutable": 30,
+    "eventos_descartados_stale": 14,
+    "total_eventos_publicados": 32,
+    "hora_actualizacion_utc": "2026-10-23T22:17:19Z"
   }
 }
