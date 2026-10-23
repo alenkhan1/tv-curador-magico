@@ -1,10 +1,60 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-22T22:16:25Z",
+  "generado_utc": "2026-10-23T03:16:18Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-22",
   "base_media": "http://avefenixtv.com:8080",
   "eventos": [
+    {
+      "id": "lineal_espn_ar_b094734b",
+      "canales_mencionados_fuente": [
+        "MotoGP Videopass",
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "MotoGP",
+      "torneo": "MotoGP",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Phillip Island",
+      "referencia": "G.P. Australia Libres • MotoGP",
+      "hora_utc": "2026-10-22T04:00:00Z",
+      "hora_local_producto": "23:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "01:00 MotoGP G.P. Australia (Phillip Island) Libres MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "01:00 MotoGP G.P. Australia (Phillip Island) Libres MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Phillip Island",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
     {
       "id": "lineal_eurosport_1_164f90ed",
       "canales_mencionados_fuente": [
@@ -194,8 +244,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Juventus",
       "equipo_visitante": "Stade Rennais",
-      "subtitulo": "Fase de Liga - Fecha",
-      "referencia": "Fase de Liga - Fecha",
+      "subtitulo": "Fecha, Allianz Stadium",
+      "referencia": "Fecha, Allianz Stadium",
       "hora_utc": "2026-10-22T16:30:00Z",
       "hora_local_producto": "11:30",
       "duracion_min": 160,
@@ -3496,6 +3546,56 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_ar_55427c1a",
+      "canales_mencionados_fuente": [
+        "MotoGP Videopass",
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Moto3",
+      "torneo": "Moto3",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Phillip Island",
+      "referencia": "G.P. Australia Clasificación • Moto3",
+      "hora_utc": "2026-10-23T01:45:00Z",
+      "hora_local_producto": "20:45",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "22:45 Moto3 G.P. Australia (Phillip Island) Clasificación MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "22:45 Moto3 G.P. Australia (Phillip Island) Clasificación MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Phillip Island",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_espn_ar_a715faf5",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
@@ -3760,21 +3860,125 @@
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_a5ce9270",
+      "canales_mencionados_fuente": [
+        "MotoGP Videopass",
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Moto2",
+      "torneo": "Moto2",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Phillip Island",
+      "referencia": "G.P. Australia Clasificación • Moto2",
+      "hora_utc": "2026-10-23T02:40:00Z",
+      "hora_local_producto": "21:40",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "23:40 Moto2 G.P. Australia (Phillip Island) Clasificación MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "23:40 Moto2 G.P. Australia (Phillip Island) Clasificación MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Phillip Island",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_eurosport_1_7cc5d5c9",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 1"
+      ],
+      "agenda_id": "",
+      "titulo": "World Snooker Tour",
+      "torneo": "World Snooker Tour",
+      "categoria": "Snooker",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Tercera Ronda",
+      "referencia": "Abierto de Irlanda del Norte de Snooker - T2627 | Tercera Ronda (05:00 a 07:00 Eurosport) • T2627 | Tercera ronda",
+      "hora_utc": "2026-10-23T03:00:00Z",
+      "hora_local_producto": "22:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "sincroguia_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Tercera ronda (05:00 a 07:00 EUROSPORT 1)",
+      "titulo_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Tercera ronda (05:00 a 07:00 EUROSPORT 1)",
+      "ronda": "Abierto de Irlanda del Norte de Snooker - T2627 | Tercera Ronda (05:00 a 07:00 Eurosport) • T2627 | Tercera ronda",
+      "auditado_agy": true,
+      "curado_integro": true
     }
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-22",
-    "total_agenda_maestra": 61,
+    "total_agenda_maestra": 55,
     "total_canales_xtream": 1493,
     "xtream_procesada_hoy": false,
     "lista_xtream_actualizada_hoy": false,
     "fixtures_api_sports_hoy": 382,
-    "eventos_lineales_inyectados": 38,
+    "eventos_lineales_inyectados": 33,
     "eventos_xtream_aprobados": 0,
     "eventos_contrastados_api": 58,
-    "eventos_sellados_boveda_inmutable": 73,
-    "eventos_descartados_stale": 68,
-    "total_eventos_publicados": 74,
-    "hora_actualizacion_utc": "2026-10-22T22:16:25Z"
+    "eventos_sellados_boveda_inmutable": 77,
+    "eventos_descartados_stale": 71,
+    "total_eventos_publicados": 78,
+    "hora_actualizacion_utc": "2026-10-23T03:16:18Z"
   }
 }
