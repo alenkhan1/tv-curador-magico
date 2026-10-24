@@ -246,38 +246,32 @@ def obtener_canales_xtream(fecha_hoy_iso: str) -> List[Dict[str, Any]]:
     if XTREAM_URL and XTREAM_USER and XTREAM_PASS:
         api_url = f"{XTREAM_URL}/player_api.php?username={XTREAM_USER}&password={XTREAM_PASS}"
         try:
-            req_cats = urllib.request.Request(f"{api_url}&action=get_live_categories", headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req_cats, timeout=14, context=_crear_contexto_ssl()) as resp:
-                cats = json.loads(resp.read().decode("utf-8", errors="ignore"))
+            # 1. Mapeo auxiliar de categorias (metadato opcional, sin filtrar ni descartar ningun canal)
+            mapa_cats = {}
+            try:
+                req_cats = urllib.request.Request(f"{api_url}&action=get_live_categories", headers={"User-Agent": "Mozilla/5.0"})
+                with urllib.request.urlopen(req_cats, timeout=10, context=_crear_contexto_ssl()) as resp:
+                    cats = json.loads(resp.read().decode("utf-8", errors="ignore"))
+                    for cat in cats:
+                        cid = str(cat.get("category_id") or "")
+                        cname = cat.get("category_name") or ""
+                        if cid:
+                            mapa_cats[cid] = cname
+            except Exception as e_cat:
+                log.debug("No se pudo obtener mapa de categorias (opcional): %s", e_cat)
 
-            deporte_kws = [
-                "EVENT", "DEPORT", "SPORT", "FUTBOL", "LALIGA", "PREMIER", "CHAMPIONS", "CONMEBOL",
-                "NBA", "MLB", "UFC", "WWE", "WIN", "DSPORTS", "BEIN", "CLARO", "FOX", "SKY", "DAZN",
-                "SPECIALS", "PPV", "COLOMBIA", "ARGENTINA", "ESPAÑA", "ESPANA", "LATAM", "DIRECTO", "VIVO"
-            ]
-            cats_deporte = [c for c in cats if any(k in (c.get("category_name") or "").upper() for k in deporte_kws)]
+            # 2. Descarga plana universal de todos los streams en vivo sin filtrar por carpetas
+            log.info("Descargando catalogo completo de streams en vivo desde Xtream...")
+            s_url = f"{api_url}&action=get_live_streams"
+            req_s = urllib.request.Request(s_url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req_s, timeout=30, context=_crear_contexto_ssl()) as resp_s:
+                canales = json.loads(resp_s.read().decode("utf-8", errors="ignore"))
 
-            canales = []
-            if len(cats) <= 5 or not cats_deporte:
-                log.info("Proveedor Xtream con carpeta única o lista plana (%d categorías). Descargando streams completos...", len(cats))
-                s_url = f"{api_url}&action=get_live_streams"
-                req_s = urllib.request.Request(s_url, headers={"User-Agent": "Mozilla/5.0"})
-                with urllib.request.urlopen(req_s, timeout=18, context=_crear_contexto_ssl()) as resp_s:
-                    canales = json.loads(resp_s.read().decode("utf-8", errors="ignore"))
-            else:
-                for c in cats_deporte:
-                    cid = c.get("category_id")
-                    cname = c.get("category_name")
-                    s_url = f"{api_url}&action=get_live_streams&category_id={cid}"
-                    try:
-                        req_s = urllib.request.Request(s_url, headers={"User-Agent": "Mozilla/5.0"})
-                        with urllib.request.urlopen(req_s, timeout=12, context=_crear_contexto_ssl()) as resp_s:
-                            streams = json.loads(resp_s.read().decode("utf-8", errors="ignore"))
-                            for s in streams:
-                                s["category_name"] = cname
-                                canales.append(s)
-                    except Exception as e:
-                        log.debug("Error leyendo categoria %s: %s", cid, e)
+            if canales and isinstance(canales, list) and mapa_cats:
+                for s in canales:
+                    cid = str(s.get("category_id") or "")
+                    if cid in mapa_cats:
+                        s["category_name"] = mapa_cats[cid]
 
             if canales:
                 try:
@@ -449,11 +443,11 @@ def procesar_streams_eventos_xtream(
         if not nombre or not sid:
             continue
 
-        if f"sid_{sid}" in descartados_set or f"txt_{_normalizar(nombre)}" in descartados_set:
-            continue
-
         m_h = RE_HORA.search(nombre)
         if not m_h:
+            continue
+
+        if f"sid_{sid}" in descartados_set or f"txt_{_normalizar(nombre)}" in descartados_set:
             continue
 
         if RE_COMODINES.search(nombre):
