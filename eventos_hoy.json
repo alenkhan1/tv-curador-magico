@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-23T22:17:19Z",
+  "generado_utc": "2026-10-24T03:16:43Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-23",
   "base_media": "http://avefenixtv.com:8080",
@@ -156,6 +156,55 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_4_402f5957",
+      "canales_mencionados_fuente": [
+        "ESPN 4",
+        "Disney+ Premium"
+      ],
+      "agenda_id": "",
+      "titulo": "RC Vannes vs. Clermont Auvergne",
+      "torneo": "Top",
+      "categoria": "Rugby",
+      "tipo_evento": "duelo",
+      "equipo_local": "RC Vannes",
+      "equipo_visitante": "Clermont Auvergne",
+      "subtitulo": "Top",
+      "referencia": "Top",
+      "hora_utc": "2026-10-23T12:30:00Z",
+      "hora_local_producto": "07:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F16.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F123.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F99.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F16.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 4 HD | AR",
+          "id_xtream": "712746",
+          "canal_lineal": "ESPN 4",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 4"
+      ],
+      "texto_original_crudo": "09:30 Top 14 RC Vannes Clermont Auvergne ESPN 4 Disney+ Premium",
+      "titulo_original_crudo": "09:30 Top 14 RC Vannes Clermont Auvergne ESPN 4 Disney+ Premium",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_dsports_ar_9c52d188",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
@@ -224,8 +273,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Real Madrid",
       "equipo_visitante": "Barça Atlètic",
-      "subtitulo": "Jornada",
-      "referencia": "Jornada",
+      "subtitulo": "Jornada | Madrid",
+      "referencia": "Jornada | Madrid",
       "hora_utc": "2026-10-23T14:55:00Z",
       "hora_local_producto": "09:55",
       "duracion_min": 150,
@@ -665,6 +714,57 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_2_6e84089f",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Torneo del Interior de Rugby",
+      "torneo": "Torneo del Interior",
+      "categoria": "Rugby",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tucumán Rugby",
+      "equipo_visitante": "Duendes",
+      "subtitulo": "En Vivo",
+      "referencia": "En Vivo",
+      "hora_utc": "2026-10-23T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 150,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "Torneo del Interior de Rugby en vivo por DSports 2",
+      "titulo_original_crudo": "Torneo del Interior de Rugby en vivo por DSports 2",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
       "id": "lineal_teledeporte_828f4840",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
@@ -1092,6 +1192,60 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_1_9fd3da94",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 1"
+      ],
+      "agenda_id": "",
+      "titulo": "Copa del Mundo de Esquí Alpino",
+      "torneo": "Copa del Mundo de Esquí Alpino",
+      "categoria": "Esquí Alpino",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "2ª Manga",
+      "referencia": "T2627 | Eslalon gigante - 2ª manga",
+      "hora_utc": "2026-10-23T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "sincroguia_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Copa del mundo de esquí alpino F - Sölden - T2627 | Eslalon gigante - 2ª manga (00:30 a 01:30 EUROSPORT 1)",
+      "titulo_original_crudo": "Copa del mundo de esquí alpino F - Sölden - T2627 | Eslalon gigante - 2ª manga (00:30 a 01:30 EUROSPORT 1)",
+      "ronda": "2ª Manga",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_espn_3_ar_d1139887",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
@@ -1114,7 +1268,8 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "mitv_espn_3_ar"
+        "mitv_espn_3_ar",
+        "futbolenlatv_dazn_f1"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1126,47 +1281,7 @@
           "id_xtream": "712745",
           "canal_lineal": "ESPN 3 AR",
           "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 3 AR"
-      ],
-      "texto_original_crudo": "GP Austin - Carrera 1. Fórmula 1 Academy. La F1 Academy es una competición de automovilismo de velocidad femenino de monoplazas. La categoría otorga a las cinco primeras clasificadas de la clasificación puntos para la superlicencia de la FIA, 10, 7, 5, 3 y 1 puntos respectivamente",
-      "titulo_original_crudo": "GP Austin - Carrera 1. Fórmula 1 Academy. La F1 Academy es una competición de automovilismo de velocidad femenino de monoplazas. La categoría otorga a las cinco primeras clasificadas de la clasificación puntos para la superlicencia de la FIA, 10, 7, 5, 3 y 1 puntos respectivamente",
-      "ronda": "Austin - Circuit of The Americas",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dazn_f1_5659f109",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "F1 Academy",
-      "torneo": "F1 Academy",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Carrera",
-      "referencia": "Opening Race • F1 Academy",
-      "hora_utc": "2026-10-23T22:50:00Z",
-      "hora_local_producto": "17:50",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenlatv_dazn_f1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
+        },
         {
           "nombre": "DAZN F1 FHD",
           "id_xtream": "155619",
@@ -1187,11 +1302,12 @@
         }
       ],
       "canales_candidatos": [
+        "ESPN 3 AR",
         "DAZN F1"
       ],
-      "texto_original_crudo": "G.P. Estados Unidos (Austin) - Opening Race",
-      "titulo_original_crudo": "G.P. Estados Unidos (Austin) - Opening Race",
-      "ronda": "Opening Race • F1 Academy",
+      "texto_original_crudo": "GP Austin - Carrera 1. Fórmula 1 Academy. La F1 Academy es una competición de automovilismo de velocidad femenino de monoplazas. La categoría otorga a las cinco primeras clasificadas de la clasificación puntos para la superlicencia de la FIA, 10, 7, 5, 3 y 1 puntos respectivamente",
+      "titulo_original_crudo": "GP Austin - Carrera 1. Fórmula 1 Academy. La F1 Academy es una competición de automovilismo de velocidad femenino de monoplazas. La categoría otorga a las cinco primeras clasificadas de la clasificación puntos para la superlicencia de la FIA, 10, 7, 5, 3 y 1 puntos respectivamente",
+      "ronda": "Austin - Circuit of The Americas",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -1359,6 +1475,56 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_ar_9d5603d0",
+      "canales_mencionados_fuente": [
+        "MotoGP Videopass",
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Moto3",
+      "torneo": "Moto3",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Phillip Island",
+      "referencia": "G.P. Australia Carrera • Moto3",
+      "hora_utc": "2026-10-24T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "21:00 Moto3 G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "21:00 Moto3 G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Phillip Island",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_tnt_sports_cf08bdc1",
       "canales_mencionados_fuente": [
         "TNT Sports Premium",
@@ -1412,6 +1578,56 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_5cedb30e",
+      "canales_mencionados_fuente": [
+        "MotoGP Videopass",
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Moto2",
+      "torneo": "Moto2",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Phillip Island",
+      "referencia": "G.P. Australia Carrera • Moto2",
+      "hora_utc": "2026-10-24T00:15:00Z",
+      "hora_local_producto": "19:15",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "21:15 Moto2 G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "21:15 Moto2 G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Phillip Island",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1673,6 +1889,56 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_ar_998cf692",
+      "canales_mencionados_fuente": [
+        "MotoGP Videopass",
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "MotoGP",
+      "torneo": "MotoGP",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Phillip Island",
+      "referencia": "G.P. Australia Carrera • MotoGP",
+      "hora_utc": "2026-10-24T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "23:00 MotoGP G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "23:00 MotoGP G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Phillip Island",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_espn_ar_addd78f4",
       "canales_mencionados_fuente": [
         "MotoGP Videopass",
@@ -1721,21 +1987,75 @@
       "ronda": "Phillip Island",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "lineal_eurosport_1_42528721",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 1"
+      ],
+      "agenda_id": "",
+      "titulo": "World Snooker Tour",
+      "torneo": "World Snooker Tour",
+      "categoria": "Snooker",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cuartos de Final",
+      "referencia": "Abierto de Irlanda del Norte de Snooker - T2627 | Cuartos de Final (05:00 a 07:30 Eurosport) • T2627 | Cuartos de final",
+      "hora_utc": "2026-10-24T03:00:00Z",
+      "hora_local_producto": "22:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "sincroguia_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Cuartos de final (05:00 a 07:30 EUROSPORT 1)",
+      "titulo_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Cuartos de final (05:00 a 07:30 EUROSPORT 1)",
+      "ronda": "Abierto de Irlanda del Norte de Snooker - T2627 | Cuartos de Final (05:00 a 07:30 Eurosport) • T2627 | Cuartos de final",
+      "auditado_agy": true,
+      "curado_integro": true
     }
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-23",
-    "total_agenda_maestra": 57,
-    "total_canales_xtream": 1498,
+    "total_agenda_maestra": 50,
+    "total_canales_xtream": 1506,
     "xtream_procesada_hoy": false,
     "lista_xtream_actualizada_hoy": false,
     "fixtures_api_sports_hoy": 958,
-    "eventos_lineales_inyectados": 43,
+    "eventos_lineales_inyectados": 37,
     "eventos_xtream_aprobados": 0,
     "eventos_contrastados_api": 13,
-    "eventos_sellados_boveda_inmutable": 30,
-    "eventos_descartados_stale": 14,
-    "total_eventos_publicados": 32,
-    "hora_actualizacion_utc": "2026-10-23T22:17:19Z"
+    "eventos_sellados_boveda_inmutable": 35,
+    "eventos_descartados_stale": 17,
+    "total_eventos_publicados": 38,
+    "hora_actualizacion_utc": "2026-10-24T03:16:43Z"
   }
 }
