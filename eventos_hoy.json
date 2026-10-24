@@ -1,12 +1,12 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-24T03:16:43Z",
+  "generado_utc": "2026-10-24T05:20:01Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-10-23",
+  "fecha_local_producto": "2026-10-24",
   "base_media": "http://avefenixtv.com:8080",
   "eventos": [
     {
-      "id": "lineal_espn_ar_a3301a10",
+      "id": "lineal_espn_ar_fcad575f",
       "canales_mencionados_fuente": [
         "MotoGP Videopass",
         "Disney+ Premium",
@@ -19,9 +19,9 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Prácticas Libres",
-      "referencia": "G.P. Australia Libres • MotoGP",
-      "hora_utc": "2026-10-23T04:00:00Z",
+      "subtitulo": "Carrera Sprint - Phillip Island",
+      "referencia": "G.P. Australia Sprint • MotoGP",
+      "hora_utc": "2026-10-24T04:00:00Z",
       "hora_local_producto": "23:00",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
@@ -49,27 +49,350 @@
       "canales_candidatos": [
         "ESPN AR"
       ],
-      "texto_original_crudo": "01:00 MotoGP G.P. Australia (Phillip Island) Libres MotoGP Videopass Disney+ Premium ESPN",
-      "titulo_original_crudo": "01:00 MotoGP G.P. Australia (Phillip Island) Libres MotoGP Videopass Disney+ Premium ESPN",
-      "ronda": "Prácticas Libres",
+      "texto_original_crudo": "01:00 MotoGP G.P. Australia (Phillip Island) Sprint MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "01:00 MotoGP G.P. Australia (Phillip Island) Sprint MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Carrera Sprint - Phillip Island",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_eurosport_1_251909e1",
+      "id": "lineal_eurosport_1_0a722c1e",
       "canales_mencionados_fuente": [
         "EUROSPORT 1"
       ],
       "agenda_id": "",
-      "titulo": "World Snooker Tour - Northern Ireland Open",
-      "torneo": "World Snooker Tour - Northern Ireland Open",
+      "titulo": "Golden Trail World Series",
+      "torneo": "Golden Trail World Series",
+      "categoria": "Atletismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Muju, Corea del Sur",
+      "referencia": "Golden Trail World Series: Muju",
+      "hora_utc": "2026-10-24T05:30:00Z",
+      "hora_local_producto": "00:30",
+      "duracion_min": 145,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Golden Trail World Series: Muju (07:30 EUROSPORT 1)",
+      "titulo_original_crudo": "Golden Trail World Series: Muju (07:30 EUROSPORT 1)",
+      "ronda": "Muju, Corea del Sur",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_teledeporte_bd672487",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "El Ejido FS vs. Barça",
+      "torneo": "Primera División de Fútbol Sala",
+      "categoria": "Fútbol Sala",
+      "tipo_evento": "duelo",
+      "equipo_local": "El Ejido FS",
+      "equipo_visitante": "Barça",
+      "subtitulo": "Jornada",
+      "referencia": "Jornada",
+      "hora_utc": "2026-10-24T09:55:00Z",
+      "hora_local_producto": "04:55",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4888.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "rtve_teledeporte_oficial"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "TELEDEPORTES FHD",
+          "id_xtream": "327981",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "TELEDEPORTE"
+      ],
+      "texto_original_crudo": "FÚTBOL SALA LIGA PRIME 6ª JORNADA SUR SEEDS EL EJIDO FS – BARÇA DESDE EL EJIDO (ALMERÍA)",
+      "titulo_original_crudo": "FÚTBOL SALA LIGA PRIME 6ª JORNADA SUR SEEDS EL EJIDO FS – BARÇA DESDE EL EJIDO (ALMERÍA)",
+      "ronda": "6ª Jornada",
+      "auditado_agy": true
+    },
+    {
+      "id": "lineal_eurosport_2_6eeee6d8",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 2"
+      ],
+      "agenda_id": "",
+      "titulo": "ISU Grand Prix of Figure Skating",
+      "torneo": "ISU Grand Prix of Figure Skating",
+      "categoria": "Patinaje",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Programa Corto / Libre",
+      "referencia": "ISU Grand Prix of Figure Skating: Francia",
+      "hora_utc": "2026-10-24T10:30:00Z",
+      "hora_local_producto": "05:30",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 2 FHD",
+          "id_xtream": "327954",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "327964",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 2"
+      ],
+      "texto_original_crudo": "ISU Grand Prix of Figure Skating: Francia (12:30 EUROSPORT 2)",
+      "titulo_original_crudo": "ISU Grand Prix of Figure Skating: Francia (12:30 EUROSPORT 2)",
+      "ronda": "Programa Corto / Libre",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_e8f204c5",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Aston Villa vs Manchester City",
+      "torneo": "Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Aston Villa",
+      "equipo_visitante": "Manchester City",
+      "subtitulo": "Premier League",
+      "referencia": "Premier League",
+      "hora_utc": "2026-10-24T11:30:00Z",
+      "hora_local_producto": "06:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F66.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F50.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "08:30 Premier League Aston Villa Manchester City Disney+ Premium ESPN",
+      "titulo_original_crudo": "08:30 Premier League Aston Villa Manchester City Disney+ Premium ESPN",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_3b57f9a4",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN 3"
+      ],
+      "agenda_id": "",
+      "titulo": "Rayo Vallecano vs Elche",
+      "torneo": "LA Liga EA Sports",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Rayo Vallecano",
+      "equipo_visitante": "Elche",
+      "subtitulo": "LA Liga EA Sports",
+      "referencia": "La Liga EA Sports",
+      "hora_utc": "2026-10-24T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F728.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F797.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "09:00 La Liga EA Sports Rayo Vallecano Elche Disney+ Premium ESPN 3",
+      "titulo_original_crudo": "09:00 La Liga EA Sports Rayo Vallecano Elche Disney+ Premium ESPN 3",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_teledeporte_ccba8388",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Campeonato Mundial de Gimnasia Artística",
+      "torneo": "Campeonato Mundial de Gimnasia Artística",
+      "categoria": "Gimnasia",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Rotterdam, Países Bajos",
+      "referencia": "Gimnasia Artística Campeonato del Mundo Finales por Aparatos I Desde Rotterdam (Paises Bajos) • Gimnasia Artística Campeonato Del Mundo Finales Por Aparatos I",
+      "hora_utc": "2026-10-24T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "rtve_teledeporte_oficial"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "TELEDEPORTES FHD",
+          "id_xtream": "327981",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "TELEDEPORTE"
+      ],
+      "texto_original_crudo": "GIMNASIA ARTÍSTICA CAMPEONATO DEL MUNDO FINALES POR APARATOS I DESDE ROTTERDAM (PAISES BAJOS)",
+      "titulo_original_crudo": "GIMNASIA ARTÍSTICA CAMPEONATO DEL MUNDO FINALES POR APARATOS I DESDE ROTTERDAM (PAISES BAJOS)",
+      "ronda": "Gimnasia Artística Campeonato del Mundo Finales por Aparatos I Desde Rotterdam (Paises Bajos) • Gimnasia Artística Campeonato Del Mundo Finales Por Aparatos I",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_eurosport_1_d914272f",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 1"
+      ],
+      "agenda_id": "",
+      "titulo": "World Snooker Tour",
+      "torneo": "World Snooker Tour",
       "categoria": "Snooker",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Cuartos de Final",
+      "subtitulo": "Semifinales - Waterfront Hall, Belfast",
       "referencia": "Northern Ireland Open",
-      "hora_utc": "2026-10-23T12:00:00Z",
+      "hora_utc": "2026-10-24T12:00:00Z",
       "hora_local_producto": "07:00",
       "duracion_min": 300,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
@@ -105,28 +428,387 @@
       ],
       "texto_original_crudo": "Northern Ireland Open (14:00 EUROSPORT 1)",
       "titulo_original_crudo": "Northern Ireland Open (14:00 EUROSPORT 1)",
-      "ronda": "Cuartos de Final",
+      "ronda": "Semifinales - Waterfront Hall, Belfast",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_3_ar_ffa66670",
+      "id": "lineal_eurosport_2_a23a9893",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 2"
+      ],
+      "agenda_id": "",
+      "titulo": "ISU Grand Prix of Figure Skating",
+      "torneo": "ISU Grand Prix of Figure Skating",
+      "categoria": "Patinaje",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Programa Corto / Libre",
+      "referencia": "ISU Grand Prix of Figure Skating: Francia",
+      "hora_utc": "2026-10-24T12:20:00Z",
+      "hora_local_producto": "07:20",
+      "duracion_min": 120,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 2 FHD",
+          "id_xtream": "327954",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "327964",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 2"
+      ],
+      "texto_original_crudo": "ISU Grand Prix of Figure Skating: Francia (14:20 EUROSPORT 2)",
+      "titulo_original_crudo": "ISU Grand Prix of Figure Skating: Francia (14:20 EUROSPORT 2)",
+      "ronda": "Programa Corto / Libre",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_4_a734cdec",
+      "canales_mencionados_fuente": [
+        "ESPN 4",
+        "Disney+ Premium"
+      ],
+      "agenda_id": "",
+      "titulo": "Vannes vs Clermont",
+      "torneo": "Top de Francia",
+      "categoria": "Rugby",
+      "tipo_evento": "duelo",
+      "equipo_local": "Vannes",
+      "equipo_visitante": "Clermont",
+      "subtitulo": "Top de Francia",
+      "referencia": "Top 14",
+      "hora_utc": "2026-10-24T12:30:00Z",
+      "hora_local_producto": "07:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F16.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F123.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F99.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F16.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 4 HD | AR",
+          "id_xtream": "712746",
+          "canal_lineal": "ESPN 4",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 4"
+      ],
+      "texto_original_crudo": "RC Vannes vs. Clermont - Top 14 Fecha 8 EN VIVO por ESPN 4",
+      "titulo_original_crudo": "RC Vannes vs. Clermont - Top 14 Fecha 8 EN VIVO por ESPN 4",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_2_ar_e8bfe219",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN 2"
+      ],
+      "agenda_id": "",
+      "titulo": "Como vs Sassuolo",
+      "torneo": "Serie a Italiana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Como",
+      "equipo_visitante": "Sassuolo",
+      "subtitulo": "Serie a Italiana",
+      "referencia": "Serie A Italiana",
+      "hora_utc": "2026-10-24T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F895.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F488.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "10:00 Serie A Italiana Como 1907 Sassuolo Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "10:00 Serie A Italiana Como 1907 Sassuolo Disney+ Premium ESPN 2",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_f811f034",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
-      "titulo": "Roma vs. Slovan Bratislava",
+      "titulo": "Ararat-Armenia vs. AZ Alkmaar",
+      "torneo": "UEFA Conference League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Ararat-Armenia",
+      "equipo_visitante": "AZ Alkmaar",
+      "subtitulo": "Fase de Liga - Fecha",
+      "referencia": "Fase de Liga - Fecha",
+      "hora_utc": "2026-10-24T13:30:00Z",
+      "hora_local_producto": "08:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_conference_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F3683.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flzqhed1673938793.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_conference_league.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_3_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "Ararat-Armenia (Arm) vs. AZ (Ned). Fecha 3, Vazgen Sargsyan Republican Stadium. Vive los partidos de la 56º edición de la UEFA Europa League, la segunda competición más importante de fútbol en la región que otorga un lugar en la UEFA Champions League al campeón",
+      "titulo_original_crudo": "Ararat-Armenia (Arm) vs. AZ (Ned). Fecha 3, Vazgen Sargsyan Republican Stadium. Vive los partidos de la 56º edición de la UEFA Europa League, la segunda competición más importante de fútbol en la región que otorga un lugar en la UEFA Champions League al campeón",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_a1c988d2",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Arsenal vs Everton",
+      "torneo": "Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Arsenal",
+      "equipo_visitante": "Everton",
+      "subtitulo": "Premier League",
+      "referencia": "Premier League",
+      "hora_utc": "2026-10-24T14:00:00Z",
+      "hora_local_producto": "09:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F42.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F45.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "11:00 Premier League Arsenal Everton Disney+ Premium ESPN",
+      "titulo_original_crudo": "11:00 Premier League Arsenal Everton Disney+ Premium ESPN",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_f983ffe2",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN 3"
+      ],
+      "agenda_id": "",
+      "titulo": "Racing Santander vs Espanyol",
+      "torneo": "LA Liga EA Sports",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Racing Santander",
+      "equipo_visitante": "Espanyol",
+      "subtitulo": "LA Liga EA Sports",
+      "referencia": "La Liga EA Sports",
+      "hora_utc": "2026-10-24T14:15:00Z",
+      "hora_local_producto": "09:15",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4665.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F540.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "11:15 La Liga EA Sports Racing Santander Espanyol Disney+ Premium ESPN 3",
+      "titulo_original_crudo": "11:15 La Liga EA Sports Racing Santander Espanyol Disney+ Premium ESPN 3",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dsports_2_2bd916c0",
+      "canales_mencionados_fuente": [
+        "DSports 2 (612/1612)",
+        "DGO",
+        "Amazon Prime Video (Ver en vivo)",
+        "Paramount+"
+      ],
+      "agenda_id": "",
+      "titulo": "Brazil U17 W vs Norway U17 W",
+      "torneo": "FIFA Mundial Femenino Sub-17",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Brazil U17 W",
+      "equipo_visitante": "Norway U17 W",
+      "subtitulo": "FIFA Mundial Femenino Sub-17",
+      "referencia": "FIFA Mundial Femenino Sub-17",
+      "hora_utc": "2026-10-24T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "logo_local": "https://flagcdn.com/256x192/br.png",
+      "logo_visitante": "https://flagcdn.com/256x192/no.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "12:00 FIFA Mundial Femenino Sub-17 Fase de grupos Brasil Noruega DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "titulo_original_crudo": "12:00 FIFA Mundial Femenino Sub-17 Fase de grupos Brasil Noruega DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_666cbb89",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Hoffenheim vs. Olympique de Lyon",
       "torneo": "UEFA Europa League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Roma",
-      "equipo_visitante": "Slovan Bratislava",
+      "equipo_local": "Hoffenheim",
+      "equipo_visitante": "Olympique de Lyon",
       "subtitulo": "Fase de Liga - Fecha",
       "referencia": "Fase de Liga - Fecha",
-      "hora_utc": "2026-10-23T12:30:00Z",
-      "hora_local_producto": "07:30",
-      "duracion_min": 210,
+      "hora_utc": "2026-10-24T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 150,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_europa_league.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7966.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7934.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7955.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fblk9771656932845.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_europa_league.png",
       "tier": 2,
       "origen": "inyector_lineal",
@@ -149,34 +831,34 @@
       "canales_candidatos": [
         "ESPN 3 AR"
       ],
-      "texto_original_crudo": "Roma (Ita) vs. Slovan Bratislava (Svk). Fecha 3, Stadio Olimpico. Vive los partidos de la 72º edición de la UEFA Champions League, la competición internacional de fútbol más prestigiosa a nivel de clubes de Europa",
-      "titulo_original_crudo": "Roma (Ita) vs. Slovan Bratislava (Svk). Fecha 3, Stadio Olimpico. Vive los partidos de la 72º edición de la UEFA Champions League, la competición internacional de fútbol más prestigiosa a nivel de clubes de Europa",
+      "texto_original_crudo": "Hoffenheim (Ale) vs. Olympique Lyon (Fra). Fecha 3, SNP Arena. Vive los partidos de la 56º edición de la UEFA Europa League, la segunda competición más importante de fútbol en la región que otorga un lugar en la UEFA Champions League al campeón",
+      "titulo_original_crudo": "Hoffenheim (Ale) vs. Olympique Lyon (Fra). Fecha 3, SNP Arena. Vive los partidos de la 56º edición de la UEFA Europa League, la segunda competición más importante de fútbol en la región que otorga un lugar en la UEFA Champions League al campeón",
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_4_402f5957",
+      "id": "lineal_espn_2_ar_606163a2",
       "canales_mencionados_fuente": [
-        "ESPN 4",
-        "Disney+ Premium"
+        "Disney+ Premium",
+        "ESPN 2"
       ],
       "agenda_id": "",
-      "titulo": "RC Vannes vs. Clermont Auvergne",
-      "torneo": "Top",
-      "categoria": "Rugby",
+      "titulo": "Napoli vs AS Roma",
+      "torneo": "Serie a Italiana",
+      "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "RC Vannes",
-      "equipo_visitante": "Clermont Auvergne",
-      "subtitulo": "Top",
-      "referencia": "Top",
-      "hora_utc": "2026-10-23T12:30:00Z",
-      "hora_local_producto": "07:30",
-      "duracion_min": 150,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F16.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F123.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F99.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F16.png&w=400&output=webp&trim=10",
+      "equipo_local": "Napoli",
+      "equipo_visitante": "AS Roma",
+      "subtitulo": "Serie a Italiana",
+      "referencia": "Serie A Italiana",
+      "hora_utc": "2026-10-24T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F492.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F497.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -189,154 +871,39 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN 4 HD | AR",
-          "id_xtream": "712746",
-          "canal_lineal": "ESPN 4",
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
           "pais": "AR"
         }
       ],
       "canales_candidatos": [
-        "ESPN 4"
+        "ESPN 2 AR"
       ],
-      "texto_original_crudo": "09:30 Top 14 RC Vannes Clermont Auvergne ESPN 4 Disney+ Premium",
-      "titulo_original_crudo": "09:30 Top 14 RC Vannes Clermont Auvergne ESPN 4 Disney+ Premium",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dsports_ar_9c52d188",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Al-Faisaly FC vs Al-Nassr",
-      "torneo": "Saudi Pro League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Al-Faisaly FC",
-      "equipo_visitante": "Al-Nassr",
-      "subtitulo": "Saudi Pro League",
-      "referencia": "Saudi Pro League",
-      "hora_utc": "2026-10-23T13:30:00Z",
-      "hora_local_producto": "08:30",
-      "duracion_min": 180,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2930.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2939.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "agy_lineales"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "DIRECTV SPORTS AR",
-          "id_xtream": "69547",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "DIRECTV SPORTS URU",
-          "id_xtream": "69570",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "DIRECTV Sports Per",
-          "id_xtream": "151274",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS AR"
-      ],
-      "texto_original_crudo": "Saudi Pro League: Al-Faisaly vs. Al-Nassr en vivo por DSports",
-      "titulo_original_crudo": "Saudi Pro League: Al-Faisaly vs. Al-Nassr en vivo por DSports",
+      "texto_original_crudo": "13:00 Serie A Italiana Napoli AS Roma Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "13:00 Serie A Italiana Napoli AS Roma Disney+ Premium ESPN 2",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
     },
     {
-      "id": "lineal_teledeporte_51723413",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Real Madrid vs. Barça Atlètic",
-      "torneo": "Liga U-22",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Real Madrid",
-      "equipo_visitante": "Barça Atlètic",
-      "subtitulo": "Jornada | Madrid",
-      "referencia": "Jornada | Madrid",
-      "hora_utc": "2026-10-23T14:55:00Z",
-      "hora_local_producto": "09:55",
-      "duracion_min": 150,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvwvwrw1473502969.png&w=400&output=webp",
-      "logo_visitante": "",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "rtve_teledeporte_oficial"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "TELEDEPORTES FHD",
-          "id_xtream": "327981",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
-        },
-        {
-          "nombre": "TELEDEPORTES HD",
-          "id_xtream": "327953",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
-        },
-        {
-          "nombre": "TELEDEPORTES",
-          "id_xtream": "327966",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "TELEDEPORTE"
-      ],
-      "texto_original_crudo": "BALONCESTO LIGA U-22 5ª JORNADA REAL MADRID - BARÇA ATLÈTIC DESDE MADRID",
-      "titulo_original_crudo": "BALONCESTO LIGA U-22 5ª JORNADA REAL MADRID - BARÇA ATLÈTIC DESDE MADRID",
-      "ronda": "5ª Jornada",
-      "auditado_agy": true
-    },
-    {
-      "id": "lineal_eurosport_1_eea4fee1",
+      "id": "lineal_eurosport_1_9483a693",
       "canales_mencionados_fuente": [
         "EUROSPORT 1"
       ],
       "agenda_id": "",
       "titulo": "ISU Grand Prix of Figure Skating",
       "torneo": "ISU Grand Prix of Figure Skating",
-      "categoria": "Patinaje Artístico",
+      "categoria": "Patinaje",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Angers, Francia",
+      "subtitulo": "Angers IceParc, Francia",
       "referencia": "ISU Grand Prix of Figure Skating: Francia",
-      "hora_utc": "2026-10-23T16:00:00Z",
+      "hora_utc": "2026-10-24T16:00:00Z",
       "hora_local_producto": "11:00",
-      "duracion_min": 110,
+      "duracion_min": 95,
       "logo_torneo": "",
       "logo_local": "",
       "logo_visitante": "",
@@ -370,37 +937,34 @@
       ],
       "texto_original_crudo": "ISU Grand Prix of Figure Skating: Francia (18:00 EUROSPORT 1)",
       "titulo_original_crudo": "ISU Grand Prix of Figure Skating: Francia (18:00 EUROSPORT 1)",
-      "ronda": "Angers, Francia",
+      "ronda": "Angers IceParc, Francia",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_teledeporte_988116f1",
-      "canales_mencionados_fuente": [
-        "EUROSPORT 2"
-      ],
+      "id": "lineal_teledeporte_53c10328",
+      "canales_mencionados_fuente": [],
       "agenda_id": "",
-      "titulo": "CD Bidasoa Irun vs Caserio Ciudad Real",
-      "torneo": "Liga ASOBAL",
-      "categoria": "Balonmano",
+      "titulo": "Baxi Ferrol vs. Lointek Gernika Bizkaia",
+      "torneo": "Liga Femenina Endesa",
+      "categoria": "Baloncesto",
       "tipo_evento": "duelo",
-      "equipo_local": "CD Bidasoa Irun",
-      "equipo_visitante": "Caserio Ciudad Real",
-      "subtitulo": "Liga ASOBAL • 7ª Jornada",
-      "referencia": "Liga Asobal 7ª Jornada",
-      "hora_utc": "2026-10-23T17:00:00Z",
-      "hora_local_producto": "12:00",
+      "equipo_local": "Baxi Ferrol",
+      "equipo_visitante": "Lointek Gernika Bizkaia",
+      "subtitulo": "Jornada - Ferrol",
+      "referencia": "Jornada - Ferrol",
+      "hora_utc": "2026-10-24T16:25:00Z",
+      "hora_local_producto": "11:25",
       "duracion_min": 150,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_asobal.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhandball%2Fteams%2F964.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhandball%2Fteams%2F3414.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_asobal.png",
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1712.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1166.png&w=400&output=webp&trim=10",
+      "banner": "",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "rtve_teledeporte_oficial",
-        "mundodeportivo_eurosport_2"
+        "rtve_teledeporte_oficial"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -424,33 +988,133 @@
           "id_xtream": "327966",
           "canal_lineal": "TELEDEPORTE",
           "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 2 FHD",
-          "id_xtream": "327954",
-          "canal_lineal": "EUROSPORT 2",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 2 HD",
-          "id_xtream": "327964",
-          "canal_lineal": "EUROSPORT 2",
-          "pais": "ES"
         }
       ],
       "canales_candidatos": [
-        "TELEDEPORTE",
-        "EUROSPORT 2"
+        "TELEDEPORTE"
       ],
-      "texto_original_crudo": "BALONMANO LIGA ASOBAL 7ª JORNADA IRUDEK BIDASOA IRÚN – BM CASERÍO CIUDAD REAL DESDE IRÚN (GUIPÚZCOA)",
-      "titulo_original_crudo": "BALONMANO LIGA ASOBAL 7ª JORNADA IRUDEK BIDASOA IRÚN – BM CASERÍO CIUDAD REAL DESDE IRÚN (GUIPÚZCOA)",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "7ª Jornada",
+      "texto_original_crudo": "BALONCESTO LIGA FEMENINA ENDESA 5ª JORNADA BAXI FERROL – INVERSUS GERNIKA DESDE EL FERROL (LA CORUÑA)",
+      "titulo_original_crudo": "BALONCESTO LIGA FEMENINA ENDESA 5ª JORNADA BAXI FERROL – INVERSUS GERNIKA DESDE EL FERROL (LA CORUÑA)",
+      "ronda": "5ª Jornada",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_dazn_f1_91f4ee0d",
+      "id": "lineal_dsports_ar_d91662f1",
+      "canales_mencionados_fuente": [
+        "DGO",
+        "Amazon Prime Video (Ver en vivo)",
+        "Paramount+",
+        "DSports (610/1610)"
+      ],
+      "agenda_id": "",
+      "titulo": "Valencia vs Villarreal",
+      "torneo": "LA Liga EA Sports",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Valencia",
+      "equipo_visitante": "Villarreal",
+      "subtitulo": "LA Liga EA Sports",
+      "referencia": "La Liga EA Sports",
+      "hora_utc": "2026-10-24T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F532.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F533.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DIRECTV SPORTS AR",
+          "id_xtream": "69547",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS URU",
+          "id_xtream": "69570",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV Sports Per",
+          "id_xtream": "151274",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS AR"
+      ],
+      "texto_original_crudo": "13:30 La Liga EA Sports Valencia CF Villarreal DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+      "titulo_original_crudo": "13:30 La Liga EA Sports Valencia CF Villarreal DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_1218eca8",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Chelsea vs Tottenham",
+      "torneo": "Premier League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Chelsea",
+      "equipo_visitante": "Tottenham",
+      "subtitulo": "Premier League",
+      "referencia": "Premier League",
+      "hora_utc": "2026-10-24T16:30:00Z",
+      "hora_local_producto": "11:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F49.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F47.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_league.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "13:30 Premier League Chelsea Tottenham Disney+ Premium ESPN",
+      "titulo_original_crudo": "13:30 Premier League Chelsea Tottenham Disney+ Premium ESPN",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dazn_f1_5615986c",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
       "titulo": "Fórmula 1",
@@ -459,9 +1123,9 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Entrenamientos Libres",
+      "subtitulo": "Austin - Libres",
       "referencia": "Libres • Fórmula 1",
-      "hora_utc": "2026-10-23T17:30:00Z",
+      "hora_utc": "2026-10-24T17:30:00Z",
       "hora_local_producto": "12:30",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
@@ -503,35 +1167,91 @@
       ],
       "texto_original_crudo": "G.P. Estados Unidos (Austin) - Libres 3",
       "titulo_original_crudo": "G.P. Estados Unidos (Austin) - Libres 3",
-      "ronda": "Entrenamientos Libres",
+      "ronda": "Austin - Libres",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_dsports_2_879b07f8",
+      "id": "lineal_tnt_sports_7ee98407",
+      "canales_mencionados_fuente": [
+        "TNT Sports Premium",
+        "TNT Sports en HBO MAX (Suscripción Pack fútbol)"
+      ],
+      "agenda_id": "",
+      "titulo": "Banfield vs Lanus",
+      "torneo": "Liga Profesional de Fútbol",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Banfield",
+      "equipo_visitante": "Lanus",
+      "subtitulo": "Liga Profesional de Fútbol",
+      "referencia": "Liga Profesional de Fútbol",
+      "hora_utc": "2026-10-24T17:45:00Z",
+      "hora_local_producto": "12:45",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F449.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F446.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "TNT Sports Premium HD",
+          "id_xtream": "712753",
+          "canal_lineal": "TNT SPORTS",
+          "pais": "AR"
+        },
+        {
+          "nombre": "TNT Sports Premium",
+          "id_xtream": "712752",
+          "canal_lineal": "TNT SPORTS",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "TNT SPORTS"
+      ],
+      "texto_original_crudo": "Banfield vs. Lanus - Torneo Clausura / Liga Profesional EN VIVO por TNT Sports",
+      "titulo_original_crudo": "Banfield vs. Lanus - Torneo Clausura / Liga Profesional EN VIVO por TNT Sports",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dsports_2_d9576416",
       "canales_mencionados_fuente": [
         "DSports 2 (612/1612)",
         "DGO",
-        "Paramount+",
         "Amazon Prime Video (Ver en vivo)",
-        "Canal Siete"
+        "Paramount+"
       ],
       "agenda_id": "",
-      "titulo": "Argentina vs. Marruecos",
-      "torneo": "Juegos Olímpicos",
+      "titulo": "Venezuela U17 W vs Japan U17 W",
+      "torneo": "FIFA Mundial Femenino Sub-17",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Argentina",
-      "equipo_visitante": "Marruecos",
-      "subtitulo": "Fase de Grupos",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-10-23T18:00:00Z",
+      "equipo_local": "Venezuela U17 W",
+      "equipo_visitante": "Japan U17 W",
+      "subtitulo": "FIFA Mundial Femenino Sub-17",
+      "referencia": "FIFA Mundial Femenino Sub-17",
+      "hora_utc": "2026-10-24T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/ar.png",
-      "logo_visitante": "https://flagcdn.com/256x192/ma.png",
-      "banner": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
+      "logo_local": "https://flagcdn.com/256x192/ve.png",
+      "logo_visitante": "https://flagcdn.com/256x192/jp.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F950.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -559,14 +1279,15 @@
       "canales_candidatos": [
         "DSPORTS 2"
       ],
-      "texto_original_crudo": "15:00 Fase de grupos Argentina Marruecos DSports 2 (612/1612) DGO Paramount+ Amazon Prime Video (Ver en vivo) Canal Siete",
-      "titulo_original_crudo": "15:00 Fase de grupos Argentina Marruecos DSports 2 (612/1612) DGO Paramount+ Amazon Prime Video (Ver en vivo) Canal Siete",
+      "texto_original_crudo": "15:00 FIFA Mundial Femenino Sub-17 Fase de grupos Venezuela Japón DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "titulo_original_crudo": "15:00 FIFA Mundial Femenino Sub-17 Fase de grupos Venezuela Japón DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
       "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_eurosport_1_f0ad4754",
+      "id": "lineal_eurosport_1_aed7aa9f",
       "canales_mencionados_fuente": [
         "EUROSPORT 1"
       ],
@@ -577,9 +1298,9 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Cuartos de Final",
+      "subtitulo": "Sesión de Tarde/Noche",
       "referencia": "Northern Ireland Open",
-      "hora_utc": "2026-10-23T18:00:00Z",
+      "hora_utc": "2026-10-24T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 300,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
@@ -615,117 +1336,23 @@
       ],
       "texto_original_crudo": "Northern Ireland Open (20:00 EUROSPORT 1)",
       "titulo_original_crudo": "Northern Ireland Open (20:00 EUROSPORT 1)",
-      "ronda": "Cuartos de Final",
+      "ronda": "Sesión de Tarde/Noche",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_dsports_plus_e067b675",
+      "id": "lineal_dsports_2_594c0e55",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
-      "titulo": "Al-Qadisiyah FC vs Al-Hilal Saudi FC",
-      "torneo": "Saudi Pro League",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Al-Qadisiyah FC",
-      "equipo_visitante": "Al-Hilal Saudi FC",
-      "subtitulo": "Saudi Pro League",
-      "referencia": "Saudi Pro League",
-      "hora_utc": "2026-10-23T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 180,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2933.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2932.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F307.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "agy_lineales"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "DSPORTS +1 AR",
-          "id_xtream": "722195",
-          "canal_lineal": "DSPORTS +",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS +"
-      ],
-      "texto_original_crudo": "Saudi Pro League: Al-Qadisiyah vs. Al-Hilal en vivo por DSports+",
-      "titulo_original_crudo": "Saudi Pro League: Al-Qadisiyah vs. Al-Hilal en vivo por DSports+",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_4_3b3445da",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "VfB Stuttgart vs Borussia Mönchengladbach",
-      "torneo": "Bundesliga",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "VfB Stuttgart",
-      "equipo_visitante": "Borussia Mönchengladbach",
-      "subtitulo": "Bundesliga",
-      "referencia": "Bundesliga",
-      "hora_utc": "2026-10-23T18:30:00Z",
-      "hora_local_producto": "13:30",
-      "duracion_min": 180,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F172.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F163.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "agy_lineales"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN 4 HD | AR",
-          "id_xtream": "712746",
-          "canal_lineal": "ESPN 4",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 4"
-      ],
-      "texto_original_crudo": "Bundesliga: Stuttgart vs Borussia Mönchengladbach en vivo por ESPN 4",
-      "titulo_original_crudo": "Bundesliga: Stuttgart vs Borussia Mönchengladbach en vivo por ESPN 4",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dsports_2_6e84089f",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Torneo del Interior de Rugby",
+      "titulo": "Tucumán Rugby vs. Jockey Club de Salta",
       "torneo": "Torneo del Interior",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
       "equipo_local": "Tucumán Rugby",
-      "equipo_visitante": "Duendes",
-      "subtitulo": "En Vivo",
-      "referencia": "En Vivo",
-      "hora_utc": "2026-10-23T18:30:00Z",
+      "equipo_visitante": "Jockey Club de Salta",
+      "subtitulo": "Torneo del Interior",
+      "referencia": "Torneo del Interior",
+      "hora_utc": "2026-10-24T18:30:00Z",
       "hora_local_producto": "13:30",
       "duracion_min": 150,
       "logo_torneo": "",
@@ -759,30 +1386,30 @@
       "canales_candidatos": [
         "DSPORTS 2"
       ],
-      "texto_original_crudo": "Torneo del Interior de Rugby en vivo por DSports 2",
-      "titulo_original_crudo": "Torneo del Interior de Rugby en vivo por DSports 2",
+      "texto_original_crudo": "Tucuman Rugby vs. Jockey Club de Salta - Torneo del Interior EN VIVO por DSports 2",
+      "titulo_original_crudo": "Tucuman Rugby vs. Jockey Club de Salta - Torneo del Interior EN VIVO por DSports 2",
       "ronda": "",
       "auditado_agy": true
     },
     {
-      "id": "lineal_teledeporte_828f4840",
+      "id": "lineal_teledeporte_0d69088f",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
-      "titulo": "Campeonato Mundial de Gimnasia Artística",
-      "torneo": "Campeonato Mundial de Gimnasia Artística",
-      "categoria": "Gimnasia Artística",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Rotterdam, Países Bajos",
-      "referencia": "Gimnasia Artística Campeonato Del Mundo All Around Femenino",
-      "hora_utc": "2026-10-23T18:35:00Z",
-      "hora_local_producto": "13:35",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
+      "titulo": "Barcelona W vs Granada",
+      "torneo": "Liga F Moeve",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Barcelona W",
+      "equipo_visitante": "Granada",
+      "subtitulo": "Liga F Moeve • 8ª Jornada",
+      "referencia": "Liga F Moeve 8ª Jornada",
+      "hora_utc": "2026-10-24T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_f.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1918.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://flagcdn.com/256x192/gd.png",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_f.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -816,34 +1443,186 @@
       "canales_candidatos": [
         "TELEDEPORTE"
       ],
-      "texto_original_crudo": "GIMNASIA ARTÍSTICA CAMPEONATO DEL MUNDO ALL AROUND FEMENINO DESDE ROTTERDAM (PAÍSES BAJOS)",
-      "titulo_original_crudo": "GIMNASIA ARTÍSTICA CAMPEONATO DEL MUNDO ALL AROUND FEMENINO DESDE ROTTERDAM (PAÍSES BAJOS)",
-      "ronda": "Gimnasia Artística Campeonato Del Mundo All Around Femenino",
+      "texto_original_crudo": "FÚTBOL LIGA F MOEVE 8ª JORNADA FC BARCELONA – GRANADA CF DESDE BARCELONA",
+      "titulo_original_crudo": "FÚTBOL LIGA F MOEVE 8ª JORNADA FC BARCELONA – GRANADA CF DESDE BARCELONA",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "8ª Jornada",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_bd01d201",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN 3"
+      ],
+      "agenda_id": "",
+      "titulo": "Lazio vs Parma",
+      "torneo": "Serie a Italiana",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lazio",
+      "equipo_visitante": "Parma",
+      "subtitulo": "Serie a Italiana",
+      "referencia": "Serie A Italiana",
+      "hora_utc": "2026-10-24T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F487.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F523.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/serie_a.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "15:45 Serie A Italiana Lazio Parma Disney+ Premium ESPN 3",
+      "titulo_original_crudo": "15:45 Serie A Italiana Lazio Parma Disney+ Premium ESPN 3",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_4_03e9f2cb",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN 4"
+      ],
+      "agenda_id": "",
+      "titulo": "Lens vs Paris FC",
+      "torneo": "Francia Ligue",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Lens",
+      "equipo_visitante": "Paris FC",
+      "subtitulo": "Francia Ligue",
+      "referencia": "Francia Ligue 1",
+      "hora_utc": "2026-10-24T18:45:00Z",
+      "hora_local_producto": "13:45",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F61.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F116.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F114.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F61.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 4 HD | AR",
+          "id_xtream": "712746",
+          "canal_lineal": "ESPN 4",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 4"
+      ],
+      "texto_original_crudo": "15:45 Francia Ligue 1 Lens Paris FC Disney+ Premium ESPN 4",
+      "titulo_original_crudo": "15:45 Francia Ligue 1 Lens Paris FC Disney+ Premium ESPN 4",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_0d8f521f",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "Atlético de Madrid vs. Deportivo de LA Coruña",
+      "torneo": "LaLiga EA Sports",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlético de Madrid",
+      "equipo_visitante": "Deportivo de LA Coruña",
+      "subtitulo": "LA Liga EA Sports",
+      "referencia": "LA Liga EA Sports",
+      "hora_utc": "2026-10-24T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0ulh3q1719984315.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fisc2yu1580833286.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/laliga.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "16:00 La Liga EA Sports At. Madrid Deportivo Disney+ Premium ESPN",
+      "titulo_original_crudo": "16:00 La Liga EA Sports At. Madrid Deportivo Disney+ Premium ESPN",
+      "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_4_6e168a56",
+      "id": "lineal_dsports_ar_d2b14ff1",
       "canales_mencionados_fuente": [
-        "Disney+ Premium",
-        "ESPN 4"
+        "DGO",
+        "Amazon Prime Video (Ver en vivo)",
+        "Paramount+",
+        "DSports (610/1610)"
       ],
       "agenda_id": "",
-      "titulo": "Torino vs Monza",
-      "torneo": "Torino vs Monza",
+      "titulo": "GIL Vicente vs FC Porto",
+      "torneo": "Liga Portuguesa",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Torino",
-      "equipo_visitante": "Monza",
-      "subtitulo": "Torino vs Monza",
-      "referencia": "Serie a",
-      "hora_utc": "2026-10-23T18:45:00Z",
-      "hora_local_producto": "13:45",
+      "equipo_local": "GIL Vicente",
+      "equipo_visitante": "FC Porto",
+      "subtitulo": "Liga Portuguesa",
+      "referencia": "Liga portuguesa",
+      "hora_utc": "2026-10-24T19:30:00Z",
+      "hora_local_producto": "14:30",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F503.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1579.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F94.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F762.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F212.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F94.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -856,145 +1635,55 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN 4 HD | AR",
-          "id_xtream": "712746",
-          "canal_lineal": "ESPN 4",
+          "nombre": "DIRECTV SPORTS AR",
+          "id_xtream": "69547",
+          "canal_lineal": "DSPORTS AR",
           "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 4"
-      ],
-      "texto_original_crudo": "15:45 Torino Monza Disney+ Premium ESPN 4",
-      "titulo_original_crudo": "15:45 Torino Monza Disney+ Premium ESPN 4",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_4_f5c1eb86",
-      "canales_mencionados_fuente": [
-        "Disney+ Premium",
-        "ESPN 4",
-        "ESPN 3"
-      ],
-      "agenda_id": "",
-      "titulo": "Alaves vs Malaga",
-      "torneo": "Alavés vs Málaga",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Alaves",
-      "equipo_visitante": "Malaga",
-      "subtitulo": "Alavés vs Málaga",
-      "referencia": "LA Liga",
-      "hora_utc": "2026-10-23T19:00:00Z",
-      "hora_local_producto": "14:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F542.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F535.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
+        },
         {
-          "nombre": "ESPN 4 HD | AR",
-          "id_xtream": "712746",
-          "canal_lineal": "ESPN 4",
+          "nombre": "DIRECTV SPORTS URU",
+          "id_xtream": "69570",
+          "canal_lineal": "DSPORTS AR",
           "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 4"
-      ],
-      "texto_original_crudo": "16:00 Alavés Málaga Disney+ Premium ESPN 4 ESPN 3",
-      "titulo_original_crudo": "16:00 Alavés Málaga Disney+ Premium ESPN 4 ESPN 3",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_2_ar_46f03d79",
-      "canales_mencionados_fuente": [
-        "Disney+ Premium",
-        "ESPN 2"
-      ],
-      "agenda_id": "",
-      "titulo": "Ipswich vs Nottingham Forest",
-      "torneo": "Ipswich Town vs Nottingham Forest",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Ipswich",
-      "equipo_visitante": "Nottingham Forest",
-      "subtitulo": "Ipswich Town vs Nottingham Forest",
-      "referencia": "Premier League",
-      "hora_utc": "2026-10-23T19:00:00Z",
-      "hora_local_producto": "14:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F57.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F65.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
+        },
         {
-          "nombre": "ESPN 2  FHD | AR",
-          "id_xtream": "712744",
-          "canal_lineal": "ESPN 2 AR",
+          "nombre": "DIRECTV Sports Per",
+          "id_xtream": "151274",
+          "canal_lineal": "DSPORTS AR",
           "pais": "AR"
         }
       ],
       "canales_candidatos": [
-        "ESPN 2 AR"
+        "DSPORTS AR"
       ],
-      "texto_original_crudo": "16:00 Ipswich Town Nottingham Forest Disney+ Premium ESPN 2",
-      "titulo_original_crudo": "16:00 Ipswich Town Nottingham Forest Disney+ Premium ESPN 2",
+      "texto_original_crudo": "16:30 Liga portuguesa Gil Vicente FC Porto DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+      "titulo_original_crudo": "16:30 Liga portuguesa Gil Vicente FC Porto DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_premium_argentina_27bdd3b3",
+      "id": "lineal_espn_premium_argentina_9c81c97b",
       "canales_mencionados_fuente": [
-        "ESPN Premium",
-        "ESPN"
+        "ESPN Premium"
       ],
       "agenda_id": "",
-      "titulo": "Gimnasia L.P. vs Sarmiento Junin",
-      "torneo": "Gimnasia LP vs Sarmiento",
+      "titulo": "Talleres Cordoba vs Defensa y Justicia",
+      "torneo": "Torneo Betano",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Gimnasia L.P.",
-      "equipo_visitante": "Sarmiento Junin",
-      "subtitulo": "Gimnasia LP vs Sarmiento",
-      "referencia": "Liga Profesional Argentina",
-      "hora_utc": "2026-10-23T21:00:00Z",
-      "hora_local_producto": "16:00",
+      "equipo_local": "Talleres Cordoba",
+      "equipo_visitante": "Defensa y Justicia",
+      "subtitulo": "Torneo Betano",
+      "referencia": "Torneo Betano",
+      "hora_utc": "2026-10-24T20:00:00Z",
+      "hora_local_producto": "15:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F434.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F474.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F456.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F442.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -1016,15 +1705,595 @@
       "canales_candidatos": [
         "ESPN PREMIUM ARGENTINA"
       ],
-      "texto_original_crudo": "18:00 Torneo Clausura Gimnasia LP Sarmiento ESPN Premium ESPN",
-      "titulo_original_crudo": "18:00 Torneo Clausura Gimnasia LP Sarmiento ESPN Premium ESPN",
+      "texto_original_crudo": "17:00 Torneo Betano Torneo Clausura Talleres Córdoba Defensa y Justicia ESPN Premium",
+      "titulo_original_crudo": "17:00 Torneo Betano Torneo Clausura Talleres Córdoba Defensa y Justicia ESPN Premium",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
     },
     {
-      "id": "lineal_dazn_f1_88bf30bd",
+      "id": "lineal_win_sports_c6da6aaa",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports TV YouTube",
+        "Win Fútbol",
+        "Win Sports",
+        "WinSports.co (Streaming)"
+      ],
+      "agenda_id": "",
+      "titulo": "Patriotas vs Envigado",
+      "torneo": "Patriotas vs Envigado",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Patriotas",
+      "equipo_visitante": "Envigado",
+      "subtitulo": "Patriotas vs Envigado",
+      "referencia": "Patriotas vs Envigado",
+      "hora_utc": "2026-10-24T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1140.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1129.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:30 Patriotas Envigado Win Fútbol + Win Play Win Sports TV YouTube Win Fútbol Win Sports WinSports.co (Streaming)",
+      "titulo_original_crudo": "15:30 Patriotas Envigado Win Fútbol + Win Play Win Sports TV YouTube Win Fútbol Win Sports WinSports.co (Streaming)",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sports_8062b30e",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports TV YouTube",
+        "Win Fútbol",
+        "Win Sports",
+        "WinSports.co (Streaming)"
+      ],
+      "agenda_id": "",
+      "titulo": "Quindio vs Tigres FC",
+      "torneo": "Quindio vs Tigres FC",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Quindio",
+      "equipo_visitante": "Tigres FC",
+      "subtitulo": "Quindio vs Tigres FC",
+      "referencia": "Quindio vs Tigres FC",
+      "hora_utc": "2026-10-24T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1461.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1145.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:30 Quindio Tigres FC Win Fútbol + Win Play Win Sports TV YouTube Win Fútbol Win Sports WinSports.co (Streaming)",
+      "titulo_original_crudo": "15:30 Quindio Tigres FC Win Fútbol + Win Play Win Sports TV YouTube Win Fútbol Win Sports WinSports.co (Streaming)",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sports_cace97ee",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports TV YouTube",
+        "Win Sports"
+      ],
+      "agenda_id": "",
+      "titulo": "Bogota FC vs Real Santander",
+      "torneo": "Bogotá vs Real Santander",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Bogota FC",
+      "equipo_visitante": "Real Santander",
+      "subtitulo": "Bogotá vs Real Santander",
+      "referencia": "Bogotá vs Real Santander",
+      "hora_utc": "2026-10-24T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1458.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1463.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:30 Bogotá Real Santander Win Fútbol + Win Play Win Sports TV YouTube Win Sports",
+      "titulo_original_crudo": "15:30 Bogotá Real Santander Win Fútbol + Win Play Win Sports TV YouTube Win Sports",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sports_aac888fa",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports TV YouTube",
+        "Win Fútbol",
+        "Win Sports",
+        "WinSports.co (Streaming)"
+      ],
+      "agenda_id": "",
+      "titulo": "Unión Magdalena vs. Atlético FC",
+      "torneo": "Torneo BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Unión Magdalena",
+      "equipo_visitante": "Atlético FC",
+      "subtitulo": "Unión Magdalena vs Atlético FC",
+      "referencia": "Unión Magdalena vs Atlético FC",
+      "hora_utc": "2026-10-24T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1465.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1cow9s1771988208.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:30 Unión Magdalena Atlético FC Win Fútbol + Win Play Win Sports TV YouTube Win Fútbol Win Sports WinSports.co (Streaming)",
+      "titulo_original_crudo": "15:30 Unión Magdalena Atlético FC Win Fútbol + Win Play Win Sports TV YouTube Win Fútbol Win Sports WinSports.co (Streaming)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sports_159d112c",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports TV YouTube",
+        "Win Sports (señal alterna)",
+        "Win Sports",
+        "WinSports.co (Streaming)"
+      ],
+      "agenda_id": "",
+      "titulo": "Barranquilla vs Real Cartagena",
+      "torneo": "Barranquilla vs Real Cartagena",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Barranquilla",
+      "equipo_visitante": "Real Cartagena",
+      "subtitulo": "Barranquilla vs Real Cartagena",
+      "referencia": "Barranquilla vs Real Cartagena",
+      "hora_utc": "2026-10-24T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1466.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1459.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:30 Barranquilla Real Cartagena Win Fútbol + Win Play Win Sports TV YouTube Win Sports (señal alterna) Win Sports WinSports.co (Streaming)",
+      "titulo_original_crudo": "15:30 Barranquilla Real Cartagena Win Fútbol + Win Play Win Sports TV YouTube Win Sports (señal alterna) Win Sports WinSports.co (Streaming)",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sports_76f6d929",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports TV YouTube",
+        "Win Sports"
+      ],
+      "agenda_id": "",
+      "titulo": "Leones FC vs Orsomarso",
+      "torneo": "Leones vs Orsomarso",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Leones FC",
+      "equipo_visitante": "Orsomarso",
+      "subtitulo": "Leones vs Orsomarso",
+      "referencia": "Leones vs Orsomarso",
+      "hora_utc": "2026-10-24T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1143.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1469.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F240.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:30 Leones Orsomarso Win Fútbol + Win Play Win Sports TV YouTube Win Sports",
+      "titulo_original_crudo": "15:30 Leones Orsomarso Win Fútbol + Win Play Win Sports TV YouTube Win Sports",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sports_dad7a5c7",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports TV YouTube",
+        "Win Sports (señal alterna)",
+        "Win Sports",
+        "WinSports.co (Streaming)"
+      ],
+      "agenda_id": "",
+      "titulo": "Boca Juniors Cali vs. Internacional FC Palmira",
+      "torneo": "Torneo BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boca Juniors Cali",
+      "equipo_visitante": "Internacional FC Palmira",
+      "subtitulo": "Boca Juniors Cali vs Internacional FC Palmira",
+      "referencia": "Boca Juniors Cali vs Internacional FC Palmira",
+      "hora_utc": "2026-10-24T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkws2x41615832171.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F23326.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:30 Boca Juniors Cali Internacional FC Palmira Win Fútbol + Win Play Win Sports TV YouTube Win Sports (señal alterna) Win Sports WinSports.co (Streaming)",
+      "titulo_original_crudo": "15:30 Boca Juniors Cali Internacional FC Palmira Win Fútbol + Win Play Win Sports TV YouTube Win Sports (señal alterna) Win Sports WinSports.co (Streaming)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_win_sports_9d060c7d",
+      "canales_mencionados_fuente": [
+        "Win Fútbol +",
+        "Win Play",
+        "Win Sports TV YouTube",
+        "Win Fútbol",
+        "Win Sports",
+        "WinSports.co (Streaming)"
+      ],
+      "agenda_id": "",
+      "titulo": "Real Cundinamarca vs. Independiente Valle del Cauca",
+      "torneo": "Torneo BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Real Cundinamarca",
+      "equipo_visitante": "Independiente Valle del Cauca",
+      "subtitulo": "Torneo BetPlay",
+      "referencia": "Torneo BetPlay",
+      "hora_utc": "2026-10-24T20:30:00Z",
+      "hora_local_producto": "15:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F3c46781721453110.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Feki4nd1580842605.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_co"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "15:30 Real Soacha Cundinamarca Independiente Valle del Cauca Win Fútbol + Win Play Win Sports TV YouTube Win Fútbol Win Sports WinSports.co (Streaming)",
+      "titulo_original_crudo": "15:30 Real Soacha Cundinamarca Independiente Valle del Cauca Win Fútbol + Win Play Win Sports TV YouTube Win Fútbol Win Sports WinSports.co (Streaming)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_eurosport_2_539623b5",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 2"
+      ],
+      "agenda_id": "",
+      "titulo": "World Climbing Series",
+      "torneo": "World Climbing Series",
+      "categoria": "Escalada",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Finales",
+      "referencia": "World Climbing Series: Santiago de Chile",
+      "hora_utc": "2026-10-24T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 105,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mundodeportivo_eurosport_2"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT 2 FHD",
+          "id_xtream": "327954",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "327964",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 2"
+      ],
+      "texto_original_crudo": "World Climbing Series: Santiago de Chile (23:00 EUROSPORT 2)",
+      "titulo_original_crudo": "World Climbing Series: Santiago de Chile (23:00 EUROSPORT 2)",
+      "ronda": "Finales",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dazn_f1_8cb43d06",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
       "titulo": "Fórmula 1",
@@ -1033,9 +2302,9 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Clasificación",
+      "subtitulo": "Austin - Clasificación",
       "referencia": "Clasificación • Fórmula 1",
-      "hora_utc": "2026-10-23T21:00:00Z",
+      "hora_utc": "2026-10-24T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
@@ -1077,36 +2346,37 @@
       ],
       "texto_original_crudo": "G.P. Estados Unidos (Austin) - Clasificación",
       "titulo_original_crudo": "G.P. Estados Unidos (Austin) - Clasificación",
-      "ronda": "Clasificación",
+      "ronda": "Austin - Clasificación",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_tnt_sports_20c090cd",
+      "id": "lineal_tnt_sports_b89bd9d8",
       "canales_mencionados_fuente": [
         "TNT Sports Premium",
         "TNT Sports en HBO MAX (Suscripción Pack fútbol)"
       ],
       "agenda_id": "",
-      "titulo": "Gimnasia M. vs Platense",
-      "torneo": "Gimnasia Mendoza vs Platense",
+      "titulo": "San Lorenzo vs. Newell's Old Boys",
+      "torneo": "Liga Profesional de Fútbol",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Gimnasia M.",
-      "equipo_visitante": "Platense",
-      "subtitulo": "Gimnasia Mendoza vs Platense",
-      "referencia": "Liga Profesional Argentina",
-      "hora_utc": "2026-10-23T21:30:00Z",
-      "hora_local_producto": "16:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1066.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1064.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
+      "equipo_local": "San Lorenzo",
+      "equipo_visitante": "Newell's Old Boys",
+      "subtitulo": "Liga Profesional de Fútbol",
+      "referencia": "Liga Profesional de Fútbol",
+      "hora_utc": "2026-10-24T22:15:00Z",
+      "hora_local_producto": "17:15",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F18697.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F18691.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
+        "agy_lineales",
         "futbolenvivo_ar"
       ],
       "estado": "confirmado",
@@ -1130,123 +2400,14 @@
       "canales_candidatos": [
         "TNT SPORTS"
       ],
-      "texto_original_crudo": "18:30 Torneo Clausura Gimnasia Mendoza Platense TNT Sports Premium TNT Sports en HBO MAX (Suscripción Pack fútbol)",
-      "titulo_original_crudo": "18:30 Torneo Clausura Gimnasia Mendoza Platense TNT Sports Premium TNT Sports en HBO MAX (Suscripción Pack fútbol)",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
+      "texto_original_crudo": "San Lorenzo vs. Newells - Liga Profesional EN VIVO por TNT Sports",
+      "titulo_original_crudo": "San Lorenzo vs. Newells - Liga Profesional EN VIVO por TNT Sports",
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_eurosport_1_73769b04",
-      "canales_mencionados_fuente": [
-        "EUROSPORT 1"
-      ],
-      "agenda_id": "",
-      "titulo": "World Snooker Tour",
-      "torneo": "World Snooker Tour",
-      "categoria": "Snooker",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Cuartos de Final",
-      "referencia": "Abierto de Irlanda del Norte de Snooker - T2627 | Cuartos de Final (23:30 a 01:30 Eurosport) • T2627 | Cuartos de final",
-      "hora_utc": "2026-10-23T21:30:00Z",
-      "hora_local_producto": "16:30",
-      "duracion_min": 300,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "sincroguia_eurosport_1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "EUROSPORT 1"
-      ],
-      "texto_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Cuartos de final (23:30 a 01:30 EUROSPORT 1)",
-      "titulo_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Cuartos de final (23:30 a 01:30 EUROSPORT 1)",
-      "ronda": "Abierto de Irlanda del Norte de Snooker - T2627 | Cuartos de Final (23:30 a 01:30 Eurosport) • T2627 | Cuartos de final",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_eurosport_1_9fd3da94",
-      "canales_mencionados_fuente": [
-        "EUROSPORT 1"
-      ],
-      "agenda_id": "",
-      "titulo": "Copa del Mundo de Esquí Alpino",
-      "torneo": "Copa del Mundo de Esquí Alpino",
-      "categoria": "Esquí Alpino",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "2ª Manga",
-      "referencia": "T2627 | Eslalon gigante - 2ª manga",
-      "hora_utc": "2026-10-23T22:30:00Z",
-      "hora_local_producto": "17:30",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "sincroguia_eurosport_1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "EUROSPORT 1"
-      ],
-      "texto_original_crudo": "Copa del mundo de esquí alpino F - Sölden - T2627 | Eslalon gigante - 2ª manga (00:30 a 01:30 EUROSPORT 1)",
-      "titulo_original_crudo": "Copa del mundo de esquí alpino F - Sölden - T2627 | Eslalon gigante - 2ª manga (00:30 a 01:30 EUROSPORT 1)",
-      "ronda": "2ª Manga",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_3_ar_d1139887",
+      "id": "lineal_espn_3_ar_134e8a5e",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
       "titulo": "F1 Academy",
@@ -1255,9 +2416,9 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Austin - Circuit of The Americas",
+      "subtitulo": "Austin",
       "referencia": "GP Austin • Carrera • Fórmula 1 Academy",
-      "hora_utc": "2026-10-23T22:45:00Z",
+      "hora_utc": "2026-10-24T22:45:00Z",
       "hora_local_producto": "17:45",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
@@ -1268,8 +2429,7 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "mitv_espn_3_ar",
-        "futbolenlatv_dazn_f1"
+        "mitv_espn_3_ar"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1281,63 +2441,41 @@
           "id_xtream": "712745",
           "canal_lineal": "ESPN 3 AR",
           "pais": "AR"
-        },
-        {
-          "nombre": "DAZN F1 FHD",
-          "id_xtream": "155619",
-          "canal_lineal": "DAZN F1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "DAZN F1 4K",
-          "id_xtream": "147267",
-          "canal_lineal": "DAZN F1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "DAZN F1 HD",
-          "id_xtream": "155616",
-          "canal_lineal": "DAZN F1",
-          "pais": "ES"
         }
       ],
       "canales_candidatos": [
-        "ESPN 3 AR",
-        "DAZN F1"
+        "ESPN 3 AR"
       ],
       "texto_original_crudo": "GP Austin - Carrera 1. Fórmula 1 Academy. La F1 Academy es una competición de automovilismo de velocidad femenino de monoplazas. La categoría otorga a las cinco primeras clasificadas de la clasificación puntos para la superlicencia de la FIA, 10, 7, 5, 3 y 1 puntos respectivamente",
       "titulo_original_crudo": "GP Austin - Carrera 1. Fórmula 1 Academy. La F1 Academy es una competición de automovilismo de velocidad femenino de monoplazas. La categoría otorga a las cinco primeras clasificadas de la clasificación puntos para la superlicencia de la FIA, 10, 7, 5, 3 y 1 puntos respectivamente",
-      "ronda": "Austin - Circuit of The Americas",
+      "ronda": "Austin",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_win_sports_95e0e5d4",
-      "canales_mencionados_fuente": [
-        "Win Play",
-        "Win Sports"
-      ],
+      "id": "lineal_dsports_ar_252f583f",
+      "canales_mencionados_fuente": [],
       "agenda_id": "",
-      "titulo": "Cruzeiro vs Remo",
-      "torneo": "Cruzeiro vs Remo",
-      "categoria": "Remo",
+      "titulo": "Boca Juniors vs. Peñarol",
+      "torneo": "Liga Nacional de Básquet",
+      "categoria": "Baloncesto",
       "tipo_evento": "duelo",
-      "equipo_local": "Cruzeiro",
-      "equipo_visitante": "Remo",
-      "subtitulo": "Cruzeiro vs Remo",
-      "referencia": "Cruzeiro vs Remo",
-      "hora_utc": "2026-10-23T23:00:00Z",
+      "equipo_local": "Boca Juniors",
+      "equipo_visitante": "Peñarol",
+      "subtitulo": "Temporada Regular",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-10-24T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fupsvvu1473538059.png&w=400&output=webp&trim=10",
-      "logo_visitante": "",
-      "banner": "",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbm7krb1775741582.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F293.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "futbolenvivo_co"
+        "agy_lineales"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1345,52 +2483,51 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "WIN SPORTS FHD",
-          "id_xtream": "1331804",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
+          "nombre": "DIRECTV SPORTS AR",
+          "id_xtream": "69547",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
         },
         {
-          "nombre": "Win Sports HD",
-          "id_xtream": "13767",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
+          "nombre": "DIRECTV SPORTS URU",
+          "id_xtream": "69570",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
         },
         {
-          "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
+          "nombre": "DIRECTV Sports Per",
+          "id_xtream": "151274",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
         }
       ],
       "canales_candidatos": [
-        "WIN SPORTS"
+        "DSPORTS AR"
       ],
-      "texto_original_crudo": "18:00 Cruzeiro Remo Win Play Win Sports",
-      "titulo_original_crudo": "18:00 Cruzeiro Remo Win Play Win Sports",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
+      "texto_original_crudo": "Boca Juniors vs. Penarol - Liga Nacional de Basquet Temporada Regular EN VIVO por DSports",
+      "titulo_original_crudo": "Boca Juniors vs. Penarol - Liga Nacional de Basquet Temporada Regular EN VIVO por DSports",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
-      "id": "lineal_espn_ar_0bfa5bb0",
+      "id": "lineal_espn_ar_d55f0f23",
       "canales_mencionados_fuente": [
         "MotoGP Videopass",
         "Disney+ Premium",
         "ESPN"
       ],
       "agenda_id": "",
-      "titulo": "MotoGP",
-      "torneo": "MotoGP",
+      "titulo": "Moto3",
+      "torneo": "Moto3",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Prácticas Libres",
-      "referencia": "G.P. Australia Libres • MotoGP",
-      "hora_utc": "2026-10-23T23:10:00Z",
-      "hora_local_producto": "18:10",
+      "subtitulo": "Phillip Island",
+      "referencia": "G.P. Australia Carrera • Moto3",
+      "hora_utc": "2026-10-25T00:00:00Z",
+      "hora_local_producto": "19:00",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
       "logo_local": "",
@@ -1417,14 +2554,14 @@
       "canales_candidatos": [
         "ESPN AR"
       ],
-      "texto_original_crudo": "20:10 MotoGP G.P. Australia (Phillip Island) Libres 2 MotoGP Videopass Disney+ Premium ESPN",
-      "titulo_original_crudo": "20:10 MotoGP G.P. Australia (Phillip Island) Libres 2 MotoGP Videopass Disney+ Premium ESPN",
-      "ronda": "Prácticas Libres",
+      "texto_original_crudo": "21:00 Moto3 G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "21:00 Moto3 G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Phillip Island",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_2_ar_cf8e54b0",
+      "id": "lineal_espn_2_ar_4724cddc",
       "canales_mencionados_fuente": [
         "Disney+ Premium",
         "FOX Sports 3",
@@ -1439,7 +2576,7 @@
       "equipo_visitante": "Tampa Bay Rays",
       "subtitulo": "MLB",
       "referencia": "MLB",
-      "hora_utc": "2026-10-24T00:00:00Z",
+      "hora_utc": "2026-10-25T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
@@ -1475,33 +2612,32 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_ar_9d5603d0",
+      "id": "lineal_win_sports_b74080a5",
       "canales_mencionados_fuente": [
-        "MotoGP Videopass",
-        "Disney+ Premium",
-        "ESPN"
+        "Win Play",
+        "Win Sports"
       ],
       "agenda_id": "",
-      "titulo": "Moto3",
-      "torneo": "Moto3",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Phillip Island",
-      "referencia": "G.P. Australia Carrera • Moto3",
-      "hora_utc": "2026-10-24T00:00:00Z",
+      "titulo": "Santos vs Bahia",
+      "torneo": "Santos vs Bahía",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Santos",
+      "equipo_visitante": "Bahia",
+      "subtitulo": "Fecha",
+      "referencia": "Fecha",
+      "hora_utc": "2026-10-25T00:00:00Z",
       "hora_local_producto": "19:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F128.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F118.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "futbolenvivo_ar"
+        "futbolenvivo_co"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -1509,79 +2645,37 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "ESPN FHD | AR",
-          "id_xtream": "712743",
-          "canal_lineal": "ESPN AR",
-          "pais": "AR"
+          "nombre": "WIN SPORTS FHD",
+          "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
         }
       ],
       "canales_candidatos": [
-        "ESPN AR"
+        "WIN SPORTS"
       ],
-      "texto_original_crudo": "21:00 Moto3 G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
-      "titulo_original_crudo": "21:00 Moto3 G.P. Australia (Phillip Island) Carrera MotoGP Videopass Disney+ Premium ESPN",
-      "ronda": "Phillip Island",
+      "texto_original_crudo": "19:00 Santos Bahía Win Play Win Sports",
+      "titulo_original_crudo": "19:00 Santos Bahía Win Play Win Sports",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_tnt_sports_cf08bdc1",
-      "canales_mencionados_fuente": [
-        "TNT Sports Premium",
-        "TNT Sports en HBO MAX (Suscripción Pack fútbol)"
-      ],
-      "agenda_id": "",
-      "titulo": "Tigre vs Atletico Tucuman",
-      "torneo": "Tigre vs Atlético Tucumán",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Tigre",
-      "equipo_visitante": "Atletico Tucuman",
-      "subtitulo": "Tigre vs Atlético Tucumán",
-      "referencia": "Liga Profesional Argentina",
-      "hora_utc": "2026-10-24T00:15:00Z",
-      "hora_local_producto": "19:15",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F452.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F455.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F128.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "TNT Sports Premium HD",
-          "id_xtream": "712753",
-          "canal_lineal": "TNT SPORTS",
-          "pais": "AR"
-        },
-        {
-          "nombre": "TNT Sports Premium",
-          "id_xtream": "712752",
-          "canal_lineal": "TNT SPORTS",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "TNT SPORTS"
-      ],
-      "texto_original_crudo": "21:15 Torneo Clausura Tigre Atlético Tucumán TNT Sports Premium TNT Sports en HBO MAX (Suscripción Pack fútbol)",
-      "titulo_original_crudo": "21:15 Torneo Clausura Tigre Atlético Tucumán TNT Sports Premium TNT Sports en HBO MAX (Suscripción Pack fútbol)",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_ar_5cedb30e",
+      "id": "lineal_espn_ar_293a99be",
       "canales_mencionados_fuente": [
         "MotoGP Videopass",
         "Disney+ Premium",
@@ -1596,7 +2690,7 @@
       "equipo_visitante": "",
       "subtitulo": "Phillip Island",
       "referencia": "G.P. Australia Carrera • Moto2",
-      "hora_utc": "2026-10-24T00:15:00Z",
+      "hora_utc": "2026-10-25T00:15:00Z",
       "hora_local_producto": "19:15",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
@@ -1631,18 +2725,67 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_3_ar_c05b5593",
+      "id": "lineal_espn_premium_argentina_9dcd196e",
+      "canales_mencionados_fuente": [
+        "ESPN Premium"
+      ],
+      "agenda_id": "",
+      "titulo": "Rosario Central vs Huracan",
+      "torneo": "Torneo Betano",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Rosario Central",
+      "equipo_visitante": "Huracan",
+      "subtitulo": "Torneo Betano",
+      "referencia": "Torneo Betano",
+      "hora_utc": "2026-10-25T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F437.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F445.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN Premium  | AR FHD",
+          "id_xtream": "712747",
+          "canal_lineal": "ESPN PREMIUM ARGENTINA",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN PREMIUM ARGENTINA"
+      ],
+      "texto_original_crudo": "21:30 Torneo Betano Torneo Clausura Rosario Central CA Huracán ESPN Premium",
+      "titulo_original_crudo": "21:30 Torneo Betano Torneo Clausura Rosario Central CA Huracán ESPN Premium",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_6aee1ca4",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
       "titulo": "Legacy Fighting Alliance",
       "torneo": "Legacy Fighting Alliance",
       "categoria": "Combate",
       "tipo_evento": "circuito",
-      "equipo_local": "LFA 244: Woodley",
-      "equipo_visitante": "Havener",
+      "equipo_local": "",
+      "equipo_visitante": "",
       "subtitulo": "Cartelera Principal",
       "referencia": "Legacy Fighting Alliance • ESPN Knockout",
-      "hora_utc": "2026-10-24T01:00:00Z",
+      "hora_utc": "2026-10-25T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 360,
       "logo_torneo": "",
@@ -1677,219 +2820,7 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_dsports_2_a1435442",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Racing de Chivilcoy vs. Boca Juniors",
-      "torneo": "Liga Nacional de Básquet",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Racing de Chivilcoy",
-      "equipo_visitante": "Boca Juniors",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
-      "hora_utc": "2026-10-24T01:05:00Z",
-      "hora_local_producto": "20:05",
-      "duracion_min": 145,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F7546.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbm7krb1775741582.png&w=400&output=webp",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "agy_lineales"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "DIRECTV SPORTS 2 AR",
-          "id_xtream": "69549",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "DSPORTS 2 ARG",
-          "id_xtream": "712757",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS 2"
-      ],
-      "texto_original_crudo": "Liga Nacional de Básquet: Racing de Chivilcoy vs Boca Juniors en vivo por DSports 2",
-      "titulo_original_crudo": "Liga Nacional de Básquet: Racing de Chivilcoy vs Boca Juniors en vivo por DSports 2",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_win_sports_a5766703",
-      "canales_mencionados_fuente": [
-        "Win Fútbol +",
-        "Win Play",
-        "Win Sports"
-      ],
-      "agenda_id": "",
-      "titulo": "Junior vs Águilas Doradas",
-      "torneo": "Junior vs Águilas Doradas Rionegro",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Junior",
-      "equipo_visitante": "Águilas Doradas",
-      "subtitulo": "Fecha Regular",
-      "referencia": "Fecha Regular",
-      "hora_utc": "2026-10-24T01:10:00Z",
-      "hora_local_producto": "20:10",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F239.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1135.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1144.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F239.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_co"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "WIN SPORTS FHD",
-          "id_xtream": "1331804",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
-        },
-        {
-          "nombre": "Win Sports HD",
-          "id_xtream": "13767",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
-        },
-        {
-          "nombre": "WIN SPORTS HD",
-          "id_xtream": "1331803",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
-        }
-      ],
-      "canales_candidatos": [
-        "WIN SPORTS"
-      ],
-      "texto_original_crudo": "20:10 Junior Águilas Doradas Rionegro Win Fútbol + Win Play Win Sports",
-      "titulo_original_crudo": "20:10 Junior Águilas Doradas Rionegro Win Fútbol + Win Play Win Sports",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_ar_f0f6d8e6",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Oklahoma City Thunder vs. Denver Nuggets",
-      "torneo": "NBA",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Oklahoma City Thunder",
-      "equipo_visitante": "Denver Nuggets",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-10-24T01:30:00Z",
-      "hora_local_producto": "20:30",
-      "duracion_min": 150,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F139.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F152.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mitv_espn_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN FHD | AR",
-          "id_xtream": "712743",
-          "canal_lineal": "ESPN AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN AR"
-      ],
-      "texto_original_crudo": "Denver Nuggets vs. Oklahoma City Thunder. Temporada regular, Paycom Center. Vive los partidos de la 81º temporada de la NBA, la competición norteamericana de baloncesto que reúne a los basquetbolistas más talentosos del mundo",
-      "titulo_original_crudo": "Denver Nuggets vs. Oklahoma City Thunder. Temporada regular, Paycom Center. Vive los partidos de la 81º temporada de la NBA, la competición norteamericana de baloncesto que reúne a los basquetbolistas más talentosos del mundo",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_ar_2222a2a0",
-      "canales_mencionados_fuente": [
-        "MotoGP Videopass",
-        "Disney+ Premium",
-        "ESPN"
-      ],
-      "agenda_id": "",
-      "titulo": "Moto3",
-      "torneo": "Moto3",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Phillip Island",
-      "referencia": "G.P. Australia Clasificación • Moto3",
-      "hora_utc": "2026-10-24T01:45:00Z",
-      "hora_local_producto": "20:45",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN FHD | AR",
-          "id_xtream": "712743",
-          "canal_lineal": "ESPN AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN AR"
-      ],
-      "texto_original_crudo": "22:45 Moto3 G.P. Australia (Phillip Island) Clasificación MotoGP Videopass Disney+ Premium ESPN",
-      "titulo_original_crudo": "22:45 Moto3 G.P. Australia (Phillip Island) Clasificación MotoGP Videopass Disney+ Premium ESPN",
-      "ronda": "Phillip Island",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_ar_998cf692",
+      "id": "lineal_espn_ar_019f7846",
       "canales_mencionados_fuente": [
         "MotoGP Videopass",
         "Disney+ Premium",
@@ -1904,7 +2835,7 @@
       "equipo_visitante": "",
       "subtitulo": "Phillip Island",
       "referencia": "G.P. Australia Carrera • MotoGP",
-      "hora_utc": "2026-10-24T02:00:00Z",
+      "hora_utc": "2026-10-25T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
@@ -1937,125 +2868,21 @@
       "ronda": "Phillip Island",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_ar_addd78f4",
-      "canales_mencionados_fuente": [
-        "MotoGP Videopass",
-        "Disney+ Premium",
-        "ESPN"
-      ],
-      "agenda_id": "",
-      "titulo": "Moto2",
-      "torneo": "Moto2",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Phillip Island",
-      "referencia": "G.P. Australia Clasificación • Moto2",
-      "hora_utc": "2026-10-24T02:40:00Z",
-      "hora_local_producto": "21:40",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ESPN FHD | AR",
-          "id_xtream": "712743",
-          "canal_lineal": "ESPN AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN AR"
-      ],
-      "texto_original_crudo": "23:40 Moto2 G.P. Australia (Phillip Island) Clasificación MotoGP Videopass Disney+ Premium ESPN",
-      "titulo_original_crudo": "23:40 Moto2 G.P. Australia (Phillip Island) Clasificación MotoGP Videopass Disney+ Premium ESPN",
-      "ronda": "Phillip Island",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_eurosport_1_42528721",
-      "canales_mencionados_fuente": [
-        "EUROSPORT 1"
-      ],
-      "agenda_id": "",
-      "titulo": "World Snooker Tour",
-      "torneo": "World Snooker Tour",
-      "categoria": "Snooker",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Cuartos de Final",
-      "referencia": "Abierto de Irlanda del Norte de Snooker - T2627 | Cuartos de Final (05:00 a 07:30 Eurosport) • T2627 | Cuartos de final",
-      "hora_utc": "2026-10-24T03:00:00Z",
-      "hora_local_producto": "22:00",
-      "duracion_min": 300,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "sincroguia_eurosport_1"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "EUROSPORT FHD",
-          "id_xtream": "327982",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        },
-        {
-          "nombre": "EUROSPORT 1 HD",
-          "id_xtream": "327938",
-          "canal_lineal": "EUROSPORT 1",
-          "pais": "ES"
-        }
-      ],
-      "canales_candidatos": [
-        "EUROSPORT 1"
-      ],
-      "texto_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Cuartos de final (05:00 a 07:30 EUROSPORT 1)",
-      "titulo_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Cuartos de final (05:00 a 07:30 EUROSPORT 1)",
-      "ronda": "Abierto de Irlanda del Norte de Snooker - T2627 | Cuartos de Final (05:00 a 07:30 Eurosport) • T2627 | Cuartos de final",
-      "auditado_agy": true,
-      "curado_integro": true
     }
   ],
   "metricas": {
-    "fecha_local_producto": "2026-10-23",
-    "total_agenda_maestra": 50,
+    "fecha_local_producto": "2026-10-24",
+    "total_agenda_maestra": 86,
     "total_canales_xtream": 1506,
     "xtream_procesada_hoy": false,
     "lista_xtream_actualizada_hoy": false,
-    "fixtures_api_sports_hoy": 958,
-    "eventos_lineales_inyectados": 37,
+    "fixtures_api_sports_hoy": 2854,
+    "eventos_lineales_inyectados": 67,
     "eventos_xtream_aprobados": 0,
-    "eventos_contrastados_api": 13,
-    "eventos_sellados_boveda_inmutable": 35,
-    "eventos_descartados_stale": 17,
-    "total_eventos_publicados": 38,
-    "hora_actualizacion_utc": "2026-10-24T03:16:43Z"
+    "eventos_contrastados_api": 27,
+    "eventos_sellados_boveda_inmutable": 50,
+    "eventos_descartados_stale": 9,
+    "total_eventos_publicados": 52,
+    "hora_actualizacion_utc": "2026-10-24T05:20:01Z"
   }
 }
