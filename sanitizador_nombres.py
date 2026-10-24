@@ -340,8 +340,8 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
 
     bloques_utiles = []
     for b in bloques:
-        b_clean = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?\s*(?:ET|PT|CT)?\s*', '', b, flags=re.I).strip(' -:.')
-        if b_clean and not re.match(r'^(?:[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?|\d{1,2})$', b_clean, re.I):
+        b_clean = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:[ap]\.?m\.?)?\s*(?:ET|PT|CT)?\s*', '', b, flags=re.I).strip(' -:.')
+        if b_clean and not re.match(r'^(?:[0-2]?[0-9][:.:][0-5][0-9]\s*(?:[ap]\.?m\.?)?|[ap]\.?m\.?|\d{1,2})$', b_clean, re.I):
             bloques_utiles.append(b_clean)
 
     GENERICOS_PREFIJO = {
@@ -384,7 +384,7 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
     if bloque_duelo:
         tipo = 'duelo'
         partes = re.split(patron_duelo, bloque_duelo, flags=re.I)
-        pre_local = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:AM|PM)?\s*', '', partes[0], flags=re.I).strip(' -:.')
+        pre_local = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:[ap]\.?m\.?)?\s*', '', partes[0], flags=re.I).strip(' -:.')
         local_raw, contexto_duelo = extraer_contexto_y_equipos(pre_local)
         visitante_raw = partes[1].strip(' -:.')
 

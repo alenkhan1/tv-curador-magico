@@ -304,7 +304,7 @@ RE_COMODINES = re.compile(
     r"(?:Movistar|DAZN|DISNEY|LALIGA|PREMIERE|TVS|EUROSPORT|ESPN|FOX|TUDN|GOL|DIRECTV|CANAL\s*\d+)",
     re.I
 )
-RE_HORA = re.compile(r"\b([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*(AM|PM)?\b", re.I)
+RE_HORA = re.compile(r"\b([0-1]?[0-9]|2[0-3]):([0-5][0-9])\s*([ap]\.?m\.?)?\b", re.I)
 
 def _duelo_coincide_con_fixtures(
     local_str: str,
@@ -498,7 +498,7 @@ def procesar_streams_eventos_xtream(
 
         h = int(m_h.group(1))
         mi = int(m_h.group(2))
-        ampm = (m_h.group(3) or "").upper()
+        ampm = (m_h.group(3) or "").replace(".", "").upper()
         if ampm == "PM" and h < 12:
             h += 12
         elif ampm == "AM" and h == 12:
