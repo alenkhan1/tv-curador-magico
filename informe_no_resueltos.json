@@ -4,11 +4,11 @@
     "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
     "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina."
   ],
-  "generado": "2026-10-29T10:44:47Z",
+  "generado": "2026-10-30T10:44:19Z",
   "resumen": {
-    "total": 690,
+    "total": 679,
     "por_motivo": {
-      "no_encontrado": 470,
+      "no_encontrado": 459,
       "pendiente": 159,
       "titulo_vacio": 61
     },
@@ -16,23 +16,23 @@
       "adulto": 19,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 258,
+      "no_encontrado": 252,
       "fallo_red": 96,
-      "clasificados": 37392,
-      "sin_identificar": 354
+      "clasificados": 37398,
+      "sin_identificar": 348
     },
     "series": {
       "adulto": 3,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 212,
+      "no_encontrado": 207,
       "fallo_red": 124,
-      "clasificados": 7959,
-      "sin_identificar": 336
+      "clasificados": 7962,
+      "sin_identificar": 331
     },
     "alerta": {
       "porcentaje_peliculas": 0.9,
-      "porcentaje_series": 4.1,
+      "porcentaje_series": 4.0,
       "umbral": 15.0,
       "supera_umbral": false
     }
@@ -40,7 +40,7 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 637,
+      "veces": 626,
       "ejemplos": [
         "Solo es una película (It's just a movie) (2025)",
         "Noticias en peligro (2026)",
@@ -418,15 +418,15 @@
   "etiquetas_mas_frecuentes": [
     {
       "etiqueta": "ENG",
-      "veces": 122
-    },
-    {
-      "etiqueta": "LAT",
       "veces": 119
     },
     {
+      "etiqueta": "LAT",
+      "veces": 117
+    },
+    {
       "etiqueta": "CAST",
-      "veces": 104
+      "veces": 103
     },
     {
       "etiqueta": "LINE",
@@ -452,11 +452,11 @@
   "carpetas_mas_frecuentes": [
     {
       "carpeta": "DOCUSERIES (CAST)",
-      "veces": 59
+      "veces": 58
     },
     {
       "carpeta": "SERIES ANIMADAS (LAT)",
-      "veces": 41
+      "veces": 40
     },
     {
       "carpeta": "SERIES RETRO (LAT)",
@@ -475,20 +475,20 @@
       "veces": 25
     },
     {
-      "carpeta": "DRAMA - (ENG)",
-      "veces": 23
-    },
-    {
       "carpeta": "DRAMA - (CAST)",
       "veces": 23
     },
     {
-      "carpeta": "ACCIÓN - (LAT)",
+      "carpeta": "DRAMA - (ENG)",
       "veces": 22
     },
     {
+      "carpeta": "ACCIÓN - (LAT)",
+      "veces": 21
+    },
+    {
       "carpeta": "DOCUMENTAL - (LAT)",
-      "veces": 19
+      "veces": 18
     },
     {
       "carpeta": "ACTION - (ENG)",
@@ -507,15 +507,11 @@
       "veces": 14
     },
     {
-      "carpeta": "COMEDY - (ENG)",
-      "veces": 12
-    },
-    {
       "carpeta": "COMEDIA - (CAST)",
       "veces": 12
     },
     {
-      "carpeta": "MOVIES 2025 - (ENG)",
+      "carpeta": "COMEDY - (ENG)",
       "veces": 11
     },
     {
@@ -535,6 +531,10 @@
       "veces": 10
     },
     {
+      "carpeta": "MOVIES 2025 - (ENG)",
+      "veces": 10
+    },
+    {
       "carpeta": "ANIMATION - (ENG)",
       "veces": 10
     },
@@ -547,8 +547,8 @@
       "veces": 9
     },
     {
-      "carpeta": "ATRESMEDIA (CAST)",
-      "veces": 9
+      "carpeta": "DOCUMENTARY - (ENG)",
+      "veces": 8
     }
   ],
   "items": [
@@ -970,40 +970,12 @@
       "copias": 36
     },
     {
-      "id": "1321446",
-      "tipo": "movie",
-      "nombre_original": "El asesino perfecto (LAT) (2022)",
-      "titulo_buscado": "El asesino perfecto",
-      "anio": 2022,
-      "motivo": "no_encontrado",
-      "carpeta": "ACCIÓN - (LAT)",
-      "etiquetas": [
-        "LAT"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "1321362",
       "tipo": "movie",
       "nombre_original": "Red privada: ¿quién mató a Manuel Buendía? (LAT) (2021)",
       "titulo_buscado": "Red privada: ¿quién mató a Manuel Buendía?",
       "anio": 2021,
       "motivo": "pendiente",
-      "carpeta": "DOCUMENTAL - (LAT)",
-      "etiquetas": [
-        "LAT"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "1321139",
-      "tipo": "movie",
-      "nombre_original": "Mirror Image (LAT) (2014)",
-      "titulo_buscado": "Mirror Image",
-      "anio": 2014,
-      "motivo": "no_encontrado",
       "carpeta": "DOCUMENTAL - (LAT)",
       "etiquetas": [
         "LAT"
@@ -2580,20 +2552,6 @@
       "copias": 1
     },
     {
-      "id": "1290109",
-      "tipo": "movie",
-      "nombre_original": "Dragon (ENG) (2025)",
-      "titulo_buscado": "Dragon",
-      "anio": 2025,
-      "motivo": "no_encontrado",
-      "carpeta": "MOVIES 2025 - (ENG)",
-      "etiquetas": [
-        "ENG"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "1290041",
       "tipo": "movie",
       "nombre_original": "Savi (ENG) (2024)",
@@ -3092,20 +3050,6 @@
       "anio": 2019,
       "motivo": "no_encontrado",
       "carpeta": "ROMANCE - (ENG)",
-      "etiquetas": [
-        "ENG"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "1279008",
-      "tipo": "movie",
-      "nombre_original": "Bala (ENG) (2019)",
-      "titulo_buscado": "Bala",
-      "anio": 2019,
-      "motivo": "no_encontrado",
-      "carpeta": "COMEDY - (ENG)",
       "etiquetas": [
         "ENG"
       ],
@@ -3626,20 +3570,6 @@
       "anio": 1999,
       "motivo": "no_encontrado",
       "carpeta": "ANIMATION - (ENG)",
-      "etiquetas": [
-        "ENG"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "1269174",
-      "tipo": "movie",
-      "nombre_original": "Secret (ENG) (1999)",
-      "titulo_buscado": "Secret",
-      "anio": 1999,
-      "motivo": "no_encontrado",
-      "carpeta": "DRAMA - (ENG)",
       "etiquetas": [
         "ENG"
       ],
@@ -4341,20 +4271,6 @@
       "anio": 2018,
       "motivo": "no_encontrado",
       "carpeta": "DRAMA - (CAST)",
-      "etiquetas": [
-        "CAST"
-      ],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "1220908",
-      "tipo": "movie",
-      "nombre_original": "Los 4 músicos de Bremen (CAST) (1989)",
-      "titulo_buscado": "Los 4 músicos de Bremen",
-      "anio": 1989,
-      "motivo": "no_encontrado",
-      "carpeta": "ANIMACIÓN - (CAST)",
       "etiquetas": [
         "CAST"
       ],
@@ -6799,18 +6715,6 @@
       "copias": 1
     },
     {
-      "id": "14206",
-      "tipo": "tv",
-      "nombre_original": "Crime Scene (2021)",
-      "titulo_buscado": "Crime Scene",
-      "anio": 2021,
-      "motivo": "no_encontrado",
-      "carpeta": "DOCUSERIES (CAST)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "14199",
       "tipo": "tv",
       "nombre_original": "Corte De Mangas A Wall Street La Saga GameStop (0)",
@@ -7009,18 +6913,6 @@
       "titulo_buscado": "Treinta y tres Dias",
       "anio": 0,
       "motivo": "pendiente",
-      "carpeta": "ATRESMEDIA (CAST)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "13566",
-      "tipo": "tv",
-      "nombre_original": "Secretos de familia (2024)",
-      "titulo_buscado": "Secretos de",
-      "anio": 2024,
-      "motivo": "no_encontrado",
       "carpeta": "ATRESMEDIA (CAST)",
       "etiquetas": [],
       "prefijo": "",
@@ -7648,18 +7540,6 @@
       "anio": 1990,
       "motivo": "no_encontrado",
       "carpeta": "SERIES ANIMADAS (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "3844",
-      "tipo": "tv",
-      "nombre_original": "Avenida Brasil (2012)",
-      "titulo_buscado": "Avenida Brasil",
-      "anio": 2012,
-      "motivo": "no_encontrado",
-      "carpeta": "NOVELAS (LAT)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -8423,18 +8303,6 @@
       "copias": 1
     },
     {
-      "id": "4349",
-      "tipo": "tv",
-      "nombre_original": "The Porky Pig Show (1964)",
-      "titulo_buscado": "The Porky Pig Show",
-      "anio": 1964,
-      "motivo": "no_encontrado",
-      "carpeta": "SERIES ANIMADAS (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
       "id": "4331",
       "tipo": "tv",
       "nombre_original": "Efecto Mariposa (2018)",
@@ -9042,18 +8910,6 @@
       "anio": 0,
       "motivo": "no_encontrado",
       "carpeta": "OTRAS PLATAFORMAS (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "601",
-      "tipo": "tv",
-      "nombre_original": "Eldorado (1992)",
-      "titulo_buscado": "Eldorado",
-      "anio": 1992,
-      "motivo": "no_encontrado",
-      "carpeta": "BBC (LAT)",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
