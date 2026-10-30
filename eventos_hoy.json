@@ -1,15 +1,77 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-10-29T22:21:46Z",
+  "generado_utc": "2026-10-30T03:22:50Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-10-29",
   "base_media": "http://avefenixtv.com:8080",
   "eventos": [
     {
+      "id": "lineal_espn_ar_d120d1a9",
+      "canales_mencionados_fuente": [
+        "MotoGP Videopass",
+        "Disney+ Premium",
+        "ESPN"
+      ],
+      "agenda_id": "",
+      "titulo": "MotoGP",
+      "torneo": "MotoGP",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Sepang International Circuit - Entrenamientos Libres",
+      "referencia": "G.P. Malasia Libres • MotoGP",
+      "hora_utc": "2026-10-29T07:00:00Z",
+      "hora_local_producto": "02:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 1 FHD | ARG",
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 1 HD | AR",
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "04:00 MotoGP G.P. Malasia (Sepang) Libres MotoGP Videopass Disney+ Premium ESPN",
+      "titulo_original_crudo": "04:00 MotoGP G.P. Malasia (Sepang) Libres MotoGP Videopass Disney+ Premium ESPN",
+      "ronda": "Sepang International Circuit - Entrenamientos Libres",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_09893b94",
       "agenda_id": "",
-      "titulo": "HotelPlanner Tour Grand Final",
-      "torneo": "HotelPlanner Tour Grand Final",
+      "titulo": "Challenge Tour",
+      "torneo": "Challenge Tour",
       "categoria": "Golf",
       "tipo_evento": "circuito",
       "equipo_local": "",
@@ -42,6 +104,57 @@
       "titulo_original_crudo": "06:00 ◘ HotelPlanner Tour Grand Final (Primera Ronda) ◘ DP World Tour ◘◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
       "ronda": "Primera Ronda",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_a6d175d7",
+      "agenda_id": "",
+      "titulo": "Premier Padel",
+      "torneo": "Premier Padel",
+      "categoria": "Pádel",
+      "tipo_evento": "circuito",
+      "equipo_local": "Kuwait Major",
+      "equipo_visitante": "Centre Court (Quarter-finals)",
+      "subtitulo": "Cuartos de Final",
+      "referencia": "Premier Padel",
+      "hora_utc": "2026-10-29T11:00:00Z",
+      "hora_local_producto": "06:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "06:00 ◘ Kuwait Major - Centre Court (Quarter-finals) ◘ Premier Padel ◘◘",
+          "id_xtream": "1734410"
+        },
+        {
+          "nombre": "06:00 ◘ Kuwait Major - Secondary Court (Quarter-finals) ◘ Premier Padel ◘◘",
+          "id_xtream": "1734411"
+        },
+        {
+          "nombre": "06:00 | Kuwait Major - Secondary Court (Cuartos de Final) | Premier Padel",
+          "id_xtream": "1734500"
+        },
+        {
+          "nombre": "06:00 | Kuwait Major - Centre Court (Cuartos de Final) | Premier Padel",
+          "id_xtream": "1734501"
+        }
+      ],
+      "texto_original_crudo": "06:00 ◘ Kuwait Major - Centre Court (Quarter-finals) ◘ Premier Padel ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "titulo_original_crudo": "06:00 ◘ Kuwait Major - Centre Court (Quarter-finals) ◘ Premier Padel ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "ronda": "Cuartos de Final",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_f086e576",
@@ -86,18 +199,18 @@
       "auditado_agy": true
     },
     {
-      "id": "xtream_4e47642c",
+      "id": "xtream_897bfbc2",
       "agenda_id": "",
       "titulo": "ATP 500 Swiss Indoors Basel",
       "torneo": "ATP 500 Swiss Indoors Basel",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
-      "equipo_local": "Swiss Indoors Basel",
-      "equipo_visitante": "Center Court",
-      "subtitulo": "Center Court",
-      "referencia": "ATP",
-      "hora_utc": "2026-10-29T11:00:00Z",
-      "hora_local_producto": "06:00",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "IWB Court",
+      "referencia": "07:00 ◘ Swiss Indoors Basel / IWB Court ◘ ATP ◘◘ ✮ [ T e N I S / P a D e L ] ✮ • IWB Court",
+      "hora_utc": "2026-10-29T12:00:00Z",
+      "hora_local_producto": "07:00",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
       "logo_local": "",
@@ -114,33 +227,29 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "06:00 | Swiss Indoors Basel - Center Court | ATP",
-          "id_xtream": "1734498"
-        },
-        {
-          "nombre": "07:00 | Swiss Indoors Basel - IWB Court 1 | ATP",
-          "id_xtream": "1734503"
+          "nombre": "07:00 ◘ Swiss Indoors Basel / IWB Court 1 ◘ ATP ◘◘",
+          "id_xtream": "1734416"
         }
       ],
-      "texto_original_crudo": "06:00 | Swiss Indoors Basel - Center Court | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "titulo_original_crudo": "06:00 | Swiss Indoors Basel - Center Court | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "ronda": "Center Court",
+      "texto_original_crudo": "07:00 ◘ Swiss Indoors Basel / IWB Court 1 ◘ ATP ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "titulo_original_crudo": "07:00 ◘ Swiss Indoors Basel / IWB Court 1 ◘ ATP ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "ronda": "IWB Court",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "xtream_6ee02d5e",
+      "id": "xtream_62ec1257",
       "agenda_id": "",
-      "titulo": "ATP 500 Viena (Erste Bank Open)",
-      "torneo": "ATP 500 Viena (Erste Bank Open)",
+      "titulo": "ATP 500 Erste Bank Open",
+      "torneo": "ATP 500 Erste Bank Open",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
-      "equipo_local": "Erste Bank Open",
-      "equipo_visitante": "Glaubandich Court",
-      "subtitulo": "Glaubandich Court",
-      "referencia": "ATP",
-      "hora_utc": "2026-10-29T11:30:00Z",
-      "hora_local_producto": "06:30",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Segunda Ronda",
+      "referencia": "Erste Bank Open",
+      "hora_utc": "2026-10-29T12:30:00Z",
+      "hora_local_producto": "07:30",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
       "logo_local": "",
@@ -157,17 +266,21 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "06:30 | Erste Bank Open - glaubandich Court | ATP",
-          "id_xtream": "1734502"
+          "nombre": "07:30 ◘ Erste Bank Open ◘ ATP ◘◘",
+          "id_xtream": "1734417"
         },
         {
-          "nombre": "08:00 | Erste Bank Open - Fairplay Court (Doubles) | ATP",
-          "id_xtream": "1734505"
+          "nombre": "08:00 ◘ Erste Bank Open / Fairplay Court (Doubles) ◘ ATP ◘◘",
+          "id_xtream": "1734418"
+        },
+        {
+          "nombre": "07:30 | Erste Bank Open (Segunda Ronda) | ATP",
+          "id_xtream": "1734504"
         }
       ],
-      "texto_original_crudo": "06:30 | Erste Bank Open - glaubandich Court | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "titulo_original_crudo": "06:30 | Erste Bank Open - glaubandich Court | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "ronda": "Glaubandich Court",
+      "texto_original_crudo": "07:30 ◘ Erste Bank Open ◘ ATP ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "titulo_original_crudo": "07:30 ◘ Erste Bank Open ◘ ATP ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "ronda": "Segunda Ronda",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -1010,12 +1123,12 @@
     {
       "id": "xtream_b2347d29",
       "agenda_id": "",
-      "titulo": "Al Riyadh vs. al Qadsiah",
+      "titulo": "Al-Riyadh vs. Al-Qadsiah",
       "torneo": "Saudi Pro League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Al Riyadh",
-      "equipo_visitante": "al Qadsiah",
+      "equipo_local": "Al-Riyadh",
+      "equipo_visitante": "Al-Qadsiah",
       "subtitulo": "Saudi Pro League",
       "referencia": "Saudi Pro League",
       "hora_utc": "2026-10-29T18:00:00Z",
@@ -1044,6 +1157,64 @@
       "titulo_original_crudo": "13:00 | Riyadh vs. Al Qadsiah | Saudi Pro League ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "lineal_dazn_f1_7a44a2cf",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Autódromo Hermanos Rodríguez",
+      "referencia": "Libres • Fórmula 1",
+      "hora_utc": "2026-10-29T18:30:00Z",
+      "hora_local_producto": "13:30",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DAZN F1 FHD",
+          "id_xtream": "155619",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 4K",
+          "id_xtream": "147267",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 HD",
+          "id_xtream": "155616",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "DAZN F1"
+      ],
+      "texto_original_crudo": "G.P. México (Ciudad de México) - Libres 1",
+      "titulo_original_crudo": "G.P. México (Ciudad de México) - Libres 1",
+      "ronda": "Autódromo Hermanos Rodríguez",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_dsports_2_241d95f4",
@@ -1175,6 +1346,96 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_plus_6f35e83d",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Estrella Roja vs. Bayern Munich",
+      "torneo": "EuroLeague",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Estrella Roja",
+      "equipo_visitante": "Bayern Munich",
+      "subtitulo": "Fase Regular",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-10-29T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/euroleague.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F01ogkh1716960412.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/euroleague.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS+",
+          "id_xtream": "592039",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS +1 AR",
+          "id_xtream": "722195",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS +"
+      ],
+      "texto_original_crudo": "Estrella Roja vs. Bayern Munich - Euroliga En Vivo por DSports+",
+      "titulo_original_crudo": "Estrella Roja vs. Bayern Munich - Euroliga En Vivo por DSports+",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_1d17cab9",
+      "agenda_id": "",
+      "titulo": "Toledo vs. Ohio",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Toledo",
+      "equipo_visitante": "Ohio",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "NCAA Women's Soccer",
+      "hora_utc": "2026-10-29T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9908.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuggxw21564336498.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Toledo vs. Ohio ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "1734432"
+        }
+      ],
+      "texto_original_crudo": "14:00 ◘ Toledo vs. Ohio ◘ NCAA Women's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "titulo_original_crudo": "14:00 ◘ Toledo vs. Ohio ◘ NCAA Women's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_1cfdf2c2",
       "agenda_id": "",
       "titulo": "Western Michigan vs. Massachusetts",
@@ -1183,8 +1444,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Western Michigan",
       "equipo_visitante": "Massachusetts",
-      "subtitulo": "NCAA Women's Soccer",
-      "referencia": "NCAA Women's Soccer",
+      "subtitulo": "Temporada Regular",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-29T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 125,
@@ -1362,6 +1623,49 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_00de5b42",
+      "agenda_id": "",
+      "titulo": "HB Køge vs. Barcelona",
+      "torneo": "UEFA Women's Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "HB Køge",
+      "equipo_visitante": "Barcelona",
+      "subtitulo": "Fase de Liga",
+      "referencia": "Fase de Liga",
+      "hora_utc": "2026-10-29T19:45:00Z",
+      "hora_local_producto": "14:45",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2063.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7885.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:45 ◘ HB Koge Women vs. Barcelona ◘ UEFA Women's Champions League ◘◘",
+          "id_xtream": "1734438"
+        },
+        {
+          "nombre": "14:45 | HB Koge Women vs. Barcelona | UEFA Women's Champions League",
+          "id_xtream": "1734522"
+        }
+      ],
+      "texto_original_crudo": "14:45 ◘ HB Koge Women vs. Barcelona ◘ UEFA Women's Champions League ◘◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "titulo_original_crudo": "14:45 ◘ HB Koge Women vs. Barcelona ◘ UEFA Women's Champions League ◘◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1786,41 +2090,60 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_87117b18",
+      "id": "lineal_dazn_f1_4bcabe0c",
+      "canales_mencionados_fuente": [],
       "agenda_id": "",
-      "titulo": "World Short Track Championship",
-      "torneo": "World Short Track Championship",
+      "titulo": "Fórmula 1",
+      "torneo": "Fórmula 1",
       "categoria": "Motor",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "The Dirt Track at Charlotte",
-      "referencia": "The Dirt Track at Charlotte",
-      "hora_utc": "2026-10-29T21:00:00Z",
-      "hora_local_producto": "16:00",
+      "subtitulo": "Entrenamientos Libres",
+      "referencia": "Libres • Fórmula 1",
+      "hora_utc": "2026-10-29T22:00:00Z",
+      "hora_local_producto": "17:00",
       "duracion_min": 240,
-      "logo_torneo": "",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "logo_local": "",
       "logo_visitante": "",
-      "banner": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
       "tier": 2,
-      "origen": "xtream_evento",
+      "origen": "inyector_lineal",
       "origenes": [
-        "xtream_evento"
+        "inyector_lineal",
+        "futbolenlatv_dazn_f1"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "DIRTVISION 01 | The Dirt Track at Charlotte | 5:00 PM ET | 10.29",
-          "id_xtream": "1734568"
+          "nombre": "DAZN F1 FHD",
+          "id_xtream": "155619",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 4K",
+          "id_xtream": "147267",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "DAZN F1 HD",
+          "id_xtream": "155616",
+          "canal_lineal": "DAZN F1",
+          "pais": "ES"
         }
       ],
-      "texto_original_crudo": "DIRTVISION 01 | The Dirt Track at Charlotte | 5:00 PM ET | 10.29 MOTOR - EVENT -",
-      "titulo_original_crudo": "DIRTVISION 01 | The Dirt Track at Charlotte | 5:00 PM ET | 10.29 MOTOR - EVENT -",
-      "ronda": "The Dirt Track at Charlotte",
+      "canales_candidatos": [
+        "DAZN F1"
+      ],
+      "texto_original_crudo": "G.P. México (Ciudad de México) - Libres 2",
+      "titulo_original_crudo": "G.P. México (Ciudad de México) - Libres 2",
+      "ronda": "Entrenamientos Libres",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -1833,8 +2156,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Notre Dame",
       "equipo_visitante": "California",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
+      "subtitulo": "Temporada Regular",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-29T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 125,
@@ -1871,8 +2194,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Kent State",
       "equipo_visitante": "Buffalo",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
+      "subtitulo": "Temporada Regular",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-10-29T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 125,
@@ -1899,6 +2222,84 @@
       "titulo_original_crudo": "17:00 ◘ Kent State vs. Buffalo ◘ NCAA Women's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_b9e410dc",
+      "agenda_id": "",
+      "titulo": "Atlético Mineiro vs. Cruzeiro",
+      "torneo": "Brasileirão Série a",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atlético Mineiro",
+      "equipo_visitante": "Cruzeiro",
+      "subtitulo": "Jornada",
+      "referencia": "Jornada",
+      "hora_utc": "2026-10-29T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx5lixs1743742872.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F135.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:30 ◘ Atlético Mineiro vs. Cruzeiro ◘ Brasileirão ◘",
+          "id_xtream": "1734448"
+        }
+      ],
+      "texto_original_crudo": "17:30 ◘ Atlético Mineiro vs. Cruzeiro ◘ Brasileirão ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "titulo_original_crudo": "17:30 ◘ Atlético Mineiro vs. Cruzeiro ◘ Brasileirão ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_dd8a680f",
+      "agenda_id": "",
+      "titulo": "Eastern Michigan vs. Akron",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Eastern Michigan",
+      "equipo_visitante": "Akron",
+      "subtitulo": "Fútbol Femenino Universitario",
+      "referencia": "Fútbol Femenino Universitario",
+      "hora_utc": "2026-10-29T22:30:00Z",
+      "hora_local_producto": "17:30",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7a4tj21564335825.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F6786.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:30 ◘ Eastern Michigan vs. Akron ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "1734450"
+        }
+      ],
+      "texto_original_crudo": "17:30 ◘ Eastern Michigan vs. Akron ◘ NCAA Women's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "titulo_original_crudo": "17:30 ◘ Eastern Michigan vs. Akron ◘ NCAA Women's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_win_sports_ae805942",
@@ -2149,6 +2550,193 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_1_edcc972e",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 1"
+      ],
+      "agenda_id": "",
+      "titulo": "World Snooker Tour - Northern Ireland Open",
+      "torneo": "World Snooker Tour - Northern Ireland Open",
+      "categoria": "Snooker",
+      "tipo_evento": "circuito",
+      "equipo_local": "Kyren Wilson",
+      "equipo_visitante": "Jak Jones",
+      "subtitulo": "Abierto de Irlanda del Norte",
+      "referencia": "T2627 | Kyren Wilson vs Jak Jones",
+      "hora_utc": "2026-10-29T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "sincroguia_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Kyren Wilson vs Jak Jones (00:00 a 02:00 EUROSPORT 1)",
+      "titulo_original_crudo": "Abierto de Irlanda del Norte de snooker - T2627 | Kyren Wilson vs Jak Jones (00:00 a 02:00 EUROSPORT 1)",
+      "ronda": "Abierto de Irlanda del Norte",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_7e671e43",
+      "agenda_id": "",
+      "titulo": "Coastal Carolina vs. West Virginia",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Coastal Carolina",
+      "equipo_visitante": "West Virginia",
+      "subtitulo": "Fútbol Masculino Universitario",
+      "referencia": "Fútbol Masculino Universitario",
+      "hora_utc": "2026-10-29T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fp3jizw1564335745.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fyyn0wz1564337133.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Coastal Carolina vs. #13 West Virginia ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1734453"
+        }
+      ],
+      "texto_original_crudo": "18:00 ◘ Coastal Carolina vs. #13 West Virginia ◘ NCAA Men's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "titulo_original_crudo": "18:00 ◘ Coastal Carolina vs. #13 West Virginia ◘ NCAA Men's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_b9585a6d",
+      "agenda_id": "",
+      "titulo": "Georgia State vs. UCF",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Georgia State",
+      "equipo_visitante": "UCF",
+      "subtitulo": "Fútbol Masculino Universitario",
+      "referencia": "Fútbol Masculino Universitario",
+      "hora_utc": "2026-10-29T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4ym7d91564335942.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv3nqtc1564336904.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Georgia State vs. UCF ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1734454"
+        }
+      ],
+      "texto_original_crudo": "18:00 ◘ Georgia State vs. UCF ◘ NCAA Men's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "titulo_original_crudo": "18:00 ◘ Georgia State vs. UCF ◘ NCAA Men's Soccer ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_4_d86cb2f4",
+      "canales_mencionados_fuente": [
+        "ESPN 4",
+        "Disney+ Premium"
+      ],
+      "agenda_id": "",
+      "titulo": "Club Newman vs. Alumni",
+      "torneo": "Urba Top",
+      "categoria": "Rugby",
+      "tipo_evento": "duelo",
+      "equipo_local": "Club Newman",
+      "equipo_visitante": "Alumni",
+      "subtitulo": "Urba Top",
+      "referencia": "Urba Top",
+      "hora_utc": "2026-10-29T23:10:00Z",
+      "hora_local_producto": "18:10",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F16.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxbj8tq1641651801.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fteams%2F1.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Frugby%2Fleagues%2F16.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ESPN 4 HD | AR",
+          "id_xtream": "712746",
+          "canal_lineal": "ESPN 4",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 4 | SUR",
+          "id_xtream": "591990",
+          "canal_lineal": "ESPN 4",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 4"
+      ],
+      "texto_original_crudo": "20:10 URBA Top 14 Club Newman Alumni ESPN 4 Disney+ Premium",
+      "titulo_original_crudo": "20:10 URBA Top 14 Club Newman Alumni ESPN 4 Disney+ Premium",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_win_sports_69772672",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
@@ -2209,45 +2797,6 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_7476f374",
-      "agenda_id": "",
-      "titulo": "Trophy Cup",
-      "torneo": "Trophy Cup",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Tulare Thunderbowl Raceway",
-      "referencia": "Trophy Cup at Tulare",
-      "hora_utc": "2026-10-29T23:15:00Z",
-      "hora_local_producto": "18:15",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "FloRacing 01 | Trophy Cup at Tulare | 7:15 PM ET | 10.29",
-          "id_xtream": "1734569"
-        }
-      ],
-      "texto_original_crudo": "FloRacing 01 | Trophy Cup at Tulare | 7:15 PM ET | 10.29 MOTOR - EVENT -",
-      "titulo_original_crudo": "FloRacing 01 | Trophy Cup at Tulare | 7:15 PM ET | 10.29 MOTOR - EVENT -",
-      "ronda": "Tulare Thunderbowl Raceway",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -2441,6 +2990,99 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_881fa107",
+      "agenda_id": "",
+      "titulo": "Tigres del Licey vs. Estrellas Orientales",
+      "torneo": "Lidom",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tigres del Licey",
+      "equipo_visitante": "Estrellas Orientales",
+      "subtitulo": "Temporada Regular",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-10-29T23:30:00Z",
+      "hora_local_producto": "18:30",
+      "duracion_min": 240,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx6mzk41615832215.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F148.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:30 ◘ Tigres de Licey vs. Estrellas Orientales ◘ LIDOM ◘",
+          "id_xtream": "1734464"
+        }
+      ],
+      "texto_original_crudo": "18:30 ◘ Tigres de Licey vs. Estrellas Orientales ◘ LIDOM ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "titulo_original_crudo": "18:30 ◘ Tigres de Licey vs. Estrellas Orientales ◘ LIDOM ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_eurosport_1_f67aa058",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 1"
+      ],
+      "agenda_id": "",
+      "titulo": "ISU Grand Prix of Figure Skating",
+      "torneo": "ISU Grand Prix of Figure Skating",
+      "categoria": "Patinaje",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Skate Canada",
+      "referencia": "T2026 | Programa libre M",
+      "hora_utc": "2026-10-29T23:45:00Z",
+      "hora_local_producto": "18:45",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "sincroguia_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Skate Canada - Grand Prix ISU - T2026 | Programa libre M (00:45 a 01:45 EUROSPORT 1)",
+      "titulo_original_crudo": "Skate Canada - Grand Prix ISU - T2026 | Programa libre M (00:45 a 01:45 EUROSPORT 1)",
+      "ronda": "Skate Canada",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -2768,6 +3410,12 @@
         {
           "nombre": "03 | 18:00 | TNF Next Gen Stats: Panthers vs. Packers | NFL",
           "id_xtream": "1734539"
+        },
+        {
+          "nombre": "ESPN 5 SUR",
+          "id_xtream": "591993",
+          "canal_lineal": "ESPN 5",
+          "pais": "AR"
         }
       ],
       "texto_original_crudo": "19:00 ◘ Carolina Panthers vs. Green Bay Packers ◘ NFL ◘◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
@@ -2866,6 +3514,84 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_4d4805fa",
+      "agenda_id": "",
+      "titulo": "Loyola New Orleans vs. LSU",
+      "torneo": "NCAA Women's Basketball",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Loyola New Orleans",
+      "equipo_visitante": "LSU",
+      "subtitulo": "Partido de Exhibición",
+      "referencia": "Partido de Exhibición",
+      "hora_utc": "2026-10-30T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F15.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjcj91i1564336177.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Loyola New Orleans vs. LSU (Exhibition) ◘ NCAA Women's Basketball ◘◘",
+          "id_xtream": "1734471"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Loyola New Orleans vs. LSU (Exhibition) ◘ NCAA Women's Basketball ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "titulo_original_crudo": "19:00 ◘ Loyola New Orleans vs. LSU (Exhibition) ◘ NCAA Women's Basketball ◘◘ ★ ★ ★   N C A A   E V E N T O S   ★ ★ ★",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_47c160c6",
+      "agenda_id": "",
+      "titulo": "Universidad Católica vs. LDU Quito",
+      "torneo": "Copa Ecuador",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Universidad Católica",
+      "equipo_visitante": "LDU Quito",
+      "subtitulo": "Semifinales",
+      "referencia": "Semifinales",
+      "hora_utc": "2026-10-30T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1157.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F28426.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Universidad Católica vs. LDU Quito ◘ Copa Ecuador ◘",
+          "id_xtream": "1734473"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Universidad Católica vs. LDU Quito ◘ Copa Ecuador ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "titulo_original_crudo": "19:00 ◘ Universidad Católica vs. LDU Quito ◘ Copa Ecuador ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_f2bcbcf8",
       "agenda_id": "",
       "titulo": "FBC Melgar vs Comerciantes Unidos",
@@ -2909,13 +3635,13 @@
       "id": "xtream_6ef47b82",
       "agenda_id": "",
       "titulo": "Grêmio vs. Athletico-PR",
-      "torneo": "Brasileirão Série a",
+      "torneo": "Brasileirão",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Grêmio",
       "equipo_visitante": "Athletico-PR",
-      "subtitulo": "Jornada de Liga",
-      "referencia": "Jornada de Liga",
+      "subtitulo": "Brasileirão",
+      "referencia": "Brasileirão",
       "hora_utc": "2026-10-30T00:30:00Z",
       "hora_local_producto": "19:30",
       "duracion_min": 130,
@@ -2942,6 +3668,45 @@
       "titulo_original_crudo": "19:30 ◘ Grêmio vs. Athletico-PR ◘ Brasileirão ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_af34a2cb",
+      "agenda_id": "",
+      "titulo": "MotoGP",
+      "torneo": "MotoGP",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "GP Malasia",
+      "equipo_visitante": "Free Practice",
+      "subtitulo": "Sepang International Circuit",
+      "referencia": "MotoGP",
+      "hora_utc": "2026-10-30T00:55:00Z",
+      "hora_local_producto": "19:55",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:55 ◘ GP Malasia - Free Practice 1 ◘ MotoGP ◘◘",
+          "id_xtream": "1734478"
+        }
+      ],
+      "texto_original_crudo": "19:55 ◘ GP Malasia - Free Practice 1 ◘ MotoGP ◘◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "titulo_original_crudo": "19:55 ◘ GP Malasia - Free Practice 1 ◘ MotoGP ◘◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "ronda": "Sepang International Circuit",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_tyc_sports_804b3644",
@@ -3049,7 +3814,7 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Segunda Ronda, Te Arai Links",
+      "subtitulo": "Segunda Ronda - Te Arai Links",
       "referencia": "Asia-Pacific Amateur Championship",
       "hora_utc": "2026-10-30T01:00:00Z",
       "hora_local_producto": "20:00",
@@ -3093,7 +3858,7 @@
       ],
       "texto_original_crudo": "Segunda ronda, Te Arai Links, Tomarata, New Zealand. Asia-Pacific Amateur Championship. Disfruta del Campeonato Amateur de Asia-Pacífico 2026. El torneo reúne a los mejores golfistas aficionados masculinos de la región Asia-Pacífico, que representan a las 43 organizaciones afiliadas a la Confederación de Golf de Asia-Pacífico",
       "titulo_original_crudo": "Segunda ronda, Te Arai Links, Tomarata, New Zealand. Asia-Pacific Amateur Championship. Disfruta del Campeonato Amateur de Asia-Pacífico 2026. El torneo reúne a los mejores golfistas aficionados masculinos de la región Asia-Pacífico, que representan a las 43 organizaciones afiliadas a la Confederación de Golf de Asia-Pacífico",
-      "ronda": "Segunda Ronda, Te Arai Links",
+      "ronda": "Segunda Ronda - Te Arai Links",
       "auditado_agy": true
     },
     {
@@ -3136,16 +3901,55 @@
       "ronda": ""
     },
     {
-      "id": "xtream_7a67cde8",
+      "id": "xtream_36869d57",
       "agenda_id": "",
-      "titulo": "WTA 500 Tokio (Toray Pan Pacific Open)",
-      "torneo": "WTA 500 Tokio (Toray Pan Pacific Open)",
+      "titulo": "Charros de Jalisco vs. Cañeros de los Mochis",
+      "torneo": "Liga Mexicana del Pacífico",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Charros de Jalisco",
+      "equipo_visitante": "Cañeros de los Mochis",
+      "subtitulo": "Liga Mexicana del Pacífico",
+      "referencia": "Liga Mexicana del Pacífico",
+      "hora_utc": "2026-10-30T01:30:00Z",
+      "hora_local_producto": "20:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fn9lywa1740582358.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fk3igm01637689092.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:30 ◘ Charros vs. Cañeros de los Mochis ◘ Liga Mexicana del Pacífico ◘",
+          "id_xtream": "1734481"
+        }
+      ],
+      "texto_original_crudo": "20:30 ◘ Charros vs. Cañeros de los Mochis ◘ Liga Mexicana del Pacífico ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "titulo_original_crudo": "20:30 ◘ Charros vs. Cañeros de los Mochis ◘ Liga Mexicana del Pacífico ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_c295328b",
+      "agenda_id": "",
+      "titulo": "WTA 500 Tokio",
+      "torneo": "WTA 500 Tokio",
       "categoria": "Tenis",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Cuartos de Final",
-      "referencia": "Toray Pan Pacific Open Tennis (Cuartos de Final)",
+      "subtitulo": "Tokio, Japón",
+      "referencia": "Toray Pan Pacific Open Tennis (Quarterfinals)",
       "hora_utc": "2026-10-30T01:30:00Z",
       "hora_local_producto": "20:30",
       "duracion_min": 240,
@@ -3164,13 +3968,13 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "20:30 | Toray Pan Pacific Open Tennis (Cuartos de Final) | WTA",
-          "id_xtream": "1734529"
+          "nombre": "20:30 ◘ Toray Pan Pacific Open Tennis (Quarterfinals) ◘ WTA ◘◘",
+          "id_xtream": "1734483"
         }
       ],
-      "texto_original_crudo": "20:30 | Toray Pan Pacific Open Tennis (Cuartos de Final) | WTA ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "titulo_original_crudo": "20:30 | Toray Pan Pacific Open Tennis (Cuartos de Final) | WTA ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "ronda": "Toray Pan Pacific Open Tennis (Cuartos de Final)",
+      "texto_original_crudo": "20:30 ◘ Toray Pan Pacific Open Tennis (Quarterfinals) ◘ WTA ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "titulo_original_crudo": "20:30 ◘ Toray Pan Pacific Open Tennis (Quarterfinals) ◘ WTA ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "ronda": "Toray Pan Pacific Open Tennis (Quarterfinals)",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -3407,8 +4211,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "NC State",
       "equipo_visitante": "Stanford",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "NCAA Women's Soccer",
       "hora_utc": "2026-10-30T02:00:00Z",
       "hora_local_producto": "21:00",
       "duracion_min": 125,
@@ -3474,6 +4278,45 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_d62408d6",
+      "agenda_id": "",
+      "titulo": "Yaquis de Ciudad Obregón vs. Tomateros de Culiacán",
+      "torneo": "Liga Mexicana del Pacífico",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Yaquis de Ciudad Obregón",
+      "equipo_visitante": "Tomateros de Culiacán",
+      "subtitulo": "Liga Mexicana del Pacífico",
+      "referencia": "Liga Mexicana del Pacífico",
+      "hora_utc": "2026-10-30T02:10:00Z",
+      "hora_local_producto": "21:10",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F307.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flfm7zk1637689117.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:10 ◘ Yaquis De Ciudad Obregón vs. Tomateros De Culiacan ◘ Liga Mexicana del Pacífico ◘",
+          "id_xtream": "1734491"
+        }
+      ],
+      "texto_original_crudo": "21:10 ◘ Yaquis De Ciudad Obregón vs. Tomateros De Culiacan ◘ Liga Mexicana del Pacífico ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "titulo_original_crudo": "21:10 ◘ Yaquis De Ciudad Obregón vs. Tomateros De Culiacan ◘ Liga Mexicana del Pacífico ◘ ✨   E V E N T O S   D I A R I O S   29/10   ✨",
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -3597,6 +4440,60 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_eurosport_1_099c20e8",
+      "canales_mencionados_fuente": [
+        "EUROSPORT 1"
+      ],
+      "agenda_id": "",
+      "titulo": "Ifsc Climbing World Cup",
+      "torneo": "Ifsc Climbing World Cup",
+      "categoria": "Escalada",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Velocidad - Final Relevo Mixto",
+      "referencia": "T2026 | Velocidad - Final relevo mixto",
+      "hora_utc": "2026-10-30T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "sincroguia_eurosport_1"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "EUROSPORT FHD",
+          "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "EUROSPORT 1"
+      ],
+      "texto_original_crudo": "Copa del mundo de escalada - Chongqing - T2026 | Velocidad - Final relevo mixto (03:30 a 04:30 EUROSPORT 1)",
+      "titulo_original_crudo": "Copa del mundo de escalada - Chongqing - T2026 | Velocidad - Final relevo mixto (03:30 a 04:30 EUROSPORT 1)",
+      "ronda": "T2026 | Velocidad - Final relevo mixto",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_espn_ar_65a8bfb3",
       "canales_mencionados_fuente": [
         "MotoGP Videopass",
@@ -3657,21 +4554,60 @@
       "ronda": "Sepang",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_d4ec7794",
+      "agenda_id": "",
+      "titulo": "WTA 250 Guangzhou Open",
+      "torneo": "WTA 250 Guangzhou Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Court - Semifinales de Dobles",
+      "referencia": "Court (Doubles Semifinals)",
+      "hora_utc": "2026-10-30T03:00:00Z",
+      "hora_local_producto": "22:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wta.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "22:00 ◘ Guangzhou Open / Court 2 (Doubles Semifinals) ◘ WTA ◘◘",
+          "id_xtream": "1734496"
+        }
+      ],
+      "texto_original_crudo": "22:00 ◘ Guangzhou Open / Court 2 (Doubles Semifinals) ◘ WTA ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "titulo_original_crudo": "22:00 ◘ Guangzhou Open / Court 2 (Doubles Semifinals) ◘ WTA ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "ronda": "Court (Doubles Semifinals)",
+      "auditado_agy": true,
+      "curado_integro": true
     }
   ],
   "metricas": {
     "fecha_local_producto": "2026-10-29",
-    "total_agenda_maestra": 42,
+    "total_agenda_maestra": 47,
     "total_canales_xtream": 8527,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 435,
-    "eventos_lineales_inyectados": 29,
+    "eventos_lineales_inyectados": 34,
     "eventos_xtream_aprobados": 118,
     "eventos_contrastados_api": 52,
-    "eventos_sellados_boveda_inmutable": 65,
-    "eventos_descartados_stale": 96,
-    "total_eventos_publicados": 75,
-    "hora_actualizacion_utc": "2026-10-29T22:21:46Z"
+    "eventos_sellados_boveda_inmutable": 84,
+    "eventos_descartados_stale": 111,
+    "total_eventos_publicados": 95,
+    "hora_actualizacion_utc": "2026-10-30T03:22:50Z"
   }
 }
