@@ -563,6 +563,10 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
                 continue
             if c_lin in canales_asignados:
                 prev_t, prev_id, prev_ofic = canales_asignados[c_lin]
+                if prev_id == ev_id:
+                    # Mismo evento con múltiples calidades del mismo canal (FHD, HD, etc.)
+                    fuentes_conservadas.append(f)
+                    continue
                 if abs(t_ev - prev_t) < 120:
                     if es_ofic and not prev_ofic:
                         canales_asignados[c_lin] = (t_ev, ev_id, es_ofic)
