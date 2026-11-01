@@ -194,6 +194,14 @@ def desmontar_duelo(titulo: str, categoria: str) -> Tuple[str, str, str, str, st
     ronda = ""
     torneo_extraido = ""
 
+    # Invariante de Deporte: En deportes de circuito nunca hay enfrentamiento de dos clubes
+    cat_norm = _normalizar(categoria)
+    if cat_norm in ["MOTOR", "FORMULA 1", "MOTOGP", "CICLISMO", "GOLF", "ATLETISMO", "SNOOKER", "ESCALADA", "CURLING", "NATACION", "PATINAJE"]:
+        partes_circ = re.split(r"\s+[-–—]\s+", tit, maxsplit=1)
+        if len(partes_circ) == 2:
+            return partes_circ[0].strip(), "", "", partes_circ[1].strip(), torneo_extraido
+        return tit, "", "", "", torneo_extraido
+
     partes = re.split(r"\s+(?:vs\.?|v\.?|-)\s+", tit, flags=re.I)
     if len(partes) == 2:
         p0, vis = partes[0].strip(), partes[1].strip()

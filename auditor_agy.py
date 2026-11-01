@@ -264,9 +264,19 @@ Responde UNICAMENTE con un JSON Array valido:
                 salida_texto = res.stdout
     except Exception as e:
         log.warning("Fallo en llamada a AGY para lote: %s", e)
+        if not es_reintento:
+            log.info("Reintentando llamada a AGY para el lote tras incidencia...")
+            import time
+            time.sleep(4)
+            return _auditar_lote_con_agy(lote, fecha_hoy_iso, es_reintento=True)
         return {}
 
     if not salida_texto:
+        if not es_reintento:
+            log.info("Reintentando llamada a AGY para el lote tras respuesta vacia...")
+            import time
+            time.sleep(4)
+            return _auditar_lote_con_agy(lote, fecha_hoy_iso, es_reintento=True)
         return {}
 
     datos = _extraer_datos_json(salida_texto)
@@ -397,8 +407,9 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
             # RESILIENCIA: Si el evento ya fue contrastado oficialmente por API-Sports o proviene de canales lineales confirmados,
             # no descartarlo si AGY sufrio un timeout temporal o demora de red.
             es_lineal = any(o in ["inyector_lineal", "mitv_colombia", "portada", "deporte", "rtve_teledeporte_oficial", "mundodeportivo_eurosport_1", "mundodeportivo_eurosport_2", "futbolenvivo_ar", "futbolenvivo_co"] for o in ev.get("origenes", [])) or (ev.get("origen") == "inyector_lineal")
-            if (ev.get("contrastado_api") is True or es_lineal) and ev.get("categoria") not in ["Otros Deportes", ""]:
-                log.info("Evento lineal o contrastado conservado tras timeout/omision temporal de AGY: '%s'", ev.get("titulo"))
+            es_cat_valida = ev.get("categoria") in ["Motor", "Fórmula 1", "MotoGP", "Fútbol", "Baloncesto", "Tenis", "Béisbol", "Pádel", "Fútbol Americano", "Rugby"]
+            if (ev.get("contrastado_api") is True or es_lineal or (es_cat_valida and ev.get("fuentes"))) and ev.get("categoria") not in ["Otros Deportes", ""]:
+                log.info("Evento lineal, contrastado o de categoria valida conservado tras timeout/omision de AGY: '%s'", ev.get("titulo"))
                 eventos_finales.append(ev)
                 continue
             motivo = "sin_certificacion_agy"

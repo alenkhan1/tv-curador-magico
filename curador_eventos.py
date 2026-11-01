@@ -526,6 +526,12 @@ def procesar_streams_eventos_xtream(
         tipo = parsed.get("tipo", "duelo" if local and visitante else "circuito")
         deporte = parsed.get("deporte", "Otros Deportes")
 
+        # Invariante Temprano de Circuito: Motor, Ciclismo, Tenis, etc. nunca son duelos de clubes
+        if deporte in ["Motor", "Fórmula 1", "MotoGP", "F1"] or any(k in f"{nombre} {titulo} {torneo}".upper() for k in ["F1", "MOTOGP", "FÓRMULA 1", "FORMULA 1"]) or deporte in DEPORTES_CIRCUITO:
+            local = ""
+            visitante = ""
+            tipo = "circuito"
+
         if local and visitante and fixtures_ayer and _duelo_coincide_con_fixtures(local, visitante, fixtures_ayer):
             es_de_hoy_tambien = bool(fixtures_dia and _duelo_coincide_con_fixtures(local, visitante, fixtures_dia))
             if not es_de_hoy_tambien:
@@ -945,6 +951,12 @@ def ejecutar_curacion(modo_check_xtream: bool = False, forzar: bool = False, fec
     log.info("Fase 4: Auditoria y revision final con AGY sobre el JSON candidato (%d eventos)...", len(eventos_candidatos))
     eventos_auditados, descartados_agy = auditar_catalogo_con_agy(eventos_candidatos, fecha_hoy_iso)
     descartados_totales.extend(descartados_agy)
+
+    # FASE 4.5: CONSOLIDACION POST-AUDITORIA Y FUSION DE CARTELERA DEFINITIVA
+    # Una vez que AGY unifico y pulio los titulos (ej. ambos quedaron como 'Formula 1 > Carrera'),
+    # se ejecuta la consolidacion para que los canales lineales y streams converjan en una sola tarjeta canonica:
+    log.info("Fase 4.5: Consolidacion y fusion post-auditoria de cartelera definitiva...")
+    eventos_auditados = post_procesar_y_curar_eventos(eventos_auditados)
 
     # FASE 5: REPASO DE ESCUDOS PARA NOMBRES CORREGIDOS POR AGY Y SELLADO EN BOVEDA
     sellados_boveda = 0
