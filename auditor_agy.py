@@ -154,6 +154,23 @@ def _extraer_datos_json(salida_texto: str) -> List[Dict[str, Any]]:
 
     return []
 
+def _minutos_utc(iso_utc: str) -> int:
+    if not iso_utc:
+        return 0
+    try:
+        from datetime import datetime
+        dt = datetime.fromisoformat(str(iso_utc).replace("Z", "+00:00"))
+        return int(dt.timestamp() // 60)
+    except Exception:
+        pass
+    try:
+        m = re.search(r"(\d{1,2}):(\d{2})", str(iso_utc))
+        if m:
+            return int(m.group(1)) * 60 + int(m.group(2))
+    except Exception:
+        pass
+    return 0
+
 def _canales_coinciden(c1: str, c2: str) -> bool:
     c1, c2 = c1.upper().strip(), c2.upper().strip()
     if c1 == c2:
