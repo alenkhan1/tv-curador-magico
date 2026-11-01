@@ -272,7 +272,7 @@ SUBTITULOS_TRADUCCION = {
 }
 
 def limpiar_prefijos_idioma(s: str) -> str:
-    s = re.sub(r'^(?:English|Spanish|Español|Portugues|Português|French|Italian|German|HD|FHD|4K|OP\d+|VIP|LIVE|DIRECTO|EN VIVO)\s*[:|-]\s*', '', s, flags=re.I)
+    s = re.sub(r'^(?:(?:En\s+)?(?:English|Spanish|Español|Portugues|Português|French|Italian|German)|HD|FHD|4K|OP\d+|VIP|LIVE|DIRECTO|EN VIVO)\s*[:|-]\s*', '', s, flags=re.I)
     s = re.sub(r'\b(?:English|Spanish|Español|Portugues|Português)\s*[:|-]\s*', '', s, flags=re.I)
     s = re.sub(r'\[(?:ENG|ESP|POR|FRA|ITA|GER|HD|FHD|4K)\]', '', s, flags=re.I)
     s = re.sub(r'\((?:ENG|ESP|POR|FRA|ITA|GER|HD|FHD|4K)\)', '', s, flags=re.I)
@@ -291,7 +291,7 @@ def extraer_contexto_y_equipos(cadena_pre_vs: str):
     return cadena_pre_vs, ''
 
 def limpiar_fragmento(s: str) -> str:
-    s = re.sub(r'[\u2010-\u2015\u2022\u2212*~#◘■♦►●▼▲]+', ' ', s)
+    s = re.sub(r'[\u2010-\u2015\u2022\u2212*~#◘■♦►●▼▲★⚡]+', ' ', s)
     s = limpiar_prefijos_idioma(s)
     s = re.sub(r'^[-\s]*J\d{1,4}\s*[:|-]\s*', '', s, flags=re.I)
     s = re.sub(r'\b(En español|Español|Spanish|OP\d+|FHD|HD|SD|4K|ES|EN|LIVE|EN VIVO|ET|PT|CT)\b', '', s, flags=re.I)
@@ -341,7 +341,11 @@ def sanitizar_evento_crudo(nombre_stream: str, grupo_stream: str = '') -> Option
     bloques_utiles = []
     for b in bloques:
         b_clean = re.sub(r'^[0-2]?[0-9][:.:][0-5][0-9]\s*(?:[ap]\.?m\.?)?\s*(?:ET|PT|CT)?\s*', '', b, flags=re.I).strip(' -:.')
+        b_clean = re.sub(r'^\s*(?:En\s+)?(?:Espa[ñn]ol|Portugu[ée]s|Ingl[ée]s)\s*[-:]\s*', '', b_clean, flags=re.I).strip(' -:.')
         if b_clean and not re.match(r'^(?:[0-2]?[0-9][:.:][0-5][0-9]\s*(?:[ap]\.?m\.?)?|[ap]\.?m\.?|\d{1,2})$', b_clean, re.I):
+            # Omitir prefijos de canal/dial como PEA 11, PPV 01, STAN 2, OPTUS 3, etc. si hay más bloques descriptivos
+            if re.match(r'^(?:PEA|PEACOCK|PPV|STAN|OPTUS|DAZN|CH|CANAL|EVENTO|EVENT|TBD)\s*\d*\b', b_clean, re.I) and len(bloques_utiles) == 0 and len(bloques) > 1:
+                continue
             bloques_utiles.append(b_clean)
 
     GENERICOS_PREFIJO = {

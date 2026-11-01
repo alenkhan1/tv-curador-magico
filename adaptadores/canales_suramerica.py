@@ -94,17 +94,22 @@ def normalizar_canales_por_pais(raw_canales: List[str], pais_guia: str, deporte:
 
         for patron, canon in mapping:
             if re.search(patron, u):
-                # 1. Regla estricta Anti-OTT para TyC Sports y Streaming de Tenis:
-                #    TyC Sports en televisión lineal JAMÁS emite torneos ATP/WTA/Challengers de circuito ordinario.
-                #    Si el deporte es Tenis y se menciona cualquier plataforma OTT (TyC Sports Play, Tennis TV, etc.),
-                #    es 100% exclusivo de streaming digital -> NO asignar canal lineal TYC SPORTS.
+                # 1. Regla estricta Anti-OTT para TyC Sports:
                 if canon == "TYC SPORTS":
                     if tiene_plataforma_ott or deporte in ["Tenis", "Tennis"] or any(k in u for k in ["PLAY", "TENNIS TV", "WTA TV"]):
                         continue
 
-                # 2. Canales lineales genéricos (ESPN AR, DSPORTS AR) en tenis de circuito secundario:
-                if tiene_plataforma_ott and canon in {"ESPN AR", "DSPORTS AR"} and deporte in ["Tenis", "Tennis"]:
-                    continue
+                # 2. Regla estricta Anti-OTT para ESPN y transmisiones exclusivas digitales:
+                # - Cuando un evento incluye plataformas OTT (Disney+, Star+, DGO, etc.), 'ESPN' genérico sin número
+                #   en futbolenvivo es únicamente la marca/badge del hub digital de Disney+, NO el feed lineal ESPN 1 (ESPN AR).
+                #   Jamas asignar 'ESPN AR' a ciegas si el evento viene con plataforma OTT (solo se asigna si mi.tv lo certifica).
+                # - En deportes con cobertura masiva multicancha (Tenis, Golf, Pádel, etc.), las señales OTT
+                #   emiten partidos que jamás van a la grilla lineal tradicional -> NO asignar feeds lineales genéricos.
+                if tiene_plataforma_ott:
+                    if canon == "ESPN AR":
+                        continue
+                    if deporte in ["Tenis", "Tennis", "Golf", "Pádel", "Padel"] and canon in {"DSPORTS AR", "ESPN 2 AR", "ESPN 3 AR"}:
+                        continue
 
                 if canon not in resultado and not _pertenece_a_familia_existente(canon, resultado):
                     resultado.append(canon)

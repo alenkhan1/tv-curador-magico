@@ -14,22 +14,100 @@ HEADERS_WEB = {
     "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
 }
 
-OFFSETS_FIJOS = {
-    "America/Bogota": timezone(timedelta(hours=-5)),
-    "America/Argentina/Buenos_Aires": timezone(timedelta(hours=-3)),
-    "America/Mexico_City": timezone(timedelta(hours=-6)),
-    "America/Santiago": timezone(timedelta(hours=-3)),
-    "Europe/Madrid": timezone(timedelta(hours=2)),
-    "Europe/London": timezone(timedelta(hours=1)),
-    "America/New_York": timezone(timedelta(hours=-4)),
-}
+from datetime import tzinfo as _tzinfo
+
+def _es_horario_verano_europa(dt: datetime) -> bool:
+    y, m = dt.year, dt.month
+    if m in (1, 2, 11, 12):
+        return False
+    if m in (4, 5, 6, 7, 8, 9):
+        return True
+    if m == 3:
+        last_sunday = 31 - ((datetime(y, 3, 31).weekday() + 1) % 7)
+        return (dt.day > last_sunday) or (dt.day == last_sunday and getattr(dt, 'hour', 0) >= 2)
+    if m == 10:
+        last_sunday = 31 - ((datetime(y, 10, 31).weekday() + 1) % 7)
+        return (dt.day < last_sunday) or (dt.day == last_sunday and getattr(dt, 'hour', 0) < 3)
+    return False
+
+def _es_horario_verano_usa(dt: datetime) -> bool:
+    y, m = dt.year, dt.month
+    if m in (1, 2, 12):
+        return False
+    if m in (4, 5, 6, 7, 8, 9, 10):
+        return True
+    if m == 3:
+        w1 = datetime(y, 3, 1).weekday()
+        first_sunday = 1 + (6 - w1) % 7
+        second_sunday = first_sunday + 7
+        return (dt.day > second_sunday) or (dt.day == second_sunday and getattr(dt, 'hour', 0) >= 2)
+    if m == 11:
+        w1 = datetime(y, 11, 1).weekday()
+        first_sunday = 1 + (6 - w1) % 7
+        return (dt.day < first_sunday) or (dt.day == first_sunday and getattr(dt, 'hour', 0) < 2)
+    return False
+
+def _es_horario_verano_chile(dt: datetime) -> bool:
+    m = dt.month
+    if m in (1, 2, 3, 10, 11, 12):
+        return True
+    if m in (5, 6, 7, 8):
+        return False
+    return m == 9 or m == 4
+
+class DynamicFallbackTz(_tzinfo):
+    """Calculador dinamico de offset segun fecha/estacion cuando ZoneInfo no tiene tzdata instalada."""
+    def __init__(self, nombre: str):
+        self.nombre = nombre
+
+    def utcoffset(self, dt: Optional[datetime]) -> timedelta:
+        d = dt or datetime.now(timezone.utc)
+        if self.nombre in ("Europe/Madrid", "Madrid"):
+            h = 2 if _es_horario_verano_europa(d) else 1
+            return timedelta(hours=h)
+        if self.nombre in ("Europe/London", "London"):
+            h = 1 if _es_horario_verano_europa(d) else 0
+            return timedelta(hours=h)
+        if self.nombre in ("America/New_York", "New_York", "US/Eastern", "ET", "EST", "EDT"):
+            h = -4 if _es_horario_verano_usa(d) else -5
+            return timedelta(hours=h)
+        if self.nombre in ("America/Chicago", "US/Central", "CT", "CST", "CDT"):
+            h = -5 if _es_horario_verano_usa(d) else -6
+            return timedelta(hours=h)
+        if self.nombre in ("America/Los_Angeles", "US/Pacific", "PT", "PST", "PDT"):
+            h = -7 if _es_horario_verano_usa(d) else -8
+            return timedelta(hours=h)
+        if self.nombre in ("America/Santiago", "Santiago", "Chile"):
+            h = -3 if _es_horario_verano_chile(d) else -4
+            return timedelta(hours=h)
+        if self.nombre in ("America/Bogota", "Bogota", "Colombia"):
+            return timedelta(hours=-5)
+        if self.nombre in ("America/Argentina/Buenos_Aires", "Buenos_Aires", "Argentina"):
+            return timedelta(hours=-3)
+        if self.nombre in ("America/Mexico_City", "Mexico_City", "Mexico"):
+            return timedelta(hours=-6)
+        return timedelta(0)
+
+    def dst(self, dt: Optional[datetime]) -> timedelta:
+        d = dt or datetime.now(timezone.utc)
+        if self.nombre in ("Europe/Madrid", "Europe/London"):
+            return timedelta(hours=1) if _es_horario_verano_europa(d) else timedelta(0)
+        if self.nombre in ("America/New_York", "America/Chicago", "America/Los_Angeles"):
+            return timedelta(hours=1) if _es_horario_verano_usa(d) else timedelta(0)
+        return timedelta(0)
+
+    def tzname(self, dt: Optional[datetime]) -> str:
+        return self.nombre
+
+    def __repr__(self) -> str:
+        return f"DynamicFallbackTz({self.nombre})"
 
 def obtener_tz(nombre: str) -> Any:
-    """Devuelve ZoneInfo si tzdata esta disponible; fallback seguro a offset fijo."""
+    """Devuelve ZoneInfo si tzdata esta disponible; fallback dinamico inteligente a offset real de estacion."""
     try:
         return ZoneInfo(nombre)
     except Exception:
-        return OFFSETS_FIJOS.get(nombre, timezone.utc)
+        return DynamicFallbackTz(nombre)
 
 def normalizar_texto(s: str) -> str:
     if not s:

@@ -412,6 +412,46 @@ def detectar_lista_actualizada_hoy(
 
     return False
 
+def convertir_hora_stream_a_producto(
+    h: int,
+    mi: int,
+    nombre_stream: str,
+    fecha_hoy_iso: str,
+    tz_prod: Any
+) -> Tuple[str, str]:
+    """
+    Convierte la hora de un stream que especifica zona horaria (ET/EST/EDT, CT/CST/CDT, PT/PST/PDT, MT/MST/MDT)
+    a la hora local del producto (tz_prod) y entrega (hora_prod_str, hora_utc_iso) de forma dinamica y exacta.
+    """
+    m_tz = re.search(r'\b(ET|EST|EDT|CT|CST|CDT|PT|PST|PDT|MT|MST|MDT)\b', nombre_stream, re.I)
+    if m_tz:
+        tag = m_tz.group(1).upper()
+        if tag in ("ET", "EST", "EDT"):
+            tz_origin = obtener_tz("America/New_York")
+        elif tag in ("CT", "CST", "CDT"):
+            tz_origin = obtener_tz("America/Chicago")
+        elif tag in ("PT", "PST", "PDT"):
+            tz_origin = obtener_tz("America/Los_Angeles")
+        elif tag in ("MT", "MST", "MDT"):
+            tz_origin = obtener_tz("America/Denver")
+        else:
+            tz_origin = tz_prod
+
+        try:
+            dt_orig = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_origin)
+            dt_utc = dt_orig.astimezone(timezone.utc)
+            dt_prod = dt_utc.astimezone(tz_prod)
+            return dt_prod.strftime("%H:%M"), dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+        except Exception:
+            pass
+
+    try:
+        dt_prod = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_prod)
+        dt_utc = dt_prod.astimezone(timezone.utc)
+        return dt_prod.strftime("%H:%M"), dt_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+    except Exception:
+        return f"{h:02d}:{mi:02d}", f"{fecha_hoy_iso}T00:00:00Z"
+
 def procesar_streams_eventos_xtream(
     canales_xtream: List[Dict[str, Any]],
     fecha_hoy_dd_mm: str,
@@ -504,11 +544,12 @@ def procesar_streams_eventos_xtream(
         elif ampm == "AM" and h == 12:
             h = 0
 
-        # Conversión de zona horaria si el stream especifica 'ET' (Eastern Time, UTC-4 en octubre -> Bogota es ET - 1h)
-        if re.search(r'\bET\b', nombre, re.I):
-            h = (h - 1) % 24
+        hora_str, hora_utc_calc = convertir_hora_stream_a_producto(h, mi, nombre, fecha_hoy_iso, tz_prod)
 
-        hora_str = f"{h:02d}:{mi:02d}"
+        try:
+            dt_calc_utc = datetime.fromisoformat(hora_utc_calc.replace("Z", "+00:00"))
+        except Exception:
+            dt_calc_utc = None
 
         div_stream = extraer_marcadores_division(f"{nombre} {torneo}")
         coincide_agenda = None
@@ -522,25 +563,38 @@ def procesar_streams_eventos_xtream(
                 ev_l = normalizar_texto(ev.local)
                 ev_v = normalizar_texto(ev.visitante)
                 if (l_u in ev_l or ev_l in l_u) and (v_u in ev_v or ev_v in v_u):
+                    if dt_calc_utc:
+                        try:
+                            dt_ev_utc = datetime.fromisoformat(ev.hora_utc.replace("Z", "+00:00"))
+                            if abs((dt_calc_utc - dt_ev_utc).total_seconds()) / 60 > 180:
+                                continue
+                        except Exception:
+                            pass
                     coincide_agenda = ev
                     break
             elif tipo == "circuito":
                 t_u = normalizar_texto(torneo)
                 ev_t = normalizar_texto(ev.torneo)
+                # Validacion estricta de proximidad horaria: previene emparejar sesiones matutinas con carreras/sesiones de la tarde
                 if t_u and ev_t and (t_u in ev_t or ev_t in t_u):
+                    if dt_calc_utc:
+                        try:
+                            dt_ev_utc = datetime.fromisoformat(ev.hora_utc.replace("Z", "+00:00"))
+                            if abs((dt_calc_utc - dt_ev_utc).total_seconds()) / 60 > 120:
+                                continue
+                        except Exception:
+                            continue
                     coincide_agenda = ev
                     break
 
         if coincide_agenda and getattr(coincide_agenda, 'hora_utc', None):
             hora_utc = coincide_agenda.hora_utc
+            hora_str = _recalcular_hora_local(hora_utc, tz_prod, fallback=hora_str)
             cat = coincide_agenda.deporte
             tor = coincide_agenda.torneo
         else:
-            try:
-                dt_local = datetime.fromisoformat(f"{fecha_hoy_iso}T{h:02d}:{mi:02d}:00").replace(tzinfo=tz_prod)
-                hora_utc = dt_local.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-            except Exception:
-                hora_utc = f"{fecha_hoy_iso}T00:00:00Z"
+            hora_utc = hora_utc_calc
+            hora_str = _recalcular_hora_local(hora_utc, tz_prod, fallback=hora_str)
             cat = deporte
             tor = torneo
 
@@ -580,7 +634,7 @@ def procesar_streams_eventos_xtream(
             "subtitulo": parsed.get("subtitulo") or f"{tor}",
             "referencia": parsed.get("referencia") or tor,
             "hora_utc": hora_utc,
-            "hora_local_producto": hora_str,
+            "hora_local_producto": _recalcular_hora_local(hora_utc, tz_prod, fallback=hora_str),
             "duracion_min": calcular_duracion_evento(cat, titulo),
             "logo_torneo": logo_tor,
             "logo_local": logo_l,
