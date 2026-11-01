@@ -372,6 +372,17 @@ def son_mismo_evento(ev1: Dict[str, Any], ev2: Dict[str, Any]) -> bool:
                 return True
             return False
 
+        if cat1 in ["MOTOR"] or cat2 in ["MOTOR"]:
+            ref1 = _normalizar(f"{ev1.get('titulo', '')} {ev1.get('subtitulo', '')} {ev1.get('ronda', '')}")
+            ref2 = _normalizar(f"{ev2.get('titulo', '')} {ev2.get('subtitulo', '')} {ev2.get('ronda', '')}")
+            es_onb1 = any(k in ref1 for k in ["ONBOARD", "A BORDO", "CAMARA A BORDO"])
+            es_onb2 = any(k in ref2 for k in ["ONBOARD", "A BORDO", "CAMARA A BORDO"])
+            if es_onb1 != es_onb2:
+                return False
+            if (tit1 == tit2 or (tit1 in tit2 and len(tit1) >= 4) or (tit2 in tit1 and len(tit2) >= 4)) and diff_min <= 180:
+                return True
+            return False
+
         if tit1 == tit2 and diff_min <= 60:
             return True
         return False
@@ -678,6 +689,10 @@ def post_procesar_y_curar_eventos(eventos: List[Dict[str, Any]]) -> List[Dict[st
                 if not exist.get("banner") and ev.get("banner"):
                     exist["banner"] = ev["banner"]
                 if ev.get("contrastado_api"):
+                    if not exist.get("contrastado_api") and ev.get("hora_utc"):
+                        exist["hora_utc"] = ev["hora_utc"]
+                        if ev.get("hora_local_producto"):
+                            exist["hora_local_producto"] = ev["hora_local_producto"]
                     exist["contrastado_api"] = True
                 if ev.get("auditado_agy"):
                     exist["auditado_agy"] = True

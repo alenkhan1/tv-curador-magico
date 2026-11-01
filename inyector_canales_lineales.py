@@ -314,5 +314,43 @@ def inyectar_eventos_lineales(
         }
         eventos_inyectados.append(evento_dict)
 
+    # Invariante Físico de Canal Lineal: Un canal lineal no puede emitir dos programas simultáneos
+    for i in range(len(eventos_inyectados)):
+        ev_a = eventos_inyectados[i]
+        canales_a = ev_a.get("canales_candidatos", [])
+        try:
+            dt_a = datetime.fromisoformat(ev_a["hora_utc"].replace("Z", "+00:00"))
+            dur_a = ev_a.get("duracion_min") or 120
+        except Exception:
+            continue
+        for j in range(i + 1, len(eventos_inyectados)):
+            ev_b = eventos_inyectados[j]
+            canales_b = ev_b.get("canales_candidatos", [])
+            comunes = [c for c in canales_a if c in canales_b]
+            if not comunes:
+                continue
+            try:
+                dt_b = datetime.fromisoformat(ev_b["hora_utc"].replace("Z", "+00:00"))
+                diff_min = abs((dt_a - dt_b).total_seconds()) / 60.0
+                if diff_min < min(dur_a, ev_b.get("duracion_min") or 120):
+                    canal_conf = comunes[0]
+                    log.warning("Detectado conflicto de canal lineal en '%s' entre '%s' (%s) y '%s' (%s)",
+                                canal_conf, ev_a.get("titulo"), ev_a.get("hora_local_producto"),
+                                ev_b.get("titulo"), ev_b.get("hora_local_producto"))
+                    ev_a.setdefault("conflictos_lineales", []).append({
+                        "canal": canal_conf,
+                        "oponente_id": ev_b.get("id"),
+                        "oponente_titulo": ev_b.get("titulo"),
+                        "oponente_hora": ev_b.get("hora_local_producto")
+                    })
+                    ev_b.setdefault("conflictos_lineales", []).append({
+                        "canal": canal_conf,
+                        "oponente_id": ev_a.get("id"),
+                        "oponente_titulo": ev_a.get("titulo"),
+                        "oponente_hora": ev_a.get("hora_local_producto")
+                    })
+            except Exception:
+                continue
+
     log.info("Total eventos lineales inyectados con streams: %d", len(eventos_inyectados))
     return eventos_inyectados

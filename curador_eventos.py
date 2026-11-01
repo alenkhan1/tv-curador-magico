@@ -562,7 +562,9 @@ def procesar_streams_eventos_xtream(
                 v_u = normalizar_texto(visitante)
                 ev_l = normalizar_texto(ev.local)
                 ev_v = normalizar_texto(ev.visitante)
-                if (l_u in ev_l or ev_l in l_u) and (v_u in ev_v or ev_v in v_u):
+                match_dir = (l_u in ev_l or ev_l in l_u) and (v_u in ev_v or ev_v in v_u)
+                match_inv = (l_u in ev_v or ev_v in l_u) and (v_u in ev_l or ev_l in v_u)
+                if match_dir or match_inv:
                     if dt_calc_utc:
                         try:
                             dt_ev_utc = datetime.fromisoformat(ev.hora_utc.replace("Z", "+00:00"))
@@ -599,21 +601,34 @@ def procesar_streams_eventos_xtream(
             tor = torneo
 
         div_tag = "_".join(sorted(div_stream))
-        clave_duelo = f"{normalizar_texto(local)}_vs_{normalizar_texto(visitante)}_{div_tag}_{h // 4}" if local and visitante else ""
+        if local and visitante:
+            duelo_canon = "_vs_".join(sorted([normalizar_texto(local), normalizar_texto(visitante)]))
+            clave_duelo = f"{duelo_canon}_{div_tag}_{h // 4}"
+        else:
+            clave_duelo = ""
         sub_c = parsed.get("subtitulo") or ""
-        clave_circuito = f"{normalizar_texto(titulo)}_{normalizar_texto(sub_c)}_{hora_utc[:13]}" if not clave_duelo else ""
+        es_motor = cat in ["Motor", "Fórmula 1", "MotoGP"] or any(k in f"{titulo} {tor} {nombre}".upper() for k in ["F1", "MOTOGP", "FÓRMULA 1", "FORMULA 1"])
+        if es_motor and not clave_duelo:
+            es_onboard = any(k in f"{titulo} {sub_c} {nombre}".upper() for k in ["ONBOARD", "A BORDO", "CAMARA"])
+            tipo_motor = "onboard" if es_onboard else "carrera"
+            gp_key = normalizar_texto(titulo)
+            for kw in ["f1", "formula_1", "motogp", "gp", "gran_premio"]:
+                gp_key = gp_key.replace(kw, "").strip("_")
+            clave_circuito = f"motor_{gp_key}_{tipo_motor}_{fecha_hoy_iso}"
+        else:
+            clave_circuito = f"{normalizar_texto(titulo)}_{normalizar_texto(sub_c)}_{hora_utc[:13]}" if not clave_duelo else ""
 
         if clave_duelo and clave_duelo in mapa_duelos_existentes:
             idx = mapa_duelos_existentes[clave_duelo]
             fuentes_existentes = eventos_finales[idx]["fuentes"]
-            if sid not in [f["id_xtream"] for f in fuentes_existentes] and len(fuentes_existentes) < 4:
+            if sid not in [f["id_xtream"] for f in fuentes_existentes] and len(fuentes_existentes) < 10:
                 fuentes_existentes.append({"nombre": nombre, "id_xtream": sid})
             continue
 
         if clave_circuito and clave_circuito in mapa_circuitos_existentes:
             idx = mapa_circuitos_existentes[clave_circuito]
             fuentes_existentes = eventos_finales[idx]["fuentes"]
-            if sid not in [f["id_xtream"] for f in fuentes_existentes] and len(fuentes_existentes) < 4:
+            if sid not in [f["id_xtream"] for f in fuentes_existentes] and len(fuentes_existentes) < 10:
                 fuentes_existentes.append({"nombre": nombre, "id_xtream": sid})
             continue
 

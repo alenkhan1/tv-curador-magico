@@ -11,7 +11,7 @@ if len(sys.argv) > 1 and os.path.exists(sys.argv[1]):
         '--effort', 'low',
         '--dangerously-skip-permissions'
     ]
-    res = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+    res = subprocess.run(cmd, capture_output=True, text=True, timeout=180)
     sys.stdout.write(res.stdout)
     try:
         os.remove(sys.argv[1])

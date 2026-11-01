@@ -170,27 +170,40 @@ def _auditar_lote_con_agy(lote: List[Dict[str, Any]], fecha_hoy_iso: str, es_rei
 
     lote_resumido = []
     for ev in lote:
+        conf_info = ""
+        if ev.get("conflictos_lineales"):
+            conf_info = "; ".join(f"Conflicto en {c['canal']} con '{c.get('oponente_titulo')}' ({c.get('oponente_hora','')})" for c in ev["conflictos_lineales"])
         lote_resumido.append({
             "id": ev.get("id"),
             "titulo": ev.get("texto_original_crudo") or ev.get("titulo_propuesto") or ev.get("titulo"),
             "canal": ev.get("canales_mencionados_fuente") or ev.get("canales_candidatos"),
             "hora_utc": ev.get("hora_utc"),
+            "hora_local": ev.get("hora_local_producto") or ev.get("hora_local"),
             "deporte_actual": ev.get("categoria"),
-            "torneo_actual": ev.get("torneo")
+            "torneo_actual": ev.get("torneo"),
+            "alerta_conflicto_canal": conf_info or None
         })
 
-    prompt_texto = f"""Eres el Auditor y Revisor de Eventos Deportivos de TV. Audita y resuelve estos eventos para HOY {fecha_hoy_iso}:
+    prompt_texto = f"""Eres el Auditor y Juez Supremo de Eventos Deportivos de Television en Directo. Tu mision es auditar y certificar la cartelera definitiva para HOY {fecha_hoy_iso}, garantizando fidelidad absoluta, eliminando basura/residuos y resolviendo inconsistencias.
 
-REGLAS ESENCIALES:
-1. 'descartar': true si y solo si:
-   - Es una REPETICION, DIFERIDO, resumen o redifusion de partidos/torneos jugados previamente (ej: partidos antiguos de Premier League, repeticiones matutinas o grabaciones de dias anteriores). Motivo: 'repeticion_diferido'.
-   - Es 100% exclusivo de app de streaming o senal digital (ej: torneos de tenis ATP/WTA/Challenger en 'TyC Sports Play', 'Tennis TV' o 'Disney+' que NO van por TV lineal tradicional) -> 'descartar': true, motivo: 'exclusivo_app_streaming'.
-   - Es un programa de debate, noticiero, previa o programa comodin sin evento especifico. Motivo: 'programa_debate_noticiero'.
-   - 'descartar': false si es un evento deportivo competitivo en DIRECTO hoy.
-2. 'categoria_exacta': Nombre exacto del deporte en espanol con tildes (ej: 'Snooker', 'Futbol', 'Tenis', 'Padel', 'Ciclismo', 'Golf', 'Baloncesto', 'Remo', 'Vela', 'Motor', 'Combate'). Snooker es Snooker, no Tenis ni Otros Deportes.
-3. 'torneo_pulido': Nombre oficial del torneo o federacion (ej: 'UEFA Champions League', 'Liga MX Femenil', 'World Snooker Tour', 'Premier League').
-4. 'titulo_pulido': Limpio. En duelos: 'Equipo Local vs. Equipo Visitante'. En circuitos: 'Nombre Especifico del Evento'.
-5. 'tipo_evento': 'duelo' (para deportes de equipo) o 'circuito' (para tenis, snooker, ciclismo, motor, etc.).
+INSTRUCCIONES DE AUDITORIA Y VERACIDAD:
+1. FILTRO DE VIGENCIA Y EN VIVO ('descartar': true si y solo si):
+   - REPETICION O DIFERIDO: Emisiones grabadas, redifusiones o diferidos nocturnos de eventos matutinos que ya concluyeron en Asia/Europa, o partidos antiguos de dias previos en canales lineales (ej: Eurosport, ESPN, TyC Sports). Motivo: 'repeticion_diferido'.
+   - SESION DE MOTOR ANACRONICA O RESIDUAL: En Formula 1, MotoGP o NASCAR, el domingo de Gran Premio se disputa la CARRERA. Sesiones de Clasificacion (Qualifying) o Practicas libres fechadas para hoy domingo (o en horarios nocturnos inconsistentes con la sede) son residuos del sabado o dias previos -> 'descartar': true, motivo: 'sesion_motor_anacronica_o_residuo'.
+   - EVENTO O DUELO INEXISTENTE HOY: Si los dos equipos o contendientes NO disputan un partido competitivo oficial hoy {fecha_hoy_iso} (ej: grabaciones de temporadas pasadas como 'Barcelona vs Benfica' en UWCL, o partidos inventados/residuales de listas IPTV) -> 'descartar': true, motivo: 'evento_inexistente_hoy'.
+   - CONFLICTO DE CANAL LINEAL: Un canal lineal fisico (ej: Eurosport 2, Win Sports) solo puede emitir un evento a la vez. Si dos eventos disputan el mismo canal en la misma franja horaria, confirma unicamente el que verdaderamente va en DIRECTO por esa senal y descarta el evento falso/diferido. Motivo: 'conflicto_canal_no_corresponde'.
+   - EXCLUSIVO DE APP DE STREAMING: 100% exclusivo de plataformas digitales que no van por TV tradicional lineal (Disney+, TyC Sports Play, Tennis TV) -> 'descartar': true, motivo: 'exclusivo_app_streaming'.
+   - PROGRAMA DE DEBATE / NOTICIERO: Programas de analisis, resúmenes o previa sin evento competitivo en vivo. Motivo: 'programa_debate_noticiero'.
+   - Si el evento es un evento deportivo competitivo legitimo en DIRECTO hoy -> 'descartar': false.
+
+2. CORRECCION DE DISCIPLINA ('categoria_exacta'):
+   - No te fies ciegamente del proveedor IPTV. Si un stream de polo acuatico viene etiquetado con 'Soccer', o si dos universidades compiten en otra disciplina (ej. Harvard vs MIT en Waterpolo), pon en 'categoria_exacta' el deporte real con tildes (ej: 'Waterpolo', 'Futbol', 'Balonmano', 'Snooker', 'Padel', 'Tenis', 'Motor', 'Combate', 'Baloncesto', 'Ciclismo', 'Escalada', 'Curling').
+
+3. TORNEO Y TITULO PULIDO:
+   - 'torneo_pulido': Nombre oficial de la competicion o federacion (ej: 'UEFA Champions League', 'Liga BetPlay Dimayor', 'World Snooker Tour', 'NCAA Men\'s Water Polo', 'MotoGP', 'Formula 1').
+   - 'titulo_pulido': En duelos SIEMPRE en orden canonico 'Equipo Local vs. Equipo Visitante'. Si el texto crudo venia invertido por el editor humano, restablecelo a su orden correcto. En circuitos, nombre representativo del Gran Premio o cita.
+   - 'subtitulo_pulido': Conciso e informativo para el boton (ej: 'Carrera', 'Camara Onboard', 'Fase de Grupos', 'Pista Central', 'Jornada 12').
+   - 'tipo_evento': 'duelo' (para deportes de equipo) o 'circuito' (para motor, tenis, snooker, etc.).
 
 Eventos a auditar:
 {json.dumps(lote_resumido, ensure_ascii=False, indent=1)}
@@ -204,7 +217,7 @@ Responde UNICAMENTE con un JSON Array valido:
     "categoria_exacta": "Deporte exacto",
     "torneo_pulido": "Torneo oficial",
     "titulo_pulido": "Titulo limpio",
-    "subtitulo_pulido": "Cancha, sede o ronda",
+    "subtitulo_pulido": "Subtitulo para boton",
     "tipo_evento": "duelo o circuito"
   }}
 ]
@@ -213,7 +226,7 @@ Responde UNICAMENTE con un JSON Array valido:
     try:
         if Path(AGY_PATH).exists():
             cmd = [AGY_PATH, "-p", prompt_texto, "--effort", "low", "--dangerously-skip-permissions"]
-            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=95)
+            res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=180)
             if res.returncode == 0:
                 salida_texto = res.stdout
         else:
@@ -229,7 +242,7 @@ Responde UNICAMENTE con un JSON Array valido:
                 f"{ORACLE_USER}@{ORACLE_HOST}",
                 f"python3 /home/ubuntu/tv-curador-magico/agy_runner.py {tmp_remote}"
             ]
-            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=70)
+            res = subprocess.run(cmd_ssh, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=180)
             if res.returncode == 0:
                 salida_texto = res.stdout
     except Exception as e:
@@ -312,6 +325,7 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
             or sospechoso_no_vivo
             or tiene_vinetas
             or tiene_win
+            or bool(ev.get("conflictos_lineales"))
         )
         if necesita:
             if not ev.get("id"):
@@ -506,7 +520,39 @@ def auditar_catalogo_con_agy(eventos: List[Dict[str, Any]], fecha_hoy_iso: str) 
             ev["auditado_agy"] = True
         eventos_finales.append(ev)
 
-    log.info("Auditoría AGY finalizada: %d aprobados (%d pulidos por AGY, %d descartados)", 
+    # INVARIANTE FISICO FINAL: Un canal lineal fisico no puede estar activo simultaneamente en 2 eventos.
+    # Si algun conflicto de canal no fue resuelto por AGY, el evento oficial conserva el canal y se desvincula del secundario.
+    canales_asignados = {}  # canal -> (hora_minutos, id_evento, es_oficial)
+    for ev in eventos_finales:
+        ev_id = ev.get("id")
+        t_ev = _minutos_utc(ev.get("hora_utc", ""))
+        es_ofic = ev.get("contrastado_api") is True or "api_sports" in ev.get("origenes", [])
+        fuentes_conservadas = []
+        for f in ev.get("fuentes", []):
+            c_lin = f.get("canal_lineal")
+            if not c_lin:
+                fuentes_conservadas.append(f)
+                continue
+            if c_lin in canales_asignados:
+                prev_t, prev_id, prev_ofic = canales_asignados[c_lin]
+                if abs(t_ev - prev_t) < 120:
+                    if es_ofic and not prev_ofic:
+                        canales_asignados[c_lin] = (t_ev, ev_id, es_ofic)
+                        fuentes_conservadas.append(f)
+                        for prev_ev in eventos_finales:
+                            if prev_ev.get("id") == prev_id:
+                                prev_ev["fuentes"] = [pf for pf in prev_ev.get("fuentes", []) if pf.get("canal_lineal") != c_lin]
+                        continue
+                    else:
+                        log.warning("Desvinculando canal lineal conflictivo '%s' de '%s' por solapamiento con '%s'", c_lin, ev.get("titulo"), prev_id)
+                        continue
+            canales_asignados[c_lin] = (t_ev, ev_id, es_ofic)
+            fuentes_conservadas.append(f)
+        ev["fuentes"] = fuentes_conservadas
+
+    eventos_finales = [e for e in eventos_finales if e.get("fuentes")]
+
+    log.info("Auditoria AGY finalizada: %d aprobados (%d pulidos por AGY, %d descartados)", 
              len(eventos_finales), len([e for e in eventos_finales if e.get("auditado_agy")]), len(eventos_descartados))
     return eventos_finales, eventos_descartados
 
