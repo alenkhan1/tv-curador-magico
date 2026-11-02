@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-01T22:31:17Z",
+  "generado_utc": "2026-11-02T03:31:06Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-01",
   "base_media": "http://avefenixtv.com:8080",
@@ -42,6 +42,12 @@
           "id_xtream": "327982",
           "canal_lineal": "EUROSPORT 1",
           "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
         }
       ],
       "canales_candidatos": [
@@ -54,56 +60,80 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_teledeporte_6edb2a81",
-      "canales_mencionados_fuente": [],
+      "id": "xtream_6f59d55a",
       "agenda_id": "",
-      "titulo": "BM Morvedre vs. Atticgo Balonmano Elche",
-      "torneo": "Liga Guerreras Iberdrola",
-      "categoria": "Balonmano",
-      "tipo_evento": "duelo",
-      "equipo_local": "BM Morvedre",
-      "equipo_visitante": "Atticgo Balonmano Elche",
-      "subtitulo": "Jornada",
-      "referencia": "Jornada",
-      "hora_utc": "2026-11-01T09:55:00Z",
-      "hora_local_producto": "04:55",
-      "duracion_min": 150,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhandball%2Fteams%2F1002.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fe4vaw51655594332.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "titulo": "HotelPlanner Tour Grand Final",
+      "torneo": "HotelPlanner Tour Grand Final",
+      "categoria": "Golf",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Ronda Final",
+      "referencia": "Ronda Final • DP World Tour",
+      "hora_utc": "2026-11-01T09:30:00Z",
+      "hora_local_producto": "04:30",
+      "duracion_min": 300,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
       "tier": 2,
-      "origen": "inyector_lineal",
+      "origen": "xtream_evento",
       "origenes": [
-        "inyector_lineal",
-        "rtve_teledeporte_oficial"
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "TELEDEPORTES FHD",
-          "id_xtream": "327981",
-          "canal_lineal": "TELEDEPORTE",
-          "pais": "ES"
+          "nombre": "04:30 ◘ HotelPlanner Tour Grand Final ◘ DP World Tour ◘◘",
+          "id_xtream": "1735766"
         }
       ],
-      "canales_candidatos": [
-        "TELEDEPORTE"
+      "texto_original_crudo": "04:30 ◘ HotelPlanner Tour Grand Final ◘ DP World Tour ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "04:30 ◘ HotelPlanner Tour Grand Final ◘ DP World Tour ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "Ronda Final",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_bf80ad9a",
+      "agenda_id": "",
+      "titulo": "ATP 500 Erste Bank Open",
+      "torneo": "ATP 500 Erste Bank Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Centre Court",
+      "referencia": "05:30 ◘ Erste Bank Open / Centre Court ◘ ATP ◘◘ ✨ e V e N T O S D I a R I O S 01/11 ✨ • Centre Court",
+      "hora_utc": "2026-11-01T10:30:00Z",
+      "hora_local_producto": "05:30",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
       ],
-      "texto_original_crudo": "BALONMANO LIGA GUERRERAS IBERDROLA 7ª JORNADA BM MORVEDRE – CLUB BALONMANO ELCHE DESDE SAGUNT (VALENCIA)",
-      "titulo_original_crudo": "BALONMANO LIGA GUERRERAS IBERDROLA 7ª JORNADA BM MORVEDRE – CLUB BALONMANO ELCHE DESDE SAGUNT (VALENCIA)",
-      "conflictos_lineales": [
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
         {
-          "canal": "TELEDEPORTE",
-          "oponente_id": "lineal_teledeporte_17a69ccb",
-          "oponente_titulo": "Fc Badalona Women vs. Fc Barcelona",
-          "oponente_hora": "06:25"
+          "nombre": "05:30 ◘ Erste Bank Open / Centre Court ◘ ATP ◘◘",
+          "id_xtream": "1735767"
         }
       ],
-      "ronda": "7ª Jornada",
+      "texto_original_crudo": "05:30 ◘ Erste Bank Open / Centre Court ◘ ATP ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "05:30 ◘ Erste Bank Open / Centre Court ◘ ATP ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "Centre Court",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -216,6 +246,18 @@
           "id_xtream": "591981",
           "canal_lineal": "ESPN 2 AR",
           "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2  FHD | AR",
+          "id_xtream": "712744",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 2 HD | ARG",
+          "id_xtream": "591980",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
         }
       ],
       "canales_candidatos": [
@@ -270,6 +312,18 @@
         {
           "nombre": "TELEDEPORTES FHD",
           "id_xtream": "327981",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
           "canal_lineal": "TELEDEPORTE",
           "pais": "ES"
         }
@@ -336,6 +390,12 @@
           "id_xtream": "327982",
           "canal_lineal": "EUROSPORT 1",
           "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
         }
       ],
       "canales_candidatos": [
@@ -352,6 +412,49 @@
         }
       ],
       "ronda": "Sesión Vespertina",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_ef8aeaa1",
+      "agenda_id": "",
+      "titulo": "ATP 500 Swiss Indoors Basel",
+      "torneo": "ATP 500 Swiss Indoors Basel",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Center Court",
+      "referencia": "Center Court",
+      "hora_utc": "2026-11-01T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "07:00 ◘ Swiss Indoors Basel / Center Court ◘ ATP ◘◘",
+          "id_xtream": "1735769"
+        },
+        {
+          "nombre": "07:00 | Swiss Indoors Basel - Center Court (Doubles Final) | ATP",
+          "id_xtream": "1735933"
+        }
+      ],
+      "texto_original_crudo": "07:00 ◘ Swiss Indoors Basel / Center Court ◘ ATP ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "07:00 ◘ Swiss Indoors Basel / Center Court ◘ ATP ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "Center Court",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -444,6 +547,88 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_90ac375d",
+      "agenda_id": "",
+      "titulo": "SpVgg Greuther Fürth vs. Holstein Kiel",
+      "torneo": "2. Bundesliga",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "SpVgg Greuther Fürth",
+      "equipo_visitante": "Holstein Kiel",
+      "subtitulo": "2. Bundesliga",
+      "referencia": "Jornada de Liga",
+      "hora_utc": "2026-11-01T12:30:00Z",
+      "hora_local_producto": "07:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F178.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F191.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/bundesliga.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "07:30 ◘ Greuther Fuerth vs. Holstein Kiel ◘ Bundesliga 2 ◘◘",
+          "id_xtream": "1735770"
+        },
+        {
+          "nombre": "07:20 | Greuther Fuerth vs. Holstein Kiel | Bundesliga 2 de Alemania",
+          "id_xtream": "1735934"
+        }
+      ],
+      "texto_original_crudo": "07:30 ◘ Greuther Fuerth vs. Holstein Kiel ◘ Bundesliga 2 ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "07:30 ◘ Greuther Fuerth vs. Holstein Kiel ◘ Bundesliga 2 ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_8668a990",
+      "agenda_id": "",
+      "titulo": "LA Aguada vs. LA Irenita Clinova",
+      "torneo": "Abierto de Tortugas",
+      "categoria": "Polo",
+      "tipo_evento": "duelo",
+      "equipo_local": "LA Aguada",
+      "equipo_visitante": "LA Irenita Clinova",
+      "subtitulo": "Abierto de Tortugas",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-11-01T12:55:00Z",
+      "hora_local_producto": "07:55",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Flo9cmg1720510841.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fd3%2FPolo_pictogram.svg%2F512px-Polo_pictogram.svg.png&w=400&output=webp",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "07:55 ◘ La Aguada vs. La Irenita Clinova ◘ Tortugas Open ◘◘",
+          "id_xtream": "1735774"
+        }
+      ],
+      "texto_original_crudo": "07:55 ◘ La Aguada vs. La Irenita Clinova ◘ Tortugas Open ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "07:55 ◘ La Aguada vs. La Irenita Clinova ◘ Tortugas Open ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_espn_2_ar_e8453f79",
       "canales_mencionados_fuente": [
         "Disney+ Premium",
@@ -493,6 +678,24 @@
         {
           "nombre": "07:55 | En Español: Getafe vs. Sevilla |",
           "id_xtream": "1735944"
+        },
+        {
+          "nombre": "ESPN 1 FHD | ARG",
+          "id_xtream": "591975",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 1 HD | AR",
+          "id_xtream": "591974",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
         }
       ],
       "canales_candidatos": [
@@ -692,6 +895,49 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_e1ef17d7",
+      "agenda_id": "",
+      "titulo": "ATP 500 Viena",
+      "torneo": "ATP 500 Viena",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "Alex de Minaur",
+      "equipo_visitante": "Carlos Alcaraz",
+      "subtitulo": "Final",
+      "referencia": "Final • ATP",
+      "hora_utc": "2026-11-01T13:00:00Z",
+      "hora_local_producto": "08:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "08:00 ◘ Alex de Minaur vs. Carlos Alcaraz ◘ ATP ◘◘",
+          "id_xtream": "1735775"
+        },
+        {
+          "nombre": "08:00 | Alex de Minaur (AUS) vs. Carlos Alcaraz (ESP) (Final) | ATP",
+          "id_xtream": "1735945"
+        }
+      ],
+      "texto_original_crudo": "08:00 ◘ Alex de Minaur vs. Carlos Alcaraz ◘ ATP ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "08:00 ◘ Alex de Minaur vs. Carlos Alcaraz ◘ ATP ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "Final",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_teledeporte_4cda78a1",
       "canales_mencionados_fuente": [
         "EUROSPORT 1"
@@ -733,6 +979,24 @@
         {
           "nombre": "EUROSPORT FHD",
           "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
           "canal_lineal": "EUROSPORT 1",
           "pais": "ES"
         }
@@ -986,6 +1250,44 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_3c362bf6",
+      "agenda_id": "",
+      "titulo": "Jiří Lehečka vs. Valentin Vacherot",
+      "torneo": "ATP Challenger Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Jiří Lehečka",
+      "equipo_visitante": "Valentin Vacherot",
+      "subtitulo": "ATP Challenger Tour",
+      "referencia": "Final",
+      "hora_utc": "2026-11-01T14:30:00Z",
+      "hora_local_producto": "09:30",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "09:30 | Jiri Lehecka (CZE) vs. Valentin Vacherot (MON) (Final) | ATP",
+          "id_xtream": "1735958"
+        }
+      ],
+      "texto_original_crudo": "09:30 | Jiri Lehecka (CZE) vs. Valentin Vacherot (MON) (Final) | ATP ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
+      "titulo_original_crudo": "09:30 | Jiri Lehecka (CZE) vs. Valentin Vacherot (MON) (Final) | ATP ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
       "id": "xtream_b2821efe",
       "agenda_id": "",
       "titulo": "Corea del Norte vs. Estados Unidos",
@@ -1040,6 +1342,49 @@
         "Amazon Prime Video (Ver en vivo)",
         "Paramount+"
       ]
+    },
+    {
+      "id": "xtream_407f946e",
+      "agenda_id": "",
+      "titulo": "River Plate vs. Tacuarembó",
+      "torneo": "Segunda División de Uruguay",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "River Plate",
+      "equipo_visitante": "Tacuarembó",
+      "subtitulo": "Segunda División de Uruguay",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-01T14:45:00Z",
+      "hora_local_producto": "09:45",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primera_nacional.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F435.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2374.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/primera_nacional.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "09:45 ◘ River Plate Uruguay vs. Tacuarembó ◘ Segunda Uruguay ◘◘",
+          "id_xtream": "1735784"
+        },
+        {
+          "nombre": "10:45 | River Plate Uruguay vs. Tacuarembó | Segunda División de Uruguay",
+          "id_xtream": "1735964"
+        }
+      ],
+      "texto_original_crudo": "09:45 ◘ River Plate Uruguay vs. Tacuarembó ◘ Segunda Uruguay ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "09:45 ◘ River Plate Uruguay vs. Tacuarembó ◘ Segunda Uruguay ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_89275b39",
@@ -1362,6 +1707,45 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_317c3b8f",
+      "agenda_id": "",
+      "titulo": "ATP Challenger Tour",
+      "torneo": "ATP Challenger Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "Challenger Ciudad de Guayaquil",
+      "equipo_visitante": "Copa Banco Guayaquil",
+      "subtitulo": "Copa Banco Guayaquil",
+      "referencia": "Copa Banco Guayaquil • ATP",
+      "hora_utc": "2026-11-01T16:00:00Z",
+      "hora_local_producto": "11:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:00 | Challenger Ciudad de Guayaquil - Copa Banco Guayaquil | ATP",
+          "id_xtream": "1735967"
+        }
+      ],
+      "texto_original_crudo": "11:00 | Challenger Ciudad de Guayaquil - Copa Banco Guayaquil | ATP ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
+      "titulo_original_crudo": "11:00 | Challenger Ciudad de Guayaquil - Copa Banco Guayaquil | ATP ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
+      "ronda": "Copa Banco Guayaquil",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_e8ba7bcb",
       "agenda_id": "",
       "titulo": "Lyon vs Angers",
@@ -1680,7 +2064,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Umbc",
       "equipo_visitante": "Maine",
-      "subtitulo": "Fase Regular",
+      "subtitulo": "NCAA Women's Soccer",
       "referencia": "Fase Regular",
       "hora_utc": "2026-11-01T17:00:00Z",
       "hora_local_producto": "12:00",
@@ -1718,7 +2102,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Eastern Michigan",
       "equipo_visitante": "Massachusetts",
-      "subtitulo": "Fase Regular",
+      "subtitulo": "NCAA Women's Soccer",
       "referencia": "Fase Regular",
       "hora_utc": "2026-11-01T17:00:00Z",
       "hora_local_producto": "12:00",
@@ -1746,6 +2130,45 @@
       "titulo_original_crudo": "12:00 ◘ Massachusetts vs. Eastern Michigan ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_1ad71f3f",
+      "agenda_id": "",
+      "titulo": "Harvard vs. MIT",
+      "torneo": "NCAA Men's Water Polo",
+      "categoria": "Waterpolo",
+      "tipo_evento": "duelo",
+      "equipo_local": "Harvard",
+      "equipo_visitante": "MIT",
+      "subtitulo": "NCAA Men's Water Polo",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-01T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fd%2Fdd%2FNCAA_logo.svg%2F512px-NCAA_logo.svg.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fq1ik7l1722311729.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:00 ◘ MIT vs. Harvard ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1735803"
+        }
+      ],
+      "texto_original_crudo": "12:00 ◘ MIT vs. Harvard ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "12:00 ◘ MIT vs. Harvard ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_3_ar_4a3c8f6b",
@@ -1877,6 +2300,49 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_74a00b74",
+      "agenda_id": "",
+      "titulo": "China Sub-17 vs. Brasil Sub-17",
+      "torneo": "Copa Mundial Femenina Sub-17",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "China Sub-17",
+      "equipo_visitante": "Brasil Sub-17",
+      "subtitulo": "Copa Mundial Femenina Sub-17",
+      "referencia": "Cuartos de Final",
+      "hora_utc": "2026-11-01T17:48:00Z",
+      "hora_local_producto": "12:48",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/cn.png",
+      "logo_visitante": "https://flagcdn.com/256x192/br.png",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "12:48 ◘ China Sub-17 vs. Brasil Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
+          "id_xtream": "1735809"
+        },
+        {
+          "nombre": "13:00 ◘ China PR Sub-17 vs. Brasil Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘",
+          "id_xtream": "1735820"
+        }
+      ],
+      "texto_original_crudo": "12:48 ◘ China Sub-17 vs. Brasil Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "12:48 ◘ China Sub-17 vs. Brasil Sub-17 ◘ Copa Mundial Femenina Sub-17 ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_eurosport_2_e8535ebd",
       "canales_mencionados_fuente": [
         "EUROSPORT 2"
@@ -1911,6 +2377,12 @@
         {
           "nombre": "EUROSPORT 2 FHD",
           "id_xtream": "327954",
+          "canal_lineal": "EUROSPORT 2",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 2 HD",
+          "id_xtream": "327964",
           "canal_lineal": "EUROSPORT 2",
           "pais": "ES"
         }
@@ -2526,7 +2998,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Kentucky",
       "equipo_visitante": "Arkansas",
-      "subtitulo": "Fase Regular",
+      "subtitulo": "NCAA Women's Soccer",
       "referencia": "Fase Regular",
       "hora_utc": "2026-11-01T18:00:00Z",
       "hora_local_producto": "13:00",
@@ -2595,22 +3067,61 @@
       "ronda": ""
     },
     {
+      "id": "xtream_65729f2d",
+      "agenda_id": "",
+      "titulo": "American University vs. Holy Cross",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "American University",
+      "equipo_visitante": "Holy Cross",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fj4tzaz1580997179.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fylpo3m1564356823.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ American University vs. Holy Cross ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1735813"
+        }
+      ],
+      "texto_original_crudo": "13:00 ◘ American University vs. Holy Cross ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "13:00 ◘ American University vs. Holy Cross ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_1faa42a2",
       "agenda_id": "",
-      "titulo": "Georgia Southern vs. James Madison",
+      "titulo": "James Madison vs. Georgia Southern",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Georgia Southern",
-      "equipo_visitante": "James Madison",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
+      "equipo_local": "James Madison",
+      "equipo_visitante": "Georgia Southern",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Sun Belt Tournament",
       "hora_utc": "2026-11-01T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffdqmd11564356998.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffdqmd11564356998.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F232.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -2633,22 +3144,100 @@
       "auditado_agy": true
     },
     {
-      "id": "xtream_26c4afa7",
+      "id": "xtream_9aac6488",
       "agenda_id": "",
-      "titulo": "Missouri vs. LSU",
+      "titulo": "Kennesaw State vs. Florida International",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Missouri",
-      "equipo_visitante": "LSU",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
+      "equipo_local": "Kennesaw State",
+      "equipo_visitante": "Florida International",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "C-usa Tournament",
+      "hora_utc": "2026-11-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0fgnub1564357017.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fd2bwxd1582053610.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Kennesaw State vs. Florida International ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "1735825"
+        }
+      ],
+      "texto_original_crudo": "13:00 ◘ Kennesaw State vs. Florida International ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "13:00 ◘ Kennesaw State vs. Florida International ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_1d8ef4a0",
+      "agenda_id": "",
+      "titulo": "Leones Negros UdeG vs. Tepatitlán FC",
+      "torneo": "Liga de Expansión MX",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Leones Negros UdeG",
+      "equipo_visitante": "Tepatitlán FC",
+      "subtitulo": "Liga de Expansión MX",
+      "referencia": "Apertura 2026",
+      "hora_utc": "2026-11-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_expansion_mx.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1143.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F14279.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_expansion_mx.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Leones Negros UdeG vs. Tepatitlán ◘ Liga de Expansión MX ◘",
+          "id_xtream": "1735827"
+        }
+      ],
+      "texto_original_crudo": "13:00 ◘ Leones Negros UdeG vs. Tepatitlán ◘ Liga de Expansión MX ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "13:00 ◘ Leones Negros UdeG vs. Tepatitlán ◘ Liga de Expansión MX ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_26c4afa7",
+      "agenda_id": "",
+      "titulo": "LSU vs. Missouri",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "LSU",
+      "equipo_visitante": "Missouri",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "SEC Tournament",
       "hora_utc": "2026-11-01T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjcj91i1564336177.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjcj91i1564336177.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F83.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -2669,6 +3258,45 @@
       "titulo_original_crudo": "13:00 ◘ LSU vs. Missouri ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_a8768db7",
+      "agenda_id": "",
+      "titulo": "Marshall vs. Coastal Carolina",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Marshall",
+      "equipo_visitante": "Coastal Carolina",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F9hakac1643576435.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fp3jizw1564335745.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Marshall vs. Coastal Carolina ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "1735829"
+        }
+      ],
+      "texto_original_crudo": "13:00 ◘ Marshall vs. Coastal Carolina ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "13:00 ◘ Marshall vs. Coastal Carolina ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_e56b9a07",
@@ -2710,21 +3338,60 @@
       "ronda": ""
     },
     {
-      "id": "xtream_f108e5be",
+      "id": "xtream_0c656b6f",
       "agenda_id": "",
-      "titulo": "Liberty vs. Missouri State",
+      "titulo": "Miami (OH) vs. Toledo",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Liberty",
-      "equipo_visitante": "Missouri State",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
+      "equipo_local": "Miami (OH)",
+      "equipo_visitante": "Toledo",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-11-01T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fz26guc1564336125.png&w=400&output=webp",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9030.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9908.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Miami vs. Toledo ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "1735831"
+        }
+      ],
+      "texto_original_crudo": "13:00 ◘ Miami vs. Toledo ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "13:00 ◘ Miami vs. Toledo ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_f108e5be",
+      "agenda_id": "",
+      "titulo": "Missouri State vs. Liberty",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Missouri State",
+      "equipo_visitante": "Liberty",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F83.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fz26guc1564336125.png&w=400&output=webp",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
@@ -2750,20 +3417,20 @@
     {
       "id": "xtream_707b5db2",
       "agenda_id": "",
-      "titulo": "Bowling Green vs. Ohio",
+      "titulo": "Ohio vs. Bowling Green",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Bowling Green",
-      "equipo_visitante": "Ohio",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
+      "equipo_local": "Ohio",
+      "equipo_visitante": "Bowling Green",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-11-01T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuggxw21564336498.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fuggxw21564336498.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F154.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -2784,6 +3451,45 @@
       "titulo_original_crudo": "13:00 ◘ Ohio vs. Bowling Green ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_f47cc604",
+      "agenda_id": "",
+      "titulo": "Troy vs. App State",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Troy",
+      "equipo_visitante": "App State",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-01T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fi1pawc1564336858.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0qlwu41564335456.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:00 ◘ Troy vs. App State ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "1735837"
+        }
+      ],
+      "texto_original_crudo": "13:00 ◘ Troy vs. App State ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "13:00 ◘ Troy vs. App State ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_08d27681",
@@ -2823,6 +3529,92 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_40de39a1",
+      "agenda_id": "",
+      "titulo": "Flamengo vs. Boca Juniors",
+      "torneo": "Messi Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Flamengo",
+      "equipo_visitante": "Boca Juniors",
+      "subtitulo": "Messi Cup",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-11-01T18:20:00Z",
+      "hora_local_producto": "13:20",
+      "duracion_min": 125,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F11054.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F451.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:20 ◘ Flamengo vs. Boca Juniors ◘ Messi Cup\t ◘◘",
+          "id_xtream": "1735840"
+        },
+        {
+          "nombre": "13:20 | Flamengo vs. Boca Juniors | Messi Cup",
+          "id_xtream": "1735987"
+        }
+      ],
+      "texto_original_crudo": "13:20 ◘ Flamengo vs. Boca Juniors ◘ Messi Cup\t ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "13:20 ◘ Flamengo vs. Boca Juniors ◘ Messi Cup\t ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_f7ab8014",
+      "agenda_id": "",
+      "titulo": "Newell's Old Boys vs. UE Cornellà",
+      "torneo": "Messi Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Newell's Old Boys",
+      "equipo_visitante": "UE Cornellà",
+      "subtitulo": "Messi Cup",
+      "referencia": "Final",
+      "hora_utc": "2026-11-01T18:25:00Z",
+      "hora_local_producto": "13:25",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F18691.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F5258.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "13:25 ◘ Newell's Old Boys vs. UE Cornellà ◘ Messi Cup ◘◘",
+          "id_xtream": "1735841"
+        },
+        {
+          "nombre": "13:25 | Newell's Old Boys vs. UE Cornellà | Messi Cup",
+          "id_xtream": "1735988"
+        }
+      ],
+      "texto_original_crudo": "13:25 ◘ Newell's Old Boys vs. UE Cornellà ◘ Messi Cup ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "13:25 ◘ Newell's Old Boys vs. UE Cornellà ◘ Messi Cup ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -2942,6 +3734,18 @@
         {
           "nombre": "WIN SPORTS FHD",
           "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
           "canal_lineal": "WIN SPORTS",
           "pais": "CO"
         }
@@ -3124,82 +3928,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_a77b95d1",
-      "agenda_id": "",
-      "titulo": "SIU Edwardsville vs. Eastern Illinois",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "SIU Edwardsville",
-      "equipo_visitante": "Eastern Illinois",
-      "subtitulo": "Temporada Regular",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-01T19:00:00Z",
-      "hora_local_producto": "14:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F80.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "14:00 ◘ Eastern Illinois vs. SIU Edwardsville ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1735843"
-        }
-      ],
-      "texto_original_crudo": "14:00 ◘ Eastern Illinois vs. SIU Edwardsville ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
-      "titulo_original_crudo": "14:00 ◘ Eastern Illinois vs. SIU Edwardsville ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_8df14d3c",
-      "agenda_id": "",
-      "titulo": "Arkansas State vs. Louisiana",
-      "torneo": "NCAA Women's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Arkansas State",
-      "equipo_visitante": "Louisiana",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
-      "hora_utc": "2026-11-01T19:00:00Z",
-      "hora_local_producto": "14:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2ltd3o1564335519.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2ltd3o1564335519.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "14:00 ◘ Louisiana vs. Arkansas State ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1735845"
-        }
-      ],
-      "texto_original_crudo": "14:00 ◘ Louisiana vs. Arkansas State ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
-      "titulo_original_crudo": "14:00 ◘ Louisiana vs. Arkansas State ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_a00a0f31",
       "agenda_id": "",
       "titulo": "Section Paloise vs. Toulouse",
@@ -3237,6 +3965,82 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_a77b95d1",
+      "agenda_id": "",
+      "titulo": "SIU Edwardsville vs. Eastern Illinois",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "SIU Edwardsville",
+      "equipo_visitante": "Eastern Illinois",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-01T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F80.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Eastern Illinois vs. SIU Edwardsville ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1735843"
+        }
+      ],
+      "texto_original_crudo": "14:00 ◘ Eastern Illinois vs. SIU Edwardsville ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "14:00 ◘ Eastern Illinois vs. SIU Edwardsville ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_8df14d3c",
+      "agenda_id": "",
+      "titulo": "Arkansas State vs. Louisiana",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Arkansas State",
+      "equipo_visitante": "Louisiana",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-01T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2ltd3o1564335519.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2ltd3o1564335519.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ Louisiana vs. Arkansas State ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1735845"
+        }
+      ],
+      "texto_original_crudo": "14:00 ◘ Louisiana vs. Arkansas State ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "14:00 ◘ Louisiana vs. Arkansas State ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_de144b1e",
@@ -3280,6 +4084,53 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_466fa226",
+      "agenda_id": "",
+      "titulo": "Formula",
+      "torneo": "Formula",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cámaras Onboard",
+      "referencia": "Cámaras Onboard • Formula On • Kimi Antonelli vs. Mexico City Grand Prix",
+      "hora_utc": "2026-11-01T19:30:00Z",
+      "hora_local_producto": "14:30",
+      "duracion_min": 240,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18 | Formula 1 On-Board Camera: Kimi Antonelli - Mexico City Grand Prix | 2:30 PM ET | 11.01",
+          "id_xtream": "1736056"
+        },
+        {
+          "nombre": "19 | Formula 1 On-Board Camera: Lance Stroll - Mexico City Grand Prix | 2:30 PM ET | 11.01",
+          "id_xtream": "1736057"
+        },
+        {
+          "nombre": "20 | Formula 1 On-Board Camera: Max Verstappen - Mexico City Grand Prix | 2:30 PM ET | 11.01",
+          "id_xtream": "1736058"
+        }
+      ],
+      "texto_original_crudo": "18 | Formula 1 On-Board Camera: Kimi Antonelli - Mexico City Grand Prix | 2:30 PM ET | 11.01 ★ » ★   F O R M U L A   1   ★ » ★",
+      "titulo_original_crudo": "18 | Formula 1 On-Board Camera: Kimi Antonelli - Mexico City Grand Prix | 2:30 PM ET | 11.01 ★ » ★   F O R M U L A   1   ★ » ★",
+      "ronda": "Cámaras Onboard",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -3335,6 +4186,18 @@
         {
           "nombre": "ESPN 3 FHD | ARG",
           "id_xtream": "591987",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 3 HD | AR",
+          "id_xtream": "591986",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 3 HD| AR",
+          "id_xtream": "712745",
           "canal_lineal": "ESPN 3 AR",
           "pais": "AR"
         }
@@ -3572,6 +4435,12 @@
           "id_xtream": "327982",
           "canal_lineal": "EUROSPORT 1",
           "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
         }
       ],
       "canales_candidatos": [
@@ -3624,45 +4493,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_fbee2c57",
-      "agenda_id": "",
-      "titulo": "Fórmula 1",
-      "torneo": "Fórmula 1",
-      "categoria": "Motor",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Carrera",
-      "referencia": "GP México • Sesión en Vivo",
-      "hora_utc": "2026-11-01T20:00:00Z",
-      "hora_local_producto": "15:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.9,
-      "fuentes": [
-        {
-          "nombre": "13:55 ◘ F1 GP México carrera ◘ Fórmula 1 ◘◘",
-          "id_xtream": "1735842"
-        }
-      ],
-      "texto_original_crudo": "13:55 ◘ F1 GP México carrera ◘ Fórmula 1 ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
-      "titulo_original_crudo": "13:55 ◘ F1 GP México carrera ◘ Fórmula 1 ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
-      "ronda": "Carrera",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_c9a25b77",
       "agenda_id": "",
       "titulo": "Universidad Católica vs. Universidad de Chile",
@@ -3671,8 +4501,8 @@
       "tipo_evento": "duelo",
       "equipo_local": "Universidad Católica",
       "equipo_visitante": "Universidad de Chile",
-      "subtitulo": "Fecha",
-      "referencia": "Fecha",
+      "subtitulo": "Primera División de Chile",
+      "referencia": "Clásico Universitario",
       "hora_utc": "2026-11-01T20:15:00Z",
       "hora_local_producto": "15:15",
       "duracion_min": 130,
@@ -3878,20 +4708,20 @@
     {
       "id": "xtream_bd6bac84",
       "agenda_id": "",
-      "titulo": "Vermont vs. Binghamton",
-      "torneo": "NCAA Women's Soccer",
+      "titulo": "Binghamton vs. Vermont",
+      "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Vermont",
-      "equipo_visitante": "Binghamton",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
+      "equipo_local": "Binghamton",
+      "equipo_visitante": "Vermont",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-11-01T20:30:00Z",
       "hora_local_producto": "15:30",
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2313.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F1476.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F1476.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2313.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -4083,20 +4913,20 @@
     {
       "id": "xtream_b6efc446",
       "agenda_id": "",
-      "titulo": "Stanford vs. Notre Dame",
+      "titulo": "Notre Dame vs. Stanford",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Stanford",
-      "equipo_visitante": "Notre Dame",
-      "subtitulo": "Fase Regular",
-      "referencia": "Fase Regular",
+      "equipo_local": "Notre Dame",
+      "equipo_visitante": "Stanford",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-11-01T21:00:00Z",
       "hora_local_producto": "16:00",
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F191.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F108.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F108.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F191.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -4117,6 +4947,45 @@
       "titulo_original_crudo": "16:00 ◘ #9 Notre Dame vs. #13 Stanford ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_e9f0f2f5",
+      "agenda_id": "",
+      "titulo": "Estrellas Orientales vs. Tigres del Licey",
+      "torneo": "Lidom",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Estrellas Orientales",
+      "equipo_visitante": "Tigres del Licey",
+      "subtitulo": "Lidom",
+      "referencia": "Serie Regular",
+      "hora_utc": "2026-11-01T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F148.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx6mzk41615832215.png&w=400&output=webp",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F11.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:00 ◘ Estrellas Orientales vs. Tigres de Licey ◘ LIDOM ◘",
+          "id_xtream": "1735867"
+        }
+      ],
+      "texto_original_crudo": "16:00 ◘ Estrellas Orientales vs. Tigres de Licey ◘ LIDOM ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "16:00 ◘ Estrellas Orientales vs. Tigres de Licey ◘ LIDOM ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_win_sports_0853f210",
@@ -4161,6 +5030,18 @@
         {
           "nombre": "WIN SPORTS FHD",
           "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
           "canal_lineal": "WIN SPORTS",
           "pais": "CO"
         }
@@ -4663,6 +5544,96 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_84a4d605",
+      "agenda_id": "",
+      "titulo": "Nashville SC vs. New York Red Bulls",
+      "torneo": "Major League Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nashville SC",
+      "equipo_visitante": "New York Red Bulls",
+      "subtitulo": "Major League Soccer",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-01T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9569.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6bnwoc1784751677.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mls.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "MLS 02 | Nashville SC vs. Red Bull New York | 4:30 PM ET | 11.1 | EN",
+          "id_xtream": "1736107"
+        },
+        {
+          "nombre": "16:30  | En Español: Nashville SC vs. Red Bull New York | MLS",
+          "id_xtream": "1736108"
+        },
+        {
+          "nombre": "16:30 ◘ Nashville SC vs. New York RB ◘ MLS ◘",
+          "id_xtream": "1735883"
+        }
+      ],
+      "texto_original_crudo": "MLS 02 | Nashville SC vs. Red Bull New York | 4:30 PM ET | 11.1 | EN MLS - APPLE TV - ONLY EVENTS",
+      "titulo_original_crudo": "MLS 02 | Nashville SC vs. Red Bull New York | 4:30 PM ET | 11.1 | EN MLS - APPLE TV - ONLY EVENTS",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_d85c1ea5",
+      "agenda_id": "",
+      "titulo": "Albion FC vs. Deportivo Maldonado",
+      "torneo": "Segunda División de Uruguay",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Albion FC",
+      "equipo_visitante": "Deportivo Maldonado",
+      "subtitulo": "Segunda División de Uruguay",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-01T21:30:00Z",
+      "hora_local_producto": "16:30",
+      "duracion_min": 125,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2378.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0fmxza1580234592.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:30 ◘ Albion FC vs. Deportivo Maldonado ◘ Segunda Uruguay ◘◘",
+          "id_xtream": "1735878"
+        },
+        {
+          "nombre": "17:30 | Albion FC vs. Deportivo Maldonado | Campeonato Uruguayo",
+          "id_xtream": "1736009"
+        }
+      ],
+      "texto_original_crudo": "16:30 ◘ Albion FC vs. Deportivo Maldonado ◘ Segunda Uruguay ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "16:30 ◘ Albion FC vs. Deportivo Maldonado ◘ Segunda Uruguay ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_3ad69edd",
       "agenda_id": "",
       "titulo": "América W vs Atlante W",
@@ -4700,6 +5671,45 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_ae383f9e",
+      "agenda_id": "",
+      "titulo": "River Plate vs. Palmeiras",
+      "torneo": "Messi Cup",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "River Plate",
+      "equipo_visitante": "Palmeiras",
+      "subtitulo": "Messi Cup",
+      "referencia": "Final",
+      "hora_utc": "2026-11-01T21:50:00Z",
+      "hora_local_producto": "16:50",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F435.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F121.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "16:50 | River Plate vs. Palmeiras (Final) | Messi Cup",
+          "id_xtream": "1736007"
+        }
+      ],
+      "texto_original_crudo": "16:50 | River Plate vs. Palmeiras (Final) | Messi Cup ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
+      "titulo_original_crudo": "16:50 | River Plate vs. Palmeiras (Final) | Messi Cup ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -5109,16 +6119,55 @@
       "ronda": ""
     },
     {
-      "id": "xtream_87d580b7",
+      "id": "xtream_461d0e5d",
       "agenda_id": "",
-      "titulo": "Tatjana Maria vs. Bianca Andreescu",
+      "titulo": "Georgia State vs. Old Dominion",
+      "torneo": "NCAA Women's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Georgia State",
+      "equipo_visitante": "Old Dominion",
+      "subtitulo": "NCAA Women's Soccer",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F2opepc1564336540.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F4ym7d91564335942.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 ◘ Old Dominion vs. Georgia State ◘ NCAA Women's Soccer ◘◘",
+          "id_xtream": "1735894"
+        }
+      ],
+      "texto_original_crudo": "17:00 ◘ Old Dominion vs. Georgia State ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "17:00 ◘ Old Dominion vs. Georgia State ◘ NCAA Women's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_ca3f224c",
+      "agenda_id": "",
+      "titulo": "WTA 125 Querétaro Open",
       "torneo": "WTA 125 Querétaro Open",
       "categoria": "Tenis",
-      "tipo_evento": "duelo",
-      "equipo_local": "Tatjana Maria",
-      "equipo_visitante": "Bianca Andreescu",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
       "subtitulo": "Final",
-      "referencia": "Final",
+      "referencia": "Final • Querétaro Open Presentado por Mexcovery",
       "hora_utc": "2026-11-01T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 240,
@@ -5137,14 +6186,58 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
+          "nombre": "17:00 ◘ Querétaro Open Presentado por MEXCOVERY ◘ WTA ◘◘",
+          "id_xtream": "1735895"
+        },
+        {
           "nombre": "17:00 | Querétaro Open Presentado por MEXCOVERY (Final) | WTA",
           "id_xtream": "1736008"
         }
       ],
-      "texto_original_crudo": "17:00 | Querétaro Open Presentado por MEXCOVERY (Final) | WTA ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
-      "titulo_original_crudo": "17:00 | Querétaro Open Presentado por MEXCOVERY (Final) | WTA ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
-      "ronda": "Querétaro Open Presentado por",
-      "auditado_agy": true
+      "texto_original_crudo": "17:00 ◘ Querétaro Open Presentado por MEXCOVERY ◘ WTA ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "17:00 ◘ Querétaro Open Presentado por MEXCOVERY ◘ WTA ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "Final",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_797456df",
+      "agenda_id": "",
+      "titulo": "Washington Spirit vs. Chicago Stars FC",
+      "torneo": "Nwsl",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Spirit",
+      "equipo_visitante": "Chicago Stars FC",
+      "subtitulo": "Nwsl",
+      "referencia": "Jornada",
+      "hora_utc": "2026-11-01T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F254.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F3005.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fh4e2t21552585926.png&w=400&output=webp",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F254.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "17:00 ◘ Washington Spirit vs. Chicago Stars ◘ NWSL ◘◘",
+          "id_xtream": "1735898"
+        }
+      ],
+      "texto_original_crudo": "17:00 ◘ Washington Spirit vs. Chicago Stars ◘ NWSL ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "17:00 ◘ Washington Spirit vs. Chicago Stars ◘ NWSL ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_eurosport_1_57294fa7",
@@ -5181,6 +6274,12 @@
         {
           "nombre": "EUROSPORT FHD",
           "id_xtream": "327982",
+          "canal_lineal": "EUROSPORT 1",
+          "pais": "ES"
+        },
+        {
+          "nombre": "EUROSPORT 1 HD",
+          "id_xtream": "327938",
           "canal_lineal": "EUROSPORT 1",
           "pais": "ES"
         }
@@ -5333,7 +6432,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Charlotte",
       "equipo_visitante": "Missouri State",
-      "subtitulo": "Temporada Regular",
+      "subtitulo": "NCAA Men's Soccer",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-01T23:00:00Z",
       "hora_local_producto": "18:00",
@@ -5371,7 +6470,7 @@
       "tipo_evento": "duelo",
       "equipo_local": "Middle Tennessee",
       "equipo_visitante": "Western Kentucky",
-      "subtitulo": "Temporada Regular",
+      "subtitulo": "NCAA Women's Soccer",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-01T23:00:00Z",
       "hora_local_producto": "18:00",
@@ -5446,6 +6545,18 @@
         {
           "nombre": "WIN SPORTS FHD",
           "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
           "canal_lineal": "WIN SPORTS",
           "pais": "CO"
         }
@@ -5753,6 +6864,244 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_cf797d30",
+      "agenda_id": "",
+      "titulo": "Milwaukee Bucks vs. Cleveland Cavaliers",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Milwaukee Bucks",
+      "equipo_visitante": "Cleveland Cavaliers",
+      "subtitulo": "NBA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F137.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F148.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Cleveland Cavaliers vs. Milwaukee Bucks ◘ NBA ◘",
+          "id_xtream": "1735317"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Cleveland Cavaliers vs. Milwaukee Bucks ◘ NBA ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ Cleveland Cavaliers vs. Milwaukee Bucks ◘ NBA ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_f1ef20bf",
+      "agenda_id": "",
+      "titulo": "San Antonio Spurs vs. Minnesota Timberwolves",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "San Antonio Spurs",
+      "equipo_visitante": "Minnesota Timberwolves",
+      "subtitulo": "NBA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F149.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F158.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Minnesota Timberwolves vs. San Antonio Spurs ◘ NBA ◘",
+          "id_xtream": "1735320"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Minnesota Timberwolves vs. San Antonio Spurs ◘ NBA ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ Minnesota Timberwolves vs. San Antonio Spurs ◘ NBA ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_3f40f3df",
+      "agenda_id": "",
+      "titulo": "Memphis Grizzlies vs. Sacramento Kings",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Memphis Grizzlies",
+      "equipo_visitante": "Sacramento Kings",
+      "subtitulo": "NBA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F157.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F146.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Sacramento Kings vs. Memphis Grizzlies ◘ NBA ◘",
+          "id_xtream": "1735322"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Sacramento Kings vs. Memphis Grizzlies ◘ NBA ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ Sacramento Kings vs. Memphis Grizzlies ◘ NBA ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_7f404d2c",
+      "agenda_id": "",
+      "titulo": "Florida Atlantic Owls vs. UAB Blazers",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Florida Atlantic Owls",
+      "equipo_visitante": "UAB Blazers",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fa72jia1666264331.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fdsbj9o1564336891.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Florida Atlantic vs. UAB ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1735910"
+        },
+        {
+          "nombre": "19:00 ◘ UAB vs. Florida Atlantic ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1735916"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Florida Atlantic vs. UAB ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ Florida Atlantic vs. UAB ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_03c1e244",
+      "agenda_id": "",
+      "titulo": "FIU Panthers vs. Temple Owls",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "FIU Panthers",
+      "equipo_visitante": "Temple Owls",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fd2bwxd1582053610.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7ykypw1643210047.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Florida International vs. Temple ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1735911"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Florida International vs. Temple ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ Florida International vs. Temple ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_ff7021fc",
+      "agenda_id": "",
+      "titulo": "Memphis Tigers vs. Tulsa Golden Hurricane",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Memphis Tigers",
+      "equipo_visitante": "Tulsa Golden Hurricane",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-02T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwvucol1564336213.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4022.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Memphis vs. Tulsa ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1735913"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Memphis vs. Tulsa ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ Memphis vs. Tulsa ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_fe9bc0e1",
       "agenda_id": "",
       "titulo": "Tomateros vs Jalisco",
@@ -5842,6 +7191,18 @@
         {
           "nombre": "ESPN 1 FHD | ARG",
           "id_xtream": "591975",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN FHD | AR",
+          "id_xtream": "712743",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "ESPN 1 HD | AR",
+          "id_xtream": "591974",
           "canal_lineal": "ESPN AR",
           "pais": "AR"
         }
@@ -5941,52 +7302,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_1d08700e",
-      "agenda_id": "",
-      "titulo": "Cañeros de los Mochis vs. Naranjeros de Hermosillo",
-      "torneo": "Liga Arco Mexicana del Pacífico",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Cañeros de los Mochis",
-      "equipo_visitante": "Naranjeros de Hermosillo",
-      "subtitulo": "Juego",
-      "referencia": "Juego",
-      "hora_utc": "2026-11-02T01:00:00Z",
-      "hora_local_producto": "20:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F22.png&w=400&output=webp&trim=10",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F302.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F22.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "20:00 ◘ Cañeros de Los Mochis vs. Naranjeros de Hermosillo ◘ LMP ◘",
-          "id_xtream": "1735328"
-        },
-        {
-          "nombre": "21:30 ◘ Cañeros de los Mochis vs. Naranjeros De Hermosillo ◘ LMP ◘",
-          "id_xtream": "1735928"
-        },
-        {
-          "nombre": "19:00 ◘ Cañeros de los Mochis vs. Naranjeros De Hermosillo ◘ LMP ◘",
-          "id_xtream": "1735908"
-        }
-      ],
-      "texto_original_crudo": "20:00 ◘ Cañeros de Los Mochis vs. Naranjeros de Hermosillo ◘ LMP ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
-      "titulo_original_crudo": "20:00 ◘ Cañeros de Los Mochis vs. Naranjeros de Hermosillo ◘ LMP ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_9dd1a38c",
       "agenda_id": "",
       "titulo": "Alacranes de Durango vs. Atlético Morelia",
@@ -6021,6 +7336,49 @@
       ],
       "texto_original_crudo": "20:00 ◘ Durango vs. Atlético Morelia ◘ Liga de Expansión MX ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
       "titulo_original_crudo": "20:00 ◘ Durango vs. Atlético Morelia ◘ Liga de Expansión MX ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_8b318051",
+      "agenda_id": "",
+      "titulo": "Algodoneros de Guasave vs. Yaquis de Ciudad Obregón",
+      "torneo": "Liga Mexicana del Pacífico",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Algodoneros de Guasave",
+      "equipo_visitante": "Yaquis de Ciudad Obregón",
+      "subtitulo": "Liga Mexicana del Pacífico",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-02T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F22.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F307.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F22.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Algodoneros de Guasave vs. Yaquis de Ciudad Obregón ◘ LMP ◘",
+          "id_xtream": "1735326"
+        },
+        {
+          "nombre": "19:00 ◘ Algodoneros De Guasave vs. Yaquis De Ciudad Obregón ◘ LMP ◘",
+          "id_xtream": "1735907"
+        }
+      ],
+      "texto_original_crudo": "20:00 ◘ Algodoneros de Guasave vs. Yaquis de Ciudad Obregón ◘ LMP ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
+      "titulo_original_crudo": "20:00 ◘ Algodoneros de Guasave vs. Yaquis de Ciudad Obregón ◘ LMP ◘ ✨   E V E N T O S   D I A R I O S   01/11   ✨",
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
@@ -6287,13 +7645,13 @@
       "id": "lineal_win_sports_bdb06c17",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
-      "titulo": "Icsin FC vs. Lyon de Cali",
-      "torneo": "Liga BetPlay Futsal",
+      "titulo": "Icsin vs. Lyon de Cali",
+      "torneo": "Liga BetPlay de Futsal FCF",
       "categoria": "Futsal",
       "tipo_evento": "duelo",
-      "equipo_local": "Icsin FC",
+      "equipo_local": "Icsin",
       "equipo_visitante": "Lyon de Cali",
-      "subtitulo": "Semifinal Ida",
+      "subtitulo": "Liga BetPlay de Futsal FCF",
       "referencia": "Semifinal Ida",
       "hora_utc": "2026-11-02T02:00:00Z",
       "hora_local_producto": "21:00",
@@ -6316,6 +7674,18 @@
         {
           "nombre": "WIN SPORTS FHD",
           "id_xtream": "1331804",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Win Sports HD",
+          "id_xtream": "13767",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "WIN SPORTS HD",
+          "id_xtream": "1331803",
           "canal_lineal": "WIN SPORTS",
           "pais": "CO"
         }
@@ -6379,17 +7749,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-01",
-    "total_agenda_maestra": 52,
+    "total_agenda_maestra": 35,
     "total_canales_xtream": 8757,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 1802,
-    "eventos_lineales_inyectados": 37,
+    "eventos_lineales_inyectados": 24,
     "eventos_xtream_aprobados": 234,
-    "eventos_contrastados_api": 100,
-    "eventos_sellados_boveda_inmutable": 108,
-    "eventos_descartados_stale": 159,
-    "total_eventos_publicados": 133,
-    "hora_actualizacion_utc": "2026-11-01T22:31:17Z"
+    "eventos_contrastados_api": 99,
+    "eventos_sellados_boveda_inmutable": 139,
+    "eventos_descartados_stale": 177,
+    "total_eventos_publicados": 163,
+    "hora_actualizacion_utc": "2026-11-02T03:31:06Z"
   }
 }
