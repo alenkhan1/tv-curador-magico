@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-03T15:12:45Z",
+  "generado_utc": "2026-11-03T22:21:07Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-03",
   "base_media": "http://avefenixtv.com:8080",
@@ -246,7 +246,8 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "mitv_espn_ar"
+        "mitv_espn_ar",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -276,6 +277,10 @@
         {
           "nombre": "05:00 ◘ Rolex Paris Masters ◘ ATP ◘◘",
           "id_xtream": "1736764"
+        },
+        {
+          "nombre": "07:00  | Rolex Paris Masters - Court 3 (Doubles) | ATP",
+          "id_xtream": "1736862"
         },
         {
           "nombre": "ESPN 1 FHD | ARG",
@@ -347,44 +352,6 @@
       "ronda": "Primera Ronda",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_c264c062",
-      "agenda_id": "",
-      "titulo": "FIP World Padel Championship",
-      "torneo": "FIP World Padel Championship",
-      "categoria": "Pádel",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Pista Central",
-      "referencia": "Pista Central • Centre Court (Round Robin) • Prime Minister Padel",
-      "hora_utc": "2026-11-03T11:00:00Z",
-      "hora_local_producto": "06:00",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "06:00 ◘ FIP World Cup - Centre Court (Round Robin) ◘ Prime Minister Padel ◘◘",
-          "id_xtream": "1736765"
-        }
-      ],
-      "texto_original_crudo": "06:00 ◘ FIP World Cup - Centre Court (Round Robin) ◘ Prime Minister Padel ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "titulo_original_crudo": "06:00 ◘ FIP World Cup - Centre Court (Round Robin) ◘ Prime Minister Padel ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "ronda": "Pista Central",
-      "auditado_agy": true
     },
     {
       "id": "lineal_eurosport_1_3e89935e",
@@ -837,14 +804,14 @@
     {
       "id": "xtream_8c16ab37",
       "agenda_id": "",
-      "titulo": "Colby Covington vs. Raúl Rosas Jr.",
+      "titulo": "Colby Covington vs. Raul Rosas Jr.",
       "torneo": "Hype Fighting Championship",
       "categoria": "Combate",
       "tipo_evento": "duelo",
       "equipo_local": "Colby Covington",
-      "equipo_visitante": "Raúl Rosas Jr.",
+      "equipo_visitante": "Raul Rosas Jr.",
       "subtitulo": "Hype Fighting Championship",
-      "referencia": "Grappling Superfight",
+      "referencia": "Grappling Main Event",
       "hora_utc": "2026-11-03T17:57:00Z",
       "hora_local_producto": "12:57",
       "duracion_min": 130,
@@ -1482,6 +1449,114 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_d414cf4f",
+      "agenda_id": "",
+      "titulo": "Atletico Madrid vs Bayern München",
+      "torneo": "UEFA Champions League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Atletico Madrid",
+      "equipo_visitante": "Bayern München",
+      "subtitulo": "UEFA Champions League",
+      "referencia": "UEFA Champions League",
+      "hora_utc": "2026-11-03T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F530.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F157.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "15:00 ◘ Atlético Madrid vs. Bayern München ◘ UEFA Champions League ◘",
+          "id_xtream": "1736776"
+        },
+        {
+          "nombre": "15:00 ◘ Atlético Madrid vs. Bayern München ◘ UEFA Champions League ◘◘ FHD",
+          "id_xtream": "1736777"
+        },
+        {
+          "nombre": "13:55| English: Atlético de Madrid vs. Bayern Munich | UEFA Champions League",
+          "id_xtream": "1736839"
+        },
+        {
+          "nombre": "14:40| Atlético de Madrid vs. Bayern Munich | UEFA Champions League",
+          "id_xtream": "1736846"
+        },
+        {
+          "nombre": "14:45| En Español: Atlético de Madrid vs. Bayern Munich | UEFA Champions League",
+          "id_xtream": "1736854"
+        }
+      ],
+      "texto_original_crudo": "15:00 ◘ Atlético Madrid vs. Bayern München ◘ UEFA Champions League ◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "titulo_original_crudo": "15:00 ◘ Atlético Madrid vs. Bayern München ◘ UEFA Champions League ◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_809824d2",
+      "agenda_id": "",
+      "titulo": "Barcelona vs Aston Villa",
+      "torneo": "Barcelona (Esp) vs. Aston Villa (Ing)",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Barcelona",
+      "equipo_visitante": "Aston Villa",
+      "subtitulo": "Barcelona (Esp) vs. Aston Villa (Ing)",
+      "referencia": "UEFA Champions League",
+      "hora_utc": "2026-11-03T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F2.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F529.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F66.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F2.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.9,
+      "fuentes": [
+        {
+          "nombre": "15:00 ◘ Barcelona vs. Aston Villa ◘ UEFA Champions League ◘",
+          "id_xtream": "1736778"
+        },
+        {
+          "nombre": "15:00 ◘ Barcelona vs. Aston Villa ◘ UEFA Champions League ◘◘",
+          "id_xtream": "1736779"
+        },
+        {
+          "nombre": "14:26| Barcelona vs. Aston Villa | UEFA Champions League",
+          "id_xtream": "1736845"
+        },
+        {
+          "nombre": "14:40| Barcelona vs. Aston Villa | UEFA Champions League",
+          "id_xtream": "1736847"
+        }
+      ],
+      "texto_original_crudo": "15:00 ◘ Barcelona vs. Aston Villa ◘ UEFA Champions League ◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "titulo_original_crudo": "15:00 ◘ Barcelona vs. Aston Villa ◘ UEFA Champions League ◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
       "id": "lineal_win_sports_094faf77",
       "canales_mencionados_fuente": [
         "Win Fútbol +",
@@ -1754,44 +1829,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_d789f245",
-      "agenda_id": "",
-      "titulo": "Army vs. Colgate",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Army",
-      "equipo_visitante": "Colgate",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-03T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7q9nro1564356542.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "18:00 ◘ Army vs. Colgate ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1736792"
-        }
-      ],
-      "texto_original_crudo": "18:00 ◘ Army vs. Colgate ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "titulo_original_crudo": "18:00 ◘ Army vs. Colgate ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_4271f635",
       "agenda_id": "",
       "titulo": "Boston University vs. Holy Cross",
@@ -1868,6 +1905,44 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_d789f245",
+      "agenda_id": "",
+      "titulo": "Army Black Knights vs. Colgate Raiders",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Army Black Knights",
+      "equipo_visitante": "Colgate Raiders",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-03T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2256.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F7q9nro1564356542.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "18:00 ◘ Army vs. Colgate ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1736792"
+        }
+      ],
+      "texto_original_crudo": "18:00 ◘ Army vs. Colgate ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "titulo_original_crudo": "18:00 ◘ Army vs. Colgate ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_7286016f",
@@ -2423,82 +2498,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_cbe8d325",
-      "agenda_id": "",
-      "titulo": "Bryant vs. New Hampshire",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Bryant",
-      "equipo_visitante": "New Hampshire",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Fase Regular",
-      "hora_utc": "2026-11-04T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F74.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F261.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ New Hampshire vs. #25 Bryant ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1736809"
-        }
-      ],
-      "texto_original_crudo": "19:00 ◘ New Hampshire vs. #25 Bryant ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "titulo_original_crudo": "19:00 ◘ New Hampshire vs. #25 Bryant ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_759dabc9",
-      "agenda_id": "",
-      "titulo": "Umbc vs. Njit",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Umbc",
-      "equipo_visitante": "Njit",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Fase Regular",
-      "hora_utc": "2026-11-04T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1990.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ NJIT vs. UMBC ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1736810"
-        }
-      ],
-      "texto_original_crudo": "19:00 ◘ NJIT vs. UMBC ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "titulo_original_crudo": "19:00 ◘ NJIT vs. UMBC ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_dc83b200",
       "agenda_id": "",
       "titulo": "Akron vs Ohio",
@@ -2578,82 +2577,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_0bec83ba",
-      "agenda_id": "",
-      "titulo": "Binghamton vs. UAlbany",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Binghamton",
-      "equipo_visitante": "UAlbany",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-04T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F6769.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F730.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ UAlbany vs. Binghamton ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1736814"
-        }
-      ],
-      "texto_original_crudo": "19:00 ◘ UAlbany vs. Binghamton ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "titulo_original_crudo": "19:00 ◘ UAlbany vs. Binghamton ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_95f494fc",
-      "agenda_id": "",
-      "titulo": "Georgia Southern vs. UCF",
-      "torneo": "NCAA Men's Soccer",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Georgia Southern",
-      "equipo_visitante": "UCF",
-      "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-04T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv3nqtc1564336904.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv3nqtc1564336904.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ UCF vs. Georgia Southern ◘ NCAA Men's Soccer ◘◘",
-          "id_xtream": "1736815"
-        }
-      ],
-      "texto_original_crudo": "19:00 ◘ UCF vs. Georgia Southern ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "titulo_original_crudo": "19:00 ◘ UCF vs. Georgia Southern ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_ee14fc43",
       "agenda_id": "",
       "titulo": "Montreal Canadiens vs Winnipeg Jets",
@@ -2692,6 +2615,158 @@
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
+    },
+    {
+      "id": "xtream_cbe8d325",
+      "agenda_id": "",
+      "titulo": "New Hampshire vs. Bryant",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "New Hampshire",
+      "equipo_visitante": "Bryant",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-04T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F261.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F74.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ New Hampshire vs. #25 Bryant ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1736809"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ New Hampshire vs. #25 Bryant ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ New Hampshire vs. #25 Bryant ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_759dabc9",
+      "agenda_id": "",
+      "titulo": "Njit vs. Umbc",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Njit",
+      "equipo_visitante": "Umbc",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-04T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1990.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ NJIT vs. UMBC ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1736810"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ NJIT vs. UMBC ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ NJIT vs. UMBC ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_0bec83ba",
+      "agenda_id": "",
+      "titulo": "UAlbany vs. Binghamton",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UAlbany",
+      "equipo_visitante": "Binghamton",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-04T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F730.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F6769.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ UAlbany vs. Binghamton ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1736814"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ UAlbany vs. Binghamton ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ UAlbany vs. Binghamton ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_95f494fc",
+      "agenda_id": "",
+      "titulo": "UCF vs. Georgia Southern",
+      "torneo": "NCAA Men's Soccer",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "UCF",
+      "equipo_visitante": "Georgia Southern",
+      "subtitulo": "NCAA Men's Soccer",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-04T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv3nqtc1564336904.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F232.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ UCF vs. Georgia Southern ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1736815"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ UCF vs. Georgia Southern ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ UCF vs. Georgia Southern ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_78decb1a",
@@ -3280,44 +3355,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_fb71c0ac",
-      "agenda_id": "",
-      "titulo": "Jaguares de Nayarit vs. Cañeros de los Mochis",
-      "torneo": "Liga Mexicana del Pacífico",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Jaguares de Nayarit",
-      "equipo_visitante": "Cañeros de los Mochis",
-      "subtitulo": "Liga Mexicana del Pacífico",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-04T02:30:00Z",
-      "hora_local_producto": "21:30",
-      "duracion_min": 240,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F22.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F1012.png&w=400&output=webp&trim=10",
-      "logo_visitante": "",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F22.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "21:30 ◘ Jagaures de Nayarit vs. Cañeros de los Mochis ◘ LMP ◘",
-          "id_xtream": "1736830"
-        }
-      ],
-      "texto_original_crudo": "21:30 ◘ Jagaures de Nayarit vs. Cañeros de los Mochis ◘ LMP ◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "titulo_original_crudo": "21:30 ◘ Jagaures de Nayarit vs. Cañeros de los Mochis ◘ LMP ◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_28a5b686",
       "agenda_id": "",
       "titulo": "Hermosillo vs Tomateros",
@@ -3396,6 +3433,44 @@
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
+    },
+    {
+      "id": "xtream_fb71c0ac",
+      "agenda_id": "",
+      "titulo": "Jaguares de Nayarit vs. Cañeros de los Mochis",
+      "torneo": "Liga Mexicana del Pacífico",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Jaguares de Nayarit",
+      "equipo_visitante": "Cañeros de los Mochis",
+      "subtitulo": "Liga Mexicana del Pacífico",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-04T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 240,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F22.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F1012.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fleagues%2F22.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:30 ◘ Jagaures de Nayarit vs. Cañeros de los Mochis ◘ LMP ◘",
+          "id_xtream": "1736830"
+        }
+      ],
+      "texto_original_crudo": "21:30 ◘ Jagaures de Nayarit vs. Cañeros de los Mochis ◘ LMP ◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "titulo_original_crudo": "21:30 ◘ Jagaures de Nayarit vs. Cañeros de los Mochis ◘ LMP ◘ ✨   E V E N T O S   D I A R I O S   03/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_ce31d8ac",
@@ -3494,17 +3569,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-03",
-    "total_agenda_maestra": 35,
+    "total_agenda_maestra": 33,
     "total_canales_xtream": 8484,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 499,
-    "eventos_lineales_inyectados": 29,
+    "eventos_lineales_inyectados": 18,
     "eventos_xtream_aprobados": 91,
-    "eventos_contrastados_api": 33,
-    "eventos_sellados_boveda_inmutable": 64,
-    "eventos_descartados_stale": 65,
-    "total_eventos_publicados": 73,
-    "hora_actualizacion_utc": "2026-11-03T15:12:45Z"
+    "eventos_contrastados_api": 35,
+    "eventos_sellados_boveda_inmutable": 66,
+    "eventos_descartados_stale": 74,
+    "total_eventos_publicados": 74,
+    "hora_actualizacion_utc": "2026-11-03T22:21:07Z"
   }
 }
