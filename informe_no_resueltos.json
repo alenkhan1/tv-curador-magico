@@ -4,12 +4,12 @@
     "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
     "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina."
   ],
-  "generado": "2026-11-03T11:41:37Z",
+  "generado": "2026-11-04T11:54:37Z",
   "resumen": {
     "total": 677,
     "por_motivo": {
-      "no_encontrado": 461,
       "pendiente": 155,
+      "no_encontrado": 461,
       "titulo_vacio": 61
     },
     "peliculas": {
@@ -18,7 +18,7 @@
       "sin_nombre": 0,
       "no_encontrado": 254,
       "fallo_red": 96,
-      "clasificados": 37422,
+      "clasificados": 37435,
       "sin_identificar": 350
     },
     "series": {
@@ -27,7 +27,7 @@
       "sin_nombre": 0,
       "no_encontrado": 207,
       "fallo_red": 120,
-      "clasificados": 7965,
+      "clasificados": 7964,
       "sin_identificar": 327
     },
     "alerta": {
@@ -40,13 +40,20 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 625,
+      "veces": 624,
       "ejemplos": [
         "Vecino Vs. Monstruos (2025)",
         "Cielo en Furia (2026)",
         "Solo es una película (It's just a movie) (2025)",
-        "Noticias en peligro (2026)",
-        "Supremacía cuántica (2026)"
+        "Supremacía cuántica (2026)",
+        "¿Por qué me casé otra vez? (2026)"
+      ]
+    },
+    {
+      "patron": "OSCAR",
+      "veces": 1,
+      "ejemplos": [
+        "Oscar: El regreso del Mamut (2025)"
       ]
     },
     {
@@ -552,6 +559,18 @@
   ],
   "items": [
     {
+      "id": "1737134",
+      "tipo": "movie",
+      "nombre_original": "Oscar: El regreso del Mamut (2025)",
+      "titulo_buscado": "Oscar: El regreso del Mamut",
+      "anio": 2025,
+      "motivo": "pendiente",
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
       "id": "1736656",
       "tipo": "movie",
       "nombre_original": "Vecino Vs. Monstruos (2025)",
@@ -586,18 +605,6 @@
       "etiquetas": [],
       "prefijo": "",
       "copias": 2
-    },
-    {
-      "id": "1730649",
-      "tipo": "movie",
-      "nombre_original": "Noticias en peligro (2026)",
-      "titulo_buscado": "Noticias en peligro",
-      "anio": 2026,
-      "motivo": "pendiente",
-      "carpeta": "ESTRENOS 2026 - (LAT)",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
     },
     {
       "id": "1728033",
