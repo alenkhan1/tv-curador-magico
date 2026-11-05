@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-04T22:22:12Z",
+  "generado_utc": "2026-11-05T03:22:27Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-04",
   "base_media": "http://avefenixtv.com:8080",
@@ -269,6 +269,10 @@
         {
           "nombre": "05:00 ◘ Rolex Paris Masters / Court Central ◘ ATP ◘◘",
           "id_xtream": "1737187"
+        },
+        {
+          "nombre": "05:00 ◘ Q. Halys vs. F. Tiafoe ◘ ATP ◘◘",
+          "id_xtream": "1737181"
         },
         {
           "nombre": "ESPN 1 FHD | ARG",
@@ -633,6 +637,48 @@
       "ronda": "Round Robin",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_aee83a6b",
+      "agenda_id": "",
+      "titulo": "Stade Rennais FC vs. Olympiacos FC",
+      "torneo": "UEFA Europa League",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Stade Rennais FC",
+      "equipo_visitante": "Olympiacos FC",
+      "subtitulo": "UEFA Europa League",
+      "referencia": "Fase de Liga",
+      "hora_utc": "2026-11-04T15:15:00Z",
+      "hora_local_producto": "10:15",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_europa_league.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F3415.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_europa_league.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "10:15 | English: Stade Rennais FC vs. Olympiakos | UEFA Europa League",
+          "id_xtream": "1737343"
+        },
+        {
+          "nombre": "10:15 | En Español: Stade Rennais FC vs. Olympiakos | UEFA Europa League",
+          "id_xtream": "1737344"
+        }
+      ],
+      "texto_original_crudo": "10:15 | English: Stade Rennais FC vs. Olympiakos | UEFA Europa League ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
+      "titulo_original_crudo": "10:15 | English: Stade Rennais FC vs. Olympiakos | UEFA Europa League ✮✮   [ E V E N T O S   D I A R I O S   |   E X C L U S I V O S ]   ✮✮",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_4_89a4f531",
@@ -1219,7 +1265,7 @@
       "equipo_local": "Iona Gaels",
       "equipo_visitante": "Manhattan Jaspers",
       "subtitulo": "NCAA Men's Soccer",
-      "referencia": "Temporada Regular",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-11-04T18:00:00Z",
       "hora_local_producto": "13:00",
       "duracion_min": 125,
@@ -1953,13 +1999,18 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "futbolenvivo_co"
+        "futbolenvivo_co",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "17:30 ◘ Athletico-PR vs. Vasco da Gama ◘ Brasileirão ◘",
+          "id_xtream": "1737223"
+        },
         {
           "nombre": "WIN SPORTS FHD",
           "id_xtream": "1331804",
@@ -2042,44 +2093,6 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_016b5104",
-      "agenda_id": "",
-      "titulo": "Athletico-PR vs. Vasco da Gama",
-      "torneo": "Brasileirão Série a",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Athletico-PR",
-      "equipo_visitante": "Vasco da Gama",
-      "subtitulo": "Brasileirão Série a",
-      "referencia": "Jornada",
-      "hora_utc": "2026-11-04T22:30:00Z",
-      "hora_local_producto": "17:30",
-      "duracion_min": 125,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F133.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/brasileirao.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "17:30 ◘ Athletico-PR vs. Vasco da Gama ◘ Brasileirão ◘",
-          "id_xtream": "1737223"
-        }
-      ],
-      "texto_original_crudo": "17:30 ◘ Athletico-PR vs. Vasco da Gama ◘ Brasileirão ◘ ✨   E V E N T O S   D I A R I O S   04/11   ✨",
-      "titulo_original_crudo": "17:30 ◘ Athletico-PR vs. Vasco da Gama ◘ Brasileirão ◘ ✨   E V E N T O S   D I A R I O S   04/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "xtream_b1c2fb01",
@@ -2205,20 +2218,20 @@
     {
       "id": "xtream_92465ae1",
       "agenda_id": "",
-      "titulo": "Army vs. Holy Cross",
+      "titulo": "Army Black Knights vs. Holy Cross Crusaders",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Army",
-      "equipo_visitante": "Holy Cross",
+      "equipo_local": "Army Black Knights",
+      "equipo_visitante": "Holy Cross Crusaders",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Temporada Regular",
+      "referencia": "Patriot League",
       "hora_utc": "2026-11-04T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fylpo3m1564356823.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fylpo3m1564356823.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2274.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -2666,20 +2679,20 @@
     {
       "id": "xtream_f76300e4",
       "agenda_id": "",
-      "titulo": "Massachusetts vs. Ball State",
-      "torneo": "NCAA College Football",
+      "titulo": "UMass Minutemen vs. Ball State Cardinals",
+      "torneo": "NCAA Division I FBS Football",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
-      "equipo_local": "Massachusetts",
-      "equipo_visitante": "Ball State",
-      "subtitulo": "NCAA College Football",
+      "equipo_local": "UMass Minutemen",
+      "equipo_visitante": "Ball State Cardinals",
+      "subtitulo": "NCAA Division I FBS Football",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-05T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 240,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F70.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F70.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvvm4051564335560.png&w=400&output=webp",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -2703,7 +2716,8 @@
       "texto_original_crudo": "19:00 ◘ Ball State vs. Massachusetts ◘ Fútbol Americano NCAA ◘◘ ✨   E V E N T O S   D I A R I O S   04/11   ✨",
       "titulo_original_crudo": "19:00 ◘ Ball State vs. Massachusetts ◘ Fútbol Americano NCAA ◘◘ ✨   E V E N T O S   D I A R I O S   04/11   ✨",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_4_59e1d180",
@@ -3288,53 +3302,6 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_f544cbfb",
-      "agenda_id": "",
-      "titulo": "AEW Dynamite",
-      "torneo": "AEW Dynamite",
-      "categoria": "Combate",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Especial en Vivo",
-      "referencia": "Especial en Vivo • Wrestling",
-      "hora_utc": "2026-11-05T01:00:00Z",
-      "hora_local_producto": "20:00",
-      "duracion_min": 360,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "20:00 ◘ AEW Dynamite ◘ Wrestling ◘◘",
-          "id_xtream": "1737248"
-        },
-        {
-          "nombre": "20:00 | En Español: AEW Dynamite: Blood and Guts | Lucha",
-          "id_xtream": "1737353"
-        },
-        {
-          "nombre": "20:00 | English: AEW Dynamite: Blood and Guts | Lucha",
-          "id_xtream": "1737354"
-        }
-      ],
-      "texto_original_crudo": "20:00 ◘ AEW Dynamite ◘ Wrestling ◘◘ ✨   E V E N T O S   D I A R I O S   04/11   ✨",
-      "titulo_original_crudo": "20:00 ◘ AEW Dynamite ◘ Wrestling ◘◘ ✨   E V E N T O S   D I A R I O S   04/11   ✨",
-      "ronda": "Especial en Vivo",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -4206,21 +4173,60 @@
       "ronda": "Tercera Ronda",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_5057d5ab",
+      "agenda_id": "",
+      "titulo": "Melbourne Cup Carnival",
+      "torneo": "Melbourne Cup Carnival",
+      "categoria": "Hípica",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Jornada Completa",
+      "referencia": "Jornada Completa • Hípica",
+      "hora_utc": "2026-11-05T04:30:00Z",
+      "hora_local_producto": "23:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "23:30 ◘ Melbourne Cup Carnival: Crown Oaks Day ◘ Hípica ◘◘",
+          "id_xtream": "1737271"
+        }
+      ],
+      "texto_original_crudo": "23:30 ◘ Melbourne Cup Carnival: Crown Oaks Day ◘ Hípica ◘◘ ✨   E V E N T O S   D I A R I O S   04/11   ✨",
+      "titulo_original_crudo": "23:30 ◘ Melbourne Cup Carnival: Crown Oaks Day ◘ Hípica ◘◘ ✨   E V E N T O S   D I A R I O S   04/11   ✨",
+      "ronda": "Jornada Completa",
+      "auditado_agy": true,
+      "curado_integro": true
     }
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-04",
-    "total_agenda_maestra": 41,
+    "total_agenda_maestra": 34,
     "total_canales_xtream": 8542,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 632,
-    "eventos_lineales_inyectados": 27,
+    "eventos_lineales_inyectados": 23,
     "eventos_xtream_aprobados": 107,
     "eventos_contrastados_api": 48,
-    "eventos_sellados_boveda_inmutable": 78,
-    "eventos_descartados_stale": 90,
+    "eventos_sellados_boveda_inmutable": 79,
+    "eventos_descartados_stale": 102,
     "total_eventos_publicados": 84,
-    "hora_actualizacion_utc": "2026-11-04T22:22:12Z"
+    "hora_actualizacion_utc": "2026-11-05T03:22:27Z"
   }
 }
