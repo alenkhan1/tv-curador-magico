@@ -2150,5 +2150,784 @@
     "titulo_original_crudo": "18:00 ◘ Univ. Concepción vs. O'Higgins ◘ Primera División ◘ ✨   E V E N T O S   D I A R I O S   05/11   ✨",
     "ronda": "",
     "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "lineal_win_sports_28fc32a2",
+    "canales_mencionados_fuente": [
+      "Fanatiz (Míralo en vivo)",
+      "Win Play",
+      "Win Sports"
+    ],
+    "agenda_id": "",
+    "titulo": "Palmeiras vs Remo",
+    "torneo": "Palmeiras vs Remo",
+    "categoria": "Remo",
+    "tipo_evento": "duelo",
+    "equipo_local": "Palmeiras",
+    "equipo_visitante": "Remo",
+    "subtitulo": "Palmeiras vs Remo",
+    "referencia": "Serie a",
+    "hora_utc": "2026-11-05T22:30:00Z",
+    "hora_local_producto": "17:30",
+    "duracion_min": 130,
+    "logo_torneo": "",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvsqwqp1473538105.png&w=400&output=webp",
+    "logo_visitante": "",
+    "banner": "",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "futbolenvivo_co"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "17:30 ◘ Palmeiras vs. Remo ◘ Brasileirão ◘",
+        "id_xtream": "1737412"
+      },
+      {
+        "nombre": "WIN SPORTS FHD",
+        "id_xtream": "1331804",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      },
+      {
+        "nombre": "Win Sports HD",
+        "id_xtream": "13767",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      },
+      {
+        "nombre": "WIN SPORTS HD",
+        "id_xtream": "1331803",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      }
+    ],
+    "canales_candidatos": [
+      "WIN SPORTS"
+    ],
+    "texto_original_crudo": "17:30 Palmeiras Remo Fanatiz (Míralo en vivo) Win Play Win Sports",
+    "titulo_original_crudo": "17:30 Palmeiras Remo Fanatiz (Míralo en vivo) Win Play Win Sports",
+    "conflictos_lineales": [
+      {
+        "canal": "WIN SPORTS",
+        "oponente_id": "lineal_win_sports_60db64e3",
+        "oponente_titulo": "Cruzeiro vs Bahía",
+        "oponente_hora": "19:30"
+      }
+    ],
+    "fecha_confirmada": true,
+    "contrastado_api": true,
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "lineal_eurosport_1_03d54529",
+    "canales_mencionados_fuente": [
+      "EUROSPORT 1"
+    ],
+    "agenda_id": "",
+    "titulo": "Mundial de Ciclismo en Carretera",
+    "torneo": "T2026 | Ruta F",
+    "categoria": "Ciclismo",
+    "tipo_evento": "circuito",
+    "equipo_local": "",
+    "equipo_visitante": "",
+    "subtitulo": "T2026",
+    "referencia": "T2026 | Ruta F",
+    "hora_utc": "2026-11-06T03:00:00Z",
+    "hora_local_producto": "22:00",
+    "duracion_min": 300,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "sincroguia_eurosport_1"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "EUROSPORT FHD",
+        "id_xtream": "327982",
+        "canal_lineal": "EUROSPORT 1",
+        "pais": "ES"
+      },
+      {
+        "nombre": "EUROSPORT 1 HD",
+        "id_xtream": "327938",
+        "canal_lineal": "EUROSPORT 1",
+        "pais": "ES"
+      }
+    ],
+    "canales_candidatos": [
+      "EUROSPORT 1"
+    ],
+    "texto_original_crudo": "Mundial de ciclismo en carretera - T2026 | Ruta F (04:00 a 05:30 EUROSPORT 1)",
+    "titulo_original_crudo": "Mundial de ciclismo en carretera - T2026 | Ruta F (04:00 a 05:30 EUROSPORT 1)",
+    "conflictos_lineales": [
+      {
+        "canal": "EUROSPORT 1",
+        "oponente_id": "lineal_eurosport_1_ad28e7f9",
+        "oponente_titulo": "International Championship de snooker",
+        "oponente_hora": "18:00"
+      }
+    ],
+    "ronda": "T2026",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_eurosport_1_ad28e7f9",
+    "canales_mencionados_fuente": [
+      "EUROSPORT 1"
+    ],
+    "agenda_id": "",
+    "titulo": "International Championship de Snooker",
+    "torneo": "T2026 |",
+    "categoria": "Snooker",
+    "tipo_evento": "circuito",
+    "equipo_local": "",
+    "equipo_visitante": "",
+    "subtitulo": "Semifinales",
+    "referencia": "International Championship de Snooker - T2026 | Semifinales - Día 2 (00:00 a 01:30 Eurosport) • T2026 | Semifinales - Día 2",
+    "hora_utc": "2026-11-05T23:00:00Z",
+    "hora_local_producto": "18:00",
+    "duracion_min": 300,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/wst.png",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "sincroguia_eurosport_1"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "EUROSPORT FHD",
+        "id_xtream": "327982",
+        "canal_lineal": "EUROSPORT 1",
+        "pais": "ES"
+      },
+      {
+        "nombre": "EUROSPORT 1 HD",
+        "id_xtream": "327938",
+        "canal_lineal": "EUROSPORT 1",
+        "pais": "ES"
+      }
+    ],
+    "canales_candidatos": [
+      "EUROSPORT 1"
+    ],
+    "texto_original_crudo": "International Championship de snooker - T2026 | Semifinales - Día 2 (00:00 a 01:30 EUROSPORT 1)",
+    "titulo_original_crudo": "International Championship de snooker - T2026 | Semifinales - Día 2 (00:00 a 01:30 EUROSPORT 1)",
+    "conflictos_lineales": [
+      {
+        "canal": "EUROSPORT 1",
+        "oponente_id": "lineal_eurosport_1_03d54529",
+        "oponente_titulo": "Mundial de ciclismo en carretera",
+        "oponente_hora": "22:00"
+      }
+    ],
+    "ronda": "Semifinales",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_eurosport_2_0161b915",
+    "canales_mencionados_fuente": [
+      "EUROSPORT 2"
+    ],
+    "agenda_id": "",
+    "titulo": "Mundial de Resistencia de LA FIA - 6 Horas de Austin",
+    "torneo": "T2026 | Carrera",
+    "categoria": "Otros Deportes",
+    "tipo_evento": "circuito",
+    "equipo_local": "",
+    "equipo_visitante": "",
+    "subtitulo": "Carrera",
+    "referencia": "T2026 | Carrera",
+    "hora_utc": "2026-11-06T02:00:00Z",
+    "hora_local_producto": "21:00",
+    "duracion_min": 130,
+    "logo_torneo": "",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "sincroguia_eurosport_2"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "EUROSPORT 2 FHD",
+        "id_xtream": "327954",
+        "canal_lineal": "EUROSPORT 2",
+        "pais": "ES"
+      },
+      {
+        "nombre": "EUROSPORT 2 HD",
+        "id_xtream": "327964",
+        "canal_lineal": "EUROSPORT 2",
+        "pais": "ES"
+      }
+    ],
+    "canales_candidatos": [
+      "EUROSPORT 2"
+    ],
+    "texto_original_crudo": "Mundial de Resistencia de la FIA - 6 Horas de Austin - T2026 | Carrera (03:00 a 04:30 EUROSPORT 2)",
+    "titulo_original_crudo": "Mundial de Resistencia de la FIA - 6 Horas de Austin - T2026 | Carrera (03:00 a 04:30 EUROSPORT 2)",
+    "ronda": "Carrera",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_eurosport_2_5c87a6bd",
+    "canales_mencionados_fuente": [
+      "EUROSPORT 2"
+    ],
+    "agenda_id": "",
+    "titulo": "6 Horas de Fuji - Mundial de Resistencia de LA FIA",
+    "torneo": "T2026 | Carrera",
+    "categoria": "Otros Deportes",
+    "tipo_evento": "circuito",
+    "equipo_local": "",
+    "equipo_visitante": "",
+    "subtitulo": "Carrera",
+    "referencia": "T2026 | Carrera",
+    "hora_utc": "2026-11-05T23:00:00Z",
+    "hora_local_producto": "18:00",
+    "duracion_min": 130,
+    "logo_torneo": "",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "sincroguia_eurosport_2"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "EUROSPORT 2 FHD",
+        "id_xtream": "327954",
+        "canal_lineal": "EUROSPORT 2",
+        "pais": "ES"
+      },
+      {
+        "nombre": "EUROSPORT 2 HD",
+        "id_xtream": "327964",
+        "canal_lineal": "EUROSPORT 2",
+        "pais": "ES"
+      }
+    ],
+    "canales_candidatos": [
+      "EUROSPORT 2"
+    ],
+    "texto_original_crudo": "6 Horas de Fuji - Mundial de Resistencia de la FIA - T2026 | Carrera (00:00 a 01:30 EUROSPORT 2)",
+    "titulo_original_crudo": "6 Horas de Fuji - Mundial de Resistencia de la FIA - T2026 | Carrera (00:00 a 01:30 EUROSPORT 2)",
+    "ronda": "Carrera",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_dazn_f1_2a5f13e0",
+    "canales_mencionados_fuente": [],
+    "agenda_id": "",
+    "titulo": "G.P. Brasil",
+    "torneo": "Fórmula 1",
+    "categoria": "Motor",
+    "tipo_evento": "circuito",
+    "equipo_local": "",
+    "equipo_visitante": "",
+    "subtitulo": "Libres",
+    "referencia": "Libres • Fórmula 1",
+    "hora_utc": "2026-11-05T15:30:00Z",
+    "hora_local_producto": "10:30",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "futbolenlatv_dazn_f1"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "DAZN F1 FHD",
+        "id_xtream": "155619",
+        "canal_lineal": "DAZN F1",
+        "pais": "ES"
+      },
+      {
+        "nombre": "DAZN F1 4K",
+        "id_xtream": "147267",
+        "canal_lineal": "DAZN F1",
+        "pais": "ES"
+      },
+      {
+        "nombre": "DAZN F1 HD",
+        "id_xtream": "155616",
+        "canal_lineal": "DAZN F1",
+        "pais": "ES"
+      }
+    ],
+    "canales_candidatos": [
+      "DAZN F1"
+    ],
+    "texto_original_crudo": "G.P. Brasil (Interlagos) - Libres 1",
+    "titulo_original_crudo": "G.P. Brasil (Interlagos) - Libres 1",
+    "conflictos_lineales": [
+      {
+        "canal": "DAZN F1",
+        "oponente_id": "lineal_dazn_f1_7a3ef6d7",
+        "oponente_titulo": "G.P. Brasil (Interlagos) - Libres 2",
+        "oponente_hora": "14:00"
+      }
+    ],
+    "ronda": "Libres",
+    "motivo_descarte": "sesion_motor_anacronica_o_residuo"
+  },
+  {
+    "id": "lineal_dazn_f1_7a3ef6d7",
+    "canales_mencionados_fuente": [],
+    "agenda_id": "",
+    "titulo": "G.P. Brasil",
+    "torneo": "Fórmula 1",
+    "categoria": "Motor",
+    "tipo_evento": "circuito",
+    "equipo_local": "",
+    "equipo_visitante": "",
+    "subtitulo": "Libres",
+    "referencia": "Libres • Fórmula 1",
+    "hora_utc": "2026-11-05T19:00:00Z",
+    "hora_local_producto": "14:00",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/f1.png",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "futbolenlatv_dazn_f1"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "DAZN F1 FHD",
+        "id_xtream": "155619",
+        "canal_lineal": "DAZN F1",
+        "pais": "ES"
+      },
+      {
+        "nombre": "DAZN F1 4K",
+        "id_xtream": "147267",
+        "canal_lineal": "DAZN F1",
+        "pais": "ES"
+      },
+      {
+        "nombre": "DAZN F1 HD",
+        "id_xtream": "155616",
+        "canal_lineal": "DAZN F1",
+        "pais": "ES"
+      }
+    ],
+    "canales_candidatos": [
+      "DAZN F1"
+    ],
+    "texto_original_crudo": "G.P. Brasil (Interlagos) - Libres 2",
+    "titulo_original_crudo": "G.P. Brasil (Interlagos) - Libres 2",
+    "conflictos_lineales": [
+      {
+        "canal": "DAZN F1",
+        "oponente_id": "lineal_dazn_f1_2a5f13e0",
+        "oponente_titulo": "G.P. Brasil (Interlagos) - Libres 1",
+        "oponente_hora": "10:30"
+      }
+    ],
+    "ronda": "Libres",
+    "motivo_descarte": "sesion_motor_anacronica_o_residuo"
+  },
+  {
+    "id": "xtream_6f4e8219",
+    "agenda_id": "",
+    "titulo": "Bravos Leon Olmecas Tabasco vs 7:30 PM",
+    "torneo": "Liga Mexicana de Béisbol",
+    "categoria": "Béisbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Bravos Leon Olmecas Tabasco",
+    "equipo_visitante": "7:30 PM",
+    "subtitulo": "Liga Mexicana de Béisbol",
+    "referencia": "Liga Mexicana de Béisbol",
+    "hora_utc": "2026-11-06T00:30:00Z",
+    "hora_local_producto": "19:30",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "LMB 03 | Bravos Leon En Olmecas Tabasco - 7:30 PM",
+        "id_xtream": "688022"
+      }
+    ],
+    "texto_original_crudo": "LMB 03 | Bravos Leon En Olmecas Tabasco - 7:30 PM LIGA MEXICANA BASEBALL - LMP",
+    "titulo_original_crudo": "LMB 03 | Bravos Leon En Olmecas Tabasco - 7:30 PM LIGA MEXICANA BASEBALL - LMP",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "xtream_266efcd0",
+    "agenda_id": "",
+    "titulo": "Pericos Puebla Leones Yucatan vs 7:30 PM",
+    "torneo": "Liga Mexicana de Béisbol",
+    "categoria": "Béisbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Pericos Puebla Leones Yucatan",
+    "equipo_visitante": "7:30 PM",
+    "subtitulo": "Liga Mexicana de Béisbol",
+    "referencia": "Liga Mexicana de Béisbol",
+    "hora_utc": "2026-11-06T00:30:00Z",
+    "hora_local_producto": "19:30",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fh0jgg51593451845.png&w=400&output=webp",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "LMB 04 | Pericos Puebla En Leones Yucatan - 7:30 PM",
+        "id_xtream": "688023"
+      }
+    ],
+    "texto_original_crudo": "LMB 04 | Pericos Puebla En Leones Yucatan - 7:30 PM LIGA MEXICANA BASEBALL - LMP",
+    "titulo_original_crudo": "LMB 04 | Pericos Puebla En Leones Yucatan - 7:30 PM LIGA MEXICANA BASEBALL - LMP",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "xtream_7778bb7b",
+    "agenda_id": "",
+    "titulo": "Dorados Chihuahua Algodoneros Laguna vs 7:30 PM",
+    "torneo": "Liga Mexicana de Béisbol",
+    "categoria": "Béisbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Dorados Chihuahua Algodoneros Laguna",
+    "equipo_visitante": "7:30 PM",
+    "subtitulo": "Liga Mexicana de Béisbol",
+    "referencia": "Liga Mexicana de Béisbol",
+    "hora_utc": "2026-11-06T00:30:00Z",
+    "hora_local_producto": "19:30",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "LMB 05 | Dorados Chihuahua En Algodoneros Laguna - 7:30 PM",
+        "id_xtream": "688024"
+      }
+    ],
+    "texto_original_crudo": "LMB 05 | Dorados Chihuahua En Algodoneros Laguna - 7:30 PM LIGA MEXICANA BASEBALL - LMP",
+    "titulo_original_crudo": "LMB 05 | Dorados Chihuahua En Algodoneros Laguna - 7:30 PM LIGA MEXICANA BASEBALL - LMP",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "xtream_a6370958",
+    "agenda_id": "",
+    "titulo": "Caliente Durango Saraperos Saltillo vs 7:30 PM",
+    "torneo": "Liga Mexicana de Béisbol",
+    "categoria": "Béisbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Caliente Durango Saraperos Saltillo",
+    "equipo_visitante": "7:30 PM",
+    "subtitulo": "Liga Mexicana de Béisbol",
+    "referencia": "Liga Mexicana de Béisbol",
+    "hora_utc": "2026-11-06T00:30:00Z",
+    "hora_local_producto": "19:30",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ftwbact1734746027.png&w=400&output=webp&trim=10",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "LMB 06 | Caliente Durango En Saraperos Saltillo - 7:30 PM",
+        "id_xtream": "688025"
+      }
+    ],
+    "texto_original_crudo": "LMB 06 | Caliente Durango En Saraperos Saltillo - 7:30 PM LIGA MEXICANA BASEBALL - LMP",
+    "titulo_original_crudo": "LMB 06 | Caliente Durango En Saraperos Saltillo - 7:30 PM LIGA MEXICANA BASEBALL - LMP",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "xtream_0afc809f",
+    "agenda_id": "",
+    "titulo": "Tecolotes Laredos Acereros Monclova vs 7:45 PM",
+    "torneo": "Liga Mexicana de Béisbol",
+    "categoria": "Béisbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Tecolotes Laredos Acereros Monclova",
+    "equipo_visitante": "7:45 PM",
+    "subtitulo": "Liga Mexicana de Béisbol",
+    "referencia": "Liga Mexicana de Béisbol",
+    "hora_utc": "2026-11-06T00:45:00Z",
+    "hora_local_producto": "19:45",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "LMB 07 | Tecolotes Laredos En Acereros Monclova - 7:45 PM",
+        "id_xtream": "688026"
+      }
+    ],
+    "texto_original_crudo": "LMB 07 | Tecolotes Laredos En Acereros Monclova - 7:45 PM LIGA MEXICANA BASEBALL - LMP",
+    "titulo_original_crudo": "LMB 07 | Tecolotes Laredos En Acereros Monclova - 7:45 PM LIGA MEXICANA BASEBALL - LMP",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "xtream_fb2055f4",
+    "agenda_id": "",
+    "titulo": "Rieleros Aguascalientes Toros Tijuana vs 9:35 PM",
+    "torneo": "Liga Mexicana de Béisbol",
+    "categoria": "Béisbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Rieleros Aguascalientes Toros Tijuana",
+    "equipo_visitante": "9:35 PM",
+    "subtitulo": "Liga Mexicana de Béisbol",
+    "referencia": "Liga Mexicana de Béisbol",
+    "hora_utc": "2026-11-06T02:35:00Z",
+    "hora_local_producto": "21:35",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fb0mky81779772352.png&w=400&output=webp&trim=10",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "LMB 08 | Rieleros Aguascalientes En Toros Tijuana - 9:35 PM",
+        "id_xtream": "688027"
+      }
+    ],
+    "texto_original_crudo": "LMB 08 | Rieleros Aguascalientes En Toros Tijuana - 9:35 PM LIGA MEXICANA BASEBALL - LMP",
+    "titulo_original_crudo": "LMB 08 | Rieleros Aguascalientes En Toros Tijuana - 9:35 PM LIGA MEXICANA BASEBALL - LMP",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "xtream_c0ba2a99",
+    "agenda_id": "",
+    "titulo": "Auburn vs LSU",
+    "torneo": "NCAA",
+    "categoria": "Otros Deportes",
+    "tipo_evento": "duelo",
+    "equipo_local": "Auburn",
+    "equipo_visitante": "LSU",
+    "subtitulo": "NCAA",
+    "referencia": "NCAA",
+    "hora_utc": "2026-11-05T18:00:00Z",
+    "hora_local_producto": "13:00",
+    "duracion_min": 130,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F171.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjcj91i1564336177.png&w=400&output=webp",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "13:00 ◘ Auburn vs. LSU ◘ NCAA Natación y Buceo ◘◘",
+        "id_xtream": "1737385"
+      }
+    ],
+    "texto_original_crudo": "13:00 ◘ Auburn vs. LSU ◘ NCAA Natación y Buceo ◘◘ ✨   E V E N T O S   D I A R I O S   05/11   ✨",
+    "titulo_original_crudo": "13:00 ◘ Auburn vs. LSU ◘ NCAA Natación y Buceo ◘◘ ✨   E V E N T O S   D I A R I O S   05/11   ✨",
+    "ronda": "",
+    "motivo_descarte": "exclusivo_app_streaming"
+  },
+  {
+    "id": "xtream_c7e7af72",
+    "agenda_id": "",
+    "titulo": "M. Berrettini vs C. Alcaraz",
+    "torneo": "ATP",
+    "categoria": "Tenis",
+    "tipo_evento": "duelo",
+    "equipo_local": "M. Berrettini",
+    "equipo_visitante": "C. Alcaraz",
+    "subtitulo": "ATP",
+    "referencia": "ATP",
+    "hora_utc": "2026-11-05T18:00:00Z",
+    "hora_local_producto": "13:00",
+    "duracion_min": 240,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+    "logo_local": "",
+    "logo_visitante": "",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "13:00 ◘ M. Berrettini (ITA) vs. C. Alcaraz (ESP) ◘ ATP ◘◘",
+        "id_xtream": "1737386"
+      },
+      {
+        "nombre": "13:00 | M. Berrettini (ITA) vs. C. Alcaraz (ESP) | ATP",
+        "id_xtream": "1737457"
+      }
+    ],
+    "texto_original_crudo": "13:00 ◘ M. Berrettini (ITA) vs. C. Alcaraz (ESP) ◘ ATP ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+    "titulo_original_crudo": "13:00 ◘ M. Berrettini (ITA) vs. C. Alcaraz (ESP) ◘ ATP ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "xtream_9d61696e",
+    "agenda_id": "",
+    "titulo": "Univ. Concepción vs O'Higgins",
+    "torneo": "Primera División",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Univ. Concepción",
+    "equipo_visitante": "O'Higgins",
+    "subtitulo": "Primera División",
+    "referencia": "Primera División",
+    "hora_utc": "2026-11-05T23:00:00Z",
+    "hora_local_producto": "18:00",
+    "duracion_min": 130,
+    "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F265.png&w=400&output=webp&trim=10",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F5635.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2320.png&w=400&output=webp&trim=10",
+    "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F265.png&w=400&output=webp&trim=10",
+    "tier": 2,
+    "origen": "xtream_evento",
+    "origenes": [
+      "xtream_evento"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "media",
+    "puntuacion_confianza": 0.75,
+    "fuentes": [
+      {
+        "nombre": "18:00 ◘ Univ. Concepción vs. O'Higgins ◘ Primera División ◘",
+        "id_xtream": "1737414"
+      }
+    ],
+    "texto_original_crudo": "18:00 ◘ Univ. Concepción vs. O'Higgins ◘ Primera División ◘ ✨   E V E N T O S   D I A R I O S   05/11   ✨",
+    "titulo_original_crudo": "18:00 ◘ Univ. Concepción vs. O'Higgins ◘ Primera División ◘ ✨   E V E N T O S   D I A R I O S   05/11   ✨",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
   }
 ]
