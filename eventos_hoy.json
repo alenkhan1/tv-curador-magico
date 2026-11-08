@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-07T22:28:49Z",
+  "generado_utc": "2026-11-08T03:26:44Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-07",
   "base_media": "http://avefenixtv.com:8080",
@@ -751,6 +751,72 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_teledeporte_517365d0",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Replasa Beti-Onak vs. Grafometal Sporting LA Rioja",
+      "torneo": "Liga Guerreras Iberdrola",
+      "categoria": "Balonmano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Replasa Beti-Onak",
+      "equipo_visitante": "Grafometal Sporting LA Rioja",
+      "subtitulo": "Liga Guerreras Iberdrola • 8ª Jornada",
+      "referencia": "Jornada",
+      "hora_utc": "2026-11-07T11:50:00Z",
+      "hora_local_producto": "06:50",
+      "duracion_min": 150,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhandball%2Fteams%2F3416.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhandball%2Fteams%2F968.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "rtve_teledeporte_oficial"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "TELEDEPORTES FHD",
+          "id_xtream": "327981",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES HD",
+          "id_xtream": "327953",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        },
+        {
+          "nombre": "TELEDEPORTES",
+          "id_xtream": "327966",
+          "canal_lineal": "TELEDEPORTE",
+          "pais": "ES"
+        }
+      ],
+      "canales_candidatos": [
+        "TELEDEPORTE"
+      ],
+      "texto_original_crudo": "BALONMANO LIGA GUERRERAS IBERDROLA 8ª JORNADA REPLASA BETI-ONAK – GRAFOMETAL SPORTING LA RIOJA DESDE VILLAVA (NAVARRA)",
+      "titulo_original_crudo": "BALONMANO LIGA GUERRERAS IBERDROLA 8ª JORNADA REPLASA BETI-ONAK – GRAFOMETAL SPORTING LA RIOJA DESDE VILLAVA (NAVARRA)",
+      "conflictos_lineales": [
+        {
+          "canal": "TELEDEPORTE",
+          "oponente_id": "lineal_teledeporte_ded17690",
+          "oponente_titulo": "Lbtl Futsal Alcantarilla vs. Futsi Atlético Navalcarnero",
+          "oponente_hora": "04:55"
+        }
+      ],
+      "ronda": "8ª Jornada",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_b5de79fb",
       "agenda_id": "",
       "titulo": "1. FC Nürnberg vs SV Darmstadt",
@@ -883,16 +949,88 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_ar_71da50e3",
+      "canales_mencionados_fuente": [
+        "Básquet Pass",
+        "DGO",
+        "Amazon Prime Video (Ver en vivo)",
+        "Paramount+",
+        "DSports (610/1610)"
+      ],
+      "agenda_id": "",
+      "titulo": "LA Laguna Tenerife vs. Joventut Badalona",
+      "torneo": "Liga Endesa",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "LA Laguna Tenerife",
+      "equipo_visitante": "Joventut Badalona",
+      "subtitulo": "Liga Endesa",
+      "referencia": "Jornada Regular",
+      "hora_utc": "2026-11-07T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F1203.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F2334.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/liga_endesa.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS | AR",
+          "id_xtream": "592036",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS 1 ARG",
+          "id_xtream": "712756",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS AR",
+          "id_xtream": "69547",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS AR"
+      ],
+      "texto_original_crudo": "09:00 Liga Endesa Liga Regular La Laguna Tenerife Joventut Badalona Básquet Pass DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+      "titulo_original_crudo": "09:00 Liga Endesa Liga Regular La Laguna Tenerife Joventut Badalona Básquet Pass DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+      "conflictos_lineales": [
+        {
+          "canal": "DSPORTS AR",
+          "oponente_id": "lineal_dsports_ar_26727e81",
+          "oponente_titulo": "Espanyol vs. Deportivo La Coruña",
+          "oponente_hora": "08:00"
+        }
+      ],
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_25017a75",
       "agenda_id": "",
-      "titulo": "Wukong vs. Chaila",
+      "titulo": "Rajadamnern World Series",
       "torneo": "Rajadamnern World Series",
       "categoria": "Combate",
-      "tipo_evento": "duelo",
-      "equipo_local": "Wukong",
+      "tipo_evento": "circuito",
+      "equipo_local": "RWS: Wukong",
       "equipo_visitante": "Chaila",
-      "subtitulo": "Rajadamnern World Series",
-      "referencia": "Muay Thai",
+      "subtitulo": "Pelea por el Título",
+      "referencia": "Pelea por el Título • RWS Lucha",
       "hora_utc": "2026-11-07T12:10:00Z",
       "hora_local_producto": "07:10",
       "duracion_min": 130,
@@ -917,8 +1055,9 @@
       ],
       "texto_original_crudo": "07:10 | RWS: Wukong vs. Chaila | RWS Lucha ►►►   P P V   E V E N T S   ◄◄◄",
       "titulo_original_crudo": "07:10 | RWS: Wukong vs. Chaila | RWS Lucha ►►►   P P V   E V E N T S   ◄◄◄",
-      "ronda": "",
-      "auditado_agy": true
+      "ronda": "Pelea por el Título",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_5_0bfb5792",
@@ -1328,6 +1467,10 @@
         {
           "nombre": "08:30 | Rolex Paris Masters (Semifinal) | ATP",
           "id_xtream": "1738501"
+        },
+        {
+          "nombre": "10:30 | Luca Van Assche (FRA) vs. Ben Shelton (USA) (Semifinal) | ATP",
+          "id_xtream": "1738524"
         }
       ],
       "texto_original_crudo": "08:30 | Rolex Paris Masters - Augmented Reality Feed (Semifinal) | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
@@ -1335,44 +1478,6 @@
       "ronda": "Semifinales (Feed de Realidad",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_b1ac0cd5",
-      "agenda_id": "",
-      "titulo": "Luca Van Assche vs. Ben Shelton",
-      "torneo": "ATP Masters 1000 - Rolex Paris Masters",
-      "categoria": "Tenis",
-      "tipo_evento": "duelo",
-      "equipo_local": "Luca Van Assche",
-      "equipo_visitante": "Ben Shelton",
-      "subtitulo": "ATP Masters 1000 - Rolex Paris Masters",
-      "referencia": "Semifinal",
-      "hora_utc": "2026-11-07T13:30:00Z",
-      "hora_local_producto": "08:30",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.9,
-      "fuentes": [
-        {
-          "nombre": "10:30 | Luca Van Assche (FRA) vs. Ben Shelton (USA) (Semifinal) | ATP",
-          "id_xtream": "1738524"
-        }
-      ],
-      "texto_original_crudo": "10:30 | Luca Van Assche (FRA) vs. Ben Shelton (USA) (Semifinal) | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "titulo_original_crudo": "10:30 | Luca Van Assche (FRA) vs. Ben Shelton (USA) (Semifinal) | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "lineal_eurosport_2_5f84a825",
@@ -1609,45 +1714,6 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_b55cc6bc",
-      "agenda_id": "",
-      "titulo": "ONE Championship",
-      "torneo": "ONE Championship",
-      "categoria": "Combate",
-      "tipo_evento": "circuito",
-      "equipo_local": "ONE Fight Night: Gabriel",
-      "equipo_visitante": "Rasulov",
-      "subtitulo": "Cartelera Principal",
-      "referencia": "Cartelera Principal • MMA • Gabriel vs. Rasulov",
-      "hora_utc": "2026-11-07T14:00:00Z",
-      "hora_local_producto": "09:00",
-      "duracion_min": 360,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "09:00 | ONE Fight Night 49: Gabriel vs. Rasulov | MMA",
-          "id_xtream": "1738319"
-        }
-      ],
-      "texto_original_crudo": "09:00 | ONE Fight Night 49: Gabriel vs. Rasulov | MMA ►►►   P P V   E V E N T S   ◄◄◄",
-      "titulo_original_crudo": "09:00 | ONE Fight Night 49: Gabriel vs. Rasulov | MMA ►►►   P P V   E V E N T S   ◄◄◄",
-      "ronda": "Cartelera Principal",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -2313,8 +2379,8 @@
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "Cartelera Principal",
-      "referencia": "Cartelera Principal • Crown Jewel 2026",
+      "subtitulo": "Evento Principal PPV",
+      "referencia": "Evento Principal PPV • Crown Jewel 2026",
       "hora_utc": "2026-11-07T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 360,
@@ -2343,7 +2409,7 @@
       ],
       "texto_original_crudo": "10:00 | English: Crown Jewel 2026 | WWE ►►►   P P V   E V E N T S   ◄◄◄",
       "titulo_original_crudo": "10:00 | English: Crown Jewel 2026 | WWE ►►►   P P V   E V E N T S   ◄◄◄",
-      "ronda": "Cartelera Principal",
+      "ronda": "Evento Principal PPV",
       "auditado_agy": true
     },
     {
@@ -2374,7 +2440,8 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "futbolenvivo_ar"
+        "futbolenvivo_ar",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
@@ -2551,12 +2618,12 @@
       "id": "xtream_a161c14c",
       "agenda_id": "",
       "titulo": "Joshua Buatsi vs. Willy Hutchinson",
-      "torneo": "Joshua Buatsi vs. Willy Hutchinson",
+      "torneo": "WBC World Light Heavyweight Championship",
       "categoria": "Combate",
       "tipo_evento": "duelo",
       "equipo_local": "Joshua Buatsi",
       "equipo_visitante": "Willy Hutchinson",
-      "subtitulo": "Joshua Buatsi vs. Willy Hutchinson • Boxeo",
+      "subtitulo": "WBC World Light Heavyweight Championship • Boxeo",
       "referencia": "Preliminares",
       "hora_utc": "2026-11-07T15:57:00Z",
       "hora_local_producto": "10:57",
@@ -2860,6 +2927,53 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_ead28932",
+      "agenda_id": "",
+      "titulo": "Zuffa Boxing",
+      "torneo": "Zuffa Boxing",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "Zuffa Boxing: Cheavon Clarke",
+      "equipo_visitante": "Chris Billam-Smith",
+      "subtitulo": "Cartelera Principal",
+      "referencia": "Cartelera Principal • Zuffa Boxing: Boxeo",
+      "hora_utc": "2026-11-07T16:25:00Z",
+      "hora_local_producto": "11:25",
+      "duracion_min": 360,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:25 | Zuffa Boxing 12: En Español | Boxeo",
+          "id_xtream": "1738322"
+        },
+        {
+          "nombre": "11:25 | Zuffa Boxing 12: English | Boxeo",
+          "id_xtream": "1738324"
+        },
+        {
+          "nombre": "11:25 | Zuffa Boxing 12: En Portugués | Boxeo",
+          "id_xtream": "1738323"
+        }
+      ],
+      "texto_original_crudo": "11:25 | Zuffa Boxing 12: En Español | Boxeo ►►►   P P V   E V E N T S   ◄◄◄",
+      "titulo_original_crudo": "11:25 | Zuffa Boxing 12: En Español | Boxeo ►►►   P P V   E V E N T S   ◄◄◄",
+      "ronda": "Cartelera Principal",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_26a7347f",
       "agenda_id": "",
       "titulo": "Gales vs. Japón",
@@ -2935,6 +3049,49 @@
       "titulo_original_crudo": "11:30 ◘ Club Italiano vs. San Fernando ◘ Torneo Metropolitano de Hockey Femenino ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_3f2c7cd5",
+      "agenda_id": "",
+      "titulo": "Oktagon MMA",
+      "torneo": "Oktagon MMA",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "Oktagon: Igor Severino",
+      "equipo_visitante": "Max Holzer",
+      "subtitulo": "Cartelera Principal",
+      "referencia": "Cartelera Principal • Lucha",
+      "hora_utc": "2026-11-07T16:57:00Z",
+      "hora_local_producto": "11:57",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11:57 | OKTAGON 97 | Lucha",
+          "id_xtream": "1738325"
+        },
+        {
+          "nombre": "12:00 ◘ Oktagon MMA ◘ MMA ◘",
+          "id_xtream": "1738178"
+        }
+      ],
+      "texto_original_crudo": "11:57 | OKTAGON 97 | Lucha ►►►   P P V   E V E N T S   ◄◄◄",
+      "titulo_original_crudo": "11:57 | OKTAGON 97 | Lucha ►►►   P P V   E V E N T S   ◄◄◄",
+      "ronda": "Cartelera Principal",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "lineal_espn_3_ar_f98f9919",
@@ -4955,6 +5112,45 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_e3381363",
+      "agenda_id": "",
+      "titulo": "Bare Knuckle Fighting Championship",
+      "torneo": "Bare Knuckle Fighting Championship",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cartelera Principal",
+      "referencia": "Cartelera Principal • Bare Knuckle Fighting",
+      "hora_utc": "2026-11-07T19:00:00Z",
+      "hora_local_producto": "14:00",
+      "duracion_min": 360,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "14:00 ◘ BKFC Fight Night ◘ Bare Knuckle Fighting ◘",
+          "id_xtream": "1738207"
+        }
+      ],
+      "texto_original_crudo": "14:00 ◘ BKFC Fight Night ◘ Bare Knuckle Fighting ◘ ✨   E V E N T O S   D I A R I O S   07/11   ✨",
+      "titulo_original_crudo": "14:00 ◘ BKFC Fight Night ◘ Bare Knuckle Fighting ◘ ✨   E V E N T O S   D I A R I O S   07/11   ✨",
+      "ronda": "Cartelera Principal",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_2cf05f12",
       "agenda_id": "",
       "titulo": "Benedict vs. Central State",
@@ -4997,19 +5193,19 @@
       "agenda_id": "",
       "titulo": "Geba vs. Belgrano Athletic",
       "torneo": "Torneo Metropolitano de Hockey Femenino",
-      "categoria": "Hockey Sobre Césped",
+      "categoria": "Hockey",
       "tipo_evento": "duelo",
       "equipo_local": "Geba",
       "equipo_visitante": "Belgrano Athletic",
       "subtitulo": "Torneo Metropolitano de Hockey Femenino",
-      "referencia": "Fase Regular",
+      "referencia": "Cuartos de Final",
       "hora_utc": "2026-11-07T19:00:00Z",
       "hora_local_producto": "14:00",
       "duracion_min": 130,
-      "logo_torneo": "",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
       "logo_local": "",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F0twgzi1517768087.png&w=400&output=webp",
-      "banner": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -5538,12 +5734,12 @@
     {
       "id": "xtream_64344c13",
       "agenda_id": "",
-      "titulo": "Penn Quakers vs. Princeton Tigers",
+      "titulo": "Princeton vs. Pennsylvania",
       "torneo": "NCAA Men's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Penn Quakers",
-      "equipo_visitante": "Princeton Tigers",
+      "equipo_local": "Princeton",
+      "equipo_visitante": "Pennsylvania",
       "subtitulo": "NCAA Men's Soccer",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-07T20:00:00Z",
@@ -5551,7 +5747,7 @@
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjuof7x1585080271.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2301.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fjuof7x1585080271.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -6272,10 +6468,10 @@
       "torneo": "UFC",
       "categoria": "Combate",
       "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Cartelera Principal",
-      "referencia": "Cartelera Principal • UFC Fight Night: UFC",
+      "equipo_local": "UFC Fight Night: Cortes-Acosta",
+      "equipo_visitante": "Walker",
+      "subtitulo": "Cartelera Preliminar",
+      "referencia": "Cartelera Preliminar • UFC Fight Night: UFC",
       "hora_utc": "2026-11-07T20:55:00Z",
       "hora_local_producto": "15:55",
       "duracion_min": 360,
@@ -6304,11 +6500,15 @@
         {
           "nombre": "15:55 | UFC Fight Night: En Portugués | UFC",
           "id_xtream": "1738315"
+        },
+        {
+          "nombre": "20:55 | UFC Fight Night: Multiview | UFC",
+          "id_xtream": "1738317"
         }
       ],
       "texto_original_crudo": "15:55 | UFC Fight Night: En Español | UFC ★ ⚡ ★   U F C   E V E N T O S   ★ ⚡ ★",
       "titulo_original_crudo": "15:55 | UFC Fight Night: En Español | UFC ★ ⚡ ★   U F C   E V E N T O S   ★ ⚡ ★",
-      "ronda": "Cartelera Principal",
+      "ronda": "Cartelera Preliminar",
       "auditado_agy": true
     },
     {
@@ -7385,20 +7585,20 @@
     {
       "id": "xtream_78e9240f",
       "agenda_id": "",
-      "titulo": "Bowling Green Falcons vs. Miami (OH) RedHawks",
+      "titulo": "Bowling Green vs. Miami (OH)",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Bowling Green Falcons",
-      "equipo_visitante": "Miami (OH) RedHawks",
+      "equipo_local": "Bowling Green",
+      "equipo_visitante": "Miami (OH)",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "MAC Tournament",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-11-07T22:00:00Z",
       "hora_local_producto": "17:00",
       "duracion_min": 125,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2262.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F9030.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F154.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F130.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
@@ -7825,16 +8025,74 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_2_bbd15229",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Boca Juniors vs. LA Unión de Formosa",
+      "torneo": "Liga Nacional de Básquet",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boca Juniors",
+      "equipo_visitante": "LA Unión de Formosa",
+      "subtitulo": "Liga Nacional de Básquet",
+      "referencia": "Fase Regular",
+      "hora_utc": "2026-11-07T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbm7krb1775741582.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F289.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fleagues%2F140.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "DSPORTS 2",
+          "id_xtream": "592038",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DSPORTS 2 ARG",
+          "id_xtream": "712757",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "DIRECTV SPORTS 2 AR",
+          "id_xtream": "69549",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "Básquet LNB: Boca Juniors vs La Unión de Formosa en vivo por DSPORTS 2",
+      "titulo_original_crudo": "Básquet LNB: Boca Juniors vs La Unión de Formosa en vivo por DSPORTS 2",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_59065bb8",
       "agenda_id": "",
-      "titulo": "Brown Bears vs. Princeton Tigers",
+      "titulo": "Brown vs. Princeton",
       "torneo": "NCAA Women's Soccer",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Brown Bears",
-      "equipo_visitante": "Princeton Tigers",
+      "equipo_local": "Brown",
+      "equipo_visitante": "Princeton",
       "subtitulo": "NCAA Women's Soccer",
-      "referencia": "Ivy League Tournament",
+      "referencia": "Ivy League",
       "hora_utc": "2026-11-07T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 125,
@@ -8778,7 +9036,7 @@
       "equipo_local": "UC Davis",
       "equipo_visitante": "Utah Tech",
       "subtitulo": "NCAAF",
-      "referencia": "Semana",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-11-08T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 240,
@@ -8807,6 +9065,45 @@
       "contrastado_api": true,
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_703baec6",
+      "agenda_id": "",
+      "titulo": "Peak Fighting Championship",
+      "torneo": "Peak Fighting Championship",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cartelera Principal",
+      "referencia": "Cartelera Principal • MMA",
+      "hora_utc": "2026-11-08T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 360,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ PFC 55 ◘ MMA ◘",
+          "id_xtream": "1738269"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ PFC 55 ◘ MMA ◘ ✨   E V E N T O S   D I A R I O S   07/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ PFC 55 ◘ MMA ◘ ✨   E V E N T O S   D I A R I O S   07/11   ✨",
+      "ronda": "Cartelera Principal",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_394da86e",
@@ -9672,6 +9969,52 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_df1cda9b",
+      "agenda_id": "",
+      "titulo": "All Elite Wrestling",
+      "torneo": "All Elite Wrestling",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Episodio Especial",
+      "referencia": "Episodio Especial • AEW Lucha • AEW Collision vs. Chris Jericho's Rock N' Wrestrling Rager",
+      "hora_utc": "2026-11-08T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 360,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:00 | En Español: AEW Collision - Chris Jericho's Rock N' Wrestrling Rager | AEW Lucha",
+          "id_xtream": "1738329"
+        },
+        {
+          "nombre": "20:00 | English: AEW Collision - Chris Jericho's Rock N' Wrestrling Rager | AEW Lucha",
+          "id_xtream": "1738330"
+        },
+        {
+          "nombre": "20:00 ◘ AEW Collision ◘ Wrestling ◘",
+          "id_xtream": "1738281"
+        }
+      ],
+      "texto_original_crudo": "20:00 | En Español: AEW Collision - Chris Jericho's Rock N' Wrestrling Rager | AEW Lucha ►►►   P P V   E V E N T S   ◄◄◄",
+      "titulo_original_crudo": "20:00 | En Español: AEW Collision - Chris Jericho's Rock N' Wrestrling Rager | AEW Lucha ►►►   P P V   E V E N T S   ◄◄◄",
+      "ronda": "Episodio Especial",
+      "auditado_agy": true
+    },
+    {
       "id": "xtream_9d7f92c6",
       "agenda_id": "",
       "titulo": "Cañeros de los Mochis vs. Águilas de Mexicali",
@@ -9955,44 +10298,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_0f4fa8a5",
-      "agenda_id": "",
-      "titulo": "UFC",
-      "torneo": "UFC",
-      "categoria": "Combate",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Multiview",
-      "referencia": "UFC Fight Night: Multiview",
-      "hora_utc": "2026-11-08T01:55:00Z",
-      "hora_local_producto": "20:55",
-      "duracion_min": 360,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "20:55 | UFC Fight Night: Multiview | UFC",
-          "id_xtream": "1738317"
-        }
-      ],
-      "texto_original_crudo": "20:55 | UFC Fight Night: Multiview | UFC ★ ⚡ ★   U F C   E V E N T O S   ★ ⚡ ★",
-      "titulo_original_crudo": "20:55 | UFC Fight Night: Multiview | UFC ★ ⚡ ★   U F C   E V E N T O S   ★ ⚡ ★",
-      "ronda": "Multiview",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_15535372",
       "agenda_id": "",
       "titulo": "Houston Rockets vs. Phoenix Suns",
@@ -10203,6 +10508,45 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_3d59122f",
+      "agenda_id": "",
+      "titulo": "Lucha Libre AAA",
+      "torneo": "Lucha Libre AAA",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Semana",
+      "referencia": "Semana • Lucha Libre",
+      "hora_utc": "2026-11-08T02:00:00Z",
+      "hora_local_producto": "21:00",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21:00 | Lucha Libre AAA | Lucha Libre",
+          "id_xtream": "1738331"
+        }
+      ],
+      "texto_original_crudo": "21:00 | Lucha Libre AAA | Lucha Libre ►►►   P P V   E V E N T S   ◄◄◄",
+      "titulo_original_crudo": "21:00 | Lucha Libre AAA | Lucha Libre ►►►   P P V   E V E N T S   ◄◄◄",
+      "ronda": "Semana",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_b2267e7f",
       "agenda_id": "",
       "titulo": "LD Alajuelense vs Sporting San Jose",
@@ -10365,13 +10709,13 @@
       "id": "xtream_c6378d0e",
       "agenda_id": "",
       "titulo": "Utep vs. Hawai'i",
-      "torneo": "NCAA College Football",
+      "torneo": "NCAA Division I Fbs/fcs",
       "categoria": "Fútbol Americano",
       "tipo_evento": "duelo",
       "equipo_local": "Utep",
       "equipo_visitante": "Hawai'i",
-      "subtitulo": "NCAA College Football",
-      "referencia": "Semana",
+      "subtitulo": "NCAA Division I Fbs/fcs",
+      "referencia": "Temporada Regular",
       "hora_utc": "2026-11-08T02:30:00Z",
       "hora_local_producto": "21:30",
       "duracion_min": 240,
@@ -10691,17 +11035,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-07",
-    "total_agenda_maestra": 68,
+    "total_agenda_maestra": 59,
     "total_canales_xtream": 8795,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 2667,
-    "eventos_lineales_inyectados": 48,
+    "eventos_lineales_inyectados": 39,
     "eventos_xtream_aprobados": 306,
-    "eventos_contrastados_api": 142,
-    "eventos_sellados_boveda_inmutable": 204,
-    "eventos_descartados_stale": 110,
-    "total_eventos_publicados": 225,
-    "hora_actualizacion_utc": "2026-11-07T22:28:49Z"
+    "eventos_contrastados_api": 143,
+    "eventos_sellados_boveda_inmutable": 212,
+    "eventos_descartados_stale": 119,
+    "total_eventos_publicados": 231,
+    "hora_actualizacion_utc": "2026-11-08T03:26:44Z"
   }
 }
