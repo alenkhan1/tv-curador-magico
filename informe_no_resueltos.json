@@ -4,22 +4,22 @@
     "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
     "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina."
   ],
-  "generado": "2026-11-07T10:54:56Z",
+  "generado": "2026-11-08T11:05:50Z",
   "resumen": {
-    "total": 677,
+    "total": 678,
     "por_motivo": {
+      "no_encontrado": 462,
       "pendiente": 155,
-      "no_encontrado": 461,
       "titulo_vacio": 61
     },
     "peliculas": {
       "adulto": 19,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 254,
+      "no_encontrado": 255,
       "fallo_red": 96,
-      "clasificados": 37435,
-      "sin_identificar": 350
+      "clasificados": 37453,
+      "sin_identificar": 351
     },
     "series": {
       "adulto": 3,
@@ -27,7 +27,7 @@
       "sin_nombre": 0,
       "no_encontrado": 207,
       "fallo_red": 120,
-      "clasificados": 7963,
+      "clasificados": 7962,
       "sin_identificar": 327
     },
     "alerta": {
@@ -40,13 +40,13 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 624,
+      "veces": 625,
       "ejemplos": [
+        "Saltamontes (2025)",
         "Vecino Vs. Monstruos (2025)",
         "Cielo en Furia (2026)",
         "Solo es una película (It's just a movie) (2025)",
-        "Supremacía cuántica (2026)",
-        "¿Por qué me casé otra vez? (2026)"
+        "Supremacía cuántica (2026)"
       ]
     },
     {
@@ -514,7 +514,7 @@
     },
     {
       "carpeta": "ESTRENOS 2026 - (LAT)",
-      "veces": 12
+      "veces": 13
     },
     {
       "carpeta": "COMEDIA - (CAST)",
@@ -558,6 +558,18 @@
     }
   ],
   "items": [
+    {
+      "id": "1738590",
+      "tipo": "movie",
+      "nombre_original": "Saltamontes (2025)",
+      "titulo_buscado": "Saltamontes",
+      "anio": 2025,
+      "motivo": "no_encontrado",
+      "carpeta": "ESTRENOS 2026 - (LAT)",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
     {
       "id": "1737134",
       "tipo": "movie",
