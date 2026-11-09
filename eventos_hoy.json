@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-09T16:11:38Z",
+  "generado_utc": "2026-11-09T22:21:18Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-09",
   "base_media": "http://avefenixtv.com:8080",
@@ -45,6 +45,44 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_8d6e561b",
+      "agenda_id": "",
+      "titulo": "ATP 250 BNP Paribas Nordic Open",
+      "torneo": "ATP 250 BNP Paribas Nordic Open",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Primera Ronda",
+      "referencia": "07:00 Bybit Stockholm Open (Primera Ronda) | ATP ✮ [ T e N I S / P a D e L ] ✮ • Bybit Stockholm Open (Primera Ronda)",
+      "hora_utc": "2026-11-09T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "07:00  BYBIT Stockholm Open (Primera Ronda) | ATP",
+          "id_xtream": "1739400"
+        }
+      ],
+      "texto_original_crudo": "07:00  BYBIT Stockholm Open (Primera Ronda) | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "titulo_original_crudo": "07:00  BYBIT Stockholm Open (Primera Ronda) | ATP ✮   [ T E N I S   /   P A D E L ]   ✮",
+      "ronda": "Primera Ronda",
+      "auditado_agy": true
+    },
+    {
       "id": "xtream_125a5e32",
       "agenda_id": "",
       "titulo": "ATP 250 Bybit Stockholm Open",
@@ -75,6 +113,10 @@
         {
           "nombre": "12:00 ◘ BYBIT Stockholm Open ◘ ATP ◘◘",
           "id_xtream": "1739359"
+        },
+        {
+          "nombre": "12:00  BYBIT Stockholm Open (Primera Ronda) | ATP",
+          "id_xtream": "1739401"
         }
       ],
       "texto_original_crudo": "12:00 ◘ BYBIT Stockholm Open ◘ ATP ◘◘ ✮   [ T E N I S   /   P A D E L ]   ✮",
@@ -612,44 +654,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_47726259",
-      "agenda_id": "",
-      "titulo": "Texas vs. Grambling State",
-      "torneo": "NCAA Men's Basketball",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Texas",
-      "equipo_visitante": "Grambling State",
-      "subtitulo": "NCAA Men's Basketball",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-10T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F203.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F185.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "19:00 ◘ Grambling vs. #7 Texas ◘ Básquetbol masculino NCAA ◘◘",
-          "id_xtream": "1739371"
-        }
-      ],
-      "texto_original_crudo": "19:00 ◘ Grambling vs. #7 Texas ◘ Básquetbol masculino NCAA ◘◘ ✨   E V E N T O S   D I A R I O S   09/11   ✨",
-      "titulo_original_crudo": "19:00 ◘ Grambling vs. #7 Texas ◘ Básquetbol masculino NCAA ◘◘ ✨   E V E N T O S   D I A R I O S   09/11   ✨",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_2a63ce87",
       "agenda_id": "",
       "titulo": "Nacional vs. Deportivo Maldonado",
@@ -687,6 +691,44 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_47726259",
+      "agenda_id": "",
+      "titulo": "Texas vs. Grambling State",
+      "torneo": "NCAA Men's Basketball",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Texas",
+      "equipo_visitante": "Grambling State",
+      "subtitulo": "NCAA Men's Basketball",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-10T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F203.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F185.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "19:00 ◘ Grambling vs. #7 Texas ◘ Básquetbol masculino NCAA ◘◘",
+          "id_xtream": "1739371"
+        }
+      ],
+      "texto_original_crudo": "19:00 ◘ Grambling vs. #7 Texas ◘ Básquetbol masculino NCAA ◘◘ ✨   E V E N T O S   D I A R I O S   09/11   ✨",
+      "titulo_original_crudo": "19:00 ◘ Grambling vs. #7 Texas ◘ Básquetbol masculino NCAA ◘◘ ✨   E V E N T O S   D I A R I O S   09/11   ✨",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_66c23b3a",
@@ -729,14 +771,14 @@
     {
       "id": "xtream_9421e74c",
       "agenda_id": "",
-      "titulo": "WWE",
-      "torneo": "WWE",
+      "titulo": "WWE Raw",
+      "torneo": "WWE Raw",
       "categoria": "Combate",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "En Directo",
-      "referencia": "En Directo • WWE Raw • Wrestling",
+      "subtitulo": "En Vivo",
+      "referencia": "En Vivo • WWE Raw • Wrestling",
       "hora_utc": "2026-11-10T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 360,
@@ -761,8 +803,9 @@
       ],
       "texto_original_crudo": "19:00 ◘ WWE Raw ◘ Wrestling ◘ ✨   E V E N T O S   D I A R I O S   09/11   ✨",
       "titulo_original_crudo": "19:00 ◘ WWE Raw ◘ Wrestling ◘ ✨   E V E N T O S   D I A R I O S   09/11   ✨",
-      "ronda": "En Directo",
-      "auditado_agy": true
+      "ronda": "En Vivo",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_c7e525b2",
@@ -888,6 +931,45 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_893a829f",
+      "agenda_id": "",
+      "titulo": "James Madison vs. Southern Miss",
+      "torneo": "Sun Belt Women's Soccer Championship",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "James Madison",
+      "equipo_visitante": "Southern Miss",
+      "subtitulo": "Sun Belt Women's Soccer Championship",
+      "referencia": "Cuartos de Final",
+      "hora_utc": "2026-11-10T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 125,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F62zn791564336723.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ffdqmd11564356998.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "20:00 ◘ Southern Miss vs. James Madison ◘ NCAA Men's Soccer ◘◘",
+          "id_xtream": "1739381"
+        }
+      ],
+      "texto_original_crudo": "20:00 ◘ Southern Miss vs. James Madison ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   09/11   ✨",
+      "titulo_original_crudo": "20:00 ◘ Southern Miss vs. James Madison ◘ NCAA Men's Soccer ◘◘ ✨   E V E N T O S   D I A R I O S   09/11   ✨",
+      "ronda": "",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -1067,12 +1149,12 @@
       "id": "xtream_af52bcc2",
       "agenda_id": "",
       "titulo": "Cañeros de los Mochis vs. Naranjeros de Hermosillo",
-      "torneo": "Liga Arco Mexicana del Pacífico",
+      "torneo": "Liga Mexicana del Pacífico",
       "categoria": "Béisbol",
       "tipo_evento": "duelo",
       "equipo_local": "Cañeros de los Mochis",
       "equipo_visitante": "Naranjeros de Hermosillo",
-      "subtitulo": "Liga Arco Mexicana del Pacífico",
+      "subtitulo": "Liga Mexicana del Pacífico",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-10T02:00:00Z",
       "hora_local_producto": "21:00",
@@ -1227,17 +1309,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-09",
-    "total_agenda_maestra": 19,
+    "total_agenda_maestra": 18,
     "total_canales_xtream": 8406,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 286,
-    "eventos_lineales_inyectados": 13,
+    "eventos_lineales_inyectados": 4,
     "eventos_xtream_aprobados": 60,
     "eventos_contrastados_api": 10,
-    "eventos_sellados_boveda_inmutable": 23,
-    "eventos_descartados_stale": 78,
-    "total_eventos_publicados": 27,
-    "hora_actualizacion_utc": "2026-11-09T16:11:38Z"
+    "eventos_sellados_boveda_inmutable": 25,
+    "eventos_descartados_stale": 92,
+    "total_eventos_publicados": 29,
+    "hora_actualizacion_utc": "2026-11-09T22:21:18Z"
   }
 }
