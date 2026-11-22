@@ -1,10 +1,49 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-21T22:26:35Z",
+  "generado_utc": "2026-11-22T03:25:36Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-21",
   "base_media": "http://latinostream.xyz:80",
   "eventos": [
+    {
+      "id": "xtream_13f15f83",
+      "agenda_id": "",
+      "titulo": "PDC Grand Slam of Darts",
+      "torneo": "PDC Grand Slam of Darts",
+      "categoria": "Dardos",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Cuartos de Final",
+      "referencia": "Cuartos de Final • Grand Slam of Darts: Quarterfinals [Espn2]",
+      "hora_utc": "2026-11-21T06:10:00Z",
+      "hora_local_producto": "01:10",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/21 01:10 Grand Slam of Darts: Quarterfinals [ESPN2]",
+          "id_xtream": "1040400"
+        }
+      ],
+      "texto_original_crudo": "11/21 01:10 Grand Slam of Darts: Quarterfinals [ESPN2] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/21 01:10 Grand Slam of Darts: Quarterfinals [ESPN2] (EVENTOS-FUBO)",
+      "ronda": "Cuartos de Final",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
     {
       "id": "xtream_4dfde748",
       "agenda_id": "",
@@ -45,22 +84,22 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_add210ac",
+      "id": "xtream_46238924",
       "agenda_id": "",
-      "titulo": "SailGP",
-      "torneo": "SailGP",
-      "categoria": "Vela",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Día 1",
-      "referencia": "Día 1 - Carreras de Flota • Dubai Day [beIN Sports]",
-      "hora_utc": "2026-11-21T10:55:00Z",
-      "hora_local_producto": "05:55",
+      "titulo": "Australia vs. Inglaterra",
+      "torneo": "Gira de Inglaterra en Australia",
+      "categoria": "Críquet",
+      "tipo_evento": "duelo",
+      "equipo_local": "Australia",
+      "equipo_visitante": "Inglaterra",
+      "subtitulo": "Gira de Inglaterra en Australia",
+      "referencia": "Partido en Directo",
+      "hora_utc": "2026-11-21T08:10:00Z",
+      "hora_local_producto": "03:10",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
+      "logo_local": "https://flagcdn.com/256x192/au.png",
+      "logo_visitante": "https://flagcdn.com/256x192/gb-eng.png",
       "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
@@ -73,13 +112,56 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "11/21 05:55 Dubai Day 1 [beIN SPORTS 7]",
-          "id_xtream": "1040438"
+          "nombre": "11/21 03:10 England at Australia [Willow Sports]",
+          "id_xtream": "1040423"
         }
       ],
-      "texto_original_crudo": "11/21 05:55 Dubai Day 1 [beIN SPORTS 7] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/21 05:55 Dubai Day 1 [beIN SPORTS 7] (EVENTOS-FUBO)",
-      "ronda": "Día 1",
+      "texto_original_crudo": "11/21 03:10 England at Australia [Willow Sports] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/21 03:10 England at Australia [Willow Sports] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_6d46b205",
+      "agenda_id": "",
+      "titulo": "MotoGP",
+      "torneo": "MotoGP",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Clasificación",
+      "referencia": "Gran Premio • Clasificación",
+      "hora_utc": "2026-11-21T08:35:00Z",
+      "hora_local_producto": "03:35",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/motogp.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/21 03:35 Repsol Grand Prix of Portugal Qualifying [MotoGP]",
+          "id_xtream": "1040426"
+        },
+        {
+          "nombre": "11/21 06:35 Qatar Airways Grand Prix of Qatar Qualifying 1 [MotoGP]",
+          "id_xtream": "1040448"
+        }
+      ],
+      "texto_original_crudo": "11/21 03:35 Repsol Grand Prix of Portugal Qualifying [MotoGP] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/21 03:35 Repsol Grand Prix of Portugal Qualifying [MotoGP] (EVENTOS-FUBO)",
+      "ronda": "Clasificación",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -192,6 +274,10 @@
         {
           "nombre": "11/21 06:00 Billie Jean King Cup Playoffs: POL v. SWE 1 & 2 [T2]",
           "id_xtream": "1040444"
+        },
+        {
+          "nombre": "11/21 03:00 Billie Jean King Cup Playoffs: POL v. SWE 1 & 2 [T2]",
+          "id_xtream": "1040422"
         }
       ],
       "texto_original_crudo": "11/21 06:00 Billie Jean King Cup Playoffs: POL v. SWE 1 & 2 [T2] (EVENTOS-FUBO)",
@@ -203,20 +289,20 @@
     {
       "id": "xtream_a9fd896a",
       "agenda_id": "",
-      "titulo": "Napoli Knights vs. Brescia Lions",
-      "torneo": "ECS Italy T10",
+      "titulo": "Brescia Lions vs. Napoli Knights",
+      "torneo": "Italia T10 Cricket League",
       "categoria": "Críquet",
       "tipo_evento": "duelo",
-      "equipo_local": "Napoli Knights",
-      "equipo_visitante": "Brescia Lions",
-      "subtitulo": "ECS Italy T10",
-      "referencia": "Fase de Grupos",
+      "equipo_local": "Brescia Lions",
+      "equipo_visitante": "Napoli Knights",
+      "subtitulo": "Italia T10 Cricket League",
+      "referencia": "Jornada",
       "hora_utc": "2026-11-21T11:00:00Z",
       "hora_local_producto": "06:00",
       "duracion_min": 125,
       "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F718.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F718.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
       "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
@@ -1180,7 +1266,7 @@
       "equipo_local": "Sporting Charleroi",
       "equipo_visitante": "Sint-Truidense",
       "subtitulo": "Jupiler Pro League",
-      "referencia": "Fase Regular",
+      "referencia": "Jornada Regular",
       "hora_utc": "2026-11-21T14:00:00Z",
       "hora_local_producto": "09:00",
       "duracion_min": 125,
@@ -2580,8 +2666,20 @@
           "id_xtream": "1040539"
         },
         {
+          "nombre": "21/11 12:00 CDMX. UFC FIGHT NIGHT. Prochazka vs Stirling (LAT)",
+          "id_xtream": "1040678"
+        },
+        {
           "nombre": "21/11 12:00 CDMX. UFC FIGHT NIGHT. Prochazka vs Stirling (ENG)",
           "id_xtream": "1040540"
+        },
+        {
+          "nombre": "21/11 12:00 CDMX. UFC FIGHT NIGHT. Prochazka vs Stirling (ENG)",
+          "id_xtream": "1040677"
+        },
+        {
+          "nombre": "21/11 12:00 CDMX. UFC FIGHT NIGHT. Prochazka vs Stirling (Multiview) (Paramount+)",
+          "id_xtream": "1040679"
         }
       ],
       "texto_original_crudo": "21/11 12:00 CDMX. UFC FIGHT NIGHT. Prochazka vs Stirling (LAT) (BOXEO-UFC-PPV)",
@@ -3049,6 +3147,150 @@
       "texto_original_crudo": "11/21 TENIS 1:00pm Hungary vs USA (EVENTOS-OPC 2)",
       "titulo_original_crudo": "11/21 TENIS 1:00pm Hungary vs USA (EVENTOS-OPC 2)",
       "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_3_ar_f41ac964",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "ATP Challenger Tour",
+      "torneo": "ATP Challenger Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Final Dobles",
+      "referencia": "Final Dobles • Uruguay Open • Doubles Final • ATP Challenger Tour - Uruguay Open",
+      "hora_utc": "2026-11-21T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/atp.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_3_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Arg| ESPN 3 FHD",
+          "id_xtream": "1034286",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| ESPN 3 FHD (local)",
+          "id_xtream": "1034287",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Premiun| ESPN 3 HD",
+          "id_xtream": "1034312",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "Doubles final. ATP Challenger Tour - Uruguay Open. Sigue el torneo de tenis profesional más importante de Uruguay y uno de los eventos más prestigiosos del ATP Challenger Tour en Sudamérica",
+      "titulo_original_crudo": "Doubles final. ATP Challenger Tour - Uruguay Open. Sigue el torneo de tenis profesional más importante de Uruguay y uno de los eventos más prestigiosos del ATP Challenger Tour en Sudamérica",
+      "conflictos_lineales": [
+        {
+          "canal": "ESPN 3 AR",
+          "oponente_id": "lineal_espn_3_ar_c14e06d1",
+          "oponente_titulo": "ATP Challenger Tour - Uruguay Open - Semifinales",
+          "oponente_hora": "15:00"
+        }
+      ],
+      "ronda": "Final Dobles",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_3d845497",
+      "agenda_id": "",
+      "titulo": "Lpga Tour",
+      "torneo": "Lpga Tour",
+      "categoria": "Golf",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Ronda",
+      "referencia": "Ronda • 11/21 GOLF:00pm CME Group Tour Championship (Third Round) (Eventos-opc) • GOLF:00pm CME Group Tour Championship (Third Round)",
+      "hora_utc": "2026-11-21T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/pga_tour.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/pga_tour.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/21 GOLF 1:00pm CME Group Tour Championship (Third Round)",
+          "id_xtream": "1040354"
+        }
+      ],
+      "texto_original_crudo": "11/21 GOLF 1:00pm CME Group Tour Championship (Third Round) (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "11/21 GOLF 1:00pm CME Group Tour Championship (Third Round) (EVENTOS-OPC 2)",
+      "ronda": "Ronda",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_14ef40a3",
+      "agenda_id": "",
+      "titulo": "PGA Tour",
+      "torneo": "PGA Tour",
+      "categoria": "Golf",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Ronda",
+      "referencia": "Ronda • 11/21 GOLF:00pm The RSM Classic (Third Round) = Golf Channel USA (Eventos-opc) • GOLF:00pm The RSM Classic (Third Round) = Golf Channel USA",
+      "hora_utc": "2026-11-21T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/pga_tour.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/pga_tour.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/21 GOLF 1:00pm The RSM Classic (Third Round) = GOLF CHANNEL USA",
+          "id_xtream": "1040355"
+        }
+      ],
+      "texto_original_crudo": "11/21 GOLF 1:00pm The RSM Classic (Third Round) = GOLF CHANNEL USA (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "11/21 GOLF 1:00pm The RSM Classic (Third Round) = GOLF CHANNEL USA (EVENTOS-OPC 2)",
+      "ronda": "Ronda",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -3831,13 +4073,13 @@
       "id": "lineal_espn_ar_35169729",
       "canales_mencionados_fuente": [],
       "agenda_id": "",
-      "titulo": "Tala RC vs. Club Newman",
-      "torneo": "Torneo del Interior a",
+      "titulo": "Tala RC vs. Club Atlético Newman",
+      "torneo": "Torneo Nacional de Clubes",
       "categoria": "Rugby",
       "tipo_evento": "duelo",
       "equipo_local": "Tala RC",
-      "equipo_visitante": "Club Newman",
-      "subtitulo": "Torneo del Interior a",
+      "equipo_visitante": "Club Atlético Newman",
+      "subtitulo": "Torneo Nacional de Clubes",
       "referencia": "Final",
       "hora_utc": "2026-11-21T22:20:00Z",
       "hora_local_producto": "17:20",
@@ -3998,6 +4240,53 @@
       "texto_original_crudo": "11/21 07:00 PM | LMP | Jaguares de Nayarit @ Charros de Jalisco [EN] (EVENTOS-LMB)",
       "titulo_original_crudo": "11/21 07:00 PM | LMP | Jaguares de Nayarit @ Charros de Jalisco [EN] (EVENTOS-LMB)",
       "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_6d35ea9d",
+      "agenda_id": "",
+      "titulo": "AEW Collision",
+      "torneo": "AEW Collision",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Episodio en Vivo",
+      "referencia": "Episodio en Vivo • Cdmx. AEW. Collision",
+      "hora_utc": "2026-11-22T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 360,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ufc.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "21/11 19:00 CDMX. AEW. Collision",
+          "id_xtream": "1040680"
+        },
+        {
+          "nombre": "21/11 19:30 CDMX. CMLL. Sabado de Arena Colideo",
+          "id_xtream": "1040681"
+        },
+        {
+          "nombre": "21/11 20:00 CDMX. AAA. Lucha Libre AAA (FOX ONE)",
+          "id_xtream": "1040682"
+        }
+      ],
+      "texto_original_crudo": "21/11 19:00 CDMX. AEW. Collision (BOXEO-UFC-PPV)",
+      "titulo_original_crudo": "21/11 19:00 CDMX. AEW. Collision (BOXEO-UFC-PPV)",
+      "ronda": "Episodio en Vivo",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -4325,12 +4614,12 @@
       "canales_mencionados_fuente": [],
       "agenda_id": "",
       "titulo": "Yoali Mosqueda vs. Carlos Mejía",
-      "torneo": "ESPN KnockOut",
+      "torneo": "ESPN Knockout",
       "categoria": "Combate",
       "tipo_evento": "duelo",
       "equipo_local": "Yoali Mosqueda",
       "equipo_visitante": "Carlos Mejía",
-      "subtitulo": "ESPN KnockOut",
+      "subtitulo": "ESPN Knockout",
       "referencia": "Pelea Estelar",
       "hora_utc": "2026-11-22T02:00:00Z",
       "hora_local_producto": "21:00",
@@ -4438,17 +4727,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-21",
-    "total_agenda_maestra": 83,
-    "total_canales_xtream": 11255,
+    "total_agenda_maestra": 66,
+    "total_canales_xtream": 11263,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 2616,
-    "eventos_lineales_inyectados": 35,
-    "eventos_xtream_aprobados": 405,
+    "eventos_lineales_inyectados": 22,
+    "eventos_xtream_aprobados": 411,
     "eventos_contrastados_api": 59,
-    "eventos_sellados_boveda_inmutable": 82,
-    "eventos_descartados_stale": 110,
-    "total_eventos_publicados": 93,
-    "hora_actualizacion_utc": "2026-11-21T22:26:35Z"
+    "eventos_sellados_boveda_inmutable": 88,
+    "eventos_descartados_stale": 146,
+    "total_eventos_publicados": 99,
+    "hora_actualizacion_utc": "2026-11-22T03:25:36Z"
   }
 }
