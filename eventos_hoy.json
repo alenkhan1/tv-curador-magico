@@ -1,10 +1,68 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-23T05:19:58Z",
+  "generado_utc": "2026-11-23T22:16:52Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-23",
   "base_media": "http://latinostream.xyz:80",
   "eventos": [
+    {
+      "id": "lineal_win_sports_40e634c6",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Boca Juniors de Cali vs. Deportes Quindío",
+      "torneo": "Torneo BetPlay Dimayor",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Boca Juniors de Cali",
+      "equipo_visitante": "Deportes Quindío",
+      "subtitulo": "Torneo BetPlay Dimayor",
+      "referencia": "Final Ida",
+      "hora_utc": "2026-11-23T05:30:00Z",
+      "hora_local_producto": "00:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F451.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1461.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_win_sports"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "COL| WIN SPORTS FHD ***",
+          "id_xtream": "1034675",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "COL| WIN SPORTS FHD COL",
+          "id_xtream": "1034676",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        },
+        {
+          "nombre": "COL| WIN SPORTS FHD *",
+          "id_xtream": "1034677",
+          "canal_lineal": "WIN SPORTS",
+          "pais": "CO"
+        }
+      ],
+      "canales_candidatos": [
+        "WIN SPORTS"
+      ],
+      "texto_original_crudo": "Boca Juniors vs. Quindío. Final ida. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
+      "titulo_original_crudo": "Boca Juniors vs. Quindío. Final ida. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
     {
       "id": "lineal_dsports_ar_b55138d0",
       "canales_mencionados_fuente": [
@@ -210,6 +268,64 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_plus_5e9dcd44",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Tayikistán vs. Croacia",
+      "torneo": "Copa Mundial Sub-17 de LA FIFA",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tayikistán",
+      "equipo_visitante": "Croacia",
+      "subtitulo": "Copa Mundial Sub-17 de LA FIFA",
+      "referencia": "Fase de Grupos",
+      "hora_utc": "2026-11-23T15:30:00Z",
+      "hora_local_producto": "10:30",
+      "duracion_min": 180,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/tj.png",
+      "logo_visitante": "https://flagcdn.com/256x192/hr.png",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Arg| Directv Sports Plus FHD",
+          "id_xtream": "1034280",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        },
+        {
+          "nombre": "LAT | DIRECTV SPORTS + (P)",
+          "id_xtream": "758154",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        },
+        {
+          "nombre": "EVENTS 10 :  Directv Sports + -COL-",
+          "id_xtream": "804927",
+          "canal_lineal": "DSPORTS +",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS +"
+      ],
+      "texto_original_crudo": "Copa Mundial Sub-17: Tayikistán vs. Croacia en vivo por DSPORTS+",
+      "titulo_original_crudo": "Copa Mundial Sub-17: Tayikistán vs. Croacia en vivo por DSPORTS+",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_espn_3_ar_ca1d5c2e",
       "canales_mencionados_fuente": [
         "Disney+ Premium",
@@ -399,6 +515,18 @@
           "id_xtream": "1040774",
           "canal_lineal": "DSPORTS 2",
           "pais": "AR"
+        },
+        {
+          "nombre": "11/23 Soccer 7:30am Spain U17 vs Fiji U17 = DIRECTV SPORTS ARGENTINA",
+          "id_xtream": "1041219",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "11/23 Soccer 9:30am Italy U17 vs Côte d'Ivoire U17 = DIRECTV SPORTS ARGENTINA *",
+          "id_xtream": "1041224",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
         }
       ],
       "canales_candidatos": [
@@ -483,6 +611,138 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_dsports_ar_d4ede676",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Sportivo de Mayo vs. Sportivo San Lorenzo",
+      "torneo": "Copa de Primera",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Sportivo de Mayo",
+      "equipo_visitante": "Sportivo San Lorenzo",
+      "subtitulo": "Copa de Primera",
+      "referencia": "Jornada - Torneo Clausura",
+      "hora_utc": "2026-11-23T21:00:00Z",
+      "hora_local_producto": "16:00",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2140.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F37wke41775741605.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "ARG| DIRECTV SPORTS FHD",
+          "id_xtream": "758131",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Directv Sports HD (Col)",
+          "id_xtream": "758143",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Directv Sports Argentina",
+          "id_xtream": "758142",
+          "canal_lineal": "DSPORTS AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS AR"
+      ],
+      "texto_original_crudo": "Copa de Primera: 2 de Mayo vs. Sportivo San Lorenzo en vivo por DSPORTS",
+      "titulo_original_crudo": "Copa de Primera: 2 de Mayo vs. Sportivo San Lorenzo en vivo por DSPORTS",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dsports_2_e2239708",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Nacional Asuncion vs Cerro Porteno",
+      "torneo": "Torneo Clausura",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nacional Asuncion",
+      "equipo_visitante": "Cerro Porteno",
+      "subtitulo": "Torneo Clausura",
+      "referencia": "Jornada - Torneo Clausura",
+      "hora_utc": "2026-11-23T23:15:00Z",
+      "hora_local_producto": "18:15",
+      "duracion_min": 180,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1175.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1176.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "agy_lineales"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Directv Sports 2 HD",
+          "id_xtream": "758141",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "11/23 Soccer 7:30am Spain U17 vs Fiji U17 = DIRECTV SPORTS ARGENTINA",
+          "id_xtream": "1041219",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "11/23 Soccer 9:30am Italy U17 vs Côte d'Ivoire U17 = DIRECTV SPORTS ARGENTINA *",
+          "id_xtream": "1041224",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "Copa de Primera: Nacional Asunción vs. Cerro Porteño en vivo por DSPORTS 2",
+      "titulo_original_crudo": "Copa de Primera: Nacional Asunción vs. Cerro Porteño en vivo por DSPORTS 2",
+      "conflictos_lineales": [
+        {
+          "canal": "DSPORTS 2",
+          "oponente_id": "lineal_dsports_2_fc1d2dfa",
+          "oponente_titulo": "Levante vs. Elche",
+          "oponente_hora": "15:00"
+        },
+        {
+          "canal": "DSPORTS 2",
+          "oponente_id": "lineal_dsports_2_7990d721",
+          "oponente_titulo": "Levante vs Elche",
+          "oponente_hora": "15:00"
+        }
+      ],
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "lineal_win_sports_0193153d",
       "canales_mencionados_fuente": [
         "Win Fútbol +",
@@ -543,21 +803,143 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "lineal_tnt_sports_32c1709b",
+      "canales_mencionados_fuente": [
+        "NBA League Pass",
+        "HBO MAX",
+        "TNT Sports Premium"
+      ],
+      "agenda_id": "",
+      "titulo": "Minnesota Timberwolves vs Brooklyn Nets",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Minnesota Timberwolves",
+      "equipo_visitante": "Brooklyn Nets",
+      "subtitulo": "NBA",
+      "referencia": "NBA",
+      "hora_utc": "2026-11-24T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F149.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F134.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Arg| TNT Sports FHD (local)",
+          "id_xtream": "1034305",
+          "canal_lineal": "TNT SPORTS",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| TNT Sports HD",
+          "id_xtream": "1034306",
+          "canal_lineal": "TNT SPORTS",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| TNT Sports HQ HD",
+          "id_xtream": "1034307",
+          "canal_lineal": "TNT SPORTS",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "TNT SPORTS"
+      ],
+      "texto_original_crudo": "21:30 NBA Liga Regular Minnesota Timberwolves Brooklyn Nets NBA League Pass HBO MAX TNT Sports Premium",
+      "titulo_original_crudo": "21:30 NBA Liga Regular Minnesota Timberwolves Brooklyn Nets NBA League Pass HBO MAX TNT Sports Premium",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_ar_1f288cdc",
+      "canales_mencionados_fuente": [],
+      "agenda_id": "",
+      "titulo": "Washington Commanders vs Cincinnati Bengals",
+      "torneo": "Cincinnati Bengals vs. Washington Commanders",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Washington Commanders",
+      "equipo_visitante": "Cincinnati Bengals",
+      "subtitulo": "Cincinnati Bengals vs. Washington Commanders",
+      "referencia": "Cincinnati Bengals vs. Washington Commanders",
+      "hora_utc": "2026-11-24T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 360,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F18.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F10.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "mitv_espn_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Arg| ESPN 1 FHD",
+          "id_xtream": "1034281",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| ESPN FHD (local)",
+          "id_xtream": "1034291",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| ESPN Plus FHD",
+          "id_xtream": "1034292",
+          "canal_lineal": "ESPN AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN AR"
+      ],
+      "texto_original_crudo": "Cincinnati Bengals vs. Washington Commanders. Fecha 11, Northwest stadium. Vive los partidos de la edición 107º de la NFL. El público podrá disfrutar de los encuentros más emocionantes de la mayor liga de fútbol americano profesional de Estados Unidos",
+      "titulo_original_crudo": "Cincinnati Bengals vs. Washington Commanders. Fecha 11, Northwest stadium. Vive los partidos de la edición 107º de la NFL. El público podrá disfrutar de los encuentros más emocionantes de la mayor liga de fútbol americano profesional de Estados Unidos",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "curado_integro": true
     }
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-23",
-    "total_agenda_maestra": 38,
-    "total_canales_xtream": 11325,
+    "total_agenda_maestra": 39,
+    "total_canales_xtream": 10988,
     "xtream_procesada_hoy": false,
     "lista_xtream_actualizada_hoy": false,
     "fixtures_api_sports_hoy": 324,
-    "eventos_lineales_inyectados": 17,
+    "eventos_lineales_inyectados": 27,
     "eventos_xtream_aprobados": 0,
-    "eventos_contrastados_api": 4,
-    "eventos_sellados_boveda_inmutable": 8,
-    "eventos_descartados_stale": 8,
-    "total_eventos_publicados": 8,
-    "hora_actualizacion_utc": "2026-11-23T05:19:58Z"
+    "eventos_contrastados_api": 7,
+    "eventos_sellados_boveda_inmutable": 14,
+    "eventos_descartados_stale": 13,
+    "total_eventos_publicados": 14,
+    "hora_actualizacion_utc": "2026-11-23T22:16:52Z"
   }
 }
