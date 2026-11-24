@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-23T22:16:52Z",
+  "generado_utc": "2026-11-24T03:15:52Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-23",
   "base_media": "http://latinostream.xyz:80",
@@ -263,6 +263,69 @@
           "oponente_hora": "07:30"
         }
       ],
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dsports_2_7678a1b3",
+      "canales_mencionados_fuente": [
+        "DSports 2 (612/1612)",
+        "DGO",
+        "Amazon Prime Video (Ver en vivo)",
+        "Paramount+"
+      ],
+      "agenda_id": "",
+      "titulo": "República Checa vs. Canadá",
+      "torneo": "Davis Cup Finals",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "República Checa",
+      "equipo_visitante": "Canadá",
+      "subtitulo": "Davis Cup Finals",
+      "referencia": "Cuartos de Final",
+      "hora_utc": "2026-11-23T15:00:00Z",
+      "hora_local_producto": "10:00",
+      "duracion_min": 240,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/cz.png",
+      "logo_visitante": "https://flagcdn.com/256x192/ca.png",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Directv Sports 2 HD",
+          "id_xtream": "758141",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "11/23 Soccer 7:30am Spain U17 vs Fiji U17 = DIRECTV SPORTS ARGENTINA",
+          "id_xtream": "1041219",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "11/23 Soccer 9:30am Italy U17 vs Côte d'Ivoire U17 = DIRECTV SPORTS ARGENTINA *",
+          "id_xtream": "1041224",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "12:00 Davis Cup Finals 1/4 de Final República Checa Canadá DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "titulo_original_crudo": "12:00 Davis Cup Finals 1/4 de Final República Checa Canadá DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
@@ -929,17 +992,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-23",
-    "total_agenda_maestra": 39,
+    "total_agenda_maestra": 37,
     "total_canales_xtream": 10988,
     "xtream_procesada_hoy": false,
     "lista_xtream_actualizada_hoy": false,
     "fixtures_api_sports_hoy": 324,
-    "eventos_lineales_inyectados": 27,
+    "eventos_lineales_inyectados": 18,
     "eventos_xtream_aprobados": 0,
     "eventos_contrastados_api": 7,
-    "eventos_sellados_boveda_inmutable": 14,
+    "eventos_sellados_boveda_inmutable": 15,
     "eventos_descartados_stale": 13,
-    "total_eventos_publicados": 14,
-    "hora_actualizacion_utc": "2026-11-23T22:16:52Z"
+    "total_eventos_publicados": 15,
+    "hora_actualizacion_utc": "2026-11-24T03:15:52Z"
   }
 }
