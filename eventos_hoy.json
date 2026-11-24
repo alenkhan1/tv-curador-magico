@@ -1,70 +1,12 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-24T03:15:52Z",
+  "generado_utc": "2026-11-24T05:18:02Z",
   "zona_horaria_producto": "America/Bogota",
-  "fecha_local_producto": "2026-11-23",
+  "fecha_local_producto": "2026-11-24",
   "base_media": "http://latinostream.xyz:80",
   "eventos": [
     {
-      "id": "lineal_win_sports_40e634c6",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Boca Juniors de Cali vs. Deportes Quindío",
-      "torneo": "Torneo BetPlay Dimayor",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Boca Juniors de Cali",
-      "equipo_visitante": "Deportes Quindío",
-      "subtitulo": "Torneo BetPlay Dimayor",
-      "referencia": "Final Ida",
-      "hora_utc": "2026-11-23T05:30:00Z",
-      "hora_local_producto": "00:30",
-      "duracion_min": 150,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F451.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1461.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mitv_win_sports"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "COL| WIN SPORTS FHD ***",
-          "id_xtream": "1034675",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
-        },
-        {
-          "nombre": "COL| WIN SPORTS FHD COL",
-          "id_xtream": "1034676",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
-        },
-        {
-          "nombre": "COL| WIN SPORTS FHD *",
-          "id_xtream": "1034677",
-          "canal_lineal": "WIN SPORTS",
-          "pais": "CO"
-        }
-      ],
-      "canales_candidatos": [
-        "WIN SPORTS"
-      ],
-      "texto_original_crudo": "Boca Juniors vs. Quindío. Final ida. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
-      "titulo_original_crudo": "Boca Juniors vs. Quindío. Final ida. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dsports_ar_b55138d0",
+      "id": "lineal_dsports_ar_8b5054f8",
       "canales_mencionados_fuente": [
         "DGO",
         "Amazon Prime Video (Ver en vivo)",
@@ -72,344 +14,21 @@
         "DSports (610/1610)"
       ],
       "agenda_id": "",
-      "titulo": "España vs. Fiyi",
-      "torneo": "Copa Mundial Sub-17 de LA FIFA",
+      "titulo": "Honduras U17 vs Colombia U17",
+      "torneo": "FIFA Mundial Sub-17",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "España",
-      "equipo_visitante": "Fiyi",
-      "subtitulo": "Copa Mundial Sub-17 de LA FIFA",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-11-23T12:30:00Z",
-      "hora_local_producto": "07:30",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/es.png",
-      "logo_visitante": "https://flagcdn.com/256x192/fj.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ARG| DIRECTV SPORTS FHD",
-          "id_xtream": "758131",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Directv Sports HD (Col)",
-          "id_xtream": "758143",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Directv Sports Argentina",
-          "id_xtream": "758142",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS AR"
-      ],
-      "texto_original_crudo": "09:30 Fase de grupos España Fiyi DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
-      "titulo_original_crudo": "09:30 Fase de grupos España Fiyi DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
-      "conflictos_lineales": [
-        {
-          "canal": "DSPORTS AR",
-          "oponente_id": "lineal_dsports_ar_b91e0693",
-          "oponente_titulo": "Italia vs Costa de Marfil",
-          "oponente_hora": "09:30"
-        }
-      ],
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_4_aa0a7c81",
-      "canales_mencionados_fuente": [
-        "ESPN 4",
-        "Disney+ Premium"
-      ],
-      "agenda_id": "",
-      "titulo": "Neftchi vs Al-Hilal Saudi FC",
-      "torneo": "FK Neftchi Fergana vs al Hilal",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Neftchi",
-      "equipo_visitante": "Al-Hilal Saudi FC",
-      "subtitulo": "FK Neftchi Fergana vs al Hilal",
-      "referencia": "AFC Champions League Elite",
-      "hora_utc": "2026-11-23T13:45:00Z",
-      "hora_local_producto": "08:45",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F17.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F4217.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2932.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F17.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Arg| ESPN 4 FHD (local)",
-          "id_xtream": "1034289",
-          "canal_lineal": "ESPN 4",
-          "pais": "AR"
-        },
-        {
-          "nombre": "DEP HD: ESPN 4 (ARG)",
-          "id_xtream": "782283",
-          "canal_lineal": "ESPN 4",
-          "pais": "AR"
-        },
-        {
-          "nombre": "ESPN 4 SUR HD",
-          "id_xtream": "782323",
-          "canal_lineal": "ESPN 4",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 4"
-      ],
-      "texto_original_crudo": "10:45 Fase Liga FK Neftchi Fergana Al Hilal ESPN 4 Disney+ Premium",
-      "titulo_original_crudo": "10:45 Fase Liga FK Neftchi Fergana Al Hilal ESPN 4 Disney+ Premium",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dsports_ar_b91e0693",
-      "canales_mencionados_fuente": [
-        "DGO",
-        "Amazon Prime Video (Ver en vivo)",
-        "Paramount+",
-        "DSports (610/1610)"
-      ],
-      "agenda_id": "",
-      "titulo": "Italia vs. Costa de Marfil",
-      "torneo": "Copa Mundial Sub-17 de LA FIFA",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Italia",
-      "equipo_visitante": "Costa de Marfil",
-      "subtitulo": "Copa Mundial Sub-17 de LA FIFA",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-11-23T14:30:00Z",
-      "hora_local_producto": "09:30",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/it.png",
-      "logo_visitante": "https://flagcdn.com/256x192/ci.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ARG| DIRECTV SPORTS FHD",
-          "id_xtream": "758131",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Directv Sports HD (Col)",
-          "id_xtream": "758143",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Directv Sports Argentina",
-          "id_xtream": "758142",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS AR"
-      ],
-      "texto_original_crudo": "11:30 Fase de grupos Italia Costa de Marfil DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
-      "titulo_original_crudo": "11:30 Fase de grupos Italia Costa de Marfil DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
-      "conflictos_lineales": [
-        {
-          "canal": "DSPORTS AR",
-          "oponente_id": "lineal_dsports_ar_b55138d0",
-          "oponente_titulo": "España vs Fiyi",
-          "oponente_hora": "07:30"
-        }
-      ],
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dsports_2_7678a1b3",
-      "canales_mencionados_fuente": [
-        "DSports 2 (612/1612)",
-        "DGO",
-        "Amazon Prime Video (Ver en vivo)",
-        "Paramount+"
-      ],
-      "agenda_id": "",
-      "titulo": "República Checa vs. Canadá",
-      "torneo": "Davis Cup Finals",
-      "categoria": "Tenis",
-      "tipo_evento": "duelo",
-      "equipo_local": "República Checa",
-      "equipo_visitante": "Canadá",
-      "subtitulo": "Davis Cup Finals",
-      "referencia": "Cuartos de Final",
-      "hora_utc": "2026-11-23T15:00:00Z",
-      "hora_local_producto": "10:00",
-      "duracion_min": 240,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/cz.png",
-      "logo_visitante": "https://flagcdn.com/256x192/ca.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Directv Sports 2 HD",
-          "id_xtream": "758141",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "11/23 Soccer 7:30am Spain U17 vs Fiji U17 = DIRECTV SPORTS ARGENTINA",
-          "id_xtream": "1041219",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "11/23 Soccer 9:30am Italy U17 vs Côte d'Ivoire U17 = DIRECTV SPORTS ARGENTINA *",
-          "id_xtream": "1041224",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS 2"
-      ],
-      "texto_original_crudo": "12:00 Davis Cup Finals 1/4 de Final República Checa Canadá DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
-      "titulo_original_crudo": "12:00 Davis Cup Finals 1/4 de Final República Checa Canadá DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dsports_plus_5e9dcd44",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Tayikistán vs. Croacia",
-      "torneo": "Copa Mundial Sub-17 de LA FIFA",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Tayikistán",
-      "equipo_visitante": "Croacia",
-      "subtitulo": "Copa Mundial Sub-17 de LA FIFA",
-      "referencia": "Fase de Grupos",
-      "hora_utc": "2026-11-23T15:30:00Z",
+      "equipo_local": "Honduras U17",
+      "equipo_visitante": "Colombia U17",
+      "subtitulo": "FIFA Mundial Sub-17",
+      "referencia": "FIFA Mundial Sub-17",
+      "hora_utc": "2026-11-24T15:30:00Z",
       "hora_local_producto": "10:30",
-      "duracion_min": 180,
-      "logo_torneo": "",
-      "logo_local": "https://flagcdn.com/256x192/tj.png",
-      "logo_visitante": "https://flagcdn.com/256x192/hr.png",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "agy_lineales"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Arg| Directv Sports Plus FHD",
-          "id_xtream": "1034280",
-          "canal_lineal": "DSPORTS +",
-          "pais": "AR"
-        },
-        {
-          "nombre": "LAT | DIRECTV SPORTS + (P)",
-          "id_xtream": "758154",
-          "canal_lineal": "DSPORTS +",
-          "pais": "AR"
-        },
-        {
-          "nombre": "EVENTS 10 :  Directv Sports + -COL-",
-          "id_xtream": "804927",
-          "canal_lineal": "DSPORTS +",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS +"
-      ],
-      "texto_original_crudo": "Copa Mundial Sub-17: Tayikistán vs. Croacia en vivo por DSPORTS+",
-      "titulo_original_crudo": "Copa Mundial Sub-17: Tayikistán vs. Croacia en vivo por DSPORTS+",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_3_ar_ca1d5c2e",
-      "canales_mencionados_fuente": [
-        "Disney+ Premium",
-        "ESPN 3"
-      ],
-      "agenda_id": "",
-      "titulo": "Monza vs Fiorentina",
-      "torneo": "Monza vs Fiorentina",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Monza",
-      "equipo_visitante": "Fiorentina",
-      "subtitulo": "Monza vs Fiorentina",
-      "referencia": "Jornada de Liga",
-      "hora_utc": "2026-11-23T19:45:00Z",
-      "hora_local_producto": "14:45",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1579.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F502.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F135.png&w=400&output=webp&trim=10",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F587.png&w=400&output=webp&trim=10",
+      "logo_local": "https://flagcdn.com/256x192/hn.png",
+      "logo_visitante": "https://flagcdn.com/256x192/co.png",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F587.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -422,209 +41,95 @@
       "puntuacion_confianza": 0.95,
       "fuentes": [
         {
-          "nombre": "Arg| ESPN 3 FHD",
-          "id_xtream": "1034286",
-          "canal_lineal": "ESPN 3 AR",
+          "nombre": "ARG| DIRECTV SPORTS FHD",
+          "id_xtream": "758131",
+          "canal_lineal": "DSPORTS AR",
           "pais": "AR"
         },
         {
-          "nombre": "Arg| ESPN 3 FHD (local)",
-          "id_xtream": "1034287",
-          "canal_lineal": "ESPN 3 AR",
+          "nombre": "Directv Sports HD (Col)",
+          "id_xtream": "758143",
+          "canal_lineal": "DSPORTS AR",
           "pais": "AR"
         },
         {
-          "nombre": "Premiun| ESPN 3 HD",
-          "id_xtream": "1034312",
-          "canal_lineal": "ESPN 3 AR",
+          "nombre": "Directv Sports Argentina",
+          "id_xtream": "758142",
+          "canal_lineal": "DSPORTS AR",
           "pais": "AR"
+        },
+        {
+          "nombre": "Col| RCN Op1 HD",
+          "id_xtream": "1034628",
+          "canal_lineal": "RCN",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Col| RCN Op2 HD",
+          "id_xtream": "1034629",
+          "canal_lineal": "RCN",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Col| RCN Op3 HD",
+          "id_xtream": "1034630",
+          "canal_lineal": "RCN",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Col| Caracol FHD *",
+          "id_xtream": "1034765",
+          "canal_lineal": "CARACOL",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Col| Caracol 1080p * HD",
+          "id_xtream": "1034763",
+          "canal_lineal": "CARACOL",
+          "pais": "CO"
+        },
+        {
+          "nombre": "Col| Caracol Colombia Hd*",
+          "id_xtream": "1034764",
+          "canal_lineal": "CARACOL",
+          "pais": "CO"
         }
       ],
       "canales_candidatos": [
-        "ESPN 3 AR"
+        "DSPORTS AR",
+        "RCN",
+        "CARACOL"
       ],
-      "texto_original_crudo": "16:45 Monza Fiorentina Disney+ Premium ESPN 3",
-      "titulo_original_crudo": "16:45 Monza Fiorentina Disney+ Premium ESPN 3",
-      "conflictos_lineales": [
-        {
-          "canal": "ESPN 3 AR",
-          "oponente_id": "lineal_espn_3_ar_4340ec60",
-          "oponente_titulo": "Olympique de Marseille vs Le Mans",
-          "oponente_hora": "14:30"
-        },
-        {
-          "canal": "ESPN 3 AR",
-          "oponente_id": "lineal_espn_3_ar_bc56f52c",
-          "oponente_titulo": "Sassuolo vs Genoa",
-          "oponente_hora": "16:40"
-        }
-      ],
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_tnt_sports_919a27b8",
-      "canales_mencionados_fuente": [
-        "TNT Sports Premium",
-        "TNT Sports en HBO MAX (Suscripción Pack fútbol)"
-      ],
-      "agenda_id": "",
-      "titulo": "Gimnasia LP vs. Newell's Old Boys",
-      "torneo": "Torneo Clausura",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Gimnasia LP",
-      "equipo_visitante": "Newell's Old Boys",
-      "subtitulo": "Torneo Clausura",
-      "referencia": "Octavos de Final",
-      "hora_utc": "2026-11-23T20:00:00Z",
-      "hora_local_producto": "15:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fepmttr1678849271.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F18691.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Arg| TNT Sports FHD (local)",
-          "id_xtream": "1034305",
-          "canal_lineal": "TNT SPORTS",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg| TNT Sports HD",
-          "id_xtream": "1034306",
-          "canal_lineal": "TNT SPORTS",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg| TNT Sports HQ HD",
-          "id_xtream": "1034307",
-          "canal_lineal": "TNT SPORTS",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "TNT SPORTS"
-      ],
-      "texto_original_crudo": "17:00 1/8 de Final Gimnasia LP Newell&#39;s Old Boys TNT Sports Premium TNT Sports en HBO MAX (Suscripción Pack fútbol)",
-      "titulo_original_crudo": "17:00 1/8 de Final Gimnasia LP Newell&#39;s Old Boys TNT Sports Premium TNT Sports en HBO MAX (Suscripción Pack fútbol)",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dsports_2_7990d721",
-      "canales_mencionados_fuente": [
-        "DSports 2 (612/1612)",
-        "DGO",
-        "Amazon Prime Video (Ver en vivo)",
-        "Paramount+"
-      ],
-      "agenda_id": "",
-      "titulo": "Levante vs Elche",
-      "torneo": "Levante vs Elche",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Levante",
-      "equipo_visitante": "Elche",
-      "subtitulo": "Levante vs Elche",
-      "referencia": "LA Liga",
-      "hora_utc": "2026-11-23T20:00:00Z",
-      "hora_local_producto": "15:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F539.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F797.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F140.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Directv Sports 2 HD",
-          "id_xtream": "758141",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "11/22 Soccer 8:00am Barcelona vs Villarreal = DIRECTV SPORTS ARGENTINA",
-          "id_xtream": "1040714",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "11/22 Soccer 10:30am Argentina U17 vs Mozambique U17 = DIRECTV SPORTS ARGENTINA **",
-          "id_xtream": "1040774",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "11/23 Soccer 7:30am Spain U17 vs Fiji U17 = DIRECTV SPORTS ARGENTINA",
-          "id_xtream": "1041219",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "11/23 Soccer 9:30am Italy U17 vs Côte d'Ivoire U17 = DIRECTV SPORTS ARGENTINA *",
-          "id_xtream": "1041224",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS 2"
-      ],
-      "texto_original_crudo": "17:00 Levante Elche DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
-      "titulo_original_crudo": "17:00 Levante Elche DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "texto_original_crudo": "12:30 FIFA Mundial Sub-17 Fase de grupos Honduras Colombia DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+      "titulo_original_crudo": "12:30 FIFA Mundial Sub-17 Fase de grupos Honduras Colombia DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_2_ar_e19909a3",
+      "id": "lineal_espn_2_ar_4c8f26d5",
       "canales_mencionados_fuente": [
         "Disney+ Premium",
         "ESPN 2"
       ],
       "agenda_id": "",
-      "titulo": "Brentford vs Everton",
-      "torneo": "Brentford vs Everton",
+      "titulo": "Arsenal vs Borussia Dortmund",
+      "torneo": "Champions League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Brentford",
-      "equipo_visitante": "Everton",
-      "subtitulo": "Brentford vs Everton",
-      "referencia": "Jornada de Liga",
-      "hora_utc": "2026-11-23T20:00:00Z",
+      "equipo_local": "Arsenal",
+      "equipo_visitante": "Borussia Dortmund",
+      "subtitulo": "Champions League",
+      "referencia": "Champions League",
+      "hora_utc": "2026-11-24T20:00:00Z",
       "hora_local_producto": "15:00",
       "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F55.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F45.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F39.png&w=400&output=webp&trim=10",
-      "tier": 2,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F42.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F165.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+      "tier": 1,
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
@@ -657,177 +162,36 @@
       "canales_candidatos": [
         "ESPN 2 AR"
       ],
-      "texto_original_crudo": "17:00 Brentford Everton Disney+ Premium ESPN 2",
-      "titulo_original_crudo": "17:00 Brentford Everton Disney+ Premium ESPN 2",
-      "conflictos_lineales": [
-        {
-          "canal": "ESPN 2 AR",
-          "oponente_id": "lineal_espn_2_ar_f1e5a5cb",
-          "oponente_titulo": "Getafe vs Atl. de Madrid",
-          "oponente_hora": "14:50"
-        }
-      ],
+      "texto_original_crudo": "17:00 Champions League Fase Liga Arsenal Borussia Dortmund Disney+ Premium ESPN 2",
+      "titulo_original_crudo": "17:00 Champions League Fase Liga Arsenal Borussia Dortmund Disney+ Premium ESPN 2",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
-      "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_dsports_ar_d4ede676",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Sportivo de Mayo vs. Sportivo San Lorenzo",
-      "torneo": "Copa de Primera",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Sportivo de Mayo",
-      "equipo_visitante": "Sportivo San Lorenzo",
-      "subtitulo": "Copa de Primera",
-      "referencia": "Jornada - Torneo Clausura",
-      "hora_utc": "2026-11-23T21:00:00Z",
-      "hora_local_producto": "16:00",
-      "duracion_min": 180,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2140.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F37wke41775741605.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "agy_lineales"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "ARG| DIRECTV SPORTS FHD",
-          "id_xtream": "758131",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Directv Sports HD (Col)",
-          "id_xtream": "758143",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Directv Sports Argentina",
-          "id_xtream": "758142",
-          "canal_lineal": "DSPORTS AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS AR"
-      ],
-      "texto_original_crudo": "Copa de Primera: 2 de Mayo vs. Sportivo San Lorenzo en vivo por DSPORTS",
-      "titulo_original_crudo": "Copa de Primera: 2 de Mayo vs. Sportivo San Lorenzo en vivo por DSPORTS",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_dsports_2_e2239708",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Nacional Asuncion vs Cerro Porteno",
-      "torneo": "Torneo Clausura",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Nacional Asuncion",
-      "equipo_visitante": "Cerro Porteno",
-      "subtitulo": "Torneo Clausura",
-      "referencia": "Jornada - Torneo Clausura",
-      "hora_utc": "2026-11-23T23:15:00Z",
-      "hora_local_producto": "18:15",
-      "duracion_min": 180,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1175.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1176.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "agy_lineales"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Directv Sports 2 HD",
-          "id_xtream": "758141",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "11/23 Soccer 7:30am Spain U17 vs Fiji U17 = DIRECTV SPORTS ARGENTINA",
-          "id_xtream": "1041219",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        },
-        {
-          "nombre": "11/23 Soccer 9:30am Italy U17 vs Côte d'Ivoire U17 = DIRECTV SPORTS ARGENTINA *",
-          "id_xtream": "1041224",
-          "canal_lineal": "DSPORTS 2",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "DSPORTS 2"
-      ],
-      "texto_original_crudo": "Copa de Primera: Nacional Asunción vs. Cerro Porteño en vivo por DSPORTS 2",
-      "titulo_original_crudo": "Copa de Primera: Nacional Asunción vs. Cerro Porteño en vivo por DSPORTS 2",
-      "conflictos_lineales": [
-        {
-          "canal": "DSPORTS 2",
-          "oponente_id": "lineal_dsports_2_fc1d2dfa",
-          "oponente_titulo": "Levante vs. Elche",
-          "oponente_hora": "15:00"
-        },
-        {
-          "canal": "DSPORTS 2",
-          "oponente_id": "lineal_dsports_2_7990d721",
-          "oponente_titulo": "Levante vs Elche",
-          "oponente_hora": "15:00"
-        }
-      ],
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_win_sports_0193153d",
+      "id": "lineal_win_sports_317e2d62",
       "canales_mencionados_fuente": [
-        "Win Fútbol +",
+        "Fanatiz (Míralo en vivo)",
         "Win Play",
         "Win Sports"
       ],
       "agenda_id": "",
-      "titulo": "Boca Juniors de Cali vs. Deportes Quindío",
-      "torneo": "Torneo BetPlay Dimayor",
+      "titulo": "Chapecoense-sc vs Palmeiras",
+      "torneo": "Chapecoense vs Palmeiras",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Boca Juniors de Cali",
-      "equipo_visitante": "Deportes Quindío",
-      "subtitulo": "Torneo BetPlay Dimayor",
-      "referencia": "Final - Ida",
-      "hora_utc": "2026-11-24T00:30:00Z",
-      "hora_local_producto": "19:30",
+      "equipo_local": "Chapecoense-sc",
+      "equipo_visitante": "Palmeiras",
+      "subtitulo": "Chapecoense vs Palmeiras",
+      "referencia": "Jornada",
+      "hora_utc": "2026-11-24T21:00:00Z",
+      "hora_local_producto": "16:00",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fkws2x41615832171.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1461.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betplay.png",
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F132.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F121.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F71.png&w=400&output=webp&trim=10",
       "tier": 2,
       "origen": "inyector_lineal",
       "origenes": [
@@ -861,34 +225,113 @@
       "canales_candidatos": [
         "WIN SPORTS"
       ],
-      "texto_original_crudo": "19:30 Final Boca Juniors Cali Quindio Win Fútbol + Win Play Win Sports",
-      "titulo_original_crudo": "19:30 Final Boca Juniors Cali Quindio Win Fútbol + Win Play Win Sports",
+      "texto_original_crudo": "16:00 Chapecoense Palmeiras Fanatiz (Míralo en vivo) Win Play Win Sports",
+      "titulo_original_crudo": "16:00 Chapecoense Palmeiras Fanatiz (Míralo en vivo) Win Play Win Sports",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
     },
     {
-      "id": "lineal_tnt_sports_32c1709b",
+      "id": "lineal_espn_3_ar_f297fe56",
+      "canales_mencionados_fuente": [
+        "ESPN 3",
+        "Disney+ Premium"
+      ],
+      "agenda_id": "",
+      "titulo": "Edmonton Oilers vs Vegas Golden Knights",
+      "torneo": "NHL",
+      "categoria": "Hockey",
+      "tipo_evento": "duelo",
+      "equipo_local": "Edmonton Oilers",
+      "equipo_visitante": "Vegas Golden Knights",
+      "subtitulo": "NHL",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F683.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F702.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Arg| ESPN 3 FHD",
+          "id_xtream": "1034286",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| ESPN 3 FHD (local)",
+          "id_xtream": "1034287",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Premiun| ESPN 3 HD",
+          "id_xtream": "1034312",
+          "canal_lineal": "ESPN 3 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 3 AR"
+      ],
+      "texto_original_crudo": "22:00 NHL Liga Regular Edmonton Oilers Vegas Golden Knights ESPN 3 Disney+ Premium",
+      "titulo_original_crudo": "22:00 NHL Liga Regular Edmonton Oilers Vegas Golden Knights ESPN 3 Disney+ Premium",
+      "conflictos_lineales": [
+        {
+          "canal": "ESPN 3 AR",
+          "oponente_id": "lineal_espn_3_ar_d8fdcd02",
+          "oponente_titulo": "OGC Nice vs Paris Saint-Germain",
+          "oponente_hora": "18:00"
+        },
+        {
+          "canal": "ESPN 3 AR",
+          "oponente_id": "lineal_espn_3_ar_cb4fb4af",
+          "oponente_titulo": "Monza vs Fiorentina",
+          "oponente_hora": "21:30"
+        }
+      ],
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_tnt_sports_069a76c0",
       "canales_mencionados_fuente": [
         "NBA League Pass",
         "HBO MAX",
         "TNT Sports Premium"
       ],
       "agenda_id": "",
-      "titulo": "Minnesota Timberwolves vs Brooklyn Nets",
+      "titulo": "Washington Wizards vs Boston Celtics",
       "torneo": "NBA",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
-      "equipo_local": "Minnesota Timberwolves",
-      "equipo_visitante": "Brooklyn Nets",
+      "equipo_local": "Washington Wizards",
+      "equipo_visitante": "Boston Celtics",
       "subtitulo": "NBA",
       "referencia": "NBA",
-      "hora_utc": "2026-11-24T00:30:00Z",
-      "hora_local_producto": "19:30",
+      "hora_utc": "2026-11-25T01:00:00Z",
+      "hora_local_producto": "20:00",
       "duracion_min": 150,
       "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F149.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F134.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F161.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F133.png&w=400&output=webp&trim=10",
       "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
       "tier": 1,
       "origen": "inyector_lineal",
@@ -923,67 +366,8 @@
       "canales_candidatos": [
         "TNT SPORTS"
       ],
-      "texto_original_crudo": "21:30 NBA Liga Regular Minnesota Timberwolves Brooklyn Nets NBA League Pass HBO MAX TNT Sports Premium",
-      "titulo_original_crudo": "21:30 NBA Liga Regular Minnesota Timberwolves Brooklyn Nets NBA League Pass HBO MAX TNT Sports Premium",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_ar_1f288cdc",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Washington Commanders vs Cincinnati Bengals",
-      "torneo": "Cincinnati Bengals vs. Washington Commanders",
-      "categoria": "Fútbol Americano",
-      "tipo_evento": "duelo",
-      "equipo_local": "Washington Commanders",
-      "equipo_visitante": "Cincinnati Bengals",
-      "subtitulo": "Cincinnati Bengals vs. Washington Commanders",
-      "referencia": "Cincinnati Bengals vs. Washington Commanders",
-      "hora_utc": "2026-11-24T01:00:00Z",
-      "hora_local_producto": "20:00",
-      "duracion_min": 360,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F18.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F10.png&w=400&output=webp&trim=10",
-      "banner": "",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mitv_espn_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Arg| ESPN 1 FHD",
-          "id_xtream": "1034281",
-          "canal_lineal": "ESPN AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg| ESPN FHD (local)",
-          "id_xtream": "1034291",
-          "canal_lineal": "ESPN AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg| ESPN Plus FHD",
-          "id_xtream": "1034292",
-          "canal_lineal": "ESPN AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN AR"
-      ],
-      "texto_original_crudo": "Cincinnati Bengals vs. Washington Commanders. Fecha 11, Northwest stadium. Vive los partidos de la edición 107º de la NFL. El público podrá disfrutar de los encuentros más emocionantes de la mayor liga de fútbol americano profesional de Estados Unidos",
-      "titulo_original_crudo": "Cincinnati Bengals vs. Washington Commanders. Fecha 11, Northwest stadium. Vive los partidos de la edición 107º de la NFL. El público podrá disfrutar de los encuentros más emocionantes de la mayor liga de fútbol americano profesional de Estados Unidos",
+      "texto_original_crudo": "22:00 NBA Liga Regular Washington Wizards Boston Celtics NBA League Pass HBO MAX TNT Sports Premium",
+      "titulo_original_crudo": "22:00 NBA Liga Regular Washington Wizards Boston Celtics NBA League Pass HBO MAX TNT Sports Premium",
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
@@ -991,18 +375,18 @@
     }
   ],
   "metricas": {
-    "fecha_local_producto": "2026-11-23",
-    "total_agenda_maestra": 37,
+    "fecha_local_producto": "2026-11-24",
+    "total_agenda_maestra": 42,
     "total_canales_xtream": 10988,
     "xtream_procesada_hoy": false,
     "lista_xtream_actualizada_hoy": false,
-    "fixtures_api_sports_hoy": 324,
-    "eventos_lineales_inyectados": 18,
+    "fixtures_api_sports_hoy": 592,
+    "eventos_lineales_inyectados": 25,
     "eventos_xtream_aprobados": 0,
-    "eventos_contrastados_api": 7,
-    "eventos_sellados_boveda_inmutable": 15,
-    "eventos_descartados_stale": 13,
-    "total_eventos_publicados": 15,
-    "hora_actualizacion_utc": "2026-11-24T03:15:52Z"
+    "eventos_contrastados_api": 8,
+    "eventos_sellados_boveda_inmutable": 5,
+    "eventos_descartados_stale": 17,
+    "total_eventos_publicados": 5,
+    "hora_actualizacion_utc": "2026-11-24T05:18:02Z"
   }
 }

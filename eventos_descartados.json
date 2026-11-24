@@ -1,28 +1,32 @@
 [
   {
-    "id": "lineal_win_sports_5f103922",
-    "canales_mencionados_fuente": [],
+    "id": "lineal_espn_4_3b5b42b1",
+    "canales_mencionados_fuente": [
+      "Disney+ Premium",
+      "ESPN 4"
+    ],
     "agenda_id": "",
-    "titulo": "Palmeiras vs Flamengo",
-    "torneo": "Palmeiras vs. Flamengo",
+    "titulo": "Slovan Bratislava vs Real Betis",
+    "torneo": "UEFA Champions League",
     "categoria": "Fútbol",
     "tipo_evento": "duelo",
-    "equipo_local": "Palmeiras",
-    "equipo_visitante": "Flamengo",
-    "subtitulo": "Palmeiras vs. Flamengo",
-    "referencia": "Palmeiras vs. Flamengo",
-    "hora_utc": "2026-11-23T14:30:00Z",
-    "hora_local_producto": "09:30",
+    "equipo_local": "Slovan Bratislava",
+    "equipo_visitante": "Real Betis",
+    "subtitulo": "UEFA Champions League",
+    "referencia": "Fase de Liga - Fecha 5",
+    "hora_utc": "2026-11-24T20:00:00Z",
+    "hora_local_producto": "15:00",
     "duracion_min": 150,
-    "logo_torneo": "",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F121.png&w=400&output=webp&trim=10",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F11054.png&w=400&output=webp&trim=10",
-    "banner": "",
-    "tier": 2,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F656.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F543.png&w=400&output=webp&trim=10",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+    "tier": 1,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_win_sports"
+      "agy_lineales",
+      "futbolenvivo_ar"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
@@ -30,64 +34,71 @@
     "puntuacion_confianza": 0.95,
     "fuentes": [
       {
-        "nombre": "COL| WIN SPORTS FHD ***",
-        "id_xtream": "1034675",
-        "canal_lineal": "WIN SPORTS",
-        "pais": "CO"
+        "nombre": "Arg| ESPN 4 FHD (local)",
+        "id_xtream": "1034289",
+        "canal_lineal": "ESPN 4",
+        "pais": "AR"
       },
       {
-        "nombre": "COL| WIN SPORTS FHD COL",
-        "id_xtream": "1034676",
-        "canal_lineal": "WIN SPORTS",
-        "pais": "CO"
+        "nombre": "DEP HD: ESPN 4 (ARG)",
+        "id_xtream": "782283",
+        "canal_lineal": "ESPN 4",
+        "pais": "AR"
       },
       {
-        "nombre": "COL| WIN SPORTS FHD *",
-        "id_xtream": "1034677",
-        "canal_lineal": "WIN SPORTS",
-        "pais": "CO"
+        "nombre": "ESPN 4 SUR HD",
+        "id_xtream": "782323",
+        "canal_lineal": "ESPN 4",
+        "pais": "AR"
       }
     ],
     "canales_candidatos": [
-      "WIN SPORTS"
+      "ESPN 4"
     ],
-    "texto_original_crudo": "Palmeiras vs. Flamengo. Fecha 36, Nubank Parque. Vive los partidos de la 69º edición del Brasileirão, donde 20 equipos se enfrentan en partidos de ida y vuelta en un todos contra todos. Al final de las 38 fechas el club con la mayor cantidad de puntos será el campeón",
-    "titulo_original_crudo": "Palmeiras vs. Flamengo. Fecha 36, Nubank Parque. Vive los partidos de la 69º edición del Brasileirão, donde 20 equipos se enfrentan en partidos de ida y vuelta en un todos contra todos. Al final de las 38 fechas el club con la mayor cantidad de puntos será el campeón",
+    "texto_original_crudo": "Slovan Bratislava vs. Real Betis en vivo por ESPN 4",
+    "titulo_original_crudo": "Slovan Bratislava vs. Real Betis en vivo por ESPN 4",
     "conflictos_lineales": [
       {
-        "canal": "WIN SPORTS",
-        "oponente_id": "lineal_win_sports_f08beef1",
-        "oponente_titulo": "Once Caldas vs Atl. Nacional Quadrangular - 1,",
-        "oponente_hora": "11:30"
+        "canal": "ESPN 4",
+        "oponente_id": "lineal_espn_4_fff95002",
+        "oponente_titulo": "Slovan Bratislava vs Real Betis",
+        "oponente_hora": "15:00"
       }
     ],
+    "fecha_confirmada": true,
+    "contrastado_api": true,
     "ronda": "",
-    "motivo_descarte": "repeticion_diferido"
+    "motivo_descarte": "evento_inexistente_hoy"
   },
   {
-    "id": "lineal_win_sports_f08beef1",
-    "canales_mencionados_fuente": [],
+    "id": "lineal_dsports_2_feab961f",
+    "canales_mencionados_fuente": [
+      "DSports 2 (612/1612)",
+      "DGO",
+      "Amazon Prime Video (Ver en vivo)",
+      "Paramount+"
+    ],
     "agenda_id": "",
-    "titulo": "Once Caldas vs Atl. Nacional Quadrangular - 1,",
-    "torneo": "Once Caldas vs. Atl. Nacional",
-    "categoria": "Fútbol",
+    "titulo": "República Checa vs Canadá",
+    "torneo": "Davis Cup Finals",
+    "categoria": "Tenis",
     "tipo_evento": "duelo",
-    "equipo_local": "Once Caldas",
-    "equipo_visitante": "Atl. Nacional Quadrangular - 1,",
-    "subtitulo": "Once Caldas vs. Atl. Nacional",
-    "referencia": "Once Caldas vs. Atl. Nacional",
-    "hora_utc": "2026-11-23T16:30:00Z",
-    "hora_local_producto": "11:30",
-    "duracion_min": 150,
+    "equipo_local": "República Checa",
+    "equipo_visitante": "Canadá",
+    "subtitulo": "Davis Cup Finals",
+    "referencia": "Davis Cup Finals",
+    "hora_utc": "2026-11-24T15:00:00Z",
+    "hora_local_producto": "10:00",
+    "duracion_min": 240,
     "logo_torneo": "",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1136.png&w=400&output=webp&trim=10",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1137.png&w=400&output=webp&trim=10",
+    "logo_local": "https://flagcdn.com/256x192/cz.png",
+    "logo_visitante": "https://flagcdn.com/256x192/ca.png",
     "banner": "",
     "tier": 2,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_win_sports"
+      "futbolenvivo_ar"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
@@ -95,65 +106,61 @@
     "puntuacion_confianza": 0.95,
     "fuentes": [
       {
-        "nombre": "COL| WIN SPORTS FHD ***",
-        "id_xtream": "1034675",
-        "canal_lineal": "WIN SPORTS",
-        "pais": "CO"
+        "nombre": "Directv Sports 2 HD",
+        "id_xtream": "758141",
+        "canal_lineal": "DSPORTS 2",
+        "pais": "AR"
       },
       {
-        "nombre": "COL| WIN SPORTS FHD COL",
-        "id_xtream": "1034676",
-        "canal_lineal": "WIN SPORTS",
-        "pais": "CO"
+        "nombre": "11/23 Soccer 7:30am Spain U17 vs Fiji U17 = DIRECTV SPORTS ARGENTINA",
+        "id_xtream": "1041219",
+        "canal_lineal": "DSPORTS 2",
+        "pais": "AR"
       },
       {
-        "nombre": "COL| WIN SPORTS FHD *",
-        "id_xtream": "1034677",
-        "canal_lineal": "WIN SPORTS",
-        "pais": "CO"
+        "nombre": "11/23 Soccer 9:30am Italy U17 vs Côte d'Ivoire U17 = DIRECTV SPORTS ARGENTINA *",
+        "id_xtream": "1041224",
+        "canal_lineal": "DSPORTS 2",
+        "pais": "AR"
       }
     ],
     "canales_candidatos": [
-      "WIN SPORTS"
+      "DSPORTS 2"
     ],
-    "texto_original_crudo": "Once Caldas vs. Atl. Nacional. Quadrangular - 1, Estadio Palogrande. Vive los partidos de la 103º edición de la Categoría Primera A de fútbol profesional colombiano. Los amantes del fútbol podrán disfrutar de una competición que reune a los mejores 20 equipos a nivel nacional",
-    "titulo_original_crudo": "Once Caldas vs. Atl. Nacional. Quadrangular - 1, Estadio Palogrande. Vive los partidos de la 103º edición de la Categoría Primera A de fútbol profesional colombiano. Los amantes del fútbol podrán disfrutar de una competición que reune a los mejores 20 equipos a nivel nacional",
-    "conflictos_lineales": [
-      {
-        "canal": "WIN SPORTS",
-        "oponente_id": "lineal_win_sports_5f103922",
-        "oponente_titulo": "Palmeiras vs Flamengo",
-        "oponente_hora": "09:30"
-      }
-    ],
+    "texto_original_crudo": "12:00 Davis Cup Finals 1/4 de Final República Checa Canadá DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+    "titulo_original_crudo": "12:00 Davis Cup Finals 1/4 de Final República Checa Canadá DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
     "ronda": "",
-    "motivo_descarte": "repeticion_diferido"
+    "motivo_descarte": "evento_inexistente_hoy"
   },
   {
-    "id": "lineal_espn_ar_56e27046",
-    "canales_mencionados_fuente": [],
+    "id": "lineal_dsports_ar_be1a609c",
+    "canales_mencionados_fuente": [
+      "DGO",
+      "Amazon Prime Video (Ver en vivo)",
+      "Paramount+",
+      "DSports (610/1610)"
+    ],
     "agenda_id": "",
-    "titulo": "Atl. Mineiro vs Boca Jrs.",
-    "torneo": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg)",
-    "categoria": "Fútbol",
+    "titulo": "Venezuela vs Rumanía",
+    "torneo": "FIFA Mundial Sub-17",
+    "categoria": "Otros Deportes",
     "tipo_evento": "duelo",
-    "equipo_local": "Atl. Mineiro",
-    "equipo_visitante": "Boca Jrs.",
-    "subtitulo": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg)",
-    "referencia": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg)",
-    "hora_utc": "2026-11-23T04:30:00Z",
-    "hora_local_producto": "23:30",
-    "duracion_min": 125,
-    "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F1107.png&w=400&output=webp&trim=10",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F24471.png&w=400&output=webp&trim=10",
-    "logo_visitante": "",
-    "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F1107.png&w=400&output=webp&trim=10",
+    "equipo_local": "Venezuela",
+    "equipo_visitante": "Rumanía",
+    "subtitulo": "FIFA Mundial Sub-17",
+    "referencia": "FIFA Mundial Sub-17",
+    "hora_utc": "2026-11-24T12:30:00Z",
+    "hora_local_producto": "07:30",
+    "duracion_min": 130,
+    "logo_torneo": "",
+    "logo_local": "https://flagcdn.com/256x192/ve.png",
+    "logo_visitante": "https://flagcdn.com/256x192/ro.png",
+    "banner": "",
     "tier": 2,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_espn_ar",
-      "mitv_espn_2_ar"
+      "futbolenvivo_ar"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
@@ -161,57 +168,59 @@
     "puntuacion_confianza": 0.95,
     "fuentes": [
       {
-        "nombre": "Arg| ESPN 1 FHD",
-        "id_xtream": "1034281",
-        "canal_lineal": "ESPN AR",
+        "nombre": "ARG| DIRECTV SPORTS FHD",
+        "id_xtream": "758131",
+        "canal_lineal": "DSPORTS AR",
         "pais": "AR"
       },
       {
-        "nombre": "Arg| ESPN FHD (local)",
-        "id_xtream": "1034291",
-        "canal_lineal": "ESPN AR",
+        "nombre": "Directv Sports HD (Col)",
+        "id_xtream": "758143",
+        "canal_lineal": "DSPORTS AR",
         "pais": "AR"
       },
       {
-        "nombre": "Arg| ESPN Plus FHD",
-        "id_xtream": "1034292",
-        "canal_lineal": "ESPN AR",
+        "nombre": "Directv Sports Argentina",
+        "id_xtream": "758142",
+        "canal_lineal": "DSPORTS AR",
         "pais": "AR"
       }
     ],
     "canales_candidatos": [
-      "ESPN AR",
-      "ESPN 2 AR"
+      "DSPORTS AR"
     ],
-    "texto_original_crudo": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg). Final, Estadio Metropolitano Roberto Meléndez. Vive las emociones de los partidos de la 25º edición de la CONMEBOL Sudamericana, el segundo torneo continental más importante organizado por la CONMEBOL, que reúne a equipos de 10 países",
-    "titulo_original_crudo": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg). Final, Estadio Metropolitano Roberto Meléndez. Vive las emociones de los partidos de la 25º edición de la CONMEBOL Sudamericana, el segundo torneo continental más importante organizado por la CONMEBOL, que reúne a equipos de 10 países",
+    "texto_original_crudo": "09:30 FIFA Mundial Sub-17 Fase de grupos Venezuela Rumanía DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
+    "titulo_original_crudo": "09:30 FIFA Mundial Sub-17 Fase de grupos Venezuela Rumanía DGO Amazon Prime Video (Ver en vivo) Paramount+ DSports (610/1610)",
     "ronda": "",
-    "motivo_descarte": "repeticion_diferido"
+    "motivo_descarte": "evento_inexistente_hoy"
   },
   {
-    "id": "lineal_espn_2_ar_53012154",
-    "canales_mencionados_fuente": [],
+    "id": "lineal_espn_2_ar_fff48f28",
+    "canales_mencionados_fuente": [
+      "Disney+ Premium",
+      "ESPN 2"
+    ],
     "agenda_id": "",
-    "titulo": "Liverpool vs Manchester Utd.",
-    "torneo": "Liverpool vs. Manchester Utd.",
+    "titulo": "Bodø/Glimt vs Lask Linz",
+    "torneo": "Champions League",
     "categoria": "Fútbol",
     "tipo_evento": "duelo",
-    "equipo_local": "Liverpool",
-    "equipo_visitante": "Manchester Utd.",
-    "subtitulo": "Liverpool vs. Manchester Utd.",
-    "referencia": "Liverpool vs. Manchester Utd.",
-    "hora_utc": "2026-11-23T16:20:00Z",
-    "hora_local_producto": "11:20",
-    "duracion_min": 155,
-    "logo_torneo": "",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F7909.png&w=400&output=webp&trim=10",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxzqdr11517660252.png&w=400&output=webp&trim=10",
-    "banner": "",
-    "tier": 2,
+    "equipo_local": "Bodø/Glimt",
+    "equipo_visitante": "Lask Linz",
+    "subtitulo": "Champions League",
+    "referencia": "Champions League",
+    "hora_utc": "2026-11-24T17:45:00Z",
+    "hora_local_producto": "12:45",
+    "duracion_min": 130,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F16553.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Foox26l1683556395.png&w=400&output=webp&trim=10",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+    "tier": 1,
     "origen": "inyector_lineal",
     "origenes": [
       "inyector_lineal",
-      "mitv_espn_2_ar"
+      "futbolenvivo_ar"
     ],
     "estado": "confirmado",
     "estado_evento": "confirmado",
@@ -240,29 +249,341 @@
     "canales_candidatos": [
       "ESPN 2 AR"
     ],
-    "texto_original_crudo": "Liverpool vs. Manchester Utd.. Fecha 11, Anfield. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
-    "titulo_original_crudo": "Liverpool vs. Manchester Utd.. Fecha 11, Anfield. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
+    "texto_original_crudo": "14:45 Champions League Fase Liga Bodø/Glimt LASK Linz Disney+ Premium ESPN 2",
+    "titulo_original_crudo": "14:45 Champions League Fase Liga Bodø/Glimt LASK Linz Disney+ Premium ESPN 2",
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "lineal_espn_3_ar_80ad92c1",
+    "canales_mencionados_fuente": [
+      "Disney+ Premium",
+      "ESPN 3"
+    ],
+    "agenda_id": "",
+    "titulo": "Como vs AEK Athens FC",
+    "torneo": "Champions League",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Como",
+    "equipo_visitante": "AEK Athens FC",
+    "subtitulo": "Champions League",
+    "referencia": "Champions League",
+    "hora_utc": "2026-11-24T20:00:00Z",
+    "hora_local_producto": "15:00",
+    "duracion_min": 130,
+    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F895.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F575.png&w=400&output=webp&trim=10",
+    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uefa_champions_league.png",
+    "tier": 1,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "futbolenvivo_ar"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "Arg| ESPN 3 FHD",
+        "id_xtream": "1034286",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "Arg| ESPN 3 FHD (local)",
+        "id_xtream": "1034287",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "Premiun| ESPN 3 HD",
+        "id_xtream": "1034312",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      }
+    ],
+    "canales_candidatos": [
+      "ESPN 3 AR"
+    ],
+    "texto_original_crudo": "17:00 Champions League Fase Liga Como 1907 AEK FC Disney+ Premium ESPN 3",
+    "titulo_original_crudo": "17:00 Champions League Fase Liga Como 1907 AEK FC Disney+ Premium ESPN 3",
+    "conflictos_lineales": [
+      {
+        "canal": "ESPN 3 AR",
+        "oponente_id": "lineal_espn_3_ar_4c0fc361",
+        "oponente_titulo": "ESPN Compact - Premier Padel - Dubai P1 - Final Masculina",
+        "oponente_hora": "13:00"
+      },
+      {
+        "canal": "ESPN 3 AR",
+        "oponente_id": "lineal_espn_3_ar_9423a87f",
+        "oponente_titulo": "Monza vs Fiorentina",
+        "oponente_hora": "14:30"
+      }
+    ],
+    "fecha_confirmada": true,
+    "contrastado_api": true,
+    "ronda": "",
+    "motivo_descarte": "evento_inexistente_hoy"
+  },
+  {
+    "id": "lineal_win_sports_068c6e9f",
+    "canales_mencionados_fuente": [],
+    "agenda_id": "",
+    "titulo": "Boca Juniors vs Quindío",
+    "torneo": "Boca Juniors vs. Quindío",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Boca Juniors",
+    "equipo_visitante": "Quindío",
+    "subtitulo": "Boca Juniors vs. Quindío",
+    "referencia": "Boca Juniors vs. Quindío",
+    "hora_utc": "2026-11-24T23:30:00Z",
+    "hora_local_producto": "18:30",
+    "duracion_min": 125,
+    "logo_torneo": "",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F451.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1461.png&w=400&output=webp&trim=10",
+    "banner": "",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "mitv_win_sports"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "COL| WIN SPORTS FHD ***",
+        "id_xtream": "1034675",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      },
+      {
+        "nombre": "COL| WIN SPORTS FHD COL",
+        "id_xtream": "1034676",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      },
+      {
+        "nombre": "COL| WIN SPORTS FHD *",
+        "id_xtream": "1034677",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      }
+    ],
+    "canales_candidatos": [
+      "WIN SPORTS"
+    ],
+    "texto_original_crudo": "Boca Juniors vs. Quindío. Final ida. Vive la previa de los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
+    "titulo_original_crudo": "Boca Juniors vs. Quindío. Final ida. Vive la previa de los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
+    "conflictos_lineales": [
+      {
+        "canal": "WIN SPORTS",
+        "oponente_id": "lineal_win_sports_652e0470",
+        "oponente_titulo": "Boca Juniors vs Quindío",
+        "oponente_hora": "19:30"
+      }
+    ],
     "ronda": "",
     "motivo_descarte": "repeticion_diferido"
   },
   {
-    "id": "lineal_espn_3_ar_f0729e80",
+    "id": "lineal_win_sports_37ac9dd5",
     "canales_mencionados_fuente": [],
     "agenda_id": "",
-    "titulo": "Dinamarca vs Noruega",
-    "torneo": "Dinamarca vs. Noruega",
+    "titulo": "Boca Juniors vs Quindío",
+    "torneo": "Boca Juniors vs. Quindío",
     "categoria": "Fútbol",
     "tipo_evento": "duelo",
-    "equipo_local": "Dinamarca",
-    "equipo_visitante": "Noruega",
-    "subtitulo": "Dinamarca vs. Noruega",
-    "referencia": "Dinamarca vs. Noruega",
-    "hora_utc": "2026-11-23T09:00:00Z",
+    "equipo_local": "Boca Juniors",
+    "equipo_visitante": "Quindío",
+    "subtitulo": "Boca Juniors vs. Quindío",
+    "referencia": "Boca Juniors vs. Quindío",
+    "hora_utc": "2026-11-24T05:30:00Z",
+    "hora_local_producto": "00:30",
+    "duracion_min": 150,
+    "logo_torneo": "",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F451.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1461.png&w=400&output=webp&trim=10",
+    "banner": "",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "mitv_win_sports"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "COL| WIN SPORTS FHD ***",
+        "id_xtream": "1034675",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      },
+      {
+        "nombre": "COL| WIN SPORTS FHD COL",
+        "id_xtream": "1034676",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      },
+      {
+        "nombre": "COL| WIN SPORTS FHD *",
+        "id_xtream": "1034677",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      }
+    ],
+    "canales_candidatos": [
+      "WIN SPORTS"
+    ],
+    "texto_original_crudo": "Boca Juniors vs. Quindío. Final ida. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
+    "titulo_original_crudo": "Boca Juniors vs. Quindío. Final ida. Vive los partidos de la 40º edición del Torneo BetPlay Dimayor, la segunda división del fútbol profesional colombiano",
+    "ronda": "",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_win_sports_67f2e4f3",
+    "canales_mencionados_fuente": [],
+    "agenda_id": "",
+    "titulo": "Ath. Paranaense vs Remo",
+    "torneo": "Ath. Paranaense vs. Remo",
+    "categoria": "Remo",
+    "tipo_evento": "duelo",
+    "equipo_local": "Ath. Paranaense",
+    "equipo_visitante": "Remo",
+    "subtitulo": "Ath. Paranaense vs. Remo",
+    "referencia": "Ath. Paranaense vs. Remo",
+    "hora_utc": "2026-11-24T08:30:00Z",
+    "hora_local_producto": "03:30",
+    "duracion_min": 150,
+    "logo_torneo": "",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Firzu1u1554237406.png&w=400&output=webp&trim=10",
+    "logo_visitante": "",
+    "banner": "",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "mitv_win_sports"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "COL| WIN SPORTS FHD ***",
+        "id_xtream": "1034675",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      },
+      {
+        "nombre": "COL| WIN SPORTS FHD COL",
+        "id_xtream": "1034676",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      },
+      {
+        "nombre": "COL| WIN SPORTS FHD *",
+        "id_xtream": "1034677",
+        "canal_lineal": "WIN SPORTS",
+        "pais": "CO"
+      }
+    ],
+    "canales_candidatos": [
+      "WIN SPORTS"
+    ],
+    "texto_original_crudo": "Ath. Paranaense vs. Remo. Fecha 36, Arena da Baixada. Vive los partidos de la 69º edición del Brasileirão, donde 20 equipos se enfrentan en partidos de ida y vuelta en un todos contra todos. Al final de las 38 fechas el club con la mayor cantidad de puntos será el campeón",
+    "titulo_original_crudo": "Ath. Paranaense vs. Remo. Fecha 36, Arena da Baixada. Vive los partidos de la 69º edición del Brasileirão, donde 20 equipos se enfrentan en partidos de ida y vuelta en un todos contra todos. Al final de las 38 fechas el club con la mayor cantidad de puntos será el campeón",
+    "ronda": "",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_espn_ar_3181aefc",
+    "canales_mencionados_fuente": [],
+    "agenda_id": "",
+    "titulo": "Atl. Mineiro vs Boca Jrs.",
+    "torneo": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg)",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Atl. Mineiro",
+    "equipo_visitante": "Boca Jrs.",
+    "subtitulo": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg)",
+    "referencia": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg)",
+    "hora_utc": "2026-11-24T13:00:00Z",
+    "hora_local_producto": "08:00",
+    "duracion_min": 125,
+    "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F1107.png&w=400&output=webp&trim=10",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F24471.png&w=400&output=webp&trim=10",
+    "logo_visitante": "",
+    "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F1107.png&w=400&output=webp&trim=10",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "mitv_espn_ar"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "Arg| ESPN 1 FHD",
+        "id_xtream": "1034281",
+        "canal_lineal": "ESPN AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "Arg| ESPN FHD (local)",
+        "id_xtream": "1034291",
+        "canal_lineal": "ESPN AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "Arg| ESPN Plus FHD",
+        "id_xtream": "1034292",
+        "canal_lineal": "ESPN AR",
+        "pais": "AR"
+      }
+    ],
+    "canales_candidatos": [
+      "ESPN AR"
+    ],
+    "texto_original_crudo": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg). Final, Estadio Metropolitano Roberto Meléndez. Vive las emociones de los partidos de la 25º edición de la CONMEBOL Sudamericana, el segundo torneo continental más importante organizado por la CONMEBOL, que reúne a equipos de 10 países",
+    "titulo_original_crudo": "Atl. Mineiro (Bra) vs. Boca Jrs. (Arg). Final, Estadio Metropolitano Roberto Meléndez. Vive las emociones de los partidos de la 25º edición de la CONMEBOL Sudamericana, el segundo torneo continental más importante organizado por la CONMEBOL, que reúne a equipos de 10 países",
+    "ronda": "",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_espn_3_ar_a0767c1d",
+    "canales_mencionados_fuente": [],
+    "agenda_id": "",
+    "titulo": "Sassuolo vs Genoa",
+    "torneo": "Sassuolo vs. Genoa",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Sassuolo",
+    "equipo_visitante": "Genoa",
+    "subtitulo": "Sassuolo vs. Genoa",
+    "referencia": "Sassuolo vs. Genoa",
+    "hora_utc": "2026-11-24T09:00:00Z",
     "hora_local_producto": "04:00",
     "duracion_min": 150,
     "logo_torneo": "",
-    "logo_local": "https://flagcdn.com/256x192/dk.png",
-    "logo_visitante": "https://flagcdn.com/256x192/no.png",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F488.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F495.png&w=400&output=webp&trim=10",
     "banner": "",
     "tier": 2,
     "origen": "inyector_lineal",
@@ -297,12 +618,18 @@
     "canales_candidatos": [
       "ESPN 3 AR"
     ],
-    "texto_original_crudo": "Dinamarca vs. Noruega. Fecha 6 - Grupo D - Liga A, Parken Stadium. Vive los partidos de la 5º edición de la Liga de Naciones de la UEFA. La competición será parte de la clasificación de la UEFA para la Eurocopa 2028",
-    "titulo_original_crudo": "Dinamarca vs. Noruega. Fecha 6 - Grupo D - Liga A, Parken Stadium. Vive los partidos de la 5º edición de la Liga de Naciones de la UEFA. La competición será parte de la clasificación de la UEFA para la Eurocopa 2028",
+    "texto_original_crudo": "Sassuolo vs. Genoa. Fecha 12, Mapei Stadium – Città del Tricolore. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
+    "titulo_original_crudo": "Sassuolo vs. Genoa. Fecha 12, Mapei Stadium – Città del Tricolore. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
     "conflictos_lineales": [
       {
         "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_6a1fa5ce",
+        "oponente_id": "lineal_espn_3_ar_38b83287",
+        "oponente_titulo": "Dep. Alavés vs Dep. La Coruña",
+        "oponente_hora": "06:00"
+      },
+      {
+        "canal": "ESPN 3 AR",
+        "oponente_id": "lineal_espn_3_ar_6cf4bced",
         "oponente_titulo": "Chelsea vs Leeds Utd.",
         "oponente_hora": "02:00"
       }
@@ -311,200 +638,7 @@
     "motivo_descarte": "repeticion_diferido"
   },
   {
-    "id": "lineal_espn_3_ar_5dc75dba",
-    "canales_mencionados_fuente": [],
-    "agenda_id": "",
-    "titulo": "R. Racing Club vs Real Sociedad",
-    "torneo": "R. Racing Club vs. Real Sociedad",
-    "categoria": "Fútbol",
-    "tipo_evento": "duelo",
-    "equipo_local": "R. Racing Club",
-    "equipo_visitante": "Real Sociedad",
-    "subtitulo": "R. Racing Club vs. Real Sociedad",
-    "referencia": "R. Racing Club vs. Real Sociedad",
-    "hora_utc": "2026-11-23T23:37:00Z",
-    "hora_local_producto": "18:37",
-    "duracion_min": 147,
-    "logo_torneo": "",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvi4mu41695734959.png&w=400&output=webp",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fvptvpr1473502986.png&w=400&output=webp",
-    "banner": "",
-    "tier": 2,
-    "origen": "inyector_lineal",
-    "origenes": [
-      "inyector_lineal",
-      "mitv_espn_3_ar"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "alta",
-    "puntuacion_confianza": 0.95,
-    "fuentes": [
-      {
-        "nombre": "Arg| ESPN 3 FHD",
-        "id_xtream": "1034286",
-        "canal_lineal": "ESPN 3 AR",
-        "pais": "AR"
-      },
-      {
-        "nombre": "Arg| ESPN 3 FHD (local)",
-        "id_xtream": "1034287",
-        "canal_lineal": "ESPN 3 AR",
-        "pais": "AR"
-      },
-      {
-        "nombre": "Premiun| ESPN 3 HD",
-        "id_xtream": "1034312",
-        "canal_lineal": "ESPN 3 AR",
-        "pais": "AR"
-      }
-    ],
-    "canales_candidatos": [
-      "ESPN 3 AR"
-    ],
-    "texto_original_crudo": "R. Racing Club vs. Real Sociedad. Fecha 13, El Sardinero. Vive las emociones de los partidos de la 96º edición de LaLiga EA Sports, la máxima competición profesional de fútbol en España, en la cual participan 20 equipos en formato de liga",
-    "titulo_original_crudo": "R. Racing Club vs. Real Sociedad. Fecha 13, El Sardinero. Vive las emociones de los partidos de la 96º edición de LaLiga EA Sports, la máxima competición profesional de fútbol en España, en la cual participan 20 equipos en formato de liga",
-    "conflictos_lineales": [
-      {
-        "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_bc56f52c",
-        "oponente_titulo": "Sassuolo vs Genoa",
-        "oponente_hora": "16:40"
-      }
-    ],
-    "ronda": "",
-    "motivo_descarte": "repeticion_diferido"
-  },
-  {
-    "id": "lineal_espn_3_ar_6a1fa5ce",
-    "canales_mencionados_fuente": [],
-    "agenda_id": "",
-    "titulo": "Chelsea vs Leeds Utd.",
-    "torneo": "Chelsea vs. Leeds Utd.",
-    "categoria": "Fútbol",
-    "tipo_evento": "duelo",
-    "equipo_local": "Chelsea",
-    "equipo_visitante": "Leeds Utd.",
-    "subtitulo": "Chelsea vs. Leeds Utd.",
-    "referencia": "Chelsea vs. Leeds Utd.",
-    "hora_utc": "2026-11-23T07:00:00Z",
-    "hora_local_producto": "02:00",
-    "duracion_min": 150,
-    "logo_torneo": "",
-    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F15391.png&w=400&output=webp&trim=10",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F63.png&w=400&output=webp&trim=10",
-    "banner": "",
-    "tier": 2,
-    "origen": "inyector_lineal",
-    "origenes": [
-      "inyector_lineal",
-      "mitv_espn_3_ar"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "alta",
-    "puntuacion_confianza": 0.95,
-    "fuentes": [
-      {
-        "nombre": "Arg| ESPN 3 FHD",
-        "id_xtream": "1034286",
-        "canal_lineal": "ESPN 3 AR",
-        "pais": "AR"
-      },
-      {
-        "nombre": "Arg| ESPN 3 FHD (local)",
-        "id_xtream": "1034287",
-        "canal_lineal": "ESPN 3 AR",
-        "pais": "AR"
-      },
-      {
-        "nombre": "Premiun| ESPN 3 HD",
-        "id_xtream": "1034312",
-        "canal_lineal": "ESPN 3 AR",
-        "pais": "AR"
-      }
-    ],
-    "canales_candidatos": [
-      "ESPN 3 AR"
-    ],
-    "texto_original_crudo": "Chelsea vs. Leeds Utd.. Fecha 11, Stamford Bridge. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
-    "titulo_original_crudo": "Chelsea vs. Leeds Utd.. Fecha 11, Stamford Bridge. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
-    "conflictos_lineales": [
-      {
-        "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_f0729e80",
-        "oponente_titulo": "Dinamarca vs Noruega",
-        "oponente_hora": "04:00"
-      },
-      {
-        "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_56451ec3",
-        "oponente_titulo": "Osasuna vs Málaga",
-        "oponente_hora": "00:00"
-      }
-    ],
-    "ronda": "",
-    "motivo_descarte": "repeticion_diferido"
-  },
-  {
-    "id": "lineal_tyc_sports_e97b6a1f",
-    "canales_mencionados_fuente": [],
-    "agenda_id": "",
-    "titulo": "El Relato de River vs Lanús por los 8vos de",
-    "torneo": "El Relato de River vs. Lanús por los 8vos de",
-    "categoria": "Fútbol",
-    "tipo_evento": "duelo",
-    "equipo_local": "El Relato de River",
-    "equipo_visitante": "Lanús por los 8vos de",
-    "subtitulo": "El Relato de River vs. Lanús por los 8vos de • final",
-    "referencia": "El relato de River vs. Lanús por los 8vos de final del Torneo Clausura",
-    "hora_utc": "2026-11-23T22:00:00Z",
-    "hora_local_producto": "17:00",
-    "duracion_min": 150,
-    "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-    "logo_local": "",
-    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fddty0w1769146364.png&w=400&output=webp",
-    "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/torneo_betano.png",
-    "tier": 2,
-    "origen": "inyector_lineal",
-    "origenes": [
-      "inyector_lineal",
-      "mitv_tyc_sports"
-    ],
-    "estado": "confirmado",
-    "estado_evento": "confirmado",
-    "confianza": "alta",
-    "puntuacion_confianza": 0.95,
-    "fuentes": [
-      {
-        "nombre": "Arg| TYC Sports FHD (local)",
-        "id_xtream": "1034308",
-        "canal_lineal": "TYC SPORTS",
-        "pais": "AR"
-      },
-      {
-        "nombre": "││arg││ TYC Sports Argentina [hd] (n)",
-        "id_xtream": "1034277",
-        "canal_lineal": "TYC SPORTS",
-        "pais": "AR"
-      },
-      {
-        "nombre": "Arg| TYC Sports HD",
-        "id_xtream": "1034309",
-        "canal_lineal": "TYC SPORTS",
-        "pais": "AR"
-      }
-    ],
-    "canales_candidatos": [
-      "TYC SPORTS"
-    ],
-    "texto_original_crudo": "El relato de River vs. Lanús por los 8vos de final del Torneo Clausura. Domingol. La mejor manera de vivir la pasión del futbol como si estuvieras en la cancha. El relato de los partidos más importantes de cada fecha, móviles en todos los estadios, la previa y el post de cada partido",
-    "titulo_original_crudo": "El relato de River vs. Lanús por los 8vos de final del Torneo Clausura. Domingol. La mejor manera de vivir la pasión del futbol como si estuvieras en la cancha. El relato de los partidos más importantes de cada fecha, móviles en todos los estadios, la previa y el post de cada partido",
-    "ronda": "final",
-    "motivo_descarte": "programa_debate_noticiero"
-  },
-  {
-    "id": "lineal_espn_3_ar_36403370",
+    "id": "lineal_espn_3_ar_38b83287",
     "canales_mencionados_fuente": [],
     "agenda_id": "",
     "titulo": "Dep. Alavés vs Dep. LA Coruña",
@@ -515,7 +649,7 @@
     "equipo_visitante": "Dep. LA Coruña",
     "subtitulo": "Dep. Alavés vs. Dep. LA Coruña",
     "referencia": "Dep. Alavés vs. Dep. La Coruña",
-    "hora_utc": "2026-11-23T11:00:00Z",
+    "hora_utc": "2026-11-24T11:00:00Z",
     "hora_local_producto": "06:00",
     "duracion_min": 150,
     "logo_torneo": "",
@@ -560,7 +694,7 @@
     "conflictos_lineales": [
       {
         "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_ade78ba3",
+        "oponente_id": "lineal_espn_3_ar_a0767c1d",
         "oponente_titulo": "Sassuolo vs Genoa",
         "oponente_hora": "04:00"
       }
@@ -569,7 +703,64 @@
     "motivo_descarte": "repeticion_diferido"
   },
   {
-    "id": "lineal_espn_3_ar_859b3e21",
+    "id": "lineal_espn_3_ar_426b92ab",
+    "canales_mencionados_fuente": [],
+    "agenda_id": "",
+    "titulo": "Juventus vs Venezia",
+    "torneo": "Juventus vs. Venezia",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Juventus",
+    "equipo_visitante": "Venezia",
+    "subtitulo": "Juventus vs. Venezia",
+    "referencia": "Juventus vs. Venezia",
+    "hora_utc": "2026-11-24T14:00:00Z",
+    "hora_local_producto": "09:00",
+    "duracion_min": 150,
+    "logo_torneo": "",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F1715.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F517.png&w=400&output=webp&trim=10",
+    "banner": "",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "mitv_espn_3_ar"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "Arg| ESPN 3 FHD",
+        "id_xtream": "1034286",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "Arg| ESPN 3 FHD (local)",
+        "id_xtream": "1034287",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "Premiun| ESPN 3 HD",
+        "id_xtream": "1034312",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      }
+    ],
+    "canales_candidatos": [
+      "ESPN 3 AR"
+    ],
+    "texto_original_crudo": "Juventus vs. Venezia. Fecha 12, Allianz Stadium. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
+    "titulo_original_crudo": "Juventus vs. Venezia. Fecha 12, Allianz Stadium. Vive las emociones de los partidos de la 125º edición de la Serie A, la máxima competición futbolística de Italia, la cual es organizada por la Lega Nazionale Professionisti",
+    "ronda": "",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_espn_3_ar_b80aeead",
     "canales_mencionados_fuente": [],
     "agenda_id": "",
     "titulo": "ESPN Compact - Premier Padel - Dubai P1 - Final Femenina",
@@ -580,7 +771,7 @@
     "equipo_visitante": "",
     "subtitulo": "",
     "referencia": "ESPN Compact - Premier Padel - Dubai P1",
-    "hora_utc": "2026-11-23T17:00:00Z",
+    "hora_utc": "2026-11-24T17:00:00Z",
     "hora_local_producto": "12:00",
     "duracion_min": 240,
     "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
@@ -625,16 +816,22 @@
     "conflictos_lineales": [
       {
         "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_e4c66ee5",
+        "oponente_id": "lineal_espn_3_ar_4c0fc361",
         "oponente_titulo": "ESPN Compact - Premier Padel - Dubai P1 - Final Masculina",
         "oponente_hora": "13:00"
+      },
+      {
+        "canal": "ESPN 3 AR",
+        "oponente_id": "lineal_espn_3_ar_9423a87f",
+        "oponente_titulo": "Monza vs Fiorentina",
+        "oponente_hora": "14:30"
       }
     ],
     "ronda": "",
     "motivo_descarte": "repeticion_diferido"
   },
   {
-    "id": "lineal_espn_3_ar_e4c66ee5",
+    "id": "lineal_espn_3_ar_4c0fc361",
     "canales_mencionados_fuente": [],
     "agenda_id": "",
     "titulo": "ESPN Compact - Premier Padel - Dubai P1 - Final Masculina",
@@ -645,7 +842,7 @@
     "equipo_visitante": "",
     "subtitulo": "",
     "referencia": "ESPN Compact - Premier Padel - Dubai P1",
-    "hora_utc": "2026-11-23T18:00:00Z",
+    "hora_utc": "2026-11-24T18:00:00Z",
     "hora_local_producto": "13:00",
     "duracion_min": 240,
     "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/premier_padel.png",
@@ -690,22 +887,28 @@
     "conflictos_lineales": [
       {
         "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_ca1d5c2e",
-        "oponente_titulo": "Monza vs Fiorentina",
-        "oponente_hora": "14:45"
+        "oponente_id": "lineal_espn_3_ar_80ad92c1",
+        "oponente_titulo": "Como 1907 vs AEK FC",
+        "oponente_hora": "15:00"
       },
       {
         "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_859b3e21",
+        "oponente_id": "lineal_espn_3_ar_b80aeead",
         "oponente_titulo": "ESPN Compact - Premier Padel - Dubai P1 - Final Femenina",
         "oponente_hora": "12:00"
+      },
+      {
+        "canal": "ESPN 3 AR",
+        "oponente_id": "lineal_espn_3_ar_9423a87f",
+        "oponente_titulo": "Monza vs Fiorentina",
+        "oponente_hora": "14:30"
       }
     ],
     "ronda": "",
     "motivo_descarte": "repeticion_diferido"
   },
   {
-    "id": "lineal_espn_3_ar_211ffbc1",
+    "id": "lineal_espn_3_ar_d8fdcd02",
     "canales_mencionados_fuente": [],
     "agenda_id": "",
     "titulo": "OGC Nice vs Paris Saint-Germain",
@@ -716,7 +919,7 @@
     "equipo_visitante": "Paris Saint-Germain",
     "subtitulo": "OGC Nice vs. Paris Saint-Germain",
     "referencia": "OGC Nice vs. Paris Saint-Germain",
-    "hora_utc": "2026-11-23T23:00:00Z",
+    "hora_utc": "2026-11-24T23:00:00Z",
     "hora_local_producto": "18:00",
     "duracion_min": 150,
     "logo_torneo": "",
@@ -758,11 +961,19 @@
     ],
     "texto_original_crudo": "OGC Nice vs. Paris Saint-Germain. Fecha 11, Allianz Riviera. Vive las emociones de los partidos de la 89º edición de la Ligue 1 de Francia. Los amantes del fútbol podrán disfrutar de la máxima competición profesional en el país",
     "titulo_original_crudo": "OGC Nice vs. Paris Saint-Germain. Fecha 11, Allianz Riviera. Vive las emociones de los partidos de la 89º edición de la Ligue 1 de Francia. Los amantes del fútbol podrán disfrutar de la máxima competición profesional en el país",
+    "conflictos_lineales": [
+      {
+        "canal": "ESPN 3 AR",
+        "oponente_id": "lineal_espn_3_ar_f297fe56",
+        "oponente_titulo": "Edmonton Oilers vs Vegas Golden Knights",
+        "oponente_hora": "20:00"
+      }
+    ],
     "ronda": "",
     "motivo_descarte": "repeticion_diferido"
   },
   {
-    "id": "lineal_espn_3_ar_a6c85c8c",
+    "id": "lineal_espn_3_ar_831d04e3",
     "canales_mencionados_fuente": [],
     "agenda_id": "",
     "titulo": "Yoali Mosqueda vs Carlos Mejia ESPN Knockout",
@@ -773,7 +984,7 @@
     "equipo_visitante": "Carlos Mejia ESPN Knockout",
     "subtitulo": "Yoali Mosqueda vs. Carlos Mejia",
     "referencia": "Yoali Mosqueda vs. Carlos Mejia",
-    "hora_utc": "2026-11-23T05:00:00Z",
+    "hora_utc": "2026-11-24T05:00:00Z",
     "hora_local_producto": "00:00",
     "duracion_min": 360,
     "logo_torneo": "",
@@ -818,9 +1029,80 @@
     "conflictos_lineales": [
       {
         "canal": "ESPN 3 AR",
-        "oponente_id": "lineal_espn_3_ar_6a1fa5ce",
+        "oponente_id": "lineal_espn_3_ar_6cf4bced",
         "oponente_titulo": "Chelsea vs Leeds Utd.",
         "oponente_hora": "02:00"
+      }
+    ],
+    "ronda": "",
+    "motivo_descarte": "repeticion_diferido"
+  },
+  {
+    "id": "lineal_espn_3_ar_6cf4bced",
+    "canales_mencionados_fuente": [],
+    "agenda_id": "",
+    "titulo": "Chelsea vs Leeds Utd.",
+    "torneo": "Chelsea vs. Leeds Utd.",
+    "categoria": "Fútbol",
+    "tipo_evento": "duelo",
+    "equipo_local": "Chelsea",
+    "equipo_visitante": "Leeds Utd.",
+    "subtitulo": "Chelsea vs. Leeds Utd.",
+    "referencia": "Chelsea vs. Leeds Utd.",
+    "hora_utc": "2026-11-24T07:00:00Z",
+    "hora_local_producto": "02:00",
+    "duracion_min": 150,
+    "logo_torneo": "",
+    "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F15391.png&w=400&output=webp&trim=10",
+    "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F63.png&w=400&output=webp&trim=10",
+    "banner": "",
+    "tier": 2,
+    "origen": "inyector_lineal",
+    "origenes": [
+      "inyector_lineal",
+      "mitv_espn_3_ar"
+    ],
+    "estado": "confirmado",
+    "estado_evento": "confirmado",
+    "confianza": "alta",
+    "puntuacion_confianza": 0.95,
+    "fuentes": [
+      {
+        "nombre": "Arg| ESPN 3 FHD",
+        "id_xtream": "1034286",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "Arg| ESPN 3 FHD (local)",
+        "id_xtream": "1034287",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      },
+      {
+        "nombre": "Premiun| ESPN 3 HD",
+        "id_xtream": "1034312",
+        "canal_lineal": "ESPN 3 AR",
+        "pais": "AR"
+      }
+    ],
+    "canales_candidatos": [
+      "ESPN 3 AR"
+    ],
+    "texto_original_crudo": "Chelsea vs. Leeds Utd.. Fecha 11, Stamford Bridge. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
+    "titulo_original_crudo": "Chelsea vs. Leeds Utd.. Fecha 11, Stamford Bridge. Vive los partidos de la 35º edición de la Premier League, la máxima competición de fútbol en Inglaterra con un total de veinte equipos participan en la competición, con diecisiete equipos de la temporada anterior y tres ascendidos",
+    "conflictos_lineales": [
+      {
+        "canal": "ESPN 3 AR",
+        "oponente_id": "lineal_espn_3_ar_a0767c1d",
+        "oponente_titulo": "Sassuolo vs Genoa",
+        "oponente_hora": "04:00"
+      },
+      {
+        "canal": "ESPN 3 AR",
+        "oponente_id": "lineal_espn_3_ar_831d04e3",
+        "oponente_titulo": "Yoali Mosqueda vs Carlos Mejia ESPN Knockout",
+        "oponente_hora": "00:00"
       }
     ],
     "ronda": "",
