@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-25T16:21:26Z",
+  "generado_utc": "2026-11-25T22:32:23Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-25",
   "base_media": "http://latinostream.xyz:80",
@@ -33,13 +33,18 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "futbolenvivo_ar"
+        "futbolenvivo_ar",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "11/25 03:00 Dallas Mavericks at Denver Nuggets [NBCSN]",
+          "id_xtream": "1042018"
+        },
         {
           "nombre": "Arg| TNT Sports FHD (local)",
           "id_xtream": "1034305",
@@ -206,45 +211,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_492ec53e",
-      "agenda_id": "",
-      "titulo": "American Cornhole League",
-      "torneo": "American Cornhole League",
-      "categoria": "Cornhole",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Women's Senior Junior Open Sin",
-      "referencia": "Cities Open: Women's Senior Junior Open Singles [ACL Cornhole TV]",
-      "hora_utc": "2026-11-25T05:00:00Z",
-      "hora_local_producto": "00:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11/25 00:00 ACL Tri-Cities Open: Women's Senior Junior Open Singles [ACL Cornhole TV]",
-          "id_xtream": "1041980"
-        }
-      ],
-      "texto_original_crudo": "11/25 00:00 ACL Tri-Cities Open: Women's Senior Junior Open Singles [ACL Cornhole TV] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/25 00:00 ACL Tri-Cities Open: Women's Senior Junior Open Singles [ACL Cornhole TV] (EVENTOS-FUBO)",
-      "ronda": "Women's Senior Junior Open Sin",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_5842a82a",
       "agenda_id": "",
       "titulo": "Wissota 100",
@@ -275,6 +241,10 @@
         {
           "nombre": "11/25 00:00 2026: 40th Annual WISSOTA 100 Night 4 Part 1 [SPEED SPORT 1]",
           "id_xtream": "1041981"
+        },
+        {
+          "nombre": "11/25 02:30 2026: 40th Annual WISSOTA 100 Night 4 Part 2 [SPEED SPORT 1]",
+          "id_xtream": "1042013"
         }
       ],
       "texto_original_crudo": "11/25 00:00 2026: 40th Annual WISSOTA 100 Night 4 Part 1 [SPEED SPORT 1] (EVENTOS-FUBO)",
@@ -284,18 +254,18 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_546cb51c",
+      "id": "xtream_f77c3905",
       "agenda_id": "",
-      "titulo": "Ub vs. Skyliners",
-      "torneo": "Fiba 3x3 World Tour",
-      "categoria": "Baloncesto",
+      "titulo": "Lovb Atlanta vs. Lovb Madison",
+      "torneo": "League One Volleyball",
+      "categoria": "Voleibol",
       "tipo_evento": "duelo",
-      "equipo_local": "Ub",
-      "equipo_visitante": "Skyliners",
-      "subtitulo": "Fiba 3x3 World Tour",
-      "referencia": "Macau Masters",
-      "hora_utc": "2026-11-25T06:00:00Z",
-      "hora_local_producto": "01:00",
+      "equipo_local": "Lovb Atlanta",
+      "equipo_visitante": "Lovb Madison",
+      "subtitulo": "League One Volleyball",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T05:35:00Z",
+      "hora_local_producto": "00:35",
       "duracion_min": 130,
       "logo_torneo": "",
       "logo_local": "",
@@ -312,16 +282,50 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "11/25 01:00 Macau Ub vs. Skyliners [beIN SPORTS Xtra En Español]",
-          "id_xtream": "1041994"
-        },
-        {
-          "nombre": "11/25 01:30 Macau Shanghai vs. Miami [beIN SPORTS Xtra En Español]",
-          "id_xtream": "1041999"
+          "nombre": "11/25 00:35 LOVB Madison at LOVB Atlanta [Women's Sports Network]",
+          "id_xtream": "1041986"
         }
       ],
-      "texto_original_crudo": "11/25 01:00 Macau Ub vs. Skyliners [beIN SPORTS Xtra En Español] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/25 01:00 Macau Ub vs. Skyliners [beIN SPORTS Xtra En Español] (EVENTOS-FUBO)",
+      "texto_original_crudo": "11/25 00:35 LOVB Madison at LOVB Atlanta [Women's Sports Network] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 00:35 LOVB Madison at LOVB Atlanta [Women's Sports Network] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_cba2c6ea",
+      "agenda_id": "",
+      "titulo": "Perth Steel vs. Canberra Heat",
+      "torneo": "Australian Volleyball League",
+      "categoria": "Voleibol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Perth Steel",
+      "equipo_visitante": "Canberra Heat",
+      "subtitulo": "Australian Volleyball League",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T05:39:00Z",
+      "hora_local_producto": "00:39",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F26.png&w=400&output=webp&trim=10",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 00:39 Canberra Heat at Perth Steel [Swerve Women's Sports]",
+          "id_xtream": "1041987"
+        }
+      ],
+      "texto_original_crudo": "11/25 00:39 Canberra Heat at Perth Steel [Swerve Women's Sports] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 00:39 Canberra Heat at Perth Steel [Swerve Women's Sports] (EVENTOS-FUBO)",
       "ronda": "",
       "auditado_agy": true
     },
@@ -407,16 +411,54 @@
       "auditado_agy": true
     },
     {
+      "id": "xtream_bbbfcd44",
+      "agenda_id": "",
+      "titulo": "Uccs vs. West Texas A&M",
+      "torneo": "NCAA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Uccs",
+      "equipo_visitante": "West Texas A&M",
+      "subtitulo": "NCAA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T08:00:00Z",
+      "hora_local_producto": "03:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F111.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 03:00 West Texas A&M at UCCS [Ryz Sports Network]",
+          "id_xtream": "1042019"
+        }
+      ],
+      "texto_original_crudo": "11/25 03:00 West Texas A&M at UCCS [Ryz Sports Network] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 03:00 West Texas A&M at UCCS [Ryz Sports Network] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
       "id": "xtream_f75868e5",
       "agenda_id": "",
       "titulo": "Melbourne Renegades vs. Brisbane Heat",
       "torneo": "Big Bash League",
-      "categoria": "Críquet",
+      "categoria": "Cricket",
       "tipo_evento": "duelo",
       "equipo_local": "Melbourne Renegades",
       "equipo_visitante": "Brisbane Heat",
       "subtitulo": "Big Bash League",
-      "referencia": "En Directo",
+      "referencia": "Fase Regular",
       "hora_utc": "2026-11-25T08:10:00Z",
       "hora_local_producto": "03:10",
       "duracion_min": 130,
@@ -445,21 +487,60 @@
       "auditado_agy": true
     },
     {
-      "id": "xtream_354a085d",
+      "id": "xtream_c0687834",
       "agenda_id": "",
-      "titulo": "Canberra Heat vs. Melbourne Vipers",
-      "torneo": "Australian Volleyball League",
-      "categoria": "Voleibol",
+      "titulo": "Missouri vs. Kentucky",
+      "torneo": "NCAA",
+      "categoria": "Baloncesto",
       "tipo_evento": "duelo",
-      "equipo_local": "Canberra Heat",
-      "equipo_visitante": "Melbourne Vipers",
-      "subtitulo": "Australian Volleyball League",
+      "equipo_local": "Missouri",
+      "equipo_visitante": "Kentucky",
+      "subtitulo": "NCAA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T08:30:00Z",
+      "hora_local_producto": "03:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F2006.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F6957.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 03:30 Kentucky at Missouri [SEC Network]",
+          "id_xtream": "1042021"
+        }
+      ],
+      "texto_original_crudo": "11/25 03:30 Kentucky at Missouri [SEC Network] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 03:30 Kentucky at Missouri [SEC Network] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_ba487159",
+      "agenda_id": "",
+      "titulo": "North Melbourne Kangaroos Women vs. Melbourne Demons Women",
+      "torneo": "AFL Women's",
+      "categoria": "Fútbol Australiano",
+      "tipo_evento": "duelo",
+      "equipo_local": "North Melbourne Kangaroos Women",
+      "equipo_visitante": "Melbourne Demons Women",
+      "subtitulo": "AFL Women's",
       "referencia": "En Directo",
-      "hora_utc": "2026-11-25T09:04:00Z",
-      "hora_local_producto": "04:04",
+      "hora_utc": "2026-11-25T08:45:00Z",
+      "hora_local_producto": "03:45",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F26.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F33.png&w=400&output=webp&trim=10",
       "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F33.png&w=400&output=webp&trim=10",
       "banner": "",
       "tier": 2,
@@ -473,13 +554,214 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "11/25 04:04 Melbourne Vipers at Canberra Heat [UNBEATEN]",
-          "id_xtream": "1042025"
+          "nombre": "11/25 AUSFOOTBALL 3:45am North Melbourne Kangaroos Women - Melbourne Demons Women = FOX SPORTS 2 USA",
+          "id_xtream": "1041939"
+        },
+        {
+          "nombre": "11/25 AUSFOOTBALL 3:45am North Melbourne Kangaroos Women - Melbourne Demons Women = TSN2 CANADA",
+          "id_xtream": "1041940"
         }
       ],
-      "texto_original_crudo": "11/25 04:04 Melbourne Vipers at Canberra Heat [UNBEATEN] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/25 04:04 Melbourne Vipers at Canberra Heat [UNBEATEN] (EVENTOS-FUBO)",
+      "texto_original_crudo": "11/25 AUSFOOTBALL 3:45am North Melbourne Kangaroos Women - Melbourne Demons Women = FOX SPORTS 2 USA (EVENTOS-OPC 1)",
+      "titulo_original_crudo": "11/25 AUSFOOTBALL 3:45am North Melbourne Kangaroos Women - Melbourne Demons Women = FOX SPORTS 2 USA (EVENTOS-OPC 1)",
       "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_f18f953a",
+      "agenda_id": "",
+      "titulo": "Tour",
+      "torneo": "Tour",
+      "categoria": "Tenis",
+      "tipo_evento": "circuito",
+      "equipo_local": "Iga Swiatek",
+      "equipo_visitante": "Mirra Andreeva [T2]",
+      "subtitulo": "Cuartos de Final",
+      "referencia": "Cuartos de Final • Quarter - Final",
+      "hora_utc": "2026-11-25T09:30:00Z",
+      "hora_local_producto": "04:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 04:30 Quarter-Final 3 - Iga Swiatek VS Mirra Andreeva [T2]",
+          "id_xtream": "1042026"
+        },
+        {
+          "nombre": "11/25 06:00 Quarter-Final 3 - Iga Swiatek VS Mirra Andreeva [T2]",
+          "id_xtream": "1042037"
+        }
+      ],
+      "texto_original_crudo": "11/25 04:30 Quarter-Final 3 - Iga Swiatek VS Mirra Andreeva [T2] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 04:30 Quarter-Final 3 - Iga Swiatek VS Mirra Andreeva [T2] (EVENTOS-FUBO)",
+      "ronda": "Cuartos de Final",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_83467f0c",
+      "agenda_id": "",
+      "titulo": "ACL Tri-Cities Open",
+      "torneo": "ACL Tri-Cities Open",
+      "categoria": "Cornhole",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Dobles",
+      "referencia": "Dobles • Cities Open: Doubles [ACL Cornhole TV]",
+      "hora_utc": "2026-11-25T09:30:00Z",
+      "hora_local_producto": "04:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 04:30 ACL Tri-Cities Open: Doubles [ACL Cornhole TV]",
+          "id_xtream": "1042027"
+        }
+      ],
+      "texto_original_crudo": "11/25 04:30 ACL Tri-Cities Open: Doubles [ACL Cornhole TV] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 04:30 ACL Tri-Cities Open: Doubles [ACL Cornhole TV] (EVENTOS-FUBO)",
+      "ronda": "Dobles",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_fec854d6",
+      "agenda_id": "",
+      "titulo": "Colorado School of Mines vs. Seattle Pacific",
+      "torneo": "NCAA Division II",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Colorado School of Mines",
+      "equipo_visitante": "Seattle Pacific",
+      "subtitulo": "NCAA Division II",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T09:51:00Z",
+      "hora_local_producto": "04:51",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F104.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F2622.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 04:51 Seattle Pacific at Colorado School of Mines [Ryz Sports Network]",
+          "id_xtream": "1042029"
+        }
+      ],
+      "texto_original_crudo": "11/25 04:51 Seattle Pacific at Colorado School of Mines [Ryz Sports Network] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 04:51 Seattle Pacific at Colorado School of Mines [Ryz Sports Network] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_42cc17d4",
+      "agenda_id": "",
+      "titulo": "Nebraska vs. Ohio State",
+      "torneo": "NCAA Big Ten",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nebraska",
+      "equipo_visitante": "Ohio State",
+      "subtitulo": "NCAA Big Ten",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F195.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F7080.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 05:00 Ohio State at Nebraska [FOX Sports 1]",
+          "id_xtream": "1042030"
+        }
+      ],
+      "texto_original_crudo": "11/25 05:00 Ohio State at Nebraska [FOX Sports 1] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 05:00 Ohio State at Nebraska [FOX Sports 1] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_54c233ad",
+      "agenda_id": "",
+      "titulo": "Winter Series",
+      "torneo": "Winter Series",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "Will 'SuperBoy'",
+      "equipo_visitante": "Matteo de Paula [beIN Sports Xtra ]",
+      "subtitulo": "Episodio",
+      "referencia": "Episodio • Episode",
+      "hora_utc": "2026-11-25T10:00:00Z",
+      "hora_local_producto": "05:00",
+      "duracion_min": 125,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 05:00 Episode 8 - Winter Series: Will 'SuperBoy' vs. Matteo De Paula [beIN SPORTS Xtra En Español]",
+          "id_xtream": "1042031"
+        }
+      ],
+      "texto_original_crudo": "11/25 05:00 Episode 8 - Winter Series: Will 'SuperBoy' vs. Matteo De Paula [beIN SPORTS Xtra En Español] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 05:00 Episode 8 - Winter Series: Will 'SuperBoy' vs. Matteo De Paula [beIN SPORTS Xtra En Español] (EVENTOS-FUBO)",
+      "ronda": "Episodio",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -556,60 +838,21 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_f484bf06",
+      "id": "xtream_c3b95365",
       "agenda_id": "",
-      "titulo": "Pro Tour Footvolley",
-      "torneo": "Pro Tour Footvolley",
-      "categoria": "Futvóley",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Pro Tour",
-      "referencia": "Pro Tour • Star Footvolley [beIN Sports Xtra]",
-      "hora_utc": "2026-11-25T11:00:00Z",
-      "hora_local_producto": "06:00",
-      "duracion_min": 300,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11/25 06:00 Pro Tour: All-Star Footvolley [beIN SPORTS Xtra]",
-          "id_xtream": "1042038"
-        }
-      ],
-      "texto_original_crudo": "11/25 06:00 Pro Tour: All-Star Footvolley [beIN SPORTS Xtra] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/25 06:00 Pro Tour: All-Star Footvolley [beIN SPORTS Xtra] (EVENTOS-FUBO)",
-      "ronda": "Pro Tour",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_666c317e",
-      "agenda_id": "",
-      "titulo": "Baskets Bonn vs. Raudondvaris Hoptrans",
-      "torneo": "Fiba 3x3 World Tour",
-      "categoria": "Baloncesto",
+      "titulo": "NSW Phoenix vs. Perth Steel",
+      "torneo": "Australian Volleyball League",
+      "categoria": "Voleibol",
       "tipo_evento": "duelo",
-      "equipo_local": "Baskets Bonn",
-      "equipo_visitante": "Raudondvaris Hoptrans",
-      "subtitulo": "Fiba 3x3 World Tour",
-      "referencia": "Baloncesto 3x3",
-      "hora_utc": "2026-11-25T12:00:00Z",
-      "hora_local_producto": "07:00",
-      "duracion_min": 150,
+      "equipo_local": "NSW Phoenix",
+      "equipo_visitante": "Perth Steel",
+      "subtitulo": "Australian Volleyball League",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T11:50:00Z",
+      "hora_local_producto": "06:50",
+      "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F524.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F3028.png&w=400&output=webp&trim=10",
       "logo_visitante": "",
       "banner": "",
       "tier": 2,
@@ -623,12 +866,12 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "11/25 07:00 Raudondvaris Hoptrans at Baskets Bonn [beIN SPORTS Xtra]",
-          "id_xtream": "1042049"
+          "nombre": "11/25 06:50 Perth Steel at NSW Phoenix [Swerve Women's Sports]",
+          "id_xtream": "1042047"
         }
       ],
-      "texto_original_crudo": "11/25 07:00 Raudondvaris Hoptrans at Baskets Bonn [beIN SPORTS Xtra] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/25 07:00 Raudondvaris Hoptrans at Baskets Bonn [beIN SPORTS Xtra] (EVENTOS-FUBO)",
+      "texto_original_crudo": "11/25 06:50 Perth Steel at NSW Phoenix [Swerve Women's Sports] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 06:50 Perth Steel at NSW Phoenix [Swerve Women's Sports] (EVENTOS-FUBO)",
       "ronda": "",
       "auditado_agy": true
     },
@@ -670,6 +913,44 @@
       "ronda": "Final Femenina",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_666c317e",
+      "agenda_id": "",
+      "titulo": "Baskets Bonn vs. Raudondvaris Hoptrans",
+      "torneo": "Fiba 3x3",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Baskets Bonn",
+      "equipo_visitante": "Raudondvaris Hoptrans",
+      "subtitulo": "Fiba 3x3",
+      "referencia": "En Directo",
+      "hora_utc": "2026-11-25T12:00:00Z",
+      "hora_local_producto": "07:00",
+      "duracion_min": 150,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F524.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/25 07:00 Raudondvaris Hoptrans at Baskets Bonn [beIN SPORTS Xtra]",
+          "id_xtream": "1042049"
+        }
+      ],
+      "texto_original_crudo": "11/25 07:00 Raudondvaris Hoptrans at Baskets Bonn [beIN SPORTS Xtra] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/25 07:00 Raudondvaris Hoptrans at Baskets Bonn [beIN SPORTS Xtra] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "lineal_espn_3_ar_54c92ee5",
@@ -1869,6 +2150,45 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_559e1304",
+      "agenda_id": "",
+      "titulo": "Njit Highlanders vs. Manhattan Jaspers",
+      "torneo": "NCAA Men's Basketball",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Njit Highlanders",
+      "equipo_visitante": "Manhattan Jaspers",
+      "subtitulo": "NCAA Men's Basketball",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T18:00:00Z",
+      "hora_local_producto": "13:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F6992.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1990.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "25/11 13:00 CDMX. NCAA BASKETBALL. Manhattan Jaspers @ NJIT Highlanders",
+          "id_xtream": "1042082"
+        }
+      ],
+      "texto_original_crudo": "25/11 13:00 CDMX. NCAA BASKETBALL. Manhattan Jaspers @ NJIT Highlanders (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "25/11 13:00 CDMX. NCAA BASKETBALL. Manhattan Jaspers @ NJIT Highlanders (EVENTOS-OPC 2)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_4052bada",
       "agenda_id": "",
       "titulo": "Western Michigan Broncos vs. Grace Christian Tigers",
@@ -1909,45 +2229,6 @@
       "titulo_original_crudo": "25/11 13:00 CDMX. NCAA BASKETBALL. Grace Christian Tigers @ Western Michigan Broncos (EVENTOS-OPC 2)",
       "ronda": "",
       "auditado_agy": true
-    },
-    {
-      "id": "xtream_559e1304",
-      "agenda_id": "",
-      "titulo": "Njit Highlanders vs. Manhattan Jaspers",
-      "torneo": "NCAA Men's Basketball",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Njit Highlanders",
-      "equipo_visitante": "Manhattan Jaspers",
-      "subtitulo": "NCAA Men's Basketball",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-25T18:00:00Z",
-      "hora_local_producto": "13:00",
-      "duracion_min": 150,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F6992.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1990.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "25/11 13:00 CDMX. NCAA BASKETBALL. Manhattan Jaspers @ NJIT Highlanders",
-          "id_xtream": "1042082"
-        }
-      ],
-      "texto_original_crudo": "25/11 13:00 CDMX. NCAA BASKETBALL. Manhattan Jaspers @ NJIT Highlanders (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 13:00 CDMX. NCAA BASKETBALL. Manhattan Jaspers @ NJIT Highlanders (EVENTOS-OPC 2)",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
     },
     {
       "id": "xtream_f0decf04",
@@ -2628,24 +2909,6 @@
         {
           "nombre": "25/11 14:00 CDMX. UEFA CHAMPIONS LEAGUE. Paris Saint-Germain vs AS Roma (FOX ONE)",
           "id_xtream": "1042113"
-        },
-        {
-          "nombre": "Arg| ESPN 2 FHD",
-          "id_xtream": "1034283",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg| ESPN 2 FHD (local)",
-          "id_xtream": "1034284",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg: ESPN 2 HD",
-          "id_xtream": "1034278",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
         }
       ],
       "canales_candidatos": [
@@ -2678,45 +2941,6 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_95346b7d",
-      "agenda_id": "",
-      "titulo": "Stoke City vs Millwall",
-      "torneo": "Otros Deportes",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Stoke City",
-      "equipo_visitante": "Millwall",
-      "subtitulo": "Otros Deportes",
-      "referencia": "Otros Deportes",
-      "hora_utc": "2026-11-25T20:00:00Z",
-      "hora_local_producto": "15:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F40.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F75.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F58.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F40.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "25/11 14:00 CDMX. CHAMPIONSHIP. Stoke City vs Millwall (Paramount+)",
-          "id_xtream": "1042089"
-        }
-      ],
-      "texto_original_crudo": "25/11 14:00 CDMX. CHAMPIONSHIP. Stoke City vs Millwall (Paramount+) (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 14:00 CDMX. CHAMPIONSHIP. Stoke City vs Millwall (Paramount+) (EVENTOS-OPC 2)",
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": ""
     },
     {
       "id": "xtream_e5714fcc",
@@ -2811,15 +3035,54 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_95346b7d",
+      "agenda_id": "",
+      "titulo": "Stoke City vs Millwall",
+      "torneo": "Otros Deportes",
+      "categoria": "Fútbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Stoke City",
+      "equipo_visitante": "Millwall",
+      "subtitulo": "Otros Deportes",
+      "referencia": "Otros Deportes",
+      "hora_utc": "2026-11-25T20:00:00Z",
+      "hora_local_producto": "15:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F40.png&w=400&output=webp&trim=10",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F75.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F58.png&w=400&output=webp&trim=10",
+      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F40.png&w=400&output=webp&trim=10",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "25/11 14:00 CDMX. CHAMPIONSHIP. Stoke City vs Millwall (Paramount+)",
+          "id_xtream": "1042089"
+        }
+      ],
+      "texto_original_crudo": "25/11 14:00 CDMX. CHAMPIONSHIP. Stoke City vs Millwall (Paramount+) (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "25/11 14:00 CDMX. CHAMPIONSHIP. Stoke City vs Millwall (Paramount+) (EVENTOS-OPC 2)",
+      "fecha_confirmada": true,
+      "contrastado_api": true,
+      "ronda": ""
+    },
+    {
       "id": "xtream_23b7a95c",
       "agenda_id": "",
       "titulo": "Utah Tech Trailblazers vs. Bethesda Flames",
-      "torneo": "NCAA Basketball",
+      "torneo": "NCAA Men's Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Utah Tech Trailblazers",
       "equipo_visitante": "Bethesda Flames",
-      "subtitulo": "NCAA Basketball",
+      "subtitulo": "NCAA Men's Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-25T20:00:00Z",
       "hora_local_producto": "15:00",
@@ -2852,12 +3115,12 @@
       "id": "xtream_343063a5",
       "agenda_id": "",
       "titulo": "LSU New Orleans Privateers vs. Grambling Tigers",
-      "torneo": "NCAA Basketball",
+      "torneo": "NCAA Men's Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "LSU New Orleans Privateers",
       "equipo_visitante": "Grambling Tigers",
-      "subtitulo": "NCAA Basketball",
+      "subtitulo": "NCAA Men's Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-25T20:00:00Z",
       "hora_local_producto": "15:00",
@@ -2890,12 +3153,12 @@
       "id": "xtream_f17071a7",
       "agenda_id": "",
       "titulo": "Marshall Thundering Herd vs. Prairie View A&M Panthers",
-      "torneo": "NCAA Basketball",
+      "torneo": "NCAA Men's Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Marshall Thundering Herd",
       "equipo_visitante": "Prairie View A&M Panthers",
-      "subtitulo": "NCAA Basketball",
+      "subtitulo": "NCAA Men's Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-25T20:00:00Z",
       "hora_local_producto": "15:00",
@@ -3008,12 +3271,12 @@
       "id": "xtream_f01b4553",
       "agenda_id": "",
       "titulo": "UC Riverside Highlanders vs. Portland State Vikings",
-      "torneo": "NCAA Men's Basketball",
+      "torneo": "NCAA Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "UC Riverside Highlanders",
       "equipo_visitante": "Portland State Vikings",
-      "subtitulo": "NCAA Men's Basketball",
+      "subtitulo": "NCAA Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-25T21:00:00Z",
       "hora_local_producto": "16:00",
@@ -3472,45 +3735,6 @@
       "auditado_agy": true
     },
     {
-      "id": "xtream_9ebee5a6",
-      "agenda_id": "",
-      "titulo": "UC Santa Barbara Gauchos vs. UC San Diego Tritons",
-      "torneo": "NCAA Women's Volleyball",
-      "categoria": "Voleibol",
-      "tipo_evento": "duelo",
-      "equipo_local": "UC Santa Barbara Gauchos",
-      "equipo_visitante": "UC San Diego Tritons",
-      "subtitulo": "NCAA Women's Volleyball",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-25T22:00:00Z",
-      "hora_local_producto": "17:00",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5i4f6l1640963194.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fz3n9u71587216097.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "25/11 17:00 CDMX. NCAA WOMENS VOLLEYBALL. UC San Diego Tritons @ UC Santa Barbara Gauchos",
-          "id_xtream": "1042134"
-        }
-      ],
-      "texto_original_crudo": "25/11 17:00 CDMX. NCAA WOMENS VOLLEYBALL. UC San Diego Tritons @ UC Santa Barbara Gauchos (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 17:00 CDMX. NCAA WOMENS VOLLEYBALL. UC San Diego Tritons @ UC Santa Barbara Gauchos (EVENTOS-OPC 2)",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_c2238d02",
       "agenda_id": "",
       "titulo": "Mayos de Navojoa vs. Tomateros de Culiacán",
@@ -3644,44 +3868,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_2c0e4c87",
-      "agenda_id": "",
-      "titulo": "The Citadel Bulldogs vs. South Carolina Upstate Spartans",
-      "torneo": "NCAA Men's Basketball",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "The Citadel Bulldogs",
-      "equipo_visitante": "South Carolina Upstate Spartans",
-      "subtitulo": "NCAA Men's Basketball",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-25T23:00:00Z",
-      "hora_local_producto": "18:00",
-      "duracion_min": 150,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpe9me11584717267.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpe9me11584717267.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "25/11 18:00 CDMX. NCAA BASKETBALL. South Carolina Upstate Spartans @ The Citadel Bulldogs",
-          "id_xtream": "1042144"
-        }
-      ],
-      "texto_original_crudo": "25/11 18:00 CDMX. NCAA BASKETBALL. South Carolina Upstate Spartans @ The Citadel Bulldogs (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 18:00 CDMX. NCAA BASKETBALL. South Carolina Upstate Spartans @ The Citadel Bulldogs (EVENTOS-OPC 2)",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_d565f7dc",
       "agenda_id": "",
       "titulo": "Texas vs. SE Louisiana",
@@ -3721,11 +3907,49 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_2c0e4c87",
+      "agenda_id": "",
+      "titulo": "The Citadel Bulldogs vs. South Carolina Upstate Spartans",
+      "torneo": "NCAA Basketball",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "The Citadel Bulldogs",
+      "equipo_visitante": "South Carolina Upstate Spartans",
+      "subtitulo": "NCAA Basketball",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-25T23:00:00Z",
+      "hora_local_producto": "18:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpe9me11584717267.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fpe9me11584717267.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "25/11 18:00 CDMX. NCAA BASKETBALL. South Carolina Upstate Spartans @ The Citadel Bulldogs",
+          "id_xtream": "1042144"
+        }
+      ],
+      "texto_original_crudo": "25/11 18:00 CDMX. NCAA BASKETBALL. South Carolina Upstate Spartans @ The Citadel Bulldogs (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "25/11 18:00 CDMX. NCAA BASKETBALL. South Carolina Upstate Spartans @ The Citadel Bulldogs (EVENTOS-OPC 2)",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
       "id": "xtream_2c8e0669",
       "agenda_id": "",
       "titulo": "Pittsburgh Penguins vs. Calgary Flames",
       "torneo": "NHL",
-      "categoria": "Hockey",
+      "categoria": "Hockey Sobre Hielo",
       "tipo_evento": "duelo",
       "equipo_local": "Pittsburgh Penguins",
       "equipo_visitante": "Calgary Flames",
@@ -3734,10 +3958,10 @@
       "hora_utc": "2026-11-25T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F696.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F696.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx3hydm1568478796.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fv8vkk11619536610.png&w=400&output=webp",
+      "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -3756,7 +3980,8 @@
       "texto_original_crudo": "25/11 18:00 CDMX. NHL. Calgary Flames @ Pittsburgh Penguins (HD) (EVENTOS-OPC 2)",
       "titulo_original_crudo": "25/11 18:00 CDMX. NHL. Calgary Flames @ Pittsburgh Penguins (HD) (EVENTOS-OPC 2)",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_1a8c1d86",
@@ -3953,7 +4178,7 @@
       "agenda_id": "",
       "titulo": "New York Islanders vs. St. Louis Blues",
       "torneo": "NHL",
-      "categoria": "Hockey",
+      "categoria": "Hockey Sobre Hielo",
       "tipo_evento": "duelo",
       "equipo_local": "New York Islanders",
       "equipo_visitante": "St. Louis Blues",
@@ -3962,10 +4187,10 @@
       "hora_utc": "2026-11-25T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F691.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F691.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F6bnwoc1784751677.png&w=400&output=webp",
+      "logo_visitante": "",
+      "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -3991,7 +4216,7 @@
       "agenda_id": "",
       "titulo": "Boston Bruins vs. Winnipeg Jets",
       "torneo": "NHL",
-      "categoria": "Hockey",
+      "categoria": "Hockey Sobre Hielo",
       "tipo_evento": "duelo",
       "equipo_local": "Boston Bruins",
       "equipo_visitante": "Winnipeg Jets",
@@ -4000,10 +4225,10 @@
       "hora_utc": "2026-11-25T23:00:00Z",
       "hora_local_producto": "18:00",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F673.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F673.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fb1r86e1720023232.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fbwn9hr1547233611.png&w=400&output=webp",
+      "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -4022,7 +4247,8 @@
       "texto_original_crudo": "25/11 18:00 CDMX. NHL. Winnipeg Jets @ Boston Bruins (HD) (EVENTOS-OPC 2)",
       "titulo_original_crudo": "25/11 18:00 CDMX. NHL. Winnipeg Jets @ Boston Bruins (HD) (EVENTOS-OPC 2)",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_103286b4",
@@ -4177,7 +4403,7 @@
       "agenda_id": "",
       "titulo": "Detroit Red Wings vs. Vancouver Canucks",
       "torneo": "NHL",
-      "categoria": "Hockey",
+      "categoria": "Hockey Sobre Hielo",
       "tipo_evento": "duelo",
       "equipo_local": "Detroit Red Wings",
       "equipo_visitante": "Vancouver Canucks",
@@ -4186,10 +4412,10 @@
       "hora_utc": "2026-11-25T23:30:00Z",
       "hora_local_producto": "18:30",
       "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F682.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F682.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nhl.png",
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F1c24ow1546544080.png&w=400&output=webp",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fxqxxpw1421875519.png&w=400&output=webp",
+      "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -4208,7 +4434,8 @@
       "texto_original_crudo": "25/11 18:30 CDMX. NHL. Vancouver Canucks @ Detroit Red Wings (HD) (EVENTOS-OPC 2)",
       "titulo_original_crudo": "25/11 18:30 CDMX. NHL. Vancouver Canucks @ Detroit Red Wings (HD) (EVENTOS-OPC 2)",
       "ronda": "",
-      "auditado_agy": true
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_f5b937d9",
@@ -4428,23 +4655,23 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_93ebba83",
+      "id": "xtream_1c1f4891",
       "agenda_id": "",
-      "titulo": "Dallas Stars vs. Nashville Predators",
-      "torneo": "NHL",
-      "categoria": "Hockey Sobre Hielo",
+      "titulo": "Final Big Ten Tournament",
+      "torneo": "NCAA Women's Volleyball",
+      "categoria": "Voleibol",
       "tipo_evento": "duelo",
-      "equipo_local": "Dallas Stars",
-      "equipo_visitante": "Nashville Predators",
-      "subtitulo": "NHL",
-      "referencia": "Temporada Regular",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "NCAA Women's Volleyball • Cdmx. NCAA Womens Volleyball.",
+      "referencia": "Final",
       "hora_utc": "2026-11-26T00:00:00Z",
       "hora_local_producto": "19:00",
       "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fqrvywq1422042125.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ftwqyvy1422052908.png&w=400&output=webp",
-      "banner": "",
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -4456,54 +4683,14 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "25/11 19:00 CDMX. NHL. Nashville Predators @ Dallas Stars (HD)",
-          "id_xtream": "1042166"
+          "nombre": "25/11 19:00 CDMX. NCAA WOMENS VOLLEYBALL. Final Big Ten Tournament",
+          "id_xtream": "1042165"
         }
       ],
-      "texto_original_crudo": "25/11 19:00 CDMX. NHL. Nashville Predators @ Dallas Stars (HD) (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 19:00 CDMX. NHL. Nashville Predators @ Dallas Stars (HD) (EVENTOS-OPC 2)",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_6c3cf363",
-      "agenda_id": "",
-      "titulo": "Minnesota Wild vs. Utah Mammoth",
-      "torneo": "NHL",
-      "categoria": "Hockey Sobre Hielo",
-      "tipo_evento": "duelo",
-      "equipo_local": "Minnesota Wild",
-      "equipo_visitante": "Utah Mammoth",
-      "subtitulo": "NHL",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-26T00:00:00Z",
-      "hora_local_producto": "19:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fswtsxs1422042685.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fw5m2ab1746690303.png&w=400&output=webp",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "25/11 19:00 CDMX. NHL. Utah Mammoth @ Minnesota Wild (HD)",
-          "id_xtream": "1042167"
-        }
-      ],
-      "texto_original_crudo": "25/11 19:00 CDMX. NHL. Utah Mammoth @ Minnesota Wild (HD) (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 19:00 CDMX. NHL. Utah Mammoth @ Minnesota Wild (HD) (EVENTOS-OPC 2)",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
+      "texto_original_crudo": "25/11 19:00 CDMX. NCAA WOMENS VOLLEYBALL. Final Big Ten Tournament (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "25/11 19:00 CDMX. NCAA WOMENS VOLLEYBALL. Final Big Ten Tournament (EVENTOS-OPC 2)",
+      "ronda": "Cdmx. NCAA Womens Volleyball.",
+      "auditado_agy": true
     },
     {
       "id": "xtream_d6ebdbbf",
@@ -4828,12 +5015,12 @@
       "id": "xtream_1de9f78a",
       "agenda_id": "",
       "titulo": "Montana State Bobcats vs. Northwest Indian RedHawks",
-      "torneo": "NCAA Men's Basketball",
+      "torneo": "NCAA Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Montana State Bobcats",
       "equipo_visitante": "Northwest Indian RedHawks",
-      "subtitulo": "NCAA Men's Basketball",
+      "subtitulo": "NCAA Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-26T01:00:00Z",
       "hora_local_producto": "20:00",
@@ -4865,14 +5052,14 @@
     {
       "id": "xtream_207345d3",
       "agenda_id": "",
-      "titulo": "All Elite Wrestling",
-      "torneo": "All Elite Wrestling",
+      "titulo": "AEW",
+      "torneo": "AEW",
       "categoria": "Combate",
       "tipo_evento": "circuito",
       "equipo_local": "",
       "equipo_visitante": "",
-      "subtitulo": "En Directo",
-      "referencia": "En Directo • PELEAS:00pm AEW Dynamite = Tsn4 Canada",
+      "subtitulo": "En Vivo",
+      "referencia": "En Vivo • PELEAS:00pm AEW Dynamite = Tsn4 Canada",
       "hora_utc": "2026-11-26T01:00:00Z",
       "hora_local_producto": "20:00",
       "duracion_min": 360,
@@ -4905,7 +5092,7 @@
       ],
       "texto_original_crudo": "11/25 PELEAS 8:00pm AEW Dynamite = TSN4 CANADA (BOXEO-UFC-PPV)",
       "titulo_original_crudo": "11/25 PELEAS 8:00pm AEW Dynamite = TSN4 CANADA (BOXEO-UFC-PPV)",
-      "ronda": "En Directo",
+      "ronda": "En Vivo",
       "auditado_agy": true
     },
     {
@@ -4965,90 +5152,6 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_6db05b93",
-      "agenda_id": "",
-      "titulo": "DP World Tour",
-      "torneo": "DP World Tour",
-      "categoria": "Golf",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Primera Ronda",
-      "referencia": "Cdmx. Golf DP World Tour. BMW Australian PGA Championship Primera Ronda",
-      "hora_utc": "2026-11-26T01:30:00Z",
-      "hora_local_producto": "20:30",
-      "duracion_min": 300,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 1,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "25/11 20:30 CDMX. GOLF DP WORLD TOUR. BMW Australian PGA Championship Primera Ronda",
-          "id_xtream": "1042170"
-        }
-      ],
-      "texto_original_crudo": "25/11 20:30 CDMX. GOLF DP WORLD TOUR. BMW Australian PGA Championship Primera Ronda (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 20:30 CDMX. GOLF DP WORLD TOUR. BMW Australian PGA Championship Primera Ronda (EVENTOS-OPC 2)",
-      "ronda": "Primera Ronda",
-      "auditado_agy": true
-    },
-    {
-      "id": "xtream_80ba9443",
-      "agenda_id": "",
-      "titulo": "Cañeros de los Mochis vs. Algodoneros de Guasave",
-      "torneo": "Liga Arco Mexicana del Pacífico",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Cañeros de los Mochis",
-      "equipo_visitante": "Algodoneros de Guasave",
-      "subtitulo": "Liga Arco Mexicana del Pacífico",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-26T01:30:00Z",
-      "hora_local_producto": "20:30",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "25/11 20:30 CDMX. LMP. Algodoneros de Guasave @ Cañeros de Los Mochis",
-          "id_xtream": "1042171"
-        },
-        {
-          "nombre": "11/25 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [EN]",
-          "id_xtream": "1041970"
-        },
-        {
-          "nombre": "11/25 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [ES]",
-          "id_xtream": "1041973"
-        }
-      ],
-      "texto_original_crudo": "25/11 20:30 CDMX. LMP. Algodoneros de Guasave @ Cañeros de Los Mochis (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 20:30 CDMX. LMP. Algodoneros de Guasave @ Cañeros de Los Mochis (EVENTOS-OPC 2)",
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "xtream_36718f3a",
@@ -5184,23 +5287,61 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_1c8f1114",
+      "id": "xtream_6db05b93",
       "agenda_id": "",
-      "titulo": "Colorado Avalanche vs. Montreal Canadiens",
-      "torneo": "NHL",
-      "categoria": "Hockey Sobre Hielo",
+      "titulo": "DP World Tour",
+      "torneo": "DP World Tour",
+      "categoria": "Golf",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Primera Ronda",
+      "referencia": "Cdmx. Golf DP World Tour. BMW Australian PGA Championship Primera Ronda",
+      "hora_utc": "2026-11-26T01:30:00Z",
+      "hora_local_producto": "20:30",
+      "duracion_min": 300,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "25/11 20:30 CDMX. GOLF DP WORLD TOUR. BMW Australian PGA Championship Primera Ronda",
+          "id_xtream": "1042170"
+        }
+      ],
+      "texto_original_crudo": "25/11 20:30 CDMX. GOLF DP WORLD TOUR. BMW Australian PGA Championship Primera Ronda (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "25/11 20:30 CDMX. GOLF DP WORLD TOUR. BMW Australian PGA Championship Primera Ronda (EVENTOS-OPC 2)",
+      "ronda": "Primera Ronda",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_80ba9443",
+      "agenda_id": "",
+      "titulo": "Cañeros de los Mochis vs. Algodoneros de Guasave",
+      "torneo": "Liga Mexicana del Pacífico",
+      "categoria": "Béisbol",
       "tipo_evento": "duelo",
-      "equipo_local": "Colorado Avalanche",
-      "equipo_visitante": "Montreal Canadiens",
-      "subtitulo": "NHL",
+      "equipo_local": "Cañeros de los Mochis",
+      "equipo_visitante": "Algodoneros de Guasave",
+      "subtitulo": "Liga Mexicana del Pacífico",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-26T01:30:00Z",
       "hora_local_producto": "20:30",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fwqutut1421173572.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fstpryx1421791753.png&w=400&output=webp",
-      "banner": "",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
       "tier": 2,
       "origen": "xtream_evento",
       "origenes": [
@@ -5212,54 +5353,22 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "25/11 20:30 CDMX. NHL. Montreal Canadiens @ Colorado Avalanche (HD)",
-          "id_xtream": "1042175"
-        }
-      ],
-      "texto_original_crudo": "25/11 20:30 CDMX. NHL. Montreal Canadiens @ Colorado Avalanche (HD) (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 20:30 CDMX. NHL. Montreal Canadiens @ Colorado Avalanche (HD) (EVENTOS-OPC 2)",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "xtream_cb6eab5a",
-      "agenda_id": "",
-      "titulo": "Seattle Kraken vs. Chicago Blackhawks",
-      "torneo": "NHL",
-      "categoria": "Hockey Sobre Hielo",
-      "tipo_evento": "duelo",
-      "equipo_local": "Seattle Kraken",
-      "equipo_visitante": "Chicago Blackhawks",
-      "subtitulo": "NHL",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-26T01:40:00Z",
-      "hora_local_producto": "20:40",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fzsx49m1595775836.png&w=400&output=webp",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Ftuwyvr1422041801.png&w=400&output=webp",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
+          "nombre": "25/11 20:30 CDMX. LMP. Algodoneros de Guasave @ Cañeros de Los Mochis",
+          "id_xtream": "1042171"
+        },
         {
-          "nombre": "25/11 20:40 CDMX. NHL. Chicago Blackhawks @ Seattle Kraken (HD)",
-          "id_xtream": "1042176"
+          "nombre": "11/25 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [EN]",
+          "id_xtream": "1041970"
+        },
+        {
+          "nombre": "11/25 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [ES]",
+          "id_xtream": "1041973"
         }
       ],
-      "texto_original_crudo": "25/11 20:40 CDMX. NHL. Chicago Blackhawks @ Seattle Kraken (HD) (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "25/11 20:40 CDMX. NHL. Chicago Blackhawks @ Seattle Kraken (HD) (EVENTOS-OPC 2)",
+      "texto_original_crudo": "25/11 20:30 CDMX. LMP. Algodoneros de Guasave @ Cañeros de Los Mochis (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "25/11 20:30 CDMX. LMP. Algodoneros de Guasave @ Cañeros de Los Mochis (EVENTOS-OPC 2)",
       "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
+      "auditado_agy": true
     },
     {
       "id": "xtream_710ae31b",
@@ -5594,12 +5703,12 @@
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 668,
-    "eventos_lineales_inyectados": 37,
+    "eventos_lineales_inyectados": 30,
     "eventos_xtream_aprobados": 298,
     "eventos_contrastados_api": 27,
     "eventos_sellados_boveda_inmutable": 73,
-    "eventos_descartados_stale": 67,
-    "total_eventos_publicados": 122,
-    "hora_actualizacion_utc": "2026-11-25T16:21:26Z"
+    "eventos_descartados_stale": 108,
+    "total_eventos_publicados": 125,
+    "hora_actualizacion_utc": "2026-11-25T22:32:23Z"
   }
 }
