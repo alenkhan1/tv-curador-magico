@@ -4,22 +4,22 @@
     "dentro de 'sin_identificar' y son buscables, solo no tienen ficha",
     "de TMDB (sin poster/genero real) y por eso no aparecen en vitrina."
   ],
-  "generado": "2026-11-24T14:37:16Z",
+  "generado": "2026-11-25T13:58:16Z",
   "resumen": {
-    "total": 2842,
+    "total": 2837,
     "por_motivo": {
-      "pendiente": 2141,
-      "no_encontrado": 672,
-      "titulo_vacio": 29
+      "titulo_vacio": 30,
+      "pendiente": 2139,
+      "no_encontrado": 668
     },
     "peliculas": {
       "adulto": 22,
       "excluido": 0,
       "sin_nombre": 0,
-      "no_encontrado": 536,
-      "fallo_red": 1502,
-      "clasificados": 25045,
-      "sin_identificar": 2038
+      "no_encontrado": 532,
+      "fallo_red": 1501,
+      "clasificados": 25044,
+      "sin_identificar": 2033
     },
     "series": {
       "adulto": 4,
@@ -40,13 +40,13 @@
   "patrones": [
     {
       "patron": "(sin prefijo)",
-      "veces": 2550,
+      "veces": 2545,
       "ejemplos": [
-        "WWECrownJewel2026",
-        "WWE Money in the Bank 2026 vip hdlatino us (2026)",
-        "In Search of Darkness 1995 1999 Journey Back Into Iconic 90s Horror (1995)",
+        "दायरा (2026)",
         "Victorian Psycho (2026) (ING) CAM",
-        "Ghost Soldier (2026) (ING) CAM"
+        "Ghost Soldier (2026) (ING) CAM",
+        "Ebenezer (2026) (ING) CAM",
+        "Godzilla Minus Zero (2026) (ING) CAM"
       ]
     },
     {
@@ -635,6 +635,10 @@
       "veces": 4
     },
     {
+      "etiqueta": "EN",
+      "veces": 3
+    },
+    {
       "etiqueta": "INGLES",
       "veces": 3
     },
@@ -644,10 +648,6 @@
     },
     {
       "etiqueta": "SUBTITULADA",
-      "veces": 2
-    },
-    {
-      "etiqueta": "EN",
       "veces": 2
     },
     {
@@ -662,7 +662,7 @@
     },
     {
       "carpeta": "PELICULAS 1 MIX - PARTE 2",
-      "veces": 347
+      "veces": 346
     },
     {
       "carpeta": "PELICULAS 1 MIX",
@@ -753,42 +753,18 @@
       "veces": 20
     },
     {
-      "carpeta": "ESTRENOS 2026",
+      "carpeta": "THRILLER / SUSPENSO",
       "veces": 15
     }
   ],
   "items": [
     {
-      "id": "1041397",
+      "id": "1038524",
       "tipo": "movie",
-      "nombre_original": "WWECrownJewel2026",
-      "titulo_buscado": "WWECrownJewel2026",
-      "anio": 0,
-      "motivo": "pendiente",
-      "carpeta": "ESTRENOS 2026",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "1041396",
-      "tipo": "movie",
-      "nombre_original": "WWE Money in the Bank 2026 vip hdlatino us (2026)",
-      "titulo_buscado": "WWE Money in the Bank 2026 vip hdlatino us",
+      "nombre_original": "दायरा (2026)",
+      "titulo_buscado": "दायरा",
       "anio": 2026,
-      "motivo": "pendiente",
-      "carpeta": "ESTRENOS 2026",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "1041387",
-      "tipo": "movie",
-      "nombre_original": "In Search of Darkness 1995 1999 Journey Back Into Iconic 90s Horror (1995)",
-      "titulo_buscado": "In Search of Darkness 1995 1999 Journey Back Into Iconic 90s Horror",
-      "anio": 1995,
-      "motivo": "no_encontrado",
+      "motivo": "titulo_vacio",
       "carpeta": "ESTRENOS 2026",
       "etiquetas": [],
       "prefijo": "",
@@ -845,7 +821,7 @@
     {
       "id": "1037921",
       "tipo": "movie",
-      "nombre_original": "Evil (2003)",
+      "nombre_original": "Evil (Ondskan) (2003)",
       "titulo_buscado": "Evil",
       "anio": 2003,
       "motivo": "no_encontrado",
@@ -899,6 +875,20 @@
       "motivo": "no_encontrado",
       "carpeta": "ESTRENOS 2026",
       "etiquetas": [],
+      "prefijo": "",
+      "copias": 1
+    },
+    {
+      "id": "1020316",
+      "tipo": "movie",
+      "nombre_original": "Rebelión en Polonia (Sublevación en el Gueto) (2001)",
+      "titulo_buscado": "Rebelión en Polonia",
+      "anio": 2001,
+      "motivo": "no_encontrado",
+      "carpeta": "ESTRENOS 2026",
+      "etiquetas": [
+        "EN"
+      ],
       "prefijo": "",
       "copias": 1
     },
@@ -1011,18 +1001,6 @@
       "copias": 1
     },
     {
-      "id": "990986",
-      "tipo": "movie",
-      "nombre_original": "MISS(ING) (2018)",
-      "titulo_buscado": "MISS",
-      "anio": 2018,
-      "motivo": "no_encontrado",
-      "carpeta": "ESTRENOS 2026",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 4
-    },
-    {
       "id": "990501",
       "tipo": "movie",
       "nombre_original": "Washington (1991)",
@@ -1073,14 +1051,14 @@
     {
       "id": "959669",
       "tipo": "movie",
-      "nombre_original": "Dink (2021)",
-      "titulo_buscado": "Dink",
+      "nombre_original": "딩크족 (2021)",
+      "titulo_buscado": "딩크족",
       "anio": 2021,
-      "motivo": "no_encontrado",
+      "motivo": "titulo_vacio",
       "carpeta": "ESTRENOS 2026",
       "etiquetas": [],
       "prefijo": "",
-      "copias": 1
+      "copias": 27
     },
     {
       "id": "921803",
@@ -1546,18 +1524,6 @@
       "anio": 0,
       "motivo": "no_encontrado",
       "carpeta": "ROMANCE / ROMANCE",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "921384",
-      "tipo": "movie",
-      "nombre_original": "Summer House (2026)",
-      "titulo_buscado": "Summer House",
-      "anio": 2026,
-      "motivo": "no_encontrado",
-      "carpeta": "ESTRENOS 2026",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -2722,18 +2688,6 @@
       "anio": 2025,
       "motivo": "pendiente",
       "carpeta": "ESTRENOS 2025",
-      "etiquetas": [],
-      "prefijo": "",
-      "copias": 1
-    },
-    {
-      "id": "920373",
-      "tipo": "movie",
-      "nombre_original": "A Village Tale",
-      "titulo_buscado": "A Village Tale",
-      "anio": 0,
-      "motivo": "no_encontrado",
-      "carpeta": "ESTRENOS 2026",
       "etiquetas": [],
       "prefijo": "",
       "copias": 1
@@ -10356,6 +10310,54 @@
       "anio": 2005,
       "motivo": "pendiente",
       "carpeta": "PELICULAS 1 MIX - PARTE 2",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 4
+    },
+    {
+      "id": "862901",
+      "tipo": "movie",
+      "nombre_original": "Fin de Semana Mortal (1)",
+      "titulo_buscado": "Fin de Semana Mortal",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "PELICULAS 1 MIX - PARTE 2",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 4
+    },
+    {
+      "id": "862880",
+      "tipo": "movie",
+      "nombre_original": "Entre los sueños y la muerte",
+      "titulo_buscado": "Entre los sueños y la muerte",
+      "anio": 0,
+      "motivo": "no_encontrado",
+      "carpeta": "THRILLER / SUSPENSO",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 2
+    },
+    {
+      "id": "862860",
+      "tipo": "movie",
+      "nombre_original": "El regreso del hada de los dientes",
+      "titulo_buscado": "El regreso del hada de los dientes",
+      "anio": 0,
+      "motivo": "pendiente",
+      "carpeta": "PELICULAS 1 MIX",
+      "etiquetas": [],
+      "prefijo": "",
+      "copias": 4
+    },
+    {
+      "id": "862845",
+      "tipo": "movie",
+      "nombre_original": "El infierno de Dante (2010)",
+      "titulo_buscado": "El infierno de Dante",
+      "anio": 2010,
+      "motivo": "no_encontrado",
+      "carpeta": "ACTION / ACCIÓN",
       "etiquetas": [],
       "prefijo": "",
       "copias": 4
