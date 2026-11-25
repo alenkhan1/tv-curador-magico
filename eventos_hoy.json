@@ -1,10 +1,73 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-24T22:31:17Z",
+  "generado_utc": "2026-11-25T03:31:11Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-24",
   "base_media": "http://latinostream.xyz:80",
   "eventos": [
+    {
+      "id": "lineal_tnt_sports_9baa77f4",
+      "canales_mencionados_fuente": [
+        "NBA League Pass",
+        "HBO MAX",
+        "TNT Sports Premium",
+        "TNT"
+      ],
+      "agenda_id": "",
+      "titulo": "Denver Nuggets vs. Dallas Mavericks",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Denver Nuggets",
+      "equipo_visitante": "Dallas Mavericks",
+      "subtitulo": "NBA",
+      "referencia": "Liga Regular",
+      "hora_utc": "2026-11-24T03:00:00Z",
+      "hora_local_producto": "22:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F139.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F138.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Arg| TNT Sports FHD (local)",
+          "id_xtream": "1034305",
+          "canal_lineal": "TNT SPORTS",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| TNT Sports HD",
+          "id_xtream": "1034306",
+          "canal_lineal": "TNT SPORTS",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| TNT Sports HQ HD",
+          "id_xtream": "1034307",
+          "canal_lineal": "TNT SPORTS",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "TNT SPORTS"
+      ],
+      "texto_original_crudo": "00:00 NBA Liga Regular Denver Nuggets Dallas Mavericks NBA League Pass HBO MAX TNT Sports Premium TNT",
+      "titulo_original_crudo": "00:00 NBA Liga Regular Denver Nuggets Dallas Mavericks NBA League Pass HBO MAX TNT Sports Premium TNT",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
     {
       "id": "xtream_a2874022",
       "agenda_id": "",
@@ -45,52 +108,14 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_8bb0b1b6",
-      "agenda_id": "",
-      "titulo": "TCU vs. Utah",
-      "torneo": "NCAA",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "TCU",
-      "equipo_visitante": "Utah",
-      "subtitulo": "NCAA",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-24T05:30:00Z",
-      "hora_local_producto": "00:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F202.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F114.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11/24 00:30 Utah at TCU [FOX Sports 2]",
-          "id_xtream": "1041563"
-        }
-      ],
-      "texto_original_crudo": "11/24 00:30 Utah at TCU [FOX Sports 2] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/24 00:30 Utah at TCU [FOX Sports 2] (EVENTOS-FUBO)",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_c5ef8148",
       "agenda_id": "",
-      "titulo": "India a vs. United Arab Emirates",
+      "titulo": "India a vs. Emiratos Árabes Unidos",
       "torneo": "Cricket Internacional",
       "categoria": "Cricket",
       "tipo_evento": "duelo",
       "equipo_local": "India a",
-      "equipo_visitante": "United Arab Emirates",
+      "equipo_visitante": "Emiratos Árabes Unidos",
       "subtitulo": "Cricket Internacional",
       "referencia": "En Directo",
       "hora_utc": "2026-11-24T06:00:00Z",
@@ -326,44 +351,6 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
-    },
-    {
-      "id": "xtream_6f779a18",
-      "agenda_id": "",
-      "titulo": "Zondi vs. Komana",
-      "torneo": "Extreme Fighting Championship 130",
-      "categoria": "Combate",
-      "tipo_evento": "duelo",
-      "equipo_local": "Zondi",
-      "equipo_visitante": "Komana",
-      "subtitulo": "Extreme Fighting Championship 130",
-      "referencia": "EFC 130",
-      "hora_utc": "2026-11-24T10:00:00Z",
-      "hora_local_producto": "05:00",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11/24 05:00 Extreme Fighting Championship 130: Zondi vs. Komana [Stadium]",
-          "id_xtream": "1041615"
-        }
-      ],
-      "texto_original_crudo": "11/24 05:00 Extreme Fighting Championship 130: Zondi vs. Komana [Stadium] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/24 05:00 Extreme Fighting Championship 130: Zondi vs. Komana [Stadium] (EVENTOS-FUBO)",
-      "ronda": "",
-      "auditado_agy": true
     },
     {
       "id": "lineal_dsports_ar_be1a609c",
@@ -688,14 +675,14 @@
     {
       "id": "xtream_e991e0b4",
       "agenda_id": "",
-      "titulo": "Shabab al Ahli vs. al Qadsiah",
+      "titulo": "Shabab al Ahli vs. al Quadisiya",
       "torneo": "AFC Champions League",
       "categoria": "Fútbol",
       "tipo_evento": "duelo",
       "equipo_local": "Shabab al Ahli",
-      "equipo_visitante": "al Qadsiah",
+      "equipo_visitante": "al Quadisiya",
       "subtitulo": "AFC Champions League",
-      "referencia": "Fase de Liga",
+      "referencia": "Fase de Grupos",
       "hora_utc": "2026-11-24T15:00:00Z",
       "hora_local_producto": "10:00",
       "duracion_min": 125,
@@ -889,6 +876,83 @@
           "oponente_id": "lineal_espn_3_ar_22959edf",
           "oponente_titulo": "R. Racing Club vs Real Sociedad",
           "oponente_hora": "09:00"
+        }
+      ],
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_dsports_2_588cc4ad",
+      "canales_mencionados_fuente": [
+        "DSports 2 (612/1612)",
+        "DGO",
+        "Amazon Prime Video (Ver en vivo)",
+        "Paramount+"
+      ],
+      "agenda_id": "",
+      "titulo": "Italia vs. Corea del Sur",
+      "torneo": "Davis Cup Finals",
+      "categoria": "Tenis",
+      "tipo_evento": "duelo",
+      "equipo_local": "Italia",
+      "equipo_visitante": "Corea del Sur",
+      "subtitulo": "Davis Cup Finals",
+      "referencia": "Cuartos de Final - Partido",
+      "hora_utc": "2026-11-24T17:00:00Z",
+      "hora_local_producto": "12:00",
+      "duracion_min": 240,
+      "logo_torneo": "",
+      "logo_local": "https://flagcdn.com/256x192/it.png",
+      "logo_visitante": "https://flagcdn.com/256x192/kr.png",
+      "banner": "",
+      "tier": 2,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Directv Sports 2 HD",
+          "id_xtream": "758141",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "LAT | DIRECTV SPORTS 2 (P)",
+          "id_xtream": "758155",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        },
+        {
+          "nombre": "EVENTS 12 :  Directv Sports 2 -ARG-",
+          "id_xtream": "804929",
+          "canal_lineal": "DSPORTS 2",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "DSPORTS 2"
+      ],
+      "texto_original_crudo": "14:00 Davis Cup Finals 1/4 de Final Partido 2 Italia Corea del Sur DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "titulo_original_crudo": "14:00 Davis Cup Finals 1/4 de Final Partido 2 Italia Corea del Sur DSports 2 (612/1612) DGO Amazon Prime Video (Ver en vivo) Paramount+",
+      "conflictos_lineales": [
+        {
+          "canal": "DSPORTS 2",
+          "oponente_id": "lineal_dsports_2_aa42aef9",
+          "oponente_titulo": "Italia vs Corea del Sur",
+          "oponente_hora": "10:00"
+        },
+        {
+          "canal": "DSPORTS 2",
+          "oponente_id": "lineal_dsports_2_ab542409",
+          "oponente_titulo": "Italia vs Corea del Sur",
+          "oponente_hora": "14:00"
         }
       ],
       "ronda": "",
@@ -1254,6 +1318,10 @@
         {
           "nombre": "24/11 13:30 CDMX. NCAA BASKETBALL. BYU vs Ole Miss",
           "id_xtream": "1041657"
+        },
+        {
+          "nombre": "11/24 NCAAB 2:30pm Mississippi vs BYU = ESPN 2 USA **",
+          "id_xtream": "1041536"
         }
       ],
       "texto_original_crudo": "24/11 13:30 CDMX. NCAA BASKETBALL. BYU vs Ole Miss (EVENTOS-OPC 2)",
@@ -1433,44 +1501,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_c6366400",
-      "agenda_id": "",
-      "titulo": "Mississippi vs. BYU",
-      "torneo": "NCAA Men's Basketball",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Mississippi",
-      "equipo_visitante": "BYU",
-      "subtitulo": "NCAA Men's Basketball",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-24T19:30:00Z",
-      "hora_local_producto": "14:30",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F271.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F6756.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11/24 NCAAB 2:30pm Mississippi vs BYU = ESPN 2 USA **",
-          "id_xtream": "1041536"
-        }
-      ],
-      "texto_original_crudo": "11/24 NCAAB 2:30pm Mississippi vs BYU = ESPN 2 USA ** (EVENTOS-OPC 1)",
-      "titulo_original_crudo": "11/24 NCAAB 2:30pm Mississippi vs BYU = ESPN 2 USA ** (EVENTOS-OPC 1)",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_dd9f0222",
       "agenda_id": "",
       "titulo": "Arkansas State Red Wolves vs. Long Beach State Beach",
@@ -1501,6 +1531,10 @@
         {
           "nombre": "24/11 14:30 CDMX. NCAA BASKETBALL. Long Beach State Beach @ Arkansas State Red Wolves",
           "id_xtream": "1041689"
+        },
+        {
+          "nombre": "24/11 16:30 CDMX. NCAA BASKETBALL. Iowa State vs San Diego State",
+          "id_xtream": "1041695"
         }
       ],
       "texto_original_crudo": "24/11 14:30 CDMX. NCAA BASKETBALL. Long Beach State Beach @ Arkansas State Red Wolves (EVENTOS-OPC 2)",
@@ -2385,15 +2419,85 @@
       "curado_integro": true
     },
     {
+      "id": "lineal_espn_2_ar_9e803b5b",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "NBA League Pass",
+        "ESPN 2"
+      ],
+      "agenda_id": "",
+      "titulo": "Philadelphia 76ers vs. Miami Heat",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Philadelphia 76ers",
+      "equipo_visitante": "Miami Heat",
+      "subtitulo": "NBA",
+      "referencia": "Liga Regular",
+      "hora_utc": "2026-11-24T22:00:00Z",
+      "hora_local_producto": "17:00",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F154.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F147.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Arg| ESPN 2 FHD",
+          "id_xtream": "1034283",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| ESPN 2 FHD (local)",
+          "id_xtream": "1034284",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg: ESPN 2 HD",
+          "id_xtream": "1034278",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "19:00 NBA Liga Regular Philadelphia 76ers Miami Heat Disney+ Premium NBA League Pass ESPN 2",
+      "titulo_original_crudo": "19:00 NBA Liga Regular Philadelphia 76ers Miami Heat Disney+ Premium NBA League Pass ESPN 2",
+      "conflictos_lineales": [
+        {
+          "canal": "ESPN 2 AR",
+          "oponente_id": "lineal_espn_2_ar_04125bb3",
+          "oponente_titulo": "Manchester City vs Napoli",
+          "oponente_hora": "14:40"
+        }
+      ],
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_f38cefba",
       "agenda_id": "",
       "titulo": "Florida Atlantic Owls vs. Mercer Bears",
-      "torneo": "NCAA Basketball",
+      "torneo": "NCAA Men's Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Florida Atlantic Owls",
       "equipo_visitante": "Mercer Bears",
-      "subtitulo": "NCAA Basketball",
+      "subtitulo": "NCAA Men's Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-24T22:00:00Z",
       "hora_local_producto": "17:00",
@@ -2434,12 +2538,12 @@
       "id": "xtream_1d55ef08",
       "agenda_id": "",
       "titulo": "Wofford Terriers vs. Queens University Royals",
-      "torneo": "NCAA Basketball",
+      "torneo": "NCAA Men's Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Wofford Terriers",
       "equipo_visitante": "Queens University Royals",
-      "subtitulo": "NCAA Basketball",
+      "subtitulo": "NCAA Men's Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-24T22:00:00Z",
       "hora_local_producto": "17:00",
@@ -2472,12 +2576,12 @@
       "id": "xtream_cdf80a29",
       "agenda_id": "",
       "titulo": "VMI Keydets vs. Southern Indiana Screaming Eagles",
-      "torneo": "NCAA Basketball",
+      "torneo": "NCAA Men's Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "VMI Keydets",
       "equipo_visitante": "Southern Indiana Screaming Eagles",
-      "subtitulo": "NCAA Basketball",
+      "subtitulo": "NCAA Men's Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-24T22:00:00Z",
       "hora_local_producto": "17:00",
@@ -2597,12 +2701,12 @@
       "id": "xtream_e6156f72",
       "agenda_id": "",
       "titulo": "Furman Paladins vs. Elon Phoenix",
-      "torneo": "NCAA Basketball",
+      "torneo": "NCAA Men's Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Furman Paladins",
       "equipo_visitante": "Elon Phoenix",
-      "subtitulo": "NCAA Basketball",
+      "subtitulo": "NCAA Men's Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-24T22:30:00Z",
       "hora_local_producto": "17:30",
@@ -3418,6 +3522,146 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_d6d55ecf",
+      "agenda_id": "",
+      "titulo": "PGA Tour",
+      "torneo": "PGA Tour",
+      "categoria": "Golf",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Jornada",
+      "referencia": "Jornada • Cdmx. Golf PGA. Wtgl Golf",
+      "hora_utc": "2026-11-25T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/pga_tour.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/pga_tour.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "24/11 19:00 CDMX. GOLF PGA. WTGL Golf",
+          "id_xtream": "1041722"
+        }
+      ],
+      "texto_original_crudo": "24/11 19:00 CDMX. GOLF PGA. WTGL Golf (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "24/11 19:00 CDMX. GOLF PGA. WTGL Golf (EVENTOS-OPC 2)",
+      "ronda": "Jornada",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_2907220e",
+      "agenda_id": "",
+      "titulo": "WWE NXT",
+      "torneo": "WWE NXT",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Show Semanal",
+      "referencia": "Show Semanal • Cdmx. WWE NXT. Wrestling",
+      "hora_utc": "2026-11-25T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 360,
+      "logo_torneo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/WWE_Logo.svg/512px-WWE_Logo.svg.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/WWE_Logo.svg/512px-WWE_Logo.svg.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "24/11 19:00 CDMX. WWE NXT. Wrestling",
+          "id_xtream": "1041728"
+        }
+      ],
+      "texto_original_crudo": "24/11 19:00 CDMX. WWE NXT. Wrestling (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "24/11 19:00 CDMX. WWE NXT. Wrestling (EVENTOS-OPC 2)",
+      "ronda": "Show Semanal",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "lineal_espn_2_ar_636e32bc",
+      "canales_mencionados_fuente": [
+        "Disney+ Premium",
+        "NBA League Pass",
+        "ESPN 2"
+      ],
+      "agenda_id": "",
+      "titulo": "Oklahoma City Thunder vs. Minnesota Timberwolves",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Oklahoma City Thunder",
+      "equipo_visitante": "Minnesota Timberwolves",
+      "subtitulo": "NBA",
+      "referencia": "Liga Regular",
+      "hora_utc": "2026-11-25T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 150,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F2059.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F149.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 1,
+      "origen": "inyector_lineal",
+      "origenes": [
+        "inyector_lineal",
+        "futbolenvivo_ar"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "alta",
+      "puntuacion_confianza": 0.95,
+      "fuentes": [
+        {
+          "nombre": "Arg| ESPN 2 FHD",
+          "id_xtream": "1034283",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg| ESPN 2 FHD (local)",
+          "id_xtream": "1034284",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        },
+        {
+          "nombre": "Arg: ESPN 2 HD",
+          "id_xtream": "1034278",
+          "canal_lineal": "ESPN 2 AR",
+          "pais": "AR"
+        }
+      ],
+      "canales_candidatos": [
+        "ESPN 2 AR"
+      ],
+      "texto_original_crudo": "21:30 NBA Liga Regular Oklahoma C. Thunder Minnesota Timberwolves Disney+ Premium NBA League Pass ESPN 2",
+      "titulo_original_crudo": "21:30 NBA Liga Regular Oklahoma C. Thunder Minnesota Timberwolves Disney+ Premium NBA League Pass ESPN 2",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_28c2131c",
       "agenda_id": "",
       "titulo": "Rush vs. FireWolves",
@@ -3454,6 +3698,45 @@
       "titulo_original_crudo": "11/24 LACROSSE 7:30pm Rush - FireWolves = TSN5 CANADA (EVENTOS-OPC 1)",
       "ronda": "",
       "auditado_agy": true
+    },
+    {
+      "id": "xtream_9535724b",
+      "agenda_id": "",
+      "titulo": "Cmll",
+      "torneo": "Cmll",
+      "categoria": "Combate",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Lucha Libre",
+      "referencia": "Lucha Libre • Cdmx. Cmll. Martes de Arena México",
+      "hora_utc": "2026-11-25T00:30:00Z",
+      "hora_local_producto": "19:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "24/11 19:30 CDMX. CMLL. Martes de arena México",
+          "id_xtream": "1041729"
+        }
+      ],
+      "texto_original_crudo": "24/11 19:30 CDMX. CMLL. Martes de arena México (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "24/11 19:30 CDMX. CMLL. Martes de arena México (EVENTOS-OPC 2)",
+      "ronda": "Lucha Libre",
+      "auditado_agy": true,
+      "curado_integro": true
     },
     {
       "id": "xtream_9a300c0c",
@@ -3681,6 +3964,45 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": "",
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_b7a171a0",
+      "agenda_id": "",
+      "titulo": "USA BMX Pro Championship",
+      "torneo": "USA BMX Pro Championship",
+      "categoria": "Ciclismo",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Finales",
+      "referencia": "Finales • CICLISMO:00pm USA BMX Pro Championship Finals",
+      "hora_utc": "2026-11-25T01:00:00Z",
+      "hora_local_producto": "20:00",
+      "duracion_min": 300,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/uci.png",
+      "tier": 1,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/24 CICLISMO 8:00pm USA BMX Pro Championship Finals",
+          "id_xtream": "1041529"
+        }
+      ],
+      "texto_original_crudo": "11/24 CICLISMO 8:00pm USA BMX Pro Championship Finals (EVENTOS-OPC 1)",
+      "titulo_original_crudo": "11/24 CICLISMO 8:00pm USA BMX Pro Championship Finals (EVENTOS-OPC 1)",
+      "ronda": "Finales",
+      "auditado_agy": true,
       "curado_integro": true
     },
     {
@@ -3938,45 +4260,6 @@
       "fecha_confirmada": true,
       "contrastado_api": true,
       "ronda": ""
-    },
-    {
-      "id": "xtream_553e35f1",
-      "agenda_id": "",
-      "titulo": "Cmll",
-      "torneo": "Cmll",
-      "categoria": "Combate",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Función en Vivo",
-      "referencia": "Función en Vivo • Cdmx. Cmll. Martes de Coliseo Guadalajara",
-      "hora_utc": "2026-11-25T01:30:00Z",
-      "hora_local_producto": "20:30",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "24/11 20:30 CDMX. CMLL. Martes de Coliseo Guadalajara",
-          "id_xtream": "1041734"
-        }
-      ],
-      "texto_original_crudo": "24/11 20:30 CDMX. CMLL. Martes de Coliseo Guadalajara (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "24/11 20:30 CDMX. CMLL. Martes de Coliseo Guadalajara (EVENTOS-OPC 2)",
-      "ronda": "Función en Vivo",
-      "auditado_agy": true,
-      "curado_integro": true
     },
     {
       "id": "xtream_f441cfd7",
@@ -4435,12 +4718,12 @@
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 592,
-    "eventos_lineales_inyectados": 13,
+    "eventos_lineales_inyectados": 14,
     "eventos_xtream_aprobados": 266,
     "eventos_contrastados_api": 36,
-    "eventos_sellados_boveda_inmutable": 64,
-    "eventos_descartados_stale": 212,
-    "total_eventos_publicados": 99,
-    "hora_actualizacion_utc": "2026-11-24T22:31:17Z"
+    "eventos_sellados_boveda_inmutable": 71,
+    "eventos_descartados_stale": 266,
+    "total_eventos_publicados": 103,
+    "hora_actualizacion_utc": "2026-11-25T03:31:11Z"
   }
 }
