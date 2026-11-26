@@ -1,6 +1,6 @@
 {
   "version": "3.3-curador-tv-boveda-inmutable",
-  "generado_utc": "2026-11-26T16:09:27Z",
+  "generado_utc": "2026-11-26T22:21:58Z",
   "zona_horaria_producto": "America/Bogota",
   "fecha_local_producto": "2026-11-26",
   "base_media": "http://latinostream.xyz:80",
@@ -28,13 +28,18 @@
       "origen": "inyector_lineal",
       "origenes": [
         "inyector_lineal",
-        "mitv_espn_ar"
+        "mitv_espn_ar",
+        "xtream_evento"
       ],
       "estado": "confirmado",
       "estado_evento": "confirmado",
       "confianza": "alta",
       "puntuacion_confianza": 0.95,
       "fuentes": [
+        {
+          "nombre": "11/26 04:00 San Antonio Spurs at Portland Trail Blazers [ESPN]",
+          "id_xtream": "1042390"
+        },
         {
           "nombre": "Arg| ESPN 1 FHD",
           "id_xtream": "1034281",
@@ -190,7 +195,7 @@
       "equipo_local": "Saint Louis",
       "equipo_visitante": "Stanford",
       "subtitulo": "NCAA Men's Basketball",
-      "referencia": "Temporada Regular",
+      "referencia": "En Directo",
       "hora_utc": "2026-11-26T05:39:00Z",
       "hora_local_producto": "00:39",
       "duracion_min": 130,
@@ -217,45 +222,6 @@
       "titulo_original_crudo": "11/26 00:39 Saint Louis vs Stanford [CBS Sports Network] (EVENTOS-FUBO)",
       "ronda": "",
       "auditado_agy": true
-    },
-    {
-      "id": "xtream_f4430e14",
-      "agenda_id": "",
-      "titulo": "Colorado College vs. Miami",
-      "torneo": "Nchc",
-      "categoria": "Hockey",
-      "tipo_evento": "duelo",
-      "equipo_local": "Colorado College",
-      "equipo_visitante": "Miami",
-      "subtitulo": "Nchc",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-26T05:57:00Z",
-      "hora_local_producto": "00:57",
-      "duracion_min": 130,
-      "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2267.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fhockey%2Fteams%2F2283.png&w=400&output=webp&trim=10",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11/26 00:57 NCHC: Miami at Colorado College [Ryz Sports Network]",
-          "id_xtream": "1042363"
-        }
-      ],
-      "texto_original_crudo": "11/26 00:57 NCHC: Miami at Colorado College [Ryz Sports Network] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/26 00:57 NCHC: Miami at Colorado College [Ryz Sports Network] (EVENTOS-FUBO)",
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
     },
     {
       "id": "xtream_10cd02d5",
@@ -383,15 +349,170 @@
       "curado_integro": true
     },
     {
+      "id": "xtream_c9e5f1ae",
+      "agenda_id": "",
+      "titulo": "Asian Le Mans Series",
+      "torneo": "Asian Le Mans Series",
+      "categoria": "Motor",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Clasificación",
+      "referencia": "Clasificación • Round • 4 Hours Of Le Castellet",
+      "hora_utc": "2026-11-26T07:24:00Z",
+      "hora_local_producto": "02:24",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 02:24 Asian Le Mans Series - Round 1 - 4 Hours Of Le Castellet - Qualifying [UNBEATEN]",
+          "id_xtream": "1042376"
+        }
+      ],
+      "texto_original_crudo": "11/26 02:24 Asian Le Mans Series - Round 1 - 4 Hours Of Le Castellet - Qualifying [UNBEATEN] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 02:24 Asian Le Mans Series - Round 1 - 4 Hours Of Le Castellet - Qualifying [UNBEATEN] (EVENTOS-FUBO)",
+      "ronda": "Clasificación",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_041d0784",
+      "agenda_id": "",
+      "titulo": "Oklahoma City Thunder vs. Minnesota Timberwolves",
+      "torneo": "NBA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Oklahoma City Thunder",
+      "equipo_visitante": "Minnesota Timberwolves",
+      "subtitulo": "NBA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-26T07:30:00Z",
+      "hora_local_producto": "02:30",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F152.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F149.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/nba.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 02:30 Minnesota Timberwolves at Oklahoma City Thunder [ESPN2]",
+          "id_xtream": "1042378"
+        }
+      ],
+      "texto_original_crudo": "11/26 02:30 Minnesota Timberwolves at Oklahoma City Thunder [ESPN2] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 02:30 Minnesota Timberwolves at Oklahoma City Thunder [ESPN2] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_ec5884dc",
+      "agenda_id": "",
+      "titulo": "Amsterdam Rabobank vs. Ub",
+      "torneo": "Fiba 3x3 World Tour",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Amsterdam Rabobank",
+      "equipo_visitante": "Ub",
+      "subtitulo": "Fiba 3x3 World Tour",
+      "referencia": "Dubai",
+      "hora_utc": "2026-11-26T07:30:00Z",
+      "hora_local_producto": "02:30",
+      "duracion_min": 130,
+      "logo_torneo": "",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F6496.png&w=400&output=webp&trim=10",
+      "logo_visitante": "",
+      "banner": "",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 02:30 Dubai Amsterdam Rabobank vs. Ub [beIN SPORTS Xtra]",
+          "id_xtream": "1042380"
+        }
+      ],
+      "texto_original_crudo": "11/26 02:30 Dubai Amsterdam Rabobank vs. Ub [beIN SPORTS Xtra] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 02:30 Dubai Amsterdam Rabobank vs. Ub [beIN SPORTS Xtra] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true
+    },
+    {
+      "id": "xtream_cbd329e1",
+      "agenda_id": "",
+      "titulo": "Baylor vs. Texas Tech",
+      "torneo": "NCAA",
+      "categoria": "Fútbol Americano",
+      "tipo_evento": "duelo",
+      "equipo_local": "Baylor",
+      "equipo_visitante": "Texas Tech",
+      "subtitulo": "NCAA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-26T08:00:00Z",
+      "hora_local_producto": "03:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F118.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Famerican-football%2Fteams%2F193.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 03:00 Texas Tech at Baylor [FOX Sports 1]",
+          "id_xtream": "1042383"
+        }
+      ],
+      "texto_original_crudo": "11/26 03:00 Texas Tech at Baylor [FOX Sports 1] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 03:00 Texas Tech at Baylor [FOX Sports 1] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
       "id": "xtream_b608db3b",
       "agenda_id": "",
       "titulo": "Sydney Sixers vs. Melbourne Stars",
-      "torneo": "Women's Big Bash League",
-      "categoria": "Críquet",
+      "torneo": "Big Bash League",
+      "categoria": "Cricket",
       "tipo_evento": "duelo",
       "equipo_local": "Sydney Sixers",
       "equipo_visitante": "Melbourne Stars",
-      "subtitulo": "Women's Big Bash League",
+      "subtitulo": "Big Bash League",
       "referencia": "En Directo",
       "hora_utc": "2026-11-26T08:10:00Z",
       "hora_local_producto": "03:10",
@@ -511,22 +632,139 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_83220db0",
+      "id": "xtream_51826dd5",
       "agenda_id": "",
-      "titulo": "Melbourne Vipers vs. Queensland Pirates",
-      "torneo": "Australian Volleyball League",
-      "categoria": "Voleibol",
+      "titulo": "Boston College vs. Syracuse",
+      "torneo": "NCAA",
+      "categoria": "Baloncesto",
       "tipo_evento": "duelo",
-      "equipo_local": "Melbourne Vipers",
-      "equipo_visitante": "Queensland Pirates",
-      "subtitulo": "Australian Volleyball League",
-      "referencia": "En Directo",
-      "hora_utc": "2026-11-26T09:20:00Z",
-      "hora_local_producto": "04:20",
+      "equipo_local": "Boston College",
+      "equipo_visitante": "Syracuse",
+      "subtitulo": "NCAA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-26T09:00:00Z",
+      "hora_local_producto": "04:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F6776.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F2137.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 04:00 Syracuse at Boston College [ACC Network]",
+          "id_xtream": "1042391"
+        }
+      ],
+      "texto_original_crudo": "11/26 04:00 Syracuse at Boston College [ACC Network] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 04:00 Syracuse at Boston College [ACC Network] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_3d413729",
+      "agenda_id": "",
+      "titulo": "Tulsa vs. Oklahoma State",
+      "torneo": "NCAA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Tulsa",
+      "equipo_visitante": "Oklahoma State",
+      "subtitulo": "NCAA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-26T09:00:00Z",
+      "hora_local_producto": "04:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F2159.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F7083.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 04:00 Oklahoma State at Tulsa [ESPN U]",
+          "id_xtream": "1042392"
+        }
+      ],
+      "texto_original_crudo": "11/26 04:00 Oklahoma State at Tulsa [ESPN U] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 04:00 Oklahoma State at Tulsa [ESPN U] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_236832b9",
+      "agenda_id": "",
+      "titulo": "Nebraska vs. Ohio State",
+      "torneo": "NCAA",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Nebraska",
+      "equipo_visitante": "Ohio State",
+      "subtitulo": "NCAA",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-26T09:00:00Z",
+      "hora_local_producto": "04:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F195.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F7080.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 04:00 Ohio State at Nebraska [FOX Sports 2]",
+          "id_xtream": "1042393"
+        }
+      ],
+      "texto_original_crudo": "11/26 04:00 Ohio State at Nebraska [FOX Sports 2] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 04:00 Ohio State at Nebraska [FOX Sports 2] (EVENTOS-FUBO)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_90bbac8f",
+      "agenda_id": "",
+      "titulo": "Jackalope",
+      "torneo": "Jackalope",
+      "categoria": "Deportes De Acción",
+      "tipo_evento": "circuito",
+      "equipo_local": "",
+      "equipo_visitante": "",
+      "subtitulo": "Final Masculina",
+      "referencia": "Final Masculina • Jackalope Men's Final [beIN Sports Xtra]",
+      "hora_utc": "2026-11-26T09:00:00Z",
+      "hora_local_producto": "04:00",
       "duracion_min": 130,
       "logo_torneo": "",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F33.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fvolley%2Fteams%2F34.png&w=400&output=webp&trim=10",
+      "logo_local": "",
+      "logo_visitante": "",
       "banner": "",
       "tier": 2,
       "origen": "xtream_evento",
@@ -539,12 +777,51 @@
       "puntuacion_confianza": 0.75,
       "fuentes": [
         {
-          "nombre": "11/26 04:20 Queensland Pirates at Melbourne Vipers [Swerve Women's Sports]",
-          "id_xtream": "1042399"
+          "nombre": "11/26 04:00 Jackalope Men's Final [beIN SPORTS Xtra]",
+          "id_xtream": "1042394"
         }
       ],
-      "texto_original_crudo": "11/26 04:20 Queensland Pirates at Melbourne Vipers [Swerve Women's Sports] (EVENTOS-FUBO)",
-      "titulo_original_crudo": "11/26 04:20 Queensland Pirates at Melbourne Vipers [Swerve Women's Sports] (EVENTOS-FUBO)",
+      "texto_original_crudo": "11/26 04:00 Jackalope Men's Final [beIN SPORTS Xtra] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 04:00 Jackalope Men's Final [beIN SPORTS Xtra] (EVENTOS-FUBO)",
+      "ronda": "Final Masculina",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_0f9e1024",
+      "agenda_id": "",
+      "titulo": "Virginia State vs. Fayetteville State",
+      "torneo": "NCAA Division II",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "Virginia State",
+      "equipo_visitante": "Fayetteville State",
+      "subtitulo": "NCAA Division II",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-26T11:04:00Z",
+      "hora_local_producto": "06:04",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F8148.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F8119.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 06:04 Fayetteville State at Virginia State [Ryz Sports Network]",
+          "id_xtream": "1042412"
+        }
+      ],
+      "texto_original_crudo": "11/26 06:04 Fayetteville State at Virginia State [Ryz Sports Network] (EVENTOS-FUBO)",
+      "titulo_original_crudo": "11/26 06:04 Fayetteville State at Virginia State [Ryz Sports Network] (EVENTOS-FUBO)",
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
@@ -553,12 +830,12 @@
       "id": "xtream_f9e3e353",
       "agenda_id": "",
       "titulo": "Sri Lanka a vs. India a",
-      "torneo": "ACC Emerging Teams Asia Cup",
-      "categoria": "Cricket",
+      "torneo": "Torneo Internacional a",
+      "categoria": "Críquet",
       "tipo_evento": "duelo",
       "equipo_local": "Sri Lanka a",
       "equipo_visitante": "India a",
-      "subtitulo": "ACC Emerging Teams Asia Cup",
+      "subtitulo": "Torneo Internacional a",
       "referencia": "Semifinal",
       "hora_utc": "2026-11-26T11:20:00Z",
       "hora_local_producto": "06:20",
@@ -702,45 +979,6 @@
       "titulo_original_crudo": "11/26 07:00 Ub vs Antwerp [beIN SPORTS Xtra] (EVENTOS-FUBO)",
       "ronda": "",
       "auditado_agy": true
-    },
-    {
-      "id": "xtream_0356eb3d",
-      "agenda_id": "",
-      "titulo": "Ladies European Tour",
-      "torneo": "Ladies European Tour",
-      "categoria": "Golf",
-      "tipo_evento": "circuito",
-      "equipo_local": "",
-      "equipo_visitante": "",
-      "subtitulo": "Primera Ronda",
-      "referencia": "Primera Ronda • GOLF:00am Andalucia Costa del Sol Open de Espana (First Round) = Golf Channel USA",
-      "hora_utc": "2026-11-26T13:00:00Z",
-      "hora_local_producto": "08:00",
-      "duracion_min": 300,
-      "logo_torneo": "",
-      "logo_local": "",
-      "logo_visitante": "",
-      "banner": "",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11/26 GOLF 8:00am Andalucia Costa del Sol Open de Espana (First Round) = GOLF CHANNEL USA",
-          "id_xtream": "1042306"
-        }
-      ],
-      "texto_original_crudo": "11/26 GOLF 8:00am Andalucia Costa del Sol Open de Espana (First Round) = GOLF CHANNEL USA (EVENTOS-OPC 2)",
-      "titulo_original_crudo": "11/26 GOLF 8:00am Andalucia Costa del Sol Open de Espana (First Round) = GOLF CHANNEL USA (EVENTOS-OPC 2)",
-      "ronda": "Primera Ronda",
-      "auditado_agy": true,
-      "curado_integro": true
     },
     {
       "id": "lineal_dsports_ar_a132ff12",
@@ -1123,75 +1361,6 @@
       ],
       "ronda": "",
       "contrastado_api": true,
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
-      "id": "lineal_espn_2_ar_918e0b46",
-      "canales_mencionados_fuente": [
-        "Disney+ Premium",
-        "ESPN 2"
-      ],
-      "agenda_id": "",
-      "titulo": "Olympiacos vs. AC Milan",
-      "torneo": "Euroliga",
-      "categoria": "Baloncesto",
-      "tipo_evento": "duelo",
-      "equipo_local": "Olympiacos",
-      "equipo_visitante": "AC Milan",
-      "subtitulo": "Euroliga",
-      "referencia": "Fase Liga",
-      "hora_utc": "2026-11-26T17:45:00Z",
-      "hora_local_producto": "12:45",
-      "duracion_min": 130,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/euroleague.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbasketball%2Fteams%2F1542.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F31vu4p1705226276.png&w=400&output=webp",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/euroleague.png",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "futbolenvivo_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Arg| ESPN 2 FHD",
-          "id_xtream": "1034283",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg| ESPN 2 FHD (local)",
-          "id_xtream": "1034284",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg: ESPN 2 HD",
-          "id_xtream": "1034278",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 2 AR"
-      ],
-      "texto_original_crudo": "14:45 Fase Liga Olympiacos AC Milan Disney+ Premium ESPN 2",
-      "titulo_original_crudo": "14:45 Fase Liga Olympiacos AC Milan Disney+ Premium ESPN 2",
-      "conflictos_lineales": [
-        {
-          "canal": "ESPN 2 AR",
-          "oponente_id": "lineal_espn_2_ar_7f8b97aa",
-          "oponente_titulo": "Paris Saint-Germain vs Roma",
-          "oponente_hora": "14:40"
-        }
-      ],
-      "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
     },
@@ -1740,86 +1909,6 @@
       "curado_integro": true
     },
     {
-      "id": "lineal_espn_2_ar_be784e84",
-      "canales_mencionados_fuente": [],
-      "agenda_id": "",
-      "titulo": "Juventus vs Omonia Nicosia",
-      "torneo": "Juventus (Ita) vs. Omonia (Cyp)",
-      "categoria": "Fútbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Juventus",
-      "equipo_visitante": "Omonia Nicosia",
-      "subtitulo": "Juventus (Ita) vs. Omonia (Cyp)",
-      "referencia": "Fecha",
-      "hora_utc": "2026-11-26T20:00:00Z",
-      "hora_local_producto": "15:00",
-      "duracion_min": 165,
-      "logo_torneo": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F3.png&w=400&output=webp&trim=10",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F496.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fteams%2F3402.png&w=400&output=webp&trim=10",
-      "banner": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Ffootball%2Fleagues%2F3.png&w=400&output=webp&trim=10",
-      "tier": 2,
-      "origen": "inyector_lineal",
-      "origenes": [
-        "inyector_lineal",
-        "mitv_espn_2_ar"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "alta",
-      "puntuacion_confianza": 0.95,
-      "fuentes": [
-        {
-          "nombre": "Arg| ESPN 2 FHD",
-          "id_xtream": "1034283",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg| ESPN 2 FHD (local)",
-          "id_xtream": "1034284",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        },
-        {
-          "nombre": "Arg: ESPN 2 HD",
-          "id_xtream": "1034278",
-          "canal_lineal": "ESPN 2 AR",
-          "pais": "AR"
-        }
-      ],
-      "canales_candidatos": [
-        "ESPN 2 AR"
-      ],
-      "texto_original_crudo": "Juventus (Ita) vs. Omonia (Cyp). Fecha 5, Allianz Stadium. Vive los partidos de la 56º edición de la UEFA Europa League, la segunda competición más importante de fútbol en la región que otorga un lugar en la UEFA Champions League al campeón",
-      "titulo_original_crudo": "Juventus (Ita) vs. Omonia (Cyp). Fecha 5, Allianz Stadium. Vive los partidos de la 56º edición de la UEFA Europa League, la segunda competición más importante de fútbol en la región que otorga un lugar en la UEFA Champions League al campeón",
-      "conflictos_lineales": [
-        {
-          "canal": "ESPN 2 AR",
-          "oponente_id": "lineal_espn_2_ar_918e0b46",
-          "oponente_titulo": "Olympiacos vs AC Milan",
-          "oponente_hora": "12:45"
-        },
-        {
-          "canal": "ESPN 2 AR",
-          "oponente_id": "lineal_espn_2_ar_8feab921",
-          "oponente_titulo": "Crystal Palace vs Real Sociedad",
-          "oponente_hora": "15:00"
-        },
-        {
-          "canal": "ESPN 2 AR",
-          "oponente_id": "lineal_espn_2_ar_af0d318a",
-          "oponente_titulo": "Plzen vs Benfica",
-          "oponente_hora": "12:30"
-        }
-      ],
-      "fecha_confirmada": true,
-      "contrastado_api": true,
-      "ronda": "",
-      "auditado_agy": true,
-      "curado_integro": true
-    },
-    {
       "id": "xtream_aaeb10c7",
       "agenda_id": "",
       "titulo": "Tennessee vs. Iowa State",
@@ -1866,12 +1955,12 @@
       "id": "xtream_9e020636",
       "agenda_id": "",
       "titulo": "Miami vs. Michigan",
-      "torneo": "NCAA Division I Men's Basketball",
+      "torneo": "NCAA Men's Basketball",
       "categoria": "Baloncesto",
       "tipo_evento": "duelo",
       "equipo_local": "Miami",
       "equipo_visitante": "Michigan",
-      "subtitulo": "NCAA Division I Men's Basketball",
+      "subtitulo": "NCAA Men's Basketball",
       "referencia": "Temporada Regular",
       "hora_utc": "2026-11-26T20:30:00Z",
       "hora_local_producto": "15:30",
@@ -1897,6 +1986,10 @@
         {
           "nombre": "11/26 NCAAB 3:30pm Miami vs Michigan = TSN2 CANADA",
           "id_xtream": "1042314"
+        },
+        {
+          "nombre": "11/26 NCAAB 4:30pm Arkansas vs Michigan State = CBS USA",
+          "id_xtream": "1042315"
         }
       ],
       "texto_original_crudo": "11/26 NCAAB 3:30pm Miami vs Michigan = ESPN 2 USA ** (EVENTOS-OPC 2)",
@@ -2113,6 +2206,45 @@
       ],
       "texto_original_crudo": "11/26 NCAAB 6:00pm TCU vs Creighton = ESPN USA *** (EVENTOS-OPC 2)",
       "titulo_original_crudo": "11/26 NCAAB 6:00pm TCU vs Creighton = ESPN USA *** (EVENTOS-OPC 2)",
+      "ronda": "",
+      "auditado_agy": true,
+      "curado_integro": true
+    },
+    {
+      "id": "xtream_1921bcd4",
+      "agenda_id": "",
+      "titulo": "DePaul vs. Pittsburgh",
+      "torneo": "NCAA Men's Basketball",
+      "categoria": "Baloncesto",
+      "tipo_evento": "duelo",
+      "equipo_local": "DePaul",
+      "equipo_visitante": "Pittsburgh",
+      "subtitulo": "NCAA Men's Basketball",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-27T00:00:00Z",
+      "hora_local_producto": "19:00",
+      "duracion_min": 130,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2F5nox0o1581778425.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fr2.thesportsdb.com%2Fimages%2Fmedia%2Fteam%2Fbadge%2Fx3hydm1568478796.png&w=400&output=webp",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/ncaa.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 NCAAB 7:00pm DePaul vs Pittsburgh = FOX SPORTS 1 USA **",
+          "id_xtream": "1042319"
+        }
+      ],
+      "texto_original_crudo": "11/26 NCAAB 7:00pm DePaul vs Pittsburgh = FOX SPORTS 1 USA ** (EVENTOS-OPC 2)",
+      "titulo_original_crudo": "11/26 NCAAB 7:00pm DePaul vs Pittsburgh = FOX SPORTS 1 USA ** (EVENTOS-OPC 2)",
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
@@ -2539,48 +2671,6 @@
       "curado_integro": true
     },
     {
-      "id": "xtream_c4e020b6",
-      "agenda_id": "",
-      "titulo": "Cañeros de los Mochis vs. Algodoneros de Guasave",
-      "torneo": "Liga Mexicana del Pacífico",
-      "categoria": "Béisbol",
-      "tipo_evento": "duelo",
-      "equipo_local": "Cañeros de los Mochis",
-      "equipo_visitante": "Algodoneros de Guasave",
-      "subtitulo": "Liga Mexicana del Pacífico",
-      "referencia": "Temporada Regular",
-      "hora_utc": "2026-11-27T02:30:00Z",
-      "hora_local_producto": "21:30",
-      "duracion_min": 240,
-      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
-      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
-      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
-      "tier": 2,
-      "origen": "xtream_evento",
-      "origenes": [
-        "xtream_evento"
-      ],
-      "estado": "confirmado",
-      "estado_evento": "confirmado",
-      "confianza": "media",
-      "puntuacion_confianza": 0.75,
-      "fuentes": [
-        {
-          "nombre": "11/26 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [EN]",
-          "id_xtream": "1042342"
-        },
-        {
-          "nombre": "11/26 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [ES]",
-          "id_xtream": "1042345"
-        }
-      ],
-      "texto_original_crudo": "11/26 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [EN] (EVENTOS-LMB)",
-      "titulo_original_crudo": "11/26 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [EN] (EVENTOS-LMB)",
-      "ronda": "",
-      "auditado_agy": true
-    },
-    {
       "id": "xtream_26e5bdc1",
       "agenda_id": "",
       "titulo": "Jaguares de Nayarit vs. Naranjeros de Hermosillo",
@@ -2622,6 +2712,48 @@
       "ronda": "",
       "auditado_agy": true,
       "curado_integro": true
+    },
+    {
+      "id": "xtream_c4e020b6",
+      "agenda_id": "",
+      "titulo": "Cañeros de los Mochis vs. Algodoneros de Guasave",
+      "torneo": "Liga Mexicana del Pacífico",
+      "categoria": "Béisbol",
+      "tipo_evento": "duelo",
+      "equipo_local": "Cañeros de los Mochis",
+      "equipo_visitante": "Algodoneros de Guasave",
+      "subtitulo": "Liga Mexicana del Pacífico",
+      "referencia": "Temporada Regular",
+      "hora_utc": "2026-11-27T02:30:00Z",
+      "hora_local_producto": "21:30",
+      "duracion_min": 240,
+      "logo_torneo": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "logo_local": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
+      "logo_visitante": "https://wsrv.nl/?url=https%3A%2F%2Fmedia.api-sports.io%2Fbaseball%2Fteams%2F300.png&w=400&output=webp&trim=10",
+      "banner": "https://raw.githubusercontent.com/alenkhan1/tv-curador-magico/main/assets/logos/torneos/mlb.png",
+      "tier": 2,
+      "origen": "xtream_evento",
+      "origenes": [
+        "xtream_evento"
+      ],
+      "estado": "confirmado",
+      "estado_evento": "confirmado",
+      "confianza": "media",
+      "puntuacion_confianza": 0.75,
+      "fuentes": [
+        {
+          "nombre": "11/26 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [EN]",
+          "id_xtream": "1042342"
+        },
+        {
+          "nombre": "11/26 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [ES]",
+          "id_xtream": "1042345"
+        }
+      ],
+      "texto_original_crudo": "11/26 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [EN] (EVENTOS-LMB)",
+      "titulo_original_crudo": "11/26 09:30 PM | LMP | Algodoneros de Guasave @ Caneros de los Mochis [EN] (EVENTOS-LMB)",
+      "ronda": "",
+      "auditado_agy": true
     },
     {
       "id": "xtream_810e6d96",
@@ -2669,17 +2801,17 @@
   ],
   "metricas": {
     "fecha_local_producto": "2026-11-26",
-    "total_agenda_maestra": 58,
+    "total_agenda_maestra": 59,
     "total_canales_xtream": 11037,
     "xtream_procesada_hoy": true,
     "lista_xtream_actualizada_hoy": true,
     "fixtures_api_sports_hoy": 374,
-    "eventos_lineales_inyectados": 40,
+    "eventos_lineales_inyectados": 34,
     "eventos_xtream_aprobados": 190,
-    "eventos_contrastados_api": 11,
-    "eventos_sellados_boveda_inmutable": 45,
-    "eventos_descartados_stale": 63,
-    "total_eventos_publicados": 51,
-    "hora_actualizacion_utc": "2026-11-26T16:09:27Z"
+    "eventos_contrastados_api": 10,
+    "eventos_sellados_boveda_inmutable": 49,
+    "eventos_descartados_stale": 100,
+    "total_eventos_publicados": 56,
+    "hora_actualizacion_utc": "2026-11-26T22:21:58Z"
   }
 }
